@@ -7,14 +7,22 @@ import 'application_gateway_private_link_ip_configuration_response.dart';
 class ApplicationGatewayPrivateLinkConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// An array of application gateway private link ip configurations.
-  final pulumi.Input<List<ApplicationGatewayPrivateLinkIpConfigurationResponse>>? ipConfigurations;
+  final pulumi.Input<
+    List<ApplicationGatewayPrivateLinkIpConfigurationResponse>
+  >?
+  ipConfigurations;
+
   /// Name of the private link configuration that is unique within an Application Gateway.
   final pulumi.Input<String>? name;
+
   /// The provisioning state of the application gateway private link configuration.
   final pulumi.Input<String> provisioningState;
+
   /// Type of the resource.
   final pulumi.Input<String> type;
 
@@ -38,22 +46,58 @@ class ApplicationGatewayPrivateLinkConfigurationResponse {
     return <String, dynamic>{
       'etag': etag,
       'id': ?id,
-      'ipConfigurations': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayPrivateLinkIpConfigurationResponse>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<ApplicationGatewayPrivateLinkIpConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipConfigurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ApplicationGatewayPrivateLinkIpConfigurationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            ipConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApplicationGatewayPrivateLinkIpConfigurationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'provisioningState': provisioningState,
       'type': type,
     };
   }
 
-  factory ApplicationGatewayPrivateLinkConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory ApplicationGatewayPrivateLinkConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationGatewayPrivateLinkConfigurationResponse(
-      etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayPrivateLinkIpConfigurationResponse>(map['ipConfigurations']!, (value) => ApplicationGatewayPrivateLinkIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      type: (map['type'] as String).input(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipConfigurations: (() {
+        final guardedValue = map['ipConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            ApplicationGatewayPrivateLinkIpConfigurationResponse
+          >(
+            guardedValue,
+            (value) =>
+                ApplicationGatewayPrivateLinkIpConfigurationResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

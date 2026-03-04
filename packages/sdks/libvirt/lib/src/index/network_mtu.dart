@@ -8,20 +8,13 @@ class NetworkMtu {
 
   /// Creates a new [NetworkMtu].
   /// [size] Defines the specific size of the MTU for network communication.
-  NetworkMtu({
-    required this.size,
-  });
+  NetworkMtu({required this.size});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'size': size,
-    };
+    return <String, dynamic>{'size': size};
   }
 
   factory NetworkMtu.fromMap(Map<String, dynamic> map) {
-    return NetworkMtu(
-      size: (map['size'] as double).input(),
-    );
+    return NetworkMtu(size: pulumi.Input.fromValue(map['size'] as double));
   }
 }
-

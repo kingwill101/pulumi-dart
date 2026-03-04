@@ -11,6 +11,7 @@ class GetRouterResult {
   final String creationTimestamp;
   final String description;
   final bool encryptedInterconnectRouter;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetRouterMd5AuthenticationKey> md5AuthenticationKeys;
@@ -54,16 +55,26 @@ class GetRouterResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bgps': pulumi.Input.encodeList<GetRouterBgp, Map<String, dynamic>>(bgps, (value) => value.toMap()),
+      'bgps': pulumi.Input.encodeList<GetRouterBgp, Map<String, dynamic>>(
+        bgps,
+        (value) => value.toMap(),
+      ),
       'creationTimestamp': creationTimestamp,
       'description': description,
       'encryptedInterconnectRouter': encryptedInterconnectRouter,
       'id': id,
-      'md5AuthenticationKeys': pulumi.Input.encodeList<GetRouterMd5AuthenticationKey, Map<String, dynamic>>(md5AuthenticationKeys, (value) => value.toMap()),
+      'md5AuthenticationKeys':
+          pulumi.Input.encodeList<
+            GetRouterMd5AuthenticationKey,
+            Map<String, dynamic>
+          >(md5AuthenticationKeys, (value) => value.toMap()),
       'name': name,
       'nccGateway': nccGateway,
       'network': network,
-      'params': pulumi.Input.encodeList<GetRouterParam, Map<String, dynamic>>(params, (value) => value.toMap()),
+      'params': pulumi.Input.encodeList<GetRouterParam, Map<String, dynamic>>(
+        params,
+        (value) => value.toMap(),
+      ),
       'project': ?project,
       'region': ?region,
       'selfLink': selfLink,
@@ -72,20 +83,40 @@ class GetRouterResult {
 
   factory GetRouterResult.fromMap(Map<String, dynamic> map) {
     return GetRouterResult(
-      bgps: pulumi.Input.decodeList<GetRouterBgp>(map['bgps'], (value) => GetRouterBgp.fromMap((value as Map).cast<String, dynamic>())),
+      bgps: pulumi.Input.decodeList<GetRouterBgp>(
+        map['bgps']!,
+        (value) => GetRouterBgp.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       creationTimestamp: map['creationTimestamp'] as String,
       description: map['description'] as String,
       encryptedInterconnectRouter: map['encryptedInterconnectRouter'] as bool,
       id: map['id'] as String,
-      md5AuthenticationKeys: pulumi.Input.decodeList<GetRouterMd5AuthenticationKey>(map['md5AuthenticationKeys'], (value) => GetRouterMd5AuthenticationKey.fromMap((value as Map).cast<String, dynamic>())),
+      md5AuthenticationKeys:
+          pulumi.Input.decodeList<GetRouterMd5AuthenticationKey>(
+            map['md5AuthenticationKeys']!,
+            (value) => GetRouterMd5AuthenticationKey.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       name: map['name'] as String,
       nccGateway: map['nccGateway'] as String,
       network: map['network'] as String,
-      params: pulumi.Input.decodeList<GetRouterParam>(map['params'], (value) => GetRouterParam.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project']! as String,
-      region: map['region'] == null ? null : map['region']! as String,
+      params: pulumi.Input.decodeList<GetRouterParam>(
+        map['params']!,
+        (value) =>
+            GetRouterParam.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       selfLink: map['selfLink'] as String,
     );
   }
 }
-

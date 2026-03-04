@@ -447,33 +447,45 @@ class ConnectCluster extends pulumi.CustomResource {
   /// A capacity configuration of a Kafka cluster.
   /// Structure is documented below.
   late final pulumi.Output<ConnectClusterCapacityConfig> capacityConfig;
+
   /// The ID to use for the Connect Cluster, which will become the final component of the connect cluster's name. This value is structured like: `my-connect-cluster-id`.
   late final pulumi.Output<String> connectClusterId;
+
   /// The time when the cluster was created.
   late final pulumi.Output<String> createTime;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform.
   /// Structure is documented below.
   late final pulumi.Output<ConnectClusterGcpConfig> gcpConfig;
+
   /// The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
   late final pulumi.Output<String> kafkaCluster;
+
   /// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   late final pulumi.Output<String> location;
+
   /// The name of the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER_ID`.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// The current state of the connect cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
   late final pulumi.Output<String> state;
+
   /// The time when the cluster was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -486,24 +498,26 @@ class ConnectCluster extends pulumi.CustomResource {
     ConnectClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:managedkafka/connectCluster:ConnectCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.capacityConfig = registerOutput<ConnectClusterCapacityConfig>('capacityConfig');
-    this.connectClusterId = registerOutput<String>('connectClusterId');
-    this.createTime = registerOutput<String>('createTime');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.gcpConfig = registerOutput<ConnectClusterGcpConfig>('gcpConfig');
-    this.kafkaCluster = registerOutput<String>('kafkaCluster');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
+         'gcp:managedkafka/connectCluster:ConnectCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    capacityConfig = registerOutput<ConnectClusterCapacityConfig>(
+      'capacityConfig',
+    );
+    connectClusterId = registerOutput<String>('connectClusterId');
+    createTime = registerOutput<String>('createTime');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    gcpConfig = registerOutput<ConnectClusterGcpConfig>('gcpConfig');
+    kafkaCluster = registerOutput<String>('kafkaCluster');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.state = registerOutput<String>('state');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [ConnectCluster] resource's state with the given [name] and [id].
@@ -524,23 +538,25 @@ class ConnectCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:managedkafka/connectCluster:ConnectCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.capacityConfig = registerOutput<ConnectClusterCapacityConfig>('capacityConfig');
-    this.connectClusterId = registerOutput<String>('connectClusterId');
-    this.createTime = registerOutput<String>('createTime');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.gcpConfig = registerOutput<ConnectClusterGcpConfig>('gcpConfig');
-    this.kafkaCluster = registerOutput<String>('kafkaCluster');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
+         'gcp:managedkafka/connectCluster:ConnectCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    capacityConfig = registerOutput<ConnectClusterCapacityConfig>(
+      'capacityConfig',
+    );
+    connectClusterId = registerOutput<String>('connectClusterId');
+    createTime = registerOutput<String>('createTime');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    gcpConfig = registerOutput<ConnectClusterGcpConfig>('gcpConfig');
+    kafkaCluster = registerOutput<String>('kafkaCluster');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.state = registerOutput<String>('state');
-    this.updateTime = registerOutput<String>('updateTime');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

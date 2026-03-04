@@ -4,16 +4,15 @@ enum HeaderActionType {
   valueDelete("Delete"),
   valueOverwrite("Overwrite");
 
-  const HeaderActionType(this.value);
-  final String value;
+  const HeaderActionType(this.wireValue);
+  final String wireValue;
 
   static HeaderActionType fromValue(String value) {
     for (final item in HeaderActionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HeaderActionType value: $value');
   }
 }
-

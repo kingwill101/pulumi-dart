@@ -1,5 +1,3 @@
-library module_scheduling_k8s_io;
-
 export 'scheduling_k8s_io/gang_scheduling_policy.dart';
 export 'scheduling_k8s_io/gang_scheduling_policy_patch.dart';
 export 'scheduling_k8s_io/pod_group.dart';

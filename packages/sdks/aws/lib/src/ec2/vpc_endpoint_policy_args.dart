@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointPolicyArgs {
   /// A policy to attach to the endpoint that controls access to the service. Defaults to full access. All `Gateway` and some `Interface` endpoints support policies - see the [relevant AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints-access.html) for more details.
   final pulumi.Input<String>? policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The VPC Endpoint ID.
   final pulumi.Input<String> vpcEndpointId;
 
@@ -34,10 +36,17 @@ class VpcEndpointPolicyArgs {
 
   factory VpcEndpointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointPolicyArgs(
-      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      vpcEndpointId: (map['vpcEndpointId'] as String).input(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcEndpointId: pulumi.Input.fromValue(map['vpcEndpointId'] as String),
     );
   }
 }
-

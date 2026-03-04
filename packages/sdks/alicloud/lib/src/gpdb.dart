@@ -1,5 +1,3 @@
-library module_gpdb;
-
 export 'gpdb/account.dart';
 export 'gpdb/account_args.dart';
 export 'gpdb/account_state.dart';

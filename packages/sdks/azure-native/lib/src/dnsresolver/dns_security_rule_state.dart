@@ -3,16 +3,15 @@ enum DnsSecurityRuleState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const DnsSecurityRuleState(this.value);
-  final String value;
+  const DnsSecurityRuleState(this.wireValue);
+  final String wireValue;
 
   static DnsSecurityRuleState fromValue(String value) {
     for (final item in DnsSecurityRuleState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DnsSecurityRuleState value: $value');
   }
 }
-

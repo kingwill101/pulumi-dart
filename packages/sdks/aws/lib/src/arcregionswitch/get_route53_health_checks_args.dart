@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoute53HealthChecksArgs {
   /// ARN of the ARC Region Switch Plan.
   final pulumi.Input<String> planArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetRoute53HealthChecksArgs].
   /// [planArn] ARN of the ARC Region Switch Plan.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetRoute53HealthChecksArgs({
-    required this.planArn,
-    this.region,
-  });
+  GetRoute53HealthChecksArgs({required this.planArn, this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'planArn': planArn,
-      'region': ?region,
-    };
+    return <String, dynamic>{'planArn': planArn, 'region': ?region};
   }
 
   factory GetRoute53HealthChecksArgs.fromMap(Map<String, dynamic> map) {
     return GetRoute53HealthChecksArgs(
-      planArn: (map['planArn'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      planArn: pulumi.Input.fromValue(map['planArn'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

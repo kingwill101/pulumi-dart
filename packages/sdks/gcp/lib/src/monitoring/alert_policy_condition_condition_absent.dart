@@ -15,13 +15,16 @@ class AlertPolicyConditionConditionAbsent {
   /// Multiple aggregations are applied in the
   /// order specified.
   /// Structure is documented below.
-  final pulumi.Input<List<AlertPolicyConditionConditionAbsentAggregation>>? aggregations;
+  final pulumi.Input<List<AlertPolicyConditionConditionAbsentAggregation>>?
+  aggregations;
+
   /// The amount of time that a time series must
   /// fail to report new data to be considered
   /// failing. Currently, only values that are a
   /// multiple of a minute--e.g. 60s, 120s, or 300s
   /// --are supported.
   final pulumi.Input<String> duration;
+
   /// A filter that identifies which time series
   /// should be compared with the threshold.The
   /// filter is similar to the one that is
@@ -35,6 +38,7 @@ class AlertPolicyConditionConditionAbsent {
   /// field may not exceed 2048 Unicode characters
   /// in length.
   final pulumi.Input<String>? filter;
+
   /// The number/percent of time series for which
   /// the comparison must hold in order for the
   /// condition to trigger. If unspecified, then
@@ -58,20 +62,60 @@ class AlertPolicyConditionConditionAbsent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aggregations': ?pulumi.Input.mapOptionalInputValue<List<AlertPolicyConditionConditionAbsentAggregation>, List<Map<String, dynamic>>>(aggregations, (value) => pulumi.Input.encodeList<AlertPolicyConditionConditionAbsentAggregation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'aggregations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AlertPolicyConditionConditionAbsentAggregation>,
+            List<Map<String, dynamic>>
+          >(
+            aggregations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AlertPolicyConditionConditionAbsentAggregation,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'duration': duration,
       'filter': ?filter,
-      'trigger': ?pulumi.Input.mapOptionalInputValue<AlertPolicyConditionConditionAbsentTrigger, Map<String, dynamic>>(trigger, (value) => value.toMap()),
+      'trigger':
+          ?pulumi.Input.mapOptionalInputValue<
+            AlertPolicyConditionConditionAbsentTrigger,
+            Map<String, dynamic>
+          >(trigger, (value) => value.toMap()),
     };
   }
 
-  factory AlertPolicyConditionConditionAbsent.fromMap(Map<String, dynamic> map) {
+  factory AlertPolicyConditionConditionAbsent.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertPolicyConditionConditionAbsent(
-      aggregations: map['aggregations'] == null ? null : (pulumi.Input.decodeList<AlertPolicyConditionConditionAbsentAggregation>(map['aggregations']!, (value) => AlertPolicyConditionConditionAbsentAggregation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      duration: (map['duration'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      trigger: map['trigger'] == null ? null : (AlertPolicyConditionConditionAbsentTrigger.fromMap((map['trigger']! as Map).cast<String, dynamic>())).input(),
+      aggregations: (() {
+        final guardedValue = map['aggregations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<AlertPolicyConditionConditionAbsentAggregation>(
+            guardedValue,
+            (value) => AlertPolicyConditionConditionAbsentAggregation.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      duration: pulumi.Input.fromValue(map['duration'] as String),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trigger: (() {
+        final guardedValue = map['trigger'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AlertPolicyConditionConditionAbsentTrigger.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

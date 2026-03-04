@@ -9,16 +9,15 @@ enum AddressPurposeComputeBeta {
   sharedLoadbalancerVip("SHARED_LOADBALANCER_VIP"),
   vpcPeering("VPC_PEERING");
 
-  const AddressPurposeComputeBeta(this.value);
-  final String value;
+  const AddressPurposeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static AddressPurposeComputeBeta fromValue(String value) {
     for (final item in AddressPurposeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AddressPurposeComputeBeta value: $value');
   }
 }
-

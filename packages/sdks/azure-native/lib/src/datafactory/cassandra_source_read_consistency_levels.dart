@@ -11,16 +11,17 @@ enum CassandraSourceReadConsistencyLevels {
   valueSERIAL("SERIAL"),
   valueLOCALSERIAL("LOCAL_SERIAL");
 
-  const CassandraSourceReadConsistencyLevels(this.value);
-  final String value;
+  const CassandraSourceReadConsistencyLevels(this.wireValue);
+  final String wireValue;
 
   static CassandraSourceReadConsistencyLevels fromValue(String value) {
     for (final item in CassandraSourceReadConsistencyLevels.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CassandraSourceReadConsistencyLevels value: $value');
+    throw ArgumentError(
+      'Unknown CassandraSourceReadConsistencyLevels value: $value',
+    );
   }
 }
-

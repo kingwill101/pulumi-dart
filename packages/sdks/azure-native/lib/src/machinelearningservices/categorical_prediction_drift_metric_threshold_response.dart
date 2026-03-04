@@ -6,8 +6,10 @@ import 'monitoring_threshold_response.dart';
 class CategoricalPredictionDriftMetricThresholdResponse {
   /// Expected value is 'Categorical'.
   final pulumi.Input<String> dataType;
+
   /// [Required] The categorical prediction drift metric to calculate.
   final pulumi.Input<String> metric;
+
   /// The threshold value. If null, a default value will be set depending on the selected metric.
   final pulumi.Input<MonitoringThresholdResponse>? threshold;
 
@@ -25,16 +27,29 @@ class CategoricalPredictionDriftMetricThresholdResponse {
     return <String, dynamic>{
       'dataType': dataType,
       'metric': metric,
-      'threshold': ?pulumi.Input.mapOptionalInputValue<MonitoringThresholdResponse, Map<String, dynamic>>(threshold, (value) => value.toMap()),
+      'threshold':
+          ?pulumi.Input.mapOptionalInputValue<
+            MonitoringThresholdResponse,
+            Map<String, dynamic>
+          >(threshold, (value) => value.toMap()),
     };
   }
 
-  factory CategoricalPredictionDriftMetricThresholdResponse.fromMap(Map<String, dynamic> map) {
+  factory CategoricalPredictionDriftMetricThresholdResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CategoricalPredictionDriftMetricThresholdResponse(
-      dataType: (map['dataType'] as String).input(),
-      metric: (map['metric'] as String).input(),
-      threshold: map['threshold'] == null ? null : (MonitoringThresholdResponse.fromMap((map['threshold']! as Map).cast<String, dynamic>())).input(),
+      dataType: pulumi.Input.fromValue(map['dataType'] as String),
+      metric: pulumi.Input.fromValue(map['metric'] as String),
+      threshold: (() {
+        final guardedValue = map['threshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MonitoringThresholdResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

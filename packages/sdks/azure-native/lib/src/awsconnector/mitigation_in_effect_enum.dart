@@ -3,16 +3,15 @@ enum MitigationInEffectEnum {
   no("no"),
   yes("yes");
 
-  const MitigationInEffectEnum(this.value);
-  final String value;
+  const MitigationInEffectEnum(this.wireValue);
+  final String wireValue;
 
   static MitigationInEffectEnum fromValue(String value) {
     for (final item in MitigationInEffectEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MitigationInEffectEnum value: $value');
   }
 }
-

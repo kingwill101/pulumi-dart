@@ -1,5 +1,3 @@
-library module_sql;
-
 export 'sql/administrator_type.dart';
 export 'sql/always_encrypted_enclave_type.dart';
 export 'sql/auth_metadata_lookup_modes.dart';

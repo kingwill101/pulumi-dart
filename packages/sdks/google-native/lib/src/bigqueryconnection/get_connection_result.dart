@@ -6,16 +6,22 @@ import 'cloud_sql_properties_response.dart';
 class GetConnectionResult {
   /// Cloud SQL properties.
   final CloudSqlPropertiesResponse cloudSql;
+
   /// The creation timestamp of the connection.
   final String creationTime;
+
   /// User provided description.
   final String description;
+
   /// User provided display name for the connection.
   final String friendlyName;
+
   /// True, if credential is configured for this connection.
   final bool hasCredential;
+
   /// The last update timestamp of the connection.
   final String lastModifiedTime;
+
   /// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
   final String name;
 
@@ -51,7 +57,9 @@ class GetConnectionResult {
 
   factory GetConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionResult(
-      cloudSql: CloudSqlPropertiesResponse.fromMap((map['cloudSql'] as Map).cast<String, dynamic>()),
+      cloudSql: CloudSqlPropertiesResponse.fromMap(
+        (map['cloudSql']! as Map).cast<String, dynamic>(),
+      ),
       creationTime: map['creationTime'] as String,
       description: map['description'] as String,
       friendlyName: map['friendlyName'] as String,
@@ -61,4 +69,3 @@ class GetConnectionResult {
     );
   }
 }
-

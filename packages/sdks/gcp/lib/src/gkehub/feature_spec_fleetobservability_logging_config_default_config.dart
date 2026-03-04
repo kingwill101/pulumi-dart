@@ -9,20 +9,21 @@ class FeatureSpecFleetobservabilityLoggingConfigDefaultConfig {
 
   /// Creates a new [FeatureSpecFleetobservabilityLoggingConfigDefaultConfig].
   /// [mode] Specified if fleet logging feature is enabled.
-  FeatureSpecFleetobservabilityLoggingConfigDefaultConfig({
-    this.mode,
-  });
+  FeatureSpecFleetobservabilityLoggingConfigDefaultConfig({this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': ?mode,
-    };
+    return <String, dynamic>{'mode': ?mode};
   }
 
-  factory FeatureSpecFleetobservabilityLoggingConfigDefaultConfig.fromMap(Map<String, dynamic> map) {
+  factory FeatureSpecFleetobservabilityLoggingConfigDefaultConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FeatureSpecFleetobservabilityLoggingConfigDefaultConfig(
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,17 +7,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_cs_get_registry_enterprise_namespaces_get_registry_enterprise_namespaces_args_doc}
 class GetRegistryEnterpriseNamespacesArgs {
-  /// A list of ids to filter results by namespace id. Each item formats as `<instance_id>:<namespace_name>`.
+  /// A list of ids to filter results by namespace id. Each item formats as `&lt;instance_id&gt;:&lt;namespace_name&gt;`.
   final pulumi.Input<List<String>>? ids;
+
   /// ID of Container Registry Enterprise Edition instance.
   final pulumi.Input<String> instanceId;
+
   /// A regex string to filter results by namespace name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
   /// Creates a new [GetRegistryEnterpriseNamespacesArgs].
-  /// [ids] A list of ids to filter results by namespace id. Each item formats as `<instance_id>:<namespace_name>`.
+  /// [ids] A list of ids to filter results by namespace id. Each item formats as `&lt;instance_id&gt;:&lt;namespace_name&gt;`.
   /// [instanceId] ID of Container Registry Enterprise Edition instance.
   /// [nameRegex] A regex string to filter results by namespace name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
@@ -37,13 +40,26 @@ class GetRegistryEnterpriseNamespacesArgs {
     };
   }
 
-  factory GetRegistryEnterpriseNamespacesArgs.fromMap(Map<String, dynamic> map) {
+  factory GetRegistryEnterpriseNamespacesArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegistryEnterpriseNamespacesArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -10,20 +10,27 @@ class VolumeNodeAffinity {
 
   /// Creates a new [VolumeNodeAffinity].
   /// [required] required specifies hard node constraints that must be met.
-  VolumeNodeAffinity({
-    this.required,
-  });
+  VolumeNodeAffinity({this.required});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'required': ?pulumi.Input.mapOptionalInputValue<NodeSelector, Map<String, dynamic>>(required, (value) => value.toMap()),
+      'required':
+          ?pulumi.Input.mapOptionalInputValue<
+            NodeSelector,
+            Map<String, dynamic>
+          >(required, (value) => value.toMap()),
     };
   }
 
   factory VolumeNodeAffinity.fromMap(Map<String, dynamic> map) {
     return VolumeNodeAffinity(
-      required: map['required'] == null ? null : (NodeSelector.fromMap((map['required']! as Map).cast<String, dynamic>())).input(),
+      required: (() {
+        final guardedValue = map['required'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodeSelector.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

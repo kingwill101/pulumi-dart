@@ -7,8 +7,10 @@ import 'dataflow_graph_node_graph_settings.dart';
 class DataflowGraphGraphNode {
   /// Graph configuration.
   final pulumi.Input<DataflowGraphNodeGraphSettings> graphSettings;
+
   /// Name of the node.
   final pulumi.Input<String> name;
+
   /// DataflowGraph node types.
   /// Expected value is 'Graph'.
   final pulumi.Input<String> nodeType;
@@ -25,7 +27,11 @@ class DataflowGraphGraphNode {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'graphSettings': pulumi.Input.mapInputValue<DataflowGraphNodeGraphSettings, Map<String, dynamic>>(graphSettings, (value) => value.toMap()),
+      'graphSettings':
+          pulumi.Input.mapInputValue<
+            DataflowGraphNodeGraphSettings,
+            Map<String, dynamic>
+          >(graphSettings, (value) => value.toMap()),
       'name': name,
       'nodeType': nodeType,
     };
@@ -33,10 +39,13 @@ class DataflowGraphGraphNode {
 
   factory DataflowGraphGraphNode.fromMap(Map<String, dynamic> map) {
     return DataflowGraphGraphNode(
-      graphSettings: (DataflowGraphNodeGraphSettings.fromMap((map['graphSettings'] as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
-      nodeType: (map['nodeType'] as String).input(),
+      graphSettings: pulumi.Input.fromValue(
+        DataflowGraphNodeGraphSettings.fromMap(
+          (map['graphSettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      nodeType: pulumi.Input.fromValue(map['nodeType'] as String),
     );
   }
 }
-

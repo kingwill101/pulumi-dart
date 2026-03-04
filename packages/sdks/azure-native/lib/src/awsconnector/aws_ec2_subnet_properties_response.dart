@@ -8,42 +8,62 @@ import 'tag_response.dart';
 class AwsEc2SubnetPropertiesResponse {
   /// Indicates whether a network interface created in this subnet receives an IPv6 address. The default value is ``false``. If you specify ``AssignIpv6AddressOnCreation``, you must also specify an IPv6 CIDR block.
   final pulumi.Input<bool>? assignIpv6AddressOnCreation;
+
   /// The Availability Zone of the subnet. If you update this property, you must also update the ``CidrBlock`` property.
   final pulumi.Input<String>? availabilityZone;
+
   /// The AZ ID of the subnet.
   final pulumi.Input<String>? availabilityZoneId;
+
   /// The IPv4 CIDR block assigned to the subnet. If you update this property, we create a new subnet, and then delete the existing one.
   final pulumi.Input<String>? cidrBlock;
+
   /// Indicates whether DNS queries made to the Amazon-provided DNS Resolver in this subnet should return synthetic IPv6 addresses for IPv4-only destinations. For more information, see [DNS64 and NAT64](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-nat64-dns64) in the *User Guide*.
   final pulumi.Input<bool>? enableDns64;
+
   /// Indicates the device position for local network interfaces in this subnet. For example, ``1`` indicates local network interfaces in this subnet are the secondary network interface (eth1).
   final pulumi.Input<int>? enableLniAtDeviceIndex;
+
   /// An IPv4 IPAM pool ID for the subnet.
   final pulumi.Input<String>? ipv4IpamPoolId;
+
   /// An IPv4 netmask length for the subnet.
   final pulumi.Input<int>? ipv4NetmaskLength;
+
   /// The IPv6 CIDR block. If you specify ``AssignIpv6AddressOnCreation``, you must also specify an IPv6 CIDR block.
   final pulumi.Input<String>? ipv6CidrBlock;
+
   /// The IPv6 network ranges for the subnet, in CIDR notation.
   final pulumi.Input<List<String>>? ipv6CidrBlocks;
+
   /// An IPv6 IPAM pool ID for the subnet.
   final pulumi.Input<String>? ipv6IpamPoolId;
+
   /// Indicates whether this is an IPv6 only subnet. For more information, see [Subnet basics](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#subnet-basics) in the *User Guide*.
   final pulumi.Input<bool>? ipv6Native;
+
   /// An IPv6 netmask length for the subnet.
   final pulumi.Input<int>? ipv6NetmaskLength;
+
   /// Indicates whether instances launched in this subnet receive a public IPv4 address. The default value is ``false``.  AWS charges for all public IPv4 addresses, including public IPv4 addresses associated with running instances and Elastic IP addresses. For more information, see the *Public IPv4 Address* tab on the [VPC pricing page](https://aws.amazon.com/vpc/pricing/).
   final pulumi.Input<bool>? mapPublicIpOnLaunch;
+
   /// Property networkAclAssociationId
   final pulumi.Input<String>? networkAclAssociationId;
+
   /// The Amazon Resource Name (ARN) of the Outpost.
   final pulumi.Input<String>? outpostArn;
+
   /// The hostname type for EC2 instances launched into this subnet and how DNS A and AAAA record queries to the instances should be handled. For more information, see [Amazon EC2 instance hostname types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-naming.html) in the *User Guide*. Available options:  +  EnableResourceNameDnsAAAARecord (true | false)  +  EnableResourceNameDnsARecord (true | false)  +  HostnameType (ip-name | resource-name)
-  final pulumi.Input<PrivateDnsNameOptionsOnLaunchModelPropertiesResponse>? privateDnsNameOptionsOnLaunch;
+  final pulumi.Input<PrivateDnsNameOptionsOnLaunchModelPropertiesResponse>?
+  privateDnsNameOptionsOnLaunch;
+
   /// Property subnetId
   final pulumi.Input<String>? subnetId;
+
   /// Any tags assigned to the subnet.
   final pulumi.Input<List<TagResponse>>? tags;
+
   /// The ID of the VPC the subnet is in. If you update this property, you must also update the ``CidrBlock`` property.
   final pulumi.Input<String>? vpcId;
 
@@ -109,36 +129,140 @@ class AwsEc2SubnetPropertiesResponse {
       'mapPublicIpOnLaunch': ?mapPublicIpOnLaunch,
       'networkAclAssociationId': ?networkAclAssociationId,
       'outpostArn': ?outpostArn,
-      'privateDnsNameOptionsOnLaunch': ?pulumi.Input.mapOptionalInputValue<PrivateDnsNameOptionsOnLaunchModelPropertiesResponse, Map<String, dynamic>>(privateDnsNameOptionsOnLaunch, (value) => value.toMap()),
+      'privateDnsNameOptionsOnLaunch':
+          ?pulumi.Input.mapOptionalInputValue<
+            PrivateDnsNameOptionsOnLaunchModelPropertiesResponse,
+            Map<String, dynamic>
+          >(privateDnsNameOptionsOnLaunch, (value) => value.toMap()),
       'subnetId': ?subnetId,
-      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagResponse>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tags':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TagResponse>,
+            List<Map<String, dynamic>>
+          >(
+            tags,
+            (value) =>
+                pulumi.Input.encodeList<TagResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'vpcId': ?vpcId,
     };
   }
 
   factory AwsEc2SubnetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2SubnetPropertiesResponse(
-      assignIpv6AddressOnCreation: map['assignIpv6AddressOnCreation'] == null ? null : (map['assignIpv6AddressOnCreation']! as bool).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : (map['availabilityZoneId']! as String).input(),
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock']! as String).input(),
-      enableDns64: map['enableDns64'] == null ? null : (map['enableDns64']! as bool).input(),
-      enableLniAtDeviceIndex: map['enableLniAtDeviceIndex'] == null ? null : (map['enableLniAtDeviceIndex']! as int).input(),
-      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : (map['ipv4IpamPoolId']! as String).input(),
-      ipv4NetmaskLength: map['ipv4NetmaskLength'] == null ? null : (map['ipv4NetmaskLength']! as int).input(),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock']! as String).input(),
-      ipv6CidrBlocks: map['ipv6CidrBlocks'] == null ? null : ((map['ipv6CidrBlocks']! as List).cast<String>()).input(),
-      ipv6IpamPoolId: map['ipv6IpamPoolId'] == null ? null : (map['ipv6IpamPoolId']! as String).input(),
-      ipv6Native: map['ipv6Native'] == null ? null : (map['ipv6Native']! as bool).input(),
-      ipv6NetmaskLength: map['ipv6NetmaskLength'] == null ? null : (map['ipv6NetmaskLength']! as int).input(),
-      mapPublicIpOnLaunch: map['mapPublicIpOnLaunch'] == null ? null : (map['mapPublicIpOnLaunch']! as bool).input(),
-      networkAclAssociationId: map['networkAclAssociationId'] == null ? null : (map['networkAclAssociationId']! as String).input(),
-      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn']! as String).input(),
-      privateDnsNameOptionsOnLaunch: map['privateDnsNameOptionsOnLaunch'] == null ? null : (PrivateDnsNameOptionsOnLaunchModelPropertiesResponse.fromMap((map['privateDnsNameOptionsOnLaunch']! as Map).cast<String, dynamic>())).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      assignIpv6AddressOnCreation: (() {
+        final guardedValue = map['assignIpv6AddressOnCreation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      availabilityZoneId: (() {
+        final guardedValue = map['availabilityZoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cidrBlock: (() {
+        final guardedValue = map['cidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableDns64: (() {
+        final guardedValue = map['enableDns64'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableLniAtDeviceIndex: (() {
+        final guardedValue = map['enableLniAtDeviceIndex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ipv4IpamPoolId: (() {
+        final guardedValue = map['ipv4IpamPoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv4NetmaskLength: (() {
+        final guardedValue = map['ipv4NetmaskLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ipv6CidrBlock: (() {
+        final guardedValue = map['ipv6CidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6CidrBlocks: (() {
+        final guardedValue = map['ipv6CidrBlocks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ipv6IpamPoolId: (() {
+        final guardedValue = map['ipv6IpamPoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6Native: (() {
+        final guardedValue = map['ipv6Native'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ipv6NetmaskLength: (() {
+        final guardedValue = map['ipv6NetmaskLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      mapPublicIpOnLaunch: (() {
+        final guardedValue = map['mapPublicIpOnLaunch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      networkAclAssociationId: (() {
+        final guardedValue = map['networkAclAssociationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outpostArn: (() {
+        final guardedValue = map['outpostArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateDnsNameOptionsOnLaunch: (() {
+        final guardedValue = map['privateDnsNameOptionsOnLaunch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PrivateDnsNameOptionsOnLaunchModelPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TagResponse>(
+            guardedValue,
+            (value) =>
+                TagResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

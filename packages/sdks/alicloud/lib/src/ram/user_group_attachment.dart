@@ -8,7 +8,7 @@ import 'user_group_attachment_state.dart';
 ///
 /// For information about RAM User Group Attachment and how to use it, see [What is User Group Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AddUserToGroup).
 ///
-/// > **NOTE:** Available since v1.245.0.
+/// &gt; **NOTE:** Available since v1.245.0.
 ///
 /// ## Example Usage
 ///
@@ -237,6 +237,7 @@ import 'user_group_attachment_state.dart';
 class UserGroupAttachment extends pulumi.CustomResource {
   /// The name of group.
   late final pulumi.Output<String> groupName;
+
   /// The name of user.
   late final pulumi.Output<String> userName;
 
@@ -249,13 +250,13 @@ class UserGroupAttachment extends pulumi.CustomResource {
     UserGroupAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/userGroupAttachment:UserGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.groupName = registerOutput<String>('groupName');
-    this.userName = registerOutput<String>('userName');
+         'alicloud:ram/userGroupAttachment:UserGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    groupName = registerOutput<String>('groupName');
+    userName = registerOutput<String>('userName');
   }
 
   /// Gets an existing [UserGroupAttachment] resource's state with the given [name] and [id].
@@ -276,12 +277,12 @@ class UserGroupAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/userGroupAttachment:UserGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.groupName = registerOutput<String>('groupName');
-    this.userName = registerOutput<String>('userName');
+         'alicloud:ram/userGroupAttachment:UserGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    groupName = registerOutput<String>('groupName');
+    userName = registerOutput<String>('userName');
   }
 }

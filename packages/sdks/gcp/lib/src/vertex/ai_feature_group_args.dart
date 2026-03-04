@@ -11,17 +11,22 @@ class AiFeatureGroupArgs {
   /// Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
   /// Structure is documented below.
   final pulumi.Input<AiFeatureGroupBigQuery>? bigQuery;
+
   /// The description of the FeatureGroup.
   final pulumi.Input<String>? description;
+
   /// The labels with user-defined metadata to organize your FeatureGroup.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The resource name of the Feature Group.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region of feature group. eg us-central1
   final pulumi.Input<String>? region;
 
@@ -43,7 +48,11 @@ class AiFeatureGroupArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigQuery': ?pulumi.Input.mapOptionalInputValue<AiFeatureGroupBigQuery, Map<String, dynamic>>(bigQuery, (value) => value.toMap()),
+      'bigQuery':
+          ?pulumi.Input.mapOptionalInputValue<
+            AiFeatureGroupBigQuery,
+            Map<String, dynamic>
+          >(bigQuery, (value) => value.toMap()),
       'description': ?description,
       'labels': ?labels,
       'name': ?name,
@@ -54,13 +63,42 @@ class AiFeatureGroupArgs {
 
   factory AiFeatureGroupArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureGroupArgs(
-      bigQuery: map['bigQuery'] == null ? null : (AiFeatureGroupBigQuery.fromMap((map['bigQuery']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      bigQuery: (() {
+        final guardedValue = map['bigQuery'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AiFeatureGroupBigQuery.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

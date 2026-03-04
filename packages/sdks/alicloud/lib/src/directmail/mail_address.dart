@@ -6,7 +6,7 @@ import 'mail_address_state.dart';
 ///
 /// For information about Direct Mail Mail Address and how to use it, see [What is Mail Address](https://www.alibabacloud.com/help/en/directmail/latest/set-up-sender-addresses).
 ///
-/// > **NOTE:** Available since v1.134.0.
+/// &gt; **NOTE:** Available since v1.134.0.
 ///
 /// ## Example Usage
 ///
@@ -211,7 +211,7 @@ import 'mail_address_state.dart';
 /// ```
 ///
 ///
-/// > **Note:**
+/// &gt; **Note:**
 /// A maximum of 10 mailing addresses can be added.
 /// Individual users: Up to 10 mailing addresses can be deleted within a month.
 /// Enterprise users: Up to 10 mailing addresses can be deleted within a month.
@@ -228,12 +228,16 @@ import 'mail_address_state.dart';
 class MailAddress extends pulumi.CustomResource {
   /// The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
   late final pulumi.Output<String> accountName;
+
   /// Account password. The password must be length 10-20 string, contains numbers, uppercase letters, lowercase letters at the same time.
   late final pulumi.Output<String?> password;
+
   /// Return address.
   late final pulumi.Output<String?> replyAddress;
+
   /// Account type. Valid values: `batch`, `trigger`.
   late final pulumi.Output<String> sendtype;
+
   /// Account Status freeze: 1, normal: 0.
   late final pulumi.Output<String> status;
 
@@ -246,16 +250,16 @@ class MailAddress extends pulumi.CustomResource {
     MailAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:directmail/mailAddress:MailAddress',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.password = registerOutput<String?>('password');
-    this.replyAddress = registerOutput<String?>('replyAddress');
-    this.sendtype = registerOutput<String>('sendtype');
-    this.status = registerOutput<String>('status');
+         'alicloud:directmail/mailAddress:MailAddress',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    password = registerOutput<String?>('password');
+    replyAddress = registerOutput<String?>('replyAddress');
+    sendtype = registerOutput<String>('sendtype');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [MailAddress] resource's state with the given [name] and [id].
@@ -276,15 +280,15 @@ class MailAddress extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:directmail/mailAddress:MailAddress',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.password = registerOutput<String?>('password');
-    this.replyAddress = registerOutput<String?>('replyAddress');
-    this.sendtype = registerOutput<String>('sendtype');
-    this.status = registerOutput<String>('status');
+         'alicloud:directmail/mailAddress:MailAddress',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    password = registerOutput<String?>('password');
+    replyAddress = registerOutput<String?>('replyAddress');
+    sendtype = registerOutput<String>('sendtype');
+    status = registerOutput<String>('status');
   }
 }

@@ -4,7 +4,7 @@ import 'channel_alexa_state.dart';
 
 /// Manages an Alexa integration for a Bot Channel
 ///
-/// > **Note:** A bot can only have a single Alexa Channel associated with it.
+/// &gt; **Note:** A bot can only have a single Alexa Channel associated with it.
 ///
 /// ## Example Usage
 ///
@@ -225,10 +225,13 @@ import 'channel_alexa_state.dart';
 class ChannelAlexa extends pulumi.CustomResource {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> botName;
+
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the resource group where the Alexa Channel should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The Alexa skill ID for the Alexa Channel.
   late final pulumi.Output<String> skillId;
 
@@ -241,15 +244,15 @@ class ChannelAlexa extends pulumi.CustomResource {
     ChannelAlexaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:bot/channelAlexa:ChannelAlexa',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botName = registerOutput<String>('botName');
-    this.location = registerOutput<String>('location');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skillId = registerOutput<String>('skillId');
+         'azure:bot/channelAlexa:ChannelAlexa',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botName = registerOutput<String>('botName');
+    location = registerOutput<String>('location');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skillId = registerOutput<String>('skillId');
   }
 
   /// Gets an existing [ChannelAlexa] resource's state with the given [name] and [id].
@@ -270,14 +273,14 @@ class ChannelAlexa extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:bot/channelAlexa:ChannelAlexa',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botName = registerOutput<String>('botName');
-    this.location = registerOutput<String>('location');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skillId = registerOutput<String>('skillId');
+         'azure:bot/channelAlexa:ChannelAlexa',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botName = registerOutput<String>('botName');
+    location = registerOutput<String>('location');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skillId = registerOutput<String>('skillId');
   }
 }

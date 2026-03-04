@@ -5,16 +5,19 @@ enum ApigatewayAuditLogConfigLogTypeApigatewayV1beta {
   dataWrite("DATA_WRITE"),
   dataRead("DATA_READ");
 
-  const ApigatewayAuditLogConfigLogTypeApigatewayV1beta(this.value);
-  final String value;
+  const ApigatewayAuditLogConfigLogTypeApigatewayV1beta(this.wireValue);
+  final String wireValue;
 
-  static ApigatewayAuditLogConfigLogTypeApigatewayV1beta fromValue(String value) {
+  static ApigatewayAuditLogConfigLogTypeApigatewayV1beta fromValue(
+    String value,
+  ) {
     for (final item in ApigatewayAuditLogConfigLogTypeApigatewayV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ApigatewayAuditLogConfigLogTypeApigatewayV1beta value: $value');
+    throw ArgumentError(
+      'Unknown ApigatewayAuditLogConfigLogTypeApigatewayV1beta value: $value',
+    );
   }
 }
-

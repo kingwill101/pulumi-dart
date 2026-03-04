@@ -7,9 +7,11 @@ import 'get_location_zone_mapping.dart';
 class GetLocationResult {
   /// The display name of the location.
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
+
   /// A `zone_mappings` block as defined below.
   final List<GetLocationZoneMapping> zoneMappings;
 
@@ -30,7 +32,11 @@ class GetLocationResult {
       'displayName': displayName,
       'id': id,
       'location': location,
-      'zoneMappings': pulumi.Input.encodeList<GetLocationZoneMapping, Map<String, dynamic>>(zoneMappings, (value) => value.toMap()),
+      'zoneMappings':
+          pulumi.Input.encodeList<GetLocationZoneMapping, Map<String, dynamic>>(
+            zoneMappings,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -39,8 +45,12 @@ class GetLocationResult {
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
-      zoneMappings: pulumi.Input.decodeList<GetLocationZoneMapping>(map['zoneMappings'], (value) => GetLocationZoneMapping.fromMap((value as Map).cast<String, dynamic>())),
+      zoneMappings: pulumi.Input.decodeList<GetLocationZoneMapping>(
+        map['zoneMappings']!,
+        (value) => GetLocationZoneMapping.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum StepType {
   valueFileTask("FileTask"),
   valueEncodedTask("EncodedTask");
 
-  const StepType(this.value);
-  final String value;
+  const StepType(this.wireValue);
+  final String wireValue;
 
   static StepType fromValue(String value) {
     for (final item in StepType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StepType value: $value');
   }
 }
-

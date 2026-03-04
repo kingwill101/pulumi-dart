@@ -10,20 +10,29 @@ class SecurityConfigDataprocV1beta2 {
 
   /// Creates a new [SecurityConfigDataprocV1beta2].
   /// [kerberosConfig] Optional. Kerberos related configuration.
-  SecurityConfigDataprocV1beta2({
-    this.kerberosConfig,
-  });
+  SecurityConfigDataprocV1beta2({this.kerberosConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kerberosConfig': ?pulumi.Input.mapOptionalInputValue<KerberosConfigDataprocV1beta2, Map<String, dynamic>>(kerberosConfig, (value) => value.toMap()),
+      'kerberosConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            KerberosConfigDataprocV1beta2,
+            Map<String, dynamic>
+          >(kerberosConfig, (value) => value.toMap()),
     };
   }
 
   factory SecurityConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return SecurityConfigDataprocV1beta2(
-      kerberosConfig: map['kerberosConfig'] == null ? null : (KerberosConfigDataprocV1beta2.fromMap((map['kerberosConfig']! as Map).cast<String, dynamic>())).input(),
+      kerberosConfig: (() {
+        final guardedValue = map['kerberosConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KerberosConfigDataprocV1beta2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateCloudHcx {
   /// Fully qualified domain name of the appliance.
   final pulumi.Input<String> fqdn;
+
   /// Internal IP address of the appliance.
   final pulumi.Input<String> internalIp;
+
   /// State of the appliance. Possible values: ["ACTIVE", "CREATING"]
   final pulumi.Input<String> state;
+
   /// Version of the appliance.
   final pulumi.Input<String> version;
 
@@ -35,11 +38,10 @@ class GetPrivateCloudHcx {
 
   factory GetPrivateCloudHcx.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudHcx(
-      fqdn: (map['fqdn'] as String).input(),
-      internalIp: (map['internalIp'] as String).input(),
-      state: (map['state'] as String).input(),
-      version: (map['version'] as String).input(),
+      fqdn: pulumi.Input.fromValue(map['fqdn'] as String),
+      internalIp: pulumi.Input.fromValue(map['internalIp'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

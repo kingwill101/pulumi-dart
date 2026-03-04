@@ -10,20 +10,38 @@ class Authorization {
 
   /// Creates a new [Authorization].
   /// [adminUsers] For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access.
-  Authorization({
-    this.adminUsers,
-  });
+  Authorization({this.adminUsers});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adminUsers': ?pulumi.Input.mapOptionalInputValue<List<ClusterUser>, List<Map<String, dynamic>>>(adminUsers, (value) => pulumi.Input.encodeList<ClusterUser, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'adminUsers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ClusterUser>,
+            List<Map<String, dynamic>>
+          >(
+            adminUsers,
+            (value) =>
+                pulumi.Input.encodeList<ClusterUser, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory Authorization.fromMap(Map<String, dynamic> map) {
     return Authorization(
-      adminUsers: map['adminUsers'] == null ? null : (pulumi.Input.decodeList<ClusterUser>(map['adminUsers']!, (value) => ClusterUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      adminUsers: (() {
+        final guardedValue = map['adminUsers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ClusterUser>(
+            guardedValue,
+            (value) =>
+                ClusterUser.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

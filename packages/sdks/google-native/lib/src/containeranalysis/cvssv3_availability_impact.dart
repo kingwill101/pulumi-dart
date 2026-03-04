@@ -4,16 +4,15 @@ enum CVSSv3AvailabilityImpact {
   impactLow("IMPACT_LOW"),
   impactNone("IMPACT_NONE");
 
-  const CVSSv3AvailabilityImpact(this.value);
-  final String value;
+  const CVSSv3AvailabilityImpact(this.wireValue);
+  final String wireValue;
 
   static CVSSv3AvailabilityImpact fromValue(String value) {
     for (final item in CVSSv3AvailabilityImpact.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CVSSv3AvailabilityImpact value: $value');
   }
 }
-

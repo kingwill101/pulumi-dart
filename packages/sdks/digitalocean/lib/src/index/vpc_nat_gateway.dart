@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_nat_gateway_args.dart';
-import 'vpc_nat_gateway_egress.dart';
 import 'vpc_nat_gateway_state.dart';
-import 'vpc_nat_gateway_vpc.dart';
 
 /// Provides a DigitalOcean VPC NAT Gateway resource. This can be used to create, modify,
 /// read and delete VPC NAT Gateways.
@@ -201,32 +199,44 @@ import 'vpc_nat_gateway_vpc.dart';
 class VpcNatGateway extends pulumi.CustomResource {
   /// Created at timestamp for the VPC NAT Gateway.
   late final pulumi.Output<String> createdAt;
+
   /// Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
   /// `public_gateways` embedding the reserved `ipv4` addresses.
-  late final pulumi.Output<List<VpcNatGatewayEgress>> egresses;
+  late final pulumi.Output<List<Map<String, dynamic>>> egresses;
+
   /// The egress timeout value for ICMP connections of the VPC NAT Gateway.
   late final pulumi.Output<int> icmpTimeoutSeconds;
+
   /// The name of the VPC NAT Gateway.
   late final pulumi.Output<String> name;
+
   /// ID of the project to which the VPC NAT Gateway will be assigned.
   late final pulumi.Output<String> projectId;
+
   /// The region for the VPC NAT Gateway.
   late final pulumi.Output<String> region;
+
   /// The size of the VPC NAT Gateway.
   late final pulumi.Output<int> size;
+
   /// State of the VPC NAT Gateway
   late final pulumi.Output<String> state;
+
   /// The egress timeout value for TCP connections of the VPC NAT Gateway.
   late final pulumi.Output<int> tcpTimeoutSeconds;
+
   /// The type of the VPC NAT Gateway.
   late final pulumi.Output<String> type;
+
   /// The egress timeout value for UDP connections of the VPC NAT Gateway.
   late final pulumi.Output<int> udpTimeoutSeconds;
+
   /// Updated at timestamp for the VPC NAT Gateway.
   late final pulumi.Output<String> updatedAt;
+
   /// The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
   /// documented below.
-  late final pulumi.Output<List<VpcNatGatewayVpc>> vpcs;
+  late final pulumi.Output<List<Map<String, dynamic>>> vpcs;
 
   /// Creates a new [VpcNatGateway].
   /// [name] The Pulumi resource name.
@@ -237,24 +247,24 @@ class VpcNatGateway extends pulumi.CustomResource {
     VpcNatGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/vpcNatGateway:VpcNatGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
-    this.egresses = registerOutput<List<VpcNatGatewayEgress>>('egresses');
-    this.icmpTimeoutSeconds = registerOutput<int>('icmpTimeoutSeconds');
+         'digitalocean:index/vpcNatGateway:VpcNatGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
+    egresses = registerOutput<List<Map<String, dynamic>>>('egresses');
+    icmpTimeoutSeconds = registerOutput<int>('icmpTimeoutSeconds');
     this.name = registerOutput<String>('name');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.size = registerOutput<int>('size');
-    this.state = registerOutput<String>('state');
-    this.tcpTimeoutSeconds = registerOutput<int>('tcpTimeoutSeconds');
-    this.type = registerOutput<String>('type');
-    this.udpTimeoutSeconds = registerOutput<int>('udpTimeoutSeconds');
-    this.updatedAt = registerOutput<String>('updatedAt');
-    this.vpcs = registerOutput<List<VpcNatGatewayVpc>>('vpcs');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    size = registerOutput<int>('size');
+    state = registerOutput<String>('state');
+    tcpTimeoutSeconds = registerOutput<int>('tcpTimeoutSeconds');
+    type = registerOutput<String>('type');
+    udpTimeoutSeconds = registerOutput<int>('udpTimeoutSeconds');
+    updatedAt = registerOutput<String>('updatedAt');
+    vpcs = registerOutput<List<Map<String, dynamic>>>('vpcs');
   }
 
   /// Gets an existing [VpcNatGateway] resource's state with the given [name] and [id].
@@ -275,23 +285,23 @@ class VpcNatGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/vpcNatGateway:VpcNatGateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
-    this.egresses = registerOutput<List<VpcNatGatewayEgress>>('egresses');
-    this.icmpTimeoutSeconds = registerOutput<int>('icmpTimeoutSeconds');
+         'digitalocean:index/vpcNatGateway:VpcNatGateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
+    egresses = registerOutput<List<Map<String, dynamic>>>('egresses');
+    icmpTimeoutSeconds = registerOutput<int>('icmpTimeoutSeconds');
     this.name = registerOutput<String>('name');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.size = registerOutput<int>('size');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    size = registerOutput<int>('size');
     this.state = registerOutput<String>('state');
-    this.tcpTimeoutSeconds = registerOutput<int>('tcpTimeoutSeconds');
-    this.type = registerOutput<String>('type');
-    this.udpTimeoutSeconds = registerOutput<int>('udpTimeoutSeconds');
-    this.updatedAt = registerOutput<String>('updatedAt');
-    this.vpcs = registerOutput<List<VpcNatGatewayVpc>>('vpcs');
+    tcpTimeoutSeconds = registerOutput<int>('tcpTimeoutSeconds');
+    type = registerOutput<String>('type');
+    udpTimeoutSeconds = registerOutput<int>('udpTimeoutSeconds');
+    updatedAt = registerOutput<String>('updatedAt');
+    vpcs = registerOutput<List<Map<String, dynamic>>>('vpcs');
   }
 }

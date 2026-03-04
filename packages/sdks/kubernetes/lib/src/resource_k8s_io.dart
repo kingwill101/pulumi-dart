@@ -1,5 +1,3 @@
-library module_resource_k8s_io;
-
 export 'resource_k8s_io/allocated_device_status.dart';
 export 'resource_k8s_io/allocated_device_status_patch.dart';
 export 'resource_k8s_io/allocated_device_status_patch_resource_k8s_io_v1beta1.dart';

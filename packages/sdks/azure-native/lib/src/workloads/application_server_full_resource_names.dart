@@ -7,6 +7,7 @@ import 'virtual_machine_resource_names.dart';
 class ApplicationServerFullResourceNames {
   /// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-App-AvSet.
   final pulumi.Input<String>? availabilitySetName;
+
   /// The list of virtual machine naming details.
   final pulumi.Input<List<VirtualMachineResourceNames>>? virtualMachines;
 
@@ -21,15 +22,40 @@ class ApplicationServerFullResourceNames {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availabilitySetName': ?availabilitySetName,
-      'virtualMachines': ?pulumi.Input.mapOptionalInputValue<List<VirtualMachineResourceNames>, List<Map<String, dynamic>>>(virtualMachines, (value) => pulumi.Input.encodeList<VirtualMachineResourceNames, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'virtualMachines':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VirtualMachineResourceNames>,
+            List<Map<String, dynamic>>
+          >(
+            virtualMachines,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualMachineResourceNames,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ApplicationServerFullResourceNames.fromMap(Map<String, dynamic> map) {
     return ApplicationServerFullResourceNames(
-      availabilitySetName: map['availabilitySetName'] == null ? null : (map['availabilitySetName']! as String).input(),
-      virtualMachines: map['virtualMachines'] == null ? null : (pulumi.Input.decodeList<VirtualMachineResourceNames>(map['virtualMachines']!, (value) => VirtualMachineResourceNames.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      availabilitySetName: (() {
+        final guardedValue = map['availabilitySetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualMachines: (() {
+        final guardedValue = map['virtualMachines'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VirtualMachineResourceNames>(
+            guardedValue,
+            (value) => VirtualMachineResourceNames.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -5,7 +5,10 @@ import 'google_cloud_aiplatform_v1beta1_feature_online_store_bigtable_auto_scali
 
 class GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse {
   /// Autoscaling config applied to Bigtable Instance.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingResponse> autoScaling;
+  final pulumi.Input<
+    GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingResponse
+  >
+  autoScaling;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse].
   /// [autoScaling] Autoscaling config applied to Bigtable Instance.
@@ -15,14 +18,23 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoScaling': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingResponse, Map<String, dynamic>>(autoScaling, (value) => value.toMap()),
+      'autoScaling':
+          pulumi.Input.mapInputValue<
+            GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingResponse,
+            Map<String, dynamic>
+          >(autoScaling, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponse(
-      autoScaling: (GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingResponse.fromMap((map['autoScaling'] as Map).cast<String, dynamic>())).input(),
+      autoScaling: pulumi.Input.fromValue(
+        GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingResponse.fromMap(
+          (map['autoScaling']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

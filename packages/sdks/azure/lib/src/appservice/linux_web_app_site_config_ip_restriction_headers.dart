@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxWebAppSiteConfigIpRestrictionHeaders {
   /// Specifies a list of Azure Front Door IDs.
   final pulumi.Input<List<String>>? xAzureFdids;
+
   /// Specifies if a Front Door Health Probe should be expected. The only possible value is `1`.
   final pulumi.Input<String>? xFdHealthProbe;
+
   /// Specifies a list of addresses for which matching should be applied. Omitting this value means allow any.
   final pulumi.Input<List<String>>? xForwardedFors;
+
   /// Specifies a list of Hosts for which matching should be applied.
   final pulumi.Input<List<String>>? xForwardedHosts;
 
@@ -33,13 +36,30 @@ class LinuxWebAppSiteConfigIpRestrictionHeaders {
     };
   }
 
-  factory LinuxWebAppSiteConfigIpRestrictionHeaders.fromMap(Map<String, dynamic> map) {
+  factory LinuxWebAppSiteConfigIpRestrictionHeaders.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LinuxWebAppSiteConfigIpRestrictionHeaders(
-      xAzureFdids: map['xAzureFdids'] == null ? null : ((map['xAzureFdids']! as List).cast<String>()).input(),
-      xFdHealthProbe: map['xFdHealthProbe'] == null ? null : (map['xFdHealthProbe']! as String).input(),
-      xForwardedFors: map['xForwardedFors'] == null ? null : ((map['xForwardedFors']! as List).cast<String>()).input(),
-      xForwardedHosts: map['xForwardedHosts'] == null ? null : ((map['xForwardedHosts']! as List).cast<String>()).input(),
+      xAzureFdids: (() {
+        final guardedValue = map['xAzureFdids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      xFdHealthProbe: (() {
+        final guardedValue = map['xFdHealthProbe'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      xForwardedFors: (() {
+        final guardedValue = map['xForwardedFors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      xForwardedHosts: (() {
+        final guardedValue = map['xForwardedHosts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

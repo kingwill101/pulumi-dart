@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssociatedRuleState {
   /// The setting name of the associated resource tag rule. For specific values, see the Rule Setting Name column in [Resources that Support Associated Resource Tag Settings](https://www.alibabacloud.com/help/en/resource-management/tag/user-guide/associated-resource-label-settings)
   final pulumi.Input<String>? associatedSettingName;
+
   /// Whether to enable the associated resource tag rule. Valid values: `Enable`, `Disable`.
   final pulumi.Input<String>? status;
+
   /// List of tag keys for the associated resource tag rule.
   final pulumi.Input<List<String>>? tagKeys;
 
@@ -15,11 +17,7 @@ class AssociatedRuleState {
   /// [associatedSettingName] The setting name of the associated resource tag rule. For specific values, see the Rule Setting Name column in [Resources that Support Associated Resource Tag Settings](https://www.alibabacloud.com/help/en/resource-management/tag/user-guide/associated-resource-label-settings)
   /// [status] Whether to enable the associated resource tag rule. Valid values: `Enable`, `Disable`.
   /// [tagKeys] List of tag keys for the associated resource tag rule.
-  AssociatedRuleState({
-    this.associatedSettingName,
-    this.status,
-    this.tagKeys,
-  });
+  AssociatedRuleState({this.associatedSettingName, this.status, this.tagKeys});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class AssociatedRuleState {
 
   factory AssociatedRuleState.fromMap(Map<String, dynamic> map) {
     return AssociatedRuleState(
-      associatedSettingName: map['associatedSettingName'] == null ? null : (map['associatedSettingName']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tagKeys: map['tagKeys'] == null ? null : ((map['tagKeys']! as List).cast<String>()).input(),
+      associatedSettingName: (() {
+        final guardedValue = map['associatedSettingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tagKeys: (() {
+        final guardedValue = map['tagKeys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

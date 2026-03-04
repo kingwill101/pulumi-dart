@@ -4,16 +4,15 @@ enum WebhookConfigState {
   ok("OK"),
   secretDeleted("SECRET_DELETED");
 
-  const WebhookConfigState(this.value);
-  final String value;
+  const WebhookConfigState(this.wireValue);
+  final String wireValue;
 
   static WebhookConfigState fromValue(String value) {
     for (final item in WebhookConfigState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WebhookConfigState value: $value');
   }
 }
-

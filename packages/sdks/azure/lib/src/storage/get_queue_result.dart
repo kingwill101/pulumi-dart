@@ -1,18 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getQueue.
 class GetQueueResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A mapping of MetaData for this Queue.
   final Map<String, String> metadata;
   final String name;
+
   /// The Resource Manager ID of this Storage Queue.
   final String resourceManagerId;
   final String? storageAccountId;
   final String? storageAccountName;
-  /// The data plane URL of the Storage Queue in the format of `<storage queue endpoint>/<queue name>`. E.g. `https://example.queue.core.windows.net/queue1`.
+
+  /// The data plane URL of the Storage Queue in the format of `&lt;storage queue endpoint&gt;/&lt;queue name&gt;`. E.g. `https://example.queue.core.windows.net/queue1`.
   final String url;
 
   /// Creates a new [GetQueueResult].
@@ -22,7 +24,7 @@ class GetQueueResult {
   /// [resourceManagerId] The Resource Manager ID of this Storage Queue.
   /// [storageAccountId] Optional.
   /// [storageAccountName] Optional.
-  /// [url] The data plane URL of the Storage Queue in the format of `<storage queue endpoint>/<queue name>`. E.g. `https://example.queue.core.windows.net/queue1`.
+  /// [url] The data plane URL of the Storage Queue in the format of `&lt;storage queue endpoint&gt;/&lt;queue name&gt;`. E.g. `https://example.queue.core.windows.net/queue1`.
   GetQueueResult({
     required this.id,
     required this.metadata,
@@ -51,10 +53,17 @@ class GetQueueResult {
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,
       resourceManagerId: map['resourceManagerId'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId']! as String,
-      storageAccountName: map['storageAccountName'] == null ? null : map['storageAccountName']! as String,
+      storageAccountId: (() {
+        final guardedValue = map['storageAccountId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      storageAccountName: (() {
+        final guardedValue = map['storageAccountName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       url: map['url'] as String,
     );
   }
 }
-

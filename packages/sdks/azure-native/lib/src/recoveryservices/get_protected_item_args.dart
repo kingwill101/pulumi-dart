@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProtectedItemArgs {
   /// Container name associated with the backed up item.
   final pulumi.Input<String> containerName;
+
   /// Fabric name associated with the backed up item.
   final pulumi.Input<String> fabricName;
+
   /// OData filter options.
   final pulumi.Input<String>? filter;
+
   /// Backed up item name whose details are to be fetched.
   final pulumi.Input<String> protectedItemName;
+
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the recovery services vault.
   final pulumi.Input<String> vaultName;
 
@@ -49,13 +54,20 @@ class GetProtectedItemArgs {
 
   factory GetProtectedItemArgs.fromMap(Map<String, dynamic> map) {
     return GetProtectedItemArgs(
-      containerName: (map['containerName'] as String).input(),
-      fabricName: (map['fabricName'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      protectedItemName: (map['protectedItemName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vaultName: (map['vaultName'] as String).input(),
+      containerName: pulumi.Input.fromValue(map['containerName'] as String),
+      fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protectedItemName: pulumi.Input.fromValue(
+        map['protectedItemName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
-

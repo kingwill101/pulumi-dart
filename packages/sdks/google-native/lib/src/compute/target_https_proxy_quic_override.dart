@@ -4,16 +4,15 @@ enum TargetHttpsProxyQuicOverride {
   enable("ENABLE"),
   none("NONE");
 
-  const TargetHttpsProxyQuicOverride(this.value);
-  final String value;
+  const TargetHttpsProxyQuicOverride(this.wireValue);
+  final String wireValue;
 
   static TargetHttpsProxyQuicOverride fromValue(String value) {
     for (final item in TargetHttpsProxyQuicOverride.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TargetHttpsProxyQuicOverride value: $value');
   }
 }
-

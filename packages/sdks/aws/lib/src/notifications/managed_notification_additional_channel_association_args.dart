@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedNotificationAdditionalChannelAssociationArgs {
   /// ARN of the channel to associate with the managed notification.
   final pulumi.Input<String> channelArn;
+
   /// ARN of the managed notification to associate the channel with.
   final pulumi.Input<String> managedNotificationArn;
 
@@ -27,11 +28,14 @@ class ManagedNotificationAdditionalChannelAssociationArgs {
     };
   }
 
-  factory ManagedNotificationAdditionalChannelAssociationArgs.fromMap(Map<String, dynamic> map) {
+  factory ManagedNotificationAdditionalChannelAssociationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedNotificationAdditionalChannelAssociationArgs(
-      channelArn: (map['channelArn'] as String).input(),
-      managedNotificationArn: (map['managedNotificationArn'] as String).input(),
+      channelArn: pulumi.Input.fromValue(map['channelArn'] as String),
+      managedNotificationArn: pulumi.Input.fromValue(
+        map['managedNotificationArn'] as String,
+      ),
     );
   }
 }
-

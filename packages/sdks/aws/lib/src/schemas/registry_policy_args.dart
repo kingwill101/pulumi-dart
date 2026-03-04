@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryPolicyArgs {
   /// Resource Policy for EventBridge Schema Registry
   final pulumi.Input<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Name of EventBridge Schema Registry
   final pulumi.Input<String> registryName;
 
@@ -34,10 +36,13 @@ class RegistryPolicyArgs {
 
   factory RegistryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RegistryPolicyArgs(
-      policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      registryName: (map['registryName'] as String).input(),
+      policy: pulumi.Input.fromValue(map['policy'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registryName: pulumi.Input.fromValue(map['registryName'] as String),
     );
   }
 }
-

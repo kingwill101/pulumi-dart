@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MembershipAttachmentState {
   /// The ID of the cluster to which the membership is being attached.
   final pulumi.Input<String>? clusterId;
+
   /// The ID of the member being attached to the cluster.
   final pulumi.Input<String>? subClusterId;
 
   /// Creates a new [MembershipAttachmentState].
   /// [clusterId] The ID of the cluster to which the membership is being attached.
   /// [subClusterId] The ID of the member being attached to the cluster.
-  MembershipAttachmentState({
-    this.clusterId,
-    this.subClusterId,
-  });
+  MembershipAttachmentState({this.clusterId, this.subClusterId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class MembershipAttachmentState {
 
   factory MembershipAttachmentState.fromMap(Map<String, dynamic> map) {
     return MembershipAttachmentState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      subClusterId: map['subClusterId'] == null ? null : (map['subClusterId']! as String).input(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subClusterId: (() {
+        final guardedValue = map['subClusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

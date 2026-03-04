@@ -15,17 +15,15 @@ class RegistryScanningConfigurationRuleRepositoryFilter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filter': filter,
-      'filterType': filterType,
-    };
+    return <String, dynamic>{'filter': filter, 'filterType': filterType};
   }
 
-  factory RegistryScanningConfigurationRuleRepositoryFilter.fromMap(Map<String, dynamic> map) {
+  factory RegistryScanningConfigurationRuleRepositoryFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegistryScanningConfigurationRuleRepositoryFilter(
-      filter: (map['filter'] as String).input(),
-      filterType: (map['filterType'] as String).input(),
+      filter: pulumi.Input.fromValue(map['filter'] as String),
+      filterType: pulumi.Input.fromValue(map['filterType'] as String),
     );
   }
 }
-

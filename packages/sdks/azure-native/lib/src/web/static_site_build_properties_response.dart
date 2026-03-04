@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticSiteBuildPropertiesResponse {
   /// A custom command to run during deployment of the Azure Functions API application.
   final pulumi.Input<String>? apiBuildCommand;
+
   /// The path to the api code within the repository.
   final pulumi.Input<String>? apiLocation;
+
   /// Deprecated: The path of the app artifacts after building (deprecated in favor of OutputLocation)
   final pulumi.Input<String>? appArtifactLocation;
+
   /// A custom command to run during deployment of the static content application.
   final pulumi.Input<String>? appBuildCommand;
+
   /// The path to the app code within the repository.
   final pulumi.Input<String>? appLocation;
+
   /// Github Action secret name override.
   final pulumi.Input<String>? githubActionSecretNameOverride;
+
   /// The output path of the app after building.
   final pulumi.Input<String>? outputLocation;
+
   /// Skip Github Action workflow generation.
   final pulumi.Input<bool>? skipGithubActionWorkflowGeneration;
 
@@ -56,15 +63,46 @@ class StaticSiteBuildPropertiesResponse {
 
   factory StaticSiteBuildPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StaticSiteBuildPropertiesResponse(
-      apiBuildCommand: map['apiBuildCommand'] == null ? null : (map['apiBuildCommand']! as String).input(),
-      apiLocation: map['apiLocation'] == null ? null : (map['apiLocation']! as String).input(),
-      appArtifactLocation: map['appArtifactLocation'] == null ? null : (map['appArtifactLocation']! as String).input(),
-      appBuildCommand: map['appBuildCommand'] == null ? null : (map['appBuildCommand']! as String).input(),
-      appLocation: map['appLocation'] == null ? null : (map['appLocation']! as String).input(),
-      githubActionSecretNameOverride: map['githubActionSecretNameOverride'] == null ? null : (map['githubActionSecretNameOverride']! as String).input(),
-      outputLocation: map['outputLocation'] == null ? null : (map['outputLocation']! as String).input(),
-      skipGithubActionWorkflowGeneration: map['skipGithubActionWorkflowGeneration'] == null ? null : (map['skipGithubActionWorkflowGeneration']! as bool).input(),
+      apiBuildCommand: (() {
+        final guardedValue = map['apiBuildCommand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      apiLocation: (() {
+        final guardedValue = map['apiLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      appArtifactLocation: (() {
+        final guardedValue = map['appArtifactLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      appBuildCommand: (() {
+        final guardedValue = map['appBuildCommand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      appLocation: (() {
+        final guardedValue = map['appLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      githubActionSecretNameOverride: (() {
+        final guardedValue = map['githubActionSecretNameOverride'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputLocation: (() {
+        final guardedValue = map['outputLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      skipGithubActionWorkflowGeneration: (() {
+        final guardedValue = map['skipGithubActionWorkflowGeneration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

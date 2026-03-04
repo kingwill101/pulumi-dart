@@ -9,20 +9,17 @@ class MavenRepositoryResponse {
 
   /// Creates a new [MavenRepositoryResponse].
   /// [publicRepository] One of the publicly available Maven repositories supported by Artifact Registry.
-  MavenRepositoryResponse({
-    required this.publicRepository,
-  });
+  MavenRepositoryResponse({required this.publicRepository});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'publicRepository': publicRepository,
-    };
+    return <String, dynamic>{'publicRepository': publicRepository};
   }
 
   factory MavenRepositoryResponse.fromMap(Map<String, dynamic> map) {
     return MavenRepositoryResponse(
-      publicRepository: (map['publicRepository'] as String).input(),
+      publicRepository: pulumi.Input.fromValue(
+        map['publicRepository'] as String,
+      ),
     );
   }
 }
-

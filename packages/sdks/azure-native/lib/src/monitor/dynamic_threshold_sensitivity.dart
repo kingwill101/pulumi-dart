@@ -4,16 +4,15 @@ enum DynamicThresholdSensitivity {
   valueMedium("Medium"),
   valueHigh("High");
 
-  const DynamicThresholdSensitivity(this.value);
-  final String value;
+  const DynamicThresholdSensitivity(this.wireValue);
+  final String wireValue;
 
   static DynamicThresholdSensitivity fromValue(String value) {
     for (final item in DynamicThresholdSensitivity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DynamicThresholdSensitivity value: $value');
   }
 }
-

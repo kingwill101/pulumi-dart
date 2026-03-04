@@ -31,13 +31,17 @@ import 'env_references_state.dart';
 class EnvReferences extends pulumi.CustomResource {
   /// Optional. A human-readable description of this reference.
   late final pulumi.Output<String?> description;
+
   /// The Apigee environment group associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
   late final pulumi.Output<String> envId;
+
   /// Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
   late final pulumi.Output<String> name;
+
   /// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resourceType.
   late final pulumi.Output<String> refers;
+
   /// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
   late final pulumi.Output<String> resourceType;
 
@@ -50,16 +54,16 @@ class EnvReferences extends pulumi.CustomResource {
     EnvReferencesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/envReferences:EnvReferences',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.envId = registerOutput<String>('envId');
+         'gcp:apigee/envReferences:EnvReferences',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    envId = registerOutput<String>('envId');
     this.name = registerOutput<String>('name');
-    this.refers = registerOutput<String>('refers');
-    this.resourceType = registerOutput<String>('resourceType');
+    refers = registerOutput<String>('refers');
+    resourceType = registerOutput<String>('resourceType');
   }
 
   /// Gets an existing [EnvReferences] resource's state with the given [name] and [id].
@@ -80,15 +84,15 @@ class EnvReferences extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/envReferences:EnvReferences',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.envId = registerOutput<String>('envId');
+         'gcp:apigee/envReferences:EnvReferences',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    envId = registerOutput<String>('envId');
     this.name = registerOutput<String>('name');
-    this.refers = registerOutput<String>('refers');
-    this.resourceType = registerOutput<String>('resourceType');
+    refers = registerOutput<String>('refers');
+    resourceType = registerOutput<String>('resourceType');
   }
 }

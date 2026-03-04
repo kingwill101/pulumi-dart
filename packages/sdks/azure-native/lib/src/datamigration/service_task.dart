@@ -196,14 +196,19 @@ import 'system_data_response.dart';
 class ServiceTask extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// HTTP strong entity tag value. This is ignored if submitted.
   late final pulumi.Output<String?> etag;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Custom task properties
   late final pulumi.Output<ConnectToMongoDbTaskPropertiesResponse> properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -216,16 +221,18 @@ class ServiceTask extends pulumi.CustomResource {
     ServiceTaskArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datamigration:ServiceTask',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String?>('etag');
+         'azure-native:datamigration:ServiceTask',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ConnectToMongoDbTaskPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ConnectToMongoDbTaskPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

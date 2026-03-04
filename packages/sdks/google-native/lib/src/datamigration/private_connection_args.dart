@@ -10,18 +10,24 @@ import 'vpc_peering_config.dart';
 class PrivateConnectionArgs {
   /// The private connection display name.
   final pulumi.Input<String>? displayName;
+
   /// The resource labels for private connections to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// The name of the resource.
   final pulumi.Input<String>? name;
+
   /// Required. The private connection identifier.
   final pulumi.Input<String> privateConnectionId;
   final pulumi.Input<String>? project;
+
   /// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
   final pulumi.Input<String>? requestId;
+
   /// Optional. If set to true, will skip validations.
   final pulumi.Input<bool>? skipValidation;
+
   /// VPC peering configuration.
   final pulumi.Input<VpcPeeringConfig>? vpcPeeringConfig;
 
@@ -57,22 +63,65 @@ class PrivateConnectionArgs {
       'project': ?project,
       'requestId': ?requestId,
       'skipValidation': ?skipValidation,
-      'vpcPeeringConfig': ?pulumi.Input.mapOptionalInputValue<VpcPeeringConfig, Map<String, dynamic>>(vpcPeeringConfig, (value) => value.toMap()),
+      'vpcPeeringConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            VpcPeeringConfig,
+            Map<String, dynamic>
+          >(vpcPeeringConfig, (value) => value.toMap()),
     };
   }
 
   factory PrivateConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateConnectionArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      privateConnectionId: (map['privateConnectionId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
-      skipValidation: map['skipValidation'] == null ? null : (map['skipValidation']! as bool).input(),
-      vpcPeeringConfig: map['vpcPeeringConfig'] == null ? null : (VpcPeeringConfig.fromMap((map['vpcPeeringConfig']! as Map).cast<String, dynamic>())).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateConnectionId: pulumi.Input.fromValue(
+        map['privateConnectionId'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestId: (() {
+        final guardedValue = map['requestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      skipValidation: (() {
+        final guardedValue = map['skipValidation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      vpcPeeringConfig: (() {
+        final guardedValue = map['vpcPeeringConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VpcPeeringConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

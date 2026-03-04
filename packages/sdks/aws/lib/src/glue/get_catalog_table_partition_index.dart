@@ -6,6 +6,7 @@ class GetCatalogTablePartitionIndex {
   /// Name of the partition index.
   final pulumi.Input<String> indexName;
   final pulumi.Input<String> indexStatus;
+
   /// Keys for the partition index.
   final pulumi.Input<List<String>> keys;
 
@@ -29,10 +30,9 @@ class GetCatalogTablePartitionIndex {
 
   factory GetCatalogTablePartitionIndex.fromMap(Map<String, dynamic> map) {
     return GetCatalogTablePartitionIndex(
-      indexName: (map['indexName'] as String).input(),
-      indexStatus: (map['indexStatus'] as String).input(),
-      keys: ((map['keys'] as List).cast<String>()).input(),
+      indexName: pulumi.Input.fromValue(map['indexName'] as String),
+      indexStatus: pulumi.Input.fromValue(map['indexStatus'] as String),
+      keys: pulumi.Input.fromValue((map['keys'] as List).cast<String>()),
     );
   }
 }
-

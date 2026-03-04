@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'property_definition_response.dart';
 import 'relationship_args.dart';
-import 'relationship_type_mapping_response.dart';
 
 /// The relationship resource format.
 ///
@@ -190,32 +188,46 @@ import 'relationship_type_mapping_response.dart';
 class Relationship extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The Relationship Cardinality.
   late final pulumi.Output<String?> cardinality;
+
   /// Localized descriptions for the Relationship.
   late final pulumi.Output<Map<String, String>?> description;
+
   /// Localized display name for the Relationship.
   late final pulumi.Output<Map<String, String>?> displayName;
+
   /// The expiry date time in UTC.
   late final pulumi.Output<String?> expiryDateTimeUtc;
+
   /// The properties of the Relationship.
-  late final pulumi.Output<List<PropertyDefinitionResponse>?> fields;
+  late final pulumi.Output<List<Map<String, dynamic>>?> fields;
+
   /// Optional property to be used to map fields in profile to their strong ids in related profile.
-  late final pulumi.Output<List<RelationshipTypeMappingResponse>?> lookupMappings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> lookupMappings;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Profile type.
   late final pulumi.Output<String> profileType;
+
   /// Provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Related profile being referenced.
   late final pulumi.Output<String> relatedProfileType;
+
   /// The relationship guid id.
   late final pulumi.Output<String> relationshipGuidId;
+
   /// The Relationship name.
   late final pulumi.Output<String> relationshipName;
+
   /// The hub name.
   late final pulumi.Output<String> tenantId;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -228,25 +240,27 @@ class Relationship extends pulumi.CustomResource {
     RelationshipArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:customerinsights:Relationship',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cardinality = registerOutput<String?>('cardinality');
-    this.description = registerOutput<Map<String, String>?>('description');
-    this.displayName = registerOutput<Map<String, String>?>('displayName');
-    this.expiryDateTimeUtc = registerOutput<String?>('expiryDateTimeUtc');
-    this.fields = registerOutput<List<PropertyDefinitionResponse>?>('fields');
-    this.lookupMappings = registerOutput<List<RelationshipTypeMappingResponse>?>('lookupMappings');
+         'azure-native:customerinsights:Relationship',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cardinality = registerOutput<String?>('cardinality');
+    description = registerOutput<Map<String, String>?>('description');
+    displayName = registerOutput<Map<String, String>?>('displayName');
+    expiryDateTimeUtc = registerOutput<String?>('expiryDateTimeUtc');
+    fields = registerOutput<List<Map<String, dynamic>>?>('fields');
+    lookupMappings = registerOutput<List<Map<String, dynamic>>?>(
+      'lookupMappings',
+    );
     this.name = registerOutput<String>('name');
-    this.profileType = registerOutput<String>('profileType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.relatedProfileType = registerOutput<String>('relatedProfileType');
-    this.relationshipGuidId = registerOutput<String>('relationshipGuidId');
-    this.relationshipName = registerOutput<String>('relationshipName');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.type = registerOutput<String>('type');
+    profileType = registerOutput<String>('profileType');
+    provisioningState = registerOutput<String>('provisioningState');
+    relatedProfileType = registerOutput<String>('relatedProfileType');
+    relationshipGuidId = registerOutput<String>('relationshipGuidId');
+    relationshipName = registerOutput<String>('relationshipName');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

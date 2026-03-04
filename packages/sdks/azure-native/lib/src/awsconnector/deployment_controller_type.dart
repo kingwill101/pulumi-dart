@@ -4,16 +4,15 @@ enum DeploymentControllerType {
   eCS("ECS"),
   eXTERNAL("EXTERNAL");
 
-  const DeploymentControllerType(this.value);
-  final String value;
+  const DeploymentControllerType(this.wireValue);
+  final String wireValue;
 
   static DeploymentControllerType fromValue(String value) {
     for (final item in DeploymentControllerType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeploymentControllerType value: $value');
   }
 }
-

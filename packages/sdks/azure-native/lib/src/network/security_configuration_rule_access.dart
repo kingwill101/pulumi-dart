@@ -4,16 +4,17 @@ enum SecurityConfigurationRuleAccess {
   valueDeny("Deny"),
   valueAlwaysAllow("AlwaysAllow");
 
-  const SecurityConfigurationRuleAccess(this.value);
-  final String value;
+  const SecurityConfigurationRuleAccess(this.wireValue);
+  final String wireValue;
 
   static SecurityConfigurationRuleAccess fromValue(String value) {
     for (final item in SecurityConfigurationRuleAccess.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityConfigurationRuleAccess value: $value');
+    throw ArgumentError(
+      'Unknown SecurityConfigurationRuleAccess value: $value',
+    );
   }
 }
-

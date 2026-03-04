@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OneDashboardPageWidgetLineDataFormat {
   /// (Optional) This attribute is provided when the `name` is that of a column comprising date/time values and the `type` attribute is set to `custom` defining the specific date format to be applied to your data.
   final pulumi.Input<String>? format;
+
   /// The title of the dashboard.
   final pulumi.Input<String> name;
+
   /// (Optional) This attribute is utilized when the `type` attribute is set to `decimal`, stipulating the precise number of digits after the decimal point for your data.
   final pulumi.Input<int>? precision;
+
   /// (Required) Specifies the data type of the variable and where its possible values may come from. One of `enum`, `nrql` or `string`
   final pulumi.Input<String> type;
 
@@ -33,13 +36,22 @@ class OneDashboardPageWidgetLineDataFormat {
     };
   }
 
-  factory OneDashboardPageWidgetLineDataFormat.fromMap(Map<String, dynamic> map) {
+  factory OneDashboardPageWidgetLineDataFormat.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OneDashboardPageWidgetLineDataFormat(
-      format: map['format'] == null ? null : (map['format']! as String).input(),
-      name: (map['name'] as String).input(),
-      precision: map['precision'] == null ? null : (map['precision']! as int).input(),
-      type: (map['type'] as String).input(),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      precision: (() {
+        final guardedValue = map['precision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

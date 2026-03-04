@@ -7,14 +7,19 @@ class WorkloadNetworkDhcpRelayResponse {
   /// Type of DHCP: SERVER or RELAY.
   /// Expected value is 'RELAY'.
   final pulumi.Input<String> dhcpType;
+
   /// Display name of the DHCP entity.
   final pulumi.Input<String>? displayName;
+
   /// The provisioning state
   final pulumi.Input<String> provisioningState;
+
   /// NSX revision number.
   final pulumi.Input<double>? revision;
+
   /// NSX Segments consuming DHCP.
   final pulumi.Input<List<String>> segments;
+
   /// DHCP Relay Addresses. Max 3.
   final pulumi.Input<List<String>>? serverAddresses;
 
@@ -47,13 +52,28 @@ class WorkloadNetworkDhcpRelayResponse {
 
   factory WorkloadNetworkDhcpRelayResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkDhcpRelayResponse(
-      dhcpType: (map['dhcpType'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision']! as double).input(),
-      segments: ((map['segments'] as List).cast<String>()).input(),
-      serverAddresses: map['serverAddresses'] == null ? null : ((map['serverAddresses']! as List).cast<String>()).input(),
+      dhcpType: pulumi.Input.fromValue(map['dhcpType'] as String),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      revision: (() {
+        final guardedValue = map['revision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      segments: pulumi.Input.fromValue(
+        (map['segments'] as List).cast<String>(),
+      ),
+      serverAddresses: (() {
+        final guardedValue = map['serverAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

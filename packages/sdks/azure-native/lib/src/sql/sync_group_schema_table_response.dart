@@ -7,29 +7,52 @@ import 'sync_group_schema_table_column_response.dart';
 class SyncGroupSchemaTableResponse {
   /// List of columns in sync group schema.
   final pulumi.Input<List<SyncGroupSchemaTableColumnResponse>>? columns;
+
   /// Quoted name of sync group schema table.
   final pulumi.Input<String>? quotedName;
 
   /// Creates a new [SyncGroupSchemaTableResponse].
   /// [columns] List of columns in sync group schema.
   /// [quotedName] Quoted name of sync group schema table.
-  SyncGroupSchemaTableResponse({
-    this.columns,
-    this.quotedName,
-  });
+  SyncGroupSchemaTableResponse({this.columns, this.quotedName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columns': ?pulumi.Input.mapOptionalInputValue<List<SyncGroupSchemaTableColumnResponse>, List<Map<String, dynamic>>>(columns, (value) => pulumi.Input.encodeList<SyncGroupSchemaTableColumnResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'columns':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SyncGroupSchemaTableColumnResponse>,
+            List<Map<String, dynamic>>
+          >(
+            columns,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SyncGroupSchemaTableColumnResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'quotedName': ?quotedName,
     };
   }
 
   factory SyncGroupSchemaTableResponse.fromMap(Map<String, dynamic> map) {
     return SyncGroupSchemaTableResponse(
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<SyncGroupSchemaTableColumnResponse>(map['columns']!, (value) => SyncGroupSchemaTableColumnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      quotedName: map['quotedName'] == null ? null : (map['quotedName']! as String).input(),
+      columns: (() {
+        final guardedValue = map['columns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SyncGroupSchemaTableColumnResponse>(
+            guardedValue,
+            (value) => SyncGroupSchemaTableColumnResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      quotedName: (() {
+        final guardedValue = map['quotedName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

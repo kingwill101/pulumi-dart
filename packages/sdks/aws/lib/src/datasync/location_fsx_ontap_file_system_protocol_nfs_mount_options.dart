@@ -7,20 +7,21 @@ class LocationFsxOntapFileSystemProtocolNfsMountOptions {
 
   /// Creates a new [LocationFsxOntapFileSystemProtocolNfsMountOptions].
   /// [version] Optional.
-  LocationFsxOntapFileSystemProtocolNfsMountOptions({
-    this.version,
-  });
+  LocationFsxOntapFileSystemProtocolNfsMountOptions({this.version});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'version': ?version,
-    };
+    return <String, dynamic>{'version': ?version};
   }
 
-  factory LocationFsxOntapFileSystemProtocolNfsMountOptions.fromMap(Map<String, dynamic> map) {
+  factory LocationFsxOntapFileSystemProtocolNfsMountOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LocationFsxOntapFileSystemProtocolNfsMountOptions(
-      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

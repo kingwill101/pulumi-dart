@@ -8,6 +8,7 @@ import 'command_state.dart';
 class Command extends pulumi.CustomResource {
   /// The resulting output from the `commands` executed.
   late final pulumi.Output<List<String>> commandResults;
+
   /// The commands to send to the remote BIG-IP device over the configured provider. The resulting output from the command is returned and added to `command_result`
   late final pulumi.Output<List<String>> commands;
   late final pulumi.Output<String?> when;
@@ -21,14 +22,14 @@ class Command extends pulumi.CustomResource {
     CommandArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:index/command:Command',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.commandResults = registerOutput<List<String>>('commandResults');
-    this.commands = registerOutput<List<String>>('commands');
-    this.when = registerOutput<String?>('when');
+         'f5bigip:index/command:Command',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    commandResults = registerOutput<List<String>>('commandResults');
+    commands = registerOutput<List<String>>('commands');
+    when = registerOutput<String?>('when');
   }
 
   /// Gets an existing [Command] resource's state with the given [name] and [id].
@@ -49,13 +50,13 @@ class Command extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:index/command:Command',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.commandResults = registerOutput<List<String>>('commandResults');
-    this.commands = registerOutput<List<String>>('commands');
-    this.when = registerOutput<String?>('when');
+         'f5bigip:index/command:Command',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    commandResults = registerOutput<List<String>>('commandResults');
+    commands = registerOutput<List<String>>('commands');
+    when = registerOutput<String?>('when');
   }
 }

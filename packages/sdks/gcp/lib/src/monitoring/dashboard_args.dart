@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DashboardArgs {
   /// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
   final pulumi.Input<String> dashboardJson;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -16,10 +17,7 @@ class DashboardArgs {
   /// Creates a new [DashboardArgs].
   /// [dashboardJson] The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
   /// [project] The ID of the project in which the resource belongs.
-  DashboardArgs({
-    required this.dashboardJson,
-    this.project,
-  });
+  DashboardArgs({required this.dashboardJson, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,9 +28,12 @@ class DashboardArgs {
 
   factory DashboardArgs.fromMap(Map<String, dynamic> map) {
     return DashboardArgs(
-      dashboardJson: (map['dashboardJson'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      dashboardJson: pulumi.Input.fromValue(map['dashboardJson'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

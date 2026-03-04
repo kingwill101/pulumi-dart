@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudVmClusterPropertiesDiagnosticsDataCollectionOptions {
   /// Indicates whether diagnostic collection is enabled for the VM cluster
   final pulumi.Input<bool>? diagnosticsEventsEnabled;
+
   /// Indicates whether health monitoring is enabled for the VM cluster
   final pulumi.Input<bool>? healthMonitoringEnabled;
+
   /// Indicates whether incident logs and trace collection are enabled for the VM
   /// cluster
   final pulumi.Input<bool>? incidentLogsEnabled;
@@ -29,12 +31,25 @@ class CloudVmClusterPropertiesDiagnosticsDataCollectionOptions {
     };
   }
 
-  factory CloudVmClusterPropertiesDiagnosticsDataCollectionOptions.fromMap(Map<String, dynamic> map) {
+  factory CloudVmClusterPropertiesDiagnosticsDataCollectionOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudVmClusterPropertiesDiagnosticsDataCollectionOptions(
-      diagnosticsEventsEnabled: map['diagnosticsEventsEnabled'] == null ? null : (map['diagnosticsEventsEnabled']! as bool).input(),
-      healthMonitoringEnabled: map['healthMonitoringEnabled'] == null ? null : (map['healthMonitoringEnabled']! as bool).input(),
-      incidentLogsEnabled: map['incidentLogsEnabled'] == null ? null : (map['incidentLogsEnabled']! as bool).input(),
+      diagnosticsEventsEnabled: (() {
+        final guardedValue = map['diagnosticsEventsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      healthMonitoringEnabled: (() {
+        final guardedValue = map['healthMonitoringEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      incidentLogsEnabled: (() {
+        final guardedValue = map['incidentLogsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

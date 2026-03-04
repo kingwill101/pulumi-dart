@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'pscredential_execution_parameter_response.dart';
 import 'script_execution_args.dart';
 import 'system_data_response.dart';
 
@@ -258,42 +257,60 @@ import 'system_data_response.dart';
 class ScriptExecution extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Standard error output stream from the powershell execution
   late final pulumi.Output<List<String>> errors;
+
   /// Error message if the script was able to run, but if the script itself had
   /// errors or powershell threw an exception
   late final pulumi.Output<String?> failureReason;
+
   /// Time the script execution was finished
   late final pulumi.Output<String> finishedAt;
+
   /// Parameters that will be hidden/not visible to ARM, such as passwords and
   /// credentials
-  late final pulumi.Output<List<PSCredentialExecutionParameterResponse>?> hiddenParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> hiddenParameters;
+
   /// Standard information out stream from the powershell execution
   late final pulumi.Output<List<String>> information;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// User-defined dictionary.
   late final pulumi.Output<Map<String, dynamic>?> namedOutputs;
+
   /// Standard output stream from the powershell execution
   late final pulumi.Output<List<String>?> output;
+
   /// Parameters the script will accept
-  late final pulumi.Output<List<PSCredentialExecutionParameterResponse>?> parameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+
   /// The state of the script execution resource
   late final pulumi.Output<String> provisioningState;
+
   /// Time to live for the resource. If not provided, will be available for 60 days
   late final pulumi.Output<String?> retention;
+
   /// A reference to the script cmdlet resource if user is running a AVS script
   late final pulumi.Output<String?> scriptCmdletId;
+
   /// Time the script execution was started
   late final pulumi.Output<String> startedAt;
+
   /// Time the script execution was submitted
   late final pulumi.Output<String> submittedAt;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Time limit for execution
   late final pulumi.Output<String> timeout;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Standard warning out stream from the powershell execution
   late final pulumi.Output<List<String>> warnings;
 
@@ -306,29 +323,31 @@ class ScriptExecution extends pulumi.CustomResource {
     ScriptExecutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:avs:ScriptExecution',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.errors = registerOutput<List<String>>('errors');
-    this.failureReason = registerOutput<String?>('failureReason');
-    this.finishedAt = registerOutput<String>('finishedAt');
-    this.hiddenParameters = registerOutput<List<PSCredentialExecutionParameterResponse>?>('hiddenParameters');
-    this.information = registerOutput<List<String>>('information');
+         'azure-native:avs:ScriptExecution',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    errors = registerOutput<List<String>>('errors');
+    failureReason = registerOutput<String?>('failureReason');
+    finishedAt = registerOutput<String>('finishedAt');
+    hiddenParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'hiddenParameters',
+    );
+    information = registerOutput<List<String>>('information');
     this.name = registerOutput<String>('name');
-    this.namedOutputs = registerOutput<Map<String, dynamic>?>('namedOutputs');
-    this.output = registerOutput<List<String>?>('output');
-    this.parameters = registerOutput<List<PSCredentialExecutionParameterResponse>?>('parameters');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.retention = registerOutput<String?>('retention');
-    this.scriptCmdletId = registerOutput<String?>('scriptCmdletId');
-    this.startedAt = registerOutput<String>('startedAt');
-    this.submittedAt = registerOutput<String>('submittedAt');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.timeout = registerOutput<String>('timeout');
-    this.type = registerOutput<String>('type');
-    this.warnings = registerOutput<List<String>>('warnings');
+    namedOutputs = registerOutput<Map<String, dynamic>?>('namedOutputs');
+    output = registerOutput<List<String>?>('output');
+    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    provisioningState = registerOutput<String>('provisioningState');
+    retention = registerOutput<String?>('retention');
+    scriptCmdletId = registerOutput<String?>('scriptCmdletId');
+    startedAt = registerOutput<String>('startedAt');
+    submittedAt = registerOutput<String>('submittedAt');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    timeout = registerOutput<String>('timeout');
+    type = registerOutput<String>('type');
+    warnings = registerOutput<List<String>>('warnings');
   }
 }

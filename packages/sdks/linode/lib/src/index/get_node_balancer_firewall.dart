@@ -7,22 +7,31 @@ import 'get_node_balancer_firewall_outbound.dart';
 class GetNodeBalancerFirewall {
   /// When this firewall was created.
   final pulumi.Input<String> created;
+
   /// The NodeBalancer's ID.
   final pulumi.Input<int> id;
+
   /// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
   final pulumi.Input<String> inboundPolicy;
+
   /// A set of firewall rules that specify what inbound network traffic is allowed.
   final pulumi.Input<List<GetNodeBalancerFirewallInbound>> inbounds;
+
   /// Used to identify this rule. For display purposes only.
   final pulumi.Input<String> label;
+
   /// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
   final pulumi.Input<String> outboundPolicy;
+
   /// A set of firewall rules that specify what outbound network traffic is allowed.
   final pulumi.Input<List<GetNodeBalancerFirewallOutbound>> outbounds;
+
   /// The status of the firewall. (`enabled`, `disabled`, `deleted`)
   final pulumi.Input<String> status;
+
   /// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
   final pulumi.Input<List<String>> tags;
+
   /// When this firewall was last updated.
   final pulumi.Input<String> updated;
 
@@ -55,10 +64,32 @@ class GetNodeBalancerFirewall {
       'created': created,
       'id': id,
       'inboundPolicy': inboundPolicy,
-      'inbounds': pulumi.Input.mapInputValue<List<GetNodeBalancerFirewallInbound>, List<Map<String, dynamic>>>(inbounds, (value) => pulumi.Input.encodeList<GetNodeBalancerFirewallInbound, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'inbounds':
+          pulumi.Input.mapInputValue<
+            List<GetNodeBalancerFirewallInbound>,
+            List<Map<String, dynamic>>
+          >(
+            inbounds,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetNodeBalancerFirewallInbound,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'label': label,
       'outboundPolicy': outboundPolicy,
-      'outbounds': pulumi.Input.mapInputValue<List<GetNodeBalancerFirewallOutbound>, List<Map<String, dynamic>>>(outbounds, (value) => pulumi.Input.encodeList<GetNodeBalancerFirewallOutbound, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'outbounds':
+          pulumi.Input.mapInputValue<
+            List<GetNodeBalancerFirewallOutbound>,
+            List<Map<String, dynamic>>
+          >(
+            outbounds,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetNodeBalancerFirewallOutbound,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'status': status,
       'tags': tags,
       'updated': updated,
@@ -67,17 +98,30 @@ class GetNodeBalancerFirewall {
 
   factory GetNodeBalancerFirewall.fromMap(Map<String, dynamic> map) {
     return GetNodeBalancerFirewall(
-      created: (map['created'] as String).input(),
-      id: (map['id'] as int).input(),
-      inboundPolicy: (map['inboundPolicy'] as String).input(),
-      inbounds: (pulumi.Input.decodeList<GetNodeBalancerFirewallInbound>(map['inbounds'], (value) => GetNodeBalancerFirewallInbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      label: (map['label'] as String).input(),
-      outboundPolicy: (map['outboundPolicy'] as String).input(),
-      outbounds: (pulumi.Input.decodeList<GetNodeBalancerFirewallOutbound>(map['outbounds'], (value) => GetNodeBalancerFirewallOutbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: (map['status'] as String).input(),
-      tags: ((map['tags'] as List).cast<String>()).input(),
-      updated: (map['updated'] as String).input(),
+      created: pulumi.Input.fromValue(map['created'] as String),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      inboundPolicy: pulumi.Input.fromValue(map['inboundPolicy'] as String),
+      inbounds: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetNodeBalancerFirewallInbound>(
+          map['inbounds']!,
+          (value) => GetNodeBalancerFirewallInbound.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      outboundPolicy: pulumi.Input.fromValue(map['outboundPolicy'] as String),
+      outbounds: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetNodeBalancerFirewallOutbound>(
+          map['outbounds']!,
+          (value) => GetNodeBalancerFirewallOutbound.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),
+      updated: pulumi.Input.fromValue(map['updated'] as String),
     );
   }
 }
-

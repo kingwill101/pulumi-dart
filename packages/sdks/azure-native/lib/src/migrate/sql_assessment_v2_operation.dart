@@ -371,91 +371,133 @@ import 'system_data_response.dart';
 class SqlAssessmentV2Operation extends pulumi.CustomResource {
   /// Assessment type of the assessment.
   late final pulumi.Output<String?> assessmentType;
+
   /// Gets or sets user preference indicating intent of async commit mode.
   late final pulumi.Output<String?> asyncCommitModeIntent;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Azure Location or Azure region where to which the machines will be migrated.
   late final pulumi.Output<String?> azureLocation;
+
   /// Azure Offer Code.
   late final pulumi.Output<String?> azureOfferCode;
+
   /// Gets or sets Azure Offer Code for VM.
   late final pulumi.Output<String?> azureOfferCodeForVm;
+
   /// Gets or sets a value indicating azure security offering type.
   late final pulumi.Output<String?> azureSecurityOfferingType;
+
   /// Gets or sets user configurable SQL database settings.
   late final pulumi.Output<SqlDbSettingsResponse?> azureSqlDatabaseSettings;
+
   /// Gets or sets user configurable SQL managed instance settings.
-  late final pulumi.Output<SqlMiSettingsResponse?> azureSqlManagedInstanceSettings;
+  late final pulumi.Output<SqlMiSettingsResponse?>
+  azureSqlManagedInstanceSettings;
+
   /// Gets or sets user configurable SQL VM settings.
   late final pulumi.Output<SqlVmSettingsResponse?> azureSqlVmSettings;
+
   /// Confidence Rating in Percentage.
   late final pulumi.Output<double?> confidenceRatingInPercentage;
+
   /// Date and Time when assessment was created.
   late final pulumi.Output<String> createdTimestamp;
+
   /// Currency in which prices should be reported.
   late final pulumi.Output<String?> currency;
+
   /// Gets or sets the Azure Location or Azure region where to which the machines
   /// will be migrated.
   late final pulumi.Output<String?> disasterRecoveryLocation;
+
   /// Custom discount percentage.
   late final pulumi.Output<double?> discountPercentage;
+
   /// Gets or sets the Enterprise agreement subscription id.
   late final pulumi.Output<String?> eaSubscriptionId;
+
   /// Gets or sets a value indicating whether HADR assessments needs to be created.
   late final pulumi.Output<bool?> enableHadrAssessment;
+
   /// Gets or sets the duration for which the entity (SQL, VMs) are up in the
   /// on-premises environment.
   late final pulumi.Output<EntityUptimeResponse?> entityUptime;
+
   /// Gets or sets user configurable setting to display the environment type.
   late final pulumi.Output<String?> environmentType;
+
   /// Gets the group type for the assessment.
   late final pulumi.Output<String?> groupType;
+
   /// Gets or sets a value indicating whether internet access is available.
   late final pulumi.Output<bool?> isInternetAccessAvailable;
+
   /// Gets or sets user preference indicating intent of multi-subnet configuration.
   late final pulumi.Output<String?> multiSubnetIntent;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Gets or sets SQL optimization logic.
   late final pulumi.Output<String?> optimizationLogic;
+
   /// Gets or sets user configurable setting to display the azure hybrid use benefit.
   late final pulumi.Output<String?> osLicense;
+
   /// Percentile of the utilization data values to be considered while assessing
   /// machines.
   late final pulumi.Output<String?> percentile;
+
   /// Gets or sets the end time to consider performance data for assessment.
   late final pulumi.Output<String?> perfDataEndTime;
+
   /// Gets or sets the start time to consider performance data for assessment.
   late final pulumi.Output<String?> perfDataStartTime;
+
   /// Last time when rates were queried.
   late final pulumi.Output<String> pricesTimestamp;
+
   /// The status of the last operation.
   late final pulumi.Output<String?> provisioningState;
+
   /// Reserved instance.
   late final pulumi.Output<String?> reservedInstance;
+
   /// Gets or sets azure reserved instance for VM.
   late final pulumi.Output<String?> reservedInstanceForVm;
+
   /// Percentage of buffer that user wants on performance metrics when recommending
   /// Azure sizes.
   late final pulumi.Output<double?> scalingFactor;
+
   /// Schema version.
   late final pulumi.Output<String> schemaVersion;
+
   /// Assessment sizing criterion.
   late final pulumi.Output<String?> sizingCriterion;
+
   /// SQL server license.
   late final pulumi.Output<String?> sqlServerLicense;
+
   /// User configurable setting to display the Stage of Assessment.
   late final pulumi.Output<String> stage;
+
   /// Whether assessment is in valid state and all machines have been assessed.
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Time Range for which the historic utilization data should be considered for
   /// assessment.
   late final pulumi.Output<String?> timeRange;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Date and Time when assessment was last updated.
   late final pulumi.Output<String> updatedTimestamp;
 
@@ -468,52 +510,66 @@ class SqlAssessmentV2Operation extends pulumi.CustomResource {
     SqlAssessmentV2OperationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:SqlAssessmentV2Operation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assessmentType = registerOutput<String?>('assessmentType');
-    this.asyncCommitModeIntent = registerOutput<String?>('asyncCommitModeIntent');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.azureLocation = registerOutput<String?>('azureLocation');
-    this.azureOfferCode = registerOutput<String?>('azureOfferCode');
-    this.azureOfferCodeForVm = registerOutput<String?>('azureOfferCodeForVm');
-    this.azureSecurityOfferingType = registerOutput<String?>('azureSecurityOfferingType');
-    this.azureSqlDatabaseSettings = registerOutput<SqlDbSettingsResponse?>('azureSqlDatabaseSettings');
-    this.azureSqlManagedInstanceSettings = registerOutput<SqlMiSettingsResponse?>('azureSqlManagedInstanceSettings');
-    this.azureSqlVmSettings = registerOutput<SqlVmSettingsResponse?>('azureSqlVmSettings');
-    this.confidenceRatingInPercentage = registerOutput<double?>('confidenceRatingInPercentage');
-    this.createdTimestamp = registerOutput<String>('createdTimestamp');
-    this.currency = registerOutput<String?>('currency');
-    this.disasterRecoveryLocation = registerOutput<String?>('disasterRecoveryLocation');
-    this.discountPercentage = registerOutput<double?>('discountPercentage');
-    this.eaSubscriptionId = registerOutput<String?>('eaSubscriptionId');
-    this.enableHadrAssessment = registerOutput<bool?>('enableHadrAssessment');
-    this.entityUptime = registerOutput<EntityUptimeResponse?>('entityUptime');
-    this.environmentType = registerOutput<String?>('environmentType');
-    this.groupType = registerOutput<String?>('groupType');
-    this.isInternetAccessAvailable = registerOutput<bool?>('isInternetAccessAvailable');
-    this.multiSubnetIntent = registerOutput<String?>('multiSubnetIntent');
+         'azure-native:migrate:SqlAssessmentV2Operation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assessmentType = registerOutput<String?>('assessmentType');
+    asyncCommitModeIntent = registerOutput<String?>('asyncCommitModeIntent');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureLocation = registerOutput<String?>('azureLocation');
+    azureOfferCode = registerOutput<String?>('azureOfferCode');
+    azureOfferCodeForVm = registerOutput<String?>('azureOfferCodeForVm');
+    azureSecurityOfferingType = registerOutput<String?>(
+      'azureSecurityOfferingType',
+    );
+    azureSqlDatabaseSettings = registerOutput<SqlDbSettingsResponse?>(
+      'azureSqlDatabaseSettings',
+    );
+    azureSqlManagedInstanceSettings = registerOutput<SqlMiSettingsResponse?>(
+      'azureSqlManagedInstanceSettings',
+    );
+    azureSqlVmSettings = registerOutput<SqlVmSettingsResponse?>(
+      'azureSqlVmSettings',
+    );
+    confidenceRatingInPercentage = registerOutput<double?>(
+      'confidenceRatingInPercentage',
+    );
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    currency = registerOutput<String?>('currency');
+    disasterRecoveryLocation = registerOutput<String?>(
+      'disasterRecoveryLocation',
+    );
+    discountPercentage = registerOutput<double?>('discountPercentage');
+    eaSubscriptionId = registerOutput<String?>('eaSubscriptionId');
+    enableHadrAssessment = registerOutput<bool?>('enableHadrAssessment');
+    entityUptime = registerOutput<EntityUptimeResponse?>('entityUptime');
+    environmentType = registerOutput<String?>('environmentType');
+    groupType = registerOutput<String?>('groupType');
+    isInternetAccessAvailable = registerOutput<bool?>(
+      'isInternetAccessAvailable',
+    );
+    multiSubnetIntent = registerOutput<String?>('multiSubnetIntent');
     this.name = registerOutput<String>('name');
-    this.optimizationLogic = registerOutput<String?>('optimizationLogic');
-    this.osLicense = registerOutput<String?>('osLicense');
-    this.percentile = registerOutput<String?>('percentile');
-    this.perfDataEndTime = registerOutput<String?>('perfDataEndTime');
-    this.perfDataStartTime = registerOutput<String?>('perfDataStartTime');
-    this.pricesTimestamp = registerOutput<String>('pricesTimestamp');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.reservedInstance = registerOutput<String?>('reservedInstance');
-    this.reservedInstanceForVm = registerOutput<String?>('reservedInstanceForVm');
-    this.scalingFactor = registerOutput<double?>('scalingFactor');
-    this.schemaVersion = registerOutput<String>('schemaVersion');
-    this.sizingCriterion = registerOutput<String?>('sizingCriterion');
-    this.sqlServerLicense = registerOutput<String?>('sqlServerLicense');
-    this.stage = registerOutput<String>('stage');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.timeRange = registerOutput<String?>('timeRange');
-    this.type = registerOutput<String>('type');
-    this.updatedTimestamp = registerOutput<String>('updatedTimestamp');
+    optimizationLogic = registerOutput<String?>('optimizationLogic');
+    osLicense = registerOutput<String?>('osLicense');
+    percentile = registerOutput<String?>('percentile');
+    perfDataEndTime = registerOutput<String?>('perfDataEndTime');
+    perfDataStartTime = registerOutput<String?>('perfDataStartTime');
+    pricesTimestamp = registerOutput<String>('pricesTimestamp');
+    provisioningState = registerOutput<String?>('provisioningState');
+    reservedInstance = registerOutput<String?>('reservedInstance');
+    reservedInstanceForVm = registerOutput<String?>('reservedInstanceForVm');
+    scalingFactor = registerOutput<double?>('scalingFactor');
+    schemaVersion = registerOutput<String>('schemaVersion');
+    sizingCriterion = registerOutput<String?>('sizingCriterion');
+    sqlServerLicense = registerOutput<String?>('sqlServerLicense');
+    stage = registerOutput<String>('stage');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    timeRange = registerOutput<String?>('timeRange');
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
   }
 }

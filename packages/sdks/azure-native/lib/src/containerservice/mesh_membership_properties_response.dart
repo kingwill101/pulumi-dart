@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MeshMembershipPropertiesResponse {
   /// The ARM resource id for the managed mesh member. This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/applinks/{appLinkName}/appLinkMembers/{appLinkMemberName}'. Visit https://aka.ms/applink for more information.
   final pulumi.Input<String> managedMeshID;
+
   /// The current provisioning state of the Mesh Membership.
   final pulumi.Input<String> provisioningState;
 
@@ -26,9 +27,10 @@ class MeshMembershipPropertiesResponse {
 
   factory MeshMembershipPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MeshMembershipPropertiesResponse(
-      managedMeshID: (map['managedMeshID'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      managedMeshID: pulumi.Input.fromValue(map['managedMeshID'] as String),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

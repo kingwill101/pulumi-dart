@@ -5,16 +5,15 @@ enum SensitivityType {
   valueMedium("Medium"),
   valueHigh("High");
 
-  const SensitivityType(this.value);
-  final String value;
+  const SensitivityType(this.wireValue);
+  final String wireValue;
 
   static SensitivityType fromValue(String value) {
     for (final item in SensitivityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SensitivityType value: $value');
   }
 }
-

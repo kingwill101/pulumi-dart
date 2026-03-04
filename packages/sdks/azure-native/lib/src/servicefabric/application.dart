@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_args.dart';
 import 'application_upgrade_policy_response.dart';
-import 'application_user_assigned_identity_response.dart';
 import 'managed_identity_response.dart';
 import 'system_data_response.dart';
 
@@ -495,26 +494,37 @@ import 'system_data_response.dart';
 class Application extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Describes the managed identities for an Azure resource.
   late final pulumi.Output<ManagedIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
+
   /// List of user assigned identities for the application, each mapped to a friendly name.
-  late final pulumi.Output<List<ApplicationUserAssignedIdentityResponse>?> managedIdentities;
+  late final pulumi.Output<List<Map<String, dynamic>>?> managedIdentities;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// List of application parameters with overridden values from their default values specified in the application manifest.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// The current deployment or provisioning state, which only appears in the response
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Describes the policy for a monitored application upgrade.
   late final pulumi.Output<ApplicationUpgradePolicyResponse?> upgradePolicy;
+
   /// The version of the application type as defined in the application manifest.
   /// This name must be the full Arm Resource ID for the referenced application type version.
   late final pulumi.Output<String?> version;
@@ -528,22 +538,26 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:servicefabric:Application',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<ManagedIdentityResponse?>('identity');
-    this.location = registerOutput<String?>('location');
-    this.managedIdentities = registerOutput<List<ApplicationUserAssignedIdentityResponse>?>('managedIdentities');
+         'azure-native:servicefabric:Application',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<ManagedIdentityResponse?>('identity');
+    location = registerOutput<String?>('location');
+    managedIdentities = registerOutput<List<Map<String, dynamic>>?>(
+      'managedIdentities',
+    );
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.upgradePolicy = registerOutput<ApplicationUpgradePolicyResponse?>('upgradePolicy');
-    this.version = registerOutput<String?>('version');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    upgradePolicy = registerOutput<ApplicationUpgradePolicyResponse?>(
+      'upgradePolicy',
+    );
+    version = registerOutput<String?>('version');
   }
 }

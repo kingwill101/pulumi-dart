@@ -9,20 +9,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectArgs {
   /// Workspace Description
   final pulumi.Input<String>? description;
+
   /// Is Development Environment Enabled
   final pulumi.Input<bool>? devEnvironmentEnabled;
+
   /// Is Development Role Disabled
   final pulumi.Input<bool>? devRoleDisabled;
+
   /// Workspace Display Name
   final pulumi.Input<String> displayName;
+
   /// Create PAI Workspace Together
   final pulumi.Input<bool> paiTaskEnabled;
+
   /// Workspace Name
   final pulumi.Input<String> projectName;
+
   /// Aliyun Resource Group Id
   final pulumi.Input<String>? resourceGroupId;
+
   /// Workspace Status
   final pulumi.Input<String>? status;
+
   /// Aliyun Resource Tag
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -64,16 +72,41 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      devEnvironmentEnabled: map['devEnvironmentEnabled'] == null ? null : (map['devEnvironmentEnabled']! as bool).input(),
-      devRoleDisabled: map['devRoleDisabled'] == null ? null : (map['devRoleDisabled']! as bool).input(),
-      displayName: (map['displayName'] as String).input(),
-      paiTaskEnabled: (map['paiTaskEnabled'] as bool).input(),
-      projectName: (map['projectName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      devEnvironmentEnabled: (() {
+        final guardedValue = map['devEnvironmentEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      devRoleDisabled: (() {
+        final guardedValue = map['devRoleDisabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      paiTaskEnabled: pulumi.Input.fromValue(map['paiTaskEnabled'] as bool),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

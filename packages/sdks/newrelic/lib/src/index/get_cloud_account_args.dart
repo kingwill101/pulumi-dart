@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCloudAccountArgs {
   /// The account ID in New Relic.
   final pulumi.Input<String>? accountId;
+
   /// The cloud provider of the account (aws, gcp, azure, etc)
   final pulumi.Input<String> cloudProvider;
+
   /// The cloud account name in New Relic.
   final pulumi.Input<String> name;
 
@@ -34,10 +36,13 @@ class GetCloudAccountArgs {
 
   factory GetCloudAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudAccountArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      cloudProvider: (map['cloudProvider'] as String).input(),
-      name: (map['name'] as String).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudProvider: pulumi.Input.fromValue(map['cloudProvider'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

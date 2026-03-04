@@ -5,16 +5,17 @@ enum AccessConfigNetworkTierComputeV1 {
   standard("STANDARD"),
   standardOverridesFixedStandard("STANDARD_OVERRIDES_FIXED_STANDARD");
 
-  const AccessConfigNetworkTierComputeV1(this.value);
-  final String value;
+  const AccessConfigNetworkTierComputeV1(this.wireValue);
+  final String wireValue;
 
   static AccessConfigNetworkTierComputeV1 fromValue(String value) {
     for (final item in AccessConfigNetworkTierComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AccessConfigNetworkTierComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown AccessConfigNetworkTierComputeV1 value: $value',
+    );
   }
 }
-

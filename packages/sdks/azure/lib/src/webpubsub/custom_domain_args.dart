@@ -9,12 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomDomainArgs {
   /// Specifies the custom domain name of the Web PubSub Custom Domain. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Please ensure the custom domain name is included in the Subject Alternative Names of the selected Web PubSub Custom Certificate.
+  /// &gt; **Note:** Please ensure the custom domain name is included in the Subject Alternative Names of the selected Web PubSub Custom Certificate.
   final pulumi.Input<String> domainName;
+
   /// Specifies the name of the Web PubSub Custom Domain. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the Web PubSub Custom Certificate ID of the Web PubSub Custom Domain. Changing this forces a new resource to be created.
   final pulumi.Input<String> webPubsubCustomCertificateId;
+
   /// Specifies the Web PubSub ID of the Web PubSub Custom Domain. Changing this forces a new resource to be created.
   final pulumi.Input<String> webPubsubId;
 
@@ -41,11 +44,16 @@ class CustomDomainArgs {
 
   factory CustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainArgs(
-      domainName: (map['domainName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      webPubsubCustomCertificateId: (map['webPubsubCustomCertificateId'] as String).input(),
-      webPubsubId: (map['webPubsubId'] as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webPubsubCustomCertificateId: pulumi.Input.fromValue(
+        map['webPubsubCustomCertificateId'] as String,
+      ),
+      webPubsubId: pulumi.Input.fromValue(map['webPubsubId'] as String),
     );
   }
 }
-

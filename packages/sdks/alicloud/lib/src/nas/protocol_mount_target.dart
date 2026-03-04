@@ -8,7 +8,7 @@ import 'protocol_mount_target_state.dart';
 ///
 /// For information about File Storage (NAS) Protocol Mount Target and how to use it, see [What is Protocol Mount Target](https://next.api.alibabacloud.com/document/NAS/2017-06-26/CreateProtocolMountTarget).
 ///
-/// > **NOTE:** Available since v1.267.0.
+/// &gt; **NOTE:** Available since v1.267.0.
 ///
 /// ## Example Usage
 ///
@@ -440,8 +440,10 @@ class ProtocolMountTarget extends pulumi.CustomResource {
   /// The permission group name.
   /// Default value: DEFAULT_VPC_GROUP_NAME
   late final pulumi.Output<String> accessGroupName;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// Description of the protocol service mount target. Display as the export directory name in the console.
   ///
   /// Limitations:
@@ -450,10 +452,13 @@ class ProtocolMountTarget extends pulumi.CustomResource {
   /// - Can contain numbers, colons (:), underscores (_), or dashes (-).
   late final pulumi.Output<String?> description;
   late final pulumi.Output<bool?> dryRun;
+
   /// Protocol Service Mount Target ID
   late final pulumi.Output<String> exportId;
+
   /// The ID of the file system.
   late final pulumi.Output<String> fileSystemId;
+
   /// The ID of the Fileset to be mounted.
   ///
   /// Limitations:
@@ -461,6 +466,7 @@ class ProtocolMountTarget extends pulumi.CustomResource {
   /// - A Fileset allows only one export directory to be created.
   /// - Fileset and Path can and must specify only one.
   late final pulumi.Output<String?> fsetId;
+
   /// The path of the CPFS directory to be mounted.
   ///
   /// Limitations:
@@ -473,14 +479,19 @@ class ProtocolMountTarget extends pulumi.CustomResource {
   /// - Use UTF-8 encoding.
   /// - Must start and end with a forward slash (/) and root directory is/.
   late final pulumi.Output<String> path;
+
   /// Protocol Service ID
   late final pulumi.Output<String> protocolServiceId;
+
   /// Status
   late final pulumi.Output<String> status;
+
   /// The VPC ID of the protocol service mount point.
   late final pulumi.Output<String?> vpcId;
+
   /// The vSwitch ID of the protocol service mount target.
   late final pulumi.Output<String?> vswitchId;
+
   /// The vSwitch IDs of the protocol service mount target.
   /// When the storage redundancy type of the file system is ZRS, if VpcId is set, the vSwitch ID of three different zones under the Vpc must be set in this field.
   late final pulumi.Output<List<String>?> vswitchIds;
@@ -494,24 +505,24 @@ class ProtocolMountTarget extends pulumi.CustomResource {
     ProtocolMountTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/protocolMountTarget:ProtocolMountTarget',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGroupName = registerOutput<String>('accessGroupName');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.exportId = registerOutput<String>('exportId');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.fsetId = registerOutput<String?>('fsetId');
-    this.path = registerOutput<String>('path');
-    this.protocolServiceId = registerOutput<String>('protocolServiceId');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String?>('vpcId');
-    this.vswitchId = registerOutput<String?>('vswitchId');
-    this.vswitchIds = registerOutput<List<String>?>('vswitchIds');
+         'alicloud:nas/protocolMountTarget:ProtocolMountTarget',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGroupName = registerOutput<String>('accessGroupName');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    dryRun = registerOutput<bool?>('dryRun');
+    exportId = registerOutput<String>('exportId');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    fsetId = registerOutput<String?>('fsetId');
+    path = registerOutput<String>('path');
+    protocolServiceId = registerOutput<String>('protocolServiceId');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String?>('vpcId');
+    vswitchId = registerOutput<String?>('vswitchId');
+    vswitchIds = registerOutput<List<String>?>('vswitchIds');
   }
 
   /// Gets an existing [ProtocolMountTarget] resource's state with the given [name] and [id].
@@ -532,23 +543,23 @@ class ProtocolMountTarget extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:nas/protocolMountTarget:ProtocolMountTarget',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessGroupName = registerOutput<String>('accessGroupName');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.exportId = registerOutput<String>('exportId');
-    this.fileSystemId = registerOutput<String>('fileSystemId');
-    this.fsetId = registerOutput<String?>('fsetId');
-    this.path = registerOutput<String>('path');
-    this.protocolServiceId = registerOutput<String>('protocolServiceId');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String?>('vpcId');
-    this.vswitchId = registerOutput<String?>('vswitchId');
-    this.vswitchIds = registerOutput<List<String>?>('vswitchIds');
+         'alicloud:nas/protocolMountTarget:ProtocolMountTarget',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessGroupName = registerOutput<String>('accessGroupName');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    dryRun = registerOutput<bool?>('dryRun');
+    exportId = registerOutput<String>('exportId');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    fsetId = registerOutput<String?>('fsetId');
+    path = registerOutput<String>('path');
+    protocolServiceId = registerOutput<String>('protocolServiceId');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String?>('vpcId');
+    vswitchId = registerOutput<String?>('vswitchId');
+    vswitchIds = registerOutput<List<String>?>('vswitchIds');
   }
 }

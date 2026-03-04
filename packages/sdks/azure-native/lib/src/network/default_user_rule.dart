@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'address_prefix_item_response.dart';
 import 'default_user_rule_args.dart';
 import 'system_data_response.dart';
 
@@ -283,33 +282,47 @@ import 'system_data_response.dart';
 class DefaultUserRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A description for this rule. Restricted to 140 chars.
   late final pulumi.Output<String> description;
+
   /// The destination port ranges.
   late final pulumi.Output<List<String>> destinationPortRanges;
+
   /// The destination address prefixes. CIDR or destination IP ranges.
-  late final pulumi.Output<List<AddressPrefixItemResponse>> destinations;
+  late final pulumi.Output<List<Map<String, dynamic>>> destinations;
+
   /// Indicates if the traffic matched against the rule in inbound or outbound.
   late final pulumi.Output<String> direction;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Default rule flag.
   late final pulumi.Output<String?> flag;
+
   /// Whether the rule is custom or default.
   /// Expected value is 'Default'.
   late final pulumi.Output<String> kind;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Network protocol this rule applies to.
   late final pulumi.Output<String> protocol;
+
   /// The provisioning state of the security configuration user rule resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The source port ranges.
   late final pulumi.Output<List<String>> sourcePortRanges;
+
   /// The CIDR or source IP ranges.
-  late final pulumi.Output<List<AddressPrefixItemResponse>> sources;
+  late final pulumi.Output<List<Map<String, dynamic>>> sources;
+
   /// The system metadata related to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -322,25 +335,27 @@ class DefaultUserRule extends pulumi.CustomResource {
     DefaultUserRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:DefaultUserRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String>('description');
-    this.destinationPortRanges = registerOutput<List<String>>('destinationPortRanges');
-    this.destinations = registerOutput<List<AddressPrefixItemResponse>>('destinations');
-    this.direction = registerOutput<String>('direction');
-    this.etag = registerOutput<String>('etag');
-    this.flag = registerOutput<String?>('flag');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:network:DefaultUserRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String>('description');
+    destinationPortRanges = registerOutput<List<String>>(
+      'destinationPortRanges',
+    );
+    destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
+    direction = registerOutput<String>('direction');
+    etag = registerOutput<String>('etag');
+    flag = registerOutput<String?>('flag');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.protocol = registerOutput<String>('protocol');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sourcePortRanges = registerOutput<List<String>>('sourcePortRanges');
-    this.sources = registerOutput<List<AddressPrefixItemResponse>>('sources');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    protocol = registerOutput<String>('protocol');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourcePortRanges = registerOutput<List<String>>('sourcePortRanges');
+    sources = registerOutput<List<Map<String, dynamic>>>('sources');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -12,24 +12,34 @@ import 'api_operation_template_parameter.dart';
 class ApiOperationArgs {
   /// The Name of the API Management Service where the API exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementName;
+
   /// The name of the API within the API Management Service where this API Operation should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiName;
+
   /// A description for this API Operation, which may include HTML formatting tags.
   final pulumi.Input<String>? description;
+
   /// The Display Name for this API Management Operation.
   final pulumi.Input<String> displayName;
+
   /// The HTTP Method used for this API Management Operation, like `GET`, `DELETE`, `PUT` or `POST` - but not limited to these values.
   final pulumi.Input<String> method;
+
   /// A unique identifier for this API Operation. Changing this forces a new resource to be created.
   final pulumi.Input<String> operationId;
+
   /// A `request` block as defined below.
   final pulumi.Input<ApiOperationRequest>? request;
+
   /// The Name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// One or more `response` blocks as defined below.
   final pulumi.Input<List<ApiOperationResponse>>? responses;
+
   /// One or more `template_parameter` blocks as defined below. Required if `url_template` contains one or more parameters.
   final pulumi.Input<List<ApiOperationTemplateParameter>>? templateParameters;
+
   /// The relative URL Template identifying the target resource for this operation, which may include parameters.
   final pulumi.Input<String> urlTemplate;
 
@@ -67,28 +77,91 @@ class ApiOperationArgs {
       'displayName': displayName,
       'method': method,
       'operationId': operationId,
-      'request': ?pulumi.Input.mapOptionalInputValue<ApiOperationRequest, Map<String, dynamic>>(request, (value) => value.toMap()),
+      'request':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApiOperationRequest,
+            Map<String, dynamic>
+          >(request, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
-      'responses': ?pulumi.Input.mapOptionalInputValue<List<ApiOperationResponse>, List<Map<String, dynamic>>>(responses, (value) => pulumi.Input.encodeList<ApiOperationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'templateParameters': ?pulumi.Input.mapOptionalInputValue<List<ApiOperationTemplateParameter>, List<Map<String, dynamic>>>(templateParameters, (value) => pulumi.Input.encodeList<ApiOperationTemplateParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'responses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ApiOperationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            responses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApiOperationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'templateParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ApiOperationTemplateParameter>,
+            List<Map<String, dynamic>>
+          >(
+            templateParameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApiOperationTemplateParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'urlTemplate': urlTemplate,
     };
   }
 
   factory ApiOperationArgs.fromMap(Map<String, dynamic> map) {
     return ApiOperationArgs(
-      apiManagementName: (map['apiManagementName'] as String).input(),
-      apiName: (map['apiName'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      method: (map['method'] as String).input(),
-      operationId: (map['operationId'] as String).input(),
-      request: map['request'] == null ? null : (ApiOperationRequest.fromMap((map['request']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      responses: map['responses'] == null ? null : (pulumi.Input.decodeList<ApiOperationResponse>(map['responses']!, (value) => ApiOperationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      templateParameters: map['templateParameters'] == null ? null : (pulumi.Input.decodeList<ApiOperationTemplateParameter>(map['templateParameters']!, (value) => ApiOperationTemplateParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      urlTemplate: (map['urlTemplate'] as String).input(),
+      apiManagementName: pulumi.Input.fromValue(
+        map['apiManagementName'] as String,
+      ),
+      apiName: pulumi.Input.fromValue(map['apiName'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      method: pulumi.Input.fromValue(map['method'] as String),
+      operationId: pulumi.Input.fromValue(map['operationId'] as String),
+      request: (() {
+        final guardedValue = map['request'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApiOperationRequest.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      responses: (() {
+        final guardedValue = map['responses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ApiOperationResponse>(
+            guardedValue,
+            (value) => ApiOperationResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      templateParameters: (() {
+        final guardedValue = map['templateParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ApiOperationTemplateParameter>(
+            guardedValue,
+            (value) => ApiOperationTemplateParameter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      urlTemplate: pulumi.Input.fromValue(map['urlTemplate'] as String),
     );
   }
 }
-

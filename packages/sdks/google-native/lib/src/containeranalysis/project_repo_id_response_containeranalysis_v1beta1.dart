@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectRepoIdResponseContaineranalysisV1beta1 {
   /// The ID of the project.
   final pulumi.Input<String> project;
+
   /// The name of the repo. Leave empty for the default repo.
   final pulumi.Input<String> repoName;
 
@@ -18,17 +19,15 @@ class ProjectRepoIdResponseContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': project,
-      'repoName': repoName,
-    };
+    return <String, dynamic>{'project': project, 'repoName': repoName};
   }
 
-  factory ProjectRepoIdResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ProjectRepoIdResponseContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProjectRepoIdResponseContaineranalysisV1beta1(
-      project: (map['project'] as String).input(),
-      repoName: (map['repoName'] as String).input(),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      repoName: pulumi.Input.fromValue(map['repoName'] as String),
     );
   }
 }
-

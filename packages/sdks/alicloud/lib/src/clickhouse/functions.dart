@@ -10,7 +10,7 @@ import 'get_regions_result.dart';
 
 /// This data source provides the Click House Accounts of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.134.0.
+/// &gt; **NOTE:** Available since v1.134.0.
 ///
 /// ## Example Usage
 ///
@@ -429,7 +429,7 @@ Future<GetAccountsResult> getAccounts(
 
 /// This data source provides the Click House Backup Policies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.147.0+.
+/// &gt; **NOTE:** Available in v1.147.0+.
 ///
 /// ## Example Usage
 ///
@@ -548,7 +548,7 @@ Future<GetBackupPoliciesResult> getBackupPolicies(
 
 /// This data source provides the Click House DBCluster of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.134.0+.
+/// &gt; **NOTE:** Available in v1.134.0+.
 ///
 /// ## Example Usage
 ///
@@ -747,7 +747,7 @@ Future<GetDbClustersResult> getDbClusters(
 
 /// This data source provides the Click House Regions of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.138.0+.
+/// &gt; **NOTE:** Available in v1.138.0+.
 ///
 /// ## Example Usage
 ///

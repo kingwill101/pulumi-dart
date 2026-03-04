@@ -10,20 +10,38 @@ class MetricRules {
 
   /// Creates a new [MetricRules].
   /// [filteringTags] List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
-  MetricRules({
-    this.filteringTags,
-  });
+  MetricRules({this.filteringTags});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filteringTags': ?pulumi.Input.mapOptionalInputValue<List<FilteringTag>, List<Map<String, dynamic>>>(filteringTags, (value) => pulumi.Input.encodeList<FilteringTag, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filteringTags':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FilteringTag>,
+            List<Map<String, dynamic>>
+          >(
+            filteringTags,
+            (value) =>
+                pulumi.Input.encodeList<FilteringTag, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory MetricRules.fromMap(Map<String, dynamic> map) {
     return MetricRules(
-      filteringTags: map['filteringTags'] == null ? null : (pulumi.Input.decodeList<FilteringTag>(map['filteringTags']!, (value) => FilteringTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filteringTags: (() {
+        final guardedValue = map['filteringTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FilteringTag>(
+            guardedValue,
+            (value) =>
+                FilteringTag.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

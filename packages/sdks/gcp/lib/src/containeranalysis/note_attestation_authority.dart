@@ -17,20 +17,25 @@ class NoteAttestationAuthority {
 
   /// Creates a new [NoteAttestationAuthority].
   /// [hint] This submessage provides human-readable hints about the purpose of
-  NoteAttestationAuthority({
-    required this.hint,
-  });
+  NoteAttestationAuthority({required this.hint});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hint': pulumi.Input.mapInputValue<NoteAttestationAuthorityHint, Map<String, dynamic>>(hint, (value) => value.toMap()),
+      'hint':
+          pulumi.Input.mapInputValue<
+            NoteAttestationAuthorityHint,
+            Map<String, dynamic>
+          >(hint, (value) => value.toMap()),
     };
   }
 
   factory NoteAttestationAuthority.fromMap(Map<String, dynamic> map) {
     return NoteAttestationAuthority(
-      hint: (NoteAttestationAuthorityHint.fromMap((map['hint'] as Map).cast<String, dynamic>())).input(),
+      hint: pulumi.Input.fromValue(
+        NoteAttestationAuthorityHint.fromMap(
+          (map['hint']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

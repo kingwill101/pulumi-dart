@@ -6,21 +6,30 @@ import 'backup_retention_settings_sqladmin_v1beta4.dart';
 /// Database instance backup configuration.
 class BackupConfigurationSqladminV1beta4 {
   /// Backup retention settings.
-  final pulumi.Input<BackupRetentionSettingsSqladminV1beta4>? backupRetentionSettings;
+  final pulumi.Input<BackupRetentionSettingsSqladminV1beta4>?
+  backupRetentionSettings;
+
   /// (MySQL only) Whether binary log is enabled. If backup configuration is disabled, binarylog must be disabled as well.
   final pulumi.Input<bool>? binaryLogEnabled;
+
   /// Whether this configuration is enabled.
   final pulumi.Input<bool>? enabled;
+
   /// This is always `sql#backupConfiguration`.
   final pulumi.Input<String>? kind;
+
   /// Location of the backup
   final pulumi.Input<String>? location;
+
   /// Whether point in time recovery is enabled.
   final pulumi.Input<bool>? pointInTimeRecoveryEnabled;
+
   /// Reserved for future use.
   final pulumi.Input<bool>? replicationLogArchivingEnabled;
+
   /// Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
   final pulumi.Input<String>? startTime;
+
   /// The number of days of transaction logs we retain for point in time restore, from 1-7.
   final pulumi.Input<int>? transactionLogRetentionDays;
 
@@ -48,7 +57,11 @@ class BackupConfigurationSqladminV1beta4 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupRetentionSettings': ?pulumi.Input.mapOptionalInputValue<BackupRetentionSettingsSqladminV1beta4, Map<String, dynamic>>(backupRetentionSettings, (value) => value.toMap()),
+      'backupRetentionSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            BackupRetentionSettingsSqladminV1beta4,
+            Map<String, dynamic>
+          >(backupRetentionSettings, (value) => value.toMap()),
       'binaryLogEnabled': ?binaryLogEnabled,
       'enabled': ?enabled,
       'kind': ?kind,
@@ -62,16 +75,55 @@ class BackupConfigurationSqladminV1beta4 {
 
   factory BackupConfigurationSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return BackupConfigurationSqladminV1beta4(
-      backupRetentionSettings: map['backupRetentionSettings'] == null ? null : (BackupRetentionSettingsSqladminV1beta4.fromMap((map['backupRetentionSettings']! as Map).cast<String, dynamic>())).input(),
-      binaryLogEnabled: map['binaryLogEnabled'] == null ? null : (map['binaryLogEnabled']! as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      pointInTimeRecoveryEnabled: map['pointInTimeRecoveryEnabled'] == null ? null : (map['pointInTimeRecoveryEnabled']! as bool).input(),
-      replicationLogArchivingEnabled: map['replicationLogArchivingEnabled'] == null ? null : (map['replicationLogArchivingEnabled']! as bool).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
-      transactionLogRetentionDays: map['transactionLogRetentionDays'] == null ? null : (map['transactionLogRetentionDays']! as int).input(),
+      backupRetentionSettings: (() {
+        final guardedValue = map['backupRetentionSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BackupRetentionSettingsSqladminV1beta4.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      binaryLogEnabled: (() {
+        final guardedValue = map['binaryLogEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pointInTimeRecoveryEnabled: (() {
+        final guardedValue = map['pointInTimeRecoveryEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      replicationLogArchivingEnabled: (() {
+        final guardedValue = map['replicationLogArchivingEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transactionLogRetentionDays: (() {
+        final guardedValue = map['transactionLogRetentionDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

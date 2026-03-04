@@ -7,12 +7,16 @@ import 'volume_appengine_v1beta.dart';
 class ResourcesAppengineV1beta {
   /// Number of CPU cores needed.
   final pulumi.Input<double>? cpu;
+
   /// Disk size (GB) needed.
   final pulumi.Input<double>? diskGb;
+
   /// The name of the encryption key that is stored in Google Cloud KMS. Only should be used by Cloud Composer to encrypt the vm disk
   final pulumi.Input<String>? kmsKeyReference;
+
   /// Memory (GB) needed.
   final pulumi.Input<double>? memoryGb;
+
   /// User specified volumes.
   final pulumi.Input<List<VolumeAppengineV1beta>>? volumes;
 
@@ -36,18 +40,55 @@ class ResourcesAppengineV1beta {
       'diskGb': ?diskGb,
       'kmsKeyReference': ?kmsKeyReference,
       'memoryGb': ?memoryGb,
-      'volumes': ?pulumi.Input.mapOptionalInputValue<List<VolumeAppengineV1beta>, List<Map<String, dynamic>>>(volumes, (value) => pulumi.Input.encodeList<VolumeAppengineV1beta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'volumes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VolumeAppengineV1beta>,
+            List<Map<String, dynamic>>
+          >(
+            volumes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VolumeAppengineV1beta,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ResourcesAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ResourcesAppengineV1beta(
-      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
-      diskGb: map['diskGb'] == null ? null : (map['diskGb']! as double).input(),
-      kmsKeyReference: map['kmsKeyReference'] == null ? null : (map['kmsKeyReference']! as String).input(),
-      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb']! as double).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeAppengineV1beta>(map['volumes']!, (value) => VolumeAppengineV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      diskGb: (() {
+        final guardedValue = map['diskGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      kmsKeyReference: (() {
+        final guardedValue = map['kmsKeyReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memoryGb: (() {
+        final guardedValue = map['memoryGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      volumes: (() {
+        final guardedValue = map['volumes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VolumeAppengineV1beta>(
+            guardedValue,
+            (value) => VolumeAppengineV1beta.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

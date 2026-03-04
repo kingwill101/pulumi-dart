@@ -4,16 +4,15 @@ enum AptSettingsTypeOsconfigV1beta {
   dist("DIST"),
   upgrade("UPGRADE");
 
-  const AptSettingsTypeOsconfigV1beta(this.value);
-  final String value;
+  const AptSettingsTypeOsconfigV1beta(this.wireValue);
+  final String wireValue;
 
   static AptSettingsTypeOsconfigV1beta fromValue(String value) {
     for (final item in AptSettingsTypeOsconfigV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AptSettingsTypeOsconfigV1beta value: $value');
   }
 }
-

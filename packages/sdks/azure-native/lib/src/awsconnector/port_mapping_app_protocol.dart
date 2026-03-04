@@ -4,16 +4,15 @@ enum PortMappingAppProtocol {
   http("http"),
   http2("http2");
 
-  const PortMappingAppProtocol(this.value);
-  final String value;
+  const PortMappingAppProtocol(this.wireValue);
+  final String wireValue;
 
   static PortMappingAppProtocol fromValue(String value) {
     for (final item in PortMappingAppProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PortMappingAppProtocol value: $value');
   }
 }
-

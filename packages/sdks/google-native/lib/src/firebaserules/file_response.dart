@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FileResponse {
   /// Textual Content.
   final pulumi.Input<String> content;
+
   /// Fingerprint (e.g. github sha) associated with the `File`.
   final pulumi.Input<String> fingerprint;
+
   /// File name.
   final pulumi.Input<String> name;
 
@@ -31,10 +33,9 @@ class FileResponse {
 
   factory FileResponse.fromMap(Map<String, dynamic> map) {
     return FileResponse(
-      content: (map['content'] as String).input(),
-      fingerprint: (map['fingerprint'] as String).input(),
-      name: (map['name'] as String).input(),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      fingerprint: pulumi.Input.fromValue(map['fingerprint'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

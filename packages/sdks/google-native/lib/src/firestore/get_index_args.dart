@@ -35,11 +35,16 @@ class GetIndexArgs {
 
   factory GetIndexArgs.fromMap(Map<String, dynamic> map) {
     return GetIndexArgs(
-      collectionGroupId: (map['collectionGroupId'] as String).input(),
-      databaseId: (map['databaseId'] as String).input(),
-      indexId: (map['indexId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      collectionGroupId: pulumi.Input.fromValue(
+        map['collectionGroupId'] as String,
+      ),
+      databaseId: pulumi.Input.fromValue(map['databaseId'] as String),
+      indexId: pulumi.Input.fromValue(map['indexId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

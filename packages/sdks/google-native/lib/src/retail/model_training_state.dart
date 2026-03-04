@@ -4,16 +4,15 @@ enum ModelTrainingState {
   paused("PAUSED"),
   training("TRAINING");
 
-  const ModelTrainingState(this.value);
-  final String value;
+  const ModelTrainingState(this.wireValue);
+  final String wireValue;
 
   static ModelTrainingState fromValue(String value) {
     for (final item in ModelTrainingState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ModelTrainingState value: $value');
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualNetworkArgs {
   /// Specifies the name of the Dev Test Lab.
   final pulumi.Input<String> labName;
+
   /// Specifies the name of the Virtual Network.
   final pulumi.Input<String> name;
+
   /// Specifies the name of the resource group that contains the Virtual Network.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetVirtualNetworkArgs {
 
   factory GetVirtualNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkArgs(
-      labName: (map['labName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      labName: pulumi.Input.fromValue(map['labName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

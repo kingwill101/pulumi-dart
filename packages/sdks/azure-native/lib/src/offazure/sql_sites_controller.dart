@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'site_appliance_properties_response.dart';
 import 'sql_sites_controller_args.dart';
 import 'system_data_response.dart';
 
@@ -240,20 +239,28 @@ import 'system_data_response.dart';
 class SqlSitesController extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the discovery scenario.
   late final pulumi.Output<String?> discoveryScenario;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// provisioning state enum
   late final pulumi.Output<String> provisioningState;
+
   /// Gets the service endpoint.
   late final pulumi.Output<String> serviceEndpoint;
+
   /// Gets or sets the appliance details used by service to communicate
   ///
   /// to the appliance.
-  late final pulumi.Output<List<SiteAppliancePropertiesResponse>?> siteAppliancePropertiesCollection;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  siteAppliancePropertiesCollection;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -266,18 +273,21 @@ class SqlSitesController extends pulumi.CustomResource {
     SqlSitesControllerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:offazure:SqlSitesController',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.discoveryScenario = registerOutput<String?>('discoveryScenario');
+         'azure-native:offazure:SqlSitesController',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    discoveryScenario = registerOutput<String?>('discoveryScenario');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.serviceEndpoint = registerOutput<String>('serviceEndpoint');
-    this.siteAppliancePropertiesCollection = registerOutput<List<SiteAppliancePropertiesResponse>?>('siteAppliancePropertiesCollection');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    serviceEndpoint = registerOutput<String>('serviceEndpoint');
+    siteAppliancePropertiesCollection =
+        registerOutput<List<Map<String, dynamic>>?>(
+          'siteAppliancePropertiesCollection',
+        );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNatRuleArgs {
   /// The name of the gateway.
   final pulumi.Input<String> gatewayName;
+
   /// The name of the nat rule.
   final pulumi.Input<String> natRuleName;
+
   /// The resource group name of the VpnGateway.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetNatRuleArgs {
 
   factory GetNatRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetNatRuleArgs(
-      gatewayName: (map['gatewayName'] as String).input(),
-      natRuleName: (map['natRuleName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
+      natRuleName: pulumi.Input.fromValue(map['natRuleName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

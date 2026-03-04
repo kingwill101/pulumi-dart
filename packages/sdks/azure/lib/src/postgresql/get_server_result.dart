@@ -7,20 +7,27 @@ import 'get_server_identity.dart';
 class GetServerResult {
   /// The administrator username of the PostgreSQL Server.
   final String administratorLogin;
+
   /// The fully qualified domain name of the PostgreSQL Server.
   final String fqdn;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// An `identity` block as defined below.
   final List<GetServerIdentity> identities;
+
   /// The location of the Resource Group in which the PostgreSQL Server exists.
   final String location;
   final String name;
   final String resourceGroupName;
+
   /// The SKU name of the PostgreSQL Server.
   final String skuName;
+
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
+
   /// The version of the PostgreSQL Server.
   final String version;
 
@@ -53,7 +60,11 @@ class GetServerResult {
       'administratorLogin': administratorLogin,
       'fqdn': fqdn,
       'id': id,
-      'identities': pulumi.Input.encodeList<GetServerIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
+      'identities':
+          pulumi.Input.encodeList<GetServerIdentity, Map<String, dynamic>>(
+            identities,
+            (value) => value.toMap(),
+          ),
       'location': location,
       'name': name,
       'resourceGroupName': resourceGroupName,
@@ -68,7 +79,11 @@ class GetServerResult {
       administratorLogin: map['administratorLogin'] as String,
       fqdn: map['fqdn'] as String,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetServerIdentity>(map['identities'], (value) => GetServerIdentity.fromMap((value as Map).cast<String, dynamic>())),
+      identities: pulumi.Input.decodeList<GetServerIdentity>(
+        map['identities']!,
+        (value) =>
+            GetServerIdentity.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       location: map['location'] as String,
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
@@ -78,4 +93,3 @@ class GetServerResult {
     );
   }
 }
-

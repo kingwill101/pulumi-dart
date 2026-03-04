@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFoldersArgs {
   /// A list of Folder IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The parent folder path.
   final pulumi.Input<String> parentFolderPath;
+
   /// The ID of the project.
   final pulumi.Input<String> projectId;
 
@@ -39,11 +42,20 @@ class GetFoldersArgs {
 
   factory GetFoldersArgs.fromMap(Map<String, dynamic> map) {
     return GetFoldersArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      parentFolderPath: (map['parentFolderPath'] as String).input(),
-      projectId: (map['projectId'] as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentFolderPath: pulumi.Input.fromValue(
+        map['parentFolderPath'] as String,
+      ),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
     );
   }
 }
-

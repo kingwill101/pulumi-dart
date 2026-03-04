@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsIntegrationsRds {
   /// Specify each AWS region that includes the resources that you want to monitor.
   final pulumi.Input<List<String>>? awsRegions;
+
   /// Specify if tags and the extended inventory should be collected. May affect total data collection time and contribute to the Cloud provider API rate limit.
   final pulumi.Input<bool>? fetchTags;
+
   /// The data polling interval in seconds.
   final pulumi.Input<int>? metricsPollingInterval;
+
   /// Specify a Tag key associated with the resources that you want to monitor. Filter values are case-sensitive.
   final pulumi.Input<String>? tagKey;
+
   /// Specify a Tag value associated with the resources that you want to monitor. Filter values are case-sensitive.
   final pulumi.Input<String>? tagValue;
 
@@ -40,12 +44,31 @@ class AwsIntegrationsRds {
 
   factory AwsIntegrationsRds.fromMap(Map<String, dynamic> map) {
     return AwsIntegrationsRds(
-      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions']! as List).cast<String>()).input(),
-      fetchTags: map['fetchTags'] == null ? null : (map['fetchTags']! as bool).input(),
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
-      tagKey: map['tagKey'] == null ? null : (map['tagKey']! as String).input(),
-      tagValue: map['tagValue'] == null ? null : (map['tagValue']! as String).input(),
+      awsRegions: (() {
+        final guardedValue = map['awsRegions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      fetchTags: (() {
+        final guardedValue = map['fetchTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      metricsPollingInterval: (() {
+        final guardedValue = map['metricsPollingInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tagKey: (() {
+        final guardedValue = map['tagKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tagValue: (() {
+        final guardedValue = map['tagValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,16 +5,17 @@ enum GooglePrivacyDlpV2ExclusionRuleMatchingType {
   matchingTypePartialMatch("MATCHING_TYPE_PARTIAL_MATCH"),
   matchingTypeInverseMatch("MATCHING_TYPE_INVERSE_MATCH");
 
-  const GooglePrivacyDlpV2ExclusionRuleMatchingType(this.value);
-  final String value;
+  const GooglePrivacyDlpV2ExclusionRuleMatchingType(this.wireValue);
+  final String wireValue;
 
   static GooglePrivacyDlpV2ExclusionRuleMatchingType fromValue(String value) {
     for (final item in GooglePrivacyDlpV2ExclusionRuleMatchingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2ExclusionRuleMatchingType value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2ExclusionRuleMatchingType value: $value',
+    );
   }
 }
-

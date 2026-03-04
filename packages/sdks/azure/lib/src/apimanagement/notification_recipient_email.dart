@@ -199,7 +199,7 @@ import 'notification_recipient_email_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -214,8 +214,10 @@ import 'notification_recipient_email_state.dart';
 class NotificationRecipientEmail extends pulumi.CustomResource {
   /// The ID of the API Management Service from which to create this Notification Recipient Email. Changing this forces a new API Management Notification Recipient Email to be created.
   late final pulumi.Output<String> apiManagementId;
+
   /// The recipient email address. Changing this forces a new API Management Notification Recipient Email to be created.
   late final pulumi.Output<String> email;
+
   /// The Notification Name to be received. Changing this forces a new API Management Notification Recipient Email to be created. Possible values are `AccountClosedPublisher`, `BCC`, `NewApplicationNotificationMessage`, `NewIssuePublisherNotificationMessage`, `PurchasePublisherNotificationMessage`, `QuotaLimitApproachingPublisherNotificationMessage`, and `RequestPublisherNotificationMessage`.
   late final pulumi.Output<String> notificationType;
 
@@ -228,14 +230,14 @@ class NotificationRecipientEmail extends pulumi.CustomResource {
     NotificationRecipientEmailArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/notificationRecipientEmail:NotificationRecipientEmail',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.email = registerOutput<String>('email');
-    this.notificationType = registerOutput<String>('notificationType');
+         'azure:apimanagement/notificationRecipientEmail:NotificationRecipientEmail',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    email = registerOutput<String>('email');
+    notificationType = registerOutput<String>('notificationType');
   }
 
   /// Gets an existing [NotificationRecipientEmail] resource's state with the given [name] and [id].
@@ -256,13 +258,13 @@ class NotificationRecipientEmail extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/notificationRecipientEmail:NotificationRecipientEmail',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.email = registerOutput<String>('email');
-    this.notificationType = registerOutput<String>('notificationType');
+         'azure:apimanagement/notificationRecipientEmail:NotificationRecipientEmail',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    email = registerOutput<String>('email');
+    notificationType = registerOutput<String>('notificationType');
   }
 }

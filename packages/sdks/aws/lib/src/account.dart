@@ -1,5 +1,3 @@
-library module_account;
-
 export 'account/alternative_contact.dart';
 export 'account/alternative_contact_args.dart';
 export 'account/alternative_contact_state.dart';

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListActiveSecurityAdminRuleArgs {
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
+
   /// List of regions.
   final pulumi.Input<List<String>>? regions;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
   final pulumi.Input<String>? skipToken;
 
@@ -39,11 +42,22 @@ class ListActiveSecurityAdminRuleArgs {
 
   factory ListActiveSecurityAdminRuleArgs.fromMap(Map<String, dynamic> map) {
     return ListActiveSecurityAdminRuleArgs(
-      networkManagerName: (map['networkManagerName'] as String).input(),
-      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
+      networkManagerName: pulumi.Input.fromValue(
+        map['networkManagerName'] as String,
+      ),
+      regions: (() {
+        final guardedValue = map['regions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      skipToken: (() {
+        final guardedValue = map['skipToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

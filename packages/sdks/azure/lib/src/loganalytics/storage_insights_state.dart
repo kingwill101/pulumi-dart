@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageInsightsState {
   /// The names of the blob containers that the workspace should read.
   final pulumi.Input<List<String>>? blobContainerNames;
+
   /// The name which should be used for this Log Analytics Storage Insights. Changing this forces a new Log Analytics Storage Insights to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the Log Analytics Storage Insights should exist. Changing this forces a new Log Analytics Storage Insights to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The ID of the Storage Account used by this Log Analytics Storage Insights.
   final pulumi.Input<String>? storageAccountId;
+
   /// The storage access key to be used to connect to the storage account.
   final pulumi.Input<String>? storageAccountKey;
+
   /// The names of the Azure tables that the workspace should read.
   final pulumi.Input<List<String>>? tableNames;
+
   /// The ID of the Log Analytics Workspace within which the Storage Insights should exist. Changing this forces a new Log Analytics Storage Insights to be created.
   final pulumi.Input<String>? workspaceId;
 
@@ -51,14 +57,41 @@ class StorageInsightsState {
 
   factory StorageInsightsState.fromMap(Map<String, dynamic> map) {
     return StorageInsightsState(
-      blobContainerNames: map['blobContainerNames'] == null ? null : ((map['blobContainerNames']! as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
-      tableNames: map['tableNames'] == null ? null : ((map['tableNames']! as List).cast<String>()).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
+      blobContainerNames: (() {
+        final guardedValue = map['blobContainerNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountId: (() {
+        final guardedValue = map['storageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountKey: (() {
+        final guardedValue = map['storageAccountKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tableNames: (() {
+        final guardedValue = map['tableNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      workspaceId: (() {
+        final guardedValue = map['workspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

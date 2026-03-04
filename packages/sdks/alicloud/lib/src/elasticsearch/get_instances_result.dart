@@ -7,6 +7,7 @@ import 'get_instances_instance.dart';
 class GetInstancesResult {
   final String? descriptionRegex;
   final List<String> descriptions;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -41,7 +42,11 @@ class GetInstancesResult {
       'descriptions': descriptions,
       'id': id,
       'ids': ids,
-      'instances': pulumi.Input.encodeList<GetInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances':
+          pulumi.Input.encodeList<GetInstancesInstance, Map<String, dynamic>>(
+            instances,
+            (value) => value.toMap(),
+          ),
       'outputFile': ?outputFile,
       'tags': ?tags,
       'version': ?version,
@@ -50,15 +55,35 @@ class GetInstancesResult {
 
   factory GetInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetInstancesResult(
-      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex']! as String,
+      descriptionRegex: (() {
+        final guardedValue = map['descriptionRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       descriptions: (map['descriptions'] as List).cast<String>(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instances: pulumi.Input.decodeList<GetInstancesInstance>(map['instances'], (value) => GetInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      version: map['version'] == null ? null : map['version']! as String,
+      instances: pulumi.Input.decodeList<GetInstancesInstance>(
+        map['instances']!,
+        (value) => GetInstancesInstance.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

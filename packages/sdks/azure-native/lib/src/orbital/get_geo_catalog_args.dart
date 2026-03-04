@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGeoCatalogArgs {
   /// The name of the catalog
   final pulumi.Input<String> catalogName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetGeoCatalogArgs {
 
   factory GetGeoCatalogArgs.fromMap(Map<String, dynamic> map) {
     return GetGeoCatalogArgs(
-      catalogName: (map['catalogName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      catalogName: pulumi.Input.fromValue(map['catalogName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

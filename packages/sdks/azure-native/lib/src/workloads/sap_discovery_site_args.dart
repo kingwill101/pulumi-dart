@@ -10,16 +10,22 @@ import 'extended_location.dart';
 class SapDiscoverySiteArgs {
   /// The extended location definition.
   final pulumi.Input<ExtendedLocation>? extendedLocation;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The master site ID from Azure Migrate.
   final pulumi.Input<String>? masterSiteId;
+
   /// The migrate project ID from Azure Migrate.
   final pulumi.Input<String>? migrateProjectId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the discovery site resource for SAP Migration.
   final pulumi.Input<String>? sapDiscoverySiteName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -43,7 +49,11 @@ class SapDiscoverySiteArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'extendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocation,
+            Map<String, dynamic>
+          >(extendedLocation, (value) => value.toMap()),
       'location': ?location,
       'masterSiteId': ?masterSiteId,
       'migrateProjectId': ?migrateProjectId,
@@ -55,14 +65,45 @@ class SapDiscoverySiteArgs {
 
   factory SapDiscoverySiteArgs.fromMap(Map<String, dynamic> map) {
     return SapDiscoverySiteArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      masterSiteId: map['masterSiteId'] == null ? null : (map['masterSiteId']! as String).input(),
-      migrateProjectId: map['migrateProjectId'] == null ? null : (map['migrateProjectId']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sapDiscoverySiteName: map['sapDiscoverySiteName'] == null ? null : (map['sapDiscoverySiteName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      masterSiteId: (() {
+        final guardedValue = map['masterSiteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      migrateProjectId: (() {
+        final guardedValue = map['migrateProjectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sapDiscoverySiteName: (() {
+        final guardedValue = map['sapDiscoverySiteName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

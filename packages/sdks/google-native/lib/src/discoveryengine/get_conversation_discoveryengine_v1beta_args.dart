@@ -37,14 +37,19 @@ class GetConversationDiscoveryengineV1betaArgs {
     };
   }
 
-  factory GetConversationDiscoveryengineV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetConversationDiscoveryengineV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConversationDiscoveryengineV1betaArgs(
-      collectionId: (map['collectionId'] as String).input(),
-      conversationId: (map['conversationId'] as String).input(),
-      dataStoreId: (map['dataStoreId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      collectionId: pulumi.Input.fromValue(map['collectionId'] as String),
+      conversationId: pulumi.Input.fromValue(map['conversationId'] as String),
+      dataStoreId: pulumi.Input.fromValue(map['dataStoreId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1DataSourceResponse {
   /// Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
   final pulumi.Input<String> entity;
+
   /// Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be: BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
   final pulumi.Input<String> resource;
 
@@ -18,17 +19,15 @@ class GoogleCloudDataplexV1DataSourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'entity': entity,
-      'resource': resource,
-    };
+    return <String, dynamic>{'entity': entity, 'resource': resource};
   }
 
-  factory GoogleCloudDataplexV1DataSourceResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1DataSourceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1DataSourceResponse(
-      entity: (map['entity'] as String).input(),
-      resource: (map['resource'] as String).input(),
+      entity: pulumi.Input.fromValue(map['entity'] as String),
+      resource: pulumi.Input.fromValue(map['resource'] as String),
     );
   }
 }
-

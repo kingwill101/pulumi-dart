@@ -12,20 +12,13 @@ class GetAccountLoginArgs {
 
   /// Creates a new [GetAccountLoginArgs].
   /// [id] The unique ID of this login object.
-  GetAccountLoginArgs({
-    required this.id,
-  });
+  GetAccountLoginArgs({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GetAccountLoginArgs.fromMap(Map<String, dynamic> map) {
-    return GetAccountLoginArgs(
-      id: (map['id'] as int).input(),
-    );
+    return GetAccountLoginArgs(id: pulumi.Input.fromValue(map['id'] as int));
   }
 }
-

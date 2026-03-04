@@ -5,16 +5,15 @@ enum DiskEncryptionSetIdentityType {
   systemAssignedUserAssigned("SystemAssigned, UserAssigned"),
   none("None");
 
-  const DiskEncryptionSetIdentityType(this.value);
-  final String value;
+  const DiskEncryptionSetIdentityType(this.wireValue);
+  final String wireValue;
 
   static DiskEncryptionSetIdentityType fromValue(String value) {
     for (final item in DiskEncryptionSetIdentityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiskEncryptionSetIdentityType value: $value');
   }
 }
-

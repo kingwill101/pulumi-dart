@@ -3,16 +3,15 @@ enum HybridAksIpamEnabled {
   valueTrue("True"),
   valueFalse("False");
 
-  const HybridAksIpamEnabled(this.value);
-  final String value;
+  const HybridAksIpamEnabled(this.wireValue);
+  final String wireValue;
 
   static HybridAksIpamEnabled fromValue(String value) {
     for (final item in HybridAksIpamEnabled.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HybridAksIpamEnabled value: $value');
   }
 }
-

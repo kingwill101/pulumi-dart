@@ -367,7 +367,7 @@ Future<GetBucketObjectResult> getBucketObject(
 /// and
 /// [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
 ///
-/// > **Warning:** The object content will be saved in the state, and visible to everyone who has access to the state file.
+/// &gt; **Warning:** The object content will be saved in the state, and visible to everyone who has access to the state file.
 ///
 /// ## Example Usage
 ///
@@ -804,7 +804,8 @@ Future<GetBucketsResult> getBuckets(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_control_folder_intelligence_config_get_control_folder_intelligence_config_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceConfig(
+Future<GetControlFolderIntelligenceConfigResult>
+getControlFolderIntelligenceConfig(
   GetControlFolderIntelligenceConfigArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -913,7 +914,8 @@ Future<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceCon
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_control_organization_intelligence_config_get_control_organization_intelligence_config_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationIntelligenceConfig(
+Future<GetControlOrganizationIntelligenceConfigResult>
+getControlOrganizationIntelligenceConfig(
   GetControlOrganizationIntelligenceConfigArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1022,7 +1024,8 @@ Future<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationInt
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_control_project_intelligence_config_get_control_project_intelligence_config_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceConfig(
+Future<GetControlProjectIntelligenceConfigResult>
+getControlProjectIntelligenceConfig(
   GetControlProjectIntelligenceConfigArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1488,7 +1491,7 @@ Future<GetObjectSignedUrlResult> getObjectSignedUrl(
 /// Always prefer to use this data source over interpolating the project ID into the well-known format for this service account, as the latter approach may cause
 /// provider update errors in cases where the service account does not yet exist.
 ///
-/// >  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
+/// &gt;  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
 /// you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
 /// Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
 /// bucket configuration, otherwise the API calls will fail.

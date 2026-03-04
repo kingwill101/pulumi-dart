@@ -3,16 +3,15 @@ enum PolicyStatus {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const PolicyStatus(this.value);
-  final String value;
+  const PolicyStatus(this.wireValue);
+  final String wireValue;
 
   static PolicyStatus fromValue(String value) {
     for (final item in PolicyStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PolicyStatus value: $value');
   }
 }
-

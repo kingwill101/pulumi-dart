@@ -5,33 +5,47 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketLifecycleRuleCondition {
   /// Minimum age of an object in days to satisfy this condition. **Note** To set `0` value of `age`, `send_age_if_zero` should be set `true` otherwise `0` value of `age` field will be ignored.
   final pulumi.Input<int>? age;
+
   /// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when an object is created before midnight of the specified date in UTC.
   final pulumi.Input<String>? createdBefore;
+
   /// A date in the RFC 3339 format YYYY-MM-DD. This condition is satisfied when the customTime metadata for the object is set to an earlier date than the date used in this lifecycle condition.
   final pulumi.Input<String>? customTimeBefore;
+
   /// Number of days elapsed since the user-specified timestamp set on an object.
   final pulumi.Input<int>? daysSinceCustomTime;
+
   /// Number of days elapsed since the noncurrent timestamp of an object. This
   /// condition is relevant only for versioned objects.
   final pulumi.Input<int>? daysSinceNoncurrentTime;
+
   /// One or more matching name prefixes to satisfy this condition.
   final pulumi.Input<List<String>>? matchesPrefixes;
+
   /// [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
   final pulumi.Input<List<String>>? matchesStorageClasses;
+
   /// One or more matching name suffixes to satisfy this condition.
   final pulumi.Input<List<String>>? matchesSuffixes;
+
   /// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
   final pulumi.Input<String>? noncurrentTimeBefore;
+
   /// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
   final pulumi.Input<int>? numNewerVersions;
+
   /// While set true, `age` value will be sent in the request even for zero value of the field. This field is only useful and required for setting 0 value to the `age` field. It can be used alone or together with `age` attribute. **NOTE** `age` attibute with `0` value will be ommitted from the API request if `send_age_if_zero` field is having `false` value.
   final pulumi.Input<bool>? sendAgeIfZero;
+
   /// While set true, `days_since_custom_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_custom_time` field. It can be used alone or together with `days_since_custom_time`.
   final pulumi.Input<bool>? sendDaysSinceCustomTimeIfZero;
+
   /// While set true, `days_since_noncurrent_time` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `days_since_noncurrent_time` field. It can be used alone or together with `days_since_noncurrent_time`.
   final pulumi.Input<bool>? sendDaysSinceNoncurrentTimeIfZero;
+
   /// While set true, `num_newer_versions` value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the `num_newer_versions` field. It can be used alone or together with `num_newer_versions`.
   final pulumi.Input<bool>? sendNumNewerVersionsIfZero;
+
   /// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
   final pulumi.Input<String>? withState;
 
@@ -91,22 +105,81 @@ class BucketLifecycleRuleCondition {
 
   factory BucketLifecycleRuleCondition.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleCondition(
-      age: map['age'] == null ? null : (map['age']! as int).input(),
-      createdBefore: map['createdBefore'] == null ? null : (map['createdBefore']! as String).input(),
-      customTimeBefore: map['customTimeBefore'] == null ? null : (map['customTimeBefore']! as String).input(),
-      daysSinceCustomTime: map['daysSinceCustomTime'] == null ? null : (map['daysSinceCustomTime']! as int).input(),
-      daysSinceNoncurrentTime: map['daysSinceNoncurrentTime'] == null ? null : (map['daysSinceNoncurrentTime']! as int).input(),
-      matchesPrefixes: map['matchesPrefixes'] == null ? null : ((map['matchesPrefixes']! as List).cast<String>()).input(),
-      matchesStorageClasses: map['matchesStorageClasses'] == null ? null : ((map['matchesStorageClasses']! as List).cast<String>()).input(),
-      matchesSuffixes: map['matchesSuffixes'] == null ? null : ((map['matchesSuffixes']! as List).cast<String>()).input(),
-      noncurrentTimeBefore: map['noncurrentTimeBefore'] == null ? null : (map['noncurrentTimeBefore']! as String).input(),
-      numNewerVersions: map['numNewerVersions'] == null ? null : (map['numNewerVersions']! as int).input(),
-      sendAgeIfZero: map['sendAgeIfZero'] == null ? null : (map['sendAgeIfZero']! as bool).input(),
-      sendDaysSinceCustomTimeIfZero: map['sendDaysSinceCustomTimeIfZero'] == null ? null : (map['sendDaysSinceCustomTimeIfZero']! as bool).input(),
-      sendDaysSinceNoncurrentTimeIfZero: map['sendDaysSinceNoncurrentTimeIfZero'] == null ? null : (map['sendDaysSinceNoncurrentTimeIfZero']! as bool).input(),
-      sendNumNewerVersionsIfZero: map['sendNumNewerVersionsIfZero'] == null ? null : (map['sendNumNewerVersionsIfZero']! as bool).input(),
-      withState: map['withState'] == null ? null : (map['withState']! as String).input(),
+      age: (() {
+        final guardedValue = map['age'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      createdBefore: (() {
+        final guardedValue = map['createdBefore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customTimeBefore: (() {
+        final guardedValue = map['customTimeBefore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      daysSinceCustomTime: (() {
+        final guardedValue = map['daysSinceCustomTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      daysSinceNoncurrentTime: (() {
+        final guardedValue = map['daysSinceNoncurrentTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      matchesPrefixes: (() {
+        final guardedValue = map['matchesPrefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      matchesStorageClasses: (() {
+        final guardedValue = map['matchesStorageClasses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      matchesSuffixes: (() {
+        final guardedValue = map['matchesSuffixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      noncurrentTimeBefore: (() {
+        final guardedValue = map['noncurrentTimeBefore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      numNewerVersions: (() {
+        final guardedValue = map['numNewerVersions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sendAgeIfZero: (() {
+        final guardedValue = map['sendAgeIfZero'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sendDaysSinceCustomTimeIfZero: (() {
+        final guardedValue = map['sendDaysSinceCustomTimeIfZero'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sendDaysSinceNoncurrentTimeIfZero: (() {
+        final guardedValue = map['sendDaysSinceNoncurrentTimeIfZero'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sendNumNewerVersionsIfZero: (() {
+        final guardedValue = map['sendNumNewerVersionsIfZero'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      withState: (() {
+        final guardedValue = map['withState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

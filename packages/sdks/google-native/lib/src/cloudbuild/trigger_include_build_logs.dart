@@ -3,16 +3,15 @@ enum TriggerIncludeBuildLogs {
   includeBuildLogsUnspecified("INCLUDE_BUILD_LOGS_UNSPECIFIED"),
   includeBuildLogsWithStatus("INCLUDE_BUILD_LOGS_WITH_STATUS");
 
-  const TriggerIncludeBuildLogs(this.value);
-  final String value;
+  const TriggerIncludeBuildLogs(this.wireValue);
+  final String wireValue;
 
   static TriggerIncludeBuildLogs fromValue(String value) {
     for (final item in TriggerIncludeBuildLogs.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TriggerIncludeBuildLogs value: $value');
   }
 }
-

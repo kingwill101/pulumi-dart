@@ -2,16 +2,17 @@
 enum TargetInstanceNatPolicyComputeBeta {
   noNat("NO_NAT");
 
-  const TargetInstanceNatPolicyComputeBeta(this.value);
-  final String value;
+  const TargetInstanceNatPolicyComputeBeta(this.wireValue);
+  final String wireValue;
 
   static TargetInstanceNatPolicyComputeBeta fromValue(String value) {
     for (final item in TargetInstanceNatPolicyComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TargetInstanceNatPolicyComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown TargetInstanceNatPolicyComputeBeta value: $value',
+    );
   }
 }
-

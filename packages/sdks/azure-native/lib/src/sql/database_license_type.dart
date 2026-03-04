@@ -3,16 +3,15 @@ enum DatabaseLicenseType {
   valueLicenseIncluded("LicenseIncluded"),
   valueBasePrice("BasePrice");
 
-  const DatabaseLicenseType(this.value);
-  final String value;
+  const DatabaseLicenseType(this.wireValue);
+  final String wireValue;
 
   static DatabaseLicenseType fromValue(String value) {
     for (final item in DatabaseLicenseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatabaseLicenseType value: $value');
   }
 }
-

@@ -3,18 +3,19 @@ enum DefaultSharePermission {
   valueNone("None"),
   valueStorageFileDataSmbShareReader("StorageFileDataSmbShareReader"),
   valueStorageFileDataSmbShareContributor("StorageFileDataSmbShareContributor"),
-  valueStorageFileDataSmbShareElevatedContributor("StorageFileDataSmbShareElevatedContributor");
+  valueStorageFileDataSmbShareElevatedContributor(
+    "StorageFileDataSmbShareElevatedContributor",
+  );
 
-  const DefaultSharePermission(this.value);
-  final String value;
+  const DefaultSharePermission(this.wireValue);
+  final String wireValue;
 
   static DefaultSharePermission fromValue(String value) {
     for (final item in DefaultSharePermission.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DefaultSharePermission value: $value');
   }
 }
-

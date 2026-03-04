@@ -9,20 +9,19 @@ class RollbackConfigPatch {
 
   /// Creates a new [RollbackConfigPatch].
   /// [revision] The revision to rollback to. If set to 0, rollback to the last revision.
-  RollbackConfigPatch({
-    this.revision,
-  });
+  RollbackConfigPatch({this.revision});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'revision': ?revision,
-    };
+    return <String, dynamic>{'revision': ?revision};
   }
 
   factory RollbackConfigPatch.fromMap(Map<String, dynamic> map) {
     return RollbackConfigPatch(
-      revision: map['revision'] == null ? null : (map['revision']! as int).input(),
+      revision: (() {
+        final guardedValue = map['revision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

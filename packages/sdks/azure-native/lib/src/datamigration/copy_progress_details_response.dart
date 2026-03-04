@@ -6,24 +6,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CopyProgressDetailsResponse {
   /// Copy Duration in seconds
   final pulumi.Input<int> copyDuration;
+
   /// Copy Start
   final pulumi.Input<String> copyStart;
+
   /// Copy throughput in KBps
   final pulumi.Input<double> copyThroughput;
+
   /// Bytes read
   final pulumi.Input<double> dataRead;
+
   /// Bytes written
   final pulumi.Input<double> dataWritten;
+
   /// Type of parallel copy (Dynamic range, Physical partition, none).
   final pulumi.Input<String> parallelCopyType;
+
   /// Rows Copied
   final pulumi.Input<double> rowsCopied;
+
   /// Rows read
   final pulumi.Input<double> rowsRead;
+
   /// Status of the Copy activity (InProgress, Succeeded, Failed, Canceled).
   final pulumi.Input<String> status;
+
   /// Table Name
   final pulumi.Input<String> tableName;
+
   /// The degree of parallelization.
   final pulumi.Input<int> usedParallelCopies;
 
@@ -71,18 +81,21 @@ class CopyProgressDetailsResponse {
 
   factory CopyProgressDetailsResponse.fromMap(Map<String, dynamic> map) {
     return CopyProgressDetailsResponse(
-      copyDuration: (map['copyDuration'] as int).input(),
-      copyStart: (map['copyStart'] as String).input(),
-      copyThroughput: (map['copyThroughput'] as double).input(),
-      dataRead: (map['dataRead'] as double).input(),
-      dataWritten: (map['dataWritten'] as double).input(),
-      parallelCopyType: (map['parallelCopyType'] as String).input(),
-      rowsCopied: (map['rowsCopied'] as double).input(),
-      rowsRead: (map['rowsRead'] as double).input(),
-      status: (map['status'] as String).input(),
-      tableName: (map['tableName'] as String).input(),
-      usedParallelCopies: (map['usedParallelCopies'] as int).input(),
+      copyDuration: pulumi.Input.fromValue(map['copyDuration'] as int),
+      copyStart: pulumi.Input.fromValue(map['copyStart'] as String),
+      copyThroughput: pulumi.Input.fromValue(map['copyThroughput'] as double),
+      dataRead: pulumi.Input.fromValue(map['dataRead'] as double),
+      dataWritten: pulumi.Input.fromValue(map['dataWritten'] as double),
+      parallelCopyType: pulumi.Input.fromValue(
+        map['parallelCopyType'] as String,
+      ),
+      rowsCopied: pulumi.Input.fromValue(map['rowsCopied'] as double),
+      rowsRead: pulumi.Input.fromValue(map['rowsRead'] as double),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      tableName: pulumi.Input.fromValue(map['tableName'] as String),
+      usedParallelCopies: pulumi.Input.fromValue(
+        map['usedParallelCopies'] as int,
+      ),
     );
   }
 }
-

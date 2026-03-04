@@ -6,7 +6,7 @@ import 'tls_cipher_policy_state.dart';
 ///
 /// For information about SLB Tls Cipher Policy and how to use it, see [What is Tls Cipher Policy](https://www.alibabacloud.com/help/doc-detail/196714.htm).
 ///
-/// > **NOTE:** Available in v1.135.0+.
+/// &gt; **NOTE:** Available in v1.135.0+.
 ///
 /// ## Example Usage
 ///
@@ -148,10 +148,13 @@ import 'tls_cipher_policy_state.dart';
 class TlsCipherPolicy extends pulumi.CustomResource {
   /// The encryption algorithms supported. It depends on the value of `tls_versions`.
   late final pulumi.Output<List<String>> ciphers;
+
   /// TLS policy instance state.
   late final pulumi.Output<String> status;
+
   /// TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
   late final pulumi.Output<String> tlsCipherPolicyName;
+
   /// The version of TLS protocol. You can find the corresponding value description in the document center [What is Tls Cipher Policy](https://www.alibabacloud.com/help/doc-detail/196714.htm).
   late final pulumi.Output<List<String>> tlsVersions;
 
@@ -164,15 +167,15 @@ class TlsCipherPolicy extends pulumi.CustomResource {
     TlsCipherPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/tlsCipherPolicy:TlsCipherPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ciphers = registerOutput<List<String>>('ciphers');
-    this.status = registerOutput<String>('status');
-    this.tlsCipherPolicyName = registerOutput<String>('tlsCipherPolicyName');
-    this.tlsVersions = registerOutput<List<String>>('tlsVersions');
+         'alicloud:slb/tlsCipherPolicy:TlsCipherPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ciphers = registerOutput<List<String>>('ciphers');
+    status = registerOutput<String>('status');
+    tlsCipherPolicyName = registerOutput<String>('tlsCipherPolicyName');
+    tlsVersions = registerOutput<List<String>>('tlsVersions');
   }
 
   /// Gets an existing [TlsCipherPolicy] resource's state with the given [name] and [id].
@@ -193,14 +196,14 @@ class TlsCipherPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/tlsCipherPolicy:TlsCipherPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ciphers = registerOutput<List<String>>('ciphers');
-    this.status = registerOutput<String>('status');
-    this.tlsCipherPolicyName = registerOutput<String>('tlsCipherPolicyName');
-    this.tlsVersions = registerOutput<List<String>>('tlsVersions');
+         'alicloud:slb/tlsCipherPolicy:TlsCipherPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ciphers = registerOutput<List<String>>('ciphers');
+    status = registerOutput<String>('status');
+    tlsCipherPolicyName = registerOutput<String>('tlsCipherPolicyName');
+    tlsVersions = registerOutput<List<String>>('tlsVersions');
   }
 }

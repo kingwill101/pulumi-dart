@@ -8,8 +8,10 @@ import 'key_vault_secret_reference.dart';
 class DiskEncryptionSettings {
   /// Specifies the location of the disk encryption key, which is a Key Vault Secret.
   final pulumi.Input<KeyVaultSecretReference>? diskEncryptionKey;
+
   /// Specifies whether disk encryption should be enabled on the virtual machine.
   final pulumi.Input<bool>? enabled;
+
   /// Specifies the location of the key encryption key in Key Vault.
   final pulumi.Input<KeyVaultKeyReference>? keyEncryptionKey;
 
@@ -25,18 +27,45 @@ class DiskEncryptionSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'diskEncryptionKey': ?pulumi.Input.mapOptionalInputValue<KeyVaultSecretReference, Map<String, dynamic>>(diskEncryptionKey, (value) => value.toMap()),
+      'diskEncryptionKey':
+          ?pulumi.Input.mapOptionalInputValue<
+            KeyVaultSecretReference,
+            Map<String, dynamic>
+          >(diskEncryptionKey, (value) => value.toMap()),
       'enabled': ?enabled,
-      'keyEncryptionKey': ?pulumi.Input.mapOptionalInputValue<KeyVaultKeyReference, Map<String, dynamic>>(keyEncryptionKey, (value) => value.toMap()),
+      'keyEncryptionKey':
+          ?pulumi.Input.mapOptionalInputValue<
+            KeyVaultKeyReference,
+            Map<String, dynamic>
+          >(keyEncryptionKey, (value) => value.toMap()),
     };
   }
 
   factory DiskEncryptionSettings.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionSettings(
-      diskEncryptionKey: map['diskEncryptionKey'] == null ? null : (KeyVaultSecretReference.fromMap((map['diskEncryptionKey']! as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (KeyVaultKeyReference.fromMap((map['keyEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      diskEncryptionKey: (() {
+        final guardedValue = map['diskEncryptionKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KeyVaultSecretReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      keyEncryptionKey: (() {
+        final guardedValue = map['keyEncryptionKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KeyVaultKeyReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

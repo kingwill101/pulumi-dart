@@ -14,29 +14,27 @@ class ResourceHealth {
   ///
   /// In future we may want to introduce the PermanentlyUnhealthy Status.
   final pulumi.Input<String>? health;
+
   /// ResourceID is the unique identifier of the resource. See the ResourceID type for more information.
   final pulumi.Input<String> resourceID;
 
   /// Creates a new [ResourceHealth].
   /// [health] Health of the resource. can be one of:
   /// [resourceID] ResourceID is the unique identifier of the resource. See the ResourceID type for more information.
-  ResourceHealth({
-    this.health,
-    required this.resourceID,
-  });
+  ResourceHealth({this.health, required this.resourceID});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'health': ?health,
-      'resourceID': resourceID,
-    };
+    return <String, dynamic>{'health': ?health, 'resourceID': resourceID};
   }
 
   factory ResourceHealth.fromMap(Map<String, dynamic> map) {
     return ResourceHealth(
-      health: map['health'] == null ? null : (map['health']! as String).input(),
-      resourceID: (map['resourceID'] as String).input(),
+      health: (() {
+        final guardedValue = map['health'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceID: pulumi.Input.fromValue(map['resourceID'] as String),
     );
   }
 }
-

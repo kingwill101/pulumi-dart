@@ -9,20 +9,19 @@ class ProviderHubMetadataProviderAuthentication {
 
   /// Creates a new [ProviderHubMetadataProviderAuthentication].
   /// [allowedAudiences] The allowed audiences.
-  ProviderHubMetadataProviderAuthentication({
-    required this.allowedAudiences,
-  });
+  ProviderHubMetadataProviderAuthentication({required this.allowedAudiences});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allowedAudiences': allowedAudiences,
-    };
+    return <String, dynamic>{'allowedAudiences': allowedAudiences};
   }
 
-  factory ProviderHubMetadataProviderAuthentication.fromMap(Map<String, dynamic> map) {
+  factory ProviderHubMetadataProviderAuthentication.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProviderHubMetadataProviderAuthentication(
-      allowedAudiences: ((map['allowedAudiences'] as List).cast<String>()).input(),
+      allowedAudiences: pulumi.Input.fromValue(
+        (map['allowedAudiences'] as List).cast<String>(),
+      ),
     );
   }
 }
-

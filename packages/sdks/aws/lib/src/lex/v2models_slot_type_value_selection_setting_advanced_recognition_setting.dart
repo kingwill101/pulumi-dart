@@ -19,10 +19,15 @@ class V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting {
     };
   }
 
-  factory V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting.fromMap(Map<String, dynamic> map) {
+  factory V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting(
-      audioRecognitionStrategy: map['audioRecognitionStrategy'] == null ? null : ((map['audioRecognitionStrategy'] as String).input()).input(),
+      audioRecognitionStrategy: (() {
+        final guardedValue = map['audioRecognitionStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

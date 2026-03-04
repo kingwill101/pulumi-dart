@@ -8,20 +8,17 @@ class GetFunctionEnvironment {
 
   /// Creates a new [GetFunctionEnvironment].
   /// [variables] Map of environment variables that are accessible from the function code during execution.
-  GetFunctionEnvironment({
-    required this.variables,
-  });
+  GetFunctionEnvironment({required this.variables});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'variables': variables,
-    };
+    return <String, dynamic>{'variables': variables};
   }
 
   factory GetFunctionEnvironment.fromMap(Map<String, dynamic> map) {
     return GetFunctionEnvironment(
-      variables: ((map['variables'] as Map).cast<String, String>()).input(),
+      variables: pulumi.Input.fromValue(
+        (map['variables'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

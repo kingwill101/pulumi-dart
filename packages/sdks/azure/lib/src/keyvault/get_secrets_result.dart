@@ -8,8 +8,10 @@ class GetSecretsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String keyVaultId;
+
   /// List containing names of secrets that exist in this Key Vault.
   final List<String> names;
+
   /// One or more `secrets` blocks as defined below.
   final List<GetSecretsSecret> secrets;
 
@@ -30,7 +32,11 @@ class GetSecretsResult {
       'id': id,
       'keyVaultId': keyVaultId,
       'names': names,
-      'secrets': pulumi.Input.encodeList<GetSecretsSecret, Map<String, dynamic>>(secrets, (value) => value.toMap()),
+      'secrets':
+          pulumi.Input.encodeList<GetSecretsSecret, Map<String, dynamic>>(
+            secrets,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -39,8 +45,11 @@ class GetSecretsResult {
       id: map['id'] as String,
       keyVaultId: map['keyVaultId'] as String,
       names: (map['names'] as List).cast<String>(),
-      secrets: pulumi.Input.decodeList<GetSecretsSecret>(map['secrets'], (value) => GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>())),
+      secrets: pulumi.Input.decodeList<GetSecretsSecret>(
+        map['secrets']!,
+        (value) =>
+            GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

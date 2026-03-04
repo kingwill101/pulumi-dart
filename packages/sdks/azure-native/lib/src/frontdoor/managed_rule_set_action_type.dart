@@ -4,16 +4,15 @@ enum ManagedRuleSetActionType {
   valueLog("Log"),
   valueRedirect("Redirect");
 
-  const ManagedRuleSetActionType(this.value);
-  final String value;
+  const ManagedRuleSetActionType(this.wireValue);
+  final String wireValue;
 
   static ManagedRuleSetActionType fromValue(String value) {
     for (final item in ManagedRuleSetActionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManagedRuleSetActionType value: $value');
   }
 }
-

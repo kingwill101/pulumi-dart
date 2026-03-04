@@ -9,20 +9,17 @@ class TrafficPercentStrategyResponse {
 
   /// Creates a new [TrafficPercentStrategyResponse].
   /// [percentages] Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
-  TrafficPercentStrategyResponse({
-    required this.percentages,
-  });
+  TrafficPercentStrategyResponse({required this.percentages});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'percentages': percentages,
-    };
+    return <String, dynamic>{'percentages': percentages};
   }
 
   factory TrafficPercentStrategyResponse.fromMap(Map<String, dynamic> map) {
     return TrafficPercentStrategyResponse(
-      percentages: ((map['percentages'] as Map).cast<String, String>()).input(),
+      percentages: pulumi.Input.fromValue(
+        (map['percentages'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

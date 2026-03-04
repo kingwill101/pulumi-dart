@@ -10,12 +10,16 @@ import 'fabric_model_properties.dart';
 class FabricArgs {
   /// The fabric name.
   final pulumi.Input<String>? fabricName;
+
   /// Gets or sets the location of the fabric.
   final pulumi.Input<String>? location;
+
   /// Fabric model properties.
   final pulumi.Input<FabricModelProperties> properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Gets or sets the resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -37,7 +41,11 @@ class FabricArgs {
     return <String, dynamic>{
       'fabricName': ?fabricName,
       'location': ?location,
-      'properties': pulumi.Input.mapInputValue<FabricModelProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            FabricModelProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -45,12 +53,31 @@ class FabricArgs {
 
   factory FabricArgs.fromMap(Map<String, dynamic> map) {
     return FabricArgs(
-      fabricName: map['fabricName'] == null ? null : (map['fabricName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: (FabricModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      fabricName: (() {
+        final guardedValue = map['fabricName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: pulumi.Input.fromValue(
+        FabricModelProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

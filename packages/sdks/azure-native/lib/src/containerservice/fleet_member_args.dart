@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FleetMemberArgs {
   /// The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'.
   final pulumi.Input<String> clusterResourceId;
+
   /// The name of the Fleet member resource.
   final pulumi.Input<String>? fleetMemberName;
+
   /// The name of the Fleet resource.
   final pulumi.Input<String> fleetName;
+
   /// The group this member belongs to for multi-cluster update management.
   final pulumi.Input<String>? group;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -44,12 +48,23 @@ class FleetMemberArgs {
 
   factory FleetMemberArgs.fromMap(Map<String, dynamic> map) {
     return FleetMemberArgs(
-      clusterResourceId: (map['clusterResourceId'] as String).input(),
-      fleetMemberName: map['fleetMemberName'] == null ? null : (map['fleetMemberName']! as String).input(),
-      fleetName: (map['fleetName'] as String).input(),
-      group: map['group'] == null ? null : (map['group']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clusterResourceId: pulumi.Input.fromValue(
+        map['clusterResourceId'] as String,
+      ),
+      fleetMemberName: (() {
+        final guardedValue = map['fleetMemberName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fleetName: pulumi.Input.fromValue(map['fleetName'] as String),
+      group: (() {
+        final guardedValue = map['group'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -9,16 +9,15 @@ enum ResourceProviderType {
   tenantOnly("TenantOnly"),
   authorizationFree("AuthorizationFree");
 
-  const ResourceProviderType(this.value);
-  final String value;
+  const ResourceProviderType(this.wireValue);
+  final String wireValue;
 
   static ResourceProviderType fromValue(String value) {
     for (final item in ResourceProviderType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceProviderType value: $value');
   }
 }
-

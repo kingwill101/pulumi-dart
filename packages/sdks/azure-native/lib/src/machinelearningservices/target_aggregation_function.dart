@@ -7,16 +7,15 @@ enum TargetAggregationFunction {
   valueMin("Min"),
   valueMean("Mean");
 
-  const TargetAggregationFunction(this.value);
-  final String value;
+  const TargetAggregationFunction(this.wireValue);
+  final String wireValue;
 
   static TargetAggregationFunction fromValue(String value) {
     for (final item in TargetAggregationFunction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TargetAggregationFunction value: $value');
   }
 }
-

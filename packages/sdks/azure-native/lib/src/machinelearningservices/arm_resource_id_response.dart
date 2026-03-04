@@ -10,20 +10,19 @@ class ArmResourceIdResponse {
 
   /// Creates a new [ArmResourceIdResponse].
   /// [resourceId] Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"
-  ArmResourceIdResponse({
-    this.resourceId,
-  });
+  ArmResourceIdResponse({this.resourceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceId': ?resourceId,
-    };
+    return <String, dynamic>{'resourceId': ?resourceId};
   }
 
   factory ArmResourceIdResponse.fromMap(Map<String, dynamic> map) {
     return ArmResourceIdResponse(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

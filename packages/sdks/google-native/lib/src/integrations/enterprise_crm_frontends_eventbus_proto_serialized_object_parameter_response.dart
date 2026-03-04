@@ -12,15 +12,14 @@ class EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'objectValue': objectValue,
-    };
+    return <String, dynamic>{'objectValue': objectValue};
   }
 
-  factory EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterResponse(
-      objectValue: (map['objectValue'] as String).input(),
+      objectValue: pulumi.Input.fromValue(map['objectValue'] as String),
     );
   }
 }
-

@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'experiment_plan_template_args.dart';
 import 'experiment_plan_template_state.dart';
-import 'experiment_plan_template_template_pipeline.dart';
 
 /// Provides a Eflo Experiment Plan Template resource.
 ///
@@ -9,7 +8,7 @@ import 'experiment_plan_template_template_pipeline.dart';
 ///
 /// For information about Eflo Experiment Plan Template and how to use it, see [What is Experiment Plan Template](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eflo-cnp-2023-08-28-createexperimentplantemplate).
 ///
-/// > **NOTE:** Available since v1.248.0.
+/// &gt; **NOTE:** Available since v1.248.0.
 ///
 /// ## Example Usage
 ///
@@ -257,18 +256,23 @@ import 'experiment_plan_template_template_pipeline.dart';
 class ExperimentPlanTemplate extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// Used to indicate the privacy level of the content or information. It can have the following optional parameters:
   /// - private: Indicates that the content is private and restricted to specific users or permission groups. Private content is usually not publicly displayed, and only authorized users can view or edit it.
   /// - public: Indicates that the content is public and can be accessed by anyone. Public content is usually viewable by all users and is suitable for sharing information or resources
   late final pulumi.Output<String> privacyLevel;
+
   /// Describe the purpose of this template.
   late final pulumi.Output<String?> templateDescription;
+
   /// The ID of the template.
   late final pulumi.Output<String> templateId;
+
   /// Help users identify and select specific templates.
   late final pulumi.Output<String> templateName;
+
   /// Representative Template Pipeline. See `template_pipeline` below.
-  late final pulumi.Output<List<ExperimentPlanTemplateTemplatePipeline>> templatePipelines;
+  late final pulumi.Output<List<Map<String, dynamic>>> templatePipelines;
 
   /// Creates a new [ExperimentPlanTemplate].
   /// [name] The Pulumi resource name.
@@ -279,17 +283,19 @@ class ExperimentPlanTemplate extends pulumi.CustomResource {
     ExperimentPlanTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eflo/experimentPlanTemplate:ExperimentPlanTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.privacyLevel = registerOutput<String>('privacyLevel');
-    this.templateDescription = registerOutput<String?>('templateDescription');
-    this.templateId = registerOutput<String>('templateId');
-    this.templateName = registerOutput<String>('templateName');
-    this.templatePipelines = registerOutput<List<ExperimentPlanTemplateTemplatePipeline>>('templatePipelines');
+         'alicloud:eflo/experimentPlanTemplate:ExperimentPlanTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    privacyLevel = registerOutput<String>('privacyLevel');
+    templateDescription = registerOutput<String?>('templateDescription');
+    templateId = registerOutput<String>('templateId');
+    templateName = registerOutput<String>('templateName');
+    templatePipelines = registerOutput<List<Map<String, dynamic>>>(
+      'templatePipelines',
+    );
   }
 
   /// Gets an existing [ExperimentPlanTemplate] resource's state with the given [name] and [id].
@@ -310,16 +316,18 @@ class ExperimentPlanTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eflo/experimentPlanTemplate:ExperimentPlanTemplate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.privacyLevel = registerOutput<String>('privacyLevel');
-    this.templateDescription = registerOutput<String?>('templateDescription');
-    this.templateId = registerOutput<String>('templateId');
-    this.templateName = registerOutput<String>('templateName');
-    this.templatePipelines = registerOutput<List<ExperimentPlanTemplateTemplatePipeline>>('templatePipelines');
+         'alicloud:eflo/experimentPlanTemplate:ExperimentPlanTemplate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    privacyLevel = registerOutput<String>('privacyLevel');
+    templateDescription = registerOutput<String?>('templateDescription');
+    templateId = registerOutput<String>('templateId');
+    templateName = registerOutput<String>('templateName');
+    templatePipelines = registerOutput<List<Map<String, dynamic>>>(
+      'templatePipelines',
+    );
   }
 }

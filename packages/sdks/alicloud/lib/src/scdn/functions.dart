@@ -4,7 +4,7 @@ import 'get_domains_result.dart';
 
 /// This data source provides the Scdn Domains of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.131.0+.
+/// &gt; **NOTE:** Available in v1.131.0+.
 ///
 /// ## Example Usage
 ///

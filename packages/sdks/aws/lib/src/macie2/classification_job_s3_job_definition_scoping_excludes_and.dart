@@ -6,9 +6,16 @@ import 'classification_job_s3_job_definition_scoping_excludes_and_tag_scope_term
 
 class ClassificationJobS3JobDefinitionScopingExcludesAnd {
   /// A property-based condition that defines a property, operator, and one or more values for including or excluding an object from the job. (documented below)
-  final pulumi.Input<ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm>? simpleScopeTerm;
+  final pulumi.Input<
+    ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm
+  >?
+  simpleScopeTerm;
+
   /// A tag-based condition that defines the operator and tag keys or tag key and value pairs for including or excluding an object from the job. (documented below)
-  final pulumi.Input<ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTerm>? tagScopeTerm;
+  final pulumi.Input<
+    ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTerm
+  >?
+  tagScopeTerm;
 
   /// Creates a new [ClassificationJobS3JobDefinitionScopingExcludesAnd].
   /// [simpleScopeTerm] A property-based condition that defines a property, operator, and one or more values for including or excluding an object from the job. (documented below)
@@ -20,16 +27,41 @@ class ClassificationJobS3JobDefinitionScopingExcludesAnd {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'simpleScopeTerm': ?pulumi.Input.mapOptionalInputValue<ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm, Map<String, dynamic>>(simpleScopeTerm, (value) => value.toMap()),
-      'tagScopeTerm': ?pulumi.Input.mapOptionalInputValue<ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTerm, Map<String, dynamic>>(tagScopeTerm, (value) => value.toMap()),
+      'simpleScopeTerm':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm,
+            Map<String, dynamic>
+          >(simpleScopeTerm, (value) => value.toMap()),
+      'tagScopeTerm':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTerm,
+            Map<String, dynamic>
+          >(tagScopeTerm, (value) => value.toMap()),
     };
   }
 
-  factory ClassificationJobS3JobDefinitionScopingExcludesAnd.fromMap(Map<String, dynamic> map) {
+  factory ClassificationJobS3JobDefinitionScopingExcludesAnd.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClassificationJobS3JobDefinitionScopingExcludesAnd(
-      simpleScopeTerm: map['simpleScopeTerm'] == null ? null : ((ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm.fromMap((map['simpleScopeTerm']! as Map).cast<String, dynamic>())).input()).input(),
-      tagScopeTerm: map['tagScopeTerm'] == null ? null : ((ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTerm.fromMap((map['tagScopeTerm']! as Map).cast<String, dynamic>())).input()).input(),
+      simpleScopeTerm: (() {
+        final guardedValue = map['simpleScopeTerm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tagScopeTerm: (() {
+        final guardedValue = map['tagScopeTerm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTerm.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

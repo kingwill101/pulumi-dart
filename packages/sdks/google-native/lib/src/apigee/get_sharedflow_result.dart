@@ -6,10 +6,13 @@ import 'google_cloud_apigee_v1_entity_metadata_response.dart';
 class GetSharedflowResult {
   /// The id of the most recently created revision for this shared flow.
   final String latestRevisionId;
+
   /// Metadata describing the shared flow.
   final GoogleCloudApigeeV1EntityMetadataResponse metaData;
+
   /// The ID of the shared flow.
   final String name;
+
   /// A list of revisions of this shared flow.
   final List<String> revision;
 
@@ -37,10 +40,11 @@ class GetSharedflowResult {
   factory GetSharedflowResult.fromMap(Map<String, dynamic> map) {
     return GetSharedflowResult(
       latestRevisionId: map['latestRevisionId'] as String,
-      metaData: GoogleCloudApigeeV1EntityMetadataResponse.fromMap((map['metaData'] as Map).cast<String, dynamic>()),
+      metaData: GoogleCloudApigeeV1EntityMetadataResponse.fromMap(
+        (map['metaData']! as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
       revision: (map['revision'] as List).cast<String>(),
     );
   }
 }
-

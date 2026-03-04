@@ -14,7 +14,7 @@ import 'node_group_state.dart';
 /// * How-to Guides
 /// * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
 ///
-/// > **Warning:** Due to limitations of the API, this provider cannot update the
+/// &gt; **Warning:** Due to limitations of the API, this provider cannot update the
 /// number of nodes in a node group and changes to node group size either
 /// through provider config or through external changes will cause
 /// the provider to delete and recreate the node group.
@@ -821,36 +821,49 @@ class NodeGroup extends pulumi.CustomResource {
   /// One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
   /// Structure is documented below.
   late final pulumi.Output<NodeGroupAutoscalingPolicy> autoscalingPolicy;
+
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// An optional textual description of the resource.
   late final pulumi.Output<String?> description;
+
   /// The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
   late final pulumi.Output<int?> initialSize;
+
   /// Specifies the frequency of planned maintenance events. Set to one of the following:
   /// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
   /// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
   /// Possible values are: `AS_NEEDED`, `RECURRENT`.
   late final pulumi.Output<String> maintenanceInterval;
+
   /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
   late final pulumi.Output<String?> maintenancePolicy;
+
   /// contains properties for the timeframe of maintenance
   /// Structure is documented below.
   late final pulumi.Output<NodeGroupMaintenanceWindow?> maintenanceWindow;
+
   /// Name of the resource.
   late final pulumi.Output<String> name;
+
   /// The URL of the node template to which this node group belongs.
   late final pulumi.Output<String> nodeTemplate;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// Share settings for the node group.
   /// Structure is documented below.
   late final pulumi.Output<NodeGroupShareSettings> shareSettings;
+
   /// The total number of nodes in the node group.
   late final pulumi.Output<int> size;
+
   /// Zone where this node group is located
   late final pulumi.Output<String> zone;
 
@@ -863,25 +876,29 @@ class NodeGroup extends pulumi.CustomResource {
     NodeGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/nodeGroup:NodeGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoscalingPolicy = registerOutput<NodeGroupAutoscalingPolicy>('autoscalingPolicy');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
-    this.initialSize = registerOutput<int?>('initialSize');
-    this.maintenanceInterval = registerOutput<String>('maintenanceInterval');
-    this.maintenancePolicy = registerOutput<String?>('maintenancePolicy');
-    this.maintenanceWindow = registerOutput<NodeGroupMaintenanceWindow?>('maintenanceWindow');
+         'gcp:compute/nodeGroup:NodeGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoscalingPolicy = registerOutput<NodeGroupAutoscalingPolicy>(
+      'autoscalingPolicy',
+    );
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    initialSize = registerOutput<int?>('initialSize');
+    maintenanceInterval = registerOutput<String>('maintenanceInterval');
+    maintenancePolicy = registerOutput<String?>('maintenancePolicy');
+    maintenanceWindow = registerOutput<NodeGroupMaintenanceWindow?>(
+      'maintenanceWindow',
+    );
     this.name = registerOutput<String>('name');
-    this.nodeTemplate = registerOutput<String>('nodeTemplate');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.shareSettings = registerOutput<NodeGroupShareSettings>('shareSettings');
-    this.size = registerOutput<int>('size');
-    this.zone = registerOutput<String>('zone');
+    nodeTemplate = registerOutput<String>('nodeTemplate');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    shareSettings = registerOutput<NodeGroupShareSettings>('shareSettings');
+    size = registerOutput<int>('size');
+    zone = registerOutput<String>('zone');
   }
 
   /// Gets an existing [NodeGroup] resource's state with the given [name] and [id].
@@ -902,24 +919,28 @@ class NodeGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/nodeGroup:NodeGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoscalingPolicy = registerOutput<NodeGroupAutoscalingPolicy>('autoscalingPolicy');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.description = registerOutput<String?>('description');
-    this.initialSize = registerOutput<int?>('initialSize');
-    this.maintenanceInterval = registerOutput<String>('maintenanceInterval');
-    this.maintenancePolicy = registerOutput<String?>('maintenancePolicy');
-    this.maintenanceWindow = registerOutput<NodeGroupMaintenanceWindow?>('maintenanceWindow');
+         'gcp:compute/nodeGroup:NodeGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoscalingPolicy = registerOutput<NodeGroupAutoscalingPolicy>(
+      'autoscalingPolicy',
+    );
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String?>('description');
+    initialSize = registerOutput<int?>('initialSize');
+    maintenanceInterval = registerOutput<String>('maintenanceInterval');
+    maintenancePolicy = registerOutput<String?>('maintenancePolicy');
+    maintenanceWindow = registerOutput<NodeGroupMaintenanceWindow?>(
+      'maintenanceWindow',
+    );
     this.name = registerOutput<String>('name');
-    this.nodeTemplate = registerOutput<String>('nodeTemplate');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.shareSettings = registerOutput<NodeGroupShareSettings>('shareSettings');
-    this.size = registerOutput<int>('size');
-    this.zone = registerOutput<String>('zone');
+    nodeTemplate = registerOutput<String>('nodeTemplate');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    shareSettings = registerOutput<NodeGroupShareSettings>('shareSettings');
+    size = registerOutput<int>('size');
+    zone = registerOutput<String>('zone');
   }
 }

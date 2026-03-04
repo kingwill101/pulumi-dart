@@ -10,15 +10,19 @@ class FlavorV2Args {
   /// The description of the flavor. Changing this
   /// updates the existing flavor.
   final pulumi.Input<String>? description;
+
   /// Whether the flavor is enabled or not. Defaults to `true`.
   /// Changing this updates the existing flavor.
   final pulumi.Input<bool>? enabled;
+
   /// The flavor_profile_id that the flavor
   /// will use. Changing this creates a new flavor.
   final pulumi.Input<String> flavorProfileId;
+
   /// Name of the flavor. Changing this updates the existing
   /// flavor.
   final pulumi.Input<String>? name;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create an LB member. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
@@ -51,12 +55,27 @@ class FlavorV2Args {
 
   factory FlavorV2Args.fromMap(Map<String, dynamic> map) {
     return FlavorV2Args(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      flavorProfileId: (map['flavorProfileId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      flavorProfileId: pulumi.Input.fromValue(map['flavorProfileId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

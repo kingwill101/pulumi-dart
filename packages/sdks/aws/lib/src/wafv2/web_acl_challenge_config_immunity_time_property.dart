@@ -8,20 +8,21 @@ class WebAclChallengeConfigImmunityTimeProperty {
 
   /// Creates a new [WebAclChallengeConfigImmunityTimeProperty].
   /// [immunityTime] The amount of time, in seconds, that a CAPTCHA or challenge timestamp is considered valid by AWS WAF. The default setting is 300.
-  WebAclChallengeConfigImmunityTimeProperty({
-    this.immunityTime,
-  });
+  WebAclChallengeConfigImmunityTimeProperty({this.immunityTime});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'immunityTime': ?immunityTime,
-    };
+    return <String, dynamic>{'immunityTime': ?immunityTime};
   }
 
-  factory WebAclChallengeConfigImmunityTimeProperty.fromMap(Map<String, dynamic> map) {
+  factory WebAclChallengeConfigImmunityTimeProperty.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclChallengeConfigImmunityTimeProperty(
-      immunityTime: map['immunityTime'] == null ? null : ((map['immunityTime'] as int).input()).input(),
+      immunityTime: (() {
+        final guardedValue = map['immunityTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

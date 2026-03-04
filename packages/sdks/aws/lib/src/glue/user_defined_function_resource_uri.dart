@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserDefinedFunctionResourceUri {
   /// The type of the resource. can be one of `JAR`, `FILE`, and `ARCHIVE`.
   final pulumi.Input<String> resourceType;
+
   /// The URI for accessing the resource.
   final pulumi.Input<String> uri;
 
@@ -17,17 +18,13 @@ class UserDefinedFunctionResourceUri {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceType': resourceType,
-      'uri': uri,
-    };
+    return <String, dynamic>{'resourceType': resourceType, 'uri': uri};
   }
 
   factory UserDefinedFunctionResourceUri.fromMap(Map<String, dynamic> map) {
     return UserDefinedFunctionResourceUri(
-      resourceType: (map['resourceType'] as String).input(),
-      uri: (map['uri'] as String).input(),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

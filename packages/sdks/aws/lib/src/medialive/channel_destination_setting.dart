@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelDestinationSetting {
   /// Key used to extract the password from EC2 Parameter store.
   final pulumi.Input<String>? passwordParam;
+
   /// Stream name RTMP destinations (URLs of type rtmp://)
   final pulumi.Input<String>? streamName;
+
   /// A URL specifying a destination.
   final pulumi.Input<String>? url;
+
   /// Username for destination.
   final pulumi.Input<String>? username;
 
@@ -35,11 +38,26 @@ class ChannelDestinationSetting {
 
   factory ChannelDestinationSetting.fromMap(Map<String, dynamic> map) {
     return ChannelDestinationSetting(
-      passwordParam: map['passwordParam'] == null ? null : ((map['passwordParam'] as String).input()).input(),
-      streamName: map['streamName'] == null ? null : ((map['streamName'] as String).input()).input(),
-      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
-      username: map['username'] == null ? null : ((map['username'] as String).input()).input(),
+      passwordParam: (() {
+        final guardedValue = map['passwordParam'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streamName: (() {
+        final guardedValue = map['streamName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

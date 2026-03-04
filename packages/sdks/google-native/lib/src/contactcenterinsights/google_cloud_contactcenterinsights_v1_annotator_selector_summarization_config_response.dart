@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse {
   /// Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
   final pulumi.Input<String> conversationProfile;
+
   /// Default summarization model to be used.
   final pulumi.Input<String> summarizationModel;
 
@@ -24,11 +25,16 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResp
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse(
-      conversationProfile: (map['conversationProfile'] as String).input(),
-      summarizationModel: (map['summarizationModel'] as String).input(),
+      conversationProfile: pulumi.Input.fromValue(
+        map['conversationProfile'] as String,
+      ),
+      summarizationModel: pulumi.Input.fromValue(
+        map['summarizationModel'] as String,
+      ),
     );
   }
 }
-

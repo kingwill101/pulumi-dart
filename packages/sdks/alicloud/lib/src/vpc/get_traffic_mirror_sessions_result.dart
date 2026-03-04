@@ -6,6 +6,7 @@ import 'get_traffic_mirror_sessions_session.dart';
 /// Result data returned by getTrafficMirrorSessions.
 class GetTrafficMirrorSessionsResult {
   final bool? enabled;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -59,7 +60,11 @@ class GetTrafficMirrorSessionsResult {
       'names': names,
       'outputFile': ?outputFile,
       'priority': ?priority,
-      'sessions': pulumi.Input.encodeList<GetTrafficMirrorSessionsSession, Map<String, dynamic>>(sessions, (value) => value.toMap()),
+      'sessions':
+          pulumi.Input.encodeList<
+            GetTrafficMirrorSessionsSession,
+            Map<String, dynamic>
+          >(sessions, (value) => value.toMap()),
       'status': ?status,
       'trafficMirrorFilterId': ?trafficMirrorFilterId,
       'trafficMirrorSessionName': ?trafficMirrorSessionName,
@@ -70,20 +75,60 @@ class GetTrafficMirrorSessionsResult {
 
   factory GetTrafficMirrorSessionsResult.fromMap(Map<String, dynamic> map) {
     return GetTrafficMirrorSessionsResult(
-      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      priority: map['priority'] == null ? null : map['priority']! as int,
-      sessions: pulumi.Input.decodeList<GetTrafficMirrorSessionsSession>(map['sessions'], (value) => GetTrafficMirrorSessionsSession.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status']! as String,
-      trafficMirrorFilterId: map['trafficMirrorFilterId'] == null ? null : map['trafficMirrorFilterId']! as String,
-      trafficMirrorSessionName: map['trafficMirrorSessionName'] == null ? null : map['trafficMirrorSessionName']! as String,
-      trafficMirrorSourceId: map['trafficMirrorSourceId'] == null ? null : map['trafficMirrorSourceId']! as String,
-      trafficMirrorTargetId: map['trafficMirrorTargetId'] == null ? null : map['trafficMirrorTargetId']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      sessions: pulumi.Input.decodeList<GetTrafficMirrorSessionsSession>(
+        map['sessions']!,
+        (value) => GetTrafficMirrorSessionsSession.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      trafficMirrorFilterId: (() {
+        final guardedValue = map['trafficMirrorFilterId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      trafficMirrorSessionName: (() {
+        final guardedValue = map['trafficMirrorSessionName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      trafficMirrorSourceId: (() {
+        final guardedValue = map['trafficMirrorSourceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      trafficMirrorTargetId: (() {
+        final guardedValue = map['trafficMirrorTargetId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

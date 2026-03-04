@@ -13,15 +13,14 @@ class GetRegionBackendServiceDynamicForwardingIpPortSelection {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory GetRegionBackendServiceDynamicForwardingIpPortSelection.fromMap(Map<String, dynamic> map) {
+  factory GetRegionBackendServiceDynamicForwardingIpPortSelection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionBackendServiceDynamicForwardingIpPortSelection(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

@@ -9,42 +9,61 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesArgs {
   /// The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
   final pulumi.Input<String>? architectureType;
+
   /// Used to retrieve instances belong to specified `vswitch` resources.  Valid values: `Enterprise`, `Community`.
   final pulumi.Input<String>? editionType;
+
   /// Default to `false`. Set it to true can output more details.
   final pulumi.Input<bool>? enableDetails;
+
   /// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
   final pulumi.Input<String>? engineVersion;
+
   /// The expiration status of the instance.
   final pulumi.Input<String>? expired;
+
   /// Whether to create a distributed cache.
   final pulumi.Input<bool>? globalInstance;
+
   /// A list of KVStore DBInstance IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
   final pulumi.Input<String>? instanceClass;
+
   /// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
   final pulumi.Input<String>? instanceType;
+
   /// A regex string to apply to the instance name.
   final pulumi.Input<String>? nameRegex;
+
   /// The type of the network. Valid values: `CLASSIC`, `VPC`.
   final pulumi.Input<String>? networkType;
+
   /// The name of file that can save the collection of instances after running `pulumi preview`.
   final pulumi.Input<String>? outputFile;
+
   /// The payment type. Valid values: `PostPaid`, `PrePaid`.
   final pulumi.Input<String>? paymentType;
+
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The name of the instance.
   final pulumi.Input<String>? searchKey;
+
   /// The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
   final pulumi.Input<String>? status;
+
   /// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Used to retrieve instances belong to specified VPC.
   final pulumi.Input<String>? vpcId;
+
   /// Used to retrieve instances belong to specified `vswitch` resources.
   final pulumi.Input<String>? vswitchId;
+
   /// The ID of the zone.
   final pulumi.Input<String>? zoneId;
 
@@ -119,27 +138,108 @@ class GetInstancesArgs {
 
   factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancesArgs(
-      architectureType: map['architectureType'] == null ? null : (map['architectureType']! as String).input(),
-      editionType: map['editionType'] == null ? null : (map['editionType']! as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion']! as String).input(),
-      expired: map['expired'] == null ? null : (map['expired']! as String).input(),
-      globalInstance: map['globalInstance'] == null ? null : (map['globalInstance']! as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      instanceClass: map['instanceClass'] == null ? null : (map['instanceClass']! as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      searchKey: map['searchKey'] == null ? null : (map['searchKey']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      architectureType: (() {
+        final guardedValue = map['architectureType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      editionType: (() {
+        final guardedValue = map['editionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      engineVersion: (() {
+        final guardedValue = map['engineVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expired: (() {
+        final guardedValue = map['expired'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      globalInstance: (() {
+        final guardedValue = map['globalInstance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceClass: (() {
+        final guardedValue = map['instanceClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkType: (() {
+        final guardedValue = map['networkType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      searchKey: (() {
+        final guardedValue = map['searchKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

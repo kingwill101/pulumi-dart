@@ -27,9 +27,12 @@ class GetTargetSslProxyComputeBetaArgs {
 
   factory GetTargetSslProxyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetSslProxyComputeBetaArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      targetSslProxy: (map['targetSslProxy'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetSslProxy: pulumi.Input.fromValue(map['targetSslProxy'] as String),
     );
   }
 }
-

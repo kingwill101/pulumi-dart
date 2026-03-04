@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SyncSetArgs {
   /// The name of the SyncSet resource.
   final pulumi.Input<String>? childResourceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the OpenShift cluster resource.
   final pulumi.Input<String> resourceName;
+
   /// Resources represents the SyncSets configuration.
   final pulumi.Input<String>? resources;
 
@@ -39,11 +42,20 @@ class SyncSetArgs {
 
   factory SyncSetArgs.fromMap(Map<String, dynamic> map) {
     return SyncSetArgs(
-      childResourceName: map['childResourceName'] == null ? null : (map['childResourceName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
-      resources: map['resources'] == null ? null : (map['resources']! as String).input(),
+      childResourceName: (() {
+        final guardedValue = map['childResourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
+      resources: (() {
+        final guardedValue = map['resources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

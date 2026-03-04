@@ -10,6 +10,7 @@ import 'extended_location.dart';
 class KubernetesVersionsArgs {
   /// The fully qualified Azure Resource Manager identifier of the custom location resource.
   final pulumi.Input<String> customLocationResourceUri;
+
   /// Extended location pointing to the underlying infrastructure
   final pulumi.Input<ExtendedLocation>? extendedLocation;
 
@@ -24,15 +25,28 @@ class KubernetesVersionsArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customLocationResourceUri': customLocationResourceUri,
-      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'extendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocation,
+            Map<String, dynamic>
+          >(extendedLocation, (value) => value.toMap()),
     };
   }
 
   factory KubernetesVersionsArgs.fromMap(Map<String, dynamic> map) {
     return KubernetesVersionsArgs(
-      customLocationResourceUri: (map['customLocationResourceUri'] as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      customLocationResourceUri: pulumi.Input.fromValue(
+        map['customLocationResourceUri'] as String,
+      ),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

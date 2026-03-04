@@ -7,12 +7,16 @@ import 'azure_storage_info_value_response.dart';
 class ListWebAppAzureStorageAccountsSlotResult {
   /// Resource Id.
   final String id;
+
   /// Kind of resource.
   final String? kind;
+
   /// Resource Name.
   final String name;
+
   /// Azure storage accounts.
   final Map<String, AzureStorageInfoValueResponse> properties;
+
   /// Resource type.
   final String type;
 
@@ -35,19 +39,33 @@ class ListWebAppAzureStorageAccountsSlotResult {
       'id': id,
       'kind': ?kind,
       'name': name,
-      'properties': pulumi.Input.encodeMapValues<AzureStorageInfoValueResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.encodeMapValues<
+            AzureStorageInfoValueResponse,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'type': type,
     };
   }
 
-  factory ListWebAppAzureStorageAccountsSlotResult.fromMap(Map<String, dynamic> map) {
+  factory ListWebAppAzureStorageAccountsSlotResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListWebAppAzureStorageAccountsSlotResult(
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      properties: pulumi.Input.decodeMapValues<AzureStorageInfoValueResponse>(map['properties'], (value) => AzureStorageInfoValueResponse.fromMap((value as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.decodeMapValues<AzureStorageInfoValueResponse>(
+        map['properties']!,
+        (value) => AzureStorageInfoValueResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

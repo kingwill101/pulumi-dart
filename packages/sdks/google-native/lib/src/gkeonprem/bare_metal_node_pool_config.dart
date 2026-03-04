@@ -10,12 +10,16 @@ import 'node_taint.dart';
 class BareMetalNodePoolConfig {
   /// The modifiable kubelet configurations for the bare metal machines.
   final pulumi.Input<BareMetalKubeletConfig>? kubeletConfig;
+
   /// The labels assigned to nodes of this node pool. An object containing a list of key/value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The list of machine addresses in the bare metal node pool.
   final pulumi.Input<List<BareMetalNodeConfig>> nodeConfigs;
+
   /// Specifies the nodes operating system (default: LINUX).
   final pulumi.Input<BareMetalNodePoolConfigOperatingSystem>? operatingSystem;
+
   /// The initial taints assigned to nodes of this node pool.
   final pulumi.Input<List<NodeTaint>>? taints;
 
@@ -35,22 +39,89 @@ class BareMetalNodePoolConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kubeletConfig': ?pulumi.Input.mapOptionalInputValue<BareMetalKubeletConfig, Map<String, dynamic>>(kubeletConfig, (value) => value.toMap()),
+      'kubeletConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            BareMetalKubeletConfig,
+            Map<String, dynamic>
+          >(kubeletConfig, (value) => value.toMap()),
       'labels': ?labels,
-      'nodeConfigs': pulumi.Input.mapInputValue<List<BareMetalNodeConfig>, List<Map<String, dynamic>>>(nodeConfigs, (value) => pulumi.Input.encodeList<BareMetalNodeConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'operatingSystem': ?pulumi.Input.mapOptionalInputValue<BareMetalNodePoolConfigOperatingSystem, String>(operatingSystem, (value) => value.value),
-      'taints': ?pulumi.Input.mapOptionalInputValue<List<NodeTaint>, List<Map<String, dynamic>>>(taints, (value) => pulumi.Input.encodeList<NodeTaint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodeConfigs':
+          pulumi.Input.mapInputValue<
+            List<BareMetalNodeConfig>,
+            List<Map<String, dynamic>>
+          >(
+            nodeConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BareMetalNodeConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'operatingSystem':
+          ?pulumi.Input.mapOptionalInputValue<
+            BareMetalNodePoolConfigOperatingSystem,
+            String
+          >(operatingSystem, (value) => value.wireValue),
+      'taints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NodeTaint>,
+            List<Map<String, dynamic>>
+          >(
+            taints,
+            (value) => pulumi.Input.encodeList<NodeTaint, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
     };
   }
 
   factory BareMetalNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolConfig(
-      kubeletConfig: map['kubeletConfig'] == null ? null : (BareMetalKubeletConfig.fromMap((map['kubeletConfig']! as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      nodeConfigs: (pulumi.Input.decodeList<BareMetalNodeConfig>(map['nodeConfigs'], (value) => BareMetalNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      operatingSystem: map['operatingSystem'] == null ? null : (BareMetalNodePoolConfigOperatingSystem.fromValue(map['operatingSystem']! as String)).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<NodeTaint>(map['taints']!, (value) => NodeTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kubeletConfig: (() {
+        final guardedValue = map['kubeletConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BareMetalKubeletConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      nodeConfigs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<BareMetalNodeConfig>(
+          map['nodeConfigs']!,
+          (value) => BareMetalNodeConfig.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      operatingSystem: (() {
+        final guardedValue = map['operatingSystem'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BareMetalNodePoolConfigOperatingSystem.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      taints: (() {
+        final guardedValue = map['taints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NodeTaint>(
+            guardedValue,
+            (value) =>
+                NodeTaint.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

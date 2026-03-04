@@ -8,20 +8,19 @@ class Addressable {
 
   /// Creates a new [Addressable].
   /// [url] Optional.
-  Addressable({
-    this.url,
-  });
+  Addressable({this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'url': ?url,
-    };
+    return <String, dynamic>{'url': ?url};
   }
 
   factory Addressable.fromMap(Map<String, dynamic> map) {
     return Addressable(
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

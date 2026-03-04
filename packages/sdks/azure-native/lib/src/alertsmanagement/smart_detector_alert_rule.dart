@@ -242,28 +242,40 @@ import 'throttling_information_response.dart';
 class SmartDetectorAlertRule extends pulumi.CustomResource {
   /// The alert rule actions.
   late final pulumi.Output<ActionGroupsInformationResponse> actionGroups;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The alert rule description.
   late final pulumi.Output<String?> description;
+
   /// The alert rule's detector.
   late final pulumi.Output<DetectorResponse> detector;
+
   /// The alert rule frequency in ISO8601 format. The time granularity must be in minutes and minimum value is 1 minute, depending on the detector.
   late final pulumi.Output<String> frequency;
+
   /// The resource location.
   late final pulumi.Output<String?> location;
+
   /// The resource name.
   late final pulumi.Output<String> name;
+
   /// The alert rule resources scope.
   late final pulumi.Output<List<String>> scope;
+
   /// The alert rule severity.
   late final pulumi.Output<String> severity;
+
   /// The alert rule state.
   late final pulumi.Output<String> state;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The alert rule throttling information.
   late final pulumi.Output<ThrottlingInformationResponse?> throttling;
+
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -276,23 +288,25 @@ class SmartDetectorAlertRule extends pulumi.CustomResource {
     SmartDetectorAlertRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:alertsmanagement:SmartDetectorAlertRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actionGroups = registerOutput<ActionGroupsInformationResponse>('actionGroups');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.detector = registerOutput<DetectorResponse>('detector');
-    this.frequency = registerOutput<String>('frequency');
-    this.location = registerOutput<String?>('location');
+         'azure-native:alertsmanagement:SmartDetectorAlertRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actionGroups = registerOutput<ActionGroupsInformationResponse>(
+      'actionGroups',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    detector = registerOutput<DetectorResponse>('detector');
+    frequency = registerOutput<String>('frequency');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.scope = registerOutput<List<String>>('scope');
-    this.severity = registerOutput<String>('severity');
-    this.state = registerOutput<String>('state');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.throttling = registerOutput<ThrottlingInformationResponse?>('throttling');
-    this.type = registerOutput<String>('type');
+    scope = registerOutput<List<String>>('scope');
+    severity = registerOutput<String>('severity');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags');
+    throttling = registerOutput<ThrottlingInformationResponse?>('throttling');
+    type = registerOutput<String>('type');
   }
 }

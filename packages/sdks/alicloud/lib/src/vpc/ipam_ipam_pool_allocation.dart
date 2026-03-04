@@ -8,7 +8,7 @@ import 'ipam_ipam_pool_allocation_state.dart';
 ///
 /// For information about Vpc Ipam Ipam Pool Allocation and how to use it, see [What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation).
 ///
-/// > **NOTE:** Available since v1.238.0.
+/// &gt; **NOTE:** Available since v1.238.0.
 ///
 /// ## Example Usage
 ///
@@ -246,23 +246,30 @@ import 'ipam_ipam_pool_allocation_state.dart';
 class IpamIpamPoolAllocation extends pulumi.CustomResource {
   /// The allocated address segment.
   late final pulumi.Output<String> cidr;
+
   /// Create a custom reserved network segment from The IPAM address pool by entering a mask.
   ///
-  /// > **NOTE:**  Enter at least one of `Cidr` or **CidrMask.
+  /// &gt; **NOTE:**  Enter at least one of `Cidr` or **CidrMask.
   late final pulumi.Output<int?> cidrMask;
+
   /// Instance creation time.
   late final pulumi.Output<String> createTime;
+
   /// The description of the ipam pool alloctaion.
   /// It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
   late final pulumi.Output<String?> ipamPoolAllocationDescription;
+
   /// The name of the ipam pool allocation.
   /// It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
   late final pulumi.Output<String?> ipamPoolAllocationName;
+
   /// The ID of the IPAM Pool.
   late final pulumi.Output<String> ipamPoolId;
+
   /// When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
   /// When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
   late final pulumi.Output<String> regionId;
+
   /// The status of the instance. Value:
   late final pulumi.Output<String> status;
 
@@ -275,19 +282,21 @@ class IpamIpamPoolAllocation extends pulumi.CustomResource {
     IpamIpamPoolAllocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipamIpamPoolAllocation:IpamIpamPoolAllocation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidr = registerOutput<String>('cidr');
-    this.cidrMask = registerOutput<int?>('cidrMask');
-    this.createTime = registerOutput<String>('createTime');
-    this.ipamPoolAllocationDescription = registerOutput<String?>('ipamPoolAllocationDescription');
-    this.ipamPoolAllocationName = registerOutput<String?>('ipamPoolAllocationName');
-    this.ipamPoolId = registerOutput<String>('ipamPoolId');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/ipamIpamPoolAllocation:IpamIpamPoolAllocation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidr = registerOutput<String>('cidr');
+    cidrMask = registerOutput<int?>('cidrMask');
+    createTime = registerOutput<String>('createTime');
+    ipamPoolAllocationDescription = registerOutput<String?>(
+      'ipamPoolAllocationDescription',
+    );
+    ipamPoolAllocationName = registerOutput<String?>('ipamPoolAllocationName');
+    ipamPoolId = registerOutput<String>('ipamPoolId');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [IpamIpamPoolAllocation] resource's state with the given [name] and [id].
@@ -308,18 +317,20 @@ class IpamIpamPoolAllocation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/ipamIpamPoolAllocation:IpamIpamPoolAllocation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidr = registerOutput<String>('cidr');
-    this.cidrMask = registerOutput<int?>('cidrMask');
-    this.createTime = registerOutput<String>('createTime');
-    this.ipamPoolAllocationDescription = registerOutput<String?>('ipamPoolAllocationDescription');
-    this.ipamPoolAllocationName = registerOutput<String?>('ipamPoolAllocationName');
-    this.ipamPoolId = registerOutput<String>('ipamPoolId');
-    this.regionId = registerOutput<String>('regionId');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/ipamIpamPoolAllocation:IpamIpamPoolAllocation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidr = registerOutput<String>('cidr');
+    cidrMask = registerOutput<int?>('cidrMask');
+    createTime = registerOutput<String>('createTime');
+    ipamPoolAllocationDescription = registerOutput<String?>(
+      'ipamPoolAllocationDescription',
+    );
+    ipamPoolAllocationName = registerOutput<String?>('ipamPoolAllocationName');
+    ipamPoolId = registerOutput<String>('ipamPoolId');
+    regionId = registerOutput<String>('regionId');
+    status = registerOutput<String>('status');
   }
 }

@@ -1,5 +1,3 @@
-library module_discovery_k8s_io;
-
 export 'discovery_k8s_io/endpoint.dart';
 export 'discovery_k8s_io/endpoint_conditions.dart';
 export 'discovery_k8s_io/endpoint_conditions_discovery_k8s_io_v1beta1.dart';

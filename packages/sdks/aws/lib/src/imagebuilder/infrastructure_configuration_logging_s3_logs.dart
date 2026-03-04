@@ -7,6 +7,7 @@ class InfrastructureConfigurationLoggingS3Logs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> s3BucketName;
+
   /// Prefix to use for S3 logs. Defaults to `/`.
   final pulumi.Input<String>? s3KeyPrefix;
 
@@ -25,11 +26,16 @@ class InfrastructureConfigurationLoggingS3Logs {
     };
   }
 
-  factory InfrastructureConfigurationLoggingS3Logs.fromMap(Map<String, dynamic> map) {
+  factory InfrastructureConfigurationLoggingS3Logs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InfrastructureConfigurationLoggingS3Logs(
-      s3BucketName: (map['s3BucketName'] as String).input(),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : ((map['s3KeyPrefix'] as String).input()).input(),
+      s3BucketName: pulumi.Input.fromValue(map['s3BucketName'] as String),
+      s3KeyPrefix: (() {
+        final guardedValue = map['s3KeyPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

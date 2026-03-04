@@ -12,20 +12,19 @@ class RoleArgs {
 
   /// Creates a new [RoleArgs].
   /// [name] The name of the role.
-  RoleArgs({
-    this.name,
-  });
+  RoleArgs({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory RoleArgs.fromMap(Map<String, dynamic> map) {
     return RoleArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

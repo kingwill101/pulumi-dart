@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApprovalRuleTemplateAssociationState {
   /// The name for the approval rule template.
   final pulumi.Input<String>? approvalRuleTemplateName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The name of the repository that you want to associate with the template.
   final pulumi.Input<String>? repositoryName;
 
@@ -29,12 +31,25 @@ class ApprovalRuleTemplateAssociationState {
     };
   }
 
-  factory ApprovalRuleTemplateAssociationState.fromMap(Map<String, dynamic> map) {
+  factory ApprovalRuleTemplateAssociationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApprovalRuleTemplateAssociationState(
-      approvalRuleTemplateName: map['approvalRuleTemplateName'] == null ? null : ((map['approvalRuleTemplateName'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      repositoryName: map['repositoryName'] == null ? null : ((map['repositoryName'] as String).input()).input(),
+      approvalRuleTemplateName: (() {
+        final guardedValue = map['approvalRuleTemplateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryName: (() {
+        final guardedValue = map['repositoryName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

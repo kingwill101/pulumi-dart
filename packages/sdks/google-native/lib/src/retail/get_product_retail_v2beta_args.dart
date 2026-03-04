@@ -39,12 +39,15 @@ class GetProductRetailV2betaArgs {
 
   factory GetProductRetailV2betaArgs.fromMap(Map<String, dynamic> map) {
     return GetProductRetailV2betaArgs(
-      branchId: (map['branchId'] as String).input(),
-      catalogId: (map['catalogId'] as String).input(),
-      location: (map['location'] as String).input(),
-      productId: (map['productId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      branchId: pulumi.Input.fromValue(map['branchId'] as String),
+      catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

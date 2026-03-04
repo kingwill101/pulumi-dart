@@ -11,20 +11,15 @@ class GroupMembershipRoleExpiryDetail {
 
   /// Creates a new [GroupMembershipRoleExpiryDetail].
   /// [expireTime] The time at which the MembershipRole will expire.
-  GroupMembershipRoleExpiryDetail({
-    required this.expireTime,
-  });
+  GroupMembershipRoleExpiryDetail({required this.expireTime});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'expireTime': expireTime,
-    };
+    return <String, dynamic>{'expireTime': expireTime};
   }
 
   factory GroupMembershipRoleExpiryDetail.fromMap(Map<String, dynamic> map) {
     return GroupMembershipRoleExpiryDetail(
-      expireTime: (map['expireTime'] as String).input(),
+      expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
     );
   }
 }
-

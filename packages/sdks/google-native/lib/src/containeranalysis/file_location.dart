@@ -9,20 +9,19 @@ class FileLocation {
 
   /// Creates a new [FileLocation].
   /// [filePath] For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
-  FileLocation({
-    this.filePath,
-  });
+  FileLocation({this.filePath});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filePath': ?filePath,
-    };
+    return <String, dynamic>{'filePath': ?filePath};
   }
 
   factory FileLocation.fromMap(Map<String, dynamic> map) {
     return FileLocation(
-      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
+      filePath: (() {
+        final guardedValue = map['filePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

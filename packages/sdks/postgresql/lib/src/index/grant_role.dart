@@ -6,7 +6,7 @@ import 'grant_role_state.dart';
 ///
 /// When using ``postgresql.GrantRole`` resource it is likely because the PostgreSQL role you are modifying was created outside of this provider.
 ///
-/// > **Note:** This resource needs PostgreSQL version 9 or above.
+/// &gt; **Note:** This resource needs PostgreSQL version 9 or above.
 ///
 /// ## Usage
 ///
@@ -111,7 +111,7 @@ import 'grant_role_state.dart';
 /// ```
 ///
 ///
-/// > **Note:** If you use `postgresql.GrantRole` for a role that you also manage with a `postgresql.Role` resource, you need to ignore the changes of the `roles` attribute in the `postgresql.Role` resource or they will fight over what your role grants should be. e.g.:
+/// &gt; **Note:** If you use `postgresql.GrantRole` for a role that you also manage with a `postgresql.Role` resource, you need to ignore the changes of the `roles` attribute in the `postgresql.Role` resource or they will fight over what your role grants should be. e.g.:
 ///
 /// ```typescript
 /// import * as pulumi from "@pulumi/pulumi";
@@ -231,8 +231,10 @@ import 'grant_role_state.dart';
 class GrantRole extends pulumi.CustomResource {
   /// The name of the role that is added to `role`.
   late final pulumi.Output<String> grantRole;
+
   /// The name of the role that is granted a new membership.
   late final pulumi.Output<String> role;
+
   /// Giving ability to grant membership to others or not for `role`. (Default: false)
   late final pulumi.Output<bool?> withAdminOption;
 
@@ -245,14 +247,14 @@ class GrantRole extends pulumi.CustomResource {
     GrantRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'postgresql:index/grantRole:GrantRole',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.grantRole = registerOutput<String>('grantRole');
-    this.role = registerOutput<String>('role');
-    this.withAdminOption = registerOutput<bool?>('withAdminOption');
+         'postgresql:index/grantRole:GrantRole',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    grantRole = registerOutput<String>('grantRole');
+    role = registerOutput<String>('role');
+    withAdminOption = registerOutput<bool?>('withAdminOption');
   }
 
   /// Gets an existing [GrantRole] resource's state with the given [name] and [id].
@@ -273,13 +275,13 @@ class GrantRole extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'postgresql:index/grantRole:GrantRole',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.grantRole = registerOutput<String>('grantRole');
-    this.role = registerOutput<String>('role');
-    this.withAdminOption = registerOutput<bool?>('withAdminOption');
+         'postgresql:index/grantRole:GrantRole',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    grantRole = registerOutput<String>('grantRole');
+    role = registerOutput<String>('role');
+    withAdminOption = registerOutput<bool?>('withAdminOption');
   }
 }

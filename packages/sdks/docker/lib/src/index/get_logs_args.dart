@@ -8,11 +8,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_logs_get_logs_args_doc}
 class GetLogsArgs {
   final pulumi.Input<bool>? details;
+
   /// Discard headers that docker appends to each log entry
   final pulumi.Input<bool>? discardHeaders;
   final pulumi.Input<bool>? follow;
+
   /// If true populate computed value `logs_list_string`
   final pulumi.Input<bool>? logsListStringEnabled;
+
   /// The name of the Docker Container
   final pulumi.Input<String> name;
   final pulumi.Input<bool>? showStderr;
@@ -66,18 +69,57 @@ class GetLogsArgs {
 
   factory GetLogsArgs.fromMap(Map<String, dynamic> map) {
     return GetLogsArgs(
-      details: map['details'] == null ? null : (map['details']! as bool).input(),
-      discardHeaders: map['discardHeaders'] == null ? null : (map['discardHeaders']! as bool).input(),
-      follow: map['follow'] == null ? null : (map['follow']! as bool).input(),
-      logsListStringEnabled: map['logsListStringEnabled'] == null ? null : (map['logsListStringEnabled']! as bool).input(),
-      name: (map['name'] as String).input(),
-      showStderr: map['showStderr'] == null ? null : (map['showStderr']! as bool).input(),
-      showStdout: map['showStdout'] == null ? null : (map['showStdout']! as bool).input(),
-      since: map['since'] == null ? null : (map['since']! as String).input(),
-      tail: map['tail'] == null ? null : (map['tail']! as String).input(),
-      timestamps: map['timestamps'] == null ? null : (map['timestamps']! as bool).input(),
-      until: map['until'] == null ? null : (map['until']! as String).input(),
+      details: (() {
+        final guardedValue = map['details'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      discardHeaders: (() {
+        final guardedValue = map['discardHeaders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      follow: (() {
+        final guardedValue = map['follow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logsListStringEnabled: (() {
+        final guardedValue = map['logsListStringEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      showStderr: (() {
+        final guardedValue = map['showStderr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      showStdout: (() {
+        final guardedValue = map['showStdout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      since: (() {
+        final guardedValue = map['since'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tail: (() {
+        final guardedValue = map['tail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timestamps: (() {
+        final guardedValue = map['timestamps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      until: (() {
+        final guardedValue = map['until'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -10,20 +10,28 @@ class WorkspaceLoggerArgs {
   /// The name and SendRule connection string of the event hub for azureEventHub logger.
   /// Instrumentation key for applicationInsights logger.
   final pulumi.Input<Map<String, String>>? credentials;
+
   /// Logger description.
   final pulumi.Input<String>? description;
+
   /// Whether records are buffered in the logger before publishing. Default is assumed to be true.
   final pulumi.Input<bool>? isBuffered;
+
   /// Logger identifier. Must be unique in the API Management service instance.
   final pulumi.Input<String>? loggerId;
+
   /// Logger type.
   final pulumi.Input<String> loggerType;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Azure Resource Id of a log target (either Azure Event Hub resource or Azure Application Insights resource).
   final pulumi.Input<String>? resourceId;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
+
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> workspaceId;
 
@@ -65,16 +73,39 @@ class WorkspaceLoggerArgs {
 
   factory WorkspaceLoggerArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceLoggerArgs(
-      credentials: map['credentials'] == null ? null : ((map['credentials']! as Map).cast<String, String>()).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      isBuffered: map['isBuffered'] == null ? null : (map['isBuffered']! as bool).input(),
-      loggerId: map['loggerId'] == null ? null : (map['loggerId']! as String).input(),
-      loggerType: (map['loggerType'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      credentials: (() {
+        final guardedValue = map['credentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isBuffered: (() {
+        final guardedValue = map['isBuffered'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      loggerId: (() {
+        final guardedValue = map['loggerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loggerType: pulumi.Input.fromValue(map['loggerType'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

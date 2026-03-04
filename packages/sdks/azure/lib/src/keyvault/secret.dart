@@ -317,33 +317,45 @@ import 'secret_state.dart';
 class Secret extends pulumi.CustomResource {
   /// Specifies the content type for the Key Vault Secret.
   late final pulumi.Output<String?> contentType;
+
   /// Expiration UTC datetime (Y-m-d'T'H:M:S'Z').
   late final pulumi.Output<String?> expirationDate;
+
   /// The ID of the Key Vault where the Secret should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> keyVaultId;
+
   /// Specifies the name of the Key Vault Secret. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Key not usable before the provided UTC datetime (Y-m-d'T'H:M:S'Z').
   late final pulumi.Output<String?> notBeforeDate;
+
   /// The (Versioned) ID for this Key Vault Secret. This property points to a specific version of a Key Vault Secret, as such using this won't auto-rotate values if used in other Azure Services.
   late final pulumi.Output<String> resourceId;
+
   /// The Versionless ID of the Key Vault Secret. This property allows other Azure Services (that support it) to auto-rotate their value when the Key Vault Secret is updated.
   late final pulumi.Output<String> resourceVersionlessId;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the value of the Key Vault Secret. Changing this will create a new version of the Key Vault Secret.
   late final pulumi.Output<String?> value;
+
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Specifies the value of the Key Vault Secret. Changing this will create a new version of the Key Vault Secret.
   ///
-  /// > **Note:** One of `value` or `value_wo` must be specified.
+  /// &gt; **Note:** One of `value` or `value_wo` must be specified.
   late final pulumi.Output<String?> valueWo;
+
   /// An integer value used to trigger an update for `value_wo`. This property should be incremented when updating `value_wo`.
   ///
-  /// > **Note:** Key Vault strips newlines. To preserve newlines in multi-line secrets try replacing them with `\n` or by base 64 encoding them with `replace(file("my_secret_file"), "/\n/", "\n")` or `base64encode(file("my_secret_file"))`, respectively.
+  /// &gt; **Note:** Key Vault strips newlines. To preserve newlines in multi-line secrets try replacing them with `\n` or by base 64 encoding them with `replace(file("my_secret_file"), "/\n/", "\n")` or `base64encode(file("my_secret_file"))`, respectively.
   late final pulumi.Output<int?> valueWoVersion;
+
   /// The current version of the Key Vault Secret.
   late final pulumi.Output<String> version;
+
   /// The Base ID of the Key Vault Secret.
   late final pulumi.Output<String> versionlessId;
 
@@ -351,29 +363,26 @@ class Secret extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Secret]. {@macro pulumi_keyvault_secret_secret_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Secret(
-    String name, {
-    SecretArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:keyvault/secret:Secret',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.contentType = registerOutput<String?>('contentType');
-    this.expirationDate = registerOutput<String?>('expirationDate');
-    this.keyVaultId = registerOutput<String>('keyVaultId');
+  Secret(String name, {SecretArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:keyvault/secret:Secret',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    contentType = registerOutput<String?>('contentType');
+    expirationDate = registerOutput<String?>('expirationDate');
+    keyVaultId = registerOutput<String>('keyVaultId');
     this.name = registerOutput<String>('name');
-    this.notBeforeDate = registerOutput<String?>('notBeforeDate');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.resourceVersionlessId = registerOutput<String>('resourceVersionlessId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.value = registerOutput<String?>('value');
-    this.valueWo = registerOutput<String?>('valueWo');
-    this.valueWoVersion = registerOutput<int?>('valueWoVersion');
-    this.version = registerOutput<String>('version');
-    this.versionlessId = registerOutput<String>('versionlessId');
+    notBeforeDate = registerOutput<String?>('notBeforeDate');
+    resourceId = registerOutput<String>('resourceId');
+    resourceVersionlessId = registerOutput<String>('resourceVersionlessId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    value = registerOutput<String?>('value');
+    valueWo = registerOutput<String?>('valueWo');
+    valueWoVersion = registerOutput<int?>('valueWoVersion');
+    version = registerOutput<String>('version');
+    versionlessId = registerOutput<String>('versionlessId');
   }
 
   /// Gets an existing [Secret] resource's state with the given [name] and [id].
@@ -394,23 +403,23 @@ class Secret extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:keyvault/secret:Secret',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.contentType = registerOutput<String?>('contentType');
-    this.expirationDate = registerOutput<String?>('expirationDate');
-    this.keyVaultId = registerOutput<String>('keyVaultId');
+         'azure:keyvault/secret:Secret',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    contentType = registerOutput<String?>('contentType');
+    expirationDate = registerOutput<String?>('expirationDate');
+    keyVaultId = registerOutput<String>('keyVaultId');
     this.name = registerOutput<String>('name');
-    this.notBeforeDate = registerOutput<String?>('notBeforeDate');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.resourceVersionlessId = registerOutput<String>('resourceVersionlessId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.value = registerOutput<String?>('value');
-    this.valueWo = registerOutput<String?>('valueWo');
-    this.valueWoVersion = registerOutput<int?>('valueWoVersion');
-    this.version = registerOutput<String>('version');
-    this.versionlessId = registerOutput<String>('versionlessId');
+    notBeforeDate = registerOutput<String?>('notBeforeDate');
+    resourceId = registerOutput<String>('resourceId');
+    resourceVersionlessId = registerOutput<String>('resourceVersionlessId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    value = registerOutput<String?>('value');
+    valueWo = registerOutput<String?>('valueWo');
+    valueWoVersion = registerOutput<int?>('valueWoVersion');
+    version = registerOutput<String>('version');
+    versionlessId = registerOutput<String>('versionlessId');
   }
 }

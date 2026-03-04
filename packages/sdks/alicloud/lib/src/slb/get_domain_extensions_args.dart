@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainExtensionsArgs {
   /// The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
   final pulumi.Input<int> frontendPort;
+
   /// IDs of the SLB domain extensions.
   final pulumi.Input<List<String>>? ids;
+
   /// The ID of the SLB instance.
   final pulumi.Input<String> loadBalancerId;
   final pulumi.Input<String>? outputFile;
@@ -38,11 +40,18 @@ class GetDomainExtensionsArgs {
 
   factory GetDomainExtensionsArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainExtensionsArgs(
-      frontendPort: (map['frontendPort'] as int).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      loadBalancerId: (map['loadBalancerId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      frontendPort: pulumi.Input.fromValue(map['frontendPort'] as int),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

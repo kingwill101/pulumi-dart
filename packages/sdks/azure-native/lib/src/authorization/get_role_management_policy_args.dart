@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoleManagementPolicyArgs {
   /// The name (guid) of the role management policy to get.
   final pulumi.Input<String> roleManagementPolicyName;
+
   /// The scope of the role management policy.
   final pulumi.Input<String> scope;
 
@@ -29,9 +30,10 @@ class GetRoleManagementPolicyArgs {
 
   factory GetRoleManagementPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleManagementPolicyArgs(
-      roleManagementPolicyName: (map['roleManagementPolicyName'] as String).input(),
-      scope: (map['scope'] as String).input(),
+      roleManagementPolicyName: pulumi.Input.fromValue(
+        map['roleManagementPolicyName'] as String,
+      ),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
-

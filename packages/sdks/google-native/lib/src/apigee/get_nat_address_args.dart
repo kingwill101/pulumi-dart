@@ -31,10 +31,9 @@ class GetNatAddressArgs {
 
   factory GetNatAddressArgs.fromMap(Map<String, dynamic> map) {
     return GetNatAddressArgs(
-      instanceId: (map['instanceId'] as String).input(),
-      natAddressId: (map['natAddressId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      natAddressId: pulumi.Input.fromValue(map['natAddressId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

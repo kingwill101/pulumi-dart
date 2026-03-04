@@ -3,16 +3,15 @@ enum AdminRuleKind {
   valueCustom("Custom"),
   valueDefault("Default");
 
-  const AdminRuleKind(this.value);
-  final String value;
+  const AdminRuleKind(this.wireValue);
+  final String wireValue;
 
   static AdminRuleKind fromValue(String value) {
     for (final item in AdminRuleKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AdminRuleKind value: $value');
   }
 }
-

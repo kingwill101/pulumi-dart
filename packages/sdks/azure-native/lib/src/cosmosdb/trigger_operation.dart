@@ -6,16 +6,15 @@ enum TriggerOperation {
   valueDelete("Delete"),
   valueReplace("Replace");
 
-  const TriggerOperation(this.value);
-  final String value;
+  const TriggerOperation(this.wireValue);
+  final String wireValue;
 
   static TriggerOperation fromValue(String value) {
     for (final item in TriggerOperation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TriggerOperation value: $value');
   }
 }
-

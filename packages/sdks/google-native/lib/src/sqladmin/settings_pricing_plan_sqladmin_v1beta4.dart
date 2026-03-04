@@ -4,16 +4,17 @@ enum SettingsPricingPlanSqladminV1beta4 {
   package("PACKAGE"),
   perUse("PER_USE");
 
-  const SettingsPricingPlanSqladminV1beta4(this.value);
-  final String value;
+  const SettingsPricingPlanSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static SettingsPricingPlanSqladminV1beta4 fromValue(String value) {
     for (final item in SettingsPricingPlanSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SettingsPricingPlanSqladminV1beta4 value: $value');
+    throw ArgumentError(
+      'Unknown SettingsPricingPlanSqladminV1beta4 value: $value',
+    );
   }
 }
-

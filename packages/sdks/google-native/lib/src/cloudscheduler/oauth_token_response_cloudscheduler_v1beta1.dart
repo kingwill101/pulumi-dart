@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OAuthTokenResponseCloudschedulerV1beta1 {
   /// OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
   final pulumi.Input<String> scope;
+
   /// [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the job. The caller must have iam.serviceAccounts.actAs permission for the service account.
   final pulumi.Input<String> serviceAccountEmail;
 
@@ -24,11 +25,14 @@ class OAuthTokenResponseCloudschedulerV1beta1 {
     };
   }
 
-  factory OAuthTokenResponseCloudschedulerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory OAuthTokenResponseCloudschedulerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OAuthTokenResponseCloudschedulerV1beta1(
-      scope: (map['scope'] as String).input(),
-      serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
+      serviceAccountEmail: pulumi.Input.fromValue(
+        map['serviceAccountEmail'] as String,
+      ),
     );
   }
 }
-

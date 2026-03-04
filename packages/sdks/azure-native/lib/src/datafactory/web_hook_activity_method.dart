@@ -2,16 +2,15 @@
 enum WebHookActivityMethod {
   valuePOST("POST");
 
-  const WebHookActivityMethod(this.value);
-  final String value;
+  const WebHookActivityMethod(this.wireValue);
+  final String wireValue;
 
   static WebHookActivityMethod fromValue(String value) {
     for (final item in WebHookActivityMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WebHookActivityMethod value: $value');
   }
 }
-

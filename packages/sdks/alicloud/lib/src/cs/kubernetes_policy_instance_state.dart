@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesPolicyInstanceState {
   /// Policy Governance Implementation Actions
   final pulumi.Input<String>? action;
+
   /// Target cluster ID
   final pulumi.Input<String>? clusterId;
+
   /// Rule Instance Name
   final pulumi.Input<String>? instanceName;
+
   /// Limits the namespace of the policy implementation. Empty indicates all namespaces.
   final pulumi.Input<List<String>>? namespaces;
+
   /// The parameter configuration of the current rule instance. For more information about the parameters supported by each policy rule, see [Container Security Policy Rule Base Description](https://www.alibabacloud.com/help/doc-detail/359819.html).
   final pulumi.Input<Map<String, String>>? parameters;
+
   /// Policy Name
   final pulumi.Input<String>? policyName;
 
@@ -46,13 +51,38 @@ class KubernetesPolicyInstanceState {
 
   factory KubernetesPolicyInstanceState.fromMap(Map<String, dynamic> map) {
     return KubernetesPolicyInstanceState(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces']! as List).cast<String>()).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceName: (() {
+        final guardedValue = map['instanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaces: (() {
+        final guardedValue = map['namespaces'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      policyName: (() {
+        final guardedValue = map['policyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

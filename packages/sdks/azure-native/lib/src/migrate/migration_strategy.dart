@@ -6,16 +6,15 @@ enum MigrationStrategy {
   optimizeForPaas("OptimizeForPaas"),
   aVSOnly("AVSOnly");
 
-  const MigrationStrategy(this.value);
-  final String value;
+  const MigrationStrategy(this.wireValue);
+  final String wireValue;
 
   static MigrationStrategy fromValue(String value) {
     for (final item in MigrationStrategy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MigrationStrategy value: $value');
   }
 }
-

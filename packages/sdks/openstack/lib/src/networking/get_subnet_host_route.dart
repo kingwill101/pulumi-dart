@@ -9,10 +9,7 @@ class GetSubnetHostRoute {
   /// Creates a new [GetSubnetHostRoute].
   /// [destinationCidr] Required.
   /// [nextHop] Required.
-  GetSubnetHostRoute({
-    required this.destinationCidr,
-    required this.nextHop,
-  });
+  GetSubnetHostRoute({required this.destinationCidr, required this.nextHop});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,9 +20,8 @@ class GetSubnetHostRoute {
 
   factory GetSubnetHostRoute.fromMap(Map<String, dynamic> map) {
     return GetSubnetHostRoute(
-      destinationCidr: (map['destinationCidr'] as String).input(),
-      nextHop: (map['nextHop'] as String).input(),
+      destinationCidr: pulumi.Input.fromValue(map['destinationCidr'] as String),
+      nextHop: pulumi.Input.fromValue(map['nextHop'] as String),
     );
   }
 }
-

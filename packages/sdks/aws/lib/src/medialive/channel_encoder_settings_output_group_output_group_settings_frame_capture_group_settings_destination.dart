@@ -13,15 +13,16 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSetti
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'destinationRefId': destinationRefId,
-    };
+    return <String, dynamic>{'destinationRefId': destinationRefId};
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsDestination.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsDestination(
-      destinationRefId: (map['destinationRefId'] as String).input(),
+      destinationRefId: pulumi.Input.fromValue(
+        map['destinationRefId'] as String,
+      ),
     );
   }
 }
-

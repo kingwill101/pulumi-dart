@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HealthMonitorResponse {
   /// Health Monitor Details
   final pulumi.Input<String> details;
+
   /// Health Monitor Id
   final pulumi.Input<String> id;
+
   /// Health Monitor Name
   final pulumi.Input<String> name;
 
@@ -22,19 +24,14 @@ class HealthMonitorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'details': details,
-      'id': id,
-      'name': name,
-    };
+    return <String, dynamic>{'details': details, 'id': id, 'name': name};
   }
 
   factory HealthMonitorResponse.fromMap(Map<String, dynamic> map) {
     return HealthMonitorResponse(
-      details: (map['details'] as String).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
+      details: pulumi.Input.fromValue(map['details'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum FeatureLags {
   valueNone("None"),
   valueAuto("Auto");
 
-  const FeatureLags(this.value);
-  final String value;
+  const FeatureLags(this.wireValue);
+  final String wireValue;
 
   static FeatureLags fromValue(String value) {
     for (final item in FeatureLags.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FeatureLags value: $value');
   }
 }
-

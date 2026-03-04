@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification {
   /// ID of the launch template.
   final pulumi.Input<String> launchTemplateId;
+
   /// Name of the launch template.
   final pulumi.Input<String> launchTemplateName;
+
   /// Template version.
   final pulumi.Input<String> version;
 
@@ -28,12 +30,17 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificat
     };
   }
 
-  factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification.fromMap(Map<String, dynamic> map) {
+  factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification(
-      launchTemplateId: (map['launchTemplateId'] as String).input(),
-      launchTemplateName: (map['launchTemplateName'] as String).input(),
-      version: (map['version'] as String).input(),
+      launchTemplateId: pulumi.Input.fromValue(
+        map['launchTemplateId'] as String,
+      ),
+      launchTemplateName: pulumi.Input.fromValue(
+        map['launchTemplateName'] as String,
+      ),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

@@ -135,10 +135,13 @@ import 'subscription_list_response.dart';
 class MonitoredSubscriptionElastic extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Name of the monitored subscription resource.
   late final pulumi.Output<String> name;
+
   /// The request to update subscriptions needed to be monitored by the Elastic monitor resource.
   late final pulumi.Output<SubscriptionListResponse> properties;
+
   /// The type of the monitored subscription resource.
   late final pulumi.Output<String> type;
 
@@ -151,14 +154,14 @@ class MonitoredSubscriptionElastic extends pulumi.CustomResource {
     MonitoredSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:elastic:MonitoredSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:elastic:MonitoredSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<SubscriptionListResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<SubscriptionListResponse>('properties');
+    type = registerOutput<String>('type');
   }
 }

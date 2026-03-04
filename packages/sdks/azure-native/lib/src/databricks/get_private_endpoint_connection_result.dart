@@ -6,12 +6,16 @@ import 'private_endpoint_connection_properties_response.dart';
 class GetPrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The resource identifier.
   final String id;
+
   /// The resource name.
   final String name;
+
   /// The private endpoint connection properties.
   final PrivateEndpointConnectionPropertiesResponse properties;
+
   /// The resource type.
   final String type;
 
@@ -44,9 +48,10 @@ class GetPrivateEndpointConnectionResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: PrivateEndpointConnectionPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

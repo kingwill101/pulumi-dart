@@ -31,11 +31,26 @@ class FeaturesVirtualMachineScaleSet {
 
   factory FeaturesVirtualMachineScaleSet.fromMap(Map<String, dynamic> map) {
     return FeaturesVirtualMachineScaleSet(
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete']! as bool).input(),
-      reimageOnManualUpgrade: map['reimageOnManualUpgrade'] == null ? null : (map['reimageOnManualUpgrade']! as bool).input(),
-      rollInstancesWhenRequired: map['rollInstancesWhenRequired'] == null ? null : (map['rollInstancesWhenRequired']! as bool).input(),
-      scaleToZeroBeforeDeletion: map['scaleToZeroBeforeDeletion'] == null ? null : (map['scaleToZeroBeforeDeletion']! as bool).input(),
+      forceDelete: (() {
+        final guardedValue = map['forceDelete'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      reimageOnManualUpgrade: (() {
+        final guardedValue = map['reimageOnManualUpgrade'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      rollInstancesWhenRequired: (() {
+        final guardedValue = map['rollInstancesWhenRequired'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      scaleToZeroBeforeDeletion: (() {
+        final guardedValue = map['scaleToZeroBeforeDeletion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

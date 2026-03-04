@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel {
   /// The key of the kubernetes label.
   final pulumi.Input<String> key;
+
   /// The value of the Label.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
-  factory BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel.fromMap(Map<String, dynamic> map) {
+  factory BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel(
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

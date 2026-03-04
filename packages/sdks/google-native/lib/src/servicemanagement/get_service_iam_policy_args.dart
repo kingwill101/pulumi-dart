@@ -11,20 +11,15 @@ class GetServiceIamPolicyArgs {
 
   /// Creates a new [GetServiceIamPolicyArgs].
   /// [serviceId] Required.
-  GetServiceIamPolicyArgs({
-    required this.serviceId,
-  });
+  GetServiceIamPolicyArgs({required this.serviceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceId': serviceId,
-    };
+    return <String, dynamic>{'serviceId': serviceId};
   }
 
   factory GetServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceIamPolicyArgs(
-      serviceId: (map['serviceId'] as String).input(),
+      serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
     );
   }
 }
-

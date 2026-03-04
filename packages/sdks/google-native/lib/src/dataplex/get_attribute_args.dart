@@ -35,11 +35,14 @@ class GetAttributeArgs {
 
   factory GetAttributeArgs.fromMap(Map<String, dynamic> map) {
     return GetAttributeArgs(
-      attributeId: (map['attributeId'] as String).input(),
-      dataTaxonomyId: (map['dataTaxonomyId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      attributeId: pulumi.Input.fromValue(map['attributeId'] as String),
+      dataTaxonomyId: pulumi.Input.fromValue(map['dataTaxonomyId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

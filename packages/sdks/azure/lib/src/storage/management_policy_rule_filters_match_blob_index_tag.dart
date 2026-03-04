@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagementPolicyRuleFiltersMatchBlobIndexTag {
   /// The filter tag name used for tag based filtering for blob objects.
   final pulumi.Input<String> name;
+
   /// The comparison operator which is used for object comparison and filtering. Possible value is `==`. Defaults to `==`.
   final pulumi.Input<String>? operation;
+
   /// The filter tag value used for tag based filtering for blob objects.
   final pulumi.Input<String> value;
 
@@ -28,12 +30,17 @@ class ManagementPolicyRuleFiltersMatchBlobIndexTag {
     };
   }
 
-  factory ManagementPolicyRuleFiltersMatchBlobIndexTag.fromMap(Map<String, dynamic> map) {
+  factory ManagementPolicyRuleFiltersMatchBlobIndexTag.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagementPolicyRuleFiltersMatchBlobIndexTag(
-      name: (map['name'] as String).input(),
-      operation: map['operation'] == null ? null : (map['operation']! as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      operation: (() {
+        final guardedValue = map['operation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

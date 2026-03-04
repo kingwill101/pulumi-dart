@@ -4,16 +4,15 @@ enum ResourceDeletionPolicy {
   cascadeDeleteAll("CascadeDeleteAll"),
   cascadeDeleteProxyOnlyChildren("CascadeDeleteProxyOnlyChildren");
 
-  const ResourceDeletionPolicy(this.value);
-  final String value;
+  const ResourceDeletionPolicy(this.wireValue);
+  final String wireValue;
 
   static ResourceDeletionPolicy fromValue(String value) {
     for (final item in ResourceDeletionPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceDeletionPolicy value: $value');
   }
 }
-

@@ -153,24 +153,34 @@ import 'system_data_response.dart';
 class Gateway extends pulumi.CustomResource {
   /// Specifies the list of features that are enabled for this Gateway.
   late final pulumi.Output<List<String>?> allowedFeatures;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The endpoint fqdn for the Gateway.
   late final pulumi.Output<String> gatewayEndpoint;
+
   /// A unique, immutable, identifier for the Gateway.
   late final pulumi.Output<String> gatewayId;
+
   /// The type of the Gateway resource.
   late final pulumi.Output<String?> gatewayType;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -183,21 +193,21 @@ class Gateway extends pulumi.CustomResource {
     GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:hybridcompute:Gateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedFeatures = registerOutput<List<String>?>('allowedFeatures');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.gatewayEndpoint = registerOutput<String>('gatewayEndpoint');
-    this.gatewayId = registerOutput<String>('gatewayId');
-    this.gatewayType = registerOutput<String?>('gatewayType');
-    this.location = registerOutput<String>('location');
+         'azure-native:hybridcompute:Gateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedFeatures = registerOutput<List<String>?>('allowedFeatures');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    gatewayEndpoint = registerOutput<String>('gatewayEndpoint');
+    gatewayId = registerOutput<String>('gatewayId');
+    gatewayType = registerOutput<String?>('gatewayType');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

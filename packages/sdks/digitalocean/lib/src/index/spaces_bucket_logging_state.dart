@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpacesBucketLoggingState {
   /// The name of the bucket which will be logged.
   final pulumi.Input<String>? bucket;
+
   /// The region where the bucket resides.
   final pulumi.Input<String>? region;
+
   /// The name of the bucket which will store the logs.
   final pulumi.Input<String>? targetBucket;
+
   /// The prefix for the log files.
   final pulumi.Input<String>? targetPrefix;
 
@@ -36,11 +39,26 @@ class SpacesBucketLoggingState {
 
   factory SpacesBucketLoggingState.fromMap(Map<String, dynamic> map) {
     return SpacesBucketLoggingState(
-      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      targetBucket: map['targetBucket'] == null ? null : (map['targetBucket']! as String).input(),
-      targetPrefix: map['targetPrefix'] == null ? null : (map['targetPrefix']! as String).input(),
+      bucket: (() {
+        final guardedValue = map['bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetBucket: (() {
+        final guardedValue = map['targetBucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetPrefix: (() {
+        final guardedValue = map['targetPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

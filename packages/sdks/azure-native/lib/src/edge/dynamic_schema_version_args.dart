@@ -10,12 +10,16 @@ import 'schema_version_properties.dart';
 class DynamicSchemaVersionArgs {
   /// The name of the DynamicSchema
   final pulumi.Input<String> dynamicSchemaName;
+
   /// The name of the DynamicSchemaVersion
   final pulumi.Input<String>? dynamicSchemaVersionName;
+
   /// The resource-specific properties for this resource.
   final pulumi.Input<SchemaVersionProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Schema
   final pulumi.Input<String> schemaName;
 
@@ -37,7 +41,11 @@ class DynamicSchemaVersionArgs {
     return <String, dynamic>{
       'dynamicSchemaName': dynamicSchemaName,
       'dynamicSchemaVersionName': ?dynamicSchemaVersionName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<SchemaVersionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            SchemaVersionProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'schemaName': schemaName,
     };
@@ -45,12 +53,27 @@ class DynamicSchemaVersionArgs {
 
   factory DynamicSchemaVersionArgs.fromMap(Map<String, dynamic> map) {
     return DynamicSchemaVersionArgs(
-      dynamicSchemaName: (map['dynamicSchemaName'] as String).input(),
-      dynamicSchemaVersionName: map['dynamicSchemaVersionName'] == null ? null : (map['dynamicSchemaVersionName']! as String).input(),
-      properties: map['properties'] == null ? null : (SchemaVersionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaName: (map['schemaName'] as String).input(),
+      dynamicSchemaName: pulumi.Input.fromValue(
+        map['dynamicSchemaName'] as String,
+      ),
+      dynamicSchemaVersionName: (() {
+        final guardedValue = map['dynamicSchemaVersionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SchemaVersionProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      schemaName: pulumi.Input.fromValue(map['schemaName'] as String),
     );
   }
 }
-

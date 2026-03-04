@@ -4,7 +4,7 @@ import 'hybrid_connection_state.dart';
 
 /// Manages an App Service Hybrid Connection for an existing App Service, Relay and Service Bus.
 ///
-/// !> **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.FunctionAppHybridConnection` and `azure.appservice.WebAppHybridConnection` resources instead.
+/// !&gt; **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.FunctionAppHybridConnection` and `azure.appservice.WebAppHybridConnection` resources instead.
 ///
 /// ## Example Usage
 ///
@@ -360,7 +360,7 @@ import 'hybrid_connection_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Relay` - 2021-11-01
@@ -375,23 +375,32 @@ import 'hybrid_connection_state.dart';
 class HybridConnection extends pulumi.CustomResource {
   /// Specifies the name of the App Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appServiceName;
+
   /// The hostname of the endpoint.
   late final pulumi.Output<String> hostname;
+
   /// The name of the Relay Namespace.
   late final pulumi.Output<String> namespaceName;
+
   /// The port of the endpoint.
   late final pulumi.Output<int> port;
+
   /// The ID of the Service Bus Relay. Changing this forces a new resource to be created.
   late final pulumi.Output<String> relayId;
   late final pulumi.Output<String> relayName;
+
   /// The name of the resource group in which to create the App Service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The name of the Service Bus key which has Send permissions. Defaults to `RootManageSharedAccessKey`.
   late final pulumi.Output<String?> sendKeyName;
+
   /// The value of the Service Bus Primary Access key.
   late final pulumi.Output<String> sendKeyValue;
+
   /// The name of the Service Bus namespace.
   late final pulumi.Output<String> serviceBusNamespace;
+
   /// The suffix for the service bus endpoint.
   late final pulumi.Output<String> serviceBusSuffix;
 
@@ -404,22 +413,22 @@ class HybridConnection extends pulumi.CustomResource {
     HybridConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/hybridConnection:HybridConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appServiceName = registerOutput<String>('appServiceName');
-    this.hostname = registerOutput<String>('hostname');
-    this.namespaceName = registerOutput<String>('namespaceName');
-    this.port = registerOutput<int>('port');
-    this.relayId = registerOutput<String>('relayId');
-    this.relayName = registerOutput<String>('relayName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sendKeyName = registerOutput<String?>('sendKeyName');
-    this.sendKeyValue = registerOutput<String>('sendKeyValue');
-    this.serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
-    this.serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
+         'azure:appservice/hybridConnection:HybridConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appServiceName = registerOutput<String>('appServiceName');
+    hostname = registerOutput<String>('hostname');
+    namespaceName = registerOutput<String>('namespaceName');
+    port = registerOutput<int>('port');
+    relayId = registerOutput<String>('relayId');
+    relayName = registerOutput<String>('relayName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sendKeyName = registerOutput<String?>('sendKeyName');
+    sendKeyValue = registerOutput<String>('sendKeyValue');
+    serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
+    serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
   }
 
   /// Gets an existing [HybridConnection] resource's state with the given [name] and [id].
@@ -440,21 +449,21 @@ class HybridConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/hybridConnection:HybridConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appServiceName = registerOutput<String>('appServiceName');
-    this.hostname = registerOutput<String>('hostname');
-    this.namespaceName = registerOutput<String>('namespaceName');
-    this.port = registerOutput<int>('port');
-    this.relayId = registerOutput<String>('relayId');
-    this.relayName = registerOutput<String>('relayName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sendKeyName = registerOutput<String?>('sendKeyName');
-    this.sendKeyValue = registerOutput<String>('sendKeyValue');
-    this.serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
-    this.serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
+         'azure:appservice/hybridConnection:HybridConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appServiceName = registerOutput<String>('appServiceName');
+    hostname = registerOutput<String>('hostname');
+    namespaceName = registerOutput<String>('namespaceName');
+    port = registerOutput<int>('port');
+    relayId = registerOutput<String>('relayId');
+    relayName = registerOutput<String>('relayName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sendKeyName = registerOutput<String?>('sendKeyName');
+    sendKeyValue = registerOutput<String>('sendKeyValue');
+    serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
+    serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
   }
 }

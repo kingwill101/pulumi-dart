@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetActionGroupArgs {
   /// The name of the action group.
   final pulumi.Input<String> actionGroupName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetActionGroupArgs {
 
   factory GetActionGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetActionGroupArgs(
-      actionGroupName: (map['actionGroupName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      actionGroupName: pulumi.Input.fromValue(map['actionGroupName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

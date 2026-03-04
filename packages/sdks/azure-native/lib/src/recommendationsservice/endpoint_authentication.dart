@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointAuthentication {
   /// AAD tenant ID.
   final pulumi.Input<String>? aadTenantID;
+
   /// AAD principal ID.
   final pulumi.Input<String>? principalID;
+
   /// AAD principal type.
   final pulumi.Input<String>? principalType;
 
@@ -31,10 +33,21 @@ class EndpointAuthentication {
 
   factory EndpointAuthentication.fromMap(Map<String, dynamic> map) {
     return EndpointAuthentication(
-      aadTenantID: map['aadTenantID'] == null ? null : (map['aadTenantID']! as String).input(),
-      principalID: map['principalID'] == null ? null : (map['principalID']! as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
+      aadTenantID: (() {
+        final guardedValue = map['aadTenantID'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalID: (() {
+        final guardedValue = map['principalID'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalType: (() {
+        final guardedValue = map['principalType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

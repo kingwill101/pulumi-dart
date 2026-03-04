@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCommunityArgs {
   /// The name of the communityResource Resource
   final pulumi.Input<String> communityName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetCommunityArgs {
 
   factory GetCommunityArgs.fromMap(Map<String, dynamic> map) {
     return GetCommunityArgs(
-      communityName: (map['communityName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      communityName: pulumi.Input.fromValue(map['communityName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

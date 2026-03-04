@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDelegatedSubnetServiceDetailsArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
   final pulumi.Input<String> resourceName;
 
@@ -27,11 +28,14 @@ class GetDelegatedSubnetServiceDetailsArgs {
     };
   }
 
-  factory GetDelegatedSubnetServiceDetailsArgs.fromMap(Map<String, dynamic> map) {
+  factory GetDelegatedSubnetServiceDetailsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDelegatedSubnetServiceDetailsArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

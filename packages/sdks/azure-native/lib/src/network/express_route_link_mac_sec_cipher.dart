@@ -5,16 +5,15 @@ enum ExpressRouteLinkMacSecCipher {
   valueGcmAesXpn128("GcmAesXpn128"),
   valueGcmAesXpn256("GcmAesXpn256");
 
-  const ExpressRouteLinkMacSecCipher(this.value);
-  final String value;
+  const ExpressRouteLinkMacSecCipher(this.wireValue);
+  final String wireValue;
 
   static ExpressRouteLinkMacSecCipher fromValue(String value) {
     for (final item in ExpressRouteLinkMacSecCipher.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExpressRouteLinkMacSecCipher value: $value');
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkDdosProtectionPlanArgs {
   /// The name of the Network DDoS Protection Plan.
   final pulumi.Input<String> name;
+
   /// The name of the resource group where the Network DDoS Protection Plan exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetNetworkDdosProtectionPlanArgs {
 
   factory GetNetworkDdosProtectionPlanArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkDdosProtectionPlanArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -5,28 +5,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSnapshotsSnapshot {
   /// The creation time of the resource.
   final pulumi.Input<String> createTime;
+
   /// The description of the snapshot.
   final pulumi.Input<String> description;
+
   /// The type of the encryption.
   final pulumi.Input<int> encryptType;
+
   /// The ID of the Snapshot.
   final pulumi.Input<String> id;
+
   /// The progress of the snapshot creation. The value of this parameter is expressed as a percentage.
   final pulumi.Input<String> progress;
+
   /// The remaining time that is required to create the snapshot. Unit: seconds.
   final pulumi.Input<int> remainTime;
+
   /// The retention period of the automatic snapshot. Unit: days.
   final pulumi.Input<int> retentionDays;
+
   /// The ID of the resource.
   final pulumi.Input<String> snapshotId;
+
   /// The name of the snapshot.
   final pulumi.Input<String> snapshotName;
+
   /// The ID of the source file system.
   final pulumi.Input<String> sourceFileSystemId;
+
   /// The capacity of the source file system. Unit: GiB.
   final pulumi.Input<String> sourceFileSystemSize;
+
   /// The version of the source file system.
   final pulumi.Input<String> sourceFileSystemVersion;
+
   /// The status of the snapshot.
   final pulumi.Input<String> status;
 
@@ -80,20 +92,25 @@ class GetSnapshotsSnapshot {
 
   factory GetSnapshotsSnapshot.fromMap(Map<String, dynamic> map) {
     return GetSnapshotsSnapshot(
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      encryptType: (map['encryptType'] as int).input(),
-      id: (map['id'] as String).input(),
-      progress: (map['progress'] as String).input(),
-      remainTime: (map['remainTime'] as int).input(),
-      retentionDays: (map['retentionDays'] as int).input(),
-      snapshotId: (map['snapshotId'] as String).input(),
-      snapshotName: (map['snapshotName'] as String).input(),
-      sourceFileSystemId: (map['sourceFileSystemId'] as String).input(),
-      sourceFileSystemSize: (map['sourceFileSystemSize'] as String).input(),
-      sourceFileSystemVersion: (map['sourceFileSystemVersion'] as String).input(),
-      status: (map['status'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      encryptType: pulumi.Input.fromValue(map['encryptType'] as int),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      progress: pulumi.Input.fromValue(map['progress'] as String),
+      remainTime: pulumi.Input.fromValue(map['remainTime'] as int),
+      retentionDays: pulumi.Input.fromValue(map['retentionDays'] as int),
+      snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
+      snapshotName: pulumi.Input.fromValue(map['snapshotName'] as String),
+      sourceFileSystemId: pulumi.Input.fromValue(
+        map['sourceFileSystemId'] as String,
+      ),
+      sourceFileSystemSize: pulumi.Input.fromValue(
+        map['sourceFileSystemSize'] as String,
+      ),
+      sourceFileSystemVersion: pulumi.Input.fromValue(
+        map['sourceFileSystemVersion'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

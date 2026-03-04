@@ -6,34 +6,49 @@ import 'get_server_groups_group_health_check.dart';
 class GetServerGroupsGroup {
   /// The protocol version.
   final pulumi.Input<String> addressIpVersion;
+
   /// Indicates whether connection draining is enabled.
   final pulumi.Input<bool> connectionDrain;
+
   /// The timeout period of connection draining. Unit: seconds.
   final pulumi.Input<int> connectionDrainTimeout;
+
   /// The configurations of health checks.
   final pulumi.Input<List<GetServerGroupsGroupHealthCheck>> healthChecks;
+
   /// The ID of the Server Group.
   final pulumi.Input<String> id;
+
   /// Indicates whether client address retention is enabled.
   final pulumi.Input<bool> preserveClientIpEnabled;
+
   /// The protocol used to forward requests to the backend servers.
   final pulumi.Input<String> protocol;
+
   /// The NLB instance.
   final pulumi.Input<List<String>> relatedLoadBalancerIds;
+
   /// The ID of the resource group to which the security group belongs.
   final pulumi.Input<String> resourceGroupId;
+
   /// The routing algorithm.
   final pulumi.Input<String> scheduler;
+
   /// The number of server groups associated with the NLB instance.
   final pulumi.Input<int> serverCount;
+
   /// The name of the server group.
   final pulumi.Input<String> serverGroupName;
+
   /// The type of the server group.
   final pulumi.Input<String> serverGroupType;
+
   /// The status of the server group.
   final pulumi.Input<String> status;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>> tags;
+
   /// The ID of the VPC to which the server group belongs.
   final pulumi.Input<String> vpcId;
 
@@ -78,7 +93,18 @@ class GetServerGroupsGroup {
       'addressIpVersion': addressIpVersion,
       'connectionDrain': connectionDrain,
       'connectionDrainTimeout': connectionDrainTimeout,
-      'healthChecks': pulumi.Input.mapInputValue<List<GetServerGroupsGroupHealthCheck>, List<Map<String, dynamic>>>(healthChecks, (value) => pulumi.Input.encodeList<GetServerGroupsGroupHealthCheck, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'healthChecks':
+          pulumi.Input.mapInputValue<
+            List<GetServerGroupsGroupHealthCheck>,
+            List<Map<String, dynamic>>
+          >(
+            healthChecks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServerGroupsGroupHealthCheck,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'id': id,
       'preserveClientIpEnabled': preserveClientIpEnabled,
       'protocol': protocol,
@@ -96,23 +122,37 @@ class GetServerGroupsGroup {
 
   factory GetServerGroupsGroup.fromMap(Map<String, dynamic> map) {
     return GetServerGroupsGroup(
-      addressIpVersion: (map['addressIpVersion'] as String).input(),
-      connectionDrain: (map['connectionDrain'] as bool).input(),
-      connectionDrainTimeout: (map['connectionDrainTimeout'] as int).input(),
-      healthChecks: (pulumi.Input.decodeList<GetServerGroupsGroupHealthCheck>(map['healthChecks'], (value) => GetServerGroupsGroupHealthCheck.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: (map['id'] as String).input(),
-      preserveClientIpEnabled: (map['preserveClientIpEnabled'] as bool).input(),
-      protocol: (map['protocol'] as String).input(),
-      relatedLoadBalancerIds: ((map['relatedLoadBalancerIds'] as List).cast<String>()).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      scheduler: (map['scheduler'] as String).input(),
-      serverCount: (map['serverCount'] as int).input(),
-      serverGroupName: (map['serverGroupName'] as String).input(),
-      serverGroupType: (map['serverGroupType'] as String).input(),
-      status: (map['status'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: (map['vpcId'] as String).input(),
+      addressIpVersion: pulumi.Input.fromValue(
+        map['addressIpVersion'] as String,
+      ),
+      connectionDrain: pulumi.Input.fromValue(map['connectionDrain'] as bool),
+      connectionDrainTimeout: pulumi.Input.fromValue(
+        map['connectionDrainTimeout'] as int,
+      ),
+      healthChecks: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetServerGroupsGroupHealthCheck>(
+          map['healthChecks']!,
+          (value) => GetServerGroupsGroupHealthCheck.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      preserveClientIpEnabled: pulumi.Input.fromValue(
+        map['preserveClientIpEnabled'] as bool,
+      ),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      relatedLoadBalancerIds: pulumi.Input.fromValue(
+        (map['relatedLoadBalancerIds'] as List).cast<String>(),
+      ),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      scheduler: pulumi.Input.fromValue(map['scheduler'] as String),
+      serverCount: pulumi.Input.fromValue(map['serverCount'] as int),
+      serverGroupName: pulumi.Input.fromValue(map['serverGroupName'] as String),
+      serverGroupType: pulumi.Input.fromValue(map['serverGroupType'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
-

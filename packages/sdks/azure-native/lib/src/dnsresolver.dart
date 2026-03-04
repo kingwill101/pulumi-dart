@@ -1,5 +1,3 @@
-library module_dnsresolver;
-
 export 'dnsresolver/action_type.dart';
 export 'dnsresolver/block_response_code.dart';
 export 'dnsresolver/dns_forwarding_ruleset.dart';

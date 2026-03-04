@@ -1,5 +1,3 @@
-library module_athena;
-
 export 'athena/capacity_reservation.dart';
 export 'athena/capacity_reservation_args.dart';
 export 'athena/capacity_reservation_state.dart';

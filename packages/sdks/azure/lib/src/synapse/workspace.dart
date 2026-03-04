@@ -1045,44 +1045,64 @@ import 'workspace_state.dart';
 class Workspace extends pulumi.CustomResource {
   /// An `azure_devops_repo` block as defined below.
   late final pulumi.Output<WorkspaceAzureDevopsRepo?> azureDevopsRepo;
+
   /// Is Azure Active Directory Authentication the only way to authenticate with resources inside this synapse Workspace. Defaults to `false`.
   late final pulumi.Output<bool?> azureadAuthenticationOnly;
+
   /// Subnet ID used for computes in workspace Changing this forces a new resource to be created.
   late final pulumi.Output<String?> computeSubnetId;
+
   /// A map of Connectivity endpoints for this Synapse Workspace. Possible key values are `dev`, `sql`, `sqlOnDemand`, and `web`.
   late final pulumi.Output<Map<String, String>> connectivityEndpoints;
+
   /// A `customer_managed_key` block as defined below.
   late final pulumi.Output<WorkspaceCustomerManagedKey?> customerManagedKey;
+
   /// Is data exfiltration protection enabled in this workspace? If set to `true`, `managed_virtual_network_enabled` must also be set to `true`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> dataExfiltrationProtectionEnabled;
+
   /// A `github_repo` block as defined below.
   late final pulumi.Output<WorkspaceGithubRepo?> githubRepo;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<WorkspaceIdentity?> identity;
+
   /// Allowed AAD Tenant Ids For Linking.
   late final pulumi.Output<List<String>?> linkingAllowedForAadTenantIds;
+
   /// Specifies the Azure Region where the synapse Workspace should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Workspace managed resource group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managedResourceGroupName;
+
   /// Is Virtual Network enabled for all computes in this workspace? Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> managedVirtualNetworkEnabled;
+
   /// Specifies the name which should be used for this synapse Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Whether public network access is allowed for the Cognitive Account. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The ID of purview account.
   late final pulumi.Output<String?> purviewId;
+
   /// Specifies the name of the Resource Group where the synapse Workspace should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies The login name of the SQL administrator. Changing this forces a new resource to be created. If this is not provided `customer_managed_key` must be provided.
   late final pulumi.Output<String?> sqlAdministratorLogin;
+
   /// The Password associated with the `sql_administrator_login` for the SQL administrator. If this is not provided `customer_managed_key` must be provided.
   late final pulumi.Output<String?> sqlAdministratorLoginPassword;
+
   /// Are pipelines (running as workspace's system assigned identity) allowed to access SQL pools?
   late final pulumi.Output<bool?> sqlIdentityControlEnabled;
+
   /// Specifies the ID of storage data lake gen2 filesystem resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageDataLakeGen2FilesystemId;
+
   /// A mapping of tags which should be assigned to the Synapse Workspace.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -1095,32 +1115,56 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:synapse/workspace:Workspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureDevopsRepo = registerOutput<WorkspaceAzureDevopsRepo?>('azureDevopsRepo');
-    this.azureadAuthenticationOnly = registerOutput<bool?>('azureadAuthenticationOnly');
-    this.computeSubnetId = registerOutput<String?>('computeSubnetId');
-    this.connectivityEndpoints = registerOutput<Map<String, String>>('connectivityEndpoints');
-    this.customerManagedKey = registerOutput<WorkspaceCustomerManagedKey?>('customerManagedKey');
-    this.dataExfiltrationProtectionEnabled = registerOutput<bool?>('dataExfiltrationProtectionEnabled');
-    this.githubRepo = registerOutput<WorkspaceGithubRepo?>('githubRepo');
-    this.identity = registerOutput<WorkspaceIdentity?>('identity');
-    this.linkingAllowedForAadTenantIds = registerOutput<List<String>?>('linkingAllowedForAadTenantIds');
-    this.location = registerOutput<String>('location');
-    this.managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
-    this.managedVirtualNetworkEnabled = registerOutput<bool?>('managedVirtualNetworkEnabled');
+         'azure:synapse/workspace:Workspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureDevopsRepo = registerOutput<WorkspaceAzureDevopsRepo?>(
+      'azureDevopsRepo',
+    );
+    azureadAuthenticationOnly = registerOutput<bool?>(
+      'azureadAuthenticationOnly',
+    );
+    computeSubnetId = registerOutput<String?>('computeSubnetId');
+    connectivityEndpoints = registerOutput<Map<String, String>>(
+      'connectivityEndpoints',
+    );
+    customerManagedKey = registerOutput<WorkspaceCustomerManagedKey?>(
+      'customerManagedKey',
+    );
+    dataExfiltrationProtectionEnabled = registerOutput<bool?>(
+      'dataExfiltrationProtectionEnabled',
+    );
+    githubRepo = registerOutput<WorkspaceGithubRepo?>('githubRepo');
+    identity = registerOutput<WorkspaceIdentity?>('identity');
+    linkingAllowedForAadTenantIds = registerOutput<List<String>?>(
+      'linkingAllowedForAadTenantIds',
+    );
+    location = registerOutput<String>('location');
+    managedResourceGroupName = registerOutput<String>(
+      'managedResourceGroupName',
+    );
+    managedVirtualNetworkEnabled = registerOutput<bool?>(
+      'managedVirtualNetworkEnabled',
+    );
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.purviewId = registerOutput<String?>('purviewId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sqlAdministratorLogin = registerOutput<String?>('sqlAdministratorLogin');
-    this.sqlAdministratorLoginPassword = registerOutput<String?>('sqlAdministratorLoginPassword');
-    this.sqlIdentityControlEnabled = registerOutput<bool?>('sqlIdentityControlEnabled');
-    this.storageDataLakeGen2FilesystemId = registerOutput<String>('storageDataLakeGen2FilesystemId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    purviewId = registerOutput<String?>('purviewId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sqlAdministratorLogin = registerOutput<String?>('sqlAdministratorLogin');
+    sqlAdministratorLoginPassword = registerOutput<String?>(
+      'sqlAdministratorLoginPassword',
+    );
+    sqlIdentityControlEnabled = registerOutput<bool?>(
+      'sqlIdentityControlEnabled',
+    );
+    storageDataLakeGen2FilesystemId = registerOutput<String>(
+      'storageDataLakeGen2FilesystemId',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Workspace] resource's state with the given [name] and [id].
@@ -1141,31 +1185,55 @@ class Workspace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:synapse/workspace:Workspace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureDevopsRepo = registerOutput<WorkspaceAzureDevopsRepo?>('azureDevopsRepo');
-    this.azureadAuthenticationOnly = registerOutput<bool?>('azureadAuthenticationOnly');
-    this.computeSubnetId = registerOutput<String?>('computeSubnetId');
-    this.connectivityEndpoints = registerOutput<Map<String, String>>('connectivityEndpoints');
-    this.customerManagedKey = registerOutput<WorkspaceCustomerManagedKey?>('customerManagedKey');
-    this.dataExfiltrationProtectionEnabled = registerOutput<bool?>('dataExfiltrationProtectionEnabled');
-    this.githubRepo = registerOutput<WorkspaceGithubRepo?>('githubRepo');
-    this.identity = registerOutput<WorkspaceIdentity?>('identity');
-    this.linkingAllowedForAadTenantIds = registerOutput<List<String>?>('linkingAllowedForAadTenantIds');
-    this.location = registerOutput<String>('location');
-    this.managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
-    this.managedVirtualNetworkEnabled = registerOutput<bool?>('managedVirtualNetworkEnabled');
+         'azure:synapse/workspace:Workspace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureDevopsRepo = registerOutput<WorkspaceAzureDevopsRepo?>(
+      'azureDevopsRepo',
+    );
+    azureadAuthenticationOnly = registerOutput<bool?>(
+      'azureadAuthenticationOnly',
+    );
+    computeSubnetId = registerOutput<String?>('computeSubnetId');
+    connectivityEndpoints = registerOutput<Map<String, String>>(
+      'connectivityEndpoints',
+    );
+    customerManagedKey = registerOutput<WorkspaceCustomerManagedKey?>(
+      'customerManagedKey',
+    );
+    dataExfiltrationProtectionEnabled = registerOutput<bool?>(
+      'dataExfiltrationProtectionEnabled',
+    );
+    githubRepo = registerOutput<WorkspaceGithubRepo?>('githubRepo');
+    identity = registerOutput<WorkspaceIdentity?>('identity');
+    linkingAllowedForAadTenantIds = registerOutput<List<String>?>(
+      'linkingAllowedForAadTenantIds',
+    );
+    location = registerOutput<String>('location');
+    managedResourceGroupName = registerOutput<String>(
+      'managedResourceGroupName',
+    );
+    managedVirtualNetworkEnabled = registerOutput<bool?>(
+      'managedVirtualNetworkEnabled',
+    );
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.purviewId = registerOutput<String?>('purviewId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sqlAdministratorLogin = registerOutput<String?>('sqlAdministratorLogin');
-    this.sqlAdministratorLoginPassword = registerOutput<String?>('sqlAdministratorLoginPassword');
-    this.sqlIdentityControlEnabled = registerOutput<bool?>('sqlIdentityControlEnabled');
-    this.storageDataLakeGen2FilesystemId = registerOutput<String>('storageDataLakeGen2FilesystemId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    purviewId = registerOutput<String?>('purviewId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sqlAdministratorLogin = registerOutput<String?>('sqlAdministratorLogin');
+    sqlAdministratorLoginPassword = registerOutput<String?>(
+      'sqlAdministratorLoginPassword',
+    );
+    sqlIdentityControlEnabled = registerOutput<bool?>(
+      'sqlIdentityControlEnabled',
+    );
+    storageDataLakeGen2FilesystemId = registerOutput<String>(
+      'storageDataLakeGen2FilesystemId',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BuildResponse {
   /// Commit ID of the latest commit in the build.
   final pulumi.Input<String> commitId;
+
   /// Commit time of the latest commit in the build.
   final pulumi.Input<String> commitTime;
+
   /// Path of the open source repository: github.com/apigee/registry.
   final pulumi.Input<String> repo;
 
@@ -31,10 +33,9 @@ class BuildResponse {
 
   factory BuildResponse.fromMap(Map<String, dynamic> map) {
     return BuildResponse(
-      commitId: (map['commitId'] as String).input(),
-      commitTime: (map['commitTime'] as String).input(),
-      repo: (map['repo'] as String).input(),
+      commitId: pulumi.Input.fromValue(map['commitId'] as String),
+      commitTime: pulumi.Input.fromValue(map['commitTime'] as String),
+      repo: pulumi.Input.fromValue(map['repo'] as String),
     );
   }
 }
-

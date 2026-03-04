@@ -9,20 +9,21 @@ class ConfigMapResponse {
 
   /// Creates a new [ConfigMapResponse].
   /// [keyValuePairs] The key value pairs dictionary in the config map.
-  ConfigMapResponse({
-    this.keyValuePairs,
-  });
+  ConfigMapResponse({this.keyValuePairs});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyValuePairs': ?keyValuePairs,
-    };
+    return <String, dynamic>{'keyValuePairs': ?keyValuePairs};
   }
 
   factory ConfigMapResponse.fromMap(Map<String, dynamic> map) {
     return ConfigMapResponse(
-      keyValuePairs: map['keyValuePairs'] == null ? null : ((map['keyValuePairs']! as Map).cast<String, String>()).input(),
+      keyValuePairs: (() {
+        final guardedValue = map['keyValuePairs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

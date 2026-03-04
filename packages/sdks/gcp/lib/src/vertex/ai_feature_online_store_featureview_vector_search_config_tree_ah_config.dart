@@ -13,15 +13,18 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'leafNodeEmbeddingCount': ?leafNodeEmbeddingCount,
-    };
+    return <String, dynamic>{'leafNodeEmbeddingCount': ?leafNodeEmbeddingCount};
   }
 
-  factory AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig.fromMap(Map<String, dynamic> map) {
+  factory AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig(
-      leafNodeEmbeddingCount: map['leafNodeEmbeddingCount'] == null ? null : (map['leafNodeEmbeddingCount']! as String).input(),
+      leafNodeEmbeddingCount: (() {
+        final guardedValue = map['leafNodeEmbeddingCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

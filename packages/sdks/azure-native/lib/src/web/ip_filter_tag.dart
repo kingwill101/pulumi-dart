@@ -4,16 +4,15 @@ enum IpFilterTag {
   valueXffProxy("XffProxy"),
   valueServiceTag("ServiceTag");
 
-  const IpFilterTag(this.value);
-  final String value;
+  const IpFilterTag(this.wireValue);
+  final String wireValue;
 
   static IpFilterTag fromValue(String value) {
     for (final item in IpFilterTag.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IpFilterTag value: $value');
   }
 }
-

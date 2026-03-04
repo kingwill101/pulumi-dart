@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdcApplicationAuthorizedTokenIssuer {
   /// List of audiences for the authorized token issuer for integrating Amazon Redshift with IDC Identity Center.
   final pulumi.Input<List<String>>? authorizedAudiencesLists;
+
   /// ARN for the authorized token issuer for integrating Amazon Redshift with IDC Identity Center.
   final pulumi.Input<String>? trustedTokenIssuerArn;
 
@@ -23,11 +24,20 @@ class IdcApplicationAuthorizedTokenIssuer {
     };
   }
 
-  factory IdcApplicationAuthorizedTokenIssuer.fromMap(Map<String, dynamic> map) {
+  factory IdcApplicationAuthorizedTokenIssuer.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdcApplicationAuthorizedTokenIssuer(
-      authorizedAudiencesLists: map['authorizedAudiencesLists'] == null ? null : (((map['authorizedAudiencesLists'] as List).cast<String>()).input()).input(),
-      trustedTokenIssuerArn: map['trustedTokenIssuerArn'] == null ? null : ((map['trustedTokenIssuerArn'] as String).input()).input(),
+      authorizedAudiencesLists: (() {
+        final guardedValue = map['authorizedAudiencesLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      trustedTokenIssuerArn: (() {
+        final guardedValue = map['trustedTokenIssuerArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

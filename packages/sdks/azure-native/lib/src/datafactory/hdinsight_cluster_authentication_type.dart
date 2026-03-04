@@ -4,16 +4,17 @@ enum HDInsightClusterAuthenticationType {
   valueSystemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
   valueUserAssignedManagedIdentity("UserAssignedManagedIdentity");
 
-  const HDInsightClusterAuthenticationType(this.value);
-  final String value;
+  const HDInsightClusterAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static HDInsightClusterAuthenticationType fromValue(String value) {
     for (final item in HDInsightClusterAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown HDInsightClusterAuthenticationType value: $value');
+    throw ArgumentError(
+      'Unknown HDInsightClusterAuthenticationType value: $value',
+    );
   }
 }
-

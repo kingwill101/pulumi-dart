@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressSyncArgs {
   /// The name of the OSS Bucket.
   final pulumi.Input<String> bucketName;
+
   /// The prefix of the OSS Bucket.
   final pulumi.Input<String>? bucketPrefix;
+
   /// The region of the OSS Bucket.
   final pulumi.Input<String> bucketRegion;
+
   /// The description of the Express Sync. The length of the name is limited to `1` to `255` characters.
   final pulumi.Input<String>? description;
+
   /// The name of the ExpressSync. The length of the name is limited to `1` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, English periods (.), underscores (_), or hyphens (-), and must start with  letters.
   final pulumi.Input<String> expressSyncName;
 
@@ -44,12 +48,19 @@ class ExpressSyncArgs {
 
   factory ExpressSyncArgs.fromMap(Map<String, dynamic> map) {
     return ExpressSyncArgs(
-      bucketName: (map['bucketName'] as String).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix']! as String).input(),
-      bucketRegion: (map['bucketRegion'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      expressSyncName: (map['expressSyncName'] as String).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      bucketPrefix: (() {
+        final guardedValue = map['bucketPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bucketRegion: pulumi.Input.fromValue(map['bucketRegion'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expressSyncName: pulumi.Input.fromValue(map['expressSyncName'] as String),
     );
   }
 }
-

@@ -13,15 +13,14 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'targetUri': targetUri,
-    };
+    return <String, dynamic>{'targetUri': targetUri};
   }
 
-  factory ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint.fromMap(Map<String, dynamic> map) {
+  factory ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint(
-      targetUri: (map['targetUri'] as String).input(),
+      targetUri: pulumi.Input.fromValue(map['targetUri'] as String),
     );
   }
 }
-

@@ -5,7 +5,12 @@ import 'scheduled_query_last_run_summary_query_insights_response_query_temporal_
 
 class ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange {
   /// Insights into the most sub-optimal performing table on the temporal axis:
-  final pulumi.Input<List<ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis>>? maxes;
+  final pulumi.Input<
+    List<
+      ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis
+    >
+  >?
+  maxes;
 
   /// Creates a new [ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange].
   /// [maxes] Insights into the most sub-optimal performing table on the temporal axis:
@@ -15,14 +20,42 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxes': ?pulumi.Input.mapOptionalInputValue<List<ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis>, List<Map<String, dynamic>>>(maxes, (value) => pulumi.Input.encodeList<ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'maxes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis
+            >,
+            List<Map<String, dynamic>>
+          >(
+            maxes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange.fromMap(Map<String, dynamic> map) {
+  factory ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange(
-      maxes: map['maxes'] == null ? null : ((pulumi.Input.decodeList<ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis>(map['maxes']!, (value) => ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      maxes: (() {
+        final guardedValue = map['maxes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis
+          >(
+            guardedValue,
+            (value) =>
+                ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

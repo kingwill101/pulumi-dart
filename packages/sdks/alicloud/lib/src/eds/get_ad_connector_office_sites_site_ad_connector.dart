@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAdConnectorOfficeSitesSiteAdConnector {
   /// AD Connector across Zones, Its Connection Addresses.
   final pulumi.Input<String> adConnectorAddress;
+
   /// AD Connector of the State. Possible Values: Creating: in the Creation of. Connecting: Connection. Requires the User to Your Own Ad Configured on the Domain to Which. Running: Run. Expired: If You Are out-of-Date. CONNECT_ERROR: Connection Error.
   final pulumi.Input<String> connectorStatus;
+
   /// AD Connector Mount of the Card ID.
   final pulumi.Input<String> networkInterfaceId;
+
   /// AD Connector in the Network Corresponding to the ID of the vSwitch in.
   final pulumi.Input<String> vswitchId;
 
@@ -33,13 +36,18 @@ class GetAdConnectorOfficeSitesSiteAdConnector {
     };
   }
 
-  factory GetAdConnectorOfficeSitesSiteAdConnector.fromMap(Map<String, dynamic> map) {
+  factory GetAdConnectorOfficeSitesSiteAdConnector.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAdConnectorOfficeSitesSiteAdConnector(
-      adConnectorAddress: (map['adConnectorAddress'] as String).input(),
-      connectorStatus: (map['connectorStatus'] as String).input(),
-      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
+      adConnectorAddress: pulumi.Input.fromValue(
+        map['adConnectorAddress'] as String,
+      ),
+      connectorStatus: pulumi.Input.fromValue(map['connectorStatus'] as String),
+      networkInterfaceId: pulumi.Input.fromValue(
+        map['networkInterfaceId'] as String,
+      ),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
-

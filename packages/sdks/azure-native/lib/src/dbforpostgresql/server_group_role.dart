@@ -141,18 +141,24 @@ import 'system_data_response.dart';
 class ServerGroupRole extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// A type definition that refers the id to an Azure Resource Manager resource.
   late final pulumi.Output<String> objectId;
   late final pulumi.Output<String> principalType;
+
   /// Provisioning state of the role
   late final pulumi.Output<String> provisioningState;
   late final pulumi.Output<String?> roleType;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// A type definition that refers the id to an Azure Resource Manager resource.
   late final pulumi.Output<String?> tenantId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -165,19 +171,19 @@ class ServerGroupRole extends pulumi.CustomResource {
     ServerGroupRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dbforpostgresql:ServerGroupRole',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:dbforpostgresql:ServerGroupRole',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.objectId = registerOutput<String>('objectId');
-    this.principalType = registerOutput<String>('principalType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.roleType = registerOutput<String?>('roleType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tenantId = registerOutput<String?>('tenantId');
-    this.type = registerOutput<String>('type');
+    objectId = registerOutput<String>('objectId');
+    principalType = registerOutput<String>('principalType');
+    provisioningState = registerOutput<String>('provisioningState');
+    roleType = registerOutput<String?>('roleType');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

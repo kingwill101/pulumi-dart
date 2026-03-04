@@ -783,21 +783,28 @@ class GatewaySecurityPolicy extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
   late final pulumi.Output<String> createTime;
+
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
+
   /// The location of the gateway security policy.
   /// The default value is `global`.
   late final pulumi.Output<String?> location;
+
   /// Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
   /// gatewaySecurityPolicy should match the pattern:(^a-z?$).
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Server-defined URL of this resource.
   late final pulumi.Output<String> selfLink;
+
   /// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
   late final pulumi.Output<String?> tlsInspectionPolicy;
+
   /// The timestamp when the resource was updated.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -812,19 +819,19 @@ class GatewaySecurityPolicy extends pulumi.CustomResource {
     GatewaySecurityPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String?>('location');
+         'gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.tlsInspectionPolicy = registerOutput<String?>('tlsInspectionPolicy');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    tlsInspectionPolicy = registerOutput<String?>('tlsInspectionPolicy');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [GatewaySecurityPolicy] resource's state with the given [name] and [id].
@@ -845,18 +852,18 @@ class GatewaySecurityPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String?>('location');
+         'gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.tlsInspectionPolicy = registerOutput<String?>('tlsInspectionPolicy');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    tlsInspectionPolicy = registerOutput<String?>('tlsInspectionPolicy');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

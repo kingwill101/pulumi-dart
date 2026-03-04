@@ -13,109 +13,157 @@ import 'sharding_instance_shard_list.dart';
 class ShardingInstanceArgs {
   /// Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
   final pulumi.Input<String>? accountPassword;
+
   /// Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
   final pulumi.Input<bool>? autoRenew;
+
   /// The auto-renewal period. Unit: months. Valid values: `1` to `12`.
-  /// > **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
+  /// &gt; **NOTE:** If `auto_renew` is set to `true`, `auto_renew_duration` must be set.
   final pulumi.Input<int>? autoRenewDuration;
+
   /// The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
   final pulumi.Input<String>? backupInterval;
+
   /// MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
   final pulumi.Input<List<String>>? backupPeriods;
+
   /// The retention period of full backups.
   final pulumi.Input<int>? backupRetentionPeriod;
+
   /// The backup retention policy configured for the instance. Valid values:
   final pulumi.Input<int>? backupRetentionPolicyOnClusterDeletion;
+
   /// Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
   final pulumi.Input<String>? backupTime;
+
   /// The ID of the encryption key.
   final pulumi.Input<String>? cloudDiskEncryptionKey;
+
   /// The ConfigServer nodes of the instance. See `config_server_list` below.
   final pulumi.Input<List<ShardingInstanceConfigServerList>>? configServerLists;
+
   /// Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
   final pulumi.Input<bool>? dbInstanceReleaseProtection;
+
   /// Specifies whether to enable the log backup feature. Valid values:
   /// - `1 `: The log backup feature is enabled.
   final pulumi.Input<int>? enableBackupLog;
+
   /// Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
   final pulumi.Input<bool>? encrypted;
+
   /// The ID of the custom key.
   final pulumi.Input<String>? encryptionKey;
+
   /// The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
   final pulumi.Input<String>? encryptorName;
+
   /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
   final pulumi.Input<String> engineVersion;
+
   /// Specifies whether to forcibly enable SSL encryption for connections. Valid values:
   final pulumi.Input<String>? forceEncryption;
+
   /// The list of Global Security Group Ids.
   final pulumi.Input<List<String>>? globalSecurityGroupLists;
+
   /// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zone_id` and `secondary_zone_id` parameter values.
   final pulumi.Input<String>? hiddenZoneId;
+
   /// The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
   final pulumi.Input<String>? instanceChargeType;
+
   /// An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
   final pulumi.Input<String>? kmsEncryptedPassword;
+
   /// An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
   final pulumi.Input<Map<String, String>>? kmsEncryptionContext;
+
   /// The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `log_backup_retention_period` is valid only when `enable_backup_log` is set to `1`.
   final pulumi.Input<int>? logBackupRetentionPeriod;
+
   /// The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
   final pulumi.Input<String>? maintainEndTime;
+
   /// The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
   final pulumi.Input<String>? maintainStartTime;
+
   /// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
   final pulumi.Input<List<ShardingInstanceMongoList>> mongoLists;
+
   /// The name of DB instance. It must be 2 to 256 characters in length.
   final pulumi.Input<String>? name;
+
   /// The network type of the instance. Valid values:`Classic` or `VPC`.
   final pulumi.Input<String>? networkType;
+
   /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
   /// - `UPGRADE`: The specifications are upgraded.
   /// - `DOWNGRADE`: The specifications are downgraded.
   /// **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
   final pulumi.Input<String>? orderType;
+
   /// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
   final pulumi.Input<List<ShardingInstanceParameter>>? parameters;
+
   /// The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
   final pulumi.Input<int>? period;
+
   /// The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
   final pulumi.Input<String>? protocolType;
+
   /// The provisioned IOPS. Valid values: `0` to `50000`.
   final pulumi.Input<int>? provisionedIops;
+
   /// The ID of the Resource Group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
-  /// > **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
+  /// &gt; **NOTE:** You must specify `src_db_instance_id` and `restore_time` only when you clone an instance based on a point in time.
   final pulumi.Input<String>? restoreTime;
+
   /// The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
   final pulumi.Input<String>? roleArn;
+
   /// Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values.
   final pulumi.Input<String>? secondaryZoneId;
+
   /// The Security Group ID of ECS.
   final pulumi.Input<String>? securityGroupId;
+
   /// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
   final pulumi.Input<List<String>>? securityIpLists;
+
   /// The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
   final pulumi.Input<List<ShardingInstanceShardList>> shardLists;
+
   /// The snapshot backup type. Default value: `Standard`. Valid values:
   /// - `Standard`: Standard backup.
   /// - `Flash `: Single-digit second backup.
   final pulumi.Input<String>? snapshotBackupType;
+
   /// The source instance ID.
   final pulumi.Input<String>? srcDbInstanceId;
   final pulumi.Input<String>? sslAction;
+
   /// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
   final pulumi.Input<String>? storageEngine;
+
   /// The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
   final pulumi.Input<String>? storageType;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
   final pulumi.Input<String>? tdeStatus;
-  /// The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+
+  /// The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
   final pulumi.Input<String>? vpcId;
+
   /// The virtual switch ID to launch DB instances in one VPC.
   final pulumi.Input<String>? vswitchId;
+
   /// The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
   /// If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
   final pulumi.Input<String>? zoneId;
@@ -168,7 +216,7 @@ class ShardingInstanceArgs {
   /// [storageType] The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `cloud_auto`, `local_ssd`. **NOTE:** From version 1.229.0, `storage_type` can be modified. However, `storage_type` can only be modified to `cloud_auto`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [tdeStatus] The TDE(Transparent Data Encryption) status. It can be updated from version 1.160.0.
-  /// [vpcId] The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
+  /// [vpcId] The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
   /// [vswitchId] The virtual switch ID to launch DB instances in one VPC.
   /// [zoneId] The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
   ShardingInstanceArgs({
@@ -232,10 +280,22 @@ class ShardingInstanceArgs {
       'backupInterval': ?backupInterval,
       'backupPeriods': ?backupPeriods,
       'backupRetentionPeriod': ?backupRetentionPeriod,
-      'backupRetentionPolicyOnClusterDeletion': ?backupRetentionPolicyOnClusterDeletion,
+      'backupRetentionPolicyOnClusterDeletion':
+          ?backupRetentionPolicyOnClusterDeletion,
       'backupTime': ?backupTime,
       'cloudDiskEncryptionKey': ?cloudDiskEncryptionKey,
-      'configServerLists': ?pulumi.Input.mapOptionalInputValue<List<ShardingInstanceConfigServerList>, List<Map<String, dynamic>>>(configServerLists, (value) => pulumi.Input.encodeList<ShardingInstanceConfigServerList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'configServerLists':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ShardingInstanceConfigServerList>,
+            List<Map<String, dynamic>>
+          >(
+            configServerLists,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ShardingInstanceConfigServerList,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'dbInstanceReleaseProtection': ?dbInstanceReleaseProtection,
       'enableBackupLog': ?enableBackupLog,
       'encrypted': ?encrypted,
@@ -251,11 +311,33 @@ class ShardingInstanceArgs {
       'logBackupRetentionPeriod': ?logBackupRetentionPeriod,
       'maintainEndTime': ?maintainEndTime,
       'maintainStartTime': ?maintainStartTime,
-      'mongoLists': pulumi.Input.mapInputValue<List<ShardingInstanceMongoList>, List<Map<String, dynamic>>>(mongoLists, (value) => pulumi.Input.encodeList<ShardingInstanceMongoList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'mongoLists':
+          pulumi.Input.mapInputValue<
+            List<ShardingInstanceMongoList>,
+            List<Map<String, dynamic>>
+          >(
+            mongoLists,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ShardingInstanceMongoList,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'networkType': ?networkType,
       'orderType': ?orderType,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<List<ShardingInstanceParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ShardingInstanceParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ShardingInstanceParameter>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ShardingInstanceParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'period': ?period,
       'protocolType': ?protocolType,
       'provisionedIops': ?provisionedIops,
@@ -265,7 +347,18 @@ class ShardingInstanceArgs {
       'secondaryZoneId': ?secondaryZoneId,
       'securityGroupId': ?securityGroupId,
       'securityIpLists': ?securityIpLists,
-      'shardLists': pulumi.Input.mapInputValue<List<ShardingInstanceShardList>, List<Map<String, dynamic>>>(shardLists, (value) => pulumi.Input.encodeList<ShardingInstanceShardList, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'shardLists':
+          pulumi.Input.mapInputValue<
+            List<ShardingInstanceShardList>,
+            List<Map<String, dynamic>>
+          >(
+            shardLists,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ShardingInstanceShardList,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'snapshotBackupType': ?snapshotBackupType,
       'srcDbInstanceId': ?srcDbInstanceId,
       'sslAction': ?sslAction,
@@ -281,57 +374,276 @@ class ShardingInstanceArgs {
 
   factory ShardingInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ShardingInstanceArgs(
-      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword']! as String).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
-      autoRenewDuration: map['autoRenewDuration'] == null ? null : (map['autoRenewDuration']! as int).input(),
-      backupInterval: map['backupInterval'] == null ? null : (map['backupInterval']! as String).input(),
-      backupPeriods: map['backupPeriods'] == null ? null : ((map['backupPeriods']! as List).cast<String>()).input(),
-      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod']! as int).input(),
-      backupRetentionPolicyOnClusterDeletion: map['backupRetentionPolicyOnClusterDeletion'] == null ? null : (map['backupRetentionPolicyOnClusterDeletion']! as int).input(),
-      backupTime: map['backupTime'] == null ? null : (map['backupTime']! as String).input(),
-      cloudDiskEncryptionKey: map['cloudDiskEncryptionKey'] == null ? null : (map['cloudDiskEncryptionKey']! as String).input(),
-      configServerLists: map['configServerLists'] == null ? null : (pulumi.Input.decodeList<ShardingInstanceConfigServerList>(map['configServerLists']!, (value) => ShardingInstanceConfigServerList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dbInstanceReleaseProtection: map['dbInstanceReleaseProtection'] == null ? null : (map['dbInstanceReleaseProtection']! as bool).input(),
-      enableBackupLog: map['enableBackupLog'] == null ? null : (map['enableBackupLog']! as int).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
-      encryptionKey: map['encryptionKey'] == null ? null : (map['encryptionKey']! as String).input(),
-      encryptorName: map['encryptorName'] == null ? null : (map['encryptorName']! as String).input(),
-      engineVersion: (map['engineVersion'] as String).input(),
-      forceEncryption: map['forceEncryption'] == null ? null : (map['forceEncryption']! as String).input(),
-      globalSecurityGroupLists: map['globalSecurityGroupLists'] == null ? null : ((map['globalSecurityGroupLists']! as List).cast<String>()).input(),
-      hiddenZoneId: map['hiddenZoneId'] == null ? null : (map['hiddenZoneId']! as String).input(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType']! as String).input(),
-      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : (map['kmsEncryptedPassword']! as String).input(),
-      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : ((map['kmsEncryptionContext']! as Map).cast<String, String>()).input(),
-      logBackupRetentionPeriod: map['logBackupRetentionPeriod'] == null ? null : (map['logBackupRetentionPeriod']! as int).input(),
-      maintainEndTime: map['maintainEndTime'] == null ? null : (map['maintainEndTime']! as String).input(),
-      maintainStartTime: map['maintainStartTime'] == null ? null : (map['maintainStartTime']! as String).input(),
-      mongoLists: (pulumi.Input.decodeList<ShardingInstanceMongoList>(map['mongoLists'], (value) => ShardingInstanceMongoList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
-      orderType: map['orderType'] == null ? null : (map['orderType']! as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ShardingInstanceParameter>(map['parameters']!, (value) => ShardingInstanceParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      period: map['period'] == null ? null : (map['period']! as int).input(),
-      protocolType: map['protocolType'] == null ? null : (map['protocolType']! as String).input(),
-      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops']! as int).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      restoreTime: map['restoreTime'] == null ? null : (map['restoreTime']! as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
-      secondaryZoneId: map['secondaryZoneId'] == null ? null : (map['secondaryZoneId']! as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
-      securityIpLists: map['securityIpLists'] == null ? null : ((map['securityIpLists']! as List).cast<String>()).input(),
-      shardLists: (pulumi.Input.decodeList<ShardingInstanceShardList>(map['shardLists'], (value) => ShardingInstanceShardList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      snapshotBackupType: map['snapshotBackupType'] == null ? null : (map['snapshotBackupType']! as String).input(),
-      srcDbInstanceId: map['srcDbInstanceId'] == null ? null : (map['srcDbInstanceId']! as String).input(),
-      sslAction: map['sslAction'] == null ? null : (map['sslAction']! as String).input(),
-      storageEngine: map['storageEngine'] == null ? null : (map['storageEngine']! as String).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      tdeStatus: map['tdeStatus'] == null ? null : (map['tdeStatus']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      accountPassword: (() {
+        final guardedValue = map['accountPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      autoRenew: (() {
+        final guardedValue = map['autoRenew'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      autoRenewDuration: (() {
+        final guardedValue = map['autoRenewDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      backupInterval: (() {
+        final guardedValue = map['backupInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupPeriods: (() {
+        final guardedValue = map['backupPeriods'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      backupRetentionPeriod: (() {
+        final guardedValue = map['backupRetentionPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      backupRetentionPolicyOnClusterDeletion: (() {
+        final guardedValue = map['backupRetentionPolicyOnClusterDeletion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      backupTime: (() {
+        final guardedValue = map['backupTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudDiskEncryptionKey: (() {
+        final guardedValue = map['cloudDiskEncryptionKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configServerLists: (() {
+        final guardedValue = map['configServerLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ShardingInstanceConfigServerList>(
+            guardedValue,
+            (value) => ShardingInstanceConfigServerList.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      dbInstanceReleaseProtection: (() {
+        final guardedValue = map['dbInstanceReleaseProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableBackupLog: (() {
+        final guardedValue = map['enableBackupLog'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encryptionKey: (() {
+        final guardedValue = map['encryptionKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptorName: (() {
+        final guardedValue = map['encryptorName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineVersion: pulumi.Input.fromValue(map['engineVersion'] as String),
+      forceEncryption: (() {
+        final guardedValue = map['forceEncryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      globalSecurityGroupLists: (() {
+        final guardedValue = map['globalSecurityGroupLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      hiddenZoneId: (() {
+        final guardedValue = map['hiddenZoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceChargeType: (() {
+        final guardedValue = map['instanceChargeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsEncryptedPassword: (() {
+        final guardedValue = map['kmsEncryptedPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsEncryptionContext: (() {
+        final guardedValue = map['kmsEncryptionContext'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      logBackupRetentionPeriod: (() {
+        final guardedValue = map['logBackupRetentionPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maintainEndTime: (() {
+        final guardedValue = map['maintainEndTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maintainStartTime: (() {
+        final guardedValue = map['maintainStartTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mongoLists: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ShardingInstanceMongoList>(
+          map['mongoLists']!,
+          (value) => ShardingInstanceMongoList.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkType: (() {
+        final guardedValue = map['networkType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orderType: (() {
+        final guardedValue = map['orderType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ShardingInstanceParameter>(
+            guardedValue,
+            (value) => ShardingInstanceParameter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      protocolType: (() {
+        final guardedValue = map['protocolType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisionedIops: (() {
+        final guardedValue = map['provisionedIops'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      restoreTime: (() {
+        final guardedValue = map['restoreTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secondaryZoneId: (() {
+        final guardedValue = map['secondaryZoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupId: (() {
+        final guardedValue = map['securityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityIpLists: (() {
+        final guardedValue = map['securityIpLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      shardLists: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ShardingInstanceShardList>(
+          map['shardLists']!,
+          (value) => ShardingInstanceShardList.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      snapshotBackupType: (() {
+        final guardedValue = map['snapshotBackupType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      srcDbInstanceId: (() {
+        final guardedValue = map['srcDbInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslAction: (() {
+        final guardedValue = map['sslAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageEngine: (() {
+        final guardedValue = map['storageEngine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageType: (() {
+        final guardedValue = map['storageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tdeStatus: (() {
+        final guardedValue = map['tdeStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

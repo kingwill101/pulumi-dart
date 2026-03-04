@@ -5,16 +5,15 @@ enum VolumeDefinitionType {
   valueTmpfs("tmpfs"),
   valueNpipe("npipe");
 
-  const VolumeDefinitionType(this.value);
-  final String value;
+  const VolumeDefinitionType(this.wireValue);
+  final String wireValue;
 
   static VolumeDefinitionType fromValue(String value) {
     for (final item in VolumeDefinitionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VolumeDefinitionType value: $value');
   }
 }
-

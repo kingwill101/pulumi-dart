@@ -1,5 +1,3 @@
-library module_firebaseml;
-
 export 'firebaseml/functions.dart';
 export 'firebaseml/get_model_args.dart';
 export 'firebaseml/get_model_result.dart';

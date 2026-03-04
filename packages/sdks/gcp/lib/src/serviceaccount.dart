@@ -1,5 +1,3 @@
-library module_serviceaccount;
-
 export 'serviceaccount/account.dart';
 export 'serviceaccount/account_args.dart';
 export 'serviceaccount/account_state.dart';

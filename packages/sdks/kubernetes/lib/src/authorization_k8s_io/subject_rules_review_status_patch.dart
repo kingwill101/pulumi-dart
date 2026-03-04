@@ -8,10 +8,13 @@ import 'resource_rule_patch.dart';
 class SubjectRulesReviewStatusPatch {
   /// EvaluationError can appear in combination with Rules. It indicates an error occurred during rule evaluation, such as an authorizer that doesn't support rule evaluation, and that ResourceRules and/or NonResourceRules may be incomplete.
   final pulumi.Input<String>? evaluationError;
+
   /// Incomplete is true when the rules returned by this call are incomplete. This is most commonly encountered when an authorizer, such as an external authorizer, doesn't support rules evaluation.
   final pulumi.Input<bool>? incomplete;
+
   /// NonResourceRules is the list of actions the subject is allowed to perform on non-resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.
   final pulumi.Input<List<NonResourceRulePatch>>? nonResourceRules;
+
   /// ResourceRules is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.
   final pulumi.Input<List<ResourceRulePatch>>? resourceRules;
 
@@ -31,18 +34,69 @@ class SubjectRulesReviewStatusPatch {
     return <String, dynamic>{
       'evaluationError': ?evaluationError,
       'incomplete': ?incomplete,
-      'nonResourceRules': ?pulumi.Input.mapOptionalInputValue<List<NonResourceRulePatch>, List<Map<String, dynamic>>>(nonResourceRules, (value) => pulumi.Input.encodeList<NonResourceRulePatch, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'resourceRules': ?pulumi.Input.mapOptionalInputValue<List<ResourceRulePatch>, List<Map<String, dynamic>>>(resourceRules, (value) => pulumi.Input.encodeList<ResourceRulePatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nonResourceRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NonResourceRulePatch>,
+            List<Map<String, dynamic>>
+          >(
+            nonResourceRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NonResourceRulePatch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'resourceRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceRulePatch>,
+            List<Map<String, dynamic>>
+          >(
+            resourceRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceRulePatch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory SubjectRulesReviewStatusPatch.fromMap(Map<String, dynamic> map) {
     return SubjectRulesReviewStatusPatch(
-      evaluationError: map['evaluationError'] == null ? null : (map['evaluationError']! as String).input(),
-      incomplete: map['incomplete'] == null ? null : (map['incomplete']! as bool).input(),
-      nonResourceRules: map['nonResourceRules'] == null ? null : (pulumi.Input.decodeList<NonResourceRulePatch>(map['nonResourceRules']!, (value) => NonResourceRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<ResourceRulePatch>(map['resourceRules']!, (value) => ResourceRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      evaluationError: (() {
+        final guardedValue = map['evaluationError'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      incomplete: (() {
+        final guardedValue = map['incomplete'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      nonResourceRules: (() {
+        final guardedValue = map['nonResourceRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NonResourceRulePatch>(
+            guardedValue,
+            (value) => NonResourceRulePatch.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      resourceRules: (() {
+        final guardedValue = map['resourceRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceRulePatch>(
+            guardedValue,
+            (value) => ResourceRulePatch.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

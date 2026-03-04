@@ -4,16 +4,15 @@ enum VersionServingStatus {
   serving("SERVING"),
   stopped("STOPPED");
 
-  const VersionServingStatus(this.value);
-  final String value;
+  const VersionServingStatus(this.wireValue);
+  final String wireValue;
 
   static VersionServingStatus fromValue(String value) {
     for (final item in VersionServingStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VersionServingStatus value: $value');
   }
 }
-

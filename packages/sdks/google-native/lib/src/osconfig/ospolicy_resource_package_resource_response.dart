@@ -13,18 +13,25 @@ import 'ospolicy_resource_package_resource_zypper_response.dart';
 class OSPolicyResourcePackageResourceResponse {
   /// A package managed by Apt.
   final pulumi.Input<OSPolicyResourcePackageResourceAPTResponse> apt;
+
   /// A deb package file.
   final pulumi.Input<OSPolicyResourcePackageResourceDebResponse> deb;
+
   /// The desired state the agent should maintain for this package.
   final pulumi.Input<String> desiredState;
+
   /// A package managed by GooGet.
   final pulumi.Input<OSPolicyResourcePackageResourceGooGetResponse> googet;
+
   /// An MSI package.
   final pulumi.Input<OSPolicyResourcePackageResourceMSIResponse> msi;
+
   /// An rpm package file.
   final pulumi.Input<OSPolicyResourcePackageResourceRPMResponse> rpm;
+
   /// A package managed by YUM.
   final pulumi.Input<OSPolicyResourcePackageResourceYUMResponse> yum;
+
   /// A package managed by Zypper.
   final pulumi.Input<OSPolicyResourcePackageResourceZypperResponse> zypper;
 
@@ -50,28 +57,85 @@ class OSPolicyResourcePackageResourceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apt': pulumi.Input.mapInputValue<OSPolicyResourcePackageResourceAPTResponse, Map<String, dynamic>>(apt, (value) => value.toMap()),
-      'deb': pulumi.Input.mapInputValue<OSPolicyResourcePackageResourceDebResponse, Map<String, dynamic>>(deb, (value) => value.toMap()),
+      'apt':
+          pulumi.Input.mapInputValue<
+            OSPolicyResourcePackageResourceAPTResponse,
+            Map<String, dynamic>
+          >(apt, (value) => value.toMap()),
+      'deb':
+          pulumi.Input.mapInputValue<
+            OSPolicyResourcePackageResourceDebResponse,
+            Map<String, dynamic>
+          >(deb, (value) => value.toMap()),
       'desiredState': desiredState,
-      'googet': pulumi.Input.mapInputValue<OSPolicyResourcePackageResourceGooGetResponse, Map<String, dynamic>>(googet, (value) => value.toMap()),
-      'msi': pulumi.Input.mapInputValue<OSPolicyResourcePackageResourceMSIResponse, Map<String, dynamic>>(msi, (value) => value.toMap()),
-      'rpm': pulumi.Input.mapInputValue<OSPolicyResourcePackageResourceRPMResponse, Map<String, dynamic>>(rpm, (value) => value.toMap()),
-      'yum': pulumi.Input.mapInputValue<OSPolicyResourcePackageResourceYUMResponse, Map<String, dynamic>>(yum, (value) => value.toMap()),
-      'zypper': pulumi.Input.mapInputValue<OSPolicyResourcePackageResourceZypperResponse, Map<String, dynamic>>(zypper, (value) => value.toMap()),
+      'googet':
+          pulumi.Input.mapInputValue<
+            OSPolicyResourcePackageResourceGooGetResponse,
+            Map<String, dynamic>
+          >(googet, (value) => value.toMap()),
+      'msi':
+          pulumi.Input.mapInputValue<
+            OSPolicyResourcePackageResourceMSIResponse,
+            Map<String, dynamic>
+          >(msi, (value) => value.toMap()),
+      'rpm':
+          pulumi.Input.mapInputValue<
+            OSPolicyResourcePackageResourceRPMResponse,
+            Map<String, dynamic>
+          >(rpm, (value) => value.toMap()),
+      'yum':
+          pulumi.Input.mapInputValue<
+            OSPolicyResourcePackageResourceYUMResponse,
+            Map<String, dynamic>
+          >(yum, (value) => value.toMap()),
+      'zypper':
+          pulumi.Input.mapInputValue<
+            OSPolicyResourcePackageResourceZypperResponse,
+            Map<String, dynamic>
+          >(zypper, (value) => value.toMap()),
     };
   }
 
-  factory OSPolicyResourcePackageResourceResponse.fromMap(Map<String, dynamic> map) {
+  factory OSPolicyResourcePackageResourceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OSPolicyResourcePackageResourceResponse(
-      apt: (OSPolicyResourcePackageResourceAPTResponse.fromMap((map['apt'] as Map).cast<String, dynamic>())).input(),
-      deb: (OSPolicyResourcePackageResourceDebResponse.fromMap((map['deb'] as Map).cast<String, dynamic>())).input(),
-      desiredState: (map['desiredState'] as String).input(),
-      googet: (OSPolicyResourcePackageResourceGooGetResponse.fromMap((map['googet'] as Map).cast<String, dynamic>())).input(),
-      msi: (OSPolicyResourcePackageResourceMSIResponse.fromMap((map['msi'] as Map).cast<String, dynamic>())).input(),
-      rpm: (OSPolicyResourcePackageResourceRPMResponse.fromMap((map['rpm'] as Map).cast<String, dynamic>())).input(),
-      yum: (OSPolicyResourcePackageResourceYUMResponse.fromMap((map['yum'] as Map).cast<String, dynamic>())).input(),
-      zypper: (OSPolicyResourcePackageResourceZypperResponse.fromMap((map['zypper'] as Map).cast<String, dynamic>())).input(),
+      apt: pulumi.Input.fromValue(
+        OSPolicyResourcePackageResourceAPTResponse.fromMap(
+          (map['apt']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      deb: pulumi.Input.fromValue(
+        OSPolicyResourcePackageResourceDebResponse.fromMap(
+          (map['deb']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      desiredState: pulumi.Input.fromValue(map['desiredState'] as String),
+      googet: pulumi.Input.fromValue(
+        OSPolicyResourcePackageResourceGooGetResponse.fromMap(
+          (map['googet']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      msi: pulumi.Input.fromValue(
+        OSPolicyResourcePackageResourceMSIResponse.fromMap(
+          (map['msi']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      rpm: pulumi.Input.fromValue(
+        OSPolicyResourcePackageResourceRPMResponse.fromMap(
+          (map['rpm']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      yum: pulumi.Input.fromValue(
+        OSPolicyResourcePackageResourceYUMResponse.fromMap(
+          (map['yum']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      zypper: pulumi.Input.fromValue(
+        OSPolicyResourcePackageResourceZypperResponse.fromMap(
+          (map['zypper']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

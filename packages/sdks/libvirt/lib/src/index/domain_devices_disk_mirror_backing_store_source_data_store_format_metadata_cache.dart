@@ -5,7 +5,10 @@ import 'domain_devices_disk_mirror_backing_store_source_data_store_format_metada
 
 class DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCache {
   /// Sets the maximum size for the metadata cache in the data store format configuration.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheMaxSize>? maxSize;
+  final pulumi.Input<
+    DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheMaxSize
+  >?
+  maxSize;
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCache].
   /// [maxSize] Sets the maximum size for the metadata cache in the data store format configuration.
@@ -15,14 +18,27 @@ class DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCache {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxSize': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheMaxSize, Map<String, dynamic>>(maxSize, (value) => value.toMap()),
+      'maxSize':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheMaxSize,
+            Map<String, dynamic>
+          >(maxSize, (value) => value.toMap()),
     };
   }
 
-  factory DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCache.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCache.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCache(
-      maxSize: map['maxSize'] == null ? null : (DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheMaxSize.fromMap((map['maxSize']! as Map).cast<String, dynamic>())).input(),
+      maxSize: (() {
+        final guardedValue = map['maxSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheMaxSize.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -7,6 +7,7 @@ class PipelineDestinationAuthenticationConfigGoogleOidc {
   /// identifies the recipient that the JWT is intended for. If
   /// unspecified, the destination URI will be used.
   final pulumi.Input<String>? audience;
+
   /// Service account email used to generate the OIDC Token.
   /// The principal who calls this API must have
   /// iam.serviceAccounts.actAs permission in the service account. See
@@ -31,11 +32,16 @@ class PipelineDestinationAuthenticationConfigGoogleOidc {
     };
   }
 
-  factory PipelineDestinationAuthenticationConfigGoogleOidc.fromMap(Map<String, dynamic> map) {
+  factory PipelineDestinationAuthenticationConfigGoogleOidc.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipelineDestinationAuthenticationConfigGoogleOidc(
-      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
-      serviceAccount: (map['serviceAccount'] as String).input(),
+      audience: (() {
+        final guardedValue = map['audience'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
     );
   }
 }
-

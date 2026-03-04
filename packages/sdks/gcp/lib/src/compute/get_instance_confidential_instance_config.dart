@@ -8,6 +8,7 @@ class GetInstanceConfidentialInstanceConfig {
   /// values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
   /// "AMD Milan" is currently required.
   final pulumi.Input<String> confidentialInstanceType;
+
   /// Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
   final pulumi.Input<bool> enableConfidentialCompute;
 
@@ -26,11 +27,16 @@ class GetInstanceConfidentialInstanceConfig {
     };
   }
 
-  factory GetInstanceConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceConfidentialInstanceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceConfidentialInstanceConfig(
-      confidentialInstanceType: (map['confidentialInstanceType'] as String).input(),
-      enableConfidentialCompute: (map['enableConfidentialCompute'] as bool).input(),
+      confidentialInstanceType: pulumi.Input.fromValue(
+        map['confidentialInstanceType'] as String,
+      ),
+      enableConfidentialCompute: pulumi.Input.fromValue(
+        map['enableConfidentialCompute'] as bool,
+      ),
     );
   }
 }
-

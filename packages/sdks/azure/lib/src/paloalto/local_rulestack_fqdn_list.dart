@@ -187,7 +187,7 @@ import 'local_rulestack_fqdn_list_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `PaloAltoNetworks.Cloudngfw` - 2022-08-29
@@ -202,12 +202,16 @@ import 'local_rulestack_fqdn_list_state.dart';
 class LocalRulestackFqdnList extends pulumi.CustomResource {
   /// The comment for Audit purposes.
   late final pulumi.Output<String?> auditComment;
+
   /// The description for the FQDN List.
   late final pulumi.Output<String?> description;
+
   /// Specifies a list of Fully Qualified Domain Names.
   late final pulumi.Output<List<String>> fullyQualifiedDomainNames;
+
   /// The name which should be used for this Palo Alto Local Rulestack FQDN List.
   late final pulumi.Output<String> name;
+
   /// The ID of the TODO. Changing this forces a new Palo Alto Local Rulestack FQDN List to be created.
   late final pulumi.Output<String> rulestackId;
 
@@ -220,16 +224,18 @@ class LocalRulestackFqdnList extends pulumi.CustomResource {
     LocalRulestackFqdnListArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:paloalto/localRulestackFqdnList:LocalRulestackFqdnList',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditComment = registerOutput<String?>('auditComment');
-    this.description = registerOutput<String?>('description');
-    this.fullyQualifiedDomainNames = registerOutput<List<String>>('fullyQualifiedDomainNames');
+         'azure:paloalto/localRulestackFqdnList:LocalRulestackFqdnList',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditComment = registerOutput<String?>('auditComment');
+    description = registerOutput<String?>('description');
+    fullyQualifiedDomainNames = registerOutput<List<String>>(
+      'fullyQualifiedDomainNames',
+    );
     this.name = registerOutput<String>('name');
-    this.rulestackId = registerOutput<String>('rulestackId');
+    rulestackId = registerOutput<String>('rulestackId');
   }
 
   /// Gets an existing [LocalRulestackFqdnList] resource's state with the given [name] and [id].
@@ -250,15 +256,17 @@ class LocalRulestackFqdnList extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:paloalto/localRulestackFqdnList:LocalRulestackFqdnList',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditComment = registerOutput<String?>('auditComment');
-    this.description = registerOutput<String?>('description');
-    this.fullyQualifiedDomainNames = registerOutput<List<String>>('fullyQualifiedDomainNames');
+         'azure:paloalto/localRulestackFqdnList:LocalRulestackFqdnList',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditComment = registerOutput<String?>('auditComment');
+    description = registerOutput<String?>('description');
+    fullyQualifiedDomainNames = registerOutput<List<String>>(
+      'fullyQualifiedDomainNames',
+    );
     this.name = registerOutput<String>('name');
-    this.rulestackId = registerOutput<String>('rulestackId');
+    rulestackId = registerOutput<String>('rulestackId');
   }
 }

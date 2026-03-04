@@ -30,12 +30,23 @@ class ListGlobalRulestackPredefinedUrlCategoriesArgs {
     };
   }
 
-  factory ListGlobalRulestackPredefinedUrlCategoriesArgs.fromMap(Map<String, dynamic> map) {
+  factory ListGlobalRulestackPredefinedUrlCategoriesArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListGlobalRulestackPredefinedUrlCategoriesArgs(
-      globalRulestackName: (map['globalRulestackName'] as String).input(),
-      skip: map['skip'] == null ? null : (map['skip']! as String).input(),
-      top: map['top'] == null ? null : (map['top']! as int).input(),
+      globalRulestackName: pulumi.Input.fromValue(
+        map['globalRulestackName'] as String,
+      ),
+      skip: (() {
+        final guardedValue = map['skip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      top: (() {
+        final guardedValue = map['top'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

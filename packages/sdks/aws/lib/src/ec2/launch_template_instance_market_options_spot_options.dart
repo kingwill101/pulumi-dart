@@ -5,13 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LaunchTemplateInstanceMarketOptionsSpotOptions {
   /// The required duration in minutes. This value must be a multiple of 60.
   final pulumi.Input<int>? blockDurationMinutes;
+
   /// The behavior when a Spot Instance is interrupted. Can be `hibernate`,
   /// `stop`, or `terminate`. (Default: `terminate`).
   final pulumi.Input<String>? instanceInterruptionBehavior;
+
   /// The maximum hourly price you're willing to pay for the Spot Instances.
   final pulumi.Input<String>? maxPrice;
+
   /// The Spot Instance request type. Can be `one-time`, or `persistent`.
   final pulumi.Input<String>? spotInstanceType;
+
   /// The end date of the request.
   final pulumi.Input<String>? validUntil;
 
@@ -39,14 +43,35 @@ class LaunchTemplateInstanceMarketOptionsSpotOptions {
     };
   }
 
-  factory LaunchTemplateInstanceMarketOptionsSpotOptions.fromMap(Map<String, dynamic> map) {
+  factory LaunchTemplateInstanceMarketOptionsSpotOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LaunchTemplateInstanceMarketOptionsSpotOptions(
-      blockDurationMinutes: map['blockDurationMinutes'] == null ? null : ((map['blockDurationMinutes'] as int).input()).input(),
-      instanceInterruptionBehavior: map['instanceInterruptionBehavior'] == null ? null : ((map['instanceInterruptionBehavior'] as String).input()).input(),
-      maxPrice: map['maxPrice'] == null ? null : ((map['maxPrice'] as String).input()).input(),
-      spotInstanceType: map['spotInstanceType'] == null ? null : ((map['spotInstanceType'] as String).input()).input(),
-      validUntil: map['validUntil'] == null ? null : ((map['validUntil'] as String).input()).input(),
+      blockDurationMinutes: (() {
+        final guardedValue = map['blockDurationMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceInterruptionBehavior: (() {
+        final guardedValue = map['instanceInterruptionBehavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxPrice: (() {
+        final guardedValue = map['maxPrice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      spotInstanceType: (() {
+        final guardedValue = map['spotInstanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      validUntil: (() {
+        final guardedValue = map['validUntil'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

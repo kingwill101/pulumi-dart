@@ -4,16 +4,15 @@ enum DataStoreSolutionTypesItem {
   solutionTypeSearch("SOLUTION_TYPE_SEARCH"),
   solutionTypeChat("SOLUTION_TYPE_CHAT");
 
-  const DataStoreSolutionTypesItem(this.value);
-  final String value;
+  const DataStoreSolutionTypesItem(this.wireValue);
+  final String wireValue;
 
   static DataStoreSolutionTypesItem fromValue(String value) {
     for (final item in DataStoreSolutionTypesItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataStoreSolutionTypesItem value: $value');
   }
 }
-

@@ -4,16 +4,15 @@ enum FtpsState {
   valueFtpsOnly("FtpsOnly"),
   valueDisabled("Disabled");
 
-  const FtpsState(this.value);
-  final String value;
+  const FtpsState(this.wireValue);
+  final String wireValue;
 
   static FtpsState fromValue(String value) {
     for (final item in FtpsState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FtpsState value: $value');
   }
 }
-

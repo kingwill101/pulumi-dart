@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceSqlAadAdminArgs {
   /// The login name of the Azure AD SQL Administrator of this Synapse Workspace.
   final pulumi.Input<String> login;
+
   /// The object id of the Azure AD SQL Administrator of this Synapse Workspace.
   final pulumi.Input<String> objectId;
+
   /// The ID of the Synapse Workspace where the Azure AD SQL Administrator should be configured.
   final pulumi.Input<String> synapseWorkspaceId;
+
   /// The tenant id of the Azure AD SQL Administrator of this Synapse Workspace.
   final pulumi.Input<String> tenantId;
 
@@ -39,11 +42,12 @@ class WorkspaceSqlAadAdminArgs {
 
   factory WorkspaceSqlAadAdminArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceSqlAadAdminArgs(
-      login: (map['login'] as String).input(),
-      objectId: (map['objectId'] as String).input(),
-      synapseWorkspaceId: (map['synapseWorkspaceId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      login: pulumi.Input.fromValue(map['login'] as String),
+      objectId: pulumi.Input.fromValue(map['objectId'] as String),
+      synapseWorkspaceId: pulumi.Input.fromValue(
+        map['synapseWorkspaceId'] as String,
+      ),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

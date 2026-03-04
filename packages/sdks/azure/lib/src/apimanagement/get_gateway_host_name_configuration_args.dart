@@ -9,9 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayHostNameConfigurationArgs {
   /// The ID of the API Management Service.
   final pulumi.Input<String> apiManagementId;
+
   /// The name of the API Management Gateway.
   /// *
   final pulumi.Input<String> gatewayName;
+
   /// The name of the API Management Gateway Host Name Configuration.
   final pulumi.Input<String> name;
 
@@ -33,12 +35,13 @@ class GetGatewayHostNameConfigurationArgs {
     };
   }
 
-  factory GetGatewayHostNameConfigurationArgs.fromMap(Map<String, dynamic> map) {
+  factory GetGatewayHostNameConfigurationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGatewayHostNameConfigurationArgs(
-      apiManagementId: (map['apiManagementId'] as String).input(),
-      gatewayName: (map['gatewayName'] as String).input(),
-      name: (map['name'] as String).input(),
+      apiManagementId: pulumi.Input.fromValue(map['apiManagementId'] as String),
+      gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

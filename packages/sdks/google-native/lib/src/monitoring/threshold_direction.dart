@@ -4,16 +4,15 @@ enum ThresholdDirection {
   above("ABOVE"),
   below("BELOW");
 
-  const ThresholdDirection(this.value);
-  final String value;
+  const ThresholdDirection(this.wireValue);
+  final String wireValue;
 
   static ThresholdDirection fromValue(String value) {
     for (final item in ThresholdDirection.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ThresholdDirection value: $value');
   }
 }
-

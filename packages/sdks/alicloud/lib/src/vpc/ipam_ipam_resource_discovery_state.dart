@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IpamIpamResourceDiscoveryState {
   /// The time when the resource discovery was created.
   final pulumi.Input<String>? createTime;
+
   /// The description of resource discovery.
   final pulumi.Input<String>? ipamResourceDiscoveryDescription;
+
   /// The name of the resource
   final pulumi.Input<String>? ipamResourceDiscoveryName;
+
   /// The list of operating regions for resource discovery.
   final pulumi.Input<List<String>>? operatingRegionLists;
+
   /// The region ID of the resource
   final pulumi.Input<String>? regionId;
+
   /// The ID of the resource group
   final pulumi.Input<String>? resourceGroupId;
+
   /// The status of the resource discovery instance. Value:
   final pulumi.Input<String>? status;
+
   /// Label list information.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -56,15 +63,48 @@ class IpamIpamResourceDiscoveryState {
 
   factory IpamIpamResourceDiscoveryState.fromMap(Map<String, dynamic> map) {
     return IpamIpamResourceDiscoveryState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      ipamResourceDiscoveryDescription: map['ipamResourceDiscoveryDescription'] == null ? null : (map['ipamResourceDiscoveryDescription']! as String).input(),
-      ipamResourceDiscoveryName: map['ipamResourceDiscoveryName'] == null ? null : (map['ipamResourceDiscoveryName']! as String).input(),
-      operatingRegionLists: map['operatingRegionLists'] == null ? null : ((map['operatingRegionLists']! as List).cast<String>()).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamResourceDiscoveryDescription: (() {
+        final guardedValue = map['ipamResourceDiscoveryDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipamResourceDiscoveryName: (() {
+        final guardedValue = map['ipamResourceDiscoveryName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operatingRegionLists: (() {
+        final guardedValue = map['operatingRegionLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

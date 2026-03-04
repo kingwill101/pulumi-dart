@@ -1,15 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'anycast_eip_address_attachment_args.dart';
-import 'anycast_eip_address_attachment_pop_location.dart';
 import 'anycast_eip_address_attachment_state.dart';
 
 /// Provides a Eipanycast Anycast Eip Address Attachment resource.
 ///
 /// For information about Eipanycast Anycast Eip Address Attachment and how to use it, see [What is Anycast Eip Address Attachment](https://www.alibabacloud.com/help/en/anycast-eip/latest/api-eipanycast-2020-03-09-associateanycasteipaddress).
 ///
-/// > **NOTE:** Available since v1.113.0.
+/// &gt; **NOTE:** Available since v1.113.0.
 ///
-/// > **NOTE:** The following regions support currently while Slb instance support bound.
+/// &gt; **NOTE:** The following regions support currently while Slb instance support bound.
 /// [eu-west-1-gb33-a01,cn-hongkong-am4-c04,ap-southeast-os30-a01,us-west-ot7-a01,ap-south-in73-a01,ap-southeast-my88-a01]
 ///
 /// ## Example Usage
@@ -364,7 +363,7 @@ import 'anycast_eip_address_attachment_state.dart';
 ///
 /// Multiple Usage
 ///
-/// > **NOTE:**  Anycast EIP supports binding cloud resource instances in multiple regions. Only one cloud resource instance is supported as the default origin station, and the rest are normal origin stations. When no access point is specified or an access point is added, the access request is forwarded to the default origin by default.  If you are bound for the first time, the Default value of the binding mode is **Default * *. /li> li> If you are not binding for the first time, you can set the binding mode to **Default**, and the new Default origin will take effect. The original Default origin will be changed to a common origin.
+/// &gt; **NOTE:**  Anycast EIP supports binding cloud resource instances in multiple regions. Only one cloud resource instance is supported as the default origin station, and the rest are normal origin stations. When no access point is specified or an access point is added, the access request is forwarded to the default origin by default.  If you are bound for the first time, the Default value of the binding mode is **Default * *. /li&gt; li&gt; If you are not binding for the first time, you can set the binding mode to **Default**, and the new Default origin will take effect. The original Default origin will be changed to a common origin.
 ///
 ///
 ///
@@ -1117,24 +1116,32 @@ import 'anycast_eip_address_attachment_state.dart';
 class AnycastEipAddressAttachment extends pulumi.CustomResource {
   /// The ID of the Anycast EIP instance.
   late final pulumi.Output<String> anycastId;
+
   /// Binding mode, value:
   /// - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
   /// - **Normal**: In Normal mode, the cloud resource instance to be bound is set to the common source station.
   late final pulumi.Output<String> associationMode;
+
   /// The ID of the cloud resource instance to be bound.
   late final pulumi.Output<String> bindInstanceId;
+
   /// The region ID of the cloud resource instance to be bound.You can only bind cloud resource instances in some regions. You can call the describeanystserverregions operation to obtain the region ID of the cloud resource instances that can be bound.
   late final pulumi.Output<String> bindInstanceRegionId;
+
   /// The type of the cloud resource instance to be bound. Value:
   /// - **SlbInstance**: a private network SLB instance.
   /// - **NetworkInterface**: ENI.
   late final pulumi.Output<String> bindInstanceType;
+
   /// Binding time.Time is expressed according to ISO8601 standard and UTC time is used. The format is: 'YYYY-MM-DDThh:mm:ssZ'.
   late final pulumi.Output<String> bindTime;
+
   /// The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
-  late final pulumi.Output<List<AnycastEipAddressAttachmentPopLocation>?> popLocations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> popLocations;
+
   /// The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
   late final pulumi.Output<String?> privateIpAddress;
+
   /// The status of the bound cloud resource instance. Value:BINDING: BINDING.Bound: Bound.UNBINDING: UNBINDING.DELETED: DELETED.MODIFYING: being modified.
   late final pulumi.Output<String> status;
 
@@ -1147,20 +1154,20 @@ class AnycastEipAddressAttachment extends pulumi.CustomResource {
     AnycastEipAddressAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.anycastId = registerOutput<String>('anycastId');
-    this.associationMode = registerOutput<String>('associationMode');
-    this.bindInstanceId = registerOutput<String>('bindInstanceId');
-    this.bindInstanceRegionId = registerOutput<String>('bindInstanceRegionId');
-    this.bindInstanceType = registerOutput<String>('bindInstanceType');
-    this.bindTime = registerOutput<String>('bindTime');
-    this.popLocations = registerOutput<List<AnycastEipAddressAttachmentPopLocation>?>('popLocations');
-    this.privateIpAddress = registerOutput<String?>('privateIpAddress');
-    this.status = registerOutput<String>('status');
+         'alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    anycastId = registerOutput<String>('anycastId');
+    associationMode = registerOutput<String>('associationMode');
+    bindInstanceId = registerOutput<String>('bindInstanceId');
+    bindInstanceRegionId = registerOutput<String>('bindInstanceRegionId');
+    bindInstanceType = registerOutput<String>('bindInstanceType');
+    bindTime = registerOutput<String>('bindTime');
+    popLocations = registerOutput<List<Map<String, dynamic>>?>('popLocations');
+    privateIpAddress = registerOutput<String?>('privateIpAddress');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [AnycastEipAddressAttachment] resource's state with the given [name] and [id].
@@ -1181,19 +1188,19 @@ class AnycastEipAddressAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.anycastId = registerOutput<String>('anycastId');
-    this.associationMode = registerOutput<String>('associationMode');
-    this.bindInstanceId = registerOutput<String>('bindInstanceId');
-    this.bindInstanceRegionId = registerOutput<String>('bindInstanceRegionId');
-    this.bindInstanceType = registerOutput<String>('bindInstanceType');
-    this.bindTime = registerOutput<String>('bindTime');
-    this.popLocations = registerOutput<List<AnycastEipAddressAttachmentPopLocation>?>('popLocations');
-    this.privateIpAddress = registerOutput<String?>('privateIpAddress');
-    this.status = registerOutput<String>('status');
+         'alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    anycastId = registerOutput<String>('anycastId');
+    associationMode = registerOutput<String>('associationMode');
+    bindInstanceId = registerOutput<String>('bindInstanceId');
+    bindInstanceRegionId = registerOutput<String>('bindInstanceRegionId');
+    bindInstanceType = registerOutput<String>('bindInstanceType');
+    bindTime = registerOutput<String>('bindTime');
+    popLocations = registerOutput<List<Map<String, dynamic>>?>('popLocations');
+    privateIpAddress = registerOutput<String?>('privateIpAddress');
+    status = registerOutput<String>('status');
   }
 }

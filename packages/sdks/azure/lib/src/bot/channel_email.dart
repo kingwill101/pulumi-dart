@@ -4,7 +4,7 @@ import 'channel_email_state.dart';
 
 /// Manages a Email integration for a Bot Channel
 ///
-/// > **Note:** A bot can only have a single Email Channel associated with it.
+/// &gt; **Note:** A bot can only have a single Email Channel associated with it.
 ///
 /// ## Example Usage
 ///
@@ -223,7 +223,7 @@ import 'channel_email_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.BotService` - 2022-09-15
@@ -238,14 +238,19 @@ import 'channel_email_state.dart';
 class ChannelEmail extends pulumi.CustomResource {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   late final pulumi.Output<String> botName;
+
   /// The email address that the Bot will authenticate with.
   late final pulumi.Output<String> emailAddress;
+
   /// The email password that the Bot will authenticate with.
   late final pulumi.Output<String?> emailPassword;
+
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The magic code used to set up OAUTH authentication.
   late final pulumi.Output<String?> magicCode;
+
   /// The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -258,17 +263,17 @@ class ChannelEmail extends pulumi.CustomResource {
     ChannelEmailArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:bot/channelEmail:ChannelEmail',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botName = registerOutput<String>('botName');
-    this.emailAddress = registerOutput<String>('emailAddress');
-    this.emailPassword = registerOutput<String?>('emailPassword');
-    this.location = registerOutput<String>('location');
-    this.magicCode = registerOutput<String?>('magicCode');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+         'azure:bot/channelEmail:ChannelEmail',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botName = registerOutput<String>('botName');
+    emailAddress = registerOutput<String>('emailAddress');
+    emailPassword = registerOutput<String?>('emailPassword');
+    location = registerOutput<String>('location');
+    magicCode = registerOutput<String?>('magicCode');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [ChannelEmail] resource's state with the given [name] and [id].
@@ -289,16 +294,16 @@ class ChannelEmail extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:bot/channelEmail:ChannelEmail',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botName = registerOutput<String>('botName');
-    this.emailAddress = registerOutput<String>('emailAddress');
-    this.emailPassword = registerOutput<String?>('emailPassword');
-    this.location = registerOutput<String>('location');
-    this.magicCode = registerOutput<String?>('magicCode');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+         'azure:bot/channelEmail:ChannelEmail',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botName = registerOutput<String>('botName');
+    emailAddress = registerOutput<String>('emailAddress');
+    emailPassword = registerOutput<String?>('emailPassword');
+    location = registerOutput<String>('location');
+    magicCode = registerOutput<String?>('magicCode');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

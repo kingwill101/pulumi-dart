@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressRouteCircuitPeeringIpv6MicrosoftPeering {
   /// The communities of Bgp Peering specified for microsoft peering.
   final pulumi.Input<List<String>>? advertisedCommunities;
+
   /// A list of Advertised Public Prefixes.
   final pulumi.Input<List<String>>? advertisedPublicPrefixes;
+
   /// The CustomerASN of the peering. Defaults to `0`.
   final pulumi.Input<int>? customerAsn;
+
   /// The Routing Registry against which the AS number and prefixes are registered. For example: `ARIN`, `RIPE`, `AFRINIC` etc. Defaults to `NONE`.
   final pulumi.Input<String>? routingRegistryName;
 
@@ -33,13 +36,30 @@ class ExpressRouteCircuitPeeringIpv6MicrosoftPeering {
     };
   }
 
-  factory ExpressRouteCircuitPeeringIpv6MicrosoftPeering.fromMap(Map<String, dynamic> map) {
+  factory ExpressRouteCircuitPeeringIpv6MicrosoftPeering.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExpressRouteCircuitPeeringIpv6MicrosoftPeering(
-      advertisedCommunities: map['advertisedCommunities'] == null ? null : ((map['advertisedCommunities']! as List).cast<String>()).input(),
-      advertisedPublicPrefixes: map['advertisedPublicPrefixes'] == null ? null : ((map['advertisedPublicPrefixes']! as List).cast<String>()).input(),
-      customerAsn: map['customerAsn'] == null ? null : (map['customerAsn']! as int).input(),
-      routingRegistryName: map['routingRegistryName'] == null ? null : (map['routingRegistryName']! as String).input(),
+      advertisedCommunities: (() {
+        final guardedValue = map['advertisedCommunities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      advertisedPublicPrefixes: (() {
+        final guardedValue = map['advertisedPublicPrefixes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      customerAsn: (() {
+        final guardedValue = map['customerAsn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      routingRegistryName: (() {
+        final guardedValue = map['routingRegistryName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

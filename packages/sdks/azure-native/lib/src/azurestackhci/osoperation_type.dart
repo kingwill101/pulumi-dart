@@ -4,16 +4,15 @@ enum OSOperationType {
   update("Update"),
   reImage("ReImage");
 
-  const OSOperationType(this.value);
-  final String value;
+  const OSOperationType(this.wireValue);
+  final String wireValue;
 
   static OSOperationType fromValue(String value) {
     for (final item in OSOperationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OSOperationType value: $value');
   }
 }
-

@@ -6,16 +6,22 @@ enum GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType {
   encryptionKeysProject("ENCRYPTION_KEYS_PROJECT"),
   keyring("KEYRING");
 
-  const GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType(this.value);
-  final String value;
+  const GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType fromValue(String value) {
-    for (final item in GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType.values) {
-      if (item.value == value) {
+  static GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType value: $value',
+    );
   }
 }
-

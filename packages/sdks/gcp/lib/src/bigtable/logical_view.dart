@@ -305,15 +305,20 @@ import 'logical_view_state.dart';
 class LogicalView extends pulumi.CustomResource {
   /// Set to true to make the logical view protected against deletion.
   late final pulumi.Output<bool?> deletionProtection;
+
   /// The name of the instance to create the logical view within.
   late final pulumi.Output<String?> instance;
+
   /// The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
   late final pulumi.Output<String> logicalViewId;
-  /// The unique name of the requested logical view. Values are of the form `projects/<project>/instances/<instance>/logicalViews/<logicalViewId>`.
+
+  /// The unique name of the requested logical view. Values are of the form `projects/&lt;project&gt;/instances/&lt;instance&gt;/logicalViews/&lt;logicalViewId&gt;`.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The logical view's select query.
   late final pulumi.Output<String> query;
 
@@ -326,17 +331,17 @@ class LogicalView extends pulumi.CustomResource {
     LogicalViewArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:bigtable/logicalView:LogicalView',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deletionProtection = registerOutput<bool?>('deletionProtection');
-    this.instance = registerOutput<String?>('instance');
-    this.logicalViewId = registerOutput<String>('logicalViewId');
+         'gcp:bigtable/logicalView:LogicalView',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    instance = registerOutput<String?>('instance');
+    logicalViewId = registerOutput<String>('logicalViewId');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.query = registerOutput<String>('query');
+    project = registerOutput<String>('project');
+    query = registerOutput<String>('query');
   }
 
   /// Gets an existing [LogicalView] resource's state with the given [name] and [id].
@@ -357,16 +362,16 @@ class LogicalView extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:bigtable/logicalView:LogicalView',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deletionProtection = registerOutput<bool?>('deletionProtection');
-    this.instance = registerOutput<String?>('instance');
-    this.logicalViewId = registerOutput<String>('logicalViewId');
+         'gcp:bigtable/logicalView:LogicalView',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    instance = registerOutput<String?>('instance');
+    logicalViewId = registerOutput<String>('logicalViewId');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.query = registerOutput<String>('query');
+    project = registerOutput<String>('project');
+    query = registerOutput<String>('query');
   }
 }

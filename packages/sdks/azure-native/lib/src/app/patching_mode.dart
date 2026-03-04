@@ -4,16 +4,15 @@ enum PatchingMode {
   valueManual("Manual"),
   valueDisabled("Disabled");
 
-  const PatchingMode(this.value);
-  final String value;
+  const PatchingMode(this.wireValue);
+  final String wireValue;
 
   static PatchingMode fromValue(String value) {
     for (final item in PatchingMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PatchingMode value: $value');
   }
 }
-

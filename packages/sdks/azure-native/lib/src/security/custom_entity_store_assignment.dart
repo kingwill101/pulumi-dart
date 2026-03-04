@@ -133,14 +133,19 @@ import 'system_data_response.dart';
 class CustomEntityStoreAssignment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The link to entity store database.
   late final pulumi.Output<String?> entityStoreDatabaseLink;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// The principal assigned with entity store. Format of principal is: [AAD type]=[PrincipalObjectId];[TenantId]
   late final pulumi.Output<String?> principal;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -153,16 +158,18 @@ class CustomEntityStoreAssignment extends pulumi.CustomResource {
     CustomEntityStoreAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:CustomEntityStoreAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.entityStoreDatabaseLink = registerOutput<String?>('entityStoreDatabaseLink');
+         'azure-native:security:CustomEntityStoreAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    entityStoreDatabaseLink = registerOutput<String?>(
+      'entityStoreDatabaseLink',
+    );
     this.name = registerOutput<String>('name');
-    this.principal = registerOutput<String?>('principal');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    principal = registerOutput<String?>('principal');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

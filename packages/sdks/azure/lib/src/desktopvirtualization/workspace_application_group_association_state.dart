@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceApplicationGroupAssociationState {
   /// The resource ID for the Virtual Desktop Application Group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? applicationGroupId;
+
   /// The resource ID for the Virtual Desktop Workspace. Changing this forces a new resource to be created.
   final pulumi.Input<String>? workspaceId;
 
@@ -24,11 +25,20 @@ class WorkspaceApplicationGroupAssociationState {
     };
   }
 
-  factory WorkspaceApplicationGroupAssociationState.fromMap(Map<String, dynamic> map) {
+  factory WorkspaceApplicationGroupAssociationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkspaceApplicationGroupAssociationState(
-      applicationGroupId: map['applicationGroupId'] == null ? null : (map['applicationGroupId']! as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
+      applicationGroupId: (() {
+        final guardedValue = map['applicationGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspaceId: (() {
+        final guardedValue = map['workspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum ImageConfigTextRedactionMode {
   redactSensitiveText("REDACT_SENSITIVE_TEXT"),
   redactNoText("REDACT_NO_TEXT");
 
-  const ImageConfigTextRedactionMode(this.value);
-  final String value;
+  const ImageConfigTextRedactionMode(this.wireValue);
+  final String wireValue;
 
   static ImageConfigTextRedactionMode fromValue(String value) {
     for (final item in ImageConfigTextRedactionMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ImageConfigTextRedactionMode value: $value');
   }
 }
-

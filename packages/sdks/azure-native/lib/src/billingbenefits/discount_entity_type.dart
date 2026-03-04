@@ -3,16 +3,15 @@ enum DiscountEntityType {
   primary("Primary"),
   affiliate("Affiliate");
 
-  const DiscountEntityType(this.value);
-  final String value;
+  const DiscountEntityType(this.wireValue);
+  final String wireValue;
 
   static DiscountEntityType fromValue(String value) {
     for (final item in DiscountEntityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiscountEntityType value: $value');
   }
 }
-

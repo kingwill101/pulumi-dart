@@ -11,23 +11,33 @@ class CisBenchmark {
   /// Creates a new [CisBenchmark].
   /// [profileLevel] Optional.
   /// [severity] Optional.
-  CisBenchmark({
-    this.profileLevel,
-    this.severity,
-  });
+  CisBenchmark({this.profileLevel, this.severity});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'profileLevel': ?profileLevel,
-      'severity': ?pulumi.Input.mapOptionalInputValue<CisBenchmarkSeverity, String>(severity, (value) => value.value),
+      'severity':
+          ?pulumi.Input.mapOptionalInputValue<CisBenchmarkSeverity, String>(
+            severity,
+            (value) => value.wireValue,
+          ),
     };
   }
 
   factory CisBenchmark.fromMap(Map<String, dynamic> map) {
     return CisBenchmark(
-      profileLevel: map['profileLevel'] == null ? null : (map['profileLevel']! as int).input(),
-      severity: map['severity'] == null ? null : (CisBenchmarkSeverity.fromValue(map['severity']! as String)).input(),
+      profileLevel: (() {
+        final guardedValue = map['profileLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      severity: (() {
+        final guardedValue = map['severity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CisBenchmarkSeverity.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

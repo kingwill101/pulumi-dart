@@ -8,16 +8,15 @@ enum AddOnStatus {
   terminated("Terminated"),
   terminating("Terminating");
 
-  const AddOnStatus(this.value);
-  final String value;
+  const AddOnStatus(this.wireValue);
+  final String wireValue;
 
   static AddOnStatus fromValue(String value) {
     for (final item in AddOnStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AddOnStatus value: $value');
   }
 }
-

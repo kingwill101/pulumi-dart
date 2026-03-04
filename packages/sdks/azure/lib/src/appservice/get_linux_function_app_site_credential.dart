@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinuxFunctionAppSiteCredential {
   /// The name which should be used for this Linux Function App.
   final pulumi.Input<String> name;
+
   /// The Site Credentials Password used for publishing.
   final pulumi.Input<String> password;
 
@@ -17,17 +18,13 @@ class GetLinuxFunctionAppSiteCredential {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'password': password,
-    };
+    return <String, dynamic>{'name': name, 'password': password};
   }
 
   factory GetLinuxFunctionAppSiteCredential.fromMap(Map<String, dynamic> map) {
     return GetLinuxFunctionAppSiteCredential(
-      name: (map['name'] as String).input(),
-      password: (map['password'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      password: pulumi.Input.fromValue(map['password'] as String),
     );
   }
 }
-

@@ -15,17 +15,17 @@ class GetDataSetLogicalTableMapDataTransformUntagColumnOperation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'columnName': columnName,
-      'tagNames': tagNames,
-    };
+    return <String, dynamic>{'columnName': columnName, 'tagNames': tagNames};
   }
 
-  factory GetDataSetLogicalTableMapDataTransformUntagColumnOperation.fromMap(Map<String, dynamic> map) {
+  factory GetDataSetLogicalTableMapDataTransformUntagColumnOperation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSetLogicalTableMapDataTransformUntagColumnOperation(
-      columnName: (map['columnName'] as String).input(),
-      tagNames: ((map['tagNames'] as List).cast<String>()).input(),
+      columnName: pulumi.Input.fromValue(map['columnName'] as String),
+      tagNames: pulumi.Input.fromValue(
+        (map['tagNames'] as List).cast<String>(),
+      ),
     );
   }
 }
-

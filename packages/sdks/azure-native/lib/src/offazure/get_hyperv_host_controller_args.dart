@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHypervHostControllerArgs {
   /// Host name
   final pulumi.Input<String> hostName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Site name
   final pulumi.Input<String> siteName;
 
@@ -34,10 +36,11 @@ class GetHypervHostControllerArgs {
 
   factory GetHypervHostControllerArgs.fromMap(Map<String, dynamic> map) {
     return GetHypervHostControllerArgs(
-      hostName: (map['hostName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteName: (map['siteName'] as String).input(),
+      hostName: pulumi.Input.fromValue(map['hostName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      siteName: pulumi.Input.fromValue(map['siteName'] as String),
     );
   }
 }
-

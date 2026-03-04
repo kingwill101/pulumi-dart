@@ -5,12 +5,17 @@ import 'connector_profile_connector_profile_config_connector_profile_credentials
 
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce {
   final pulumi.Input<String>? accessToken;
+
   /// The secret manager ARN, which contains the client ID and client secret of the connected app.
   final pulumi.Input<String>? clientCredentialsArn;
+
   /// A JSON web token (JWT) that authorizes access to Salesforce records.
   final pulumi.Input<String>? jwtToken;
   final pulumi.Input<String>? oauth2GrantType;
-  final pulumi.Input<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforceOauthRequest>? oauthRequest;
+  final pulumi.Input<
+    ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforceOauthRequest
+  >?
+  oauthRequest;
   final pulumi.Input<String>? refreshToken;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce].
@@ -35,20 +40,53 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforc
       'clientCredentialsArn': ?clientCredentialsArn,
       'jwtToken': ?jwtToken,
       'oauth2GrantType': ?oauth2GrantType,
-      'oauthRequest': ?pulumi.Input.mapOptionalInputValue<ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforceOauthRequest, Map<String, dynamic>>(oauthRequest, (value) => value.toMap()),
+      'oauthRequest':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforceOauthRequest,
+            Map<String, dynamic>
+          >(oauthRequest, (value) => value.toMap()),
       'refreshToken': ?refreshToken,
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce(
-      accessToken: map['accessToken'] == null ? null : ((map['accessToken'] as String).input()).input(),
-      clientCredentialsArn: map['clientCredentialsArn'] == null ? null : ((map['clientCredentialsArn'] as String).input()).input(),
-      jwtToken: map['jwtToken'] == null ? null : ((map['jwtToken'] as String).input()).input(),
-      oauth2GrantType: map['oauth2GrantType'] == null ? null : ((map['oauth2GrantType'] as String).input()).input(),
-      oauthRequest: map['oauthRequest'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforceOauthRequest.fromMap((map['oauthRequest']! as Map).cast<String, dynamic>())).input()).input(),
-      refreshToken: map['refreshToken'] == null ? null : ((map['refreshToken'] as String).input()).input(),
+      accessToken: (() {
+        final guardedValue = map['accessToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientCredentialsArn: (() {
+        final guardedValue = map['clientCredentialsArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jwtToken: (() {
+        final guardedValue = map['jwtToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oauth2GrantType: (() {
+        final guardedValue = map['oauth2GrantType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      oauthRequest: (() {
+        final guardedValue = map['oauthRequest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforceOauthRequest.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      refreshToken: (() {
+        final guardedValue = map['refreshToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

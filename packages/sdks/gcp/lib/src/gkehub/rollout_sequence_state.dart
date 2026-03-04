@@ -7,34 +7,46 @@ import 'rollout_sequence_stage.dart';
 class RolloutSequenceState {
   /// The timestamp at which the Rollout Sequence was created.
   final pulumi.Input<String>? createTime;
+
   /// The timestamp at the Rollout Sequence was deleted.
   final pulumi.Input<String>? deleteTime;
+
   /// Human readable display name of the Rollout Sequence.
   final pulumi.Input<String>? displayName;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+
   /// etag of the Rollout Sequence.
   final pulumi.Input<String>? etag;
+
   /// Labels for this Rollout Sequence.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The full resource name of the RolloutSequence.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+
   /// The user-provided identifier of the RolloutSequence.
   final pulumi.Input<String>? rolloutSequenceId;
+
   /// Ordered list of stages that constitute this Rollout Sequence.
   /// Structure is documented below.
   final pulumi.Input<List<RolloutSequenceStage>>? stages;
+
   /// Google-generated UUID for this resource.
   final pulumi.Input<String>? uid;
+
   /// The timestamp at which the Rollout Sequence was last updated.
   final pulumi.Input<String>? updateTime;
 
@@ -80,7 +92,18 @@ class RolloutSequenceState {
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
       'rolloutSequenceId': ?rolloutSequenceId,
-      'stages': ?pulumi.Input.mapOptionalInputValue<List<RolloutSequenceStage>, List<Map<String, dynamic>>>(stages, (value) => pulumi.Input.encodeList<RolloutSequenceStage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'stages':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RolloutSequenceStage>,
+            List<Map<String, dynamic>>
+          >(
+            stages,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RolloutSequenceStage,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'uid': ?uid,
       'updateTime': ?updateTime,
     };
@@ -88,20 +111,84 @@ class RolloutSequenceState {
 
   factory RolloutSequenceState.fromMap(Map<String, dynamic> map) {
     return RolloutSequenceState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
-      rolloutSequenceId: map['rolloutSequenceId'] == null ? null : (map['rolloutSequenceId']! as String).input(),
-      stages: map['stages'] == null ? null : (pulumi.Input.decodeList<RolloutSequenceStage>(map['stages']!, (value) => RolloutSequenceStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteTime: (() {
+        final guardedValue = map['deleteTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveLabels: (() {
+        final guardedValue = map['effectiveLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pulumiLabels: (() {
+        final guardedValue = map['pulumiLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      rolloutSequenceId: (() {
+        final guardedValue = map['rolloutSequenceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stages: (() {
+        final guardedValue = map['stages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RolloutSequenceStage>(
+            guardedValue,
+            (value) => RolloutSequenceStage.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

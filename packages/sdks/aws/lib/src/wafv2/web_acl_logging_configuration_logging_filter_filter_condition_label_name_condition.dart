@@ -13,15 +13,14 @@ class WebAclLoggingConfigurationLoggingFilterFilterConditionLabelNameCondition {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'labelName': labelName,
-    };
+    return <String, dynamic>{'labelName': labelName};
   }
 
-  factory WebAclLoggingConfigurationLoggingFilterFilterConditionLabelNameCondition.fromMap(Map<String, dynamic> map) {
+  factory WebAclLoggingConfigurationLoggingFilterFilterConditionLabelNameCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclLoggingConfigurationLoggingFilterFilterConditionLabelNameCondition(
-      labelName: (map['labelName'] as String).input(),
+      labelName: pulumi.Input.fromValue(map['labelName'] as String),
     );
   }
 }
-

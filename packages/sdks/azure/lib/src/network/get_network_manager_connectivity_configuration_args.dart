@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkManagerConnectivityConfigurationArgs {
   /// The name of this Network Manager Connectivity Configuration.
   final pulumi.Input<String> name;
+
   /// The ID of the Network Manager.
   final pulumi.Input<String> networkManagerId;
 
@@ -27,11 +28,14 @@ class GetNetworkManagerConnectivityConfigurationArgs {
     };
   }
 
-  factory GetNetworkManagerConnectivityConfigurationArgs.fromMap(Map<String, dynamic> map) {
+  factory GetNetworkManagerConnectivityConfigurationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNetworkManagerConnectivityConfigurationArgs(
-      name: (map['name'] as String).input(),
-      networkManagerId: (map['networkManagerId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      networkManagerId: pulumi.Input.fromValue(
+        map['networkManagerId'] as String,
+      ),
     );
   }
 }
-

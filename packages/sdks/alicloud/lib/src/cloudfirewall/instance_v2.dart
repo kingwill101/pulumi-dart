@@ -8,7 +8,7 @@ import 'instance_v2_state.dart';
 ///
 /// For information about Cloud Firewall Instance V2 and how to use it, see [What is Instance V2](https://www.alibabacloud.com/help/en/product/90174.htm).
 ///
-/// > **NOTE:** Available since v1.269.0.
+/// &gt; **NOTE:** Available since v1.269.0.
 ///
 /// ## Example Usage
 ///
@@ -134,39 +134,54 @@ import 'instance_v2_state.dart';
 class InstanceV2 extends pulumi.CustomResource {
   /// Whether to use log audit. Valid values:
   late final pulumi.Output<bool> cfwLog;
+
   /// The creation time.
   late final pulumi.Output<String> createTime;
+
   /// The end time.
   late final pulumi.Output<String> endTime;
+
   /// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
   late final pulumi.Output<String?> modifyType;
+
   /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
   late final pulumi.Output<String> paymentType;
+
   /// The prepaid period. **NOTE:** If `payment_type` is set to `Subscription`, `period` is required.
   late final pulumi.Output<int?> period;
+
   /// The product code. Valid values: `cfw`.
   late final pulumi.Output<String> productCode;
+
   /// The product type. Valid values: `cfw_elasticity_public_cn`, `cfw_elasticity_public_intl`, `cfw_sub_public_cn`, `cfw_sub_public_intl`.
   late final pulumi.Output<String> productType;
+
   /// The release time.
   late final pulumi.Output<String> releaseTime;
+
   /// The auto-renewal duration. **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
   late final pulumi.Output<int?> renewalDuration;
+
   /// The unit of the auto-renewal period. Valid values:
   /// - `M`: Month.
   /// - `Y`: Year.
   late final pulumi.Output<String> renewalDurationUnit;
+
   /// Whether to renew an instance automatically or not.
   /// - `AutoRenewal`: Auto renewal.
   /// - `ManualRenewal`: Manual renewal.
   /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
   late final pulumi.Output<String> renewalStatus;
+
   /// Data leakage protection status. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> sdl;
+
   /// The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`.
   late final pulumi.Output<String> spec;
+
   /// The status of Cloud Firewall Instance.
   late final pulumi.Output<String> status;
+
   /// The user status of Cloud Firewall Instance.
   late final pulumi.Output<String> userStatus;
 
@@ -179,27 +194,27 @@ class InstanceV2 extends pulumi.CustomResource {
     InstanceV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/instanceV2:InstanceV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cfwLog = registerOutput<bool>('cfwLog');
-    this.createTime = registerOutput<String>('createTime');
-    this.endTime = registerOutput<String>('endTime');
-    this.modifyType = registerOutput<String?>('modifyType');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.productCode = registerOutput<String>('productCode');
-    this.productType = registerOutput<String>('productType');
-    this.releaseTime = registerOutput<String>('releaseTime');
-    this.renewalDuration = registerOutput<int?>('renewalDuration');
-    this.renewalDurationUnit = registerOutput<String>('renewalDurationUnit');
-    this.renewalStatus = registerOutput<String>('renewalStatus');
-    this.sdl = registerOutput<bool?>('sdl');
-    this.spec = registerOutput<String>('spec');
-    this.status = registerOutput<String>('status');
-    this.userStatus = registerOutput<String>('userStatus');
+         'alicloud:cloudfirewall/instanceV2:InstanceV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cfwLog = registerOutput<bool>('cfwLog');
+    createTime = registerOutput<String>('createTime');
+    endTime = registerOutput<String>('endTime');
+    modifyType = registerOutput<String?>('modifyType');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int?>('period');
+    productCode = registerOutput<String>('productCode');
+    productType = registerOutput<String>('productType');
+    releaseTime = registerOutput<String>('releaseTime');
+    renewalDuration = registerOutput<int?>('renewalDuration');
+    renewalDurationUnit = registerOutput<String>('renewalDurationUnit');
+    renewalStatus = registerOutput<String>('renewalStatus');
+    sdl = registerOutput<bool?>('sdl');
+    spec = registerOutput<String>('spec');
+    status = registerOutput<String>('status');
+    userStatus = registerOutput<String>('userStatus');
   }
 
   /// Gets an existing [InstanceV2] resource's state with the given [name] and [id].
@@ -220,26 +235,26 @@ class InstanceV2 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/instanceV2:InstanceV2',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cfwLog = registerOutput<bool>('cfwLog');
-    this.createTime = registerOutput<String>('createTime');
-    this.endTime = registerOutput<String>('endTime');
-    this.modifyType = registerOutput<String?>('modifyType');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int?>('period');
-    this.productCode = registerOutput<String>('productCode');
-    this.productType = registerOutput<String>('productType');
-    this.releaseTime = registerOutput<String>('releaseTime');
-    this.renewalDuration = registerOutput<int?>('renewalDuration');
-    this.renewalDurationUnit = registerOutput<String>('renewalDurationUnit');
-    this.renewalStatus = registerOutput<String>('renewalStatus');
-    this.sdl = registerOutput<bool?>('sdl');
-    this.spec = registerOutput<String>('spec');
-    this.status = registerOutput<String>('status');
-    this.userStatus = registerOutput<String>('userStatus');
+         'alicloud:cloudfirewall/instanceV2:InstanceV2',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cfwLog = registerOutput<bool>('cfwLog');
+    createTime = registerOutput<String>('createTime');
+    endTime = registerOutput<String>('endTime');
+    modifyType = registerOutput<String?>('modifyType');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int?>('period');
+    productCode = registerOutput<String>('productCode');
+    productType = registerOutput<String>('productType');
+    releaseTime = registerOutput<String>('releaseTime');
+    renewalDuration = registerOutput<int?>('renewalDuration');
+    renewalDurationUnit = registerOutput<String>('renewalDurationUnit');
+    renewalStatus = registerOutput<String>('renewalStatus');
+    sdl = registerOutput<bool?>('sdl');
+    spec = registerOutput<String>('spec');
+    status = registerOutput<String>('status');
+    userStatus = registerOutput<String>('userStatus');
   }
 }

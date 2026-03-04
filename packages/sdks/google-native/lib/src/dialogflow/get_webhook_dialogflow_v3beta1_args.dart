@@ -35,11 +35,14 @@ class GetWebhookDialogflowV3beta1Args {
 
   factory GetWebhookDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return GetWebhookDialogflowV3beta1Args(
-      agentId: (map['agentId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      webhookId: (map['webhookId'] as String).input(),
+      agentId: pulumi.Input.fromValue(map['agentId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webhookId: pulumi.Input.fromValue(map['webhookId'] as String),
     );
   }
 }
-

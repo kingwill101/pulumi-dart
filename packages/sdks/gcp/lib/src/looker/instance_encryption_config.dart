@@ -5,9 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceEncryptionConfig {
   /// Name of the customer managed encryption key (CMEK) in KMS.
   final pulumi.Input<String>? kmsKeyName;
+
   /// (Output)
   /// Full name and version of the CMEK key currently in use to encrypt Looker data.
   final pulumi.Input<String>? kmsKeyNameVersion;
+
   /// (Output)
   /// Status of the customer managed encryption key (CMEK) in KMS.
   final pulumi.Input<String>? kmsKeyState;
@@ -32,10 +34,21 @@ class InstanceEncryptionConfig {
 
   factory InstanceEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return InstanceEncryptionConfig(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
-      kmsKeyNameVersion: map['kmsKeyNameVersion'] == null ? null : (map['kmsKeyNameVersion']! as String).input(),
-      kmsKeyState: map['kmsKeyState'] == null ? null : (map['kmsKeyState']! as String).input(),
+      kmsKeyName: (() {
+        final guardedValue = map['kmsKeyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyNameVersion: (() {
+        final guardedValue = map['kmsKeyNameVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyState: (() {
+        final guardedValue = map['kmsKeyState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

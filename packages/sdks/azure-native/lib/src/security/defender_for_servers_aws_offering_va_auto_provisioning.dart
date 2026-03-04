@@ -7,6 +7,7 @@ import 'defender_for_servers_aws_offering_configuration.dart';
 class DefenderForServersAwsOfferingVaAutoProvisioning {
   /// configuration for Vulnerability Assessment autoprovisioning
   final pulumi.Input<DefenderForServersAwsOfferingConfiguration>? configuration;
+
   /// Is Vulnerability Assessment auto provisioning enabled
   final pulumi.Input<bool>? enabled;
 
@@ -20,16 +21,33 @@ class DefenderForServersAwsOfferingVaAutoProvisioning {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': ?pulumi.Input.mapOptionalInputValue<DefenderForServersAwsOfferingConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'configuration':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefenderForServersAwsOfferingConfiguration,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
       'enabled': ?enabled,
     };
   }
 
-  factory DefenderForServersAwsOfferingVaAutoProvisioning.fromMap(Map<String, dynamic> map) {
+  factory DefenderForServersAwsOfferingVaAutoProvisioning.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefenderForServersAwsOfferingVaAutoProvisioning(
-      configuration: map['configuration'] == null ? null : (DefenderForServersAwsOfferingConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefenderForServersAwsOfferingConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

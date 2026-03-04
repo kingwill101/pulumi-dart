@@ -7,9 +7,16 @@ import 'google_cloud_dataplex_v1_environment_infrastructure_spec_os_image_runtim
 /// Configuration for the underlying infrastructure used to run workloads.
 class GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse {
   /// Optional. Compute resources needed for analyze interactive workloads.
-  final pulumi.Input<GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse> compute;
+  final pulumi.Input<
+    GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse
+  >
+  compute;
+
   /// Software Runtime Configuration for analyze interactive workloads.
-  final pulumi.Input<GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeResponse> osImage;
+  final pulumi.Input<
+    GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeResponse
+  >
+  osImage;
 
   /// Creates a new [GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse].
   /// [compute] Optional. Compute resources needed for analyze interactive workloads.
@@ -21,16 +28,33 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compute': pulumi.Input.mapInputValue<GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse, Map<String, dynamic>>(compute, (value) => value.toMap()),
-      'osImage': pulumi.Input.mapInputValue<GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeResponse, Map<String, dynamic>>(osImage, (value) => value.toMap()),
+      'compute':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse,
+            Map<String, dynamic>
+          >(compute, (value) => value.toMap()),
+      'osImage':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeResponse,
+            Map<String, dynamic>
+          >(osImage, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse(
-      compute: (GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse.fromMap((map['compute'] as Map).cast<String, dynamic>())).input(),
-      osImage: (GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeResponse.fromMap((map['osImage'] as Map).cast<String, dynamic>())).input(),
+      compute: pulumi.Input.fromValue(
+        GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse.fromMap(
+          (map['compute']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      osImage: pulumi.Input.fromValue(
+        GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeResponse.fromMap(
+          (map['osImage']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

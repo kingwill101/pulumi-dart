@@ -11,20 +11,15 @@ class GetTagKeyArgs {
 
   /// Creates a new [GetTagKeyArgs].
   /// [tagKeyId] Required.
-  GetTagKeyArgs({
-    required this.tagKeyId,
-  });
+  GetTagKeyArgs({required this.tagKeyId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tagKeyId': tagKeyId,
-    };
+    return <String, dynamic>{'tagKeyId': tagKeyId};
   }
 
   factory GetTagKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetTagKeyArgs(
-      tagKeyId: (map['tagKeyId'] as String).input(),
+      tagKeyId: pulumi.Input.fromValue(map['tagKeyId'] as String),
     );
   }
 }
-

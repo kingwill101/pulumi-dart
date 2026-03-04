@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReposRepoDomainList {
   /// Domain of internal endpoint, only in some regions.
   final pulumi.Input<String> internal;
+
   /// Domain of public endpoint.
   final pulumi.Input<String> public;
+
   /// Domain of vpc endpoint.
   final pulumi.Input<String> vpc;
 
@@ -30,10 +32,9 @@ class GetReposRepoDomainList {
 
   factory GetReposRepoDomainList.fromMap(Map<String, dynamic> map) {
     return GetReposRepoDomainList(
-      internal: (map['internal'] as String).input(),
-      public: (map['public'] as String).input(),
-      vpc: (map['vpc'] as String).input(),
+      internal: pulumi.Input.fromValue(map['internal'] as String),
+      public: pulumi.Input.fromValue(map['public'] as String),
+      vpc: pulumi.Input.fromValue(map['vpc'] as String),
     );
   }
 }
-

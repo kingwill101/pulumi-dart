@@ -6,6 +6,7 @@ class InsightsDatasetConfigIdentity {
   /// (Output)
   /// Name of the identity.
   final pulumi.Input<String>? name;
+
   /// Type of identity to use for the DatasetConfig.
   /// Possible values are: `IDENTITY_TYPE_PER_CONFIG`, `IDENTITY_TYPE_PER_PROJECT`.
   final pulumi.Input<String> type;
@@ -13,23 +14,20 @@ class InsightsDatasetConfigIdentity {
   /// Creates a new [InsightsDatasetConfigIdentity].
   /// [name] (Output)
   /// [type] Type of identity to use for the DatasetConfig.
-  InsightsDatasetConfigIdentity({
-    this.name,
-    required this.type,
-  });
+  InsightsDatasetConfigIdentity({this.name, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'type': type,
-    };
+    return <String, dynamic>{'name': ?name, 'type': type};
   }
 
   factory InsightsDatasetConfigIdentity.fromMap(Map<String, dynamic> map) {
     return InsightsDatasetConfigIdentity(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: (map['type'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

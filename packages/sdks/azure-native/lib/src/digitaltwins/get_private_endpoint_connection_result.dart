@@ -7,14 +7,19 @@ import 'system_data_response.dart';
 class GetPrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The resource identifier.
   final String id;
+
   /// The resource name.
   final String name;
+
   /// The connection properties.
   final ConnectionPropertiesResponse properties;
+
   /// Metadata pertaining to creation and last modification of the private endpoint connection.
   final SystemDataResponse systemData;
+
   /// The resource type.
   final String type;
 
@@ -50,10 +55,13 @@ class GetPrivateEndpointConnectionResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: ConnectionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      properties: ConnectionPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum VpnAuthenticationType {
   valueRadius("Radius"),
   valueAAD("AAD");
 
-  const VpnAuthenticationType(this.value);
-  final String value;
+  const VpnAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static VpnAuthenticationType fromValue(String value) {
     for (final item in VpnAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VpnAuthenticationType value: $value');
   }
 }
-

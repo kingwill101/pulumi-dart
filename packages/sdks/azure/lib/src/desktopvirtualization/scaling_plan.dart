@@ -1,16 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scaling_plan_args.dart';
-import 'scaling_plan_host_pool.dart';
-import 'scaling_plan_schedule.dart';
 import 'scaling_plan_state.dart';
 
 /// Manages a Virtual Desktop Scaling Plan.
 ///
 /// ## Disclaimers
 ///
-/// > **Note:** Scaling Plans are currently in preview and are only supported in a limited number of regions. Both the Scaling Plan and any referenced Host Pools must be deployed in a supported region. [Autoscale (preview) for Azure Virtual Desktop host pools](https://docs.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan).
+/// &gt; **Note:** Scaling Plans are currently in preview and are only supported in a limited number of regions. Both the Scaling Plan and any referenced Host Pools must be deployed in a supported region. [Autoscale (preview) for Azure Virtual Desktop host pools](https://docs.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan).
 ///
-/// > **Note:** Scaling Plans require specific permissions to be granted to the Windows Virtual Desktop application before a 'host_pool' can be configured. [Required Permissions for Scaling Plans](https://docs.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan#create-a-custom-rbac-role).
+/// &gt; **Note:** Scaling Plans require specific permissions to be granted to the Windows Virtual Desktop application before a 'host_pool' can be configured. [Required Permissions for Scaling Plans](https://docs.microsoft.com/azure/virtual-desktop/autoscale-scaling-plan#create-a-custom-rbac-role).
 ///
 /// ## Import
 ///
@@ -22,22 +20,31 @@ import 'scaling_plan_state.dart';
 class ScalingPlan extends pulumi.CustomResource {
   /// A description of the Scaling Plan.
   late final pulumi.Output<String?> description;
+
   /// The name of the tag associated with the VMs you want to exclude from autoscaling.
   late final pulumi.Output<String?> exclusionTag;
+
   /// Friendly name of the Scaling Plan.
   late final pulumi.Output<String?> friendlyName;
+
   /// One or more `host_pool` blocks as defined below.
-  late final pulumi.Output<List<ScalingPlanHostPool>> hostPools;
+  late final pulumi.Output<List<Map<String, dynamic>>> hostPools;
+
   /// The Azure Region where the Virtual Desktop Scaling Plan should exist. Changing this forces a new Virtual Desktop Scaling Plan to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Virtual Desktop Scaling Plan . Changing this forces a new Virtual Desktop Scaling Plan to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Virtual Desktop Scaling Plan should exist. Changing this forces a new Virtual Desktop Scaling Plan to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// One or more `schedule` blocks as defined below.
-  late final pulumi.Output<List<ScalingPlanSchedule>> schedules;
+  late final pulumi.Output<List<Map<String, dynamic>>> schedules;
+
   /// A mapping of tags which should be assigned to the Virtual Desktop Scaling Plan .
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the Time Zone which should be used by the Scaling Plan for time based events, [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
   late final pulumi.Output<String> timeZone;
 
@@ -50,21 +57,21 @@ class ScalingPlan extends pulumi.CustomResource {
     ScalingPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:desktopvirtualization/scalingPlan:ScalingPlan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.exclusionTag = registerOutput<String?>('exclusionTag');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.hostPools = registerOutput<List<ScalingPlanHostPool>>('hostPools');
-    this.location = registerOutput<String>('location');
+         'azure:desktopvirtualization/scalingPlan:ScalingPlan',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    exclusionTag = registerOutput<String?>('exclusionTag');
+    friendlyName = registerOutput<String?>('friendlyName');
+    hostPools = registerOutput<List<Map<String, dynamic>>>('hostPools');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.schedules = registerOutput<List<ScalingPlanSchedule>>('schedules');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeZone = registerOutput<String>('timeZone');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    schedules = registerOutput<List<Map<String, dynamic>>>('schedules');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeZone = registerOutput<String>('timeZone');
   }
 
   /// Gets an existing [ScalingPlan] resource's state with the given [name] and [id].
@@ -85,20 +92,20 @@ class ScalingPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:desktopvirtualization/scalingPlan:ScalingPlan',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.exclusionTag = registerOutput<String?>('exclusionTag');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.hostPools = registerOutput<List<ScalingPlanHostPool>>('hostPools');
-    this.location = registerOutput<String>('location');
+         'azure:desktopvirtualization/scalingPlan:ScalingPlan',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    exclusionTag = registerOutput<String?>('exclusionTag');
+    friendlyName = registerOutput<String?>('friendlyName');
+    hostPools = registerOutput<List<Map<String, dynamic>>>('hostPools');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.schedules = registerOutput<List<ScalingPlanSchedule>>('schedules');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeZone = registerOutput<String>('timeZone');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    schedules = registerOutput<List<Map<String, dynamic>>>('schedules');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeZone = registerOutput<String>('timeZone');
   }
 }

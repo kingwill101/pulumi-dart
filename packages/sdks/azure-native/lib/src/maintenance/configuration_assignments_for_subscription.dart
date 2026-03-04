@@ -301,18 +301,26 @@ import 'system_data_response.dart';
 class ConfigurationAssignmentsForSubscription extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Properties of the configuration assignment
-  late final pulumi.Output<ConfigurationAssignmentFilterPropertiesResponse?> filter;
+  late final pulumi.Output<ConfigurationAssignmentFilterPropertiesResponse?>
+  filter;
+
   /// Location of the resource
   late final pulumi.Output<String?> location;
+
   /// The maintenance configuration Id
   late final pulumi.Output<String?> maintenanceConfigurationId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The unique resourceId
   late final pulumi.Output<String?> resourceId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -325,18 +333,22 @@ class ConfigurationAssignmentsForSubscription extends pulumi.CustomResource {
     ConfigurationAssignmentsForSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:maintenance:ConfigurationAssignmentsForSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.filter = registerOutput<ConfigurationAssignmentFilterPropertiesResponse?>('filter');
-    this.location = registerOutput<String?>('location');
-    this.maintenanceConfigurationId = registerOutput<String?>('maintenanceConfigurationId');
+         'azure-native:maintenance:ConfigurationAssignmentsForSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    filter = registerOutput<ConfigurationAssignmentFilterPropertiesResponse?>(
+      'filter',
+    );
+    location = registerOutput<String?>('location');
+    maintenanceConfigurationId = registerOutput<String?>(
+      'maintenanceConfigurationId',
+    );
     this.name = registerOutput<String>('name');
-    this.resourceId = registerOutput<String?>('resourceId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    resourceId = registerOutput<String?>('resourceId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -165,11 +165,14 @@ import 'policy_model_response_system_data.dart';
 class Policy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets or sets the name of the resource.
   late final pulumi.Output<String> name;
+
   /// Policy model properties.
   late final pulumi.Output<PolicyModelPropertiesResponse> properties;
   late final pulumi.Output<PolicyModelResponseSystemData> systemData;
+
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -177,20 +180,17 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_datareplication_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(
-    String name, {
-    PolicyArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:datareplication:Policy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:datareplication:Policy',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<PolicyModelPropertiesResponse>('properties');
-    this.systemData = registerOutput<PolicyModelResponseSystemData>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<PolicyModelPropertiesResponse>('properties');
+    systemData = registerOutput<PolicyModelResponseSystemData>('systemData');
+    type = registerOutput<String>('type');
   }
 }

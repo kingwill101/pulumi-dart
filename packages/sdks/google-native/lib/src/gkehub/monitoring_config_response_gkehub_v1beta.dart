@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitoringConfigResponseGkehubV1beta {
   /// Optional. Cluster name used to report metrics. For Anthos on VMWare/Baremetal/MultiCloud clusters, it would be in format {cluster_type}/{cluster_name}, e.g., "awsClusters/cluster_1".
   final pulumi.Input<String> cluster;
+
   /// Optional. For GKE and Multicloud clusters, this is the UUID of the cluster resource. For VMWare and Baremetal clusters, this is the kube-system UID.
   final pulumi.Input<String> clusterHash;
+
   /// Optional. Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos.
   final pulumi.Input<String> kubernetesMetricsPrefix;
+
   /// Optional. Location used to report Metrics
   final pulumi.Input<String> location;
+
   /// Optional. Project used to report Metrics
   final pulumi.Input<String> project;
 
@@ -39,14 +43,17 @@ class MonitoringConfigResponseGkehubV1beta {
     };
   }
 
-  factory MonitoringConfigResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
+  factory MonitoringConfigResponseGkehubV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MonitoringConfigResponseGkehubV1beta(
-      cluster: (map['cluster'] as String).input(),
-      clusterHash: (map['clusterHash'] as String).input(),
-      kubernetesMetricsPrefix: (map['kubernetesMetricsPrefix'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: (map['project'] as String).input(),
+      cluster: pulumi.Input.fromValue(map['cluster'] as String),
+      clusterHash: pulumi.Input.fromValue(map['clusterHash'] as String),
+      kubernetesMetricsPrefix: pulumi.Input.fromValue(
+        map['kubernetesMetricsPrefix'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
-

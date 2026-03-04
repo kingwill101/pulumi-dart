@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPasswordState {
   /// The encrypted password, base64 encoded.
   final pulumi.Input<String>? encryptedPassword;
+
   /// The source host of the user. Defaults to `localhost`.
   final pulumi.Input<String>? host;
+
   /// The fingerprint of the PGP key used to encrypt the password
   final pulumi.Input<String>? keyFingerprint;
+
   /// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
   final pulumi.Input<String>? pgpKey;
+
   /// The IAM user to associate with this access key.
   final pulumi.Input<String>? user;
 
@@ -41,12 +45,31 @@ class UserPasswordState {
 
   factory UserPasswordState.fromMap(Map<String, dynamic> map) {
     return UserPasswordState(
-      encryptedPassword: map['encryptedPassword'] == null ? null : (map['encryptedPassword']! as String).input(),
-      host: map['host'] == null ? null : (map['host']! as String).input(),
-      keyFingerprint: map['keyFingerprint'] == null ? null : (map['keyFingerprint']! as String).input(),
-      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey']! as String).input(),
-      user: map['user'] == null ? null : (map['user']! as String).input(),
+      encryptedPassword: (() {
+        final guardedValue = map['encryptedPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      host: (() {
+        final guardedValue = map['host'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyFingerprint: (() {
+        final guardedValue = map['keyFingerprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pgpKey: (() {
+        final guardedValue = map['pgpKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      user: (() {
+        final guardedValue = map['user'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

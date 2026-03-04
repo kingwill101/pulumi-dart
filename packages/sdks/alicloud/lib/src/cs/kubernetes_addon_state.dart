@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesAddonState {
   /// Is the addon ready for upgrade.
   final pulumi.Input<bool>? canUpgrade;
+
   /// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
   final pulumi.Input<bool>? cleanupCloudResources;
+
   /// The id of kubernetes cluster.
   final pulumi.Input<String>? clusterId;
+
   /// The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
   final pulumi.Input<String>? config;
+
   /// The name of addon.
   final pulumi.Input<String>? name;
+
   /// The version which addon can be upgraded to.
   final pulumi.Input<String>? nextVersion;
+
   /// Is it a mandatory addon to be installed.
   final pulumi.Input<bool>? required;
+
   /// The current version of addon.
   final pulumi.Input<String>? version;
 
@@ -56,15 +63,46 @@ class KubernetesAddonState {
 
   factory KubernetesAddonState.fromMap(Map<String, dynamic> map) {
     return KubernetesAddonState(
-      canUpgrade: map['canUpgrade'] == null ? null : (map['canUpgrade']! as bool).input(),
-      cleanupCloudResources: map['cleanupCloudResources'] == null ? null : (map['cleanupCloudResources']! as bool).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      config: map['config'] == null ? null : (map['config']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nextVersion: map['nextVersion'] == null ? null : (map['nextVersion']! as String).input(),
-      required: map['required'] == null ? null : (map['required']! as bool).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      canUpgrade: (() {
+        final guardedValue = map['canUpgrade'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      cleanupCloudResources: (() {
+        final guardedValue = map['cleanupCloudResources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      config: (() {
+        final guardedValue = map['config'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nextVersion: (() {
+        final guardedValue = map['nextVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      required: (() {
+        final guardedValue = map['required'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

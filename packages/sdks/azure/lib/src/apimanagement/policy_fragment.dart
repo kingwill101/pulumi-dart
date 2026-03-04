@@ -229,7 +229,7 @@ import 'policy_fragment_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -238,7 +238,7 @@ import 'policy_fragment_state.dart';
 ///
 /// Api Management Policy Fragments can be imported using the `resource id`, e.g.
 ///
-/// > **Note:** Due to the behaviour of the API, Api Management Policy Fragments can only be imported as `xml`, but can be updated to the desired format after importing.
+/// &gt; **Note:** Due to the behaviour of the API, Api Management Policy Fragments can only be imported as `xml`, but can be updated to the desired format after importing.
 ///
 /// ```sh
 /// $ pulumi import azure:apimanagement/policyFragment:PolicyFragment example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.ApiManagement/service/instance1/policyFragments/policyFragment1
@@ -246,17 +246,21 @@ import 'policy_fragment_state.dart';
 class PolicyFragment extends pulumi.CustomResource {
   /// The id of the API Management Service. Changing this forces a new Api Management Policy Fragment to be created.
   late final pulumi.Output<String> apiManagementId;
+
   /// The description for the Policy Fragment.
   late final pulumi.Output<String?> description;
+
   /// The format of the Policy Fragment. Possible values are `xml` or `rawxml`. Default is `xml`.
   ///
-  /// > **Note:** The `value` property will be updated to reflect the corresponding format when `format` is updated.
+  /// &gt; **Note:** The `value` property will be updated to reflect the corresponding format when `format` is updated.
   late final pulumi.Output<String?> format;
+
   /// The name which should be used for this Api Management Policy Fragment. Changing this forces a new Api Management Policy Fragment to be created.
   late final pulumi.Output<String> name;
+
   /// The value of the Policy Fragment.
   ///
-  /// > **Note:** Be aware of the two format possibilities. If the `value` is not applied and continues to cause a diff the format could be wrong.
+  /// &gt; **Note:** Be aware of the two format possibilities. If the `value` is not applied and continues to cause a diff the format could be wrong.
   late final pulumi.Output<String> value;
 
   /// Creates a new [PolicyFragment].
@@ -268,16 +272,16 @@ class PolicyFragment extends pulumi.CustomResource {
     PolicyFragmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/policyFragment:PolicyFragment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.description = registerOutput<String?>('description');
-    this.format = registerOutput<String?>('format');
+         'azure:apimanagement/policyFragment:PolicyFragment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    description = registerOutput<String?>('description');
+    format = registerOutput<String?>('format');
     this.name = registerOutput<String>('name');
-    this.value = registerOutput<String>('value');
+    value = registerOutput<String>('value');
   }
 
   /// Gets an existing [PolicyFragment] resource's state with the given [name] and [id].
@@ -298,15 +302,15 @@ class PolicyFragment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/policyFragment:PolicyFragment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.description = registerOutput<String?>('description');
-    this.format = registerOutput<String?>('format');
+         'azure:apimanagement/policyFragment:PolicyFragment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    description = registerOutput<String?>('description');
+    format = registerOutput<String?>('format');
     this.name = registerOutput<String>('name');
-    this.value = registerOutput<String>('value');
+    value = registerOutput<String>('value');
   }
 }

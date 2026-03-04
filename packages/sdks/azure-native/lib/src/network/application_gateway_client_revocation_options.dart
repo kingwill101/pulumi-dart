@@ -3,16 +3,17 @@ enum ApplicationGatewayClientRevocationOptions {
   valueNone("None"),
   valueOCSP("OCSP");
 
-  const ApplicationGatewayClientRevocationOptions(this.value);
-  final String value;
+  const ApplicationGatewayClientRevocationOptions(this.wireValue);
+  final String wireValue;
 
   static ApplicationGatewayClientRevocationOptions fromValue(String value) {
     for (final item in ApplicationGatewayClientRevocationOptions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ApplicationGatewayClientRevocationOptions value: $value');
+    throw ArgumentError(
+      'Unknown ApplicationGatewayClientRevocationOptions value: $value',
+    );
   }
 }
-

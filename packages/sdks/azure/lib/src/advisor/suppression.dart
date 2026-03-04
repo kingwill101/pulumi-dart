@@ -149,7 +149,7 @@ import 'suppression_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Advisor` - 2023-01-01
@@ -164,12 +164,16 @@ import 'suppression_state.dart';
 class Suppression extends pulumi.CustomResource {
   /// The Name which should be used for this Advisor suppression. Changing this forces a new Advisor suppression to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Advisor recommendation to suppress. Changing this forces a new Advisor suppression to be created.
   late final pulumi.Output<String> recommendationId;
+
   /// The ID of the Resource to suppress the Advisor recommendation for. Changing this forces a new Advisor suppression to be created.
   late final pulumi.Output<String> resourceId;
+
   /// The GUID of the suppression.
   late final pulumi.Output<String> suppressionId;
+
   /// A optional time to live value. If omitted, the suppression will not expire. Changing this forces a new Advisor suppression to be created.
   late final pulumi.Output<String?> ttl;
 
@@ -182,16 +186,16 @@ class Suppression extends pulumi.CustomResource {
     SuppressionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:advisor/suppression:Suppression',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:advisor/suppression:Suppression',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.recommendationId = registerOutput<String>('recommendationId');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.suppressionId = registerOutput<String>('suppressionId');
-    this.ttl = registerOutput<String?>('ttl');
+    recommendationId = registerOutput<String>('recommendationId');
+    resourceId = registerOutput<String>('resourceId');
+    suppressionId = registerOutput<String>('suppressionId');
+    ttl = registerOutput<String?>('ttl');
   }
 
   /// Gets an existing [Suppression] resource's state with the given [name] and [id].
@@ -212,15 +216,15 @@ class Suppression extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:advisor/suppression:Suppression',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:advisor/suppression:Suppression',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.recommendationId = registerOutput<String>('recommendationId');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.suppressionId = registerOutput<String>('suppressionId');
-    this.ttl = registerOutput<String?>('ttl');
+    recommendationId = registerOutput<String>('recommendationId');
+    resourceId = registerOutput<String>('resourceId');
+    suppressionId = registerOutput<String>('suppressionId');
+    ttl = registerOutput<String?>('ttl');
   }
 }

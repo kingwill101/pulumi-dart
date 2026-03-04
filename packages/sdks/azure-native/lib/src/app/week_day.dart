@@ -8,16 +8,15 @@ enum WeekDay {
   valueSaturday("Saturday"),
   valueSunday("Sunday");
 
-  const WeekDay(this.value);
-  final String value;
+  const WeekDay(this.wireValue);
+  final String wireValue;
 
   static WeekDay fromValue(String value) {
     for (final item in WeekDay.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WeekDay value: $value');
   }
 }
-

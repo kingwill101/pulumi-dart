@@ -12,20 +12,15 @@ class GetConnectorArgs {
 
   /// Creates a new [GetConnectorArgs].
   /// [connectorName] Name of the cloud account connector
-  GetConnectorArgs({
-    required this.connectorName,
-  });
+  GetConnectorArgs({required this.connectorName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'connectorName': connectorName,
-    };
+    return <String, dynamic>{'connectorName': connectorName};
   }
 
   factory GetConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectorArgs(
-      connectorName: (map['connectorName'] as String).input(),
+      connectorName: pulumi.Input.fromValue(map['connectorName'] as String),
     );
   }
 }
-

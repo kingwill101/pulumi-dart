@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TestGridProjectVpcConfig {
   /// A list of VPC security group IDs in your Amazon VPC.
   final pulumi.Input<List<String>> securityGroupIds;
+
   /// A list of VPC subnet IDs in your Amazon VPC.
   final pulumi.Input<List<String>> subnetIds;
+
   /// The ID of the Amazon VPC.
   final pulumi.Input<String> vpcId;
 
@@ -30,10 +32,13 @@ class TestGridProjectVpcConfig {
 
   factory TestGridProjectVpcConfig.fromMap(Map<String, dynamic> map) {
     return TestGridProjectVpcConfig(
-      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      vpcId: (map['vpcId'] as String).input(),
+      securityGroupIds: pulumi.Input.fromValue(
+        (map['securityGroupIds'] as List).cast<String>(),
+      ),
+      subnetIds: pulumi.Input.fromValue(
+        (map['subnetIds'] as List).cast<String>(),
+      ),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
-

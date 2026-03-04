@@ -7,14 +7,19 @@ import 'duration.dart';
 class CircuitBreakers {
   /// The timeout for new network connections to hosts.
   final pulumi.Input<Duration>? connectTimeout;
+
   /// The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   final pulumi.Input<int>? maxConnections;
+
   /// The maximum number of pending requests allowed to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   final pulumi.Input<int>? maxPendingRequests;
+
   /// The maximum number of parallel requests that allowed to the backend service. If not specified, there is no limit.
   final pulumi.Input<int>? maxRequests;
+
   /// Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   final pulumi.Input<int>? maxRequestsPerConnection;
+
   /// The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   final pulumi.Input<int>? maxRetries;
 
@@ -36,7 +41,11 @@ class CircuitBreakers {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectTimeout': ?pulumi.Input.mapOptionalInputValue<Duration, Map<String, dynamic>>(connectTimeout, (value) => value.toMap()),
+      'connectTimeout':
+          ?pulumi.Input.mapOptionalInputValue<Duration, Map<String, dynamic>>(
+            connectTimeout,
+            (value) => value.toMap(),
+          ),
       'maxConnections': ?maxConnections,
       'maxPendingRequests': ?maxPendingRequests,
       'maxRequests': ?maxRequests,
@@ -47,13 +56,38 @@ class CircuitBreakers {
 
   factory CircuitBreakers.fromMap(Map<String, dynamic> map) {
     return CircuitBreakers(
-      connectTimeout: map['connectTimeout'] == null ? null : (Duration.fromMap((map['connectTimeout']! as Map).cast<String, dynamic>())).input(),
-      maxConnections: map['maxConnections'] == null ? null : (map['maxConnections']! as int).input(),
-      maxPendingRequests: map['maxPendingRequests'] == null ? null : (map['maxPendingRequests']! as int).input(),
-      maxRequests: map['maxRequests'] == null ? null : (map['maxRequests']! as int).input(),
-      maxRequestsPerConnection: map['maxRequestsPerConnection'] == null ? null : (map['maxRequestsPerConnection']! as int).input(),
-      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries']! as int).input(),
+      connectTimeout: (() {
+        final guardedValue = map['connectTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Duration.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      maxConnections: (() {
+        final guardedValue = map['maxConnections'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxPendingRequests: (() {
+        final guardedValue = map['maxPendingRequests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxRequests: (() {
+        final guardedValue = map['maxRequests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxRequestsPerConnection: (() {
+        final guardedValue = map['maxRequestsPerConnection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxRetries: (() {
+        final guardedValue = map['maxRetries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum RoboDirectiveActionType {
   enterText("ENTER_TEXT"),
   ignore("IGNORE");
 
-  const RoboDirectiveActionType(this.value);
-  final String value;
+  const RoboDirectiveActionType(this.wireValue);
+  final String wireValue;
 
   static RoboDirectiveActionType fromValue(String value) {
     for (final item in RoboDirectiveActionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RoboDirectiveActionType value: $value');
   }
 }
-

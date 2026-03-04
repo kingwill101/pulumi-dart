@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Permissions {
   /// Permissions to certificates
   final pulumi.Input<List<String>>? certificates;
+
   /// Permissions to keys
   final pulumi.Input<List<String>>? keys;
+
   /// Permissions to secrets
   final pulumi.Input<List<String>>? secrets;
+
   /// Permissions to storage accounts
   final pulumi.Input<List<String>>? storage;
 
@@ -18,12 +21,7 @@ class Permissions {
   /// [keys] Permissions to keys
   /// [secrets] Permissions to secrets
   /// [storage] Permissions to storage accounts
-  Permissions({
-    this.certificates,
-    this.keys,
-    this.secrets,
-    this.storage,
-  });
+  Permissions({this.certificates, this.keys, this.secrets, this.storage});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,11 +34,26 @@ class Permissions {
 
   factory Permissions.fromMap(Map<String, dynamic> map) {
     return Permissions(
-      certificates: map['certificates'] == null ? null : ((map['certificates']! as List).cast<String>()).input(),
-      keys: map['keys'] == null ? null : ((map['keys']! as List).cast<String>()).input(),
-      secrets: map['secrets'] == null ? null : ((map['secrets']! as List).cast<String>()).input(),
-      storage: map['storage'] == null ? null : ((map['storage']! as List).cast<String>()).input(),
+      certificates: (() {
+        final guardedValue = map['certificates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      keys: (() {
+        final guardedValue = map['keys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      secrets: (() {
+        final guardedValue = map['secrets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      storage: (() {
+        final guardedValue = map['storage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

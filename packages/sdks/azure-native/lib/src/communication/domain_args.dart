@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainArgs {
   /// Describes how a Domains resource is being managed.
   final pulumi.Input<String> domainManagement;
+
   /// The name of the Domains resource.
   final pulumi.Input<String>? domainName;
+
   /// The name of the EmailService resource.
   final pulumi.Input<String> emailServiceName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Describes whether user engagement tracking is enabled or disabled.
   final pulumi.Input<String>? userEngagementTracking;
 
@@ -54,14 +60,37 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      domainManagement: (map['domainManagement'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      emailServiceName: (map['emailServiceName'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      userEngagementTracking: map['userEngagementTracking'] == null ? null : (map['userEngagementTracking']! as String).input(),
+      domainManagement: pulumi.Input.fromValue(
+        map['domainManagement'] as String,
+      ),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      emailServiceName: pulumi.Input.fromValue(
+        map['emailServiceName'] as String,
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      userEngagementTracking: (() {
+        final guardedValue = map['userEngagementTracking'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

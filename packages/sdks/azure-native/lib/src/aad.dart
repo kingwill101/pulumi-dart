@@ -1,5 +1,3 @@
-library module_aad;
-
 export 'aad/channel_binding.dart';
 export 'aad/config_diagnostics.dart';
 export 'aad/config_diagnostics_response.dart';

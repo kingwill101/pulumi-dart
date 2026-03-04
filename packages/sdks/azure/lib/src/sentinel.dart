@@ -1,5 +1,3 @@
-library module_sentinel;
-
 export 'sentinel/alert_rule_anomaly_built_in.dart';
 export 'sentinel/alert_rule_anomaly_built_in_args.dart';
 export 'sentinel/alert_rule_anomaly_built_in_multi_select_observation.dart';

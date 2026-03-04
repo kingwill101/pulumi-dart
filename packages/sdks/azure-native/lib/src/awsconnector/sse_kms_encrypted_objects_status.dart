@@ -3,16 +3,15 @@ enum SseKmsEncryptedObjectsStatus {
   disabled("Disabled"),
   enabled("Enabled");
 
-  const SseKmsEncryptedObjectsStatus(this.value);
-  final String value;
+  const SseKmsEncryptedObjectsStatus(this.wireValue);
+  final String wireValue;
 
   static SseKmsEncryptedObjectsStatus fromValue(String value) {
     for (final item in SseKmsEncryptedObjectsStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SseKmsEncryptedObjectsStatus value: $value');
   }
 }
-

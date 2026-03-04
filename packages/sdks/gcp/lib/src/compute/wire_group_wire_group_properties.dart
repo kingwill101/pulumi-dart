@@ -11,20 +11,19 @@ class WireGroupWireGroupProperties {
 
   /// Creates a new [WireGroupWireGroupProperties].
   /// [type] Type of wire group (enum).
-  WireGroupWireGroupProperties({
-    this.type,
-  });
+  WireGroupWireGroupProperties({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-    };
+    return <String, dynamic>{'type': ?type};
   }
 
   factory WireGroupWireGroupProperties.fromMap(Map<String, dynamic> map) {
     return WireGroupWireGroupProperties(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

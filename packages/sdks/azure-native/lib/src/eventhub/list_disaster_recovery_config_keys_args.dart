@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListDisasterRecoveryConfigKeysArgs {
   /// The Disaster Recovery configuration name
   final pulumi.Input<String> alias;
+
   /// The authorization rule name.
   final pulumi.Input<String> authorizationRuleName;
+
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
+
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,14 @@ class ListDisasterRecoveryConfigKeysArgs {
 
   factory ListDisasterRecoveryConfigKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListDisasterRecoveryConfigKeysArgs(
-      alias: (map['alias'] as String).input(),
-      authorizationRuleName: (map['authorizationRuleName'] as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      alias: pulumi.Input.fromValue(map['alias'] as String),
+      authorizationRuleName: pulumi.Input.fromValue(
+        map['authorizationRuleName'] as String,
+      ),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

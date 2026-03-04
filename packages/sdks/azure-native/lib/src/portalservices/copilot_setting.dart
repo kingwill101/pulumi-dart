@@ -120,14 +120,19 @@ import 'system_data_response.dart';
 class CopilotSetting extends pulumi.CustomResource {
   /// Boolean indicating if role-based access control is enabled for copilot in this tenant.
   late final pulumi.Output<bool> accessControlEnabled;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last provisioning operation performed on the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -140,16 +145,16 @@ class CopilotSetting extends pulumi.CustomResource {
     CopilotSettingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:portalservices:CopilotSetting',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessControlEnabled = registerOutput<bool>('accessControlEnabled');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:portalservices:CopilotSetting',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessControlEnabled = registerOutput<bool>('accessControlEnabled');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

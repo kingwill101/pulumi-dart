@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   final pulumi.Input<int>? code;
+
   /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
   final pulumi.Input<List<Map<String, String>>>? details;
+
   /// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
   final pulumi.Input<String>? message;
 
@@ -15,11 +17,7 @@ class Status {
   /// [code] The status code, which should be an enum value of google.rpc.Code.
   /// [details] A list of messages that carry the error details. There is a common set of message types for APIs to use.
   /// [message] A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-  Status({
-    this.code,
-    this.details,
-    this.message,
-  });
+  Status({this.code, this.details, this.message});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,23 @@ class Status {
 
   factory Status.fromMap(Map<String, dynamic> map) {
     return Status(
-      code: map['code'] == null ? null : (map['code']! as int).input(),
-      details: map['details'] == null ? null : ((map['details']! as List).cast<Map<String, String>>()).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
+      code: (() {
+        final guardedValue = map['code'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      details: (() {
+        final guardedValue = map['details'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as List).cast<Map<String, String>>(),
+        );
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

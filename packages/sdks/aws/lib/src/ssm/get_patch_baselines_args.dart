@@ -10,8 +10,10 @@ import 'get_patch_baselines_filter.dart';
 class GetPatchBaselinesArgs {
   /// Only return baseline identities where `default_baseline` is `true`.
   final pulumi.Input<bool>? defaultBaselines;
+
   /// Key-value pairs used to filter the results. See `filter` below.
   final pulumi.Input<List<GetPatchBaselinesFilter>>? filters;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -19,26 +21,51 @@ class GetPatchBaselinesArgs {
   /// [defaultBaselines] Only return baseline identities where `default_baseline` is `true`.
   /// [filters] Key-value pairs used to filter the results. See `filter` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetPatchBaselinesArgs({
-    this.defaultBaselines,
-    this.filters,
-    this.region,
-  });
+  GetPatchBaselinesArgs({this.defaultBaselines, this.filters, this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultBaselines': ?defaultBaselines,
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetPatchBaselinesFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetPatchBaselinesFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetPatchBaselinesFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetPatchBaselinesFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': ?region,
     };
   }
 
   factory GetPatchBaselinesArgs.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselinesArgs(
-      defaultBaselines: map['defaultBaselines'] == null ? null : ((map['defaultBaselines'] as bool).input()).input(),
-      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetPatchBaselinesFilter>(map['filters']!, (value) => GetPatchBaselinesFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      defaultBaselines: (() {
+        final guardedValue = map['defaultBaselines'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetPatchBaselinesFilter>(
+            guardedValue,
+            (value) => GetPatchBaselinesFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

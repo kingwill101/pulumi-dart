@@ -6,7 +6,7 @@ import 'kv_namespace_state.dart';
 ///
 /// For information about Dcdn Kv Namespace and how to use it, see [What is Kv Namespace](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-putdcdnkvnamespace).
 ///
-/// > **NOTE:** Available since v1.198.0.
+/// &gt; **NOTE:** Available since v1.198.0.
 ///
 /// ## Example Usage
 ///
@@ -178,8 +178,10 @@ import 'kv_namespace_state.dart';
 class KvNamespace extends pulumi.CustomResource {
   /// Namespace description information
   late final pulumi.Output<String> description;
+
   /// Namespace name. The name can contain letters, digits, hyphens (-), and underscores (_).
   late final pulumi.Output<String> namespace;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -192,14 +194,14 @@ class KvNamespace extends pulumi.CustomResource {
     KvNamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dcdn/kvNamespace:KvNamespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.namespace = registerOutput<String>('namespace');
-    this.status = registerOutput<String>('status');
+         'alicloud:dcdn/kvNamespace:KvNamespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    namespace = registerOutput<String>('namespace');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [KvNamespace] resource's state with the given [name] and [id].
@@ -220,13 +222,13 @@ class KvNamespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dcdn/kvNamespace:KvNamespace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String>('description');
-    this.namespace = registerOutput<String>('namespace');
-    this.status = registerOutput<String>('status');
+         'alicloud:dcdn/kvNamespace:KvNamespace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String>('description');
+    namespace = registerOutput<String>('namespace');
+    status = registerOutput<String>('status');
   }
 }

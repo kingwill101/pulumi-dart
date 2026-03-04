@@ -9,20 +9,21 @@ class LocalTimestampResponseTimeZoneOffset {
 
   /// Creates a new [LocalTimestampResponseTimeZoneOffset].
   /// [propertyName] The event property that will be contain the offset information to calculate the local timestamp. When the LocalTimestampFormat is Iana, the property name will contain the name of the column which contains IANA Timezone Name (eg: Americas/Los Angeles). When LocalTimestampFormat is Timespan, it contains the name of property which contains values representing the offset (eg: P1D or 1.00:00:00)
-  LocalTimestampResponseTimeZoneOffset({
-    this.propertyName,
-  });
+  LocalTimestampResponseTimeZoneOffset({this.propertyName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'propertyName': ?propertyName,
-    };
+    return <String, dynamic>{'propertyName': ?propertyName};
   }
 
-  factory LocalTimestampResponseTimeZoneOffset.fromMap(Map<String, dynamic> map) {
+  factory LocalTimestampResponseTimeZoneOffset.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LocalTimestampResponseTimeZoneOffset(
-      propertyName: map['propertyName'] == null ? null : (map['propertyName']! as String).input(),
+      propertyName: (() {
+        final guardedValue = map['propertyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_kinesisanalyticsv2;
-
 export 'kinesisanalyticsv2/application.dart';
 export 'kinesisanalyticsv2/application_application_configuration.dart';
 export 'kinesisanalyticsv2/application_application_configuration_application_code_configuration.dart';

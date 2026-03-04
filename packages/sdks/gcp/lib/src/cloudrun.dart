@@ -1,5 +1,3 @@
-library module_cloudrun;
-
 export 'cloudrun/domain_mapping.dart';
 export 'cloudrun/domain_mapping_args.dart';
 export 'cloudrun/domain_mapping_metadata.dart';

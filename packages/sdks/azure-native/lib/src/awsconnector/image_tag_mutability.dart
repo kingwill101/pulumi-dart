@@ -3,16 +3,15 @@ enum ImageTagMutability {
   iMMUTABLE("IMMUTABLE"),
   mUTABLE("MUTABLE");
 
-  const ImageTagMutability(this.value);
-  final String value;
+  const ImageTagMutability(this.wireValue);
+  final String wireValue;
 
   static ImageTagMutability fromValue(String value) {
     for (final item in ImageTagMutability.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ImageTagMutability value: $value');
   }
 }
-

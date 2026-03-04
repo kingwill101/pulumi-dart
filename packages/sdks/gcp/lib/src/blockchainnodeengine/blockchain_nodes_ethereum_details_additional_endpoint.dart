@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BlockchainNodesEthereumDetailsAdditionalEndpoint {
   /// The assigned URL for the node's Beacon API endpoint.
   final pulumi.Input<String>? beaconApiEndpoint;
+
   /// The assigned URL for the node's Beacon Prometheus metrics endpoint.
   final pulumi.Input<String>? beaconPrometheusMetricsApiEndpoint;
+
   /// The assigned URL for the node's execution client's Prometheus metrics endpoint.
   final pulumi.Input<String>? executionClientPrometheusMetricsApiEndpoint;
 
@@ -24,16 +26,30 @@ class BlockchainNodesEthereumDetailsAdditionalEndpoint {
     return <String, dynamic>{
       'beaconApiEndpoint': ?beaconApiEndpoint,
       'beaconPrometheusMetricsApiEndpoint': ?beaconPrometheusMetricsApiEndpoint,
-      'executionClientPrometheusMetricsApiEndpoint': ?executionClientPrometheusMetricsApiEndpoint,
+      'executionClientPrometheusMetricsApiEndpoint':
+          ?executionClientPrometheusMetricsApiEndpoint,
     };
   }
 
-  factory BlockchainNodesEthereumDetailsAdditionalEndpoint.fromMap(Map<String, dynamic> map) {
+  factory BlockchainNodesEthereumDetailsAdditionalEndpoint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BlockchainNodesEthereumDetailsAdditionalEndpoint(
-      beaconApiEndpoint: map['beaconApiEndpoint'] == null ? null : (map['beaconApiEndpoint']! as String).input(),
-      beaconPrometheusMetricsApiEndpoint: map['beaconPrometheusMetricsApiEndpoint'] == null ? null : (map['beaconPrometheusMetricsApiEndpoint']! as String).input(),
-      executionClientPrometheusMetricsApiEndpoint: map['executionClientPrometheusMetricsApiEndpoint'] == null ? null : (map['executionClientPrometheusMetricsApiEndpoint']! as String).input(),
+      beaconApiEndpoint: (() {
+        final guardedValue = map['beaconApiEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      beaconPrometheusMetricsApiEndpoint: (() {
+        final guardedValue = map['beaconPrometheusMetricsApiEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executionClientPrometheusMetricsApiEndpoint: (() {
+        final guardedValue = map['executionClientPrometheusMetricsApiEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

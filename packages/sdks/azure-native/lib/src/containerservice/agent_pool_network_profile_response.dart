@@ -8,8 +8,10 @@ import 'port_range_response.dart';
 class AgentPoolNetworkProfileResponse {
   /// The port ranges that are allowed to access. The specified ranges are allowed to overlap.
   final pulumi.Input<List<PortRangeResponse>>? allowedHostPorts;
+
   /// The IDs of the application security groups which agent pool will associate when created.
   final pulumi.Input<List<String>>? applicationSecurityGroups;
+
   /// IPTags of instance-level public IPs.
   final pulumi.Input<List<IPTagResponse>>? nodePublicIPTags;
 
@@ -25,18 +27,64 @@ class AgentPoolNetworkProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedHostPorts': ?pulumi.Input.mapOptionalInputValue<List<PortRangeResponse>, List<Map<String, dynamic>>>(allowedHostPorts, (value) => pulumi.Input.encodeList<PortRangeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'allowedHostPorts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PortRangeResponse>,
+            List<Map<String, dynamic>>
+          >(
+            allowedHostPorts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PortRangeResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'applicationSecurityGroups': ?applicationSecurityGroups,
-      'nodePublicIPTags': ?pulumi.Input.mapOptionalInputValue<List<IPTagResponse>, List<Map<String, dynamic>>>(nodePublicIPTags, (value) => pulumi.Input.encodeList<IPTagResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodePublicIPTags':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IPTagResponse>,
+            List<Map<String, dynamic>>
+          >(
+            nodePublicIPTags,
+            (value) =>
+                pulumi.Input.encodeList<IPTagResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory AgentPoolNetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return AgentPoolNetworkProfileResponse(
-      allowedHostPorts: map['allowedHostPorts'] == null ? null : (pulumi.Input.decodeList<PortRangeResponse>(map['allowedHostPorts']!, (value) => PortRangeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : ((map['applicationSecurityGroups']! as List).cast<String>()).input(),
-      nodePublicIPTags: map['nodePublicIPTags'] == null ? null : (pulumi.Input.decodeList<IPTagResponse>(map['nodePublicIPTags']!, (value) => IPTagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedHostPorts: (() {
+        final guardedValue = map['allowedHostPorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PortRangeResponse>(
+            guardedValue,
+            (value) => PortRangeResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      applicationSecurityGroups: (() {
+        final guardedValue = map['applicationSecurityGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nodePublicIPTags: (() {
+        final guardedValue = map['nodePublicIPTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IPTagResponse>(
+            guardedValue,
+            (value) =>
+                IPTagResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

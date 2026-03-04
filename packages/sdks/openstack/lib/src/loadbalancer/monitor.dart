@@ -135,54 +135,68 @@ class Monitor extends pulumi.CustomResource {
   /// The administrative state of the monitor.
   /// A valid value is true (UP) or false (DOWN).
   late final pulumi.Output<bool?> adminStateUp;
+
   /// The time, in seconds, between sending probes to members.
   late final pulumi.Output<int> delay;
+
   /// The domain name to use in the HTTP host header
   /// health monitor requests. Supported in Octavia API version 2.10 or later.
   late final pulumi.Output<String?> domainName;
+
   /// Required for HTTP(S) types. Expected HTTP codes
   /// for a passing HTTP(S) monitor. You can either specify a single status like
   /// "200", a list like "200, 202" or a range like "200-202". Default is "200".
   late final pulumi.Output<String> expectedCodes;
+
   /// Required for HTTP(S) types. The HTTP method that
   /// the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
   /// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
   late final pulumi.Output<String> httpMethod;
+
   /// Required for HTTP(S) types. The HTTP version that
   /// the health monitor uses for requests. One of `1.0` or 1.1` is supported
   /// for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
   /// 2.10 or later.
   late final pulumi.Output<String?> httpVersion;
+
   /// Number of permissible ping failures before
   /// changing the member's status to INACTIVE. Must be a number between 1
   /// and 10.
   late final pulumi.Output<int> maxRetries;
+
   /// Number of permissible ping failures before
   /// changing the member's status to ERROR. Must be a number between 1 and 10.
   /// The default is 3. Changing this updates the max_retries_down of the
   /// existing monitor.
   late final pulumi.Output<int> maxRetriesDown;
+
   /// The Name of the Monitor.
   late final pulumi.Output<String> name;
+
   /// The id of the pool that this monitor will be assigned to.
   late final pulumi.Output<String> poolId;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a monitor. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// monitor.
   late final pulumi.Output<String> region;
+
   /// Required for admins. The UUID of the tenant who owns
   /// the monitor.  Only administrative users can specify a tenant UUID
   /// other than their own. Changing this creates a new monitor.
   late final pulumi.Output<String> tenantId;
+
   /// Maximum number of seconds for a monitor to wait for a
   /// ping reply before it times out. The value must be less than the delay
   /// value.
   late final pulumi.Output<int> timeout;
+
   /// The type of probe, which is PING, TCP, HTTP, HTTPS,
   /// TLS-HELLO, SCTP or UDP-CONNECT, that is sent by the loadbalancer to
   /// verify the member state. Changing this creates a new monitor.
   late final pulumi.Output<String> type;
+
   /// Required for HTTP(S) types. URI path that will be
   /// accessed if monitor type is HTTP or HTTPS. Default is `/`.
   late final pulumi.Output<String> urlPath;
@@ -196,26 +210,26 @@ class Monitor extends pulumi.CustomResource {
     MonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:loadbalancer/monitor:Monitor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminStateUp = registerOutput<bool?>('adminStateUp');
-    this.delay = registerOutput<int>('delay');
-    this.domainName = registerOutput<String?>('domainName');
-    this.expectedCodes = registerOutput<String>('expectedCodes');
-    this.httpMethod = registerOutput<String>('httpMethod');
-    this.httpVersion = registerOutput<String?>('httpVersion');
-    this.maxRetries = registerOutput<int>('maxRetries');
-    this.maxRetriesDown = registerOutput<int>('maxRetriesDown');
+         'openstack:loadbalancer/monitor:Monitor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminStateUp = registerOutput<bool?>('adminStateUp');
+    delay = registerOutput<int>('delay');
+    domainName = registerOutput<String?>('domainName');
+    expectedCodes = registerOutput<String>('expectedCodes');
+    httpMethod = registerOutput<String>('httpMethod');
+    httpVersion = registerOutput<String?>('httpVersion');
+    maxRetries = registerOutput<int>('maxRetries');
+    maxRetriesDown = registerOutput<int>('maxRetriesDown');
     this.name = registerOutput<String>('name');
-    this.poolId = registerOutput<String>('poolId');
-    this.region = registerOutput<String>('region');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.timeout = registerOutput<int>('timeout');
-    this.type = registerOutput<String>('type');
-    this.urlPath = registerOutput<String>('urlPath');
+    poolId = registerOutput<String>('poolId');
+    region = registerOutput<String>('region');
+    tenantId = registerOutput<String>('tenantId');
+    timeout = registerOutput<int>('timeout');
+    type = registerOutput<String>('type');
+    urlPath = registerOutput<String>('urlPath');
   }
 
   /// Gets an existing [Monitor] resource's state with the given [name] and [id].
@@ -236,25 +250,25 @@ class Monitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:loadbalancer/monitor:Monitor',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminStateUp = registerOutput<bool?>('adminStateUp');
-    this.delay = registerOutput<int>('delay');
-    this.domainName = registerOutput<String?>('domainName');
-    this.expectedCodes = registerOutput<String>('expectedCodes');
-    this.httpMethod = registerOutput<String>('httpMethod');
-    this.httpVersion = registerOutput<String?>('httpVersion');
-    this.maxRetries = registerOutput<int>('maxRetries');
-    this.maxRetriesDown = registerOutput<int>('maxRetriesDown');
+         'openstack:loadbalancer/monitor:Monitor',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminStateUp = registerOutput<bool?>('adminStateUp');
+    delay = registerOutput<int>('delay');
+    domainName = registerOutput<String?>('domainName');
+    expectedCodes = registerOutput<String>('expectedCodes');
+    httpMethod = registerOutput<String>('httpMethod');
+    httpVersion = registerOutput<String?>('httpVersion');
+    maxRetries = registerOutput<int>('maxRetries');
+    maxRetriesDown = registerOutput<int>('maxRetriesDown');
     this.name = registerOutput<String>('name');
-    this.poolId = registerOutput<String>('poolId');
-    this.region = registerOutput<String>('region');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.timeout = registerOutput<int>('timeout');
-    this.type = registerOutput<String>('type');
-    this.urlPath = registerOutput<String>('urlPath');
+    poolId = registerOutput<String>('poolId');
+    region = registerOutput<String>('region');
+    tenantId = registerOutput<String>('tenantId');
+    timeout = registerOutput<int>('timeout');
+    type = registerOutput<String>('type');
+    urlPath = registerOutput<String>('urlPath');
   }
 }

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecureInputOutputPolicyResponse {
   /// When set to true, Input from activity is considered as secure and will not be logged to monitoring.
   final pulumi.Input<bool>? secureInput;
+
   /// When set to true, Output from activity is considered as secure and will not be logged to monitoring.
   final pulumi.Input<bool>? secureOutput;
 
   /// Creates a new [SecureInputOutputPolicyResponse].
   /// [secureInput] When set to true, Input from activity is considered as secure and will not be logged to monitoring.
   /// [secureOutput] When set to true, Output from activity is considered as secure and will not be logged to monitoring.
-  SecureInputOutputPolicyResponse({
-    this.secureInput,
-    this.secureOutput,
-  });
+  SecureInputOutputPolicyResponse({this.secureInput, this.secureOutput});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class SecureInputOutputPolicyResponse {
 
   factory SecureInputOutputPolicyResponse.fromMap(Map<String, dynamic> map) {
     return SecureInputOutputPolicyResponse(
-      secureInput: map['secureInput'] == null ? null : (map['secureInput']! as bool).input(),
-      secureOutput: map['secureOutput'] == null ? null : (map['secureOutput']! as bool).input(),
+      secureInput: (() {
+        final guardedValue = map['secureInput'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      secureOutput: (() {
+        final guardedValue = map['secureOutput'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

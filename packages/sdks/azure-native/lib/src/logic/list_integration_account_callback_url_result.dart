@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by listIntegrationAccountCallbackUrl.
 class ListIntegrationAccountCallbackUrlResult {
   /// The URL value.
@@ -8,20 +7,21 @@ class ListIntegrationAccountCallbackUrlResult {
 
   /// Creates a new [ListIntegrationAccountCallbackUrlResult].
   /// [value] The URL value.
-  ListIntegrationAccountCallbackUrlResult({
-    this.value,
-  });
+  ListIntegrationAccountCallbackUrlResult({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
-  factory ListIntegrationAccountCallbackUrlResult.fromMap(Map<String, dynamic> map) {
+  factory ListIntegrationAccountCallbackUrlResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListIntegrationAccountCallbackUrlResult(
-      value: map['value'] == null ? null : map['value']! as String,
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

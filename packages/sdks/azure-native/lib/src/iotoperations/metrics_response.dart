@@ -9,20 +9,19 @@ class MetricsResponse {
 
   /// Creates a new [MetricsResponse].
   /// [prometheusPort] The prometheus port to expose the metrics.
-  MetricsResponse({
-    this.prometheusPort,
-  });
+  MetricsResponse({this.prometheusPort});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'prometheusPort': ?prometheusPort,
-    };
+    return <String, dynamic>{'prometheusPort': ?prometheusPort};
   }
 
   factory MetricsResponse.fromMap(Map<String, dynamic> map) {
     return MetricsResponse(
-      prometheusPort: map['prometheusPort'] == null ? null : (map['prometheusPort']! as int).input(),
+      prometheusPort: (() {
+        final guardedValue = map['prometheusPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

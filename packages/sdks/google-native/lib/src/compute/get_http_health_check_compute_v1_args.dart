@@ -27,9 +27,12 @@ class GetHttpHealthCheckComputeV1Args {
 
   factory GetHttpHealthCheckComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetHttpHealthCheckComputeV1Args(
-      httpHealthCheck: (map['httpHealthCheck'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      httpHealthCheck: pulumi.Input.fromValue(map['httpHealthCheck'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

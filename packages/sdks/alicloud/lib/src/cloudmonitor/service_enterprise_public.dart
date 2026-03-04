@@ -5,7 +5,7 @@ import 'service_enterprise_public_state.dart';
 ///
 /// For information about Cloud Monitor Service Enterprise Public and how to use it, see [What is Enterprise Public](https://www.alibabacloud.com/help/en/cms/user-guide/overview-3).
 ///
-/// > **NOTE:** Available since v1.215.0.
+/// &gt; **NOTE:** Available since v1.215.0.
 ///
 /// ## Example Usage
 ///
@@ -129,12 +129,12 @@ class ServiceEnterprisePublic extends pulumi.CustomResource {
     Map<String, dynamic>? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic',
-          name,
-          pulumi.Input.mapToInputs(args ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
+         'alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic',
+         name,
+         pulumi.Input.mapToInputs(args ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
   }
 
   /// Gets an existing [ServiceEnterprisePublic] resource's state with the given [name] and [id].
@@ -155,11 +155,11 @@ class ServiceEnterprisePublic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
+         'alicloud:cloudmonitor/serviceEnterprisePublic:ServiceEnterprisePublic',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
   }
 }

@@ -3,16 +3,15 @@ enum SettingNames {
   valueAutoLogon("AutoLogon"),
   valueFirstLogonCommands("FirstLogonCommands");
 
-  const SettingNames(this.value);
-  final String value;
+  const SettingNames(this.wireValue);
+  final String wireValue;
 
   static SettingNames fromValue(String value) {
     for (final item in SettingNames.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SettingNames value: $value');
   }
 }
-

@@ -6,16 +6,15 @@ enum FeatureSpecProvisionGoogleCa {
   enabledWithManagedCa("ENABLED_WITH_MANAGED_CA"),
   enabledWithDefaultCa("ENABLED_WITH_DEFAULT_CA");
 
-  const FeatureSpecProvisionGoogleCa(this.value);
-  final String value;
+  const FeatureSpecProvisionGoogleCa(this.wireValue);
+  final String wireValue;
 
   static FeatureSpecProvisionGoogleCa fromValue(String value) {
     for (final item in FeatureSpecProvisionGoogleCa.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FeatureSpecProvisionGoogleCa value: $value');
   }
 }
-

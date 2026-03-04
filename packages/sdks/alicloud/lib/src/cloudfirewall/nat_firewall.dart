@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'nat_firewall_args.dart';
-import 'nat_firewall_nat_route_entry_list.dart';
 import 'nat_firewall_state.dart';
 
 /// Provides a Cloud Firewall Nat Firewall resource.
 ///
 /// For information about Cloud Firewall Nat Firewall and how to use it, see [What is Nat Firewall](https://www.alibabacloud.com/help/zh/cloud-firewall/developer-reference/api-cloudfw-2017-12-07-createsecurityproxy).
 ///
-/// > **NOTE:** Available since v1.224.0.
+/// &gt; **NOTE:** Available since v1.224.0.
 ///
 /// ## Example Usage
 ///
@@ -510,26 +509,37 @@ import 'nat_firewall_state.dart';
 class NatFirewall extends pulumi.CustomResource {
   /// Safety protection switch. Value:-**open**: open-**close**: close.
   late final pulumi.Output<String?> firewallSwitch;
+
   /// Lang.
   late final pulumi.Output<String?> lang;
+
   /// NAT gateway ID.
   late final pulumi.Output<String> natGatewayId;
+
   /// The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
-  late final pulumi.Output<List<NatFirewallNatRouteEntryList>> natRouteEntryLists;
+  late final pulumi.Output<List<Map<String, dynamic>>> natRouteEntryLists;
+
   /// NAT firewall name.
   late final pulumi.Output<String> proxyName;
+
   /// Region.
   late final pulumi.Output<String> regionNo;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
+
   /// Whether strict mode is enabled 1-Enable strict mode 0-Disable strict mode.
   late final pulumi.Output<int?> strictMode;
+
   /// The ID of the VPC instance.
   late final pulumi.Output<String> vpcId;
+
   /// Whether to use switch automatic mode. Value: **true**: Use automatic mode: **false**: Use manual mode.
   late final pulumi.Output<String?> vswitchAuto;
+
   /// The network segment of the virtual switch. Required for Switch automatic mode.
   late final pulumi.Output<String?> vswitchCidr;
+
   /// The switch ID. Required for switch manual mode.
   late final pulumi.Output<String?> vswitchId;
 
@@ -542,23 +552,25 @@ class NatFirewall extends pulumi.CustomResource {
     NatFirewallArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/natFirewall:NatFirewall',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.firewallSwitch = registerOutput<String?>('firewallSwitch');
-    this.lang = registerOutput<String?>('lang');
-    this.natGatewayId = registerOutput<String>('natGatewayId');
-    this.natRouteEntryLists = registerOutput<List<NatFirewallNatRouteEntryList>>('natRouteEntryLists');
-    this.proxyName = registerOutput<String>('proxyName');
-    this.regionNo = registerOutput<String>('regionNo');
-    this.status = registerOutput<String>('status');
-    this.strictMode = registerOutput<int?>('strictMode');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchAuto = registerOutput<String?>('vswitchAuto');
-    this.vswitchCidr = registerOutput<String?>('vswitchCidr');
-    this.vswitchId = registerOutput<String?>('vswitchId');
+         'alicloud:cloudfirewall/natFirewall:NatFirewall',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    firewallSwitch = registerOutput<String?>('firewallSwitch');
+    lang = registerOutput<String?>('lang');
+    natGatewayId = registerOutput<String>('natGatewayId');
+    natRouteEntryLists = registerOutput<List<Map<String, dynamic>>>(
+      'natRouteEntryLists',
+    );
+    proxyName = registerOutput<String>('proxyName');
+    regionNo = registerOutput<String>('regionNo');
+    status = registerOutput<String>('status');
+    strictMode = registerOutput<int?>('strictMode');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchAuto = registerOutput<String?>('vswitchAuto');
+    vswitchCidr = registerOutput<String?>('vswitchCidr');
+    vswitchId = registerOutput<String?>('vswitchId');
   }
 
   /// Gets an existing [NatFirewall] resource's state with the given [name] and [id].
@@ -579,22 +591,24 @@ class NatFirewall extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/natFirewall:NatFirewall',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.firewallSwitch = registerOutput<String?>('firewallSwitch');
-    this.lang = registerOutput<String?>('lang');
-    this.natGatewayId = registerOutput<String>('natGatewayId');
-    this.natRouteEntryLists = registerOutput<List<NatFirewallNatRouteEntryList>>('natRouteEntryLists');
-    this.proxyName = registerOutput<String>('proxyName');
-    this.regionNo = registerOutput<String>('regionNo');
-    this.status = registerOutput<String>('status');
-    this.strictMode = registerOutput<int?>('strictMode');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchAuto = registerOutput<String?>('vswitchAuto');
-    this.vswitchCidr = registerOutput<String?>('vswitchCidr');
-    this.vswitchId = registerOutput<String?>('vswitchId');
+         'alicloud:cloudfirewall/natFirewall:NatFirewall',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    firewallSwitch = registerOutput<String?>('firewallSwitch');
+    lang = registerOutput<String?>('lang');
+    natGatewayId = registerOutput<String>('natGatewayId');
+    natRouteEntryLists = registerOutput<List<Map<String, dynamic>>>(
+      'natRouteEntryLists',
+    );
+    proxyName = registerOutput<String>('proxyName');
+    regionNo = registerOutput<String>('regionNo');
+    status = registerOutput<String>('status');
+    strictMode = registerOutput<int?>('strictMode');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchAuto = registerOutput<String?>('vswitchAuto');
+    vswitchCidr = registerOutput<String?>('vswitchCidr');
+    vswitchId = registerOutput<String?>('vswitchId');
   }
 }

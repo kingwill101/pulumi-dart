@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRecommendationsArgs {
   /// Specifies a list of categories in which the Advisor Recommendations will be listed. Possible values are `HighAvailability`, `Security`, `Performance`, `Cost` and `OperationalExcellence`.
   final pulumi.Input<List<String>>? filterByCategories;
+
   /// Specifies a list of resource groups about which the Advisor Recommendations will be listed.
   final pulumi.Input<List<String>>? filterByResourceGroups;
 
@@ -29,9 +30,16 @@ class GetRecommendationsArgs {
 
   factory GetRecommendationsArgs.fromMap(Map<String, dynamic> map) {
     return GetRecommendationsArgs(
-      filterByCategories: map['filterByCategories'] == null ? null : ((map['filterByCategories']! as List).cast<String>()).input(),
-      filterByResourceGroups: map['filterByResourceGroups'] == null ? null : ((map['filterByResourceGroups']! as List).cast<String>()).input(),
+      filterByCategories: (() {
+        final guardedValue = map['filterByCategories'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      filterByResourceGroups: (() {
+        final guardedValue = map['filterByResourceGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

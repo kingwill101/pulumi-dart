@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesClusterStorageProfile {
   /// Is the Blob CSI driver enabled? Defaults to `false`.
   final pulumi.Input<bool>? blobDriverEnabled;
+
   /// Is the Disk CSI driver enabled? Defaults to `true`.
   final pulumi.Input<bool>? diskDriverEnabled;
+
   /// Is the File CSI driver enabled? Defaults to `true`.
   final pulumi.Input<bool>? fileDriverEnabled;
+
   /// Is the Snapshot Controller enabled? Defaults to `true`.
   final pulumi.Input<bool>? snapshotControllerEnabled;
 
@@ -35,11 +38,26 @@ class KubernetesClusterStorageProfile {
 
   factory KubernetesClusterStorageProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterStorageProfile(
-      blobDriverEnabled: map['blobDriverEnabled'] == null ? null : (map['blobDriverEnabled']! as bool).input(),
-      diskDriverEnabled: map['diskDriverEnabled'] == null ? null : (map['diskDriverEnabled']! as bool).input(),
-      fileDriverEnabled: map['fileDriverEnabled'] == null ? null : (map['fileDriverEnabled']! as bool).input(),
-      snapshotControllerEnabled: map['snapshotControllerEnabled'] == null ? null : (map['snapshotControllerEnabled']! as bool).input(),
+      blobDriverEnabled: (() {
+        final guardedValue = map['blobDriverEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      diskDriverEnabled: (() {
+        final guardedValue = map['diskDriverEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      fileDriverEnabled: (() {
+        final guardedValue = map['fileDriverEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      snapshotControllerEnabled: (() {
+        final guardedValue = map['snapshotControllerEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

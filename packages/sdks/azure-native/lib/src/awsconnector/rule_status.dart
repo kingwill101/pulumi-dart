@@ -3,16 +3,15 @@ enum RuleStatus {
   disabled("Disabled"),
   enabled("Enabled");
 
-  const RuleStatus(this.value);
-  final String value;
+  const RuleStatus(this.wireValue);
+  final String wireValue;
 
   static RuleStatus fromValue(String value) {
     for (final item in RuleStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RuleStatus value: $value');
   }
 }
-

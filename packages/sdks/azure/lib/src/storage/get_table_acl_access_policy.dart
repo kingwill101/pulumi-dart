@@ -27,10 +27,9 @@ class GetTableAclAccessPolicy {
 
   factory GetTableAclAccessPolicy.fromMap(Map<String, dynamic> map) {
     return GetTableAclAccessPolicy(
-      expiry: (map['expiry'] as String).input(),
-      permissions: (map['permissions'] as String).input(),
-      start: (map['start'] as String).input(),
+      expiry: pulumi.Input.fromValue(map['expiry'] as String),
+      permissions: pulumi.Input.fromValue(map['permissions'] as String),
+      start: pulumi.Input.fromValue(map['start'] as String),
     );
   }
 }
-

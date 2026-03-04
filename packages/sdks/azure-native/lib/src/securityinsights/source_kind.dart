@@ -5,16 +5,15 @@ enum SourceKind {
   valueSolution("Solution"),
   valueSourceRepository("SourceRepository");
 
-  const SourceKind(this.value);
-  final String value;
+  const SourceKind(this.wireValue);
+  final String wireValue;
 
   static SourceKind fromValue(String value) {
     for (final item in SourceKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SourceKind value: $value');
   }
 }
-

@@ -3,16 +3,15 @@ enum InfrastructureEncryption {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const InfrastructureEncryption(this.value);
-  final String value;
+  const InfrastructureEncryption(this.wireValue);
+  final String wireValue;
 
   static InfrastructureEncryption fromValue(String value) {
     for (final item in InfrastructureEncryption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InfrastructureEncryption value: $value');
   }
 }
-

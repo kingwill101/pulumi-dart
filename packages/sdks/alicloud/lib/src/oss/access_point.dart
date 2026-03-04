@@ -10,7 +10,7 @@ import 'access_point_vpc_configuration.dart';
 ///
 /// For information about OSS Access Point and how to use it, see [What is Access Point](https://www.alibabacloud.com/help/en/oss/developer-reference/createaccesspoint).
 ///
-/// > **NOTE:** Available since v1.240.0.
+/// &gt; **NOTE:** Available since v1.240.0.
 ///
 /// ## Example Usage
 ///
@@ -211,16 +211,22 @@ import 'access_point_vpc_configuration.dart';
 class AccessPoint extends pulumi.CustomResource {
   /// The name of the access point
   late final pulumi.Output<String> accessPointName;
+
   /// The Bucket to which the current access point belongs.
   late final pulumi.Output<String> bucket;
+
   /// Access point network source. The valid values are as follows:
   /// - vpc: only the specified VPC ID can be used to access the access point.
   /// - internet: the access point can be accessed through both external and internal Endpoint.
   late final pulumi.Output<String> networkOrigin;
+
   /// Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
-  late final pulumi.Output<AccessPointPublicAccessBlockConfiguration?> publicAccessBlockConfiguration;
+  late final pulumi.Output<AccessPointPublicAccessBlockConfiguration?>
+  publicAccessBlockConfiguration;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
+
   /// If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
   late final pulumi.Output<AccessPointVpcConfiguration?> vpcConfiguration;
 
@@ -233,17 +239,22 @@ class AccessPoint extends pulumi.CustomResource {
     AccessPointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/accessPoint:AccessPoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPointName = registerOutput<String>('accessPointName');
-    this.bucket = registerOutput<String>('bucket');
-    this.networkOrigin = registerOutput<String>('networkOrigin');
-    this.publicAccessBlockConfiguration = registerOutput<AccessPointPublicAccessBlockConfiguration?>('publicAccessBlockConfiguration');
-    this.status = registerOutput<String>('status');
-    this.vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>('vpcConfiguration');
+         'alicloud:oss/accessPoint:AccessPoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessPointName = registerOutput<String>('accessPointName');
+    bucket = registerOutput<String>('bucket');
+    networkOrigin = registerOutput<String>('networkOrigin');
+    publicAccessBlockConfiguration =
+        registerOutput<AccessPointPublicAccessBlockConfiguration?>(
+          'publicAccessBlockConfiguration',
+        );
+    status = registerOutput<String>('status');
+    vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>(
+      'vpcConfiguration',
+    );
   }
 
   /// Gets an existing [AccessPoint] resource's state with the given [name] and [id].
@@ -264,16 +275,21 @@ class AccessPoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/accessPoint:AccessPoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPointName = registerOutput<String>('accessPointName');
-    this.bucket = registerOutput<String>('bucket');
-    this.networkOrigin = registerOutput<String>('networkOrigin');
-    this.publicAccessBlockConfiguration = registerOutput<AccessPointPublicAccessBlockConfiguration?>('publicAccessBlockConfiguration');
-    this.status = registerOutput<String>('status');
-    this.vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>('vpcConfiguration');
+         'alicloud:oss/accessPoint:AccessPoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessPointName = registerOutput<String>('accessPointName');
+    bucket = registerOutput<String>('bucket');
+    networkOrigin = registerOutput<String>('networkOrigin');
+    publicAccessBlockConfiguration =
+        registerOutput<AccessPointPublicAccessBlockConfiguration?>(
+          'publicAccessBlockConfiguration',
+        );
+    status = registerOutput<String>('status');
+    vpcConfiguration = registerOutput<AccessPointVpcConfiguration?>(
+      'vpcConfiguration',
+    );
   }
 }

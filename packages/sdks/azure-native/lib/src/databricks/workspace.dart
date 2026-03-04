@@ -3,14 +3,12 @@ import 'created_by_response.dart';
 import 'default_catalog_properties_response.dart';
 import 'enhanced_security_compliance_definition_response.dart';
 import 'managed_identity_configuration_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
 import 'workspace_args.dart';
 import 'workspace_custom_parameters_response.dart';
 import 'workspace_properties_response_access_connector.dart';
 import 'workspace_properties_response_encryption.dart';
-import 'workspace_provider_authorization_response.dart';
 
 /// Information about workspace.
 ///
@@ -1601,61 +1599,94 @@ import 'workspace_provider_authorization_response.dart';
 /// ```
 class Workspace extends pulumi.CustomResource {
   /// Access Connector Resource that is going to be associated with Databricks Workspace
-  late final pulumi.Output<WorkspacePropertiesResponseAccessConnector?> accessConnector;
+  late final pulumi.Output<WorkspacePropertiesResponseAccessConnector?>
+  accessConnector;
+
   /// The workspace provider authorizations.
-  late final pulumi.Output<List<WorkspaceProviderAuthorizationResponse>?> authorizations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> authorizations;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Indicates the Object ID, PUID and Application ID of entity that created the workspace.
   late final pulumi.Output<CreatedByResponse?> createdBy;
+
   /// Specifies the date and time when the workspace is created.
   late final pulumi.Output<String> createdDateTime;
+
   /// Properties for Default Catalog configuration during workspace creation.
   late final pulumi.Output<DefaultCatalogPropertiesResponse?> defaultCatalog;
+
   /// Gets or Sets Default Storage Firewall configuration information
   late final pulumi.Output<String?> defaultStorageFirewall;
+
   /// The resource Id of the managed disk encryption set.
   late final pulumi.Output<String> diskEncryptionSetId;
+
   /// Encryption properties for databricks workspace
   late final pulumi.Output<WorkspacePropertiesResponseEncryption?> encryption;
+
   /// Contains settings related to the Enhanced Security and Compliance Add-On.
-  late final pulumi.Output<EnhancedSecurityComplianceDefinitionResponse?> enhancedSecurityCompliance;
+  late final pulumi.Output<EnhancedSecurityComplianceDefinitionResponse?>
+  enhancedSecurityCompliance;
+
   /// Indicates whether unity catalog enabled for the workspace or not.
   late final pulumi.Output<bool> isUcEnabled;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The details of Managed Identity of Disk Encryption Set used for Managed Disk Encryption
-  late final pulumi.Output<ManagedIdentityConfigurationResponse?> managedDiskIdentity;
+  late final pulumi.Output<ManagedIdentityConfigurationResponse?>
+  managedDiskIdentity;
+
   /// The managed resource group Id.
   late final pulumi.Output<String> managedResourceGroupId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The workspace's custom parameters.
   late final pulumi.Output<WorkspaceCustomParametersResponse?> parameters;
+
   /// Private endpoint connections created on the workspace
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// The workspace provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
   late final pulumi.Output<String?> requiredNsgRules;
+
   /// The SKU of the resource.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// The details of Managed Identity of Storage Account
-  late final pulumi.Output<ManagedIdentityConfigurationResponse?> storageAccountIdentity;
+  late final pulumi.Output<ManagedIdentityConfigurationResponse?>
+  storageAccountIdentity;
+
   /// The system metadata relating to this resource
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
+
   /// The blob URI where the UI definition file is located.
   late final pulumi.Output<String?> uiDefinitionUri;
+
   /// Indicates the Object ID, PUID and Application ID of entity that last updated the workspace.
   late final pulumi.Output<CreatedByResponse?> updatedBy;
+
   /// The unique identifier of the databricks workspace in databricks control plane.
   late final pulumi.Output<String> workspaceId;
+
   /// The workspace URL which is of the format 'adb-{workspaceId}.{random}.azuredatabricks.net'
   late final pulumi.Output<String> workspaceUrl;
 
@@ -1668,39 +1699,60 @@ class Workspace extends pulumi.CustomResource {
     WorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:databricks:Workspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessConnector = registerOutput<WorkspacePropertiesResponseAccessConnector?>('accessConnector');
-    this.authorizations = registerOutput<List<WorkspaceProviderAuthorizationResponse>?>('authorizations');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdBy = registerOutput<CreatedByResponse?>('createdBy');
-    this.createdDateTime = registerOutput<String>('createdDateTime');
-    this.defaultCatalog = registerOutput<DefaultCatalogPropertiesResponse?>('defaultCatalog');
-    this.defaultStorageFirewall = registerOutput<String?>('defaultStorageFirewall');
-    this.diskEncryptionSetId = registerOutput<String>('diskEncryptionSetId');
-    this.encryption = registerOutput<WorkspacePropertiesResponseEncryption?>('encryption');
-    this.enhancedSecurityCompliance = registerOutput<EnhancedSecurityComplianceDefinitionResponse?>('enhancedSecurityCompliance');
-    this.isUcEnabled = registerOutput<bool>('isUcEnabled');
-    this.location = registerOutput<String>('location');
-    this.managedDiskIdentity = registerOutput<ManagedIdentityConfigurationResponse?>('managedDiskIdentity');
-    this.managedResourceGroupId = registerOutput<String>('managedResourceGroupId');
+         'azure-native:databricks:Workspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessConnector =
+        registerOutput<WorkspacePropertiesResponseAccessConnector?>(
+          'accessConnector',
+        );
+    authorizations = registerOutput<List<Map<String, dynamic>>?>(
+      'authorizations',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdBy = registerOutput<CreatedByResponse?>('createdBy');
+    createdDateTime = registerOutput<String>('createdDateTime');
+    defaultCatalog = registerOutput<DefaultCatalogPropertiesResponse?>(
+      'defaultCatalog',
+    );
+    defaultStorageFirewall = registerOutput<String?>('defaultStorageFirewall');
+    diskEncryptionSetId = registerOutput<String>('diskEncryptionSetId');
+    encryption = registerOutput<WorkspacePropertiesResponseEncryption?>(
+      'encryption',
+    );
+    enhancedSecurityCompliance =
+        registerOutput<EnhancedSecurityComplianceDefinitionResponse?>(
+          'enhancedSecurityCompliance',
+        );
+    isUcEnabled = registerOutput<bool>('isUcEnabled');
+    location = registerOutput<String>('location');
+    managedDiskIdentity = registerOutput<ManagedIdentityConfigurationResponse?>(
+      'managedDiskIdentity',
+    );
+    managedResourceGroupId = registerOutput<String>('managedResourceGroupId');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<WorkspaceCustomParametersResponse?>('parameters');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.requiredNsgRules = registerOutput<String?>('requiredNsgRules');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.storageAccountIdentity = registerOutput<ManagedIdentityConfigurationResponse?>('storageAccountIdentity');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.uiDefinitionUri = registerOutput<String?>('uiDefinitionUri');
-    this.updatedBy = registerOutput<CreatedByResponse?>('updatedBy');
-    this.workspaceId = registerOutput<String>('workspaceId');
-    this.workspaceUrl = registerOutput<String>('workspaceUrl');
+    parameters = registerOutput<WorkspaceCustomParametersResponse?>(
+      'parameters',
+    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    requiredNsgRules = registerOutput<String?>('requiredNsgRules');
+    sku = registerOutput<SkuResponse?>('sku');
+    storageAccountIdentity =
+        registerOutput<ManagedIdentityConfigurationResponse?>(
+          'storageAccountIdentity',
+        );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    uiDefinitionUri = registerOutput<String?>('uiDefinitionUri');
+    updatedBy = registerOutput<CreatedByResponse?>('updatedBy');
+    workspaceId = registerOutput<String>('workspaceId');
+    workspaceUrl = registerOutput<String>('workspaceUrl');
   }
 }

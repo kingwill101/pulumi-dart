@@ -3,16 +3,17 @@ enum BareMetalWorkloadNodeConfigContainerRuntime {
   containerRuntimeUnspecified("CONTAINER_RUNTIME_UNSPECIFIED"),
   containerd("CONTAINERD");
 
-  const BareMetalWorkloadNodeConfigContainerRuntime(this.value);
-  final String value;
+  const BareMetalWorkloadNodeConfigContainerRuntime(this.wireValue);
+  final String wireValue;
 
   static BareMetalWorkloadNodeConfigContainerRuntime fromValue(String value) {
     for (final item in BareMetalWorkloadNodeConfigContainerRuntime.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BareMetalWorkloadNodeConfigContainerRuntime value: $value');
+    throw ArgumentError(
+      'Unknown BareMetalWorkloadNodeConfigContainerRuntime value: $value',
+    );
   }
 }
-

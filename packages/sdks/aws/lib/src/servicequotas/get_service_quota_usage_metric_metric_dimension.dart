@@ -29,13 +29,14 @@ class GetServiceQuotaUsageMetricMetricDimension {
     };
   }
 
-  factory GetServiceQuotaUsageMetricMetricDimension.fromMap(Map<String, dynamic> map) {
+  factory GetServiceQuotaUsageMetricMetricDimension.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceQuotaUsageMetricMetricDimension(
-      class_: (map['class'] as String).input(),
-      resource: (map['resource'] as String).input(),
-      service: (map['service'] as String).input(),
-      type: (map['type'] as String).input(),
+      class_: pulumi.Input.fromValue(map['class'] as String),
+      resource: pulumi.Input.fromValue(map['resource'] as String),
+      service: pulumi.Input.fromValue(map['service'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -13,15 +13,16 @@ class GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxTimeToLiveInMinutes': maxTimeToLiveInMinutes,
-    };
+    return <String, dynamic>{'maxTimeToLiveInMinutes': maxTimeToLiveInMinutes};
   }
 
-  factory GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration(
-      maxTimeToLiveInMinutes: (map['maxTimeToLiveInMinutes'] as int).input(),
+      maxTimeToLiveInMinutes: pulumi.Input.fromValue(
+        map['maxTimeToLiveInMinutes'] as int,
+      ),
     );
   }
 }
-

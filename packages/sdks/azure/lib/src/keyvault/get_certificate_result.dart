@@ -7,33 +7,47 @@ import 'get_certificate_certificate_policy.dart';
 class GetCertificateResult {
   /// The raw Key Vault Certificate data represented as a hexadecimal string.
   final String certificateData;
+
   /// The raw Key Vault Certificate data represented as a base64 string.
   final String certificateDataBase64;
+
   /// A `certificate_policy` block as defined below.
   final List<GetCertificateCertificatePolicy> certificatePolicies;
+
   /// Expiry date of certificate in RFC3339 format.
   final String expires;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String keyVaultId;
+
   /// The name of the Certificate Issuer.
   final String name;
+
   /// Not Before date of certificate in RFC3339 format.
   final String notBefore;
+
   /// The (Versioned) ID for this Key Vault Certificate. This property points to a specific version of a Key Vault Certificate, as such using this won't auto-rotate values if used in other Azure Services.
   final String resourceManagerId;
+
   /// The Versionless ID of the Key Vault Certificate. This property allows other Azure Services (that support it) to auto-rotate their value when the Key Vault Certificate is updated.
   final String resourceManagerVersionlessId;
+
   /// The ID of the associated Key Vault Secret.
   final String secretId;
+
   /// A mapping of tags to assign to the resource.
   final Map<String, String> tags;
+
   /// The X509 Thumbprint of the Key Vault Certificate represented as a hexadecimal string.
   final String thumbprint;
+
   /// The current version of the Key Vault Certificate.
   final String version;
+
   /// The Base ID of the Key Vault Certificate.
   final String versionlessId;
+
   /// The Base ID of the Key Vault Secret.
   final String versionlessSecretId;
 
@@ -77,7 +91,11 @@ class GetCertificateResult {
     return <String, dynamic>{
       'certificateData': certificateData,
       'certificateDataBase64': certificateDataBase64,
-      'certificatePolicies': pulumi.Input.encodeList<GetCertificateCertificatePolicy, Map<String, dynamic>>(certificatePolicies, (value) => value.toMap()),
+      'certificatePolicies':
+          pulumi.Input.encodeList<
+            GetCertificateCertificatePolicy,
+            Map<String, dynamic>
+          >(certificatePolicies, (value) => value.toMap()),
       'expires': expires,
       'id': id,
       'keyVaultId': keyVaultId,
@@ -98,14 +116,21 @@ class GetCertificateResult {
     return GetCertificateResult(
       certificateData: map['certificateData'] as String,
       certificateDataBase64: map['certificateDataBase64'] as String,
-      certificatePolicies: pulumi.Input.decodeList<GetCertificateCertificatePolicy>(map['certificatePolicies'], (value) => GetCertificateCertificatePolicy.fromMap((value as Map).cast<String, dynamic>())),
+      certificatePolicies:
+          pulumi.Input.decodeList<GetCertificateCertificatePolicy>(
+            map['certificatePolicies']!,
+            (value) => GetCertificateCertificatePolicy.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       expires: map['expires'] as String,
       id: map['id'] as String,
       keyVaultId: map['keyVaultId'] as String,
       name: map['name'] as String,
       notBefore: map['notBefore'] as String,
       resourceManagerId: map['resourceManagerId'] as String,
-      resourceManagerVersionlessId: map['resourceManagerVersionlessId'] as String,
+      resourceManagerVersionlessId:
+          map['resourceManagerVersionlessId'] as String,
       secretId: map['secretId'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       thumbprint: map['thumbprint'] as String,
@@ -115,4 +140,3 @@ class GetCertificateResult {
     );
   }
 }
-

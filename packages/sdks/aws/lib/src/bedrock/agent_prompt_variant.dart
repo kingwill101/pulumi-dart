@@ -9,18 +9,27 @@ import 'agent_prompt_variant_template_configuration.dart';
 class AgentPromptVariant {
   /// Contains model-specific inference configurations that aren’t in the inferenceConfiguration field. To see model-specific inference parameters, see [Inference request parameters and response fields for foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
   final pulumi.Input<String>? additionalModelRequestFields;
+
   /// Specifies a generative AI resource with which to use the prompt. If this is not supplied, then a `gen_ai_resource` must be defined. See Generative AI Resource for more information.
   final pulumi.Input<AgentPromptVariantGenAiResource>? genAiResource;
+
   /// Contains inference configurations for the prompt variant. See Inference Configuration for more information.
-  final pulumi.Input<AgentPromptVariantInferenceConfiguration>? inferenceConfiguration;
+  final pulumi.Input<AgentPromptVariantInferenceConfiguration>?
+  inferenceConfiguration;
+
   /// A list of objects, each containing a key-value pair that defines a metadata tag and value to attach to a prompt variant. See Metadata for more information.
   final pulumi.Input<List<AgentPromptVariantMetadata>>? metadatas;
+
   /// Unique identifier of the model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) with which to run inference on the prompt. If this is not supplied, then a `gen_ai_resource` must be defined.
   final pulumi.Input<String>? modelId;
+
   /// Name of the prompt variant.
   final pulumi.Input<String> name;
+
   /// Contains configurations for the prompt template. See Template Configuration for more information.
-  final pulumi.Input<AgentPromptVariantTemplateConfiguration>? templateConfiguration;
+  final pulumi.Input<AgentPromptVariantTemplateConfiguration>?
+  templateConfiguration;
+
   /// Type of prompt template to use. Valid values: `CHAT`, `TEXT`.
   final pulumi.Input<String> templateType;
 
@@ -47,27 +56,92 @@ class AgentPromptVariant {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalModelRequestFields': ?additionalModelRequestFields,
-      'genAiResource': ?pulumi.Input.mapOptionalInputValue<AgentPromptVariantGenAiResource, Map<String, dynamic>>(genAiResource, (value) => value.toMap()),
-      'inferenceConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentPromptVariantInferenceConfiguration, Map<String, dynamic>>(inferenceConfiguration, (value) => value.toMap()),
-      'metadatas': ?pulumi.Input.mapOptionalInputValue<List<AgentPromptVariantMetadata>, List<Map<String, dynamic>>>(metadatas, (value) => pulumi.Input.encodeList<AgentPromptVariantMetadata, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'genAiResource':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentPromptVariantGenAiResource,
+            Map<String, dynamic>
+          >(genAiResource, (value) => value.toMap()),
+      'inferenceConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentPromptVariantInferenceConfiguration,
+            Map<String, dynamic>
+          >(inferenceConfiguration, (value) => value.toMap()),
+      'metadatas':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AgentPromptVariantMetadata>,
+            List<Map<String, dynamic>>
+          >(
+            metadatas,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AgentPromptVariantMetadata,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'modelId': ?modelId,
       'name': name,
-      'templateConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentPromptVariantTemplateConfiguration, Map<String, dynamic>>(templateConfiguration, (value) => value.toMap()),
+      'templateConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentPromptVariantTemplateConfiguration,
+            Map<String, dynamic>
+          >(templateConfiguration, (value) => value.toMap()),
       'templateType': templateType,
     };
   }
 
   factory AgentPromptVariant.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariant(
-      additionalModelRequestFields: map['additionalModelRequestFields'] == null ? null : ((map['additionalModelRequestFields'] as String).input()).input(),
-      genAiResource: map['genAiResource'] == null ? null : ((AgentPromptVariantGenAiResource.fromMap((map['genAiResource']! as Map).cast<String, dynamic>())).input()).input(),
-      inferenceConfiguration: map['inferenceConfiguration'] == null ? null : ((AgentPromptVariantInferenceConfiguration.fromMap((map['inferenceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      metadatas: map['metadatas'] == null ? null : ((pulumi.Input.decodeList<AgentPromptVariantMetadata>(map['metadatas']!, (value) => AgentPromptVariantMetadata.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      modelId: map['modelId'] == null ? null : ((map['modelId'] as String).input()).input(),
-      name: (map['name'] as String).input(),
-      templateConfiguration: map['templateConfiguration'] == null ? null : ((AgentPromptVariantTemplateConfiguration.fromMap((map['templateConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      templateType: (map['templateType'] as String).input(),
+      additionalModelRequestFields: (() {
+        final guardedValue = map['additionalModelRequestFields'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      genAiResource: (() {
+        final guardedValue = map['genAiResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentPromptVariantGenAiResource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      inferenceConfiguration: (() {
+        final guardedValue = map['inferenceConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentPromptVariantInferenceConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      metadatas: (() {
+        final guardedValue = map['metadatas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AgentPromptVariantMetadata>(
+            guardedValue,
+            (value) => AgentPromptVariantMetadata.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      modelId: (() {
+        final guardedValue = map['modelId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      templateConfiguration: (() {
+        final guardedValue = map['templateConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentPromptVariantTemplateConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      templateType: pulumi.Input.fromValue(map['templateType'] as String),
     );
   }
 }
-

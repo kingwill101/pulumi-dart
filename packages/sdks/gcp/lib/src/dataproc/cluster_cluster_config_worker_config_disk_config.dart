@@ -8,11 +8,14 @@ class ClusterClusterConfigWorkerConfigDiskConfig {
   /// computed value if not set (currently 500GB). Note: If SSDs are not
   /// attached, it also contains the HDFS data blocks and Hadoop working directories.
   final pulumi.Input<int>? bootDiskSizeGb;
+
   /// The disk type of the primary disk attached to each node.
   /// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
   final pulumi.Input<String>? bootDiskType;
+
   /// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
   final pulumi.Input<String>? localSsdInterface;
+
   /// The amount of local SSD disks that will be
   /// attached to each worker cluster node. Defaults to 0.
   final pulumi.Input<int>? numLocalSsds;
@@ -38,13 +41,30 @@ class ClusterClusterConfigWorkerConfigDiskConfig {
     };
   }
 
-  factory ClusterClusterConfigWorkerConfigDiskConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterClusterConfigWorkerConfigDiskConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterClusterConfigWorkerConfigDiskConfig(
-      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb']! as int).input(),
-      bootDiskType: map['bootDiskType'] == null ? null : (map['bootDiskType']! as String).input(),
-      localSsdInterface: map['localSsdInterface'] == null ? null : (map['localSsdInterface']! as String).input(),
-      numLocalSsds: map['numLocalSsds'] == null ? null : (map['numLocalSsds']! as int).input(),
+      bootDiskSizeGb: (() {
+        final guardedValue = map['bootDiskSizeGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      bootDiskType: (() {
+        final guardedValue = map['bootDiskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      localSsdInterface: (() {
+        final guardedValue = map['localSsdInterface'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      numLocalSsds: (() {
+        final guardedValue = map['numLocalSsds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

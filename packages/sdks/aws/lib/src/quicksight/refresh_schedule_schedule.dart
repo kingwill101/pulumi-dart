@@ -6,8 +6,11 @@ import 'refresh_schedule_schedule_schedule_frequency.dart';
 class RefreshScheduleSchedule {
   /// The type of refresh that the dataset undergoes. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
   final pulumi.Input<String> refreshType;
+
   /// The configuration of the [schedule frequency](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshFrequency.html). See schedule_frequency.
-  final pulumi.Input<RefreshScheduleScheduleScheduleFrequency> scheduleFrequency;
+  final pulumi.Input<RefreshScheduleScheduleScheduleFrequency>
+  scheduleFrequency;
+
   /// Time after which the refresh schedule can be started, expressed in `YYYY-MM-DDTHH:MM:SS` format.
   final pulumi.Input<String>? startAfterDateTime;
 
@@ -24,17 +27,28 @@ class RefreshScheduleSchedule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'refreshType': refreshType,
-      'scheduleFrequency': pulumi.Input.mapInputValue<RefreshScheduleScheduleScheduleFrequency, Map<String, dynamic>>(scheduleFrequency, (value) => value.toMap()),
+      'scheduleFrequency':
+          pulumi.Input.mapInputValue<
+            RefreshScheduleScheduleScheduleFrequency,
+            Map<String, dynamic>
+          >(scheduleFrequency, (value) => value.toMap()),
       'startAfterDateTime': ?startAfterDateTime,
     };
   }
 
   factory RefreshScheduleSchedule.fromMap(Map<String, dynamic> map) {
     return RefreshScheduleSchedule(
-      refreshType: (map['refreshType'] as String).input(),
-      scheduleFrequency: (RefreshScheduleScheduleScheduleFrequency.fromMap((map['scheduleFrequency']! as Map).cast<String, dynamic>())).input(),
-      startAfterDateTime: map['startAfterDateTime'] == null ? null : ((map['startAfterDateTime'] as String).input()).input(),
+      refreshType: pulumi.Input.fromValue(map['refreshType'] as String),
+      scheduleFrequency: pulumi.Input.fromValue(
+        RefreshScheduleScheduleScheduleFrequency.fromMap(
+          (map['scheduleFrequency']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      startAfterDateTime: (() {
+        final guardedValue = map['startAfterDateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

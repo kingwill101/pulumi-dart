@@ -7,12 +7,16 @@ import 'simple_filter.dart';
 class QuerySelector {
   /// Model that represents available filter types that can be applied to a targets list.
   final pulumi.Input<SimpleFilter>? filter;
+
   /// String of the selector ID.
   final pulumi.Input<String> id;
+
   /// Azure Resource Graph (ARG) Query Language query for target resources.
   final pulumi.Input<String> queryString;
+
   /// Subscription id list to scope resource query.
   final pulumi.Input<List<String>> subscriptionIds;
+
   /// Enum of the selector type.
   /// Expected value is 'Query'.
   final pulumi.Input<String> type;
@@ -33,7 +37,11 @@ class QuerySelector {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filter': ?pulumi.Input.mapOptionalInputValue<SimpleFilter, Map<String, dynamic>>(filter, (value) => value.toMap()),
+      'filter':
+          ?pulumi.Input.mapOptionalInputValue<
+            SimpleFilter,
+            Map<String, dynamic>
+          >(filter, (value) => value.toMap()),
       'id': id,
       'queryString': queryString,
       'subscriptionIds': subscriptionIds,
@@ -43,12 +51,19 @@ class QuerySelector {
 
   factory QuerySelector.fromMap(Map<String, dynamic> map) {
     return QuerySelector(
-      filter: map['filter'] == null ? null : (SimpleFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
-      id: (map['id'] as String).input(),
-      queryString: (map['queryString'] as String).input(),
-      subscriptionIds: ((map['subscriptionIds'] as List).cast<String>()).input(),
-      type: (map['type'] as String).input(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SimpleFilter.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      queryString: pulumi.Input.fromValue(map['queryString'] as String),
+      subscriptionIds: pulumi.Input.fromValue(
+        (map['subscriptionIds'] as List).cast<String>(),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

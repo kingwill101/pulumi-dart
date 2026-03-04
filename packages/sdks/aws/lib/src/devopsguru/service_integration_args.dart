@@ -11,11 +11,16 @@ import 'service_integration_ops_center.dart';
 /// {@macro pulumi_devopsguru_service_integration_service_integration_args_doc}
 class ServiceIntegrationArgs {
   /// Information about whether DevOps Guru is configured to encrypt server-side data using KMS. See `kms_server_side_encryption` below.
-  final pulumi.Input<ServiceIntegrationKmsServerSideEncryption> kmsServerSideEncryption;
+  final pulumi.Input<ServiceIntegrationKmsServerSideEncryption>
+  kmsServerSideEncryption;
+
   /// Information about whether DevOps Guru is configured to perform log anomaly detection on Amazon CloudWatch log groups. See `logs_anomaly_detection` below.
-  final pulumi.Input<ServiceIntegrationLogsAnomalyDetection> logsAnomalyDetection;
+  final pulumi.Input<ServiceIntegrationLogsAnomalyDetection>
+  logsAnomalyDetection;
+
   /// Information about whether DevOps Guru is configured to create an OpsItem in AWS Systems Manager OpsCenter for each created insight. See `ops_center` below.
   final pulumi.Input<ServiceIntegrationOpsCenter> opsCenter;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -33,20 +38,47 @@ class ServiceIntegrationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kmsServerSideEncryption': pulumi.Input.mapInputValue<ServiceIntegrationKmsServerSideEncryption, Map<String, dynamic>>(kmsServerSideEncryption, (value) => value.toMap()),
-      'logsAnomalyDetection': pulumi.Input.mapInputValue<ServiceIntegrationLogsAnomalyDetection, Map<String, dynamic>>(logsAnomalyDetection, (value) => value.toMap()),
-      'opsCenter': pulumi.Input.mapInputValue<ServiceIntegrationOpsCenter, Map<String, dynamic>>(opsCenter, (value) => value.toMap()),
+      'kmsServerSideEncryption':
+          pulumi.Input.mapInputValue<
+            ServiceIntegrationKmsServerSideEncryption,
+            Map<String, dynamic>
+          >(kmsServerSideEncryption, (value) => value.toMap()),
+      'logsAnomalyDetection':
+          pulumi.Input.mapInputValue<
+            ServiceIntegrationLogsAnomalyDetection,
+            Map<String, dynamic>
+          >(logsAnomalyDetection, (value) => value.toMap()),
+      'opsCenter':
+          pulumi.Input.mapInputValue<
+            ServiceIntegrationOpsCenter,
+            Map<String, dynamic>
+          >(opsCenter, (value) => value.toMap()),
       'region': ?region,
     };
   }
 
   factory ServiceIntegrationArgs.fromMap(Map<String, dynamic> map) {
     return ServiceIntegrationArgs(
-      kmsServerSideEncryption: (ServiceIntegrationKmsServerSideEncryption.fromMap((map['kmsServerSideEncryption']! as Map).cast<String, dynamic>())).input(),
-      logsAnomalyDetection: (ServiceIntegrationLogsAnomalyDetection.fromMap((map['logsAnomalyDetection']! as Map).cast<String, dynamic>())).input(),
-      opsCenter: (ServiceIntegrationOpsCenter.fromMap((map['opsCenter']! as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      kmsServerSideEncryption: pulumi.Input.fromValue(
+        ServiceIntegrationKmsServerSideEncryption.fromMap(
+          (map['kmsServerSideEncryption']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      logsAnomalyDetection: pulumi.Input.fromValue(
+        ServiceIntegrationLogsAnomalyDetection.fromMap(
+          (map['logsAnomalyDetection']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      opsCenter: pulumi.Input.fromValue(
+        ServiceIntegrationOpsCenter.fromMap(
+          (map['opsCenter']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,20 +8,21 @@ class AiFeatureOnlineStoreEmbeddingManagement {
 
   /// Creates a new [AiFeatureOnlineStoreEmbeddingManagement].
   /// [enabled] Enable embedding management.
-  AiFeatureOnlineStoreEmbeddingManagement({
-    this.enabled,
-  });
+  AiFeatureOnlineStoreEmbeddingManagement({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
-  factory AiFeatureOnlineStoreEmbeddingManagement.fromMap(Map<String, dynamic> map) {
+  factory AiFeatureOnlineStoreEmbeddingManagement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AiFeatureOnlineStoreEmbeddingManagement(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

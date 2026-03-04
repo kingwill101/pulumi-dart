@@ -3,16 +3,15 @@ enum AddressPrefixType {
   valueIPPrefix("IPPrefix"),
   valueServiceTag("ServiceTag");
 
-  const AddressPrefixType(this.value);
-  final String value;
+  const AddressPrefixType(this.wireValue);
+  final String wireValue;
 
   static AddressPrefixType fromValue(String value) {
     for (final item in AddressPrefixType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AddressPrefixType value: $value');
   }
 }
-

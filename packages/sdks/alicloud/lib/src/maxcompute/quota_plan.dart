@@ -9,7 +9,7 @@ import 'quota_plan_state.dart';
 ///
 /// For information about Max Compute Quota Plan and how to use it, see [What is Quota Plan](https://www.alibabacloud.com/help/en/).
 ///
-/// > **NOTE:** Available since v1.242.0.
+/// &gt; **NOTE:** Available since v1.242.0.
 ///
 /// ## Example Usage
 ///
@@ -291,12 +291,15 @@ import 'quota_plan_state.dart';
 /// ```
 class QuotaPlan extends pulumi.CustomResource {
   /// Whether to take effect immediately. “Valid values: true”
-  /// .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
+  /// .&gt; **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
   late final pulumi.Output<bool?> isEffective;
+
   /// Quota Name
   late final pulumi.Output<String> nickname;
+
   /// The Quota plan name. Start with a letter, containing letters, numbers, and underscores (_). It is no more than 64 characters long.
   late final pulumi.Output<String> planName;
+
   /// Quota property See `quota` below.
   late final pulumi.Output<QuotaPlanQuota?> quota;
 
@@ -309,15 +312,15 @@ class QuotaPlan extends pulumi.CustomResource {
     QuotaPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:maxcompute/quotaPlan:QuotaPlan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.isEffective = registerOutput<bool?>('isEffective');
-    this.nickname = registerOutput<String>('nickname');
-    this.planName = registerOutput<String>('planName');
-    this.quota = registerOutput<QuotaPlanQuota?>('quota');
+         'alicloud:maxcompute/quotaPlan:QuotaPlan',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    isEffective = registerOutput<bool?>('isEffective');
+    nickname = registerOutput<String>('nickname');
+    planName = registerOutput<String>('planName');
+    quota = registerOutput<QuotaPlanQuota?>('quota');
   }
 
   /// Gets an existing [QuotaPlan] resource's state with the given [name] and [id].
@@ -338,14 +341,14 @@ class QuotaPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:maxcompute/quotaPlan:QuotaPlan',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.isEffective = registerOutput<bool?>('isEffective');
-    this.nickname = registerOutput<String>('nickname');
-    this.planName = registerOutput<String>('planName');
-    this.quota = registerOutput<QuotaPlanQuota?>('quota');
+         'alicloud:maxcompute/quotaPlan:QuotaPlan',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    isEffective = registerOutput<bool?>('isEffective');
+    nickname = registerOutput<String>('nickname');
+    planName = registerOutput<String>('planName');
+    quota = registerOutput<QuotaPlanQuota?>('quota');
   }
 }

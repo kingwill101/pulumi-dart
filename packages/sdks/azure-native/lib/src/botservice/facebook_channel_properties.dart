@@ -7,10 +7,13 @@ import 'facebook_page.dart';
 class FacebookChannelProperties {
   /// Facebook application id
   final pulumi.Input<String> appId;
+
   /// Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty.
   final pulumi.Input<String>? appSecret;
+
   /// Whether this channel is enabled for the bot
   final pulumi.Input<bool> isEnabled;
+
   /// The list of Facebook pages
   final pulumi.Input<List<FacebookPage>>? pages;
 
@@ -31,17 +34,41 @@ class FacebookChannelProperties {
       'appId': appId,
       'appSecret': ?appSecret,
       'isEnabled': isEnabled,
-      'pages': ?pulumi.Input.mapOptionalInputValue<List<FacebookPage>, List<Map<String, dynamic>>>(pages, (value) => pulumi.Input.encodeList<FacebookPage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'pages':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<FacebookPage>,
+            List<Map<String, dynamic>>
+          >(
+            pages,
+            (value) =>
+                pulumi.Input.encodeList<FacebookPage, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory FacebookChannelProperties.fromMap(Map<String, dynamic> map) {
     return FacebookChannelProperties(
-      appId: (map['appId'] as String).input(),
-      appSecret: map['appSecret'] == null ? null : (map['appSecret']! as String).input(),
-      isEnabled: (map['isEnabled'] as bool).input(),
-      pages: map['pages'] == null ? null : (pulumi.Input.decodeList<FacebookPage>(map['pages']!, (value) => FacebookPage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      appSecret: (() {
+        final guardedValue = map['appSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
+      pages: (() {
+        final guardedValue = map['pages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<FacebookPage>(
+            guardedValue,
+            (value) =>
+                FacebookPage.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum HistoryTestPlatform {
   android("android"),
   ios("ios");
 
-  const HistoryTestPlatform(this.value);
-  final String value;
+  const HistoryTestPlatform(this.wireValue);
+  final String wireValue;
 
   static HistoryTestPlatform fromValue(String value) {
     for (final item in HistoryTestPlatform.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HistoryTestPlatform value: $value');
   }
 }
-

@@ -1,5 +1,3 @@
-library module_memorydb;
-
 export 'memorydb/acl.dart';
 export 'memorydb/acl_args.dart';
 export 'memorydb/acl_state.dart';

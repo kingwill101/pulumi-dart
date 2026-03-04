@@ -4,16 +4,15 @@ enum FhirResourceVersionPolicy {
   valueVersioned("versioned"),
   valueVersionedUpdate("versioned-update");
 
-  const FhirResourceVersionPolicy(this.value);
-  final String value;
+  const FhirResourceVersionPolicy(this.wireValue);
+  final String wireValue;
 
   static FhirResourceVersionPolicy fromValue(String value) {
     for (final item in FhirResourceVersionPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FhirResourceVersionPolicy value: $value');
   }
 }
-

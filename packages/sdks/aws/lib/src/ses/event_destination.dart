@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_destination_args.dart';
-import 'event_destination_cloudwatch_destination.dart';
 import 'event_destination_kinesis_destination.dart';
 import 'event_destination_sns_destination.dart';
 import 'event_destination_state.dart';
@@ -474,23 +473,32 @@ import 'event_destination_state.dart';
 class EventDestination extends pulumi.CustomResource {
   /// The SES event destination ARN.
   late final pulumi.Output<String> arn;
+
   /// CloudWatch destination for the events
-  late final pulumi.Output<List<EventDestinationCloudwatchDestination>?> cloudwatchDestinations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> cloudwatchDestinations;
+
   /// The name of the configuration set
   late final pulumi.Output<String> configurationSetName;
+
   /// If true, the event destination will be enabled
   late final pulumi.Output<bool?> enabled;
+
   /// Send the events to a kinesis firehose destination
-  late final pulumi.Output<EventDestinationKinesisDestination?> kinesisDestination;
+  late final pulumi.Output<EventDestinationKinesisDestination?>
+  kinesisDestination;
+
   /// A list of matching types. May be any of `"send"`, `"reject"`, `"bounce"`, `"complaint"`, `"delivery"`, `"open"`, `"click"`, or `"renderingFailure"`.
   late final pulumi.Output<List<String>> matchingTypes;
+
   /// The name of the event destination
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Send the events to an SNS Topic destination
   ///
-  /// > **NOTE:** You can specify `"cloudwatch_destination"` or `"kinesis_destination"` but not both
+  /// &gt; **NOTE:** You can specify `"cloudwatch_destination"` or `"kinesis_destination"` but not both
   late final pulumi.Output<EventDestinationSnsDestination?> snsDestination;
 
   /// Creates a new [EventDestination].
@@ -502,20 +510,26 @@ class EventDestination extends pulumi.CustomResource {
     EventDestinationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ses/eventDestination:EventDestination',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.cloudwatchDestinations = registerOutput<List<EventDestinationCloudwatchDestination>?>('cloudwatchDestinations');
-    this.configurationSetName = registerOutput<String>('configurationSetName');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.kinesisDestination = registerOutput<EventDestinationKinesisDestination?>('kinesisDestination');
-    this.matchingTypes = registerOutput<List<String>>('matchingTypes');
+         'aws:ses/eventDestination:EventDestination',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    cloudwatchDestinations = registerOutput<List<Map<String, dynamic>>?>(
+      'cloudwatchDestinations',
+    );
+    configurationSetName = registerOutput<String>('configurationSetName');
+    enabled = registerOutput<bool?>('enabled');
+    kinesisDestination = registerOutput<EventDestinationKinesisDestination?>(
+      'kinesisDestination',
+    );
+    matchingTypes = registerOutput<List<String>>('matchingTypes');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.snsDestination = registerOutput<EventDestinationSnsDestination?>('snsDestination');
+    region = registerOutput<String>('region');
+    snsDestination = registerOutput<EventDestinationSnsDestination?>(
+      'snsDestination',
+    );
   }
 
   /// Gets an existing [EventDestination] resource's state with the given [name] and [id].
@@ -536,19 +550,25 @@ class EventDestination extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ses/eventDestination:EventDestination',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.cloudwatchDestinations = registerOutput<List<EventDestinationCloudwatchDestination>?>('cloudwatchDestinations');
-    this.configurationSetName = registerOutput<String>('configurationSetName');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.kinesisDestination = registerOutput<EventDestinationKinesisDestination?>('kinesisDestination');
-    this.matchingTypes = registerOutput<List<String>>('matchingTypes');
+         'aws:ses/eventDestination:EventDestination',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    cloudwatchDestinations = registerOutput<List<Map<String, dynamic>>?>(
+      'cloudwatchDestinations',
+    );
+    configurationSetName = registerOutput<String>('configurationSetName');
+    enabled = registerOutput<bool?>('enabled');
+    kinesisDestination = registerOutput<EventDestinationKinesisDestination?>(
+      'kinesisDestination',
+    );
+    matchingTypes = registerOutput<List<String>>('matchingTypes');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.snsDestination = registerOutput<EventDestinationSnsDestination?>('snsDestination');
+    region = registerOutput<String>('region');
+    snsDestination = registerOutput<EventDestinationSnsDestination?>(
+      'snsDestination',
+    );
   }
 }

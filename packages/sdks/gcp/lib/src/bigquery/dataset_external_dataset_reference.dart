@@ -6,6 +6,7 @@ class DatasetExternalDatasetReference {
   /// The connection id that is used to access the externalSource.
   /// Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
   final pulumi.Input<String> connection;
+
   /// External source that backs this dataset.
   final pulumi.Input<String> externalSource;
 
@@ -26,9 +27,8 @@ class DatasetExternalDatasetReference {
 
   factory DatasetExternalDatasetReference.fromMap(Map<String, dynamic> map) {
     return DatasetExternalDatasetReference(
-      connection: (map['connection'] as String).input(),
-      externalSource: (map['externalSource'] as String).input(),
+      connection: pulumi.Input.fromValue(map['connection'] as String),
+      externalSource: pulumi.Input.fromValue(map['externalSource'] as String),
     );
   }
 }
-

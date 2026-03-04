@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountManagedResource {
   /// The ID of the managed event hub namespace.
   final pulumi.Input<String>? eventHubNamespaceId;
+
   /// The ID of the managed resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The ID of the managed storage account.
   final pulumi.Input<String>? storageAccountId;
 
@@ -30,10 +32,21 @@ class AccountManagedResource {
 
   factory AccountManagedResource.fromMap(Map<String, dynamic> map) {
     return AccountManagedResource(
-      eventHubNamespaceId: map['eventHubNamespaceId'] == null ? null : (map['eventHubNamespaceId']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      eventHubNamespaceId: (() {
+        final guardedValue = map['eventHubNamespaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountId: (() {
+        final guardedValue = map['storageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class B2CTenantResourcePropertiesResponseBillingConfig {
   /// The type of billing. Will be MAU for all new customers. If 'Auths', it can be updated to 'MAU'. Cannot be changed if value is 'MAU'. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling).
   final pulumi.Input<String>? billingType;
+
   /// The data from which the billing type took effect
   final pulumi.Input<String> effectiveStartDateUtc;
 
@@ -24,11 +25,18 @@ class B2CTenantResourcePropertiesResponseBillingConfig {
     };
   }
 
-  factory B2CTenantResourcePropertiesResponseBillingConfig.fromMap(Map<String, dynamic> map) {
+  factory B2CTenantResourcePropertiesResponseBillingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return B2CTenantResourcePropertiesResponseBillingConfig(
-      billingType: map['billingType'] == null ? null : (map['billingType']! as String).input(),
-      effectiveStartDateUtc: (map['effectiveStartDateUtc'] as String).input(),
+      billingType: (() {
+        final guardedValue = map['billingType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveStartDateUtc: pulumi.Input.fromValue(
+        map['effectiveStartDateUtc'] as String,
+      ),
     );
   }
 }
-

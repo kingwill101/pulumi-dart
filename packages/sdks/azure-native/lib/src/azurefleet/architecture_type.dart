@@ -3,16 +3,15 @@ enum ArchitectureType {
   aRM64("ARM64"),
   x64("X64");
 
-  const ArchitectureType(this.value);
-  final String value;
+  const ArchitectureType(this.wireValue);
+  final String wireValue;
 
   static ArchitectureType fromValue(String value) {
     for (final item in ArchitectureType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ArchitectureType value: $value');
   }
 }
-

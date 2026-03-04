@@ -12,20 +12,13 @@ class GetStackScriptArgs {
 
   /// Creates a new [GetStackScriptArgs].
   /// [id] The unique numeric ID of the StackScript to query.
-  GetStackScriptArgs({
-    required this.id,
-  });
+  GetStackScriptArgs({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GetStackScriptArgs.fromMap(Map<String, dynamic> map) {
-    return GetStackScriptArgs(
-      id: (map['id'] as String).input(),
-    );
+    return GetStackScriptArgs(id: pulumi.Input.fromValue(map['id'] as String));
   }
 }
-

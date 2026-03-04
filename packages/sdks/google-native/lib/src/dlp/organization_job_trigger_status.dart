@@ -5,16 +5,15 @@ enum OrganizationJobTriggerStatus {
   paused("PAUSED"),
   cancelled("CANCELLED");
 
-  const OrganizationJobTriggerStatus(this.value);
-  final String value;
+  const OrganizationJobTriggerStatus(this.wireValue);
+  final String wireValue;
 
   static OrganizationJobTriggerStatus fromValue(String value) {
     for (final item in OrganizationJobTriggerStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OrganizationJobTriggerStatus value: $value');
   }
 }
-

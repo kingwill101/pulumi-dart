@@ -4,16 +4,15 @@ enum VirtualMachineDeviceModelType {
   t2("T2"),
   t3("T3");
 
-  const VirtualMachineDeviceModelType(this.value);
-  final String value;
+  const VirtualMachineDeviceModelType(this.wireValue);
+  final String wireValue;
 
   static VirtualMachineDeviceModelType fromValue(String value) {
     for (final item in VirtualMachineDeviceModelType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VirtualMachineDeviceModelType value: $value');
   }
 }
-

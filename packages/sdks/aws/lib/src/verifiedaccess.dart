@@ -1,5 +1,3 @@
-library module_verifiedaccess;
-
 export 'verifiedaccess/endpoint.dart';
 export 'verifiedaccess/endpoint_args.dart';
 export 'verifiedaccess/endpoint_cidr_options.dart';

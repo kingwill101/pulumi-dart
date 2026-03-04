@@ -10,20 +10,25 @@ class FabricModelProperties {
 
   /// Creates a new [FabricModelProperties].
   /// [customProperties] Fabric model custom properties.
-  FabricModelProperties({
-    required this.customProperties,
-  });
+  FabricModelProperties({required this.customProperties});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customProperties': pulumi.Input.mapInputValue<AzStackHCIFabricModelCustomProperties, Map<String, dynamic>>(customProperties, (value) => value.toMap()),
+      'customProperties':
+          pulumi.Input.mapInputValue<
+            AzStackHCIFabricModelCustomProperties,
+            Map<String, dynamic>
+          >(customProperties, (value) => value.toMap()),
     };
   }
 
   factory FabricModelProperties.fromMap(Map<String, dynamic> map) {
     return FabricModelProperties(
-      customProperties: (AzStackHCIFabricModelCustomProperties.fromMap((map['customProperties'] as Map).cast<String, dynamic>())).input(),
+      customProperties: pulumi.Input.fromValue(
+        AzStackHCIFabricModelCustomProperties.fromMap(
+          (map['customProperties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

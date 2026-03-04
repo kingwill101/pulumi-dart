@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPublicIpAddressPoolsArgs {
   /// A list of Vpc Public Ip Address Pool IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
   final pulumi.Input<String>? isp;
+
   /// A regex string to filter results by Vpc Public Ip Address Pool name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The IDs of the Vpc Public IP address pools.
   final pulumi.Input<List<String>>? publicIpAddressPoolIds;
+
   /// The name of the VPC Public IP address pool.
   final pulumi.Input<String>? publicIpAddressPoolName;
+
   /// The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
   final pulumi.Input<String>? status;
 
@@ -54,14 +60,41 @@ class GetPublicIpAddressPoolsArgs {
 
   factory GetPublicIpAddressPoolsArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicIpAddressPoolsArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      isp: map['isp'] == null ? null : (map['isp']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      publicIpAddressPoolIds: map['publicIpAddressPoolIds'] == null ? null : ((map['publicIpAddressPoolIds']! as List).cast<String>()).input(),
-      publicIpAddressPoolName: map['publicIpAddressPoolName'] == null ? null : (map['publicIpAddressPoolName']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      isp: (() {
+        final guardedValue = map['isp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicIpAddressPoolIds: (() {
+        final guardedValue = map['publicIpAddressPoolIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      publicIpAddressPoolName: (() {
+        final guardedValue = map['publicIpAddressPoolName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

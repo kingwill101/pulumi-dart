@@ -214,19 +214,24 @@ import 'data_connector_office365_state.dart';
 class DataConnectorOffice365 extends pulumi.CustomResource {
   /// Should the Exchange data connector be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> exchangeEnabled;
+
   /// The ID of the Log Analytics Workspace that this Office 365 Data Connector resides in. Changing this forces a new Office 365 Data Connector to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
+
   /// The name which should be used for this Office 365 Data Connector. Changing this forces a new Office 365 Data Connector to be created.
   late final pulumi.Output<String> name;
+
   /// Should the SharePoint data connector be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> sharepointEnabled;
+
   /// Should the Microsoft Teams data connector be enabled? Defaults to `true`.
   ///
-  /// > **Note:** At least one of `exchange_enabled`, `sharedpoint_enabled` and `teams_enabled` has to be specified.
+  /// &gt; **Note:** At least one of `exchange_enabled`, `sharedpoint_enabled` and `teams_enabled` has to be specified.
   late final pulumi.Output<bool?> teamsEnabled;
+
   /// The ID of the Tenant that this Office 365 Data Connector connects to. Changing this forces a new Office 365 Data Connector to be created.
   ///
-  /// > **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
+  /// &gt; **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
   late final pulumi.Output<String> tenantId;
 
   /// Creates a new [DataConnectorOffice365].
@@ -238,17 +243,17 @@ class DataConnectorOffice365 extends pulumi.CustomResource {
     DataConnectorOffice365Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/dataConnectorOffice365:DataConnectorOffice365',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.exchangeEnabled = registerOutput<bool?>('exchangeEnabled');
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+         'azure:sentinel/dataConnectorOffice365:DataConnectorOffice365',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    exchangeEnabled = registerOutput<bool?>('exchangeEnabled');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.sharepointEnabled = registerOutput<bool?>('sharepointEnabled');
-    this.teamsEnabled = registerOutput<bool?>('teamsEnabled');
-    this.tenantId = registerOutput<String>('tenantId');
+    sharepointEnabled = registerOutput<bool?>('sharepointEnabled');
+    teamsEnabled = registerOutput<bool?>('teamsEnabled');
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [DataConnectorOffice365] resource's state with the given [name] and [id].
@@ -269,16 +274,16 @@ class DataConnectorOffice365 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/dataConnectorOffice365:DataConnectorOffice365',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.exchangeEnabled = registerOutput<bool?>('exchangeEnabled');
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+         'azure:sentinel/dataConnectorOffice365:DataConnectorOffice365',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    exchangeEnabled = registerOutput<bool?>('exchangeEnabled');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.sharepointEnabled = registerOutput<bool?>('sharepointEnabled');
-    this.teamsEnabled = registerOutput<bool?>('teamsEnabled');
-    this.tenantId = registerOutput<String>('tenantId');
+    sharepointEnabled = registerOutput<bool?>('sharepointEnabled');
+    teamsEnabled = registerOutput<bool?>('teamsEnabled');
+    tenantId = registerOutput<String>('tenantId');
   }
 }

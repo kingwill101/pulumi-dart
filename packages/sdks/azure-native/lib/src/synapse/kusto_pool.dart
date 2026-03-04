@@ -193,38 +193,55 @@ import 'system_data_response.dart';
 class KustoPool extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The Kusto Pool data ingestion URI.
   late final pulumi.Output<String> dataIngestionUri;
+
   /// A boolean value that indicates if the purge operations are enabled.
   late final pulumi.Output<bool?> enablePurge;
+
   /// A boolean value that indicates if the streaming ingest is enabled.
   late final pulumi.Output<bool?> enableStreamingIngest;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// List of the Kusto Pool's language extensions.
   late final pulumi.Output<LanguageExtensionsListResponse> languageExtensions;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Optimized auto scale definition.
   late final pulumi.Output<OptimizedAutoscaleResponse?> optimizedAutoscale;
+
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The SKU of the kusto pool.
   late final pulumi.Output<AzureSkuResponse> sku;
+
   /// The state of the resource.
   late final pulumi.Output<String> state;
+
   /// The reason for the Kusto Pool's current state.
   late final pulumi.Output<String> stateReason;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// The Kusto Pool URI.
   late final pulumi.Output<String> uri;
+
   /// The workspace unique identifier.
   late final pulumi.Output<String?> workspaceUID;
 
@@ -237,28 +254,32 @@ class KustoPool extends pulumi.CustomResource {
     KustoPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:synapse:KustoPool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataIngestionUri = registerOutput<String>('dataIngestionUri');
-    this.enablePurge = registerOutput<bool?>('enablePurge');
-    this.enableStreamingIngest = registerOutput<bool?>('enableStreamingIngest');
-    this.etag = registerOutput<String>('etag');
-    this.languageExtensions = registerOutput<LanguageExtensionsListResponse>('languageExtensions');
-    this.location = registerOutput<String>('location');
+         'azure-native:synapse:KustoPool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataIngestionUri = registerOutput<String>('dataIngestionUri');
+    enablePurge = registerOutput<bool?>('enablePurge');
+    enableStreamingIngest = registerOutput<bool?>('enableStreamingIngest');
+    etag = registerOutput<String>('etag');
+    languageExtensions = registerOutput<LanguageExtensionsListResponse>(
+      'languageExtensions',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.optimizedAutoscale = registerOutput<OptimizedAutoscaleResponse?>('optimizedAutoscale');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<AzureSkuResponse>('sku');
-    this.state = registerOutput<String>('state');
-    this.stateReason = registerOutput<String>('stateReason');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.uri = registerOutput<String>('uri');
-    this.workspaceUID = registerOutput<String?>('workspaceUID');
+    optimizedAutoscale = registerOutput<OptimizedAutoscaleResponse?>(
+      'optimizedAutoscale',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<AzureSkuResponse>('sku');
+    state = registerOutput<String>('state');
+    stateReason = registerOutput<String>('stateReason');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    uri = registerOutput<String>('uri');
+    workspaceUID = registerOutput<String?>('workspaceUID');
   }
 }

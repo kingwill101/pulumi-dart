@@ -277,20 +277,28 @@ import 'data_masking_policy_args.dart';
 class DataMaskingPolicy extends pulumi.CustomResource {
   /// The list of the application principals. This is a legacy parameter and is no longer used.
   late final pulumi.Output<String> applicationPrincipals;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The state of the data masking policy.
   late final pulumi.Output<String> dataMaskingState;
+
   /// The list of the exempt principals. Specifies the semicolon-separated list of database users for which the data masking policy does not apply. The specified users receive data results without masking for all of the database queries.
   late final pulumi.Output<String?> exemptPrincipals;
+
   /// The kind of Data Masking Policy. Metadata, used for Azure portal.
   late final pulumi.Output<String> kind;
+
   /// The location of the data masking policy.
   late final pulumi.Output<String> location;
+
   /// The masking level. This is a legacy parameter and is no longer used.
   late final pulumi.Output<String> maskingLevel;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -303,19 +311,19 @@ class DataMaskingPolicy extends pulumi.CustomResource {
     DataMaskingPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:DataMaskingPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationPrincipals = registerOutput<String>('applicationPrincipals');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataMaskingState = registerOutput<String>('dataMaskingState');
-    this.exemptPrincipals = registerOutput<String?>('exemptPrincipals');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
-    this.maskingLevel = registerOutput<String>('maskingLevel');
+         'azure-native:sql:DataMaskingPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationPrincipals = registerOutput<String>('applicationPrincipals');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataMaskingState = registerOutput<String>('dataMaskingState');
+    exemptPrincipals = registerOutput<String?>('exemptPrincipals');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    maskingLevel = registerOutput<String>('maskingLevel');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

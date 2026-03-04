@@ -9,20 +9,19 @@ class ResilientVMDeletionPolicyResponse {
 
   /// Creates a new [ResilientVMDeletionPolicyResponse].
   /// [enabled] Specifies whether resilient VM deletion should be enabled on the virtual machine scale set. The default value is false.
-  ResilientVMDeletionPolicyResponse({
-    this.enabled,
-  });
+  ResilientVMDeletionPolicyResponse({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory ResilientVMDeletionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ResilientVMDeletionPolicyResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

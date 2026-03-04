@@ -9,20 +9,17 @@ class UserSubjectFlowcontrolApiserverK8sIoV1beta2 {
 
   /// Creates a new [UserSubjectFlowcontrolApiserverK8sIoV1beta2].
   /// [name] `name` is the username that matches, or "*" to match all usernames. Required.
-  UserSubjectFlowcontrolApiserverK8sIoV1beta2({
-    required this.name,
-  });
+  UserSubjectFlowcontrolApiserverK8sIoV1beta2({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory UserSubjectFlowcontrolApiserverK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
+  factory UserSubjectFlowcontrolApiserverK8sIoV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UserSubjectFlowcontrolApiserverK8sIoV1beta2(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

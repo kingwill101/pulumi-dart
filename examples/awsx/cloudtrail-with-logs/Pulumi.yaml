@@ -1,0 +1,6 @@
+name: awsx-dart-cloudtrail-with-logs-nodejs
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX CloudTrail with CloudWatch logs in Dart.

@@ -14,11 +14,11 @@ class ProviderProvider extends pulumi.ProviderResource {
     ProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'docker-build',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.host = registerOutput<String?>('host');
+         'docker-build',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    host = registerOutput<String?>('host');
   }
 }

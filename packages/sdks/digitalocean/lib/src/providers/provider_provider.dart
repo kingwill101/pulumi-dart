@@ -9,12 +9,16 @@ import 'provider_terraform_config_result.dart';
 class ProviderProvider extends pulumi.ProviderResource {
   /// The URL to use for the DigitalOcean API.
   late final pulumi.Output<String?> apiEndpoint;
+
   /// The access key ID for Spaces API operations.
   late final pulumi.Output<String?> spacesAccessId;
+
   /// The URL to use for the DigitalOcean Spaces API.
   late final pulumi.Output<String?> spacesEndpoint;
+
   /// The secret access key for Spaces API operations.
   late final pulumi.Output<String?> spacesSecretKey;
+
   /// The token key for API operations.
   late final pulumi.Output<String?> token;
 
@@ -27,16 +31,16 @@ class ProviderProvider extends pulumi.ProviderResource {
     ProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiEndpoint = registerOutput<String?>('apiEndpoint');
-    this.spacesAccessId = registerOutput<String?>('spacesAccessId');
-    this.spacesEndpoint = registerOutput<String?>('spacesEndpoint');
-    this.spacesSecretKey = registerOutput<String?>('spacesSecretKey');
-    this.token = registerOutput<String?>('token');
+         'digitalocean',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiEndpoint = registerOutput<String?>('apiEndpoint');
+    spacesAccessId = registerOutput<String?>('spacesAccessId');
+    spacesEndpoint = registerOutput<String?>('spacesEndpoint');
+    spacesSecretKey = registerOutput<String?>('spacesSecretKey');
+    token = registerOutput<String?>('token');
   }
 
   /// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.

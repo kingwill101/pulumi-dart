@@ -6,38 +6,49 @@ import 'git_hub_action_configuration_response.dart';
 class GetWebAppSourceControlResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Name of branch to use for deployment.
   final String? branch;
-  /// <code>true</code> to enable deployment rollback; otherwise, <code>false</code>.
+
+  /// &lt;code&gt;true&lt;/code&gt; to enable deployment rollback; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final bool? deploymentRollbackEnabled;
+
   /// If GitHub Action is selected, than the associated configuration.
   final GitHubActionConfigurationResponse? gitHubActionConfiguration;
+
   /// Resource Id.
   final String id;
-  /// <code>true</code> if this is deployed via GitHub action.
+
+  /// &lt;code&gt;true&lt;/code&gt; if this is deployed via GitHub action.
   final bool? isGitHubAction;
-  /// <code>true</code> to limit to manual integration; <code>false</code> to enable continuous integration (which configures webhooks into online repos like GitHub).
+
+  /// &lt;code&gt;true&lt;/code&gt; to limit to manual integration; &lt;code&gt;false&lt;/code&gt; to enable continuous integration (which configures webhooks into online repos like GitHub).
   final bool? isManualIntegration;
-  /// <code>true</code> for a Mercurial repository; <code>false</code> for a Git repository.
+
+  /// &lt;code&gt;true&lt;/code&gt; for a Mercurial repository; &lt;code&gt;false&lt;/code&gt; for a Git repository.
   final bool? isMercurial;
+
   /// Kind of resource.
   final String? kind;
+
   /// Resource Name.
   final String name;
+
   /// Repository or source control URL.
   final String? repoUrl;
+
   /// Resource type.
   final String type;
 
   /// Creates a new [GetWebAppSourceControlResult].
   /// [azureApiVersion] The Azure API version of the resource.
   /// [branch] Name of branch to use for deployment.
-  /// [deploymentRollbackEnabled] <code>true</code> to enable deployment rollback; otherwise, <code>false</code>.
+  /// [deploymentRollbackEnabled] &lt;code&gt;true&lt;/code&gt; to enable deployment rollback; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [gitHubActionConfiguration] If GitHub Action is selected, than the associated configuration.
   /// [id] Resource Id.
-  /// [isGitHubAction] <code>true</code> if this is deployed via GitHub action.
-  /// [isManualIntegration] <code>true</code> to limit to manual integration; <code>false</code> to enable continuous integration (which configures webhooks into online repos like GitHub).
-  /// [isMercurial] <code>true</code> for a Mercurial repository; <code>false</code> for a Git repository.
+  /// [isGitHubAction] &lt;code&gt;true&lt;/code&gt; if this is deployed via GitHub action.
+  /// [isManualIntegration] &lt;code&gt;true&lt;/code&gt; to limit to manual integration; &lt;code&gt;false&lt;/code&gt; to enable continuous integration (which configures webhooks into online repos like GitHub).
+  /// [isMercurial] &lt;code&gt;true&lt;/code&gt; for a Mercurial repository; &lt;code&gt;false&lt;/code&gt; for a Git repository.
   /// [kind] Kind of resource.
   /// [name] Resource Name.
   /// [repoUrl] Repository or source control URL.
@@ -62,7 +73,7 @@ class GetWebAppSourceControlResult {
       'azureApiVersion': azureApiVersion,
       'branch': ?branch,
       'deploymentRollbackEnabled': ?deploymentRollbackEnabled,
-      'gitHubActionConfiguration': ?gitHubActionConfiguration == null ? null : gitHubActionConfiguration!.toMap(),
+      'gitHubActionConfiguration': ?gitHubActionConfiguration?.toMap(),
       'id': id,
       'isGitHubAction': ?isGitHubAction,
       'isManualIntegration': ?isManualIntegration,
@@ -77,18 +88,51 @@ class GetWebAppSourceControlResult {
   factory GetWebAppSourceControlResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppSourceControlResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      branch: map['branch'] == null ? null : map['branch']! as String,
-      deploymentRollbackEnabled: map['deploymentRollbackEnabled'] == null ? null : map['deploymentRollbackEnabled']! as bool,
-      gitHubActionConfiguration: map['gitHubActionConfiguration'] == null ? null : GitHubActionConfigurationResponse.fromMap((map['gitHubActionConfiguration']! as Map).cast<String, dynamic>()),
+      branch: (() {
+        final guardedValue = map['branch'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      deploymentRollbackEnabled: (() {
+        final guardedValue = map['deploymentRollbackEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      gitHubActionConfiguration: (() {
+        final guardedValue = map['gitHubActionConfiguration'];
+        if (guardedValue == null) return null;
+        return GitHubActionConfigurationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      isGitHubAction: map['isGitHubAction'] == null ? null : map['isGitHubAction']! as bool,
-      isManualIntegration: map['isManualIntegration'] == null ? null : map['isManualIntegration']! as bool,
-      isMercurial: map['isMercurial'] == null ? null : map['isMercurial']! as bool,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      isGitHubAction: (() {
+        final guardedValue = map['isGitHubAction'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      isManualIntegration: (() {
+        final guardedValue = map['isManualIntegration'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      isMercurial: (() {
+        final guardedValue = map['isMercurial'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      repoUrl: map['repoUrl'] == null ? null : map['repoUrl']! as String,
+      repoUrl: (() {
+        final guardedValue = map['repoUrl'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

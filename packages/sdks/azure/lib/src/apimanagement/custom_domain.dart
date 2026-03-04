@@ -1,17 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_domain_args.dart';
-import 'custom_domain_developer_portal.dart';
-import 'custom_domain_gateway.dart';
-import 'custom_domain_management.dart';
-import 'custom_domain_portal.dart';
-import 'custom_domain_scm.dart';
 import 'custom_domain_state.dart';
 
 /// Manages a API Management Custom Domain.
 ///
 /// ## Disclaimers
 ///
-/// > **Note:** It's possible to define Custom Domains both within the `azure.apimanagement.Service` resource via the `hostname_configurations` block and by using this resource. However it's not possible to use both methods to manage Custom Domains within an API Management Service, since there will be conflicts.
+/// &gt; **Note:** It's possible to define Custom Domains both within the `azure.apimanagement.Service` resource via the `hostname_configurations` block and by using this resource. However it's not possible to use both methods to manage Custom Domains within an API Management Service, since there will be conflicts.
 ///
 /// ## Example Usage
 ///
@@ -573,7 +568,7 @@ import 'custom_domain_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2024-05-01
@@ -588,16 +583,21 @@ import 'custom_domain_state.dart';
 class CustomDomain extends pulumi.CustomResource {
   /// The ID of the API Management service for which to configure Custom Domains. Changing this forces a new API Management Custom Domain resource to be created.
   late final pulumi.Output<String> apiManagementId;
+
   /// One or more `developer_portal` blocks as defined below.
-  late final pulumi.Output<List<CustomDomainDeveloperPortal>?> developerPortals;
+  late final pulumi.Output<List<Map<String, dynamic>>?> developerPortals;
+
   /// One or more `gateway` blocks as defined below.
-  late final pulumi.Output<List<CustomDomainGateway>?> gateways;
+  late final pulumi.Output<List<Map<String, dynamic>>?> gateways;
+
   /// One or more `management` blocks as defined below.
-  late final pulumi.Output<List<CustomDomainManagement>?> managements;
+  late final pulumi.Output<List<Map<String, dynamic>>?> managements;
+
   /// One or more `portal` blocks as defined below.
-  late final pulumi.Output<List<CustomDomainPortal>?> portals;
+  late final pulumi.Output<List<Map<String, dynamic>>?> portals;
+
   /// One or more `scm` blocks as defined below.
-  late final pulumi.Output<List<CustomDomainScm>?> scms;
+  late final pulumi.Output<List<Map<String, dynamic>>?> scms;
 
   /// Creates a new [CustomDomain].
   /// [name] The Pulumi resource name.
@@ -608,17 +608,19 @@ class CustomDomain extends pulumi.CustomResource {
     CustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/customDomain:CustomDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.developerPortals = registerOutput<List<CustomDomainDeveloperPortal>?>('developerPortals');
-    this.gateways = registerOutput<List<CustomDomainGateway>?>('gateways');
-    this.managements = registerOutput<List<CustomDomainManagement>?>('managements');
-    this.portals = registerOutput<List<CustomDomainPortal>?>('portals');
-    this.scms = registerOutput<List<CustomDomainScm>?>('scms');
+         'azure:apimanagement/customDomain:CustomDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    developerPortals = registerOutput<List<Map<String, dynamic>>?>(
+      'developerPortals',
+    );
+    gateways = registerOutput<List<Map<String, dynamic>>?>('gateways');
+    managements = registerOutput<List<Map<String, dynamic>>?>('managements');
+    portals = registerOutput<List<Map<String, dynamic>>?>('portals');
+    scms = registerOutput<List<Map<String, dynamic>>?>('scms');
   }
 
   /// Gets an existing [CustomDomain] resource's state with the given [name] and [id].
@@ -639,16 +641,18 @@ class CustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/customDomain:CustomDomain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.developerPortals = registerOutput<List<CustomDomainDeveloperPortal>?>('developerPortals');
-    this.gateways = registerOutput<List<CustomDomainGateway>?>('gateways');
-    this.managements = registerOutput<List<CustomDomainManagement>?>('managements');
-    this.portals = registerOutput<List<CustomDomainPortal>?>('portals');
-    this.scms = registerOutput<List<CustomDomainScm>?>('scms');
+         'azure:apimanagement/customDomain:CustomDomain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    developerPortals = registerOutput<List<Map<String, dynamic>>?>(
+      'developerPortals',
+    );
+    gateways = registerOutput<List<Map<String, dynamic>>?>('gateways');
+    managements = registerOutput<List<Map<String, dynamic>>?>('managements');
+    portals = registerOutput<List<Map<String, dynamic>>?>('portals');
+    scms = registerOutput<List<Map<String, dynamic>>?>('scms');
   }
 }

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDdosCooDomainResourcesResourceProxyType {
   /// The forwarding port.
   final pulumi.Input<List<int>> proxyPorts;
+
   /// Protocol type.
   final pulumi.Input<String> proxyType;
 
@@ -17,17 +18,17 @@ class GetDdosCooDomainResourcesResourceProxyType {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'proxyPorts': proxyPorts,
-      'proxyType': proxyType,
-    };
+    return <String, dynamic>{'proxyPorts': proxyPorts, 'proxyType': proxyType};
   }
 
-  factory GetDdosCooDomainResourcesResourceProxyType.fromMap(Map<String, dynamic> map) {
+  factory GetDdosCooDomainResourcesResourceProxyType.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDdosCooDomainResourcesResourceProxyType(
-      proxyPorts: ((map['proxyPorts'] as List).cast<int>()).input(),
-      proxyType: (map['proxyType'] as String).input(),
+      proxyPorts: pulumi.Input.fromValue(
+        (map['proxyPorts'] as List).cast<int>(),
+      ),
+      proxyType: pulumi.Input.fromValue(map['proxyType'] as String),
     );
   }
 }
-

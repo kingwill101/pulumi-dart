@@ -12,15 +12,14 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurit
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'values': values,
-    };
+    return <String, dynamic>{'values': values};
   }
 
-  factory ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList.fromMap(Map<String, dynamic> map) {
+  factory ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList(
-      values: ((map['values'] as List).cast<int>()).input(),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<int>()),
     );
   }
 }
-

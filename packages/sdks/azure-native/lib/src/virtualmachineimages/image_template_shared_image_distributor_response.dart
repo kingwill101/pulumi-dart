@@ -8,21 +8,29 @@ import 'target_region_response.dart';
 class ImageTemplateSharedImageDistributorResponse {
   /// Tags that will be applied to the artifact once it has been created/updated by the distributor.
   final pulumi.Input<Map<String, String>>? artifactTags;
+
   /// Flag that indicates whether created image version should be excluded from latest. Omit to use the default (false).
   final pulumi.Input<bool>? excludeFromLatest;
+
   /// Resource Id of the Azure Compute Gallery image
   final pulumi.Input<String> galleryImageId;
+
   /// [Deprecated] A list of regions that the image will be replicated to. This list can be specified only if targetRegions is not specified. This field is deprecated - use targetRegions instead.
   final pulumi.Input<List<String>>? replicationRegions;
+
   /// The name to be used for the associated RunOutput.
   final pulumi.Input<String> runOutputName;
+
   /// [Deprecated] Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS). This field can be specified only if replicationRegions is specified. This field is deprecated - use targetRegions instead.
   final pulumi.Input<String>? storageAccountType;
+
   /// The target regions where the distributed Image Version is going to be replicated to. This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.
   final pulumi.Input<List<TargetRegionResponse>>? targetRegions;
+
   /// Type of distribution.
   /// Expected value is 'SharedImage'.
   final pulumi.Input<String> type;
+
   /// Describes how to generate new x.y.z version number for distribution.
   final pulumi.Input<DistributeVersionerLatestResponse>? versioning;
 
@@ -56,24 +64,77 @@ class ImageTemplateSharedImageDistributorResponse {
       'replicationRegions': ?replicationRegions,
       'runOutputName': runOutputName,
       'storageAccountType': ?storageAccountType,
-      'targetRegions': ?pulumi.Input.mapOptionalInputValue<List<TargetRegionResponse>, List<Map<String, dynamic>>>(targetRegions, (value) => pulumi.Input.encodeList<TargetRegionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targetRegions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TargetRegionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            targetRegions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TargetRegionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'type': type,
-      'versioning': ?pulumi.Input.mapOptionalInputValue<DistributeVersionerLatestResponse, Map<String, dynamic>>(versioning, (value) => value.toMap()),
+      'versioning':
+          ?pulumi.Input.mapOptionalInputValue<
+            DistributeVersionerLatestResponse,
+            Map<String, dynamic>
+          >(versioning, (value) => value.toMap()),
     };
   }
 
-  factory ImageTemplateSharedImageDistributorResponse.fromMap(Map<String, dynamic> map) {
+  factory ImageTemplateSharedImageDistributorResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ImageTemplateSharedImageDistributorResponse(
-      artifactTags: map['artifactTags'] == null ? null : ((map['artifactTags']! as Map).cast<String, String>()).input(),
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest']! as bool).input(),
-      galleryImageId: (map['galleryImageId'] as String).input(),
-      replicationRegions: map['replicationRegions'] == null ? null : ((map['replicationRegions']! as List).cast<String>()).input(),
-      runOutputName: (map['runOutputName'] as String).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
-      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<TargetRegionResponse>(map['targetRegions']!, (value) => TargetRegionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: (map['type'] as String).input(),
-      versioning: map['versioning'] == null ? null : (DistributeVersionerLatestResponse.fromMap((map['versioning']! as Map).cast<String, dynamic>())).input(),
+      artifactTags: (() {
+        final guardedValue = map['artifactTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      excludeFromLatest: (() {
+        final guardedValue = map['excludeFromLatest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      galleryImageId: pulumi.Input.fromValue(map['galleryImageId'] as String),
+      replicationRegions: (() {
+        final guardedValue = map['replicationRegions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      runOutputName: pulumi.Input.fromValue(map['runOutputName'] as String),
+      storageAccountType: (() {
+        final guardedValue = map['storageAccountType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetRegions: (() {
+        final guardedValue = map['targetRegions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TargetRegionResponse>(
+            guardedValue,
+            (value) => TargetRegionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      versioning: (() {
+        final guardedValue = map['versioning'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DistributeVersionerLatestResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

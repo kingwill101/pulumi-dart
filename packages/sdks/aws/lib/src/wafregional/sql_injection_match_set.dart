@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sql_injection_match_set_args.dart';
-import 'sql_injection_match_set_sql_injection_match_tuple.dart';
 import 'sql_injection_match_set_state.dart';
 
 /// Provides a WAF Regional SQL Injection Match Set Resource for use with Application Load Balancer.
@@ -149,10 +148,12 @@ import 'sql_injection_match_set_state.dart';
 class SqlInjectionMatchSet extends pulumi.CustomResource {
   /// The name or description of the SizeConstraintSet.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
-  late final pulumi.Output<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?> sqlInjectionMatchTuples;
+  late final pulumi.Output<List<Map<String, dynamic>>?> sqlInjectionMatchTuples;
 
   /// Creates a new [SqlInjectionMatchSet].
   /// [name] The Pulumi resource name.
@@ -163,14 +164,16 @@ class SqlInjectionMatchSet extends pulumi.CustomResource {
     SqlInjectionMatchSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:wafregional/sqlInjectionMatchSet:SqlInjectionMatchSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:wafregional/sqlInjectionMatchSet:SqlInjectionMatchSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.sqlInjectionMatchTuples = registerOutput<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?>('sqlInjectionMatchTuples');
+    region = registerOutput<String>('region');
+    sqlInjectionMatchTuples = registerOutput<List<Map<String, dynamic>>?>(
+      'sqlInjectionMatchTuples',
+    );
   }
 
   /// Gets an existing [SqlInjectionMatchSet] resource's state with the given [name] and [id].
@@ -191,13 +194,15 @@ class SqlInjectionMatchSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:wafregional/sqlInjectionMatchSet:SqlInjectionMatchSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:wafregional/sqlInjectionMatchSet:SqlInjectionMatchSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.sqlInjectionMatchTuples = registerOutput<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?>('sqlInjectionMatchTuples');
+    region = registerOutput<String>('region');
+    sqlInjectionMatchTuples = registerOutput<List<Map<String, dynamic>>?>(
+      'sqlInjectionMatchTuples',
+    );
   }
 }

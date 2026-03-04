@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticKeyVaultProperties {
   /// The name of KeyVault key.
   final pulumi.Input<String>? keyName;
+
   /// The resource ID of KeyVault.
   final pulumi.Input<String>? keyVaultResourceId;
+
   /// The Uri of KeyVault.
   final pulumi.Input<String>? keyVaultUri;
 
@@ -31,10 +33,21 @@ class ElasticKeyVaultProperties {
 
   factory ElasticKeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return ElasticKeyVaultProperties(
-      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
-      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : (map['keyVaultResourceId']! as String).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
+      keyName: (() {
+        final guardedValue = map['keyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultResourceId: (() {
+        final guardedValue = map['keyVaultResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultUri: (() {
+        final guardedValue = map['keyVaultUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

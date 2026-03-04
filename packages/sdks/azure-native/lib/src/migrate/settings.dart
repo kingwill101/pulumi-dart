@@ -9,8 +9,10 @@ import 'on_premise_settings.dart';
 class Settings {
   /// Azure arc settings.
   final pulumi.Input<AzureArcSettings>? azureArcSettings;
+
   /// Azure settings for a business case.
   final pulumi.Input<AzureSettings> azureSettings;
+
   /// On-premise settings.
   final pulumi.Input<OnPremiseSettings>? onPremiseSettings;
 
@@ -26,18 +28,49 @@ class Settings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureArcSettings': ?pulumi.Input.mapOptionalInputValue<AzureArcSettings, Map<String, dynamic>>(azureArcSettings, (value) => value.toMap()),
-      'azureSettings': pulumi.Input.mapInputValue<AzureSettings, Map<String, dynamic>>(azureSettings, (value) => value.toMap()),
-      'onPremiseSettings': ?pulumi.Input.mapOptionalInputValue<OnPremiseSettings, Map<String, dynamic>>(onPremiseSettings, (value) => value.toMap()),
+      'azureArcSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureArcSettings,
+            Map<String, dynamic>
+          >(azureArcSettings, (value) => value.toMap()),
+      'azureSettings':
+          pulumi.Input.mapInputValue<AzureSettings, Map<String, dynamic>>(
+            azureSettings,
+            (value) => value.toMap(),
+          ),
+      'onPremiseSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            OnPremiseSettings,
+            Map<String, dynamic>
+          >(onPremiseSettings, (value) => value.toMap()),
     };
   }
 
   factory Settings.fromMap(Map<String, dynamic> map) {
     return Settings(
-      azureArcSettings: map['azureArcSettings'] == null ? null : (AzureArcSettings.fromMap((map['azureArcSettings']! as Map).cast<String, dynamic>())).input(),
-      azureSettings: (AzureSettings.fromMap((map['azureSettings'] as Map).cast<String, dynamic>())).input(),
-      onPremiseSettings: map['onPremiseSettings'] == null ? null : (OnPremiseSettings.fromMap((map['onPremiseSettings']! as Map).cast<String, dynamic>())).input(),
+      azureArcSettings: (() {
+        final guardedValue = map['azureArcSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureArcSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      azureSettings: pulumi.Input.fromValue(
+        AzureSettings.fromMap(
+          (map['azureSettings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      onPremiseSettings: (() {
+        final guardedValue = map['onPremiseSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OnPremiseSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

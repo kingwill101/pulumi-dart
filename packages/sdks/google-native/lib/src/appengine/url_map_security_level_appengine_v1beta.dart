@@ -6,16 +6,17 @@ enum UrlMapSecurityLevelAppengineV1beta {
   secureOptional("SECURE_OPTIONAL"),
   secureAlways("SECURE_ALWAYS");
 
-  const UrlMapSecurityLevelAppengineV1beta(this.value);
-  final String value;
+  const UrlMapSecurityLevelAppengineV1beta(this.wireValue);
+  final String wireValue;
 
   static UrlMapSecurityLevelAppengineV1beta fromValue(String value) {
     for (final item in UrlMapSecurityLevelAppengineV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown UrlMapSecurityLevelAppengineV1beta value: $value');
+    throw ArgumentError(
+      'Unknown UrlMapSecurityLevelAppengineV1beta value: $value',
+    );
   }
 }
-

@@ -9,20 +9,19 @@ class ReadPoolConfigAlloydbV1beta {
 
   /// Creates a new [ReadPoolConfigAlloydbV1beta].
   /// [nodeCount] Read capacity, i.e. number of nodes in a read pool instance.
-  ReadPoolConfigAlloydbV1beta({
-    this.nodeCount,
-  });
+  ReadPoolConfigAlloydbV1beta({this.nodeCount});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nodeCount': ?nodeCount,
-    };
+    return <String, dynamic>{'nodeCount': ?nodeCount};
   }
 
   factory ReadPoolConfigAlloydbV1beta.fromMap(Map<String, dynamic> map) {
     return ReadPoolConfigAlloydbV1beta(
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      nodeCount: (() {
+        final guardedValue = map['nodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

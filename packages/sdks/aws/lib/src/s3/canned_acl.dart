@@ -9,16 +9,15 @@ enum CannedAcl {
   bucketOwnerFullControl("bucket-owner-full-control"),
   logDeliveryWrite("log-delivery-write");
 
-  const CannedAcl(this.value);
-  final String value;
+  const CannedAcl(this.wireValue);
+  final String wireValue;
 
   static CannedAcl fromValue(String value) {
     for (final item in CannedAcl.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CannedAcl value: $value');
   }
 }
-

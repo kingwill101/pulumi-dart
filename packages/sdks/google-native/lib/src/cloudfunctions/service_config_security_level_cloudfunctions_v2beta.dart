@@ -4,16 +4,19 @@ enum ServiceConfigSecurityLevelCloudfunctionsV2beta {
   secureAlways("SECURE_ALWAYS"),
   secureOptional("SECURE_OPTIONAL");
 
-  const ServiceConfigSecurityLevelCloudfunctionsV2beta(this.value);
-  final String value;
+  const ServiceConfigSecurityLevelCloudfunctionsV2beta(this.wireValue);
+  final String wireValue;
 
-  static ServiceConfigSecurityLevelCloudfunctionsV2beta fromValue(String value) {
+  static ServiceConfigSecurityLevelCloudfunctionsV2beta fromValue(
+    String value,
+  ) {
     for (final item in ServiceConfigSecurityLevelCloudfunctionsV2beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceConfigSecurityLevelCloudfunctionsV2beta value: $value');
+    throw ArgumentError(
+      'Unknown ServiceConfigSecurityLevelCloudfunctionsV2beta value: $value',
+    );
   }
 }
-

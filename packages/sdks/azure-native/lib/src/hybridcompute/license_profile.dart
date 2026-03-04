@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'error_detail_response.dart';
-import 'esu_key_response.dart';
 import 'license_profile_args.dart';
-import 'product_feature_response.dart';
 import 'system_data_response.dart';
 
 /// Describes a license profile in a hybrid machine.
@@ -198,46 +196,67 @@ import 'system_data_response.dart';
 class LicenseProfile extends pulumi.CustomResource {
   /// The resource id of the license.
   late final pulumi.Output<String?> assignedLicense;
+
   /// The guid id of the license.
   late final pulumi.Output<String> assignedLicenseImmutableId;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The timestamp in UTC when the billing ends.
   late final pulumi.Output<String> billingEndDate;
+
   /// The timestamp in UTC when the billing starts.
   late final pulumi.Output<String> billingStartDate;
+
   /// The timestamp in UTC when the user disenrolled the feature.
   late final pulumi.Output<String> disenrollmentDate;
+
   /// The timestamp in UTC when the user enrolls the feature.
   late final pulumi.Output<String> enrollmentDate;
+
   /// The errors that were encountered during the feature enrollment or disenrollment.
   late final pulumi.Output<ErrorDetailResponse> error;
+
   /// Indicates the eligibility state of Esu.
   late final pulumi.Output<String> esuEligibility;
+
   /// Indicates whether there is an ESU Key currently active for the machine.
   late final pulumi.Output<String> esuKeyState;
+
   /// The list of ESU keys.
-  late final pulumi.Output<List<EsuKeyResponse>> esuKeys;
+  late final pulumi.Output<List<Map<String, dynamic>>> esuKeys;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The list of product features.
-  late final pulumi.Output<List<ProductFeatureResponse>?> productFeatures;
+  late final pulumi.Output<List<Map<String, dynamic>>?> productFeatures;
+
   /// Indicates the product type of the license.
   late final pulumi.Output<String?> productType;
+
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// The type of the Esu servers.
   late final pulumi.Output<String> serverType;
+
   /// Specifies if this machine is licensed as part of a Software Assurance agreement.
   late final pulumi.Output<bool?> softwareAssuranceCustomer;
+
   /// Indicates the subscription status of the product.
   late final pulumi.Output<String?> subscriptionStatus;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -250,32 +269,38 @@ class LicenseProfile extends pulumi.CustomResource {
     LicenseProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:hybridcompute:LicenseProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assignedLicense = registerOutput<String?>('assignedLicense');
-    this.assignedLicenseImmutableId = registerOutput<String>('assignedLicenseImmutableId');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.billingEndDate = registerOutput<String>('billingEndDate');
-    this.billingStartDate = registerOutput<String>('billingStartDate');
-    this.disenrollmentDate = registerOutput<String>('disenrollmentDate');
-    this.enrollmentDate = registerOutput<String>('enrollmentDate');
-    this.error = registerOutput<ErrorDetailResponse>('error');
-    this.esuEligibility = registerOutput<String>('esuEligibility');
-    this.esuKeyState = registerOutput<String>('esuKeyState');
-    this.esuKeys = registerOutput<List<EsuKeyResponse>>('esuKeys');
-    this.location = registerOutput<String>('location');
+         'azure-native:hybridcompute:LicenseProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assignedLicense = registerOutput<String?>('assignedLicense');
+    assignedLicenseImmutableId = registerOutput<String>(
+      'assignedLicenseImmutableId',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    billingEndDate = registerOutput<String>('billingEndDate');
+    billingStartDate = registerOutput<String>('billingStartDate');
+    disenrollmentDate = registerOutput<String>('disenrollmentDate');
+    enrollmentDate = registerOutput<String>('enrollmentDate');
+    error = registerOutput<ErrorDetailResponse>('error');
+    esuEligibility = registerOutput<String>('esuEligibility');
+    esuKeyState = registerOutput<String>('esuKeyState');
+    esuKeys = registerOutput<List<Map<String, dynamic>>>('esuKeys');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.productFeatures = registerOutput<List<ProductFeatureResponse>?>('productFeatures');
-    this.productType = registerOutput<String?>('productType');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.serverType = registerOutput<String>('serverType');
-    this.softwareAssuranceCustomer = registerOutput<bool?>('softwareAssuranceCustomer');
-    this.subscriptionStatus = registerOutput<String?>('subscriptionStatus');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    productFeatures = registerOutput<List<Map<String, dynamic>>?>(
+      'productFeatures',
+    );
+    productType = registerOutput<String?>('productType');
+    provisioningState = registerOutput<String>('provisioningState');
+    serverType = registerOutput<String>('serverType');
+    softwareAssuranceCustomer = registerOutput<bool?>(
+      'softwareAssuranceCustomer',
+    );
+    subscriptionStatus = registerOutput<String?>('subscriptionStatus');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

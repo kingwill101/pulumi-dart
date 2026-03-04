@@ -7,12 +7,20 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore {
   /// (Output)
   /// The connector config for the data store connection.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig>>? connectorConfigs;
+  final pulumi.Input<
+    List<
+      AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig
+    >
+  >?
+  connectorConfigs;
+
   /// (Output)
   /// Timestamp when the toolset was created.
   final pulumi.Input<String>? createTime;
+
   /// The display name of the app version.
   final pulumi.Input<String>? displayName;
+
   /// (Output)
   /// The document processing mode for the data store connection.
   /// Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
@@ -20,11 +28,13 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore {
   /// DOCUMENTS
   /// CHUNKS
   final pulumi.Input<String>? documentProcessingMode;
+
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
   final pulumi.Input<String>? name;
+
   /// (Output)
   /// The type of the data store. This field is readonly and populated by the
   /// server.
@@ -53,7 +63,20 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectorConfigs': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig>, List<Map<String, dynamic>>>(connectorConfigs, (value) => pulumi.Input.encodeList<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'connectorConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig
+            >,
+            List<Map<String, dynamic>>
+          >(
+            connectorConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'createTime': ?createTime,
       'displayName': ?displayName,
       'documentProcessingMode': ?documentProcessingMode,
@@ -62,15 +85,50 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore {
     };
   }
 
-  factory AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore(
-      connectorConfigs: map['connectorConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig>(map['connectorConfigs']!, (value) => AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      documentProcessingMode: map['documentProcessingMode'] == null ? null : (map['documentProcessingMode']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      connectorConfigs: (() {
+        final guardedValue = map['connectorConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig
+          >(
+            guardedValue,
+            (value) =>
+                AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      documentProcessingMode: (() {
+        final guardedValue = map['documentProcessingMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

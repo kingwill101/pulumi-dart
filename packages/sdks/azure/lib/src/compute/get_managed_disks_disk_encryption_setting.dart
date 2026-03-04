@@ -6,10 +6,15 @@ import 'get_managed_disks_disk_encryption_setting_key_encryption_key.dart';
 
 class GetManagedDisksDiskEncryptionSetting {
   /// A `disk_encryption_key` block as defined above.
-  final pulumi.Input<List<GetManagedDisksDiskEncryptionSettingDiskEncryptionKey>> diskEncryptionKeys;
+  final pulumi.Input<
+    List<GetManagedDisksDiskEncryptionSettingDiskEncryptionKey>
+  >
+  diskEncryptionKeys;
   final pulumi.Input<bool> enabled;
+
   /// A `key_encryption_key` block as defined below.
-  final pulumi.Input<List<GetManagedDisksDiskEncryptionSettingKeyEncryptionKey>> keyEncryptionKeys;
+  final pulumi.Input<List<GetManagedDisksDiskEncryptionSettingKeyEncryptionKey>>
+  keyEncryptionKeys;
 
   /// Creates a new [GetManagedDisksDiskEncryptionSetting].
   /// [diskEncryptionKeys] A `disk_encryption_key` block as defined above.
@@ -23,18 +28,61 @@ class GetManagedDisksDiskEncryptionSetting {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'diskEncryptionKeys': pulumi.Input.mapInputValue<List<GetManagedDisksDiskEncryptionSettingDiskEncryptionKey>, List<Map<String, dynamic>>>(diskEncryptionKeys, (value) => pulumi.Input.encodeList<GetManagedDisksDiskEncryptionSettingDiskEncryptionKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'diskEncryptionKeys':
+          pulumi.Input.mapInputValue<
+            List<GetManagedDisksDiskEncryptionSettingDiskEncryptionKey>,
+            List<Map<String, dynamic>>
+          >(
+            diskEncryptionKeys,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetManagedDisksDiskEncryptionSettingDiskEncryptionKey,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'enabled': enabled,
-      'keyEncryptionKeys': pulumi.Input.mapInputValue<List<GetManagedDisksDiskEncryptionSettingKeyEncryptionKey>, List<Map<String, dynamic>>>(keyEncryptionKeys, (value) => pulumi.Input.encodeList<GetManagedDisksDiskEncryptionSettingKeyEncryptionKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'keyEncryptionKeys':
+          pulumi.Input.mapInputValue<
+            List<GetManagedDisksDiskEncryptionSettingKeyEncryptionKey>,
+            List<Map<String, dynamic>>
+          >(
+            keyEncryptionKeys,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetManagedDisksDiskEncryptionSettingKeyEncryptionKey,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GetManagedDisksDiskEncryptionSetting.fromMap(Map<String, dynamic> map) {
+  factory GetManagedDisksDiskEncryptionSetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagedDisksDiskEncryptionSetting(
-      diskEncryptionKeys: (pulumi.Input.decodeList<GetManagedDisksDiskEncryptionSettingDiskEncryptionKey>(map['diskEncryptionKeys'], (value) => GetManagedDisksDiskEncryptionSettingDiskEncryptionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: (map['enabled'] as bool).input(),
-      keyEncryptionKeys: (pulumi.Input.decodeList<GetManagedDisksDiskEncryptionSettingKeyEncryptionKey>(map['keyEncryptionKeys'], (value) => GetManagedDisksDiskEncryptionSettingKeyEncryptionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskEncryptionKeys: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetManagedDisksDiskEncryptionSettingDiskEncryptionKey
+        >(
+          map['diskEncryptionKeys']!,
+          (value) =>
+              GetManagedDisksDiskEncryptionSettingDiskEncryptionKey.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      keyEncryptionKeys: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetManagedDisksDiskEncryptionSettingKeyEncryptionKey
+        >(
+          map['keyEncryptionKeys']!,
+          (value) =>
+              GetManagedDisksDiskEncryptionSettingKeyEncryptionKey.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

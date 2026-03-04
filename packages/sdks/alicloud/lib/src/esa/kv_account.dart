@@ -21,12 +21,12 @@ class KvAccount extends pulumi.CustomResource {
     Map<String, dynamic>? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/kvAccount:KvAccount',
-          name,
-          pulumi.Input.mapToInputs(args ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.status = registerOutput<String>('status');
+         'alicloud:esa/kvAccount:KvAccount',
+         name,
+         pulumi.Input.mapToInputs(args ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [KvAccount] resource's state with the given [name] and [id].
@@ -47,11 +47,11 @@ class KvAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/kvAccount:KvAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.status = registerOutput<String>('status');
+         'alicloud:esa/kvAccount:KvAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    status = registerOutput<String>('status');
   }
 }

@@ -7,34 +7,49 @@ import 'system_data_response.dart';
 class GetWebhookResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Gets or sets the creation time.
   final String? creationTime;
+
   /// Gets or sets the description.
   final String? description;
+
   /// Gets or sets the expiry time.
   final String? expiryTime;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// Gets or sets the value of the enabled flag of the webhook.
   final bool? isEnabled;
+
   /// Gets or sets the last invoked time.
   final String? lastInvokedTime;
+
   /// Details of the user who last modified the Webhook
   final String? lastModifiedBy;
+
   /// Gets or sets the last modified time.
   final String? lastModifiedTime;
+
   /// The name of the resource
   final String name;
+
   /// Gets or sets the parameters of the job that is created when the webhook calls the runbook it is associated with.
   final Map<String, String>? parameters;
+
   /// Gets or sets the name of the hybrid worker group the webhook job will run on.
   final String? runOn;
+
   /// Gets or sets the runbook the webhook is associated with.
   final RunbookAssociationPropertyResponse? runbook;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Gets or sets the webhook uri.
   final String? uri;
 
@@ -88,7 +103,7 @@ class GetWebhookResult {
       'name': name,
       'parameters': ?parameters,
       'runOn': ?runOn,
-      'runbook': ?runbook == null ? null : runbook!.toMap(),
+      'runbook': ?runbook?.toMap(),
       'systemData': systemData.toMap(),
       'type': type,
       'uri': ?uri,
@@ -98,22 +113,69 @@ class GetWebhookResult {
   factory GetWebhookResult.fromMap(Map<String, dynamic> map) {
     return GetWebhookResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      creationTime: map['creationTime'] == null ? null : map['creationTime']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      expiryTime: map['expiryTime'] == null ? null : map['expiryTime']! as String,
+      creationTime: (() {
+        final guardedValue = map['creationTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      expiryTime: (() {
+        final guardedValue = map['expiryTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      isEnabled: map['isEnabled'] == null ? null : map['isEnabled']! as bool,
-      lastInvokedTime: map['lastInvokedTime'] == null ? null : map['lastInvokedTime']! as String,
-      lastModifiedBy: map['lastModifiedBy'] == null ? null : map['lastModifiedBy']! as String,
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime']! as String,
+      isEnabled: (() {
+        final guardedValue = map['isEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      lastInvokedTime: (() {
+        final guardedValue = map['lastInvokedTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      lastModifiedBy: (() {
+        final guardedValue = map['lastModifiedBy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      lastModifiedTime: (() {
+        final guardedValue = map['lastModifiedTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters']! as Map).cast<String, String>(),
-      runOn: map['runOn'] == null ? null : map['runOn']! as String,
-      runbook: map['runbook'] == null ? null : RunbookAssociationPropertyResponse.fromMap((map['runbook']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      runOn: (() {
+        final guardedValue = map['runOn'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      runbook: (() {
+        final guardedValue = map['runbook'];
+        if (guardedValue == null) return null;
+        return RunbookAssociationPropertyResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
-      uri: map['uri'] == null ? null : map['uri']! as String,
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

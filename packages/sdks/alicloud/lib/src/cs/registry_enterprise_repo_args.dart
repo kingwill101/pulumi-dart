@@ -9,16 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryEnterpriseRepoArgs {
   /// The description of the repository.
   final pulumi.Input<String>? detail;
+
   /// The ID of the Container Registry Enterprise Edition instance.
   final pulumi.Input<String> instanceId;
+
   /// The name of the image repository.
   final pulumi.Input<String>? name;
+
   /// The name of the namespace to which the image repository belongs.
   final pulumi.Input<String> namespace;
+
   /// The type of the repository. Valid values:
   /// - `PUBLIC`: The repository is a public repository.
   /// - `PRIVATE`: The repository is a private repository.
   final pulumi.Input<String> repoType;
+
   /// The summary about the repository.
   final pulumi.Input<String> summary;
 
@@ -51,13 +56,20 @@ class RegistryEnterpriseRepoArgs {
 
   factory RegistryEnterpriseRepoArgs.fromMap(Map<String, dynamic> map) {
     return RegistryEnterpriseRepoArgs(
-      detail: map['detail'] == null ? null : (map['detail']! as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namespace: (map['namespace'] as String).input(),
-      repoType: (map['repoType'] as String).input(),
-      summary: (map['summary'] as String).input(),
+      detail: (() {
+        final guardedValue = map['detail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
+      repoType: pulumi.Input.fromValue(map['repoType'] as String),
+      summary: pulumi.Input.fromValue(map['summary'] as String),
     );
   }
 }
-

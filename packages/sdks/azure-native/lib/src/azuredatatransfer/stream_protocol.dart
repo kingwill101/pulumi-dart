@@ -4,16 +4,15 @@ enum StreamProtocol {
   valueSRT("SRT"),
   valueRTP("RTP");
 
-  const StreamProtocol(this.value);
-  final String value;
+  const StreamProtocol(this.wireValue);
+  final String wireValue;
 
   static StreamProtocol fromValue(String value) {
     for (final item in StreamProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StreamProtocol value: $value');
   }
 }
-

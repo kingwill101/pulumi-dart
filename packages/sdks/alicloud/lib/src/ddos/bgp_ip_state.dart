@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BgpIpState {
   /// The ID of the Anti-DDoS Origin instance.
   final pulumi.Input<String>? instanceId;
+
   /// The IP address that you want to add.
   final pulumi.Input<String>? ip;
+
   /// The member to which the asset belongs.
   final pulumi.Input<String>? memberUid;
+
   /// Field `resource_group_id` has been deprecated from provider version 1.259.0.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The status of the IP address.
   final pulumi.Input<String>? status;
 
@@ -41,12 +45,31 @@ class BgpIpState {
 
   factory BgpIpState.fromMap(Map<String, dynamic> map) {
     return BgpIpState(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
-      memberUid: map['memberUid'] == null ? null : (map['memberUid']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ip: (() {
+        final guardedValue = map['ip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memberUid: (() {
+        final guardedValue = map['memberUid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

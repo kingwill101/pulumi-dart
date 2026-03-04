@@ -167,17 +167,24 @@ import 'directory_config_state.dart';
 /// ```
 class DirectoryConfig extends pulumi.CustomResource {
   /// Configuration block for the certificate-based authentication properties used to authenticate SAML 2.0 Identity Provider (IdP) user identities to Active Directory domain-joined streaming instances. See `certificate_based_auth_properties` below.
-  late final pulumi.Output<DirectoryConfigCertificateBasedAuthProperties?> certificateBasedAuthProperties;
+  late final pulumi.Output<DirectoryConfigCertificateBasedAuthProperties?>
+  certificateBasedAuthProperties;
+
   /// Date and time, in UTC and extended RFC 3339 format, when the directory config was created.
   late final pulumi.Output<String> createdTime;
+
   /// Fully qualified name of the directory.
   late final pulumi.Output<String> directoryName;
+
   /// Distinguished names of the organizational units for computer accounts.
   late final pulumi.Output<List<String>> organizationalUnitDistinguishedNames;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Configuration block for the name of the directory and organizational unit (OU) to use to join the directory config to a Microsoft Active Directory domain. See `service_account_credentials` below.
-  late final pulumi.Output<DirectoryConfigServiceAccountCredentials> serviceAccountCredentials;
+  late final pulumi.Output<DirectoryConfigServiceAccountCredentials>
+  serviceAccountCredentials;
 
   /// Creates a new [DirectoryConfig].
   /// [name] The Pulumi resource name.
@@ -188,17 +195,25 @@ class DirectoryConfig extends pulumi.CustomResource {
     DirectoryConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:appstream/directoryConfig:DirectoryConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateBasedAuthProperties = registerOutput<DirectoryConfigCertificateBasedAuthProperties?>('certificateBasedAuthProperties');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.directoryName = registerOutput<String>('directoryName');
-    this.organizationalUnitDistinguishedNames = registerOutput<List<String>>('organizationalUnitDistinguishedNames');
-    this.region = registerOutput<String>('region');
-    this.serviceAccountCredentials = registerOutput<DirectoryConfigServiceAccountCredentials>('serviceAccountCredentials');
+         'aws:appstream/directoryConfig:DirectoryConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateBasedAuthProperties =
+        registerOutput<DirectoryConfigCertificateBasedAuthProperties?>(
+          'certificateBasedAuthProperties',
+        );
+    createdTime = registerOutput<String>('createdTime');
+    directoryName = registerOutput<String>('directoryName');
+    organizationalUnitDistinguishedNames = registerOutput<List<String>>(
+      'organizationalUnitDistinguishedNames',
+    );
+    region = registerOutput<String>('region');
+    serviceAccountCredentials =
+        registerOutput<DirectoryConfigServiceAccountCredentials>(
+          'serviceAccountCredentials',
+        );
   }
 
   /// Gets an existing [DirectoryConfig] resource's state with the given [name] and [id].
@@ -219,16 +234,24 @@ class DirectoryConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:appstream/directoryConfig:DirectoryConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateBasedAuthProperties = registerOutput<DirectoryConfigCertificateBasedAuthProperties?>('certificateBasedAuthProperties');
-    this.createdTime = registerOutput<String>('createdTime');
-    this.directoryName = registerOutput<String>('directoryName');
-    this.organizationalUnitDistinguishedNames = registerOutput<List<String>>('organizationalUnitDistinguishedNames');
-    this.region = registerOutput<String>('region');
-    this.serviceAccountCredentials = registerOutput<DirectoryConfigServiceAccountCredentials>('serviceAccountCredentials');
+         'aws:appstream/directoryConfig:DirectoryConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateBasedAuthProperties =
+        registerOutput<DirectoryConfigCertificateBasedAuthProperties?>(
+          'certificateBasedAuthProperties',
+        );
+    createdTime = registerOutput<String>('createdTime');
+    directoryName = registerOutput<String>('directoryName');
+    organizationalUnitDistinguishedNames = registerOutput<List<String>>(
+      'organizationalUnitDistinguishedNames',
+    );
+    region = registerOutput<String>('region');
+    serviceAccountCredentials =
+        registerOutput<DirectoryConfigServiceAccountCredentials>(
+          'serviceAccountCredentials',
+        );
   }
 }

@@ -10,10 +10,13 @@ import 'managed_identity_credential.dart';
 class CredentialOperationArgs {
   /// Credential name
   final pulumi.Input<String>? credentialName;
+
   /// The factory name.
   final pulumi.Input<String> factoryName;
+
   /// Properties of credentials.
   final pulumi.Input<ManagedIdentityCredential> properties;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,18 +36,31 @@ class CredentialOperationArgs {
     return <String, dynamic>{
       'credentialName': ?credentialName,
       'factoryName': factoryName,
-      'properties': pulumi.Input.mapInputValue<ManagedIdentityCredential, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            ManagedIdentityCredential,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory CredentialOperationArgs.fromMap(Map<String, dynamic> map) {
     return CredentialOperationArgs(
-      credentialName: map['credentialName'] == null ? null : (map['credentialName']! as String).input(),
-      factoryName: (map['factoryName'] as String).input(),
-      properties: (ManagedIdentityCredential.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      credentialName: (() {
+        final guardedValue = map['credentialName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
+      properties: pulumi.Input.fromValue(
+        ManagedIdentityCredential.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

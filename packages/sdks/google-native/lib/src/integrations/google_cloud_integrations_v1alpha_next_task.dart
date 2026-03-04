@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIntegrationsV1alphaNextTask {
   /// Standard filter expression for this task to become an eligible next task.
   final pulumi.Input<String>? condition;
+
   /// User-provided description intended to give additional business context about the task.
   final pulumi.Input<String>? description;
+
   /// User-provided label that is attached to this edge in the UI.
   final pulumi.Input<String>? displayName;
+
   /// ID of the next task.
   final pulumi.Input<String>? taskConfigId;
+
   /// Task number of the next task.
   final pulumi.Input<String>? taskId;
 
@@ -39,14 +43,35 @@ class GoogleCloudIntegrationsV1alphaNextTask {
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaNextTask.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaNextTask.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaNextTask(
-      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      taskConfigId: map['taskConfigId'] == null ? null : (map['taskConfigId']! as String).input(),
-      taskId: map['taskId'] == null ? null : (map['taskId']! as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      taskConfigId: (() {
+        final guardedValue = map['taskConfigId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      taskId: (() {
+        final guardedValue = map['taskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

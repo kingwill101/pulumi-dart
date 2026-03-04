@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TlsInspectionConfigurationCertificateAuthority {
   /// ARN of the certificate.
   final pulumi.Input<String> certificateArn;
+
   /// Serial number of the certificate.
   final pulumi.Input<String> certificateSerial;
+
   /// Status of the certificate.
   final pulumi.Input<String> status;
+
   /// Details about the certificate status, including information about certificate errors.
   final pulumi.Input<String> statusMessage;
 
@@ -33,13 +36,16 @@ class TlsInspectionConfigurationCertificateAuthority {
     };
   }
 
-  factory TlsInspectionConfigurationCertificateAuthority.fromMap(Map<String, dynamic> map) {
+  factory TlsInspectionConfigurationCertificateAuthority.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TlsInspectionConfigurationCertificateAuthority(
-      certificateArn: (map['certificateArn'] as String).input(),
-      certificateSerial: (map['certificateSerial'] as String).input(),
-      status: (map['status'] as String).input(),
-      statusMessage: (map['statusMessage'] as String).input(),
+      certificateArn: pulumi.Input.fromValue(map['certificateArn'] as String),
+      certificateSerial: pulumi.Input.fromValue(
+        map['certificateSerial'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      statusMessage: pulumi.Input.fromValue(map['statusMessage'] as String),
     );
   }
 }
-

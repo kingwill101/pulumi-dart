@@ -10,12 +10,16 @@ import 'build_properties.dart';
 class BuildServiceBuildArgs {
   /// The name of the build resource.
   final pulumi.Input<String>? buildName;
+
   /// The name of the build service resource.
   final pulumi.Input<String> buildServiceName;
+
   /// Properties of the build resource
   final pulumi.Input<BuildProperties>? properties;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -37,7 +41,11 @@ class BuildServiceBuildArgs {
     return <String, dynamic>{
       'buildName': ?buildName,
       'buildServiceName': buildServiceName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<BuildProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            BuildProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'serviceName': serviceName,
     };
@@ -45,12 +53,27 @@ class BuildServiceBuildArgs {
 
   factory BuildServiceBuildArgs.fromMap(Map<String, dynamic> map) {
     return BuildServiceBuildArgs(
-      buildName: map['buildName'] == null ? null : (map['buildName']! as String).input(),
-      buildServiceName: (map['buildServiceName'] as String).input(),
-      properties: map['properties'] == null ? null : (BuildProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      buildName: (() {
+        final guardedValue = map['buildName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      buildServiceName: pulumi.Input.fromValue(
+        map['buildServiceName'] as String,
+      ),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BuildProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

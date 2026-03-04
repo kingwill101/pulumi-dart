@@ -179,16 +179,23 @@ import 'system_data_response.dart';
 class EdgeSite extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A reference to global communications site.
-  late final pulumi.Output<EdgeSitesPropertiesResponseGlobalCommunicationsSite> globalCommunicationsSite;
+  late final pulumi.Output<EdgeSitesPropertiesResponseGlobalCommunicationsSite>
+  globalCommunicationsSite;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -201,17 +208,20 @@ class EdgeSite extends pulumi.CustomResource {
     EdgeSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:orbital:EdgeSite',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.globalCommunicationsSite = registerOutput<EdgeSitesPropertiesResponseGlobalCommunicationsSite>('globalCommunicationsSite');
-    this.location = registerOutput<String>('location');
+         'azure-native:orbital:EdgeSite',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    globalCommunicationsSite =
+        registerOutput<EdgeSitesPropertiesResponseGlobalCommunicationsSite>(
+          'globalCommunicationsSite',
+        );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

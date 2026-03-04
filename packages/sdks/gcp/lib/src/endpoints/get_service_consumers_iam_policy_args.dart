@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceConsumersIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> consumerProject;
+
   /// The name of the service. Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> serviceName;
 
@@ -29,9 +30,8 @@ class GetServiceConsumersIamPolicyArgs {
 
   factory GetServiceConsumersIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceConsumersIamPolicyArgs(
-      consumerProject: (map['consumerProject'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      consumerProject: pulumi.Input.fromValue(map['consumerProject'] as String),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

@@ -357,20 +357,26 @@ import 'image_access_state.dart';
 class ImageAccess extends pulumi.CustomResource {
   /// The date the image access was created.
   late final pulumi.Output<String> createdAt;
+
   /// The image ID.
   late final pulumi.Output<String> imageId;
+
   /// The member ID, e.g. the target project ID.
   late final pulumi.Output<String> memberId;
+
   /// The region in which to obtain the V2 Glance client.
   /// A Glance client is needed to manage Image members. If omitted, the `region`
   /// argument of the provider is used. Changing this creates a new resource.
   late final pulumi.Output<String> region;
+
   /// The member schema.
   late final pulumi.Output<String> schema;
+
   /// The member proposal status. Optional if admin wants to
   /// force the member proposal acceptance. Can either be `accepted`, `rejected` or
   /// `pending`. Defaults to `pending`. Foridden for non-admin users.
   late final pulumi.Output<String> status;
+
   /// The date the image access was last updated.
   late final pulumi.Output<String> updatedAt;
 
@@ -383,18 +389,18 @@ class ImageAccess extends pulumi.CustomResource {
     ImageAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:images/imageAccess:ImageAccess',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
-    this.imageId = registerOutput<String>('imageId');
-    this.memberId = registerOutput<String>('memberId');
-    this.region = registerOutput<String>('region');
-    this.schema = registerOutput<String>('schema');
-    this.status = registerOutput<String>('status');
-    this.updatedAt = registerOutput<String>('updatedAt');
+         'openstack:images/imageAccess:ImageAccess',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
+    imageId = registerOutput<String>('imageId');
+    memberId = registerOutput<String>('memberId');
+    region = registerOutput<String>('region');
+    schema = registerOutput<String>('schema');
+    status = registerOutput<String>('status');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 
   /// Gets an existing [ImageAccess] resource's state with the given [name] and [id].
@@ -415,17 +421,17 @@ class ImageAccess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:images/imageAccess:ImageAccess',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
-    this.imageId = registerOutput<String>('imageId');
-    this.memberId = registerOutput<String>('memberId');
-    this.region = registerOutput<String>('region');
-    this.schema = registerOutput<String>('schema');
-    this.status = registerOutput<String>('status');
-    this.updatedAt = registerOutput<String>('updatedAt');
+         'openstack:images/imageAccess:ImageAccess',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
+    imageId = registerOutput<String>('imageId');
+    memberId = registerOutput<String>('memberId');
+    region = registerOutput<String>('region');
+    schema = registerOutput<String>('schema');
+    status = registerOutput<String>('status');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 }

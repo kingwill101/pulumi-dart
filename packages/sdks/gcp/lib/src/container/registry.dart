@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'registry_args.dart';
 import 'registry_state.dart';
 
-/// > **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+/// &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
 ///
 /// Ensures that the Google Cloud Storage bucket that backs Google Container Registry exists. Creating this resource will create the backing bucket if it does not exist, or do nothing if the bucket already exists. Destroying this resource does *NOT* destroy the backing bucket. For more information see [the official documentation](https://cloud.google.com/container-registry/docs/overview)
 ///
@@ -246,8 +246,10 @@ import 'registry_state.dart';
 class Registry extends pulumi.CustomResource {
   /// The URI of the created resource.
   late final pulumi.Output<String> bucketSelfLink;
+
   /// The location of the registry. One of `ASIA`, `EU`, `US` or not specified. See [the official documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling#pushing_an_image_to_a_registry) for more information on registry locations.
   late final pulumi.Output<String?> location;
+
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
 
@@ -260,14 +262,14 @@ class Registry extends pulumi.CustomResource {
     RegistryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:container/registry:Registry',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucketSelfLink = registerOutput<String>('bucketSelfLink');
-    this.location = registerOutput<String?>('location');
-    this.project = registerOutput<String>('project');
+         'gcp:container/registry:Registry',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucketSelfLink = registerOutput<String>('bucketSelfLink');
+    location = registerOutput<String?>('location');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [Registry] resource's state with the given [name] and [id].
@@ -288,13 +290,13 @@ class Registry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:container/registry:Registry',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucketSelfLink = registerOutput<String>('bucketSelfLink');
-    this.location = registerOutput<String?>('location');
-    this.project = registerOutput<String>('project');
+         'gcp:container/registry:Registry',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucketSelfLink = registerOutput<String>('bucketSelfLink');
+    location = registerOutput<String?>('location');
+    project = registerOutput<String>('project');
   }
 }

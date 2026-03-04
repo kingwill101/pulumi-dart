@@ -6,16 +6,15 @@ enum AssessmentState {
   fixed("FIXED"),
   underInvestigation("UNDER_INVESTIGATION");
 
-  const AssessmentState(this.value);
-  final String value;
+  const AssessmentState(this.wireValue);
+  final String wireValue;
 
   static AssessmentState fromValue(String value) {
     for (final item in AssessmentState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AssessmentState value: $value');
   }
 }
-

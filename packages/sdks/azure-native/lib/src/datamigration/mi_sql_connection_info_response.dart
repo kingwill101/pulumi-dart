@@ -6,11 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MiSqlConnectionInfoResponse {
   /// Resource id for Azure SQL database Managed instance
   final pulumi.Input<String> managedInstanceResourceId;
+
   /// Password credential.
   final pulumi.Input<String>? password;
+
   /// Type of connection info
   /// Expected value is 'MiSqlConnectionInfo'.
   final pulumi.Input<String> type;
+
   /// User name
   final pulumi.Input<String>? userName;
 
@@ -37,11 +40,20 @@ class MiSqlConnectionInfoResponse {
 
   factory MiSqlConnectionInfoResponse.fromMap(Map<String, dynamic> map) {
     return MiSqlConnectionInfoResponse(
-      managedInstanceResourceId: (map['managedInstanceResourceId'] as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      type: (map['type'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
+      managedInstanceResourceId: pulumi.Input.fromValue(
+        map['managedInstanceResourceId'] as String,
+      ),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      userName: (() {
+        final guardedValue = map['userName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

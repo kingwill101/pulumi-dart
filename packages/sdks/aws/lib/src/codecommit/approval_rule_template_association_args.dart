@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApprovalRuleTemplateAssociationArgs {
   /// The name for the approval rule template.
   final pulumi.Input<String> approvalRuleTemplateName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The name of the repository that you want to associate with the template.
   final pulumi.Input<String> repositoryName;
 
@@ -32,12 +34,19 @@ class ApprovalRuleTemplateAssociationArgs {
     };
   }
 
-  factory ApprovalRuleTemplateAssociationArgs.fromMap(Map<String, dynamic> map) {
+  factory ApprovalRuleTemplateAssociationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApprovalRuleTemplateAssociationArgs(
-      approvalRuleTemplateName: (map['approvalRuleTemplateName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      repositoryName: (map['repositoryName'] as String).input(),
+      approvalRuleTemplateName: pulumi.Input.fromValue(
+        map['approvalRuleTemplateName'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryName: pulumi.Input.fromValue(map['repositoryName'] as String),
     );
   }
 }
-

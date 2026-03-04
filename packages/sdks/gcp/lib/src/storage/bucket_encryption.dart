@@ -7,7 +7,7 @@ class BucketEncryption {
   /// You must pay attention to whether the crypto key is available in the location that this bucket is created in.
   /// See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
   ///
-  /// > As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
+  /// &gt; As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
   /// specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket's
   /// project to use the specified key for encryption and decryption operations.
   /// Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
@@ -21,20 +21,17 @@ class BucketEncryption {
 
   /// Creates a new [BucketEncryption].
   /// [defaultKmsKeyName] The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
-  BucketEncryption({
-    required this.defaultKmsKeyName,
-  });
+  BucketEncryption({required this.defaultKmsKeyName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'defaultKmsKeyName': defaultKmsKeyName,
-    };
+    return <String, dynamic>{'defaultKmsKeyName': defaultKmsKeyName};
   }
 
   factory BucketEncryption.fromMap(Map<String, dynamic> map) {
     return BucketEncryption(
-      defaultKmsKeyName: (map['defaultKmsKeyName'] as String).input(),
+      defaultKmsKeyName: pulumi.Input.fromValue(
+        map['defaultKmsKeyName'] as String,
+      ),
     );
   }
 }
-

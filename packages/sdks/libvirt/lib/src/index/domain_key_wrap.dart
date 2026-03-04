@@ -9,20 +9,39 @@ class DomainKeyWrap {
 
   /// Creates a new [DomainKeyWrap].
   /// [ciphers] Defines the cipher algorithms used for key wrapping in the domain.
-  DomainKeyWrap({
-    this.ciphers,
-  });
+  DomainKeyWrap({this.ciphers});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ciphers': ?pulumi.Input.mapOptionalInputValue<List<DomainKeyWrapCipher>, List<Map<String, dynamic>>>(ciphers, (value) => pulumi.Input.encodeList<DomainKeyWrapCipher, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ciphers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DomainKeyWrapCipher>,
+            List<Map<String, dynamic>>
+          >(
+            ciphers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DomainKeyWrapCipher,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DomainKeyWrap.fromMap(Map<String, dynamic> map) {
     return DomainKeyWrap(
-      ciphers: map['ciphers'] == null ? null : (pulumi.Input.decodeList<DomainKeyWrapCipher>(map['ciphers']!, (value) => DomainKeyWrapCipher.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ciphers: (() {
+        final guardedValue = map['ciphers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DomainKeyWrapCipher>(
+            guardedValue,
+            (value) => DomainKeyWrapCipher.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

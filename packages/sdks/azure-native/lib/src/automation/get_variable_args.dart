@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVariableArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of variable.
   final pulumi.Input<String> variableName;
 
@@ -34,10 +36,13 @@ class GetVariableArgs {
 
   factory GetVariableArgs.fromMap(Map<String, dynamic> map) {
     return GetVariableArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      variableName: (map['variableName'] as String).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      variableName: pulumi.Input.fromValue(map['variableName'] as String),
     );
   }
 }
-

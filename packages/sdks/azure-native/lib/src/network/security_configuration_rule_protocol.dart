@@ -7,16 +7,17 @@ enum SecurityConfigurationRuleProtocol {
   valueAny("Any"),
   valueAh("Ah");
 
-  const SecurityConfigurationRuleProtocol(this.value);
-  final String value;
+  const SecurityConfigurationRuleProtocol(this.wireValue);
+  final String wireValue;
 
   static SecurityConfigurationRuleProtocol fromValue(String value) {
     for (final item in SecurityConfigurationRuleProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityConfigurationRuleProtocol value: $value');
+    throw ArgumentError(
+      'Unknown SecurityConfigurationRuleProtocol value: $value',
+    );
   }
 }
-

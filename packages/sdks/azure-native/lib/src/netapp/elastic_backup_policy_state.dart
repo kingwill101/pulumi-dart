@@ -3,16 +3,15 @@ enum ElasticBackupPolicyState {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const ElasticBackupPolicyState(this.value);
-  final String value;
+  const ElasticBackupPolicyState(this.wireValue);
+  final String wireValue;
 
   static ElasticBackupPolicyState fromValue(String value) {
     for (final item in ElasticBackupPolicyState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ElasticBackupPolicyState value: $value');
   }
 }
-

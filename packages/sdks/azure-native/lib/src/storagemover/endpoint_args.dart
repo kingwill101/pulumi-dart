@@ -10,10 +10,13 @@ import 'azure_storage_blob_container_endpoint_properties.dart';
 class EndpointArgs {
   /// The name of the Endpoint resource.
   final pulumi.Input<String>? endpointName;
+
   /// The resource specific properties for the Storage Mover resource.
   final pulumi.Input<AzureStorageBlobContainerEndpointProperties> properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Storage Mover resource.
   final pulumi.Input<String> storageMoverName;
 
@@ -32,7 +35,11 @@ class EndpointArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endpointName': ?endpointName,
-      'properties': pulumi.Input.mapInputValue<AzureStorageBlobContainerEndpointProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            AzureStorageBlobContainerEndpointProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'storageMoverName': storageMoverName,
     };
@@ -40,11 +47,22 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      endpointName: map['endpointName'] == null ? null : (map['endpointName']! as String).input(),
-      properties: (AzureStorageBlobContainerEndpointProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageMoverName: (map['storageMoverName'] as String).input(),
+      endpointName: (() {
+        final guardedValue = map['endpointName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: pulumi.Input.fromValue(
+        AzureStorageBlobContainerEndpointProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageMoverName: pulumi.Input.fromValue(
+        map['storageMoverName'] as String,
+      ),
     );
   }
 }
-

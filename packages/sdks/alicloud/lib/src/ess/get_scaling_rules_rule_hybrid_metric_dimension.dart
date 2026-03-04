@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScalingRulesRuleHybridMetricDimension {
   /// (Available since v1.250.0) The dimension key of the metric.
   final pulumi.Input<String> dimensionKey;
+
   /// (Available since v1.250.0) The dimension value of the metric.
   final pulumi.Input<String> dimensionValue;
 
@@ -23,11 +24,12 @@ class GetScalingRulesRuleHybridMetricDimension {
     };
   }
 
-  factory GetScalingRulesRuleHybridMetricDimension.fromMap(Map<String, dynamic> map) {
+  factory GetScalingRulesRuleHybridMetricDimension.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetScalingRulesRuleHybridMetricDimension(
-      dimensionKey: (map['dimensionKey'] as String).input(),
-      dimensionValue: (map['dimensionValue'] as String).input(),
+      dimensionKey: pulumi.Input.fromValue(map['dimensionKey'] as String),
+      dimensionValue: pulumi.Input.fromValue(map['dimensionValue'] as String),
     );
   }
 }
-

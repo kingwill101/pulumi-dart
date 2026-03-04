@@ -4,9 +4,9 @@ import 'namespace_state.dart';
 
 /// This resource will help you to manager Container Registry namespaces, see [What is Namespace](https://www.alibabacloud.com/help/en/acr/developer-reference/api-cr-2018-12-01-createnamespace).
 ///
-/// > **NOTE:** Available since v1.34.0.
+/// &gt; **NOTE:** Available since v1.34.0.
 ///
-/// > **NOTE:** You need to set your registry password in Container Registry console before use this resource.
+/// &gt; **NOTE:** You need to set your registry password in Container Registry console before use this resource.
 ///
 /// ## Example Usage
 ///
@@ -183,8 +183,10 @@ import 'namespace_state.dart';
 class Namespace extends pulumi.CustomResource {
   /// Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
   late final pulumi.Output<bool> autoCreate;
+
   /// `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
   late final pulumi.Output<String> defaultVisibility;
+
   /// Name of Container Registry namespace.
   late final pulumi.Output<String> name;
 
@@ -197,13 +199,13 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cr/namespace:Namespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoCreate = registerOutput<bool>('autoCreate');
-    this.defaultVisibility = registerOutput<String>('defaultVisibility');
+         'alicloud:cr/namespace:Namespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoCreate = registerOutput<bool>('autoCreate');
+    defaultVisibility = registerOutput<String>('defaultVisibility');
     this.name = registerOutput<String>('name');
   }
 
@@ -225,13 +227,13 @@ class Namespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cr/namespace:Namespace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoCreate = registerOutput<bool>('autoCreate');
-    this.defaultVisibility = registerOutput<String>('defaultVisibility');
+         'alicloud:cr/namespace:Namespace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoCreate = registerOutput<bool>('autoCreate');
+    defaultVisibility = registerOutput<String>('defaultVisibility');
     this.name = registerOutput<String>('name');
   }
 }

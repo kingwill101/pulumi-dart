@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by listAppServicePlanHybridConnectionKeys.
 class ListAppServicePlanHybridConnectionKeysResult {
   /// Resource Id.
   final String id;
+
   /// Kind of resource.
   final String? kind;
+
   /// Resource Name.
   final String name;
+
   /// The name of the send key.
   final String sendKeyName;
+
   /// The value of the send key.
   final String sendKeyValue;
+
   /// Resource type.
   final String type;
 
@@ -43,10 +47,16 @@ class ListAppServicePlanHybridConnectionKeysResult {
     };
   }
 
-  factory ListAppServicePlanHybridConnectionKeysResult.fromMap(Map<String, dynamic> map) {
+  factory ListAppServicePlanHybridConnectionKeysResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListAppServicePlanHybridConnectionKeysResult(
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       sendKeyName: map['sendKeyName'] as String,
       sendKeyValue: map['sendKeyValue'] as String,
@@ -54,4 +64,3 @@ class ListAppServicePlanHybridConnectionKeysResult {
     );
   }
 }
-

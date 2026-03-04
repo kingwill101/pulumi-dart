@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkManagerVerifierWorkspaceState {
   /// The Description of the Network Manager Verifier Workspace.
   final pulumi.Input<String>? description;
+
   /// The Azure Region where the Network Manager Verifier Workspace should exist. Changing this forces a new Network Manager Verifier Workspace to be created.
   final pulumi.Input<String>? location;
+
   /// The name which should be used for this Network Manager Verifier Workspace. Changing this forces a new Network Manager Verifier Workspace to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Network Manager. Changing this forces a new Network Manager Verifier Workspace to be created.
   final pulumi.Input<String>? networkManagerId;
+
   /// A mapping of tags which should be assigned to the Network Manager Verifier Workspace.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -39,14 +43,37 @@ class NetworkManagerVerifierWorkspaceState {
     };
   }
 
-  factory NetworkManagerVerifierWorkspaceState.fromMap(Map<String, dynamic> map) {
+  factory NetworkManagerVerifierWorkspaceState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkManagerVerifierWorkspaceState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkManagerId: (() {
+        final guardedValue = map['networkManagerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

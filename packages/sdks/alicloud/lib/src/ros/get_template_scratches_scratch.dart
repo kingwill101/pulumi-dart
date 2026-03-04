@@ -10,26 +10,40 @@ import 'get_template_scratches_scratch_stack.dart';
 class GetTemplateScratchesScratch {
   /// The creation time of the resource.
   final pulumi.Input<String> createTime;
+
   /// The description of the Template Scratch.
   final pulumi.Input<String> description;
+
   /// The ID of the Template Scratch.
   final pulumi.Input<String> id;
+
   /// The Logical ID generation strategy of the Template Scratch.
   final pulumi.Input<String> logicalIdStrategy;
+
   /// Priority parameter.
-  final pulumi.Input<List<GetTemplateScratchesScratchPreferenceParameter>> preferenceParameters;
+  final pulumi.Input<List<GetTemplateScratchesScratchPreferenceParameter>>
+  preferenceParameters;
+
   /// Source resource grouping.
-  final pulumi.Input<List<GetTemplateScratchesScratchSourceResourceGroup>> sourceResourceGroups;
+  final pulumi.Input<List<GetTemplateScratchesScratchSourceResourceGroup>>
+  sourceResourceGroups;
+
   /// Source resource.
-  final pulumi.Input<List<GetTemplateScratchesScratchSourceResource>> sourceResources;
+  final pulumi.Input<List<GetTemplateScratchesScratchSourceResource>>
+  sourceResources;
+
   /// The Source label list.
   final pulumi.Input<List<GetTemplateScratchesScratchSourceTag>> sourceTags;
+
   /// A list of resource stacks associated with the resource scene.
   final pulumi.Input<List<GetTemplateScratchesScratchStack>> stacks;
+
   /// The status of the resource.
   final pulumi.Input<String> status;
+
   /// The ID of the Template Scratch.
   final pulumi.Input<String> templateScratchId;
+
   /// The type of the Template Scratch.
   final pulumi.Input<String> templateScratchType;
 
@@ -67,11 +81,66 @@ class GetTemplateScratchesScratch {
       'description': description,
       'id': id,
       'logicalIdStrategy': logicalIdStrategy,
-      'preferenceParameters': pulumi.Input.mapInputValue<List<GetTemplateScratchesScratchPreferenceParameter>, List<Map<String, dynamic>>>(preferenceParameters, (value) => pulumi.Input.encodeList<GetTemplateScratchesScratchPreferenceParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'sourceResourceGroups': pulumi.Input.mapInputValue<List<GetTemplateScratchesScratchSourceResourceGroup>, List<Map<String, dynamic>>>(sourceResourceGroups, (value) => pulumi.Input.encodeList<GetTemplateScratchesScratchSourceResourceGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'sourceResources': pulumi.Input.mapInputValue<List<GetTemplateScratchesScratchSourceResource>, List<Map<String, dynamic>>>(sourceResources, (value) => pulumi.Input.encodeList<GetTemplateScratchesScratchSourceResource, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'sourceTags': pulumi.Input.mapInputValue<List<GetTemplateScratchesScratchSourceTag>, List<Map<String, dynamic>>>(sourceTags, (value) => pulumi.Input.encodeList<GetTemplateScratchesScratchSourceTag, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'stacks': pulumi.Input.mapInputValue<List<GetTemplateScratchesScratchStack>, List<Map<String, dynamic>>>(stacks, (value) => pulumi.Input.encodeList<GetTemplateScratchesScratchStack, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'preferenceParameters':
+          pulumi.Input.mapInputValue<
+            List<GetTemplateScratchesScratchPreferenceParameter>,
+            List<Map<String, dynamic>>
+          >(
+            preferenceParameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetTemplateScratchesScratchPreferenceParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'sourceResourceGroups':
+          pulumi.Input.mapInputValue<
+            List<GetTemplateScratchesScratchSourceResourceGroup>,
+            List<Map<String, dynamic>>
+          >(
+            sourceResourceGroups,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetTemplateScratchesScratchSourceResourceGroup,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'sourceResources':
+          pulumi.Input.mapInputValue<
+            List<GetTemplateScratchesScratchSourceResource>,
+            List<Map<String, dynamic>>
+          >(
+            sourceResources,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetTemplateScratchesScratchSourceResource,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'sourceTags':
+          pulumi.Input.mapInputValue<
+            List<GetTemplateScratchesScratchSourceTag>,
+            List<Map<String, dynamic>>
+          >(
+            sourceTags,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetTemplateScratchesScratchSourceTag,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'stacks':
+          pulumi.Input.mapInputValue<
+            List<GetTemplateScratchesScratchStack>,
+            List<Map<String, dynamic>>
+          >(
+            stacks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetTemplateScratchesScratchStack,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'status': status,
       'templateScratchId': templateScratchId,
       'templateScratchType': templateScratchType,
@@ -80,19 +149,59 @@ class GetTemplateScratchesScratch {
 
   factory GetTemplateScratchesScratch.fromMap(Map<String, dynamic> map) {
     return GetTemplateScratchesScratch(
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      logicalIdStrategy: (map['logicalIdStrategy'] as String).input(),
-      preferenceParameters: (pulumi.Input.decodeList<GetTemplateScratchesScratchPreferenceParameter>(map['preferenceParameters'], (value) => GetTemplateScratchesScratchPreferenceParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceResourceGroups: (pulumi.Input.decodeList<GetTemplateScratchesScratchSourceResourceGroup>(map['sourceResourceGroups'], (value) => GetTemplateScratchesScratchSourceResourceGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceResources: (pulumi.Input.decodeList<GetTemplateScratchesScratchSourceResource>(map['sourceResources'], (value) => GetTemplateScratchesScratchSourceResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceTags: (pulumi.Input.decodeList<GetTemplateScratchesScratchSourceTag>(map['sourceTags'], (value) => GetTemplateScratchesScratchSourceTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stacks: (pulumi.Input.decodeList<GetTemplateScratchesScratchStack>(map['stacks'], (value) => GetTemplateScratchesScratchStack.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: (map['status'] as String).input(),
-      templateScratchId: (map['templateScratchId'] as String).input(),
-      templateScratchType: (map['templateScratchType'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      logicalIdStrategy: pulumi.Input.fromValue(
+        map['logicalIdStrategy'] as String,
+      ),
+      preferenceParameters: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetTemplateScratchesScratchPreferenceParameter>(
+          map['preferenceParameters']!,
+          (value) => GetTemplateScratchesScratchPreferenceParameter.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      sourceResourceGroups: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetTemplateScratchesScratchSourceResourceGroup>(
+          map['sourceResourceGroups']!,
+          (value) => GetTemplateScratchesScratchSourceResourceGroup.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      sourceResources: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetTemplateScratchesScratchSourceResource>(
+          map['sourceResources']!,
+          (value) => GetTemplateScratchesScratchSourceResource.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      sourceTags: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetTemplateScratchesScratchSourceTag>(
+          map['sourceTags']!,
+          (value) => GetTemplateScratchesScratchSourceTag.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      stacks: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetTemplateScratchesScratchStack>(
+          map['stacks']!,
+          (value) => GetTemplateScratchesScratchStack.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      templateScratchId: pulumi.Input.fromValue(
+        map['templateScratchId'] as String,
+      ),
+      templateScratchType: pulumi.Input.fromValue(
+        map['templateScratchType'] as String,
+      ),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum Schedule {
   valueDaily("Daily"),
   valueWeekly("Weekly");
 
-  const Schedule(this.value);
-  final String value;
+  const Schedule(this.wireValue);
+  final String wireValue;
 
   static Schedule fromValue(String value) {
     for (final item in Schedule.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Schedule value: $value');
   }
 }
-

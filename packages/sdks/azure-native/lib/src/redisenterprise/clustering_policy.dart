@@ -4,16 +4,15 @@ enum ClusteringPolicy {
   oSSCluster("OSSCluster"),
   noCluster("NoCluster");
 
-  const ClusteringPolicy(this.value);
-  final String value;
+  const ClusteringPolicy(this.wireValue);
+  final String wireValue;
 
   static ClusteringPolicy fromValue(String value) {
     for (final item in ClusteringPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClusteringPolicy value: $value');
   }
 }
-

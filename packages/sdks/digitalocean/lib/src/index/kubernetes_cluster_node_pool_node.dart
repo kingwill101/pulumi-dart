@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesClusterNodePoolNode {
   /// The date and time when the node was created.
   final pulumi.Input<String>? createdAt;
+
   /// The id of the node's droplet
   final pulumi.Input<String>? dropletId;
+
   /// A unique ID that can be used to identify and reference the node.
   final pulumi.Input<String>? id;
+
   /// A name for the Kubernetes cluster.
   final pulumi.Input<String>? name;
+
   /// A string indicating the current status of the individual node.
   final pulumi.Input<String>? status;
+
   /// The date and time when the node was last updated.
   final pulumi.Input<String>? updatedAt;
 
@@ -45,13 +50,36 @@ class KubernetesClusterNodePoolNode {
 
   factory KubernetesClusterNodePoolNode.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNodePoolNode(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
-      dropletId: map['dropletId'] == null ? null : (map['dropletId']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
+      createdAt: (() {
+        final guardedValue = map['createdAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dropletId: (() {
+        final guardedValue = map['dropletId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updatedAt: (() {
+        final guardedValue = map['updatedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

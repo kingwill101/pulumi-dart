@@ -6,30 +6,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseValkeyConfigState {
   /// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
   final pulumi.Input<String>? aclChannelsDefault;
+
   /// The ID of the target Valkey cluster.
   final pulumi.Input<String>? clusterId;
+
   /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
   final pulumi.Input<bool>? frequentSnapshots;
+
   /// The Valkey IO thread count.
   final pulumi.Input<int>? ioThreads;
+
   /// The LFU maxmemory policy counter decay time in minutes.
   final pulumi.Input<int>? lfuDecayTime;
+
   /// The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
   final pulumi.Input<int>? lfuLogFactor;
+
   /// The `notify-keyspace-events` option. Requires at least `K` or `E`.
   final pulumi.Input<String>? notifyKeyspaceEvents;
+
   /// The number of Valkey databases. Changing this will cause a restart of Valkey service.
   final pulumi.Input<int>? numberOfDatabases;
+
   /// When persistence is 'rdb', Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
   final pulumi.Input<String>? persistence;
+
   /// The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
   final pulumi.Input<int>? pubsubClientOutputBufferLimit;
+
   /// A boolean indicating whether to require SSL to access Valkey.
   final pulumi.Input<bool>? ssl;
+
   /// The Valkey idle connection timeout in seconds.
   final pulumi.Input<int>? timeout;
+
   /// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
   final pulumi.Input<int>? valkeyActiveExpireEffort;
+
   /// Eviction policy model
   final pulumi.Input<String>? valkeyMaxmemoryPolicy;
 
@@ -86,21 +99,76 @@ class DatabaseValkeyConfigState {
 
   factory DatabaseValkeyConfigState.fromMap(Map<String, dynamic> map) {
     return DatabaseValkeyConfigState(
-      aclChannelsDefault: map['aclChannelsDefault'] == null ? null : (map['aclChannelsDefault']! as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      frequentSnapshots: map['frequentSnapshots'] == null ? null : (map['frequentSnapshots']! as bool).input(),
-      ioThreads: map['ioThreads'] == null ? null : (map['ioThreads']! as int).input(),
-      lfuDecayTime: map['lfuDecayTime'] == null ? null : (map['lfuDecayTime']! as int).input(),
-      lfuLogFactor: map['lfuLogFactor'] == null ? null : (map['lfuLogFactor']! as int).input(),
-      notifyKeyspaceEvents: map['notifyKeyspaceEvents'] == null ? null : (map['notifyKeyspaceEvents']! as String).input(),
-      numberOfDatabases: map['numberOfDatabases'] == null ? null : (map['numberOfDatabases']! as int).input(),
-      persistence: map['persistence'] == null ? null : (map['persistence']! as String).input(),
-      pubsubClientOutputBufferLimit: map['pubsubClientOutputBufferLimit'] == null ? null : (map['pubsubClientOutputBufferLimit']! as int).input(),
-      ssl: map['ssl'] == null ? null : (map['ssl']! as bool).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
-      valkeyActiveExpireEffort: map['valkeyActiveExpireEffort'] == null ? null : (map['valkeyActiveExpireEffort']! as int).input(),
-      valkeyMaxmemoryPolicy: map['valkeyMaxmemoryPolicy'] == null ? null : (map['valkeyMaxmemoryPolicy']! as String).input(),
+      aclChannelsDefault: (() {
+        final guardedValue = map['aclChannelsDefault'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      frequentSnapshots: (() {
+        final guardedValue = map['frequentSnapshots'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ioThreads: (() {
+        final guardedValue = map['ioThreads'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      lfuDecayTime: (() {
+        final guardedValue = map['lfuDecayTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      lfuLogFactor: (() {
+        final guardedValue = map['lfuLogFactor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      notifyKeyspaceEvents: (() {
+        final guardedValue = map['notifyKeyspaceEvents'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      numberOfDatabases: (() {
+        final guardedValue = map['numberOfDatabases'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      persistence: (() {
+        final guardedValue = map['persistence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pubsubClientOutputBufferLimit: (() {
+        final guardedValue = map['pubsubClientOutputBufferLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ssl: (() {
+        final guardedValue = map['ssl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      valkeyActiveExpireEffort: (() {
+        final guardedValue = map['valkeyActiveExpireEffort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      valkeyMaxmemoryPolicy: (() {
+        final guardedValue = map['valkeyMaxmemoryPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

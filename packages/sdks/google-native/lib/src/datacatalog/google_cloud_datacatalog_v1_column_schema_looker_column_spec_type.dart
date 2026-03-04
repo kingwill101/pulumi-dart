@@ -7,16 +7,22 @@ enum GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType {
   measure("MEASURE"),
   parameter("PARAMETER");
 
-  const GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType(this.value);
-  final String value;
+  const GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType fromValue(String value) {
-    for (final item in GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType.values) {
-      if (item.value == value) {
+  static GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType value: $value',
+    );
   }
 }
-

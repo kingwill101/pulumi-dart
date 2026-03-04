@@ -6,16 +6,15 @@ enum Frequency {
   weekly("Weekly"),
   monthly("Monthly");
 
-  const Frequency(this.value);
-  final String value;
+  const Frequency(this.wireValue);
+  final String wireValue;
 
   static Frequency fromValue(String value) {
     for (final item in Frequency.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Frequency value: $value');
   }
 }
-

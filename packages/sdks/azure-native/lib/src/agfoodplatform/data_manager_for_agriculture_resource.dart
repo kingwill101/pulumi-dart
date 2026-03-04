@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_manager_for_agriculture_resource_args.dart';
 import 'identity_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'sensor_integration_response.dart';
 import 'system_data_response.dart';
 
@@ -160,26 +159,38 @@ import 'system_data_response.dart';
 class DataManagerForAgricultureResource extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Identity for the resource.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// Uri of the Data Manager For Agriculture instance.
   late final pulumi.Output<String> instanceUri;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Private endpoints.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// Data Manager For Agriculture instance provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Property to allow or block public traffic for an Azure Data Manager For Agriculture resource.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// Sensor integration request model.
   late final pulumi.Output<SensorIntegrationResponse?> sensorIntegration;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -192,22 +203,26 @@ class DataManagerForAgricultureResource extends pulumi.CustomResource {
     DataManagerForAgricultureResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:agfoodplatform:DataManagerForAgricultureResource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.instanceUri = registerOutput<String>('instanceUri');
-    this.location = registerOutput<String>('location');
+         'azure-native:agfoodplatform:DataManagerForAgricultureResource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<IdentityResponse?>('identity');
+    instanceUri = registerOutput<String>('instanceUri');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.sensorIntegration = registerOutput<SensorIntegrationResponse?>('sensorIntegration');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    sensorIntegration = registerOutput<SensorIntegrationResponse?>(
+      'sensorIntegration',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TableStatsResponse {
   /// How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
   final pulumi.Input<double> averageCellsPerColumn;
+
   /// How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field.
   final pulumi.Input<double> averageColumnsPerRow;
+
   /// This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out).
   final pulumi.Input<String> logicalDataBytes;
+
   /// How many rows are in the table.
   final pulumi.Input<String> rowCount;
 
@@ -36,11 +39,16 @@ class TableStatsResponse {
 
   factory TableStatsResponse.fromMap(Map<String, dynamic> map) {
     return TableStatsResponse(
-      averageCellsPerColumn: (map['averageCellsPerColumn'] as double).input(),
-      averageColumnsPerRow: (map['averageColumnsPerRow'] as double).input(),
-      logicalDataBytes: (map['logicalDataBytes'] as String).input(),
-      rowCount: (map['rowCount'] as String).input(),
+      averageCellsPerColumn: pulumi.Input.fromValue(
+        map['averageCellsPerColumn'] as double,
+      ),
+      averageColumnsPerRow: pulumi.Input.fromValue(
+        map['averageColumnsPerRow'] as double,
+      ),
+      logicalDataBytes: pulumi.Input.fromValue(
+        map['logicalDataBytes'] as String,
+      ),
+      rowCount: pulumi.Input.fromValue(map['rowCount'] as String),
     );
   }
 }
-

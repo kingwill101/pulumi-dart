@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubstituteFromDefinitionResponse {
   /// Define whether it is ConfigMap or Secret that holds the variables to be used in substitution.
   final pulumi.Input<String>? kind;
+
   /// Name of the ConfigMap/Secret that holds the variables to be used in substitution.
   final pulumi.Input<String>? name;
+
   /// Set to True to proceed without ConfigMap/Secret, if it is not present.
   final pulumi.Input<bool>? optional;
 
@@ -15,11 +17,7 @@ class SubstituteFromDefinitionResponse {
   /// [kind] Define whether it is ConfigMap or Secret that holds the variables to be used in substitution.
   /// [name] Name of the ConfigMap/Secret that holds the variables to be used in substitution.
   /// [optional] Set to True to proceed without ConfigMap/Secret, if it is not present.
-  SubstituteFromDefinitionResponse({
-    this.kind,
-    this.name,
-    this.optional,
-  });
+  SubstituteFromDefinitionResponse({this.kind, this.name, this.optional});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class SubstituteFromDefinitionResponse {
 
   factory SubstituteFromDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return SubstituteFromDefinitionResponse(
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      optional: map['optional'] == null ? null : (map['optional']! as bool).input(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      optional: (() {
+        final guardedValue = map['optional'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

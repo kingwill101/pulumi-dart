@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConfigurationConfigFile {
   /// The base-64 encoded contents of this configuration file.
   final pulumi.Input<String> content;
+
   /// The path of this configuration file.
   final pulumi.Input<String> virtualPath;
 
@@ -17,17 +18,13 @@ class GetConfigurationConfigFile {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'content': content,
-      'virtualPath': virtualPath,
-    };
+    return <String, dynamic>{'content': content, 'virtualPath': virtualPath};
   }
 
   factory GetConfigurationConfigFile.fromMap(Map<String, dynamic> map) {
     return GetConfigurationConfigFile(
-      content: (map['content'] as String).input(),
-      virtualPath: (map['virtualPath'] as String).input(),
+      content: pulumi.Input.fromValue(map['content'] as String),
+      virtualPath: pulumi.Input.fromValue(map['virtualPath'] as String),
     );
   }
 }
-

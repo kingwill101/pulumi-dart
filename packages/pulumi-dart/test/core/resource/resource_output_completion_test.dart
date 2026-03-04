@@ -15,6 +15,7 @@ class _CompletionResource extends CustomResource {
   late final Output<List<String>?> tags;
   late final Output<List<int>?> ports;
   late final Output<List<double>?> weights;
+  late final Output<List<Map<String, dynamic>>?> networkArtifacts;
   late final Output<Map<String, dynamic>?> metadata;
 
   _CompletionResource(String name)
@@ -32,6 +33,9 @@ class _CompletionResource extends CustomResource {
     tags = registerOutput<List<String>?>('tags');
     ports = registerOutput<List<int>?>('ports');
     weights = registerOutput<List<double>?>('weights');
+    networkArtifacts = registerOutput<List<Map<String, dynamic>>?>(
+      'networkArtifacts',
+    );
     metadata = registerOutput<Map<String, dynamic>?>('metadata');
   }
 }
@@ -64,6 +68,12 @@ void main() {
           ..fields[Constants.specialSigKey] = (Value()
             ..stringValue = Constants.specialSecretSig)
           ..fields[Constants.valueName] = (Value()..stringValue = 'sensitive');
+        final dependencyRef = Struct()
+          ..fields[Constants.specialSigKey] = (Value()
+            ..stringValue = Constants.specialResourceSig)
+          ..fields[Constants.resourceUrnName] = (Value()
+            ..stringValue =
+                'urn:pulumi:stack::project::pkg:index:Dependency::dep');
 
         final responseObject = Struct()
           ..fields['arn'] = (Value()..stringValue = 'arn:sample:123')
@@ -89,6 +99,9 @@ void main() {
                 Value()..numberValue = 1,
                 Value()..numberValue = 2.5,
               ])))
+          ..fields['networkArtifacts'] = (Value()
+            ..listValue = (ListValue()
+              ..values.add(Value()..structValue = dependencyRef)))
           ..fields['metadata'] = (Value()
             ..structValue = (Struct()
               ..fields['k'] = (Value()..stringValue = 'v')));
@@ -135,6 +148,10 @@ void main() {
       expect(await resource.tags.getValue(), equals(<String>['alpha', '2.0']));
       expect(await resource.ports.getValue(), equals(<int>[80, 443]));
       expect(await resource.weights.getValue(), equals(<double>[1.0, 2.5]));
+      expect(
+        await resource.networkArtifacts.getValue(),
+        equals(<Map<String, dynamic>>[<String, dynamic>{}]),
+      );
       expect(
         await resource.metadata.getValue(),
         equals(<String, dynamic>{'k': 'v'}),

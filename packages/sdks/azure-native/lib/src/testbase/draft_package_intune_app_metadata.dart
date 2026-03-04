@@ -7,29 +7,61 @@ import 'draft_package_intune_app_metadata_item.dart';
 class DraftPackageIntuneAppMetadata {
   /// The Metadata of the Intune App through intunewin file uploading.
   final pulumi.Input<DraftPackageIntuneAppMetadataItem>? intuneApp;
+
   /// The Metadata of dependencies of the Intune App through intunewin file uploading.
-  final pulumi.Input<List<DraftPackageIntuneAppMetadataItem>>? intuneAppDependencies;
+  final pulumi.Input<List<DraftPackageIntuneAppMetadataItem>>?
+  intuneAppDependencies;
 
   /// Creates a new [DraftPackageIntuneAppMetadata].
   /// [intuneApp] The Metadata of the Intune App through intunewin file uploading.
   /// [intuneAppDependencies] The Metadata of dependencies of the Intune App through intunewin file uploading.
-  DraftPackageIntuneAppMetadata({
-    this.intuneApp,
-    this.intuneAppDependencies,
-  });
+  DraftPackageIntuneAppMetadata({this.intuneApp, this.intuneAppDependencies});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'intuneApp': ?pulumi.Input.mapOptionalInputValue<DraftPackageIntuneAppMetadataItem, Map<String, dynamic>>(intuneApp, (value) => value.toMap()),
-      'intuneAppDependencies': ?pulumi.Input.mapOptionalInputValue<List<DraftPackageIntuneAppMetadataItem>, List<Map<String, dynamic>>>(intuneAppDependencies, (value) => pulumi.Input.encodeList<DraftPackageIntuneAppMetadataItem, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'intuneApp':
+          ?pulumi.Input.mapOptionalInputValue<
+            DraftPackageIntuneAppMetadataItem,
+            Map<String, dynamic>
+          >(intuneApp, (value) => value.toMap()),
+      'intuneAppDependencies':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DraftPackageIntuneAppMetadataItem>,
+            List<Map<String, dynamic>>
+          >(
+            intuneAppDependencies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DraftPackageIntuneAppMetadataItem,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DraftPackageIntuneAppMetadata.fromMap(Map<String, dynamic> map) {
     return DraftPackageIntuneAppMetadata(
-      intuneApp: map['intuneApp'] == null ? null : (DraftPackageIntuneAppMetadataItem.fromMap((map['intuneApp']! as Map).cast<String, dynamic>())).input(),
-      intuneAppDependencies: map['intuneAppDependencies'] == null ? null : (pulumi.Input.decodeList<DraftPackageIntuneAppMetadataItem>(map['intuneAppDependencies']!, (value) => DraftPackageIntuneAppMetadataItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      intuneApp: (() {
+        final guardedValue = map['intuneApp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DraftPackageIntuneAppMetadataItem.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      intuneAppDependencies: (() {
+        final guardedValue = map['intuneAppDependencies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DraftPackageIntuneAppMetadataItem>(
+            guardedValue,
+            (value) => DraftPackageIntuneAppMetadataItem.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

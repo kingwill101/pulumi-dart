@@ -5,16 +5,17 @@ enum EntityTypeKindDialogflowV3beta1 {
   kindList("KIND_LIST"),
   kindRegexp("KIND_REGEXP");
 
-  const EntityTypeKindDialogflowV3beta1(this.value);
-  final String value;
+  const EntityTypeKindDialogflowV3beta1(this.wireValue);
+  final String wireValue;
 
   static EntityTypeKindDialogflowV3beta1 fromValue(String value) {
     for (final item in EntityTypeKindDialogflowV3beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EntityTypeKindDialogflowV3beta1 value: $value');
+    throw ArgumentError(
+      'Unknown EntityTypeKindDialogflowV3beta1 value: $value',
+    );
   }
 }
-

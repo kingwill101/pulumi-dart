@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSiteArgs {
   /// ID of the Global Network of the site to retrieve.
   final pulumi.Input<String> globalNetworkId;
+
   /// ID of the specific site to retrieve.
   final pulumi.Input<String> siteId;
+
   /// Key-value tags for the Site.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -18,11 +20,7 @@ class GetSiteArgs {
   /// [globalNetworkId] ID of the Global Network of the site to retrieve.
   /// [siteId] ID of the specific site to retrieve.
   /// [tags] Key-value tags for the Site.
-  GetSiteArgs({
-    required this.globalNetworkId,
-    required this.siteId,
-    this.tags,
-  });
+  GetSiteArgs({required this.globalNetworkId, required this.siteId, this.tags});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,15 @@ class GetSiteArgs {
 
   factory GetSiteArgs.fromMap(Map<String, dynamic> map) {
     return GetSiteArgs(
-      globalNetworkId: (map['globalNetworkId'] as String).input(),
-      siteId: (map['siteId'] as String).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      globalNetworkId: pulumi.Input.fromValue(map['globalNetworkId'] as String),
+      siteId: pulumi.Input.fromValue(map['siteId'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

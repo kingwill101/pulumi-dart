@@ -6,16 +6,17 @@ enum ExternalRefCategoryContaineranalysisV1beta1 {
   persistentId("PERSISTENT_ID"),
   other("OTHER");
 
-  const ExternalRefCategoryContaineranalysisV1beta1(this.value);
-  final String value;
+  const ExternalRefCategoryContaineranalysisV1beta1(this.wireValue);
+  final String wireValue;
 
   static ExternalRefCategoryContaineranalysisV1beta1 fromValue(String value) {
     for (final item in ExternalRefCategoryContaineranalysisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ExternalRefCategoryContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown ExternalRefCategoryContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

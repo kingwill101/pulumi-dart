@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertArgs {
   /// Name of the SAP monitor alert resource.
   final pulumi.Input<String> alertName;
+
   /// Name of the SAP monitor resource.
   final pulumi.Input<String> monitorName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetAlertArgs {
 
   factory GetAlertArgs.fromMap(Map<String, dynamic> map) {
     return GetAlertArgs(
-      alertName: (map['alertName'] as String).input(),
-      monitorName: (map['monitorName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      alertName: pulumi.Input.fromValue(map['alertName'] as String),
+      monitorName: pulumi.Input.fromValue(map['monitorName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

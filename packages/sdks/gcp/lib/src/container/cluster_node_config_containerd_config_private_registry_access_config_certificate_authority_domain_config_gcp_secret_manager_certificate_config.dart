@@ -13,15 +13,14 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAut
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretUri': secretUri,
-    };
+    return <String, dynamic>{'secretUri': secretUri};
   }
 
-  factory ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig(
-      secretUri: (map['secretUri'] as String).input(),
+      secretUri: pulumi.Input.fromValue(map['secretUri'] as String),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Webhook {
   /// A flag to instruct the backend service to rotate webhook secret.
   final pulumi.Input<bool>? rotateWebhookSecret;
+
   /// Unique identifier for the webhook.
   final pulumi.Input<String>? webhookId;
+
   /// Time when the webhook secret was updated.
   final pulumi.Input<String>? webhookSecretUpdateTime;
+
   /// URL that gets invoked by the webhook.
   final pulumi.Input<String>? webhookUrl;
 
@@ -36,11 +39,26 @@ class Webhook {
 
   factory Webhook.fromMap(Map<String, dynamic> map) {
     return Webhook(
-      rotateWebhookSecret: map['rotateWebhookSecret'] == null ? null : (map['rotateWebhookSecret']! as bool).input(),
-      webhookId: map['webhookId'] == null ? null : (map['webhookId']! as String).input(),
-      webhookSecretUpdateTime: map['webhookSecretUpdateTime'] == null ? null : (map['webhookSecretUpdateTime']! as String).input(),
-      webhookUrl: map['webhookUrl'] == null ? null : (map['webhookUrl']! as String).input(),
+      rotateWebhookSecret: (() {
+        final guardedValue = map['rotateWebhookSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      webhookId: (() {
+        final guardedValue = map['webhookId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webhookSecretUpdateTime: (() {
+        final guardedValue = map['webhookSecretUpdateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webhookUrl: (() {
+        final guardedValue = map['webhookUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

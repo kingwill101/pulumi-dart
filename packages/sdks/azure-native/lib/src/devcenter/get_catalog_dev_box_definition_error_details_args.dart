@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCatalogDevBoxDefinitionErrorDetailsArgs {
   /// The name of the Catalog.
   final pulumi.Input<String> catalogName;
+
   /// The name of the Dev Box definition.
   final pulumi.Input<String> devBoxDefinitionName;
+
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,13 +40,18 @@ class GetCatalogDevBoxDefinitionErrorDetailsArgs {
     };
   }
 
-  factory GetCatalogDevBoxDefinitionErrorDetailsArgs.fromMap(Map<String, dynamic> map) {
+  factory GetCatalogDevBoxDefinitionErrorDetailsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCatalogDevBoxDefinitionErrorDetailsArgs(
-      catalogName: (map['catalogName'] as String).input(),
-      devBoxDefinitionName: (map['devBoxDefinitionName'] as String).input(),
-      devCenterName: (map['devCenterName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      catalogName: pulumi.Input.fromValue(map['catalogName'] as String),
+      devBoxDefinitionName: pulumi.Input.fromValue(
+        map['devBoxDefinitionName'] as String,
+      ),
+      devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

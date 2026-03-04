@@ -3,16 +3,15 @@ enum NamespaceType {
   messaging("Messaging"),
   notificationHub("NotificationHub");
 
-  const NamespaceType(this.value);
-  final String value;
+  const NamespaceType(this.wireValue);
+  final String wireValue;
 
   static NamespaceType fromValue(String value) {
     for (final item in NamespaceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NamespaceType value: $value');
   }
 }
-

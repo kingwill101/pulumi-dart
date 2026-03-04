@@ -1,5 +1,3 @@
-library module_backup;
-
 export 'backup/container_storage_account.dart';
 export 'backup/container_storage_account_args.dart';
 export 'backup/container_storage_account_state.dart';

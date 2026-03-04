@@ -10,20 +10,21 @@ class NetworkParams {
 
   /// Creates a new [NetworkParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the network. Tag keys and values have the
-  NetworkParams({
-    this.resourceManagerTags,
-  });
+  NetworkParams({this.resourceManagerTags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceManagerTags': ?resourceManagerTags,
-    };
+    return <String, dynamic>{'resourceManagerTags': ?resourceManagerTags};
   }
 
   factory NetworkParams.fromMap(Map<String, dynamic> map) {
     return NetworkParams(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
+      resourceManagerTags: (() {
+        final guardedValue = map['resourceManagerTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

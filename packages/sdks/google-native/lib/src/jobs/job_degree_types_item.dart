@@ -9,16 +9,15 @@ enum JobDegreeTypesItem {
   mastersOrEquivalent("MASTERS_OR_EQUIVALENT"),
   doctoralOrEquivalent("DOCTORAL_OR_EQUIVALENT");
 
-  const JobDegreeTypesItem(this.value);
-  final String value;
+  const JobDegreeTypesItem(this.wireValue);
+  final String wireValue;
 
   static JobDegreeTypesItem fromValue(String value) {
     for (final item in JobDegreeTypesItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobDegreeTypesItem value: $value');
   }
 }
-

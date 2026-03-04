@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsNetworkInterfacePermissionsPermission {
   /// Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
   final pulumi.Input<String> accountId;
+
   /// The ID of the Network Interface Permission.
   final pulumi.Input<String> id;
+
   /// The ID of the network interface.
   final pulumi.Input<String> networkInterfaceId;
+
   /// The ID of the Network Interface Permissions.
   final pulumi.Input<String> networkInterfacePermissionId;
+
   /// The permissions of the Network Interface.
   final pulumi.Input<String> permission;
+
   /// Alibaba Cloud service name.
   final pulumi.Input<String> serviceName;
+
   /// The Status of the Network Interface Permissions.
   final pulumi.Input<String> status;
 
@@ -48,16 +54,21 @@ class GetEcsNetworkInterfacePermissionsPermission {
     };
   }
 
-  factory GetEcsNetworkInterfacePermissionsPermission.fromMap(Map<String, dynamic> map) {
+  factory GetEcsNetworkInterfacePermissionsPermission.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEcsNetworkInterfacePermissionsPermission(
-      accountId: (map['accountId'] as String).input(),
-      id: (map['id'] as String).input(),
-      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
-      networkInterfacePermissionId: (map['networkInterfacePermissionId'] as String).input(),
-      permission: (map['permission'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      status: (map['status'] as String).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      networkInterfaceId: pulumi.Input.fromValue(
+        map['networkInterfaceId'] as String,
+      ),
+      networkInterfacePermissionId: pulumi.Input.fromValue(
+        map['networkInterfacePermissionId'] as String,
+      ),
+      permission: pulumi.Input.fromValue(map['permission'] as String),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

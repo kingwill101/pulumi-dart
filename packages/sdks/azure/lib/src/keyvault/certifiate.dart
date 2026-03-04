@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certifiate_args.dart';
 import 'certifiate_certificate.dart';
-import 'certifiate_certificate_attribute.dart';
 import 'certifiate_certificate_policy.dart';
 import 'certifiate_state.dart';
 
@@ -11,7 +10,7 @@ import 'certifiate_state.dart';
 ///
 /// ### Importing A PFX)
 ///
-/// > **Note:** this example assumed the PFX file is located in the same directory at `certificate-to-import.pfx`.
+/// &gt; **Note:** this example assumed the PFX file is located in the same directory at `certificate-to-import.pfx`.
 ///
 ///
 /// ```typescript
@@ -1295,34 +1294,48 @@ import 'certifiate_state.dart';
 class Certifiate extends pulumi.CustomResource {
   /// A `certificate` block as defined below, used to Import an existing certificate. Changing this will create a new version of the Key Vault Certificate.
   late final pulumi.Output<CertifiateCertificate?> certificate;
+
   /// A `certificate_attribute` block as defined below.
-  late final pulumi.Output<List<CertifiateCertificateAttribute>> certificateAttributes;
+  late final pulumi.Output<List<Map<String, dynamic>>> certificateAttributes;
+
   /// The raw Key Vault Certificate data represented as a hexadecimal string.
   late final pulumi.Output<String> certificateData;
+
   /// The Base64 encoded Key Vault Certificate data.
   late final pulumi.Output<String> certificateDataBase64;
+
   /// A `certificate_policy` block as defined below. Changing this (except the `lifetime_action` field) will create a new version of the Key Vault Certificate.
   ///
-  /// > **NOTE:** When creating a Key Vault Certificate, at least one of `certificate` or `certificate_policy` is required. Provide `certificate` to import an existing certificate, `certificate_policy` to generate a new certificate.
+  /// &gt; **NOTE:** When creating a Key Vault Certificate, at least one of `certificate` or `certificate_policy` is required. Provide `certificate` to import an existing certificate, `certificate_policy` to generate a new certificate.
   late final pulumi.Output<CertifiateCertificatePolicy> certificatePolicy;
+
   /// The ID of the Key Vault where the Certificate should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> keyVaultId;
+
   /// Specifies the name of the Key Vault Certificate. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The (Versioned) ID for this Key Vault Certificate. This property points to a specific version of a Key Vault Certificate, as such using this won't auto-rotate values if used in other Azure Services.
   late final pulumi.Output<String> resourceManagerId;
+
   /// The Versionless ID of the Key Vault Certificate. This property allows other Azure Services (that support it) to auto-rotate their value when the Key Vault Certificate is updated.
   late final pulumi.Output<String> resourceManagerVersionlessId;
+
   /// The ID of the associated Key Vault Secret.
   late final pulumi.Output<String> secretId;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The X509 Thumbprint of the Key Vault Certificate represented as a hexadecimal string.
   late final pulumi.Output<String> thumbprint;
+
   /// The current version of the Key Vault Certificate.
   late final pulumi.Output<String> version;
+
   /// The Base ID of the Key Vault Certificate.
   late final pulumi.Output<String> versionlessId;
+
   /// The Base ID of the Key Vault Secret.
   late final pulumi.Output<String> versionlessSecretId;
 
@@ -1335,26 +1348,32 @@ class Certifiate extends pulumi.CustomResource {
     CertifiateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:keyvault/certifiate:Certifiate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<CertifiateCertificate?>('certificate');
-    this.certificateAttributes = registerOutput<List<CertifiateCertificateAttribute>>('certificateAttributes');
-    this.certificateData = registerOutput<String>('certificateData');
-    this.certificateDataBase64 = registerOutput<String>('certificateDataBase64');
-    this.certificatePolicy = registerOutput<CertifiateCertificatePolicy>('certificatePolicy');
-    this.keyVaultId = registerOutput<String>('keyVaultId');
+         'azure:keyvault/certifiate:Certifiate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<CertifiateCertificate?>('certificate');
+    certificateAttributes = registerOutput<List<Map<String, dynamic>>>(
+      'certificateAttributes',
+    );
+    certificateData = registerOutput<String>('certificateData');
+    certificateDataBase64 = registerOutput<String>('certificateDataBase64');
+    certificatePolicy = registerOutput<CertifiateCertificatePolicy>(
+      'certificatePolicy',
+    );
+    keyVaultId = registerOutput<String>('keyVaultId');
     this.name = registerOutput<String>('name');
-    this.resourceManagerId = registerOutput<String>('resourceManagerId');
-    this.resourceManagerVersionlessId = registerOutput<String>('resourceManagerVersionlessId');
-    this.secretId = registerOutput<String>('secretId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.thumbprint = registerOutput<String>('thumbprint');
-    this.version = registerOutput<String>('version');
-    this.versionlessId = registerOutput<String>('versionlessId');
-    this.versionlessSecretId = registerOutput<String>('versionlessSecretId');
+    resourceManagerId = registerOutput<String>('resourceManagerId');
+    resourceManagerVersionlessId = registerOutput<String>(
+      'resourceManagerVersionlessId',
+    );
+    secretId = registerOutput<String>('secretId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    thumbprint = registerOutput<String>('thumbprint');
+    version = registerOutput<String>('version');
+    versionlessId = registerOutput<String>('versionlessId');
+    versionlessSecretId = registerOutput<String>('versionlessSecretId');
   }
 
   /// Gets an existing [Certifiate] resource's state with the given [name] and [id].
@@ -1375,25 +1394,31 @@ class Certifiate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:keyvault/certifiate:Certifiate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificate = registerOutput<CertifiateCertificate?>('certificate');
-    this.certificateAttributes = registerOutput<List<CertifiateCertificateAttribute>>('certificateAttributes');
-    this.certificateData = registerOutput<String>('certificateData');
-    this.certificateDataBase64 = registerOutput<String>('certificateDataBase64');
-    this.certificatePolicy = registerOutput<CertifiateCertificatePolicy>('certificatePolicy');
-    this.keyVaultId = registerOutput<String>('keyVaultId');
+         'azure:keyvault/certifiate:Certifiate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificate = registerOutput<CertifiateCertificate?>('certificate');
+    certificateAttributes = registerOutput<List<Map<String, dynamic>>>(
+      'certificateAttributes',
+    );
+    certificateData = registerOutput<String>('certificateData');
+    certificateDataBase64 = registerOutput<String>('certificateDataBase64');
+    certificatePolicy = registerOutput<CertifiateCertificatePolicy>(
+      'certificatePolicy',
+    );
+    keyVaultId = registerOutput<String>('keyVaultId');
     this.name = registerOutput<String>('name');
-    this.resourceManagerId = registerOutput<String>('resourceManagerId');
-    this.resourceManagerVersionlessId = registerOutput<String>('resourceManagerVersionlessId');
-    this.secretId = registerOutput<String>('secretId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.thumbprint = registerOutput<String>('thumbprint');
-    this.version = registerOutput<String>('version');
-    this.versionlessId = registerOutput<String>('versionlessId');
-    this.versionlessSecretId = registerOutput<String>('versionlessSecretId');
+    resourceManagerId = registerOutput<String>('resourceManagerId');
+    resourceManagerVersionlessId = registerOutput<String>(
+      'resourceManagerVersionlessId',
+    );
+    secretId = registerOutput<String>('secretId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    thumbprint = registerOutput<String>('thumbprint');
+    version = registerOutput<String>('version');
+    versionlessId = registerOutput<String>('versionlessId');
+    versionlessSecretId = registerOutput<String>('versionlessSecretId');
   }
 }

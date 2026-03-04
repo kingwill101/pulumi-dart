@@ -8,20 +8,29 @@ import 'event_connection_invocation_connectivity_parameters.dart';
 class EventConnectionState {
   /// The Amazon Resource Name (ARN) of the connection.
   final pulumi.Input<String>? arn;
+
   /// Parameters used for authorization. A maximum of 1 are allowed. Documented below.
   final pulumi.Input<EventConnectionAuthParameters>? authParameters;
+
   /// Type of authorization to use for the connection. One of `API_KEY`,`BASIC`,`OAUTH_CLIENT_CREDENTIALS`.
   final pulumi.Input<String>? authorizationType;
+
   /// Description for the connection. Maximum of 512 characters.
   final pulumi.Input<String>? description;
+
   /// Parameters to use for invoking a private API. Documented below.
-  final pulumi.Input<EventConnectionInvocationConnectivityParameters>? invocationConnectivityParameters;
+  final pulumi.Input<EventConnectionInvocationConnectivityParameters>?
+  invocationConnectivityParameters;
+
   /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt this connection. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN.
   final pulumi.Input<String>? kmsKeyIdentifier;
+
   /// The name for the connection. Maximum of 64 characters consisting of numbers, lower/upper case letters, .,-,_.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The Amazon Resource Name (ARN) of the secret created from the authorization parameters specified for the connection.
   final pulumi.Input<String>? secretArn;
 
@@ -50,10 +59,18 @@ class EventConnectionState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': ?arn,
-      'authParameters': ?pulumi.Input.mapOptionalInputValue<EventConnectionAuthParameters, Map<String, dynamic>>(authParameters, (value) => value.toMap()),
+      'authParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            EventConnectionAuthParameters,
+            Map<String, dynamic>
+          >(authParameters, (value) => value.toMap()),
       'authorizationType': ?authorizationType,
       'description': ?description,
-      'invocationConnectivityParameters': ?pulumi.Input.mapOptionalInputValue<EventConnectionInvocationConnectivityParameters, Map<String, dynamic>>(invocationConnectivityParameters, (value) => value.toMap()),
+      'invocationConnectivityParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            EventConnectionInvocationConnectivityParameters,
+            Map<String, dynamic>
+          >(invocationConnectivityParameters, (value) => value.toMap()),
       'kmsKeyIdentifier': ?kmsKeyIdentifier,
       'name': ?name,
       'region': ?region,
@@ -63,16 +80,59 @@ class EventConnectionState {
 
   factory EventConnectionState.fromMap(Map<String, dynamic> map) {
     return EventConnectionState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      authParameters: map['authParameters'] == null ? null : ((EventConnectionAuthParameters.fromMap((map['authParameters']! as Map).cast<String, dynamic>())).input()).input(),
-      authorizationType: map['authorizationType'] == null ? null : ((map['authorizationType'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      invocationConnectivityParameters: map['invocationConnectivityParameters'] == null ? null : ((EventConnectionInvocationConnectivityParameters.fromMap((map['invocationConnectivityParameters']! as Map).cast<String, dynamic>())).input()).input(),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : ((map['kmsKeyIdentifier'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      secretArn: map['secretArn'] == null ? null : ((map['secretArn'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authParameters: (() {
+        final guardedValue = map['authParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EventConnectionAuthParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      authorizationType: (() {
+        final guardedValue = map['authorizationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      invocationConnectivityParameters: (() {
+        final guardedValue = map['invocationConnectivityParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EventConnectionInvocationConnectivityParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kmsKeyIdentifier: (() {
+        final guardedValue = map['kmsKeyIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretArn: (() {
+        final guardedValue = map['secretArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

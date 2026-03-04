@@ -7,29 +7,23 @@ class AzPowerShellSetupResponse {
   /// The type of custom setup.
   /// Expected value is 'AzPowerShellSetup'.
   final pulumi.Input<String> type;
+
   /// The required version of Azure PowerShell to install.
   final pulumi.Input<String> version;
 
   /// Creates a new [AzPowerShellSetupResponse].
   /// [type] The type of custom setup.
   /// [version] The required version of Azure PowerShell to install.
-  AzPowerShellSetupResponse({
-    required this.type,
-    required this.version,
-  });
+  AzPowerShellSetupResponse({required this.type, required this.version});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-      'version': version,
-    };
+    return <String, dynamic>{'type': type, 'version': version};
   }
 
   factory AzPowerShellSetupResponse.fromMap(Map<String, dynamic> map) {
     return AzPowerShellSetupResponse(
-      type: (map['type'] as String).input(),
-      version: (map['version'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

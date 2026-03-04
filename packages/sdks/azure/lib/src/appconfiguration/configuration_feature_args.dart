@@ -11,27 +11,39 @@ import 'configuration_feature_timewindow_filter.dart';
 class ConfigurationFeatureArgs {
   /// Specifies the id of the App Configuration. Changing this forces a new resource to be created.
   final pulumi.Input<String> configurationStoreId;
+
   /// The description of the App Configuration Feature.
   final pulumi.Input<String>? description;
+
   /// The status of the App Configuration Feature. By default, this is set to false.
   final pulumi.Input<bool>? enabled;
   final pulumi.Input<String>? etag;
+
   /// The key of the App Configuration Feature. The value for `name` will be used if this is unspecified. Changing this forces a new resource to be created.
   final pulumi.Input<String>? key;
+
   /// The label of the App Configuration Feature. Changing this forces a new resource to be created.
   final pulumi.Input<String>? label;
+
   /// Should this App Configuration Feature be Locked to prevent changes?
   final pulumi.Input<bool>? locked;
+
   /// The name of the App Configuration Feature. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// A number representing the value of the percentage required to enable this feature.
   final pulumi.Input<double>? percentageFilterValue;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A `targeting_filter` block as defined below.
-  final pulumi.Input<List<ConfigurationFeatureTargetingFilter>>? targetingFilters;
+  final pulumi.Input<List<ConfigurationFeatureTargetingFilter>>?
+  targetingFilters;
+
   /// A `timewindow_filter` block as defined below.
-  final pulumi.Input<List<ConfigurationFeatureTimewindowFilter>>? timewindowFilters;
+  final pulumi.Input<List<ConfigurationFeatureTimewindowFilter>>?
+  timewindowFilters;
 
   /// Creates a new [ConfigurationFeatureArgs].
   /// [configurationStoreId] Specifies the id of the App Configuration. Changing this forces a new resource to be created.
@@ -73,26 +85,109 @@ class ConfigurationFeatureArgs {
       'name': ?name,
       'percentageFilterValue': ?percentageFilterValue,
       'tags': ?tags,
-      'targetingFilters': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationFeatureTargetingFilter>, List<Map<String, dynamic>>>(targetingFilters, (value) => pulumi.Input.encodeList<ConfigurationFeatureTargetingFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'timewindowFilters': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationFeatureTimewindowFilter>, List<Map<String, dynamic>>>(timewindowFilters, (value) => pulumi.Input.encodeList<ConfigurationFeatureTimewindowFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targetingFilters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ConfigurationFeatureTargetingFilter>,
+            List<Map<String, dynamic>>
+          >(
+            targetingFilters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConfigurationFeatureTargetingFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'timewindowFilters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ConfigurationFeatureTimewindowFilter>,
+            List<Map<String, dynamic>>
+          >(
+            timewindowFilters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConfigurationFeatureTimewindowFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ConfigurationFeatureArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationFeatureArgs(
-      configurationStoreId: (map['configurationStoreId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      label: map['label'] == null ? null : (map['label']! as String).input(),
-      locked: map['locked'] == null ? null : (map['locked']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      percentageFilterValue: map['percentageFilterValue'] == null ? null : (map['percentageFilterValue']! as double).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      targetingFilters: map['targetingFilters'] == null ? null : (pulumi.Input.decodeList<ConfigurationFeatureTargetingFilter>(map['targetingFilters']!, (value) => ConfigurationFeatureTargetingFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timewindowFilters: map['timewindowFilters'] == null ? null : (pulumi.Input.decodeList<ConfigurationFeatureTimewindowFilter>(map['timewindowFilters']!, (value) => ConfigurationFeatureTimewindowFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurationStoreId: pulumi.Input.fromValue(
+        map['configurationStoreId'] as String,
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      locked: (() {
+        final guardedValue = map['locked'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      percentageFilterValue: (() {
+        final guardedValue = map['percentageFilterValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targetingFilters: (() {
+        final guardedValue = map['targetingFilters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ConfigurationFeatureTargetingFilter>(
+            guardedValue,
+            (value) => ConfigurationFeatureTargetingFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      timewindowFilters: (() {
+        final guardedValue = map['timewindowFilters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ConfigurationFeatureTimewindowFilter>(
+            guardedValue,
+            (value) => ConfigurationFeatureTimewindowFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

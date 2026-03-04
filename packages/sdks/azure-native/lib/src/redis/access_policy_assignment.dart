@@ -153,18 +153,25 @@ import 'system_data_response.dart';
 class AccessPolicyAssignment extends pulumi.CustomResource {
   /// The name of the access policy that is being assigned
   late final pulumi.Output<String> accessPolicyName;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Object Id to assign access policy to
   late final pulumi.Output<String> objectId;
+
   /// User friendly name for object id. Also represents username for token based authentication
   late final pulumi.Output<String> objectIdAlias;
+
   /// Provisioning state of an access policy assignment set
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -177,18 +184,18 @@ class AccessPolicyAssignment extends pulumi.CustomResource {
     AccessPolicyAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:redis:AccessPolicyAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPolicyName = registerOutput<String>('accessPolicyName');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:redis:AccessPolicyAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessPolicyName = registerOutput<String>('accessPolicyName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.objectId = registerOutput<String>('objectId');
-    this.objectIdAlias = registerOutput<String>('objectIdAlias');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    objectId = registerOutput<String>('objectId');
+    objectIdAlias = registerOutput<String>('objectIdAlias');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

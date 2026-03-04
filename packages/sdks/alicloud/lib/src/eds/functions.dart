@@ -34,7 +34,7 @@ import 'get_zones_result.dart';
 
 /// This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.174.0+.
+/// &gt; **NOTE:** Available in v1.174.0+.
 ///
 /// ## Example Usage
 ///
@@ -159,7 +159,7 @@ Future<GetAdConnectorDirectoriesResult> getAdConnectorDirectories(
 
 /// This data source provides the Ecd Ad Connector Office Sites of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.176.0+.
+/// &gt; **NOTE:** Available in v1.176.0+.
 ///
 /// ## Example Usage
 ///
@@ -299,7 +299,7 @@ Future<GetAdConnectorOfficeSitesResult> getAdConnectorOfficeSites(
 
 /// This data source provides the Ecd bundles of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.143.0+.
+/// &gt; **NOTE:** Available in v1.143.0+.
 ///
 /// ## Example Usage
 ///
@@ -408,7 +408,7 @@ Future<GetBundlesResult> getBundles(
 
 /// This data source provides the Ecd Commands of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.146.0+.
+/// &gt; **NOTE:** Available in v1.146.0+.
 ///
 /// ## Example Usage
 ///
@@ -802,7 +802,7 @@ Future<GetCommandsResult> getCommands(
 
 /// This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.176.0+.
+/// &gt; **NOTE:** Available in v1.176.0+.
 ///
 /// ## Example Usage
 ///
@@ -927,7 +927,7 @@ Future<GetCustomPropertiesResult> getCustomProperties(
 
 /// This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.170.0+.
+/// &gt; **NOTE:** Available in v1.170.0+.
 ///
 /// ## Example Usage
 ///
@@ -1046,7 +1046,7 @@ Future<GetDesktopTypesResult> getDesktopTypes(
 
 /// This data source provides the Ecd Desktops of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.144.0+.
+/// &gt; **NOTE:** Available in v1.144.0+.
 ///
 /// ## Example Usage
 ///
@@ -1497,7 +1497,7 @@ Future<GetDesktopsResult> getDesktops(
 
 /// This data source provides the Ecd Images of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.146.0+.
+/// &gt; **NOTE:** Available in v1.146.0+.
 ///
 /// ## Example Usage
 ///
@@ -1930,7 +1930,7 @@ Future<GetImagesResult> getImages(
 
 /// This data source provides the Ecd Nas File Systems of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.141.0+.
+/// &gt; **NOTE:** Available in v1.141.0+.
 ///
 /// ## Example Usage
 ///
@@ -2155,7 +2155,7 @@ Future<GetNasFileSystemsResult> getNasFileSystems(
 
 /// This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.142.0+.
+/// &gt; **NOTE:** Available in v1.142.0+.
 ///
 /// ## Example Usage
 ///
@@ -2351,7 +2351,7 @@ Future<GetNetworkPackagesResult> getNetworkPackages(
 
 /// This data source provides the Ecd Policy Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.130.0+.
+/// &gt; **NOTE:** Available in v1.130.0+.
 ///
 /// ## Example Usage
 ///
@@ -2611,7 +2611,7 @@ Future<GetPolicyGroupsResult> getPolicyGroups(
 
 /// This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.174.0+.
+/// &gt; **NOTE:** Available in v1.174.0+.
 ///
 /// ## Example Usage
 ///
@@ -2766,7 +2766,7 @@ Future<GetRamDirectoriesResult> getRamDirectories(
 
 /// This data source provides the Ecd Simple Office Sites of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.140.0+.
+/// &gt; **NOTE:** Available in v1.140.0+.
 ///
 /// ## Example Usage
 ///
@@ -2897,7 +2897,7 @@ Future<GetSimpleOfficeSitesResult> getSimpleOfficeSites(
 
 /// This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.169.0+.
+/// &gt; **NOTE:** Available in v1.169.0+.
 ///
 /// ## Example Usage
 ///
@@ -3007,7 +3007,7 @@ Future<GetSnapshotsResult> getSnapshots(
 
 /// This data source provides the Elastic Desktop Service (ECD) Users of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.142.0+.
+/// &gt; **NOTE:** Available in v1.142.0+.
 ///
 /// ## Example Usage
 ///
@@ -3162,7 +3162,7 @@ Future<GetUsersResult> getUsers(
 
 /// This data source provides the available zones with the Elastic Desktop Service (ECD) of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.174.0+.
+/// &gt; **NOTE:** Available in v1.174.0+.
 ///
 /// ## Example Usage
 ///

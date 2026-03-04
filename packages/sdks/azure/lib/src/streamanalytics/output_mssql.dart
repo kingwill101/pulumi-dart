@@ -298,7 +298,7 @@ import 'output_mssql_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StreamAnalytics` - 2021-10-01-preview
@@ -313,24 +313,34 @@ import 'output_mssql_state.dart';
 class OutputMssql extends pulumi.CustomResource {
   /// The authentication mode for the Stream Output. Possible values are `Msi` and `ConnectionString`. Defaults to `ConnectionString`.
   late final pulumi.Output<String?> authenticationMode;
+
   /// The MS SQL database name where the reference table exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> database;
+
   /// The max batch count to write to the SQL Database. Defaults to `10000`. Possible values are between `1` and `1073741824`.
   late final pulumi.Output<double?> maxBatchCount;
+
   /// The max writer count for the SQL Database. Defaults to `1`. Possible values are `0` which bases the writer count on the query partition and `1` which corresponds to a single writer.
   late final pulumi.Output<double?> maxWriterCount;
+
   /// The name of the Stream Output. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Password used together with username, to login to the Microsoft SQL Server. Required if `authentication_mode` is `ConnectionString`.
   late final pulumi.Output<String?> password;
+
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The SQL server url. Changing this forces a new resource to be created.
   late final pulumi.Output<String> server;
+
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobName;
+
   /// Table in the database that the output points to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> table;
+
   /// Username used to login to the Microsoft SQL Server. Changing this forces a new resource to be created. Required if `authentication_mode` is `ConnectionString`.
   late final pulumi.Output<String?> user;
 
@@ -343,22 +353,22 @@ class OutputMssql extends pulumi.CustomResource {
     OutputMssqlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/outputMssql:OutputMssql',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationMode = registerOutput<String?>('authenticationMode');
-    this.database = registerOutput<String>('database');
-    this.maxBatchCount = registerOutput<double?>('maxBatchCount');
-    this.maxWriterCount = registerOutput<double?>('maxWriterCount');
+         'azure:streamanalytics/outputMssql:OutputMssql',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationMode = registerOutput<String?>('authenticationMode');
+    database = registerOutput<String>('database');
+    maxBatchCount = registerOutput<double?>('maxBatchCount');
+    maxWriterCount = registerOutput<double?>('maxWriterCount');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String?>('password');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.server = registerOutput<String>('server');
-    this.streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
-    this.table = registerOutput<String>('table');
-    this.user = registerOutput<String?>('user');
+    password = registerOutput<String?>('password');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    server = registerOutput<String>('server');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+    table = registerOutput<String>('table');
+    user = registerOutput<String?>('user');
   }
 
   /// Gets an existing [OutputMssql] resource's state with the given [name] and [id].
@@ -379,21 +389,21 @@ class OutputMssql extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/outputMssql:OutputMssql',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationMode = registerOutput<String?>('authenticationMode');
-    this.database = registerOutput<String>('database');
-    this.maxBatchCount = registerOutput<double?>('maxBatchCount');
-    this.maxWriterCount = registerOutput<double?>('maxWriterCount');
+         'azure:streamanalytics/outputMssql:OutputMssql',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationMode = registerOutput<String?>('authenticationMode');
+    database = registerOutput<String>('database');
+    maxBatchCount = registerOutput<double?>('maxBatchCount');
+    maxWriterCount = registerOutput<double?>('maxWriterCount');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String?>('password');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.server = registerOutput<String>('server');
-    this.streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
-    this.table = registerOutput<String>('table');
-    this.user = registerOutput<String?>('user');
+    password = registerOutput<String?>('password');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    server = registerOutput<String>('server');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+    table = registerOutput<String>('table');
+    user = registerOutput<String?>('user');
   }
 }

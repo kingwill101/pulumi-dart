@@ -5,14 +5,15 @@ import 'dbsnapshot_attribute.dart';
 
 /// Definition of awsRdsDBSnapshotAttributesResult
 class AwsRdsDBSnapshotAttributesResultProperties {
-  /// <p>The list of attributes and values for the manual DB snapshot.</p>
+  /// &lt;p&gt;The list of attributes and values for the manual DB snapshot.&lt;/p&gt;
   final pulumi.Input<List<DBSnapshotAttribute>>? dbSnapshotAttributes;
-  /// <p>The identifier of the manual DB snapshot that the attributes apply to.</p>
+
+  /// &lt;p&gt;The identifier of the manual DB snapshot that the attributes apply to.&lt;/p&gt;
   final pulumi.Input<String>? dbSnapshotIdentifier;
 
   /// Creates a new [AwsRdsDBSnapshotAttributesResultProperties].
-  /// [dbSnapshotAttributes] <p>The list of attributes and values for the manual DB snapshot.</p>
-  /// [dbSnapshotIdentifier] <p>The identifier of the manual DB snapshot that the attributes apply to.</p>
+  /// [dbSnapshotAttributes] &lt;p&gt;The list of attributes and values for the manual DB snapshot.&lt;/p&gt;
+  /// [dbSnapshotIdentifier] &lt;p&gt;The identifier of the manual DB snapshot that the attributes apply to.&lt;/p&gt;
   AwsRdsDBSnapshotAttributesResultProperties({
     this.dbSnapshotAttributes,
     this.dbSnapshotIdentifier,
@@ -20,16 +21,43 @@ class AwsRdsDBSnapshotAttributesResultProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dbSnapshotAttributes': ?pulumi.Input.mapOptionalInputValue<List<DBSnapshotAttribute>, List<Map<String, dynamic>>>(dbSnapshotAttributes, (value) => pulumi.Input.encodeList<DBSnapshotAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dbSnapshotAttributes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DBSnapshotAttribute>,
+            List<Map<String, dynamic>>
+          >(
+            dbSnapshotAttributes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DBSnapshotAttribute,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'dbSnapshotIdentifier': ?dbSnapshotIdentifier,
     };
   }
 
-  factory AwsRdsDBSnapshotAttributesResultProperties.fromMap(Map<String, dynamic> map) {
+  factory AwsRdsDBSnapshotAttributesResultProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsRdsDBSnapshotAttributesResultProperties(
-      dbSnapshotAttributes: map['dbSnapshotAttributes'] == null ? null : (pulumi.Input.decodeList<DBSnapshotAttribute>(map['dbSnapshotAttributes']!, (value) => DBSnapshotAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dbSnapshotIdentifier: map['dbSnapshotIdentifier'] == null ? null : (map['dbSnapshotIdentifier']! as String).input(),
+      dbSnapshotAttributes: (() {
+        final guardedValue = map['dbSnapshotAttributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DBSnapshotAttribute>(
+            guardedValue,
+            (value) => DBSnapshotAttribute.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      dbSnapshotIdentifier: (() {
+        final guardedValue = map['dbSnapshotIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

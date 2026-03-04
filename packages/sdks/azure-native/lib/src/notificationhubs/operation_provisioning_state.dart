@@ -8,16 +8,15 @@ enum OperationProvisioningState {
   pending("Pending"),
   disabled("Disabled");
 
-  const OperationProvisioningState(this.value);
-  final String value;
+  const OperationProvisioningState(this.wireValue);
+  final String wireValue;
 
   static OperationProvisioningState fromValue(String value) {
     for (final item in OperationProvisioningState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OperationProvisioningState value: $value');
   }
 }
-

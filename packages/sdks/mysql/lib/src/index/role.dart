@@ -5,7 +5,7 @@ import 'role_state.dart';
 /// The ``mysql.Role`` resource creates and manages a user on a MySQL
 /// server.
 ///
-/// > **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
+/// &gt; **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
 ///
 /// ## Example Usage
 ///
@@ -100,25 +100,18 @@ class Role extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Role]. {@macro pulumi_index_role_role_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Role(
-    String name, {
-    RoleArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'mysql:index/role:Role',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  Role(String name, {RoleArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'mysql:index/role:Role',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.name = registerOutput<String>('name');
   }
 
   /// Gets an existing [Role] resource's state with the given [name] and [id].
-  static Role get(
-    String name,
-    pulumi.Input<String> id, {
-    RoleState? state,
-  }) {
+  static Role get(String name, pulumi.Input<String> id, {RoleState? state}) {
     return Role._get(
       name,
       state: state?.toMap(),
@@ -131,11 +124,11 @@ class Role extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'mysql:index/role:Role',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'mysql:index/role:Role',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
   }
 }

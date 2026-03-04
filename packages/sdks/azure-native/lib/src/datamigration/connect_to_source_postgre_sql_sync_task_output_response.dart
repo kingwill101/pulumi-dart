@@ -7,12 +7,16 @@ import 'reportable_exception_response.dart';
 class ConnectToSourcePostgreSqlSyncTaskOutputResponse {
   /// List of databases on source server
   final pulumi.Input<List<String>> databases;
+
   /// Result identifier
   final pulumi.Input<String> id;
+
   /// Source server brand version
   final pulumi.Input<String> sourceServerBrandVersion;
+
   /// Version of the source server
   final pulumi.Input<String> sourceServerVersion;
+
   /// Validation errors associated with the task
   final pulumi.Input<List<ReportableExceptionResponse>> validationErrors;
 
@@ -36,18 +40,43 @@ class ConnectToSourcePostgreSqlSyncTaskOutputResponse {
       'id': id,
       'sourceServerBrandVersion': sourceServerBrandVersion,
       'sourceServerVersion': sourceServerVersion,
-      'validationErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(validationErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'validationErrors':
+          pulumi.Input.mapInputValue<
+            List<ReportableExceptionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            validationErrors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReportableExceptionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory ConnectToSourcePostgreSqlSyncTaskOutputResponse.fromMap(Map<String, dynamic> map) {
+  factory ConnectToSourcePostgreSqlSyncTaskOutputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectToSourcePostgreSqlSyncTaskOutputResponse(
-      databases: ((map['databases'] as List).cast<String>()).input(),
-      id: (map['id'] as String).input(),
-      sourceServerBrandVersion: (map['sourceServerBrandVersion'] as String).input(),
-      sourceServerVersion: (map['sourceServerVersion'] as String).input(),
-      validationErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      databases: pulumi.Input.fromValue(
+        (map['databases'] as List).cast<String>(),
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      sourceServerBrandVersion: pulumi.Input.fromValue(
+        map['sourceServerBrandVersion'] as String,
+      ),
+      sourceServerVersion: pulumi.Input.fromValue(
+        map['sourceServerVersion'] as String,
+      ),
+      validationErrors: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ReportableExceptionResponse>(
+          map['validationErrors']!,
+          (value) => ReportableExceptionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

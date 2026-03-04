@@ -1,5 +1,3 @@
-library module_batch;
-
 export 'batch/account.dart';
 export 'batch/account_args.dart';
 export 'batch/account_encryption.dart';

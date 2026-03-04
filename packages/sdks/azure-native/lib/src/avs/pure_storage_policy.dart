@@ -147,16 +147,22 @@ import 'system_data_response.dart';
 class PureStoragePolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The state of the Pure Storage Policy Based Management policy provisioning
   late final pulumi.Output<String> provisioningState;
+
   /// Definition of a Pure Storage Policy Based Management policy
   late final pulumi.Output<String> storagePolicyDefinition;
+
   /// Azure resource ID of the Pure Storage Pool associated with the storage policy
   late final pulumi.Output<String> storagePoolId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -169,17 +175,17 @@ class PureStoragePolicy extends pulumi.CustomResource {
     PureStoragePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:avs:PureStoragePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:avs:PureStoragePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.storagePolicyDefinition = registerOutput<String>('storagePolicyDefinition');
-    this.storagePoolId = registerOutput<String>('storagePoolId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    storagePolicyDefinition = registerOutput<String>('storagePolicyDefinition');
+    storagePoolId = registerOutput<String>('storagePoolId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

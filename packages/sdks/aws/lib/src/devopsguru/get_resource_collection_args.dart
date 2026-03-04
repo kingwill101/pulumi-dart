@@ -9,29 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceCollectionArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Type of AWS resource collection to create. Valid values are `AWS_CLOUD_FORMATION`, `AWS_SERVICE`, and `AWS_TAGS`.
   final pulumi.Input<String> type;
 
   /// Creates a new [GetResourceCollectionArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] Type of AWS resource collection to create. Valid values are `AWS_CLOUD_FORMATION`, `AWS_SERVICE`, and `AWS_TAGS`.
-  GetResourceCollectionArgs({
-    this.region,
-    required this.type,
-  });
+  GetResourceCollectionArgs({this.region, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-      'type': type,
-    };
+    return <String, dynamic>{'region': ?region, 'type': type};
   }
 
   factory GetResourceCollectionArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceCollectionArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      type: (map['type'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

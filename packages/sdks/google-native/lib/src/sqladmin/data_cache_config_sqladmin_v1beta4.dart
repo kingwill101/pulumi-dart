@@ -9,20 +9,19 @@ class DataCacheConfigSqladminV1beta4 {
 
   /// Creates a new [DataCacheConfigSqladminV1beta4].
   /// [dataCacheEnabled] Whether data cache is enabled for the instance.
-  DataCacheConfigSqladminV1beta4({
-    this.dataCacheEnabled,
-  });
+  DataCacheConfigSqladminV1beta4({this.dataCacheEnabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dataCacheEnabled': ?dataCacheEnabled,
-    };
+    return <String, dynamic>{'dataCacheEnabled': ?dataCacheEnabled};
   }
 
   factory DataCacheConfigSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return DataCacheConfigSqladminV1beta4(
-      dataCacheEnabled: map['dataCacheEnabled'] == null ? null : (map['dataCacheEnabled']! as bool).input(),
+      dataCacheEnabled: (() {
+        final guardedValue = map['dataCacheEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

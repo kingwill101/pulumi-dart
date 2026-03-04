@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1UsageSignalResponse {
   /// Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
   final pulumi.Input<Map<String, String>> commonUsageWithinTimeRange;
+
   /// Favorite count in the source system.
   final pulumi.Input<String> favoriteCount;
+
   /// The end timestamp of the duration of usage statistics.
   final pulumi.Input<String> updateTime;
+
   /// BigQuery usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
   final pulumi.Input<Map<String, String>> usageWithinTimeRange;
 
@@ -34,13 +37,18 @@ class GoogleCloudDatacatalogV1UsageSignalResponse {
     };
   }
 
-  factory GoogleCloudDatacatalogV1UsageSignalResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1UsageSignalResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1UsageSignalResponse(
-      commonUsageWithinTimeRange: ((map['commonUsageWithinTimeRange'] as Map).cast<String, String>()).input(),
-      favoriteCount: (map['favoriteCount'] as String).input(),
-      updateTime: (map['updateTime'] as String).input(),
-      usageWithinTimeRange: ((map['usageWithinTimeRange'] as Map).cast<String, String>()).input(),
+      commonUsageWithinTimeRange: pulumi.Input.fromValue(
+        (map['commonUsageWithinTimeRange'] as Map).cast<String, String>(),
+      ),
+      favoriteCount: pulumi.Input.fromValue(map['favoriteCount'] as String),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
+      usageWithinTimeRange: pulumi.Input.fromValue(
+        (map['usageWithinTimeRange'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

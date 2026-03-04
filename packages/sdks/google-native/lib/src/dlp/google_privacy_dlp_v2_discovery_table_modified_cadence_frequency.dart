@@ -5,16 +5,22 @@ enum GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency {
   updateFrequencyDaily("UPDATE_FREQUENCY_DAILY"),
   updateFrequencyMonthly("UPDATE_FREQUENCY_MONTHLY");
 
-  const GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency(this.value);
-  final String value;
+  const GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency fromValue(String value) {
-    for (final item in GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency.values) {
-      if (item.value == value) {
+  static GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency fromValue(
+    String value,
+  ) {
+    for (final item
+        in GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency value: $value',
+    );
   }
 }
-

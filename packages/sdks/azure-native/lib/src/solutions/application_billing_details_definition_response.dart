@@ -9,20 +9,21 @@ class ApplicationBillingDetailsDefinitionResponse {
 
   /// Creates a new [ApplicationBillingDetailsDefinitionResponse].
   /// [resourceUsageId] The managed application resource usage Id.
-  ApplicationBillingDetailsDefinitionResponse({
-    this.resourceUsageId,
-  });
+  ApplicationBillingDetailsDefinitionResponse({this.resourceUsageId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceUsageId': ?resourceUsageId,
-    };
+    return <String, dynamic>{'resourceUsageId': ?resourceUsageId};
   }
 
-  factory ApplicationBillingDetailsDefinitionResponse.fromMap(Map<String, dynamic> map) {
+  factory ApplicationBillingDetailsDefinitionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationBillingDetailsDefinitionResponse(
-      resourceUsageId: map['resourceUsageId'] == null ? null : (map['resourceUsageId']! as String).input(),
+      resourceUsageId: (() {
+        final guardedValue = map['resourceUsageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,7 +9,7 @@ import 'account_state.dart';
 ///
 /// For information about Click House Enterprise Db Cluster Account and how to use it, see [What is Enterprise Db Cluster Account](https://next.api.alibabacloud.com/document/clickhouse/2023-05-22/CreateAccount).
 ///
-/// > **NOTE:** Available since v1.247.0.
+/// &gt; **NOTE:** Available since v1.247.0.
 ///
 /// ## Example Usage
 ///
@@ -373,16 +373,21 @@ import 'account_state.dart';
 class Account extends pulumi.CustomResource {
   /// The name of the database account.
   late final pulumi.Output<String> account;
+
   /// The type of the database account. Valid values:
   /// - `NormalAccount`: Normal account number.
   /// - `SuperAccount`: The privileged account.
   late final pulumi.Output<String> accountType;
+
   /// The cluster ID.
   late final pulumi.Output<String> dbInstanceId;
+
   /// Note information.
   late final pulumi.Output<String?> description;
+
   /// Authorization information. See `dml_auth_setting` below.
   late final pulumi.Output<AccountDmlAuthSetting?> dmlAuthSetting;
+
   /// Database account password. Set the following rules.
   /// - Consists of at least three of uppercase letters, lowercase letters, numbers, and special characters.
   /// - Oh-! @#$%^& *()_+-= is a special character.
@@ -398,17 +403,17 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:clickhouseenterprisedbcluster/account:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.account = registerOutput<String>('account');
-    this.accountType = registerOutput<String>('accountType');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.description = registerOutput<String?>('description');
-    this.dmlAuthSetting = registerOutput<AccountDmlAuthSetting?>('dmlAuthSetting');
-    this.password = registerOutput<String>('password');
+         'alicloud:clickhouseenterprisedbcluster/account:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    account = registerOutput<String>('account');
+    accountType = registerOutput<String>('accountType');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    description = registerOutput<String?>('description');
+    dmlAuthSetting = registerOutput<AccountDmlAuthSetting?>('dmlAuthSetting');
+    password = registerOutput<String>('password');
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -429,16 +434,16 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:clickhouseenterprisedbcluster/account:Account',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.account = registerOutput<String>('account');
-    this.accountType = registerOutput<String>('accountType');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.description = registerOutput<String?>('description');
-    this.dmlAuthSetting = registerOutput<AccountDmlAuthSetting?>('dmlAuthSetting');
-    this.password = registerOutput<String>('password');
+         'alicloud:clickhouseenterprisedbcluster/account:Account',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    account = registerOutput<String>('account');
+    accountType = registerOutput<String>('accountType');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    description = registerOutput<String?>('description');
+    dmlAuthSetting = registerOutput<AccountDmlAuthSetting?>('dmlAuthSetting');
+    password = registerOutput<String>('password');
   }
 }

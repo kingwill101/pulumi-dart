@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IngestionSourcesPropertiesFormat {
   /// Resource ID.
   final pulumi.Input<String>? resourceId;
+
   /// Ingestion source type.
   final pulumi.Input<String>? sourceType;
 
   /// Creates a new [IngestionSourcesPropertiesFormat].
   /// [resourceId] Resource ID.
   /// [sourceType] Ingestion source type.
-  IngestionSourcesPropertiesFormat({
-    this.resourceId,
-    this.sourceType,
-  });
+  IngestionSourcesPropertiesFormat({this.resourceId, this.sourceType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class IngestionSourcesPropertiesFormat {
 
   factory IngestionSourcesPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return IngestionSourcesPropertiesFormat(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceType: (() {
+        final guardedValue = map['sourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

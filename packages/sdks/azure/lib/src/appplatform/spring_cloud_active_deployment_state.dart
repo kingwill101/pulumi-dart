@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpringCloudActiveDeploymentState {
   /// Specifies the name of Spring Cloud Deployment which is going to be active.
   final pulumi.Input<String>? deploymentName;
+
   /// Specifies the id of the Spring Cloud Application. Changing this forces a new resource to be created.
   final pulumi.Input<String>? springCloudAppId;
 
@@ -26,9 +27,16 @@ class SpringCloudActiveDeploymentState {
 
   factory SpringCloudActiveDeploymentState.fromMap(Map<String, dynamic> map) {
     return SpringCloudActiveDeploymentState(
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
-      springCloudAppId: map['springCloudAppId'] == null ? null : (map['springCloudAppId']! as String).input(),
+      deploymentName: (() {
+        final guardedValue = map['deploymentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      springCloudAppId: (() {
+        final guardedValue = map['springCloudAppId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

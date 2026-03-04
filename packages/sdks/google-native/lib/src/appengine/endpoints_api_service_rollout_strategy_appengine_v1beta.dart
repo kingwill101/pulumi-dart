@@ -4,16 +4,20 @@ enum EndpointsApiServiceRolloutStrategyAppengineV1beta {
   fixed("FIXED"),
   managed("MANAGED");
 
-  const EndpointsApiServiceRolloutStrategyAppengineV1beta(this.value);
-  final String value;
+  const EndpointsApiServiceRolloutStrategyAppengineV1beta(this.wireValue);
+  final String wireValue;
 
-  static EndpointsApiServiceRolloutStrategyAppengineV1beta fromValue(String value) {
-    for (final item in EndpointsApiServiceRolloutStrategyAppengineV1beta.values) {
-      if (item.value == value) {
+  static EndpointsApiServiceRolloutStrategyAppengineV1beta fromValue(
+    String value,
+  ) {
+    for (final item
+        in EndpointsApiServiceRolloutStrategyAppengineV1beta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EndpointsApiServiceRolloutStrategyAppengineV1beta value: $value');
+    throw ArgumentError(
+      'Unknown EndpointsApiServiceRolloutStrategyAppengineV1beta value: $value',
+    );
   }
 }
-

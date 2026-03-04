@@ -10,14 +10,19 @@ import 'rule_properties.dart';
 class InternetGatewayRuleArgs {
   /// Switch configuration description.
   final pulumi.Input<String>? annotation;
+
   /// Name of the Internet Gateway rule.
   final pulumi.Input<String>? internetGatewayRuleName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Rules for the InternetGateways
   final pulumi.Input<RuleProperties> ruleProperties;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -43,20 +48,47 @@ class InternetGatewayRuleArgs {
       'internetGatewayRuleName': ?internetGatewayRuleName,
       'location': ?location,
       'resourceGroupName': resourceGroupName,
-      'ruleProperties': pulumi.Input.mapInputValue<RuleProperties, Map<String, dynamic>>(ruleProperties, (value) => value.toMap()),
+      'ruleProperties':
+          pulumi.Input.mapInputValue<RuleProperties, Map<String, dynamic>>(
+            ruleProperties,
+            (value) => value.toMap(),
+          ),
       'tags': ?tags,
     };
   }
 
   factory InternetGatewayRuleArgs.fromMap(Map<String, dynamic> map) {
     return InternetGatewayRuleArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
-      internetGatewayRuleName: map['internetGatewayRuleName'] == null ? null : (map['internetGatewayRuleName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleProperties: (RuleProperties.fromMap((map['ruleProperties'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      annotation: (() {
+        final guardedValue = map['annotation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      internetGatewayRuleName: (() {
+        final guardedValue = map['internetGatewayRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      ruleProperties: pulumi.Input.fromValue(
+        RuleProperties.fromMap(
+          (map['ruleProperties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

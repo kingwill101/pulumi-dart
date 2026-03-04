@@ -6,7 +6,7 @@ import 'system_group_state.dart';
 ///
 /// For information about Video Surveillance System Group and how to use it, see [What is Group](https://help.aliyun.com/product/108765.html).
 ///
-/// > **NOTE:** Available in v1.135.0+.
+/// &gt; **NOTE:** Available in v1.135.0+.
 ///
 /// ## Example Usage
 ///
@@ -137,32 +137,46 @@ import 'system_group_state.dart';
 class SystemGroup extends pulumi.CustomResource {
   /// The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
   late final pulumi.Output<String?> callback;
+
   /// The capture image.
   late final pulumi.Output<int> captureImage;
+
   /// The capture interval.
   late final pulumi.Output<int> captureInterval;
+
   /// The capture oss bucket.
   late final pulumi.Output<String> captureOssBucket;
+
   /// The capture oss path.
   late final pulumi.Output<String> captureOssPath;
+
   /// The capture video.
   late final pulumi.Output<int> captureVideo;
+
   /// The description of Group.
   late final pulumi.Output<String?> description;
+
   /// Whether to open Group.
   late final pulumi.Output<bool> enabled;
+
   /// The Group Name.
   late final pulumi.Output<String> groupName;
+
   /// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
   late final pulumi.Output<String> inProtocol;
+
   /// Whether to enable on-demand streaming. Default value:`false`.
   late final pulumi.Output<bool> lazyPull;
+
   /// The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `flv`,`hls`, `rtmp`.
   late final pulumi.Output<String> outProtocol;
+
   /// The domain name of plan streaming used by the group.
   late final pulumi.Output<String> playDomain;
+
   /// The domain name of push streaming used by the group.
   late final pulumi.Output<String> pushDomain;
+
   /// Whether to open Group. Valid values: `on`,`off`.
   late final pulumi.Output<bool> status;
 
@@ -175,26 +189,26 @@ class SystemGroup extends pulumi.CustomResource {
     SystemGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:videosurveillance/systemGroup:SystemGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.callback = registerOutput<String?>('callback');
-    this.captureImage = registerOutput<int>('captureImage');
-    this.captureInterval = registerOutput<int>('captureInterval');
-    this.captureOssBucket = registerOutput<String>('captureOssBucket');
-    this.captureOssPath = registerOutput<String>('captureOssPath');
-    this.captureVideo = registerOutput<int>('captureVideo');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool>('enabled');
-    this.groupName = registerOutput<String>('groupName');
-    this.inProtocol = registerOutput<String>('inProtocol');
-    this.lazyPull = registerOutput<bool>('lazyPull');
-    this.outProtocol = registerOutput<String>('outProtocol');
-    this.playDomain = registerOutput<String>('playDomain');
-    this.pushDomain = registerOutput<String>('pushDomain');
-    this.status = registerOutput<bool>('status');
+         'alicloud:videosurveillance/systemGroup:SystemGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    callback = registerOutput<String?>('callback');
+    captureImage = registerOutput<int>('captureImage');
+    captureInterval = registerOutput<int>('captureInterval');
+    captureOssBucket = registerOutput<String>('captureOssBucket');
+    captureOssPath = registerOutput<String>('captureOssPath');
+    captureVideo = registerOutput<int>('captureVideo');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool>('enabled');
+    groupName = registerOutput<String>('groupName');
+    inProtocol = registerOutput<String>('inProtocol');
+    lazyPull = registerOutput<bool>('lazyPull');
+    outProtocol = registerOutput<String>('outProtocol');
+    playDomain = registerOutput<String>('playDomain');
+    pushDomain = registerOutput<String>('pushDomain');
+    status = registerOutput<bool>('status');
   }
 
   /// Gets an existing [SystemGroup] resource's state with the given [name] and [id].
@@ -215,25 +229,25 @@ class SystemGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:videosurveillance/systemGroup:SystemGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.callback = registerOutput<String?>('callback');
-    this.captureImage = registerOutput<int>('captureImage');
-    this.captureInterval = registerOutput<int>('captureInterval');
-    this.captureOssBucket = registerOutput<String>('captureOssBucket');
-    this.captureOssPath = registerOutput<String>('captureOssPath');
-    this.captureVideo = registerOutput<int>('captureVideo');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool>('enabled');
-    this.groupName = registerOutput<String>('groupName');
-    this.inProtocol = registerOutput<String>('inProtocol');
-    this.lazyPull = registerOutput<bool>('lazyPull');
-    this.outProtocol = registerOutput<String>('outProtocol');
-    this.playDomain = registerOutput<String>('playDomain');
-    this.pushDomain = registerOutput<String>('pushDomain');
-    this.status = registerOutput<bool>('status');
+         'alicloud:videosurveillance/systemGroup:SystemGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    callback = registerOutput<String?>('callback');
+    captureImage = registerOutput<int>('captureImage');
+    captureInterval = registerOutput<int>('captureInterval');
+    captureOssBucket = registerOutput<String>('captureOssBucket');
+    captureOssPath = registerOutput<String>('captureOssPath');
+    captureVideo = registerOutput<int>('captureVideo');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool>('enabled');
+    groupName = registerOutput<String>('groupName');
+    inProtocol = registerOutput<String>('inProtocol');
+    lazyPull = registerOutput<bool>('lazyPull');
+    outProtocol = registerOutput<String>('outProtocol');
+    playDomain = registerOutput<String>('playDomain');
+    pushDomain = registerOutput<String>('pushDomain');
+    status = registerOutput<bool>('status');
   }
 }

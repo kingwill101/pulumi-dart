@@ -35,12 +35,31 @@ class FrontdoorExplicitResourceOrder {
 
   factory FrontdoorExplicitResourceOrder.fromMap(Map<String, dynamic> map) {
     return FrontdoorExplicitResourceOrder(
-      backendPoolHealthProbeIds: map['backendPoolHealthProbeIds'] == null ? null : ((map['backendPoolHealthProbeIds']! as List).cast<String>()).input(),
-      backendPoolIds: map['backendPoolIds'] == null ? null : ((map['backendPoolIds']! as List).cast<String>()).input(),
-      backendPoolLoadBalancingIds: map['backendPoolLoadBalancingIds'] == null ? null : ((map['backendPoolLoadBalancingIds']! as List).cast<String>()).input(),
-      frontendEndpointIds: map['frontendEndpointIds'] == null ? null : ((map['frontendEndpointIds']! as List).cast<String>()).input(),
-      routingRuleIds: map['routingRuleIds'] == null ? null : ((map['routingRuleIds']! as List).cast<String>()).input(),
+      backendPoolHealthProbeIds: (() {
+        final guardedValue = map['backendPoolHealthProbeIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      backendPoolIds: (() {
+        final guardedValue = map['backendPoolIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      backendPoolLoadBalancingIds: (() {
+        final guardedValue = map['backendPoolLoadBalancingIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      frontendEndpointIds: (() {
+        final guardedValue = map['frontendEndpointIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      routingRuleIds: (() {
+        final guardedValue = map['routingRuleIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

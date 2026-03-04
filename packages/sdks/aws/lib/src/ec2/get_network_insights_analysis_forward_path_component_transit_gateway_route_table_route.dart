@@ -41,16 +41,17 @@ class GetNetworkInsightsAnalysisForwardPathComponentTransitGatewayRouteTableRout
     };
   }
 
-  factory GetNetworkInsightsAnalysisForwardPathComponentTransitGatewayRouteTableRoute.fromMap(Map<String, dynamic> map) {
+  factory GetNetworkInsightsAnalysisForwardPathComponentTransitGatewayRouteTableRoute.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNetworkInsightsAnalysisForwardPathComponentTransitGatewayRouteTableRoute(
-      attachmentId: (map['attachmentId'] as String).input(),
-      destinationCidr: (map['destinationCidr'] as String).input(),
-      prefixListId: (map['prefixListId'] as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
-      routeOrigin: (map['routeOrigin'] as String).input(),
-      state: (map['state'] as String).input(),
+      attachmentId: pulumi.Input.fromValue(map['attachmentId'] as String),
+      destinationCidr: pulumi.Input.fromValue(map['destinationCidr'] as String),
+      prefixListId: pulumi.Input.fromValue(map['prefixListId'] as String),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      routeOrigin: pulumi.Input.fromValue(map['routeOrigin'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

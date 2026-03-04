@@ -5,16 +5,17 @@ enum KnownExtensionDataSourceStreams {
   valueMicrosoftSyslog("Microsoft-Syslog"),
   valueMicrosoftWindowsEvent("Microsoft-WindowsEvent");
 
-  const KnownExtensionDataSourceStreams(this.value);
-  final String value;
+  const KnownExtensionDataSourceStreams(this.wireValue);
+  final String wireValue;
 
   static KnownExtensionDataSourceStreams fromValue(String value) {
     for (final item in KnownExtensionDataSourceStreams.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown KnownExtensionDataSourceStreams value: $value');
+    throw ArgumentError(
+      'Unknown KnownExtensionDataSourceStreams value: $value',
+    );
   }
 }
-

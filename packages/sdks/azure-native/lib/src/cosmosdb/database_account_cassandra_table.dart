@@ -267,16 +267,22 @@ import 'database_account_cassandra_table_args.dart';
 class DatabaseAccountCassandraTable extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Time to live of the Cosmos DB Cassandra table
   late final pulumi.Output<int?> defaultTtl;
+
   /// The location of the resource group to which the resource belongs.
   late final pulumi.Output<String?> location;
+
   /// The name of the database account.
   late final pulumi.Output<String> name;
+
   /// Schema of the Cosmos DB Cassandra table
   late final pulumi.Output<CassandraSchemaResponse?> schema;
+
   /// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
 
@@ -289,17 +295,17 @@ class DatabaseAccountCassandraTable extends pulumi.CustomResource {
     DatabaseAccountCassandraTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cosmosdb:DatabaseAccountCassandraTable',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.defaultTtl = registerOutput<int?>('defaultTtl');
-    this.location = registerOutput<String?>('location');
+         'azure-native:cosmosdb:DatabaseAccountCassandraTable',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultTtl = registerOutput<int?>('defaultTtl');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.schema = registerOutput<CassandraSchemaResponse?>('schema');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    schema = registerOutput<CassandraSchemaResponse?>('schema');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

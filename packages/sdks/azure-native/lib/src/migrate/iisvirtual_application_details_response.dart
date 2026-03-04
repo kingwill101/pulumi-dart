@@ -7,10 +7,13 @@ import 'directory_path_response.dart';
 class IISVirtualApplicationDetailsResponse {
   /// Gets or sets the list of directories.
   final pulumi.Input<List<DirectoryPathResponse>>? directories;
+
   /// Gets the ID.
   final pulumi.Input<String> id;
+
   /// Gets a value indicating whether the application corresponds to a directory.
   final pulumi.Input<bool> isVirtualDirectory;
+
   /// Second level entity for virtual directories.
   final pulumi.Input<DirectoryPathResponse>? path;
 
@@ -28,20 +31,57 @@ class IISVirtualApplicationDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'directories': ?pulumi.Input.mapOptionalInputValue<List<DirectoryPathResponse>, List<Map<String, dynamic>>>(directories, (value) => pulumi.Input.encodeList<DirectoryPathResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'directories':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DirectoryPathResponse>,
+            List<Map<String, dynamic>>
+          >(
+            directories,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DirectoryPathResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'id': id,
       'isVirtualDirectory': isVirtualDirectory,
-      'path': ?pulumi.Input.mapOptionalInputValue<DirectoryPathResponse, Map<String, dynamic>>(path, (value) => value.toMap()),
+      'path':
+          ?pulumi.Input.mapOptionalInputValue<
+            DirectoryPathResponse,
+            Map<String, dynamic>
+          >(path, (value) => value.toMap()),
     };
   }
 
-  factory IISVirtualApplicationDetailsResponse.fromMap(Map<String, dynamic> map) {
+  factory IISVirtualApplicationDetailsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IISVirtualApplicationDetailsResponse(
-      directories: map['directories'] == null ? null : (pulumi.Input.decodeList<DirectoryPathResponse>(map['directories']!, (value) => DirectoryPathResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: (map['id'] as String).input(),
-      isVirtualDirectory: (map['isVirtualDirectory'] as bool).input(),
-      path: map['path'] == null ? null : (DirectoryPathResponse.fromMap((map['path']! as Map).cast<String, dynamic>())).input(),
+      directories: (() {
+        final guardedValue = map['directories'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DirectoryPathResponse>(
+            guardedValue,
+            (value) => DirectoryPathResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      isVirtualDirectory: pulumi.Input.fromValue(
+        map['isVirtualDirectory'] as bool,
+      ),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DirectoryPathResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

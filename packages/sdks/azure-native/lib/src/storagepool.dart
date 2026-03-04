@@ -1,5 +1,3 @@
-library module_storagepool;
-
 export 'storagepool/acl.dart';
 export 'storagepool/acl_response.dart';
 export 'storagepool/disk.dart';

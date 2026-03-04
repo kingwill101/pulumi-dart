@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDynamicTagGroupsGroupMatchExpress {
   /// The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
   final pulumi.Input<String> tagValue;
+
   /// Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
   final pulumi.Input<String> tagValueMatchFunction;
 
@@ -23,11 +24,14 @@ class GetDynamicTagGroupsGroupMatchExpress {
     };
   }
 
-  factory GetDynamicTagGroupsGroupMatchExpress.fromMap(Map<String, dynamic> map) {
+  factory GetDynamicTagGroupsGroupMatchExpress.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDynamicTagGroupsGroupMatchExpress(
-      tagValue: (map['tagValue'] as String).input(),
-      tagValueMatchFunction: (map['tagValueMatchFunction'] as String).input(),
+      tagValue: pulumi.Input.fromValue(map['tagValue'] as String),
+      tagValueMatchFunction: pulumi.Input.fromValue(
+        map['tagValueMatchFunction'] as String,
+      ),
     );
   }
 }
-

@@ -19,60 +19,86 @@ import 'virtual_machine_storage_os_disk.dart';
 /// {@macro pulumi_compute_virtual_machine_virtual_machine_args_doc}
 class VirtualMachineArgs {
   /// An `additional_capabilities` block as defined below.
-  final pulumi.Input<VirtualMachineAdditionalCapabilities>? additionalCapabilities;
+  final pulumi.Input<VirtualMachineAdditionalCapabilities>?
+  additionalCapabilities;
+
   /// The ID of the Availability Set in which the Virtual Machine should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? availabilitySetId;
+
   /// A `boot_diagnostics` block as defined below.
   final pulumi.Input<VirtualMachineBootDiagnostics>? bootDiagnostics;
+
   /// Should the Data Disks (either the Managed Disks / VHD Blobs) be deleted when the Virtual Machine is destroyed? Defaults to `false`.
   ///
-  /// > **Note:** This setting works when instance is deleted via the provider only and don't forget to delete disks manually if you deleted VM manually. It can increase spending.
+  /// &gt; **Note:** This setting works when instance is deleted via the provider only and don't forget to delete disks manually if you deleted VM manually. It can increase spending.
   final pulumi.Input<bool>? deleteDataDisksOnTermination;
+
   /// Should the OS Disk (either the Managed Disk / VHD Blob) be deleted when the Virtual Machine is destroyed? Defaults to `false`.
   ///
-  /// > **Note:** This setting works when instance is deleted via the provider only and don't forget to delete disks manually if you deleted VM manually. It can increase spending.
+  /// &gt; **Note:** This setting works when instance is deleted via the provider only and don't forget to delete disks manually if you deleted VM manually. It can increase spending.
   final pulumi.Input<bool>? deleteOsDiskOnTermination;
+
   /// An `identity` block as defined below.
   final pulumi.Input<VirtualMachineIdentity>? identity;
+
   /// Specifies the BYOL Type for this Virtual Machine. This is only applicable to Windows Virtual Machines. Possible values are `Windows_Client` and `Windows_Server`.
   final pulumi.Input<String>? licenseType;
+
   /// Specifies the Azure Region where the Virtual Machine exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// A list of Network Interface IDs which should be associated with the Virtual Machine.
   final pulumi.Input<List<String>> networkInterfaceIds;
+
   /// An `os_profile` block as defined below. Required when `create_option` in the `storage_os_disk` block is set to `FromImage`.
   final pulumi.Input<VirtualMachineOsProfile>? osProfile;
+
   /// (Required, when a Linux machine) An `os_profile_linux_config` block as defined below.
   final pulumi.Input<VirtualMachineOsProfileLinuxConfig>? osProfileLinuxConfig;
+
   /// One or more `os_profile_secrets` blocks as defined below.
   final pulumi.Input<List<VirtualMachineOsProfileSecret>>? osProfileSecrets;
+
   /// (Required, when a Windows machine) An `os_profile_windows_config` block as defined below.
-  final pulumi.Input<VirtualMachineOsProfileWindowsConfig>? osProfileWindowsConfig;
+  final pulumi.Input<VirtualMachineOsProfileWindowsConfig>?
+  osProfileWindowsConfig;
+
   /// A `plan` block as defined below.
   final pulumi.Input<VirtualMachinePlan>? plan;
+
   /// The ID of the Network Interface (which must be attached to the Virtual Machine) which should be the Primary Network Interface for this Virtual Machine.
   final pulumi.Input<String>? primaryNetworkInterfaceId;
+
   /// The ID of the Proximity Placement Group to which this Virtual Machine should be assigned. Changing this forces a new resource to be created
   final pulumi.Input<String>? proximityPlacementGroupId;
+
   /// Specifies the name of the Resource Group in which the Virtual Machine should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// One or more `storage_data_disk` blocks as defined below.
   ///
-  /// > **Please Note:** Data Disks can also be attached either using this block or the `azure.compute.DataDiskAttachment` resource - but not both.
+  /// &gt; **Please Note:** Data Disks can also be attached either using this block or the `azure.compute.DataDiskAttachment` resource - but not both.
   final pulumi.Input<List<VirtualMachineStorageDataDisk>>? storageDataDisks;
+
   /// A `storage_image_reference` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<VirtualMachineStorageImageReference>? storageImageReference;
+  final pulumi.Input<VirtualMachineStorageImageReference>?
+  storageImageReference;
+
   /// A `storage_os_disk` block as defined below.
   final pulumi.Input<VirtualMachineStorageOsDisk> storageOsDisk;
+
   /// A mapping of tags to assign to the Virtual Machine.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
   final pulumi.Input<String> vmSize;
+
   /// A list of a single item of the Availability Zone which the Virtual Machine should be allocated in. Changing this forces a new resource to be created.
   ///
-  /// > **Please Note:** Availability Zones are [only supported in several regions at this time](https://docs.microsoft.com/azure/availability-zones/az-overview).
+  /// &gt; **Please Note:** Availability Zones are [only supported in several regions at this time](https://docs.microsoft.com/azure/availability-zones/az-overview).
   ///
   /// For more information on the different example configurations, please check out the [Azure documentation](https://docs.microsoft.com/en-gb/rest/api/compute/virtualmachines/createorupdate#examples)
   final pulumi.Input<String>? zones;
@@ -131,27 +157,85 @@ class VirtualMachineArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalCapabilities': ?pulumi.Input.mapOptionalInputValue<VirtualMachineAdditionalCapabilities, Map<String, dynamic>>(additionalCapabilities, (value) => value.toMap()),
+      'additionalCapabilities':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineAdditionalCapabilities,
+            Map<String, dynamic>
+          >(additionalCapabilities, (value) => value.toMap()),
       'availabilitySetId': ?availabilitySetId,
-      'bootDiagnostics': ?pulumi.Input.mapOptionalInputValue<VirtualMachineBootDiagnostics, Map<String, dynamic>>(bootDiagnostics, (value) => value.toMap()),
+      'bootDiagnostics':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineBootDiagnostics,
+            Map<String, dynamic>
+          >(bootDiagnostics, (value) => value.toMap()),
       'deleteDataDisksOnTermination': ?deleteDataDisksOnTermination,
       'deleteOsDiskOnTermination': ?deleteOsDiskOnTermination,
-      'identity': ?pulumi.Input.mapOptionalInputValue<VirtualMachineIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'licenseType': ?licenseType,
       'location': ?location,
       'name': ?name,
       'networkInterfaceIds': networkInterfaceIds,
-      'osProfile': ?pulumi.Input.mapOptionalInputValue<VirtualMachineOsProfile, Map<String, dynamic>>(osProfile, (value) => value.toMap()),
-      'osProfileLinuxConfig': ?pulumi.Input.mapOptionalInputValue<VirtualMachineOsProfileLinuxConfig, Map<String, dynamic>>(osProfileLinuxConfig, (value) => value.toMap()),
-      'osProfileSecrets': ?pulumi.Input.mapOptionalInputValue<List<VirtualMachineOsProfileSecret>, List<Map<String, dynamic>>>(osProfileSecrets, (value) => pulumi.Input.encodeList<VirtualMachineOsProfileSecret, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'osProfileWindowsConfig': ?pulumi.Input.mapOptionalInputValue<VirtualMachineOsProfileWindowsConfig, Map<String, dynamic>>(osProfileWindowsConfig, (value) => value.toMap()),
-      'plan': ?pulumi.Input.mapOptionalInputValue<VirtualMachinePlan, Map<String, dynamic>>(plan, (value) => value.toMap()),
+      'osProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineOsProfile,
+            Map<String, dynamic>
+          >(osProfile, (value) => value.toMap()),
+      'osProfileLinuxConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineOsProfileLinuxConfig,
+            Map<String, dynamic>
+          >(osProfileLinuxConfig, (value) => value.toMap()),
+      'osProfileSecrets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VirtualMachineOsProfileSecret>,
+            List<Map<String, dynamic>>
+          >(
+            osProfileSecrets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualMachineOsProfileSecret,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'osProfileWindowsConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineOsProfileWindowsConfig,
+            Map<String, dynamic>
+          >(osProfileWindowsConfig, (value) => value.toMap()),
+      'plan':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachinePlan,
+            Map<String, dynamic>
+          >(plan, (value) => value.toMap()),
       'primaryNetworkInterfaceId': ?primaryNetworkInterfaceId,
       'proximityPlacementGroupId': ?proximityPlacementGroupId,
       'resourceGroupName': resourceGroupName,
-      'storageDataDisks': ?pulumi.Input.mapOptionalInputValue<List<VirtualMachineStorageDataDisk>, List<Map<String, dynamic>>>(storageDataDisks, (value) => pulumi.Input.encodeList<VirtualMachineStorageDataDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'storageImageReference': ?pulumi.Input.mapOptionalInputValue<VirtualMachineStorageImageReference, Map<String, dynamic>>(storageImageReference, (value) => value.toMap()),
-      'storageOsDisk': pulumi.Input.mapInputValue<VirtualMachineStorageOsDisk, Map<String, dynamic>>(storageOsDisk, (value) => value.toMap()),
+      'storageDataDisks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VirtualMachineStorageDataDisk>,
+            List<Map<String, dynamic>>
+          >(
+            storageDataDisks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualMachineStorageDataDisk,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'storageImageReference':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineStorageImageReference,
+            Map<String, dynamic>
+          >(storageImageReference, (value) => value.toMap()),
+      'storageOsDisk':
+          pulumi.Input.mapInputValue<
+            VirtualMachineStorageOsDisk,
+            Map<String, dynamic>
+          >(storageOsDisk, (value) => value.toMap()),
       'tags': ?tags,
       'vmSize': vmSize,
       'zones': ?zones,
@@ -160,31 +244,166 @@ class VirtualMachineArgs {
 
   factory VirtualMachineArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineArgs(
-      additionalCapabilities: map['additionalCapabilities'] == null ? null : (VirtualMachineAdditionalCapabilities.fromMap((map['additionalCapabilities']! as Map).cast<String, dynamic>())).input(),
-      availabilitySetId: map['availabilitySetId'] == null ? null : (map['availabilitySetId']! as String).input(),
-      bootDiagnostics: map['bootDiagnostics'] == null ? null : (VirtualMachineBootDiagnostics.fromMap((map['bootDiagnostics']! as Map).cast<String, dynamic>())).input(),
-      deleteDataDisksOnTermination: map['deleteDataDisksOnTermination'] == null ? null : (map['deleteDataDisksOnTermination']! as bool).input(),
-      deleteOsDiskOnTermination: map['deleteOsDiskOnTermination'] == null ? null : (map['deleteOsDiskOnTermination']! as bool).input(),
-      identity: map['identity'] == null ? null : (VirtualMachineIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkInterfaceIds: ((map['networkInterfaceIds'] as List).cast<String>()).input(),
-      osProfile: map['osProfile'] == null ? null : (VirtualMachineOsProfile.fromMap((map['osProfile']! as Map).cast<String, dynamic>())).input(),
-      osProfileLinuxConfig: map['osProfileLinuxConfig'] == null ? null : (VirtualMachineOsProfileLinuxConfig.fromMap((map['osProfileLinuxConfig']! as Map).cast<String, dynamic>())).input(),
-      osProfileSecrets: map['osProfileSecrets'] == null ? null : (pulumi.Input.decodeList<VirtualMachineOsProfileSecret>(map['osProfileSecrets']!, (value) => VirtualMachineOsProfileSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      osProfileWindowsConfig: map['osProfileWindowsConfig'] == null ? null : (VirtualMachineOsProfileWindowsConfig.fromMap((map['osProfileWindowsConfig']! as Map).cast<String, dynamic>())).input(),
-      plan: map['plan'] == null ? null : (VirtualMachinePlan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
-      primaryNetworkInterfaceId: map['primaryNetworkInterfaceId'] == null ? null : (map['primaryNetworkInterfaceId']! as String).input(),
-      proximityPlacementGroupId: map['proximityPlacementGroupId'] == null ? null : (map['proximityPlacementGroupId']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageDataDisks: map['storageDataDisks'] == null ? null : (pulumi.Input.decodeList<VirtualMachineStorageDataDisk>(map['storageDataDisks']!, (value) => VirtualMachineStorageDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageImageReference: map['storageImageReference'] == null ? null : (VirtualMachineStorageImageReference.fromMap((map['storageImageReference']! as Map).cast<String, dynamic>())).input(),
-      storageOsDisk: (VirtualMachineStorageOsDisk.fromMap((map['storageOsDisk'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vmSize: (map['vmSize'] as String).input(),
-      zones: map['zones'] == null ? null : (map['zones']! as String).input(),
+      additionalCapabilities: (() {
+        final guardedValue = map['additionalCapabilities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineAdditionalCapabilities.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      availabilitySetId: (() {
+        final guardedValue = map['availabilitySetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bootDiagnostics: (() {
+        final guardedValue = map['bootDiagnostics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineBootDiagnostics.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      deleteDataDisksOnTermination: (() {
+        final guardedValue = map['deleteDataDisksOnTermination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      deleteOsDiskOnTermination: (() {
+        final guardedValue = map['deleteOsDiskOnTermination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      licenseType: (() {
+        final guardedValue = map['licenseType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaceIds: pulumi.Input.fromValue(
+        (map['networkInterfaceIds'] as List).cast<String>(),
+      ),
+      osProfile: (() {
+        final guardedValue = map['osProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineOsProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      osProfileLinuxConfig: (() {
+        final guardedValue = map['osProfileLinuxConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineOsProfileLinuxConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      osProfileSecrets: (() {
+        final guardedValue = map['osProfileSecrets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VirtualMachineOsProfileSecret>(
+            guardedValue,
+            (value) => VirtualMachineOsProfileSecret.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      osProfileWindowsConfig: (() {
+        final guardedValue = map['osProfileWindowsConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineOsProfileWindowsConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      plan: (() {
+        final guardedValue = map['plan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachinePlan.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      primaryNetworkInterfaceId: (() {
+        final guardedValue = map['primaryNetworkInterfaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      proximityPlacementGroupId: (() {
+        final guardedValue = map['proximityPlacementGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageDataDisks: (() {
+        final guardedValue = map['storageDataDisks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VirtualMachineStorageDataDisk>(
+            guardedValue,
+            (value) => VirtualMachineStorageDataDisk.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      storageImageReference: (() {
+        final guardedValue = map['storageImageReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineStorageImageReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      storageOsDisk: pulumi.Input.fromValue(
+        VirtualMachineStorageOsDisk.fromMap(
+          (map['storageOsDisk']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vmSize: pulumi.Input.fromValue(map['vmSize'] as String),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

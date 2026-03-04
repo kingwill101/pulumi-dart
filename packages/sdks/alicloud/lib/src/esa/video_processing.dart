@@ -8,7 +8,7 @@ import 'video_processing_state.dart';
 ///
 /// For information about ESA Video Processing and how to use it, see [What is Video Processing](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateVideoProcessing).
 ///
-/// > **NOTE:** Available since v1.251.0.
+/// &gt; **NOTE:** Available since v1.251.0.
 ///
 /// ## Example Usage
 ///
@@ -274,30 +274,42 @@ import 'video_processing_state.dart';
 class VideoProcessing extends pulumi.CustomResource {
   /// Config Id
   late final pulumi.Output<int> configId;
+
   /// Custom FLV end parameters.
   late final pulumi.Output<String?> flvSeekEnd;
+
   /// Custom FLV start parameters.
   late final pulumi.Output<String?> flvSeekStart;
+
   /// FLV drag mode. Value range:
   late final pulumi.Output<String?> flvVideoSeekMode;
+
   /// Custom mp4 end parameters.
   late final pulumi.Output<String?> mp4SeekEnd;
+
   /// Custom mp4 start parameters.
   late final pulumi.Output<String?> mp4SeekStart;
+
   /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
   /// - Match all incoming requests: value set to true
   /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
   late final pulumi.Output<String?> rule;
+
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   late final pulumi.Output<String?> ruleEnable;
+
   /// Rule name. When adding global configuration, this parameter does not need to be set.
   late final pulumi.Output<String?> ruleName;
+
   /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
   late final pulumi.Output<int?> sequence;
+
   /// The site ID, which can be obtained by calling the ListSites API.
   late final pulumi.Output<String> siteId;
+
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   late final pulumi.Output<int?> siteVersion;
+
   /// Drag and drop the play function switch. Value range:
   late final pulumi.Output<String?> videoSeekEnable;
 
@@ -310,24 +322,24 @@ class VideoProcessing extends pulumi.CustomResource {
     VideoProcessingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/videoProcessing:VideoProcessing',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configId = registerOutput<int>('configId');
-    this.flvSeekEnd = registerOutput<String?>('flvSeekEnd');
-    this.flvSeekStart = registerOutput<String?>('flvSeekStart');
-    this.flvVideoSeekMode = registerOutput<String?>('flvVideoSeekMode');
-    this.mp4SeekEnd = registerOutput<String?>('mp4SeekEnd');
-    this.mp4SeekStart = registerOutput<String?>('mp4SeekStart');
-    this.rule = registerOutput<String?>('rule');
-    this.ruleEnable = registerOutput<String?>('ruleEnable');
-    this.ruleName = registerOutput<String?>('ruleName');
-    this.sequence = registerOutput<int?>('sequence');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteVersion = registerOutput<int?>('siteVersion');
-    this.videoSeekEnable = registerOutput<String?>('videoSeekEnable');
+         'alicloud:esa/videoProcessing:VideoProcessing',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configId = registerOutput<int>('configId');
+    flvSeekEnd = registerOutput<String?>('flvSeekEnd');
+    flvSeekStart = registerOutput<String?>('flvSeekStart');
+    flvVideoSeekMode = registerOutput<String?>('flvVideoSeekMode');
+    mp4SeekEnd = registerOutput<String?>('mp4SeekEnd');
+    mp4SeekStart = registerOutput<String?>('mp4SeekStart');
+    rule = registerOutput<String?>('rule');
+    ruleEnable = registerOutput<String?>('ruleEnable');
+    ruleName = registerOutput<String?>('ruleName');
+    sequence = registerOutput<int?>('sequence');
+    siteId = registerOutput<String>('siteId');
+    siteVersion = registerOutput<int?>('siteVersion');
+    videoSeekEnable = registerOutput<String?>('videoSeekEnable');
   }
 
   /// Gets an existing [VideoProcessing] resource's state with the given [name] and [id].
@@ -348,23 +360,23 @@ class VideoProcessing extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/videoProcessing:VideoProcessing',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configId = registerOutput<int>('configId');
-    this.flvSeekEnd = registerOutput<String?>('flvSeekEnd');
-    this.flvSeekStart = registerOutput<String?>('flvSeekStart');
-    this.flvVideoSeekMode = registerOutput<String?>('flvVideoSeekMode');
-    this.mp4SeekEnd = registerOutput<String?>('mp4SeekEnd');
-    this.mp4SeekStart = registerOutput<String?>('mp4SeekStart');
-    this.rule = registerOutput<String?>('rule');
-    this.ruleEnable = registerOutput<String?>('ruleEnable');
-    this.ruleName = registerOutput<String?>('ruleName');
-    this.sequence = registerOutput<int?>('sequence');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteVersion = registerOutput<int?>('siteVersion');
-    this.videoSeekEnable = registerOutput<String?>('videoSeekEnable');
+         'alicloud:esa/videoProcessing:VideoProcessing',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configId = registerOutput<int>('configId');
+    flvSeekEnd = registerOutput<String?>('flvSeekEnd');
+    flvSeekStart = registerOutput<String?>('flvSeekStart');
+    flvVideoSeekMode = registerOutput<String?>('flvVideoSeekMode');
+    mp4SeekEnd = registerOutput<String?>('mp4SeekEnd');
+    mp4SeekStart = registerOutput<String?>('mp4SeekStart');
+    rule = registerOutput<String?>('rule');
+    ruleEnable = registerOutput<String?>('ruleEnable');
+    ruleName = registerOutput<String?>('ruleName');
+    sequence = registerOutput<int?>('sequence');
+    siteId = registerOutput<String>('siteId');
+    siteVersion = registerOutput<int?>('siteVersion');
+    videoSeekEnable = registerOutput<String?>('videoSeekEnable');
   }
 }

@@ -6,29 +6,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowState {
   /// Amazon Resource Name (ARN) of the workflow.
   final pulumi.Input<String>? arn;
+
   /// Change description of the workflow.
   final pulumi.Input<String>? changeDescription;
+
   /// Inline YAML string with data of the workflow. Exactly one of `data` and `uri` can be specified.
   final pulumi.Input<String>? data;
+
   /// Date the workflow was created.
   final pulumi.Input<String>? dateCreated;
+
   /// Description of the workflow.
   final pulumi.Input<String>? description;
+
   /// Amazon Resource Name (ARN) of the Key Management Service (KMS) Key used to encrypt the workflow.
   final pulumi.Input<String>? kmsKeyId;
+
   /// Name of the workflow.
   final pulumi.Input<String>? name;
+
   /// Owner of the workflow.
   final pulumi.Input<String>? owner;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value map of resource tags for the workflow. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// Type of the workflow. Valid values: `BUILD`, `TEST`.
   final pulumi.Input<String>? type;
+
   /// S3 URI with data of the workflow. Exactly one of `data` and `uri` can be specified.
   final pulumi.Input<String>? uri;
+
   /// Version of the workflow.
   ///
   /// The following arguments are optional:
@@ -87,21 +99,80 @@ class WorkflowState {
 
   factory WorkflowState.fromMap(Map<String, dynamic> map) {
     return WorkflowState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      changeDescription: map['changeDescription'] == null ? null : ((map['changeDescription'] as String).input()).input(),
-      data: map['data'] == null ? null : ((map['data'] as String).input()).input(),
-      dateCreated: map['dateCreated'] == null ? null : ((map['dateCreated'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      owner: map['owner'] == null ? null : ((map['owner'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
-      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
-      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      changeDescription: (() {
+        final guardedValue = map['changeDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      data: (() {
+        final guardedValue = map['data'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dateCreated: (() {
+        final guardedValue = map['dateCreated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      owner: (() {
+        final guardedValue = map['owner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_mskconnect;
-
 export 'mskconnect/connector.dart';
 export 'mskconnect/connector_args.dart';
 export 'mskconnect/connector_capacity.dart';

@@ -8,6 +8,7 @@ import 'managed_cluster_response.dart';
 class WorkflowTemplatePlacementResponse {
   /// Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.
   final pulumi.Input<ClusterSelectorResponse> clusterSelector;
+
   /// A cluster that is managed by the workflow.
   final pulumi.Input<ManagedClusterResponse> managedCluster;
 
@@ -21,16 +22,31 @@ class WorkflowTemplatePlacementResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterSelector': pulumi.Input.mapInputValue<ClusterSelectorResponse, Map<String, dynamic>>(clusterSelector, (value) => value.toMap()),
-      'managedCluster': pulumi.Input.mapInputValue<ManagedClusterResponse, Map<String, dynamic>>(managedCluster, (value) => value.toMap()),
+      'clusterSelector':
+          pulumi.Input.mapInputValue<
+            ClusterSelectorResponse,
+            Map<String, dynamic>
+          >(clusterSelector, (value) => value.toMap()),
+      'managedCluster':
+          pulumi.Input.mapInputValue<
+            ManagedClusterResponse,
+            Map<String, dynamic>
+          >(managedCluster, (value) => value.toMap()),
     };
   }
 
   factory WorkflowTemplatePlacementResponse.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementResponse(
-      clusterSelector: (ClusterSelectorResponse.fromMap((map['clusterSelector'] as Map).cast<String, dynamic>())).input(),
-      managedCluster: (ManagedClusterResponse.fromMap((map['managedCluster'] as Map).cast<String, dynamic>())).input(),
+      clusterSelector: pulumi.Input.fromValue(
+        ClusterSelectorResponse.fromMap(
+          (map['clusterSelector']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      managedCluster: pulumi.Input.fromValue(
+        ManagedClusterResponse.fromMap(
+          (map['managedCluster']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

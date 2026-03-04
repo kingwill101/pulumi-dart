@@ -29,12 +29,21 @@ class GetPeeringIamPolicyManagedidentitiesV1alpha1Args {
     };
   }
 
-  factory GetPeeringIamPolicyManagedidentitiesV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetPeeringIamPolicyManagedidentitiesV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPeeringIamPolicyManagedidentitiesV1alpha1Args(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      peeringId: (map['peeringId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      peeringId: pulumi.Input.fromValue(map['peeringId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

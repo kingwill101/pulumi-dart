@@ -1,5 +1,3 @@
-library module_discoveryengine;
-
 export 'discoveryengine/acl_config.dart';
 export 'discoveryengine/acl_config_args.dart';
 export 'discoveryengine/acl_config_idp_config.dart';

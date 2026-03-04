@@ -8,27 +8,35 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ecs_get_network_interfaces_get_network_interfaces_args_doc}
 class GetNetworkInterfacesArgs {
   final pulumi.Input<List<String>>? ids;
+
   /// ID of the instance that the ENI is attached to.
   final pulumi.Input<String>? instanceId;
+
   /// Name of the ENI.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? nameRegex;
   final pulumi.Input<String>? networkInterfaceName;
   final pulumi.Input<String>? outputFile;
   final pulumi.Input<String>? primaryIpAddress;
+
   /// Primary private IP of the ENI.
   final pulumi.Input<String>? privateIp;
+
   /// The Id of resource group.
   final pulumi.Input<String>? resourceGroupId;
   final pulumi.Input<String>? securityGroupId;
   final pulumi.Input<bool>? serviceManaged;
+
   /// Current status of the ENI.
   final pulumi.Input<String>? status;
+
   /// A map of tags assigned to the ENI.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<String>? type;
+
   /// ID of the VPC that the ENI belongs to.
   final pulumi.Input<String>? vpcId;
+
   /// ID of the vSwitch that the ENI is linked to.
   final pulumi.Input<String>? vswitchId;
 
@@ -91,23 +99,88 @@ class GetNetworkInterfacesArgs {
 
   factory GetNetworkInterfacesArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfacesArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      primaryIpAddress: map['primaryIpAddress'] == null ? null : (map['primaryIpAddress']! as String).input(),
-      privateIp: map['privateIp'] == null ? null : (map['privateIp']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
-      serviceManaged: map['serviceManaged'] == null ? null : (map['serviceManaged']! as bool).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaceName: (() {
+        final guardedValue = map['networkInterfaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryIpAddress: (() {
+        final guardedValue = map['primaryIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateIp: (() {
+        final guardedValue = map['privateIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupId: (() {
+        final guardedValue = map['securityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceManaged: (() {
+        final guardedValue = map['serviceManaged'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

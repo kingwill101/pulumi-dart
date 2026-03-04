@@ -4,7 +4,7 @@ import 'get_instances_result.dart';
 
 /// This data source provides the Eais Instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.137.0+.
+/// &gt; **NOTE:** Available in v1.137.0+.
 ///
 /// ## Example Usage
 ///

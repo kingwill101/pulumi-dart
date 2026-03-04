@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse {
   /// Optional. Display price of the product.
   final pulumi.Input<double> displayPrice;
+
   /// Optional. Price of the product without any discount. If zero, by default set to be the 'displayPrice'.
   final pulumi.Input<double> originalPrice;
 
@@ -24,11 +25,12 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse
     };
   }
 
-  factory GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse(
-      displayPrice: (map['displayPrice'] as double).input(),
-      originalPrice: (map['originalPrice'] as double).input(),
+      displayPrice: pulumi.Input.fromValue(map['displayPrice'] as double),
+      originalPrice: pulumi.Input.fromValue(map['originalPrice'] as double),
     );
   }
 }
-

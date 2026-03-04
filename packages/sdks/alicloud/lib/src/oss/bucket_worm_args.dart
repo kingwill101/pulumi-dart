@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketWormArgs {
   /// The name of the bucket
   final pulumi.Input<String> bucket;
+
   /// The specified number of days to retain the Object.
   final pulumi.Input<int>? retentionPeriodInDays;
+
   /// The status of the compliance retention policy. Optional values:
   /// - `InProgress`: After a compliance retention policy is created, the policy is in the InProgress status by default, and the validity period of this status is 24 hours.
   /// - `Locked`: The compliance retention policy is Locked.
@@ -36,10 +38,17 @@ class BucketWormArgs {
 
   factory BucketWormArgs.fromMap(Map<String, dynamic> map) {
     return BucketWormArgs(
-      bucket: (map['bucket'] as String).input(),
-      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : (map['retentionPeriodInDays']! as int).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      retentionPeriodInDays: (() {
+        final guardedValue = map['retentionPeriodInDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

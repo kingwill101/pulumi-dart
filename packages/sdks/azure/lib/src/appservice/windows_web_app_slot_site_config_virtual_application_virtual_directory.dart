@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory {
   /// The physical path for the Virtual Application.
   final pulumi.Input<String>? physicalPath;
+
   /// The Virtual Path for the Virtual Application.
   final pulumi.Input<String>? virtualPath;
 
@@ -23,11 +24,20 @@ class WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory {
     };
   }
 
-  factory WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory.fromMap(Map<String, dynamic> map) {
+  factory WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WindowsWebAppSlotSiteConfigVirtualApplicationVirtualDirectory(
-      physicalPath: map['physicalPath'] == null ? null : (map['physicalPath']! as String).input(),
-      virtualPath: map['virtualPath'] == null ? null : (map['virtualPath']! as String).input(),
+      physicalPath: (() {
+        final guardedValue = map['physicalPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualPath: (() {
+        final guardedValue = map['virtualPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

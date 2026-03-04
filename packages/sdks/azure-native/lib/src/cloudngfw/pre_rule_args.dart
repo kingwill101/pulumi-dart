@@ -13,40 +13,58 @@ import 'tag_info.dart';
 class PreRuleArgs {
   /// rule action
   final pulumi.Input<String>? actionType;
+
   /// array of rule applications
   final pulumi.Input<List<String>>? applications;
+
   /// rule comment
   final pulumi.Input<String>? auditComment;
+
   /// rule category
   final pulumi.Input<Category>? category;
+
   /// enable or disable decryption
   final pulumi.Input<String>? decryptionRuleType;
+
   /// rule description
   final pulumi.Input<String>? description;
+
   /// destination address
   final pulumi.Input<DestinationAddr>? destination;
+
   /// enable or disable logging
   final pulumi.Input<String>? enableLogging;
+
   /// GlobalRulestack resource name
   final pulumi.Input<String> globalRulestackName;
+
   /// inbound Inspection Certificate
   final pulumi.Input<String>? inboundInspectionCertificate;
+
   /// cidr should not be 'any'
   final pulumi.Input<String>? negateDestination;
+
   /// cidr should not be 'any'
   final pulumi.Input<String>? negateSource;
+
   /// Pre Rule priority
   final pulumi.Input<String>? priority;
+
   /// any, application-default, TCP:number, UDP:number
   final pulumi.Input<String>? protocol;
+
   /// prot port list
   final pulumi.Input<List<String>>? protocolPortList;
+
   /// rule name
   final pulumi.Input<String> ruleName;
+
   /// state of this rule
   final pulumi.Input<String>? ruleState;
+
   /// source address
   final pulumi.Input<SourceAddr>? source;
+
   /// tag for rule
   final pulumi.Input<List<TagInfo>>? tags;
 
@@ -97,10 +115,18 @@ class PreRuleArgs {
       'actionType': ?actionType,
       'applications': ?applications,
       'auditComment': ?auditComment,
-      'category': ?pulumi.Input.mapOptionalInputValue<Category, Map<String, dynamic>>(category, (value) => value.toMap()),
+      'category':
+          ?pulumi.Input.mapOptionalInputValue<Category, Map<String, dynamic>>(
+            category,
+            (value) => value.toMap(),
+          ),
       'decryptionRuleType': ?decryptionRuleType,
       'description': ?description,
-      'destination': ?pulumi.Input.mapOptionalInputValue<DestinationAddr, Map<String, dynamic>>(destination, (value) => value.toMap()),
+      'destination':
+          ?pulumi.Input.mapOptionalInputValue<
+            DestinationAddr,
+            Map<String, dynamic>
+          >(destination, (value) => value.toMap()),
       'enableLogging': ?enableLogging,
       'globalRulestackName': globalRulestackName,
       'inboundInspectionCertificate': ?inboundInspectionCertificate,
@@ -111,33 +137,129 @@ class PreRuleArgs {
       'protocolPortList': ?protocolPortList,
       'ruleName': ruleName,
       'ruleState': ?ruleState,
-      'source': ?pulumi.Input.mapOptionalInputValue<SourceAddr, Map<String, dynamic>>(source, (value) => value.toMap()),
-      'tags': ?pulumi.Input.mapOptionalInputValue<List<TagInfo>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<TagInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'source':
+          ?pulumi.Input.mapOptionalInputValue<SourceAddr, Map<String, dynamic>>(
+            source,
+            (value) => value.toMap(),
+          ),
+      'tags':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TagInfo>,
+            List<Map<String, dynamic>>
+          >(
+            tags,
+            (value) => pulumi.Input.encodeList<TagInfo, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
     };
   }
 
   factory PreRuleArgs.fromMap(Map<String, dynamic> map) {
     return PreRuleArgs(
-      actionType: map['actionType'] == null ? null : (map['actionType']! as String).input(),
-      applications: map['applications'] == null ? null : ((map['applications']! as List).cast<String>()).input(),
-      auditComment: map['auditComment'] == null ? null : (map['auditComment']! as String).input(),
-      category: map['category'] == null ? null : (Category.fromMap((map['category']! as Map).cast<String, dynamic>())).input(),
-      decryptionRuleType: map['decryptionRuleType'] == null ? null : (map['decryptionRuleType']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      destination: map['destination'] == null ? null : (DestinationAddr.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
-      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']! as String).input(),
-      globalRulestackName: (map['globalRulestackName'] as String).input(),
-      inboundInspectionCertificate: map['inboundInspectionCertificate'] == null ? null : (map['inboundInspectionCertificate']! as String).input(),
-      negateDestination: map['negateDestination'] == null ? null : (map['negateDestination']! as String).input(),
-      negateSource: map['negateSource'] == null ? null : (map['negateSource']! as String).input(),
-      priority: map['priority'] == null ? null : (map['priority']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      protocolPortList: map['protocolPortList'] == null ? null : ((map['protocolPortList']! as List).cast<String>()).input(),
-      ruleName: (map['ruleName'] as String).input(),
-      ruleState: map['ruleState'] == null ? null : (map['ruleState']! as String).input(),
-      source: map['source'] == null ? null : (SourceAddr.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagInfo>(map['tags']!, (value) => TagInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actionType: (() {
+        final guardedValue = map['actionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      applications: (() {
+        final guardedValue = map['applications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      auditComment: (() {
+        final guardedValue = map['auditComment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Category.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      decryptionRuleType: (() {
+        final guardedValue = map['decryptionRuleType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DestinationAddr.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      enableLogging: (() {
+        final guardedValue = map['enableLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      globalRulestackName: pulumi.Input.fromValue(
+        map['globalRulestackName'] as String,
+      ),
+      inboundInspectionCertificate: (() {
+        final guardedValue = map['inboundInspectionCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      negateDestination: (() {
+        final guardedValue = map['negateDestination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      negateSource: (() {
+        final guardedValue = map['negateSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocolPortList: (() {
+        final guardedValue = map['protocolPortList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
+      ruleState: (() {
+        final guardedValue = map['ruleState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SourceAddr.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TagInfo>(
+            guardedValue,
+            (value) => TagInfo.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -7,12 +7,16 @@ import 'reportable_exception_response.dart';
 class ConnectToTargetAzureDbForMySqlTaskOutputResponse {
   /// List of databases on target server
   final pulumi.Input<List<String>> databases;
+
   /// Result identifier
   final pulumi.Input<String> id;
+
   /// Version of the target server
   final pulumi.Input<String> serverVersion;
+
   /// Target server brand version
   final pulumi.Input<String> targetServerBrandVersion;
+
   /// Validation errors associated with the task
   final pulumi.Input<List<ReportableExceptionResponse>> validationErrors;
 
@@ -36,18 +40,41 @@ class ConnectToTargetAzureDbForMySqlTaskOutputResponse {
       'id': id,
       'serverVersion': serverVersion,
       'targetServerBrandVersion': targetServerBrandVersion,
-      'validationErrors': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(validationErrors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'validationErrors':
+          pulumi.Input.mapInputValue<
+            List<ReportableExceptionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            validationErrors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReportableExceptionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory ConnectToTargetAzureDbForMySqlTaskOutputResponse.fromMap(Map<String, dynamic> map) {
+  factory ConnectToTargetAzureDbForMySqlTaskOutputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectToTargetAzureDbForMySqlTaskOutputResponse(
-      databases: ((map['databases'] as List).cast<String>()).input(),
-      id: (map['id'] as String).input(),
-      serverVersion: (map['serverVersion'] as String).input(),
-      targetServerBrandVersion: (map['targetServerBrandVersion'] as String).input(),
-      validationErrors: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      databases: pulumi.Input.fromValue(
+        (map['databases'] as List).cast<String>(),
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      serverVersion: pulumi.Input.fromValue(map['serverVersion'] as String),
+      targetServerBrandVersion: pulumi.Input.fromValue(
+        map['targetServerBrandVersion'] as String,
+      ),
+      validationErrors: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ReportableExceptionResponse>(
+          map['validationErrors']!,
+          (value) => ReportableExceptionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

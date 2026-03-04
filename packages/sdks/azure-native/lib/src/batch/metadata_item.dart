@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetadataItem {
   /// The name of the metadata item.
   final pulumi.Input<String> name;
+
   /// The value of the metadata item.
   final pulumi.Input<String> value;
 
   /// Creates a new [MetadataItem].
   /// [name] The name of the metadata item.
   /// [value] The value of the metadata item.
-  MetadataItem({
-    required this.name,
-    required this.value,
-  });
+  MetadataItem({required this.name, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
   factory MetadataItem.fromMap(Map<String, dynamic> map) {
     return MetadataItem(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

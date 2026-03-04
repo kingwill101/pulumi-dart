@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceTypesTypeInfo {
   /// Payment formpaid (paid)(free).
   final pulumi.Input<String> chargeType;
+
   /// Delivery Levelcenter (centralized deployment level)region (regional deployment level)zone (Availability zone deployment level).
   final pulumi.Input<String> deliveryScope;
+
   /// Resource type description.
   final pulumi.Input<String> description;
+
   /// The resource type name.
   final pulumi.Input<String> title;
 
@@ -35,11 +38,10 @@ class GetResourceTypesTypeInfo {
 
   factory GetResourceTypesTypeInfo.fromMap(Map<String, dynamic> map) {
     return GetResourceTypesTypeInfo(
-      chargeType: (map['chargeType'] as String).input(),
-      deliveryScope: (map['deliveryScope'] as String).input(),
-      description: (map['description'] as String).input(),
-      title: (map['title'] as String).input(),
+      chargeType: pulumi.Input.fromValue(map['chargeType'] as String),
+      deliveryScope: pulumi.Input.fromValue(map['deliveryScope'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
-

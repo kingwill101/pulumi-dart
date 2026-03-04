@@ -6,7 +6,7 @@ import 'data_limit_state.dart';
 ///
 /// For information about Data Security Center Data Limit and how to use it, see [What is Data Limit](https://www.alibabacloud.com/help/en/doc-detail/158987.html).
 ///
-/// > **NOTE:** Available since v1.159.0.
+/// &gt; **NOTE:** Available since v1.159.0.
 ///
 /// ## Example Usage
 ///
@@ -678,22 +678,31 @@ import 'data_limit_state.dart';
 class DataLimit extends pulumi.CustomResource {
   /// Whether to enable the log auditing feature. Valid values: `0`, `1`.
   late final pulumi.Output<int> auditStatus;
+
   /// The type of the database. Valid values: `MySQL`, `SQLServer`.
   late final pulumi.Output<String?> engineType;
+
   /// The lang.
   late final pulumi.Output<String?> lang;
+
   /// The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`log_store_day` is valid when the `audit_status` is `1`.
   late final pulumi.Output<int?> logStoreDay;
+
   /// The ID of the data asset.
   late final pulumi.Output<String?> parentId;
+
   /// The password that is used to connect to the database.
   late final pulumi.Output<String?> password;
+
   /// The port that is used to connect to the database.
   late final pulumi.Output<int?> port;
+
   /// The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
   late final pulumi.Output<String> resourceType;
+
   /// The region ID of the data asset.
   late final pulumi.Output<String?> serviceRegionId;
+
   /// The name of the service to which the data asset belongs.
   late final pulumi.Output<String?> userName;
 
@@ -706,21 +715,21 @@ class DataLimit extends pulumi.CustomResource {
     DataLimitArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sddp/dataLimit:DataLimit',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditStatus = registerOutput<int>('auditStatus');
-    this.engineType = registerOutput<String?>('engineType');
-    this.lang = registerOutput<String?>('lang');
-    this.logStoreDay = registerOutput<int?>('logStoreDay');
-    this.parentId = registerOutput<String?>('parentId');
-    this.password = registerOutput<String?>('password');
-    this.port = registerOutput<int?>('port');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.serviceRegionId = registerOutput<String?>('serviceRegionId');
-    this.userName = registerOutput<String?>('userName');
+         'alicloud:sddp/dataLimit:DataLimit',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditStatus = registerOutput<int>('auditStatus');
+    engineType = registerOutput<String?>('engineType');
+    lang = registerOutput<String?>('lang');
+    logStoreDay = registerOutput<int?>('logStoreDay');
+    parentId = registerOutput<String?>('parentId');
+    password = registerOutput<String?>('password');
+    port = registerOutput<int?>('port');
+    resourceType = registerOutput<String>('resourceType');
+    serviceRegionId = registerOutput<String?>('serviceRegionId');
+    userName = registerOutput<String?>('userName');
   }
 
   /// Gets an existing [DataLimit] resource's state with the given [name] and [id].
@@ -741,20 +750,20 @@ class DataLimit extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sddp/dataLimit:DataLimit',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditStatus = registerOutput<int>('auditStatus');
-    this.engineType = registerOutput<String?>('engineType');
-    this.lang = registerOutput<String?>('lang');
-    this.logStoreDay = registerOutput<int?>('logStoreDay');
-    this.parentId = registerOutput<String?>('parentId');
-    this.password = registerOutput<String?>('password');
-    this.port = registerOutput<int?>('port');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.serviceRegionId = registerOutput<String?>('serviceRegionId');
-    this.userName = registerOutput<String?>('userName');
+         'alicloud:sddp/dataLimit:DataLimit',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    auditStatus = registerOutput<int>('auditStatus');
+    engineType = registerOutput<String?>('engineType');
+    lang = registerOutput<String?>('lang');
+    logStoreDay = registerOutput<int?>('logStoreDay');
+    parentId = registerOutput<String?>('parentId');
+    password = registerOutput<String?>('password');
+    port = registerOutput<int?>('port');
+    resourceType = registerOutput<String>('resourceType');
+    serviceRegionId = registerOutput<String?>('serviceRegionId');
+    userName = registerOutput<String?>('userName');
   }
 }

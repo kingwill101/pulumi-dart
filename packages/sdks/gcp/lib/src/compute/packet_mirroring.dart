@@ -650,28 +650,36 @@ class PacketMirroring extends pulumi.CustomResource {
   /// set to true.
   /// Structure is documented below.
   late final pulumi.Output<PacketMirroringCollectorIlb> collectorIlb;
+
   /// A human-readable description of the rule.
   late final pulumi.Output<String?> description;
+
   /// A filter for mirrored traffic.  If unset, all traffic is mirrored.
   /// Structure is documented below.
   late final pulumi.Output<PacketMirroringFilter?> filter;
+
   /// A means of specifying which resources to mirror.
   /// Structure is documented below.
   late final pulumi.Output<PacketMirroringMirroredResources> mirroredResources;
+
   /// The name of the packet mirroring rule
   late final pulumi.Output<String> name;
+
   /// Specifies the mirrored VPC network. Only packets in this network
   /// will be mirrored. All mirrored VMs should have a NIC in the given
   /// network. All mirrored subnetworks should belong to the given network.
   /// Structure is documented below.
   late final pulumi.Output<PacketMirroringNetwork> network;
+
   /// Since only one rule can be active at a time, priority is
   /// used to break ties in the case of two rules that apply to
   /// the same instances.
   late final pulumi.Output<int> priority;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The Region in which the created address should reside.
   /// If it is not provided, the provider region is used.
   late final pulumi.Output<String> region;
@@ -685,20 +693,22 @@ class PacketMirroring extends pulumi.CustomResource {
     PacketMirroringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/packetMirroring:PacketMirroring',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.collectorIlb = registerOutput<PacketMirroringCollectorIlb>('collectorIlb');
-    this.description = registerOutput<String?>('description');
-    this.filter = registerOutput<PacketMirroringFilter?>('filter');
-    this.mirroredResources = registerOutput<PacketMirroringMirroredResources>('mirroredResources');
+         'gcp:compute/packetMirroring:PacketMirroring',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    collectorIlb = registerOutput<PacketMirroringCollectorIlb>('collectorIlb');
+    description = registerOutput<String?>('description');
+    filter = registerOutput<PacketMirroringFilter?>('filter');
+    mirroredResources = registerOutput<PacketMirroringMirroredResources>(
+      'mirroredResources',
+    );
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<PacketMirroringNetwork>('network');
-    this.priority = registerOutput<int>('priority');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
+    network = registerOutput<PacketMirroringNetwork>('network');
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [PacketMirroring] resource's state with the given [name] and [id].
@@ -719,19 +729,21 @@ class PacketMirroring extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/packetMirroring:PacketMirroring',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.collectorIlb = registerOutput<PacketMirroringCollectorIlb>('collectorIlb');
-    this.description = registerOutput<String?>('description');
-    this.filter = registerOutput<PacketMirroringFilter?>('filter');
-    this.mirroredResources = registerOutput<PacketMirroringMirroredResources>('mirroredResources');
+         'gcp:compute/packetMirroring:PacketMirroring',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    collectorIlb = registerOutput<PacketMirroringCollectorIlb>('collectorIlb');
+    description = registerOutput<String?>('description');
+    filter = registerOutput<PacketMirroringFilter?>('filter');
+    mirroredResources = registerOutput<PacketMirroringMirroredResources>(
+      'mirroredResources',
+    );
     this.name = registerOutput<String>('name');
-    this.network = registerOutput<PacketMirroringNetwork>('network');
-    this.priority = registerOutput<int>('priority');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
+    network = registerOutput<PacketMirroringNetwork>('network');
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
   }
 }

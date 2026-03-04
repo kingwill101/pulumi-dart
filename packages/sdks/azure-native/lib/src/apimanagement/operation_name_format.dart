@@ -3,16 +3,15 @@ enum OperationNameFormat {
   valueName("Name"),
   valueUrl("Url");
 
-  const OperationNameFormat(this.value);
-  final String value;
+  const OperationNameFormat(this.wireValue);
+  final String wireValue;
 
   static OperationNameFormat fromValue(String value) {
     for (final item in OperationNameFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OperationNameFormat value: $value');
   }
 }
-

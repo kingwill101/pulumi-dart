@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IndustrialPidLoopArgs {
   /// The Pid Loop Configuration.
   final pulumi.Input<String> pidLoopConfiguration;
+
   /// The dcs type of Pid Loop. Valid values: `standard`.
   final pulumi.Input<String> pidLoopDcsType;
+
   /// The desc of Pid Loop.
   final pulumi.Input<String>? pidLoopDesc;
+
   /// Whether is crucial Pid Loop.
   final pulumi.Input<bool> pidLoopIsCrucial;
+
   /// The name of Pid Loop.
   final pulumi.Input<String> pidLoopName;
+
   /// The type of Pid Loop. Valid values: `0`, `1`, `2`, `3`, `4`, `5`.
   final pulumi.Input<String> pidLoopType;
+
   /// The pid project id.
   final pulumi.Input<String> pidProjectId;
 
@@ -54,14 +60,19 @@ class IndustrialPidLoopArgs {
 
   factory IndustrialPidLoopArgs.fromMap(Map<String, dynamic> map) {
     return IndustrialPidLoopArgs(
-      pidLoopConfiguration: (map['pidLoopConfiguration'] as String).input(),
-      pidLoopDcsType: (map['pidLoopDcsType'] as String).input(),
-      pidLoopDesc: map['pidLoopDesc'] == null ? null : (map['pidLoopDesc']! as String).input(),
-      pidLoopIsCrucial: (map['pidLoopIsCrucial'] as bool).input(),
-      pidLoopName: (map['pidLoopName'] as String).input(),
-      pidLoopType: (map['pidLoopType'] as String).input(),
-      pidProjectId: (map['pidProjectId'] as String).input(),
+      pidLoopConfiguration: pulumi.Input.fromValue(
+        map['pidLoopConfiguration'] as String,
+      ),
+      pidLoopDcsType: pulumi.Input.fromValue(map['pidLoopDcsType'] as String),
+      pidLoopDesc: (() {
+        final guardedValue = map['pidLoopDesc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pidLoopIsCrucial: pulumi.Input.fromValue(map['pidLoopIsCrucial'] as bool),
+      pidLoopName: pulumi.Input.fromValue(map['pidLoopName'] as String),
+      pidLoopType: pulumi.Input.fromValue(map['pidLoopType'] as String),
+      pidProjectId: pulumi.Input.fromValue(map['pidProjectId'] as String),
     );
   }
 }
-

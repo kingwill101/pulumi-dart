@@ -7,12 +7,16 @@ import 'nsp_access_rule_response.dart';
 class ProvisioningIssuePropertiesResponse {
   /// Description of the issue
   final pulumi.Input<String>? description;
+
   /// Type of Issue
   final pulumi.Input<String>? issueType;
+
   /// Provisioning state of Network Security Perimeter configuration propagation
   final pulumi.Input<String>? severity;
+
   /// Access rules that can be added to the same profile to remediate the issue.
   final pulumi.Input<List<NspAccessRuleResponse>>? suggestedAccessRules;
+
   /// ARM IDs of resources that can be associated to the same perimeter to remediate the issue.
   final pulumi.Input<List<String>> suggestedResourceIds;
 
@@ -35,19 +39,56 @@ class ProvisioningIssuePropertiesResponse {
       'description': ?description,
       'issueType': ?issueType,
       'severity': ?severity,
-      'suggestedAccessRules': ?pulumi.Input.mapOptionalInputValue<List<NspAccessRuleResponse>, List<Map<String, dynamic>>>(suggestedAccessRules, (value) => pulumi.Input.encodeList<NspAccessRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'suggestedAccessRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NspAccessRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            suggestedAccessRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NspAccessRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'suggestedResourceIds': suggestedResourceIds,
     };
   }
 
-  factory ProvisioningIssuePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ProvisioningIssuePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProvisioningIssuePropertiesResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      issueType: map['issueType'] == null ? null : (map['issueType']! as String).input(),
-      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
-      suggestedAccessRules: map['suggestedAccessRules'] == null ? null : (pulumi.Input.decodeList<NspAccessRuleResponse>(map['suggestedAccessRules']!, (value) => NspAccessRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      suggestedResourceIds: ((map['suggestedResourceIds'] as List).cast<String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      issueType: (() {
+        final guardedValue = map['issueType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      severity: (() {
+        final guardedValue = map['severity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      suggestedAccessRules: (() {
+        final guardedValue = map['suggestedAccessRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NspAccessRuleResponse>(
+            guardedValue,
+            (value) => NspAccessRuleResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      suggestedResourceIds: pulumi.Input.fromValue(
+        (map['suggestedResourceIds'] as List).cast<String>(),
+      ),
     );
   }
 }
-

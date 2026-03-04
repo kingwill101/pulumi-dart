@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema {
   /// Comment describing the parameter.
   final pulumi.Input<String>? comment;
+
   /// Default value for the parameter.
   final pulumi.Input<String>? defaultValue;
+
   /// Whether the parameter is required.
   final pulumi.Input<bool> required;
 
@@ -28,12 +30,21 @@ class MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSche
     };
   }
 
-  factory MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema.fromMap(Map<String, dynamic> map) {
+  factory MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema(
-      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
-      defaultValue: map['defaultValue'] == null ? null : ((map['defaultValue'] as String).input()).input(),
-      required: (map['required'] as bool).input(),
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultValue: (() {
+        final guardedValue = map['defaultValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      required: pulumi.Input.fromValue(map['required'] as bool),
     );
   }
 }
-

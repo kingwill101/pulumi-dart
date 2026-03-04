@@ -5,16 +5,15 @@ enum EnvironmentPermission {
   valueWrite("write"),
   valueAdmin("admin");
 
-  const EnvironmentPermission(this.value);
-  final String value;
+  const EnvironmentPermission(this.wireValue);
+  final String wireValue;
 
   static EnvironmentPermission fromValue(String value) {
     for (final item in EnvironmentPermission.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EnvironmentPermission value: $value');
   }
 }
-

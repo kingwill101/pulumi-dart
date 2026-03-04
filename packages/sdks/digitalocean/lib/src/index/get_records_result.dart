@@ -10,6 +10,7 @@ class GetRecordsResult {
   /// Domain of the DNS record.
   final String domain;
   final List<GetRecordsFilter>? filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetRecordsRecord> records;
@@ -32,21 +33,58 @@ class GetRecordsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'domain': domain,
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetRecordsFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<GetRecordsFilter, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'id': id,
-      'records': pulumi.Input.encodeList<GetRecordsRecord, Map<String, dynamic>>(records, (value) => value.toMap()),
-      'sorts': ?sorts == null ? null : pulumi.Input.encodeList<GetRecordsSort, Map<String, dynamic>>(sorts!, (value) => value.toMap()),
+      'records':
+          pulumi.Input.encodeList<GetRecordsRecord, Map<String, dynamic>>(
+            records,
+            (value) => value.toMap(),
+          ),
+      'sorts': ?(() {
+        final guardedValue = sorts;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<GetRecordsSort, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
     };
   }
 
   factory GetRecordsResult.fromMap(Map<String, dynamic> map) {
     return GetRecordsResult(
       domain: map['domain'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetRecordsFilter>(map['filters']!, (value) => GetRecordsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetRecordsFilter>(
+          guardedValue,
+          (value) =>
+              GetRecordsFilter.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       id: map['id'] as String,
-      records: pulumi.Input.decodeList<GetRecordsRecord>(map['records'], (value) => GetRecordsRecord.fromMap((value as Map).cast<String, dynamic>())),
-      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetRecordsSort>(map['sorts']!, (value) => GetRecordsSort.fromMap((value as Map).cast<String, dynamic>())),
+      records: pulumi.Input.decodeList<GetRecordsRecord>(
+        map['records']!,
+        (value) =>
+            GetRecordsRecord.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      sorts: (() {
+        final guardedValue = map['sorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetRecordsSort>(
+          guardedValue,
+          (value) =>
+              GetRecordsSort.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

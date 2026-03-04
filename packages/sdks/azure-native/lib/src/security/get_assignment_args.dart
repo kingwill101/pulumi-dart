@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAssignmentArgs {
   /// The security assignment key - unique key for the standard assignment
   final pulumi.Input<String> assignmentId;
+
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetAssignmentArgs {
 
   factory GetAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetAssignmentArgs(
-      assignmentId: (map['assignmentId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      assignmentId: pulumi.Input.fromValue(map['assignmentId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

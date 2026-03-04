@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageTemplateManagedImageDistributor {
   /// Tags that will be applied to the artifact once it has been created/updated by the distributor.
   final pulumi.Input<Map<String, String>>? artifactTags;
+
   /// Resource Id of the Managed Disk Image
   final pulumi.Input<String> imageId;
+
   /// Azure location for the image, should match if image already exists
   final pulumi.Input<String> location;
+
   /// The name to be used for the associated RunOutput.
   final pulumi.Input<String> runOutputName;
+
   /// Type of distribution.
   /// Expected value is 'ManagedImage'.
   final pulumi.Input<String> type;
@@ -40,14 +44,21 @@ class ImageTemplateManagedImageDistributor {
     };
   }
 
-  factory ImageTemplateManagedImageDistributor.fromMap(Map<String, dynamic> map) {
+  factory ImageTemplateManagedImageDistributor.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ImageTemplateManagedImageDistributor(
-      artifactTags: map['artifactTags'] == null ? null : ((map['artifactTags']! as Map).cast<String, String>()).input(),
-      imageId: (map['imageId'] as String).input(),
-      location: (map['location'] as String).input(),
-      runOutputName: (map['runOutputName'] as String).input(),
-      type: (map['type'] as String).input(),
+      artifactTags: (() {
+        final guardedValue = map['artifactTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      imageId: pulumi.Input.fromValue(map['imageId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      runOutputName: pulumi.Input.fromValue(map['runOutputName'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -7,16 +7,15 @@ enum WebPubSubSkuTier {
   valueStandard("Standard"),
   valuePremium("Premium");
 
-  const WebPubSubSkuTier(this.value);
-  final String value;
+  const WebPubSubSkuTier(this.wireValue);
+  final String wireValue;
 
   static WebPubSubSkuTier fromValue(String value) {
     for (final item in WebPubSubSkuTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WebPubSubSkuTier value: $value');
   }
 }
-

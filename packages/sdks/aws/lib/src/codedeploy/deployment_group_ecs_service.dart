@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentGroupEcsService {
   /// The name of the ECS cluster.
   final pulumi.Input<String> clusterName;
+
   /// The name of the ECS service.
   final pulumi.Input<String> serviceName;
 
@@ -25,9 +26,8 @@ class DeploymentGroupEcsService {
 
   factory DeploymentGroupEcsService.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupEcsService(
-      clusterName: (map['clusterName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

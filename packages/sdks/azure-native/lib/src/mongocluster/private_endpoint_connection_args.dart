@@ -10,10 +10,13 @@ import 'private_endpoint_connection_properties.dart';
 class PrivateEndpointConnectionArgs {
   /// The name of the mongo cluster.
   final pulumi.Input<String> mongoClusterName;
+
   /// The name of the private endpoint connection associated with the Azure resource.
   final pulumi.Input<String>? privateEndpointConnectionName;
+
   /// The resource-specific properties for this resource.
   final pulumi.Input<PrivateEndpointConnectionProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,18 +36,37 @@ class PrivateEndpointConnectionArgs {
     return <String, dynamic>{
       'mongoClusterName': mongoClusterName,
       'privateEndpointConnectionName': ?privateEndpointConnectionName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<PrivateEndpointConnectionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            PrivateEndpointConnectionProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory PrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionArgs(
-      mongoClusterName: (map['mongoClusterName'] as String).input(),
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName']! as String).input(),
-      properties: map['properties'] == null ? null : (PrivateEndpointConnectionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      mongoClusterName: pulumi.Input.fromValue(
+        map['mongoClusterName'] as String,
+      ),
+      privateEndpointConnectionName: (() {
+        final guardedValue = map['privateEndpointConnectionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PrivateEndpointConnectionProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

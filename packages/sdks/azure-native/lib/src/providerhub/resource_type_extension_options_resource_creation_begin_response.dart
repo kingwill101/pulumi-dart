@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceTypeExtensionOptionsResourceCreationBeginResponse {
   /// The request.
   final pulumi.Input<List<String>>? request;
+
   /// The response.
   final pulumi.Input<List<String>>? response;
 
@@ -18,17 +19,23 @@ class ResourceTypeExtensionOptionsResourceCreationBeginResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'request': ?request,
-      'response': ?response,
-    };
+    return <String, dynamic>{'request': ?request, 'response': ?response};
   }
 
-  factory ResourceTypeExtensionOptionsResourceCreationBeginResponse.fromMap(Map<String, dynamic> map) {
+  factory ResourceTypeExtensionOptionsResourceCreationBeginResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceTypeExtensionOptionsResourceCreationBeginResponse(
-      request: map['request'] == null ? null : ((map['request']! as List).cast<String>()).input(),
-      response: map['response'] == null ? null : ((map['response']! as List).cast<String>()).input(),
+      request: (() {
+        final guardedValue = map['request'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      response: (() {
+        final guardedValue = map['response'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

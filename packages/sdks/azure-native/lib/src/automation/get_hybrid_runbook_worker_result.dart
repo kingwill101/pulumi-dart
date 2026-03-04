@@ -6,24 +6,34 @@ import 'system_data_response.dart';
 class GetHybridRunbookWorkerResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource Id for the resource
   final String id;
+
   /// Gets or sets the assigned machine IP address.
   final String? ip;
+
   /// Last Heartbeat from the Worker
   final String? lastSeenDateTime;
+
   /// The name of the resource
   final String name;
+
   /// Gets or sets the registration time of the worker machine.
   final String? registeredDateTime;
+
   /// Resource system metadata.
   final SystemDataResponse systemData;
+
   /// The type of the resource.
   final String type;
+
   /// Azure Resource Manager Id for a virtual machine.
   final String? vmResourceId;
+
   /// Name of the HybridWorker.
   final String? workerName;
+
   /// Type of the HybridWorker.
   final String? workerType;
 
@@ -73,16 +83,41 @@ class GetHybridRunbookWorkerResult {
     return GetHybridRunbookWorkerResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      ip: map['ip'] == null ? null : map['ip']! as String,
-      lastSeenDateTime: map['lastSeenDateTime'] == null ? null : map['lastSeenDateTime']! as String,
+      ip: (() {
+        final guardedValue = map['ip'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      lastSeenDateTime: (() {
+        final guardedValue = map['lastSeenDateTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      registeredDateTime: map['registeredDateTime'] == null ? null : map['registeredDateTime']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      registeredDateTime: (() {
+        final guardedValue = map['registeredDateTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
-      vmResourceId: map['vmResourceId'] == null ? null : map['vmResourceId']! as String,
-      workerName: map['workerName'] == null ? null : map['workerName']! as String,
-      workerType: map['workerType'] == null ? null : map['workerType']! as String,
+      vmResourceId: (() {
+        final guardedValue = map['vmResourceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      workerName: (() {
+        final guardedValue = map['workerName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      workerType: (() {
+        final guardedValue = map['workerType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkSettingsArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// One or more security groups used to control access from streaming instances to your VPC.
   final pulumi.Input<List<String>> securityGroupIds;
+
   /// The subnets in which network interfaces are created to connect streaming instances to your VPC. At least two subnet ids must be specified.
   final pulumi.Input<List<String>> subnetIds;
+
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The VPC that streaming instances will connect to.
   ///
   /// The following arguments are optional:
@@ -46,12 +50,25 @@ class NetworkSettingsArgs {
 
   factory NetworkSettingsArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSettingsArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      vpcId: (map['vpcId'] as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupIds: pulumi.Input.fromValue(
+        (map['securityGroupIds'] as List).cast<String>(),
+      ),
+      subnetIds: pulumi.Input.fromValue(
+        (map['subnetIds'] as List).cast<String>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
-

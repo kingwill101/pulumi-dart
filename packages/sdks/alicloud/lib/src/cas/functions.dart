@@ -4,7 +4,7 @@ import 'get_certificates_result.dart';
 import 'get_service_certificates_args.dart';
 import 'get_service_certificates_result.dart';
 
-/// > **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
+/// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
 ///
 /// This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cas_get_certificates_get_certificates_args_doc}
@@ -24,7 +24,7 @@ Future<GetCertificatesResult> getCertificates(
 
 /// This data source provides the Ssl Certificates Service Certificates of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.129.0.
+/// &gt; **NOTE:** Available since v1.129.0.
 ///
 /// ## Example Usage
 ///

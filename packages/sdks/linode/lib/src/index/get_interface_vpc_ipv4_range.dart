@@ -8,20 +8,15 @@ class GetInterfaceVpcIpv4Range {
 
   /// Creates a new [GetInterfaceVpcIpv4Range].
   /// [range] The VPC IPv4 range.
-  GetInterfaceVpcIpv4Range({
-    required this.range,
-  });
+  GetInterfaceVpcIpv4Range({required this.range});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'range': range,
-    };
+    return <String, dynamic>{'range': range};
   }
 
   factory GetInterfaceVpcIpv4Range.fromMap(Map<String, dynamic> map) {
     return GetInterfaceVpcIpv4Range(
-      range: (map['range'] as String).input(),
+      range: pulumi.Input.fromValue(map['range'] as String),
     );
   }
 }
-

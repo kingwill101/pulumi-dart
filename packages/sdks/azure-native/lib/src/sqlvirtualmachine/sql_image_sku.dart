@@ -6,16 +6,15 @@ enum SqlImageSku {
   enterprise("Enterprise"),
   web("Web");
 
-  const SqlImageSku(this.value);
-  final String value;
+  const SqlImageSku(this.wireValue);
+  final String wireValue;
 
   static SqlImageSku fromValue(String value) {
     for (final item in SqlImageSku.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SqlImageSku value: $value');
   }
 }
-

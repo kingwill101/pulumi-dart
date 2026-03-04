@@ -4,7 +4,7 @@ import 'enterprise_cluster_state.dart';
 
 /// Manages a Redis Enterprise Cluster.
 ///
-/// > **Note:** This resource has been deprecated in favor of azurerm_managed_redis.
+/// &gt; **Note:** This resource has been deprecated in favor of azurerm_managed_redis.
 ///
 /// ## Example Usage
 ///
@@ -150,7 +150,7 @@ import 'enterprise_cluster_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Cache` - 2024-10-01
@@ -165,20 +165,27 @@ import 'enterprise_cluster_state.dart';
 class EnterpriseCluster extends pulumi.CustomResource {
   /// DNS name of the cluster endpoint.
   late final pulumi.Output<String> hostname;
+
   /// The Azure Region where the Redis Enterprise Cluster should exist. Changing this forces a new Redis Enterprise Cluster to be created.
   late final pulumi.Output<String> location;
+
   /// The minimum TLS version. Possible values are `1.0`, `1.1` and `1.2`. Defaults to `1.2`. Changing this forces a new Redis Enterprise Cluster to be created.
   ///
-  /// > **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more.
+  /// &gt; **Note:** Azure Services will require TLS 1.2+ by August 2025, please see this [announcement](https://azure.microsoft.com/en-us/updates/v2/update-retirement-tls1-0-tls1-1-versions-azure-services/) for more.
   late final pulumi.Output<String?> minimumTlsVersion;
+
   /// The name which should be used for this Redis Enterprise Cluster. Changing this forces a new Redis Enterprise Cluster to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Redis Enterprise Cluster should exist. Changing this forces a new Redis Enterprise Cluster to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The `sku_name` is comprised of two segments separated by a hyphen (e.g. `Enterprise_E10-2`). The first segment of the `sku_name` defines the `name` of the SKU, possible values are `Enterprise_E5`, `Enterprise_E10`, `Enterprise_E20`, `Enterprise_E50`, `Enterprise_E100`, `Enterprise_E200`, `Enterprise_E400`, `EnterpriseFlash_F300`, `EnterpriseFlash_F700` or `EnterpriseFlash_F1500`. The second segment defines the `capacity` of the `sku_name`, possible values for `Enteprise` SKUs are (`2`, `4`, `6`, ...). Possible values for `EnterpriseFlash` SKUs are (`3`, `9`, `15`, ...). Changing this forces a new Redis Enterprise Cluster to be created.
   late final pulumi.Output<String> skuName;
+
   /// A mapping of tags which should be assigned to the Redis Enterprise Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies a list of Availability Zones in which this Redis Enterprise Cluster should be located. Changing this forces a new Redis Enterprise Cluster to be created.
   late final pulumi.Output<List<String>?> zones;
 
@@ -191,19 +198,19 @@ class EnterpriseCluster extends pulumi.CustomResource {
     EnterpriseClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:redis/enterpriseCluster:EnterpriseCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.hostname = registerOutput<String>('hostname');
-    this.location = registerOutput<String>('location');
-    this.minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
+         'azure:redis/enterpriseCluster:EnterpriseCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    hostname = registerOutput<String>('hostname');
+    location = registerOutput<String>('location');
+    minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zones = registerOutput<List<String>?>('zones');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zones = registerOutput<List<String>?>('zones');
   }
 
   /// Gets an existing [EnterpriseCluster] resource's state with the given [name] and [id].
@@ -224,18 +231,18 @@ class EnterpriseCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:redis/enterpriseCluster:EnterpriseCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.hostname = registerOutput<String>('hostname');
-    this.location = registerOutput<String>('location');
-    this.minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
+         'azure:redis/enterpriseCluster:EnterpriseCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    hostname = registerOutput<String>('hostname');
+    location = registerOutput<String>('location');
+    minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zones = registerOutput<List<String>?>('zones');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

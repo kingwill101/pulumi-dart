@@ -5,7 +5,7 @@ import 'account_project_state.dart';
 
 /// Manages a Cognitive Account Project.
 ///
-/// > **Note:** Cognitive Account Projects can only be created under a Cognitive Account that has `project_management_enabled = true`, `kind = "AIServices"`, a managed identity configured, and a `custom_subdomain_name` specified.
+/// &gt; **Note:** Cognitive Account Projects can only be created under a Cognitive Account that has `project_management_enabled = true`, `kind = "AIServices"`, a managed identity configured, and a `custom_subdomain_name` specified.
 ///
 /// ## Example Usage
 ///
@@ -274,7 +274,7 @@ import 'account_project_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.CognitiveServices` - 2025-06-01
@@ -289,20 +289,28 @@ import 'account_project_state.dart';
 class AccountProject extends pulumi.CustomResource {
   /// The ID of the Cognitive Account where the Project should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cognitiveAccountId;
+
   /// Whether this project is the default project for the Cognitive Account.
   late final pulumi.Output<bool> default_;
+
   /// A description of the Cognitive Account Project.
   late final pulumi.Output<String?> description;
+
   /// The display name of the Cognitive Account Project.
   late final pulumi.Output<String?> displayName;
+
   /// A mapping of endpoint names to endpoint URLs for the project.
   late final pulumi.Output<Map<String, String>> endpoints;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<AccountProjectIdentity> identity;
+
   /// The Azure Region where the Cognitive Account Project should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the Cognitive Account Project. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -315,20 +323,20 @@ class AccountProject extends pulumi.CustomResource {
     AccountProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cognitive/accountProject:AccountProject',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
-    this.default_ = registerOutput<bool>('default');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.endpoints = registerOutput<Map<String, String>>('endpoints');
-    this.identity = registerOutput<AccountProjectIdentity>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:cognitive/accountProject:AccountProject',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
+    default_ = registerOutput<bool>('default');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    endpoints = registerOutput<Map<String, String>>('endpoints');
+    identity = registerOutput<AccountProjectIdentity>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [AccountProject] resource's state with the given [name] and [id].
@@ -349,19 +357,19 @@ class AccountProject extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cognitive/accountProject:AccountProject',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
-    this.default_ = registerOutput<bool>('default');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.endpoints = registerOutput<Map<String, String>>('endpoints');
-    this.identity = registerOutput<AccountProjectIdentity>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:cognitive/accountProject:AccountProject',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
+    default_ = registerOutput<bool>('default');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    endpoints = registerOutput<Map<String, String>>('endpoints');
+    identity = registerOutput<AccountProjectIdentity>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

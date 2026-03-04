@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workspace_model_version_args.dart';
-import 'workspace_model_version_label.dart';
 import 'workspace_model_version_state.dart';
 
 /// Provides a PAI Workspace Model Version resource.
@@ -9,7 +8,7 @@ import 'workspace_model_version_state.dart';
 ///
 /// For information about PAI Workspace Model Version and how to use it, see [What is Model Version](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateModelVersion).
 ///
-/// > **NOTE:** Available since v1.248.0.
+/// &gt; **NOTE:** Available since v1.248.0.
 ///
 /// ## Example Usage
 ///
@@ -487,8 +486,10 @@ class WorkspaceModelVersion extends pulumi.CustomResource {
   /// - Approved: Allow to go online.
   /// - Rejected: Online is not allowed.
   late final pulumi.Output<String> approvalStatus;
+
   /// Other information.
   late final pulumi.Output<Map<String, String>?> extraInfo;
+
   /// The format of the model. Valid values:
   /// - OfflineModel
   /// - SavedModel
@@ -501,6 +502,7 @@ class WorkspaceModelVersion extends pulumi.CustomResource {
   /// - AlinkModel
   /// - ONNX
   late final pulumi.Output<String?> formatType;
+
   /// The framework of the model. Valid values:
   /// - Pytorch
   /// - XGBoost
@@ -510,29 +512,40 @@ class WorkspaceModelVersion extends pulumi.CustomResource {
   /// - Xflow
   /// - TensorFlow
   late final pulumi.Output<String?> frameworkType;
+
   /// Describes how to apply to downstream inference services.
   late final pulumi.Output<Map<String, String>?> inferenceSpec;
+
   /// List of model version labels. See `labels` below.
-  late final pulumi.Output<List<WorkspaceModelVersionLabel>?> labels;
+  late final pulumi.Output<List<Map<String, dynamic>>?> labels;
+
   /// The metrics for the model. The serialized length is limited to 8192.
   late final pulumi.Output<Map<String, String>?> metrics;
+
   /// The model ID.
   late final pulumi.Output<String> modelId;
+
   /// The extended field. This is a JSON string.
   late final pulumi.Output<String?> options;
+
   /// The source ID.
   late final pulumi.Output<String?> sourceId;
+
   /// The type of the model source. Valid values:
   /// - Custom: Custom.
   /// - PAIFlow:PAI workflow.
   /// - TrainingService:PAI training service.
   late final pulumi.Output<String> sourceType;
+
   /// The training configurations. Used for fine-tuning and incremental training.
   late final pulumi.Output<Map<String, String>?> trainingSpec;
+
   /// The URI of the model version.
   late final pulumi.Output<String> uri;
+
   /// The version descriptions.
   late final pulumi.Output<String?> versionDescription;
+
   /// The Model version.
   late final pulumi.Output<String> versionName;
 
@@ -545,26 +558,26 @@ class WorkspaceModelVersion extends pulumi.CustomResource {
     WorkspaceModelVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pai/workspaceModelVersion:WorkspaceModelVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.approvalStatus = registerOutput<String>('approvalStatus');
-    this.extraInfo = registerOutput<Map<String, String>?>('extraInfo');
-    this.formatType = registerOutput<String?>('formatType');
-    this.frameworkType = registerOutput<String?>('frameworkType');
-    this.inferenceSpec = registerOutput<Map<String, String>?>('inferenceSpec');
-    this.labels = registerOutput<List<WorkspaceModelVersionLabel>?>('labels');
-    this.metrics = registerOutput<Map<String, String>?>('metrics');
-    this.modelId = registerOutput<String>('modelId');
+         'alicloud:pai/workspaceModelVersion:WorkspaceModelVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    approvalStatus = registerOutput<String>('approvalStatus');
+    extraInfo = registerOutput<Map<String, String>?>('extraInfo');
+    formatType = registerOutput<String?>('formatType');
+    frameworkType = registerOutput<String?>('frameworkType');
+    inferenceSpec = registerOutput<Map<String, String>?>('inferenceSpec');
+    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    metrics = registerOutput<Map<String, String>?>('metrics');
+    modelId = registerOutput<String>('modelId');
     this.options = registerOutput<String?>('options');
-    this.sourceId = registerOutput<String?>('sourceId');
-    this.sourceType = registerOutput<String>('sourceType');
-    this.trainingSpec = registerOutput<Map<String, String>?>('trainingSpec');
-    this.uri = registerOutput<String>('uri');
-    this.versionDescription = registerOutput<String?>('versionDescription');
-    this.versionName = registerOutput<String>('versionName');
+    sourceId = registerOutput<String?>('sourceId');
+    sourceType = registerOutput<String>('sourceType');
+    trainingSpec = registerOutput<Map<String, String>?>('trainingSpec');
+    uri = registerOutput<String>('uri');
+    versionDescription = registerOutput<String?>('versionDescription');
+    versionName = registerOutput<String>('versionName');
   }
 
   /// Gets an existing [WorkspaceModelVersion] resource's state with the given [name] and [id].
@@ -585,25 +598,25 @@ class WorkspaceModelVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pai/workspaceModelVersion:WorkspaceModelVersion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.approvalStatus = registerOutput<String>('approvalStatus');
-    this.extraInfo = registerOutput<Map<String, String>?>('extraInfo');
-    this.formatType = registerOutput<String?>('formatType');
-    this.frameworkType = registerOutput<String?>('frameworkType');
-    this.inferenceSpec = registerOutput<Map<String, String>?>('inferenceSpec');
-    this.labels = registerOutput<List<WorkspaceModelVersionLabel>?>('labels');
-    this.metrics = registerOutput<Map<String, String>?>('metrics');
-    this.modelId = registerOutput<String>('modelId');
+         'alicloud:pai/workspaceModelVersion:WorkspaceModelVersion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    approvalStatus = registerOutput<String>('approvalStatus');
+    extraInfo = registerOutput<Map<String, String>?>('extraInfo');
+    formatType = registerOutput<String?>('formatType');
+    frameworkType = registerOutput<String?>('frameworkType');
+    inferenceSpec = registerOutput<Map<String, String>?>('inferenceSpec');
+    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    metrics = registerOutput<Map<String, String>?>('metrics');
+    modelId = registerOutput<String>('modelId');
     this.options = registerOutput<String?>('options');
-    this.sourceId = registerOutput<String?>('sourceId');
-    this.sourceType = registerOutput<String>('sourceType');
-    this.trainingSpec = registerOutput<Map<String, String>?>('trainingSpec');
-    this.uri = registerOutput<String>('uri');
-    this.versionDescription = registerOutput<String?>('versionDescription');
-    this.versionName = registerOutput<String>('versionName');
+    sourceId = registerOutput<String?>('sourceId');
+    sourceType = registerOutput<String>('sourceType');
+    trainingSpec = registerOutput<Map<String, String>?>('trainingSpec');
+    uri = registerOutput<String>('uri');
+    versionDescription = registerOutput<String?>('versionDescription');
+    versionName = registerOutput<String>('versionName');
   }
 }

@@ -7,12 +7,16 @@ import 'day_of_week.dart';
 class AutoPatchingSettings {
   /// Additional Patch to be enable or enabled on the SQL Virtual Machine.
   final pulumi.Input<String>? additionalVmPatch;
+
   /// Day of week to apply the patch on.
   final pulumi.Input<DayOfWeek>? dayOfWeek;
+
   /// Enable or disable autopatching on SQL virtual machine.
   final pulumi.Input<bool>? enable;
+
   /// Duration of patching.
   final pulumi.Input<int>? maintenanceWindowDuration;
+
   /// Hour of the day when patching is initiated. Local VM time.
   final pulumi.Input<int>? maintenanceWindowStartingHour;
 
@@ -33,7 +37,10 @@ class AutoPatchingSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalVmPatch': ?additionalVmPatch,
-      'dayOfWeek': ?pulumi.Input.mapOptionalInputValue<DayOfWeek, String>(dayOfWeek, (value) => value.value),
+      'dayOfWeek': ?pulumi.Input.mapOptionalInputValue<DayOfWeek, String>(
+        dayOfWeek,
+        (value) => value.wireValue,
+      ),
       'enable': ?enable,
       'maintenanceWindowDuration': ?maintenanceWindowDuration,
       'maintenanceWindowStartingHour': ?maintenanceWindowStartingHour,
@@ -42,12 +49,33 @@ class AutoPatchingSettings {
 
   factory AutoPatchingSettings.fromMap(Map<String, dynamic> map) {
     return AutoPatchingSettings(
-      additionalVmPatch: map['additionalVmPatch'] == null ? null : (map['additionalVmPatch']! as String).input(),
-      dayOfWeek: map['dayOfWeek'] == null ? null : (DayOfWeek.fromValue(map['dayOfWeek']! as String)).input(),
-      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
-      maintenanceWindowDuration: map['maintenanceWindowDuration'] == null ? null : (map['maintenanceWindowDuration']! as int).input(),
-      maintenanceWindowStartingHour: map['maintenanceWindowStartingHour'] == null ? null : (map['maintenanceWindowStartingHour']! as int).input(),
+      additionalVmPatch: (() {
+        final guardedValue = map['additionalVmPatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dayOfWeek: (() {
+        final guardedValue = map['dayOfWeek'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DayOfWeek.fromValue(guardedValue as String),
+        );
+      })(),
+      enable: (() {
+        final guardedValue = map['enable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      maintenanceWindowDuration: (() {
+        final guardedValue = map['maintenanceWindowDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maintenanceWindowStartingHour: (() {
+        final guardedValue = map['maintenanceWindowStartingHour'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

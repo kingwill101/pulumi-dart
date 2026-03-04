@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudTieringVolumeFreeSpacePolicyStatusResponse {
   /// Current volume free space percentage.
   final pulumi.Input<int> currentVolumeFreeSpacePercent;
+
   /// In the case where multiple server endpoints are present in a volume, an effective free space policy is applied.
   final pulumi.Input<int> effectiveVolumeFreeSpacePolicy;
+
   /// Last updated timestamp
   final pulumi.Input<String> lastUpdatedTimestamp;
 
@@ -29,12 +31,19 @@ class CloudTieringVolumeFreeSpacePolicyStatusResponse {
     };
   }
 
-  factory CloudTieringVolumeFreeSpacePolicyStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory CloudTieringVolumeFreeSpacePolicyStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudTieringVolumeFreeSpacePolicyStatusResponse(
-      currentVolumeFreeSpacePercent: (map['currentVolumeFreeSpacePercent'] as int).input(),
-      effectiveVolumeFreeSpacePolicy: (map['effectiveVolumeFreeSpacePolicy'] as int).input(),
-      lastUpdatedTimestamp: (map['lastUpdatedTimestamp'] as String).input(),
+      currentVolumeFreeSpacePercent: pulumi.Input.fromValue(
+        map['currentVolumeFreeSpacePercent'] as int,
+      ),
+      effectiveVolumeFreeSpacePolicy: pulumi.Input.fromValue(
+        map['effectiveVolumeFreeSpacePolicy'] as int,
+      ),
+      lastUpdatedTimestamp: pulumi.Input.fromValue(
+        map['lastUpdatedTimestamp'] as String,
+      ),
     );
   }
 }
-

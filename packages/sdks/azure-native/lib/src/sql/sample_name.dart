@@ -4,16 +4,15 @@ enum SampleName {
   valueWideWorldImportersStd("WideWorldImportersStd"),
   valueWideWorldImportersFull("WideWorldImportersFull");
 
-  const SampleName(this.value);
-  final String value;
+  const SampleName(this.wireValue);
+  final String wireValue;
 
   static SampleName fromValue(String value) {
     for (final item in SampleName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SampleName value: $value');
   }
 }
-

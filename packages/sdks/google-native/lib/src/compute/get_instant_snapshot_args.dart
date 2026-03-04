@@ -31,10 +31,13 @@ class GetInstantSnapshotArgs {
 
   factory GetInstantSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetInstantSnapshotArgs(
-      instantSnapshot: (map['instantSnapshot'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      zone: (map['zone'] as String).input(),
+      instantSnapshot: pulumi.Input.fromValue(map['instantSnapshot'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_detective;
-
 export 'detective/graph.dart';
 export 'detective/graph_args.dart';
 export 'detective/graph_state.dart';

@@ -7,8 +7,11 @@ import 'google_cloud_datacatalog_v1beta1_system_timestamps_response.dart';
 class GoogleCloudDatacatalogV1beta1GcsFileSpecResponse {
   /// The full file path. Example: `gs://bucket_name/a/b.txt`.
   final pulumi.Input<String> filePath;
+
   /// Timestamps about the Cloud Storage file.
-  final pulumi.Input<GoogleCloudDatacatalogV1beta1SystemTimestampsResponse> gcsTimestamps;
+  final pulumi.Input<GoogleCloudDatacatalogV1beta1SystemTimestampsResponse>
+  gcsTimestamps;
+
   /// The size of the file, in bytes.
   final pulumi.Input<String> sizeBytes;
 
@@ -25,17 +28,26 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpecResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filePath': filePath,
-      'gcsTimestamps': pulumi.Input.mapInputValue<GoogleCloudDatacatalogV1beta1SystemTimestampsResponse, Map<String, dynamic>>(gcsTimestamps, (value) => value.toMap()),
+      'gcsTimestamps':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDatacatalogV1beta1SystemTimestampsResponse,
+            Map<String, dynamic>
+          >(gcsTimestamps, (value) => value.toMap()),
       'sizeBytes': sizeBytes,
     };
   }
 
-  factory GoogleCloudDatacatalogV1beta1GcsFileSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1beta1GcsFileSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1beta1GcsFileSpecResponse(
-      filePath: (map['filePath'] as String).input(),
-      gcsTimestamps: (GoogleCloudDatacatalogV1beta1SystemTimestampsResponse.fromMap((map['gcsTimestamps'] as Map).cast<String, dynamic>())).input(),
-      sizeBytes: (map['sizeBytes'] as String).input(),
+      filePath: pulumi.Input.fromValue(map['filePath'] as String),
+      gcsTimestamps: pulumi.Input.fromValue(
+        GoogleCloudDatacatalogV1beta1SystemTimestampsResponse.fromMap(
+          (map['gcsTimestamps']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      sizeBytes: pulumi.Input.fromValue(map['sizeBytes'] as String),
     );
   }
 }
-

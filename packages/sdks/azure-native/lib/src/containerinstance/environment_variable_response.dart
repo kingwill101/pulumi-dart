@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentVariableResponse {
   /// The name of the environment variable.
   final pulumi.Input<String> name;
+
   /// The value of the secure environment variable.
   final pulumi.Input<String>? secureValue;
+
   /// The reference of the secure environment variable.
   final pulumi.Input<String>? secureValueReference;
+
   /// The value of the environment variable.
   final pulumi.Input<String>? value;
 
@@ -36,11 +39,22 @@ class EnvironmentVariableResponse {
 
   factory EnvironmentVariableResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentVariableResponse(
-      name: (map['name'] as String).input(),
-      secureValue: map['secureValue'] == null ? null : (map['secureValue']! as String).input(),
-      secureValueReference: map['secureValueReference'] == null ? null : (map['secureValueReference']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      secureValue: (() {
+        final guardedValue = map['secureValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secureValueReference: (() {
+        final guardedValue = map['secureValueReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

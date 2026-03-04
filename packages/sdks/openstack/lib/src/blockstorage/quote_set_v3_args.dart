@@ -10,32 +10,41 @@ class QuoteSetV3Args {
   /// Quota value for backup gigabytes. Changing
   /// this updates the existing quotaset.
   final pulumi.Input<int>? backupGigabytes;
+
   /// Quota value for backups. Changing this updates the
   /// existing quotaset.
   final pulumi.Input<int>? backups;
+
   /// Quota value for gigabytes. Changing this updates the
   /// existing quotaset.
   final pulumi.Input<int>? gigabytes;
+
   /// Quota value for groups. Changing this updates the
   /// existing quotaset.
   final pulumi.Input<int>? groups;
+
   /// Quota value for gigabytes per volume .
   /// Changing this updates the existing quotaset.
   final pulumi.Input<int>? perVolumeGigabytes;
+
   /// ID of the project to manage quotas. Changing this
   /// creates a new quotaset.
   final pulumi.Input<String> projectId;
+
   /// The region in which to create the volume. If
   /// omitted, the `region` argument of the provider is used. Changing this
   /// creates a new quotaset.
   final pulumi.Input<String>? region;
+
   /// Quota value for snapshots. Changing this updates the
   /// existing quotaset.
   final pulumi.Input<int>? snapshots;
+
   /// Key/Value pairs for setting quota for
-  /// volumes types. Possible keys are `snapshots_<volume_type_name>`,
-  /// `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
+  /// volumes types. Possible keys are `snapshots_&lt;volume_type_name&gt;`,
+  /// `volumes_&lt;volume_type_name&gt;` and `gigabytes_&lt;volume_type_name&gt;`.
   final pulumi.Input<Map<String, String>>? volumeTypeQuota;
+
   /// Quota value for volumes. Changing this updates the
   /// existing quotaset.
   final pulumi.Input<int>? volumes;
@@ -81,17 +90,54 @@ class QuoteSetV3Args {
 
   factory QuoteSetV3Args.fromMap(Map<String, dynamic> map) {
     return QuoteSetV3Args(
-      backupGigabytes: map['backupGigabytes'] == null ? null : (map['backupGigabytes']! as int).input(),
-      backups: map['backups'] == null ? null : (map['backups']! as int).input(),
-      gigabytes: map['gigabytes'] == null ? null : (map['gigabytes']! as int).input(),
-      groups: map['groups'] == null ? null : (map['groups']! as int).input(),
-      perVolumeGigabytes: map['perVolumeGigabytes'] == null ? null : (map['perVolumeGigabytes']! as int).input(),
-      projectId: (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      snapshots: map['snapshots'] == null ? null : (map['snapshots']! as int).input(),
-      volumeTypeQuota: map['volumeTypeQuota'] == null ? null : ((map['volumeTypeQuota']! as Map).cast<String, String>()).input(),
-      volumes: map['volumes'] == null ? null : (map['volumes']! as int).input(),
+      backupGigabytes: (() {
+        final guardedValue = map['backupGigabytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      backups: (() {
+        final guardedValue = map['backups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      gigabytes: (() {
+        final guardedValue = map['gigabytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      groups: (() {
+        final guardedValue = map['groups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      perVolumeGigabytes: (() {
+        final guardedValue = map['perVolumeGigabytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshots: (() {
+        final guardedValue = map['snapshots'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      volumeTypeQuota: (() {
+        final guardedValue = map['volumeTypeQuota'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      volumes: (() {
+        final guardedValue = map['volumes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

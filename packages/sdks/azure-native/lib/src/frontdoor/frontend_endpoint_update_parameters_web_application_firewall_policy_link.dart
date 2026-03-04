@@ -9,20 +9,21 @@ class FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink {
 
   /// Creates a new [FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink].
   /// [id] Resource ID.
-  FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink({
-    this.id,
-  });
+  FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
-  factory FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink.fromMap(Map<String, dynamic> map) {
+  factory FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

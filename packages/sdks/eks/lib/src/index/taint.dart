@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Taint {
   /// The effect of the taint.
   final pulumi.Input<String> effect;
+
   /// The value of the taint.
   final pulumi.Input<String> value;
 
   /// Creates a new [Taint].
   /// [effect] The effect of the taint.
   /// [value] The value of the taint.
-  Taint({
-    required this.effect,
-    required this.value,
-  });
+  Taint({required this.effect, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'effect': effect,
-      'value': value,
-    };
+    return <String, dynamic>{'effect': effect, 'value': value};
   }
 
   factory Taint.fromMap(Map<String, dynamic> map) {
     return Taint(
-      effect: (map['effect'] as String).input(),
-      value: (map['value'] as String).input(),
+      effect: pulumi.Input.fromValue(map['effect'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

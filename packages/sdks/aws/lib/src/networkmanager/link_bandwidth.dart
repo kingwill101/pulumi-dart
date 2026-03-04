@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkBandwidth {
   /// Download speed in Mbps.
   final pulumi.Input<int>? downloadSpeed;
+
   /// Upload speed in Mbps.
   final pulumi.Input<int>? uploadSpeed;
 
   /// Creates a new [LinkBandwidth].
   /// [downloadSpeed] Download speed in Mbps.
   /// [uploadSpeed] Upload speed in Mbps.
-  LinkBandwidth({
-    this.downloadSpeed,
-    this.uploadSpeed,
-  });
+  LinkBandwidth({this.downloadSpeed, this.uploadSpeed});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,16 @@ class LinkBandwidth {
 
   factory LinkBandwidth.fromMap(Map<String, dynamic> map) {
     return LinkBandwidth(
-      downloadSpeed: map['downloadSpeed'] == null ? null : ((map['downloadSpeed'] as int).input()).input(),
-      uploadSpeed: map['uploadSpeed'] == null ? null : ((map['uploadSpeed'] as int).input()).input(),
+      downloadSpeed: (() {
+        final guardedValue = map['downloadSpeed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      uploadSpeed: (() {
+        final guardedValue = map['uploadSpeed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

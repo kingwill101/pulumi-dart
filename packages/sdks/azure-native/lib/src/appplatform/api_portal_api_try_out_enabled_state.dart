@@ -3,16 +3,15 @@ enum ApiPortalApiTryOutEnabledState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const ApiPortalApiTryOutEnabledState(this.value);
-  final String value;
+  const ApiPortalApiTryOutEnabledState(this.wireValue);
+  final String wireValue;
 
   static ApiPortalApiTryOutEnabledState fromValue(String value) {
     for (final item in ApiPortalApiTryOutEnabledState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApiPortalApiTryOutEnabledState value: $value');
   }
 }
-

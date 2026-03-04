@@ -4,16 +4,17 @@ enum AddressGroupTypeNetworksecurityV1beta1 {
   ipv4("IPV4"),
   ipv6("IPV6");
 
-  const AddressGroupTypeNetworksecurityV1beta1(this.value);
-  final String value;
+  const AddressGroupTypeNetworksecurityV1beta1(this.wireValue);
+  final String wireValue;
 
   static AddressGroupTypeNetworksecurityV1beta1 fromValue(String value) {
     for (final item in AddressGroupTypeNetworksecurityV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AddressGroupTypeNetworksecurityV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown AddressGroupTypeNetworksecurityV1beta1 value: $value',
+    );
   }
 }
-

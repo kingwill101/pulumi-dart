@@ -9,29 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserArgs {
   /// Map of key-value pairs associated with the user.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Friendly IAM user name to match.
   final pulumi.Input<String> userName;
 
   /// Creates a new [GetUserArgs].
   /// [tags] Map of key-value pairs associated with the user.
   /// [userName] Friendly IAM user name to match.
-  GetUserArgs({
-    this.tags,
-    required this.userName,
-  });
+  GetUserArgs({this.tags, required this.userName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tags': ?tags,
-      'userName': userName,
-    };
+    return <String, dynamic>{'tags': ?tags, 'userName': userName};
   }
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      userName: (map['userName'] as String).input(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
-

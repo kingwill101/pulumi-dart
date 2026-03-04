@@ -1,5 +1,3 @@
-library module_index;
-
 export 'index/as3.dart';
 export 'index/as3_args.dart';
 export 'index/as3_delete_apps.dart';

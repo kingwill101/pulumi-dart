@@ -3,16 +3,15 @@ enum IngressTargetPortHttpScheme {
   valueHttp("http"),
   valueHttps("https");
 
-  const IngressTargetPortHttpScheme(this.value);
-  final String value;
+  const IngressTargetPortHttpScheme(this.wireValue);
+  final String wireValue;
 
   static IngressTargetPortHttpScheme fromValue(String value) {
     for (final item in IngressTargetPortHttpScheme.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IngressTargetPortHttpScheme value: $value');
   }
 }
-

@@ -9,25 +9,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HostArgs {
   /// Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
   final pulumi.Input<String> activeAddressType;
+
   /// Specify a host of notes, supports up to 500 characters.
   final pulumi.Input<String>? comment;
+
   /// Specify the new create a host name of the supports up to 128 characters.
   final pulumi.Input<String> hostName;
+
   /// Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
   final pulumi.Input<String>? hostPrivateAddress;
+
   /// Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
   final pulumi.Input<String>? hostPublicAddress;
+
   /// Specify the new create a host where the Bastion host ID of.
   final pulumi.Input<String> instanceId;
+
   /// The instance region id.
   final pulumi.Input<String>? instanceRegionId;
+
   /// Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
   final pulumi.Input<String> osType;
+
   /// Specify the new create a host of source. Valid values:
   /// * `Local`: localhost
   /// * `Ecs`:ECS instance
   /// * `Rds`:RDS exclusive cluster host.
   final pulumi.Input<String> source;
+
   /// Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
   final pulumi.Input<String>? sourceInstanceId;
 
@@ -72,17 +81,38 @@ class HostArgs {
 
   factory HostArgs.fromMap(Map<String, dynamic> map) {
     return HostArgs(
-      activeAddressType: (map['activeAddressType'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
-      hostName: (map['hostName'] as String).input(),
-      hostPrivateAddress: map['hostPrivateAddress'] == null ? null : (map['hostPrivateAddress']! as String).input(),
-      hostPublicAddress: map['hostPublicAddress'] == null ? null : (map['hostPublicAddress']! as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceRegionId: map['instanceRegionId'] == null ? null : (map['instanceRegionId']! as String).input(),
-      osType: (map['osType'] as String).input(),
-      source: (map['source'] as String).input(),
-      sourceInstanceId: map['sourceInstanceId'] == null ? null : (map['sourceInstanceId']! as String).input(),
+      activeAddressType: pulumi.Input.fromValue(
+        map['activeAddressType'] as String,
+      ),
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostName: pulumi.Input.fromValue(map['hostName'] as String),
+      hostPrivateAddress: (() {
+        final guardedValue = map['hostPrivateAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostPublicAddress: (() {
+        final guardedValue = map['hostPublicAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceRegionId: (() {
+        final guardedValue = map['instanceRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osType: pulumi.Input.fromValue(map['osType'] as String),
+      source: pulumi.Input.fromValue(map['source'] as String),
+      sourceInstanceId: (() {
+        final guardedValue = map['sourceInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

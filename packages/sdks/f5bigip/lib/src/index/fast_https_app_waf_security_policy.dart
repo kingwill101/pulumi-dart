@@ -8,20 +8,15 @@ class FastHttpsAppWafSecurityPolicy {
 
   /// Creates a new [FastHttpsAppWafSecurityPolicy].
   /// [enable] Setting `true` will enable FAST to create WAF Security Policy.
-  FastHttpsAppWafSecurityPolicy({
-    required this.enable,
-  });
+  FastHttpsAppWafSecurityPolicy({required this.enable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enable': enable,
-    };
+    return <String, dynamic>{'enable': enable};
   }
 
   factory FastHttpsAppWafSecurityPolicy.fromMap(Map<String, dynamic> map) {
     return FastHttpsAppWafSecurityPolicy(
-      enable: (map['enable'] as bool).input(),
+      enable: pulumi.Input.fromValue(map['enable'] as bool),
     );
   }
 }
-

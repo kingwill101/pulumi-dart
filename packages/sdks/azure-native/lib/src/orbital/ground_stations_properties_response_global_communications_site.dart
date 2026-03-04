@@ -9,20 +9,17 @@ class GroundStationsPropertiesResponseGlobalCommunicationsSite {
 
   /// Creates a new [GroundStationsPropertiesResponseGlobalCommunicationsSite].
   /// [id] Resource ID.
-  GroundStationsPropertiesResponseGlobalCommunicationsSite({
-    required this.id,
-  });
+  GroundStationsPropertiesResponseGlobalCommunicationsSite({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
-  factory GroundStationsPropertiesResponseGlobalCommunicationsSite.fromMap(Map<String, dynamic> map) {
+  factory GroundStationsPropertiesResponseGlobalCommunicationsSite.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GroundStationsPropertiesResponseGlobalCommunicationsSite(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

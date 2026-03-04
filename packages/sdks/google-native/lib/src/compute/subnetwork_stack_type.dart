@@ -4,16 +4,15 @@ enum SubnetworkStackType {
   ipv4Only("IPV4_ONLY"),
   ipv6Only("IPV6_ONLY");
 
-  const SubnetworkStackType(this.value);
-  final String value;
+  const SubnetworkStackType(this.wireValue);
+  final String wireValue;
 
   static SubnetworkStackType fromValue(String value) {
     for (final item in SubnetworkStackType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SubnetworkStackType value: $value');
   }
 }
-

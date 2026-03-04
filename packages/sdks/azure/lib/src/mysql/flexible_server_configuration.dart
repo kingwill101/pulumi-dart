@@ -6,7 +6,7 @@ import 'flexible_server_configuration_state.dart';
 ///
 /// ## Disclaimers
 ///
-/// > **Note:** Since this resource is provisioned by default, the Azure Provider will not check for the presence of an existing resource prior to attempting to create it.
+/// &gt; **Note:** Since this resource is provisioned by default, the Azure Provider will not check for the presence of an existing resource prior to attempting to create it.
 ///
 /// ## Example Usage
 ///
@@ -209,7 +209,7 @@ import 'flexible_server_configuration_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DBforMySQL` - 2023-12-30
@@ -224,10 +224,13 @@ import 'flexible_server_configuration_state.dart';
 class FlexibleServerConfiguration extends pulumi.CustomResource {
   /// Specifies the name of the MySQL Flexible Server Configuration, which needs [to be a valid MySQL configuration name](https://dev.mysql.com/doc/refman/5.7/en/server-configuration.html). Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which the MySQL Flexible Server exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies the name of the MySQL Flexible Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverName;
+
   /// Specifies the value of the MySQL Flexible Server Configuration. See the MySQL documentation for valid values.
   late final pulumi.Output<String> value;
 
@@ -240,15 +243,15 @@ class FlexibleServerConfiguration extends pulumi.CustomResource {
     FlexibleServerConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mysql/flexibleServerConfiguration:FlexibleServerConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:mysql/flexibleServerConfiguration:FlexibleServerConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serverName = registerOutput<String>('serverName');
-    this.value = registerOutput<String>('value');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+    value = registerOutput<String>('value');
   }
 
   /// Gets an existing [FlexibleServerConfiguration] resource's state with the given [name] and [id].
@@ -269,14 +272,14 @@ class FlexibleServerConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mysql/flexibleServerConfiguration:FlexibleServerConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:mysql/flexibleServerConfiguration:FlexibleServerConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serverName = registerOutput<String>('serverName');
-    this.value = registerOutput<String>('value');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+    value = registerOutput<String>('value');
   }
 }

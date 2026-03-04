@@ -9,31 +9,44 @@ import 'parameter_specification_response.dart';
 class ConcurLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
   final pulumi.Input<List<dynamic>>? annotations;
+
   /// Application client_id supplied by Concur App Management.
   final pulumi.Input<dynamic> clientId;
+
   /// The integration runtime reference.
   final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
+
   /// Properties used to connect to Concur. It is mutually exclusive with any other properties in the linked service. Type: object.
   final pulumi.Input<dynamic>? connectionProperties;
+
   /// Linked service description.
   final pulumi.Input<String>? description;
+
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
   final pulumi.Input<String>? encryptedCredential;
+
   /// Parameters for linked service.
   final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+
   /// The password corresponding to the user name that you provided in the username field.
   final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? password;
+
   /// Type of linked service.
   /// Expected value is 'Concur'.
   final pulumi.Input<String> type;
+
   /// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
   final pulumi.Input<dynamic>? useEncryptedEndpoints;
+
   /// Specifies whether to require the host name in the server's certificate to match the host name of the server when connecting over SSL. The default value is true.
   final pulumi.Input<dynamic>? useHostVerification;
+
   /// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
   final pulumi.Input<dynamic>? usePeerVerification;
+
   /// The user name that you use to access Concur Service.
   final pulumi.Input<dynamic> username;
+
   /// Version of the linked service.
   final pulumi.Input<String>? version;
 
@@ -73,12 +86,31 @@ class ConcurLinkedServiceResponse {
     return <String, dynamic>{
       'annotations': ?annotations,
       'clientId': clientId,
-      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
+      'connectVia':
+          ?pulumi.Input.mapOptionalInputValue<
+            IntegrationRuntimeReferenceResponse,
+            Map<String, dynamic>
+          >(connectVia, (value) => value.toMap()),
       'connectionProperties': ?connectionProperties,
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, ParameterSpecificationResponse>,
+            Map<String, Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  ParameterSpecificationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'password':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureKeyVaultSecretReferenceResponse,
+            Map<String, dynamic>
+          >(password, (value) => value.toMap()),
       'type': type,
       'useEncryptedEndpoints': ?useEncryptedEndpoints,
       'useHostVerification': ?useHostVerification,
@@ -90,21 +122,79 @@ class ConcurLinkedServiceResponse {
 
   factory ConcurLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return ConcurLinkedServiceResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
-      clientId: (map['clientId']).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
-      connectionProperties: map['connectionProperties'] == null ? null : (map['connectionProperties']!).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential']! as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters']!, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      password: map['password'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['password']! as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
-      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : (map['useEncryptedEndpoints']!).input(),
-      useHostVerification: map['useHostVerification'] == null ? null : (map['useHostVerification']!).input(),
-      usePeerVerification: map['usePeerVerification'] == null ? null : (map['usePeerVerification']!).input(),
-      username: (map['username']).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
+      })(),
+      clientId: pulumi.Input.fromValue(map['clientId']),
+      connectVia: (() {
+        final guardedValue = map['connectVia'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IntegrationRuntimeReferenceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      connectionProperties: (() {
+        final guardedValue = map['connectionProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptedCredential: (() {
+        final guardedValue = map['encryptedCredential'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(
+            guardedValue,
+            (value) => ParameterSpecificationResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureKeyVaultSecretReferenceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      useEncryptedEndpoints: (() {
+        final guardedValue = map['useEncryptedEndpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      useHostVerification: (() {
+        final guardedValue = map['useHostVerification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      usePeerVerification: (() {
+        final guardedValue = map['usePeerVerification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      username: pulumi.Input.fromValue(map['username']),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

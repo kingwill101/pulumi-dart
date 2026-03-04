@@ -7,14 +7,19 @@ import 'google_cloud_aiplatform_v1_metadata_store_metadata_store_state_response.
 class GetMetadataStoreResult {
   /// Timestamp when this MetadataStore was created.
   final String createTime;
+
   /// Description of the MetadataStore.
   final String description;
+
   /// Customer-managed encryption key spec for a Metadata Store. If set, this Metadata Store and all sub-resources of this Metadata Store are secured using this key.
   final GoogleCloudAiplatformV1EncryptionSpecResponse encryptionSpec;
+
   /// The resource name of the MetadataStore instance.
   final String name;
+
   /// State information of the MetadataStore.
   final GoogleCloudAiplatformV1MetadataStoreMetadataStoreStateResponse state;
+
   /// Timestamp when this MetadataStore was last updated.
   final String updateTime;
 
@@ -49,11 +54,15 @@ class GetMetadataStoreResult {
     return GetMetadataStoreResult(
       createTime: map['createTime'] as String,
       description: map['description'] as String,
-      encryptionSpec: GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>()),
+      encryptionSpec: GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap(
+        (map['encryptionSpec']! as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
-      state: GoogleCloudAiplatformV1MetadataStoreMetadataStoreStateResponse.fromMap((map['state'] as Map).cast<String, dynamic>()),
+      state:
+          GoogleCloudAiplatformV1MetadataStoreMetadataStoreStateResponse.fromMap(
+            (map['state']! as Map).cast<String, dynamic>(),
+          ),
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

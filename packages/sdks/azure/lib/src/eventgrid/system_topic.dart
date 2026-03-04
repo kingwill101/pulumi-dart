@@ -223,7 +223,7 @@ import 'system_topic_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventGrid` - 2025-02-15
@@ -238,25 +238,32 @@ import 'system_topic_state.dart';
 class SystemTopic extends pulumi.CustomResource {
   /// An `identity` block as defined below.
   late final pulumi.Output<SystemTopicIdentity?> identity;
+
   /// The Azure Region where the Event Grid System Topic should exist. Changing this forces a new Event Grid System Topic to be created.
   late final pulumi.Output<String> location;
   late final pulumi.Output<String> metricArmResourceId;
+
   /// The Metric Resource ID of the Event Grid System Topic.
   late final pulumi.Output<String> metricResourceId;
+
   /// The name which should be used for this Event Grid System Topic. Changing this forces a new Event Grid System Topic to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Event Grid System Topic should exist. Changing this forces a new Event Grid System Topic to be created.
   late final pulumi.Output<String> resourceGroupName;
   late final pulumi.Output<String> sourceArmResourceId;
+
   /// The ID of the Event Grid System Topic ARM Source. Changing this forces a new Event Grid System Topic to be created.
   late final pulumi.Output<String> sourceResourceId;
+
   /// A mapping of tags which should be assigned to the Event Grid System Topic.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The Topic Type of the Event Grid System Topic. The topic type is validated by Azure and there may be additional topic types beyond the following: `Microsoft.AppConfiguration.ConfigurationStores`, `Microsoft.Communication.CommunicationServices`, `Microsoft.ContainerRegistry.Registries`, `Microsoft.Devices.IoTHubs`, `Microsoft.EventGrid.Domains`, `Microsoft.EventGrid.Topics`, `Microsoft.Eventhub.Namespaces`, `Microsoft.KeyVault.vaults`, `Microsoft.MachineLearningServices.Workspaces`, `Microsoft.Maps.Accounts`, `Microsoft.Media.MediaServices`, `Microsoft.Resources.ResourceGroups`, `Microsoft.Resources.Subscriptions`, `Microsoft.ServiceBus.Namespaces`, `Microsoft.SignalRService.SignalR`, `Microsoft.Storage.StorageAccounts`, `Microsoft.Web.ServerFarms` and `Microsoft.Web.Sites`. Changing this forces a new Event Grid System Topic to be created.
   ///
-  /// > **Note:** Some `topic_type`s (e.g. **Microsoft.Resources.Subscriptions**) requires location to be set to `Global` instead of a real location like `West US`.
+  /// &gt; **Note:** Some `topic_type`s (e.g. **Microsoft.Resources.Subscriptions**) requires location to be set to `Global` instead of a real location like `West US`.
   ///
-  /// > **Note:** You can use Azure CLI to get a full list of the available topic types: `az eventgrid topic-type  list --output json | grep -w id`
+  /// &gt; **Note:** You can use Azure CLI to get a full list of the available topic types: `az eventgrid topic-type  list --output json | grep -w id`
   late final pulumi.Output<String> topicType;
 
   /// Creates a new [SystemTopic].
@@ -268,21 +275,21 @@ class SystemTopic extends pulumi.CustomResource {
     SystemTopicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventgrid/systemTopic:SystemTopic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identity = registerOutput<SystemTopicIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.metricArmResourceId = registerOutput<String>('metricArmResourceId');
-    this.metricResourceId = registerOutput<String>('metricResourceId');
+         'azure:eventgrid/systemTopic:SystemTopic',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identity = registerOutput<SystemTopicIdentity?>('identity');
+    location = registerOutput<String>('location');
+    metricArmResourceId = registerOutput<String>('metricArmResourceId');
+    metricResourceId = registerOutput<String>('metricResourceId');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sourceArmResourceId = registerOutput<String>('sourceArmResourceId');
-    this.sourceResourceId = registerOutput<String>('sourceResourceId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.topicType = registerOutput<String>('topicType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceArmResourceId = registerOutput<String>('sourceArmResourceId');
+    sourceResourceId = registerOutput<String>('sourceResourceId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    topicType = registerOutput<String>('topicType');
   }
 
   /// Gets an existing [SystemTopic] resource's state with the given [name] and [id].
@@ -303,20 +310,20 @@ class SystemTopic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventgrid/systemTopic:SystemTopic',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identity = registerOutput<SystemTopicIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.metricArmResourceId = registerOutput<String>('metricArmResourceId');
-    this.metricResourceId = registerOutput<String>('metricResourceId');
+         'azure:eventgrid/systemTopic:SystemTopic',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identity = registerOutput<SystemTopicIdentity?>('identity');
+    location = registerOutput<String>('location');
+    metricArmResourceId = registerOutput<String>('metricArmResourceId');
+    metricResourceId = registerOutput<String>('metricResourceId');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sourceArmResourceId = registerOutput<String>('sourceArmResourceId');
-    this.sourceResourceId = registerOutput<String>('sourceResourceId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.topicType = registerOutput<String>('topicType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceArmResourceId = registerOutput<String>('sourceArmResourceId');
+    sourceResourceId = registerOutput<String>('sourceResourceId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    topicType = registerOutput<String>('topicType');
   }
 }

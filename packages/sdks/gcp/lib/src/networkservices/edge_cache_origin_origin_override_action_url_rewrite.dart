@@ -11,20 +11,21 @@ class EdgeCacheOriginOriginOverrideActionUrlRewrite {
 
   /// Creates a new [EdgeCacheOriginOriginOverrideActionUrlRewrite].
   /// [hostRewrite] Prior to forwarding the request to the selected
-  EdgeCacheOriginOriginOverrideActionUrlRewrite({
-    this.hostRewrite,
-  });
+  EdgeCacheOriginOriginOverrideActionUrlRewrite({this.hostRewrite});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hostRewrite': ?hostRewrite,
-    };
+    return <String, dynamic>{'hostRewrite': ?hostRewrite};
   }
 
-  factory EdgeCacheOriginOriginOverrideActionUrlRewrite.fromMap(Map<String, dynamic> map) {
+  factory EdgeCacheOriginOriginOverrideActionUrlRewrite.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EdgeCacheOriginOriginOverrideActionUrlRewrite(
-      hostRewrite: map['hostRewrite'] == null ? null : (map['hostRewrite']! as String).input(),
+      hostRewrite: (() {
+        final guardedValue = map['hostRewrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

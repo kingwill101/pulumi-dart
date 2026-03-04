@@ -3,16 +3,20 @@ enum RegionInstanceGroupManagerListManagedInstancesResults {
   pageless("PAGELESS"),
   paginated("PAGINATED");
 
-  const RegionInstanceGroupManagerListManagedInstancesResults(this.value);
-  final String value;
+  const RegionInstanceGroupManagerListManagedInstancesResults(this.wireValue);
+  final String wireValue;
 
-  static RegionInstanceGroupManagerListManagedInstancesResults fromValue(String value) {
-    for (final item in RegionInstanceGroupManagerListManagedInstancesResults.values) {
-      if (item.value == value) {
+  static RegionInstanceGroupManagerListManagedInstancesResults fromValue(
+    String value,
+  ) {
+    for (final item
+        in RegionInstanceGroupManagerListManagedInstancesResults.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionInstanceGroupManagerListManagedInstancesResults value: $value');
+    throw ArgumentError(
+      'Unknown RegionInstanceGroupManagerListManagedInstancesResults value: $value',
+    );
   }
 }
-

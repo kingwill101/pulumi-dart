@@ -1,5 +1,3 @@
-library module_dsql;
-
 export 'dsql/cluster.dart';
 export 'dsql/cluster_args.dart';
 export 'dsql/cluster_encryption_detail.dart';

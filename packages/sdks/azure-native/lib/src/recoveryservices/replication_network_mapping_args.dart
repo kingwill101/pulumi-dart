@@ -10,14 +10,19 @@ import 'create_network_mapping_input_properties.dart';
 class ReplicationNetworkMappingArgs {
   /// Primary fabric name.
   final pulumi.Input<String> fabricName;
+
   /// Network mapping name.
   final pulumi.Input<String>? networkMappingName;
+
   /// Primary network name.
   final pulumi.Input<String> networkName;
+
   /// Input properties for creating network mapping.
   final pulumi.Input<CreateNetworkMappingInputProperties> properties;
+
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the recovery services vault.
   final pulumi.Input<String> resourceName;
 
@@ -42,7 +47,11 @@ class ReplicationNetworkMappingArgs {
       'fabricName': fabricName,
       'networkMappingName': ?networkMappingName,
       'networkName': networkName,
-      'properties': pulumi.Input.mapInputValue<CreateNetworkMappingInputProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            CreateNetworkMappingInputProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'resourceName': resourceName,
     };
@@ -50,13 +59,22 @@ class ReplicationNetworkMappingArgs {
 
   factory ReplicationNetworkMappingArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationNetworkMappingArgs(
-      fabricName: (map['fabricName'] as String).input(),
-      networkMappingName: map['networkMappingName'] == null ? null : (map['networkMappingName']! as String).input(),
-      networkName: (map['networkName'] as String).input(),
-      properties: (CreateNetworkMappingInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
+      networkMappingName: (() {
+        final guardedValue = map['networkMappingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkName: pulumi.Input.fromValue(map['networkName'] as String),
+      properties: pulumi.Input.fromValue(
+        CreateNetworkMappingInputProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

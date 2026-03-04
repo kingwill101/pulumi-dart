@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SSISChildPackageResponse {
   /// Content for embedded child package. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> packageContent;
+
   /// Last modified date for embedded child package.
   final pulumi.Input<String>? packageLastModifiedDate;
+
   /// Name for embedded child package.
   final pulumi.Input<String>? packageName;
+
   /// Path for embedded child package. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> packagePath;
 
@@ -36,11 +39,18 @@ class SSISChildPackageResponse {
 
   factory SSISChildPackageResponse.fromMap(Map<String, dynamic> map) {
     return SSISChildPackageResponse(
-      packageContent: (map['packageContent']).input(),
-      packageLastModifiedDate: map['packageLastModifiedDate'] == null ? null : (map['packageLastModifiedDate']! as String).input(),
-      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
-      packagePath: (map['packagePath']).input(),
+      packageContent: pulumi.Input.fromValue(map['packageContent']),
+      packageLastModifiedDate: (() {
+        final guardedValue = map['packageLastModifiedDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      packageName: (() {
+        final guardedValue = map['packageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      packagePath: pulumi.Input.fromValue(map['packagePath']),
     );
   }
 }
-

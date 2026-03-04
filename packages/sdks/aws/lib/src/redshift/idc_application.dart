@@ -130,26 +130,38 @@ import 'idc_application_state.dart';
 class IdcApplication extends pulumi.CustomResource {
   /// Type of application being created. Valid values are `None` or `Lakehouse`.
   late final pulumi.Output<String> applicationType;
+
   /// Token issuer list for the Amazon Redshift IAM Identity Center application instance. Refer to the authorized_token_issuer documentation for more details.
-  late final pulumi.Output<IdcApplicationAuthorizedTokenIssuer?> authorizedTokenIssuer;
+  late final pulumi.Output<IdcApplicationAuthorizedTokenIssuer?>
+  authorizedTokenIssuer;
+
   /// IAM role ARN for the Amazon Redshift IAM Identity Center application instance.
   late final pulumi.Output<String> iamRoleArn;
+
   /// Display name for the Amazon Redshift IAM Identity Center application instance.
   late final pulumi.Output<String> idcDisplayName;
+
   /// ARN of the IAM Identity Center instance where Amazon Redshift creates a new managed application.
   late final pulumi.Output<String> idcInstanceArn;
+
   /// ARN for the Amazon Redshift IAM Identity Center application.
   late final pulumi.Output<String> idcManagedApplicationArn;
+
   /// Namespace for the Amazon Redshift IAM Identity Center application instance.
   late final pulumi.Output<String> identityNamespace;
+
   /// ARN of the Redshift application in IAM Identity Center.
   late final pulumi.Output<String> redshiftIdcApplicationArn;
+
   /// Name of the Redshift application in IAM Identity Center.
   late final pulumi.Output<String> redshiftIdcApplicationName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Collection of service integrations for the Redshift IAM Identity Center application. Refer to the service_integration documentation for more details.
-  late final pulumi.Output<IdcApplicationServiceIntegration?> serviceIntegration;
+  late final pulumi.Output<IdcApplicationServiceIntegration?>
+  serviceIntegration;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -162,24 +174,35 @@ class IdcApplication extends pulumi.CustomResource {
     IdcApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:redshift/idcApplication:IdcApplication',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationType = registerOutput<String>('applicationType');
-    this.authorizedTokenIssuer = registerOutput<IdcApplicationAuthorizedTokenIssuer?>('authorizedTokenIssuer');
-    this.iamRoleArn = registerOutput<String>('iamRoleArn');
-    this.idcDisplayName = registerOutput<String>('idcDisplayName');
-    this.idcInstanceArn = registerOutput<String>('idcInstanceArn');
-    this.idcManagedApplicationArn = registerOutput<String>('idcManagedApplicationArn');
-    this.identityNamespace = registerOutput<String>('identityNamespace');
-    this.redshiftIdcApplicationArn = registerOutput<String>('redshiftIdcApplicationArn');
-    this.redshiftIdcApplicationName = registerOutput<String>('redshiftIdcApplicationName');
-    this.region = registerOutput<String>('region');
-    this.serviceIntegration = registerOutput<IdcApplicationServiceIntegration?>('serviceIntegration');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:redshift/idcApplication:IdcApplication',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationType = registerOutput<String>('applicationType');
+    authorizedTokenIssuer =
+        registerOutput<IdcApplicationAuthorizedTokenIssuer?>(
+          'authorizedTokenIssuer',
+        );
+    iamRoleArn = registerOutput<String>('iamRoleArn');
+    idcDisplayName = registerOutput<String>('idcDisplayName');
+    idcInstanceArn = registerOutput<String>('idcInstanceArn');
+    idcManagedApplicationArn = registerOutput<String>(
+      'idcManagedApplicationArn',
+    );
+    identityNamespace = registerOutput<String>('identityNamespace');
+    redshiftIdcApplicationArn = registerOutput<String>(
+      'redshiftIdcApplicationArn',
+    );
+    redshiftIdcApplicationName = registerOutput<String>(
+      'redshiftIdcApplicationName',
+    );
+    region = registerOutput<String>('region');
+    serviceIntegration = registerOutput<IdcApplicationServiceIntegration?>(
+      'serviceIntegration',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [IdcApplication] resource's state with the given [name] and [id].
@@ -200,23 +223,34 @@ class IdcApplication extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:redshift/idcApplication:IdcApplication',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationType = registerOutput<String>('applicationType');
-    this.authorizedTokenIssuer = registerOutput<IdcApplicationAuthorizedTokenIssuer?>('authorizedTokenIssuer');
-    this.iamRoleArn = registerOutput<String>('iamRoleArn');
-    this.idcDisplayName = registerOutput<String>('idcDisplayName');
-    this.idcInstanceArn = registerOutput<String>('idcInstanceArn');
-    this.idcManagedApplicationArn = registerOutput<String>('idcManagedApplicationArn');
-    this.identityNamespace = registerOutput<String>('identityNamespace');
-    this.redshiftIdcApplicationArn = registerOutput<String>('redshiftIdcApplicationArn');
-    this.redshiftIdcApplicationName = registerOutput<String>('redshiftIdcApplicationName');
-    this.region = registerOutput<String>('region');
-    this.serviceIntegration = registerOutput<IdcApplicationServiceIntegration?>('serviceIntegration');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:redshift/idcApplication:IdcApplication',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationType = registerOutput<String>('applicationType');
+    authorizedTokenIssuer =
+        registerOutput<IdcApplicationAuthorizedTokenIssuer?>(
+          'authorizedTokenIssuer',
+        );
+    iamRoleArn = registerOutput<String>('iamRoleArn');
+    idcDisplayName = registerOutput<String>('idcDisplayName');
+    idcInstanceArn = registerOutput<String>('idcInstanceArn');
+    idcManagedApplicationArn = registerOutput<String>(
+      'idcManagedApplicationArn',
+    );
+    identityNamespace = registerOutput<String>('identityNamespace');
+    redshiftIdcApplicationArn = registerOutput<String>(
+      'redshiftIdcApplicationArn',
+    );
+    redshiftIdcApplicationName = registerOutput<String>(
+      'redshiftIdcApplicationName',
+    );
+    region = registerOutput<String>('region');
+    serviceIntegration = registerOutput<IdcApplicationServiceIntegration?>(
+      'serviceIntegration',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

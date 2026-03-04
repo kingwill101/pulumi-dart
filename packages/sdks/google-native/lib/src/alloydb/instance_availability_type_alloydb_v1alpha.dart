@@ -4,16 +4,17 @@ enum InstanceAvailabilityTypeAlloydbV1alpha {
   zonal("ZONAL"),
   regional("REGIONAL");
 
-  const InstanceAvailabilityTypeAlloydbV1alpha(this.value);
-  final String value;
+  const InstanceAvailabilityTypeAlloydbV1alpha(this.wireValue);
+  final String wireValue;
 
   static InstanceAvailabilityTypeAlloydbV1alpha fromValue(String value) {
     for (final item in InstanceAvailabilityTypeAlloydbV1alpha.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceAvailabilityTypeAlloydbV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown InstanceAvailabilityTypeAlloydbV1alpha value: $value',
+    );
   }
 }
-

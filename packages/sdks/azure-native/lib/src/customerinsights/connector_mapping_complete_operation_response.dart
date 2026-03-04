@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectorMappingCompleteOperationResponse {
   /// The type of completion operation.
   final pulumi.Input<String>? completionOperationType;
+
   /// The destination folder where files will be moved to once the import is done.
   final pulumi.Input<String>? destinationFolder;
 
@@ -24,11 +25,20 @@ class ConnectorMappingCompleteOperationResponse {
     };
   }
 
-  factory ConnectorMappingCompleteOperationResponse.fromMap(Map<String, dynamic> map) {
+  factory ConnectorMappingCompleteOperationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorMappingCompleteOperationResponse(
-      completionOperationType: map['completionOperationType'] == null ? null : (map['completionOperationType']! as String).input(),
-      destinationFolder: map['destinationFolder'] == null ? null : (map['destinationFolder']! as String).input(),
+      completionOperationType: (() {
+        final guardedValue = map['completionOperationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationFolder: (() {
+        final guardedValue = map['destinationFolder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

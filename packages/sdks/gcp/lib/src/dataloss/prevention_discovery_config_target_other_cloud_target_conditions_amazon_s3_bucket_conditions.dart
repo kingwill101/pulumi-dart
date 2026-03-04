@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions {
   /// Bucket types that should be profiled. Optional. Defaults to TYPE_ALL_SUPPORTED if unspecified. Possible values: ["TYPE_ALL_SUPPORTED", "TYPE_GENERAL_PURPOSE"]
   final pulumi.Input<List<String>>? bucketTypes;
+
   /// Object classes that should be profiled. Optional. Defaults to ALL_SUPPORTED_CLASSES if unspecified. Possible values: ["ALL_SUPPORTED_CLASSES", "STANDARD", "STANDARD_INFREQUENT_ACCESS", "GLACIER_INSTANT_RETRIEVAL", "INTELLIGENT_TIERING"]
   final pulumi.Input<List<String>>? objectStorageClasses;
 
@@ -23,11 +24,20 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketCon
     };
   }
 
-  factory PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions(
-      bucketTypes: map['bucketTypes'] == null ? null : ((map['bucketTypes']! as List).cast<String>()).input(),
-      objectStorageClasses: map['objectStorageClasses'] == null ? null : ((map['objectStorageClasses']! as List).cast<String>()).input(),
+      bucketTypes: (() {
+        final guardedValue = map['bucketTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      objectStorageClasses: (() {
+        final guardedValue = map['objectStorageClasses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

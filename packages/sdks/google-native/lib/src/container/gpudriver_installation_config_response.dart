@@ -9,20 +9,19 @@ class GPUDriverInstallationConfigResponse {
 
   /// Creates a new [GPUDriverInstallationConfigResponse].
   /// [gpuDriverVersion] Mode for how the GPU driver is installed.
-  GPUDriverInstallationConfigResponse({
-    required this.gpuDriverVersion,
-  });
+  GPUDriverInstallationConfigResponse({required this.gpuDriverVersion});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gpuDriverVersion': gpuDriverVersion,
-    };
+    return <String, dynamic>{'gpuDriverVersion': gpuDriverVersion};
   }
 
-  factory GPUDriverInstallationConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GPUDriverInstallationConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GPUDriverInstallationConfigResponse(
-      gpuDriverVersion: (map['gpuDriverVersion'] as String).input(),
+      gpuDriverVersion: pulumi.Input.fromValue(
+        map['gpuDriverVersion'] as String,
+      ),
     );
   }
 }
-

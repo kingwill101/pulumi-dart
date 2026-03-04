@@ -5,16 +5,15 @@ enum ApplicationGatewayProtocol {
   valueTcp("Tcp"),
   valueTls("Tls");
 
-  const ApplicationGatewayProtocol(this.value);
-  final String value;
+  const ApplicationGatewayProtocol(this.wireValue);
+  final String wireValue;
 
   static ApplicationGatewayProtocol fromValue(String value) {
     for (final item in ApplicationGatewayProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApplicationGatewayProtocol value: $value');
   }
 }
-

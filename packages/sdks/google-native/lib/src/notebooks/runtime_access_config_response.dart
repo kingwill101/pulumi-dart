@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuntimeAccessConfigResponse {
   /// The type of access mode this instance.
   final pulumi.Input<String> accessType;
+
   /// The proxy endpoint that is used to access the runtime.
   final pulumi.Input<String> proxyUri;
+
   /// The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
   final pulumi.Input<String> runtimeOwner;
 
@@ -31,10 +33,9 @@ class RuntimeAccessConfigResponse {
 
   factory RuntimeAccessConfigResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeAccessConfigResponse(
-      accessType: (map['accessType'] as String).input(),
-      proxyUri: (map['proxyUri'] as String).input(),
-      runtimeOwner: (map['runtimeOwner'] as String).input(),
+      accessType: pulumi.Input.fromValue(map['accessType'] as String),
+      proxyUri: pulumi.Input.fromValue(map['proxyUri'] as String),
+      runtimeOwner: pulumi.Input.fromValue(map['runtimeOwner'] as String),
     );
   }
 }
-

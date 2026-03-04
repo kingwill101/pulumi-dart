@@ -9,10 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListenerAclAttachmentArgs {
   /// The ID list of the access policy group bound by the listener.
   final pulumi.Input<String> aclId;
+
   /// Access control type:
   /// - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
   /// - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
   final pulumi.Input<String> aclType;
+
   /// Listener instance ID.
   final pulumi.Input<String> listenerId;
 
@@ -36,10 +38,9 @@ class ListenerAclAttachmentArgs {
 
   factory ListenerAclAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ListenerAclAttachmentArgs(
-      aclId: (map['aclId'] as String).input(),
-      aclType: (map['aclType'] as String).input(),
-      listenerId: (map['listenerId'] as String).input(),
+      aclId: pulumi.Input.fromValue(map['aclId'] as String),
+      aclType: pulumi.Input.fromValue(map['aclType'] as String),
+      listenerId: pulumi.Input.fromValue(map['listenerId'] as String),
     );
   }
 }
-

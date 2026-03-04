@@ -201,14 +201,19 @@ import 'bool_variable_state.dart';
 class BoolVariable extends pulumi.CustomResource {
   /// The name of the automation account in which the Variable is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
+
   /// The description of the Automation Variable.
   late final pulumi.Output<String?> description;
+
   /// Specifies if the Automation Variable is encrypted. Defaults to `false`.
   late final pulumi.Output<bool?> encrypted;
+
   /// The name of the Automation Variable. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which to create the Automation Variable. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The value of the Automation Variable as a `boolean`.
   late final pulumi.Output<bool?> value;
 
@@ -221,17 +226,17 @@ class BoolVariable extends pulumi.CustomResource {
     BoolVariableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/boolVariable:BoolVariable',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.description = registerOutput<String?>('description');
-    this.encrypted = registerOutput<bool?>('encrypted');
+         'azure:automation/boolVariable:BoolVariable',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    description = registerOutput<String?>('description');
+    encrypted = registerOutput<bool?>('encrypted');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.value = registerOutput<bool?>('value');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    value = registerOutput<bool?>('value');
   }
 
   /// Gets an existing [BoolVariable] resource's state with the given [name] and [id].
@@ -252,16 +257,16 @@ class BoolVariable extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/boolVariable:BoolVariable',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.description = registerOutput<String?>('description');
-    this.encrypted = registerOutput<bool?>('encrypted');
+         'azure:automation/boolVariable:BoolVariable',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    description = registerOutput<String?>('description');
+    encrypted = registerOutput<bool?>('encrypted');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.value = registerOutput<bool?>('value');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    value = registerOutput<bool?>('value');
   }
 }

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreGatewayProtocolConfigurationMcp {
   /// Instructions for the MCP protocol configuration.
   final pulumi.Input<String>? instructions;
+
   /// Search type for MCP. Valid values: `SEMANTIC`.
   final pulumi.Input<String>? searchType;
+
   /// Set of supported MCP protocol versions.
   final pulumi.Input<List<String>>? supportedVersions;
 
@@ -28,12 +30,25 @@ class AgentcoreGatewayProtocolConfigurationMcp {
     };
   }
 
-  factory AgentcoreGatewayProtocolConfigurationMcp.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreGatewayProtocolConfigurationMcp.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreGatewayProtocolConfigurationMcp(
-      instructions: map['instructions'] == null ? null : ((map['instructions'] as String).input()).input(),
-      searchType: map['searchType'] == null ? null : ((map['searchType'] as String).input()).input(),
-      supportedVersions: map['supportedVersions'] == null ? null : (((map['supportedVersions'] as List).cast<String>()).input()).input(),
+      instructions: (() {
+        final guardedValue = map['instructions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      searchType: (() {
+        final guardedValue = map['searchType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      supportedVersions: (() {
+        final guardedValue = map['supportedVersions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

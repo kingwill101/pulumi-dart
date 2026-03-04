@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseAccountSqlDatabaseArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
+
   /// Cosmos DB database name.
   final pulumi.Input<String> databaseName;
+
   /// Name of an Azure resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetDatabaseAccountSqlDatabaseArgs {
 
   factory GetDatabaseAccountSqlDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseAccountSqlDatabaseArgs(
-      accountName: (map['accountName'] as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

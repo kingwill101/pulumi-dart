@@ -12,12 +12,15 @@ class GetWorkstationConfigIamPolicyArgs {
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   final pulumi.Input<String>? location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The ID of the parent workstation cluster.
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> workstationClusterId;
+
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> workstationConfigId;
 
@@ -44,11 +47,22 @@ class GetWorkstationConfigIamPolicyArgs {
 
   factory GetWorkstationConfigIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkstationConfigIamPolicyArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      workstationClusterId: (map['workstationClusterId'] as String).input(),
-      workstationConfigId: (map['workstationConfigId'] as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workstationClusterId: pulumi.Input.fromValue(
+        map['workstationClusterId'] as String,
+      ),
+      workstationConfigId: pulumi.Input.fromValue(
+        map['workstationConfigId'] as String,
+      ),
     );
   }
 }
-

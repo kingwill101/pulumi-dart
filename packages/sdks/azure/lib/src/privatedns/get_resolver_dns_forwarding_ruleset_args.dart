@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResolverDnsForwardingRulesetArgs {
   /// Name of the existing Private DNS Resolver Dns Forwarding Ruleset.
   final pulumi.Input<String> name;
+
   /// Name of the Resource Group where the Private DNS Resolver Dns Forwarding Ruleset exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -27,11 +28,14 @@ class GetResolverDnsForwardingRulesetArgs {
     };
   }
 
-  factory GetResolverDnsForwardingRulesetArgs.fromMap(Map<String, dynamic> map) {
+  factory GetResolverDnsForwardingRulesetArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetResolverDnsForwardingRulesetArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

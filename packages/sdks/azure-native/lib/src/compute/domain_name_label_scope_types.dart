@@ -5,16 +5,15 @@ enum DomainNameLabelScopeTypes {
   resourceGroupReuse("ResourceGroupReuse"),
   noReuse("NoReuse");
 
-  const DomainNameLabelScopeTypes(this.value);
-  final String value;
+  const DomainNameLabelScopeTypes(this.wireValue);
+  final String wireValue;
 
   static DomainNameLabelScopeTypes fromValue(String value) {
     for (final item in DomainNameLabelScopeTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DomainNameLabelScopeTypes value: $value');
   }
 }
-

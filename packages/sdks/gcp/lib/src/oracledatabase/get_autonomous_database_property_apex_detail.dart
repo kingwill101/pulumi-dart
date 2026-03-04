@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAutonomousDatabasePropertyApexDetail {
   /// The Oracle APEX Application Development version.
   final pulumi.Input<String> apexVersion;
+
   /// The Oracle REST Data Services (ORDS) version.
   final pulumi.Input<String> ordsVersion;
 
@@ -23,11 +24,12 @@ class GetAutonomousDatabasePropertyApexDetail {
     };
   }
 
-  factory GetAutonomousDatabasePropertyApexDetail.fromMap(Map<String, dynamic> map) {
+  factory GetAutonomousDatabasePropertyApexDetail.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAutonomousDatabasePropertyApexDetail(
-      apexVersion: (map['apexVersion'] as String).input(),
-      ordsVersion: (map['ordsVersion'] as String).input(),
+      apexVersion: pulumi.Input.fromValue(map['apexVersion'] as String),
+      ordsVersion: pulumi.Input.fromValue(map['ordsVersion'] as String),
     );
   }
 }
-

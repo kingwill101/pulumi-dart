@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExperimentExecutionDetailsArgs {
   /// GUID that represents a Experiment execution detail.
   final pulumi.Input<String> executionId;
+
   /// String that represents a Experiment resource name.
   final pulumi.Input<String> experimentName;
+
   /// String that represents an Azure resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetExperimentExecutionDetailsArgs {
 
   factory GetExperimentExecutionDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetExperimentExecutionDetailsArgs(
-      executionId: (map['executionId'] as String).input(),
-      experimentName: (map['experimentName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      executionId: pulumi.Input.fromValue(map['executionId'] as String),
+      experimentName: pulumi.Input.fromValue(map['experimentName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

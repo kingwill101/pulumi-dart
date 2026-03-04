@@ -4,16 +4,15 @@ enum RegistrationTokenOperation {
   valueNone("None"),
   valueUpdate("Update");
 
-  const RegistrationTokenOperation(this.value);
-  final String value;
+  const RegistrationTokenOperation(this.wireValue);
+  final String wireValue;
 
   static RegistrationTokenOperation fromValue(String value) {
     for (final item in RegistrationTokenOperation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegistrationTokenOperation value: $value');
   }
 }
-

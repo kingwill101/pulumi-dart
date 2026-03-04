@@ -29,12 +29,17 @@ class GetDebugTokenFirebaseappcheckV1betaArgs {
     };
   }
 
-  factory GetDebugTokenFirebaseappcheckV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetDebugTokenFirebaseappcheckV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDebugTokenFirebaseappcheckV1betaArgs(
-      appId: (map['appId'] as String).input(),
-      debugTokenId: (map['debugTokenId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      debugTokenId: pulumi.Input.fromValue(map['debugTokenId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

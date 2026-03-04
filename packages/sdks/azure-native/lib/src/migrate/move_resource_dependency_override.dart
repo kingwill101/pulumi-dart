@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MoveResourceDependencyOverride {
   /// Gets or sets the ARM ID of the dependent resource.
   final pulumi.Input<String>? id;
+
   /// Gets or sets the resource ARM id of either the MoveResource or the resource ARM ID of
   /// the dependent resource.
   final pulumi.Input<String>? targetId;
@@ -13,23 +14,24 @@ class MoveResourceDependencyOverride {
   /// Creates a new [MoveResourceDependencyOverride].
   /// [id] Gets or sets the ARM ID of the dependent resource.
   /// [targetId] Gets or sets the resource ARM id of either the MoveResource or the resource ARM ID of
-  MoveResourceDependencyOverride({
-    this.id,
-    this.targetId,
-  });
+  MoveResourceDependencyOverride({this.id, this.targetId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'targetId': ?targetId,
-    };
+    return <String, dynamic>{'id': ?id, 'targetId': ?targetId};
   }
 
   factory MoveResourceDependencyOverride.fromMap(Map<String, dynamic> map) {
     return MoveResourceDependencyOverride(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetId: (() {
+        final guardedValue = map['targetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

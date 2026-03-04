@@ -1,5 +1,3 @@
-library module_developerconnect;
-
 export 'developerconnect/account_connector.dart';
 export 'developerconnect/account_connector_args.dart';
 export 'developerconnect/account_connector_provider_oauth_config.dart';

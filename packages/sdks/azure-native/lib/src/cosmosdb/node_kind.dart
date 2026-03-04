@@ -2,16 +2,15 @@
 enum NodeKind {
   valueShard("Shard");
 
-  const NodeKind(this.value);
-  final String value;
+  const NodeKind(this.wireValue);
+  final String wireValue;
 
   static NodeKind fromValue(String value) {
     for (final item in NodeKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NodeKind value: $value');
   }
 }
-

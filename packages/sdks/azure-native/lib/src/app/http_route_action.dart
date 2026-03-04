@@ -9,20 +9,19 @@ class HttpRouteAction {
 
   /// Creates a new [HttpRouteAction].
   /// [prefixRewrite] Rewrite prefix, default is no rewrites
-  HttpRouteAction({
-    this.prefixRewrite,
-  });
+  HttpRouteAction({this.prefixRewrite});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'prefixRewrite': ?prefixRewrite,
-    };
+    return <String, dynamic>{'prefixRewrite': ?prefixRewrite};
   }
 
   factory HttpRouteAction.fromMap(Map<String, dynamic> map) {
     return HttpRouteAction(
-      prefixRewrite: map['prefixRewrite'] == null ? null : (map['prefixRewrite']! as String).input(),
+      prefixRewrite: (() {
+        final guardedValue = map['prefixRewrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

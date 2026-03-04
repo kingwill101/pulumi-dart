@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListGitHubOwnerAvailableArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The security connector name.
   final pulumi.Input<String> securityConnectorName;
 
@@ -29,9 +30,12 @@ class ListGitHubOwnerAvailableArgs {
 
   factory ListGitHubOwnerAvailableArgs.fromMap(Map<String, dynamic> map) {
     return ListGitHubOwnerAvailableArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityConnectorName: (map['securityConnectorName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      securityConnectorName: pulumi.Input.fromValue(
+        map['securityConnectorName'] as String,
+      ),
     );
   }
 }
-

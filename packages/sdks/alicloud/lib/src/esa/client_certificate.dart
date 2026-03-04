@@ -8,7 +8,7 @@ import 'client_certificate_state.dart';
 ///
 /// For information about ESA Client Certificate and how to use it, see [What is Client Certificate](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateClientCertificate).
 ///
-/// > **NOTE:** Available since v1.244.0.
+/// &gt; **NOTE:** Available since v1.244.0.
 ///
 /// ## Example Usage
 ///
@@ -161,23 +161,29 @@ import 'client_certificate_state.dart';
 class ClientCertificate extends pulumi.CustomResource {
   /// ClientCertificate Id
   late final pulumi.Output<String> clientCertId;
+
   /// The time when the certificate was created.
   late final pulumi.Output<String> createTime;
+
   /// Certificate signing request content.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> csr;
+
   /// The private key algorithm type.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> pkeyType;
+
   /// Site Id
   late final pulumi.Output<String> siteId;
+
   /// The certificate status. Valid values: `revoked`, `active`.
   late final pulumi.Output<String> status;
+
   /// Certificate validity period.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String> validityDays;
 
   /// Creates a new [ClientCertificate].
@@ -189,18 +195,18 @@ class ClientCertificate extends pulumi.CustomResource {
     ClientCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/clientCertificate:ClientCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clientCertId = registerOutput<String>('clientCertId');
-    this.createTime = registerOutput<String>('createTime');
-    this.csr = registerOutput<String?>('csr');
-    this.pkeyType = registerOutput<String?>('pkeyType');
-    this.siteId = registerOutput<String>('siteId');
-    this.status = registerOutput<String>('status');
-    this.validityDays = registerOutput<String>('validityDays');
+         'alicloud:esa/clientCertificate:ClientCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clientCertId = registerOutput<String>('clientCertId');
+    createTime = registerOutput<String>('createTime');
+    csr = registerOutput<String?>('csr');
+    pkeyType = registerOutput<String?>('pkeyType');
+    siteId = registerOutput<String>('siteId');
+    status = registerOutput<String>('status');
+    validityDays = registerOutput<String>('validityDays');
   }
 
   /// Gets an existing [ClientCertificate] resource's state with the given [name] and [id].
@@ -221,17 +227,17 @@ class ClientCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/clientCertificate:ClientCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clientCertId = registerOutput<String>('clientCertId');
-    this.createTime = registerOutput<String>('createTime');
-    this.csr = registerOutput<String?>('csr');
-    this.pkeyType = registerOutput<String?>('pkeyType');
-    this.siteId = registerOutput<String>('siteId');
-    this.status = registerOutput<String>('status');
-    this.validityDays = registerOutput<String>('validityDays');
+         'alicloud:esa/clientCertificate:ClientCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clientCertId = registerOutput<String>('clientCertId');
+    createTime = registerOutput<String>('createTime');
+    csr = registerOutput<String?>('csr');
+    pkeyType = registerOutput<String?>('pkeyType');
+    siteId = registerOutput<String>('siteId');
+    status = registerOutput<String>('status');
+    validityDays = registerOutput<String>('validityDays');
   }
 }

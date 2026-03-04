@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceManagementPrivateLinkArgs {
   /// the region to create private link association.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the resource management private link.
   final pulumi.Input<String>? rmplName;
 
@@ -34,10 +36,19 @@ class ResourceManagementPrivateLinkArgs {
 
   factory ResourceManagementPrivateLinkArgs.fromMap(Map<String, dynamic> map) {
     return ResourceManagementPrivateLinkArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rmplName: map['rmplName'] == null ? null : (map['rmplName']! as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      rmplName: (() {
+        final guardedValue = map['rmplName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

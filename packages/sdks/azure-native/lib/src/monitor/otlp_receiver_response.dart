@@ -4,25 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// OTLP Receiver.
 class OtlpReceiverResponse {
-  /// OTLP GRPC endpoint definition. Example: 0.0.0.0:<port>.
+  /// OTLP GRPC endpoint definition. Example: 0.0.0.0:&lt;port&gt;.
   final pulumi.Input<String> endpoint;
 
   /// Creates a new [OtlpReceiverResponse].
-  /// [endpoint] OTLP GRPC endpoint definition. Example: 0.0.0.0:<port>.
-  OtlpReceiverResponse({
-    required this.endpoint,
-  });
+  /// [endpoint] OTLP GRPC endpoint definition. Example: 0.0.0.0:&lt;port&gt;.
+  OtlpReceiverResponse({required this.endpoint});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'endpoint': endpoint,
-    };
+    return <String, dynamic>{'endpoint': endpoint};
   }
 
   factory OtlpReceiverResponse.fromMap(Map<String, dynamic> map) {
     return OtlpReceiverResponse(
-      endpoint: (map['endpoint'] as String).input(),
+      endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
     );
   }
 }
-

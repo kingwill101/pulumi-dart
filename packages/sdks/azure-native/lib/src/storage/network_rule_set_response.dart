@@ -9,12 +9,16 @@ import 'virtual_network_rule_response.dart';
 class NetworkRuleSetResponse {
   /// Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics.
   final pulumi.Input<String>? bypass;
+
   /// Specifies the default action of allow or deny when no other rules match.
   final pulumi.Input<String> defaultAction;
+
   /// Sets the IP ACL rules
   final pulumi.Input<List<IPRuleResponse>>? ipRules;
+
   /// Sets the resource access rules
   final pulumi.Input<List<ResourceAccessRuleResponse>>? resourceAccessRules;
+
   /// Sets the virtual network rules
   final pulumi.Input<List<VirtualNetworkRuleResponse>>? virtualNetworkRules;
 
@@ -36,20 +40,88 @@ class NetworkRuleSetResponse {
     return <String, dynamic>{
       'bypass': ?bypass,
       'defaultAction': defaultAction,
-      'ipRules': ?pulumi.Input.mapOptionalInputValue<List<IPRuleResponse>, List<Map<String, dynamic>>>(ipRules, (value) => pulumi.Input.encodeList<IPRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'resourceAccessRules': ?pulumi.Input.mapOptionalInputValue<List<ResourceAccessRuleResponse>, List<Map<String, dynamic>>>(resourceAccessRules, (value) => pulumi.Input.encodeList<ResourceAccessRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'virtualNetworkRules': ?pulumi.Input.mapOptionalInputValue<List<VirtualNetworkRuleResponse>, List<Map<String, dynamic>>>(virtualNetworkRules, (value) => pulumi.Input.encodeList<VirtualNetworkRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IPRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            ipRules,
+            (value) =>
+                pulumi.Input.encodeList<IPRuleResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'resourceAccessRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceAccessRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            resourceAccessRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceAccessRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'virtualNetworkRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VirtualNetworkRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            virtualNetworkRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualNetworkRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory NetworkRuleSetResponse.fromMap(Map<String, dynamic> map) {
     return NetworkRuleSetResponse(
-      bypass: map['bypass'] == null ? null : (map['bypass']! as String).input(),
-      defaultAction: (map['defaultAction'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IPRuleResponse>(map['ipRules']!, (value) => IPRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceAccessRules: map['resourceAccessRules'] == null ? null : (pulumi.Input.decodeList<ResourceAccessRuleResponse>(map['resourceAccessRules']!, (value) => ResourceAccessRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkRuleResponse>(map['virtualNetworkRules']!, (value) => VirtualNetworkRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bypass: (() {
+        final guardedValue = map['bypass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultAction: pulumi.Input.fromValue(map['defaultAction'] as String),
+      ipRules: (() {
+        final guardedValue = map['ipRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IPRuleResponse>(
+            guardedValue,
+            (value) =>
+                IPRuleResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      resourceAccessRules: (() {
+        final guardedValue = map['resourceAccessRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceAccessRuleResponse>(
+            guardedValue,
+            (value) => ResourceAccessRuleResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      virtualNetworkRules: (() {
+        final guardedValue = map['virtualNetworkRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VirtualNetworkRuleResponse>(
+            guardedValue,
+            (value) => VirtualNetworkRuleResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

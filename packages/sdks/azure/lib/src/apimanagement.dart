@@ -1,5 +1,3 @@
-library module_apimanagement;
-
 export 'apimanagement/api.dart';
 export 'apimanagement/api_args.dart';
 export 'apimanagement/api_contact.dart';

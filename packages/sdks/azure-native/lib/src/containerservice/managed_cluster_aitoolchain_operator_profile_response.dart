@@ -9,20 +9,21 @@ class ManagedClusterAIToolchainOperatorProfileResponse {
 
   /// Creates a new [ManagedClusterAIToolchainOperatorProfileResponse].
   /// [enabled] Whether to enable AI toolchain operator to the cluster. Indicates if AI toolchain operator  enabled or not.
-  ManagedClusterAIToolchainOperatorProfileResponse({
-    this.enabled,
-  });
+  ManagedClusterAIToolchainOperatorProfileResponse({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
-  factory ManagedClusterAIToolchainOperatorProfileResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedClusterAIToolchainOperatorProfileResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedClusterAIToolchainOperatorProfileResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

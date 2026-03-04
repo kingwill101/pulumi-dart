@@ -5,16 +5,15 @@ enum DistributionPolicyTargetShape {
   balanced("BALANCED"),
   even("EVEN");
 
-  const DistributionPolicyTargetShape(this.value);
-  final String value;
+  const DistributionPolicyTargetShape(this.wireValue);
+  final String wireValue;
 
   static DistributionPolicyTargetShape fromValue(String value) {
     for (final item in DistributionPolicyTargetShape.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DistributionPolicyTargetShape value: $value');
   }
 }
-

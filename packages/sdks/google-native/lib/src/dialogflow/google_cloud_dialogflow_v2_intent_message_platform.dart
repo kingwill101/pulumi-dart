@@ -11,16 +11,17 @@ enum GoogleCloudDialogflowV2IntentMessagePlatform {
   actionsOnGoogle("ACTIONS_ON_GOOGLE"),
   googleHangouts("GOOGLE_HANGOUTS");
 
-  const GoogleCloudDialogflowV2IntentMessagePlatform(this.value);
-  final String value;
+  const GoogleCloudDialogflowV2IntentMessagePlatform(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudDialogflowV2IntentMessagePlatform fromValue(String value) {
     for (final item in GoogleCloudDialogflowV2IntentMessagePlatform.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowV2IntentMessagePlatform value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowV2IntentMessagePlatform value: $value',
+    );
   }
 }
-

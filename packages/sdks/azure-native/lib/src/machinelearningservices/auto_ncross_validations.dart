@@ -10,20 +10,15 @@ class AutoNCrossValidations {
 
   /// Creates a new [AutoNCrossValidations].
   /// [mode] Determines how N-Cross validations value is determined.
-  AutoNCrossValidations({
-    required this.mode,
-  });
+  AutoNCrossValidations({required this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': mode,
-    };
+    return <String, dynamic>{'mode': mode};
   }
 
   factory AutoNCrossValidations.fromMap(Map<String, dynamic> map) {
     return AutoNCrossValidations(
-      mode: (map['mode'] as String).input(),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

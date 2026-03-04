@@ -13,15 +13,18 @@ class ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashbo
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dashboardArn': ?dashboardArn,
-    };
+    return <String, dynamic>{'dashboardArn': ?dashboardArn};
   }
 
-  factory ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard.fromMap(Map<String, dynamic> map) {
+  factory ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard(
-      dashboardArn: map['dashboardArn'] == null ? null : ((map['dashboardArn'] as String).input()).input(),
+      dashboardArn: (() {
+        final guardedValue = map['dashboardArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

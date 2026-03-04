@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetModifyParameterLogsArgs {
   /// The db instance id.
   final pulumi.Input<String> dbInstanceId;
+
   /// The end time.
   final pulumi.Input<String> endTime;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The start time.
   final pulumi.Input<String> startTime;
 
@@ -39,11 +42,14 @@ class GetModifyParameterLogsArgs {
 
   factory GetModifyParameterLogsArgs.fromMap(Map<String, dynamic> map) {
     return GetModifyParameterLogsArgs(
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      endTime: (map['endTime'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      startTime: (map['startTime'] as String).input(),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
-

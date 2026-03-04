@@ -8,8 +8,10 @@ import 'secret_env_source_response.dart';
 class EnvFromSourceResponse {
   /// The ConfigMap to select from
   final pulumi.Input<ConfigMapEnvSourceResponse> configMapRef;
+
   /// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
   final pulumi.Input<String> prefix;
+
   /// The Secret to select from
   final pulumi.Input<SecretEnvSourceResponse> secretRef;
 
@@ -25,18 +27,33 @@ class EnvFromSourceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configMapRef': pulumi.Input.mapInputValue<ConfigMapEnvSourceResponse, Map<String, dynamic>>(configMapRef, (value) => value.toMap()),
+      'configMapRef':
+          pulumi.Input.mapInputValue<
+            ConfigMapEnvSourceResponse,
+            Map<String, dynamic>
+          >(configMapRef, (value) => value.toMap()),
       'prefix': prefix,
-      'secretRef': pulumi.Input.mapInputValue<SecretEnvSourceResponse, Map<String, dynamic>>(secretRef, (value) => value.toMap()),
+      'secretRef':
+          pulumi.Input.mapInputValue<
+            SecretEnvSourceResponse,
+            Map<String, dynamic>
+          >(secretRef, (value) => value.toMap()),
     };
   }
 
   factory EnvFromSourceResponse.fromMap(Map<String, dynamic> map) {
     return EnvFromSourceResponse(
-      configMapRef: (ConfigMapEnvSourceResponse.fromMap((map['configMapRef'] as Map).cast<String, dynamic>())).input(),
-      prefix: (map['prefix'] as String).input(),
-      secretRef: (SecretEnvSourceResponse.fromMap((map['secretRef'] as Map).cast<String, dynamic>())).input(),
+      configMapRef: pulumi.Input.fromValue(
+        ConfigMapEnvSourceResponse.fromMap(
+          (map['configMapRef']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      prefix: pulumi.Input.fromValue(map['prefix'] as String),
+      secretRef: pulumi.Input.fromValue(
+        SecretEnvSourceResponse.fromMap(
+          (map['secretRef']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

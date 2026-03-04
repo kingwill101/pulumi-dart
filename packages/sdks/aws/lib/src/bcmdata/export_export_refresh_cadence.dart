@@ -8,20 +8,15 @@ class ExportExportRefreshCadence {
 
   /// Creates a new [ExportExportRefreshCadence].
   /// [frequency] Frequency that data exports are updated. The export refreshes each time the source data updates, up to three times daily. Valid values `SYNCHRONOUS`.
-  ExportExportRefreshCadence({
-    required this.frequency,
-  });
+  ExportExportRefreshCadence({required this.frequency});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'frequency': frequency,
-    };
+    return <String, dynamic>{'frequency': frequency};
   }
 
   factory ExportExportRefreshCadence.fromMap(Map<String, dynamic> map) {
     return ExportExportRefreshCadence(
-      frequency: (map['frequency'] as String).input(),
+      frequency: pulumi.Input.fromValue(map['frequency'] as String),
     );
   }
 }
-

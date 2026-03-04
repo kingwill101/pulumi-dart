@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdAssetReferenceResponse {
   /// [Required] ARM resource ID of the asset.
   final pulumi.Input<String> assetId;
+
   /// Enum to determine which reference method to use for an asset.
   /// Expected value is 'Id'.
   final pulumi.Input<String> referenceType;
@@ -27,9 +28,8 @@ class IdAssetReferenceResponse {
 
   factory IdAssetReferenceResponse.fromMap(Map<String, dynamic> map) {
     return IdAssetReferenceResponse(
-      assetId: (map['assetId'] as String).input(),
-      referenceType: (map['referenceType'] as String).input(),
+      assetId: pulumi.Input.fromValue(map['assetId'] as String),
+      referenceType: pulumi.Input.fromValue(map['referenceType'] as String),
     );
   }
 }
-

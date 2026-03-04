@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistrationInfoResponse {
   /// Expiration time of registration token.
   final pulumi.Input<String>? expirationTime;
+
   /// The type of resetting the token.
   final pulumi.Input<String>? registrationTokenOperation;
+
   /// The registration token base64 encoded string.
   final pulumi.Input<String>? token;
 
@@ -31,10 +33,21 @@ class RegistrationInfoResponse {
 
   factory RegistrationInfoResponse.fromMap(Map<String, dynamic> map) {
     return RegistrationInfoResponse(
-      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime']! as String).input(),
-      registrationTokenOperation: map['registrationTokenOperation'] == null ? null : (map['registrationTokenOperation']! as String).input(),
-      token: map['token'] == null ? null : (map['token']! as String).input(),
+      expirationTime: (() {
+        final guardedValue = map['expirationTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registrationTokenOperation: (() {
+        final guardedValue = map['registrationTokenOperation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      token: (() {
+        final guardedValue = map['token'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

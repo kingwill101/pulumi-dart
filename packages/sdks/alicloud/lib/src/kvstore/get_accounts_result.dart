@@ -7,6 +7,7 @@ import 'get_accounts_account.dart';
 class GetAccountsResult {
   final String? accountName;
   final List<GetAccountsAccount> accounts;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -41,7 +42,11 @@ class GetAccountsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountName': ?accountName,
-      'accounts': pulumi.Input.encodeList<GetAccountsAccount, Map<String, dynamic>>(accounts, (value) => value.toMap()),
+      'accounts':
+          pulumi.Input.encodeList<GetAccountsAccount, Map<String, dynamic>>(
+            accounts,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'instanceId': instanceId,
@@ -54,16 +59,35 @@ class GetAccountsResult {
 
   factory GetAccountsResult.fromMap(Map<String, dynamic> map) {
     return GetAccountsResult(
-      accountName: map['accountName'] == null ? null : map['accountName']! as String,
-      accounts: pulumi.Input.decodeList<GetAccountsAccount>(map['accounts'], (value) => GetAccountsAccount.fromMap((value as Map).cast<String, dynamic>())),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      accounts: pulumi.Input.decodeList<GetAccountsAccount>(
+        map['accounts']!,
+        (value) =>
+            GetAccountsAccount.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

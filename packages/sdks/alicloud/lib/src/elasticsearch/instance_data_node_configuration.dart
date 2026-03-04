@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceDataNodeConfiguration {
   /// Number of data nodes in the Elasticsearch cluster
   final pulumi.Input<int>? amount;
+
   /// Elasticsearch data node disk size
   final pulumi.Input<int>? disk;
+
   /// Whether the Elasticsearch data node disk is encrypted
   final pulumi.Input<bool>? diskEncryption;
+
   /// Elasticsearch cluster data node disk type
   final pulumi.Input<String>? diskType;
+
   /// Elasticsearch cluster data node Essd disk level
   final pulumi.Input<String>? performanceLevel;
+
   /// Elasticsearch data node specification
   final pulumi.Input<String> spec;
 
@@ -45,13 +50,32 @@ class InstanceDataNodeConfiguration {
 
   factory InstanceDataNodeConfiguration.fromMap(Map<String, dynamic> map) {
     return InstanceDataNodeConfiguration(
-      amount: map['amount'] == null ? null : (map['amount']! as int).input(),
-      disk: map['disk'] == null ? null : (map['disk']! as int).input(),
-      diskEncryption: map['diskEncryption'] == null ? null : (map['diskEncryption']! as bool).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
-      spec: (map['spec'] as String).input(),
+      amount: (() {
+        final guardedValue = map['amount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      disk: (() {
+        final guardedValue = map['disk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      diskEncryption: (() {
+        final guardedValue = map['diskEncryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      diskType: (() {
+        final guardedValue = map['diskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      performanceLevel: (() {
+        final guardedValue = map['performanceLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      spec: pulumi.Input.fromValue(map['spec'] as String),
     );
   }
 }
-

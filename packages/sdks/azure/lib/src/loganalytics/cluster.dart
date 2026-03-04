@@ -3,7 +3,7 @@ import 'cluster_args.dart';
 import 'cluster_identity.dart';
 import 'cluster_state.dart';
 
-/// > **Note:** Log Analytics Clusters are subject to 14-day soft delete policy. Clusters created with the same resource group & name as a previously deleted cluster will be recovered rather than creating anew.
+/// &gt; **Note:** Log Analytics Clusters are subject to 14-day soft delete policy. Clusters created with the same resource group & name as a previously deleted cluster will be recovered rather than creating anew.
 ///
 /// Manages a Log Analytics Cluster.
 ///
@@ -164,7 +164,7 @@ import 'cluster_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.OperationalInsights` - 2022-10-01
@@ -179,18 +179,24 @@ import 'cluster_state.dart';
 class Cluster extends pulumi.CustomResource {
   /// The GUID of the cluster.
   late final pulumi.Output<String> clusterId;
+
   /// An `identity` block as defined below. Changing this forces a new Log Analytics Cluster to be created.
   late final pulumi.Output<ClusterIdentity> identity;
+
   /// The Azure Region where the Log Analytics Cluster should exist. Changing this forces a new Log Analytics Cluster to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Log Analytics Cluster. Changing this forces a new Log Analytics Cluster to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Log Analytics Cluster should exist. Changing this forces a new Log Analytics Cluster to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The capacity of the Log Analytics Cluster is specified in GB/day. Possible values include `100`, `200`, `300`, `400`, `500`, `1000`, `2000`, `5000`, `10000`, `25000`, or `50000`. Defaults to `100`.
   ///
-  /// > **Note:** The cluster capacity must start at 100 GB and can be set to 500, 1000, 2000 or 5000 GB/day. For more information on cluster costs, see [Dedicated clusters](https://docs.microsoft.com/en-us/azure/azure-monitor/logs/cost-logs#dedicated-clusters).
+  /// &gt; **Note:** The cluster capacity must start at 100 GB and can be set to 500, 1000, 2000 or 5000 GB/day. For more information on cluster costs, see [Dedicated clusters](https://docs.microsoft.com/en-us/azure/azure-monitor/logs/cost-logs#dedicated-clusters).
   late final pulumi.Output<int?> sizeGb;
+
   /// A mapping of tags which should be assigned to the Log Analytics Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -203,18 +209,18 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:loganalytics/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.identity = registerOutput<ClusterIdentity>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:loganalytics/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    identity = registerOutput<ClusterIdentity>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sizeGb = registerOutput<int?>('sizeGb');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sizeGb = registerOutput<int?>('sizeGb');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -235,17 +241,17 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:loganalytics/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.identity = registerOutput<ClusterIdentity>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:loganalytics/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    identity = registerOutput<ClusterIdentity>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sizeGb = registerOutput<int?>('sizeGb');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sizeGb = registerOutput<int?>('sizeGb');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

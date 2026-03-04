@@ -4,16 +4,17 @@ enum BackendServiceLogConfigOptionalModeComputeV1 {
   excludeAllOptional("EXCLUDE_ALL_OPTIONAL"),
   includeAllOptional("INCLUDE_ALL_OPTIONAL");
 
-  const BackendServiceLogConfigOptionalModeComputeV1(this.value);
-  final String value;
+  const BackendServiceLogConfigOptionalModeComputeV1(this.wireValue);
+  final String wireValue;
 
   static BackendServiceLogConfigOptionalModeComputeV1 fromValue(String value) {
     for (final item in BackendServiceLogConfigOptionalModeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackendServiceLogConfigOptionalModeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown BackendServiceLogConfigOptionalModeComputeV1 value: $value',
+    );
   }
 }
-

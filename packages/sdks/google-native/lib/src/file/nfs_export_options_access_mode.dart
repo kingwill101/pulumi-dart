@@ -4,16 +4,15 @@ enum NfsExportOptionsAccessMode {
   readOnly("READ_ONLY"),
   readWrite("READ_WRITE");
 
-  const NfsExportOptionsAccessMode(this.value);
-  final String value;
+  const NfsExportOptionsAccessMode(this.wireValue);
+  final String wireValue;
 
   static NfsExportOptionsAccessMode fromValue(String value) {
     for (final item in NfsExportOptionsAccessMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NfsExportOptionsAccessMode value: $value');
   }
 }
-

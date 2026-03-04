@@ -4,16 +4,15 @@ enum PipelineOptions {
   valueDeleteSourceBlobOnSuccess("DeleteSourceBlobOnSuccess"),
   valueContinueOnErrors("ContinueOnErrors");
 
-  const PipelineOptions(this.value);
-  final String value;
+  const PipelineOptions(this.wireValue);
+  final String wireValue;
 
   static PipelineOptions fromValue(String value) {
     for (final item in PipelineOptions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PipelineOptions value: $value');
   }
 }
-

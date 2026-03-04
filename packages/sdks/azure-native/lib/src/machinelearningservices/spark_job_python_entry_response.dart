@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SparkJobPythonEntryResponse {
   /// [Required] Relative python file path for job entry point.
   final pulumi.Input<String> file;
+
   /// Expected value is 'SparkJobPythonEntry'.
   final pulumi.Input<String> sparkJobEntryType;
 
@@ -25,9 +26,10 @@ class SparkJobPythonEntryResponse {
 
   factory SparkJobPythonEntryResponse.fromMap(Map<String, dynamic> map) {
     return SparkJobPythonEntryResponse(
-      file: (map['file'] as String).input(),
-      sparkJobEntryType: (map['sparkJobEntryType'] as String).input(),
+      file: pulumi.Input.fromValue(map['file'] as String),
+      sparkJobEntryType: pulumi.Input.fromValue(
+        map['sparkJobEntryType'] as String,
+      ),
     );
   }
 }
-

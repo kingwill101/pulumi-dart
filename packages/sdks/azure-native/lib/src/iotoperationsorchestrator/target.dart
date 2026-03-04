@@ -1,10 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'component_properties_response.dart';
 import 'extended_location_response.dart';
 import 'reconciliation_policy_response.dart';
 import 'system_data_response.dart';
 import 'target_args.dart';
-import 'topologies_properties_response.dart';
 
 /// A Target resource belonging to an Instance resource.
 ///
@@ -309,28 +307,40 @@ import 'topologies_properties_response.dart';
 class Target extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A list of components.
-  late final pulumi.Output<List<ComponentPropertiesResponse>?> components;
+  late final pulumi.Output<List<Map<String, dynamic>>?> components;
+
   /// Edge location of the resource.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// Reconciliation Policy.
   late final pulumi.Output<ReconciliationPolicyResponse?> reconciliationPolicy;
+
   /// Deployment scope (such as Kubernetes namespace).
   late final pulumi.Output<String?> scope;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Defines the device topology for a target or instance.
-  late final pulumi.Output<List<TopologiesPropertiesResponse>?> topologies;
+  late final pulumi.Output<List<Map<String, dynamic>>?> topologies;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Version of the particular resource.
   late final pulumi.Output<String?> version;
 
@@ -338,28 +348,29 @@ class Target extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Target]. {@macro pulumi_iotoperationsorchestrator_target_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Target(
-    String name, {
-    TargetArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:iotoperationsorchestrator:Target',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.components = registerOutput<List<ComponentPropertiesResponse>?>('components');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.location = registerOutput<String>('location');
+  Target(String name, {TargetArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:iotoperationsorchestrator:Target',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    components = registerOutput<List<Map<String, dynamic>>?>('components');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.reconciliationPolicy = registerOutput<ReconciliationPolicyResponse?>('reconciliationPolicy');
-    this.scope = registerOutput<String?>('scope');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.topologies = registerOutput<List<TopologiesPropertiesResponse>?>('topologies');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String?>('version');
+    provisioningState = registerOutput<String>('provisioningState');
+    reconciliationPolicy = registerOutput<ReconciliationPolicyResponse?>(
+      'reconciliationPolicy',
+    );
+    scope = registerOutput<String?>('scope');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    topologies = registerOutput<List<Map<String, dynamic>>?>('topologies');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
   }
 }

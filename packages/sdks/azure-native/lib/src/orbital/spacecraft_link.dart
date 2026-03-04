@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpacecraftLink {
   /// Bandwidth in MHz.
   final pulumi.Input<double> bandwidthMHz;
+
   /// Center Frequency in MHz.
   final pulumi.Input<double> centerFrequencyMHz;
+
   /// Direction (Uplink or Downlink).
   final pulumi.Input<String> direction;
+
   /// Link name.
   final pulumi.Input<String> name;
+
   /// Polarization. e.g. (RHCP, LHCP).
   final pulumi.Input<String> polarization;
 
@@ -41,12 +45,13 @@ class SpacecraftLink {
 
   factory SpacecraftLink.fromMap(Map<String, dynamic> map) {
     return SpacecraftLink(
-      bandwidthMHz: (map['bandwidthMHz'] as double).input(),
-      centerFrequencyMHz: (map['centerFrequencyMHz'] as double).input(),
-      direction: (map['direction'] as String).input(),
-      name: (map['name'] as String).input(),
-      polarization: (map['polarization'] as String).input(),
+      bandwidthMHz: pulumi.Input.fromValue(map['bandwidthMHz'] as double),
+      centerFrequencyMHz: pulumi.Input.fromValue(
+        map['centerFrequencyMHz'] as double,
+      ),
+      direction: pulumi.Input.fromValue(map['direction'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      polarization: pulumi.Input.fromValue(map['polarization'] as String),
     );
   }
 }
-

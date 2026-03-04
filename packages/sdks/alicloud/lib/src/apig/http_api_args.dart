@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpApiArgs {
   /// API path
   final pulumi.Input<String>? basePath;
+
   /// Description of API
   final pulumi.Input<String>? description;
+
   /// The name of the resource
   final pulumi.Input<String> httpApiName;
+
   /// API protocol
   final pulumi.Input<List<String>> protocols;
+
   /// The ID of the resource group
   final pulumi.Input<String>? resourceGroupId;
+
   /// API type
   final pulumi.Input<String>? type;
 
@@ -49,13 +54,30 @@ class HttpApiArgs {
 
   factory HttpApiArgs.fromMap(Map<String, dynamic> map) {
     return HttpApiArgs(
-      basePath: map['basePath'] == null ? null : (map['basePath']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      httpApiName: (map['httpApiName'] as String).input(),
-      protocols: ((map['protocols'] as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      basePath: (() {
+        final guardedValue = map['basePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      httpApiName: pulumi.Input.fromValue(map['httpApiName'] as String),
+      protocols: pulumi.Input.fromValue(
+        (map['protocols'] as List).cast<String>(),
+      ),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,29 +8,50 @@ import 'soft_delete_settings.dart';
 class SecuritySettings {
   /// Immutability Settings of a vault
   final pulumi.Input<ImmutabilitySettings>? immutabilitySettings;
+
   /// Soft delete Settings of a vault
   final pulumi.Input<SoftDeleteSettings>? softDeleteSettings;
 
   /// Creates a new [SecuritySettings].
   /// [immutabilitySettings] Immutability Settings of a vault
   /// [softDeleteSettings] Soft delete Settings of a vault
-  SecuritySettings({
-    this.immutabilitySettings,
-    this.softDeleteSettings,
-  });
+  SecuritySettings({this.immutabilitySettings, this.softDeleteSettings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'immutabilitySettings': ?pulumi.Input.mapOptionalInputValue<ImmutabilitySettings, Map<String, dynamic>>(immutabilitySettings, (value) => value.toMap()),
-      'softDeleteSettings': ?pulumi.Input.mapOptionalInputValue<SoftDeleteSettings, Map<String, dynamic>>(softDeleteSettings, (value) => value.toMap()),
+      'immutabilitySettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImmutabilitySettings,
+            Map<String, dynamic>
+          >(immutabilitySettings, (value) => value.toMap()),
+      'softDeleteSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            SoftDeleteSettings,
+            Map<String, dynamic>
+          >(softDeleteSettings, (value) => value.toMap()),
     };
   }
 
   factory SecuritySettings.fromMap(Map<String, dynamic> map) {
     return SecuritySettings(
-      immutabilitySettings: map['immutabilitySettings'] == null ? null : (ImmutabilitySettings.fromMap((map['immutabilitySettings']! as Map).cast<String, dynamic>())).input(),
-      softDeleteSettings: map['softDeleteSettings'] == null ? null : (SoftDeleteSettings.fromMap((map['softDeleteSettings']! as Map).cast<String, dynamic>())).input(),
+      immutabilitySettings: (() {
+        final guardedValue = map['immutabilitySettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ImmutabilitySettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      softDeleteSettings: (() {
+        final guardedValue = map['softDeleteSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SoftDeleteSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -13,15 +13,18 @@ class SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dataprocCluster': ?dataprocCluster,
-    };
+    return <String, dynamic>{'dataprocCluster': ?dataprocCluster};
   }
 
-  factory SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig.fromMap(Map<String, dynamic> map) {
+  factory SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig(
-      dataprocCluster: map['dataprocCluster'] == null ? null : (map['dataprocCluster']! as String).input(),
+      dataprocCluster: (() {
+        final guardedValue = map['dataprocCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

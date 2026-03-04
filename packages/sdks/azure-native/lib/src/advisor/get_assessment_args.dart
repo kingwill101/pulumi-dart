@@ -12,20 +12,15 @@ class GetAssessmentArgs {
 
   /// Creates a new [GetAssessmentArgs].
   /// [assessmentName] Advisor assessment name.
-  GetAssessmentArgs({
-    required this.assessmentName,
-  });
+  GetAssessmentArgs({required this.assessmentName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'assessmentName': assessmentName,
-    };
+    return <String, dynamic>{'assessmentName': assessmentName};
   }
 
   factory GetAssessmentArgs.fromMap(Map<String, dynamic> map) {
     return GetAssessmentArgs(
-      assessmentName: (map['assessmentName'] as String).input(),
+      assessmentName: pulumi.Input.fromValue(map['assessmentName'] as String),
     );
   }
 }
-

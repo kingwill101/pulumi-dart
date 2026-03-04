@@ -170,22 +170,32 @@ import 'security_assessment_partner_data_response.dart';
 class Assessment extends pulumi.CustomResource {
   /// Additional data regarding the assessment
   late final pulumi.Output<Map<String, String>?> additionalData;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// User friendly display name of the assessment
   late final pulumi.Output<String> displayName;
+
   /// Links relevant to the assessment
   late final pulumi.Output<AssessmentLinksResponse> links;
+
   /// Describes properties of an assessment metadata.
-  late final pulumi.Output<SecurityAssessmentMetadataPropertiesResponse?> metadata;
+  late final pulumi.Output<SecurityAssessmentMetadataPropertiesResponse?>
+  metadata;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// Data regarding 3rd party partner integration
   late final pulumi.Output<SecurityAssessmentPartnerDataResponse?> partnersData;
+
   /// Details of the resource that was assessed
   late final pulumi.Output<AzureResourceDetailsResponse> resourceDetails;
+
   /// The result of the assessment
   late final pulumi.Output<AssessmentStatusResponseResponse> status;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -198,20 +208,26 @@ class Assessment extends pulumi.CustomResource {
     AssessmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:Assessment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalData = registerOutput<Map<String, String>?>('additionalData');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.displayName = registerOutput<String>('displayName');
-    this.links = registerOutput<AssessmentLinksResponse>('links');
-    this.metadata = registerOutput<SecurityAssessmentMetadataPropertiesResponse?>('metadata');
+         'azure-native:security:Assessment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalData = registerOutput<Map<String, String>?>('additionalData');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    displayName = registerOutput<String>('displayName');
+    links = registerOutput<AssessmentLinksResponse>('links');
+    metadata = registerOutput<SecurityAssessmentMetadataPropertiesResponse?>(
+      'metadata',
+    );
     this.name = registerOutput<String>('name');
-    this.partnersData = registerOutput<SecurityAssessmentPartnerDataResponse?>('partnersData');
-    this.resourceDetails = registerOutput<AzureResourceDetailsResponse>('resourceDetails');
-    this.status = registerOutput<AssessmentStatusResponseResponse>('status');
-    this.type = registerOutput<String>('type');
+    partnersData = registerOutput<SecurityAssessmentPartnerDataResponse?>(
+      'partnersData',
+    );
+    resourceDetails = registerOutput<AzureResourceDetailsResponse>(
+      'resourceDetails',
+    );
+    status = registerOutput<AssessmentStatusResponseResponse>('status');
+    type = registerOutput<String>('type');
   }
 }

@@ -7,20 +7,17 @@ class GetGrafanaAzureMonitorWorkspaceIntegration {
 
   /// Creates a new [GetGrafanaAzureMonitorWorkspaceIntegration].
   /// [resourceId] Required.
-  GetGrafanaAzureMonitorWorkspaceIntegration({
-    required this.resourceId,
-  });
+  GetGrafanaAzureMonitorWorkspaceIntegration({required this.resourceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceId': resourceId,
-    };
+    return <String, dynamic>{'resourceId': resourceId};
   }
 
-  factory GetGrafanaAzureMonitorWorkspaceIntegration.fromMap(Map<String, dynamic> map) {
+  factory GetGrafanaAzureMonitorWorkspaceIntegration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGrafanaAzureMonitorWorkspaceIntegration(
-      resourceId: (map['resourceId'] as String).input(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
-

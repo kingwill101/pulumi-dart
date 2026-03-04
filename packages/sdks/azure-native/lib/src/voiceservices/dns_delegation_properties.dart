@@ -9,20 +9,19 @@ class DnsDelegationProperties {
 
   /// Creates a new [DnsDelegationProperties].
   /// [domain] Domain name to delegate
-  DnsDelegationProperties({
-    this.domain,
-  });
+  DnsDelegationProperties({this.domain});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'domain': ?domain,
-    };
+    return <String, dynamic>{'domain': ?domain};
   }
 
   factory DnsDelegationProperties.fromMap(Map<String, dynamic> map) {
     return DnsDelegationProperties(
-      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

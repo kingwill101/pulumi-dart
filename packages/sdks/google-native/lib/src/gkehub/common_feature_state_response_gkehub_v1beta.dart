@@ -9,11 +9,17 @@ import 'fleet_observability_feature_state_response_gkehub_v1beta.dart';
 /// CommonFeatureState contains Hub-wide Feature status information.
 class CommonFeatureStateResponseGkehubV1beta {
   /// Appdevexperience specific state.
-  final pulumi.Input<AppDevExperienceFeatureStateResponseGkehubV1beta> appdevexperience;
+  final pulumi.Input<AppDevExperienceFeatureStateResponseGkehubV1beta>
+  appdevexperience;
+
   /// ClusterUpgrade fleet-level state.
-  final pulumi.Input<ClusterUpgradeFleetStateResponseGkehubV1beta> clusterupgrade;
+  final pulumi.Input<ClusterUpgradeFleetStateResponseGkehubV1beta>
+  clusterupgrade;
+
   /// FleetObservability feature state.
-  final pulumi.Input<FleetObservabilityFeatureStateResponseGkehubV1beta> fleetobservability;
+  final pulumi.Input<FleetObservabilityFeatureStateResponseGkehubV1beta>
+  fleetobservability;
+
   /// The "running state" of the Feature in this Hub.
   final pulumi.Input<FeatureStateResponseGkehubV1beta> state;
 
@@ -31,20 +37,53 @@ class CommonFeatureStateResponseGkehubV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appdevexperience': pulumi.Input.mapInputValue<AppDevExperienceFeatureStateResponseGkehubV1beta, Map<String, dynamic>>(appdevexperience, (value) => value.toMap()),
-      'clusterupgrade': pulumi.Input.mapInputValue<ClusterUpgradeFleetStateResponseGkehubV1beta, Map<String, dynamic>>(clusterupgrade, (value) => value.toMap()),
-      'fleetobservability': pulumi.Input.mapInputValue<FleetObservabilityFeatureStateResponseGkehubV1beta, Map<String, dynamic>>(fleetobservability, (value) => value.toMap()),
-      'state': pulumi.Input.mapInputValue<FeatureStateResponseGkehubV1beta, Map<String, dynamic>>(state, (value) => value.toMap()),
+      'appdevexperience':
+          pulumi.Input.mapInputValue<
+            AppDevExperienceFeatureStateResponseGkehubV1beta,
+            Map<String, dynamic>
+          >(appdevexperience, (value) => value.toMap()),
+      'clusterupgrade':
+          pulumi.Input.mapInputValue<
+            ClusterUpgradeFleetStateResponseGkehubV1beta,
+            Map<String, dynamic>
+          >(clusterupgrade, (value) => value.toMap()),
+      'fleetobservability':
+          pulumi.Input.mapInputValue<
+            FleetObservabilityFeatureStateResponseGkehubV1beta,
+            Map<String, dynamic>
+          >(fleetobservability, (value) => value.toMap()),
+      'state':
+          pulumi.Input.mapInputValue<
+            FeatureStateResponseGkehubV1beta,
+            Map<String, dynamic>
+          >(state, (value) => value.toMap()),
     };
   }
 
-  factory CommonFeatureStateResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
+  factory CommonFeatureStateResponseGkehubV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CommonFeatureStateResponseGkehubV1beta(
-      appdevexperience: (AppDevExperienceFeatureStateResponseGkehubV1beta.fromMap((map['appdevexperience'] as Map).cast<String, dynamic>())).input(),
-      clusterupgrade: (ClusterUpgradeFleetStateResponseGkehubV1beta.fromMap((map['clusterupgrade'] as Map).cast<String, dynamic>())).input(),
-      fleetobservability: (FleetObservabilityFeatureStateResponseGkehubV1beta.fromMap((map['fleetobservability'] as Map).cast<String, dynamic>())).input(),
-      state: (FeatureStateResponseGkehubV1beta.fromMap((map['state'] as Map).cast<String, dynamic>())).input(),
+      appdevexperience: pulumi.Input.fromValue(
+        AppDevExperienceFeatureStateResponseGkehubV1beta.fromMap(
+          (map['appdevexperience']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      clusterupgrade: pulumi.Input.fromValue(
+        ClusterUpgradeFleetStateResponseGkehubV1beta.fromMap(
+          (map['clusterupgrade']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      fleetobservability: pulumi.Input.fromValue(
+        FleetObservabilityFeatureStateResponseGkehubV1beta.fromMap(
+          (map['fleetobservability']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      state: pulumi.Input.fromValue(
+        FeatureStateResponseGkehubV1beta.fromMap(
+          (map['state']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

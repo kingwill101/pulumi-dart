@@ -27,6 +27,7 @@ class GetWorkerPoolResult {
   final String etag;
   final String expireTime;
   final String generation;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetWorkerPoolInstanceSplitStatus> instanceSplitStatuses;
@@ -125,10 +126,18 @@ class GetWorkerPoolResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': annotations,
-      'binaryAuthorizations': pulumi.Input.encodeList<GetWorkerPoolBinaryAuthorization, Map<String, dynamic>>(binaryAuthorizations, (value) => value.toMap()),
+      'binaryAuthorizations':
+          pulumi.Input.encodeList<
+            GetWorkerPoolBinaryAuthorization,
+            Map<String, dynamic>
+          >(binaryAuthorizations, (value) => value.toMap()),
       'client': client,
       'clientVersion': clientVersion,
-      'conditions': pulumi.Input.encodeList<GetWorkerPoolCondition, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+      'conditions':
+          pulumi.Input.encodeList<GetWorkerPoolCondition, Map<String, dynamic>>(
+            conditions,
+            (value) => value.toMap(),
+          ),
       'createTime': createTime,
       'creator': creator,
       'customAudiences': customAudiences,
@@ -141,8 +150,16 @@ class GetWorkerPoolResult {
       'expireTime': expireTime,
       'generation': generation,
       'id': id,
-      'instanceSplitStatuses': pulumi.Input.encodeList<GetWorkerPoolInstanceSplitStatus, Map<String, dynamic>>(instanceSplitStatuses, (value) => value.toMap()),
-      'instanceSplits': pulumi.Input.encodeList<GetWorkerPoolInstanceSplit, Map<String, dynamic>>(instanceSplits, (value) => value.toMap()),
+      'instanceSplitStatuses':
+          pulumi.Input.encodeList<
+            GetWorkerPoolInstanceSplitStatus,
+            Map<String, dynamic>
+          >(instanceSplitStatuses, (value) => value.toMap()),
+      'instanceSplits':
+          pulumi.Input.encodeList<
+            GetWorkerPoolInstanceSplit,
+            Map<String, dynamic>
+          >(instanceSplits, (value) => value.toMap()),
       'labels': labels,
       'lastModifier': lastModifier,
       'latestCreatedRevision': latestCreatedRevision,
@@ -154,9 +171,21 @@ class GetWorkerPoolResult {
       'project': ?project,
       'pulumiLabels': pulumiLabels,
       'reconciling': reconciling,
-      'scalings': pulumi.Input.encodeList<GetWorkerPoolScaling, Map<String, dynamic>>(scalings, (value) => value.toMap()),
-      'templates': pulumi.Input.encodeList<GetWorkerPoolTemplate, Map<String, dynamic>>(templates, (value) => value.toMap()),
-      'terminalConditions': pulumi.Input.encodeList<GetWorkerPoolTerminalCondition, Map<String, dynamic>>(terminalConditions, (value) => value.toMap()),
+      'scalings':
+          pulumi.Input.encodeList<GetWorkerPoolScaling, Map<String, dynamic>>(
+            scalings,
+            (value) => value.toMap(),
+          ),
+      'templates':
+          pulumi.Input.encodeList<GetWorkerPoolTemplate, Map<String, dynamic>>(
+            templates,
+            (value) => value.toMap(),
+          ),
+      'terminalConditions':
+          pulumi.Input.encodeList<
+            GetWorkerPoolTerminalCondition,
+            Map<String, dynamic>
+          >(terminalConditions, (value) => value.toMap()),
       'uid': uid,
       'updateTime': updateTime,
     };
@@ -165,41 +194,87 @@ class GetWorkerPoolResult {
   factory GetWorkerPoolResult.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolResult(
       annotations: (map['annotations'] as Map).cast<String, String>(),
-      binaryAuthorizations: pulumi.Input.decodeList<GetWorkerPoolBinaryAuthorization>(map['binaryAuthorizations'], (value) => GetWorkerPoolBinaryAuthorization.fromMap((value as Map).cast<String, dynamic>())),
+      binaryAuthorizations:
+          pulumi.Input.decodeList<GetWorkerPoolBinaryAuthorization>(
+            map['binaryAuthorizations']!,
+            (value) => GetWorkerPoolBinaryAuthorization.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       client: map['client'] as String,
       clientVersion: map['clientVersion'] as String,
-      conditions: pulumi.Input.decodeList<GetWorkerPoolCondition>(map['conditions'], (value) => GetWorkerPoolCondition.fromMap((value as Map).cast<String, dynamic>())),
+      conditions: pulumi.Input.decodeList<GetWorkerPoolCondition>(
+        map['conditions']!,
+        (value) => GetWorkerPoolCondition.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       createTime: map['createTime'] as String,
       creator: map['creator'] as String,
       customAudiences: (map['customAudiences'] as List).cast<String>(),
       deleteTime: map['deleteTime'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       description: map['description'] as String,
-      effectiveAnnotations: (map['effectiveAnnotations'] as Map).cast<String, String>(),
+      effectiveAnnotations: (map['effectiveAnnotations'] as Map)
+          .cast<String, String>(),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       etag: map['etag'] as String,
       expireTime: map['expireTime'] as String,
       generation: map['generation'] as String,
       id: map['id'] as String,
-      instanceSplitStatuses: pulumi.Input.decodeList<GetWorkerPoolInstanceSplitStatus>(map['instanceSplitStatuses'], (value) => GetWorkerPoolInstanceSplitStatus.fromMap((value as Map).cast<String, dynamic>())),
-      instanceSplits: pulumi.Input.decodeList<GetWorkerPoolInstanceSplit>(map['instanceSplits'], (value) => GetWorkerPoolInstanceSplit.fromMap((value as Map).cast<String, dynamic>())),
+      instanceSplitStatuses:
+          pulumi.Input.decodeList<GetWorkerPoolInstanceSplitStatus>(
+            map['instanceSplitStatuses']!,
+            (value) => GetWorkerPoolInstanceSplitStatus.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      instanceSplits: pulumi.Input.decodeList<GetWorkerPoolInstanceSplit>(
+        map['instanceSplits']!,
+        (value) => GetWorkerPoolInstanceSplit.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       labels: (map['labels'] as Map).cast<String, String>(),
       lastModifier: map['lastModifier'] as String,
       latestCreatedRevision: map['latestCreatedRevision'] as String,
       latestReadyRevision: map['latestReadyRevision'] as String,
       launchStage: map['launchStage'] as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       observedGeneration: map['observedGeneration'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       reconciling: map['reconciling'] as bool,
-      scalings: pulumi.Input.decodeList<GetWorkerPoolScaling>(map['scalings'], (value) => GetWorkerPoolScaling.fromMap((value as Map).cast<String, dynamic>())),
-      templates: pulumi.Input.decodeList<GetWorkerPoolTemplate>(map['templates'], (value) => GetWorkerPoolTemplate.fromMap((value as Map).cast<String, dynamic>())),
-      terminalConditions: pulumi.Input.decodeList<GetWorkerPoolTerminalCondition>(map['terminalConditions'], (value) => GetWorkerPoolTerminalCondition.fromMap((value as Map).cast<String, dynamic>())),
+      scalings: pulumi.Input.decodeList<GetWorkerPoolScaling>(
+        map['scalings']!,
+        (value) => GetWorkerPoolScaling.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      templates: pulumi.Input.decodeList<GetWorkerPoolTemplate>(
+        map['templates']!,
+        (value) => GetWorkerPoolTemplate.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      terminalConditions:
+          pulumi.Input.decodeList<GetWorkerPoolTerminalCondition>(
+            map['terminalConditions']!,
+            (value) => GetWorkerPoolTerminalCondition.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

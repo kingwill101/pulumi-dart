@@ -5,16 +5,15 @@ enum UpgradeHistoryEntryState {
   succeeded("SUCCEEDED"),
   failed("FAILED");
 
-  const UpgradeHistoryEntryState(this.value);
-  final String value;
+  const UpgradeHistoryEntryState(this.wireValue);
+  final String wireValue;
 
   static UpgradeHistoryEntryState fromValue(String value) {
     for (final item in UpgradeHistoryEntryState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UpgradeHistoryEntryState value: $value');
   }
 }
-

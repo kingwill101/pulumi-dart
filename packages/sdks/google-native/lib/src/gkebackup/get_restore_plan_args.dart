@@ -31,10 +31,13 @@ class GetRestorePlanArgs {
 
   factory GetRestorePlanArgs.fromMap(Map<String, dynamic> map) {
     return GetRestorePlanArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      restorePlanId: (map['restorePlanId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      restorePlanId: pulumi.Input.fromValue(map['restorePlanId'] as String),
     );
   }
 }
-

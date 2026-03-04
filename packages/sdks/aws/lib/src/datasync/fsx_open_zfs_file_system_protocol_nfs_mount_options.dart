@@ -8,20 +8,21 @@ class FsxOpenZfsFileSystemProtocolNfsMountOptions {
 
   /// Creates a new [FsxOpenZfsFileSystemProtocolNfsMountOptions].
   /// [version] The specific NFS version that you want DataSync to use for mounting your NFS share. Valid values: `AUTOMATIC`, `NFS3`, `NFS4_0` and `NFS4_1`. Default: `AUTOMATIC`
-  FsxOpenZfsFileSystemProtocolNfsMountOptions({
-    this.version,
-  });
+  FsxOpenZfsFileSystemProtocolNfsMountOptions({this.version});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'version': ?version,
-    };
+    return <String, dynamic>{'version': ?version};
   }
 
-  factory FsxOpenZfsFileSystemProtocolNfsMountOptions.fromMap(Map<String, dynamic> map) {
+  factory FsxOpenZfsFileSystemProtocolNfsMountOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FsxOpenZfsFileSystemProtocolNfsMountOptions(
-      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

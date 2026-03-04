@@ -3,16 +3,15 @@ enum OperatingSystemStateTypes {
   generalized("Generalized"),
   specialized("Specialized");
 
-  const OperatingSystemStateTypes(this.value);
-  final String value;
+  const OperatingSystemStateTypes(this.wireValue);
+  final String wireValue;
 
   static OperatingSystemStateTypes fromValue(String value) {
     for (final item in OperatingSystemStateTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OperatingSystemStateTypes value: $value');
   }
 }
-

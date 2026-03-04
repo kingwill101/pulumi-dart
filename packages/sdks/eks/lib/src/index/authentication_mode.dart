@@ -7,16 +7,15 @@ enum AuthenticationMode {
   api("API"),
   apiAndConfigMap("API_AND_CONFIG_MAP");
 
-  const AuthenticationMode(this.value);
-  final String value;
+  const AuthenticationMode(this.wireValue);
+  final String wireValue;
 
   static AuthenticationMode fromValue(String value) {
     for (final item in AuthenticationMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuthenticationMode value: $value');
   }
 }
-

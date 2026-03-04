@@ -5,13 +5,18 @@ import 'get_task_execution_overrides_container_override.dart';
 
 class GetTaskExecutionOverrides {
   /// One or more container overrides that are sent to a task. See below.
-  final pulumi.Input<List<GetTaskExecutionOverridesContainerOverride>>? containerOverrides;
+  final pulumi.Input<List<GetTaskExecutionOverridesContainerOverride>>?
+  containerOverrides;
+
   /// The CPU override for the task.
   final pulumi.Input<String>? cpu;
+
   /// Amazon Resource Name (ARN) of the task execution role override for the task.
   final pulumi.Input<String>? executionRoleArn;
+
   /// The memory override for the task.
   final pulumi.Input<String>? memory;
+
   /// Amazon Resource Name (ARN) of the role that containers in this task can assume.
   final pulumi.Input<String>? taskRoleArn;
 
@@ -31,7 +36,18 @@ class GetTaskExecutionOverrides {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerOverrides': ?pulumi.Input.mapOptionalInputValue<List<GetTaskExecutionOverridesContainerOverride>, List<Map<String, dynamic>>>(containerOverrides, (value) => pulumi.Input.encodeList<GetTaskExecutionOverridesContainerOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'containerOverrides':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetTaskExecutionOverridesContainerOverride>,
+            List<Map<String, dynamic>>
+          >(
+            containerOverrides,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetTaskExecutionOverridesContainerOverride,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'cpu': ?cpu,
       'executionRoleArn': ?executionRoleArn,
       'memory': ?memory,
@@ -41,12 +57,38 @@ class GetTaskExecutionOverrides {
 
   factory GetTaskExecutionOverrides.fromMap(Map<String, dynamic> map) {
     return GetTaskExecutionOverrides(
-      containerOverrides: map['containerOverrides'] == null ? null : ((pulumi.Input.decodeList<GetTaskExecutionOverridesContainerOverride>(map['containerOverrides']!, (value) => GetTaskExecutionOverridesContainerOverride.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      cpu: map['cpu'] == null ? null : ((map['cpu'] as String).input()).input(),
-      executionRoleArn: map['executionRoleArn'] == null ? null : ((map['executionRoleArn'] as String).input()).input(),
-      memory: map['memory'] == null ? null : ((map['memory'] as String).input()).input(),
-      taskRoleArn: map['taskRoleArn'] == null ? null : ((map['taskRoleArn'] as String).input()).input(),
+      containerOverrides: (() {
+        final guardedValue = map['containerOverrides'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetTaskExecutionOverridesContainerOverride>(
+            guardedValue,
+            (value) => GetTaskExecutionOverridesContainerOverride.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executionRoleArn: (() {
+        final guardedValue = map['executionRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memory: (() {
+        final guardedValue = map['memory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      taskRoleArn: (() {
+        final guardedValue = map['taskRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

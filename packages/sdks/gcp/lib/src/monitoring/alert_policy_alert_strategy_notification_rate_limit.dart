@@ -9,20 +9,21 @@ class AlertPolicyAlertStrategyNotificationRateLimit {
 
   /// Creates a new [AlertPolicyAlertStrategyNotificationRateLimit].
   /// [period] Not more than one notification per period.
-  AlertPolicyAlertStrategyNotificationRateLimit({
-    this.period,
-  });
+  AlertPolicyAlertStrategyNotificationRateLimit({this.period});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'period': ?period,
-    };
+    return <String, dynamic>{'period': ?period};
   }
 
-  factory AlertPolicyAlertStrategyNotificationRateLimit.fromMap(Map<String, dynamic> map) {
+  factory AlertPolicyAlertStrategyNotificationRateLimit.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertPolicyAlertStrategyNotificationRateLimit(
-      period: map['period'] == null ? null : (map['period']! as String).input(),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

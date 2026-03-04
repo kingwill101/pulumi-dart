@@ -13,15 +13,14 @@ class PipeTargetParametersStepFunctionStateMachineParameters {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'invocationType': invocationType,
-    };
+    return <String, dynamic>{'invocationType': invocationType};
   }
 
-  factory PipeTargetParametersStepFunctionStateMachineParameters.fromMap(Map<String, dynamic> map) {
+  factory PipeTargetParametersStepFunctionStateMachineParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipeTargetParametersStepFunctionStateMachineParameters(
-      invocationType: (map['invocationType'] as String).input(),
+      invocationType: pulumi.Input.fromValue(map['invocationType'] as String),
     );
   }
 }
-

@@ -10,22 +10,31 @@ import 'login_response.dart';
 class GetWebAppAuthSettingsV2WithoutSecretsResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.
   final GlobalValidationResponse? globalValidation;
+
   /// The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
   final HttpSettingsResponse? httpSettings;
+
   /// Resource Id.
   final String id;
+
   /// The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
   final IdentityProvidersResponse? identityProviders;
+
   /// Kind of resource.
   final String? kind;
+
   /// The configuration settings of the login flow of users using App Service Authentication/Authorization.
   final LoginResponse? login;
+
   /// Resource Name.
   final String name;
+
   /// The configuration settings of the platform of App Service Authentication/Authorization.
   final AuthPlatformResponse? platform;
+
   /// Resource type.
   final String type;
 
@@ -56,31 +65,66 @@ class GetWebAppAuthSettingsV2WithoutSecretsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'globalValidation': ?globalValidation == null ? null : globalValidation!.toMap(),
-      'httpSettings': ?httpSettings == null ? null : httpSettings!.toMap(),
+      'globalValidation': ?globalValidation?.toMap(),
+      'httpSettings': ?httpSettings?.toMap(),
       'id': id,
-      'identityProviders': ?identityProviders == null ? null : identityProviders!.toMap(),
+      'identityProviders': ?identityProviders?.toMap(),
       'kind': ?kind,
-      'login': ?login == null ? null : login!.toMap(),
+      'login': ?login?.toMap(),
       'name': name,
-      'platform': ?platform == null ? null : platform!.toMap(),
+      'platform': ?platform?.toMap(),
       'type': type,
     };
   }
 
-  factory GetWebAppAuthSettingsV2WithoutSecretsResult.fromMap(Map<String, dynamic> map) {
+  factory GetWebAppAuthSettingsV2WithoutSecretsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWebAppAuthSettingsV2WithoutSecretsResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      globalValidation: map['globalValidation'] == null ? null : GlobalValidationResponse.fromMap((map['globalValidation']! as Map).cast<String, dynamic>()),
-      httpSettings: map['httpSettings'] == null ? null : HttpSettingsResponse.fromMap((map['httpSettings']! as Map).cast<String, dynamic>()),
+      globalValidation: (() {
+        final guardedValue = map['globalValidation'];
+        if (guardedValue == null) return null;
+        return GlobalValidationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      httpSettings: (() {
+        final guardedValue = map['httpSettings'];
+        if (guardedValue == null) return null;
+        return HttpSettingsResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      identityProviders: map['identityProviders'] == null ? null : IdentityProvidersResponse.fromMap((map['identityProviders']! as Map).cast<String, dynamic>()),
-      kind: map['kind'] == null ? null : map['kind']! as String,
-      login: map['login'] == null ? null : LoginResponse.fromMap((map['login']! as Map).cast<String, dynamic>()),
+      identityProviders: (() {
+        final guardedValue = map['identityProviders'];
+        if (guardedValue == null) return null;
+        return IdentityProvidersResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      login: (() {
+        final guardedValue = map['login'];
+        if (guardedValue == null) return null;
+        return LoginResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       name: map['name'] as String,
-      platform: map['platform'] == null ? null : AuthPlatformResponse.fromMap((map['platform']! as Map).cast<String, dynamic>()),
+      platform: (() {
+        final guardedValue = map['platform'];
+        if (guardedValue == null) return null;
+        return AuthPlatformResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

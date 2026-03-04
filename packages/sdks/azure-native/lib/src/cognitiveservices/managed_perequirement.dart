@@ -3,16 +3,15 @@ enum ManagedPERequirement {
   valueNotRequired("NotRequired"),
   valueNotApplicable("NotApplicable");
 
-  const ManagedPERequirement(this.value);
-  final String value;
+  const ManagedPERequirement(this.wireValue);
+  final String wireValue;
 
   static ManagedPERequirement fromValue(String value) {
     for (final item in ManagedPERequirement.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManagedPERequirement value: $value');
   }
 }
-

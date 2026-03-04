@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LicationLoadBalancerFrontendState {
   /// The ID of the Application Gateway for Containers. Changing this forces a new resource to be created.
   final pulumi.Input<String>? applicationLoadBalancerId;
+
   /// The Fully Qualified Domain Name of the DNS record associated to an Application Gateway for Containers Frontend.
   final pulumi.Input<String>? fullyQualifiedDomainName;
+
   /// The name which should be used for this Application Gateway for Containers Frontend. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// A mapping of tags which should be assigned to the Application Gateway for Containers Frontend.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -36,11 +39,28 @@ class LicationLoadBalancerFrontendState {
 
   factory LicationLoadBalancerFrontendState.fromMap(Map<String, dynamic> map) {
     return LicationLoadBalancerFrontendState(
-      applicationLoadBalancerId: map['applicationLoadBalancerId'] == null ? null : (map['applicationLoadBalancerId']! as String).input(),
-      fullyQualifiedDomainName: map['fullyQualifiedDomainName'] == null ? null : (map['fullyQualifiedDomainName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      applicationLoadBalancerId: (() {
+        final guardedValue = map['applicationLoadBalancerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fullyQualifiedDomainName: (() {
+        final guardedValue = map['fullyQualifiedDomainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -8,29 +8,42 @@ import 'data_store_info_base_response.dart';
 class TargetCopySettingResponse {
   /// It can be CustomCopyOption or ImmediateCopyOption.
   final pulumi.Input<CopyOnExpiryOptionResponse> copyAfter;
+
   /// Info of target datastore
   final pulumi.Input<DataStoreInfoBaseResponse> dataStore;
 
   /// Creates a new [TargetCopySettingResponse].
   /// [copyAfter] It can be CustomCopyOption or ImmediateCopyOption.
   /// [dataStore] Info of target datastore
-  TargetCopySettingResponse({
-    required this.copyAfter,
-    required this.dataStore,
-  });
+  TargetCopySettingResponse({required this.copyAfter, required this.dataStore});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'copyAfter': pulumi.Input.mapInputValue<CopyOnExpiryOptionResponse, Map<String, dynamic>>(copyAfter, (value) => value.toMap()),
-      'dataStore': pulumi.Input.mapInputValue<DataStoreInfoBaseResponse, Map<String, dynamic>>(dataStore, (value) => value.toMap()),
+      'copyAfter':
+          pulumi.Input.mapInputValue<
+            CopyOnExpiryOptionResponse,
+            Map<String, dynamic>
+          >(copyAfter, (value) => value.toMap()),
+      'dataStore':
+          pulumi.Input.mapInputValue<
+            DataStoreInfoBaseResponse,
+            Map<String, dynamic>
+          >(dataStore, (value) => value.toMap()),
     };
   }
 
   factory TargetCopySettingResponse.fromMap(Map<String, dynamic> map) {
     return TargetCopySettingResponse(
-      copyAfter: (CopyOnExpiryOptionResponse.fromMap((map['copyAfter'] as Map).cast<String, dynamic>())).input(),
-      dataStore: (DataStoreInfoBaseResponse.fromMap((map['dataStore'] as Map).cast<String, dynamic>())).input(),
+      copyAfter: pulumi.Input.fromValue(
+        CopyOnExpiryOptionResponse.fromMap(
+          (map['copyAfter']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      dataStore: pulumi.Input.fromValue(
+        DataStoreInfoBaseResponse.fromMap(
+          (map['dataStore']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

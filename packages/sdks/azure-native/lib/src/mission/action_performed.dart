@@ -3,16 +3,15 @@ enum ActionPerformed {
   approved("Approved"),
   rejected("Rejected");
 
-  const ActionPerformed(this.value);
-  final String value;
+  const ActionPerformed(this.wireValue);
+  final String wireValue;
 
   static ActionPerformed fromValue(String value) {
     for (final item in ActionPerformed.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ActionPerformed value: $value');
   }
 }
-

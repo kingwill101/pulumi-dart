@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabasePrincipalAssignmentArgs {
   /// The name of the cluster in which to create the resource. Changing this forces a new resource to be created.
   final pulumi.Input<String> clusterName;
+
   /// The name of the database in which to create the resource. Changing this forces a new resource to be created.
   final pulumi.Input<String> databaseName;
+
   /// The name of the kusto principal assignment. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The object id of the principal. Changing this forces a new resource to be created.
   final pulumi.Input<String> principalId;
+
   /// The type of the principal. Valid values include `App`, `Group`, `User`. Changing this forces a new resource to be created.
   final pulumi.Input<String> principalType;
+
   /// The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The database role assigned to the principal. Valid values include `Admin`, `Ingestor`, `Monitor`, `UnrestrictedViewer`, `User` and `Viewer`. Changing this forces a new resource to be created.
   final pulumi.Input<String> role;
+
   /// The tenant id in which the principal resides. Changing this forces a new resource to be created.
   final pulumi.Input<String> tenantId;
 
@@ -59,15 +66,20 @@ class DatabasePrincipalAssignmentArgs {
 
   factory DatabasePrincipalAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return DatabasePrincipalAssignmentArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      principalId: (map['principalId'] as String).input(),
-      principalType: (map['principalType'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      role: (map['role'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      principalType: pulumi.Input.fromValue(map['principalType'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      role: pulumi.Input.fromValue(map['role'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

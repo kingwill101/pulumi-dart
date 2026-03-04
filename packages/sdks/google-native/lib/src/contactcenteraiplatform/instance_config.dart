@@ -10,20 +10,27 @@ class InstanceConfig {
 
   /// Creates a new [InstanceConfig].
   /// [instanceSize] The instance size of this the instance configuration.
-  InstanceConfig({
-    this.instanceSize,
-  });
+  InstanceConfig({this.instanceSize});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'instanceSize': ?pulumi.Input.mapOptionalInputValue<InstanceConfigInstanceSize, String>(instanceSize, (value) => value.value),
+      'instanceSize':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceConfigInstanceSize,
+            String
+          >(instanceSize, (value) => value.wireValue),
     };
   }
 
   factory InstanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceConfig(
-      instanceSize: map['instanceSize'] == null ? null : (InstanceConfigInstanceSize.fromValue(map['instanceSize']! as String)).input(),
+      instanceSize: (() {
+        final guardedValue = map['instanceSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InstanceConfigInstanceSize.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

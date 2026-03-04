@@ -6,14 +6,19 @@ import 'remote_private_endpoint_connection_response.dart';
 class GetPrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Etag identifies change in the resource.
   final String etag;
+
   /// The resource identifier.
   final String id;
+
   /// The resource name.
   final String name;
+
   /// Core resource properties
   final RemotePrivateEndpointConnectionResponse properties;
+
   /// The resource type.
   final String type;
 
@@ -50,9 +55,10 @@ class GetPrivateEndpointConnectionResult {
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: RemotePrivateEndpointConnectionResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: RemotePrivateEndpointConnectionResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

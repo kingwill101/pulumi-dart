@@ -9,20 +9,41 @@ class DedicatedHostGroupInstanceViewResponse {
 
   /// Creates a new [DedicatedHostGroupInstanceViewResponse].
   /// [hosts] List of instance view of the dedicated hosts under the dedicated host group.
-  DedicatedHostGroupInstanceViewResponse({
-    this.hosts,
-  });
+  DedicatedHostGroupInstanceViewResponse({this.hosts});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hosts': ?pulumi.Input.mapOptionalInputValue<List<DedicatedHostInstanceViewWithNameResponse>, List<Map<String, dynamic>>>(hosts, (value) => pulumi.Input.encodeList<DedicatedHostInstanceViewWithNameResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'hosts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DedicatedHostInstanceViewWithNameResponse>,
+            List<Map<String, dynamic>>
+          >(
+            hosts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DedicatedHostInstanceViewWithNameResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory DedicatedHostGroupInstanceViewResponse.fromMap(Map<String, dynamic> map) {
+  factory DedicatedHostGroupInstanceViewResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DedicatedHostGroupInstanceViewResponse(
-      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<DedicatedHostInstanceViewWithNameResponse>(map['hosts']!, (value) => DedicatedHostInstanceViewWithNameResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hosts: (() {
+        final guardedValue = map['hosts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DedicatedHostInstanceViewWithNameResponse>(
+            guardedValue,
+            (value) => DedicatedHostInstanceViewWithNameResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

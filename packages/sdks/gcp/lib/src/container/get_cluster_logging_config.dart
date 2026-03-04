@@ -8,20 +8,17 @@ class GetClusterLoggingConfig {
 
   /// Creates a new [GetClusterLoggingConfig].
   /// [enableComponents] GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, KCP_HPA, SCHEDULER, and WORKLOADS.
-  GetClusterLoggingConfig({
-    required this.enableComponents,
-  });
+  GetClusterLoggingConfig({required this.enableComponents});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableComponents': enableComponents,
-    };
+    return <String, dynamic>{'enableComponents': enableComponents};
   }
 
   factory GetClusterLoggingConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterLoggingConfig(
-      enableComponents: ((map['enableComponents'] as List).cast<String>()).input(),
+      enableComponents: pulumi.Input.fromValue(
+        (map['enableComponents'] as List).cast<String>(),
+      ),
     );
   }
 }
-

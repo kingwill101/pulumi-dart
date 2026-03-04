@@ -7,14 +7,19 @@ class AzureCosmosDBSinkConnectorServiceInfo {
   /// The connector service type.
   /// Expected value is 'AzureCosmosDBSinkConnector'.
   final pulumi.Input<String> connectorServiceType;
+
   /// Azure Cosmos Database Connection Endpoint
   final pulumi.Input<String>? cosmosConnectionEndpoint;
+
   /// Azure Cosmos Database Containers Topic Mapping
   final pulumi.Input<String>? cosmosContainersTopicMapping;
+
   /// Azure Cosmos Database Name
   final pulumi.Input<String>? cosmosDatabaseName;
+
   /// Azure Cosmos Database Id Strategy
   final pulumi.Input<String>? cosmosIdStrategy;
+
   /// Azure Cosmos Database Master Key
   final pulumi.Input<String>? cosmosMasterKey;
 
@@ -45,15 +50,38 @@ class AzureCosmosDBSinkConnectorServiceInfo {
     };
   }
 
-  factory AzureCosmosDBSinkConnectorServiceInfo.fromMap(Map<String, dynamic> map) {
+  factory AzureCosmosDBSinkConnectorServiceInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureCosmosDBSinkConnectorServiceInfo(
-      connectorServiceType: (map['connectorServiceType'] as String).input(),
-      cosmosConnectionEndpoint: map['cosmosConnectionEndpoint'] == null ? null : (map['cosmosConnectionEndpoint']! as String).input(),
-      cosmosContainersTopicMapping: map['cosmosContainersTopicMapping'] == null ? null : (map['cosmosContainersTopicMapping']! as String).input(),
-      cosmosDatabaseName: map['cosmosDatabaseName'] == null ? null : (map['cosmosDatabaseName']! as String).input(),
-      cosmosIdStrategy: map['cosmosIdStrategy'] == null ? null : (map['cosmosIdStrategy']! as String).input(),
-      cosmosMasterKey: map['cosmosMasterKey'] == null ? null : (map['cosmosMasterKey']! as String).input(),
+      connectorServiceType: pulumi.Input.fromValue(
+        map['connectorServiceType'] as String,
+      ),
+      cosmosConnectionEndpoint: (() {
+        final guardedValue = map['cosmosConnectionEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cosmosContainersTopicMapping: (() {
+        final guardedValue = map['cosmosContainersTopicMapping'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cosmosDatabaseName: (() {
+        final guardedValue = map['cosmosDatabaseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cosmosIdStrategy: (() {
+        final guardedValue = map['cosmosIdStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cosmosMasterKey: (() {
+        final guardedValue = map['cosmosMasterKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

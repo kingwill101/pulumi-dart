@@ -142,6 +142,7 @@ class SourceIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<SourceIamBindingCondition?> condition;
   late final pulumi.Output<String> etag;
   late final pulumi.Output<List<String>> members;
+
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
   late final pulumi.Output<String> organization;
@@ -157,17 +158,17 @@ class SourceIamBinding extends pulumi.CustomResource {
     SourceIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:securitycenter/sourceIamBinding:SourceIamBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<SourceIamBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.members = registerOutput<List<String>>('members');
-    this.organization = registerOutput<String>('organization');
-    this.role = registerOutput<String>('role');
-    this.source = registerOutput<String>('source');
+         'gcp:securitycenter/sourceIamBinding:SourceIamBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<SourceIamBindingCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members');
+    organization = registerOutput<String>('organization');
+    role = registerOutput<String>('role');
+    source = registerOutput<String>('source');
   }
 
   /// Gets an existing [SourceIamBinding] resource's state with the given [name] and [id].
@@ -188,16 +189,16 @@ class SourceIamBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:securitycenter/sourceIamBinding:SourceIamBinding',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<SourceIamBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.members = registerOutput<List<String>>('members');
-    this.organization = registerOutput<String>('organization');
-    this.role = registerOutput<String>('role');
-    this.source = registerOutput<String>('source');
+         'gcp:securitycenter/sourceIamBinding:SourceIamBinding',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<SourceIamBindingCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members');
+    organization = registerOutput<String>('organization');
+    role = registerOutput<String>('role');
+    source = registerOutput<String>('source');
   }
 }

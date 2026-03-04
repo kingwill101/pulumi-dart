@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransferAllDetailsResponse {
   /// Type of the account of data
   final pulumi.Input<String> dataAccountType;
+
   /// To indicate if all Azure blobs have to be transferred
   final pulumi.Input<bool>? transferAllBlobs;
+
   /// To indicate if all Azure Files have to be transferred
   final pulumi.Input<bool>? transferAllFiles;
 
@@ -31,10 +33,17 @@ class TransferAllDetailsResponse {
 
   factory TransferAllDetailsResponse.fromMap(Map<String, dynamic> map) {
     return TransferAllDetailsResponse(
-      dataAccountType: (map['dataAccountType'] as String).input(),
-      transferAllBlobs: map['transferAllBlobs'] == null ? null : (map['transferAllBlobs']! as bool).input(),
-      transferAllFiles: map['transferAllFiles'] == null ? null : (map['transferAllFiles']! as bool).input(),
+      dataAccountType: pulumi.Input.fromValue(map['dataAccountType'] as String),
+      transferAllBlobs: (() {
+        final guardedValue = map['transferAllBlobs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      transferAllFiles: (() {
+        final guardedValue = map['transferAllFiles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

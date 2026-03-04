@@ -10,34 +10,44 @@ import 'git_hub_action_configuration.dart';
 class WebAppSourceControlSlotArgs {
   /// Name of branch to use for deployment.
   final pulumi.Input<String>? branch;
-  /// <code>true</code> to enable deployment rollback; otherwise, <code>false</code>.
+
+  /// &lt;code&gt;true&lt;/code&gt; to enable deployment rollback; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final pulumi.Input<bool>? deploymentRollbackEnabled;
+
   /// If GitHub Action is selected, than the associated configuration.
   final pulumi.Input<GitHubActionConfiguration>? gitHubActionConfiguration;
-  /// <code>true</code> if this is deployed via GitHub action.
+
+  /// &lt;code&gt;true&lt;/code&gt; if this is deployed via GitHub action.
   final pulumi.Input<bool>? isGitHubAction;
-  /// <code>true</code> to limit to manual integration; <code>false</code> to enable continuous integration (which configures webhooks into online repos like GitHub).
+
+  /// &lt;code&gt;true&lt;/code&gt; to limit to manual integration; &lt;code&gt;false&lt;/code&gt; to enable continuous integration (which configures webhooks into online repos like GitHub).
   final pulumi.Input<bool>? isManualIntegration;
-  /// <code>true</code> for a Mercurial repository; <code>false</code> for a Git repository.
+
+  /// &lt;code&gt;true&lt;/code&gt; for a Mercurial repository; &lt;code&gt;false&lt;/code&gt; for a Git repository.
   final pulumi.Input<bool>? isMercurial;
+
   /// Kind of resource.
   final pulumi.Input<String>? kind;
+
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Repository or source control URL.
   final pulumi.Input<String>? repoUrl;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the deployment slot. If a slot is not specified, the API will update the source control configuration for the production slot.
   final pulumi.Input<String> slot;
 
   /// Creates a new [WebAppSourceControlSlotArgs].
   /// [branch] Name of branch to use for deployment.
-  /// [deploymentRollbackEnabled] <code>true</code> to enable deployment rollback; otherwise, <code>false</code>.
+  /// [deploymentRollbackEnabled] &lt;code&gt;true&lt;/code&gt; to enable deployment rollback; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [gitHubActionConfiguration] If GitHub Action is selected, than the associated configuration.
-  /// [isGitHubAction] <code>true</code> if this is deployed via GitHub action.
-  /// [isManualIntegration] <code>true</code> to limit to manual integration; <code>false</code> to enable continuous integration (which configures webhooks into online repos like GitHub).
-  /// [isMercurial] <code>true</code> for a Mercurial repository; <code>false</code> for a Git repository.
+  /// [isGitHubAction] &lt;code&gt;true&lt;/code&gt; if this is deployed via GitHub action.
+  /// [isManualIntegration] &lt;code&gt;true&lt;/code&gt; to limit to manual integration; &lt;code&gt;false&lt;/code&gt; to enable continuous integration (which configures webhooks into online repos like GitHub).
+  /// [isMercurial] &lt;code&gt;true&lt;/code&gt; for a Mercurial repository; &lt;code&gt;false&lt;/code&gt; for a Git repository.
   /// [kind] Kind of resource.
   /// [name] Name of the app.
   /// [repoUrl] Repository or source control URL.
@@ -61,7 +71,11 @@ class WebAppSourceControlSlotArgs {
     return <String, dynamic>{
       'branch': ?branch,
       'deploymentRollbackEnabled': ?deploymentRollbackEnabled,
-      'gitHubActionConfiguration': ?pulumi.Input.mapOptionalInputValue<GitHubActionConfiguration, Map<String, dynamic>>(gitHubActionConfiguration, (value) => value.toMap()),
+      'gitHubActionConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            GitHubActionConfiguration,
+            Map<String, dynamic>
+          >(gitHubActionConfiguration, (value) => value.toMap()),
       'isGitHubAction': ?isGitHubAction,
       'isManualIntegration': ?isManualIntegration,
       'isMercurial': ?isMercurial,
@@ -75,18 +89,55 @@ class WebAppSourceControlSlotArgs {
 
   factory WebAppSourceControlSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppSourceControlSlotArgs(
-      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
-      deploymentRollbackEnabled: map['deploymentRollbackEnabled'] == null ? null : (map['deploymentRollbackEnabled']! as bool).input(),
-      gitHubActionConfiguration: map['gitHubActionConfiguration'] == null ? null : (GitHubActionConfiguration.fromMap((map['gitHubActionConfiguration']! as Map).cast<String, dynamic>())).input(),
-      isGitHubAction: map['isGitHubAction'] == null ? null : (map['isGitHubAction']! as bool).input(),
-      isManualIntegration: map['isManualIntegration'] == null ? null : (map['isManualIntegration']! as bool).input(),
-      isMercurial: map['isMercurial'] == null ? null : (map['isMercurial']! as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: (map['name'] as String).input(),
-      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      slot: (map['slot'] as String).input(),
+      branch: (() {
+        final guardedValue = map['branch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deploymentRollbackEnabled: (() {
+        final guardedValue = map['deploymentRollbackEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      gitHubActionConfiguration: (() {
+        final guardedValue = map['gitHubActionConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GitHubActionConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      isGitHubAction: (() {
+        final guardedValue = map['isGitHubAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isManualIntegration: (() {
+        final guardedValue = map['isManualIntegration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isMercurial: (() {
+        final guardedValue = map['isMercurial'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      repoUrl: (() {
+        final guardedValue = map['repoUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      slot: pulumi.Input.fromValue(map['slot'] as String),
     );
   }
 }
-

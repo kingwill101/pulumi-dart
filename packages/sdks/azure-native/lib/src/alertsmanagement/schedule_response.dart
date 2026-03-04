@@ -7,10 +7,13 @@ import 'daily_recurrence_response.dart';
 class ScheduleResponse {
   /// Scheduling effective from time. Date-Time in ISO-8601 format without timezone suffix.
   final pulumi.Input<String>? effectiveFrom;
+
   /// Scheduling effective until time. Date-Time in ISO-8601 format without timezone suffix.
   final pulumi.Input<String>? effectiveUntil;
+
   /// List of recurrences.
   final pulumi.Input<List<DailyRecurrenceResponse>>? recurrences;
+
   /// Scheduling time zone.
   final pulumi.Input<String>? timeZone;
 
@@ -30,18 +33,51 @@ class ScheduleResponse {
     return <String, dynamic>{
       'effectiveFrom': ?effectiveFrom,
       'effectiveUntil': ?effectiveUntil,
-      'recurrences': ?pulumi.Input.mapOptionalInputValue<List<DailyRecurrenceResponse>, List<Map<String, dynamic>>>(recurrences, (value) => pulumi.Input.encodeList<DailyRecurrenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'recurrences':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DailyRecurrenceResponse>,
+            List<Map<String, dynamic>>
+          >(
+            recurrences,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DailyRecurrenceResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'timeZone': ?timeZone,
     };
   }
 
   factory ScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ScheduleResponse(
-      effectiveFrom: map['effectiveFrom'] == null ? null : (map['effectiveFrom']! as String).input(),
-      effectiveUntil: map['effectiveUntil'] == null ? null : (map['effectiveUntil']! as String).input(),
-      recurrences: map['recurrences'] == null ? null : (pulumi.Input.decodeList<DailyRecurrenceResponse>(map['recurrences']!, (value) => DailyRecurrenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      effectiveFrom: (() {
+        final guardedValue = map['effectiveFrom'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveUntil: (() {
+        final guardedValue = map['effectiveUntil'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recurrences: (() {
+        final guardedValue = map['recurrences'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DailyRecurrenceResponse>(
+            guardedValue,
+            (value) => DailyRecurrenceResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      timeZone: (() {
+        final guardedValue = map['timeZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTopicsArgs {
   /// A string to filter resulting topics by their name prefixs.
   final pulumi.Input<String>? namePrefix;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
   /// Creates a new [GetTopicsArgs].
   /// [namePrefix] A string to filter resulting topics by their name prefixs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetTopicsArgs({
-    this.namePrefix,
-    this.outputFile,
-  });
+  GetTopicsArgs({this.namePrefix, this.outputFile});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,16 @@ class GetTopicsArgs {
 
   factory GetTopicsArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicsArgs(
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      namePrefix: (() {
+        final guardedValue = map['namePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

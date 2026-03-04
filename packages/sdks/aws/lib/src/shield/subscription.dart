@@ -4,9 +4,9 @@ import 'subscription_state.dart';
 
 /// Resource for managing an AWS Shield Subscription.
 ///
-/// > This resource creates a subscription to AWS Shield Advanced, which requires a 1 year subscription commitment with a monthly fee. Refer to the [AWS Shield Pricing](https://aws.amazon.com/shield/pricing/) page for more details.
+/// &gt; This resource creates a subscription to AWS Shield Advanced, which requires a 1 year subscription commitment with a monthly fee. Refer to the [AWS Shield Pricing](https://aws.amazon.com/shield/pricing/) page for more details.
 ///
-/// > Destruction of this resource will set `auto_renew` to `DISABLED`. Automatic renewal can only be disabled during the last 30 days of a subscription. To unsubscribe outside of this window, you must contact AWS Support. Set `skip_destroy` to `true` to skip modifying the `auto_renew` argument during destruction.
+/// &gt; Destruction of this resource will set `auto_renew` to `DISABLED`. Automatic renewal can only be disabled during the last 30 days of a subscription. To unsubscribe outside of this window, you must contact AWS Support. Set `skip_destroy` to `true` to skip modifying the `auto_renew` argument during destruction.
 ///
 /// ## Example Usage
 ///
@@ -107,6 +107,7 @@ import 'subscription_state.dart';
 class Subscription extends pulumi.CustomResource {
   /// Toggle for automated renewal of the subscription. Valid values are `ENABLED` or `DISABLED`. Default is `ENABLED`.
   late final pulumi.Output<String> autoRenew;
+
   /// Skip attempting to disable automated renewal upon destruction. If set to `true`, the `auto_renew` value will be left as-is and the resource will simply be removed from state.
   late final pulumi.Output<bool?> skipDestroy;
 
@@ -119,13 +120,13 @@ class Subscription extends pulumi.CustomResource {
     SubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:shield/subscription:Subscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoRenew = registerOutput<String>('autoRenew');
-    this.skipDestroy = registerOutput<bool?>('skipDestroy');
+         'aws:shield/subscription:Subscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoRenew = registerOutput<String>('autoRenew');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
   }
 
   /// Gets an existing [Subscription] resource's state with the given [name] and [id].
@@ -146,12 +147,12 @@ class Subscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:shield/subscription:Subscription',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoRenew = registerOutput<String>('autoRenew');
-    this.skipDestroy = registerOutput<bool?>('skipDestroy');
+         'aws:shield/subscription:Subscription',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoRenew = registerOutput<String>('autoRenew');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
   }
 }

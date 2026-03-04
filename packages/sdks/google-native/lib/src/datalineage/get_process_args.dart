@@ -31,10 +31,13 @@ class GetProcessArgs {
 
   factory GetProcessArgs.fromMap(Map<String, dynamic> map) {
     return GetProcessArgs(
-      location: (map['location'] as String).input(),
-      processId: (map['processId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      processId: pulumi.Input.fromValue(map['processId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

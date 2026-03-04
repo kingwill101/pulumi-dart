@@ -1,14 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'grey_tag_route_args.dart';
-import 'grey_tag_route_dubbo_rule.dart';
-import 'grey_tag_route_sc_rule.dart';
 import 'grey_tag_route_state.dart';
 
 /// Provides a Serverless App Engine (SAE) GreyTagRoute resource.
 ///
 /// For information about Serverless App Engine (SAE) GreyTagRoute and how to use it, see [What is GreyTagRoute](https://www.alibabacloud.com/help/en/sae/latest/create-grey-tag-route).
 ///
-/// > **NOTE:** Available since v1.160.0.
+/// &gt; **NOTE:** Available since v1.160.0.
 ///
 /// ## Example Usage
 ///
@@ -654,14 +652,18 @@ import 'grey_tag_route_state.dart';
 class GreyTagRoute extends pulumi.CustomResource {
   /// The ID  of the SAE Application.
   late final pulumi.Output<String> appId;
+
   /// The description of GreyTagRoute.
   late final pulumi.Output<String?> description;
+
   /// The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
-  late final pulumi.Output<List<GreyTagRouteDubboRule>?> dubboRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> dubboRules;
+
   /// The name of GreyTagRoute.
   late final pulumi.Output<String> greyTagRouteName;
+
   /// The grayscale rule created for SpringCloud Application. See `sc_rules` below.
-  late final pulumi.Output<List<GreyTagRouteScRule>?> scRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> scRules;
 
   /// Creates a new [GreyTagRoute].
   /// [name] The Pulumi resource name.
@@ -672,16 +674,16 @@ class GreyTagRoute extends pulumi.CustomResource {
     GreyTagRouteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sae/greyTagRoute:GreyTagRoute',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.description = registerOutput<String?>('description');
-    this.dubboRules = registerOutput<List<GreyTagRouteDubboRule>?>('dubboRules');
-    this.greyTagRouteName = registerOutput<String>('greyTagRouteName');
-    this.scRules = registerOutput<List<GreyTagRouteScRule>?>('scRules');
+         'alicloud:sae/greyTagRoute:GreyTagRoute',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    description = registerOutput<String?>('description');
+    dubboRules = registerOutput<List<Map<String, dynamic>>?>('dubboRules');
+    greyTagRouteName = registerOutput<String>('greyTagRouteName');
+    scRules = registerOutput<List<Map<String, dynamic>>?>('scRules');
   }
 
   /// Gets an existing [GreyTagRoute] resource's state with the given [name] and [id].
@@ -702,15 +704,15 @@ class GreyTagRoute extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sae/greyTagRoute:GreyTagRoute',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.description = registerOutput<String?>('description');
-    this.dubboRules = registerOutput<List<GreyTagRouteDubboRule>?>('dubboRules');
-    this.greyTagRouteName = registerOutput<String>('greyTagRouteName');
-    this.scRules = registerOutput<List<GreyTagRouteScRule>?>('scRules');
+         'alicloud:sae/greyTagRoute:GreyTagRoute',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    description = registerOutput<String?>('description');
+    dubboRules = registerOutput<List<Map<String, dynamic>>?>('dubboRules');
+    greyTagRouteName = registerOutput<String>('greyTagRouteName');
+    scRules = registerOutput<List<Map<String, dynamic>>?>('scRules');
   }
 }

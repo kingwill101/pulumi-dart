@@ -4,16 +4,15 @@ enum ArtifactsType {
   nOARTIFACTS("NO_ARTIFACTS"),
   s3("S3");
 
-  const ArtifactsType(this.value);
-  final String value;
+  const ArtifactsType(this.wireValue);
+  final String wireValue;
 
   static ArtifactsType fromValue(String value) {
     for (final item in ArtifactsType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ArtifactsType value: $value');
   }
 }
-

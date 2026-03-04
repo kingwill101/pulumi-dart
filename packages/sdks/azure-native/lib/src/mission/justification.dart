@@ -4,16 +4,15 @@ enum Justification {
   valueGovernance("Governance"),
   valueOff("Off");
 
-  const Justification(this.value);
-  final String value;
+  const Justification(this.wireValue);
+  final String wireValue;
 
   static Justification fromValue(String value) {
     for (final item in Justification.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Justification value: $value');
   }
 }
-

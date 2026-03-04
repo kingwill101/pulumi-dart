@@ -3,16 +3,15 @@ enum IncomingTrafficPolicy {
   allowAllTraffic("AllowAllTraffic"),
   allowVirtualNetworksOnly("AllowVirtualNetworksOnly");
 
-  const IncomingTrafficPolicy(this.value);
-  final String value;
+  const IncomingTrafficPolicy(this.wireValue);
+  final String wireValue;
 
   static IncomingTrafficPolicy fromValue(String value) {
     for (final item in IncomingTrafficPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IncomingTrafficPolicy value: $value');
   }
 }
-

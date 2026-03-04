@@ -1,20 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getManagedZone.
 class GetManagedZoneResult {
   /// A textual description field.
   final String description;
+
   /// The fully qualified DNS name of this zone, e.g. `example.io.`.
   final String dnsName;
   final String id;
   final String managedZoneId;
   final String name;
+
   /// The list of nameservers that will be authoritative for this
   /// domain. Use NS records to redirect from your DNS provider to these names,
   /// thus making Google Cloud DNS authoritative for this zone.
   final List<String> nameServers;
   final String? project;
+
   /// The zone's visibility: public zones are exposed to the Internet,
   /// while private zones are visible only to Virtual Private Cloud resources.
   final String visibility;
@@ -60,9 +62,12 @@ class GetManagedZoneResult {
       managedZoneId: map['managedZoneId'] as String,
       name: map['name'] as String,
       nameServers: (map['nameServers'] as List).cast<String>(),
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       visibility: map['visibility'] as String,
     );
   }
 }
-

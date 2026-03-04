@@ -113,6 +113,7 @@ class ProjectDefaultNetworkTier extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String> networkTier;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -126,13 +127,13 @@ class ProjectDefaultNetworkTier extends pulumi.CustomResource {
     ProjectDefaultNetworkTierArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.networkTier = registerOutput<String>('networkTier');
-    this.project = registerOutput<String>('project');
+         'gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    networkTier = registerOutput<String>('networkTier');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [ProjectDefaultNetworkTier] resource's state with the given [name] and [id].
@@ -153,12 +154,12 @@ class ProjectDefaultNetworkTier extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.networkTier = registerOutput<String>('networkTier');
-    this.project = registerOutput<String>('project');
+         'gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    networkTier = registerOutput<String>('networkTier');
+    project = registerOutput<String>('project');
   }
 }

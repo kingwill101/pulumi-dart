@@ -8,22 +8,31 @@ import 'object_replication_policy_rule_response.dart';
 class GetObjectReplicationPolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Required. Destination account name. It should be full resource id if allowCrossTenantReplication set to false.
   final String destinationAccount;
+
   /// Indicates when the policy is enabled on the source account.
   final String enabledTime;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Optional. The object replication policy metrics feature options.
   final ObjectReplicationPolicyPropertiesResponseMetrics? metrics;
+
   /// The name of the resource
   final String name;
+
   /// A unique id for object replication policy.
   final String policyId;
+
   /// The storage account object replication rules.
   final List<ObjectReplicationPolicyRuleResponse>? rules;
+
   /// Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
   final String sourceAccount;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -57,10 +66,17 @@ class GetObjectReplicationPolicyResult {
       'destinationAccount': destinationAccount,
       'enabledTime': enabledTime,
       'id': id,
-      'metrics': ?metrics == null ? null : metrics!.toMap(),
+      'metrics': ?metrics?.toMap(),
       'name': name,
       'policyId': policyId,
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<ObjectReplicationPolicyRuleResponse, Map<String, dynamic>>(rules!, (value) => value.toMap()),
+      'rules': ?(() {
+        final guardedValue = rules;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ObjectReplicationPolicyRuleResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'sourceAccount': sourceAccount,
       'type': type,
     };
@@ -72,13 +88,27 @@ class GetObjectReplicationPolicyResult {
       destinationAccount: map['destinationAccount'] as String,
       enabledTime: map['enabledTime'] as String,
       id: map['id'] as String,
-      metrics: map['metrics'] == null ? null : ObjectReplicationPolicyPropertiesResponseMetrics.fromMap((map['metrics']! as Map).cast<String, dynamic>()),
+      metrics: (() {
+        final guardedValue = map['metrics'];
+        if (guardedValue == null) return null;
+        return ObjectReplicationPolicyPropertiesResponseMetrics.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       name: map['name'] as String,
       policyId: map['policyId'] as String,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<ObjectReplicationPolicyRuleResponse>(map['rules']!, (value) => ObjectReplicationPolicyRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ObjectReplicationPolicyRuleResponse>(
+          guardedValue,
+          (value) => ObjectReplicationPolicyRuleResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       sourceAccount: map['sourceAccount'] as String,
       type: map['type'] as String,
     );
   }
 }
-

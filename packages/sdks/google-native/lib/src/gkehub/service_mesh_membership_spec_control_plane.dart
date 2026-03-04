@@ -4,16 +4,17 @@ enum ServiceMeshMembershipSpecControlPlane {
   automatic("AUTOMATIC"),
   manual("MANUAL");
 
-  const ServiceMeshMembershipSpecControlPlane(this.value);
-  final String value;
+  const ServiceMeshMembershipSpecControlPlane(this.wireValue);
+  final String wireValue;
 
   static ServiceMeshMembershipSpecControlPlane fromValue(String value) {
     for (final item in ServiceMeshMembershipSpecControlPlane.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceMeshMembershipSpecControlPlane value: $value');
+    throw ArgumentError(
+      'Unknown ServiceMeshMembershipSpecControlPlane value: $value',
+    );
   }
 }
-

@@ -7,9 +7,10 @@ class AnalyticsWorkspaceIdentity {
   final pulumi.Input<List<String>>? identityIds;
   final pulumi.Input<String>? principalId;
   final pulumi.Input<String>? tenantId;
+
   /// Specifies the identity type of the Log Analytics Workspace. Possible values are `SystemAssigned` (where Azure will generate a Service Principal for you) and `UserAssigned` where you can specify the Service Principal IDs in the `identity_ids` field.
   ///
-  /// > **Note:** When `type` is set to `SystemAssigned`, The assigned `principal_id` and `tenant_id` can be retrieved after the Log Analytics Workspace has been created.
+  /// &gt; **Note:** When `type` is set to `SystemAssigned`, The assigned `principal_id` and `tenant_id` can be retrieved after the Log Analytics Workspace has been created.
   final pulumi.Input<String> type;
 
   /// Creates a new [AnalyticsWorkspaceIdentity].
@@ -35,11 +36,22 @@ class AnalyticsWorkspaceIdentity {
 
   factory AnalyticsWorkspaceIdentity.fromMap(Map<String, dynamic> map) {
     return AnalyticsWorkspaceIdentity(
-      identityIds: map['identityIds'] == null ? null : ((map['identityIds']! as List).cast<String>()).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
-      type: (map['type'] as String).input(),
+      identityIds: (() {
+        final guardedValue = map['identityIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

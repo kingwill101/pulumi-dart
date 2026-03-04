@@ -27,9 +27,14 @@ class GetGlobalNetworkEndpointGroupArgs {
 
   factory GetGlobalNetworkEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalNetworkEndpointGroupArgs(
-      networkEndpointGroup: (map['networkEndpointGroup'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      networkEndpointGroup: pulumi.Input.fromValue(
+        map['networkEndpointGroup'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

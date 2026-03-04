@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GuestPoliciesRecipeInstallStepMsiInstallation {
   /// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
   final pulumi.Input<List<int>>? allowedExitCodes;
+
   /// The id of the relevant artifact in the recipe.
   final pulumi.Input<String> artifactId;
+
   /// The flags to use when installing the MSI. Defaults to the install flag.
   final pulumi.Input<List<String>>? flags;
 
@@ -28,12 +30,21 @@ class GuestPoliciesRecipeInstallStepMsiInstallation {
     };
   }
 
-  factory GuestPoliciesRecipeInstallStepMsiInstallation.fromMap(Map<String, dynamic> map) {
+  factory GuestPoliciesRecipeInstallStepMsiInstallation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GuestPoliciesRecipeInstallStepMsiInstallation(
-      allowedExitCodes: map['allowedExitCodes'] == null ? null : ((map['allowedExitCodes']! as List).cast<int>()).input(),
-      artifactId: (map['artifactId'] as String).input(),
-      flags: map['flags'] == null ? null : ((map['flags']! as List).cast<String>()).input(),
+      allowedExitCodes: (() {
+        final guardedValue = map['allowedExitCodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      artifactId: pulumi.Input.fromValue(map['artifactId'] as String),
+      flags: (() {
+        final guardedValue = map['flags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

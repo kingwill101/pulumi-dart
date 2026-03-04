@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateLinkResourceSharedPrivateLinkResourceType {
   /// The description of the resource type that has been onboarded to private link service.
   final pulumi.Input<String> description;
+
   /// The  name for the resource that has been onboarded to private link service.
   final pulumi.Input<String> subresourceName;
 
@@ -23,11 +24,12 @@ class GetPrivateLinkResourceSharedPrivateLinkResourceType {
     };
   }
 
-  factory GetPrivateLinkResourceSharedPrivateLinkResourceType.fromMap(Map<String, dynamic> map) {
+  factory GetPrivateLinkResourceSharedPrivateLinkResourceType.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPrivateLinkResourceSharedPrivateLinkResourceType(
-      description: (map['description'] as String).input(),
-      subresourceName: (map['subresourceName'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      subresourceName: pulumi.Input.fromValue(map['subresourceName'] as String),
     );
   }
 }
-

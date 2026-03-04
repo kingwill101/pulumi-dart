@@ -9,10 +9,14 @@ import 'google_cloud_apigee_v1_quota_response.dart';
 class GoogleCloudApigeeV1GraphQLOperationConfigResponse {
   /// Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.
   final pulumi.Input<String> apiSource;
+
   /// Custom attributes associated with the operation.
   final pulumi.Input<List<GoogleCloudApigeeV1AttributeResponse>> attributes;
+
   /// List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name. **Note**: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
-  final pulumi.Input<List<GoogleCloudApigeeV1GraphQLOperationResponse>> operations;
+  final pulumi.Input<List<GoogleCloudApigeeV1GraphQLOperationResponse>>
+  operations;
+
   /// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
   final pulumi.Input<GoogleCloudApigeeV1QuotaResponse> quota;
 
@@ -31,19 +35,64 @@ class GoogleCloudApigeeV1GraphQLOperationConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiSource': apiSource,
-      'attributes': pulumi.Input.mapInputValue<List<GoogleCloudApigeeV1AttributeResponse>, List<Map<String, dynamic>>>(attributes, (value) => pulumi.Input.encodeList<GoogleCloudApigeeV1AttributeResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'operations': pulumi.Input.mapInputValue<List<GoogleCloudApigeeV1GraphQLOperationResponse>, List<Map<String, dynamic>>>(operations, (value) => pulumi.Input.encodeList<GoogleCloudApigeeV1GraphQLOperationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'quota': pulumi.Input.mapInputValue<GoogleCloudApigeeV1QuotaResponse, Map<String, dynamic>>(quota, (value) => value.toMap()),
+      'attributes':
+          pulumi.Input.mapInputValue<
+            List<GoogleCloudApigeeV1AttributeResponse>,
+            List<Map<String, dynamic>>
+          >(
+            attributes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudApigeeV1AttributeResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'operations':
+          pulumi.Input.mapInputValue<
+            List<GoogleCloudApigeeV1GraphQLOperationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            operations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudApigeeV1GraphQLOperationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'quota':
+          pulumi.Input.mapInputValue<
+            GoogleCloudApigeeV1QuotaResponse,
+            Map<String, dynamic>
+          >(quota, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudApigeeV1GraphQLOperationConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1GraphQLOperationConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1GraphQLOperationConfigResponse(
-      apiSource: (map['apiSource'] as String).input(),
-      attributes: (pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(map['attributes'], (value) => GoogleCloudApigeeV1AttributeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      operations: (pulumi.Input.decodeList<GoogleCloudApigeeV1GraphQLOperationResponse>(map['operations'], (value) => GoogleCloudApigeeV1GraphQLOperationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      quota: (GoogleCloudApigeeV1QuotaResponse.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
+      apiSource: pulumi.Input.fromValue(map['apiSource'] as String),
+      attributes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(
+          map['attributes']!,
+          (value) => GoogleCloudApigeeV1AttributeResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      operations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GoogleCloudApigeeV1GraphQLOperationResponse>(
+          map['operations']!,
+          (value) => GoogleCloudApigeeV1GraphQLOperationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      quota: pulumi.Input.fromValue(
+        GoogleCloudApigeeV1QuotaResponse.fromMap(
+          (map['quota']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

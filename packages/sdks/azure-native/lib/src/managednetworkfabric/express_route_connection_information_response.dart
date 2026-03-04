@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressRouteConnectionInformationResponse {
   /// Authorization key for the circuit, must be of type Microsoft.Network/expressRouteCircuits/authorizations. The Auth Key is a mandatory attribute.
   final pulumi.Input<String> expressRouteAuthorizationKey;
+
   /// The express route circuit Azure resource ID, must be of type Microsoft.Network/expressRouteCircuits/circuitName. The ExpressRoute Circuit is a mandatory attribute.
   final pulumi.Input<String> expressRouteCircuitId;
 
@@ -24,11 +25,16 @@ class ExpressRouteConnectionInformationResponse {
     };
   }
 
-  factory ExpressRouteConnectionInformationResponse.fromMap(Map<String, dynamic> map) {
+  factory ExpressRouteConnectionInformationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExpressRouteConnectionInformationResponse(
-      expressRouteAuthorizationKey: (map['expressRouteAuthorizationKey'] as String).input(),
-      expressRouteCircuitId: (map['expressRouteCircuitId'] as String).input(),
+      expressRouteAuthorizationKey: pulumi.Input.fromValue(
+        map['expressRouteAuthorizationKey'] as String,
+      ),
+      expressRouteCircuitId: pulumi.Input.fromValue(
+        map['expressRouteCircuitId'] as String,
+      ),
     );
   }
 }
-

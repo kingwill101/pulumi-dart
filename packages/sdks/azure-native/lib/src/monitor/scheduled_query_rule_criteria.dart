@@ -10,20 +10,37 @@ class ScheduledQueryRuleCriteria {
 
   /// Creates a new [ScheduledQueryRuleCriteria].
   /// [allOf] A list of conditions to evaluate against the specified scopes
-  ScheduledQueryRuleCriteria({
-    this.allOf,
-  });
+  ScheduledQueryRuleCriteria({this.allOf});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allOf': ?pulumi.Input.mapOptionalInputValue<List<Condition>, List<Map<String, dynamic>>>(allOf, (value) => pulumi.Input.encodeList<Condition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'allOf':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Condition>,
+            List<Map<String, dynamic>>
+          >(
+            allOf,
+            (value) => pulumi.Input.encodeList<Condition, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
     };
   }
 
   factory ScheduledQueryRuleCriteria.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRuleCriteria(
-      allOf: map['allOf'] == null ? null : (pulumi.Input.decodeList<Condition>(map['allOf']!, (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allOf: (() {
+        final guardedValue = map['allOf'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Condition>(
+            guardedValue,
+            (value) =>
+                Condition.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

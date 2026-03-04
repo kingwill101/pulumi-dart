@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReservationSubBlockReservationSubBlockMaintenance {
   /// Number of instances that have ongoing maintenance.
   final pulumi.Input<int> instanceMaintenanceOngoingCount;
+
   /// Number of instances that have pending maintenance.
   final pulumi.Input<int> instanceMaintenancePendingCount;
+
   /// Number of hosts in the sub-block that have ongoing maintenance.
   final pulumi.Input<int> maintenanceOngoingCount;
+
   /// Number of hosts in the sub-block that have pending maintenance.
   final pulumi.Input<int> maintenancePendingCount;
+
   /// The type of maintenance for the reservation.
   final pulumi.Input<String> schedulingType;
+
   /// Number of sub-block infrastructure that has ongoing maintenance.
   final pulumi.Input<int> subblockInfraMaintenanceOngoingCount;
+
   /// Number of sub-block infrastructure that has pending maintenance.
   final pulumi.Input<int> subblockInfraMaintenancePendingCount;
 
@@ -43,21 +49,36 @@ class GetReservationSubBlockReservationSubBlockMaintenance {
       'maintenanceOngoingCount': maintenanceOngoingCount,
       'maintenancePendingCount': maintenancePendingCount,
       'schedulingType': schedulingType,
-      'subblockInfraMaintenanceOngoingCount': subblockInfraMaintenanceOngoingCount,
-      'subblockInfraMaintenancePendingCount': subblockInfraMaintenancePendingCount,
+      'subblockInfraMaintenanceOngoingCount':
+          subblockInfraMaintenanceOngoingCount,
+      'subblockInfraMaintenancePendingCount':
+          subblockInfraMaintenancePendingCount,
     };
   }
 
-  factory GetReservationSubBlockReservationSubBlockMaintenance.fromMap(Map<String, dynamic> map) {
+  factory GetReservationSubBlockReservationSubBlockMaintenance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetReservationSubBlockReservationSubBlockMaintenance(
-      instanceMaintenanceOngoingCount: (map['instanceMaintenanceOngoingCount'] as int).input(),
-      instanceMaintenancePendingCount: (map['instanceMaintenancePendingCount'] as int).input(),
-      maintenanceOngoingCount: (map['maintenanceOngoingCount'] as int).input(),
-      maintenancePendingCount: (map['maintenancePendingCount'] as int).input(),
-      schedulingType: (map['schedulingType'] as String).input(),
-      subblockInfraMaintenanceOngoingCount: (map['subblockInfraMaintenanceOngoingCount'] as int).input(),
-      subblockInfraMaintenancePendingCount: (map['subblockInfraMaintenancePendingCount'] as int).input(),
+      instanceMaintenanceOngoingCount: pulumi.Input.fromValue(
+        map['instanceMaintenanceOngoingCount'] as int,
+      ),
+      instanceMaintenancePendingCount: pulumi.Input.fromValue(
+        map['instanceMaintenancePendingCount'] as int,
+      ),
+      maintenanceOngoingCount: pulumi.Input.fromValue(
+        map['maintenanceOngoingCount'] as int,
+      ),
+      maintenancePendingCount: pulumi.Input.fromValue(
+        map['maintenancePendingCount'] as int,
+      ),
+      schedulingType: pulumi.Input.fromValue(map['schedulingType'] as String),
+      subblockInfraMaintenanceOngoingCount: pulumi.Input.fromValue(
+        map['subblockInfraMaintenanceOngoingCount'] as int,
+      ),
+      subblockInfraMaintenancePendingCount: pulumi.Input.fromValue(
+        map['subblockInfraMaintenancePendingCount'] as int,
+      ),
     );
   }
 }
-

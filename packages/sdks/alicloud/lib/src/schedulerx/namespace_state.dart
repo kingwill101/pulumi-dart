@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceState {
   /// Namespace description.
   final pulumi.Input<String>? description;
+
   /// Namespace name.
   final pulumi.Input<String>? namespaceName;
+
   /// namespace uid
   final pulumi.Input<String>? namespaceUid;
 
@@ -15,11 +17,7 @@ class NamespaceState {
   /// [description] Namespace description.
   /// [namespaceName] Namespace name.
   /// [namespaceUid] namespace uid
-  NamespaceState({
-    this.description,
-    this.namespaceName,
-    this.namespaceUid,
-  });
+  NamespaceState({this.description, this.namespaceName, this.namespaceUid});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
-      namespaceUid: map['namespaceUid'] == null ? null : (map['namespaceUid']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: (() {
+        final guardedValue = map['namespaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceUid: (() {
+        final guardedValue = map['namespaceUid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

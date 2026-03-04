@@ -3,16 +3,15 @@ enum FavoriteType {
   valueShared("shared"),
   valueUser("user");
 
-  const FavoriteType(this.value);
-  final String value;
+  const FavoriteType(this.wireValue);
+  final String wireValue;
 
   static FavoriteType fromValue(String value) {
     for (final item in FavoriteType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FavoriteType value: $value');
   }
 }
-

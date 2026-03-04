@@ -2,16 +2,15 @@
 enum Distro {
   aKSEdge("AKSEdge");
 
-  const Distro(this.value);
-  final String value;
+  const Distro(this.wireValue);
+  final String wireValue;
 
   static Distro fromValue(String value) {
     for (final item in Distro.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Distro value: $value');
   }
 }
-

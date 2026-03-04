@@ -8,7 +8,7 @@ import 'acl_state.dart';
 ///
 /// For information about RocketMQ Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-createinstanceacl).
 ///
-/// > **NOTE:** Available since v1.245.0.
+/// &gt; **NOTE:** Available since v1.245.0.
 ///
 /// ## Example Usage
 ///
@@ -576,16 +576,22 @@ class Acl extends pulumi.CustomResource {
   /// - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
   /// - If `resource_type` is set to `Group`. Valid values: `Sub`.
   late final pulumi.Output<List<String>> actions;
+
   /// The decision result of the authorization. Valid values: `Deny`, `Allow`.
   late final pulumi.Output<String> decision;
+
   /// The instance ID.
   late final pulumi.Output<String> instanceId;
+
   /// The IP address whitelists.
   late final pulumi.Output<List<String>> ipWhitelists;
+
   /// The name of the resource on which you want to grant permissions.
   late final pulumi.Output<String> resourceName;
+
   /// The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
   late final pulumi.Output<String> resourceType;
+
   /// The username of the account.
   late final pulumi.Output<String> username;
 
@@ -593,31 +599,24 @@ class Acl extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Acl]. {@macro pulumi_rocketmq_acl_acl_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Acl(
-    String name, {
-    AclArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:rocketmq/acl:Acl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actions = registerOutput<List<String>>('actions');
-    this.decision = registerOutput<String>('decision');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.ipWhitelists = registerOutput<List<String>>('ipWhitelists');
-    this.resourceName = registerOutput<String>('resourceName');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.username = registerOutput<String>('username');
+  Acl(String name, {AclArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:rocketmq/acl:Acl',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    actions = registerOutput<List<String>>('actions');
+    decision = registerOutput<String>('decision');
+    instanceId = registerOutput<String>('instanceId');
+    ipWhitelists = registerOutput<List<String>>('ipWhitelists');
+    resourceName = registerOutput<String>('resourceName');
+    resourceType = registerOutput<String>('resourceType');
+    username = registerOutput<String>('username');
   }
 
   /// Gets an existing [Acl] resource's state with the given [name] and [id].
-  static Acl get(
-    String name,
-    pulumi.Input<String> id, {
-    AclState? state,
-  }) {
+  static Acl get(String name, pulumi.Input<String> id, {AclState? state}) {
     return Acl._get(
       name,
       state: state?.toMap(),
@@ -630,17 +629,17 @@ class Acl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rocketmq/acl:Acl',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actions = registerOutput<List<String>>('actions');
-    this.decision = registerOutput<String>('decision');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.ipWhitelists = registerOutput<List<String>>('ipWhitelists');
-    this.resourceName = registerOutput<String>('resourceName');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.username = registerOutput<String>('username');
+         'alicloud:rocketmq/acl:Acl',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actions = registerOutput<List<String>>('actions');
+    decision = registerOutput<String>('decision');
+    instanceId = registerOutput<String>('instanceId');
+    ipWhitelists = registerOutput<List<String>>('ipWhitelists');
+    resourceName = registerOutput<String>('resourceName');
+    resourceType = registerOutput<String>('resourceType');
+    username = registerOutput<String>('username');
   }
 }

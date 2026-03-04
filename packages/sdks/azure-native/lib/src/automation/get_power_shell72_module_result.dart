@@ -6,36 +6,52 @@ import 'module_error_info_response.dart';
 class GetPowerShell72ModuleResult {
   /// Gets the activity count of the module.
   final int? activityCount;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Gets the creation time.
   final String? creationTime;
+
   /// Gets or sets the description.
   final String? description;
+
   /// Gets the error info of the module.
   final ModuleErrorInfoResponse? error;
+
   /// Gets the etag of the resource.
   final String? etag;
+
   /// Fully qualified resource Id for the resource
   final String id;
+
   /// Gets type of module, if its composite or not.
   final bool? isComposite;
+
   /// Gets the isGlobal flag of the module.
   final bool? isGlobal;
+
   /// Gets the last modified time.
   final String? lastModifiedTime;
+
   /// The Azure Region where the resource lives
   final String? location;
+
   /// The name of the resource
   final String name;
+
   /// Gets the provisioning state of the module.
   final String? provisioningState;
+
   /// Gets the size in bytes of the module.
   final double? sizeInBytes;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource.
   final String type;
+
   /// Gets the version of the module.
   final String? version;
 
@@ -83,7 +99,7 @@ class GetPowerShell72ModuleResult {
       'azureApiVersion': azureApiVersion,
       'creationTime': ?creationTime,
       'description': ?description,
-      'error': ?error == null ? null : error!.toMap(),
+      'error': ?error?.toMap(),
       'etag': ?etag,
       'id': id,
       'isComposite': ?isComposite,
@@ -101,24 +117,77 @@ class GetPowerShell72ModuleResult {
 
   factory GetPowerShell72ModuleResult.fromMap(Map<String, dynamic> map) {
     return GetPowerShell72ModuleResult(
-      activityCount: map['activityCount'] == null ? null : map['activityCount']! as int,
+      activityCount: (() {
+        final guardedValue = map['activityCount'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      creationTime: map['creationTime'] == null ? null : map['creationTime']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      error: map['error'] == null ? null : ModuleErrorInfoResponse.fromMap((map['error']! as Map).cast<String, dynamic>()),
-      etag: map['etag'] == null ? null : map['etag']! as String,
+      creationTime: (() {
+        final guardedValue = map['creationTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      error: (() {
+        final guardedValue = map['error'];
+        if (guardedValue == null) return null;
+        return ModuleErrorInfoResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      isComposite: map['isComposite'] == null ? null : map['isComposite']! as bool,
-      isGlobal: map['isGlobal'] == null ? null : map['isGlobal']! as bool,
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime']! as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      isComposite: (() {
+        final guardedValue = map['isComposite'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      isGlobal: (() {
+        final guardedValue = map['isGlobal'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      lastModifiedTime: (() {
+        final guardedValue = map['lastModifiedTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
-      sizeInBytes: map['sizeInBytes'] == null ? null : map['sizeInBytes']! as double,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sizeInBytes: (() {
+        final guardedValue = map['sizeInBytes'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version']! as String,
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

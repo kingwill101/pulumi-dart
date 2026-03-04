@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMaccArgs {
   /// Name of primary MACC.
   final pulumi.Input<String> maccName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetMaccArgs].
   /// [maccName] Name of primary MACC.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMaccArgs({
-    required this.maccName,
-    required this.resourceGroupName,
-  });
+  GetMaccArgs({required this.maccName, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetMaccArgs {
 
   factory GetMaccArgs.fromMap(Map<String, dynamic> map) {
     return GetMaccArgs(
-      maccName: (map['maccName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      maccName: pulumi.Input.fromValue(map['maccName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

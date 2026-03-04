@@ -4,16 +4,17 @@ enum ServiceReleaseChannelMetastoreV1alpha {
   canary("CANARY"),
   stable("STABLE");
 
-  const ServiceReleaseChannelMetastoreV1alpha(this.value);
-  final String value;
+  const ServiceReleaseChannelMetastoreV1alpha(this.wireValue);
+  final String wireValue;
 
   static ServiceReleaseChannelMetastoreV1alpha fromValue(String value) {
     for (final item in ServiceReleaseChannelMetastoreV1alpha.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceReleaseChannelMetastoreV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown ServiceReleaseChannelMetastoreV1alpha value: $value',
+    );
   }
 }
-

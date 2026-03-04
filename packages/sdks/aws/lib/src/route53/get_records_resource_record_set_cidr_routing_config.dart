@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRecordsResourceRecordSetCidrRoutingConfig {
   /// The CIDR collection ID.
   final pulumi.Input<String> collectionId;
+
   /// The CIDR collection location name.
   final pulumi.Input<String> locationName;
 
@@ -23,11 +24,12 @@ class GetRecordsResourceRecordSetCidrRoutingConfig {
     };
   }
 
-  factory GetRecordsResourceRecordSetCidrRoutingConfig.fromMap(Map<String, dynamic> map) {
+  factory GetRecordsResourceRecordSetCidrRoutingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRecordsResourceRecordSetCidrRoutingConfig(
-      collectionId: (map['collectionId'] as String).input(),
-      locationName: (map['locationName'] as String).input(),
+      collectionId: pulumi.Input.fromValue(map['collectionId'] as String),
+      locationName: pulumi.Input.fromValue(map['locationName'] as String),
     );
   }
 }
-

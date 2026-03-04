@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetShareArgs {
   /// The ID of the Data Share account in which the Data Share is created.
   final pulumi.Input<String> accountId;
+
   /// The name of this Data Share.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetShareArgs].
   /// [accountId] The ID of the Data Share account in which the Data Share is created.
   /// [name] The name of this Data Share.
-  GetShareArgs({
-    required this.accountId,
-    required this.name,
-  });
+  GetShareArgs({required this.accountId, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accountId': accountId,
-      'name': name,
-    };
+    return <String, dynamic>{'accountId': accountId, 'name': name};
   }
 
   factory GetShareArgs.fromMap(Map<String, dynamic> map) {
     return GetShareArgs(
-      accountId: (map['accountId'] as String).input(),
-      name: (map['name'] as String).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

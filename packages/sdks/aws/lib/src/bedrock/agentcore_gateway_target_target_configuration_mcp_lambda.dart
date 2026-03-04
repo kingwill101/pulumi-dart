@@ -6,8 +6,12 @@ import 'agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema.dar
 class AgentcoreGatewayTargetTargetConfigurationMcpLambda {
   /// ARN of the Lambda function to invoke.
   final pulumi.Input<String> lambdaArn;
+
   /// Schema definition for the tool. See `tool_schema` below.
-  final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema> toolSchema;
+  final pulumi.Input<
+    AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema
+  >
+  toolSchema;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpLambda].
   /// [lambdaArn] ARN of the Lambda function to invoke.
@@ -20,15 +24,24 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambda {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'lambdaArn': lambdaArn,
-      'toolSchema': pulumi.Input.mapInputValue<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema, Map<String, dynamic>>(toolSchema, (value) => value.toMap()),
+      'toolSchema':
+          pulumi.Input.mapInputValue<
+            AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema,
+            Map<String, dynamic>
+          >(toolSchema, (value) => value.toMap()),
     };
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcpLambda.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcpLambda.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreGatewayTargetTargetConfigurationMcpLambda(
-      lambdaArn: (map['lambdaArn'] as String).input(),
-      toolSchema: (AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema.fromMap((map['toolSchema']! as Map).cast<String, dynamic>())).input(),
+      lambdaArn: pulumi.Input.fromValue(map['lambdaArn'] as String),
+      toolSchema: pulumi.Input.fromValue(
+        AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema.fromMap(
+          (map['toolSchema']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

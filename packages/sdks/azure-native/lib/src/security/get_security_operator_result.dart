@@ -6,12 +6,16 @@ import 'identity_response.dart';
 class GetSecurityOperatorResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource Id
   final String id;
+
   /// Identity for the resource.
   final IdentityResponse? identity;
+
   /// Resource name
   final String name;
+
   /// Resource type
   final String type;
 
@@ -33,7 +37,7 @@ class GetSecurityOperatorResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'name': name,
       'type': type,
     };
@@ -43,10 +47,15 @@ class GetSecurityOperatorResult {
     return GetSecurityOperatorResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return IdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       name: map['name'] as String,
       type: map['type'] as String,
     );
   }
 }
-

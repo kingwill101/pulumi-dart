@@ -32,7 +32,11 @@ class GetServerFirewallRulesResult {
       'ids': ids,
       'instanceId': instanceId,
       'outputFile': ?outputFile,
-      'rules': pulumi.Input.encodeList<GetServerFirewallRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules':
+          pulumi.Input.encodeList<
+            GetServerFirewallRulesRule,
+            Map<String, dynamic>
+          >(rules, (value) => value.toMap()),
     };
   }
 
@@ -41,9 +45,17 @@ class GetServerFirewallRulesResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      rules: pulumi.Input.decodeList<GetServerFirewallRulesRule>(map['rules'], (value) => GetServerFirewallRulesRule.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      rules: pulumi.Input.decodeList<GetServerFirewallRulesRule>(
+        map['rules']!,
+        (value) => GetServerFirewallRulesRule.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum QosType {
   valueAuto("Auto"),
   valueManual("Manual");
 
-  const QosType(this.value);
-  final String value;
+  const QosType(this.wireValue);
+  final String wireValue;
 
   static QosType fromValue(String value) {
     for (final item in QosType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown QosType value: $value');
   }
 }
-

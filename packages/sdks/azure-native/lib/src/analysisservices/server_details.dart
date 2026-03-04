@@ -219,34 +219,49 @@ import 'server_details_args.dart';
 class ServerDetails extends pulumi.CustomResource {
   /// A collection of AS server administrators
   late final pulumi.Output<ServerAdministratorsResponse?> asAdministrators;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The SAS container URI to the backup container.
   late final pulumi.Output<String?> backupBlobContainerUri;
+
   /// The gateway details configured for the AS server.
   late final pulumi.Output<GatewayDetailsResponse?> gatewayDetails;
+
   /// The firewall settings for the AS server.
   late final pulumi.Output<IPv4FirewallSettingsResponse?> ipV4FirewallSettings;
+
   /// Location of the Analysis Services resource.
   late final pulumi.Output<String> location;
+
   /// The managed mode of the server (0 = not managed, 1 = managed).
   late final pulumi.Output<int?> managedMode;
+
   /// The name of the Analysis Services resource.
   late final pulumi.Output<String> name;
+
   /// The current deployment state of Analysis Services resource. The provisioningState is to indicate states for resource provisioning.
   late final pulumi.Output<String> provisioningState;
-  /// How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error.
+
+  /// How the read-write server's participation in the query pool is controlled.&lt;br/&gt;It can have the following values: &lt;ul&gt;&lt;li&gt;readOnly - indicates that the read-write server is intended not to participate in query operations&lt;/li&gt;&lt;li&gt;all - indicates that the read-write server can participate in query operations&lt;/li&gt;&lt;/ul&gt;Specifying readOnly when capacity is 1 results in error.
   late final pulumi.Output<String?> querypoolConnectionMode;
+
   /// The full name of the Analysis Services resource.
   late final pulumi.Output<String> serverFullName;
+
   /// The server monitor mode for AS server
   late final pulumi.Output<int?> serverMonitorMode;
+
   /// The SKU of the Analysis Services resource.
   late final pulumi.Output<ResourceSkuResponse> sku;
+
   /// The current state of Analysis Services resource. The state is to indicate more states outside of resource provisioning.
   late final pulumi.Output<String> state;
+
   /// Key-value pairs of additional resource provisioning properties.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the Analysis Services resource.
   late final pulumi.Output<String> type;
 
@@ -259,26 +274,32 @@ class ServerDetails extends pulumi.CustomResource {
     ServerDetailsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:analysisservices:ServerDetails',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.asAdministrators = registerOutput<ServerAdministratorsResponse?>('asAdministrators');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.backupBlobContainerUri = registerOutput<String?>('backupBlobContainerUri');
-    this.gatewayDetails = registerOutput<GatewayDetailsResponse?>('gatewayDetails');
-    this.ipV4FirewallSettings = registerOutput<IPv4FirewallSettingsResponse?>('ipV4FirewallSettings');
-    this.location = registerOutput<String>('location');
-    this.managedMode = registerOutput<int?>('managedMode');
+         'azure-native:analysisservices:ServerDetails',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    asAdministrators = registerOutput<ServerAdministratorsResponse?>(
+      'asAdministrators',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backupBlobContainerUri = registerOutput<String?>('backupBlobContainerUri');
+    gatewayDetails = registerOutput<GatewayDetailsResponse?>('gatewayDetails');
+    ipV4FirewallSettings = registerOutput<IPv4FirewallSettingsResponse?>(
+      'ipV4FirewallSettings',
+    );
+    location = registerOutput<String>('location');
+    managedMode = registerOutput<int?>('managedMode');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.querypoolConnectionMode = registerOutput<String?>('querypoolConnectionMode');
-    this.serverFullName = registerOutput<String>('serverFullName');
-    this.serverMonitorMode = registerOutput<int?>('serverMonitorMode');
-    this.sku = registerOutput<ResourceSkuResponse>('sku');
-    this.state = registerOutput<String>('state');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    querypoolConnectionMode = registerOutput<String?>(
+      'querypoolConnectionMode',
+    );
+    serverFullName = registerOutput<String>('serverFullName');
+    serverMonitorMode = registerOutput<int?>('serverMonitorMode');
+    sku = registerOutput<ResourceSkuResponse>('sku');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

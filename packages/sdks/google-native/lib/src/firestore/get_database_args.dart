@@ -13,23 +13,20 @@ class GetDatabaseArgs {
   /// Creates a new [GetDatabaseArgs].
   /// [databaseId] Required.
   /// [project] Optional.
-  GetDatabaseArgs({
-    required this.databaseId,
-    this.project,
-  });
+  GetDatabaseArgs({required this.databaseId, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'databaseId': databaseId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'databaseId': databaseId, 'project': ?project};
   }
 
   factory GetDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseArgs(
-      databaseId: (map['databaseId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      databaseId: pulumi.Input.fromValue(map['databaseId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

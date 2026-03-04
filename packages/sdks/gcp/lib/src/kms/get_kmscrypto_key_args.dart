@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKMSCryptoKeyArgs {
   /// The `id` of the Google Cloud Platform KeyRing to which the key belongs.
   final pulumi.Input<String> keyRing;
+
   /// The CryptoKey's name.
   /// A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
   final pulumi.Input<String> name;
@@ -16,23 +17,16 @@ class GetKMSCryptoKeyArgs {
   /// Creates a new [GetKMSCryptoKeyArgs].
   /// [keyRing] The `id` of the Google Cloud Platform KeyRing to which the key belongs.
   /// [name] The CryptoKey's name.
-  GetKMSCryptoKeyArgs({
-    required this.keyRing,
-    required this.name,
-  });
+  GetKMSCryptoKeyArgs({required this.keyRing, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyRing': keyRing,
-      'name': name,
-    };
+    return <String, dynamic>{'keyRing': keyRing, 'name': name};
   }
 
   factory GetKMSCryptoKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetKMSCryptoKeyArgs(
-      keyRing: (map['keyRing'] as String).input(),
-      name: (map['name'] as String).input(),
+      keyRing: pulumi.Input.fromValue(map['keyRing'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

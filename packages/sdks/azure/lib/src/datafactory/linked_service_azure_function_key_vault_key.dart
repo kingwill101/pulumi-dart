@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedServiceAzureFunctionKeyVaultKey {
   /// Specifies the name of an existing Key Vault Data Factory Linked Service.
   final pulumi.Input<String> linkedServiceName;
+
   /// Specifies the secret name in Azure Key Vault that stores the system key of the Azure Function.
   final pulumi.Input<String> secretName;
 
@@ -23,11 +24,14 @@ class LinkedServiceAzureFunctionKeyVaultKey {
     };
   }
 
-  factory LinkedServiceAzureFunctionKeyVaultKey.fromMap(Map<String, dynamic> map) {
+  factory LinkedServiceAzureFunctionKeyVaultKey.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LinkedServiceAzureFunctionKeyVaultKey(
-      linkedServiceName: (map['linkedServiceName'] as String).input(),
-      secretName: (map['secretName'] as String).input(),
+      linkedServiceName: pulumi.Input.fromValue(
+        map['linkedServiceName'] as String,
+      ),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
     );
   }
 }
-

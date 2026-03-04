@@ -1,5 +1,3 @@
-library module_emrcontainers;
-
 export 'emrcontainers/functions.dart';
 export 'emrcontainers/get_virtual_cluster_args.dart';
 export 'emrcontainers/get_virtual_cluster_container_provider.dart';

@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceGroupValueResponse {
   /// Location of the resource group.
   final pulumi.Input<String>? location;
+
   /// Name of the resource group.
   final pulumi.Input<String>? name;
 
   /// Creates a new [ResourceGroupValueResponse].
   /// [location] Location of the resource group.
   /// [name] Name of the resource group.
-  ResourceGroupValueResponse({
-    this.location,
-    this.name,
-  });
+  ResourceGroupValueResponse({this.location, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'location': ?location,
-      'name': ?name,
-    };
+    return <String, dynamic>{'location': ?location, 'name': ?name};
   }
 
   factory ResourceGroupValueResponse.fromMap(Map<String, dynamic> map) {
     return ResourceGroupValueResponse(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

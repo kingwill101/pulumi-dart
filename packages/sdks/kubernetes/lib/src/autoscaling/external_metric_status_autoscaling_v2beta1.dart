@@ -7,10 +7,13 @@ import '../meta/label_selector.dart';
 class ExternalMetricStatusAutoscalingV2beta1 {
   /// currentAverageValue is the current value of metric averaged over autoscaled pods.
   final pulumi.Input<String>? currentAverageValue;
+
   /// currentValue is the current value of the metric (as a quantity)
   final pulumi.Input<String> currentValue;
+
   /// metricName is the name of a metric used for autoscaling in metric system.
   final pulumi.Input<String> metricName;
+
   /// metricSelector is used to identify a specific time series within a given metric.
   final pulumi.Input<LabelSelector>? metricSelector;
 
@@ -31,17 +34,32 @@ class ExternalMetricStatusAutoscalingV2beta1 {
       'currentAverageValue': ?currentAverageValue,
       'currentValue': currentValue,
       'metricName': metricName,
-      'metricSelector': ?pulumi.Input.mapOptionalInputValue<LabelSelector, Map<String, dynamic>>(metricSelector, (value) => value.toMap()),
+      'metricSelector':
+          ?pulumi.Input.mapOptionalInputValue<
+            LabelSelector,
+            Map<String, dynamic>
+          >(metricSelector, (value) => value.toMap()),
     };
   }
 
-  factory ExternalMetricStatusAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
+  factory ExternalMetricStatusAutoscalingV2beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExternalMetricStatusAutoscalingV2beta1(
-      currentAverageValue: map['currentAverageValue'] == null ? null : (map['currentAverageValue']! as String).input(),
-      currentValue: (map['currentValue'] as String).input(),
-      metricName: (map['metricName'] as String).input(),
-      metricSelector: map['metricSelector'] == null ? null : (LabelSelector.fromMap((map['metricSelector']! as Map).cast<String, dynamic>())).input(),
+      currentAverageValue: (() {
+        final guardedValue = map['currentAverageValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      currentValue: pulumi.Input.fromValue(map['currentValue'] as String),
+      metricName: pulumi.Input.fromValue(map['metricName'] as String),
+      metricSelector: (() {
+        final guardedValue = map['metricSelector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LabelSelector.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

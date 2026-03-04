@@ -266,7 +266,7 @@ import 'protection_container_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.RecoveryServices` - 2024-04-01
@@ -281,10 +281,13 @@ import 'protection_container_state.dart';
 class ProtectionContainer extends pulumi.CustomResource {
   /// The name of the protection container. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Name of fabric that should contain this protection container. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryFabricName;
+
   /// The name of the vault that should be updated. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultName;
+
   /// Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -297,15 +300,15 @@ class ProtectionContainer extends pulumi.CustomResource {
     ProtectionContainerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:siterecovery/protectionContainer:ProtectionContainer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:siterecovery/protectionContainer:ProtectionContainer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.recoveryFabricName = registerOutput<String>('recoveryFabricName');
-    this.recoveryVaultName = registerOutput<String>('recoveryVaultName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    recoveryFabricName = registerOutput<String>('recoveryFabricName');
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [ProtectionContainer] resource's state with the given [name] and [id].
@@ -326,14 +329,14 @@ class ProtectionContainer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:siterecovery/protectionContainer:ProtectionContainer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:siterecovery/protectionContainer:ProtectionContainer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.recoveryFabricName = registerOutput<String>('recoveryFabricName');
-    this.recoveryVaultName = registerOutput<String>('recoveryVaultName');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    recoveryFabricName = registerOutput<String>('recoveryFabricName');
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

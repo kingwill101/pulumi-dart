@@ -8,9 +8,9 @@ import 'service_state.dart';
 ///
 /// For information about PAI Service and how to use it, see [What is Service](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eas-2021-07-01-createservice).
 ///
-/// > **NOTE:** Field `labels` has been removed since version 1.245.0. Please use new field `tags`.
+/// &gt; **NOTE:** Field `labels` has been removed since version 1.245.0. Please use new field `tags`.
 ///
-/// > **NOTE:** Available since v1.238.0.
+/// &gt; **NOTE:** Available since v1.238.0.
 ///
 /// ## Example Usage
 ///
@@ -245,16 +245,22 @@ import 'service_state.dart';
 class Service extends pulumi.CustomResource {
   /// Creation time of the service
   late final pulumi.Output<String> createTime;
+
   /// Whether to enter the development mode.
   late final pulumi.Output<String?> develop;
+
   /// The region ID of the resource
   late final pulumi.Output<String> regionId;
+
   /// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
   late final pulumi.Output<String> serviceConfig;
+
   /// Service Current Status.
   late final pulumi.Output<String> status;
+
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Workspace id
   late final pulumi.Output<String?> workspaceId;
 
@@ -267,18 +273,18 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pai/service:Service',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.develop = registerOutput<String?>('develop');
-    this.regionId = registerOutput<String>('regionId');
-    this.serviceConfig = registerOutput<String>('serviceConfig');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.workspaceId = registerOutput<String?>('workspaceId');
+         'alicloud:pai/service:Service',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    develop = registerOutput<String?>('develop');
+    regionId = registerOutput<String>('regionId');
+    serviceConfig = registerOutput<String>('serviceConfig');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    workspaceId = registerOutput<String?>('workspaceId');
   }
 
   /// Gets an existing [Service] resource's state with the given [name] and [id].
@@ -299,17 +305,17 @@ class Service extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pai/service:Service',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.develop = registerOutput<String?>('develop');
-    this.regionId = registerOutput<String>('regionId');
-    this.serviceConfig = registerOutput<String>('serviceConfig');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.workspaceId = registerOutput<String?>('workspaceId');
+         'alicloud:pai/service:Service',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    develop = registerOutput<String?>('develop');
+    regionId = registerOutput<String>('regionId');
+    serviceConfig = registerOutput<String>('serviceConfig');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    workspaceId = registerOutput<String?>('workspaceId');
   }
 }

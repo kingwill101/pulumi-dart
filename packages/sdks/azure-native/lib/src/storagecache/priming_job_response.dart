@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrimingJobResponse {
   /// The job details or error information if any.
   final pulumi.Input<String> primingJobDetails;
+
   /// The unique identifier of the priming job.
   final pulumi.Input<String> primingJobId;
+
   /// The priming job name.
   final pulumi.Input<String> primingJobName;
+
   /// The current progress of the priming job, as a percentage.
   final pulumi.Input<double> primingJobPercentComplete;
+
   /// The state of the priming operation.
   final pulumi.Input<String> primingJobState;
+
   /// The status code of the priming job.
   final pulumi.Input<String> primingJobStatus;
 
@@ -46,13 +51,18 @@ class PrimingJobResponse {
 
   factory PrimingJobResponse.fromMap(Map<String, dynamic> map) {
     return PrimingJobResponse(
-      primingJobDetails: (map['primingJobDetails'] as String).input(),
-      primingJobId: (map['primingJobId'] as String).input(),
-      primingJobName: (map['primingJobName'] as String).input(),
-      primingJobPercentComplete: (map['primingJobPercentComplete'] as double).input(),
-      primingJobState: (map['primingJobState'] as String).input(),
-      primingJobStatus: (map['primingJobStatus'] as String).input(),
+      primingJobDetails: pulumi.Input.fromValue(
+        map['primingJobDetails'] as String,
+      ),
+      primingJobId: pulumi.Input.fromValue(map['primingJobId'] as String),
+      primingJobName: pulumi.Input.fromValue(map['primingJobName'] as String),
+      primingJobPercentComplete: pulumi.Input.fromValue(
+        map['primingJobPercentComplete'] as double,
+      ),
+      primingJobState: pulumi.Input.fromValue(map['primingJobState'] as String),
+      primingJobStatus: pulumi.Input.fromValue(
+        map['primingJobStatus'] as String,
+      ),
     );
   }
 }
-

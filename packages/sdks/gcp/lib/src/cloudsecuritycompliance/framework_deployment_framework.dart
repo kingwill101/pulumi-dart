@@ -6,6 +6,7 @@ class FrameworkDeploymentFramework {
   /// In the format:
   /// organizations/{org}/locations/{location}/frameworks/{framework}
   final pulumi.Input<String> framework;
+
   /// Major revision id of the framework.
   final pulumi.Input<String> majorRevisionId;
 
@@ -26,9 +27,8 @@ class FrameworkDeploymentFramework {
 
   factory FrameworkDeploymentFramework.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentFramework(
-      framework: (map['framework'] as String).input(),
-      majorRevisionId: (map['majorRevisionId'] as String).input(),
+      framework: pulumi.Input.fromValue(map['framework'] as String),
+      majorRevisionId: pulumi.Input.fromValue(map['majorRevisionId'] as String),
     );
   }
 }
-

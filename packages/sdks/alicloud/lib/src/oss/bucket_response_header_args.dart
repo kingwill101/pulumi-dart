@@ -10,29 +10,48 @@ import 'bucket_response_header_rule.dart';
 class BucketResponseHeaderArgs {
   /// The name of the bucket
   final pulumi.Input<String> bucket;
+
   /// The container that holds the response header rules. See `rule` below.
   final pulumi.Input<List<BucketResponseHeaderRule>>? rules;
 
   /// Creates a new [BucketResponseHeaderArgs].
   /// [bucket] The name of the bucket
   /// [rules] The container that holds the response header rules. See `rule` below.
-  BucketResponseHeaderArgs({
-    required this.bucket,
-    this.rules,
-  });
+  BucketResponseHeaderArgs({required this.bucket, this.rules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': bucket,
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<BucketResponseHeaderRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<BucketResponseHeaderRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BucketResponseHeaderRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BucketResponseHeaderRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory BucketResponseHeaderArgs.fromMap(Map<String, dynamic> map) {
     return BucketResponseHeaderArgs(
-      bucket: (map['bucket'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BucketResponseHeaderRule>(map['rules']!, (value) => BucketResponseHeaderRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BucketResponseHeaderRule>(
+            guardedValue,
+            (value) => BucketResponseHeaderRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

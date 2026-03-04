@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkTransferPricesTypePrice {
   /// Cost (in US dollars) per hour.
   final pulumi.Input<double> hourly;
+
   /// Cost (in US dollars) per month.
   final pulumi.Input<double> monthly;
 
@@ -17,17 +18,13 @@ class GetNetworkTransferPricesTypePrice {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hourly': hourly,
-      'monthly': monthly,
-    };
+    return <String, dynamic>{'hourly': hourly, 'monthly': monthly};
   }
 
   factory GetNetworkTransferPricesTypePrice.fromMap(Map<String, dynamic> map) {
     return GetNetworkTransferPricesTypePrice(
-      hourly: (map['hourly'] as double).input(),
-      monthly: (map['monthly'] as double).input(),
+      hourly: pulumi.Input.fromValue(map['hourly'] as double),
+      monthly: pulumi.Input.fromValue(map['monthly'] as double),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_esa;
-
 export 'esa/cache_reserve_instance.dart';
 export 'esa/cache_reserve_instance_args.dart';
 export 'esa/cache_reserve_instance_state.dart';

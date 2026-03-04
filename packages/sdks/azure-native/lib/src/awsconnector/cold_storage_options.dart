@@ -4,25 +4,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ColdStorageOptions
 class ColdStorageOptions {
-  /// <p>Whether to enable or disable cold storage on the domain. You must enable UltraWarm storage to enable cold storage.</p>
+  /// &lt;p&gt;Whether to enable or disable cold storage on the domain. You must enable UltraWarm storage to enable cold storage.&lt;/p&gt;
   final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ColdStorageOptions].
-  /// [enabled] <p>Whether to enable or disable cold storage on the domain. You must enable UltraWarm storage to enable cold storage.</p>
-  ColdStorageOptions({
-    this.enabled,
-  });
+  /// [enabled] &lt;p&gt;Whether to enable or disable cold storage on the domain. You must enable UltraWarm storage to enable cold storage.&lt;/p&gt;
+  ColdStorageOptions({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory ColdStorageOptions.fromMap(Map<String, dynamic> map) {
     return ColdStorageOptions(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

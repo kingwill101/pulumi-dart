@@ -4,8 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScraperSourceEks {
   final pulumi.Input<String> clusterArn;
+
   /// List of the security group IDs for the Amazon EKS cluster VPC configuration.
   final pulumi.Input<List<String>>? securityGroupIds;
+
   /// List of subnet IDs. Must be in at least two different availability zones.
   final pulumi.Input<List<String>> subnetIds;
 
@@ -29,10 +31,15 @@ class ScraperSourceEks {
 
   factory ScraperSourceEks.fromMap(Map<String, dynamic> map) {
     return ScraperSourceEks(
-      clusterArn: (map['clusterArn'] as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
-      subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
+      clusterArn: pulumi.Input.fromValue(map['clusterArn'] as String),
+      securityGroupIds: (() {
+        final guardedValue = map['securityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subnetIds: pulumi.Input.fromValue(
+        (map['subnetIds'] as List).cast<String>(),
+      ),
     );
   }
 }
-

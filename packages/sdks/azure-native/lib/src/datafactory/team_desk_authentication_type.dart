@@ -3,16 +3,15 @@ enum TeamDeskAuthenticationType {
   valueBasic("Basic"),
   valueToken("Token");
 
-  const TeamDeskAuthenticationType(this.value);
-  final String value;
+  const TeamDeskAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static TeamDeskAuthenticationType fromValue(String value) {
     for (final item in TeamDeskAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TeamDeskAuthenticationType value: $value');
   }
 }
-

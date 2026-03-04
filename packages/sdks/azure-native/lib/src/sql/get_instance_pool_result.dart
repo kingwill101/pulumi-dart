@@ -6,26 +6,37 @@ import 'sku_response.dart';
 class GetInstancePoolResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The Dns Zone that the managed instance pool is in.
   final String dnsZone;
+
   /// Resource ID.
   final String id;
+
   /// The license type. Possible values are 'LicenseIncluded' (price for SQL license is included) and 'BasePrice' (without SQL license price).
   final String licenseType;
+
   /// Resource location.
   final String location;
+
   /// Specifies maintenance configuration id to apply to this managed instance.
   final String? maintenanceConfigurationId;
+
   /// Resource name.
   final String name;
+
   /// The name and tier of the SKU.
   final SkuResponse? sku;
+
   /// Resource ID of the subnet to place this instance pool in.
   final String subnetId;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Resource type.
   final String type;
+
   /// Count of vCores belonging to this instance pool.
   final int vCores;
 
@@ -66,7 +77,7 @@ class GetInstancePoolResult {
       'location': location,
       'maintenanceConfigurationId': ?maintenanceConfigurationId,
       'name': name,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?sku?.toMap(),
       'subnetId': subnetId,
       'tags': ?tags,
       'type': type,
@@ -81,14 +92,27 @@ class GetInstancePoolResult {
       id: map['id'] as String,
       licenseType: map['licenseType'] as String,
       location: map['location'] as String,
-      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : map['maintenanceConfigurationId']! as String,
+      maintenanceConfigurationId: (() {
+        final guardedValue = map['maintenanceConfigurationId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       subnetId: map['subnetId'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       vCores: map['vCores'] as int,
     );
   }
 }
-

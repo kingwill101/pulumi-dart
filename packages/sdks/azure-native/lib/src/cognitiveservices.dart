@@ -1,5 +1,3 @@
-library module_cognitiveservices;
-
 export 'cognitiveservices/aadauth_type_connection_properties.dart';
 export 'cognitiveservices/aadauth_type_connection_properties_response.dart';
 export 'cognitiveservices/abuse_penalty_response.dart';

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HAVipAttachmentArgs {
   /// Specifies whether to force delete the snapshot.
   final pulumi.Input<bool>? force;
+
   /// The ID of the HaVip instance.
   final pulumi.Input<String>? haVipId;
+
   /// . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
   final pulumi.Input<String>? havipId;
+
   /// The ID of the ECS instance bound to the HaVip instance.
   final pulumi.Input<String> instanceId;
+
   /// The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
   final pulumi.Input<String>? instanceType;
 
@@ -44,12 +48,27 @@ class HAVipAttachmentArgs {
 
   factory HAVipAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return HAVipAttachmentArgs(
-      force: map['force'] == null ? null : (map['force']! as bool).input(),
-      haVipId: map['haVipId'] == null ? null : (map['haVipId']! as String).input(),
-      havipId: map['havipId'] == null ? null : (map['havipId']! as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      force: (() {
+        final guardedValue = map['force'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      haVipId: (() {
+        final guardedValue = map['haVipId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      havipId: (() {
+        final guardedValue = map['havipId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

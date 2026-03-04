@@ -4,16 +4,15 @@ enum SecurityActionState {
   enabled("ENABLED"),
   disabled("DISABLED");
 
-  const SecurityActionState(this.value);
-  final String value;
+  const SecurityActionState(this.wireValue);
+  final String wireValue;
 
   static SecurityActionState fromValue(String value) {
     for (final item in SecurityActionState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecurityActionState value: $value');
   }
 }
-

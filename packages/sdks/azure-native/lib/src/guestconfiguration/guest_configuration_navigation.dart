@@ -7,20 +7,29 @@ import 'configuration_parameter.dart';
 class GuestConfigurationNavigation {
   /// Specifies the assignment type and execution of the configuration. Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor.
   final pulumi.Input<String>? assignmentType;
+
   /// The configuration parameters for the guest configuration.
   final pulumi.Input<List<ConfigurationParameter>>? configurationParameter;
+
   /// The protected configuration parameters for the guest configuration.
-  final pulumi.Input<List<ConfigurationParameter>>? configurationProtectedParameter;
+  final pulumi.Input<List<ConfigurationParameter>>?
+  configurationProtectedParameter;
+
   /// Combined hash of the guest configuration package and configuration parameters.
   final pulumi.Input<String>? contentHash;
+
   /// Managed identity with storage access of the guest configuration package and configuration parameters.
   final pulumi.Input<String>? contentManagedIdentity;
+
   /// Uri of the storage where guest configuration package is uploaded.
   final pulumi.Input<String>? contentUri;
+
   /// Kind of the guest configuration. For example:DSC
   final pulumi.Input<String>? kind;
+
   /// Name of the guest configuration.
   final pulumi.Input<String>? name;
+
   /// Version of the guest configuration.
   final pulumi.Input<String>? version;
 
@@ -49,8 +58,30 @@ class GuestConfigurationNavigation {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'assignmentType': ?assignmentType,
-      'configurationParameter': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationParameter>, List<Map<String, dynamic>>>(configurationParameter, (value) => pulumi.Input.encodeList<ConfigurationParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'configurationProtectedParameter': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationParameter>, List<Map<String, dynamic>>>(configurationProtectedParameter, (value) => pulumi.Input.encodeList<ConfigurationParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'configurationParameter':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ConfigurationParameter>,
+            List<Map<String, dynamic>>
+          >(
+            configurationParameter,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConfigurationParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'configurationProtectedParameter':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ConfigurationParameter>,
+            List<Map<String, dynamic>>
+          >(
+            configurationProtectedParameter,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ConfigurationParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'contentHash': ?contentHash,
       'contentManagedIdentity': ?contentManagedIdentity,
       'contentUri': ?contentUri,
@@ -62,16 +93,65 @@ class GuestConfigurationNavigation {
 
   factory GuestConfigurationNavigation.fromMap(Map<String, dynamic> map) {
     return GuestConfigurationNavigation(
-      assignmentType: map['assignmentType'] == null ? null : (map['assignmentType']! as String).input(),
-      configurationParameter: map['configurationParameter'] == null ? null : (pulumi.Input.decodeList<ConfigurationParameter>(map['configurationParameter']!, (value) => ConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configurationProtectedParameter: map['configurationProtectedParameter'] == null ? null : (pulumi.Input.decodeList<ConfigurationParameter>(map['configurationProtectedParameter']!, (value) => ConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      contentHash: map['contentHash'] == null ? null : (map['contentHash']! as String).input(),
-      contentManagedIdentity: map['contentManagedIdentity'] == null ? null : (map['contentManagedIdentity']! as String).input(),
-      contentUri: map['contentUri'] == null ? null : (map['contentUri']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      assignmentType: (() {
+        final guardedValue = map['assignmentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configurationParameter: (() {
+        final guardedValue = map['configurationParameter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ConfigurationParameter>(
+            guardedValue,
+            (value) => ConfigurationParameter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      configurationProtectedParameter: (() {
+        final guardedValue = map['configurationProtectedParameter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ConfigurationParameter>(
+            guardedValue,
+            (value) => ConfigurationParameter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      contentHash: (() {
+        final guardedValue = map['contentHash'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentManagedIdentity: (() {
+        final guardedValue = map['contentManagedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentUri: (() {
+        final guardedValue = map['contentUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

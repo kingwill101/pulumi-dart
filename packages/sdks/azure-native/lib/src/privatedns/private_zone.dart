@@ -151,32 +151,47 @@ import 'system_data_response.dart';
 class PrivateZone extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The ETag of the zone.
   late final pulumi.Output<String?> etag;
+
   /// Private zone internal Id
   late final pulumi.Output<String> internalId;
+
   /// The Azure Region where the resource lives
   late final pulumi.Output<String?> location;
+
   /// The maximum number of record sets that can be created in this Private DNS zone. This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<double> maxNumberOfRecordSets;
+
   /// The maximum number of virtual networks that can be linked to this Private DNS zone. This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<double> maxNumberOfVirtualNetworkLinks;
+
   /// The maximum number of virtual networks that can be linked to this Private DNS zone with registration enabled. This is a read-only property and any attempt to set this value will be ignored.
-  late final pulumi.Output<double> maxNumberOfVirtualNetworkLinksWithRegistration;
+  late final pulumi.Output<double>
+  maxNumberOfVirtualNetworkLinksWithRegistration;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The current number of record sets in this Private DNS zone. This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<double> numberOfRecordSets;
+
   /// The current number of virtual networks that are linked to this Private DNS zone. This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<double> numberOfVirtualNetworkLinks;
+
   /// The current number of virtual networks that are linked to this Private DNS zone with registration enabled. This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<double> numberOfVirtualNetworkLinksWithRegistration;
+
   /// The provisioning state of the resource. This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -189,25 +204,33 @@ class PrivateZone extends pulumi.CustomResource {
     PrivateZoneArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:privatedns:PrivateZone',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String?>('etag');
-    this.internalId = registerOutput<String>('internalId');
-    this.location = registerOutput<String?>('location');
-    this.maxNumberOfRecordSets = registerOutput<double>('maxNumberOfRecordSets');
-    this.maxNumberOfVirtualNetworkLinks = registerOutput<double>('maxNumberOfVirtualNetworkLinks');
-    this.maxNumberOfVirtualNetworkLinksWithRegistration = registerOutput<double>('maxNumberOfVirtualNetworkLinksWithRegistration');
+         'azure-native:privatedns:PrivateZone',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    internalId = registerOutput<String>('internalId');
+    location = registerOutput<String?>('location');
+    maxNumberOfRecordSets = registerOutput<double>('maxNumberOfRecordSets');
+    maxNumberOfVirtualNetworkLinks = registerOutput<double>(
+      'maxNumberOfVirtualNetworkLinks',
+    );
+    maxNumberOfVirtualNetworkLinksWithRegistration = registerOutput<double>(
+      'maxNumberOfVirtualNetworkLinksWithRegistration',
+    );
     this.name = registerOutput<String>('name');
-    this.numberOfRecordSets = registerOutput<double>('numberOfRecordSets');
-    this.numberOfVirtualNetworkLinks = registerOutput<double>('numberOfVirtualNetworkLinks');
-    this.numberOfVirtualNetworkLinksWithRegistration = registerOutput<double>('numberOfVirtualNetworkLinksWithRegistration');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    numberOfRecordSets = registerOutput<double>('numberOfRecordSets');
+    numberOfVirtualNetworkLinks = registerOutput<double>(
+      'numberOfVirtualNetworkLinks',
+    );
+    numberOfVirtualNetworkLinksWithRegistration = registerOutput<double>(
+      'numberOfVirtualNetworkLinksWithRegistration',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

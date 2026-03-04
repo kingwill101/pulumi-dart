@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRunV2BinaryAuthorization {
   /// If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
   final pulumi.Input<String>? breakglassJustification;
+
   /// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
   final pulumi.Input<bool>? useDefault;
 
@@ -24,11 +25,20 @@ class GoogleCloudRunV2BinaryAuthorization {
     };
   }
 
-  factory GoogleCloudRunV2BinaryAuthorization.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRunV2BinaryAuthorization.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRunV2BinaryAuthorization(
-      breakglassJustification: map['breakglassJustification'] == null ? null : (map['breakglassJustification']! as String).input(),
-      useDefault: map['useDefault'] == null ? null : (map['useDefault']! as bool).input(),
+      breakglassJustification: (() {
+        final guardedValue = map['breakglassJustification'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      useDefault: (() {
+        final guardedValue = map['useDefault'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrchestratedVirtualMachineScaleSetOsDiskDiffDiskSettings {
   /// Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is `Local`. Changing this forces a new resource to be created.
   final pulumi.Input<String> option;
+
   /// Specifies where to store the Ephemeral Disk. Possible values are `CacheDisk` and `ResourceDisk`. Defaults to `CacheDisk`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? placement;
 
@@ -17,17 +18,19 @@ class OrchestratedVirtualMachineScaleSetOsDiskDiffDiskSettings {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'option': option,
-      'placement': ?placement,
-    };
+    return <String, dynamic>{'option': option, 'placement': ?placement};
   }
 
-  factory OrchestratedVirtualMachineScaleSetOsDiskDiffDiskSettings.fromMap(Map<String, dynamic> map) {
+  factory OrchestratedVirtualMachineScaleSetOsDiskDiffDiskSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OrchestratedVirtualMachineScaleSetOsDiskDiffDiskSettings(
-      option: (map['option'] as String).input(),
-      placement: map['placement'] == null ? null : (map['placement']! as String).input(),
+      option: pulumi.Input.fromValue(map['option'] as String),
+      placement: (() {
+        final guardedValue = map['placement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

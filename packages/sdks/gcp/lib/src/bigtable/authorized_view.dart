@@ -474,17 +474,22 @@ import 'authorized_view_subset_view.dart';
 /// ```
 class AuthorizedView extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionProtection;
+
   /// The name of the Bigtable instance in which the authorized view belongs.
   late final pulumi.Output<String> instanceName;
+
   /// The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
   ///
   /// -----
   late final pulumi.Output<AuthorizedViewSubsetView?> subsetView;
+
   /// The name of the Bigtable table in which the authorized view belongs.
   late final pulumi.Output<String> tableName;
 
@@ -497,17 +502,17 @@ class AuthorizedView extends pulumi.CustomResource {
     AuthorizedViewArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:bigtable/authorizedView:AuthorizedView',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deletionProtection = registerOutput<String>('deletionProtection');
-    this.instanceName = registerOutput<String>('instanceName');
+         'gcp:bigtable/authorizedView:AuthorizedView',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deletionProtection = registerOutput<String>('deletionProtection');
+    instanceName = registerOutput<String>('instanceName');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.subsetView = registerOutput<AuthorizedViewSubsetView?>('subsetView');
-    this.tableName = registerOutput<String>('tableName');
+    project = registerOutput<String>('project');
+    subsetView = registerOutput<AuthorizedViewSubsetView?>('subsetView');
+    tableName = registerOutput<String>('tableName');
   }
 
   /// Gets an existing [AuthorizedView] resource's state with the given [name] and [id].
@@ -528,16 +533,16 @@ class AuthorizedView extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:bigtable/authorizedView:AuthorizedView',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deletionProtection = registerOutput<String>('deletionProtection');
-    this.instanceName = registerOutput<String>('instanceName');
+         'gcp:bigtable/authorizedView:AuthorizedView',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deletionProtection = registerOutput<String>('deletionProtection');
+    instanceName = registerOutput<String>('instanceName');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.subsetView = registerOutput<AuthorizedViewSubsetView?>('subsetView');
-    this.tableName = registerOutput<String>('tableName');
+    project = registerOutput<String>('project');
+    subsetView = registerOutput<AuthorizedViewSubsetView?>('subsetView');
+    tableName = registerOutput<String>('tableName');
   }
 }

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicRuleErrorActionTimestreamDimension {
   /// The metadata dimension name. This is the name of the column in the Amazon Timestream database table record.
   final pulumi.Input<String> name;
+
   /// The value to write in this column of the database record.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class TopicRuleErrorActionTimestreamDimension {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory TopicRuleErrorActionTimestreamDimension.fromMap(Map<String, dynamic> map) {
+  factory TopicRuleErrorActionTimestreamDimension.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TopicRuleErrorActionTimestreamDimension(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

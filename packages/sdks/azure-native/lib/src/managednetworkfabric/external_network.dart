@@ -409,34 +409,50 @@ import 'system_data_response.dart';
 class ExternalNetwork extends pulumi.CustomResource {
   /// Administrative state of the resource.
   late final pulumi.Output<String> administrativeState;
+
   /// Switch configuration description.
   late final pulumi.Output<String?> annotation;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Configuration state of the resource.
   late final pulumi.Output<String> configurationState;
+
   /// Export Route Policy either IPv4 or IPv6.
   late final pulumi.Output<ExportRoutePolicyResponse?> exportRoutePolicy;
+
   /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
   late final pulumi.Output<String?> exportRoutePolicyId;
+
   /// Import Route Policy either IPv4 or IPv6.
   late final pulumi.Output<ImportRoutePolicyResponse?> importRoutePolicy;
+
   /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
   late final pulumi.Output<String?> importRoutePolicyId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
   late final pulumi.Output<String?> networkToNetworkInterconnectId;
+
   /// option A properties object
-  late final pulumi.Output<ExternalNetworkPropertiesResponseOptionAProperties?> optionAProperties;
+  late final pulumi.Output<ExternalNetworkPropertiesResponseOptionAProperties?>
+  optionAProperties;
+
   /// option B properties object
   late final pulumi.Output<L3OptionBPropertiesResponse?> optionBProperties;
+
   /// Peering option list.
   late final pulumi.Output<String> peeringOption;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -449,26 +465,37 @@ class ExternalNetwork extends pulumi.CustomResource {
     ExternalNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managednetworkfabric:ExternalNetwork',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administrativeState = registerOutput<String>('administrativeState');
-    this.annotation = registerOutput<String?>('annotation');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.configurationState = registerOutput<String>('configurationState');
-    this.exportRoutePolicy = registerOutput<ExportRoutePolicyResponse?>('exportRoutePolicy');
-    this.exportRoutePolicyId = registerOutput<String?>('exportRoutePolicyId');
-    this.importRoutePolicy = registerOutput<ImportRoutePolicyResponse?>('importRoutePolicy');
-    this.importRoutePolicyId = registerOutput<String?>('importRoutePolicyId');
+         'azure-native:managednetworkfabric:ExternalNetwork',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administrativeState = registerOutput<String>('administrativeState');
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationState = registerOutput<String>('configurationState');
+    exportRoutePolicy = registerOutput<ExportRoutePolicyResponse?>(
+      'exportRoutePolicy',
+    );
+    exportRoutePolicyId = registerOutput<String?>('exportRoutePolicyId');
+    importRoutePolicy = registerOutput<ImportRoutePolicyResponse?>(
+      'importRoutePolicy',
+    );
+    importRoutePolicyId = registerOutput<String?>('importRoutePolicyId');
     this.name = registerOutput<String>('name');
-    this.networkToNetworkInterconnectId = registerOutput<String?>('networkToNetworkInterconnectId');
-    this.optionAProperties = registerOutput<ExternalNetworkPropertiesResponseOptionAProperties?>('optionAProperties');
-    this.optionBProperties = registerOutput<L3OptionBPropertiesResponse?>('optionBProperties');
-    this.peeringOption = registerOutput<String>('peeringOption');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    networkToNetworkInterconnectId = registerOutput<String?>(
+      'networkToNetworkInterconnectId',
+    );
+    optionAProperties =
+        registerOutput<ExternalNetworkPropertiesResponseOptionAProperties?>(
+          'optionAProperties',
+        );
+    optionBProperties = registerOutput<L3OptionBPropertiesResponse?>(
+      'optionBProperties',
+    );
+    peeringOption = registerOutput<String>('peeringOption');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

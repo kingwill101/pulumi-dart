@@ -7,16 +7,15 @@ enum AutoBackupDaysOfWeek {
   saturday("Saturday"),
   sunday("Sunday");
 
-  const AutoBackupDaysOfWeek(this.value);
-  final String value;
+  const AutoBackupDaysOfWeek(this.wireValue);
+  final String wireValue;
 
   static AutoBackupDaysOfWeek fromValue(String value) {
     for (final item in AutoBackupDaysOfWeek.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AutoBackupDaysOfWeek value: $value');
   }
 }
-

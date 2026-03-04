@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConsumerGroupArgs {
   /// ID of the consumer group.
   final pulumi.Input<String> consumerId;
+
   /// Field `description` has been deprecated from provider version 1.268.0. New field `remark` instead.
   final pulumi.Input<String>? description;
+
   /// ID of the ALIKAFKA Instance that owns the groups.
   final pulumi.Input<String> instanceId;
+
   /// The remark of the resource.
   final pulumi.Input<String>? remark;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,12 +48,25 @@ class ConsumerGroupArgs {
 
   factory ConsumerGroupArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupArgs(
-      consumerId: (map['consumerId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      consumerId: pulumi.Input.fromValue(map['consumerId'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      remark: (() {
+        final guardedValue = map['remark'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

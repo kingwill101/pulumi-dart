@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SshKeyArgs {
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Name of the SSH Key.
   final pulumi.Input<String>? name;
+
   /// Public key of the SSH Key pair. If this is a file, it can be read using the `file` interpolation function.
   final pulumi.Input<String> publicKey;
 
@@ -18,11 +20,7 @@ class SshKeyArgs {
   /// [labels] User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   /// [name] Name of the SSH Key.
   /// [publicKey] Public key of the SSH Key pair. If this is a file, it can be read using the `file` interpolation function.
-  SshKeyArgs({
-    this.labels,
-    this.name,
-    required this.publicKey,
-  });
+  SshKeyArgs({this.labels, this.name, required this.publicKey});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,19 @@ class SshKeyArgs {
 
   factory SshKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshKeyArgs(
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      publicKey: (map['publicKey'] as String).input(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicKey: pulumi.Input.fromValue(map['publicKey'] as String),
     );
   }
 }
-

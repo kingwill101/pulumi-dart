@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharedTargetArgs {
   /// The ID of the resource share.
   final pulumi.Input<String> resourceShareId;
+
   /// The ID of the principal.
   final pulumi.Input<String> targetId;
 
   /// Creates a new [SharedTargetArgs].
   /// [resourceShareId] The ID of the resource share.
   /// [targetId] The ID of the principal.
-  SharedTargetArgs({
-    required this.resourceShareId,
-    required this.targetId,
-  });
+  SharedTargetArgs({required this.resourceShareId, required this.targetId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,8 @@ class SharedTargetArgs {
 
   factory SharedTargetArgs.fromMap(Map<String, dynamic> map) {
     return SharedTargetArgs(
-      resourceShareId: (map['resourceShareId'] as String).input(),
-      targetId: (map['targetId'] as String).input(),
+      resourceShareId: pulumi.Input.fromValue(map['resourceShareId'] as String),
+      targetId: pulumi.Input.fromValue(map['targetId'] as String),
     );
   }
 }
-

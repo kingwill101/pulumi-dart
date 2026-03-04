@@ -2,11 +2,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spring_cloud_application_live_view_args.dart';
 import 'spring_cloud_application_live_view_state.dart';
 
-/// > **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
+/// &gt; **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
 ///
 /// Manages a Spring Cloud Application Live View.
 ///
-/// !> **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudApplicationLiveView` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudApplicationLiveView` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -193,6 +193,7 @@ import 'spring_cloud_application_live_view_state.dart';
 class SpringCloudApplicationLiveView extends pulumi.CustomResource {
   /// The name which should be used for this Spring Cloud Application Live View. Changing this forces a new Spring Cloud Application Live View to be created. The only possible value is `default`.
   late final pulumi.Output<String> name;
+
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Application Live View to be created.
   late final pulumi.Output<String> springCloudServiceId;
 
@@ -205,13 +206,13 @@ class SpringCloudApplicationLiveView extends pulumi.CustomResource {
     SpringCloudApplicationLiveViewArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudApplicationLiveView:SpringCloudApplicationLiveView',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:appplatform/springCloudApplicationLiveView:SpringCloudApplicationLiveView',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }
 
   /// Gets an existing [SpringCloudApplicationLiveView] resource's state with the given [name] and [id].
@@ -232,12 +233,12 @@ class SpringCloudApplicationLiveView extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudApplicationLiveView:SpringCloudApplicationLiveView',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:appplatform/springCloudApplicationLiveView:SpringCloudApplicationLiveView',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
   }
 }

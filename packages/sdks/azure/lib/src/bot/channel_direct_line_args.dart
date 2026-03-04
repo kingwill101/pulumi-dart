@@ -10,10 +10,13 @@ import 'channel_direct_line_site.dart';
 class ChannelDirectLineArgs {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String> botName;
+
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// A site represents a client application that you want to connect to your bot. One or more `site` blocks as defined below.
   final pulumi.Input<List<ChannelDirectLineSite>> sites;
 
@@ -34,17 +37,40 @@ class ChannelDirectLineArgs {
       'botName': botName,
       'location': ?location,
       'resourceGroupName': resourceGroupName,
-      'sites': pulumi.Input.mapInputValue<List<ChannelDirectLineSite>, List<Map<String, dynamic>>>(sites, (value) => pulumi.Input.encodeList<ChannelDirectLineSite, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sites':
+          pulumi.Input.mapInputValue<
+            List<ChannelDirectLineSite>,
+            List<Map<String, dynamic>>
+          >(
+            sites,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ChannelDirectLineSite,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ChannelDirectLineArgs.fromMap(Map<String, dynamic> map) {
     return ChannelDirectLineArgs(
-      botName: (map['botName'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sites: (pulumi.Input.decodeList<ChannelDirectLineSite>(map['sites'], (value) => ChannelDirectLineSite.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      botName: pulumi.Input.fromValue(map['botName'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sites: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ChannelDirectLineSite>(
+          map['sites']!,
+          (value) => ChannelDirectLineSite.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

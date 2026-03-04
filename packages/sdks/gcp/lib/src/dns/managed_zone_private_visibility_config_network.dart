@@ -10,20 +10,17 @@ class ManagedZonePrivateVisibilityConfigNetwork {
 
   /// Creates a new [ManagedZonePrivateVisibilityConfigNetwork].
   /// [networkUrl] The id or fully qualified URL of the VPC network to bind to.
-  ManagedZonePrivateVisibilityConfigNetwork({
-    required this.networkUrl,
-  });
+  ManagedZonePrivateVisibilityConfigNetwork({required this.networkUrl});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'networkUrl': networkUrl,
-    };
+    return <String, dynamic>{'networkUrl': networkUrl};
   }
 
-  factory ManagedZonePrivateVisibilityConfigNetwork.fromMap(Map<String, dynamic> map) {
+  factory ManagedZonePrivateVisibilityConfigNetwork.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedZonePrivateVisibilityConfigNetwork(
-      networkUrl: (map['networkUrl'] as String).input(),
+      networkUrl: pulumi.Input.fromValue(map['networkUrl'] as String),
     );
   }
 }
-

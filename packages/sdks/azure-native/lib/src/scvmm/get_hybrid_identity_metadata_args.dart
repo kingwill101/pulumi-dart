@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHybridIdentityMetadataArgs {
   /// Name of the HybridIdentityMetadata.
   final pulumi.Input<String> metadataName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the vm.
   final pulumi.Input<String> virtualMachineName;
 
@@ -34,10 +36,13 @@ class GetHybridIdentityMetadataArgs {
 
   factory GetHybridIdentityMetadataArgs.fromMap(Map<String, dynamic> map) {
     return GetHybridIdentityMetadataArgs(
-      metadataName: (map['metadataName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      virtualMachineName: (map['virtualMachineName'] as String).input(),
+      metadataName: pulumi.Input.fromValue(map['metadataName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      virtualMachineName: pulumi.Input.fromValue(
+        map['virtualMachineName'] as String,
+      ),
     );
   }
 }
-

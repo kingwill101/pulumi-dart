@@ -7,16 +7,15 @@ enum TransformType {
   valueUrlEncode("UrlEncode"),
   valueRemoveNulls("RemoveNulls");
 
-  const TransformType(this.value);
-  final String value;
+  const TransformType(this.wireValue);
+  final String wireValue;
 
   static TransformType fromValue(String value) {
     for (final item in TransformType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TransformType value: $value');
   }
 }
-

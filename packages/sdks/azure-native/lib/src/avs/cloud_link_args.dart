@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudLinkArgs {
   /// Name of the cloud link.
   final pulumi.Input<String>? cloudLinkName;
+
   /// Identifier of the other private cloud participating in the link.
   final pulumi.Input<String>? linkedCloud;
+
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,22 @@ class CloudLinkArgs {
 
   factory CloudLinkArgs.fromMap(Map<String, dynamic> map) {
     return CloudLinkArgs(
-      cloudLinkName: map['cloudLinkName'] == null ? null : (map['cloudLinkName']! as String).input(),
-      linkedCloud: map['linkedCloud'] == null ? null : (map['linkedCloud']! as String).input(),
-      privateCloudName: (map['privateCloudName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      cloudLinkName: (() {
+        final guardedValue = map['cloudLinkName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkedCloud: (() {
+        final guardedValue = map['linkedCloud'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateCloudName: pulumi.Input.fromValue(
+        map['privateCloudName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

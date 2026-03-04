@@ -10,20 +10,31 @@ class LogConfigDataAccessOptionsComputeV1 {
 
   /// Creates a new [LogConfigDataAccessOptionsComputeV1].
   /// [logMode] This is deprecated and has no effect. Do not use.
-  LogConfigDataAccessOptionsComputeV1({
-    this.logMode,
-  });
+  LogConfigDataAccessOptionsComputeV1({this.logMode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logMode': ?pulumi.Input.mapOptionalInputValue<LogConfigDataAccessOptionsLogModeComputeV1, String>(logMode, (value) => value.value),
+      'logMode':
+          ?pulumi.Input.mapOptionalInputValue<
+            LogConfigDataAccessOptionsLogModeComputeV1,
+            String
+          >(logMode, (value) => value.wireValue),
     };
   }
 
-  factory LogConfigDataAccessOptionsComputeV1.fromMap(Map<String, dynamic> map) {
+  factory LogConfigDataAccessOptionsComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LogConfigDataAccessOptionsComputeV1(
-      logMode: map['logMode'] == null ? null : (LogConfigDataAccessOptionsLogModeComputeV1.fromValue(map['logMode']! as String)).input(),
+      logMode: (() {
+        final guardedValue = map['logMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LogConfigDataAccessOptionsLogModeComputeV1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

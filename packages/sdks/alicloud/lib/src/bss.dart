@@ -1,5 +1,3 @@
-library module_bss;
-
 export 'bss/functions.dart';
 export 'bss/get_open_api_pricing_modules_args.dart';
 export 'bss/get_open_api_pricing_modules_module.dart';

@@ -10,14 +10,19 @@ import 'collector_agent_properties_base.dart';
 class SqlCollectorOperationArgs {
   /// Gets or sets the collector agent properties.
   final pulumi.Input<CollectorAgentPropertiesBase>? agentProperties;
+
   /// Sql collector ARM name.
   final pulumi.Input<String>? collectorName;
+
   /// Gets the discovery site id.
   final pulumi.Input<String>? discoverySiteId;
+
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
+
   /// The status of the last operation.
   final pulumi.Input<String>? provisioningState;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,7 +44,11 @@ class SqlCollectorOperationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentProperties': ?pulumi.Input.mapOptionalInputValue<CollectorAgentPropertiesBase, Map<String, dynamic>>(agentProperties, (value) => value.toMap()),
+      'agentProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            CollectorAgentPropertiesBase,
+            Map<String, dynamic>
+          >(agentProperties, (value) => value.toMap()),
       'collectorName': ?collectorName,
       'discoverySiteId': ?discoverySiteId,
       'projectName': projectName,
@@ -50,13 +59,34 @@ class SqlCollectorOperationArgs {
 
   factory SqlCollectorOperationArgs.fromMap(Map<String, dynamic> map) {
     return SqlCollectorOperationArgs(
-      agentProperties: map['agentProperties'] == null ? null : (CollectorAgentPropertiesBase.fromMap((map['agentProperties']! as Map).cast<String, dynamic>())).input(),
-      collectorName: map['collectorName'] == null ? null : (map['collectorName']! as String).input(),
-      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId']! as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      agentProperties: (() {
+        final guardedValue = map['agentProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CollectorAgentPropertiesBase.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      collectorName: (() {
+        final guardedValue = map['collectorName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      discoverySiteId: (() {
+        final guardedValue = map['discoverySiteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

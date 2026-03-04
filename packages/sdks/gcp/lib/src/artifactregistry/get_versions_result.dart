@@ -6,12 +6,14 @@ import 'get_versions_version.dart';
 /// Result data returned by getVersions.
 class GetVersionsResult {
   final String? filter;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
   final String packageName;
   final String? project;
   final String repositoryId;
+
   /// A list of all retrieved Artifact Registry versions. Structure is defined below.
   final List<GetVersionsVersion> versions;
   final String? view;
@@ -44,22 +46,41 @@ class GetVersionsResult {
       'packageName': packageName,
       'project': ?project,
       'repositoryId': repositoryId,
-      'versions': pulumi.Input.encodeList<GetVersionsVersion, Map<String, dynamic>>(versions, (value) => value.toMap()),
+      'versions':
+          pulumi.Input.encodeList<GetVersionsVersion, Map<String, dynamic>>(
+            versions,
+            (value) => value.toMap(),
+          ),
       'view': ?view,
     };
   }
 
   factory GetVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetVersionsResult(
-      filter: map['filter'] == null ? null : map['filter']! as String,
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       location: map['location'] as String,
       packageName: map['packageName'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       repositoryId: map['repositoryId'] as String,
-      versions: pulumi.Input.decodeList<GetVersionsVersion>(map['versions'], (value) => GetVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
-      view: map['view'] == null ? null : map['view']! as String,
+      versions: pulumi.Input.decodeList<GetVersionsVersion>(
+        map['versions']!,
+        (value) =>
+            GetVersionsVersion.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      view: (() {
+        final guardedValue = map['view'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

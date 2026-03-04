@@ -2,16 +2,15 @@
 enum OwnerKeyType {
   microsoftManaged("MicrosoftManaged");
 
-  const OwnerKeyType(this.value);
-  final String value;
+  const OwnerKeyType(this.wireValue);
+  final String wireValue;
 
   static OwnerKeyType fromValue(String value) {
     for (final item in OwnerKeyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OwnerKeyType value: $value');
   }
 }
-

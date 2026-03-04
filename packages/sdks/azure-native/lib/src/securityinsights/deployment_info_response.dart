@@ -7,8 +7,10 @@ import 'deployment_response.dart';
 class DeploymentInfoResponse {
   /// Deployment information.
   final pulumi.Input<DeploymentResponse>? deployment;
+
   /// Status while fetching the last deployment.
   final pulumi.Input<String>? deploymentFetchStatus;
+
   /// Additional details about the deployment that can be shown to the user.
   final pulumi.Input<String>? message;
 
@@ -24,7 +26,11 @@ class DeploymentInfoResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deployment': ?pulumi.Input.mapOptionalInputValue<DeploymentResponse, Map<String, dynamic>>(deployment, (value) => value.toMap()),
+      'deployment':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentResponse,
+            Map<String, dynamic>
+          >(deployment, (value) => value.toMap()),
       'deploymentFetchStatus': ?deploymentFetchStatus,
       'message': ?message,
     };
@@ -32,10 +38,25 @@ class DeploymentInfoResponse {
 
   factory DeploymentInfoResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentInfoResponse(
-      deployment: map['deployment'] == null ? null : (DeploymentResponse.fromMap((map['deployment']! as Map).cast<String, dynamic>())).input(),
-      deploymentFetchStatus: map['deploymentFetchStatus'] == null ? null : (map['deploymentFetchStatus']! as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
+      deployment: (() {
+        final guardedValue = map['deployment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      deploymentFetchStatus: (() {
+        final guardedValue = map['deploymentFetchStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

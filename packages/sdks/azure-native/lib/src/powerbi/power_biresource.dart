@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'power_biresource_args.dart';
-import 'private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
 
 /// Uses Azure REST API version 2020-06-01. In version 2.x of the Azure Native provider, it used API version 2020-06-01.
@@ -162,18 +161,26 @@ import 'system_data_response.dart';
 class PowerBIResource extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Specifies the location of the resource.
   late final pulumi.Output<String?> location;
+
   /// Specifies the name of the resource.
   late final pulumi.Output<String> name;
+
   /// Specifies the private endpoint connections of the resource.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>?> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  privateEndpointConnections;
+
   /// The system metadata relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Specifies the tags of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the tenant id of the resource.
   late final pulumi.Output<String?> tenantId;
+
   /// Specifies the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -186,18 +193,20 @@ class PowerBIResource extends pulumi.CustomResource {
     PowerBIResourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:powerbi:PowerBIResource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String?>('location');
+         'azure-native:powerbi:PowerBIResource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>?>('privateEndpointConnections');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tenantId = registerOutput<String?>('tenantId');
-    this.type = registerOutput<String>('type');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>(
+      'privateEndpointConnections',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

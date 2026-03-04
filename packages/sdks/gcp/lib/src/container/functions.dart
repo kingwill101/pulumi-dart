@@ -656,7 +656,7 @@ Future<GetClusterResult> getCluster(
 /// To get more information about GKE versions, see:
 /// * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations/getServerConfig)
 ///
-/// > If you are using the `gcp.container.getEngineVersions` datasource with a
+/// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a
 /// regional cluster, ensure that you have provided a region as the `location` to
 /// the datasource. A region can have a different set of supported versions than
 /// its component zones, and not all zones in a region are guaranteed to
@@ -832,7 +832,7 @@ Future<GetEngineVersionsResult> getEngineVersions(
   return GetEngineVersionsResult.fromMap(result);
 }
 
-/// > **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+/// &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
 ///
 /// This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
 ///
@@ -951,7 +951,7 @@ Future<GetRegistryImageResult> getRegistryImage(
   return GetRegistryImageResult.fromMap(result);
 }
 
-/// > **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
+/// &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
 ///
 /// This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
 ///

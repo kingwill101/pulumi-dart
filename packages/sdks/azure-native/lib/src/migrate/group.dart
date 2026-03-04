@@ -147,12 +147,16 @@ import 'group_properties_response.dart';
 class Group extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// For optimistic concurrency control.
   late final pulumi.Output<String?> eTag;
+
   /// Name of the group.
   late final pulumi.Output<String> name;
+
   /// Properties of the group.
   late final pulumi.Output<GroupPropertiesResponse> properties;
+
   /// Type of the object = [Microsoft.Migrate/assessmentProjects/groups].
   late final pulumi.Output<String> type;
 
@@ -160,20 +164,17 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_migrate_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(
-    String name, {
-    GroupArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:migrate:Group',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eTag = registerOutput<String?>('eTag');
+  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:migrate:Group',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String?>('eTag');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<GroupPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<GroupPropertiesResponse>('properties');
+    type = registerOutput<String>('type');
   }
 }

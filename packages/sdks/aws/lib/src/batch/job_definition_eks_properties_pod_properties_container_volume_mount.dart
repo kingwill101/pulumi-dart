@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount {
   final pulumi.Input<String> mountPath;
+
   /// Name of the job definition.
   final pulumi.Input<String> name;
   final pulumi.Input<bool>? readOnly;
@@ -26,12 +27,17 @@ class JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount {
     };
   }
 
-  factory JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount.fromMap(Map<String, dynamic> map) {
+  factory JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount(
-      mountPath: (map['mountPath'] as String).input(),
-      name: (map['name'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : ((map['readOnly'] as bool).input()).input(),
+      mountPath: pulumi.Input.fromValue(map['mountPath'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      readOnly: (() {
+        final guardedValue = map['readOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

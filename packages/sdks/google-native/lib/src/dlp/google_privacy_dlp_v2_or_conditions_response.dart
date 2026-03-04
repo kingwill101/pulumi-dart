@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GooglePrivacyDlpV2OrConditionsResponse {
   /// Minimum age a table must have before Cloud DLP can profile it. Value must be 1 hour or greater.
   final pulumi.Input<String> minAge;
+
   /// Minimum number of rows that should be present before Cloud DLP profiles a table
   final pulumi.Input<int> minRowCount;
 
@@ -18,17 +19,15 @@ class GooglePrivacyDlpV2OrConditionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'minAge': minAge,
-      'minRowCount': minRowCount,
-    };
+    return <String, dynamic>{'minAge': minAge, 'minRowCount': minRowCount};
   }
 
-  factory GooglePrivacyDlpV2OrConditionsResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2OrConditionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2OrConditionsResponse(
-      minAge: (map['minAge'] as String).input(),
-      minRowCount: (map['minRowCount'] as int).input(),
+      minAge: pulumi.Input.fromValue(map['minAge'] as String),
+      minRowCount: pulumi.Input.fromValue(map['minRowCount'] as int),
     );
   }
 }
-

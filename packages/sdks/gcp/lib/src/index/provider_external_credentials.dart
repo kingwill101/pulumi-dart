@@ -27,10 +27,11 @@ class ProviderExternalCredentials {
 
   factory ProviderExternalCredentials.fromMap(Map<String, dynamic> map) {
     return ProviderExternalCredentials(
-      audience: (map['audience'] as String).input(),
-      identityToken: (map['identityToken'] as String).input(),
-      serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
+      audience: pulumi.Input.fromValue(map['audience'] as String),
+      identityToken: pulumi.Input.fromValue(map['identityToken'] as String),
+      serviceAccountEmail: pulumi.Input.fromValue(
+        map['serviceAccountEmail'] as String,
+      ),
     );
   }
 }
-

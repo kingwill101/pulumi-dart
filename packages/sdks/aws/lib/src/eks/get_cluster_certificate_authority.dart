@@ -8,20 +8,15 @@ class GetClusterCertificateAuthority {
 
   /// Creates a new [GetClusterCertificateAuthority].
   /// [data] The base64 encoded certificate data required to communicate with your cluster. Add this to the `certificate-authority-data` section of the `kubeconfig` file for your cluster.
-  GetClusterCertificateAuthority({
-    required this.data,
-  });
+  GetClusterCertificateAuthority({required this.data});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'data': data,
-    };
+    return <String, dynamic>{'data': data};
   }
 
   factory GetClusterCertificateAuthority.fromMap(Map<String, dynamic> map) {
     return GetClusterCertificateAuthority(
-      data: (map['data'] as String).input(),
+      data: pulumi.Input.fromValue(map['data'] as String),
     );
   }
 }
-

@@ -13,15 +13,16 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigR
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceTypes': resourceTypes,
-    };
+    return <String, dynamic>{'resourceTypes': resourceTypes};
   }
 
-  factory PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector.fromMap(Map<String, dynamic> map) {
+  factory PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector(
-      resourceTypes: ((map['resourceTypes'] as List).cast<String>()).input(),
+      resourceTypes: pulumi.Input.fromValue(
+        (map['resourceTypes'] as List).cast<String>(),
+      ),
     );
   }
 }
-

@@ -8,7 +8,7 @@ import 'http_api_state.dart';
 ///
 /// For information about APIG Http Api and how to use it, see [What is Http Api](https://next.api.aliyun.com/api/APIG/2024-03-27/CreateHttpApi).
 ///
-/// > **NOTE:** Available since v1.240.0.
+/// &gt; **NOTE:** Available since v1.240.0.
 ///
 /// ## Example Usage
 ///
@@ -211,14 +211,19 @@ import 'http_api_state.dart';
 class HttpApi extends pulumi.CustomResource {
   /// API path
   late final pulumi.Output<String?> basePath;
+
   /// Description of API
   late final pulumi.Output<String?> description;
+
   /// The name of the resource
   late final pulumi.Output<String> httpApiName;
+
   /// API protocol
   late final pulumi.Output<List<String>> protocols;
+
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
+
   /// API type
   late final pulumi.Output<String?> type;
 
@@ -231,17 +236,17 @@ class HttpApi extends pulumi.CustomResource {
     HttpApiArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apig/httpApi:HttpApi',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.basePath = registerOutput<String?>('basePath');
-    this.description = registerOutput<String?>('description');
-    this.httpApiName = registerOutput<String>('httpApiName');
-    this.protocols = registerOutput<List<String>>('protocols');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.type = registerOutput<String?>('type');
+         'alicloud:apig/httpApi:HttpApi',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    basePath = registerOutput<String?>('basePath');
+    description = registerOutput<String?>('description');
+    httpApiName = registerOutput<String>('httpApiName');
+    protocols = registerOutput<List<String>>('protocols');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    type = registerOutput<String?>('type');
   }
 
   /// Gets an existing [HttpApi] resource's state with the given [name] and [id].
@@ -262,16 +267,16 @@ class HttpApi extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apig/httpApi:HttpApi',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.basePath = registerOutput<String?>('basePath');
-    this.description = registerOutput<String?>('description');
-    this.httpApiName = registerOutput<String>('httpApiName');
-    this.protocols = registerOutput<List<String>>('protocols');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.type = registerOutput<String?>('type');
+         'alicloud:apig/httpApi:HttpApi',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    basePath = registerOutput<String?>('basePath');
+    description = registerOutput<String?>('description');
+    httpApiName = registerOutput<String>('httpApiName');
+    protocols = registerOutput<List<String>>('protocols');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    type = registerOutput<String?>('type');
   }
 }

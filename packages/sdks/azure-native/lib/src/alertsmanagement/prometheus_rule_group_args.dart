@@ -10,22 +10,31 @@ import 'prometheus_rule.dart';
 class PrometheusRuleGroupArgs {
   /// Apply rule to data from a specific cluster.
   final pulumi.Input<String>? clusterName;
+
   /// Rule group description.
   final pulumi.Input<String>? description;
+
   /// Enable/disable rule group.
   final pulumi.Input<bool>? enabled;
+
   /// The interval in which to run the Prometheus rule group represented in ISO 8601 duration format. Should be between 1 and 15 minutes
   final pulumi.Input<String>? interval;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the rule group.
   final pulumi.Input<String>? ruleGroupName;
+
   /// Defines the rules in the Prometheus rule group.
   final pulumi.Input<List<PrometheusRule>> rules;
+
   /// Target Azure Monitor workspaces resource ids. This api-version is currently limited to creating with one scope. This may change in future.
   final pulumi.Input<List<String>> scopes;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -62,7 +71,18 @@ class PrometheusRuleGroupArgs {
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'ruleGroupName': ?ruleGroupName,
-      'rules': pulumi.Input.mapInputValue<List<PrometheusRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<PrometheusRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          pulumi.Input.mapInputValue<
+            List<PrometheusRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<PrometheusRule, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'scopes': scopes,
       'tags': ?tags,
     };
@@ -70,17 +90,54 @@ class PrometheusRuleGroupArgs {
 
   factory PrometheusRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return PrometheusRuleGroupArgs(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleGroupName: map['ruleGroupName'] == null ? null : (map['ruleGroupName']! as String).input(),
-      rules: (pulumi.Input.decodeList<PrometheusRule>(map['rules'], (value) => PrometheusRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scopes: ((map['scopes'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      interval: (() {
+        final guardedValue = map['interval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      ruleGroupName: (() {
+        final guardedValue = map['ruleGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<PrometheusRule>(
+          map['rules']!,
+          (value) =>
+              PrometheusRule.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      scopes: pulumi.Input.fromValue((map['scopes'] as List).cast<String>()),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

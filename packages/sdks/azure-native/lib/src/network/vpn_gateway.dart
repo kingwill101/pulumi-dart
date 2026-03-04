@@ -1,10 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bgp_settings_response.dart';
 import 'sub_resource_response.dart';
-import 'vpn_connection_response.dart';
 import 'vpn_gateway_args.dart';
-import 'vpn_gateway_ip_configuration_response.dart';
-import 'vpn_gateway_nat_rule_response.dart';
 
 /// VpnGateway Resource.
 ///
@@ -492,32 +489,46 @@ import 'vpn_gateway_nat_rule_response.dart';
 class VpnGateway extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Local network gateway's BGP speaker settings.
   late final pulumi.Output<BgpSettingsResponse?> bgpSettings;
+
   /// List of all vpn connections to the gateway.
-  late final pulumi.Output<List<VpnConnectionResponse>?> connections;
+  late final pulumi.Output<List<Map<String, dynamic>>?> connections;
+
   /// Enable BGP routes translation for NAT on this VpnGateway.
   late final pulumi.Output<bool?> enableBgpRouteTranslationForNat;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// List of all IPs configured on the gateway.
-  late final pulumi.Output<List<VpnGatewayIpConfigurationResponse>> ipConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>> ipConfigurations;
+
   /// Enable Routing Preference property for the Public IP Interface of the VpnGateway.
   late final pulumi.Output<bool?> isRoutingPreferenceInternet;
+
   /// Resource location.
   late final pulumi.Output<String> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// List of all the nat Rules associated with the gateway.
-  late final pulumi.Output<List<VpnGatewayNatRuleResponse>?> natRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> natRules;
+
   /// The provisioning state of the VPN gateway resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// The VirtualHub to which the gateway belongs.
   late final pulumi.Output<SubResourceResponse?> virtualHub;
+
   /// The scale unit for this vpn gateway.
   late final pulumi.Output<int?> vpnGatewayScaleUnit;
 
@@ -530,25 +541,31 @@ class VpnGateway extends pulumi.CustomResource {
     VpnGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:VpnGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.bgpSettings = registerOutput<BgpSettingsResponse?>('bgpSettings');
-    this.connections = registerOutput<List<VpnConnectionResponse>?>('connections');
-    this.enableBgpRouteTranslationForNat = registerOutput<bool?>('enableBgpRouteTranslationForNat');
-    this.etag = registerOutput<String>('etag');
-    this.ipConfigurations = registerOutput<List<VpnGatewayIpConfigurationResponse>>('ipConfigurations');
-    this.isRoutingPreferenceInternet = registerOutput<bool?>('isRoutingPreferenceInternet');
-    this.location = registerOutput<String>('location');
+         'azure-native:network:VpnGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bgpSettings = registerOutput<BgpSettingsResponse?>('bgpSettings');
+    connections = registerOutput<List<Map<String, dynamic>>?>('connections');
+    enableBgpRouteTranslationForNat = registerOutput<bool?>(
+      'enableBgpRouteTranslationForNat',
+    );
+    etag = registerOutput<String>('etag');
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'ipConfigurations',
+    );
+    isRoutingPreferenceInternet = registerOutput<bool?>(
+      'isRoutingPreferenceInternet',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.natRules = registerOutput<List<VpnGatewayNatRuleResponse>?>('natRules');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.virtualHub = registerOutput<SubResourceResponse?>('virtualHub');
-    this.vpnGatewayScaleUnit = registerOutput<int?>('vpnGatewayScaleUnit');
+    natRules = registerOutput<List<Map<String, dynamic>>?>('natRules');
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    virtualHub = registerOutput<SubResourceResponse?>('virtualHub');
+    vpnGatewayScaleUnit = registerOutput<int?>('vpnGatewayScaleUnit');
   }
 }

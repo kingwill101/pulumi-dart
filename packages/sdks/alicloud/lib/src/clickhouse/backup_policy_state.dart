@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPolicyState {
   /// Data backup days. Valid values: `7` to `730`.
   final pulumi.Input<int>? backupRetentionPeriod;
+
   /// The id of the DBCluster.
   final pulumi.Input<String>? dbClusterId;
+
   /// DBCluster Backup period. A list of DBCluster Backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
   final pulumi.Input<List<String>>? preferredBackupPeriods;
+
   /// DBCluster backup time, in the format of `HH:mmZ-HH:mmZ`. Time setting interval is one hour. China time is 8 hours behind it.
   final pulumi.Input<String>? preferredBackupTime;
+
   /// The status of the resource.
   final pulumi.Input<String>? status;
 
@@ -41,12 +45,31 @@ class BackupPolicyState {
 
   factory BackupPolicyState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyState(
-      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod']! as int).input(),
-      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId']! as String).input(),
-      preferredBackupPeriods: map['preferredBackupPeriods'] == null ? null : ((map['preferredBackupPeriods']! as List).cast<String>()).input(),
-      preferredBackupTime: map['preferredBackupTime'] == null ? null : (map['preferredBackupTime']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      backupRetentionPeriod: (() {
+        final guardedValue = map['backupRetentionPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dbClusterId: (() {
+        final guardedValue = map['dbClusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      preferredBackupPeriods: (() {
+        final guardedValue = map['preferredBackupPeriods'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      preferredBackupTime: (() {
+        final guardedValue = map['preferredBackupTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

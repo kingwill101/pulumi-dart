@@ -7,12 +7,16 @@ import 'user_assigned_identities_response.dart';
 class NGroupIdentityResponse {
   /// The principal id of the NGroup identity. This property will only be provided for a system assigned identity.
   final pulumi.Input<String> principalId;
+
   /// The tenant id associated with the NGroup. This property will only be provided for a system assigned identity.
   final pulumi.Input<String> tenantId;
+
   /// The type of identity used for the NGroup. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the NGroup.
   final pulumi.Input<String>? type;
+
   /// The list of user identities associated with the NGroup.
-  final pulumi.Input<Map<String, UserAssignedIdentitiesResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentitiesResponse>>?
+  userAssignedIdentities;
 
   /// Creates a new [NGroupIdentityResponse].
   /// [principalId] The principal id of the NGroup identity. This property will only be provided for a system assigned identity.
@@ -31,17 +35,42 @@ class NGroupIdentityResponse {
       'principalId': principalId,
       'tenantId': tenantId,
       'type': ?type,
-      'userAssignedIdentities': ?pulumi.Input.mapOptionalInputValue<Map<String, UserAssignedIdentitiesResponse>, Map<String, Map<String, dynamic>>>(userAssignedIdentities, (value) => pulumi.Input.encodeMapValues<UserAssignedIdentitiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'userAssignedIdentities':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, UserAssignedIdentitiesResponse>,
+            Map<String, Map<String, dynamic>>
+          >(
+            userAssignedIdentities,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  UserAssignedIdentitiesResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory NGroupIdentityResponse.fromMap(Map<String, dynamic> map) {
     return NGroupIdentityResponse(
-      principalId: (map['principalId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserAssignedIdentitiesResponse>(map['userAssignedIdentities']!, (value) => UserAssignedIdentitiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userAssignedIdentities: (() {
+        final guardedValue = map['userAssignedIdentities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<UserAssignedIdentitiesResponse>(
+            guardedValue,
+            (value) => UserAssignedIdentitiesResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExpressRouteCircuitPeering {
   /// The Either a 16-bit or a 32-bit ASN for Azure.
   final pulumi.Input<int> azureAsn;
+
   /// The Either a 16-bit or a 32-bit ASN. Can either be public or private.
   final pulumi.Input<int> peerAsn;
+
   /// The type of the ExpressRoute Circuit Peering. Acceptable values include `AzurePrivatePeering`, `AzurePublicPeering` and `MicrosoftPeering`. Changing this forces a new resource to be created.
   final pulumi.Input<String> peeringType;
+
   /// A `/30` subnet for the primary link.
   final pulumi.Input<String> primaryPeerAddressPrefix;
+
   /// A `/30` subnet for the secondary link.
   final pulumi.Input<String> secondaryPeerAddressPrefix;
+
   /// The shared key. Can be a maximum of 25 characters.
   final pulumi.Input<String> sharedKey;
+
   /// A valid VLAN ID to establish this peering on.
   final pulumi.Input<int> vlanId;
 
@@ -50,14 +56,17 @@ class GetExpressRouteCircuitPeering {
 
   factory GetExpressRouteCircuitPeering.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteCircuitPeering(
-      azureAsn: (map['azureAsn'] as int).input(),
-      peerAsn: (map['peerAsn'] as int).input(),
-      peeringType: (map['peeringType'] as String).input(),
-      primaryPeerAddressPrefix: (map['primaryPeerAddressPrefix'] as String).input(),
-      secondaryPeerAddressPrefix: (map['secondaryPeerAddressPrefix'] as String).input(),
-      sharedKey: (map['sharedKey'] as String).input(),
-      vlanId: (map['vlanId'] as int).input(),
+      azureAsn: pulumi.Input.fromValue(map['azureAsn'] as int),
+      peerAsn: pulumi.Input.fromValue(map['peerAsn'] as int),
+      peeringType: pulumi.Input.fromValue(map['peeringType'] as String),
+      primaryPeerAddressPrefix: pulumi.Input.fromValue(
+        map['primaryPeerAddressPrefix'] as String,
+      ),
+      secondaryPeerAddressPrefix: pulumi.Input.fromValue(
+        map['secondaryPeerAddressPrefix'] as String,
+      ),
+      sharedKey: pulumi.Input.fromValue(map['sharedKey'] as String),
+      vlanId: pulumi.Input.fromValue(map['vlanId'] as int),
     );
   }
 }
-

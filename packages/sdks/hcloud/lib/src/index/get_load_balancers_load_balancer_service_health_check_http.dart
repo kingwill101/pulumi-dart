@@ -33,14 +33,17 @@ class GetLoadBalancersLoadBalancerServiceHealthCheckHttp {
     };
   }
 
-  factory GetLoadBalancersLoadBalancerServiceHealthCheckHttp.fromMap(Map<String, dynamic> map) {
+  factory GetLoadBalancersLoadBalancerServiceHealthCheckHttp.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLoadBalancersLoadBalancerServiceHealthCheckHttp(
-      domain: (map['domain'] as String).input(),
-      path: (map['path'] as String).input(),
-      response: (map['response'] as String).input(),
-      statusCodes: ((map['statusCodes'] as List).cast<int>()).input(),
-      tls: (map['tls'] as bool).input(),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      response: pulumi.Input.fromValue(map['response'] as String),
+      statusCodes: pulumi.Input.fromValue(
+        (map['statusCodes'] as List).cast<int>(),
+      ),
+      tls: pulumi.Input.fromValue(map['tls'] as bool),
     );
   }
 }
-

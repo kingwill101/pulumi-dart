@@ -4,16 +4,15 @@ enum InstanceAvailabilityType {
   zonal("ZONAL"),
   regional("REGIONAL");
 
-  const InstanceAvailabilityType(this.value);
-  final String value;
+  const InstanceAvailabilityType(this.wireValue);
+  final String wireValue;
 
   static InstanceAvailabilityType fromValue(String value) {
     for (final item in InstanceAvailabilityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceAvailabilityType value: $value');
   }
 }
-

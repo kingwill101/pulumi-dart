@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_node_args.dart';
 import 'virtual_node_state.dart';
-import 'virtual_node_taint.dart';
 
 /// Provides a ECI Virtual Node resource.
 ///
 /// For information about ECI Virtual Node and how to use it, see [What is Virtual Node](https://www.alibabacloud.com/help/en/doc-detail/89129.html).
 ///
-/// > **NOTE:** Available since v1.145.0.
+/// &gt; **NOTE:** Available since v1.145.0.
 ///
 /// ## Example Usage
 ///
@@ -435,24 +434,34 @@ import 'virtual_node_taint.dart';
 class VirtualNode extends pulumi.CustomResource {
   /// The Id of eip.
   late final pulumi.Output<String> eipInstanceId;
+
   /// Whether to enable public network. **NOTE:** If `eip_instance_id` is not configured and `enable_public_network` is true, the system will create an elastic public network IP.
   late final pulumi.Output<bool?> enablePublicNetwork;
+
   /// The kube config for the k8s cluster. It needs to be connected after Base64 encoding.
   late final pulumi.Output<String> kubeConfig;
+
   /// The resource group ID.
   late final pulumi.Output<String?> resourceGroupId;
+
   /// The security group ID.
   late final pulumi.Output<String> securityGroupId;
+
   /// The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
   late final pulumi.Output<String> status;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The taint. See `taints` below.
-  late final pulumi.Output<List<VirtualNodeTaint>?> taints;
+  late final pulumi.Output<List<Map<String, dynamic>>?> taints;
+
   /// The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
   late final pulumi.Output<String?> virtualNodeName;
+
   /// The vswitch id.
   late final pulumi.Output<String> vswitchId;
+
   /// The Zone.
   late final pulumi.Output<String> zoneId;
 
@@ -465,22 +474,22 @@ class VirtualNode extends pulumi.CustomResource {
     VirtualNodeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eci/virtualNode:VirtualNode',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.eipInstanceId = registerOutput<String>('eipInstanceId');
-    this.enablePublicNetwork = registerOutput<bool?>('enablePublicNetwork');
-    this.kubeConfig = registerOutput<String>('kubeConfig');
-    this.resourceGroupId = registerOutput<String?>('resourceGroupId');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.taints = registerOutput<List<VirtualNodeTaint>?>('taints');
-    this.virtualNodeName = registerOutput<String?>('virtualNodeName');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:eci/virtualNode:VirtualNode',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    eipInstanceId = registerOutput<String>('eipInstanceId');
+    enablePublicNetwork = registerOutput<bool?>('enablePublicNetwork');
+    kubeConfig = registerOutput<String>('kubeConfig');
+    resourceGroupId = registerOutput<String?>('resourceGroupId');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    taints = registerOutput<List<Map<String, dynamic>>?>('taints');
+    virtualNodeName = registerOutput<String?>('virtualNodeName');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [VirtualNode] resource's state with the given [name] and [id].
@@ -501,21 +510,21 @@ class VirtualNode extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:eci/virtualNode:VirtualNode',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.eipInstanceId = registerOutput<String>('eipInstanceId');
-    this.enablePublicNetwork = registerOutput<bool?>('enablePublicNetwork');
-    this.kubeConfig = registerOutput<String>('kubeConfig');
-    this.resourceGroupId = registerOutput<String?>('resourceGroupId');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.taints = registerOutput<List<VirtualNodeTaint>?>('taints');
-    this.virtualNodeName = registerOutput<String?>('virtualNodeName');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:eci/virtualNode:VirtualNode',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    eipInstanceId = registerOutput<String>('eipInstanceId');
+    enablePublicNetwork = registerOutput<bool?>('enablePublicNetwork');
+    kubeConfig = registerOutput<String>('kubeConfig');
+    resourceGroupId = registerOutput<String?>('resourceGroupId');
+    securityGroupId = registerOutput<String>('securityGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    taints = registerOutput<List<Map<String, dynamic>>?>('taints');
+    virtualNodeName = registerOutput<String?>('virtualNodeName');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

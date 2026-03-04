@@ -6,16 +6,22 @@ enum GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState {
   preorder("PREORDER"),
   backorder("BACKORDER");
 
-  const GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState(this.value);
-  final String value;
+  const GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState fromValue(String value) {
-    for (final item in GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState.values) {
-      if (item.value == value) {
+  static GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState value: $value',
+    );
   }
 }
-

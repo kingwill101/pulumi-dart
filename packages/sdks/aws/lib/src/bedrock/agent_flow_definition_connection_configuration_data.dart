@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentFlowDefinitionConnectionConfigurationData {
   /// The name of the output in the source node that the connection begins from.
   final pulumi.Input<String> sourceOutput;
+
   /// The name of the input in the target node that the connection ends at.
   final pulumi.Input<String> targetInput;
 
@@ -23,11 +24,12 @@ class AgentFlowDefinitionConnectionConfigurationData {
     };
   }
 
-  factory AgentFlowDefinitionConnectionConfigurationData.fromMap(Map<String, dynamic> map) {
+  factory AgentFlowDefinitionConnectionConfigurationData.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentFlowDefinitionConnectionConfigurationData(
-      sourceOutput: (map['sourceOutput'] as String).input(),
-      targetInput: (map['targetInput'] as String).input(),
+      sourceOutput: pulumi.Input.fromValue(map['sourceOutput'] as String),
+      targetInput: pulumi.Input.fromValue(map['targetInput'] as String),
     );
   }
 }
-

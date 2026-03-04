@@ -3,16 +3,15 @@ enum InstanceMessageCode {
   codeUnspecified("CODE_UNSPECIFIED"),
   zoneDistributionUnbalanced("ZONE_DISTRIBUTION_UNBALANCED");
 
-  const InstanceMessageCode(this.value);
-  final String value;
+  const InstanceMessageCode(this.wireValue);
+  final String wireValue;
 
   static InstanceMessageCode fromValue(String value) {
     for (final item in InstanceMessageCode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceMessageCode value: $value');
   }
 }
-

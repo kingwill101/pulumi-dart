@@ -193,7 +193,7 @@ import 'arecord_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2024-06-01
@@ -208,16 +208,22 @@ import 'arecord_state.dart';
 class ARecord extends pulumi.CustomResource {
   /// The FQDN of the DNS A Record.
   late final pulumi.Output<String> fqdn;
+
   /// The name of the DNS A Record. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// List of IPv4 Addresses.
   late final pulumi.Output<List<String>> records;
+
   /// Specifies the resource group where the Private DNS Zone exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The Time To Live (TTL) of the DNS record in seconds.
   late final pulumi.Output<int> ttl;
+
   /// Specifies the Private DNS Zone where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> zoneName;
 
@@ -230,18 +236,18 @@ class ARecord extends pulumi.CustomResource {
     ARecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:privatedns/aRecord:ARecord',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fqdn = registerOutput<String>('fqdn');
+         'azure:privatedns/aRecord:ARecord',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    this.records = registerOutput<List<String>>('records');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.ttl = registerOutput<int>('ttl');
-    this.zoneName = registerOutput<String>('zoneName');
+    records = registerOutput<List<String>>('records');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    ttl = registerOutput<int>('ttl');
+    zoneName = registerOutput<String>('zoneName');
   }
 
   /// Gets an existing [ARecord] resource's state with the given [name] and [id].
@@ -262,17 +268,17 @@ class ARecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:privatedns/aRecord:ARecord',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fqdn = registerOutput<String>('fqdn');
+         'azure:privatedns/aRecord:ARecord',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    this.records = registerOutput<List<String>>('records');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.ttl = registerOutput<int>('ttl');
-    this.zoneName = registerOutput<String>('zoneName');
+    records = registerOutput<List<String>>('records');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    ttl = registerOutput<int>('ttl');
+    zoneName = registerOutput<String>('zoneName');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Ulimit {
   /// The hard limit for the ``ulimit`` type.
   final pulumi.Input<int>? hardLimit;
+
   /// The ``type`` of the ``ulimit``.
   final pulumi.Input<String>? name;
+
   /// The soft limit for the ``ulimit`` type.
   final pulumi.Input<int>? softLimit;
 
@@ -15,11 +17,7 @@ class Ulimit {
   /// [hardLimit] The hard limit for the ``ulimit`` type.
   /// [name] The ``type`` of the ``ulimit``.
   /// [softLimit] The soft limit for the ``ulimit`` type.
-  Ulimit({
-    this.hardLimit,
-    this.name,
-    this.softLimit,
-  });
+  Ulimit({this.hardLimit, this.name, this.softLimit});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class Ulimit {
 
   factory Ulimit.fromMap(Map<String, dynamic> map) {
     return Ulimit(
-      hardLimit: map['hardLimit'] == null ? null : (map['hardLimit']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      softLimit: map['softLimit'] == null ? null : (map['softLimit']! as int).input(),
+      hardLimit: (() {
+        final guardedValue = map['hardLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      softLimit: (() {
+        final guardedValue = map['softLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

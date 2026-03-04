@@ -14,15 +14,16 @@ class WorkloadIdentityPoolManagedIdentityAttestationRule {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'googleCloudResource': googleCloudResource,
-    };
+    return <String, dynamic>{'googleCloudResource': googleCloudResource};
   }
 
-  factory WorkloadIdentityPoolManagedIdentityAttestationRule.fromMap(Map<String, dynamic> map) {
+  factory WorkloadIdentityPoolManagedIdentityAttestationRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkloadIdentityPoolManagedIdentityAttestationRule(
-      googleCloudResource: (map['googleCloudResource'] as String).input(),
+      googleCloudResource: pulumi.Input.fromValue(
+        map['googleCloudResource'] as String,
+      ),
     );
   }
 }
-

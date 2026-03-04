@@ -3,16 +3,15 @@ enum AdminStatus {
   valueEnable("Enable"),
   valueDisable("Disable");
 
-  const AdminStatus(this.value);
-  final String value;
+  const AdminStatus(this.wireValue);
+  final String wireValue;
 
   static AdminStatus fromValue(String value) {
     for (final item in AdminStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AdminStatus value: $value');
   }
 }
-

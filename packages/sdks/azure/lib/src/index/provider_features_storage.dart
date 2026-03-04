@@ -7,20 +7,19 @@ class ProviderFeaturesStorage {
 
   /// Creates a new [ProviderFeaturesStorage].
   /// [dataPlaneAvailable] Optional.
-  ProviderFeaturesStorage({
-    this.dataPlaneAvailable,
-  });
+  ProviderFeaturesStorage({this.dataPlaneAvailable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dataPlaneAvailable': ?dataPlaneAvailable,
-    };
+    return <String, dynamic>{'dataPlaneAvailable': ?dataPlaneAvailable};
   }
 
   factory ProviderFeaturesStorage.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesStorage(
-      dataPlaneAvailable: map['dataPlaneAvailable'] == null ? null : (map['dataPlaneAvailable']! as bool).input(),
+      dataPlaneAvailable: (() {
+        final guardedValue = map['dataPlaneAvailable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

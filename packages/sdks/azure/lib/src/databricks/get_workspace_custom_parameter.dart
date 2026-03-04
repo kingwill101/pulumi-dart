@@ -5,22 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkspaceCustomParameter {
   /// The ID of a Azure Machine Learning workspace to link with Databricks workspace.
   final pulumi.Input<String> machineLearningWorkspaceId;
+
   /// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets (only for workspace with managed virtual network).
   final pulumi.Input<String> natGatewayName;
+
   /// Are public IP Addresses not allowed?
   final pulumi.Input<bool> noPublicIp;
+
   /// The name of the Private Subnet within the Virtual Network.
   final pulumi.Input<String> privateSubnetName;
+
   /// Name of the Public IP for No Public IP workspace with managed virtual network.
   final pulumi.Input<String> publicIpName;
+
   /// The name of the Public Subnet within the Virtual Network.
   final pulumi.Input<String> publicSubnetName;
+
   /// Default Databricks File Storage account name.
   final pulumi.Input<String> storageAccountName;
+
   /// Storage account SKU name.
   final pulumi.Input<String> storageAccountSkuName;
+
   /// The ID of a Virtual Network where this Databricks Cluster should be created.
   final pulumi.Input<String> virtualNetworkId;
+
   /// Address prefix for Managed virtual network.
   final pulumi.Input<String> vnetAddressPrefix;
 
@@ -65,17 +74,30 @@ class GetWorkspaceCustomParameter {
 
   factory GetWorkspaceCustomParameter.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceCustomParameter(
-      machineLearningWorkspaceId: (map['machineLearningWorkspaceId'] as String).input(),
-      natGatewayName: (map['natGatewayName'] as String).input(),
-      noPublicIp: (map['noPublicIp'] as bool).input(),
-      privateSubnetName: (map['privateSubnetName'] as String).input(),
-      publicIpName: (map['publicIpName'] as String).input(),
-      publicSubnetName: (map['publicSubnetName'] as String).input(),
-      storageAccountName: (map['storageAccountName'] as String).input(),
-      storageAccountSkuName: (map['storageAccountSkuName'] as String).input(),
-      virtualNetworkId: (map['virtualNetworkId'] as String).input(),
-      vnetAddressPrefix: (map['vnetAddressPrefix'] as String).input(),
+      machineLearningWorkspaceId: pulumi.Input.fromValue(
+        map['machineLearningWorkspaceId'] as String,
+      ),
+      natGatewayName: pulumi.Input.fromValue(map['natGatewayName'] as String),
+      noPublicIp: pulumi.Input.fromValue(map['noPublicIp'] as bool),
+      privateSubnetName: pulumi.Input.fromValue(
+        map['privateSubnetName'] as String,
+      ),
+      publicIpName: pulumi.Input.fromValue(map['publicIpName'] as String),
+      publicSubnetName: pulumi.Input.fromValue(
+        map['publicSubnetName'] as String,
+      ),
+      storageAccountName: pulumi.Input.fromValue(
+        map['storageAccountName'] as String,
+      ),
+      storageAccountSkuName: pulumi.Input.fromValue(
+        map['storageAccountSkuName'] as String,
+      ),
+      virtualNetworkId: pulumi.Input.fromValue(
+        map['virtualNetworkId'] as String,
+      ),
+      vnetAddressPrefix: pulumi.Input.fromValue(
+        map['vnetAddressPrefix'] as String,
+      ),
     );
   }
 }
-

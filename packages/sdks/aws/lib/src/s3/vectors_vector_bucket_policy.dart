@@ -203,8 +203,10 @@ import 'vectors_vector_bucket_policy_state.dart';
 class VectorsVectorBucketPolicy extends pulumi.CustomResource {
   /// The policy document.
   late final pulumi.Output<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ARN of the vector bucket.
   ///
   /// The following arguments are optional:
@@ -219,14 +221,14 @@ class VectorsVectorBucketPolicy extends pulumi.CustomResource {
     VectorsVectorBucketPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/vectorsVectorBucketPolicy:VectorsVectorBucketPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
-    this.vectorBucketArn = registerOutput<String>('vectorBucketArn');
+         'aws:s3/vectorsVectorBucketPolicy:VectorsVectorBucketPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    vectorBucketArn = registerOutput<String>('vectorBucketArn');
   }
 
   /// Gets an existing [VectorsVectorBucketPolicy] resource's state with the given [name] and [id].
@@ -247,13 +249,13 @@ class VectorsVectorBucketPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/vectorsVectorBucketPolicy:VectorsVectorBucketPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policy = registerOutput<String>('policy');
-    this.region = registerOutput<String>('region');
-    this.vectorBucketArn = registerOutput<String>('vectorBucketArn');
+         'aws:s3/vectorsVectorBucketPolicy:VectorsVectorBucketPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+    vectorBucketArn = registerOutput<String>('vectorBucketArn');
   }
 }

@@ -1,5 +1,3 @@
-library module_ebs;
-
 export 'ebs/dedicated_block_storage_cluster.dart';
 export 'ebs/dedicated_block_storage_cluster_args.dart';
 export 'ebs/dedicated_block_storage_cluster_state.dart';

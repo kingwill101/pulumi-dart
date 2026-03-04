@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWorkflowRunActionExpressionTracesArgs {
   /// The workflow action name.
   final pulumi.Input<String> actionName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The workflow run name.
   final pulumi.Input<String> runName;
+
   /// The workflow name.
   final pulumi.Input<String> workflowName;
 
@@ -37,13 +40,16 @@ class ListWorkflowRunActionExpressionTracesArgs {
     };
   }
 
-  factory ListWorkflowRunActionExpressionTracesArgs.fromMap(Map<String, dynamic> map) {
+  factory ListWorkflowRunActionExpressionTracesArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListWorkflowRunActionExpressionTracesArgs(
-      actionName: (map['actionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      runName: (map['runName'] as String).input(),
-      workflowName: (map['workflowName'] as String).input(),
+      actionName: pulumi.Input.fromValue(map['actionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      runName: pulumi.Input.fromValue(map['runName'] as String),
+      workflowName: pulumi.Input.fromValue(map['workflowName'] as String),
     );
   }
 }
-

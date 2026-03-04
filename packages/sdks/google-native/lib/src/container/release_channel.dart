@@ -10,20 +10,27 @@ class ReleaseChannel {
 
   /// Creates a new [ReleaseChannel].
   /// [channel] channel specifies which release channel the cluster is subscribed to.
-  ReleaseChannel({
-    this.channel,
-  });
+  ReleaseChannel({this.channel});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'channel': ?pulumi.Input.mapOptionalInputValue<ReleaseChannelChannel, String>(channel, (value) => value.value),
+      'channel':
+          ?pulumi.Input.mapOptionalInputValue<ReleaseChannelChannel, String>(
+            channel,
+            (value) => value.wireValue,
+          ),
     };
   }
 
   factory ReleaseChannel.fromMap(Map<String, dynamic> map) {
     return ReleaseChannel(
-      channel: map['channel'] == null ? null : (ReleaseChannelChannel.fromValue(map['channel']! as String)).input(),
+      channel: (() {
+        final guardedValue = map['channel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReleaseChannelChannel.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1DatastoreConfigResponse {
   /// Name of the Cloud Storage bucket. Required for `gcs` target_type.
   final pulumi.Input<String> bucketName;
+
   /// BigQuery dataset name Required for `bigquery` target_type.
   final pulumi.Input<String> datasetName;
+
   /// Path of Cloud Storage bucket Required for `gcs` target_type.
   final pulumi.Input<String> path;
+
   /// GCP project in which the datastore exists
   final pulumi.Input<String> project;
+
   /// Prefix of BigQuery table Required for `bigquery` target_type.
   final pulumi.Input<String> tablePrefix;
 
@@ -39,14 +43,15 @@ class GoogleCloudApigeeV1DatastoreConfigResponse {
     };
   }
 
-  factory GoogleCloudApigeeV1DatastoreConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1DatastoreConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1DatastoreConfigResponse(
-      bucketName: (map['bucketName'] as String).input(),
-      datasetName: (map['datasetName'] as String).input(),
-      path: (map['path'] as String).input(),
-      project: (map['project'] as String).input(),
-      tablePrefix: (map['tablePrefix'] as String).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      datasetName: pulumi.Input.fromValue(map['datasetName'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      tablePrefix: pulumi.Input.fromValue(map['tablePrefix'] as String),
     );
   }
 }
-

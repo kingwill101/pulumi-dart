@@ -7,6 +7,7 @@ import 'get_health_check_templates_template.dart';
 class GetHealthCheckTemplatesResult {
   final List<String>? healthCheckTemplateIds;
   final String? healthCheckTemplateName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -44,21 +45,45 @@ class GetHealthCheckTemplatesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'templates': pulumi.Input.encodeList<GetHealthCheckTemplatesTemplate, Map<String, dynamic>>(templates, (value) => value.toMap()),
+      'templates':
+          pulumi.Input.encodeList<
+            GetHealthCheckTemplatesTemplate,
+            Map<String, dynamic>
+          >(templates, (value) => value.toMap()),
     };
   }
 
   factory GetHealthCheckTemplatesResult.fromMap(Map<String, dynamic> map) {
     return GetHealthCheckTemplatesResult(
-      healthCheckTemplateIds: map['healthCheckTemplateIds'] == null ? null : (map['healthCheckTemplateIds']! as List).cast<String>(),
-      healthCheckTemplateName: map['healthCheckTemplateName'] == null ? null : map['healthCheckTemplateName']! as String,
+      healthCheckTemplateIds: (() {
+        final guardedValue = map['healthCheckTemplateIds'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      healthCheckTemplateName: (() {
+        final guardedValue = map['healthCheckTemplateName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      templates: pulumi.Input.decodeList<GetHealthCheckTemplatesTemplate>(map['templates'], (value) => GetHealthCheckTemplatesTemplate.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      templates: pulumi.Input.decodeList<GetHealthCheckTemplatesTemplate>(
+        map['templates']!,
+        (value) => GetHealthCheckTemplatesTemplate.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

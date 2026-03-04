@@ -3,16 +3,15 @@ enum LifecycleTagStatus {
   untagged("untagged"),
   tagged("tagged");
 
-  const LifecycleTagStatus(this.value);
-  final String value;
+  const LifecycleTagStatus(this.wireValue);
+  final String wireValue;
 
   static LifecycleTagStatus fromValue(String value) {
     for (final item in LifecycleTagStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LifecycleTagStatus value: $value');
   }
 }
-

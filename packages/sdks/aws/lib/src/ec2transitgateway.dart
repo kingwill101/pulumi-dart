@@ -1,5 +1,3 @@
-library module_ec2transitgateway;
-
 export 'ec2transitgateway/connect.dart';
 export 'ec2transitgateway/connect_args.dart';
 export 'ec2transitgateway/connect_peer.dart';

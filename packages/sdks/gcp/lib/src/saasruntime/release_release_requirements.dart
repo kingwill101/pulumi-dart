@@ -11,9 +11,7 @@ class ReleaseReleaseRequirements {
 
   /// Creates a new [ReleaseReleaseRequirements].
   /// [upgradeableFromReleases] A list of releases from which a unit can be upgraded to this one
-  ReleaseReleaseRequirements({
-    this.upgradeableFromReleases,
-  });
+  ReleaseReleaseRequirements({this.upgradeableFromReleases});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,8 +21,11 @@ class ReleaseReleaseRequirements {
 
   factory ReleaseReleaseRequirements.fromMap(Map<String, dynamic> map) {
     return ReleaseReleaseRequirements(
-      upgradeableFromReleases: map['upgradeableFromReleases'] == null ? null : ((map['upgradeableFromReleases']! as List).cast<String>()).input(),
+      upgradeableFromReleases: (() {
+        final guardedValue = map['upgradeableFromReleases'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

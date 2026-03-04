@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiImportWsdlSelector {
   /// The name of endpoint (port) to import from WSDL.
   final pulumi.Input<String> endpointName;
+
   /// The name of service to import from WSDL.
   final pulumi.Input<String> serviceName;
 
@@ -25,9 +26,8 @@ class ApiImportWsdlSelector {
 
   factory ApiImportWsdlSelector.fromMap(Map<String, dynamic> map) {
     return ApiImportWsdlSelector(
-      endpointName: (map['endpointName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

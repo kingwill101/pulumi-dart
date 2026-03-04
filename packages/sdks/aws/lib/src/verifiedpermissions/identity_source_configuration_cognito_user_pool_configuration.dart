@@ -6,8 +6,13 @@ import 'identity_source_configuration_cognito_user_pool_configuration_group_conf
 class IdentitySourceConfigurationCognitoUserPoolConfiguration {
   /// The unique application client IDs that are associated with the specified Amazon Cognito user pool.
   final pulumi.Input<List<String>>? clientIds;
+
   /// The type of entity that a policy store maps to groups from an Amazon Cognito user pool identity source. See Group Configuration below.
-  final pulumi.Input<IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration>? groupConfiguration;
+  final pulumi.Input<
+    IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration
+  >?
+  groupConfiguration;
+
   /// The Amazon Resource Name (ARN) of the Amazon Cognito user pool that contains the identities to be authorized.
   final pulumi.Input<String> userPoolArn;
 
@@ -24,17 +29,34 @@ class IdentitySourceConfigurationCognitoUserPoolConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientIds': ?clientIds,
-      'groupConfiguration': ?pulumi.Input.mapOptionalInputValue<IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration, Map<String, dynamic>>(groupConfiguration, (value) => value.toMap()),
+      'groupConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration,
+            Map<String, dynamic>
+          >(groupConfiguration, (value) => value.toMap()),
       'userPoolArn': userPoolArn,
     };
   }
 
-  factory IdentitySourceConfigurationCognitoUserPoolConfiguration.fromMap(Map<String, dynamic> map) {
+  factory IdentitySourceConfigurationCognitoUserPoolConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdentitySourceConfigurationCognitoUserPoolConfiguration(
-      clientIds: map['clientIds'] == null ? null : (((map['clientIds'] as List).cast<String>()).input()).input(),
-      groupConfiguration: map['groupConfiguration'] == null ? null : ((IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration.fromMap((map['groupConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      userPoolArn: (map['userPoolArn'] as String).input(),
+      clientIds: (() {
+        final guardedValue = map['clientIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      groupConfiguration: (() {
+        final guardedValue = map['groupConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      userPoolArn: pulumi.Input.fromValue(map['userPoolArn'] as String),
     );
   }
 }
-

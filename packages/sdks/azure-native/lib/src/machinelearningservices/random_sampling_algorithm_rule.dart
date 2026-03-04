@@ -3,16 +3,15 @@ enum RandomSamplingAlgorithmRule {
   valueRandom("Random"),
   valueSobol("Sobol");
 
-  const RandomSamplingAlgorithmRule(this.value);
-  final String value;
+  const RandomSamplingAlgorithmRule(this.wireValue);
+  final String wireValue;
 
   static RandomSamplingAlgorithmRule fromValue(String value) {
     for (final item in RandomSamplingAlgorithmRule.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RandomSamplingAlgorithmRule value: $value');
   }
 }
-

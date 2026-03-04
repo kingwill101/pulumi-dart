@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendEnvironmentArgs {
   /// Unique ID for an Amplify app.
   final pulumi.Input<String> appId;
+
   /// Name of deployment artifacts.
   final pulumi.Input<String>? deploymentArtifacts;
+
   /// Name for the backend environment.
   final pulumi.Input<String> environmentName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// AWS CloudFormation stack name of a backend environment.
   final pulumi.Input<String>? stackName;
 
@@ -44,12 +48,23 @@ class BackendEnvironmentArgs {
 
   factory BackendEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return BackendEnvironmentArgs(
-      appId: (map['appId'] as String).input(),
-      deploymentArtifacts: map['deploymentArtifacts'] == null ? null : ((map['deploymentArtifacts'] as String).input()).input(),
-      environmentName: (map['environmentName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      stackName: map['stackName'] == null ? null : ((map['stackName'] as String).input()).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      deploymentArtifacts: (() {
+        final guardedValue = map['deploymentArtifacts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stackName: (() {
+        final guardedValue = map['stackName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

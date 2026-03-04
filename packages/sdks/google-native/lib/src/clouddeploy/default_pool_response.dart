@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefaultPoolResponse {
   /// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
   final pulumi.Input<String> artifactStorage;
+
   /// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used.
   final pulumi.Input<String> serviceAccount;
 
@@ -26,9 +27,8 @@ class DefaultPoolResponse {
 
   factory DefaultPoolResponse.fromMap(Map<String, dynamic> map) {
     return DefaultPoolResponse(
-      artifactStorage: (map['artifactStorage'] as String).input(),
-      serviceAccount: (map['serviceAccount'] as String).input(),
+      artifactStorage: pulumi.Input.fromValue(map['artifactStorage'] as String),
+      serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
     );
   }
 }
-

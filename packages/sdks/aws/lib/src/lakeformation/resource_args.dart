@@ -11,19 +11,25 @@ class ResourceArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> arn;
+
   /// Flag to enable AWS LakeFormation hybrid access permission mode.
   final pulumi.Input<bool>? hybridAccessEnabled;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Role that has read/write access to the resource.
   final pulumi.Input<String>? roleArn;
+
   /// Designates an AWS Identity and Access Management (IAM) service-linked role by registering this role with the Data Catalog.
   final pulumi.Input<bool>? useServiceLinkedRole;
+
   /// Whether or not the resource is a federated resource. Set to true when registering AWS Glue connections for federated catalog functionality.
   final pulumi.Input<bool>? withFederation;
+
   /// Boolean to grant the calling principal the permissions to perform all supported Lake Formation operations on the registered data location.
   ///
-  /// > **NOTE:** AWS does not support registering an S3 location with an IAM role and subsequently updating the S3 location registration to a service-linked role.
+  /// &gt; **NOTE:** AWS does not support registering an S3 location with an IAM role and subsequently updating the S3 location registration to a service-linked role.
   final pulumi.Input<bool>? withPrivilegedAccess;
 
   /// Creates a new [ResourceArgs].
@@ -58,14 +64,37 @@ class ResourceArgs {
 
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
-      arn: (map['arn'] as String).input(),
-      hybridAccessEnabled: map['hybridAccessEnabled'] == null ? null : ((map['hybridAccessEnabled'] as bool).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      useServiceLinkedRole: map['useServiceLinkedRole'] == null ? null : ((map['useServiceLinkedRole'] as bool).input()).input(),
-      withFederation: map['withFederation'] == null ? null : ((map['withFederation'] as bool).input()).input(),
-      withPrivilegedAccess: map['withPrivilegedAccess'] == null ? null : ((map['withPrivilegedAccess'] as bool).input()).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      hybridAccessEnabled: (() {
+        final guardedValue = map['hybridAccessEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      useServiceLinkedRole: (() {
+        final guardedValue = map['useServiceLinkedRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      withFederation: (() {
+        final guardedValue = map['withFederation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      withPrivilegedAccess: (() {
+        final guardedValue = map['withPrivilegedAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

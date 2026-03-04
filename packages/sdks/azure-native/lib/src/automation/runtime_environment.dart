@@ -169,22 +169,31 @@ import 'system_data_response.dart';
 class RuntimeEnvironment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of Default packages for Environment
   late final pulumi.Output<Map<String, String>?> defaultPackages;
+
   /// Gets or sets the description.
   late final pulumi.Output<String?> description;
+
   /// Language of Runtime Environment
   late final pulumi.Output<String?> language;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Version of Language
   late final pulumi.Output<String?> version;
 
@@ -197,20 +206,20 @@ class RuntimeEnvironment extends pulumi.CustomResource {
     RuntimeEnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:automation:RuntimeEnvironment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.defaultPackages = registerOutput<Map<String, String>?>('defaultPackages');
-    this.description = registerOutput<String?>('description');
-    this.language = registerOutput<String?>('language');
-    this.location = registerOutput<String>('location');
+         'azure-native:automation:RuntimeEnvironment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultPackages = registerOutput<Map<String, String>?>('defaultPackages');
+    description = registerOutput<String?>('description');
+    language = registerOutput<String?>('language');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String?>('version');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
   }
 }

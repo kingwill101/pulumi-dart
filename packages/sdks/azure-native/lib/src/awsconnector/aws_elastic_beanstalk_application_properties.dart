@@ -7,10 +7,13 @@ import 'application_resource_lifecycle_config.dart';
 class AwsElasticBeanstalkApplicationProperties {
   /// A name for the Elastic Beanstalk application. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the application name.
   final pulumi.Input<String>? applicationName;
+
   /// Your description of the application.
   final pulumi.Input<String>? description;
+
   /// Specifies an application resource lifecycle configuration to prevent your application from accumulating too many versions.
-  final pulumi.Input<ApplicationResourceLifecycleConfig>? resourceLifecycleConfig;
+  final pulumi.Input<ApplicationResourceLifecycleConfig>?
+  resourceLifecycleConfig;
 
   /// Creates a new [AwsElasticBeanstalkApplicationProperties].
   /// [applicationName] A name for the Elastic Beanstalk application. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the application name.
@@ -26,16 +29,37 @@ class AwsElasticBeanstalkApplicationProperties {
     return <String, dynamic>{
       'applicationName': ?applicationName,
       'description': ?description,
-      'resourceLifecycleConfig': ?pulumi.Input.mapOptionalInputValue<ApplicationResourceLifecycleConfig, Map<String, dynamic>>(resourceLifecycleConfig, (value) => value.toMap()),
+      'resourceLifecycleConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationResourceLifecycleConfig,
+            Map<String, dynamic>
+          >(resourceLifecycleConfig, (value) => value.toMap()),
     };
   }
 
-  factory AwsElasticBeanstalkApplicationProperties.fromMap(Map<String, dynamic> map) {
+  factory AwsElasticBeanstalkApplicationProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsElasticBeanstalkApplicationProperties(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      resourceLifecycleConfig: map['resourceLifecycleConfig'] == null ? null : (ApplicationResourceLifecycleConfig.fromMap((map['resourceLifecycleConfig']! as Map).cast<String, dynamic>())).input(),
+      applicationName: (() {
+        final guardedValue = map['applicationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceLifecycleConfig: (() {
+        final guardedValue = map['resourceLifecycleConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationResourceLifecycleConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -8,20 +8,15 @@ class GetLoadBalancerAlgorithm {
 
   /// Creates a new [GetLoadBalancerAlgorithm].
   /// [type] (string) Type of the target. `server` or `label_selector`
-  GetLoadBalancerAlgorithm({
-    required this.type,
-  });
+  GetLoadBalancerAlgorithm({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory GetLoadBalancerAlgorithm.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerAlgorithm(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

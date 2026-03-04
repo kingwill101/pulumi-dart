@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateArgs {
   /// ID of the certificate.
   final pulumi.Input<int>? id;
+
   /// Name of the certificate.
   final pulumi.Input<String>? name;
+
   /// [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   final pulumi.Input<String>? withSelector;
 
@@ -18,11 +20,7 @@ class GetCertificateArgs {
   /// [id] ID of the certificate.
   /// [name] Name of the certificate.
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetCertificateArgs({
-    this.id,
-    this.name,
-    this.withSelector,
-  });
+  GetCertificateArgs({this.id, this.name, this.withSelector});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,21 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      id: map['id'] == null ? null : (map['id']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

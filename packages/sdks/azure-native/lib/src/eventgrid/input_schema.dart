@@ -4,16 +4,15 @@ enum InputSchema {
   valueCustomEventSchema("CustomEventSchema"),
   valueCloudEventSchemaV10("CloudEventSchemaV1_0");
 
-  const InputSchema(this.value);
-  final String value;
+  const InputSchema(this.wireValue);
+  final String wireValue;
 
   static InputSchema fromValue(String value) {
     for (final item in InputSchema.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InputSchema value: $value');
   }
 }
-

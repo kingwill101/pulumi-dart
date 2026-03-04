@@ -1,5 +1,3 @@
-library module_datalakeanalytics;
-
 export 'datalakeanalytics/aadobject_type.dart';
 export 'datalakeanalytics/account.dart';
 export 'datalakeanalytics/account_args.dart';

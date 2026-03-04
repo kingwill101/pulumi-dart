@@ -22,7 +22,7 @@ import 'get_zones_result.dart';
 
 /// This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.133.0+.
+/// &gt; **NOTE:** Available in v1.133.0+.
 ///
 /// ## Example Usage
 ///
@@ -162,7 +162,7 @@ Future<GetAclsResult> getAcls(
 
 /// This data source provides Alb Ascript available to the user.
 ///
-/// > **NOTE:** Available in 1.195.0+
+/// &gt; **NOTE:** Available in 1.195.0+
 ///
 /// ## Example Usage
 ///
@@ -302,7 +302,7 @@ Future<GetAscriptsResult> getAscripts(
 
 /// This data source provides the Alb Health Check Templates of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.134.0+.
+/// &gt; **NOTE:** Available in v1.134.0+.
 ///
 /// ## Example Usage
 ///
@@ -457,7 +457,7 @@ Future<GetHealthCheckTemplatesResult> getHealthCheckTemplates(
 
 /// This data source provides the Application Load Balancer (ALB) Listeners of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.133.0+.
+/// &gt; **NOTE:** Available in v1.133.0+.
 ///
 /// ## Example Usage
 ///
@@ -582,7 +582,7 @@ Future<GetListenersResult> getListeners(
 
 /// This data source provides the Alb Load Balancers of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.132.0.
+/// &gt; **NOTE:** Available since v1.132.0.
 ///
 /// ## Example Usage
 ///
@@ -1193,7 +1193,7 @@ Future<GetLoadBalancersResult> getLoadBalancers(
 
 /// This data source provides the Alb Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.133.0.
+/// &gt; **NOTE:** Available since v1.133.0.
 ///
 /// ## Example Usage
 ///
@@ -1946,7 +1946,7 @@ Future<GetRulesResult> getRules(
 
 /// This data source provides the Alb Security Policies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.130.0+.
+/// &gt; **NOTE:** Available in v1.130.0+.
 ///
 /// ## Example Usage
 ///
@@ -2086,7 +2086,7 @@ Future<GetSecurityPoliciesResult> getSecurityPolicies(
 
 /// This data source provides the Alb Server Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.131.0.
+/// &gt; **NOTE:** Available since v1.131.0.
 ///
 /// ## Example Usage
 ///
@@ -2341,7 +2341,7 @@ Future<GetServerGroupsResult> getServerGroups(
 
 /// This data source provides the ALB System Security Policies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.183.0+.
+/// &gt; **NOTE:** Available in v1.183.0+.
 ///
 /// ## Example Usage
 ///
@@ -2466,7 +2466,7 @@ Future<GetSystemSecurityPoliciesResult> getSystemSecurityPolicies(
 
 /// This data source provides the available zones with the Application Load Balancer (ALB) Instance of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.132.0+.
+/// &gt; **NOTE:** Available in v1.132.0+.
 ///
 /// ## Example Usage
 ///

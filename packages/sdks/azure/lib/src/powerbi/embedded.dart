@@ -160,7 +160,7 @@ import 'embedded_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.PowerBIDedicated` - 2021-01-01
@@ -175,16 +175,22 @@ import 'embedded_state.dart';
 class Embedded extends pulumi.CustomResource {
   /// A set of administrator user identities, which manages the Power BI Embedded and must be a member user or a service principal in your AAD tenant.
   late final pulumi.Output<List<String>> administrators;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Sets the PowerBI Embedded's mode. Possible values include: `Gen1`, `Gen2`. Defaults to `Gen1`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> mode;
+
   /// The name of the PowerBI Embedded. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the PowerBI Embedded should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Sets the PowerBI Embedded's pricing level's SKU. Possible values include: `A1`, `A2`, `A3`, `A4`, `A5`, `A6`, `A7` and `A8`.
   late final pulumi.Output<String> skuName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -197,18 +203,18 @@ class Embedded extends pulumi.CustomResource {
     EmbeddedArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:powerbi/embedded:Embedded',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administrators = registerOutput<List<String>>('administrators');
-    this.location = registerOutput<String>('location');
-    this.mode = registerOutput<String?>('mode');
+         'azure:powerbi/embedded:Embedded',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administrators = registerOutput<List<String>>('administrators');
+    location = registerOutput<String>('location');
+    mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Embedded] resource's state with the given [name] and [id].
@@ -229,17 +235,17 @@ class Embedded extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:powerbi/embedded:Embedded',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administrators = registerOutput<List<String>>('administrators');
-    this.location = registerOutput<String>('location');
-    this.mode = registerOutput<String?>('mode');
+         'azure:powerbi/embedded:Embedded',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administrators = registerOutput<List<String>>('administrators');
+    location = registerOutput<String>('location');
+    mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.skuName = registerOutput<String>('skuName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

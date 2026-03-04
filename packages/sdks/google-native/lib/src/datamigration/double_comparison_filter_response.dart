@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DoubleComparisonFilterResponse {
   /// Double compare value to be used
   final pulumi.Input<double> value;
+
   /// Relation between source value and compare value
   final pulumi.Input<String> valueComparison;
 
@@ -26,9 +27,8 @@ class DoubleComparisonFilterResponse {
 
   factory DoubleComparisonFilterResponse.fromMap(Map<String, dynamic> map) {
     return DoubleComparisonFilterResponse(
-      value: (map['value'] as double).input(),
-      valueComparison: (map['valueComparison'] as String).input(),
+      value: pulumi.Input.fromValue(map['value'] as double),
+      valueComparison: pulumi.Input.fromValue(map['valueComparison'] as String),
     );
   }
 }
-

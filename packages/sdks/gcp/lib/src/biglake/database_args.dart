@@ -10,11 +10,14 @@ import 'database_hive_options.dart';
 class DatabaseArgs {
   /// The parent catalog.
   final pulumi.Input<String> catalog;
+
   /// Options of a Hive database.
   /// Structure is documented below.
   final pulumi.Input<DatabaseHiveOptions> hiveOptions;
+
   /// The name of the database.
   final pulumi.Input<String>? name;
+
   /// The database type.
   final pulumi.Input<String> type;
 
@@ -33,7 +36,11 @@ class DatabaseArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'catalog': catalog,
-      'hiveOptions': pulumi.Input.mapInputValue<DatabaseHiveOptions, Map<String, dynamic>>(hiveOptions, (value) => value.toMap()),
+      'hiveOptions':
+          pulumi.Input.mapInputValue<DatabaseHiveOptions, Map<String, dynamic>>(
+            hiveOptions,
+            (value) => value.toMap(),
+          ),
       'name': ?name,
       'type': type,
     };
@@ -41,11 +48,18 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      catalog: (map['catalog'] as String).input(),
-      hiveOptions: (DatabaseHiveOptions.fromMap((map['hiveOptions'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: (map['type'] as String).input(),
+      catalog: pulumi.Input.fromValue(map['catalog'] as String),
+      hiveOptions: pulumi.Input.fromValue(
+        DatabaseHiveOptions.fromMap(
+          (map['hiveOptions']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -8,29 +8,50 @@ import 'file_system_http_logs_config.dart';
 class HttpLogsConfig {
   /// Http logs to azure blob storage configuration.
   final pulumi.Input<AzureBlobStorageHttpLogsConfig>? azureBlobStorage;
+
   /// Http logs to file system configuration.
   final pulumi.Input<FileSystemHttpLogsConfig>? fileSystem;
 
   /// Creates a new [HttpLogsConfig].
   /// [azureBlobStorage] Http logs to azure blob storage configuration.
   /// [fileSystem] Http logs to file system configuration.
-  HttpLogsConfig({
-    this.azureBlobStorage,
-    this.fileSystem,
-  });
+  HttpLogsConfig({this.azureBlobStorage, this.fileSystem});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureBlobStorage': ?pulumi.Input.mapOptionalInputValue<AzureBlobStorageHttpLogsConfig, Map<String, dynamic>>(azureBlobStorage, (value) => value.toMap()),
-      'fileSystem': ?pulumi.Input.mapOptionalInputValue<FileSystemHttpLogsConfig, Map<String, dynamic>>(fileSystem, (value) => value.toMap()),
+      'azureBlobStorage':
+          ?pulumi.Input.mapOptionalInputValue<
+            AzureBlobStorageHttpLogsConfig,
+            Map<String, dynamic>
+          >(azureBlobStorage, (value) => value.toMap()),
+      'fileSystem':
+          ?pulumi.Input.mapOptionalInputValue<
+            FileSystemHttpLogsConfig,
+            Map<String, dynamic>
+          >(fileSystem, (value) => value.toMap()),
     };
   }
 
   factory HttpLogsConfig.fromMap(Map<String, dynamic> map) {
     return HttpLogsConfig(
-      azureBlobStorage: map['azureBlobStorage'] == null ? null : (AzureBlobStorageHttpLogsConfig.fromMap((map['azureBlobStorage']! as Map).cast<String, dynamic>())).input(),
-      fileSystem: map['fileSystem'] == null ? null : (FileSystemHttpLogsConfig.fromMap((map['fileSystem']! as Map).cast<String, dynamic>())).input(),
+      azureBlobStorage: (() {
+        final guardedValue = map['azureBlobStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AzureBlobStorageHttpLogsConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fileSystem: (() {
+        final guardedValue = map['fileSystem'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FileSystemHttpLogsConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class PipelineJobBackfillPipelineJob {
 
   /// Creates a new [PipelineJobBackfillPipelineJob].
   /// [mappingPipelineJob] Specifies the mapping pipeline job to backfill, the name format
-  PipelineJobBackfillPipelineJob({
-    this.mappingPipelineJob,
-  });
+  PipelineJobBackfillPipelineJob({this.mappingPipelineJob});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mappingPipelineJob': ?mappingPipelineJob,
-    };
+    return <String, dynamic>{'mappingPipelineJob': ?mappingPipelineJob};
   }
 
   factory PipelineJobBackfillPipelineJob.fromMap(Map<String, dynamic> map) {
     return PipelineJobBackfillPipelineJob(
-      mappingPipelineJob: map['mappingPipelineJob'] == null ? null : (map['mappingPipelineJob']! as String).input(),
+      mappingPipelineJob: (() {
+        final guardedValue = map['mappingPipelineJob'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

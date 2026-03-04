@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrafficPolicyDocumentRuleLocation {
   /// Value of a continent.
   final pulumi.Input<String>? continent;
+
   /// Value of a country.
   final pulumi.Input<String>? country;
+
   /// References to an endpoint.
   final pulumi.Input<String>? endpointReference;
+
   /// Indicates whether you want Amazon Route 53 to evaluate the health of the endpoint and route traffic only to healthy endpoints.
   final pulumi.Input<bool>? evaluateTargetHealth;
+
   /// If you want to associate a health check with the endpoint or rule.
   final pulumi.Input<String>? healthCheck;
+
   /// Indicates whether this set of values represents the default location.
   final pulumi.Input<bool>? isDefault;
+
   /// References to a rule.
   final pulumi.Input<String>? ruleReference;
+
   /// Value of a subdivision.
   final pulumi.Input<String>? subdivision;
 
@@ -53,17 +60,50 @@ class GetTrafficPolicyDocumentRuleLocation {
     };
   }
 
-  factory GetTrafficPolicyDocumentRuleLocation.fromMap(Map<String, dynamic> map) {
+  factory GetTrafficPolicyDocumentRuleLocation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTrafficPolicyDocumentRuleLocation(
-      continent: map['continent'] == null ? null : ((map['continent'] as String).input()).input(),
-      country: map['country'] == null ? null : ((map['country'] as String).input()).input(),
-      endpointReference: map['endpointReference'] == null ? null : ((map['endpointReference'] as String).input()).input(),
-      evaluateTargetHealth: map['evaluateTargetHealth'] == null ? null : ((map['evaluateTargetHealth'] as bool).input()).input(),
-      healthCheck: map['healthCheck'] == null ? null : ((map['healthCheck'] as String).input()).input(),
-      isDefault: map['isDefault'] == null ? null : ((map['isDefault'] as bool).input()).input(),
-      ruleReference: map['ruleReference'] == null ? null : ((map['ruleReference'] as String).input()).input(),
-      subdivision: map['subdivision'] == null ? null : ((map['subdivision'] as String).input()).input(),
+      continent: (() {
+        final guardedValue = map['continent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      country: (() {
+        final guardedValue = map['country'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointReference: (() {
+        final guardedValue = map['endpointReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      evaluateTargetHealth: (() {
+        final guardedValue = map['evaluateTargetHealth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      healthCheck: (() {
+        final guardedValue = map['healthCheck'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isDefault: (() {
+        final guardedValue = map['isDefault'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ruleReference: (() {
+        final guardedValue = map['ruleReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subdivision: (() {
+        final guardedValue = map['subdivision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

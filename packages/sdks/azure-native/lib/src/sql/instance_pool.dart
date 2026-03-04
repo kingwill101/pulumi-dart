@@ -368,24 +368,34 @@ import 'sku_response.dart';
 class InstancePool extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The Dns Zone that the managed instance pool is in.
   late final pulumi.Output<String> dnsZone;
+
   /// The license type. Possible values are 'LicenseIncluded' (price for SQL license is included) and 'BasePrice' (without SQL license price).
   late final pulumi.Output<String> licenseType;
+
   /// Resource location.
   late final pulumi.Output<String> location;
+
   /// Specifies maintenance configuration id to apply to this managed instance.
   late final pulumi.Output<String?> maintenanceConfigurationId;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The name and tier of the SKU.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Resource ID of the subnet to place this instance pool in.
   late final pulumi.Output<String> subnetId;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// Count of vCores belonging to this instance pool.
   late final pulumi.Output<int> vCores;
 
@@ -398,21 +408,23 @@ class InstancePool extends pulumi.CustomResource {
     InstancePoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:InstancePool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dnsZone = registerOutput<String>('dnsZone');
-    this.licenseType = registerOutput<String>('licenseType');
-    this.location = registerOutput<String>('location');
-    this.maintenanceConfigurationId = registerOutput<String?>('maintenanceConfigurationId');
+         'azure-native:sql:InstancePool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dnsZone = registerOutput<String>('dnsZone');
+    licenseType = registerOutput<String>('licenseType');
+    location = registerOutput<String>('location');
+    maintenanceConfigurationId = registerOutput<String?>(
+      'maintenanceConfigurationId',
+    );
     this.name = registerOutput<String>('name');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.vCores = registerOutput<int>('vCores');
+    sku = registerOutput<SkuResponse?>('sku');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    vCores = registerOutput<int>('vCores');
   }
 }

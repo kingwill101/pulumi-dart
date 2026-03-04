@@ -5,9 +5,16 @@ import 'web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_c
 
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallenge {
   /// Block for the list of the regular expressions to match against the web request URI, used to identify requests that can't handle a silent browser challenge.
-  final pulumi.Input<List<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression>>? exemptUriRegularExpressions;
+  final pulumi.Input<
+    List<
+      WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression
+    >
+  >?
+  exemptUriRegularExpressions;
+
   /// Sensitivity that the rule group rule ChallengeDDoSRequests uses when matching against the DDoS suspicion labeling on a request. Valid values are `LOW`, `MEDIUM` and `HIGH` (Default).
   final pulumi.Input<String>? sensitivity;
+
   /// Configuration whether to use the `AWSManagedRulesAntiDDoSRuleSet` rules `ChallengeAllDuringEvent` and `ChallengeDDoSRequests` in the rule group evaluation. Valid values are `ENABLED` and `DISABLED`.
   final pulumi.Input<String> usageOfAction;
 
@@ -23,18 +30,50 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exemptUriRegularExpressions': ?pulumi.Input.mapOptionalInputValue<List<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression>, List<Map<String, dynamic>>>(exemptUriRegularExpressions, (value) => pulumi.Input.encodeList<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'exemptUriRegularExpressions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression
+            >,
+            List<Map<String, dynamic>>
+          >(
+            exemptUriRegularExpressions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'sensitivity': ?sensitivity,
       'usageOfAction': usageOfAction,
     };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallenge.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallenge.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallenge(
-      exemptUriRegularExpressions: map['exemptUriRegularExpressions'] == null ? null : ((pulumi.Input.decodeList<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression>(map['exemptUriRegularExpressions']!, (value) => WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      sensitivity: map['sensitivity'] == null ? null : ((map['sensitivity'] as String).input()).input(),
-      usageOfAction: (map['usageOfAction'] as String).input(),
+      exemptUriRegularExpressions: (() {
+        final guardedValue = map['exemptUriRegularExpressions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression
+          >(
+            guardedValue,
+            (value) =>
+                WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfigChallengeExemptUriRegularExpression.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      sensitivity: (() {
+        final guardedValue = map['sensitivity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      usageOfAction: pulumi.Input.fromValue(map['usageOfAction'] as String),
     );
   }
 }
-

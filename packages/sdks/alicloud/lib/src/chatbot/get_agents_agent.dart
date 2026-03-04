@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAgentsAgent {
   /// The agent id.
   final pulumi.Input<String> agentId;
+
   /// Service space signature, which is used when PAAS interface specifies the service space.
   final pulumi.Input<String> agentKey;
+
   /// The name of the agent.
   final pulumi.Input<String> agentName;
+
   /// ID of the agent.
   final pulumi.Input<String> id;
 
@@ -35,11 +38,10 @@ class GetAgentsAgent {
 
   factory GetAgentsAgent.fromMap(Map<String, dynamic> map) {
     return GetAgentsAgent(
-      agentId: (map['agentId'] as String).input(),
-      agentKey: (map['agentKey'] as String).input(),
-      agentName: (map['agentName'] as String).input(),
-      id: (map['id'] as String).input(),
+      agentId: pulumi.Input.fromValue(map['agentId'] as String),
+      agentKey: pulumi.Input.fromValue(map['agentKey'] as String),
+      agentName: pulumi.Input.fromValue(map['agentName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

@@ -15,11 +15,7 @@ class GetTopicArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [topicId] Required.
-  GetTopicArgs({
-    required this.location,
-    this.project,
-    required this.topicId,
-  });
+  GetTopicArgs({required this.location, this.project, required this.topicId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +27,13 @@ class GetTopicArgs {
 
   factory GetTopicArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      topicId: (map['topicId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topicId: pulumi.Input.fromValue(map['topicId'] as String),
     );
   }
 }
-

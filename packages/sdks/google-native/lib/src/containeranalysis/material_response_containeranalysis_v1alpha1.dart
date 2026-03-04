@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MaterialResponseContaineranalysisV1alpha1 {
   /// digest is a map from a hash algorithm (e.g. sha256) to the value in the material
   final pulumi.Input<Map<String, String>> digest;
+
   /// uri is the uri of the material
   final pulumi.Input<String> uri;
 
@@ -18,17 +19,17 @@ class MaterialResponseContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'digest': digest,
-      'uri': uri,
-    };
+    return <String, dynamic>{'digest': digest, 'uri': uri};
   }
 
-  factory MaterialResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory MaterialResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MaterialResponseContaineranalysisV1alpha1(
-      digest: ((map['digest'] as Map).cast<String, String>()).input(),
-      uri: (map['uri'] as String).input(),
+      digest: pulumi.Input.fromValue(
+        (map['digest'] as Map).cast<String, String>(),
+      ),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

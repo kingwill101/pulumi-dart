@@ -5,16 +5,20 @@ enum GoogleIamV1AuditLogConfigLogTypeNetworksecurityV1beta1 {
   dataWrite("DATA_WRITE"),
   dataRead("DATA_READ");
 
-  const GoogleIamV1AuditLogConfigLogTypeNetworksecurityV1beta1(this.value);
-  final String value;
+  const GoogleIamV1AuditLogConfigLogTypeNetworksecurityV1beta1(this.wireValue);
+  final String wireValue;
 
-  static GoogleIamV1AuditLogConfigLogTypeNetworksecurityV1beta1 fromValue(String value) {
-    for (final item in GoogleIamV1AuditLogConfigLogTypeNetworksecurityV1beta1.values) {
-      if (item.value == value) {
+  static GoogleIamV1AuditLogConfigLogTypeNetworksecurityV1beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleIamV1AuditLogConfigLogTypeNetworksecurityV1beta1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleIamV1AuditLogConfigLogTypeNetworksecurityV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown GoogleIamV1AuditLogConfigLogTypeNetworksecurityV1beta1 value: $value',
+    );
   }
 }
-

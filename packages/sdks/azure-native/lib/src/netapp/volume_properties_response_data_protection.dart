@@ -10,10 +10,13 @@ import 'volume_snapshot_properties_response.dart';
 class VolumePropertiesResponseDataProtection {
   /// Backup Properties
   final pulumi.Input<VolumeBackupPropertiesResponse>? backup;
+
   /// Replication properties
   final pulumi.Input<ReplicationObjectResponse>? replication;
+
   /// Snapshot properties.
   final pulumi.Input<VolumeSnapshotPropertiesResponse>? snapshot;
+
   /// VolumeRelocation properties
   final pulumi.Input<VolumeRelocationPropertiesResponse>? volumeRelocation;
 
@@ -31,20 +34,69 @@ class VolumePropertiesResponseDataProtection {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backup': ?pulumi.Input.mapOptionalInputValue<VolumeBackupPropertiesResponse, Map<String, dynamic>>(backup, (value) => value.toMap()),
-      'replication': ?pulumi.Input.mapOptionalInputValue<ReplicationObjectResponse, Map<String, dynamic>>(replication, (value) => value.toMap()),
-      'snapshot': ?pulumi.Input.mapOptionalInputValue<VolumeSnapshotPropertiesResponse, Map<String, dynamic>>(snapshot, (value) => value.toMap()),
-      'volumeRelocation': ?pulumi.Input.mapOptionalInputValue<VolumeRelocationPropertiesResponse, Map<String, dynamic>>(volumeRelocation, (value) => value.toMap()),
+      'backup':
+          ?pulumi.Input.mapOptionalInputValue<
+            VolumeBackupPropertiesResponse,
+            Map<String, dynamic>
+          >(backup, (value) => value.toMap()),
+      'replication':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReplicationObjectResponse,
+            Map<String, dynamic>
+          >(replication, (value) => value.toMap()),
+      'snapshot':
+          ?pulumi.Input.mapOptionalInputValue<
+            VolumeSnapshotPropertiesResponse,
+            Map<String, dynamic>
+          >(snapshot, (value) => value.toMap()),
+      'volumeRelocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            VolumeRelocationPropertiesResponse,
+            Map<String, dynamic>
+          >(volumeRelocation, (value) => value.toMap()),
     };
   }
 
-  factory VolumePropertiesResponseDataProtection.fromMap(Map<String, dynamic> map) {
+  factory VolumePropertiesResponseDataProtection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VolumePropertiesResponseDataProtection(
-      backup: map['backup'] == null ? null : (VolumeBackupPropertiesResponse.fromMap((map['backup']! as Map).cast<String, dynamic>())).input(),
-      replication: map['replication'] == null ? null : (ReplicationObjectResponse.fromMap((map['replication']! as Map).cast<String, dynamic>())).input(),
-      snapshot: map['snapshot'] == null ? null : (VolumeSnapshotPropertiesResponse.fromMap((map['snapshot']! as Map).cast<String, dynamic>())).input(),
-      volumeRelocation: map['volumeRelocation'] == null ? null : (VolumeRelocationPropertiesResponse.fromMap((map['volumeRelocation']! as Map).cast<String, dynamic>())).input(),
+      backup: (() {
+        final guardedValue = map['backup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VolumeBackupPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      replication: (() {
+        final guardedValue = map['replication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReplicationObjectResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      snapshot: (() {
+        final guardedValue = map['snapshot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VolumeSnapshotPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      volumeRelocation: (() {
+        final guardedValue = map['volumeRelocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VolumeRelocationPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -4,19 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines the port condition that needs to be matched.
 class AccessControlListPortConditionResponse {
-  /// List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+  /// List of protocol flags that need to be matched. Example: established | initial | &lt;List-of-TCP-flags&gt;. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
   final pulumi.Input<List<String>>? flags;
+
   /// Layer4 protocol type that needs to be matched.
   final pulumi.Input<String> layer4Protocol;
+
   /// List of the port Group Names that need to be matched.
   final pulumi.Input<List<String>>? portGroupNames;
+
   /// Port type that needs to be matched.
   final pulumi.Input<String>? portType;
+
   /// List of the Ports that need to be matched.
   final pulumi.Input<List<String>>? ports;
 
   /// Creates a new [AccessControlListPortConditionResponse].
-  /// [flags] List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
+  /// [flags] List of protocol flags that need to be matched. Example: established | initial | &lt;List-of-TCP-flags&gt;. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
   /// [layer4Protocol] Layer4 protocol type that needs to be matched.
   /// [portGroupNames] List of the port Group Names that need to be matched.
   /// [portType] Port type that needs to be matched.
@@ -39,14 +43,31 @@ class AccessControlListPortConditionResponse {
     };
   }
 
-  factory AccessControlListPortConditionResponse.fromMap(Map<String, dynamic> map) {
+  factory AccessControlListPortConditionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccessControlListPortConditionResponse(
-      flags: map['flags'] == null ? null : ((map['flags']! as List).cast<String>()).input(),
-      layer4Protocol: (map['layer4Protocol'] as String).input(),
-      portGroupNames: map['portGroupNames'] == null ? null : ((map['portGroupNames']! as List).cast<String>()).input(),
-      portType: map['portType'] == null ? null : (map['portType']! as String).input(),
-      ports: map['ports'] == null ? null : ((map['ports']! as List).cast<String>()).input(),
+      flags: (() {
+        final guardedValue = map['flags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      layer4Protocol: pulumi.Input.fromValue(map['layer4Protocol'] as String),
+      portGroupNames: (() {
+        final guardedValue = map['portGroupNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      portType: (() {
+        final guardedValue = map['portType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ports: (() {
+        final guardedValue = map['ports'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

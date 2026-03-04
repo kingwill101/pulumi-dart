@@ -9,20 +9,13 @@ class DaemonEndpoint {
 
   /// Creates a new [DaemonEndpoint].
   /// [port] Port number of the given endpoint.
-  DaemonEndpoint({
-    required this.port,
-  });
+  DaemonEndpoint({required this.port});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'Port': port,
-    };
+    return <String, dynamic>{'Port': port};
   }
 
   factory DaemonEndpoint.fromMap(Map<String, dynamic> map) {
-    return DaemonEndpoint(
-      port: (map['Port'] as int).input(),
-    );
+    return DaemonEndpoint(port: pulumi.Input.fromValue(map['Port'] as int));
   }
 }
-

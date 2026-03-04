@@ -3,14 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDicomServiceAuthentication {
-  /// The intended audience to receive authentication tokens for the service. The default value is <https://dicom.azurehealthcareapis.azure.com>
+  /// The intended audience to receive authentication tokens for the service. The default value is &lt;https://dicom.azurehealthcareapis.azure.com&gt;
   final pulumi.Input<List<String>> audiences;
+
   /// The Azure Active Directory (tenant) that serves as the authentication authority to access the service. The default authority is the Directory defined in the authentication scheme in use when running Terraform.
-  /// Authority must be registered to Azure AD and in the following format: <https://{Azure-AD-endpoint}/{tenant-id>}.
+  /// Authority must be registered to Azure AD and in the following format: &lt;https://{Azure-AD-endpoint}/{tenant-id&gt;}.
   final pulumi.Input<String> authority;
 
   /// Creates a new [GetDicomServiceAuthentication].
-  /// [audiences] The intended audience to receive authentication tokens for the service. The default value is <https://dicom.azurehealthcareapis.azure.com>
+  /// [audiences] The intended audience to receive authentication tokens for the service. The default value is &lt;https://dicom.azurehealthcareapis.azure.com&gt;
   /// [authority] The Azure Active Directory (tenant) that serves as the authentication authority to access the service. The default authority is the Directory defined in the authentication scheme in use when running Terraform.
   GetDicomServiceAuthentication({
     required this.audiences,
@@ -18,17 +19,15 @@ class GetDicomServiceAuthentication {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'audiences': audiences,
-      'authority': authority,
-    };
+    return <String, dynamic>{'audiences': audiences, 'authority': authority};
   }
 
   factory GetDicomServiceAuthentication.fromMap(Map<String, dynamic> map) {
     return GetDicomServiceAuthentication(
-      audiences: ((map['audiences'] as List).cast<String>()).input(),
-      authority: (map['authority'] as String).input(),
+      audiences: pulumi.Input.fromValue(
+        (map['audiences'] as List).cast<String>(),
+      ),
+      authority: pulumi.Input.fromValue(map['authority'] as String),
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'google_cloud_integrations_v1alpha_value_type.dart';
 class GoogleCloudIntegrationsV1alphaParameterMapField {
   /// Passing a literal value.
   final pulumi.Input<GoogleCloudIntegrationsV1alphaValueType>? literalValue;
+
   /// Referencing one of the Integration variables.
   final pulumi.Input<String>? referenceKey;
 
@@ -20,16 +21,33 @@ class GoogleCloudIntegrationsV1alphaParameterMapField {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'literalValue': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIntegrationsV1alphaValueType, Map<String, dynamic>>(literalValue, (value) => value.toMap()),
+      'literalValue':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudIntegrationsV1alphaValueType,
+            Map<String, dynamic>
+          >(literalValue, (value) => value.toMap()),
       'referenceKey': ?referenceKey,
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaParameterMapField.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaParameterMapField.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaParameterMapField(
-      literalValue: map['literalValue'] == null ? null : (GoogleCloudIntegrationsV1alphaValueType.fromMap((map['literalValue']! as Map).cast<String, dynamic>())).input(),
-      referenceKey: map['referenceKey'] == null ? null : (map['referenceKey']! as String).input(),
+      literalValue: (() {
+        final guardedValue = map['literalValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudIntegrationsV1alphaValueType.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      referenceKey: (() {
+        final guardedValue = map['referenceKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

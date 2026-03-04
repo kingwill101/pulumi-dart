@@ -10,14 +10,19 @@ import 'classifier_xml_classifier.dart';
 class ClassifierState {
   /// A classifier for CSV content. Defined below.
   final pulumi.Input<ClassifierCsvClassifier>? csvClassifier;
+
   /// A classifier that uses grok patterns. Defined below.
   final pulumi.Input<ClassifierGrokClassifier>? grokClassifier;
+
   /// A classifier for JSON content. Defined below.
   final pulumi.Input<ClassifierJsonClassifier>? jsonClassifier;
+
   /// The name of the classifier.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A classifier for XML content. Defined below.
   final pulumi.Input<ClassifierXmlClassifier>? xmlClassifier;
 
@@ -39,24 +44,79 @@ class ClassifierState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'csvClassifier': ?pulumi.Input.mapOptionalInputValue<ClassifierCsvClassifier, Map<String, dynamic>>(csvClassifier, (value) => value.toMap()),
-      'grokClassifier': ?pulumi.Input.mapOptionalInputValue<ClassifierGrokClassifier, Map<String, dynamic>>(grokClassifier, (value) => value.toMap()),
-      'jsonClassifier': ?pulumi.Input.mapOptionalInputValue<ClassifierJsonClassifier, Map<String, dynamic>>(jsonClassifier, (value) => value.toMap()),
+      'csvClassifier':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClassifierCsvClassifier,
+            Map<String, dynamic>
+          >(csvClassifier, (value) => value.toMap()),
+      'grokClassifier':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClassifierGrokClassifier,
+            Map<String, dynamic>
+          >(grokClassifier, (value) => value.toMap()),
+      'jsonClassifier':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClassifierJsonClassifier,
+            Map<String, dynamic>
+          >(jsonClassifier, (value) => value.toMap()),
       'name': ?name,
       'region': ?region,
-      'xmlClassifier': ?pulumi.Input.mapOptionalInputValue<ClassifierXmlClassifier, Map<String, dynamic>>(xmlClassifier, (value) => value.toMap()),
+      'xmlClassifier':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClassifierXmlClassifier,
+            Map<String, dynamic>
+          >(xmlClassifier, (value) => value.toMap()),
     };
   }
 
   factory ClassifierState.fromMap(Map<String, dynamic> map) {
     return ClassifierState(
-      csvClassifier: map['csvClassifier'] == null ? null : ((ClassifierCsvClassifier.fromMap((map['csvClassifier']! as Map).cast<String, dynamic>())).input()).input(),
-      grokClassifier: map['grokClassifier'] == null ? null : ((ClassifierGrokClassifier.fromMap((map['grokClassifier']! as Map).cast<String, dynamic>())).input()).input(),
-      jsonClassifier: map['jsonClassifier'] == null ? null : ((ClassifierJsonClassifier.fromMap((map['jsonClassifier']! as Map).cast<String, dynamic>())).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      xmlClassifier: map['xmlClassifier'] == null ? null : ((ClassifierXmlClassifier.fromMap((map['xmlClassifier']! as Map).cast<String, dynamic>())).input()).input(),
+      csvClassifier: (() {
+        final guardedValue = map['csvClassifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClassifierCsvClassifier.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      grokClassifier: (() {
+        final guardedValue = map['grokClassifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClassifierGrokClassifier.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      jsonClassifier: (() {
+        final guardedValue = map['jsonClassifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClassifierJsonClassifier.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      xmlClassifier: (() {
+        final guardedValue = map['xmlClassifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClassifierXmlClassifier.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

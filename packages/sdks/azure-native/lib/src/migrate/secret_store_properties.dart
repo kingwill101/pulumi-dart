@@ -7,20 +7,19 @@ class SecretStoreProperties {
 
   /// Creates a new [SecretStoreProperties].
   /// [secretStoreId] Optional.
-  SecretStoreProperties({
-    this.secretStoreId,
-  });
+  SecretStoreProperties({this.secretStoreId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretStoreId': ?secretStoreId,
-    };
+    return <String, dynamic>{'secretStoreId': ?secretStoreId};
   }
 
   factory SecretStoreProperties.fromMap(Map<String, dynamic> map) {
     return SecretStoreProperties(
-      secretStoreId: map['secretStoreId'] == null ? null : (map['secretStoreId']! as String).input(),
+      secretStoreId: (() {
+        final guardedValue = map['secretStoreId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

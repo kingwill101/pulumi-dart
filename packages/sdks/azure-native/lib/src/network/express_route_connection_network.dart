@@ -345,22 +345,32 @@ import 'routing_configuration_response.dart';
 class ExpressRouteConnectionNetwork extends pulumi.CustomResource {
   /// Authorization key to establish the connection.
   late final pulumi.Output<String?> authorizationKey;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Enable internet security.
   late final pulumi.Output<bool?> enableInternetSecurity;
+
   /// Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (expressRouteGatewayBypass) must be enabled.
   late final pulumi.Output<bool?> enablePrivateLinkFastPath;
+
   /// The ExpressRoute circuit peering.
-  late final pulumi.Output<ExpressRouteCircuitPeeringIdResponse> expressRouteCircuitPeering;
+  late final pulumi.Output<ExpressRouteCircuitPeeringIdResponse>
+  expressRouteCircuitPeering;
+
   /// Enable FastPath to vWan Firewall hub.
   late final pulumi.Output<bool?> expressRouteGatewayBypass;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the express route connection resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
   late final pulumi.Output<RoutingConfigurationResponse?> routingConfiguration;
+
   /// The routing weight associated to the connection.
   late final pulumi.Output<int?> routingWeight;
 
@@ -373,20 +383,29 @@ class ExpressRouteConnectionNetwork extends pulumi.CustomResource {
     ExpressRouteConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:ExpressRouteConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authorizationKey = registerOutput<String?>('authorizationKey');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.enableInternetSecurity = registerOutput<bool?>('enableInternetSecurity');
-    this.enablePrivateLinkFastPath = registerOutput<bool?>('enablePrivateLinkFastPath');
-    this.expressRouteCircuitPeering = registerOutput<ExpressRouteCircuitPeeringIdResponse>('expressRouteCircuitPeering');
-    this.expressRouteGatewayBypass = registerOutput<bool?>('expressRouteGatewayBypass');
+         'azure-native:network:ExpressRouteConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authorizationKey = registerOutput<String?>('authorizationKey');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    enableInternetSecurity = registerOutput<bool?>('enableInternetSecurity');
+    enablePrivateLinkFastPath = registerOutput<bool?>(
+      'enablePrivateLinkFastPath',
+    );
+    expressRouteCircuitPeering =
+        registerOutput<ExpressRouteCircuitPeeringIdResponse>(
+          'expressRouteCircuitPeering',
+        );
+    expressRouteGatewayBypass = registerOutput<bool?>(
+      'expressRouteGatewayBypass',
+    );
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.routingConfiguration = registerOutput<RoutingConfigurationResponse?>('routingConfiguration');
-    this.routingWeight = registerOutput<int?>('routingWeight');
+    provisioningState = registerOutput<String>('provisioningState');
+    routingConfiguration = registerOutput<RoutingConfigurationResponse?>(
+      'routingConfiguration',
+    );
+    routingWeight = registerOutput<int?>('routingWeight');
   }
 }

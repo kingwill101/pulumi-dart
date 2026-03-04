@@ -7,10 +7,17 @@ import 'auth_config_decrypted_credential_oauth2_client_credentials_token_params_
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry {
   /// Key of the map entry.
   /// Structure is documented below.
-  final pulumi.Input<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey>? key;
+  final pulumi.Input<
+    AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey
+  >?
+  key;
+
   /// Value of the map entry.
   /// Structure is documented below.
-  final pulumi.Input<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue>? value;
+  final pulumi.Input<
+    AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue
+  >?
+  value;
 
   /// Creates a new [AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry].
   /// [key] Key of the map entry.
@@ -22,16 +29,41 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'key': ?pulumi.Input.mapOptionalInputValue<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey, Map<String, dynamic>>(key, (value) => value.toMap()),
-      'value': ?pulumi.Input.mapOptionalInputValue<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'key':
+          ?pulumi.Input.mapOptionalInputValue<
+            AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey,
+            Map<String, dynamic>
+          >(key, (value) => value.toMap()),
+      'value':
+          ?pulumi.Input.mapOptionalInputValue<
+            AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue,
+            Map<String, dynamic>
+          >(value, (value) => value.toMap()),
     };
   }
 
-  factory AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry.fromMap(Map<String, dynamic> map) {
+  factory AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry(
-      key: map['key'] == null ? null : (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey.fromMap((map['key']! as Map).cast<String, dynamic>())).input(),
-      value: map['value'] == null ? null : (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

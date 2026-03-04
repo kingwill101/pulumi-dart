@@ -5,9 +5,9 @@ import 'aws_log_source_state.dart';
 
 /// Resource for managing an Amazon Security Lake AWS Log Source.
 ///
-/// > **NOTE:** A single `aws.securitylake.AwsLogSource` should be used to configure a log source across all regions and accounts.
+/// &gt; **NOTE:** A single `aws.securitylake.AwsLogSource` should be used to configure a log source across all regions and accounts.
 ///
-/// > **NOTE:** The underlying `aws.securitylake.DataLake` must be configured before creating the `aws.securitylake.AwsLogSource`. Use a `depends_on` statement.
+/// &gt; **NOTE:** The underlying `aws.securitylake.DataLake` must be configured before creating the `aws.securitylake.AwsLogSource`. Use a `depends_on` statement.
 ///
 /// ## Example Usage
 ///
@@ -162,6 +162,7 @@ import 'aws_log_source_state.dart';
 class AwsLogSource extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Specify the natively-supported AWS service to add as a source in Security Lake.
   late final pulumi.Output<AwsLogSourceSource> source;
 
@@ -174,13 +175,13 @@ class AwsLogSource extends pulumi.CustomResource {
     AwsLogSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:securitylake/awsLogSource:AwsLogSource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.source = registerOutput<AwsLogSourceSource>('source');
+         'aws:securitylake/awsLogSource:AwsLogSource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    source = registerOutput<AwsLogSourceSource>('source');
   }
 
   /// Gets an existing [AwsLogSource] resource's state with the given [name] and [id].
@@ -201,12 +202,12 @@ class AwsLogSource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:securitylake/awsLogSource:AwsLogSource',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.source = registerOutput<AwsLogSourceSource>('source');
+         'aws:securitylake/awsLogSource:AwsLogSource',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    source = registerOutput<AwsLogSourceSource>('source');
   }
 }

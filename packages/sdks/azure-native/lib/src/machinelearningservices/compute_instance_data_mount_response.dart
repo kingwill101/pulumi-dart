@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeInstanceDataMountResponse {
   /// who this data mount created by.
   final pulumi.Input<String>? createdBy;
+
   /// Error of this data mount.
   final pulumi.Input<String>? error;
+
   /// Mount Action.
   final pulumi.Input<String>? mountAction;
+
   /// name of the ComputeInstance data mount.
   final pulumi.Input<String>? mountName;
+
   /// Path of this data mount.
   final pulumi.Input<String>? mountPath;
+
   /// Mount state.
   final pulumi.Input<String>? mountState;
+
   /// The time when the disk mounted.
   final pulumi.Input<String>? mountedOn;
+
   /// Source of the ComputeInstance data mount.
   final pulumi.Input<String>? source;
+
   /// Data source type.
   final pulumi.Input<String>? sourceType;
 
@@ -61,16 +69,51 @@ class ComputeInstanceDataMountResponse {
 
   factory ComputeInstanceDataMountResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceDataMountResponse(
-      createdBy: map['createdBy'] == null ? null : (map['createdBy']! as String).input(),
-      error: map['error'] == null ? null : (map['error']! as String).input(),
-      mountAction: map['mountAction'] == null ? null : (map['mountAction']! as String).input(),
-      mountName: map['mountName'] == null ? null : (map['mountName']! as String).input(),
-      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
-      mountState: map['mountState'] == null ? null : (map['mountState']! as String).input(),
-      mountedOn: map['mountedOn'] == null ? null : (map['mountedOn']! as String).input(),
-      source: map['source'] == null ? null : (map['source']! as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
+      createdBy: (() {
+        final guardedValue = map['createdBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      error: (() {
+        final guardedValue = map['error'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mountAction: (() {
+        final guardedValue = map['mountAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mountName: (() {
+        final guardedValue = map['mountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mountPath: (() {
+        final guardedValue = map['mountPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mountState: (() {
+        final guardedValue = map['mountState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mountedOn: (() {
+        final guardedValue = map['mountedOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceType: (() {
+        final guardedValue = map['sourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

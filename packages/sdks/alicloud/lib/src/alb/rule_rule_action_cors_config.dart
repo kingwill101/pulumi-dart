@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleRuleActionCorsConfig {
   /// Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
   final pulumi.Input<String>? allowCredentials;
+
   /// The allowed headers for CORS requests.
   final pulumi.Input<List<String>>? allowHeaders;
+
   /// The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
   final pulumi.Input<List<String>>? allowMethods;
+
   /// The allowed origins of CORS requests.
   final pulumi.Input<List<String>>? allowOrigins;
+
   /// The headers that can be exposed.
   final pulumi.Input<List<String>>? exposeHeaders;
+
   /// The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
   final pulumi.Input<int>? maxAge;
 
@@ -45,13 +50,36 @@ class RuleRuleActionCorsConfig {
 
   factory RuleRuleActionCorsConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionCorsConfig(
-      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials']! as String).input(),
-      allowHeaders: map['allowHeaders'] == null ? null : ((map['allowHeaders']! as List).cast<String>()).input(),
-      allowMethods: map['allowMethods'] == null ? null : ((map['allowMethods']! as List).cast<String>()).input(),
-      allowOrigins: map['allowOrigins'] == null ? null : ((map['allowOrigins']! as List).cast<String>()).input(),
-      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders']! as List).cast<String>()).input(),
-      maxAge: map['maxAge'] == null ? null : (map['maxAge']! as int).input(),
+      allowCredentials: (() {
+        final guardedValue = map['allowCredentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      allowHeaders: (() {
+        final guardedValue = map['allowHeaders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      allowMethods: (() {
+        final guardedValue = map['allowMethods'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      allowOrigins: (() {
+        final guardedValue = map['allowOrigins'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      exposeHeaders: (() {
+        final guardedValue = map['exposeHeaders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      maxAge: (() {
+        final guardedValue = map['maxAge'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

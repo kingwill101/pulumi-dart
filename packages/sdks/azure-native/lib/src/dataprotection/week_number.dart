@@ -5,16 +5,15 @@ enum WeekNumber {
   valueSecond("Second"),
   valueThird("Third");
 
-  const WeekNumber(this.value);
-  final String value;
+  const WeekNumber(this.wireValue);
+  final String wireValue;
 
   static WeekNumber fromValue(String value) {
     for (final item in WeekNumber.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WeekNumber value: $value');
   }
 }
-

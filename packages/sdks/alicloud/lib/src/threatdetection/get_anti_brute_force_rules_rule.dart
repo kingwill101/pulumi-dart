@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAntiBruteForceRulesRule {
   /// The ID of the defense rule.
   final pulumi.Input<String> antiBruteForceRuleId;
+
   /// The name of the defense rule.
   final pulumi.Input<String> antiBruteForceRuleName;
+
   /// Specifies whether to set the defense rule as the default rule.
   final pulumi.Input<bool> defaultRule;
+
   /// The threshold for the number of failed user logins when the brute-force defense rule takes effect.
   final pulumi.Input<int> failCount;
+
   /// The period of time during which logons from an account are not allowed. Unit: minutes.
   final pulumi.Input<int> forbiddenTime;
+
   /// The ID of the defense rule.
   final pulumi.Input<String> id;
+
   /// The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
   final pulumi.Input<int> span;
+
   /// An array consisting of the UUIDs of servers to which the defense rule is applied.
   final pulumi.Input<List<String>> uuidLists;
 
@@ -55,15 +62,20 @@ class GetAntiBruteForceRulesRule {
 
   factory GetAntiBruteForceRulesRule.fromMap(Map<String, dynamic> map) {
     return GetAntiBruteForceRulesRule(
-      antiBruteForceRuleId: (map['antiBruteForceRuleId'] as String).input(),
-      antiBruteForceRuleName: (map['antiBruteForceRuleName'] as String).input(),
-      defaultRule: (map['defaultRule'] as bool).input(),
-      failCount: (map['failCount'] as int).input(),
-      forbiddenTime: (map['forbiddenTime'] as int).input(),
-      id: (map['id'] as String).input(),
-      span: (map['span'] as int).input(),
-      uuidLists: ((map['uuidLists'] as List).cast<String>()).input(),
+      antiBruteForceRuleId: pulumi.Input.fromValue(
+        map['antiBruteForceRuleId'] as String,
+      ),
+      antiBruteForceRuleName: pulumi.Input.fromValue(
+        map['antiBruteForceRuleName'] as String,
+      ),
+      defaultRule: pulumi.Input.fromValue(map['defaultRule'] as bool),
+      failCount: pulumi.Input.fromValue(map['failCount'] as int),
+      forbiddenTime: pulumi.Input.fromValue(map['forbiddenTime'] as int),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      span: pulumi.Input.fromValue(map['span'] as int),
+      uuidLists: pulumi.Input.fromValue(
+        (map['uuidLists'] as List).cast<String>(),
+      ),
     );
   }
 }
-

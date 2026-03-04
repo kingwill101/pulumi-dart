@@ -6,7 +6,7 @@ import 'config_map_state.dart';
 ///
 /// For information about Serverless App Engine (SAE) Config Map and how to use it, see [What is Config Map](https://www.alibabacloud.com/help/en/sae/latest/create-configmap).
 ///
-/// > **NOTE:** Available since v1.130.0.
+/// &gt; **NOTE:** Available since v1.130.0.
 ///
 /// ## Example Usage
 ///
@@ -287,10 +287,13 @@ import 'config_map_state.dart';
 class ConfigMap extends pulumi.CustomResource {
   /// ConfigMap instance data.
   late final pulumi.Output<String> data;
+
   /// The Description of ConfigMap.
   late final pulumi.Output<String?> description;
+
   /// ConfigMap instance name.
   late final pulumi.Output<String> name;
+
   /// The NamespaceId of ConfigMap.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
   late final pulumi.Output<String> namespaceId;
 
@@ -303,15 +306,15 @@ class ConfigMap extends pulumi.CustomResource {
     ConfigMapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sae/configMap:ConfigMap',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.data = registerOutput<String>('data');
-    this.description = registerOutput<String?>('description');
+         'alicloud:sae/configMap:ConfigMap',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    data = registerOutput<String>('data');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.namespaceId = registerOutput<String>('namespaceId');
+    namespaceId = registerOutput<String>('namespaceId');
   }
 
   /// Gets an existing [ConfigMap] resource's state with the given [name] and [id].
@@ -332,14 +335,14 @@ class ConfigMap extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sae/configMap:ConfigMap',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.data = registerOutput<String>('data');
-    this.description = registerOutput<String?>('description');
+         'alicloud:sae/configMap:ConfigMap',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    data = registerOutput<String>('data');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.namespaceId = registerOutput<String>('namespaceId');
+    namespaceId = registerOutput<String>('namespaceId');
   }
 }

@@ -679,24 +679,34 @@ import 'custom_dataset_state.dart';
 class CustomDataset extends pulumi.CustomResource {
   /// A map of additional properties to associate with the Data Factory Dataset.
   late final pulumi.Output<Map<String, String>?> additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Dataset.
   late final pulumi.Output<List<String>?> annotations;
+
   /// The Data Factory ID in which to associate the Dataset with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Dataset.
   late final pulumi.Output<String?> description;
+
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   late final pulumi.Output<String?> folder;
+
   /// A `linked_service` block as defined below.
   late final pulumi.Output<CustomDatasetLinkedService> linkedService;
+
   /// Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// A map of parameters to associate with the Data Factory Dataset.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// A JSON object that contains the schema of the Data Factory Dataset.
   late final pulumi.Output<String?> schemaJson;
+
   /// The type of dataset that will be associated with Data Factory. Changing this forces a new resource to be created.
   late final pulumi.Output<String> type;
+
   /// A JSON object that contains the properties of the Data Factory Dataset. Refer to
   /// datafactory/models.go for the shape of the expected JSON. For example, the JSON object for `AzureBlob`-typed Dataset will be unmarshaled into `AzureBlobDatasetTypeProperties struct`.
   late final pulumi.Output<String> typePropertiesJson;
@@ -710,22 +720,24 @@ class CustomDataset extends pulumi.CustomResource {
     CustomDatasetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/customDataset:CustomDataset',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.folder = registerOutput<String?>('folder');
-    this.linkedService = registerOutput<CustomDatasetLinkedService>('linkedService');
+         'azure:datafactory/customDataset:CustomDataset',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    linkedService = registerOutput<CustomDatasetLinkedService>('linkedService');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.schemaJson = registerOutput<String?>('schemaJson');
-    this.type = registerOutput<String>('type');
-    this.typePropertiesJson = registerOutput<String>('typePropertiesJson');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    schemaJson = registerOutput<String?>('schemaJson');
+    type = registerOutput<String>('type');
+    typePropertiesJson = registerOutput<String>('typePropertiesJson');
   }
 
   /// Gets an existing [CustomDataset] resource's state with the given [name] and [id].
@@ -746,21 +758,23 @@ class CustomDataset extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/customDataset:CustomDataset',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.folder = registerOutput<String?>('folder');
-    this.linkedService = registerOutput<CustomDatasetLinkedService>('linkedService');
+         'azure:datafactory/customDataset:CustomDataset',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    linkedService = registerOutput<CustomDatasetLinkedService>('linkedService');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.schemaJson = registerOutput<String?>('schemaJson');
-    this.type = registerOutput<String>('type');
-    this.typePropertiesJson = registerOutput<String>('typePropertiesJson');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    schemaJson = registerOutput<String?>('schemaJson');
+    type = registerOutput<String>('type');
+    typePropertiesJson = registerOutput<String>('typePropertiesJson');
   }
 }

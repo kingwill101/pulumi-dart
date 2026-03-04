@@ -8,12 +8,16 @@ class RecoveryPlanA2AInput {
   /// Gets the Instance type.
   /// Expected value is 'A2A'.
   final pulumi.Input<String> instanceType;
+
   /// The primary extended location.
   final pulumi.Input<ExtendedLocation>? primaryExtendedLocation;
+
   /// The primary zone.
   final pulumi.Input<String>? primaryZone;
+
   /// The recovery extended location.
   final pulumi.Input<ExtendedLocation>? recoveryExtendedLocation;
+
   /// The recovery zone.
   final pulumi.Input<String>? recoveryZone;
 
@@ -34,21 +38,52 @@ class RecoveryPlanA2AInput {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'instanceType': instanceType,
-      'primaryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(primaryExtendedLocation, (value) => value.toMap()),
+      'primaryExtendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocation,
+            Map<String, dynamic>
+          >(primaryExtendedLocation, (value) => value.toMap()),
       'primaryZone': ?primaryZone,
-      'recoveryExtendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(recoveryExtendedLocation, (value) => value.toMap()),
+      'recoveryExtendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocation,
+            Map<String, dynamic>
+          >(recoveryExtendedLocation, (value) => value.toMap()),
       'recoveryZone': ?recoveryZone,
     };
   }
 
   factory RecoveryPlanA2AInput.fromMap(Map<String, dynamic> map) {
     return RecoveryPlanA2AInput(
-      instanceType: (map['instanceType'] as String).input(),
-      primaryExtendedLocation: map['primaryExtendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['primaryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
-      primaryZone: map['primaryZone'] == null ? null : (map['primaryZone']! as String).input(),
-      recoveryExtendedLocation: map['recoveryExtendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['recoveryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
-      recoveryZone: map['recoveryZone'] == null ? null : (map['recoveryZone']! as String).input(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      primaryExtendedLocation: (() {
+        final guardedValue = map['primaryExtendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      primaryZone: (() {
+        final guardedValue = map['primaryZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryExtendedLocation: (() {
+        final guardedValue = map['recoveryExtendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      recoveryZone: (() {
+        final guardedValue = map['recoveryZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

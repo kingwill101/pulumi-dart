@@ -3,16 +3,15 @@ enum PackageTimestamped {
   valueTimestamped("Timestamped"),
   valueNotTimestamped("NotTimestamped");
 
-  const PackageTimestamped(this.value);
-  final String value;
+  const PackageTimestamped(this.wireValue);
+  final String wireValue;
 
   static PackageTimestamped fromValue(String value) {
     for (final item in PackageTimestamped.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PackageTimestamped value: $value');
   }
 }
-

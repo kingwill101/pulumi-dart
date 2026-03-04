@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIdentitytoolkitAdminV2HashConfigResponse {
   /// Different password hash algorithms used in Identity Toolkit.
   final pulumi.Input<String> algorithm;
+
   /// Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
   final pulumi.Input<int> memoryCost;
+
   /// How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
   final pulumi.Input<int> rounds;
+
   /// Non-printable character to be inserted between the salt and plain text password in base64.
   final pulumi.Input<String> saltSeparator;
+
   /// Signer key in base64.
   final pulumi.Input<String> signerKey;
 
@@ -39,14 +43,15 @@ class GoogleCloudIdentitytoolkitAdminV2HashConfigResponse {
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2HashConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2HashConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2HashConfigResponse(
-      algorithm: (map['algorithm'] as String).input(),
-      memoryCost: (map['memoryCost'] as int).input(),
-      rounds: (map['rounds'] as int).input(),
-      saltSeparator: (map['saltSeparator'] as String).input(),
-      signerKey: (map['signerKey'] as String).input(),
+      algorithm: pulumi.Input.fromValue(map['algorithm'] as String),
+      memoryCost: pulumi.Input.fromValue(map['memoryCost'] as int),
+      rounds: pulumi.Input.fromValue(map['rounds'] as int),
+      saltSeparator: pulumi.Input.fromValue(map['saltSeparator'] as String),
+      signerKey: pulumi.Input.fromValue(map['signerKey'] as String),
     );
   }
 }
-

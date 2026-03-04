@@ -6,6 +6,7 @@ class ConnectionGithubConfigAuthorizerCredential {
   /// Required. A SecretManager resource containing the OAuth token that authorizes
   /// the connection. Format: `projects/*/secrets/*/versions/*`.
   final pulumi.Input<String> oauthTokenSecretVersion;
+
   /// (Output)
   /// Output only. The username associated with this token.
   final pulumi.Input<String>? username;
@@ -25,11 +26,18 @@ class ConnectionGithubConfigAuthorizerCredential {
     };
   }
 
-  factory ConnectionGithubConfigAuthorizerCredential.fromMap(Map<String, dynamic> map) {
+  factory ConnectionGithubConfigAuthorizerCredential.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionGithubConfigAuthorizerCredential(
-      oauthTokenSecretVersion: (map['oauthTokenSecretVersion'] as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      oauthTokenSecretVersion: pulumi.Input.fromValue(
+        map['oauthTokenSecretVersion'] as String,
+      ),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

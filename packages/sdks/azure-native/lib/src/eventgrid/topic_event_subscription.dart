@@ -196,36 +196,54 @@ import 'topic_event_subscription_args.dart';
 class TopicEventSubscription extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
   /// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
-  late final pulumi.Output<StorageBlobDeadLetterDestinationResponse?> deadLetterDestination;
+  late final pulumi.Output<StorageBlobDeadLetterDestinationResponse?>
+  deadLetterDestination;
+
   /// The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
   /// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
-  late final pulumi.Output<DeadLetterWithResourceIdentityResponse?> deadLetterWithResourceIdentity;
+  late final pulumi.Output<DeadLetterWithResourceIdentityResponse?>
+  deadLetterWithResourceIdentity;
+
   /// Information about the destination where events have to be delivered for the event subscription.
   /// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
-  late final pulumi.Output<DeliveryWithResourceIdentityResponse?> deliveryWithResourceIdentity;
+  late final pulumi.Output<DeliveryWithResourceIdentityResponse?>
+  deliveryWithResourceIdentity;
+
   /// Information about the destination where events have to be delivered for the event subscription.
   /// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
-  late final pulumi.Output<AzureFunctionEventSubscriptionDestinationResponse?> destination;
+  late final pulumi.Output<AzureFunctionEventSubscriptionDestinationResponse?>
+  destination;
+
   /// The event delivery schema for the event subscription.
   late final pulumi.Output<String?> eventDeliverySchema;
+
   /// Expiration time of the event subscription.
   late final pulumi.Output<String?> expirationTimeUtc;
+
   /// Information about the filter for the event subscription.
   late final pulumi.Output<EventSubscriptionFilterResponse?> filter;
+
   /// List of user defined labels.
   late final pulumi.Output<List<String>?> labels;
+
   /// Name of the resource.
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the event subscription.
   late final pulumi.Output<String> provisioningState;
+
   /// The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
   late final pulumi.Output<RetryPolicyResponse?> retryPolicy;
+
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Name of the topic of the event subscription.
   late final pulumi.Output<String> topic;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -238,25 +256,37 @@ class TopicEventSubscription extends pulumi.CustomResource {
     TopicEventSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:eventgrid:TopicEventSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.deadLetterDestination = registerOutput<StorageBlobDeadLetterDestinationResponse?>('deadLetterDestination');
-    this.deadLetterWithResourceIdentity = registerOutput<DeadLetterWithResourceIdentityResponse?>('deadLetterWithResourceIdentity');
-    this.deliveryWithResourceIdentity = registerOutput<DeliveryWithResourceIdentityResponse?>('deliveryWithResourceIdentity');
-    this.destination = registerOutput<AzureFunctionEventSubscriptionDestinationResponse?>('destination');
-    this.eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
-    this.expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
-    this.filter = registerOutput<EventSubscriptionFilterResponse?>('filter');
-    this.labels = registerOutput<List<String>?>('labels');
+         'azure-native:eventgrid:TopicEventSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deadLetterDestination =
+        registerOutput<StorageBlobDeadLetterDestinationResponse?>(
+          'deadLetterDestination',
+        );
+    deadLetterWithResourceIdentity =
+        registerOutput<DeadLetterWithResourceIdentityResponse?>(
+          'deadLetterWithResourceIdentity',
+        );
+    deliveryWithResourceIdentity =
+        registerOutput<DeliveryWithResourceIdentityResponse?>(
+          'deliveryWithResourceIdentity',
+        );
+    destination =
+        registerOutput<AzureFunctionEventSubscriptionDestinationResponse?>(
+          'destination',
+        );
+    eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
+    expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
+    filter = registerOutput<EventSubscriptionFilterResponse?>('filter');
+    labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.retryPolicy = registerOutput<RetryPolicyResponse?>('retryPolicy');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.topic = registerOutput<String>('topic');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    retryPolicy = registerOutput<RetryPolicyResponse?>('retryPolicy');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    topic = registerOutput<String>('topic');
+    type = registerOutput<String>('type');
   }
 }

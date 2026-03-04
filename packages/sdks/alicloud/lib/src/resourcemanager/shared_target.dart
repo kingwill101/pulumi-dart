@@ -8,7 +8,7 @@ import 'shared_target_state.dart';
 ///
 /// For information about Resource Manager Shared Target and how to use it, see [What is Shared Target](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/developer-reference/api-resourcesharing-2020-01-10-associateresourceshare).
 ///
-/// > **NOTE:** Available since v1.111.0.
+/// &gt; **NOTE:** Available since v1.111.0.
 ///
 /// ## Example Usage
 ///
@@ -223,10 +223,13 @@ import 'shared_target_state.dart';
 class SharedTarget extends pulumi.CustomResource {
   /// (Available since v1.259.0) The time when the association of the entity was created.
   late final pulumi.Output<String> createTime;
+
   /// The ID of the resource share.
   late final pulumi.Output<String> resourceShareId;
+
   /// The status of shared target.
   late final pulumi.Output<String> status;
+
   /// The ID of the principal.
   late final pulumi.Output<String> targetId;
 
@@ -239,15 +242,15 @@ class SharedTarget extends pulumi.CustomResource {
     SharedTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/sharedTarget:SharedTarget',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.resourceShareId = registerOutput<String>('resourceShareId');
-    this.status = registerOutput<String>('status');
-    this.targetId = registerOutput<String>('targetId');
+         'alicloud:resourcemanager/sharedTarget:SharedTarget',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    resourceShareId = registerOutput<String>('resourceShareId');
+    status = registerOutput<String>('status');
+    targetId = registerOutput<String>('targetId');
   }
 
   /// Gets an existing [SharedTarget] resource's state with the given [name] and [id].
@@ -268,14 +271,14 @@ class SharedTarget extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/sharedTarget:SharedTarget',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.resourceShareId = registerOutput<String>('resourceShareId');
-    this.status = registerOutput<String>('status');
-    this.targetId = registerOutput<String>('targetId');
+         'alicloud:resourcemanager/sharedTarget:SharedTarget',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    resourceShareId = registerOutput<String>('resourceShareId');
+    status = registerOutput<String>('status');
+    targetId = registerOutput<String>('targetId');
   }
 }

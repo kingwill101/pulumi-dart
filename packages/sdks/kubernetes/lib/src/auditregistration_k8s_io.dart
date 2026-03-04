@@ -1,5 +1,3 @@
-library module_auditregistration_k8s_io;
-
 export 'auditregistration_k8s_io/audit_sink.dart';
 export 'auditregistration_k8s_io/audit_sink_args.dart';
 export 'auditregistration_k8s_io/audit_sink_auditregistration_k8s_io_v1alpha1.dart';

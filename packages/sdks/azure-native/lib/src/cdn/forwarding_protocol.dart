@@ -4,16 +4,15 @@ enum ForwardingProtocol {
   httpsOnly("HttpsOnly"),
   matchRequest("MatchRequest");
 
-  const ForwardingProtocol(this.value);
-  final String value;
+  const ForwardingProtocol(this.wireValue);
+  final String wireValue;
 
   static ForwardingProtocol fromValue(String value) {
     for (final item in ForwardingProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ForwardingProtocol value: $value');
   }
 }
-

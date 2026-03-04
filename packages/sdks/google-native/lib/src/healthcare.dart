@@ -1,5 +1,3 @@
-library module_healthcare;
-
 export 'healthcare/access_determination_log_config.dart';
 export 'healthcare/access_determination_log_config_log_level.dart';
 export 'healthcare/access_determination_log_config_response.dart';

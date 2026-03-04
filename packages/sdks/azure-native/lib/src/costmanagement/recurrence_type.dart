@@ -5,16 +5,15 @@ enum RecurrenceType {
   valueMonthly("Monthly"),
   valueAnnually("Annually");
 
-  const RecurrenceType(this.value);
-  final String value;
+  const RecurrenceType(this.wireValue);
+  final String wireValue;
 
   static RecurrenceType fromValue(String value) {
     for (final item in RecurrenceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RecurrenceType value: $value');
   }
 }
-

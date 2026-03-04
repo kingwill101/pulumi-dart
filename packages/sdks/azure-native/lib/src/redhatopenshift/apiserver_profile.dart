@@ -9,20 +9,19 @@ class APIServerProfile {
 
   /// Creates a new [APIServerProfile].
   /// [visibility] API server visibility.
-  APIServerProfile({
-    this.visibility,
-  });
+  APIServerProfile({this.visibility});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'visibility': ?visibility,
-    };
+    return <String, dynamic>{'visibility': ?visibility};
   }
 
   factory APIServerProfile.fromMap(Map<String, dynamic> map) {
     return APIServerProfile(
-      visibility: map['visibility'] == null ? null : (map['visibility']! as String).input(),
+      visibility: (() {
+        final guardedValue = map['visibility'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

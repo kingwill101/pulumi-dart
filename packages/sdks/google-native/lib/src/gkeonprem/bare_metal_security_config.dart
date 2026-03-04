@@ -10,20 +10,27 @@ class BareMetalSecurityConfig {
 
   /// Creates a new [BareMetalSecurityConfig].
   /// [authorization] Configures user access to the user cluster.
-  BareMetalSecurityConfig({
-    this.authorization,
-  });
+  BareMetalSecurityConfig({this.authorization});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorization': ?pulumi.Input.mapOptionalInputValue<Authorization, Map<String, dynamic>>(authorization, (value) => value.toMap()),
+      'authorization':
+          ?pulumi.Input.mapOptionalInputValue<
+            Authorization,
+            Map<String, dynamic>
+          >(authorization, (value) => value.toMap()),
     };
   }
 
   factory BareMetalSecurityConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalSecurityConfig(
-      authorization: map['authorization'] == null ? null : (Authorization.fromMap((map['authorization']! as Map).cast<String, dynamic>())).input(),
+      authorization: (() {
+        final guardedValue = map['authorization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Authorization.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

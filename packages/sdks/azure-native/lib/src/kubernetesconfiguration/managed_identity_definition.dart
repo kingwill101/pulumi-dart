@@ -9,20 +9,19 @@ class ManagedIdentityDefinition {
 
   /// Creates a new [ManagedIdentityDefinition].
   /// [clientId] The client Id for authenticating a Managed Identity.
-  ManagedIdentityDefinition({
-    this.clientId,
-  });
+  ManagedIdentityDefinition({this.clientId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'clientId': ?clientId,
-    };
+    return <String, dynamic>{'clientId': ?clientId};
   }
 
   factory ManagedIdentityDefinition.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityDefinition(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

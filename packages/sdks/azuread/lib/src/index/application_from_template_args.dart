@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationFromTemplateArgs {
   /// The display name for the application.
   final pulumi.Input<String> displayName;
+
   /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
   final pulumi.Input<String> templateId;
 
@@ -29,9 +30,8 @@ class ApplicationFromTemplateArgs {
 
   factory ApplicationFromTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationFromTemplateArgs(
-      displayName: (map['displayName'] as String).input(),
-      templateId: (map['templateId'] as String).input(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      templateId: pulumi.Input.fromValue(map['templateId'] as String),
     );
   }
 }
-

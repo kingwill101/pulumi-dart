@@ -12,51 +12,61 @@ class NodeArgs {
   /// - Consists of lowercase letters, numbers, or underscores (_).
   /// - 4~16 characters in length.
   ///
-  /// > **NOTE:** - apsaradb for MongoDB does not support using keywords as accounts.
+  /// &gt; **NOTE:** - apsaradb for MongoDB does not support using keywords as accounts.
   /// - The permissions of the account are fixed to read-only permissions.
   /// - When applying for a direct connection address of a Shard node for the first time, you need to set an account and password.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? accountName;
+
   /// Account password, value description:
   /// - Consists of at least three of uppercase letters, lowercase letters, numbers, and special characters.
   /// - Oh-! @#$%^& *()_+-= is a special character.
   /// - Length is 8~32 characters.
   ///
-  /// > **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
+  /// &gt; **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
   ///
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? accountPassword;
+
   /// Whether to pay automatically. Value description:
   final pulumi.Input<bool>? autoPay;
+
   /// Additional parameters, business information.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? businessInfo;
+
   /// The ID of the sharded cluster instance.
   final pulumi.Input<String> dbInstanceId;
   final pulumi.Input<String>? effectiveTime;
+
   /// Request Source, value description:
   /// - `OpenApi`: The request source is OpenApi.
   final pulumi.Input<String>? fromApp;
+
   /// The specifications of the Shard node or Mongos node. For more information, see Instance Specifications.
   final pulumi.Input<String> nodeClass;
+
   /// The disk space of the Node. Unit: GB.
   ///
   /// Value range: `10` to `2000`, with a step size of 10GB.
   ///
-  /// > **NOTE:**  When the node type is `Shard`, you need to configure this parameter.
+  /// &gt; **NOTE:**  When the node type is `Shard`, you need to configure this parameter.
   final pulumi.Input<int>? nodeStorage;
+
   /// Node type, value description:
   final pulumi.Input<String> nodeType;
   final pulumi.Input<String>? orderType;
+
   /// The number of read-only nodes in the Shard.
   ///
   /// Value range: `0` to `5` (integer). Default value: **0 * *.
   ///
-  /// > **NOTE:**  This parameter is currently only supported by China Station.
+  /// &gt; **NOTE:**  This parameter is currently only supported by China Station.
   final pulumi.Input<int>? readonlyReplicas;
+
   /// Whether to apply for the direct connection address of the Shard node. Value description:
   final pulumi.Input<bool>? shardDirect;
   final pulumi.Input<String>? switchTime;
@@ -114,21 +124,64 @@ class NodeArgs {
 
   factory NodeArgs.fromMap(Map<String, dynamic> map) {
     return NodeArgs(
-      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
-      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword']! as String).input(),
-      autoPay: map['autoPay'] == null ? null : (map['autoPay']! as bool).input(),
-      businessInfo: map['businessInfo'] == null ? null : (map['businessInfo']! as String).input(),
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime']! as String).input(),
-      fromApp: map['fromApp'] == null ? null : (map['fromApp']! as String).input(),
-      nodeClass: (map['nodeClass'] as String).input(),
-      nodeStorage: map['nodeStorage'] == null ? null : (map['nodeStorage']! as int).input(),
-      nodeType: (map['nodeType'] as String).input(),
-      orderType: map['orderType'] == null ? null : (map['orderType']! as String).input(),
-      readonlyReplicas: map['readonlyReplicas'] == null ? null : (map['readonlyReplicas']! as int).input(),
-      shardDirect: map['shardDirect'] == null ? null : (map['shardDirect']! as bool).input(),
-      switchTime: map['switchTime'] == null ? null : (map['switchTime']! as String).input(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountPassword: (() {
+        final guardedValue = map['accountPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      autoPay: (() {
+        final guardedValue = map['autoPay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      businessInfo: (() {
+        final guardedValue = map['businessInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      effectiveTime: (() {
+        final guardedValue = map['effectiveTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fromApp: (() {
+        final guardedValue = map['fromApp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeClass: pulumi.Input.fromValue(map['nodeClass'] as String),
+      nodeStorage: (() {
+        final guardedValue = map['nodeStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      nodeType: pulumi.Input.fromValue(map['nodeType'] as String),
+      orderType: (() {
+        final guardedValue = map['orderType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readonlyReplicas: (() {
+        final guardedValue = map['readonlyReplicas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      shardDirect: (() {
+        final guardedValue = map['shardDirect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      switchTime: (() {
+        final guardedValue = map['switchTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

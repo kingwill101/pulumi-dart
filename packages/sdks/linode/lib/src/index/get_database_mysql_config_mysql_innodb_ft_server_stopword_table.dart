@@ -37,15 +37,16 @@ class GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable(
-      description: (map['description'] as String).input(),
-      example: (map['example'] as String).input(),
-      maxLength: (map['maxLength'] as int).input(),
-      pattern: (map['pattern'] as String).input(),
-      requiresRestart: (map['requiresRestart'] as bool).input(),
-      types: ((map['types'] as List).cast<String>()).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      example: pulumi.Input.fromValue(map['example'] as String),
+      maxLength: pulumi.Input.fromValue(map['maxLength'] as int),
+      pattern: pulumi.Input.fromValue(map['pattern'] as String),
+      requiresRestart: pulumi.Input.fromValue(map['requiresRestart'] as bool),
+      types: pulumi.Input.fromValue((map['types'] as List).cast<String>()),
     );
   }
 }
-

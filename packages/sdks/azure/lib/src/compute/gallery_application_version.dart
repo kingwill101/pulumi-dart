@@ -3,7 +3,6 @@ import 'gallery_application_version_args.dart';
 import 'gallery_application_version_manage_action.dart';
 import 'gallery_application_version_source.dart';
 import 'gallery_application_version_state.dart';
-import 'gallery_application_version_target_region.dart';
 
 /// Manages a Gallery Application Version.
 ///
@@ -445,7 +444,7 @@ import 'gallery_application_version_target_region.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-03-03
@@ -460,28 +459,39 @@ import 'gallery_application_version_target_region.dart';
 class GalleryApplicationVersion extends pulumi.CustomResource {
   /// Specifies the name of the config file on the VM. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> configFile;
+
   /// Should the Gallery Application reports health. Defaults to `false`.
   late final pulumi.Output<bool?> enableHealthCheck;
+
   /// The end of life date in RFC3339 format of the Gallery Application Version.
   late final pulumi.Output<String?> endOfLifeDate;
+
   /// Should the Gallery Application Version be excluded from the `latest` filter? If set to `true` this Gallery Application Version won't be returned for the `latest` version. Defaults to `false`.
   late final pulumi.Output<bool?> excludeFromLatest;
+
   /// The ID of the Gallery Application. Changing this forces a new resource to be created.
   late final pulumi.Output<String> galleryApplicationId;
+
   /// The Azure Region where the Gallery Application Version exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// A `manage_action` block as defined below.
   late final pulumi.Output<GalleryApplicationVersionManageAction> manageAction;
+
   /// The version name of the Gallery Application Version, such as `1.0.0`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the package file on the VM. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> packageFile;
+
   /// A `source` block as defined below.
   late final pulumi.Output<GalleryApplicationVersionSource> source;
+
   /// A mapping of tags to assign to the Gallery Application Version.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// One or more `target_region` blocks as defined below.
-  late final pulumi.Output<List<GalleryApplicationVersionTargetRegion>> targetRegions;
+  late final pulumi.Output<List<Map<String, dynamic>>> targetRegions;
 
   /// Creates a new [GalleryApplicationVersion].
   /// [name] The Pulumi resource name.
@@ -492,23 +502,25 @@ class GalleryApplicationVersion extends pulumi.CustomResource {
     GalleryApplicationVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/galleryApplicationVersion:GalleryApplicationVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configFile = registerOutput<String?>('configFile');
-    this.enableHealthCheck = registerOutput<bool?>('enableHealthCheck');
-    this.endOfLifeDate = registerOutput<String?>('endOfLifeDate');
-    this.excludeFromLatest = registerOutput<bool?>('excludeFromLatest');
-    this.galleryApplicationId = registerOutput<String>('galleryApplicationId');
-    this.location = registerOutput<String>('location');
-    this.manageAction = registerOutput<GalleryApplicationVersionManageAction>('manageAction');
+         'azure:compute/galleryApplicationVersion:GalleryApplicationVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configFile = registerOutput<String?>('configFile');
+    enableHealthCheck = registerOutput<bool?>('enableHealthCheck');
+    endOfLifeDate = registerOutput<String?>('endOfLifeDate');
+    excludeFromLatest = registerOutput<bool?>('excludeFromLatest');
+    galleryApplicationId = registerOutput<String>('galleryApplicationId');
+    location = registerOutput<String>('location');
+    manageAction = registerOutput<GalleryApplicationVersionManageAction>(
+      'manageAction',
+    );
     this.name = registerOutput<String>('name');
-    this.packageFile = registerOutput<String?>('packageFile');
-    this.source = registerOutput<GalleryApplicationVersionSource>('source');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetRegions = registerOutput<List<GalleryApplicationVersionTargetRegion>>('targetRegions');
+    packageFile = registerOutput<String?>('packageFile');
+    source = registerOutput<GalleryApplicationVersionSource>('source');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetRegions = registerOutput<List<Map<String, dynamic>>>('targetRegions');
   }
 
   /// Gets an existing [GalleryApplicationVersion] resource's state with the given [name] and [id].
@@ -529,22 +541,24 @@ class GalleryApplicationVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/galleryApplicationVersion:GalleryApplicationVersion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configFile = registerOutput<String?>('configFile');
-    this.enableHealthCheck = registerOutput<bool?>('enableHealthCheck');
-    this.endOfLifeDate = registerOutput<String?>('endOfLifeDate');
-    this.excludeFromLatest = registerOutput<bool?>('excludeFromLatest');
-    this.galleryApplicationId = registerOutput<String>('galleryApplicationId');
-    this.location = registerOutput<String>('location');
-    this.manageAction = registerOutput<GalleryApplicationVersionManageAction>('manageAction');
+         'azure:compute/galleryApplicationVersion:GalleryApplicationVersion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configFile = registerOutput<String?>('configFile');
+    enableHealthCheck = registerOutput<bool?>('enableHealthCheck');
+    endOfLifeDate = registerOutput<String?>('endOfLifeDate');
+    excludeFromLatest = registerOutput<bool?>('excludeFromLatest');
+    galleryApplicationId = registerOutput<String>('galleryApplicationId');
+    location = registerOutput<String>('location');
+    manageAction = registerOutput<GalleryApplicationVersionManageAction>(
+      'manageAction',
+    );
     this.name = registerOutput<String>('name');
-    this.packageFile = registerOutput<String?>('packageFile');
-    this.source = registerOutput<GalleryApplicationVersionSource>('source');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetRegions = registerOutput<List<GalleryApplicationVersionTargetRegion>>('targetRegions');
+    packageFile = registerOutput<String?>('packageFile');
+    source = registerOutput<GalleryApplicationVersionSource>('source');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetRegions = registerOutput<List<Map<String, dynamic>>>('targetRegions');
   }
 }

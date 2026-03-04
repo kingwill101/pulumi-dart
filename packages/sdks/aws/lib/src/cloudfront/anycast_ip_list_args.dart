@@ -10,10 +10,12 @@ import 'anycast_ip_list_timeouts.dart';
 class AnycastIpListArgs {
   /// The number of static IP addresses that are allocated to the Anycast IP list. Valid values: `3`, `21`.
   final pulumi.Input<int> ipCount;
+
   /// Name of the Anycast IP list.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
+
   /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<AnycastIpListTimeouts>? timeouts;
@@ -35,17 +37,38 @@ class AnycastIpListArgs {
       'ipCount': ipCount,
       'name': ?name,
       'tags': ?tags,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<AnycastIpListTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            AnycastIpListTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory AnycastIpListArgs.fromMap(Map<String, dynamic> map) {
     return AnycastIpListArgs(
-      ipCount: (map['ipCount'] as int).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((AnycastIpListTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      ipCount: pulumi.Input.fromValue(map['ipCount'] as int),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AnycastIpListTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

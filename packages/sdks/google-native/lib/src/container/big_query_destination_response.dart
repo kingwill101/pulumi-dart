@@ -9,20 +9,15 @@ class BigQueryDestinationResponse {
 
   /// Creates a new [BigQueryDestinationResponse].
   /// [datasetId] The ID of a BigQuery Dataset.
-  BigQueryDestinationResponse({
-    required this.datasetId,
-  });
+  BigQueryDestinationResponse({required this.datasetId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'datasetId': datasetId,
-    };
+    return <String, dynamic>{'datasetId': datasetId};
   }
 
   factory BigQueryDestinationResponse.fromMap(Map<String, dynamic> map) {
     return BigQueryDestinationResponse(
-      datasetId: (map['datasetId'] as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
     );
   }
 }
-

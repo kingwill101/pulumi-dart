@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SbomReferenceIntotoPredicateContaineranalysisV1alpha1 {
   /// A map of algorithm to digest of the contents of the SBOM.
   final pulumi.Input<Map<String, String>>? digest;
+
   /// The location of the SBOM.
   final pulumi.Input<String>? location;
+
   /// The mime type of the SBOM.
   final pulumi.Input<String>? mimeType;
+
   /// The person or system referring this predicate to the consumer.
   final pulumi.Input<String>? referrerId;
 
@@ -34,13 +37,32 @@ class SbomReferenceIntotoPredicateContaineranalysisV1alpha1 {
     };
   }
 
-  factory SbomReferenceIntotoPredicateContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory SbomReferenceIntotoPredicateContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SbomReferenceIntotoPredicateContaineranalysisV1alpha1(
-      digest: map['digest'] == null ? null : ((map['digest']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      mimeType: map['mimeType'] == null ? null : (map['mimeType']! as String).input(),
-      referrerId: map['referrerId'] == null ? null : (map['referrerId']! as String).input(),
+      digest: (() {
+        final guardedValue = map['digest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mimeType: (() {
+        final guardedValue = map['mimeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      referrerId: (() {
+        final guardedValue = map['referrerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

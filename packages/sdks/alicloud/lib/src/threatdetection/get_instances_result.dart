@@ -7,10 +7,13 @@ import 'get_instances_instance.dart';
 class GetInstancesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Instance IDs.
   final List<String> ids;
+
   /// The first ID of the resource
   final String? instanceId;
+
   /// A list of Instance Entries. Each element contains the following attributes:
   final List<GetInstancesInstance> instances;
   final String? outputFile;
@@ -43,7 +46,11 @@ class GetInstancesResult {
       'id': id,
       'ids': ids,
       'instanceId': ?instanceId,
-      'instances': pulumi.Input.encodeList<GetInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances':
+          pulumi.Input.encodeList<GetInstancesInstance, Map<String, dynamic>>(
+            instances,
+            (value) => value.toMap(),
+          ),
       'outputFile': ?outputFile,
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
@@ -55,13 +62,37 @@ class GetInstancesResult {
     return GetInstancesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
-      instances: pulumi.Input.decodeList<GetInstancesInstance>(map['instances'], (value) => GetInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      renewStatus: map['renewStatus'] == null ? null : map['renewStatus']! as String,
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      instances: pulumi.Input.decodeList<GetInstancesInstance>(
+        map['instances']!,
+        (value) => GetInstancesInstance.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      renewStatus: (() {
+        final guardedValue = map['renewStatus'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

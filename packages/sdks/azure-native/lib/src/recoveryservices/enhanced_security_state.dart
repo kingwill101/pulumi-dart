@@ -4,16 +4,15 @@ enum EnhancedSecurityState {
   valueDisabled("Disabled"),
   valueAlwaysON("AlwaysON");
 
-  const EnhancedSecurityState(this.value);
-  final String value;
+  const EnhancedSecurityState(this.wireValue);
+  final String wireValue;
 
   static EnhancedSecurityState fromValue(String value) {
     for (final item in EnhancedSecurityState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EnhancedSecurityState value: $value');
   }
 }
-

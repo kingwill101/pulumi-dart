@@ -10,22 +10,31 @@ import 'network_config_type.dart';
 class NetworkConfig {
   /// Interconnect bandwidth. Set only when type is CLIENT.
   final pulumi.Input<NetworkConfigBandwidth>? bandwidth;
+
   /// CIDR range of the network.
   final pulumi.Input<String>? cidr;
+
   /// The GCP service of the network. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
   final pulumi.Input<String>? gcpService;
+
   /// A transient unique identifier to identify a volume within an ProvisioningConfig request.
   final pulumi.Input<String>? id;
+
   /// The JumboFramesEnabled option for customer to set.
   final pulumi.Input<bool>? jumboFramesEnabled;
+
   /// Service CIDR, if any.
   final pulumi.Input<NetworkConfigServiceCidr>? serviceCidr;
+
   /// The type of this network, either Client or Private.
   final pulumi.Input<NetworkConfigType>? type;
+
   /// User note field, it can be used by customers to add additional information for the BMS Ops team .
   final pulumi.Input<String>? userNote;
+
   /// List of VLAN attachments. As of now there are always 2 attachments, but it is going to change in the future (multi vlan).
   final pulumi.Input<List<IntakeVlanAttachment>>? vlanAttachments;
+
   /// Whether the VLAN attachment pair is located in the same project.
   final pulumi.Input<bool>? vlanSameProject;
 
@@ -55,32 +64,106 @@ class NetworkConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bandwidth': ?pulumi.Input.mapOptionalInputValue<NetworkConfigBandwidth, String>(bandwidth, (value) => value.value),
+      'bandwidth':
+          ?pulumi.Input.mapOptionalInputValue<NetworkConfigBandwidth, String>(
+            bandwidth,
+            (value) => value.wireValue,
+          ),
       'cidr': ?cidr,
       'gcpService': ?gcpService,
       'id': ?id,
       'jumboFramesEnabled': ?jumboFramesEnabled,
-      'serviceCidr': ?pulumi.Input.mapOptionalInputValue<NetworkConfigServiceCidr, String>(serviceCidr, (value) => value.value),
-      'type': ?pulumi.Input.mapOptionalInputValue<NetworkConfigType, String>(type, (value) => value.value),
+      'serviceCidr':
+          ?pulumi.Input.mapOptionalInputValue<NetworkConfigServiceCidr, String>(
+            serviceCidr,
+            (value) => value.wireValue,
+          ),
+      'type': ?pulumi.Input.mapOptionalInputValue<NetworkConfigType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
       'userNote': ?userNote,
-      'vlanAttachments': ?pulumi.Input.mapOptionalInputValue<List<IntakeVlanAttachment>, List<Map<String, dynamic>>>(vlanAttachments, (value) => pulumi.Input.encodeList<IntakeVlanAttachment, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vlanAttachments':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IntakeVlanAttachment>,
+            List<Map<String, dynamic>>
+          >(
+            vlanAttachments,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IntakeVlanAttachment,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'vlanSameProject': ?vlanSameProject,
     };
   }
 
   factory NetworkConfig.fromMap(Map<String, dynamic> map) {
     return NetworkConfig(
-      bandwidth: map['bandwidth'] == null ? null : (NetworkConfigBandwidth.fromValue(map['bandwidth']! as String)).input(),
-      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
-      gcpService: map['gcpService'] == null ? null : (map['gcpService']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      jumboFramesEnabled: map['jumboFramesEnabled'] == null ? null : (map['jumboFramesEnabled']! as bool).input(),
-      serviceCidr: map['serviceCidr'] == null ? null : (NetworkConfigServiceCidr.fromValue(map['serviceCidr']! as String)).input(),
-      type: map['type'] == null ? null : (NetworkConfigType.fromValue(map['type']! as String)).input(),
-      userNote: map['userNote'] == null ? null : (map['userNote']! as String).input(),
-      vlanAttachments: map['vlanAttachments'] == null ? null : (pulumi.Input.decodeList<IntakeVlanAttachment>(map['vlanAttachments']!, (value) => IntakeVlanAttachment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vlanSameProject: map['vlanSameProject'] == null ? null : (map['vlanSameProject']! as bool).input(),
+      bandwidth: (() {
+        final guardedValue = map['bandwidth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkConfigBandwidth.fromValue(guardedValue as String),
+        );
+      })(),
+      cidr: (() {
+        final guardedValue = map['cidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gcpService: (() {
+        final guardedValue = map['gcpService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jumboFramesEnabled: (() {
+        final guardedValue = map['jumboFramesEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      serviceCidr: (() {
+        final guardedValue = map['serviceCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkConfigServiceCidr.fromValue(guardedValue as String),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkConfigType.fromValue(guardedValue as String),
+        );
+      })(),
+      userNote: (() {
+        final guardedValue = map['userNote'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vlanAttachments: (() {
+        final guardedValue = map['vlanAttachments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IntakeVlanAttachment>(
+            guardedValue,
+            (value) => IntakeVlanAttachment.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      vlanSameProject: (() {
+        final guardedValue = map['vlanSameProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -1,20 +1,18 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_group_args.dart';
-import 'security_group_egress.dart';
-import 'security_group_ingress.dart';
 import 'security_group_state.dart';
 
 /// Provides a security group resource.
 ///
-/// > **NOTE:** Avoid using the `ingress` and `egress` arguments of the `aws.ec2.SecurityGroup` resource to configure in-line rules, as they struggle with managing multiple CIDR blocks, and, due to the historical lack of unique IDs, tags and descriptions. To avoid these problems, use the current best practice of the `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources with one CIDR block per rule.
+/// &gt; **NOTE:** Avoid using the `ingress` and `egress` arguments of the `aws.ec2.SecurityGroup` resource to configure in-line rules, as they struggle with managing multiple CIDR blocks, and, due to the historical lack of unique IDs, tags and descriptions. To avoid these problems, use the current best practice of the `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources with one CIDR block per rule.
 ///
-/// !> **WARNING:** You should not use the `aws.ec2.SecurityGroup` resource with _in-line rules_ (using the `ingress` and `egress` arguments of `aws.ec2.SecurityGroup`) in conjunction with the `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources or the `aws.ec2.SecurityGroupRule` resource. Doing so may cause rule conflicts, perpetual differences, and result in rules being overwritten.
+/// !&gt; **WARNING:** You should not use the `aws.ec2.SecurityGroup` resource with _in-line rules_ (using the `ingress` and `egress` arguments of `aws.ec2.SecurityGroup`) in conjunction with the `aws.vpc.SecurityGroupEgressRule` and `aws.vpc.SecurityGroupIngressRule` resources or the `aws.ec2.SecurityGroupRule` resource. Doing so may cause rule conflicts, perpetual differences, and result in rules being overwritten.
 ///
-/// > **NOTE:** Referencing Security Groups across VPC peering has certain restrictions. More information is available in the [VPC Peering User Guide](https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html).
+/// &gt; **NOTE:** Referencing Security Groups across VPC peering has certain restrictions. More information is available in the [VPC Peering User Guide](https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-security-groups.html).
 ///
-/// > **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), security groups associated with Lambda Functions can take up to 45 minutes to successfully delete. To allow for successful deletion, the provider will wait for at least 45 minutes even if a shorter delete timeout is specified.
+/// &gt; **NOTE:** Due to [AWS Lambda improved VPC networking changes that began deploying in September 2019](https://aws.amazon.com/blogs/compute/announcing-improved-vpc-networking-for-aws-lambda-functions/), security groups associated with Lambda Functions can take up to 45 minutes to successfully delete. To allow for successful deletion, the provider will wait for at least 45 minutes even if a shorter delete timeout is specified.
 ///
-/// > **NOTE:** The `cidr_blocks` and `ipv6_cidr_blocks` parameters are optional in the `ingress` and `egress` blocks. If nothing is specified, traffic will be blocked as described in _NOTE on Egress rules_ later.
+/// &gt; **NOTE:** The `cidr_blocks` and `ipv6_cidr_blocks` parameters are optional in the `ingress` and `egress` blocks. If nothing is specified, traffic will be blocked as described in _NOTE on Egress rules_ later.
 ///
 /// ## Example Usage
 ///
@@ -314,7 +312,7 @@ import 'security_group_state.dart';
 /// ```
 ///
 ///
-/// > **NOTE on Egress rules:** By default, AWS creates an `ALLOW ALL` egress rule when creating a new Security Group inside of a VPC. When creating a new Security Group inside a VPC, **this provider will remove this default rule**, and require you specifically re-create it if you desire that rule. We feel this leads to fewer surprises in terms of controlling your egress rules. If you desire this rule to be in place, you can use this `egress` block:
+/// &gt; **NOTE on Egress rules:** By default, AWS creates an `ALLOW ALL` egress rule when creating a new Security Group inside of a VPC. When creating a new Security Group inside a VPC, **this provider will remove this default rule**, and require you specifically re-create it if you desire that rule. We feel this leads to fewer surprises in terms of controlling your egress rules. If you desire this rule to be in place, you can use this `egress` block:
 ///
 ///
 /// ```typescript
@@ -1168,26 +1166,37 @@ import 'security_group_state.dart';
 class SecurityGroup extends pulumi.CustomResource {
   /// ARN of the security group.
   late final pulumi.Output<String> arn;
+
   /// Security group description. Defaults to `Managed by Pulumi`. Cannot be `""`. **NOTE**: This field maps to the AWS `GroupDescription` attribute, for which there is no Update API. If you'd like to classify your security groups in a way that can be updated, use `tags`.
   late final pulumi.Output<String> description;
+
   /// Configuration block for egress rules. Can be specified multiple times for each egress rule. Each egress block supports fields documented below. This argument is processed in attribute-as-blocks mode.
-  late final pulumi.Output<List<SecurityGroupEgress>> egress;
+  late final pulumi.Output<List<Map<String, dynamic>>> egress;
+
   /// Configuration block for ingress rules. Can be specified multiple times for each ingress rule. Each ingress block supports fields documented below. This argument is processed in attribute-as-blocks mode.
-  late final pulumi.Output<List<SecurityGroupIngress>> ingress;
+  late final pulumi.Output<List<Map<String, dynamic>>> ingress;
+
   /// Name of the security group. If omitted, the provider will assign a random, unique name.
   late final pulumi.Output<String> name;
+
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
+
   /// Owner ID.
   late final pulumi.Output<String> ownerId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Instruct the provider to revoke all of the Security Groups attached ingress and egress rules before deleting the rule itself. This is normally not needed, however certain AWS services such as Elastic Map Reduce may automatically add required rules to security groups used with the service, and those rules may contain a cyclic dependency that prevent the security groups from being destroyed without removing the dependency first. Default `false`.
   late final pulumi.Output<bool?> revokeRulesOnDelete;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// VPC ID. Defaults to the region's default VPC.
   late final pulumi.Output<String> vpcId;
 
@@ -1200,23 +1209,23 @@ class SecurityGroup extends pulumi.CustomResource {
     SecurityGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/securityGroup:SecurityGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String>('description');
-    this.egress = registerOutput<List<SecurityGroupEgress>>('egress');
-    this.ingress = registerOutput<List<SecurityGroupIngress>>('ingress');
+         'aws:ec2/securityGroup:SecurityGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    egress = registerOutput<List<Map<String, dynamic>>>('egress');
+    ingress = registerOutput<List<Map<String, dynamic>>>('ingress');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String>('namePrefix');
-    this.ownerId = registerOutput<String>('ownerId');
-    this.region = registerOutput<String>('region');
-    this.revokeRulesOnDelete = registerOutput<bool?>('revokeRulesOnDelete');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.vpcId = registerOutput<String>('vpcId');
+    namePrefix = registerOutput<String>('namePrefix');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    revokeRulesOnDelete = registerOutput<bool?>('revokeRulesOnDelete');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [SecurityGroup] resource's state with the given [name] and [id].
@@ -1237,22 +1246,22 @@ class SecurityGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/securityGroup:SecurityGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String>('description');
-    this.egress = registerOutput<List<SecurityGroupEgress>>('egress');
-    this.ingress = registerOutput<List<SecurityGroupIngress>>('ingress');
+         'aws:ec2/securityGroup:SecurityGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String>('description');
+    egress = registerOutput<List<Map<String, dynamic>>>('egress');
+    ingress = registerOutput<List<Map<String, dynamic>>>('ingress');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String>('namePrefix');
-    this.ownerId = registerOutput<String>('ownerId');
-    this.region = registerOutput<String>('region');
-    this.revokeRulesOnDelete = registerOutput<bool?>('revokeRulesOnDelete');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.vpcId = registerOutput<String>('vpcId');
+    namePrefix = registerOutput<String>('namePrefix');
+    ownerId = registerOutput<String>('ownerId');
+    region = registerOutput<String>('region');
+    revokeRulesOnDelete = registerOutput<bool?>('revokeRulesOnDelete');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

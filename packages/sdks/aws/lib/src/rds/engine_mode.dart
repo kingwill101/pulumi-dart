@@ -4,16 +4,15 @@ enum EngineMode {
   parallelQuery("parallelquery"),
   global("global");
 
-  const EngineMode(this.value);
-  final String value;
+  const EngineMode(this.wireValue);
+  final String wireValue;
 
   static EngineMode fromValue(String value) {
     for (final item in EngineMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EngineMode value: $value');
   }
 }
-

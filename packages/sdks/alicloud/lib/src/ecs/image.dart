@@ -1,20 +1,19 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_args.dart';
-import 'image_disk_device_mapping.dart';
 import 'image_features.dart';
 import 'image_state.dart';
 
 /// Provides a ECS Image resource.
 ///
-/// > **NOTE:**  If you want to create a template from an ECS instance, you can specify the instance ID (InstanceId) to create a custom image. You must make sure that the status of the specified instance is Running or Stopped. After a successful invocation, each disk of the specified instance has a new snapshot created.
+/// &gt; **NOTE:**  If you want to create a template from an ECS instance, you can specify the instance ID (InstanceId) to create a custom image. You must make sure that the status of the specified instance is Running or Stopped. After a successful invocation, each disk of the specified instance has a new snapshot created.
 ///
-/// > **NOTE:**  If you want to create a custom image based on the system disk of your ECS instance, you can specify one of the system disk snapshots (SnapshotId) to create a custom image. However, the specified snapshot cannot be created on or before July 15, 2013.
+/// &gt; **NOTE:**  If you want to create a custom image based on the system disk of your ECS instance, you can specify one of the system disk snapshots (SnapshotId) to create a custom image. However, the specified snapshot cannot be created on or before July 15, 2013.
 ///
-/// > **NOTE:**  If you want to combine snapshots of multiple disks into an image template, you can specify DiskDeviceMapping to create a custom image.
+/// &gt; **NOTE:**  If you want to combine snapshots of multiple disks into an image template, you can specify DiskDeviceMapping to create a custom image.
 ///
 /// For information about ECS Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-createimage).
 ///
-/// > **NOTE:** Available since v1.64.0.
+/// &gt; **NOTE:** Available since v1.64.0.
 ///
 /// ## Example Usage
 ///
@@ -485,6 +484,7 @@ import 'image_state.dart';
 class Image extends pulumi.CustomResource {
   /// The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
   late final pulumi.Output<String?> architecture;
+
   /// The new boot mode of the image. Valid values:
   ///
   /// *   BIOS: Basic Input/Output System (BIOS)
@@ -493,54 +493,72 @@ class Image extends pulumi.CustomResource {
   ///
   /// *   UEFI-Preferred: BIOS and UEFI
   ///
-  /// > **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
+  /// &gt; **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
   ///
-  /// > **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
+  /// &gt; **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
   late final pulumi.Output<String> bootMode;
+
   /// The create time
   late final pulumi.Output<String> createTime;
+
   /// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
   late final pulumi.Output<bool?> deleteAutoSnapshot;
+
   /// The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
   late final pulumi.Output<String?> description;
+
   /// The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
   ///
-  /// > **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
+  /// &gt; **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
   late final pulumi.Output<String?> detectionStrategy;
+
   /// Snapshot information for the image See `disk_device_mapping` below.
-  late final pulumi.Output<List<ImageDiskDeviceMapping>> diskDeviceMappings;
+  late final pulumi.Output<List<Map<String, dynamic>>> diskDeviceMappings;
+
   /// Features See `features` below.
   late final pulumi.Output<ImageFeatures> features;
+
   /// Whether to perform forced deletion. Value range:
   /// - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
   /// - false: The custom image is deleted normally. Before deleting the custom image, check whether the current image is used by other instances.
   ///
   /// Default value: false
   late final pulumi.Output<bool?> force;
+
   /// The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
   late final pulumi.Output<String?> imageFamily;
+
   /// The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
   late final pulumi.Output<String> imageName;
+
   /// The image version.
   ///
-  /// > **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
+  /// &gt; **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
   late final pulumi.Output<String?> imageVersion;
+
   /// The instance ID.
   late final pulumi.Output<String?> instanceId;
+
   /// The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
   late final pulumi.Output<String?> licenseType;
+
   /// . Field 'name' has been deprecated from provider version 1.227.0. New field 'image_name' instead.
   late final pulumi.Output<String> name;
+
   /// The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
   late final pulumi.Output<String> platform;
+
   /// The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
   ///
-  /// > **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
+  /// &gt; **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The ID of the snapshot that you want to use to create the custom image.
   late final pulumi.Output<String?> snapshotId;
+
   /// The status of the image. By default, if you do not specify this parameter, only images in the Available state are returned.
   late final pulumi.Output<String> status;
+
   /// The tag
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -550,44 +568,39 @@ class Image extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Image]. {@macro pulumi_ecs_image_image_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Image(
-    String name, {
-    ImageArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:ecs/image:Image',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.architecture = registerOutput<String?>('architecture');
-    this.bootMode = registerOutput<String>('bootMode');
-    this.createTime = registerOutput<String>('createTime');
-    this.deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
-    this.description = registerOutput<String?>('description');
-    this.detectionStrategy = registerOutput<String?>('detectionStrategy');
-    this.diskDeviceMappings = registerOutput<List<ImageDiskDeviceMapping>>('diskDeviceMappings');
-    this.features = registerOutput<ImageFeatures>('features');
-    this.force = registerOutput<bool?>('force');
-    this.imageFamily = registerOutput<String?>('imageFamily');
-    this.imageName = registerOutput<String>('imageName');
-    this.imageVersion = registerOutput<String?>('imageVersion');
-    this.instanceId = registerOutput<String?>('instanceId');
-    this.licenseType = registerOutput<String?>('licenseType');
+  Image(String name, {ImageArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:ecs/image:Image',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    architecture = registerOutput<String?>('architecture');
+    bootMode = registerOutput<String>('bootMode');
+    createTime = registerOutput<String>('createTime');
+    deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
+    description = registerOutput<String?>('description');
+    detectionStrategy = registerOutput<String?>('detectionStrategy');
+    diskDeviceMappings = registerOutput<List<Map<String, dynamic>>>(
+      'diskDeviceMappings',
+    );
+    features = registerOutput<ImageFeatures>('features');
+    force = registerOutput<bool?>('force');
+    imageFamily = registerOutput<String?>('imageFamily');
+    imageName = registerOutput<String>('imageName');
+    imageVersion = registerOutput<String?>('imageVersion');
+    instanceId = registerOutput<String?>('instanceId');
+    licenseType = registerOutput<String?>('licenseType');
     this.name = registerOutput<String>('name');
-    this.platform = registerOutput<String>('platform');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.snapshotId = registerOutput<String?>('snapshotId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    platform = registerOutput<String>('platform');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    snapshotId = registerOutput<String?>('snapshotId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Image] resource's state with the given [name] and [id].
-  static Image get(
-    String name,
-    pulumi.Input<String> id, {
-    ImageState? state,
-  }) {
+  static Image get(String name, pulumi.Input<String> id, {ImageState? state}) {
     return Image._get(
       name,
       state: state?.toMap(),
@@ -600,30 +613,32 @@ class Image extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/image:Image',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.architecture = registerOutput<String?>('architecture');
-    this.bootMode = registerOutput<String>('bootMode');
-    this.createTime = registerOutput<String>('createTime');
-    this.deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
-    this.description = registerOutput<String?>('description');
-    this.detectionStrategy = registerOutput<String?>('detectionStrategy');
-    this.diskDeviceMappings = registerOutput<List<ImageDiskDeviceMapping>>('diskDeviceMappings');
-    this.features = registerOutput<ImageFeatures>('features');
-    this.force = registerOutput<bool?>('force');
-    this.imageFamily = registerOutput<String?>('imageFamily');
-    this.imageName = registerOutput<String>('imageName');
-    this.imageVersion = registerOutput<String?>('imageVersion');
-    this.instanceId = registerOutput<String?>('instanceId');
-    this.licenseType = registerOutput<String?>('licenseType');
+         'alicloud:ecs/image:Image',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    architecture = registerOutput<String?>('architecture');
+    bootMode = registerOutput<String>('bootMode');
+    createTime = registerOutput<String>('createTime');
+    deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
+    description = registerOutput<String?>('description');
+    detectionStrategy = registerOutput<String?>('detectionStrategy');
+    diskDeviceMappings = registerOutput<List<Map<String, dynamic>>>(
+      'diskDeviceMappings',
+    );
+    features = registerOutput<ImageFeatures>('features');
+    force = registerOutput<bool?>('force');
+    imageFamily = registerOutput<String?>('imageFamily');
+    imageName = registerOutput<String>('imageName');
+    imageVersion = registerOutput<String?>('imageVersion');
+    instanceId = registerOutput<String?>('instanceId');
+    licenseType = registerOutput<String?>('licenseType');
     this.name = registerOutput<String>('name');
-    this.platform = registerOutput<String>('platform');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.snapshotId = registerOutput<String?>('snapshotId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    platform = registerOutput<String>('platform');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    snapshotId = registerOutput<String?>('snapshotId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

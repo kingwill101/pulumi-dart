@@ -1,5 +1,3 @@
-library module_acmpca;
-
 export 'acmpca/certificate.dart';
 export 'acmpca/certificate_args.dart';
 export 'acmpca/certificate_authority.dart';

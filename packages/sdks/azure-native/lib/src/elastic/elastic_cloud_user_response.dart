@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticCloudUserResponse {
   /// Elastic cloud default dashboard sso URL of the Elastic user account.
   final pulumi.Input<String> elasticCloudSsoDefaultUrl;
+
   /// Email of the Elastic User Account.
   final pulumi.Input<String> emailAddress;
+
   /// User Id of the elastic account of the User.
   final pulumi.Input<String> id;
 
@@ -31,10 +33,11 @@ class ElasticCloudUserResponse {
 
   factory ElasticCloudUserResponse.fromMap(Map<String, dynamic> map) {
     return ElasticCloudUserResponse(
-      elasticCloudSsoDefaultUrl: (map['elasticCloudSsoDefaultUrl'] as String).input(),
-      emailAddress: (map['emailAddress'] as String).input(),
-      id: (map['id'] as String).input(),
+      elasticCloudSsoDefaultUrl: pulumi.Input.fromValue(
+        map['elasticCloudSsoDefaultUrl'] as String,
+      ),
+      emailAddress: pulumi.Input.fromValue(map['emailAddress'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

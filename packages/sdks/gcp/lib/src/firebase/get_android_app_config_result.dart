@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAndroidAppConfig.
 class GetAndroidAppConfigResult {
   final String appId;
@@ -39,8 +38,11 @@ class GetAndroidAppConfigResult {
       configFileContents: map['configFileContents'] as String,
       configFilename: map['configFilename'] as String,
       id: map['id'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

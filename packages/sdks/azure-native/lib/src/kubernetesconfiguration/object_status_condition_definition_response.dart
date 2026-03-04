@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ObjectStatusConditionDefinitionResponse {
   /// Last time this status condition has changed
   final pulumi.Input<String>? lastTransitionTime;
+
   /// A more verbose description of the object status condition
   final pulumi.Input<String>? message;
+
   /// Reason for the specified status condition type status
   final pulumi.Input<String>? reason;
+
   /// Status of the Kubernetes object condition type
   final pulumi.Input<String>? status;
+
   /// Object status condition type for this object
   final pulumi.Input<String>? type;
 
@@ -39,14 +43,35 @@ class ObjectStatusConditionDefinitionResponse {
     };
   }
 
-  factory ObjectStatusConditionDefinitionResponse.fromMap(Map<String, dynamic> map) {
+  factory ObjectStatusConditionDefinitionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ObjectStatusConditionDefinitionResponse(
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime']! as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      lastTransitionTime: (() {
+        final guardedValue = map['lastTransitionTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reason: (() {
+        final guardedValue = map['reason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

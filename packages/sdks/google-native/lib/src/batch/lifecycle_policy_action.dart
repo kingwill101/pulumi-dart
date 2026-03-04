@@ -4,16 +4,15 @@ enum LifecyclePolicyAction {
   retryTask("RETRY_TASK"),
   failTask("FAIL_TASK");
 
-  const LifecyclePolicyAction(this.value);
-  final String value;
+  const LifecyclePolicyAction(this.wireValue);
+  final String wireValue;
 
   static LifecyclePolicyAction fromValue(String value) {
     for (final item in LifecyclePolicyAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LifecyclePolicyAction value: $value');
   }
 }
-

@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'metric_alert_action_response.dart';
 import 'metric_alert_args.dart';
 import 'metric_alert_multiple_resource_multiple_metric_criteria_response.dart';
 
@@ -2553,39 +2552,59 @@ import 'metric_alert_multiple_resource_multiple_metric_criteria_response.dart';
 /// ```
 class MetricAlert extends pulumi.CustomResource {
   /// the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
-  late final pulumi.Output<List<MetricAlertActionResponse>?> actions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> actions;
+
   /// the flag that indicates whether the alert should be auto resolved or not. The default is true.
   late final pulumi.Output<bool?> autoMitigate;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// defines the specific alert criteria information.
-  late final pulumi.Output<MetricAlertMultipleResourceMultipleMetricCriteriaResponse> criteria;
+  late final pulumi.Output<
+    MetricAlertMultipleResourceMultipleMetricCriteriaResponse
+  >
+  criteria;
+
   /// the description of the metric alert that will be included in the alert email.
   late final pulumi.Output<String?> description;
+
   /// the flag that indicates whether the metric alert is enabled.
   late final pulumi.Output<bool> enabled;
+
   /// how often the metric alert is evaluated represented in ISO 8601 duration format.
   late final pulumi.Output<String> evaluationFrequency;
+
   /// the value indicating whether this alert rule is migrated.
   late final pulumi.Output<bool> isMigrated;
+
   /// Last time the rule was updated in ISO8601 format.
   late final pulumi.Output<String> lastUpdatedTime;
+
   /// Resource location
   late final pulumi.Output<String> location;
+
   /// Azure resource name
   late final pulumi.Output<String> name;
+
   /// the list of resource id's that this metric alert is scoped to. You cannot change the scope of a metric rule based on logs.
   late final pulumi.Output<List<String>> scopes;
+
   /// Alert severity {0, 1, 2, 3, 4}
   late final pulumi.Output<int> severity;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// the region of the target resource(s) on which the alert is created/updated. Mandatory if the scope contains a subscription, resource group, or more than one resource.
   late final pulumi.Output<String?> targetResourceRegion;
+
   /// the resource type of the target resource(s) on which the alert is created/updated. Mandatory if the scope contains a subscription, resource group, or more than one resource.
   late final pulumi.Output<String?> targetResourceType;
+
   /// Azure resource type
   late final pulumi.Output<String> type;
+
   /// the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold.
   late final pulumi.Output<String> windowSize;
 
@@ -2598,28 +2617,31 @@ class MetricAlert extends pulumi.CustomResource {
     MetricAlertArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:monitor:MetricAlert',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actions = registerOutput<List<MetricAlertActionResponse>?>('actions');
-    this.autoMitigate = registerOutput<bool?>('autoMitigate');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.criteria = registerOutput<MetricAlertMultipleResourceMultipleMetricCriteriaResponse>('criteria');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool>('enabled');
-    this.evaluationFrequency = registerOutput<String>('evaluationFrequency');
-    this.isMigrated = registerOutput<bool>('isMigrated');
-    this.lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
-    this.location = registerOutput<String>('location');
+         'azure-native:monitor:MetricAlert',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actions = registerOutput<List<Map<String, dynamic>>?>('actions');
+    autoMitigate = registerOutput<bool?>('autoMitigate');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    criteria =
+        registerOutput<
+          MetricAlertMultipleResourceMultipleMetricCriteriaResponse
+        >('criteria');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool>('enabled');
+    evaluationFrequency = registerOutput<String>('evaluationFrequency');
+    isMigrated = registerOutput<bool>('isMigrated');
+    lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.scopes = registerOutput<List<String>>('scopes');
-    this.severity = registerOutput<int>('severity');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.targetResourceRegion = registerOutput<String?>('targetResourceRegion');
-    this.targetResourceType = registerOutput<String?>('targetResourceType');
-    this.type = registerOutput<String>('type');
-    this.windowSize = registerOutput<String>('windowSize');
+    scopes = registerOutput<List<String>>('scopes');
+    severity = registerOutput<int>('severity');
+    tags = registerOutput<Map<String, String>?>('tags');
+    targetResourceRegion = registerOutput<String?>('targetResourceRegion');
+    targetResourceType = registerOutput<String?>('targetResourceType');
+    type = registerOutput<String>('type');
+    windowSize = registerOutput<String>('windowSize');
   }
 }

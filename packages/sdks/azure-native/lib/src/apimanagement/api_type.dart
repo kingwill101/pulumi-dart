@@ -5,16 +5,15 @@ enum ApiType {
   valueWebsocket("websocket"),
   valueGraphql("graphql");
 
-  const ApiType(this.value);
-  final String value;
+  const ApiType(this.wireValue);
+  final String wireValue;
 
   static ApiType fromValue(String value) {
     for (final item in ApiType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApiType value: $value');
   }
 }
-

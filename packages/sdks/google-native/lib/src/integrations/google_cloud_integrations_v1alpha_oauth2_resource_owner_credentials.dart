@@ -9,20 +9,31 @@ import 'google_cloud_integrations_v1alpha_parameter_map.dart';
 class GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials {
   /// Access token fetched from the authorization server.
   final pulumi.Input<GoogleCloudIntegrationsV1alphaAccessToken>? accessToken;
+
   /// The client's ID.
   final pulumi.Input<String>? clientId;
+
   /// The client's secret.
   final pulumi.Input<String>? clientSecret;
+
   /// The user's password.
   final pulumi.Input<String>? password;
+
   /// Represent how to pass parameters to fetch access token
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType>? requestType;
+  final pulumi.Input<
+    GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType
+  >?
+  requestType;
+
   /// A space-delimited list of requested scope permissions.
   final pulumi.Input<String>? scope;
+
   /// The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
   final pulumi.Input<String>? tokenEndpoint;
+
   /// Token parameters for the auth request.
   final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMap>? tokenParams;
+
   /// The user's username.
   final pulumi.Input<String>? username;
 
@@ -50,30 +61,91 @@ class GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessToken': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIntegrationsV1alphaAccessToken, Map<String, dynamic>>(accessToken, (value) => value.toMap()),
+      'accessToken':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudIntegrationsV1alphaAccessToken,
+            Map<String, dynamic>
+          >(accessToken, (value) => value.toMap()),
       'clientId': ?clientId,
       'clientSecret': ?clientSecret,
       'password': ?password,
-      'requestType': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType, String>(requestType, (value) => value.value),
+      'requestType':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType,
+            String
+          >(requestType, (value) => value.wireValue),
       'scope': ?scope,
       'tokenEndpoint': ?tokenEndpoint,
-      'tokenParams': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIntegrationsV1alphaParameterMap, Map<String, dynamic>>(tokenParams, (value) => value.toMap()),
+      'tokenParams':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudIntegrationsV1alphaParameterMap,
+            Map<String, dynamic>
+          >(tokenParams, (value) => value.toMap()),
       'username': ?username,
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials(
-      accessToken: map['accessToken'] == null ? null : (GoogleCloudIntegrationsV1alphaAccessToken.fromMap((map['accessToken']! as Map).cast<String, dynamic>())).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      requestType: map['requestType'] == null ? null : (GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType.fromValue(map['requestType']! as String)).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint']! as String).input(),
-      tokenParams: map['tokenParams'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMap.fromMap((map['tokenParams']! as Map).cast<String, dynamic>())).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      accessToken: (() {
+        final guardedValue = map['accessToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudIntegrationsV1alphaAccessToken.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestType: (() {
+        final guardedValue = map['requestType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tokenEndpoint: (() {
+        final guardedValue = map['tokenEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tokenParams: (() {
+        final guardedValue = map['tokenParams'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudIntegrationsV1alphaParameterMap.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

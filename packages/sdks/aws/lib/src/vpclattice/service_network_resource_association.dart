@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_network_resource_association_args.dart';
-import 'service_network_resource_association_dns_entry.dart';
 import 'service_network_resource_association_state.dart';
 import 'service_network_resource_association_timeouts.dart';
 
@@ -130,20 +129,27 @@ import 'service_network_resource_association_timeouts.dart';
 class ServiceNetworkResourceAssociation extends pulumi.CustomResource {
   /// ARN of the Service Network Resource Association.
   late final pulumi.Output<String> arn;
+
   /// DNS entry of the association in the service network.
-  late final pulumi.Output<List<ServiceNetworkResourceAssociationDnsEntry>> dnsEntries;
+  late final pulumi.Output<List<Map<String, dynamic>>> dnsEntries;
+
   /// Boolean indicating whether private DNS is enabled for the service network resource association. Defaults to `false`. When set to `true`, the resource configuration identified by `resource_configuration_identifier` must have a custom domain name or a group domain for private DNS.
   late final pulumi.Output<bool> privateDnsEnabled;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Identifier of Resource Configuration to associate to the Service Network.
   late final pulumi.Output<String> resourceConfigurationIdentifier;
+
   /// Identifier of the Service Network to associate the Resource to.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> serviceNetworkIdentifier;
+
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ServiceNetworkResourceAssociationTimeouts?> timeouts;
@@ -157,20 +163,26 @@ class ServiceNetworkResourceAssociation extends pulumi.CustomResource {
     ServiceNetworkResourceAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:vpclattice/serviceNetworkResourceAssociation:ServiceNetworkResourceAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.dnsEntries = registerOutput<List<ServiceNetworkResourceAssociationDnsEntry>>('dnsEntries');
-    this.privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
-    this.region = registerOutput<String>('region');
-    this.resourceConfigurationIdentifier = registerOutput<String>('resourceConfigurationIdentifier');
-    this.serviceNetworkIdentifier = registerOutput<String>('serviceNetworkIdentifier');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<ServiceNetworkResourceAssociationTimeouts?>('timeouts');
+         'aws:vpclattice/serviceNetworkResourceAssociation:ServiceNetworkResourceAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    dnsEntries = registerOutput<List<Map<String, dynamic>>>('dnsEntries');
+    privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
+    region = registerOutput<String>('region');
+    resourceConfigurationIdentifier = registerOutput<String>(
+      'resourceConfigurationIdentifier',
+    );
+    serviceNetworkIdentifier = registerOutput<String>(
+      'serviceNetworkIdentifier',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<ServiceNetworkResourceAssociationTimeouts?>(
+      'timeouts',
+    );
   }
 
   /// Gets an existing [ServiceNetworkResourceAssociation] resource's state with the given [name] and [id].
@@ -191,19 +203,25 @@ class ServiceNetworkResourceAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:vpclattice/serviceNetworkResourceAssociation:ServiceNetworkResourceAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.dnsEntries = registerOutput<List<ServiceNetworkResourceAssociationDnsEntry>>('dnsEntries');
-    this.privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
-    this.region = registerOutput<String>('region');
-    this.resourceConfigurationIdentifier = registerOutput<String>('resourceConfigurationIdentifier');
-    this.serviceNetworkIdentifier = registerOutput<String>('serviceNetworkIdentifier');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<ServiceNetworkResourceAssociationTimeouts?>('timeouts');
+         'aws:vpclattice/serviceNetworkResourceAssociation:ServiceNetworkResourceAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    dnsEntries = registerOutput<List<Map<String, dynamic>>>('dnsEntries');
+    privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
+    region = registerOutput<String>('region');
+    resourceConfigurationIdentifier = registerOutput<String>(
+      'resourceConfigurationIdentifier',
+    );
+    serviceNetworkIdentifier = registerOutput<String>(
+      'serviceNetworkIdentifier',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<ServiceNetworkResourceAssociationTimeouts?>(
+      'timeouts',
+    );
   }
 }

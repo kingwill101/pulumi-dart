@@ -4,9 +4,9 @@ import 'source_code_token_state.dart';
 
 /// Manages an App Service source control token.
 ///
-/// !> **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.ServicePlan` resource instead.
+/// !&gt; **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.ServicePlan` resource instead.
 ///
-/// > **NOTE:** Source Control Tokens are configured at the subscription level, not on each App Service - as such this can only be configured Subscription-wide
+/// &gt; **NOTE:** Source Control Tokens are configured at the subscription level, not on each App Service - as such this can only be configured Subscription-wide
 ///
 /// ## Example Usage
 ///
@@ -114,8 +114,10 @@ import 'source_code_token_state.dart';
 class SourceCodeToken extends pulumi.CustomResource {
   /// The OAuth access token.
   late final pulumi.Output<String> token;
+
   /// The OAuth access token secret.
   late final pulumi.Output<String?> tokenSecret;
+
   /// The source control type. Possible values are `BitBucket`, `Dropbox`, `GitHub` and `OneDrive`.
   late final pulumi.Output<String> type;
 
@@ -128,14 +130,14 @@ class SourceCodeToken extends pulumi.CustomResource {
     SourceCodeTokenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/sourceCodeToken:SourceCodeToken',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.token = registerOutput<String>('token');
-    this.tokenSecret = registerOutput<String?>('tokenSecret');
-    this.type = registerOutput<String>('type');
+         'azure:appservice/sourceCodeToken:SourceCodeToken',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    token = registerOutput<String>('token');
+    tokenSecret = registerOutput<String?>('tokenSecret');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [SourceCodeToken] resource's state with the given [name] and [id].
@@ -156,13 +158,13 @@ class SourceCodeToken extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/sourceCodeToken:SourceCodeToken',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.token = registerOutput<String>('token');
-    this.tokenSecret = registerOutput<String?>('tokenSecret');
-    this.type = registerOutput<String>('type');
+         'azure:appservice/sourceCodeToken:SourceCodeToken',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    token = registerOutput<String>('token');
+    tokenSecret = registerOutput<String?>('tokenSecret');
+    type = registerOutput<String>('type');
   }
 }

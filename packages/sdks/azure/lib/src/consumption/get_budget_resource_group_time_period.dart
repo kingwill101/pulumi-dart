@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBudgetResourceGroupTimePeriod {
   /// The end date for the budget.
   final pulumi.Input<String> endDate;
+
   /// The start date for the budget.
   final pulumi.Input<String> startDate;
 
@@ -17,17 +18,13 @@ class GetBudgetResourceGroupTimePeriod {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'endDate': endDate,
-      'startDate': startDate,
-    };
+    return <String, dynamic>{'endDate': endDate, 'startDate': startDate};
   }
 
   factory GetBudgetResourceGroupTimePeriod.fromMap(Map<String, dynamic> map) {
     return GetBudgetResourceGroupTimePeriod(
-      endDate: (map['endDate'] as String).input(),
-      startDate: (map['startDate'] as String).input(),
+      endDate: pulumi.Input.fromValue(map['endDate'] as String),
+      startDate: pulumi.Input.fromValue(map['startDate'] as String),
     );
   }
 }
-

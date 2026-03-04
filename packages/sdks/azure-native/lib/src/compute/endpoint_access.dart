@@ -3,16 +3,15 @@ enum EndpointAccess {
   allow("Allow"),
   deny("Deny");
 
-  const EndpointAccess(this.value);
-  final String value;
+  const EndpointAccess(this.wireValue);
+  final String wireValue;
 
   static EndpointAccess fromValue(String value) {
     for (final item in EndpointAccess.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EndpointAccess value: $value');
   }
 }
-

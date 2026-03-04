@@ -4,18 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of BatchRestrictions
 class BatchRestrictions {
-  /// <p>An array of strings that specify the compute types that are allowed for the batch build. See <a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html'>Build environment compute types</a> in the <i>CodeBuild User Guide</i> for these values. </p>
+  /// &lt;p&gt;An array of strings that specify the compute types that are allowed for the batch build. See &lt;a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html'&gt;Build environment compute types&lt;/a&gt; in the &lt;i&gt;CodeBuild User Guide&lt;/i&gt; for these values. &lt;/p&gt;
   final pulumi.Input<List<String>>? computeTypesAllowed;
-  /// <p>Specifies the maximum number of builds allowed.</p>
+
+  /// &lt;p&gt;Specifies the maximum number of builds allowed.&lt;/p&gt;
   final pulumi.Input<int>? maximumBuildsAllowed;
 
   /// Creates a new [BatchRestrictions].
-  /// [computeTypesAllowed] <p>An array of strings that specify the compute types that are allowed for the batch build. See <a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html'>Build environment compute types</a> in the <i>CodeBuild User Guide</i> for these values. </p>
-  /// [maximumBuildsAllowed] <p>Specifies the maximum number of builds allowed.</p>
-  BatchRestrictions({
-    this.computeTypesAllowed,
-    this.maximumBuildsAllowed,
-  });
+  /// [computeTypesAllowed] &lt;p&gt;An array of strings that specify the compute types that are allowed for the batch build. See &lt;a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html'&gt;Build environment compute types&lt;/a&gt; in the &lt;i&gt;CodeBuild User Guide&lt;/i&gt; for these values. &lt;/p&gt;
+  /// [maximumBuildsAllowed] &lt;p&gt;Specifies the maximum number of builds allowed.&lt;/p&gt;
+  BatchRestrictions({this.computeTypesAllowed, this.maximumBuildsAllowed});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class BatchRestrictions {
 
   factory BatchRestrictions.fromMap(Map<String, dynamic> map) {
     return BatchRestrictions(
-      computeTypesAllowed: map['computeTypesAllowed'] == null ? null : ((map['computeTypesAllowed']! as List).cast<String>()).input(),
-      maximumBuildsAllowed: map['maximumBuildsAllowed'] == null ? null : (map['maximumBuildsAllowed']! as int).input(),
+      computeTypesAllowed: (() {
+        final guardedValue = map['computeTypesAllowed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      maximumBuildsAllowed: (() {
+        final guardedValue = map['maximumBuildsAllowed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

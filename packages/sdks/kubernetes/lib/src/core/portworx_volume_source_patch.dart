@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PortworxVolumeSourcePatch {
   /// fSType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs". Implicitly inferred to be "ext4" if unspecified.
   final pulumi.Input<String>? fsType;
+
   /// readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
   final pulumi.Input<bool>? readOnly;
+
   /// volumeID uniquely identifies a Portworx volume
   final pulumi.Input<String>? volumeID;
 
@@ -15,11 +17,7 @@ class PortworxVolumeSourcePatch {
   /// [fsType] fSType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs". Implicitly inferred to be "ext4" if unspecified.
   /// [readOnly] readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
   /// [volumeID] volumeID uniquely identifies a Portworx volume
-  PortworxVolumeSourcePatch({
-    this.fsType,
-    this.readOnly,
-    this.volumeID,
-  });
+  PortworxVolumeSourcePatch({this.fsType, this.readOnly, this.volumeID});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class PortworxVolumeSourcePatch {
 
   factory PortworxVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return PortworxVolumeSourcePatch(
-      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
-      volumeID: map['volumeID'] == null ? null : (map['volumeID']! as String).input(),
+      fsType: (() {
+        final guardedValue = map['fsType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readOnly: (() {
+        final guardedValue = map['readOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      volumeID: (() {
+        final guardedValue = map['volumeID'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

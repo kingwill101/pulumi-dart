@@ -1,14 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'service_group_monitoring_agent_process_alert_config.dart';
 import 'service_group_monitoring_agent_process_args.dart';
-import 'service_group_monitoring_agent_process_match_express.dart';
 import 'service_group_monitoring_agent_process_state.dart';
 
 /// Provides a Cloud Monitor Service Group Monitoring Agent Process resource.
 ///
 /// For information about Cloud Monitor Service Group Monitoring Agent Process and how to use it, see [What is Group Monitoring Agent Process](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-creategroupmonitoringagentprocess).
 ///
-/// > **NOTE:** Available since v1.212.0.
+/// &gt; **NOTE:** Available since v1.212.0.
 ///
 /// ## Example Usage
 ///
@@ -385,15 +383,20 @@ import 'service_group_monitoring_agent_process_state.dart';
 /// ```
 class ServiceGroupMonitoringAgentProcess extends pulumi.CustomResource {
   /// The alert rule configurations. See `alert_config` below.
-  late final pulumi.Output<List<ServiceGroupMonitoringAgentProcessAlertConfig>> alertConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> alertConfigs;
+
   /// The ID of the application group.
   late final pulumi.Output<String> groupId;
+
   /// The ID of the Group Monitoring Agent Process.
   late final pulumi.Output<String> groupMonitoringAgentProcessId;
+
   /// The logical operator used between conditional expressions that are used to match instances. Valid values: `all`, `and`, `or`.
   late final pulumi.Output<String> matchExpressFilterRelation;
+
   /// The expressions used to match instances. See `match_express` below.
-  late final pulumi.Output<List<ServiceGroupMonitoringAgentProcessMatchExpress>> matchExpresses;
+  late final pulumi.Output<List<Map<String, dynamic>>> matchExpresses;
+
   /// The name of the process.
   late final pulumi.Output<String> processName;
 
@@ -406,17 +409,23 @@ class ServiceGroupMonitoringAgentProcess extends pulumi.CustomResource {
     ServiceGroupMonitoringAgentProcessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertConfigs = registerOutput<List<ServiceGroupMonitoringAgentProcessAlertConfig>>('alertConfigs');
-    this.groupId = registerOutput<String>('groupId');
-    this.groupMonitoringAgentProcessId = registerOutput<String>('groupMonitoringAgentProcessId');
-    this.matchExpressFilterRelation = registerOutput<String>('matchExpressFilterRelation');
-    this.matchExpresses = registerOutput<List<ServiceGroupMonitoringAgentProcessMatchExpress>>('matchExpresses');
-    this.processName = registerOutput<String>('processName');
+         'alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertConfigs = registerOutput<List<Map<String, dynamic>>>('alertConfigs');
+    groupId = registerOutput<String>('groupId');
+    groupMonitoringAgentProcessId = registerOutput<String>(
+      'groupMonitoringAgentProcessId',
+    );
+    matchExpressFilterRelation = registerOutput<String>(
+      'matchExpressFilterRelation',
+    );
+    matchExpresses = registerOutput<List<Map<String, dynamic>>>(
+      'matchExpresses',
+    );
+    processName = registerOutput<String>('processName');
   }
 
   /// Gets an existing [ServiceGroupMonitoringAgentProcess] resource's state with the given [name] and [id].
@@ -437,16 +446,22 @@ class ServiceGroupMonitoringAgentProcess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertConfigs = registerOutput<List<ServiceGroupMonitoringAgentProcessAlertConfig>>('alertConfigs');
-    this.groupId = registerOutput<String>('groupId');
-    this.groupMonitoringAgentProcessId = registerOutput<String>('groupMonitoringAgentProcessId');
-    this.matchExpressFilterRelation = registerOutput<String>('matchExpressFilterRelation');
-    this.matchExpresses = registerOutput<List<ServiceGroupMonitoringAgentProcessMatchExpress>>('matchExpresses');
-    this.processName = registerOutput<String>('processName');
+         'alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertConfigs = registerOutput<List<Map<String, dynamic>>>('alertConfigs');
+    groupId = registerOutput<String>('groupId');
+    groupMonitoringAgentProcessId = registerOutput<String>(
+      'groupMonitoringAgentProcessId',
+    );
+    matchExpressFilterRelation = registerOutput<String>(
+      'matchExpressFilterRelation',
+    );
+    matchExpresses = registerOutput<List<Map<String, dynamic>>>(
+      'matchExpresses',
+    );
+    processName = registerOutput<String>('processName');
   }
 }

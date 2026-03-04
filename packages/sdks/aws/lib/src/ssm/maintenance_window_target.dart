@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'maintenance_window_target_args.dart';
 import 'maintenance_window_target_state.dart';
-import 'maintenance_window_target_target.dart';
 
 /// Provides an SSM Maintenance Window Target resource
 ///
@@ -406,17 +405,23 @@ import 'maintenance_window_target_target.dart';
 class MaintenanceWindowTarget extends pulumi.CustomResource {
   /// The description of the maintenance window target.
   late final pulumi.Output<String?> description;
+
   /// The name of the maintenance window target.
   late final pulumi.Output<String> name;
+
   /// User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.
   late final pulumi.Output<String?> ownerInformation;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The type of target being registered with the Maintenance Window. Possible values are `INSTANCE` and `RESOURCE_GROUP`.
   late final pulumi.Output<String> resourceType;
+
   /// The targets to register with the maintenance window. In other words, the instances to run commands on when the maintenance window runs. You can specify targets using instance IDs, resource group names, or tags that have been applied to instances. For more information about these examples formats see
   /// (https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-targets-examples.html)
-  late final pulumi.Output<List<MaintenanceWindowTargetTarget>> targets;
+  late final pulumi.Output<List<Map<String, dynamic>>> targets;
+
   /// The Id of the maintenance window to register the target with.
   late final pulumi.Output<String> windowId;
 
@@ -429,18 +434,18 @@ class MaintenanceWindowTarget extends pulumi.CustomResource {
     MaintenanceWindowTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssm/maintenanceWindowTarget:MaintenanceWindowTarget',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'aws:ssm/maintenanceWindowTarget:MaintenanceWindowTarget',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.ownerInformation = registerOutput<String?>('ownerInformation');
-    this.region = registerOutput<String>('region');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.targets = registerOutput<List<MaintenanceWindowTargetTarget>>('targets');
-    this.windowId = registerOutput<String>('windowId');
+    ownerInformation = registerOutput<String?>('ownerInformation');
+    region = registerOutput<String>('region');
+    resourceType = registerOutput<String>('resourceType');
+    targets = registerOutput<List<Map<String, dynamic>>>('targets');
+    windowId = registerOutput<String>('windowId');
   }
 
   /// Gets an existing [MaintenanceWindowTarget] resource's state with the given [name] and [id].
@@ -461,17 +466,17 @@ class MaintenanceWindowTarget extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssm/maintenanceWindowTarget:MaintenanceWindowTarget',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'aws:ssm/maintenanceWindowTarget:MaintenanceWindowTarget',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.ownerInformation = registerOutput<String?>('ownerInformation');
-    this.region = registerOutput<String>('region');
-    this.resourceType = registerOutput<String>('resourceType');
-    this.targets = registerOutput<List<MaintenanceWindowTargetTarget>>('targets');
-    this.windowId = registerOutput<String>('windowId');
+    ownerInformation = registerOutput<String?>('ownerInformation');
+    region = registerOutput<String>('region');
+    resourceType = registerOutput<String>('resourceType');
+    targets = registerOutput<List<Map<String, dynamic>>>('targets');
+    windowId = registerOutput<String>('windowId');
   }
 }

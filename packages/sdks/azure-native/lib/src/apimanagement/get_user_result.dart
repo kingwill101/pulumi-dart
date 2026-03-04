@@ -8,26 +8,37 @@ import 'user_identity_contract_response.dart';
 class GetUserResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Email address.
   final String? email;
+
   /// First name.
   final String? firstName;
+
   /// Collection of groups user is part of.
   final List<GroupContractPropertiesResponse> groups;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Collection of user identities.
   final List<UserIdentityContractResponse>? identities;
+
   /// Last name.
   final String? lastName;
+
   /// The name of the resource
   final String name;
+
   /// Optional note about a user set by the administrator.
   final String? note;
+
   /// Date of user registration. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   final String? registrationDate;
+
   /// Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
   final String? state;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -64,9 +75,20 @@ class GetUserResult {
       'azureApiVersion': azureApiVersion,
       'email': ?email,
       'firstName': ?firstName,
-      'groups': pulumi.Input.encodeList<GroupContractPropertiesResponse, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'groups':
+          pulumi.Input.encodeList<
+            GroupContractPropertiesResponse,
+            Map<String, dynamic>
+          >(groups, (value) => value.toMap()),
       'id': id,
-      'identities': ?identities == null ? null : pulumi.Input.encodeList<UserIdentityContractResponse, Map<String, dynamic>>(identities!, (value) => value.toMap()),
+      'identities': ?(() {
+        final guardedValue = identities;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          UserIdentityContractResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'lastName': ?lastName,
       'name': name,
       'note': ?note,
@@ -79,18 +101,55 @@ class GetUserResult {
   factory GetUserResult.fromMap(Map<String, dynamic> map) {
     return GetUserResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      email: map['email'] == null ? null : map['email']! as String,
-      firstName: map['firstName'] == null ? null : map['firstName']! as String,
-      groups: pulumi.Input.decodeList<GroupContractPropertiesResponse>(map['groups'], (value) => GroupContractPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      firstName: (() {
+        final guardedValue = map['firstName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      groups: pulumi.Input.decodeList<GroupContractPropertiesResponse>(
+        map['groups']!,
+        (value) => GroupContractPropertiesResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
-      identities: map['identities'] == null ? null : pulumi.Input.decodeList<UserIdentityContractResponse>(map['identities']!, (value) => UserIdentityContractResponse.fromMap((value as Map).cast<String, dynamic>())),
-      lastName: map['lastName'] == null ? null : map['lastName']! as String,
+      identities: (() {
+        final guardedValue = map['identities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<UserIdentityContractResponse>(
+          guardedValue,
+          (value) => UserIdentityContractResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      lastName: (() {
+        final guardedValue = map['lastName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      note: map['note'] == null ? null : map['note']! as String,
-      registrationDate: map['registrationDate'] == null ? null : map['registrationDate']! as String,
-      state: map['state'] == null ? null : map['state']! as String,
+      note: (() {
+        final guardedValue = map['note'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      registrationDate: (() {
+        final guardedValue = map['registrationDate'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

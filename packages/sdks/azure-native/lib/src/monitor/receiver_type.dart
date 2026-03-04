@@ -6,16 +6,15 @@ enum ReceiverType {
   oTLP("OTLP"),
   uDP("UDP");
 
-  const ReceiverType(this.value);
-  final String value;
+  const ReceiverType(this.wireValue);
+  final String wireValue;
 
   static ReceiverType fromValue(String value) {
     for (final item in ReceiverType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReceiverType value: $value');
   }
 }
-

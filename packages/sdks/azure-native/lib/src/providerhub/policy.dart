@@ -3,16 +3,15 @@ enum Policy {
   notSpecified("NotSpecified"),
   synchronizeBeginExtension("SynchronizeBeginExtension");
 
-  const Policy(this.value);
-  final String value;
+  const Policy(this.wireValue);
+  final String wireValue;
 
   static Policy fromValue(String value) {
     for (final item in Policy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Policy value: $value');
   }
 }
-

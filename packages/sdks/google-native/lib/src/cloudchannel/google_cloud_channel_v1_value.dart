@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudChannelV1Value {
   /// Represents a boolean value.
   final pulumi.Input<bool>? boolValue;
+
   /// Represents a double value.
   final pulumi.Input<double>? doubleValue;
+
   /// Represents an int64 value.
   final pulumi.Input<String>? int64Value;
+
   /// Represents an 'Any' proto value.
   final pulumi.Input<Map<String, String>>? protoValue;
+
   /// Represents a string value.
   final pulumi.Input<String>? stringValue;
 
@@ -41,12 +45,33 @@ class GoogleCloudChannelV1Value {
 
   factory GoogleCloudChannelV1Value.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1Value(
-      boolValue: map['boolValue'] == null ? null : (map['boolValue']! as bool).input(),
-      doubleValue: map['doubleValue'] == null ? null : (map['doubleValue']! as double).input(),
-      int64Value: map['int64Value'] == null ? null : (map['int64Value']! as String).input(),
-      protoValue: map['protoValue'] == null ? null : ((map['protoValue']! as Map).cast<String, String>()).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue']! as String).input(),
+      boolValue: (() {
+        final guardedValue = map['boolValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      doubleValue: (() {
+        final guardedValue = map['doubleValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      int64Value: (() {
+        final guardedValue = map['int64Value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protoValue: (() {
+        final guardedValue = map['protoValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      stringValue: (() {
+        final guardedValue = map['stringValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

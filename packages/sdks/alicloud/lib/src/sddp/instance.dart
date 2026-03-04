@@ -6,9 +6,9 @@ import 'instance_state.dart';
 ///
 /// For information about Data Security Center Instance and how to use it, see [What is Instance](https://help.aliyun.com/product/88674.html).
 ///
-/// > **NOTE:** Available in v1.136.0+.
+/// &gt; **NOTE:** Available in v1.136.0+.
 ///
-/// > **NOTE:** The Data Security Center Instance is not support in the international site.
+/// &gt; **NOTE:** The Data Security Center Instance is not support in the international site.
 ///
 /// ## Example Usage
 ///
@@ -157,44 +157,64 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// Whether the required RAM authorization is configured.
   late final pulumi.Output<bool> authed;
+
   /// The dataphin. Valid values: `yes`,`no`.
   late final pulumi.Output<String?> dataphin;
+
   /// The dataphin count. Valid values: 1 to 20.
   late final pulumi.Output<String?> dataphinCount;
+
   /// The number of instances.
   late final pulumi.Output<String> instanceNum;
+
   /// The logistics.
   late final pulumi.Output<String?> logistics;
+
   /// The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
   late final pulumi.Output<String?> modifyType;
+
   /// Whether the authorized MaxCompute (ODPS) assets.
   late final pulumi.Output<bool> odpsSet;
+
   /// Whether the authorized oss assets.
   late final pulumi.Output<bool> ossBucketSet;
+
   /// The OSS storage capacity.
   late final pulumi.Output<String> ossSize;
+
   /// The payment type of the resource. Valid values: `Subscription`.
   late final pulumi.Output<String> paymentType;
+
   /// The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
   late final pulumi.Output<int> period;
+
   /// Whether the authorized rds assets.
   late final pulumi.Output<bool> rdsSet;
+
   /// The remaining days of the protection period of the assets in the current login account.
   late final pulumi.Output<String> remainDays;
+
   /// Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
   late final pulumi.Output<int?> renewPeriod;
+
   /// Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
   late final pulumi.Output<String> renewalStatus;
+
   /// Whether to use the database. Valid values:`yes`,`no`.
   late final pulumi.Output<String> sdCbool;
+
   /// The number of instances.
   late final pulumi.Output<String> sdc;
+
   /// The sddp version. Valid values: `version_audit`,`version_company`,`version_dlp`.
   late final pulumi.Output<String> sddpVersion;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
+
   /// Whether to use OSS. Valid values: `yes`,`no`.
   late final pulumi.Output<String> udCbool;
+
   /// OSS Size.
   late final pulumi.Output<String> udc;
 
@@ -207,32 +227,32 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sddp/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authed = registerOutput<bool>('authed');
-    this.dataphin = registerOutput<String?>('dataphin');
-    this.dataphinCount = registerOutput<String?>('dataphinCount');
-    this.instanceNum = registerOutput<String>('instanceNum');
-    this.logistics = registerOutput<String?>('logistics');
-    this.modifyType = registerOutput<String?>('modifyType');
-    this.odpsSet = registerOutput<bool>('odpsSet');
-    this.ossBucketSet = registerOutput<bool>('ossBucketSet');
-    this.ossSize = registerOutput<String>('ossSize');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int>('period');
-    this.rdsSet = registerOutput<bool>('rdsSet');
-    this.remainDays = registerOutput<String>('remainDays');
-    this.renewPeriod = registerOutput<int?>('renewPeriod');
-    this.renewalStatus = registerOutput<String>('renewalStatus');
-    this.sdCbool = registerOutput<String>('sdCbool');
-    this.sdc = registerOutput<String>('sdc');
-    this.sddpVersion = registerOutput<String>('sddpVersion');
-    this.status = registerOutput<String>('status');
-    this.udCbool = registerOutput<String>('udCbool');
-    this.udc = registerOutput<String>('udc');
+         'alicloud:sddp/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authed = registerOutput<bool>('authed');
+    dataphin = registerOutput<String?>('dataphin');
+    dataphinCount = registerOutput<String?>('dataphinCount');
+    instanceNum = registerOutput<String>('instanceNum');
+    logistics = registerOutput<String?>('logistics');
+    modifyType = registerOutput<String?>('modifyType');
+    odpsSet = registerOutput<bool>('odpsSet');
+    ossBucketSet = registerOutput<bool>('ossBucketSet');
+    ossSize = registerOutput<String>('ossSize');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int>('period');
+    rdsSet = registerOutput<bool>('rdsSet');
+    remainDays = registerOutput<String>('remainDays');
+    renewPeriod = registerOutput<int?>('renewPeriod');
+    renewalStatus = registerOutput<String>('renewalStatus');
+    sdCbool = registerOutput<String>('sdCbool');
+    sdc = registerOutput<String>('sdc');
+    sddpVersion = registerOutput<String>('sddpVersion');
+    status = registerOutput<String>('status');
+    udCbool = registerOutput<String>('udCbool');
+    udc = registerOutput<String>('udc');
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -253,31 +273,31 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:sddp/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authed = registerOutput<bool>('authed');
-    this.dataphin = registerOutput<String?>('dataphin');
-    this.dataphinCount = registerOutput<String?>('dataphinCount');
-    this.instanceNum = registerOutput<String>('instanceNum');
-    this.logistics = registerOutput<String?>('logistics');
-    this.modifyType = registerOutput<String?>('modifyType');
-    this.odpsSet = registerOutput<bool>('odpsSet');
-    this.ossBucketSet = registerOutput<bool>('ossBucketSet');
-    this.ossSize = registerOutput<String>('ossSize');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.period = registerOutput<int>('period');
-    this.rdsSet = registerOutput<bool>('rdsSet');
-    this.remainDays = registerOutput<String>('remainDays');
-    this.renewPeriod = registerOutput<int?>('renewPeriod');
-    this.renewalStatus = registerOutput<String>('renewalStatus');
-    this.sdCbool = registerOutput<String>('sdCbool');
-    this.sdc = registerOutput<String>('sdc');
-    this.sddpVersion = registerOutput<String>('sddpVersion');
-    this.status = registerOutput<String>('status');
-    this.udCbool = registerOutput<String>('udCbool');
-    this.udc = registerOutput<String>('udc');
+         'alicloud:sddp/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authed = registerOutput<bool>('authed');
+    dataphin = registerOutput<String?>('dataphin');
+    dataphinCount = registerOutput<String?>('dataphinCount');
+    instanceNum = registerOutput<String>('instanceNum');
+    logistics = registerOutput<String?>('logistics');
+    modifyType = registerOutput<String?>('modifyType');
+    odpsSet = registerOutput<bool>('odpsSet');
+    ossBucketSet = registerOutput<bool>('ossBucketSet');
+    ossSize = registerOutput<String>('ossSize');
+    paymentType = registerOutput<String>('paymentType');
+    period = registerOutput<int>('period');
+    rdsSet = registerOutput<bool>('rdsSet');
+    remainDays = registerOutput<String>('remainDays');
+    renewPeriod = registerOutput<int?>('renewPeriod');
+    renewalStatus = registerOutput<String>('renewalStatus');
+    sdCbool = registerOutput<String>('sdCbool');
+    sdc = registerOutput<String>('sdc');
+    sddpVersion = registerOutput<String>('sddpVersion');
+    status = registerOutput<String>('status');
+    udCbool = registerOutput<String>('udCbool');
+    udc = registerOutput<String>('udc');
   }
 }

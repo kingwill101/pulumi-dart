@@ -3,16 +3,15 @@ enum RegionSnapshotSnapshotType {
   archive("ARCHIVE"),
   standard("STANDARD");
 
-  const RegionSnapshotSnapshotType(this.value);
-  final String value;
+  const RegionSnapshotSnapshotType(this.wireValue);
+  final String wireValue;
 
   static RegionSnapshotSnapshotType fromValue(String value) {
     for (final item in RegionSnapshotSnapshotType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegionSnapshotSnapshotType value: $value');
   }
 }
-

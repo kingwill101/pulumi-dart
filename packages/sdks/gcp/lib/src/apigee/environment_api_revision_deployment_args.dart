@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentApiRevisionDeploymentArgs {
   /// Apigee API proxy name.
   final pulumi.Input<String> api;
+
   /// Apigee environment name.
   final pulumi.Input<String> environment;
+
   /// Apigee organization ID.
   final pulumi.Input<String> orgId;
+
   /// If true, replaces other deployed revisions of this proxy in the environment.
   final pulumi.Input<bool>? override;
+
   /// API proxy revision number to deploy.
   final pulumi.Input<int> revision;
+
   /// If true, enables sequenced rollout for safe traffic switching.
   final pulumi.Input<bool>? sequencedRollout;
+
   /// Optional service account the deployed proxy runs as.
   final pulumi.Input<String>? serviceAccount;
 
@@ -52,16 +58,29 @@ class EnvironmentApiRevisionDeploymentArgs {
     };
   }
 
-  factory EnvironmentApiRevisionDeploymentArgs.fromMap(Map<String, dynamic> map) {
+  factory EnvironmentApiRevisionDeploymentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnvironmentApiRevisionDeploymentArgs(
-      api: (map['api'] as String).input(),
-      environment: (map['environment'] as String).input(),
-      orgId: (map['orgId'] as String).input(),
-      override: map['override'] == null ? null : (map['override']! as bool).input(),
-      revision: (map['revision'] as int).input(),
-      sequencedRollout: map['sequencedRollout'] == null ? null : (map['sequencedRollout']! as bool).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      api: pulumi.Input.fromValue(map['api'] as String),
+      environment: pulumi.Input.fromValue(map['environment'] as String),
+      orgId: pulumi.Input.fromValue(map['orgId'] as String),
+      override: (() {
+        final guardedValue = map['override'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      revision: pulumi.Input.fromValue(map['revision'] as int),
+      sequencedRollout: (() {
+        final guardedValue = map['sequencedRollout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      serviceAccount: (() {
+        final guardedValue = map['serviceAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

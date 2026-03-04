@@ -5,16 +5,15 @@ enum SelectorKind {
   valueResourceWithoutLocation("resourceWithoutLocation"),
   valuePolicyDefinitionReferenceId("policyDefinitionReferenceId");
 
-  const SelectorKind(this.value);
-  final String value;
+  const SelectorKind(this.wireValue);
+  final String wireValue;
 
   static SelectorKind fromValue(String value) {
     for (final item in SelectorKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SelectorKind value: $value');
   }
 }
-

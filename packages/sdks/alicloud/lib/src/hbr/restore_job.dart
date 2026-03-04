@@ -7,7 +7,7 @@ import 'restore_job_state.dart';
 ///
 /// For information about Hybrid Backup Recovery (HBR) Restore Job and how to use it, see [What is Restore Job](https://www.alibabacloud.com/help/doc-detail/186575.htm).
 ///
-/// > **NOTE:** Available since v1.133.0.
+/// &gt; **NOTE:** Available since v1.133.0.
 ///
 /// ## Example Usage
 ///
@@ -476,13 +476,13 @@ import 'restore_job_state.dart';
 /// ```
 ///
 ///
-/// > **NOTE:** This resource can only be created, cannot be modified or deleted. Therefore, any modification of the resource attribute will not affect exist resource.
+/// &gt; **NOTE:** This resource can only be created, cannot be modified or deleted. Therefore, any modification of the resource attribute will not affect exist resource.
 ///
 /// 📚 Need more examples? VIEW MORE EXAMPLES
 ///
 /// ## Import
 ///
-/// Hybrid Backup Recovery (HBR) Restore Job can be imported using the id. Format to `<restore_job_id>:<restore_type>`, e.g.
+/// Hybrid Backup Recovery (HBR) Restore Job can be imported using the id. Format to `&lt;restore_job_id&gt;:&lt;restore_type&gt;`, e.g.
 ///
 /// ```sh
 /// $ pulumi import alicloud:hbr/restoreJob:RestoreJob example your_restore_job_id:your_restore_type
@@ -490,54 +490,79 @@ import 'restore_job_state.dart';
 class RestoreJob extends pulumi.CustomResource {
   /// The role name created in the original account RAM backup by the cross account managed by the current account.
   late final pulumi.Output<String?> crossAccountRoleName;
+
   /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
   late final pulumi.Output<String> crossAccountType;
+
   /// The original account ID of the cross account backup managed by the current account.
   late final pulumi.Output<int?> crossAccountUserId;
+
   /// The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
   late final pulumi.Output<String?> exclude;
+
   /// The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
   late final pulumi.Output<String?> include;
+
   /// Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
   late final pulumi.Output<String?> options;
+
   /// The details about the Tablestore instance. See the following `Block ots_detail`.
   late final pulumi.Output<RestoreJobOtsDetail> otsDetail;
+
   /// Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
   late final pulumi.Output<String> restoreJobId;
+
   /// The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
   late final pulumi.Output<String> restoreType;
+
   /// The hashcode of Snapshot.
   late final pulumi.Output<String> snapshotHash;
+
   /// The ID of Snapshot.
   late final pulumi.Output<String> snapshotId;
+
   /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS`.
   late final pulumi.Output<String> sourceType;
+
   /// The Restore Job Status.
   late final pulumi.Output<String> status;
+
   /// The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
   late final pulumi.Output<String?> targetBucket;
+
   /// The target client ID.
   late final pulumi.Output<String?> targetClientId;
+
   /// The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
   late final pulumi.Output<String?> targetCreateTime;
+
   /// The target data source ID.
   late final pulumi.Output<String?> targetDataSourceId;
+
   /// The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
   late final pulumi.Output<String?> targetFileSystemId;
+
   /// The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
   late final pulumi.Output<String?> targetInstanceId;
+
   /// The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
   late final pulumi.Output<String?> targetInstanceName;
+
   /// The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
   late final pulumi.Output<String?> targetPath;
+
   /// The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
   late final pulumi.Output<String?> targetPrefix;
+
   /// The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
   late final pulumi.Output<String?> targetTableName;
+
   /// The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
   late final pulumi.Output<String?> targetTime;
+
   /// The full machine backup details.
   late final pulumi.Output<String?> udmDetail;
+
   /// The ID of backup vault.
   late final pulumi.Output<String> vaultId;
 
@@ -550,37 +575,37 @@ class RestoreJob extends pulumi.CustomResource {
     RestoreJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:hbr/restoreJob:RestoreJob',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
-    this.crossAccountType = registerOutput<String>('crossAccountType');
-    this.crossAccountUserId = registerOutput<int?>('crossAccountUserId');
-    this.exclude = registerOutput<String?>('exclude');
-    this.include = registerOutput<String?>('include');
+         'alicloud:hbr/restoreJob:RestoreJob',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
+    crossAccountType = registerOutput<String>('crossAccountType');
+    crossAccountUserId = registerOutput<int?>('crossAccountUserId');
+    exclude = registerOutput<String?>('exclude');
+    include = registerOutput<String?>('include');
     this.options = registerOutput<String?>('options');
-    this.otsDetail = registerOutput<RestoreJobOtsDetail>('otsDetail');
-    this.restoreJobId = registerOutput<String>('restoreJobId');
-    this.restoreType = registerOutput<String>('restoreType');
-    this.snapshotHash = registerOutput<String>('snapshotHash');
-    this.snapshotId = registerOutput<String>('snapshotId');
-    this.sourceType = registerOutput<String>('sourceType');
-    this.status = registerOutput<String>('status');
-    this.targetBucket = registerOutput<String?>('targetBucket');
-    this.targetClientId = registerOutput<String?>('targetClientId');
-    this.targetCreateTime = registerOutput<String?>('targetCreateTime');
-    this.targetDataSourceId = registerOutput<String?>('targetDataSourceId');
-    this.targetFileSystemId = registerOutput<String?>('targetFileSystemId');
-    this.targetInstanceId = registerOutput<String?>('targetInstanceId');
-    this.targetInstanceName = registerOutput<String?>('targetInstanceName');
-    this.targetPath = registerOutput<String?>('targetPath');
-    this.targetPrefix = registerOutput<String?>('targetPrefix');
-    this.targetTableName = registerOutput<String?>('targetTableName');
-    this.targetTime = registerOutput<String?>('targetTime');
-    this.udmDetail = registerOutput<String?>('udmDetail');
-    this.vaultId = registerOutput<String>('vaultId');
+    otsDetail = registerOutput<RestoreJobOtsDetail>('otsDetail');
+    restoreJobId = registerOutput<String>('restoreJobId');
+    restoreType = registerOutput<String>('restoreType');
+    snapshotHash = registerOutput<String>('snapshotHash');
+    snapshotId = registerOutput<String>('snapshotId');
+    sourceType = registerOutput<String>('sourceType');
+    status = registerOutput<String>('status');
+    targetBucket = registerOutput<String?>('targetBucket');
+    targetClientId = registerOutput<String?>('targetClientId');
+    targetCreateTime = registerOutput<String?>('targetCreateTime');
+    targetDataSourceId = registerOutput<String?>('targetDataSourceId');
+    targetFileSystemId = registerOutput<String?>('targetFileSystemId');
+    targetInstanceId = registerOutput<String?>('targetInstanceId');
+    targetInstanceName = registerOutput<String?>('targetInstanceName');
+    targetPath = registerOutput<String?>('targetPath');
+    targetPrefix = registerOutput<String?>('targetPrefix');
+    targetTableName = registerOutput<String?>('targetTableName');
+    targetTime = registerOutput<String?>('targetTime');
+    udmDetail = registerOutput<String?>('udmDetail');
+    vaultId = registerOutput<String>('vaultId');
   }
 
   /// Gets an existing [RestoreJob] resource's state with the given [name] and [id].
@@ -601,36 +626,36 @@ class RestoreJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:hbr/restoreJob:RestoreJob',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
-    this.crossAccountType = registerOutput<String>('crossAccountType');
-    this.crossAccountUserId = registerOutput<int?>('crossAccountUserId');
-    this.exclude = registerOutput<String?>('exclude');
-    this.include = registerOutput<String?>('include');
+         'alicloud:hbr/restoreJob:RestoreJob',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
+    crossAccountType = registerOutput<String>('crossAccountType');
+    crossAccountUserId = registerOutput<int?>('crossAccountUserId');
+    exclude = registerOutput<String?>('exclude');
+    include = registerOutput<String?>('include');
     this.options = registerOutput<String?>('options');
-    this.otsDetail = registerOutput<RestoreJobOtsDetail>('otsDetail');
-    this.restoreJobId = registerOutput<String>('restoreJobId');
-    this.restoreType = registerOutput<String>('restoreType');
-    this.snapshotHash = registerOutput<String>('snapshotHash');
-    this.snapshotId = registerOutput<String>('snapshotId');
-    this.sourceType = registerOutput<String>('sourceType');
-    this.status = registerOutput<String>('status');
-    this.targetBucket = registerOutput<String?>('targetBucket');
-    this.targetClientId = registerOutput<String?>('targetClientId');
-    this.targetCreateTime = registerOutput<String?>('targetCreateTime');
-    this.targetDataSourceId = registerOutput<String?>('targetDataSourceId');
-    this.targetFileSystemId = registerOutput<String?>('targetFileSystemId');
-    this.targetInstanceId = registerOutput<String?>('targetInstanceId');
-    this.targetInstanceName = registerOutput<String?>('targetInstanceName');
-    this.targetPath = registerOutput<String?>('targetPath');
-    this.targetPrefix = registerOutput<String?>('targetPrefix');
-    this.targetTableName = registerOutput<String?>('targetTableName');
-    this.targetTime = registerOutput<String?>('targetTime');
-    this.udmDetail = registerOutput<String?>('udmDetail');
-    this.vaultId = registerOutput<String>('vaultId');
+    otsDetail = registerOutput<RestoreJobOtsDetail>('otsDetail');
+    restoreJobId = registerOutput<String>('restoreJobId');
+    restoreType = registerOutput<String>('restoreType');
+    snapshotHash = registerOutput<String>('snapshotHash');
+    snapshotId = registerOutput<String>('snapshotId');
+    sourceType = registerOutput<String>('sourceType');
+    status = registerOutput<String>('status');
+    targetBucket = registerOutput<String?>('targetBucket');
+    targetClientId = registerOutput<String?>('targetClientId');
+    targetCreateTime = registerOutput<String?>('targetCreateTime');
+    targetDataSourceId = registerOutput<String?>('targetDataSourceId');
+    targetFileSystemId = registerOutput<String?>('targetFileSystemId');
+    targetInstanceId = registerOutput<String?>('targetInstanceId');
+    targetInstanceName = registerOutput<String?>('targetInstanceName');
+    targetPath = registerOutput<String?>('targetPath');
+    targetPrefix = registerOutput<String?>('targetPrefix');
+    targetTableName = registerOutput<String?>('targetTableName');
+    targetTime = registerOutput<String?>('targetTime');
+    udmDetail = registerOutput<String?>('udmDetail');
+    vaultId = registerOutput<String>('vaultId');
   }
 }

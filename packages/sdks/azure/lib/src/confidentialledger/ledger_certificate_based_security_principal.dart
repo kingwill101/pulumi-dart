@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LedgerCertificateBasedSecurityPrincipal {
   /// Specifies the Ledger Role to grant this Certificate Security Principal. Possible values are `Administrator`, `Contributor` and `Reader`.
   final pulumi.Input<String> ledgerRoleName;
+
   /// The public key, in PEM format, of the certificate used by this identity to authenticate with the Confidential Ledger.
   final pulumi.Input<String> pemPublicKey;
 
@@ -23,11 +24,12 @@ class LedgerCertificateBasedSecurityPrincipal {
     };
   }
 
-  factory LedgerCertificateBasedSecurityPrincipal.fromMap(Map<String, dynamic> map) {
+  factory LedgerCertificateBasedSecurityPrincipal.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LedgerCertificateBasedSecurityPrincipal(
-      ledgerRoleName: (map['ledgerRoleName'] as String).input(),
-      pemPublicKey: (map['pemPublicKey'] as String).input(),
+      ledgerRoleName: pulumi.Input.fromValue(map['ledgerRoleName'] as String),
+      pemPublicKey: pulumi.Input.fromValue(map['pemPublicKey'] as String),
     );
   }
 }
-

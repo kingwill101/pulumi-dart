@@ -7,16 +7,15 @@ enum RemediationRemediationType {
   vendorFix("VENDOR_FIX"),
   workaround("WORKAROUND");
 
-  const RemediationRemediationType(this.value);
-  final String value;
+  const RemediationRemediationType(this.wireValue);
+  final String wireValue;
 
   static RemediationRemediationType fromValue(String value) {
     for (final item in RemediationRemediationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RemediationRemediationType value: $value');
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPublisherArgs {
   /// The name of the publisher.
   final pulumi.Input<String> publisherName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetPublisherArgs {
 
   factory GetPublisherArgs.fromMap(Map<String, dynamic> map) {
     return GetPublisherArgs(
-      publisherName: (map['publisherName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      publisherName: pulumi.Input.fromValue(map['publisherName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

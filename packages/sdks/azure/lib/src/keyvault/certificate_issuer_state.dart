@@ -7,16 +7,22 @@ import 'certificate_issuer_admin.dart';
 class CertificateIssuerState {
   /// The account number with the third-party Certificate Issuer.
   final pulumi.Input<String>? accountId;
+
   /// One or more `admin` blocks as defined below.
   final pulumi.Input<List<CertificateIssuerAdmin>>? admins;
+
   /// The ID of the Key Vault in which to create the Certificate Issuer. Changing this forces a new resource to be created.
   final pulumi.Input<String>? keyVaultId;
+
   /// The name which should be used for this Key Vault Certificate Issuer. Changing this forces a new Key Vault Certificate Issuer to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the organization as provided to the issuer.
   final pulumi.Input<String>? orgId;
+
   /// The password associated with the account and organization ID at the third-party Certificate Issuer. If not specified, will not overwrite any previous value.
   final pulumi.Input<String>? password;
+
   /// The name of the third-party Certificate Issuer. Possible values are: `DigiCert`, `GlobalSign`, `OneCertV2-PrivateCA`, `OneCertV2-PublicCA` and `SslAdminV2`.
   final pulumi.Input<String>? providerName;
 
@@ -41,7 +47,18 @@ class CertificateIssuerState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': ?accountId,
-      'admins': ?pulumi.Input.mapOptionalInputValue<List<CertificateIssuerAdmin>, List<Map<String, dynamic>>>(admins, (value) => pulumi.Input.encodeList<CertificateIssuerAdmin, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'admins':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CertificateIssuerAdmin>,
+            List<Map<String, dynamic>>
+          >(
+            admins,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CertificateIssuerAdmin,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'keyVaultId': ?keyVaultId,
       'name': ?name,
       'orgId': ?orgId,
@@ -52,14 +69,48 @@ class CertificateIssuerState {
 
   factory CertificateIssuerState.fromMap(Map<String, dynamic> map) {
     return CertificateIssuerState(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      admins: map['admins'] == null ? null : (pulumi.Input.decodeList<CertificateIssuerAdmin>(map['admins']!, (value) => CertificateIssuerAdmin.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName']! as String).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      admins: (() {
+        final guardedValue = map['admins'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CertificateIssuerAdmin>(
+            guardedValue,
+            (value) => CertificateIssuerAdmin.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      keyVaultId: (() {
+        final guardedValue = map['keyVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orgId: (() {
+        final guardedValue = map['orgId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerName: (() {
+        final guardedValue = map['providerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

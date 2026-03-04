@@ -9,20 +9,15 @@ class ExpressRouteConnectionIdResponse {
 
   /// Creates a new [ExpressRouteConnectionIdResponse].
   /// [id] The ID of the ExpressRouteConnection.
-  ExpressRouteConnectionIdResponse({
-    required this.id,
-  });
+  ExpressRouteConnectionIdResponse({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory ExpressRouteConnectionIdResponse.fromMap(Map<String, dynamic> map) {
     return ExpressRouteConnectionIdResponse(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

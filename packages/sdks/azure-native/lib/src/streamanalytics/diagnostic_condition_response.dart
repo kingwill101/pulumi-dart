@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiagnosticConditionResponse {
   /// The opaque diagnostic code.
   final pulumi.Input<String> code;
+
   /// The human-readable message describing the condition in detail. Localized in the Accept-Language of the client request.
   final pulumi.Input<String> message;
+
   /// The UTC timestamp of when the condition started. Customers should be able to find a corresponding event in the ops log around this time.
   final pulumi.Input<String> since;
 
@@ -22,19 +24,14 @@ class DiagnosticConditionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-      'message': message,
-      'since': since,
-    };
+    return <String, dynamic>{'code': code, 'message': message, 'since': since};
   }
 
   factory DiagnosticConditionResponse.fromMap(Map<String, dynamic> map) {
     return DiagnosticConditionResponse(
-      code: (map['code'] as String).input(),
-      message: (map['message'] as String).input(),
-      since: (map['since'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      since: pulumi.Input.fromValue(map['since'] as String),
     );
   }
 }
-

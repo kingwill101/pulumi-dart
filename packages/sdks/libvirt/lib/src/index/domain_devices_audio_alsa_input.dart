@@ -8,20 +8,19 @@ class DomainDevicesAudioAlsaInput {
 
   /// Creates a new [DomainDevicesAudioAlsaInput].
   /// [dev] Sets the device node for the ALSA audio output.
-  DomainDevicesAudioAlsaInput({
-    this.dev,
-  });
+  DomainDevicesAudioAlsaInput({this.dev});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dev': ?dev,
-    };
+    return <String, dynamic>{'dev': ?dev};
   }
 
   factory DomainDevicesAudioAlsaInput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioAlsaInput(
-      dev: map['dev'] == null ? null : (map['dev']! as String).input(),
+      dev: (() {
+        final guardedValue = map['dev'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExperienceConfigurationContentSourceConfiguration {
   /// The identifiers of the data sources you want to use for your Amazon Kendra experience. Maximum number of 100 items.
   final pulumi.Input<List<String>>? dataSourceIds;
+
   /// Whether to use documents you indexed directly using the `BatchPutDocument API`. Defaults to `false`.
   final pulumi.Input<bool>? directPutContent;
+
   /// The identifier of the FAQs that you want to use for your Amazon Kendra experience. Maximum number of 100 items.
   final pulumi.Input<List<String>>? faqIds;
 
@@ -28,12 +30,25 @@ class ExperienceConfigurationContentSourceConfiguration {
     };
   }
 
-  factory ExperienceConfigurationContentSourceConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ExperienceConfigurationContentSourceConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExperienceConfigurationContentSourceConfiguration(
-      dataSourceIds: map['dataSourceIds'] == null ? null : (((map['dataSourceIds'] as List).cast<String>()).input()).input(),
-      directPutContent: map['directPutContent'] == null ? null : ((map['directPutContent'] as bool).input()).input(),
-      faqIds: map['faqIds'] == null ? null : (((map['faqIds'] as List).cast<String>()).input()).input(),
+      dataSourceIds: (() {
+        final guardedValue = map['dataSourceIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      directPutContent: (() {
+        final guardedValue = map['directPutContent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      faqIds: (() {
+        final guardedValue = map['faqIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -12,18 +12,25 @@ import 'subnet.dart';
 class LogicalNetworkArgs {
   /// DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.
   final pulumi.Input<LogicalNetworkPropertiesDhcpOptions>? dhcpOptions;
+
   /// The extendedLocation of the resource.
   final pulumi.Input<ExtendedLocation>? extendedLocation;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Name of the logical network
   final pulumi.Input<String>? logicalNetworkName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Subnet - list of subnets under the logical network
   final pulumi.Input<List<Subnet>>? subnets;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// name of the network switch to be used for VMs
   final pulumi.Input<String>? vmSwitchName;
 
@@ -49,12 +56,30 @@ class LogicalNetworkArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dhcpOptions': ?pulumi.Input.mapOptionalInputValue<LogicalNetworkPropertiesDhcpOptions, Map<String, dynamic>>(dhcpOptions, (value) => value.toMap()),
-      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'dhcpOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            LogicalNetworkPropertiesDhcpOptions,
+            Map<String, dynamic>
+          >(dhcpOptions, (value) => value.toMap()),
+      'extendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocation,
+            Map<String, dynamic>
+          >(extendedLocation, (value) => value.toMap()),
       'location': ?location,
       'logicalNetworkName': ?logicalNetworkName,
       'resourceGroupName': resourceGroupName,
-      'subnets': ?pulumi.Input.mapOptionalInputValue<List<Subnet>, List<Map<String, dynamic>>>(subnets, (value) => pulumi.Input.encodeList<Subnet, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'subnets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Subnet>,
+            List<Map<String, dynamic>>
+          >(
+            subnets,
+            (value) => pulumi.Input.encodeList<Subnet, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
       'tags': ?tags,
       'vmSwitchName': ?vmSwitchName,
     };
@@ -62,15 +87,59 @@ class LogicalNetworkArgs {
 
   factory LogicalNetworkArgs.fromMap(Map<String, dynamic> map) {
     return LogicalNetworkArgs(
-      dhcpOptions: map['dhcpOptions'] == null ? null : (LogicalNetworkPropertiesDhcpOptions.fromMap((map['dhcpOptions']! as Map).cast<String, dynamic>())).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      logicalNetworkName: map['logicalNetworkName'] == null ? null : (map['logicalNetworkName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<Subnet>(map['subnets']!, (value) => Subnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vmSwitchName: map['vmSwitchName'] == null ? null : (map['vmSwitchName']! as String).input(),
+      dhcpOptions: (() {
+        final guardedValue = map['dhcpOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LogicalNetworkPropertiesDhcpOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logicalNetworkName: (() {
+        final guardedValue = map['logicalNetworkName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      subnets: (() {
+        final guardedValue = map['subnets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Subnet>(
+            guardedValue,
+            (value) => Subnet.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vmSwitchName: (() {
+        final guardedValue = map['vmSwitchName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

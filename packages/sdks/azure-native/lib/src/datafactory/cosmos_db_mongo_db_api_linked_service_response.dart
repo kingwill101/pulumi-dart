@@ -8,21 +8,29 @@ import 'parameter_specification_response.dart';
 class CosmosDbMongoDbApiLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
   final pulumi.Input<List<dynamic>>? annotations;
+
   /// The integration runtime reference.
   final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
+
   /// The CosmosDB (MongoDB API) connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or AzureKeyVaultSecretReference.
   final pulumi.Input<dynamic> connectionString;
+
   /// The name of the CosmosDB (MongoDB API) database that you want to access. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> database;
+
   /// Linked service description.
   final pulumi.Input<String>? description;
+
   /// Whether the CosmosDB (MongoDB API) server version is higher than 3.2. The default value is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? isServerVersionAbove32;
+
   /// Parameters for linked service.
   final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+
   /// Type of linked service.
   /// Expected value is 'CosmosDbMongoDbApi'.
   final pulumi.Input<String> type;
+
   /// Version of the linked service.
   final pulumi.Input<String>? version;
 
@@ -51,29 +59,80 @@ class CosmosDbMongoDbApiLinkedServiceResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': ?annotations,
-      'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
+      'connectVia':
+          ?pulumi.Input.mapOptionalInputValue<
+            IntegrationRuntimeReferenceResponse,
+            Map<String, dynamic>
+          >(connectVia, (value) => value.toMap()),
       'connectionString': connectionString,
       'database': database,
       'description': ?description,
       'isServerVersionAbove32': ?isServerVersionAbove32,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, ParameterSpecificationResponse>,
+            Map<String, Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  ParameterSpecificationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'type': type,
       'version': ?version,
     };
   }
 
-  factory CosmosDbMongoDbApiLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
+  factory CosmosDbMongoDbApiLinkedServiceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CosmosDbMongoDbApiLinkedServiceResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
-      connectionString: (map['connectionString']).input(),
-      database: (map['database']).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      isServerVersionAbove32: map['isServerVersionAbove32'] == null ? null : (map['isServerVersionAbove32']!).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters']!, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
+      })(),
+      connectVia: (() {
+        final guardedValue = map['connectVia'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IntegrationRuntimeReferenceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      connectionString: pulumi.Input.fromValue(map['connectionString']),
+      database: pulumi.Input.fromValue(map['database']),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isServerVersionAbove32: (() {
+        final guardedValue = map['isServerVersionAbove32'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(
+            guardedValue,
+            (value) => ParameterSpecificationResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

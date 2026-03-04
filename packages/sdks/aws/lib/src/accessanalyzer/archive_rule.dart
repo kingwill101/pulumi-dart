@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'archive_rule_args.dart';
-import 'archive_rule_filter.dart';
 import 'archive_rule_state.dart';
 
 /// Resource for managing an AWS AccessAnalyzer Archive Rule.
@@ -206,10 +205,13 @@ import 'archive_rule_state.dart';
 class ArchiveRule extends pulumi.CustomResource {
   /// Analyzer name.
   late final pulumi.Output<String> analyzerName;
+
   /// Filter criteria for the archive rule. See Filter for more details.
-  late final pulumi.Output<List<ArchiveRuleFilter>> filters;
+  late final pulumi.Output<List<Map<String, dynamic>>> filters;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Rule name.
   late final pulumi.Output<String> ruleName;
 
@@ -222,15 +224,15 @@ class ArchiveRule extends pulumi.CustomResource {
     ArchiveRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:accessanalyzer/archiveRule:ArchiveRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.analyzerName = registerOutput<String>('analyzerName');
-    this.filters = registerOutput<List<ArchiveRuleFilter>>('filters');
-    this.region = registerOutput<String>('region');
-    this.ruleName = registerOutput<String>('ruleName');
+         'aws:accessanalyzer/archiveRule:ArchiveRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    analyzerName = registerOutput<String>('analyzerName');
+    filters = registerOutput<List<Map<String, dynamic>>>('filters');
+    region = registerOutput<String>('region');
+    ruleName = registerOutput<String>('ruleName');
   }
 
   /// Gets an existing [ArchiveRule] resource's state with the given [name] and [id].
@@ -251,14 +253,14 @@ class ArchiveRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:accessanalyzer/archiveRule:ArchiveRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.analyzerName = registerOutput<String>('analyzerName');
-    this.filters = registerOutput<List<ArchiveRuleFilter>>('filters');
-    this.region = registerOutput<String>('region');
-    this.ruleName = registerOutput<String>('ruleName');
+         'aws:accessanalyzer/archiveRule:ArchiveRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    analyzerName = registerOutput<String>('analyzerName');
+    filters = registerOutput<List<Map<String, dynamic>>>('filters');
+    region = registerOutput<String>('region');
+    ruleName = registerOutput<String>('ruleName');
   }
 }

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceMeshMeshConfigKialiServerConfig {
   /// The domain name or address used when accessing the mesh topology in a custom way
   final pulumi.Input<String>? webFqdn;
+
   /// The port used when accessing the mesh topology in a custom way
   final pulumi.Input<int>? webPort;
+
   /// The root path of the service when accessing the mesh topology in a custom way
   final pulumi.Input<String>? webRoot;
+
   /// The protocol used when accessing the mesh topology in a custom way. Can only be http or https
   final pulumi.Input<String>? webSchema;
 
@@ -33,13 +36,30 @@ class ServiceMeshMeshConfigKialiServerConfig {
     };
   }
 
-  factory ServiceMeshMeshConfigKialiServerConfig.fromMap(Map<String, dynamic> map) {
+  factory ServiceMeshMeshConfigKialiServerConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceMeshMeshConfigKialiServerConfig(
-      webFqdn: map['webFqdn'] == null ? null : (map['webFqdn']! as String).input(),
-      webPort: map['webPort'] == null ? null : (map['webPort']! as int).input(),
-      webRoot: map['webRoot'] == null ? null : (map['webRoot']! as String).input(),
-      webSchema: map['webSchema'] == null ? null : (map['webSchema']! as String).input(),
+      webFqdn: (() {
+        final guardedValue = map['webFqdn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webPort: (() {
+        final guardedValue = map['webPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      webRoot: (() {
+        final guardedValue = map['webRoot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webSchema: (() {
+        final guardedValue = map['webSchema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

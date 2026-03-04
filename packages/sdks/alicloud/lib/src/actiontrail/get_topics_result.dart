@@ -8,16 +8,20 @@ class GetTopicsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
+
   /// The instance_id of the instance.
   final String instanceId;
   final String? nameRegex;
+
   /// A list of topic names.
   final List<String> names;
   final String? outputFile;
   final int? pageNumber;
   final int? pageSize;
+
   /// The name of the topic.
   final String? topic;
+
   /// A list of topics. Each element contains the following attributes:
   final List<GetTopicsTopic> topics;
   final int totalCount;
@@ -59,7 +63,10 @@ class GetTopicsResult {
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
       'topic': ?topic,
-      'topics': pulumi.Input.encodeList<GetTopicsTopic, Map<String, dynamic>>(topics, (value) => value.toMap()),
+      'topics': pulumi.Input.encodeList<GetTopicsTopic, Map<String, dynamic>>(
+        topics,
+        (value) => value.toMap(),
+      ),
       'totalCount': totalCount,
     };
   }
@@ -69,15 +76,38 @@ class GetTopicsResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      topic: map['topic'] == null ? null : map['topic']! as String,
-      topics: pulumi.Input.decodeList<GetTopicsTopic>(map['topics'], (value) => GetTopicsTopic.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      topic: (() {
+        final guardedValue = map['topic'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      topics: pulumi.Input.decodeList<GetTopicsTopic>(
+        map['topics']!,
+        (value) =>
+            GetTopicsTopic.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       totalCount: map['totalCount'] as int,
     );
   }
 }
-

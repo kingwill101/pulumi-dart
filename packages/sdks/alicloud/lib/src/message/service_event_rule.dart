@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_event_rule_args.dart';
 import 'service_event_rule_endpoint.dart';
-import 'service_event_rule_match_rule.dart';
 import 'service_event_rule_state.dart';
 
 /// Provides a Message Service Event Rule resource.
@@ -10,7 +9,7 @@ import 'service_event_rule_state.dart';
 ///
 /// For information about Message Service Event Rule and how to use it, see [What is Event Rule](https://next.api.alibabacloud.com/document/Mns-open/2022-01-19/CreateEventRule).
 ///
-/// > **NOTE:** Available since v1.255.0.
+/// &gt; **NOTE:** Available since v1.255.0.
 ///
 /// ## Example Usage
 ///
@@ -461,12 +460,16 @@ class ServiceEventRule extends pulumi.CustomResource {
   /// DIRECT: directly delivers to a single queue (1:1) without creating a Topic;
   /// - BROADCAST: BROADCAST to all subscription queues (1:N). You need to create a Topic;
   late final pulumi.Output<String> deliveryMode;
+
   /// Message Receiving Terminal Endpoint Object. See `endpoint` below.
   late final pulumi.Output<ServiceEventRuleEndpoint?> endpoint;
+
   /// Event Type List
   late final pulumi.Output<List<String>> eventTypes;
+
   /// Matching rules, or relationships between multiple rules. See `match_rules` below.
-  late final pulumi.Output<List<List<ServiceEventRuleMatchRule>>?> matchRules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> matchRules;
+
   /// The event notification rule name.
   late final pulumi.Output<String> ruleName;
 
@@ -479,16 +482,16 @@ class ServiceEventRule extends pulumi.CustomResource {
     ServiceEventRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:message/serviceEventRule:ServiceEventRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deliveryMode = registerOutput<String>('deliveryMode');
-    this.endpoint = registerOutput<ServiceEventRuleEndpoint?>('endpoint');
-    this.eventTypes = registerOutput<List<String>>('eventTypes');
-    this.matchRules = registerOutput<List<List<ServiceEventRuleMatchRule>>?>('matchRules');
-    this.ruleName = registerOutput<String>('ruleName');
+         'alicloud:message/serviceEventRule:ServiceEventRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deliveryMode = registerOutput<String>('deliveryMode');
+    endpoint = registerOutput<ServiceEventRuleEndpoint?>('endpoint');
+    eventTypes = registerOutput<List<String>>('eventTypes');
+    matchRules = registerOutput<List<Map<String, dynamic>>?>('matchRules');
+    ruleName = registerOutput<String>('ruleName');
   }
 
   /// Gets an existing [ServiceEventRule] resource's state with the given [name] and [id].
@@ -509,15 +512,15 @@ class ServiceEventRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:message/serviceEventRule:ServiceEventRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deliveryMode = registerOutput<String>('deliveryMode');
-    this.endpoint = registerOutput<ServiceEventRuleEndpoint?>('endpoint');
-    this.eventTypes = registerOutput<List<String>>('eventTypes');
-    this.matchRules = registerOutput<List<List<ServiceEventRuleMatchRule>>?>('matchRules');
-    this.ruleName = registerOutput<String>('ruleName');
+         'alicloud:message/serviceEventRule:ServiceEventRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deliveryMode = registerOutput<String>('deliveryMode');
+    endpoint = registerOutput<ServiceEventRuleEndpoint?>('endpoint');
+    eventTypes = registerOutput<List<String>>('eventTypes');
+    matchRules = registerOutput<List<Map<String, dynamic>>?>('matchRules');
+    ruleName = registerOutput<String>('ruleName');
   }
 }

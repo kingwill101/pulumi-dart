@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDomainEventSubscriptionFullUrl.
 class GetDomainEventSubscriptionFullUrlResult {
   /// The URL that represents the endpoint of the destination of an event subscription.
@@ -8,20 +7,21 @@ class GetDomainEventSubscriptionFullUrlResult {
 
   /// Creates a new [GetDomainEventSubscriptionFullUrlResult].
   /// [endpointUrl] The URL that represents the endpoint of the destination of an event subscription.
-  GetDomainEventSubscriptionFullUrlResult({
-    this.endpointUrl,
-  });
+  GetDomainEventSubscriptionFullUrlResult({this.endpointUrl});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'endpointUrl': ?endpointUrl,
-    };
+    return <String, dynamic>{'endpointUrl': ?endpointUrl};
   }
 
-  factory GetDomainEventSubscriptionFullUrlResult.fromMap(Map<String, dynamic> map) {
+  factory GetDomainEventSubscriptionFullUrlResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDomainEventSubscriptionFullUrlResult(
-      endpointUrl: map['endpointUrl'] == null ? null : map['endpointUrl']! as String,
+      endpointUrl: (() {
+        final guardedValue = map['endpointUrl'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

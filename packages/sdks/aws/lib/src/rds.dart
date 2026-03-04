@@ -1,5 +1,3 @@
-library module_rds;
-
 export 'rds/certificate.dart';
 export 'rds/certificate_args.dart';
 export 'rds/certificate_state.dart';

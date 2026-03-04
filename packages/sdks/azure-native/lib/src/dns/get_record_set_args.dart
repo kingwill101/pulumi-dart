@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRecordSetArgs {
   /// The type of DNS record in this record set.
   final pulumi.Input<String> recordType;
+
   /// The name of the record set, relative to the name of the zone.
   final pulumi.Input<String> relativeRecordSetName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the DNS zone (without a terminating dot).
   final pulumi.Input<String> zoneName;
 
@@ -39,11 +42,14 @@ class GetRecordSetArgs {
 
   factory GetRecordSetArgs.fromMap(Map<String, dynamic> map) {
     return GetRecordSetArgs(
-      recordType: (map['recordType'] as String).input(),
-      relativeRecordSetName: (map['relativeRecordSetName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      zoneName: (map['zoneName'] as String).input(),
+      recordType: pulumi.Input.fromValue(map['recordType'] as String),
+      relativeRecordSetName: pulumi.Input.fromValue(
+        map['relativeRecordSetName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      zoneName: pulumi.Input.fromValue(map['zoneName'] as String),
     );
   }
 }
-

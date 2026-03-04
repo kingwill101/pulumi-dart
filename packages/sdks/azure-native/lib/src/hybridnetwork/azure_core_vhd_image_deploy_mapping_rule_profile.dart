@@ -7,6 +7,7 @@ import 'vhd_image_mapping_rule_profile.dart';
 class AzureCoreVhdImageDeployMappingRuleProfile {
   /// The application enablement.
   final pulumi.Input<String>? applicationEnablement;
+
   /// The vhd mapping rule profile.
   final pulumi.Input<VhdImageMappingRuleProfile>? vhdImageMappingRuleProfile;
 
@@ -21,15 +22,32 @@ class AzureCoreVhdImageDeployMappingRuleProfile {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationEnablement': ?applicationEnablement,
-      'vhdImageMappingRuleProfile': ?pulumi.Input.mapOptionalInputValue<VhdImageMappingRuleProfile, Map<String, dynamic>>(vhdImageMappingRuleProfile, (value) => value.toMap()),
+      'vhdImageMappingRuleProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            VhdImageMappingRuleProfile,
+            Map<String, dynamic>
+          >(vhdImageMappingRuleProfile, (value) => value.toMap()),
     };
   }
 
-  factory AzureCoreVhdImageDeployMappingRuleProfile.fromMap(Map<String, dynamic> map) {
+  factory AzureCoreVhdImageDeployMappingRuleProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureCoreVhdImageDeployMappingRuleProfile(
-      applicationEnablement: map['applicationEnablement'] == null ? null : (map['applicationEnablement']! as String).input(),
-      vhdImageMappingRuleProfile: map['vhdImageMappingRuleProfile'] == null ? null : (VhdImageMappingRuleProfile.fromMap((map['vhdImageMappingRuleProfile']! as Map).cast<String, dynamic>())).input(),
+      applicationEnablement: (() {
+        final guardedValue = map['applicationEnablement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vhdImageMappingRuleProfile: (() {
+        final guardedValue = map['vhdImageMappingRuleProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VhdImageMappingRuleProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

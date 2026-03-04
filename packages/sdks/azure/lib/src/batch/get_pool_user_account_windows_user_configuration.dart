@@ -8,20 +8,17 @@ class GetPoolUserAccountWindowsUserConfiguration {
 
   /// Creates a new [GetPoolUserAccountWindowsUserConfiguration].
   /// [loginMode] Specifies login mode for the user.
-  GetPoolUserAccountWindowsUserConfiguration({
-    required this.loginMode,
-  });
+  GetPoolUserAccountWindowsUserConfiguration({required this.loginMode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'loginMode': loginMode,
-    };
+    return <String, dynamic>{'loginMode': loginMode};
   }
 
-  factory GetPoolUserAccountWindowsUserConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetPoolUserAccountWindowsUserConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPoolUserAccountWindowsUserConfiguration(
-      loginMode: (map['loginMode'] as String).input(),
+      loginMode: pulumi.Input.fromValue(map['loginMode'] as String),
     );
   }
 }
-

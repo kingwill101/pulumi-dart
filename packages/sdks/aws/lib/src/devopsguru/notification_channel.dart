@@ -258,8 +258,10 @@ import 'notification_channel_state.dart';
 class NotificationChannel extends pulumi.CustomResource {
   /// Filter configurations for the Amazon SNS notification topic. See the `filters` argument reference below.
   late final pulumi.Output<NotificationChannelFilters?> filters;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// SNS noficiation channel configurations. See the `sns` argument reference below.
   ///
   /// The following arguments are optional:
@@ -274,14 +276,14 @@ class NotificationChannel extends pulumi.CustomResource {
     NotificationChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:devopsguru/notificationChannel:NotificationChannel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.filters = registerOutput<NotificationChannelFilters?>('filters');
-    this.region = registerOutput<String>('region');
-    this.sns = registerOutput<NotificationChannelSns>('sns');
+         'aws:devopsguru/notificationChannel:NotificationChannel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    filters = registerOutput<NotificationChannelFilters?>('filters');
+    region = registerOutput<String>('region');
+    sns = registerOutput<NotificationChannelSns>('sns');
   }
 
   /// Gets an existing [NotificationChannel] resource's state with the given [name] and [id].
@@ -302,13 +304,13 @@ class NotificationChannel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:devopsguru/notificationChannel:NotificationChannel',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.filters = registerOutput<NotificationChannelFilters?>('filters');
-    this.region = registerOutput<String>('region');
-    this.sns = registerOutput<NotificationChannelSns>('sns');
+         'aws:devopsguru/notificationChannel:NotificationChannel',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    filters = registerOutput<NotificationChannelFilters?>('filters');
+    region = registerOutput<String>('region');
+    sns = registerOutput<NotificationChannelSns>('sns');
   }
 }

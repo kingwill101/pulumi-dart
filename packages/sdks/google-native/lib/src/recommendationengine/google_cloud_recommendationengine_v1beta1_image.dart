@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudRecommendationengineV1beta1Image {
   /// Optional. Height of the image in number of pixels.
   final pulumi.Input<int>? height;
+
   /// URL of the image with a length limit of 5 KiB.
   final pulumi.Input<String> uri;
+
   /// Optional. Width of the image in number of pixels.
   final pulumi.Input<int>? width;
 
@@ -22,19 +24,24 @@ class GoogleCloudRecommendationengineV1beta1Image {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'height': ?height,
-      'uri': uri,
-      'width': ?width,
-    };
+    return <String, dynamic>{'height': ?height, 'uri': uri, 'width': ?width};
   }
 
-  factory GoogleCloudRecommendationengineV1beta1Image.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRecommendationengineV1beta1Image.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRecommendationengineV1beta1Image(
-      height: map['height'] == null ? null : (map['height']! as int).input(),
-      uri: (map['uri'] as String).input(),
-      width: map['width'] == null ? null : (map['width']! as int).input(),
+      height: (() {
+        final guardedValue = map['height'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
+      width: (() {
+        final guardedValue = map['width'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

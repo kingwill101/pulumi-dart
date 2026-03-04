@@ -6,16 +6,15 @@ enum ApprovalStatus {
   deleted("Deleted"),
   expired("Expired");
 
-  const ApprovalStatus(this.value);
-  final String value;
+  const ApprovalStatus(this.wireValue);
+  final String wireValue;
 
   static ApprovalStatus fromValue(String value) {
     for (final item in ApprovalStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApprovalStatus value: $value');
   }
 }
-

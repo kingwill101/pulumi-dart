@@ -8,8 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_nfs_attachment_nfs_attachment_args_doc}
 class NfsAttachmentArgs {
   final pulumi.Input<String> region;
+
   /// The ID of the NFS share to attach.
   final pulumi.Input<String> shareId;
+
   /// The ID of the vpc to attach the NFS share to.
   final pulumi.Input<String> vpcId;
 
@@ -33,10 +35,9 @@ class NfsAttachmentArgs {
 
   factory NfsAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return NfsAttachmentArgs(
-      region: (map['region'] as String).input(),
-      shareId: (map['shareId'] as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      shareId: pulumi.Input.fromValue(map['shareId'] as String),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );
   }
 }
-

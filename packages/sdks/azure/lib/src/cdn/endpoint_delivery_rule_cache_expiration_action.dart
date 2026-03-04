@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointDeliveryRuleCacheExpirationAction {
   /// The behavior of the cache. Valid values are `BypassCache`, `Override` and `SetIfMissing`.
   final pulumi.Input<String> behavior;
+
   /// Duration of the cache. Only allowed when `behavior` is set to `Override` or `SetIfMissing`. Format: `[d.]hh:mm:ss`
   final pulumi.Input<String>? duration;
 
@@ -17,17 +18,19 @@ class EndpointDeliveryRuleCacheExpirationAction {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'behavior': behavior,
-      'duration': ?duration,
-    };
+    return <String, dynamic>{'behavior': behavior, 'duration': ?duration};
   }
 
-  factory EndpointDeliveryRuleCacheExpirationAction.fromMap(Map<String, dynamic> map) {
+  factory EndpointDeliveryRuleCacheExpirationAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EndpointDeliveryRuleCacheExpirationAction(
-      behavior: (map['behavior'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      behavior: pulumi.Input.fromValue(map['behavior'] as String),
+      duration: (() {
+        final guardedValue = map['duration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

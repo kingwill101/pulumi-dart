@@ -1,5 +1,3 @@
-library module_powerplatform;
-
 export 'powerplatform/account.dart';
 export 'powerplatform/account_args.dart';
 export 'powerplatform/enterprise_policy.dart';

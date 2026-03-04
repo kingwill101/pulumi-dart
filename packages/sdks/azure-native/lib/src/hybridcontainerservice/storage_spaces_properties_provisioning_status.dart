@@ -7,6 +7,7 @@ import 'storage_spaces_properties_error.dart';
 class StorageSpacesPropertiesProvisioningStatus {
   final pulumi.Input<StorageSpacesPropertiesError>? error;
   final pulumi.Input<String>? operationId;
+
   /// Phase represents the current phase of cluster actuation. E.g. Pending, Running, Terminating, Failed etc.
   final pulumi.Input<String>? phase;
   final pulumi.Input<String>? status;
@@ -25,20 +26,45 @@ class StorageSpacesPropertiesProvisioningStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'error': ?pulumi.Input.mapOptionalInputValue<StorageSpacesPropertiesError, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'error':
+          ?pulumi.Input.mapOptionalInputValue<
+            StorageSpacesPropertiesError,
+            Map<String, dynamic>
+          >(error, (value) => value.toMap()),
       'operationId': ?operationId,
       'phase': ?phase,
       'status': ?status,
     };
   }
 
-  factory StorageSpacesPropertiesProvisioningStatus.fromMap(Map<String, dynamic> map) {
+  factory StorageSpacesPropertiesProvisioningStatus.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StorageSpacesPropertiesProvisioningStatus(
-      error: map['error'] == null ? null : (StorageSpacesPropertiesError.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
-      operationId: map['operationId'] == null ? null : (map['operationId']! as String).input(),
-      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      error: (() {
+        final guardedValue = map['error'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StorageSpacesPropertiesError.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      operationId: (() {
+        final guardedValue = map['operationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phase: (() {
+        final guardedValue = map['phase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

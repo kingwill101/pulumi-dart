@@ -19,10 +19,15 @@ class GoogleCloudDatalabelingV1beta1SentimentConfig {
     };
   }
 
-  factory GoogleCloudDatalabelingV1beta1SentimentConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatalabelingV1beta1SentimentConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatalabelingV1beta1SentimentConfig(
-      enableLabelSentimentSelection: map['enableLabelSentimentSelection'] == null ? null : (map['enableLabelSentimentSelection']! as bool).input(),
+      enableLabelSentimentSelection: (() {
+        final guardedValue = map['enableLabelSentimentSelection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

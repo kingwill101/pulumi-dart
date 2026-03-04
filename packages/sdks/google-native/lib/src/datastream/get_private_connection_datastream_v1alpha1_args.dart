@@ -29,12 +29,19 @@ class GetPrivateConnectionDatastreamV1alpha1Args {
     };
   }
 
-  factory GetPrivateConnectionDatastreamV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetPrivateConnectionDatastreamV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPrivateConnectionDatastreamV1alpha1Args(
-      location: (map['location'] as String).input(),
-      privateConnectionId: (map['privateConnectionId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      privateConnectionId: pulumi.Input.fromValue(
+        map['privateConnectionId'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

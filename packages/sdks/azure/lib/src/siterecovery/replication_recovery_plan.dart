@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replication_recovery_plan_args.dart';
 import 'replication_recovery_plan_azure_to_azure_settings.dart';
-import 'replication_recovery_plan_boot_recovery_group.dart';
 import 'replication_recovery_plan_failover_recovery_group.dart';
 import 'replication_recovery_plan_shutdown_recovery_group.dart';
 import 'replication_recovery_plan_state.dart';
@@ -1217,7 +1216,7 @@ import 'replication_recovery_plan_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.RecoveryServices` - 2024-04-01
@@ -1231,19 +1230,29 @@ import 'replication_recovery_plan_state.dart';
 /// ```
 class ReplicationRecoveryPlan extends pulumi.CustomResource {
   /// An `azure_to_azure_settings` block as defined below.
-  late final pulumi.Output<ReplicationRecoveryPlanAzureToAzureSettings?> azureToAzureSettings;
+  late final pulumi.Output<ReplicationRecoveryPlanAzureToAzureSettings?>
+  azureToAzureSettings;
+
   /// One or more `boot_recovery_group` blocks as defined below.
-  late final pulumi.Output<List<ReplicationRecoveryPlanBootRecoveryGroup>> bootRecoveryGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>> bootRecoveryGroups;
+
   /// One `failover_recovery_group` block as defined below.
-  late final pulumi.Output<ReplicationRecoveryPlanFailoverRecoveryGroup> failoverRecoveryGroup;
+  late final pulumi.Output<ReplicationRecoveryPlanFailoverRecoveryGroup>
+  failoverRecoveryGroup;
+
   /// The name of the Replication Plan. The name can contain only letters, numbers, and hyphens. It should start with a letter and end with a letter or a number. Can be a maximum of 63 characters. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the vault that should be updated. Changing this forces a new resource to be created.
   late final pulumi.Output<String> recoveryVaultId;
+
   /// One `shutdown_recovery_group` block as defined below.
-  late final pulumi.Output<ReplicationRecoveryPlanShutdownRecoveryGroup> shutdownRecoveryGroup;
+  late final pulumi.Output<ReplicationRecoveryPlanShutdownRecoveryGroup>
+  shutdownRecoveryGroup;
+
   /// ID of source fabric to be recovered from. Changing this forces a new Replication Plan to be created.
   late final pulumi.Output<String> sourceRecoveryFabricId;
+
   /// ID of target fabric to recover. Changing this forces a new Replication Plan to be created.
   late final pulumi.Output<String> targetRecoveryFabricId;
 
@@ -1256,19 +1265,30 @@ class ReplicationRecoveryPlan extends pulumi.CustomResource {
     ReplicationRecoveryPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:siterecovery/replicationRecoveryPlan:ReplicationRecoveryPlan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureToAzureSettings = registerOutput<ReplicationRecoveryPlanAzureToAzureSettings?>('azureToAzureSettings');
-    this.bootRecoveryGroups = registerOutput<List<ReplicationRecoveryPlanBootRecoveryGroup>>('bootRecoveryGroups');
-    this.failoverRecoveryGroup = registerOutput<ReplicationRecoveryPlanFailoverRecoveryGroup>('failoverRecoveryGroup');
+         'azure:siterecovery/replicationRecoveryPlan:ReplicationRecoveryPlan',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureToAzureSettings =
+        registerOutput<ReplicationRecoveryPlanAzureToAzureSettings?>(
+          'azureToAzureSettings',
+        );
+    bootRecoveryGroups = registerOutput<List<Map<String, dynamic>>>(
+      'bootRecoveryGroups',
+    );
+    failoverRecoveryGroup =
+        registerOutput<ReplicationRecoveryPlanFailoverRecoveryGroup>(
+          'failoverRecoveryGroup',
+        );
     this.name = registerOutput<String>('name');
-    this.recoveryVaultId = registerOutput<String>('recoveryVaultId');
-    this.shutdownRecoveryGroup = registerOutput<ReplicationRecoveryPlanShutdownRecoveryGroup>('shutdownRecoveryGroup');
-    this.sourceRecoveryFabricId = registerOutput<String>('sourceRecoveryFabricId');
-    this.targetRecoveryFabricId = registerOutput<String>('targetRecoveryFabricId');
+    recoveryVaultId = registerOutput<String>('recoveryVaultId');
+    shutdownRecoveryGroup =
+        registerOutput<ReplicationRecoveryPlanShutdownRecoveryGroup>(
+          'shutdownRecoveryGroup',
+        );
+    sourceRecoveryFabricId = registerOutput<String>('sourceRecoveryFabricId');
+    targetRecoveryFabricId = registerOutput<String>('targetRecoveryFabricId');
   }
 
   /// Gets an existing [ReplicationRecoveryPlan] resource's state with the given [name] and [id].
@@ -1289,18 +1309,29 @@ class ReplicationRecoveryPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:siterecovery/replicationRecoveryPlan:ReplicationRecoveryPlan',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureToAzureSettings = registerOutput<ReplicationRecoveryPlanAzureToAzureSettings?>('azureToAzureSettings');
-    this.bootRecoveryGroups = registerOutput<List<ReplicationRecoveryPlanBootRecoveryGroup>>('bootRecoveryGroups');
-    this.failoverRecoveryGroup = registerOutput<ReplicationRecoveryPlanFailoverRecoveryGroup>('failoverRecoveryGroup');
+         'azure:siterecovery/replicationRecoveryPlan:ReplicationRecoveryPlan',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureToAzureSettings =
+        registerOutput<ReplicationRecoveryPlanAzureToAzureSettings?>(
+          'azureToAzureSettings',
+        );
+    bootRecoveryGroups = registerOutput<List<Map<String, dynamic>>>(
+      'bootRecoveryGroups',
+    );
+    failoverRecoveryGroup =
+        registerOutput<ReplicationRecoveryPlanFailoverRecoveryGroup>(
+          'failoverRecoveryGroup',
+        );
     this.name = registerOutput<String>('name');
-    this.recoveryVaultId = registerOutput<String>('recoveryVaultId');
-    this.shutdownRecoveryGroup = registerOutput<ReplicationRecoveryPlanShutdownRecoveryGroup>('shutdownRecoveryGroup');
-    this.sourceRecoveryFabricId = registerOutput<String>('sourceRecoveryFabricId');
-    this.targetRecoveryFabricId = registerOutput<String>('targetRecoveryFabricId');
+    recoveryVaultId = registerOutput<String>('recoveryVaultId');
+    shutdownRecoveryGroup =
+        registerOutput<ReplicationRecoveryPlanShutdownRecoveryGroup>(
+          'shutdownRecoveryGroup',
+        );
+    sourceRecoveryFabricId = registerOutput<String>('sourceRecoveryFabricId');
+    targetRecoveryFabricId = registerOutput<String>('targetRecoveryFabricId');
   }
 }

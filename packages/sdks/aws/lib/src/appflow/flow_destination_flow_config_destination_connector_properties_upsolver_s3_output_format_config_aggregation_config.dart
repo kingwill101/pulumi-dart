@@ -13,15 +13,18 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFor
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'aggregationType': ?aggregationType,
-    };
+    return <String, dynamic>{'aggregationType': ?aggregationType};
   }
 
-  factory FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfigAggregationConfig.fromMap(Map<String, dynamic> map) {
+  factory FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfigAggregationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfigAggregationConfig(
-      aggregationType: map['aggregationType'] == null ? null : ((map['aggregationType'] as String).input()).input(),
+      aggregationType: (() {
+        final guardedValue = map['aggregationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

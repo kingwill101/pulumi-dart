@@ -8,11 +8,14 @@ class SizeConstraintSetSizeConstraint {
   /// e.g., `EQ`, `NE`, `LT`, `GT`.
   /// See [docs](https://docs.aws.amazon.com/waf/latest/APIReference/API_wafRegional_SizeConstraint.html) for all supported values.
   final pulumi.Input<String> comparisonOperator;
+
   /// Specifies where in a web request to look for the size constraint.
   final pulumi.Input<SizeConstraintSetSizeConstraintFieldToMatch> fieldToMatch;
+
   /// The size in bytes that you want to compare against the size of the specified `field_to_match`.
   /// Valid values are between 0 - 21474836480 bytes (0 - 20 GB).
   final pulumi.Input<int> size;
+
   /// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
   /// If you specify a transformation, AWS WAF performs the transformation on `field_to_match` before inspecting a request for a match.
   /// e.g., `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
@@ -36,7 +39,11 @@ class SizeConstraintSetSizeConstraint {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'comparisonOperator': comparisonOperator,
-      'fieldToMatch': pulumi.Input.mapInputValue<SizeConstraintSetSizeConstraintFieldToMatch, Map<String, dynamic>>(fieldToMatch, (value) => value.toMap()),
+      'fieldToMatch':
+          pulumi.Input.mapInputValue<
+            SizeConstraintSetSizeConstraintFieldToMatch,
+            Map<String, dynamic>
+          >(fieldToMatch, (value) => value.toMap()),
       'size': size,
       'textTransformation': textTransformation,
     };
@@ -44,11 +51,18 @@ class SizeConstraintSetSizeConstraint {
 
   factory SizeConstraintSetSizeConstraint.fromMap(Map<String, dynamic> map) {
     return SizeConstraintSetSizeConstraint(
-      comparisonOperator: (map['comparisonOperator'] as String).input(),
-      fieldToMatch: (SizeConstraintSetSizeConstraintFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input(),
-      size: (map['size'] as int).input(),
-      textTransformation: (map['textTransformation'] as String).input(),
+      comparisonOperator: pulumi.Input.fromValue(
+        map['comparisonOperator'] as String,
+      ),
+      fieldToMatch: pulumi.Input.fromValue(
+        SizeConstraintSetSizeConstraintFieldToMatch.fromMap(
+          (map['fieldToMatch']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      size: pulumi.Input.fromValue(map['size'] as int),
+      textTransformation: pulumi.Input.fromValue(
+        map['textTransformation'] as String,
+      ),
     );
   }
 }
-

@@ -114,28 +114,39 @@ import 'device_state.dart';
 class Device extends pulumi.CustomResource {
   /// ARN of the device.
   late final pulumi.Output<String> arn;
+
   /// AWS location of the device. Documented below.
   late final pulumi.Output<DeviceAwsLocation?> awsLocation;
+
   /// Description of the device.
   late final pulumi.Output<String?> description;
+
   /// ID of the global network.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> globalNetworkId;
+
   /// Location of the device. Documented below.
   late final pulumi.Output<DeviceLocation?> location;
+
   /// Model of device.
   late final pulumi.Output<String?> model;
+
   /// Serial number of the device.
   late final pulumi.Output<String?> serialNumber;
+
   /// ID of the site.
   late final pulumi.Output<String?> siteId;
+
   /// Key-value tags for the device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Type of device.
   late final pulumi.Output<String?> type;
+
   /// Vendor of the device.
   late final pulumi.Output<String?> vendor;
 
@@ -143,28 +154,25 @@ class Device extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Device]. {@macro pulumi_networkmanager_device_device_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Device(
-    String name, {
-    DeviceArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:networkmanager/device:Device',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.awsLocation = registerOutput<DeviceAwsLocation?>('awsLocation');
-    this.description = registerOutput<String?>('description');
-    this.globalNetworkId = registerOutput<String>('globalNetworkId');
-    this.location = registerOutput<DeviceLocation?>('location');
-    this.model = registerOutput<String?>('model');
-    this.serialNumber = registerOutput<String?>('serialNumber');
-    this.siteId = registerOutput<String?>('siteId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.type = registerOutput<String?>('type');
-    this.vendor = registerOutput<String?>('vendor');
+  Device(String name, {DeviceArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:networkmanager/device:Device',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    awsLocation = registerOutput<DeviceAwsLocation?>('awsLocation');
+    description = registerOutput<String?>('description');
+    globalNetworkId = registerOutput<String>('globalNetworkId');
+    location = registerOutput<DeviceLocation?>('location');
+    model = registerOutput<String?>('model');
+    serialNumber = registerOutput<String?>('serialNumber');
+    siteId = registerOutput<String?>('siteId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    type = registerOutput<String?>('type');
+    vendor = registerOutput<String?>('vendor');
   }
 
   /// Gets an existing [Device] resource's state with the given [name] and [id].
@@ -185,22 +193,22 @@ class Device extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkmanager/device:Device',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.awsLocation = registerOutput<DeviceAwsLocation?>('awsLocation');
-    this.description = registerOutput<String?>('description');
-    this.globalNetworkId = registerOutput<String>('globalNetworkId');
-    this.location = registerOutput<DeviceLocation?>('location');
-    this.model = registerOutput<String?>('model');
-    this.serialNumber = registerOutput<String?>('serialNumber');
-    this.siteId = registerOutput<String?>('siteId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.type = registerOutput<String?>('type');
-    this.vendor = registerOutput<String?>('vendor');
+         'aws:networkmanager/device:Device',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    awsLocation = registerOutput<DeviceAwsLocation?>('awsLocation');
+    description = registerOutput<String?>('description');
+    globalNetworkId = registerOutput<String>('globalNetworkId');
+    location = registerOutput<DeviceLocation?>('location');
+    model = registerOutput<String?>('model');
+    serialNumber = registerOutput<String?>('serialNumber');
+    siteId = registerOutput<String?>('siteId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    type = registerOutput<String?>('type');
+    vendor = registerOutput<String?>('vendor');
   }
 }

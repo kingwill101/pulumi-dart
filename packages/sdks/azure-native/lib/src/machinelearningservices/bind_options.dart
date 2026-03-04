@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BindOptions {
   /// Indicate whether to create host path.
   final pulumi.Input<bool>? createHostPath;
+
   /// Type of Bind Option
   final pulumi.Input<String>? propagation;
+
   /// Mention the selinux options.
   final pulumi.Input<String>? selinux;
 
@@ -15,11 +17,7 @@ class BindOptions {
   /// [createHostPath] Indicate whether to create host path.
   /// [propagation] Type of Bind Option
   /// [selinux] Mention the selinux options.
-  BindOptions({
-    this.createHostPath,
-    this.propagation,
-    this.selinux,
-  });
+  BindOptions({this.createHostPath, this.propagation, this.selinux});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class BindOptions {
 
   factory BindOptions.fromMap(Map<String, dynamic> map) {
     return BindOptions(
-      createHostPath: map['createHostPath'] == null ? null : (map['createHostPath']! as bool).input(),
-      propagation: map['propagation'] == null ? null : (map['propagation']! as String).input(),
-      selinux: map['selinux'] == null ? null : (map['selinux']! as String).input(),
+      createHostPath: (() {
+        final guardedValue = map['createHostPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      propagation: (() {
+        final guardedValue = map['propagation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selinux: (() {
+        final guardedValue = map['selinux'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

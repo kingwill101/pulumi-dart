@@ -5,8 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FrontdoorSecretSecretCustomerCertificate {
   /// The ID of the Key Vault certificate resource to use. Changing this forces a new Front Door Secret to be created.
   ///
-  /// > **Note:** If you would like to use the **latest version** of the Key Vault Certificate use the Key Vault Certificates `versionless_id` attribute as the `key_vault_certificate_id` fields value(e.g. `key_vault_certificate_id = azurerm_key_vault_certificate.example.versionless_id`).
+  /// &gt; **Note:** If you would like to use the **latest version** of the Key Vault Certificate use the Key Vault Certificates `versionless_id` attribute as the `key_vault_certificate_id` fields value(e.g. `key_vault_certificate_id = azurerm_key_vault_certificate.example.versionless_id`).
   final pulumi.Input<String> keyVaultCertificateId;
+
   /// One or more `subject alternative names` contained within the key vault certificate.
   final pulumi.Input<List<String>>? subjectAlternativeNames;
 
@@ -25,11 +26,18 @@ class FrontdoorSecretSecretCustomerCertificate {
     };
   }
 
-  factory FrontdoorSecretSecretCustomerCertificate.fromMap(Map<String, dynamic> map) {
+  factory FrontdoorSecretSecretCustomerCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FrontdoorSecretSecretCustomerCertificate(
-      keyVaultCertificateId: (map['keyVaultCertificateId'] as String).input(),
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames']! as List).cast<String>()).input(),
+      keyVaultCertificateId: pulumi.Input.fromValue(
+        map['keyVaultCertificateId'] as String,
+      ),
+      subjectAlternativeNames: (() {
+        final guardedValue = map['subjectAlternativeNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

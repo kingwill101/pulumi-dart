@@ -35,11 +35,10 @@ class GetDeveloperAppKeyArgs {
 
   factory GetDeveloperAppKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetDeveloperAppKeyArgs(
-      appId: (map['appId'] as String).input(),
-      developerId: (map['developerId'] as String).input(),
-      keyId: (map['keyId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      developerId: pulumi.Input.fromValue(map['developerId'] as String),
+      keyId: pulumi.Input.fromValue(map['keyId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

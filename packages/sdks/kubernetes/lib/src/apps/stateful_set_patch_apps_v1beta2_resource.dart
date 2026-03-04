@@ -30,11 +30,14 @@ import 'stateful_set_status_patch_apps_v1beta2.dart';
 class StatefulSetPatchAppsV1beta2Resource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
   late final pulumi.Output<ObjectMetaPatch?> metadata;
+
   /// Spec defines the desired identities of pods in this set.
   late final pulumi.Output<StatefulSetSpecPatchAppsV1beta2?> spec;
+
   /// Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.
   late final pulumi.Output<StatefulSetStatusPatchAppsV1beta2?> status;
 
@@ -47,15 +50,15 @@ class StatefulSetPatchAppsV1beta2Resource extends pulumi.CustomResource {
     StatefulSetPatchAppsV1beta2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'kubernetes:apps/v1beta2:StatefulSetPatch',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiVersion = registerOutput<String?>('apiVersion');
-    this.kind = registerOutput<String?>('kind');
-    this.metadata = registerOutput<ObjectMetaPatch?>('metadata');
-    this.spec = registerOutput<StatefulSetSpecPatchAppsV1beta2?>('spec');
-    this.status = registerOutput<StatefulSetStatusPatchAppsV1beta2?>('status');
+         'kubernetes:apps/v1beta2:StatefulSetPatch',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    spec = registerOutput<StatefulSetSpecPatchAppsV1beta2?>('spec');
+    status = registerOutput<StatefulSetStatusPatchAppsV1beta2?>('status');
   }
 }

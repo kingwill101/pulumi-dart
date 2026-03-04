@@ -8,7 +8,7 @@ import 'db_proxy_public_state.dart';
 ///
 /// For information about Resource AlicloudRdsDBProxyPublic and how to use it, see [What is proxy](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-createdbproxyendpointaddress).
 ///
-/// > **NOTE:** Available since v1.250.0.
+/// &gt; **NOTE:** Available since v1.250.0.
 ///
 /// ## Example Usage
 ///
@@ -571,7 +571,7 @@ import 'db_proxy_public_state.dart';
 /// ```
 ///
 ///
-/// > **NOTE:** Resource `alicloud.rds.DbProxyPublic` should be created after `alicloud.rds.RdsDbProxy`, so the `depends_on` statement is necessary.
+/// &gt; **NOTE:** Resource `alicloud.rds.DbProxyPublic` should be created after `alicloud.rds.RdsDbProxy`, so the `depends_on` statement is necessary.
 ///
 /// 📚 Need more examples? VIEW MORE EXAMPLES
 ///
@@ -585,12 +585,16 @@ import 'db_proxy_public_state.dart';
 class DbProxyPublic extends pulumi.CustomResource {
   /// The prefix for the new database proxy connection address can be customized.
   late final pulumi.Output<String> connectionStringPrefix;
+
   /// Instance ID.
   late final pulumi.Output<String> dbInstanceId;
+
   /// The network type of the new database proxy connection address,This resource defaults to Public.
   late final pulumi.Output<String> dbProxyConnectionStringNetType;
+
   /// Database proxy connection address ID.
   late final pulumi.Output<String> dbProxyEndpointId;
+
   /// The port for the new database proxy connection address is 3306 by default for MySQL and 5432 by default for PostgreSQL, which can be customized.
   late final pulumi.Output<String> dbProxyNewConnectStringPort;
 
@@ -603,16 +607,20 @@ class DbProxyPublic extends pulumi.CustomResource {
     DbProxyPublicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/dbProxyPublic:DbProxyPublic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.dbProxyConnectionStringNetType = registerOutput<String>('dbProxyConnectionStringNetType');
-    this.dbProxyEndpointId = registerOutput<String>('dbProxyEndpointId');
-    this.dbProxyNewConnectStringPort = registerOutput<String>('dbProxyNewConnectStringPort');
+         'alicloud:rds/dbProxyPublic:DbProxyPublic',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    dbProxyConnectionStringNetType = registerOutput<String>(
+      'dbProxyConnectionStringNetType',
+    );
+    dbProxyEndpointId = registerOutput<String>('dbProxyEndpointId');
+    dbProxyNewConnectStringPort = registerOutput<String>(
+      'dbProxyNewConnectStringPort',
+    );
   }
 
   /// Gets an existing [DbProxyPublic] resource's state with the given [name] and [id].
@@ -633,15 +641,19 @@ class DbProxyPublic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/dbProxyPublic:DbProxyPublic',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.dbProxyConnectionStringNetType = registerOutput<String>('dbProxyConnectionStringNetType');
-    this.dbProxyEndpointId = registerOutput<String>('dbProxyEndpointId');
-    this.dbProxyNewConnectStringPort = registerOutput<String>('dbProxyNewConnectStringPort');
+         'alicloud:rds/dbProxyPublic:DbProxyPublic',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    dbProxyConnectionStringNetType = registerOutput<String>(
+      'dbProxyConnectionStringNetType',
+    );
+    dbProxyEndpointId = registerOutput<String>('dbProxyEndpointId');
+    dbProxyNewConnectStringPort = registerOutput<String>(
+      'dbProxyNewConnectStringPort',
+    );
   }
 }

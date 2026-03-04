@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mongo_cluster_args.dart';
-import 'mongo_cluster_connection_string.dart';
 import 'mongo_cluster_customer_managed_key.dart';
 import 'mongo_cluster_identity.dart';
 import 'mongo_cluster_restore.dart';
@@ -422,7 +421,7 @@ import 'mongo_cluster_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DocumentDB` - 2025-09-01
@@ -437,54 +436,76 @@ import 'mongo_cluster_state.dart';
 class MongoCluster extends pulumi.CustomResource {
   /// The Password associated with the `administrator_username` for the MongoDB Cluster.
   late final pulumi.Output<String?> administratorPassword;
+
   /// The administrator username of the MongoDB Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> administratorUsername;
+
   /// A list of allowed authentication modes for the MongoDB Cluster. Possible values are `NativeAuth` and `MicrosoftEntraID`.
   late final pulumi.Output<List<String>> authenticationMethods;
+
   /// The compute tier to assign to the MongoDB Cluster. Possible values are `Free`, `M10`, `M20`, `M25`, `M30`, `M40`, `M50`, `M60`, `M80`, and `M200`.
   late final pulumi.Output<String?> computeTier;
+
   /// One or more `connection_strings` blocks as defined below.
-  late final pulumi.Output<List<MongoClusterConnectionString>> connectionStrings;
+  late final pulumi.Output<List<Map<String, dynamic>>> connectionStrings;
+
   /// The creation mode for the MongoDB Cluster. Possible values are `Default`, `GeoReplica` and `PointInTimeRestore`. Defaults to `Default`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> createMode;
+
   /// A `customer_managed_key` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<MongoClusterCustomerManagedKey?> customerManagedKey;
+
   /// Is the Data API for the MongoDB Cluster enabled? Defaults to `false`.
   ///
-  /// > **Note:** `data_api_mode_enabled` can only be set when `create_mode` is `Default`. Once enabled, it can only be disabled by recreating the resource.
+  /// &gt; **Note:** `data_api_mode_enabled` can only be set when `create_mode` is `Default`. Once enabled, it can only be disabled by recreating the resource.
   late final pulumi.Output<bool?> dataApiModeEnabled;
+
   /// The high availability mode for the MongoDB Cluster. Possibles values are `Disabled` and `ZoneRedundantPreferred`.
   late final pulumi.Output<String?> highAvailabilityMode;
+
   /// An `identity` block as detailed below.
   ///
-  /// > **Note:** When adding or removing `identity`, a resource recreation will be triggered.
+  /// &gt; **Note:** When adding or removing `identity`, a resource recreation will be triggered.
   late final pulumi.Output<MongoClusterIdentity?> identity;
+
   /// The supported Azure location where the MongoDB Cluster exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for the MongoDB Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The preview features that can be enabled on the MongoDB Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>?> previewFeatures;
+
   /// The Public Network Access setting for the MongoDB Cluster. Possibles values are `Disabled` and `Enabled`. Defaults to `Enabled`.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// The name of the resource group in which to create the MongoDB Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `restore` block as defined below. Required when `create_mode` is set to `PointInTimeRestore`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** When `PointInTimeRestore` is enabled, service API will also assign a value to `source_server_id`. The user has to explicitly set this property in the Terraform configuration or handle it using `ignore_changes`.
+  /// &gt; **Note:** When `PointInTimeRestore` is enabled, service API will also assign a value to `source_server_id`. The user has to explicitly set this property in the Terraform configuration or handle it using `ignore_changes`.
   late final pulumi.Output<MongoClusterRestore?> restore;
+
   /// The Number of shards to provision on the MongoDB Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<int?> shardCount;
+
   /// The location of the source MongoDB Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sourceLocation;
+
   /// The ID of the replication source MongoDB Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sourceServerId;
+
   /// The size of the data disk space for the MongoDB Cluster.
   late final pulumi.Output<int?> storageSizeInGb;
+
   /// The storage type for the MongoDB Cluster. Possible values are `PremiumSSD` and `PremiumSSDv2`. Defaults to `PremiumSSD`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> storageType;
+
   /// A mapping of tags to assign to the MongoDB Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The version for the MongoDB Cluster. Possibles values are `5.0`, `6.0`, `7.0` and `8.0`.
   late final pulumi.Output<String?> version;
 
@@ -497,34 +518,40 @@ class MongoCluster extends pulumi.CustomResource {
     MongoClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mongocluster/mongoCluster:MongoCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorPassword = registerOutput<String?>('administratorPassword');
-    this.administratorUsername = registerOutput<String?>('administratorUsername');
-    this.authenticationMethods = registerOutput<List<String>>('authenticationMethods');
-    this.computeTier = registerOutput<String?>('computeTier');
-    this.connectionStrings = registerOutput<List<MongoClusterConnectionString>>('connectionStrings');
-    this.createMode = registerOutput<String?>('createMode');
-    this.customerManagedKey = registerOutput<MongoClusterCustomerManagedKey?>('customerManagedKey');
-    this.dataApiModeEnabled = registerOutput<bool?>('dataApiModeEnabled');
-    this.highAvailabilityMode = registerOutput<String?>('highAvailabilityMode');
-    this.identity = registerOutput<MongoClusterIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:mongocluster/mongoCluster:MongoCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administratorPassword = registerOutput<String?>('administratorPassword');
+    administratorUsername = registerOutput<String?>('administratorUsername');
+    authenticationMethods = registerOutput<List<String>>(
+      'authenticationMethods',
+    );
+    computeTier = registerOutput<String?>('computeTier');
+    connectionStrings = registerOutput<List<Map<String, dynamic>>>(
+      'connectionStrings',
+    );
+    createMode = registerOutput<String?>('createMode');
+    customerManagedKey = registerOutput<MongoClusterCustomerManagedKey?>(
+      'customerManagedKey',
+    );
+    dataApiModeEnabled = registerOutput<bool?>('dataApiModeEnabled');
+    highAvailabilityMode = registerOutput<String?>('highAvailabilityMode');
+    identity = registerOutput<MongoClusterIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.previewFeatures = registerOutput<List<String>?>('previewFeatures');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.restore = registerOutput<MongoClusterRestore?>('restore');
-    this.shardCount = registerOutput<int?>('shardCount');
-    this.sourceLocation = registerOutput<String?>('sourceLocation');
-    this.sourceServerId = registerOutput<String?>('sourceServerId');
-    this.storageSizeInGb = registerOutput<int?>('storageSizeInGb');
-    this.storageType = registerOutput<String?>('storageType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.version = registerOutput<String?>('version');
+    previewFeatures = registerOutput<List<String>?>('previewFeatures');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    restore = registerOutput<MongoClusterRestore?>('restore');
+    shardCount = registerOutput<int?>('shardCount');
+    sourceLocation = registerOutput<String?>('sourceLocation');
+    sourceServerId = registerOutput<String?>('sourceServerId');
+    storageSizeInGb = registerOutput<int?>('storageSizeInGb');
+    storageType = registerOutput<String?>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    version = registerOutput<String?>('version');
   }
 
   /// Gets an existing [MongoCluster] resource's state with the given [name] and [id].
@@ -545,33 +572,39 @@ class MongoCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mongocluster/mongoCluster:MongoCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorPassword = registerOutput<String?>('administratorPassword');
-    this.administratorUsername = registerOutput<String?>('administratorUsername');
-    this.authenticationMethods = registerOutput<List<String>>('authenticationMethods');
-    this.computeTier = registerOutput<String?>('computeTier');
-    this.connectionStrings = registerOutput<List<MongoClusterConnectionString>>('connectionStrings');
-    this.createMode = registerOutput<String?>('createMode');
-    this.customerManagedKey = registerOutput<MongoClusterCustomerManagedKey?>('customerManagedKey');
-    this.dataApiModeEnabled = registerOutput<bool?>('dataApiModeEnabled');
-    this.highAvailabilityMode = registerOutput<String?>('highAvailabilityMode');
-    this.identity = registerOutput<MongoClusterIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:mongocluster/mongoCluster:MongoCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administratorPassword = registerOutput<String?>('administratorPassword');
+    administratorUsername = registerOutput<String?>('administratorUsername');
+    authenticationMethods = registerOutput<List<String>>(
+      'authenticationMethods',
+    );
+    computeTier = registerOutput<String?>('computeTier');
+    connectionStrings = registerOutput<List<Map<String, dynamic>>>(
+      'connectionStrings',
+    );
+    createMode = registerOutput<String?>('createMode');
+    customerManagedKey = registerOutput<MongoClusterCustomerManagedKey?>(
+      'customerManagedKey',
+    );
+    dataApiModeEnabled = registerOutput<bool?>('dataApiModeEnabled');
+    highAvailabilityMode = registerOutput<String?>('highAvailabilityMode');
+    identity = registerOutput<MongoClusterIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.previewFeatures = registerOutput<List<String>?>('previewFeatures');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.restore = registerOutput<MongoClusterRestore?>('restore');
-    this.shardCount = registerOutput<int?>('shardCount');
-    this.sourceLocation = registerOutput<String?>('sourceLocation');
-    this.sourceServerId = registerOutput<String?>('sourceServerId');
-    this.storageSizeInGb = registerOutput<int?>('storageSizeInGb');
-    this.storageType = registerOutput<String?>('storageType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.version = registerOutput<String?>('version');
+    previewFeatures = registerOutput<List<String>?>('previewFeatures');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    restore = registerOutput<MongoClusterRestore?>('restore');
+    shardCount = registerOutput<int?>('shardCount');
+    sourceLocation = registerOutput<String?>('sourceLocation');
+    sourceServerId = registerOutput<String?>('sourceServerId');
+    storageSizeInGb = registerOutput<int?>('storageSizeInGb');
+    storageType = registerOutput<String?>('storageType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    version = registerOutput<String?>('version');
   }
 }

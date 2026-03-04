@@ -10,22 +10,31 @@ import 'runbook_association_property.dart';
 class WebhookArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
+
   /// Gets or sets the expiry time.
   final pulumi.Input<String>? expiryTime;
+
   /// Gets or sets the value of the enabled flag of webhook.
   final pulumi.Input<bool>? isEnabled;
+
   /// Gets or sets the name of the webhook.
   final pulumi.Input<String> name;
+
   /// Gets or sets the parameters of the job.
   final pulumi.Input<Map<String, String>>? parameters;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Gets or sets the name of the hybrid worker group the webhook job will run on.
   final pulumi.Input<String>? runOn;
+
   /// Gets or sets the runbook.
   final pulumi.Input<RunbookAssociationProperty>? runbook;
+
   /// Gets or sets the uri.
   final pulumi.Input<String>? uri;
+
   /// The webhook name.
   final pulumi.Input<String>? webhookName;
 
@@ -62,7 +71,11 @@ class WebhookArgs {
       'parameters': ?parameters,
       'resourceGroupName': resourceGroupName,
       'runOn': ?runOn,
-      'runbook': ?pulumi.Input.mapOptionalInputValue<RunbookAssociationProperty, Map<String, dynamic>>(runbook, (value) => value.toMap()),
+      'runbook':
+          ?pulumi.Input.mapOptionalInputValue<
+            RunbookAssociationProperty,
+            Map<String, dynamic>
+          >(runbook, (value) => value.toMap()),
       'uri': ?uri,
       'webhookName': ?webhookName,
     };
@@ -70,17 +83,54 @@ class WebhookArgs {
 
   factory WebhookArgs.fromMap(Map<String, dynamic> map) {
     return WebhookArgs(
-      automationAccountName: (map['automationAccountName'] as String).input(),
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
-      name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      runOn: map['runOn'] == null ? null : (map['runOn']! as String).input(),
-      runbook: map['runbook'] == null ? null : (RunbookAssociationProperty.fromMap((map['runbook']! as Map).cast<String, dynamic>())).input(),
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
-      webhookName: map['webhookName'] == null ? null : (map['webhookName']! as String).input(),
+      automationAccountName: pulumi.Input.fromValue(
+        map['automationAccountName'] as String,
+      ),
+      expiryTime: (() {
+        final guardedValue = map['expiryTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isEnabled: (() {
+        final guardedValue = map['isEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      runOn: (() {
+        final guardedValue = map['runOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runbook: (() {
+        final guardedValue = map['runbook'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RunbookAssociationProperty.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      webhookName: (() {
+        final guardedValue = map['webhookName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

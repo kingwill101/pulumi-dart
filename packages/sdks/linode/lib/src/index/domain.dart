@@ -187,30 +187,42 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
   late final pulumi.Output<List<String>?> axfrIps;
+
   /// A description for this Domain. This is for display purposes only.
   late final pulumi.Output<String?> description;
+
   /// The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
   late final pulumi.Output<String> domain;
+
   /// The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
   late final pulumi.Output<int?> expireSec;
+
   /// The group this Domain belongs to. This is for display purposes only.
   late final pulumi.Output<String?> group;
+
   /// The IP addresses representing the master DNS for this Domain.
   ///
   /// - - -
   late final pulumi.Output<List<String>?> masterIps;
+
   /// The amount of time in seconds before this Domain should be refreshed. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
   late final pulumi.Output<int?> refreshSec;
+
   /// The interval, in seconds, at which a failed refresh should be retried. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
   late final pulumi.Output<int?> retrySec;
+
   /// Start of Authority email address. This is required for master Domains.
   late final pulumi.Output<String?> soaEmail;
+
   /// Used to control whether this Domain is currently being rendered (defaults to "active").
   late final pulumi.Output<String> status;
+
   /// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   late final pulumi.Output<List<String>> tags;
+
   /// 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
   late final pulumi.Output<int?> ttlSec;
+
   /// If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
   late final pulumi.Output<String> type;
 
@@ -218,29 +230,26 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_index_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(
-    String name, {
-    DomainArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'linode:index/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.axfrIps = registerOutput<List<String>?>('axfrIps');
-    this.description = registerOutput<String?>('description');
-    this.domain = registerOutput<String>('domain');
-    this.expireSec = registerOutput<int?>('expireSec');
-    this.group = registerOutput<String?>('group');
-    this.masterIps = registerOutput<List<String>?>('masterIps');
-    this.refreshSec = registerOutput<int?>('refreshSec');
-    this.retrySec = registerOutput<int?>('retrySec');
-    this.soaEmail = registerOutput<String?>('soaEmail');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<List<String>>('tags');
-    this.ttlSec = registerOutput<int?>('ttlSec');
-    this.type = registerOutput<String>('type');
+  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'linode:index/domain:Domain',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    axfrIps = registerOutput<List<String>?>('axfrIps');
+    description = registerOutput<String?>('description');
+    domain = registerOutput<String>('domain');
+    expireSec = registerOutput<int?>('expireSec');
+    group = registerOutput<String?>('group');
+    masterIps = registerOutput<List<String>?>('masterIps');
+    refreshSec = registerOutput<int?>('refreshSec');
+    retrySec = registerOutput<int?>('retrySec');
+    soaEmail = registerOutput<String?>('soaEmail');
+    status = registerOutput<String>('status');
+    tags = registerOutput<List<String>>('tags');
+    ttlSec = registerOutput<int?>('ttlSec');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -261,23 +270,23 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.axfrIps = registerOutput<List<String>?>('axfrIps');
-    this.description = registerOutput<String?>('description');
-    this.domain = registerOutput<String>('domain');
-    this.expireSec = registerOutput<int?>('expireSec');
-    this.group = registerOutput<String?>('group');
-    this.masterIps = registerOutput<List<String>?>('masterIps');
-    this.refreshSec = registerOutput<int?>('refreshSec');
-    this.retrySec = registerOutput<int?>('retrySec');
-    this.soaEmail = registerOutput<String?>('soaEmail');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<List<String>>('tags');
-    this.ttlSec = registerOutput<int?>('ttlSec');
-    this.type = registerOutput<String>('type');
+         'linode:index/domain:Domain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    axfrIps = registerOutput<List<String>?>('axfrIps');
+    description = registerOutput<String?>('description');
+    domain = registerOutput<String>('domain');
+    expireSec = registerOutput<int?>('expireSec');
+    group = registerOutput<String?>('group');
+    masterIps = registerOutput<List<String>?>('masterIps');
+    refreshSec = registerOutput<int?>('refreshSec');
+    retrySec = registerOutput<int?>('retrySec');
+    soaEmail = registerOutput<String?>('soaEmail');
+    status = registerOutput<String>('status');
+    tags = registerOutput<List<String>>('tags');
+    ttlSec = registerOutput<int?>('ttlSec');
+    type = registerOutput<String>('type');
   }
 }

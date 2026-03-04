@@ -6,7 +6,11 @@ import 'google_cloud_dialogflow_v2_intent_message_basic_card_button_open_uri_act
 /// The button object that appears at the bottom of a card.
 class GoogleCloudDialogflowV2IntentMessageBasicCardButton {
   /// Action to take when a user taps on the button.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction> openUriAction;
+  final pulumi.Input<
+    GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction
+  >
+  openUriAction;
+
   /// The title of the button.
   final pulumi.Input<String> title;
 
@@ -20,16 +24,25 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButton {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'openUriAction': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction, Map<String, dynamic>>(openUriAction, (value) => value.toMap()),
+      'openUriAction':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction,
+            Map<String, dynamic>
+          >(openUriAction, (value) => value.toMap()),
       'title': title,
     };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageBasicCardButton.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageBasicCardButton.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2IntentMessageBasicCardButton(
-      openUriAction: (GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction.fromMap((map['openUriAction'] as Map).cast<String, dynamic>())).input(),
-      title: (map['title'] as String).input(),
+      openUriAction: pulumi.Input.fromValue(
+        GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction.fromMap(
+          (map['openUriAction']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
-

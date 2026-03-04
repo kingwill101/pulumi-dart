@@ -10,14 +10,19 @@ import 'access_policy_assignment_properties_user.dart';
 class AccessPolicyAssignmentArgs {
   /// The name of the Redis Enterprise database access policy assignment.
   final pulumi.Input<String>? accessPolicyAssignmentName;
+
   /// Name of access policy under specific access policy assignment. Only "default" policy is supported for now.
   final pulumi.Input<String> accessPolicyName;
+
   /// The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   final pulumi.Input<String> clusterName;
+
   /// The name of the Redis Enterprise database.
   final pulumi.Input<String> databaseName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The user associated with the access policy.
   final pulumi.Input<AccessPolicyAssignmentPropertiesUser> user;
 
@@ -44,19 +49,34 @@ class AccessPolicyAssignmentArgs {
       'clusterName': clusterName,
       'databaseName': databaseName,
       'resourceGroupName': resourceGroupName,
-      'user': pulumi.Input.mapInputValue<AccessPolicyAssignmentPropertiesUser, Map<String, dynamic>>(user, (value) => value.toMap()),
+      'user':
+          pulumi.Input.mapInputValue<
+            AccessPolicyAssignmentPropertiesUser,
+            Map<String, dynamic>
+          >(user, (value) => value.toMap()),
     };
   }
 
   factory AccessPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyAssignmentArgs(
-      accessPolicyAssignmentName: map['accessPolicyAssignmentName'] == null ? null : (map['accessPolicyAssignmentName']! as String).input(),
-      accessPolicyName: (map['accessPolicyName'] as String).input(),
-      clusterName: (map['clusterName'] as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      user: (AccessPolicyAssignmentPropertiesUser.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
+      accessPolicyAssignmentName: (() {
+        final guardedValue = map['accessPolicyAssignmentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accessPolicyName: pulumi.Input.fromValue(
+        map['accessPolicyName'] as String,
+      ),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      user: pulumi.Input.fromValue(
+        AccessPolicyAssignmentPropertiesUser.fromMap(
+          (map['user']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

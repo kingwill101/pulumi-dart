@@ -5,22 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationGatewaySslCertificate {
   /// The base64-encoded PFX certificate data. Required if `key_vault_secret_id` is not set.
   ///
-  /// > **Note:** When specifying a file, use `data = filebase64("path/to/file")` to encode the contents of that file.
+  /// &gt; **Note:** When specifying a file, use `data = filebase64("path/to/file")` to encode the contents of that file.
   final pulumi.Input<String>? data;
+
   /// The ID of the Rewrite Rule Set
   final pulumi.Input<String>? id;
+
   /// The Secret ID of the (base-64 encoded unencrypted pfx) `Secret` or `Certificate` object stored in Azure KeyVault. You need to enable soft delete for Key Vault to use this feature. Required if `data` is not set.
   ///
-  /// > **Note:** To implement certificate rotation, the `azure.keyvault.Secret` attribute `versionless_id` should be used, although `id` is also supported.
+  /// &gt; **Note:** To implement certificate rotation, the `azure.keyvault.Secret` attribute `versionless_id` should be used, although `id` is also supported.
   ///
-  /// > **Note:** TLS termination with Key Vault certificates is limited to the [v2 SKUs](https://docs.microsoft.com/azure/application-gateway/key-vault-certs).
+  /// &gt; **Note:** TLS termination with Key Vault certificates is limited to the [v2 SKUs](https://docs.microsoft.com/azure/application-gateway/key-vault-certs).
   ///
-  /// > **Note:** For TLS termination with Key Vault certificates to work properly, an existing user-assigned managed identity, which Application Gateway uses to retrieve certificates from Key Vault, should be defined via `identity` block. Additionally, access policies in the Key Vault to allow the identity to be granted *get* access to the secret should be defined.
+  /// &gt; **Note:** For TLS termination with Key Vault certificates to work properly, an existing user-assigned managed identity, which Application Gateway uses to retrieve certificates from Key Vault, should be defined via `identity` block. Additionally, access policies in the Key Vault to allow the identity to be granted *get* access to the secret should be defined.
   final pulumi.Input<String>? keyVaultSecretId;
+
   /// The Name of the SSL certificate that is unique within this Application Gateway
   final pulumi.Input<String> name;
+
   /// Password for the pfx file specified in data. Required if `data` is set.
   final pulumi.Input<String>? password;
+
   /// The Public Certificate Data associated with the SSL Certificate.
   final pulumi.Input<String>? publicCertData;
 
@@ -53,13 +58,32 @@ class ApplicationGatewaySslCertificate {
 
   factory ApplicationGatewaySslCertificate.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewaySslCertificate(
-      data: map['data'] == null ? null : (map['data']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId']! as String).input(),
-      name: (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      publicCertData: map['publicCertData'] == null ? null : (map['publicCertData']! as String).input(),
+      data: (() {
+        final guardedValue = map['data'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultSecretId: (() {
+        final guardedValue = map['keyVaultSecretId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicCertData: (() {
+        final guardedValue = map['publicCertData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

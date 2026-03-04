@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlexibleDatabaseArgs {
   /// Specifies the Charset for the MySQL Database, which needs [to be a valid MySQL Charset](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html). Changing this forces a new resource to be created.
   final pulumi.Input<String> charset;
+
   /// Specifies the Collation for the MySQL Database, which needs [to be a valid MySQL Collation](https://dev.mysql.com/doc/refman/5.7/en/charset-mysql.html). Changing this forces a new resource to be created.
   final pulumi.Input<String> collation;
+
   /// Specifies the name of the MySQL Database, which needs [to be a valid MySQL identifier](https://dev.mysql.com/doc/refman/5.7/en/identifiers.html). Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group in which the MySQL Server exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// Specifies the name of the MySQL Flexible Server. Changing this forces a new resource to be created.
   final pulumi.Input<String> serverName;
 
@@ -44,12 +48,17 @@ class FlexibleDatabaseArgs {
 
   factory FlexibleDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return FlexibleDatabaseArgs(
-      charset: (map['charset'] as String).input(),
-      collation: (map['collation'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
+      charset: pulumi.Input.fromValue(map['charset'] as String),
+      collation: pulumi.Input.fromValue(map['collation'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
-

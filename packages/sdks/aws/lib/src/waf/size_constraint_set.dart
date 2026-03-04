@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'size_constraint_set_args.dart';
-import 'size_constraint_set_size_constraint.dart';
 import 'size_constraint_set_state.dart';
 
 /// Use the `aws.waf.SizeConstraintSet` resource to manage WAF size constraint sets.
@@ -161,10 +160,12 @@ import 'size_constraint_set_state.dart';
 class SizeConstraintSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN).
   late final pulumi.Output<String> arn;
+
   /// Name or description of the Size Constraint Set.
   late final pulumi.Output<String> name;
+
   /// Parts of web requests that you want to inspect the size of.
-  late final pulumi.Output<List<SizeConstraintSetSizeConstraint>?> sizeConstraints;
+  late final pulumi.Output<List<Map<String, dynamic>>?> sizeConstraints;
 
   /// Creates a new [SizeConstraintSet].
   /// [name] The Pulumi resource name.
@@ -175,14 +176,16 @@ class SizeConstraintSet extends pulumi.CustomResource {
     SizeConstraintSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:waf/sizeConstraintSet:SizeConstraintSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:waf/sizeConstraintSet:SizeConstraintSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.sizeConstraints = registerOutput<List<SizeConstraintSetSizeConstraint>?>('sizeConstraints');
+    sizeConstraints = registerOutput<List<Map<String, dynamic>>?>(
+      'sizeConstraints',
+    );
   }
 
   /// Gets an existing [SizeConstraintSet] resource's state with the given [name] and [id].
@@ -203,13 +206,15 @@ class SizeConstraintSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:waf/sizeConstraintSet:SizeConstraintSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:waf/sizeConstraintSet:SizeConstraintSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.sizeConstraints = registerOutput<List<SizeConstraintSetSizeConstraint>?>('sizeConstraints');
+    sizeConstraints = registerOutput<List<Map<String, dynamic>>?>(
+      'sizeConstraints',
+    );
   }
 }

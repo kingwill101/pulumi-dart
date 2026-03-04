@@ -6,10 +6,13 @@ class EnvgroupAttachment extends pulumi.CustomResource {
   /// The time at which the environment group attachment was created as milliseconds since epoch.
   late final pulumi.Output<String> createdAt;
   late final pulumi.Output<String> envgroupId;
+
   /// ID of the attached environment.
   late final pulumi.Output<String> environment;
+
   /// ID of the environment group.
   late final pulumi.Output<String> environmentGroupId;
+
   /// ID of the environment group attachment.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
@@ -23,16 +26,16 @@ class EnvgroupAttachment extends pulumi.CustomResource {
     EnvgroupAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:apigee/v1:EnvgroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
-    this.envgroupId = registerOutput<String>('envgroupId');
-    this.environment = registerOutput<String>('environment');
-    this.environmentGroupId = registerOutput<String>('environmentGroupId');
+         'google-native:apigee/v1:EnvgroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
+    envgroupId = registerOutput<String>('envgroupId');
+    environment = registerOutput<String>('environment');
+    environmentGroupId = registerOutput<String>('environmentGroupId');
     this.name = registerOutput<String>('name');
-    this.organizationId = registerOutput<String>('organizationId');
+    organizationId = registerOutput<String>('organizationId');
   }
 }

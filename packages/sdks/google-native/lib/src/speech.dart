@@ -1,5 +1,3 @@
-library module_speech;
-
 export 'speech/class_item.dart';
 export 'speech/class_item_response.dart';
 export 'speech/custom_class.dart';

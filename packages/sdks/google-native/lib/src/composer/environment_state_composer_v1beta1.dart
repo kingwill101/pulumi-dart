@@ -7,16 +7,17 @@ enum EnvironmentStateComposerV1beta1 {
   deleting("DELETING"),
   error("ERROR");
 
-  const EnvironmentStateComposerV1beta1(this.value);
-  final String value;
+  const EnvironmentStateComposerV1beta1(this.wireValue);
+  final String wireValue;
 
   static EnvironmentStateComposerV1beta1 fromValue(String value) {
     for (final item in EnvironmentStateComposerV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnvironmentStateComposerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown EnvironmentStateComposerV1beta1 value: $value',
+    );
   }
 }
-

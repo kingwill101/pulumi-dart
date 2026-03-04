@@ -4,16 +4,15 @@ enum DestinationFormat {
   oRC("ORC"),
   parquet("Parquet");
 
-  const DestinationFormat(this.value);
-  final String value;
+  const DestinationFormat(this.wireValue);
+  final String wireValue;
 
   static DestinationFormat fromValue(String value) {
     for (final item in DestinationFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DestinationFormat value: $value');
   }
 }
-

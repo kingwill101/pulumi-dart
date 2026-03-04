@@ -4,16 +4,17 @@ enum NotificationConfigEventTypesItem {
   transferOperationFailed("TRANSFER_OPERATION_FAILED"),
   transferOperationAborted("TRANSFER_OPERATION_ABORTED");
 
-  const NotificationConfigEventTypesItem(this.value);
-  final String value;
+  const NotificationConfigEventTypesItem(this.wireValue);
+  final String wireValue;
 
   static NotificationConfigEventTypesItem fromValue(String value) {
     for (final item in NotificationConfigEventTypesItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NotificationConfigEventTypesItem value: $value');
+    throw ArgumentError(
+      'Unknown NotificationConfigEventTypesItem value: $value',
+    );
   }
 }
-

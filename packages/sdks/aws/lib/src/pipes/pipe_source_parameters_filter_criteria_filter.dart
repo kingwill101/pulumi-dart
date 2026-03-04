@@ -8,20 +8,17 @@ class PipeSourceParametersFilterCriteriaFilter {
 
   /// Creates a new [PipeSourceParametersFilterCriteriaFilter].
   /// [pattern] The event pattern. At most 4096 characters.
-  PipeSourceParametersFilterCriteriaFilter({
-    required this.pattern,
-  });
+  PipeSourceParametersFilterCriteriaFilter({required this.pattern});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pattern': pattern,
-    };
+    return <String, dynamic>{'pattern': pattern};
   }
 
-  factory PipeSourceParametersFilterCriteriaFilter.fromMap(Map<String, dynamic> map) {
+  factory PipeSourceParametersFilterCriteriaFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipeSourceParametersFilterCriteriaFilter(
-      pattern: (map['pattern'] as String).input(),
+      pattern: pulumi.Input.fromValue(map['pattern'] as String),
     );
   }
 }
-

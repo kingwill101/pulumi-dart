@@ -1,5 +1,3 @@
-library module_cloudmonitor;
-
 export 'cloudmonitor/functions.dart';
 export 'cloudmonitor/get_service_hybrid_double_writes_args.dart';
 export 'cloudmonitor/get_service_hybrid_double_writes_hybrid_double_write.dart';

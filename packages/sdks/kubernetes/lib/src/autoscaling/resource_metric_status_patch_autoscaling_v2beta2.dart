@@ -7,29 +7,44 @@ import 'metric_value_status_patch_autoscaling_v2beta2.dart';
 class ResourceMetricStatusPatchAutoscalingV2beta2 {
   /// current contains the current value for the given metric
   final pulumi.Input<MetricValueStatusPatchAutoscalingV2beta2>? current;
+
   /// Name is the name of the resource in question.
   final pulumi.Input<String>? name;
 
   /// Creates a new [ResourceMetricStatusPatchAutoscalingV2beta2].
   /// [current] current contains the current value for the given metric
   /// [name] Name is the name of the resource in question.
-  ResourceMetricStatusPatchAutoscalingV2beta2({
-    this.current,
-    this.name,
-  });
+  ResourceMetricStatusPatchAutoscalingV2beta2({this.current, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'current': ?pulumi.Input.mapOptionalInputValue<MetricValueStatusPatchAutoscalingV2beta2, Map<String, dynamic>>(current, (value) => value.toMap()),
+      'current':
+          ?pulumi.Input.mapOptionalInputValue<
+            MetricValueStatusPatchAutoscalingV2beta2,
+            Map<String, dynamic>
+          >(current, (value) => value.toMap()),
       'name': ?name,
     };
   }
 
-  factory ResourceMetricStatusPatchAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
+  factory ResourceMetricStatusPatchAutoscalingV2beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceMetricStatusPatchAutoscalingV2beta2(
-      current: map['current'] == null ? null : (MetricValueStatusPatchAutoscalingV2beta2.fromMap((map['current']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      current: (() {
+        final guardedValue = map['current'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MetricValueStatusPatchAutoscalingV2beta2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

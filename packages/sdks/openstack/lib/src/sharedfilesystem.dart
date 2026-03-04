@@ -1,5 +1,3 @@
-library module_sharedfilesystem;
-
 export 'sharedfilesystem/functions.dart';
 export 'sharedfilesystem/get_availbility_zones_args.dart';
 export 'sharedfilesystem/get_availbility_zones_result.dart';

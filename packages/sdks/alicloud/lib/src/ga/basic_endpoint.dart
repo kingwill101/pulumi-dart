@@ -6,7 +6,7 @@ import 'basic_endpoint_state.dart';
 ///
 /// For information about Global Accelerator (GA) Basic Endpoint and how to use it, see [What is Basic Endpoint](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicendpoint).
 ///
-/// > **NOTE:** Available since v1.194.0.
+/// &gt; **NOTE:** Available since v1.194.0.
 ///
 /// ## Example Usage
 ///
@@ -465,22 +465,31 @@ import 'basic_endpoint_state.dart';
 class BasicEndpoint extends pulumi.CustomResource {
   /// The ID of the Basic GA instance.
   late final pulumi.Output<String> acceleratorId;
+
   /// The name of the Basic Endpoint.
   late final pulumi.Output<String?> basicEndpointName;
+
   /// The address of the Basic Endpoint.
   late final pulumi.Output<String> endpointAddress;
+
   /// The ID of the Basic Endpoint Group.
   late final pulumi.Output<String> endpointGroupId;
+
   /// The ID of the Basic Endpoint.
   late final pulumi.Output<String> endpointId;
+
   /// The sub address of the Basic Endpoint.
   late final pulumi.Output<String?> endpointSubAddress;
+
   /// The sub address type of the Basic Endpoint. Valid values: `primary`, `secondary`.
   late final pulumi.Output<String?> endpointSubAddressType;
+
   /// The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
   late final pulumi.Output<String> endpointType;
+
   /// The zone id of the Basic Endpoint.
   late final pulumi.Output<String?> endpointZoneId;
+
   /// The status of the Basic Endpoint.
   late final pulumi.Output<String> status;
 
@@ -493,21 +502,21 @@ class BasicEndpoint extends pulumi.CustomResource {
     BasicEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/basicEndpoint:BasicEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.basicEndpointName = registerOutput<String?>('basicEndpointName');
-    this.endpointAddress = registerOutput<String>('endpointAddress');
-    this.endpointGroupId = registerOutput<String>('endpointGroupId');
-    this.endpointId = registerOutput<String>('endpointId');
-    this.endpointSubAddress = registerOutput<String?>('endpointSubAddress');
-    this.endpointSubAddressType = registerOutput<String?>('endpointSubAddressType');
-    this.endpointType = registerOutput<String>('endpointType');
-    this.endpointZoneId = registerOutput<String?>('endpointZoneId');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/basicEndpoint:BasicEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    basicEndpointName = registerOutput<String?>('basicEndpointName');
+    endpointAddress = registerOutput<String>('endpointAddress');
+    endpointGroupId = registerOutput<String>('endpointGroupId');
+    endpointId = registerOutput<String>('endpointId');
+    endpointSubAddress = registerOutput<String?>('endpointSubAddress');
+    endpointSubAddressType = registerOutput<String?>('endpointSubAddressType');
+    endpointType = registerOutput<String>('endpointType');
+    endpointZoneId = registerOutput<String?>('endpointZoneId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [BasicEndpoint] resource's state with the given [name] and [id].
@@ -528,20 +537,20 @@ class BasicEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/basicEndpoint:BasicEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.basicEndpointName = registerOutput<String?>('basicEndpointName');
-    this.endpointAddress = registerOutput<String>('endpointAddress');
-    this.endpointGroupId = registerOutput<String>('endpointGroupId');
-    this.endpointId = registerOutput<String>('endpointId');
-    this.endpointSubAddress = registerOutput<String?>('endpointSubAddress');
-    this.endpointSubAddressType = registerOutput<String?>('endpointSubAddressType');
-    this.endpointType = registerOutput<String>('endpointType');
-    this.endpointZoneId = registerOutput<String?>('endpointZoneId');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/basicEndpoint:BasicEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    basicEndpointName = registerOutput<String?>('basicEndpointName');
+    endpointAddress = registerOutput<String>('endpointAddress');
+    endpointGroupId = registerOutput<String>('endpointGroupId');
+    endpointId = registerOutput<String>('endpointId');
+    endpointSubAddress = registerOutput<String?>('endpointSubAddress');
+    endpointSubAddressType = registerOutput<String?>('endpointSubAddressType');
+    endpointType = registerOutput<String>('endpointType');
+    endpointZoneId = registerOutput<String?>('endpointZoneId');
+    status = registerOutput<String>('status');
   }
 }

@@ -5,29 +5,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWindowsWebAppSiteConfigApplicationStack {
   /// The Current Stack value of the Windows Web App.
   final pulumi.Input<String> currentStack;
+
   /// The docker image, including tag, used by this Windows Web App.
   final pulumi.Input<String> dockerImageName;
+
   /// The User Name to use for authentication against the registry to pull the image.
   final pulumi.Input<String> dockerRegistryPassword;
+
   /// The URL of the container registry where the `docker_image_name` is located.
   final pulumi.Input<String> dockerRegistryUrl;
+
   /// The User Name to use for authentication against the registry to pull the image.
   final pulumi.Input<String> dockerRegistryUsername;
   final pulumi.Input<String> dotnetCoreVersion;
+
   /// The version of .NET in use.
   final pulumi.Input<String> dotnetVersion;
+
   /// The Java Container in use.
   final pulumi.Input<String> javaContainer;
+
   /// The Version of the Java Container in use.
   final pulumi.Input<String> javaContainerVersion;
   final pulumi.Input<bool> javaEmbeddedServerEnabled;
+
   /// The Version of Java in use.
   final pulumi.Input<String> javaVersion;
+
   /// The Version of Node in use.
   final pulumi.Input<String> nodeVersion;
+
   /// The Version of the PHP in use.
   final pulumi.Input<String> phpVersion;
   final pulumi.Input<bool> python;
+
   /// The Version of Python in use.
   final pulumi.Input<String> pythonVersion;
   final pulumi.Input<String> tomcatVersion;
@@ -89,25 +100,38 @@ class GetWindowsWebAppSiteConfigApplicationStack {
     };
   }
 
-  factory GetWindowsWebAppSiteConfigApplicationStack.fromMap(Map<String, dynamic> map) {
+  factory GetWindowsWebAppSiteConfigApplicationStack.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWindowsWebAppSiteConfigApplicationStack(
-      currentStack: (map['currentStack'] as String).input(),
-      dockerImageName: (map['dockerImageName'] as String).input(),
-      dockerRegistryPassword: (map['dockerRegistryPassword'] as String).input(),
-      dockerRegistryUrl: (map['dockerRegistryUrl'] as String).input(),
-      dockerRegistryUsername: (map['dockerRegistryUsername'] as String).input(),
-      dotnetCoreVersion: (map['dotnetCoreVersion'] as String).input(),
-      dotnetVersion: (map['dotnetVersion'] as String).input(),
-      javaContainer: (map['javaContainer'] as String).input(),
-      javaContainerVersion: (map['javaContainerVersion'] as String).input(),
-      javaEmbeddedServerEnabled: (map['javaEmbeddedServerEnabled'] as bool).input(),
-      javaVersion: (map['javaVersion'] as String).input(),
-      nodeVersion: (map['nodeVersion'] as String).input(),
-      phpVersion: (map['phpVersion'] as String).input(),
-      python: (map['python'] as bool).input(),
-      pythonVersion: (map['pythonVersion'] as String).input(),
-      tomcatVersion: (map['tomcatVersion'] as String).input(),
+      currentStack: pulumi.Input.fromValue(map['currentStack'] as String),
+      dockerImageName: pulumi.Input.fromValue(map['dockerImageName'] as String),
+      dockerRegistryPassword: pulumi.Input.fromValue(
+        map['dockerRegistryPassword'] as String,
+      ),
+      dockerRegistryUrl: pulumi.Input.fromValue(
+        map['dockerRegistryUrl'] as String,
+      ),
+      dockerRegistryUsername: pulumi.Input.fromValue(
+        map['dockerRegistryUsername'] as String,
+      ),
+      dotnetCoreVersion: pulumi.Input.fromValue(
+        map['dotnetCoreVersion'] as String,
+      ),
+      dotnetVersion: pulumi.Input.fromValue(map['dotnetVersion'] as String),
+      javaContainer: pulumi.Input.fromValue(map['javaContainer'] as String),
+      javaContainerVersion: pulumi.Input.fromValue(
+        map['javaContainerVersion'] as String,
+      ),
+      javaEmbeddedServerEnabled: pulumi.Input.fromValue(
+        map['javaEmbeddedServerEnabled'] as bool,
+      ),
+      javaVersion: pulumi.Input.fromValue(map['javaVersion'] as String),
+      nodeVersion: pulumi.Input.fromValue(map['nodeVersion'] as String),
+      phpVersion: pulumi.Input.fromValue(map['phpVersion'] as String),
+      python: pulumi.Input.fromValue(map['python'] as bool),
+      pythonVersion: pulumi.Input.fromValue(map['pythonVersion'] as String),
+      tomcatVersion: pulumi.Input.fromValue(map['tomcatVersion'] as String),
     );
   }
 }
-

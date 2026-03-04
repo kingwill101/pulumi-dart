@@ -121,16 +121,22 @@ import 'vpn_gateway_state.dart';
 class VpnGateway extends pulumi.CustomResource {
   /// The Autonomous System Number (ASN) for the Amazon side of the gateway. If you don't specify an ASN, the virtual private gateway is created with the default ASN.
   late final pulumi.Output<String> amazonSideAsn;
+
   /// Amazon Resource Name (ARN) of the VPN Gateway.
   late final pulumi.Output<String> arn;
+
   /// The Availability Zone for the virtual private gateway.
   late final pulumi.Output<String?> availabilityZone;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The VPC ID to create in.
   late final pulumi.Output<String> vpcId;
 
@@ -143,18 +149,18 @@ class VpnGateway extends pulumi.CustomResource {
     VpnGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/vpnGateway:VpnGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.amazonSideAsn = registerOutput<String>('amazonSideAsn');
-    this.arn = registerOutput<String>('arn');
-    this.availabilityZone = registerOutput<String?>('availabilityZone');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.vpcId = registerOutput<String>('vpcId');
+         'aws:ec2/vpnGateway:VpnGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    amazonSideAsn = registerOutput<String>('amazonSideAsn');
+    arn = registerOutput<String>('arn');
+    availabilityZone = registerOutput<String?>('availabilityZone');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [VpnGateway] resource's state with the given [name] and [id].
@@ -175,17 +181,17 @@ class VpnGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/vpnGateway:VpnGateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.amazonSideAsn = registerOutput<String>('amazonSideAsn');
-    this.arn = registerOutput<String>('arn');
-    this.availabilityZone = registerOutput<String?>('availabilityZone');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.vpcId = registerOutput<String>('vpcId');
+         'aws:ec2/vpnGateway:VpnGateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    amazonSideAsn = registerOutput<String>('amazonSideAsn');
+    arn = registerOutput<String>('arn');
+    availabilityZone = registerOutput<String?>('availabilityZone');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

@@ -9,20 +9,19 @@ class WebServerConfig {
 
   /// Creates a new [WebServerConfig].
   /// [machineType] Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
-  WebServerConfig({
-    this.machineType,
-  });
+  WebServerConfig({this.machineType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'machineType': ?machineType,
-    };
+    return <String, dynamic>{'machineType': ?machineType};
   }
 
   factory WebServerConfig.fromMap(Map<String, dynamic> map) {
     return WebServerConfig(
-      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      machineType: (() {
+        final guardedValue = map['machineType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceReferenceResponse {
   /// The name of the Cloud SQL instance being referenced. This does not include the project ID.
   final pulumi.Input<String> name;
+
   /// The project ID of the Cloud SQL instance being referenced. The default is the same project ID as the instance references it.
   final pulumi.Input<String> project;
+
   /// The region of the Cloud SQL instance being referenced.
   final pulumi.Input<String> region;
 
@@ -31,10 +33,9 @@ class InstanceReferenceResponse {
 
   factory InstanceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return InstanceReferenceResponse(
-      name: (map['name'] as String).input(),
-      project: (map['project'] as String).input(),
-      region: (map['region'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

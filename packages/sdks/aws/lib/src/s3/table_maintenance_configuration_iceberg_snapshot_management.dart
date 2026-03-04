@@ -6,7 +6,11 @@ import 'table_maintenance_configuration_iceberg_snapshot_management_settings.dar
 class TableMaintenanceConfigurationIcebergSnapshotManagement {
   /// Settings object for snapshot management.
   /// See `iceberg_snapshot_management.settings` below.
-  final pulumi.Input<TableMaintenanceConfigurationIcebergSnapshotManagementSettings> settings;
+  final pulumi.Input<
+    TableMaintenanceConfigurationIcebergSnapshotManagementSettings
+  >
+  settings;
+
   /// Whether the configuration is enabled.
   /// Valid values are `enabled` and `disabled`.
   final pulumi.Input<String> status;
@@ -21,16 +25,25 @@ class TableMaintenanceConfigurationIcebergSnapshotManagement {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'settings': pulumi.Input.mapInputValue<TableMaintenanceConfigurationIcebergSnapshotManagementSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
+      'settings':
+          pulumi.Input.mapInputValue<
+            TableMaintenanceConfigurationIcebergSnapshotManagementSettings,
+            Map<String, dynamic>
+          >(settings, (value) => value.toMap()),
       'status': status,
     };
   }
 
-  factory TableMaintenanceConfigurationIcebergSnapshotManagement.fromMap(Map<String, dynamic> map) {
+  factory TableMaintenanceConfigurationIcebergSnapshotManagement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableMaintenanceConfigurationIcebergSnapshotManagement(
-      settings: (TableMaintenanceConfigurationIcebergSnapshotManagementSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
-      status: (map['status'] as String).input(),
+      settings: pulumi.Input.fromValue(
+        TableMaintenanceConfigurationIcebergSnapshotManagementSettings.fromMap(
+          (map['settings']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

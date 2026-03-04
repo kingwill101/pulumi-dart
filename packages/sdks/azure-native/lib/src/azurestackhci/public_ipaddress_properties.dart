@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PublicIPAddressProperties {
   /// IP Address. This is static. If the user specifies, we allocate that otherwise allocate from logical network address space.
   final pulumi.Input<String>? ipAddress;
+
   /// ipAllocationScope: Azure Reference to a particular IP Pool (ALM) or a LogicalNetwork (ALL) for allocating public IP
   final pulumi.Input<String>? ipAllocationScope;
+
   /// Whether the public IP is v4 or v6. Defaults to IPv4
   final pulumi.Input<String>? publicIPAddressVersion;
 
@@ -31,10 +33,21 @@ class PublicIPAddressProperties {
 
   factory PublicIPAddressProperties.fromMap(Map<String, dynamic> map) {
     return PublicIPAddressProperties(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      ipAllocationScope: map['ipAllocationScope'] == null ? null : (map['ipAllocationScope']! as String).input(),
-      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion']! as String).input(),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAllocationScope: (() {
+        final guardedValue = map['ipAllocationScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicIPAddressVersion: (() {
+        final guardedValue = map['publicIPAddressVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

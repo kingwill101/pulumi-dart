@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDatacenter.
 class GetDatacenterResult {
   /// List of currently available Server Types in the Datacenter.
   final List<int> availableServerTypeIds;
+
   /// Description of the Datacenter.
   final String description;
+
   /// ID of the Datacenter.
   final int? id;
+
   /// Location of the Datacenter. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   final Map<String, String> location;
+
   /// Name of the Datacenter.
   final String? name;
+
   /// List of supported Server Types in the Datacenter.
   final List<int> supportedServerTypeIds;
 
@@ -45,13 +49,22 @@ class GetDatacenterResult {
 
   factory GetDatacenterResult.fromMap(Map<String, dynamic> map) {
     return GetDatacenterResult(
-      availableServerTypeIds: (map['availableServerTypeIds'] as List).cast<int>(),
+      availableServerTypeIds: (map['availableServerTypeIds'] as List)
+          .cast<int>(),
       description: map['description'] as String,
-      id: map['id'] == null ? null : map['id']! as int,
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       location: (map['location'] as Map).cast<String, String>(),
-      name: map['name'] == null ? null : map['name']! as String,
-      supportedServerTypeIds: (map['supportedServerTypeIds'] as List).cast<int>(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      supportedServerTypeIds: (map['supportedServerTypeIds'] as List)
+          .cast<int>(),
     );
   }
 }
-

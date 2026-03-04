@@ -13,15 +13,16 @@ class RuleGroupRuleStatementRegexMatchStatementFieldToMatchJa3Fingerprint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fallbackBehavior': fallbackBehavior,
-    };
+    return <String, dynamic>{'fallbackBehavior': fallbackBehavior};
   }
 
-  factory RuleGroupRuleStatementRegexMatchStatementFieldToMatchJa3Fingerprint.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementRegexMatchStatementFieldToMatchJa3Fingerprint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleStatementRegexMatchStatementFieldToMatchJa3Fingerprint(
-      fallbackBehavior: (map['fallbackBehavior'] as String).input(),
+      fallbackBehavior: pulumi.Input.fromValue(
+        map['fallbackBehavior'] as String,
+      ),
     );
   }
 }
-

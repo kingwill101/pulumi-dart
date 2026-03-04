@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionInstanceGroupInstanceNamedPort {
   /// The name of the instance group.  One of `name` or `self_link` must be provided.
   final pulumi.Input<String> name;
+
   /// Integer port number
   final pulumi.Input<int> port;
 
@@ -17,17 +18,15 @@ class GetRegionInstanceGroupInstanceNamedPort {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'port': port,
-    };
+    return <String, dynamic>{'name': name, 'port': port};
   }
 
-  factory GetRegionInstanceGroupInstanceNamedPort.fromMap(Map<String, dynamic> map) {
+  factory GetRegionInstanceGroupInstanceNamedPort.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionInstanceGroupInstanceNamedPort(
-      name: (map['name'] as String).input(),
-      port: (map['port'] as int).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
-

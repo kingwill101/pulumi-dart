@@ -2,16 +2,19 @@
 enum SecurityPolicyRuleMatcherVersionedExprComputeV1 {
   srcIpsV1("SRC_IPS_V1");
 
-  const SecurityPolicyRuleMatcherVersionedExprComputeV1(this.value);
-  final String value;
+  const SecurityPolicyRuleMatcherVersionedExprComputeV1(this.wireValue);
+  final String wireValue;
 
-  static SecurityPolicyRuleMatcherVersionedExprComputeV1 fromValue(String value) {
+  static SecurityPolicyRuleMatcherVersionedExprComputeV1 fromValue(
+    String value,
+  ) {
     for (final item in SecurityPolicyRuleMatcherVersionedExprComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityPolicyRuleMatcherVersionedExprComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown SecurityPolicyRuleMatcherVersionedExprComputeV1 value: $value',
+    );
   }
 }
-

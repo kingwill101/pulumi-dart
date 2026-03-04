@@ -7,12 +7,16 @@ import 'azure_credentials.dart';
 class AzureBlobStorageData {
   /// Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
   final pulumi.Input<AzureCredentials> azureCredentials;
+
   /// The container to transfer from the Azure Storage account.
   final pulumi.Input<String> container;
+
   /// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
   final pulumi.Input<String>? credentialsSecret;
+
   /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
   final pulumi.Input<String>? path;
+
   /// The name of the Azure Storage account.
   final pulumi.Input<String> storageAccount;
 
@@ -32,7 +36,11 @@ class AzureBlobStorageData {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureCredentials': pulumi.Input.mapInputValue<AzureCredentials, Map<String, dynamic>>(azureCredentials, (value) => value.toMap()),
+      'azureCredentials':
+          pulumi.Input.mapInputValue<AzureCredentials, Map<String, dynamic>>(
+            azureCredentials,
+            (value) => value.toMap(),
+          ),
       'container': container,
       'credentialsSecret': ?credentialsSecret,
       'path': ?path,
@@ -42,12 +50,23 @@ class AzureBlobStorageData {
 
   factory AzureBlobStorageData.fromMap(Map<String, dynamic> map) {
     return AzureBlobStorageData(
-      azureCredentials: (AzureCredentials.fromMap((map['azureCredentials'] as Map).cast<String, dynamic>())).input(),
-      container: (map['container'] as String).input(),
-      credentialsSecret: map['credentialsSecret'] == null ? null : (map['credentialsSecret']! as String).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      storageAccount: (map['storageAccount'] as String).input(),
+      azureCredentials: pulumi.Input.fromValue(
+        AzureCredentials.fromMap(
+          (map['azureCredentials']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      container: pulumi.Input.fromValue(map['container'] as String),
+      credentialsSecret: (() {
+        final guardedValue = map['credentialsSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccount: pulumi.Input.fromValue(map['storageAccount'] as String),
     );
   }
 }
-

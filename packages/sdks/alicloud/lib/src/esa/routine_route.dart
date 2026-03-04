@@ -8,7 +8,7 @@ import 'routine_route_state.dart';
 ///
 /// For information about ESA Routine Route and how to use it, see [What is Routine Route](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateRoutineRoute).
 ///
-/// > **NOTE:** Available since v1.251.0.
+/// &gt; **NOTE:** Available since v1.251.0.
 ///
 /// ## Example Usage
 ///
@@ -279,22 +279,30 @@ class RoutineRoute extends pulumi.CustomResource {
   /// - on: Open
   /// - off: off
   late final pulumi.Output<String?> bypass;
+
   /// Config Id
   late final pulumi.Output<int> configId;
+
   /// Spare
   late final pulumi.Output<String> fallback;
+
   /// Routing switch. Value range:
   /// - on: Open
   /// - off: off
   late final pulumi.Output<String?> routeEnable;
+
   /// The route name.
   late final pulumi.Output<String?> routeName;
+
   /// The edge function Routine name.
   late final pulumi.Output<String> routineName;
+
   /// The rule content.
   late final pulumi.Output<String?> rule;
+
   /// Rule execution order.
   late final pulumi.Output<int?> sequence;
+
   /// Site Id
   late final pulumi.Output<String> siteId;
 
@@ -307,20 +315,20 @@ class RoutineRoute extends pulumi.CustomResource {
     RoutineRouteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/routineRoute:RoutineRoute',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bypass = registerOutput<String?>('bypass');
-    this.configId = registerOutput<int>('configId');
-    this.fallback = registerOutput<String>('fallback');
-    this.routeEnable = registerOutput<String?>('routeEnable');
-    this.routeName = registerOutput<String?>('routeName');
-    this.routineName = registerOutput<String>('routineName');
-    this.rule = registerOutput<String?>('rule');
-    this.sequence = registerOutput<int?>('sequence');
-    this.siteId = registerOutput<String>('siteId');
+         'alicloud:esa/routineRoute:RoutineRoute',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bypass = registerOutput<String?>('bypass');
+    configId = registerOutput<int>('configId');
+    fallback = registerOutput<String>('fallback');
+    routeEnable = registerOutput<String?>('routeEnable');
+    routeName = registerOutput<String?>('routeName');
+    routineName = registerOutput<String>('routineName');
+    rule = registerOutput<String?>('rule');
+    sequence = registerOutput<int?>('sequence');
+    siteId = registerOutput<String>('siteId');
   }
 
   /// Gets an existing [RoutineRoute] resource's state with the given [name] and [id].
@@ -341,19 +349,19 @@ class RoutineRoute extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/routineRoute:RoutineRoute',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bypass = registerOutput<String?>('bypass');
-    this.configId = registerOutput<int>('configId');
-    this.fallback = registerOutput<String>('fallback');
-    this.routeEnable = registerOutput<String?>('routeEnable');
-    this.routeName = registerOutput<String?>('routeName');
-    this.routineName = registerOutput<String>('routineName');
-    this.rule = registerOutput<String?>('rule');
-    this.sequence = registerOutput<int?>('sequence');
-    this.siteId = registerOutput<String>('siteId');
+         'alicloud:esa/routineRoute:RoutineRoute',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bypass = registerOutput<String?>('bypass');
+    configId = registerOutput<int>('configId');
+    fallback = registerOutput<String>('fallback');
+    routeEnable = registerOutput<String?>('routeEnable');
+    routeName = registerOutput<String?>('routeName');
+    routineName = registerOutput<String>('routineName');
+    rule = registerOutput<String?>('rule');
+    sequence = registerOutput<int?>('sequence');
+    siteId = registerOutput<String>('siteId');
   }
 }

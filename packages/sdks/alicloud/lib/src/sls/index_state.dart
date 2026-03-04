@@ -7,18 +7,25 @@ import 'index_line.dart';
 class IndexState {
   /// Field index
   final pulumi.Input<String>? keys;
+
   /// Full-text index See `line` below.
   final pulumi.Input<IndexLine>? line;
+
   /// Whether log clustering is enabled
   final pulumi.Input<bool>? logReduce;
+
   /// The blacklist of the cluster fields of log clustering is filtered only when log clustering is enabled.
   final pulumi.Input<List<String>>? logReduceBlackLists;
+
   /// The whitelist of the cluster fields for log clustering. This filter is valid only when log clustering is enabled.
   final pulumi.Input<List<String>>? logReduceWhiteLists;
+
   /// Logstore name
   final pulumi.Input<String>? logstoreName;
+
   /// Maximum length of statistical field
   final pulumi.Input<int>? maxTextLen;
+
   /// Project name
   final pulumi.Input<String>? projectName;
 
@@ -45,7 +52,11 @@ class IndexState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'keys': ?keys,
-      'line': ?pulumi.Input.mapOptionalInputValue<IndexLine, Map<String, dynamic>>(line, (value) => value.toMap()),
+      'line':
+          ?pulumi.Input.mapOptionalInputValue<IndexLine, Map<String, dynamic>>(
+            line,
+            (value) => value.toMap(),
+          ),
       'logReduce': ?logReduce,
       'logReduceBlackLists': ?logReduceBlackLists,
       'logReduceWhiteLists': ?logReduceWhiteLists,
@@ -57,15 +68,48 @@ class IndexState {
 
   factory IndexState.fromMap(Map<String, dynamic> map) {
     return IndexState(
-      keys: map['keys'] == null ? null : (map['keys']! as String).input(),
-      line: map['line'] == null ? null : (IndexLine.fromMap((map['line']! as Map).cast<String, dynamic>())).input(),
-      logReduce: map['logReduce'] == null ? null : (map['logReduce']! as bool).input(),
-      logReduceBlackLists: map['logReduceBlackLists'] == null ? null : ((map['logReduceBlackLists']! as List).cast<String>()).input(),
-      logReduceWhiteLists: map['logReduceWhiteLists'] == null ? null : ((map['logReduceWhiteLists']! as List).cast<String>()).input(),
-      logstoreName: map['logstoreName'] == null ? null : (map['logstoreName']! as String).input(),
-      maxTextLen: map['maxTextLen'] == null ? null : (map['maxTextLen']! as int).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      keys: (() {
+        final guardedValue = map['keys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      line: (() {
+        final guardedValue = map['line'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IndexLine.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      logReduce: (() {
+        final guardedValue = map['logReduce'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logReduceBlackLists: (() {
+        final guardedValue = map['logReduceBlackLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      logReduceWhiteLists: (() {
+        final guardedValue = map['logReduceWhiteLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      logstoreName: (() {
+        final guardedValue = map['logstoreName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxTextLen: (() {
+        final guardedValue = map['maxTextLen'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      projectName: (() {
+        final guardedValue = map['projectName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_ltm;
-
 export 'ltm/cipher_group.dart';
 export 'ltm/cipher_group_args.dart';
 export 'ltm/cipher_group_state.dart';

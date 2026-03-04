@@ -3,16 +3,15 @@ enum JobDeliveryType {
   valueNonScheduled("NonScheduled"),
   valueScheduled("Scheduled");
 
-  const JobDeliveryType(this.value);
-  final String value;
+  const JobDeliveryType(this.wireValue);
+  final String wireValue;
 
   static JobDeliveryType fromValue(String value) {
     for (final item in JobDeliveryType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobDeliveryType value: $value');
   }
 }
-

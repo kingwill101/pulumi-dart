@@ -3,16 +3,15 @@ enum LoadBalancerSku {
   valueStandard("standard"),
   valueBasic("basic");
 
-  const LoadBalancerSku(this.value);
-  final String value;
+  const LoadBalancerSku(this.wireValue);
+  final String wireValue;
 
   static LoadBalancerSku fromValue(String value) {
     for (final item in LoadBalancerSku.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LoadBalancerSku value: $value');
   }
 }
-

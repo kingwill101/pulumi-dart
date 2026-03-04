@@ -8,20 +8,17 @@ class DomainDevicesFilesystemBinaryOpenFiles {
 
   /// Creates a new [DomainDevicesFilesystemBinaryOpenFiles].
   /// [max] Defines the upper limit for the number of open files in the binary filesystem.
-  DomainDevicesFilesystemBinaryOpenFiles({
-    required this.max,
-  });
+  DomainDevicesFilesystemBinaryOpenFiles({required this.max});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'max': max,
-    };
+    return <String, dynamic>{'max': max};
   }
 
-  factory DomainDevicesFilesystemBinaryOpenFiles.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesFilesystemBinaryOpenFiles.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesFilesystemBinaryOpenFiles(
-      max: (map['max'] as double).input(),
+      max: pulumi.Input.fromValue(map['max'] as double),
     );
   }
 }
-

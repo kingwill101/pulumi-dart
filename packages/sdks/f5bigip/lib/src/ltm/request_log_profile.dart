@@ -154,42 +154,61 @@ import 'request_log_profile_state.dart';
 class RequestLogProfile extends pulumi.CustomResource {
   /// Specifies the profile from which this profile inherits settings. The default is the system-supplied `request-log` profile.
   late final pulumi.Output<String?> defaultsFrom;
+
   /// Specifies user-defined description.
   late final pulumi.Output<String> description;
+
   /// Name of the Request Logging profile,name of Profile should be full path. Full path is the combination of the `partition + profile name`,For example `/Common/request-log-profile-tc1`.
   late final pulumi.Output<String> name;
+
   /// Defines the pool associated with logging request errors. The default is None.
   late final pulumi.Output<String?> proxyResponse;
+
   /// Defines the pool associated with logging request errors. The default is None.
   late final pulumi.Output<String?> proxycloseOnError;
+
   /// Defines the pool associated with logging request errors. The default is None.
   late final pulumi.Output<String?> proxyrespondOnLoggingerror;
+
   /// Enables or disables request logging. The default is `disabled`, possible values are `enabled` and `disabled`.
   late final pulumi.Output<String> requestLogging;
+
   /// Defines the pool associated with logging request errors. The default is None.
   late final pulumi.Output<String?> requestlogErrorPool;
+
   /// Specifies the protocol to be used for high-speed logging of request errors. The default is `mds-udp`,possible values are `mds-udp` and `mds-tcp`.
   late final pulumi.Output<String?> requestlogErrorProtocol;
+
   /// Specifies the directives and entries to be logged for request errors.
   late final pulumi.Output<String?> requestlogErrorTemplate;
+
   /// Defines the pool to send logs to. Typically, the pool will contain one or more syslog servers. It is recommended that you create a pool specifically for logging requests. The default is `none`.
   late final pulumi.Output<String?> requestlogPool;
+
   /// Specifies the protocol to be used for high-speed logging of requests. The default is `mds-udp`,possible values are `mds-udp` and `mds-tcp`.
   late final pulumi.Output<String?> requestlogProtocol;
+
   /// Specifies the directives and entries to be logged. More infor on requestlog_template can be found [here](https://techdocs.f5.com/en-us/bigip-15-0-0/external-monitoring-of-big-ip-systems-implementations/configuring-request-logging.html). how to use can be find [here](https://my.f5.com/manage/s/article/K00847516).
   late final pulumi.Output<String?> requestlogTemplate;
+
   /// Enables or disables response logging. The default is `disabled`, possible values are `enabled` and `disabled`.
   late final pulumi.Output<String> responseLogging;
+
   /// Defines the pool associated with logging response errors. The default is `none`.
   late final pulumi.Output<String?> responselogErrorPool;
+
   /// Specifies the protocol to be used for high-speed logging of response errors. The default is `mds-udp`,possible values are `mds-udp` and `mds-tcp`.
   late final pulumi.Output<String?> responselogErrorProtocol;
+
   /// Specifies the directives and entries to be logged for request errors.
   late final pulumi.Output<String?> responselogErrorTemplate;
+
   /// Defines the pool to send logs to. Typically, the pool contains one or more syslog servers. It is recommended that you create a pool specifically for logging responses. The default is `none`.
   late final pulumi.Output<String?> responselogPool;
+
   /// Specifies the protocol to be used for high-speed logging of responses. The default is `mds-udp`,possible values are `mds-udp` and `mds-tcp`.
   late final pulumi.Output<String?> responselogProtocol;
+
   /// Specifies the directives and entries to be logged. More infor on responselog_template can be found [here](https://techdocs.f5.com/en-us/bigip-15-0-0/external-monitoring-of-big-ip-systems-implementations/configuring-request-logging.html). how to use can be find [here](https://my.f5.com/manage/s/article/K00847516).
   late final pulumi.Output<String?> responselogTemplate;
 
@@ -202,31 +221,41 @@ class RequestLogProfile extends pulumi.CustomResource {
     RequestLogProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ltm/requestLogProfile:RequestLogProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultsFrom = registerOutput<String?>('defaultsFrom');
-    this.description = registerOutput<String>('description');
+         'f5bigip:ltm/requestLogProfile:RequestLogProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultsFrom = registerOutput<String?>('defaultsFrom');
+    description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
-    this.proxyResponse = registerOutput<String?>('proxyResponse');
-    this.proxycloseOnError = registerOutput<String?>('proxycloseOnError');
-    this.proxyrespondOnLoggingerror = registerOutput<String?>('proxyrespondOnLoggingerror');
-    this.requestLogging = registerOutput<String>('requestLogging');
-    this.requestlogErrorPool = registerOutput<String?>('requestlogErrorPool');
-    this.requestlogErrorProtocol = registerOutput<String?>('requestlogErrorProtocol');
-    this.requestlogErrorTemplate = registerOutput<String?>('requestlogErrorTemplate');
-    this.requestlogPool = registerOutput<String?>('requestlogPool');
-    this.requestlogProtocol = registerOutput<String?>('requestlogProtocol');
-    this.requestlogTemplate = registerOutput<String?>('requestlogTemplate');
-    this.responseLogging = registerOutput<String>('responseLogging');
-    this.responselogErrorPool = registerOutput<String?>('responselogErrorPool');
-    this.responselogErrorProtocol = registerOutput<String?>('responselogErrorProtocol');
-    this.responselogErrorTemplate = registerOutput<String?>('responselogErrorTemplate');
-    this.responselogPool = registerOutput<String?>('responselogPool');
-    this.responselogProtocol = registerOutput<String?>('responselogProtocol');
-    this.responselogTemplate = registerOutput<String?>('responselogTemplate');
+    proxyResponse = registerOutput<String?>('proxyResponse');
+    proxycloseOnError = registerOutput<String?>('proxycloseOnError');
+    proxyrespondOnLoggingerror = registerOutput<String?>(
+      'proxyrespondOnLoggingerror',
+    );
+    requestLogging = registerOutput<String>('requestLogging');
+    requestlogErrorPool = registerOutput<String?>('requestlogErrorPool');
+    requestlogErrorProtocol = registerOutput<String?>(
+      'requestlogErrorProtocol',
+    );
+    requestlogErrorTemplate = registerOutput<String?>(
+      'requestlogErrorTemplate',
+    );
+    requestlogPool = registerOutput<String?>('requestlogPool');
+    requestlogProtocol = registerOutput<String?>('requestlogProtocol');
+    requestlogTemplate = registerOutput<String?>('requestlogTemplate');
+    responseLogging = registerOutput<String>('responseLogging');
+    responselogErrorPool = registerOutput<String?>('responselogErrorPool');
+    responselogErrorProtocol = registerOutput<String?>(
+      'responselogErrorProtocol',
+    );
+    responselogErrorTemplate = registerOutput<String?>(
+      'responselogErrorTemplate',
+    );
+    responselogPool = registerOutput<String?>('responselogPool');
+    responselogProtocol = registerOutput<String?>('responselogProtocol');
+    responselogTemplate = registerOutput<String?>('responselogTemplate');
   }
 
   /// Gets an existing [RequestLogProfile] resource's state with the given [name] and [id].
@@ -247,30 +276,40 @@ class RequestLogProfile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ltm/requestLogProfile:RequestLogProfile',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultsFrom = registerOutput<String?>('defaultsFrom');
-    this.description = registerOutput<String>('description');
+         'f5bigip:ltm/requestLogProfile:RequestLogProfile',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultsFrom = registerOutput<String?>('defaultsFrom');
+    description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
-    this.proxyResponse = registerOutput<String?>('proxyResponse');
-    this.proxycloseOnError = registerOutput<String?>('proxycloseOnError');
-    this.proxyrespondOnLoggingerror = registerOutput<String?>('proxyrespondOnLoggingerror');
-    this.requestLogging = registerOutput<String>('requestLogging');
-    this.requestlogErrorPool = registerOutput<String?>('requestlogErrorPool');
-    this.requestlogErrorProtocol = registerOutput<String?>('requestlogErrorProtocol');
-    this.requestlogErrorTemplate = registerOutput<String?>('requestlogErrorTemplate');
-    this.requestlogPool = registerOutput<String?>('requestlogPool');
-    this.requestlogProtocol = registerOutput<String?>('requestlogProtocol');
-    this.requestlogTemplate = registerOutput<String?>('requestlogTemplate');
-    this.responseLogging = registerOutput<String>('responseLogging');
-    this.responselogErrorPool = registerOutput<String?>('responselogErrorPool');
-    this.responselogErrorProtocol = registerOutput<String?>('responselogErrorProtocol');
-    this.responselogErrorTemplate = registerOutput<String?>('responselogErrorTemplate');
-    this.responselogPool = registerOutput<String?>('responselogPool');
-    this.responselogProtocol = registerOutput<String?>('responselogProtocol');
-    this.responselogTemplate = registerOutput<String?>('responselogTemplate');
+    proxyResponse = registerOutput<String?>('proxyResponse');
+    proxycloseOnError = registerOutput<String?>('proxycloseOnError');
+    proxyrespondOnLoggingerror = registerOutput<String?>(
+      'proxyrespondOnLoggingerror',
+    );
+    requestLogging = registerOutput<String>('requestLogging');
+    requestlogErrorPool = registerOutput<String?>('requestlogErrorPool');
+    requestlogErrorProtocol = registerOutput<String?>(
+      'requestlogErrorProtocol',
+    );
+    requestlogErrorTemplate = registerOutput<String?>(
+      'requestlogErrorTemplate',
+    );
+    requestlogPool = registerOutput<String?>('requestlogPool');
+    requestlogProtocol = registerOutput<String?>('requestlogProtocol');
+    requestlogTemplate = registerOutput<String?>('requestlogTemplate');
+    responseLogging = registerOutput<String>('responseLogging');
+    responselogErrorPool = registerOutput<String?>('responselogErrorPool');
+    responselogErrorProtocol = registerOutput<String?>(
+      'responselogErrorProtocol',
+    );
+    responselogErrorTemplate = registerOutput<String?>(
+      'responselogErrorTemplate',
+    );
+    responselogPool = registerOutput<String?>('responselogPool');
+    responselogProtocol = registerOutput<String?>('responselogProtocol');
+    responselogTemplate = registerOutput<String?>('responselogTemplate');
   }
 }

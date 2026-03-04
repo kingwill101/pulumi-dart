@@ -29,12 +29,21 @@ class GetDomainIamPolicyManagedidentitiesV1beta1Args {
     };
   }
 
-  factory GetDomainIamPolicyManagedidentitiesV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetDomainIamPolicyManagedidentitiesV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDomainIamPolicyManagedidentitiesV1beta1Args(
-      domainId: (map['domainId'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      domainId: pulumi.Input.fromValue(map['domainId'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

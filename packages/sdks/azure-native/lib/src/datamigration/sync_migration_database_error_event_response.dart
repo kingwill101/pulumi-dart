@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SyncMigrationDatabaseErrorEventResponse {
   /// Event text.
   final pulumi.Input<String> eventText;
+
   /// Event type.
   final pulumi.Input<String> eventTypeString;
+
   /// String value of timestamp.
   final pulumi.Input<String> timestampString;
 
@@ -29,12 +31,13 @@ class SyncMigrationDatabaseErrorEventResponse {
     };
   }
 
-  factory SyncMigrationDatabaseErrorEventResponse.fromMap(Map<String, dynamic> map) {
+  factory SyncMigrationDatabaseErrorEventResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SyncMigrationDatabaseErrorEventResponse(
-      eventText: (map['eventText'] as String).input(),
-      eventTypeString: (map['eventTypeString'] as String).input(),
-      timestampString: (map['timestampString'] as String).input(),
+      eventText: pulumi.Input.fromValue(map['eventText'] as String),
+      eventTypeString: pulumi.Input.fromValue(map['eventTypeString'] as String),
+      timestampString: pulumi.Input.fromValue(map['timestampString'] as String),
     );
   }
 }
-

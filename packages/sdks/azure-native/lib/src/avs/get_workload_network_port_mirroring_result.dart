@@ -6,26 +6,37 @@ import 'system_data_response.dart';
 class GetWorkloadNetworkPortMirroringResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Destination VM Group.
   final String? destination;
+
   /// Direction of port mirroring profile.
   final String? direction;
+
   /// Display name of the port mirroring profile.
   final String? displayName;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The provisioning state
   final String provisioningState;
+
   /// NSX revision number.
   final double? revision;
+
   /// Source VM Group.
   final String? source;
+
   /// Port Mirroring Status.
   final String status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -74,21 +85,44 @@ class GetWorkloadNetworkPortMirroringResult {
     };
   }
 
-  factory GetWorkloadNetworkPortMirroringResult.fromMap(Map<String, dynamic> map) {
+  factory GetWorkloadNetworkPortMirroringResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkloadNetworkPortMirroringResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      destination: map['destination'] == null ? null : map['destination']! as String,
-      direction: map['direction'] == null ? null : map['direction']! as String,
-      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      direction: (() {
+        final guardedValue = map['direction'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      revision: map['revision'] == null ? null : map['revision']! as double,
-      source: map['source'] == null ? null : map['source']! as String,
+      revision: (() {
+        final guardedValue = map['revision'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

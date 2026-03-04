@@ -8,20 +8,17 @@ class DataTransferConfigEmailPreferences {
 
   /// Creates a new [DataTransferConfigEmailPreferences].
   /// [enableFailureEmail] If true, email notifications will be sent on transfer run failures.
-  DataTransferConfigEmailPreferences({
-    required this.enableFailureEmail,
-  });
+  DataTransferConfigEmailPreferences({required this.enableFailureEmail});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableFailureEmail': enableFailureEmail,
-    };
+    return <String, dynamic>{'enableFailureEmail': enableFailureEmail};
   }
 
   factory DataTransferConfigEmailPreferences.fromMap(Map<String, dynamic> map) {
     return DataTransferConfigEmailPreferences(
-      enableFailureEmail: (map['enableFailureEmail'] as bool).input(),
+      enableFailureEmail: pulumi.Input.fromValue(
+        map['enableFailureEmail'] as bool,
+      ),
     );
   }
 }
-

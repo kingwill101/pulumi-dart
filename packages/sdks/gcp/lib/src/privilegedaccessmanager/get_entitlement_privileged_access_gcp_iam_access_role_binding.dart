@@ -6,8 +6,10 @@ class GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding {
   /// The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
   /// https://cloud.google.com/iam/docs/conditions-overview#attributes.
   final pulumi.Input<String> conditionExpression;
+
   /// Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
   final pulumi.Input<String> id;
+
   /// IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
   final pulumi.Input<String> role;
 
@@ -29,12 +31,15 @@ class GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding {
     };
   }
 
-  factory GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding.fromMap(Map<String, dynamic> map) {
+  factory GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding(
-      conditionExpression: (map['conditionExpression'] as String).input(),
-      id: (map['id'] as String).input(),
-      role: (map['role'] as String).input(),
+      conditionExpression: pulumi.Input.fromValue(
+        map['conditionExpression'] as String,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
-

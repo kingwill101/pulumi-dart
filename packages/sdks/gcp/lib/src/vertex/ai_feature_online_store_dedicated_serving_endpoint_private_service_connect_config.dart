@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig {
   /// If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
   final pulumi.Input<bool> enablePrivateServiceConnect;
+
   /// A list of Projects from which the forwarding rule will target the service attachment.
   final pulumi.Input<List<String>>? projectAllowlists;
 
@@ -23,11 +24,18 @@ class AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig {
     };
   }
 
-  factory AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig.fromMap(Map<String, dynamic> map) {
+  factory AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig(
-      enablePrivateServiceConnect: (map['enablePrivateServiceConnect'] as bool).input(),
-      projectAllowlists: map['projectAllowlists'] == null ? null : ((map['projectAllowlists']! as List).cast<String>()).input(),
+      enablePrivateServiceConnect: pulumi.Input.fromValue(
+        map['enablePrivateServiceConnect'] as bool,
+      ),
+      projectAllowlists: (() {
+        final guardedValue = map['projectAllowlists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

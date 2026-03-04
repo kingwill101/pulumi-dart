@@ -14,15 +14,14 @@ class FlowDistinguisherMethodFlowcontrolApiserverK8sIoV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
-  factory FlowDistinguisherMethodFlowcontrolApiserverK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory FlowDistinguisherMethodFlowcontrolApiserverK8sIoV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowDistinguisherMethodFlowcontrolApiserverK8sIoV1alpha1(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

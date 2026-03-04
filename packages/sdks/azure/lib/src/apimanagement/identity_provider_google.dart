@@ -205,7 +205,7 @@ import 'identity_provider_google_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -220,10 +220,13 @@ import 'identity_provider_google_state.dart';
 class IdentityProviderGoogle extends pulumi.CustomResource {
   /// The Name of the API Management Service where this Google Identity Provider should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementName;
+
   /// Client Id for Google Sign-in.
   late final pulumi.Output<String> clientId;
+
   /// Client secret for Google Sign-in.
   late final pulumi.Output<String> clientSecret;
+
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
 
@@ -236,15 +239,15 @@ class IdentityProviderGoogle extends pulumi.CustomResource {
     IdentityProviderGoogleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/identityProviderGoogle:IdentityProviderGoogle',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.clientId = registerOutput<String>('clientId');
-    this.clientSecret = registerOutput<String>('clientSecret');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+         'azure:apimanagement/identityProviderGoogle:IdentityProviderGoogle',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    clientId = registerOutput<String>('clientId');
+    clientSecret = registerOutput<String>('clientSecret');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
   /// Gets an existing [IdentityProviderGoogle] resource's state with the given [name] and [id].
@@ -265,14 +268,14 @@ class IdentityProviderGoogle extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/identityProviderGoogle:IdentityProviderGoogle',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.clientId = registerOutput<String>('clientId');
-    this.clientSecret = registerOutput<String>('clientSecret');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+         'azure:apimanagement/identityProviderGoogle:IdentityProviderGoogle',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    clientId = registerOutput<String>('clientId');
+    clientSecret = registerOutput<String>('clientSecret');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

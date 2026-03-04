@@ -159,21 +159,28 @@ import 'vocabulary_filter_state.dart';
 class VocabularyFilter extends pulumi.CustomResource {
   /// ARN of the VocabularyFilter.
   late final pulumi.Output<String> arn;
+
   /// Generated download URI.
   late final pulumi.Output<String> downloadUri;
+
   /// The language code you selected for your vocabulary filter. Refer to the [supported languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html) page for accepted codes.
   late final pulumi.Output<String> languageCode;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the VocabularyFilter. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The Amazon S3 location (URI) of the text file that contains your custom VocabularyFilter. Conflicts with `words` argument.
   late final pulumi.Output<String?> vocabularyFilterFileUri;
+
   /// The name of the VocabularyFilter.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> vocabularyFilterName;
+
   /// A list of terms to include in the vocabulary. Conflicts with `vocabulary_filter_file_uri` argument.
   late final pulumi.Output<List<String>?> words;
 
@@ -186,20 +193,22 @@ class VocabularyFilter extends pulumi.CustomResource {
     VocabularyFilterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:transcribe/vocabularyFilter:VocabularyFilter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.downloadUri = registerOutput<String>('downloadUri');
-    this.languageCode = registerOutput<String>('languageCode');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.vocabularyFilterFileUri = registerOutput<String?>('vocabularyFilterFileUri');
-    this.vocabularyFilterName = registerOutput<String>('vocabularyFilterName');
-    this.words = registerOutput<List<String>?>('words');
+         'aws:transcribe/vocabularyFilter:VocabularyFilter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    downloadUri = registerOutput<String>('downloadUri');
+    languageCode = registerOutput<String>('languageCode');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    vocabularyFilterFileUri = registerOutput<String?>(
+      'vocabularyFilterFileUri',
+    );
+    vocabularyFilterName = registerOutput<String>('vocabularyFilterName');
+    words = registerOutput<List<String>?>('words');
   }
 
   /// Gets an existing [VocabularyFilter] resource's state with the given [name] and [id].
@@ -220,19 +229,21 @@ class VocabularyFilter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:transcribe/vocabularyFilter:VocabularyFilter',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.downloadUri = registerOutput<String>('downloadUri');
-    this.languageCode = registerOutput<String>('languageCode');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.vocabularyFilterFileUri = registerOutput<String?>('vocabularyFilterFileUri');
-    this.vocabularyFilterName = registerOutput<String>('vocabularyFilterName');
-    this.words = registerOutput<List<String>?>('words');
+         'aws:transcribe/vocabularyFilter:VocabularyFilter',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    downloadUri = registerOutput<String>('downloadUri');
+    languageCode = registerOutput<String>('languageCode');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    vocabularyFilterFileUri = registerOutput<String?>(
+      'vocabularyFilterFileUri',
+    );
+    vocabularyFilterName = registerOutput<String>('vocabularyFilterName');
+    words = registerOutput<List<String>?>('words');
   }
 }

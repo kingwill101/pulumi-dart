@@ -3,16 +3,15 @@ enum RemoteApplicationType {
   valueInBuilt("InBuilt"),
   valueMsixApplication("MsixApplication");
 
-  const RemoteApplicationType(this.value);
-  final String value;
+  const RemoteApplicationType(this.wireValue);
+  final String wireValue;
 
   static RemoteApplicationType fromValue(String value) {
     for (final item in RemoteApplicationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RemoteApplicationType value: $value');
   }
 }
-

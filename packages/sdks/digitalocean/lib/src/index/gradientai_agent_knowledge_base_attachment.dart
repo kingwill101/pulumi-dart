@@ -5,6 +5,7 @@ import 'gradientai_agent_knowledge_base_attachment_state.dart';
 class GradientaiAgentKnowledgeBaseAttachment extends pulumi.CustomResource {
   /// A unique identifier for an agent.
   late final pulumi.Output<String> agentUuid;
+
   /// A unique identifier for a knowledge base.
   late final pulumi.Output<String> knowledgeBaseUuid;
 
@@ -17,13 +18,13 @@ class GradientaiAgentKnowledgeBaseAttachment extends pulumi.CustomResource {
     GradientaiAgentKnowledgeBaseAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentUuid = registerOutput<String>('agentUuid');
-    this.knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
+         'digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentUuid = registerOutput<String>('agentUuid');
+    knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
   }
 
   /// Gets an existing [GradientaiAgentKnowledgeBaseAttachment] resource's state with the given [name] and [id].
@@ -44,12 +45,12 @@ class GradientaiAgentKnowledgeBaseAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.agentUuid = registerOutput<String>('agentUuid');
-    this.knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
+         'digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    agentUuid = registerOutput<String>('agentUuid');
+    knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
   }
 }

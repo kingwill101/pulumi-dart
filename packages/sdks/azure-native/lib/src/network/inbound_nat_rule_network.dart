@@ -191,34 +191,50 @@ import 'sub_resource_response.dart';
 class InboundNatRuleNetwork extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A reference to backendAddressPool resource.
   late final pulumi.Output<SubResourceResponse?> backendAddressPool;
+
   /// A reference to a private IP address defined on a network interface of a VM. Traffic sent to the frontend port of each of the frontend IP configurations is forwarded to the backend IP.
-  late final pulumi.Output<NetworkInterfaceIPConfigurationResponse> backendIPConfiguration;
+  late final pulumi.Output<NetworkInterfaceIPConfigurationResponse>
+  backendIPConfiguration;
+
   /// The port used for the internal endpoint. Acceptable values range from 1 to 65535.
   late final pulumi.Output<int?> backendPort;
+
   /// Configures a virtual machine's endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed after you create the endpoint.
   late final pulumi.Output<bool?> enableFloatingIP;
+
   /// Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
   late final pulumi.Output<bool?> enableTcpReset;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// A reference to frontend IP addresses.
   late final pulumi.Output<SubResourceResponse?> frontendIPConfiguration;
+
   /// The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
   late final pulumi.Output<int?> frontendPort;
+
   /// The port range end for the external endpoint. This property is used together with BackendAddressPool and FrontendPortRangeStart. Individual inbound NAT rule port mappings will be created for each backend address from BackendAddressPool. Acceptable values range from 1 to 65534.
   late final pulumi.Output<int?> frontendPortRangeEnd;
+
   /// The port range start for the external endpoint. This property is used together with BackendAddressPool and FrontendPortRangeEnd. Individual inbound NAT rule port mappings will be created for each backend address from BackendAddressPool. Acceptable values range from 1 to 65534.
   late final pulumi.Output<int?> frontendPortRangeStart;
+
   /// The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
   late final pulumi.Output<int?> idleTimeoutInMinutes;
+
   /// The name of the resource that is unique within the set of inbound NAT rules used by the load balancer. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// The reference to the transport protocol used by the load balancing rule.
   late final pulumi.Output<String?> protocol;
+
   /// The provisioning state of the inbound NAT rule resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -231,26 +247,33 @@ class InboundNatRuleNetwork extends pulumi.CustomResource {
     InboundNatRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:InboundNatRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.backendAddressPool = registerOutput<SubResourceResponse?>('backendAddressPool');
-    this.backendIPConfiguration = registerOutput<NetworkInterfaceIPConfigurationResponse>('backendIPConfiguration');
-    this.backendPort = registerOutput<int?>('backendPort');
-    this.enableFloatingIP = registerOutput<bool?>('enableFloatingIP');
-    this.enableTcpReset = registerOutput<bool?>('enableTcpReset');
-    this.etag = registerOutput<String>('etag');
-    this.frontendIPConfiguration = registerOutput<SubResourceResponse?>('frontendIPConfiguration');
-    this.frontendPort = registerOutput<int?>('frontendPort');
-    this.frontendPortRangeEnd = registerOutput<int?>('frontendPortRangeEnd');
-    this.frontendPortRangeStart = registerOutput<int?>('frontendPortRangeStart');
-    this.idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
+         'azure-native:network:InboundNatRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backendAddressPool = registerOutput<SubResourceResponse?>(
+      'backendAddressPool',
+    );
+    backendIPConfiguration =
+        registerOutput<NetworkInterfaceIPConfigurationResponse>(
+          'backendIPConfiguration',
+        );
+    backendPort = registerOutput<int?>('backendPort');
+    enableFloatingIP = registerOutput<bool?>('enableFloatingIP');
+    enableTcpReset = registerOutput<bool?>('enableTcpReset');
+    etag = registerOutput<String>('etag');
+    frontendIPConfiguration = registerOutput<SubResourceResponse?>(
+      'frontendIPConfiguration',
+    );
+    frontendPort = registerOutput<int?>('frontendPort');
+    frontendPortRangeEnd = registerOutput<int?>('frontendPortRangeEnd');
+    frontendPortRangeStart = registerOutput<int?>('frontendPortRangeStart');
+    idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
     this.name = registerOutput<String?>('name');
-    this.protocol = registerOutput<String?>('protocol');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.type = registerOutput<String>('type');
+    protocol = registerOutput<String?>('protocol');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
   }
 }

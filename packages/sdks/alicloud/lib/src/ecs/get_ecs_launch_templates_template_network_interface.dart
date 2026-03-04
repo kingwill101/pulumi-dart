@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsLaunchTemplatesTemplateNetworkInterface {
   /// System disk description.
   final pulumi.Input<String> description;
+
   /// System disk name.
   final pulumi.Input<String> name;
+
   /// The primary private IP address of the ENI.
   final pulumi.Input<String> primaryIp;
+
   /// The security group ID must be one in the same VPC.
   final pulumi.Input<String> securityGroupId;
+
   /// The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
   final pulumi.Input<String> vswitchId;
 
@@ -38,14 +42,15 @@ class GetEcsLaunchTemplatesTemplateNetworkInterface {
     };
   }
 
-  factory GetEcsLaunchTemplatesTemplateNetworkInterface.fromMap(Map<String, dynamic> map) {
+  factory GetEcsLaunchTemplatesTemplateNetworkInterface.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEcsLaunchTemplatesTemplateNetworkInterface(
-      description: (map['description'] as String).input(),
-      name: (map['name'] as String).input(),
-      primaryIp: (map['primaryIp'] as String).input(),
-      securityGroupId: (map['securityGroupId'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      primaryIp: pulumi.Input.fromValue(map['primaryIp'] as String),
+      securityGroupId: pulumi.Input.fromValue(map['securityGroupId'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
-

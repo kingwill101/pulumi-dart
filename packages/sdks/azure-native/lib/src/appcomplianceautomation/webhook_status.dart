@@ -3,16 +3,15 @@ enum WebhookStatus {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const WebhookStatus(this.value);
-  final String value;
+  const WebhookStatus(this.wireValue);
+  final String wireValue;
 
   static WebhookStatus fromValue(String value) {
     for (final item in WebhookStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WebhookStatus value: $value');
   }
 }
-

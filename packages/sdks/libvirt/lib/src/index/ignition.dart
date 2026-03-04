@@ -35,10 +35,13 @@ import '../internal/package_registration.dart' as package_registration;
 class Ignition extends pulumi.CustomResource {
   /// Ignition configuration content (JSON)
   late final pulumi.Output<String> content;
+
   /// Name for this ignition resource
   late final pulumi.Output<String> name;
+
   /// Full path to the generated ignition file
   late final pulumi.Output<String> path;
+
   /// Size of the file in bytes
   late final pulumi.Output<double> size;
 
@@ -51,16 +54,16 @@ class Ignition extends pulumi.CustomResource {
     IgnitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'libvirt:index/ignition:Ignition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-          registerPackageRequest: package_registration.registerPackageRequest,
-        ) {
-    this.content = registerOutput<String>('content');
+         'libvirt:index/ignition:Ignition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+         registerPackageRequest: package_registration.registerPackageRequest,
+       ) {
+    content = registerOutput<String>('content');
     this.name = registerOutput<String>('name');
-    this.path = registerOutput<String>('path');
-    this.size = registerOutput<double>('size');
+    path = registerOutput<String>('path');
+    size = registerOutput<double>('size');
   }
 
   /// Gets an existing [Ignition] resource's state with the given [name] and [id].
@@ -81,14 +84,14 @@ class Ignition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'libvirt:index/ignition:Ignition',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.content = registerOutput<String>('content');
+         'libvirt:index/ignition:Ignition',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    content = registerOutput<String>('content');
     this.name = registerOutput<String>('name');
-    this.path = registerOutput<String>('path');
-    this.size = registerOutput<double>('size');
+    path = registerOutput<String>('path');
+    size = registerOutput<double>('size');
   }
 }

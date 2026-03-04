@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmSizeProfileResponse {
   /// The Sku name (e.g. 'Standard_DS1_v2')
   final pulumi.Input<String> name;
+
   /// The rank of the VM size. This is used with 'RegularPriorityAllocationStrategy.Prioritized'
   /// The lower the number, the higher the priority. Starting with 0.
   final pulumi.Input<int>? rank;
@@ -13,23 +14,20 @@ class VmSizeProfileResponse {
   /// Creates a new [VmSizeProfileResponse].
   /// [name] The Sku name (e.g. 'Standard_DS1_v2')
   /// [rank] The rank of the VM size. This is used with 'RegularPriorityAllocationStrategy.Prioritized'
-  VmSizeProfileResponse({
-    required this.name,
-    this.rank,
-  });
+  VmSizeProfileResponse({required this.name, this.rank});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'rank': ?rank,
-    };
+    return <String, dynamic>{'name': name, 'rank': ?rank};
   }
 
   factory VmSizeProfileResponse.fromMap(Map<String, dynamic> map) {
     return VmSizeProfileResponse(
-      name: (map['name'] as String).input(),
-      rank: map['rank'] == null ? null : (map['rank']! as int).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      rank: (() {
+        final guardedValue = map['rank'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

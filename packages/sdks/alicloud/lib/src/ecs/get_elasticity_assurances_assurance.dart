@@ -5,35 +5,51 @@ import 'get_elasticity_assurances_assurance_allocated_resource.dart';
 
 class GetElasticityAssurancesAssurance {
   /// Details of resource allocation.
-  final pulumi.Input<List<GetElasticityAssurancesAssuranceAllocatedResource>> allocatedResources;
+  final pulumi.Input<List<GetElasticityAssurancesAssuranceAllocatedResource>>
+  allocatedResources;
+
   /// Description of flexible guarantee service.
   final pulumi.Input<String> description;
+
   /// The first ID of the resource
   final pulumi.Input<String> elasticityAssuranceId;
+
   /// Flexible guarantee service failure time.
   final pulumi.Input<String> endTime;
+
   /// ID of flexible guarantee service.
   final pulumi.Input<String> id;
+
   /// The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
   final pulumi.Input<String> instanceChargeType;
+
   /// The ID of the elasticity assurance.
   final pulumi.Input<String> privatePoolOptionsId;
+
   /// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
   final pulumi.Input<String> privatePoolOptionsMatchCriteria;
+
   /// The name of the elasticity assurance.
   final pulumi.Input<String> privatePoolOptionsName;
+
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
+
   /// Flexible guarantee service effective time.
   final pulumi.Input<String> startTime;
+
   /// Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
   final pulumi.Input<String> startTimeType;
+
   /// The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
   final pulumi.Input<String> status;
+
   /// The tag key-value pair information bound by the elastic guarantee service.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The total number of flexible guarantee services.
   final pulumi.Input<String> totalAssuranceTimes;
+
   /// This parameter is not yet available.
   final pulumi.Input<int> usedAssuranceTimes;
 
@@ -75,7 +91,18 @@ class GetElasticityAssurancesAssurance {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allocatedResources': pulumi.Input.mapInputValue<List<GetElasticityAssurancesAssuranceAllocatedResource>, List<Map<String, dynamic>>>(allocatedResources, (value) => pulumi.Input.encodeList<GetElasticityAssurancesAssuranceAllocatedResource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'allocatedResources':
+          pulumi.Input.mapInputValue<
+            List<GetElasticityAssurancesAssuranceAllocatedResource>,
+            List<Map<String, dynamic>>
+          >(
+            allocatedResources,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetElasticityAssurancesAssuranceAllocatedResource,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'description': description,
       'elasticityAssuranceId': elasticityAssuranceId,
       'endTime': endTime,
@@ -96,23 +123,51 @@ class GetElasticityAssurancesAssurance {
 
   factory GetElasticityAssurancesAssurance.fromMap(Map<String, dynamic> map) {
     return GetElasticityAssurancesAssurance(
-      allocatedResources: (pulumi.Input.decodeList<GetElasticityAssurancesAssuranceAllocatedResource>(map['allocatedResources'], (value) => GetElasticityAssurancesAssuranceAllocatedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: (map['description'] as String).input(),
-      elasticityAssuranceId: (map['elasticityAssuranceId'] as String).input(),
-      endTime: (map['endTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceChargeType: (map['instanceChargeType'] as String).input(),
-      privatePoolOptionsId: (map['privatePoolOptionsId'] as String).input(),
-      privatePoolOptionsMatchCriteria: (map['privatePoolOptionsMatchCriteria'] as String).input(),
-      privatePoolOptionsName: (map['privatePoolOptionsName'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      startTimeType: (map['startTimeType'] as String).input(),
-      status: (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      totalAssuranceTimes: (map['totalAssuranceTimes'] as String).input(),
-      usedAssuranceTimes: (map['usedAssuranceTimes'] as int).input(),
+      allocatedResources: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetElasticityAssurancesAssuranceAllocatedResource
+        >(
+          map['allocatedResources']!,
+          (value) => GetElasticityAssurancesAssuranceAllocatedResource.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      elasticityAssuranceId: pulumi.Input.fromValue(
+        map['elasticityAssuranceId'] as String,
+      ),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceChargeType: pulumi.Input.fromValue(
+        map['instanceChargeType'] as String,
+      ),
+      privatePoolOptionsId: pulumi.Input.fromValue(
+        map['privatePoolOptionsId'] as String,
+      ),
+      privatePoolOptionsMatchCriteria: pulumi.Input.fromValue(
+        map['privatePoolOptionsMatchCriteria'] as String,
+      ),
+      privatePoolOptionsName: pulumi.Input.fromValue(
+        map['privatePoolOptionsName'] as String,
+      ),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      startTimeType: pulumi.Input.fromValue(map['startTimeType'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      totalAssuranceTimes: pulumi.Input.fromValue(
+        map['totalAssuranceTimes'] as String,
+      ),
+      usedAssuranceTimes: pulumi.Input.fromValue(
+        map['usedAssuranceTimes'] as int,
+      ),
     );
   }
 }
-

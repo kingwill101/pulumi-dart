@@ -53,19 +53,30 @@ class GetNetworkInsightsAnalysisReturnPathComponentRouteTableRoute {
     };
   }
 
-  factory GetNetworkInsightsAnalysisReturnPathComponentRouteTableRoute.fromMap(Map<String, dynamic> map) {
+  factory GetNetworkInsightsAnalysisReturnPathComponentRouteTableRoute.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNetworkInsightsAnalysisReturnPathComponentRouteTableRoute(
-      destinationCidr: (map['destinationCidr'] as String).input(),
-      destinationPrefixListId: (map['destinationPrefixListId'] as String).input(),
-      egressOnlyInternetGatewayId: (map['egressOnlyInternetGatewayId'] as String).input(),
-      gatewayId: (map['gatewayId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      natGatewayId: (map['natGatewayId'] as String).input(),
-      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
-      origin: (map['origin'] as String).input(),
-      transitGatewayId: (map['transitGatewayId'] as String).input(),
-      vpcPeeringConnectionId: (map['vpcPeeringConnectionId'] as String).input(),
+      destinationCidr: pulumi.Input.fromValue(map['destinationCidr'] as String),
+      destinationPrefixListId: pulumi.Input.fromValue(
+        map['destinationPrefixListId'] as String,
+      ),
+      egressOnlyInternetGatewayId: pulumi.Input.fromValue(
+        map['egressOnlyInternetGatewayId'] as String,
+      ),
+      gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      natGatewayId: pulumi.Input.fromValue(map['natGatewayId'] as String),
+      networkInterfaceId: pulumi.Input.fromValue(
+        map['networkInterfaceId'] as String,
+      ),
+      origin: pulumi.Input.fromValue(map['origin'] as String),
+      transitGatewayId: pulumi.Input.fromValue(
+        map['transitGatewayId'] as String,
+      ),
+      vpcPeeringConnectionId: pulumi.Input.fromValue(
+        map['vpcPeeringConnectionId'] as String,
+      ),
     );
   }
 }
-

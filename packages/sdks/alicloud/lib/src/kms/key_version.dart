@@ -4,7 +4,7 @@ import 'key_version_state.dart';
 
 /// Provides a Alikms Key Version resource. For information about Alikms Key Version and how to use it, see [What is Resource Alikms Key Version](https://www.alibabacloud.com/help/doc-detail/133838.htm).
 ///
-/// > **NOTE:** Available in v1.85.0+.
+/// &gt; **NOTE:** Available in v1.85.0+.
 ///
 /// ## Example Usage
 ///
@@ -121,8 +121,9 @@ import 'key_version_state.dart';
 class KeyVersion extends pulumi.CustomResource {
   /// The id of the master key (CMK).
   ///
-  /// > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
+  /// &gt; **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
   late final pulumi.Output<String> keyId;
+
   /// The id of the Alikms key version.
   late final pulumi.Output<String> keyVersionId;
 
@@ -135,13 +136,13 @@ class KeyVersion extends pulumi.CustomResource {
     KeyVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:kms/keyVersion:KeyVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyId = registerOutput<String>('keyId');
-    this.keyVersionId = registerOutput<String>('keyVersionId');
+         'alicloud:kms/keyVersion:KeyVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyId = registerOutput<String>('keyId');
+    keyVersionId = registerOutput<String>('keyVersionId');
   }
 
   /// Gets an existing [KeyVersion] resource's state with the given [name] and [id].
@@ -162,12 +163,12 @@ class KeyVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:kms/keyVersion:KeyVersion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.keyId = registerOutput<String>('keyId');
-    this.keyVersionId = registerOutput<String>('keyVersionId');
+         'alicloud:kms/keyVersion:KeyVersion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    keyId = registerOutput<String>('keyId');
+    keyVersionId = registerOutput<String>('keyVersionId');
   }
 }

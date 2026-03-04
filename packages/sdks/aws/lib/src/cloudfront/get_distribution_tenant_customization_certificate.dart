@@ -8,20 +8,17 @@ class GetDistributionTenantCustomizationCertificate {
 
   /// Creates a new [GetDistributionTenantCustomizationCertificate].
   /// [arn] ARN (Amazon Resource Name) for the distribution tenant.
-  GetDistributionTenantCustomizationCertificate({
-    required this.arn,
-  });
+  GetDistributionTenantCustomizationCertificate({required this.arn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'arn': arn,
-    };
+    return <String, dynamic>{'arn': arn};
   }
 
-  factory GetDistributionTenantCustomizationCertificate.fromMap(Map<String, dynamic> map) {
+  factory GetDistributionTenantCustomizationCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDistributionTenantCustomizationCertificate(
-      arn: (map['arn'] as String).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
     );
   }
 }
-

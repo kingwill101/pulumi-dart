@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAppPremierAddOnArgs {
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Add-on name.
   final pulumi.Input<String> premierAddOnName;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetWebAppPremierAddOnArgs {
 
   factory GetWebAppPremierAddOnArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppPremierAddOnArgs(
-      name: (map['name'] as String).input(),
-      premierAddOnName: (map['premierAddOnName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      premierAddOnName: pulumi.Input.fromValue(
+        map['premierAddOnName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

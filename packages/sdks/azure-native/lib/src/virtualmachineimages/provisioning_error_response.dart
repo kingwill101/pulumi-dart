@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProvisioningErrorResponse {
   /// Verbose error message about the provisioning failure
   final pulumi.Input<String>? message;
+
   /// Error code of the provisioning failure
   final pulumi.Input<String>? provisioningErrorCode;
 
   /// Creates a new [ProvisioningErrorResponse].
   /// [message] Verbose error message about the provisioning failure
   /// [provisioningErrorCode] Error code of the provisioning failure
-  ProvisioningErrorResponse({
-    this.message,
-    this.provisioningErrorCode,
-  });
+  ProvisioningErrorResponse({this.message, this.provisioningErrorCode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class ProvisioningErrorResponse {
 
   factory ProvisioningErrorResponse.fromMap(Map<String, dynamic> map) {
     return ProvisioningErrorResponse(
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      provisioningErrorCode: map['provisioningErrorCode'] == null ? null : (map['provisioningErrorCode']! as String).input(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningErrorCode: (() {
+        final guardedValue = map['provisioningErrorCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

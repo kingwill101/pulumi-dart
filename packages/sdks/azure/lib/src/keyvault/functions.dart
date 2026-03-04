@@ -295,7 +295,7 @@ Future<GetCertificateResult> getCertificate(
 
 /// Use this data source to access data stored in an existing Key Vault Certificate.
 ///
-/// > **Note:** This data source uses the `GetSecret` function of the Azure API, to get the key of the certificate. Therefore you need secret/get permission
+/// &gt; **Note:** This data source uses the `GetSecret` function of the Azure API, to get the key of the certificate. Therefore you need secret/get permission
 ///
 /// ## Example Usage
 ///
@@ -1032,7 +1032,7 @@ Future<GetKeyVaultResult> getKeyVault(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.KeyVault` - 2023-07-01
@@ -1053,7 +1053,7 @@ Future<GetManagedHardwareSecurityModuleResult> getManagedHardwareSecurityModule(
 
 /// Use this data source to access information about an existing Managed Hardware Security Module Key.
 ///
-/// > **Note:** All arguments including the secret value will be stored in the raw state as plain-text.
+/// &gt; **Note:** All arguments including the secret value will be stored in the raw state as plain-text.
 /// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 ///
 /// ## Example Usage
@@ -1166,7 +1166,8 @@ Future<GetManagedHardwareSecurityModuleResult> getManagedHardwareSecurityModule(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_keyvault_get_managed_hardware_security_module_key_get_managed_hardware_security_module_key_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetManagedHardwareSecurityModuleKeyResult> getManagedHardwareSecurityModuleKey(
+Future<GetManagedHardwareSecurityModuleKeyResult>
+getManagedHardwareSecurityModuleKey(
   GetManagedHardwareSecurityModuleKeyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1287,7 +1288,8 @@ Future<GetManagedHardwareSecurityModuleKeyResult> getManagedHardwareSecurityModu
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_keyvault_get_managed_hardware_security_module_role_definition_get_managed_hardware_security_module_role_definition_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetManagedHardwareSecurityModuleRoleDefinitionResult> getManagedHardwareSecurityModuleRoleDefinition(
+Future<GetManagedHardwareSecurityModuleRoleDefinitionResult>
+getManagedHardwareSecurityModuleRoleDefinition(
   GetManagedHardwareSecurityModuleRoleDefinitionArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

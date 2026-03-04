@@ -2,16 +2,15 @@
 enum RebalanceStrategy {
   recreate("Recreate");
 
-  const RebalanceStrategy(this.value);
-  final String value;
+  const RebalanceStrategy(this.wireValue);
+  final String wireValue;
 
   static RebalanceStrategy fromValue(String value) {
     for (final item in RebalanceStrategy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RebalanceStrategy value: $value');
   }
 }
-

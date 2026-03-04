@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressRouteCircuitAuthorizationArgs {
   /// The authorization key.
   final pulumi.Input<String>? authorizationKey;
+
   /// The name of the authorization.
   final pulumi.Input<String>? authorizationName;
+
   /// The authorization use status.
   final pulumi.Input<String>? authorizationUseStatus;
+
   /// The name of the express route circuit.
   final pulumi.Input<String> circuitName;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -52,16 +58,39 @@ class ExpressRouteCircuitAuthorizationArgs {
     };
   }
 
-  factory ExpressRouteCircuitAuthorizationArgs.fromMap(Map<String, dynamic> map) {
+  factory ExpressRouteCircuitAuthorizationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExpressRouteCircuitAuthorizationArgs(
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
-      authorizationName: map['authorizationName'] == null ? null : (map['authorizationName']! as String).input(),
-      authorizationUseStatus: map['authorizationUseStatus'] == null ? null : (map['authorizationUseStatus']! as String).input(),
-      circuitName: (map['circuitName'] as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      authorizationKey: (() {
+        final guardedValue = map['authorizationKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authorizationName: (() {
+        final guardedValue = map['authorizationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authorizationUseStatus: (() {
+        final guardedValue = map['authorizationUseStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      circuitName: pulumi.Input.fromValue(map['circuitName'] as String),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

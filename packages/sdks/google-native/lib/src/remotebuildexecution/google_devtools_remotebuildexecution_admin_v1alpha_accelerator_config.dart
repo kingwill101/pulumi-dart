@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig {
   /// The number of guest accelerator cards exposed to each VM.
   final pulumi.Input<String>? acceleratorCount;
+
   /// The type of accelerator to attach to each VM, e.g. "nvidia-tesla-k80" for nVidia Tesla K80.
   final pulumi.Input<String>? acceleratorType;
 
@@ -24,11 +25,20 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig {
     };
   }
 
-  factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig(
-      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount']! as String).input(),
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
+      acceleratorCount: (() {
+        final guardedValue = map['acceleratorCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      acceleratorType: (() {
+        final guardedValue = map['acceleratorType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

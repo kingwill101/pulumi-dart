@@ -5,16 +5,15 @@ enum FieldCardinality {
   cardinalityRequired("CARDINALITY_REQUIRED"),
   cardinalityRepeated("CARDINALITY_REPEATED");
 
-  const FieldCardinality(this.value);
-  final String value;
+  const FieldCardinality(this.wireValue);
+  final String wireValue;
 
   static FieldCardinality fromValue(String value) {
     for (final item in FieldCardinality.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FieldCardinality value: $value');
   }
 }
-

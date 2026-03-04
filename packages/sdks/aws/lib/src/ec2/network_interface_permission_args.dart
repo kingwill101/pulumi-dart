@@ -10,10 +10,13 @@ import 'network_interface_permission_timeouts.dart';
 class NetworkInterfacePermissionArgs {
   /// The Amazon Web Services account ID.
   final pulumi.Input<String> awsAccountId;
+
   /// The ID of the network interface.
   final pulumi.Input<String> networkInterfaceId;
+
   /// The type of permission to grant. Valid values are `INSTANCE-ATTACH` or `EIP-ASSOCIATE`.
   final pulumi.Input<String> permission;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<NetworkInterfacePermissionTimeouts>? timeouts;
@@ -38,18 +41,35 @@ class NetworkInterfacePermissionArgs {
       'networkInterfaceId': networkInterfaceId,
       'permission': permission,
       'region': ?region,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<NetworkInterfacePermissionTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkInterfacePermissionTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory NetworkInterfacePermissionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfacePermissionArgs(
-      awsAccountId: (map['awsAccountId'] as String).input(),
-      networkInterfaceId: (map['networkInterfaceId'] as String).input(),
-      permission: (map['permission'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((NetworkInterfacePermissionTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      awsAccountId: pulumi.Input.fromValue(map['awsAccountId'] as String),
+      networkInterfaceId: pulumi.Input.fromValue(
+        map['networkInterfaceId'] as String,
+      ),
+      permission: pulumi.Input.fromValue(map['permission'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkInterfacePermissionTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

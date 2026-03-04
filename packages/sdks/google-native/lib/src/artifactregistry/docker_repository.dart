@@ -10,20 +10,27 @@ class DockerRepository {
 
   /// Creates a new [DockerRepository].
   /// [publicRepository] One of the publicly available Docker repositories supported by Artifact Registry.
-  DockerRepository({
-    this.publicRepository,
-  });
+  DockerRepository({this.publicRepository});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicRepository': ?pulumi.Input.mapOptionalInputValue<DockerRepositoryPublicRepository, String>(publicRepository, (value) => value.value),
+      'publicRepository':
+          ?pulumi.Input.mapOptionalInputValue<
+            DockerRepositoryPublicRepository,
+            String
+          >(publicRepository, (value) => value.wireValue),
     };
   }
 
   factory DockerRepository.fromMap(Map<String, dynamic> map) {
     return DockerRepository(
-      publicRepository: map['publicRepository'] == null ? null : (DockerRepositoryPublicRepository.fromValue(map['publicRepository']! as String)).input(),
+      publicRepository: (() {
+        final guardedValue = map['publicRepository'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DockerRepositoryPublicRepository.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoutingRuleRouteDestination {
   /// Destination address.
   final pulumi.Input<String> destinationAddress;
+
   /// Destination type.
   final pulumi.Input<String> type;
 
@@ -26,9 +27,10 @@ class RoutingRuleRouteDestination {
 
   factory RoutingRuleRouteDestination.fromMap(Map<String, dynamic> map) {
     return RoutingRuleRouteDestination(
-      destinationAddress: (map['destinationAddress'] as String).input(),
-      type: (map['type'] as String).input(),
+      destinationAddress: pulumi.Input.fromValue(
+        map['destinationAddress'] as String,
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

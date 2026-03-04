@@ -6,29 +6,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlServerInstanceTelemetryColumnResponse {
   /// The name of the telemetry column.
   final pulumi.Input<String>? name;
+
   /// The type of the telemetry column.
   final pulumi.Input<String>? type;
 
   /// Creates a new [SqlServerInstanceTelemetryColumnResponse].
   /// [name] The name of the telemetry column.
   /// [type] The type of the telemetry column.
-  SqlServerInstanceTelemetryColumnResponse({
-    this.name,
-    this.type,
-  });
+  SqlServerInstanceTelemetryColumnResponse({this.name, this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'type': ?type,
-    };
+    return <String, dynamic>{'name': ?name, 'type': ?type};
   }
 
-  factory SqlServerInstanceTelemetryColumnResponse.fromMap(Map<String, dynamic> map) {
+  factory SqlServerInstanceTelemetryColumnResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SqlServerInstanceTelemetryColumnResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareCbtDiskInput {
   /// The DiskEncryptionSet ARM Id.
   final pulumi.Input<String>? diskEncryptionSetId;
+
   /// The disk Id.
   final pulumi.Input<String> diskId;
+
   /// The disk type.
   final pulumi.Input<String>? diskType;
+
   /// A value indicating whether the disk is the OS disk.
   final pulumi.Input<String> isOSDisk;
+
   /// The log storage account ARM Id.
   final pulumi.Input<String> logStorageAccountId;
+
   /// The key vault secret name of the log storage account.
   final pulumi.Input<String> logStorageAccountSasSecretName;
+
   /// The logical sector size (in bytes), 512 by default.
   final pulumi.Input<int>? sectorSizeInBytes;
 
@@ -51,14 +57,29 @@ class VMwareCbtDiskInput {
 
   factory VMwareCbtDiskInput.fromMap(Map<String, dynamic> map) {
     return VMwareCbtDiskInput(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
-      diskId: (map['diskId'] as String).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
-      isOSDisk: (map['isOSDisk'] as String).input(),
-      logStorageAccountId: (map['logStorageAccountId'] as String).input(),
-      logStorageAccountSasSecretName: (map['logStorageAccountSasSecretName'] as String).input(),
-      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : (map['sectorSizeInBytes']! as int).input(),
+      diskEncryptionSetId: (() {
+        final guardedValue = map['diskEncryptionSetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskId: pulumi.Input.fromValue(map['diskId'] as String),
+      diskType: (() {
+        final guardedValue = map['diskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isOSDisk: pulumi.Input.fromValue(map['isOSDisk'] as String),
+      logStorageAccountId: pulumi.Input.fromValue(
+        map['logStorageAccountId'] as String,
+      ),
+      logStorageAccountSasSecretName: pulumi.Input.fromValue(
+        map['logStorageAccountSasSecretName'] as String,
+      ),
+      sectorSizeInBytes: (() {
+        final guardedValue = map['sectorSizeInBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

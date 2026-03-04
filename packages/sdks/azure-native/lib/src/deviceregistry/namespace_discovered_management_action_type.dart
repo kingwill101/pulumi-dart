@@ -4,16 +4,17 @@ enum NamespaceDiscoveredManagementActionType {
   read("Read"),
   write("Write");
 
-  const NamespaceDiscoveredManagementActionType(this.value);
-  final String value;
+  const NamespaceDiscoveredManagementActionType(this.wireValue);
+  final String wireValue;
 
   static NamespaceDiscoveredManagementActionType fromValue(String value) {
     for (final item in NamespaceDiscoveredManagementActionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NamespaceDiscoveredManagementActionType value: $value');
+    throw ArgumentError(
+      'Unknown NamespaceDiscoveredManagementActionType value: $value',
+    );
   }
 }
-

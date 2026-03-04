@@ -21,16 +21,17 @@ enum CloudSqlSettingsDatabaseVersion {
   postgres14("POSTGRES_14"),
   postgres15("POSTGRES_15");
 
-  const CloudSqlSettingsDatabaseVersion(this.value);
-  final String value;
+  const CloudSqlSettingsDatabaseVersion(this.wireValue);
+  final String wireValue;
 
   static CloudSqlSettingsDatabaseVersion fromValue(String value) {
     for (final item in CloudSqlSettingsDatabaseVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CloudSqlSettingsDatabaseVersion value: $value');
+    throw ArgumentError(
+      'Unknown CloudSqlSettingsDatabaseVersion value: $value',
+    );
   }
 }
-

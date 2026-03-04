@@ -8,10 +8,13 @@ import 'upgrade_settings_strategy_container_v1beta1.dart';
 class UpgradeSettingsContainerV1beta1 {
   /// Settings for blue-green upgrade strategy.
   final pulumi.Input<BlueGreenSettingsContainerV1beta1>? blueGreenSettings;
+
   /// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
   final pulumi.Input<int>? maxSurge;
+
   /// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
   final pulumi.Input<int>? maxUnavailable;
+
   /// Update strategy of the node pool.
   final pulumi.Input<UpgradeSettingsStrategyContainerV1beta1>? strategy;
 
@@ -29,20 +32,51 @@ class UpgradeSettingsContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'blueGreenSettings': ?pulumi.Input.mapOptionalInputValue<BlueGreenSettingsContainerV1beta1, Map<String, dynamic>>(blueGreenSettings, (value) => value.toMap()),
+      'blueGreenSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            BlueGreenSettingsContainerV1beta1,
+            Map<String, dynamic>
+          >(blueGreenSettings, (value) => value.toMap()),
       'maxSurge': ?maxSurge,
       'maxUnavailable': ?maxUnavailable,
-      'strategy': ?pulumi.Input.mapOptionalInputValue<UpgradeSettingsStrategyContainerV1beta1, String>(strategy, (value) => value.value),
+      'strategy':
+          ?pulumi.Input.mapOptionalInputValue<
+            UpgradeSettingsStrategyContainerV1beta1,
+            String
+          >(strategy, (value) => value.wireValue),
     };
   }
 
   factory UpgradeSettingsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return UpgradeSettingsContainerV1beta1(
-      blueGreenSettings: map['blueGreenSettings'] == null ? null : (BlueGreenSettingsContainerV1beta1.fromMap((map['blueGreenSettings']! as Map).cast<String, dynamic>())).input(),
-      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge']! as int).input(),
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as int).input(),
-      strategy: map['strategy'] == null ? null : (UpgradeSettingsStrategyContainerV1beta1.fromValue(map['strategy']! as String)).input(),
+      blueGreenSettings: (() {
+        final guardedValue = map['blueGreenSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BlueGreenSettingsContainerV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      maxSurge: (() {
+        final guardedValue = map['maxSurge'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxUnavailable: (() {
+        final guardedValue = map['maxUnavailable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      strategy: (() {
+        final guardedValue = map['strategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UpgradeSettingsStrategyContainerV1beta1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

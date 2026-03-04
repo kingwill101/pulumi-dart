@@ -4,16 +4,15 @@ enum PublicNetworkAccessFlag {
   valueDisabled("Disabled"),
   valueSecuredByPerimeter("SecuredByPerimeter");
 
-  const PublicNetworkAccessFlag(this.value);
-  final String value;
+  const PublicNetworkAccessFlag(this.wireValue);
+  final String wireValue;
 
   static PublicNetworkAccessFlag fromValue(String value) {
     for (final item in PublicNetworkAccessFlag.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PublicNetworkAccessFlag value: $value');
   }
 }
-

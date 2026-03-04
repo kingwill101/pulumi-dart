@@ -5,26 +5,31 @@ import 'dax_cluster_endpoint_response.dart';
 
 /// Definition of Node
 class NodeResponse {
-  /// <p>The Availability Zone (AZ) in which the node has been deployed.</p>
+  /// &lt;p&gt;The Availability Zone (AZ) in which the node has been deployed.&lt;/p&gt;
   final pulumi.Input<String>? availabilityZone;
-  /// <p>The endpoint for the node, consisting of a DNS name and a port number. Client applications can connect directly to a node endpoint, if desired (as an alternative to allowing DAX client software to intelligently route requests and responses to nodes in the DAX cluster.</p>
+
+  /// &lt;p&gt;The endpoint for the node, consisting of a DNS name and a port number. Client applications can connect directly to a node endpoint, if desired (as an alternative to allowing DAX client software to intelligently route requests and responses to nodes in the DAX cluster.&lt;/p&gt;
   final pulumi.Input<DaxClusterEndpointResponse>? endpoint;
-  /// <p>The date and time (in UNIX epoch format) when the node was launched.</p>
+
+  /// &lt;p&gt;The date and time (in UNIX epoch format) when the node was launched.&lt;/p&gt;
   final pulumi.Input<String>? nodeCreateTime;
-  /// <p>A system-generated identifier for the node.</p>
+
+  /// &lt;p&gt;A system-generated identifier for the node.&lt;/p&gt;
   final pulumi.Input<String>? nodeId;
-  /// <p>The current status of the node. For example: <code>available</code>.</p>
+
+  /// &lt;p&gt;The current status of the node. For example: &lt;code&gt;available&lt;/code&gt;.&lt;/p&gt;
   final pulumi.Input<String>? nodeStatus;
-  /// <p>The status of the parameter group associated with this node. For example, <code>in-sync</code>.</p>
+
+  /// &lt;p&gt;The status of the parameter group associated with this node. For example, &lt;code&gt;in-sync&lt;/code&gt;.&lt;/p&gt;
   final pulumi.Input<String>? parameterGroupStatus;
 
   /// Creates a new [NodeResponse].
-  /// [availabilityZone] <p>The Availability Zone (AZ) in which the node has been deployed.</p>
-  /// [endpoint] <p>The endpoint for the node, consisting of a DNS name and a port number. Client applications can connect directly to a node endpoint, if desired (as an alternative to allowing DAX client software to intelligently route requests and responses to nodes in the DAX cluster.</p>
-  /// [nodeCreateTime] <p>The date and time (in UNIX epoch format) when the node was launched.</p>
-  /// [nodeId] <p>A system-generated identifier for the node.</p>
-  /// [nodeStatus] <p>The current status of the node. For example: <code>available</code>.</p>
-  /// [parameterGroupStatus] <p>The status of the parameter group associated with this node. For example, <code>in-sync</code>.</p>
+  /// [availabilityZone] &lt;p&gt;The Availability Zone (AZ) in which the node has been deployed.&lt;/p&gt;
+  /// [endpoint] &lt;p&gt;The endpoint for the node, consisting of a DNS name and a port number. Client applications can connect directly to a node endpoint, if desired (as an alternative to allowing DAX client software to intelligently route requests and responses to nodes in the DAX cluster.&lt;/p&gt;
+  /// [nodeCreateTime] &lt;p&gt;The date and time (in UNIX epoch format) when the node was launched.&lt;/p&gt;
+  /// [nodeId] &lt;p&gt;A system-generated identifier for the node.&lt;/p&gt;
+  /// [nodeStatus] &lt;p&gt;The current status of the node. For example: &lt;code&gt;available&lt;/code&gt;.&lt;/p&gt;
+  /// [parameterGroupStatus] &lt;p&gt;The status of the parameter group associated with this node. For example, &lt;code&gt;in-sync&lt;/code&gt;.&lt;/p&gt;
   NodeResponse({
     this.availabilityZone,
     this.endpoint,
@@ -37,7 +42,11 @@ class NodeResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availabilityZone': ?availabilityZone,
-      'endpoint': ?pulumi.Input.mapOptionalInputValue<DaxClusterEndpointResponse, Map<String, dynamic>>(endpoint, (value) => value.toMap()),
+      'endpoint':
+          ?pulumi.Input.mapOptionalInputValue<
+            DaxClusterEndpointResponse,
+            Map<String, dynamic>
+          >(endpoint, (value) => value.toMap()),
       'nodeCreateTime': ?nodeCreateTime,
       'nodeId': ?nodeId,
       'nodeStatus': ?nodeStatus,
@@ -47,13 +56,40 @@ class NodeResponse {
 
   factory NodeResponse.fromMap(Map<String, dynamic> map) {
     return NodeResponse(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
-      endpoint: map['endpoint'] == null ? null : (DaxClusterEndpointResponse.fromMap((map['endpoint']! as Map).cast<String, dynamic>())).input(),
-      nodeCreateTime: map['nodeCreateTime'] == null ? null : (map['nodeCreateTime']! as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
-      nodeStatus: map['nodeStatus'] == null ? null : (map['nodeStatus']! as String).input(),
-      parameterGroupStatus: map['parameterGroupStatus'] == null ? null : (map['parameterGroupStatus']! as String).input(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DaxClusterEndpointResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      nodeCreateTime: (() {
+        final guardedValue = map['nodeCreateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeId: (() {
+        final guardedValue = map['nodeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeStatus: (() {
+        final guardedValue = map['nodeStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterGroupStatus: (() {
+        final guardedValue = map['parameterGroupStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

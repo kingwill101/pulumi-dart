@@ -13,10 +13,7 @@ class GetCompositeTypeArgs {
   /// Creates a new [GetCompositeTypeArgs].
   /// [compositeType] Required.
   /// [project] Optional.
-  GetCompositeTypeArgs({
-    required this.compositeType,
-    this.project,
-  });
+  GetCompositeTypeArgs({required this.compositeType, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +24,12 @@ class GetCompositeTypeArgs {
 
   factory GetCompositeTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetCompositeTypeArgs(
-      compositeType: (map['compositeType'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      compositeType: pulumi.Input.fromValue(map['compositeType'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

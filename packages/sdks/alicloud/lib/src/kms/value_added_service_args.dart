@@ -10,19 +10,22 @@ class ValueAddedServiceArgs {
   /// The payment type of the resource
   final pulumi.Input<String> paymentType;
   final pulumi.Input<int>? period;
+
   /// Automatic renewal period, in years.
   ///
-  /// > **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
+  /// &gt; **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
   final pulumi.Input<int>? renewPeriod;
+
   /// The renewal status of the specified instance. Valid values:
   ///
   /// - AutoRenewal: The instance is automatically renewed.
   /// - ManualRenewal: The instance is manually renewed.
   /// - NotRenewal: The instance is not renewed.
   final pulumi.Input<String>? renewStatus;
+
   /// value added service type, Instance Backup 1 default key rotation 2 Expert service 3
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? valueAddedService;
 
   /// Creates a new [ValueAddedServiceArgs].
@@ -51,12 +54,27 @@ class ValueAddedServiceArgs {
 
   factory ValueAddedServiceArgs.fromMap(Map<String, dynamic> map) {
     return ValueAddedServiceArgs(
-      paymentType: (map['paymentType'] as String).input(),
-      period: map['period'] == null ? null : (map['period']! as int).input(),
-      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod']! as int).input(),
-      renewStatus: map['renewStatus'] == null ? null : (map['renewStatus']! as String).input(),
-      valueAddedService: map['valueAddedService'] == null ? null : (map['valueAddedService']! as String).input(),
+      paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      renewPeriod: (() {
+        final guardedValue = map['renewPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      renewStatus: (() {
+        final guardedValue = map['renewStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      valueAddedService: (() {
+        final guardedValue = map['valueAddedService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

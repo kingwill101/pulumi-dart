@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProducerImageShareGroupMemberArgs {
   /// A label for the member.
   final pulumi.Input<String> label;
+
   /// The ID of the Image Share Group to which the member will be added.
   final pulumi.Input<int> sharegroupId;
+
   /// The token of the prospective member.
   final pulumi.Input<String> token;
 
@@ -34,10 +36,9 @@ class ProducerImageShareGroupMemberArgs {
 
   factory ProducerImageShareGroupMemberArgs.fromMap(Map<String, dynamic> map) {
     return ProducerImageShareGroupMemberArgs(
-      label: (map['label'] as String).input(),
-      sharegroupId: (map['sharegroupId'] as int).input(),
-      token: (map['token'] as String).input(),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      sharegroupId: pulumi.Input.fromValue(map['sharegroupId'] as int),
+      token: pulumi.Input.fromValue(map['token'] as String),
     );
   }
 }
-

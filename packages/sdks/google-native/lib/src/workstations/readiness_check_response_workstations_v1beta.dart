@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReadinessCheckResponseWorkstationsV1beta {
   /// Optional. Path to which the request should be sent.
   final pulumi.Input<String> path;
+
   /// Optional. Port to which the request should be sent.
   final pulumi.Input<int> port;
 
@@ -18,17 +19,15 @@ class ReadinessCheckResponseWorkstationsV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-      'port': port,
-    };
+    return <String, dynamic>{'path': path, 'port': port};
   }
 
-  factory ReadinessCheckResponseWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
+  factory ReadinessCheckResponseWorkstationsV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReadinessCheckResponseWorkstationsV1beta(
-      path: (map['path'] as String).input(),
-      port: (map['port'] as int).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
-

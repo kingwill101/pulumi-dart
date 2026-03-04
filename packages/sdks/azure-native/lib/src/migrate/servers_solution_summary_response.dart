@@ -6,15 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServersSolutionSummaryResponse {
   /// Gets or sets the count of servers assessed.
   final pulumi.Input<int>? assessedCount;
+
   /// Gets or sets the count of servers discovered.
   final pulumi.Input<int>? discoveredCount;
+
   /// Gets the Instance type.
   /// Expected value is 'Servers'.
   final pulumi.Input<String> instanceType;
+
   /// Gets or sets the count of servers migrated.
   final pulumi.Input<int>? migratedCount;
+
   /// Gets or sets the count of servers being replicated.
   final pulumi.Input<int>? replicatingCount;
+
   /// Gets or sets the count of servers test migrated.
   final pulumi.Input<int>? testMigratedCount;
 
@@ -47,13 +52,32 @@ class ServersSolutionSummaryResponse {
 
   factory ServersSolutionSummaryResponse.fromMap(Map<String, dynamic> map) {
     return ServersSolutionSummaryResponse(
-      assessedCount: map['assessedCount'] == null ? null : (map['assessedCount']! as int).input(),
-      discoveredCount: map['discoveredCount'] == null ? null : (map['discoveredCount']! as int).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      migratedCount: map['migratedCount'] == null ? null : (map['migratedCount']! as int).input(),
-      replicatingCount: map['replicatingCount'] == null ? null : (map['replicatingCount']! as int).input(),
-      testMigratedCount: map['testMigratedCount'] == null ? null : (map['testMigratedCount']! as int).input(),
+      assessedCount: (() {
+        final guardedValue = map['assessedCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      discoveredCount: (() {
+        final guardedValue = map['discoveredCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      migratedCount: (() {
+        final guardedValue = map['migratedCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      replicatingCount: (() {
+        final guardedValue = map['replicatingCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      testMigratedCount: (() {
+        final guardedValue = map['testMigratedCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

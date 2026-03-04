@@ -8,20 +8,17 @@ class TagTemplateFieldTypeEnumTypeAllowedValue {
 
   /// Creates a new [TagTemplateFieldTypeEnumTypeAllowedValue].
   /// [displayName] The display name of the enum value.
-  TagTemplateFieldTypeEnumTypeAllowedValue({
-    required this.displayName,
-  });
+  TagTemplateFieldTypeEnumTypeAllowedValue({required this.displayName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'displayName': displayName,
-    };
+    return <String, dynamic>{'displayName': displayName};
   }
 
-  factory TagTemplateFieldTypeEnumTypeAllowedValue.fromMap(Map<String, dynamic> map) {
+  factory TagTemplateFieldTypeEnumTypeAllowedValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TagTemplateFieldTypeEnumTypeAllowedValue(
-      displayName: (map['displayName'] as String).input(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
     );
   }
 }
-

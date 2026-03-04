@@ -248,7 +248,7 @@ import 'private_link_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Management` - 2020-05-01
@@ -263,14 +263,18 @@ import 'private_link_association_state.dart';
 class PrivateLinkAssociation extends pulumi.CustomResource {
   /// Specifies the Management Group ID within which this Private Link Association should exist. Changing this forces a new Private Link Association to be created.
   ///
-  /// > **Note:** For now, `management_group_id` must be the ID of [Root Management Group](https://learn.microsoft.com/en-us/azure/governance/management-groups/overview#root-management-group-for-each-directory).
+  /// &gt; **Note:** For now, `management_group_id` must be the ID of [Root Management Group](https://learn.microsoft.com/en-us/azure/governance/management-groups/overview#root-management-group-for-each-directory).
   late final pulumi.Output<String> managementGroupId;
+
   /// Specifies the name of this Private Link Association, which should be a UUID. If `name` is not provided, a UUID will be generated, you should use the `ignore_changes` attribute to ignore changes to this field. Changing this forces a new Private Link Association to be created.
   late final pulumi.Output<String> name;
+
   /// Whether public network access is allowed. Changing this forces a new Private Link Association to be created.
   late final pulumi.Output<bool> publicNetworkAccessEnabled;
+
   /// The Resource ID of Resource Management Private Link. Changing this forces a new Private Link Association to be created.
   late final pulumi.Output<String> resourceManagementPrivateLinkId;
+
   /// The Tenant ID.
   late final pulumi.Output<String> tenantId;
 
@@ -283,16 +287,20 @@ class PrivateLinkAssociation extends pulumi.CustomResource {
     PrivateLinkAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:management/privateLinkAssociation:PrivateLinkAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.managementGroupId = registerOutput<String>('managementGroupId');
+         'azure:management/privateLinkAssociation:PrivateLinkAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool>('publicNetworkAccessEnabled');
-    this.resourceManagementPrivateLinkId = registerOutput<String>('resourceManagementPrivateLinkId');
-    this.tenantId = registerOutput<String>('tenantId');
+    publicNetworkAccessEnabled = registerOutput<bool>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceManagementPrivateLinkId = registerOutput<String>(
+      'resourceManagementPrivateLinkId',
+    );
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [PrivateLinkAssociation] resource's state with the given [name] and [id].
@@ -313,15 +321,19 @@ class PrivateLinkAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:management/privateLinkAssociation:PrivateLinkAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.managementGroupId = registerOutput<String>('managementGroupId');
+         'azure:management/privateLinkAssociation:PrivateLinkAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
-    this.publicNetworkAccessEnabled = registerOutput<bool>('publicNetworkAccessEnabled');
-    this.resourceManagementPrivateLinkId = registerOutput<String>('resourceManagementPrivateLinkId');
-    this.tenantId = registerOutput<String>('tenantId');
+    publicNetworkAccessEnabled = registerOutput<bool>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceManagementPrivateLinkId = registerOutput<String>(
+      'resourceManagementPrivateLinkId',
+    );
+    tenantId = registerOutput<String>('tenantId');
   }
 }

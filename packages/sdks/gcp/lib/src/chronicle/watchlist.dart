@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'watchlist_args.dart';
-import 'watchlist_entity_count.dart';
 import 'watchlist_entity_population_mechanism.dart';
 import 'watchlist_state.dart';
 import 'watchlist_watchlist_user_preferences.dart';
@@ -357,43 +356,57 @@ import 'watchlist_watchlist_user_preferences.dart';
 class Watchlist extends pulumi.CustomResource {
   /// Output only. Time the watchlist was created.
   late final pulumi.Output<String> createTime;
+
   /// Optional. Description of the watchlist.
   late final pulumi.Output<String?> description;
+
   /// Required. Display name of the watchlist.
   /// Note that it must be at least one character and less than 63 characters
   /// (https://google.aip.dev/148).
   late final pulumi.Output<String> displayName;
+
   /// Count of different types of entities in the watchlist.
   /// Structure is documented below.
-  late final pulumi.Output<List<WatchlistEntityCount>> entityCounts;
+  late final pulumi.Output<List<Map<String, dynamic>>> entityCounts;
+
   /// Mechanism to populate entities in the watchlist.
   /// Structure is documented below.
-  late final pulumi.Output<WatchlistEntityPopulationMechanism> entityPopulationMechanism;
+  late final pulumi.Output<WatchlistEntityPopulationMechanism>
+  entityPopulationMechanism;
+
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   late final pulumi.Output<String> instance;
+
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   late final pulumi.Output<String> location;
+
   /// Optional. Weight applied to the risk score for entities
   /// in this watchlist.
   /// The default is 1.0 if it is not specified.
   late final pulumi.Output<double?> multiplyingFactor;
+
   /// Identifier. Resource name of the watchlist. This unique identifier is generated using values provided for the URL parameters.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/watchlists/{watchlist}
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Output only. Time the watchlist was last updated.
   late final pulumi.Output<String> updateTime;
+
   /// Optional. The ID to use for the watchlist,
   /// which will become the final component of the watchlist's resource name.
   /// This value should be 4-63 characters, and valid characters
   /// are /a-z-/.
   late final pulumi.Output<String> watchlistId;
+
   /// A collection of user preferences for watchlist UI configuration.
   /// Structure is documented below.
-  late final pulumi.Output<WatchlistWatchlistUserPreferences> watchlistUserPreferences;
+  late final pulumi.Output<WatchlistWatchlistUserPreferences>
+  watchlistUserPreferences;
 
   /// Creates a new [Watchlist].
   /// [name] The Pulumi resource name.
@@ -404,24 +417,30 @@ class Watchlist extends pulumi.CustomResource {
     WatchlistArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:chronicle/watchlist:Watchlist',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.entityCounts = registerOutput<List<WatchlistEntityCount>>('entityCounts');
-    this.entityPopulationMechanism = registerOutput<WatchlistEntityPopulationMechanism>('entityPopulationMechanism');
-    this.instance = registerOutput<String>('instance');
-    this.location = registerOutput<String>('location');
-    this.multiplyingFactor = registerOutput<double?>('multiplyingFactor');
+         'gcp:chronicle/watchlist:Watchlist',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    entityCounts = registerOutput<List<Map<String, dynamic>>>('entityCounts');
+    entityPopulationMechanism =
+        registerOutput<WatchlistEntityPopulationMechanism>(
+          'entityPopulationMechanism',
+        );
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    multiplyingFactor = registerOutput<double?>('multiplyingFactor');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.watchlistId = registerOutput<String>('watchlistId');
-    this.watchlistUserPreferences = registerOutput<WatchlistWatchlistUserPreferences>('watchlistUserPreferences');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+    watchlistId = registerOutput<String>('watchlistId');
+    watchlistUserPreferences =
+        registerOutput<WatchlistWatchlistUserPreferences>(
+          'watchlistUserPreferences',
+        );
   }
 
   /// Gets an existing [Watchlist] resource's state with the given [name] and [id].
@@ -442,23 +461,29 @@ class Watchlist extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:chronicle/watchlist:Watchlist',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.entityCounts = registerOutput<List<WatchlistEntityCount>>('entityCounts');
-    this.entityPopulationMechanism = registerOutput<WatchlistEntityPopulationMechanism>('entityPopulationMechanism');
-    this.instance = registerOutput<String>('instance');
-    this.location = registerOutput<String>('location');
-    this.multiplyingFactor = registerOutput<double?>('multiplyingFactor');
+         'gcp:chronicle/watchlist:Watchlist',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    entityCounts = registerOutput<List<Map<String, dynamic>>>('entityCounts');
+    entityPopulationMechanism =
+        registerOutput<WatchlistEntityPopulationMechanism>(
+          'entityPopulationMechanism',
+        );
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    multiplyingFactor = registerOutput<double?>('multiplyingFactor');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.watchlistId = registerOutput<String>('watchlistId');
-    this.watchlistUserPreferences = registerOutput<WatchlistWatchlistUserPreferences>('watchlistUserPreferences');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+    watchlistId = registerOutput<String>('watchlistId');
+    watchlistUserPreferences =
+        registerOutput<WatchlistWatchlistUserPreferences>(
+          'watchlistUserPreferences',
+        );
   }
 }

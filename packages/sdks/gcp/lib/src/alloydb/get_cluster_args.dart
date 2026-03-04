@@ -10,9 +10,11 @@ class GetClusterArgs {
   /// The ID of the alloydb cluster that the instance belongs to.
   /// 'alloydb_cluster_id'
   final pulumi.Input<String> clusterId;
+
   /// (optional)
   /// The canonical id of the location.If it is not provided, the provider project is used. For example: us-east1.
   final pulumi.Input<String>? location;
+
   /// (optional)
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -21,11 +23,7 @@ class GetClusterArgs {
   /// [clusterId] The ID of the alloydb cluster that the instance belongs to.
   /// [location] (optional)
   /// [project] (optional)
-  GetClusterArgs({
-    required this.clusterId,
-    this.location,
-    this.project,
-  });
+  GetClusterArgs({required this.clusterId, this.location, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,10 +35,17 @@ class GetClusterArgs {
 
   factory GetClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

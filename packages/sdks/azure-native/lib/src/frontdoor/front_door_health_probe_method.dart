@@ -3,16 +3,15 @@ enum FrontDoorHealthProbeMethod {
   valueGET("GET"),
   valueHEAD("HEAD");
 
-  const FrontDoorHealthProbeMethod(this.value);
-  final String value;
+  const FrontDoorHealthProbeMethod(this.wireValue);
+  final String wireValue;
 
   static FrontDoorHealthProbeMethod fromValue(String value) {
     for (final item in FrontDoorHealthProbeMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FrontDoorHealthProbeMethod value: $value');
   }
 }
-

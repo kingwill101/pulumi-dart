@@ -13,18 +13,25 @@ import 'sku.dart';
 class PolicyArgs {
   /// Describes custom rules inside the policy.
   final pulumi.Input<CustomRuleList>? customRules;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// Describes managed rules inside the policy.
   final pulumi.Input<ManagedRuleSetList>? managedRules;
+
   /// The name of the Web Application Firewall Policy.
   final pulumi.Input<String>? policyName;
+
   /// Describes settings for the policy.
   final pulumi.Input<PolicySettings>? policySettings;
+
   /// Name of the Resource group within the Azure subscription.
   final pulumi.Input<String> resourceGroupName;
+
   /// The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified.
   final pulumi.Input<Sku>? sku;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -50,28 +57,84 @@ class PolicyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRules': ?pulumi.Input.mapOptionalInputValue<CustomRuleList, Map<String, dynamic>>(customRules, (value) => value.toMap()),
+      'customRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomRuleList,
+            Map<String, dynamic>
+          >(customRules, (value) => value.toMap()),
       'location': ?location,
-      'managedRules': ?pulumi.Input.mapOptionalInputValue<ManagedRuleSetList, Map<String, dynamic>>(managedRules, (value) => value.toMap()),
+      'managedRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedRuleSetList,
+            Map<String, dynamic>
+          >(managedRules, (value) => value.toMap()),
       'policyName': ?policyName,
-      'policySettings': ?pulumi.Input.mapOptionalInputValue<PolicySettings, Map<String, dynamic>>(policySettings, (value) => value.toMap()),
+      'policySettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            PolicySettings,
+            Map<String, dynamic>
+          >(policySettings, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
-      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(
+        sku,
+        (value) => value.toMap(),
+      ),
       'tags': ?tags,
     };
   }
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      customRules: map['customRules'] == null ? null : (CustomRuleList.fromMap((map['customRules']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      managedRules: map['managedRules'] == null ? null : (ManagedRuleSetList.fromMap((map['managedRules']! as Map).cast<String, dynamic>())).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
-      policySettings: map['policySettings'] == null ? null : (PolicySettings.fromMap((map['policySettings']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      customRules: (() {
+        final guardedValue = map['customRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomRuleList.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedRules: (() {
+        final guardedValue = map['managedRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedRuleSetList.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      policyName: (() {
+        final guardedValue = map['policyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policySettings: (() {
+        final guardedValue = map['policySettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PolicySettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Sku.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

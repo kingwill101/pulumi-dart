@@ -4,16 +4,15 @@ enum AccessControlRulesMode {
   enforce("Enforce"),
   disabled("Disabled");
 
-  const AccessControlRulesMode(this.value);
-  final String value;
+  const AccessControlRulesMode(this.wireValue);
+  final String wireValue;
 
   static AccessControlRulesMode fromValue(String value) {
     for (final item in AccessControlRulesMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccessControlRulesMode value: $value');
   }
 }
-

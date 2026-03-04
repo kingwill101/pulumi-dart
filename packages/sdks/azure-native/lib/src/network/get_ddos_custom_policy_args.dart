@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDdosCustomPolicyArgs {
   /// The name of the DDoS custom policy.
   final pulumi.Input<String> ddosCustomPolicyName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetDdosCustomPolicyArgs {
 
   factory GetDdosCustomPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDdosCustomPolicyArgs(
-      ddosCustomPolicyName: (map['ddosCustomPolicyName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      ddosCustomPolicyName: pulumi.Input.fromValue(
+        map['ddosCustomPolicyName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum SchedulingOnHostMaintenance {
   migrate("MIGRATE"),
   terminate("TERMINATE");
 
-  const SchedulingOnHostMaintenance(this.value);
-  final String value;
+  const SchedulingOnHostMaintenance(this.wireValue);
+  final String wireValue;
 
   static SchedulingOnHostMaintenance fromValue(String value) {
     for (final item in SchedulingOnHostMaintenance.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SchedulingOnHostMaintenance value: $value');
   }
 }
-

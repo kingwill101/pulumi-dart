@@ -5,16 +5,15 @@ enum BackupStorageRedundancy {
   valueZone("Zone"),
   valueGeoZone("GeoZone");
 
-  const BackupStorageRedundancy(this.value);
-  final String value;
+  const BackupStorageRedundancy(this.wireValue);
+  final String wireValue;
 
   static BackupStorageRedundancy fromValue(String value) {
     for (final item in BackupStorageRedundancy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackupStorageRedundancy value: $value');
   }
 }
-

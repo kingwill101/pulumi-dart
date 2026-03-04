@@ -7,16 +7,17 @@ enum LoggingConfigApplicationLogLevel {
   tRACE("TRACE"),
   wARN("WARN");
 
-  const LoggingConfigApplicationLogLevel(this.value);
-  final String value;
+  const LoggingConfigApplicationLogLevel(this.wireValue);
+  final String wireValue;
 
   static LoggingConfigApplicationLogLevel fromValue(String value) {
     for (final item in LoggingConfigApplicationLogLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown LoggingConfigApplicationLogLevel value: $value');
+    throw ArgumentError(
+      'Unknown LoggingConfigApplicationLogLevel value: $value',
+    );
   }
 }
-

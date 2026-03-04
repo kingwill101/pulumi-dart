@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BlobStorageTokenStore {
   /// The URI of the blob storage containing the tokens. Should not be used along with sasUrlSettingName.
   final pulumi.Input<String>? blobContainerUri;
+
   /// The Client ID of a User-Assigned Managed Identity. Should not be used along with managedIdentityResourceId.
   final pulumi.Input<String>? clientId;
+
   /// The Resource ID of a User-Assigned Managed Identity. Should not be used along with clientId.
   final pulumi.Input<String>? managedIdentityResourceId;
+
   /// The name of the app secrets containing the SAS URL of the blob storage containing the tokens. Should not be used along with blobContainerUri.
   final pulumi.Input<String>? sasUrlSettingName;
 
@@ -36,11 +39,26 @@ class BlobStorageTokenStore {
 
   factory BlobStorageTokenStore.fromMap(Map<String, dynamic> map) {
     return BlobStorageTokenStore(
-      blobContainerUri: map['blobContainerUri'] == null ? null : (map['blobContainerUri']! as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      managedIdentityResourceId: map['managedIdentityResourceId'] == null ? null : (map['managedIdentityResourceId']! as String).input(),
-      sasUrlSettingName: map['sasUrlSettingName'] == null ? null : (map['sasUrlSettingName']! as String).input(),
+      blobContainerUri: (() {
+        final guardedValue = map['blobContainerUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedIdentityResourceId: (() {
+        final guardedValue = map['managedIdentityResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sasUrlSettingName: (() {
+        final guardedValue = map['sasUrlSettingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointServiceAllowedPrincipleState {
   /// The ARN of the principal to allow permissions.
   final pulumi.Input<String>? principalArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the VPC endpoint service to allow permission.
   final pulumi.Input<String>? vpcEndpointServiceId;
 
@@ -29,12 +31,25 @@ class VpcEndpointServiceAllowedPrincipleState {
     };
   }
 
-  factory VpcEndpointServiceAllowedPrincipleState.fromMap(Map<String, dynamic> map) {
+  factory VpcEndpointServiceAllowedPrincipleState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpcEndpointServiceAllowedPrincipleState(
-      principalArn: map['principalArn'] == null ? null : ((map['principalArn'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      vpcEndpointServiceId: map['vpcEndpointServiceId'] == null ? null : ((map['vpcEndpointServiceId'] as String).input()).input(),
+      principalArn: (() {
+        final guardedValue = map['principalArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcEndpointServiceId: (() {
+        final guardedValue = map['vpcEndpointServiceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

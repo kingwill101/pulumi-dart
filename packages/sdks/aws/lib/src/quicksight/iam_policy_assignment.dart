@@ -144,20 +144,27 @@ import 'iam_policy_assignment_state.dart';
 class IamPolicyAssignment extends pulumi.CustomResource {
   /// Assignment ID.
   late final pulumi.Output<String> assignmentId;
+
   /// Name of the assignment.
   late final pulumi.Output<String> assignmentName;
+
   /// Status of the assignment. Valid values are `ENABLED`, `DISABLED`, and `DRAFT`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> assignmentStatus;
+
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
+
   /// Amazon QuickSight users, groups, or both to assign the policy to. See `identities` block.
   late final pulumi.Output<IamPolicyAssignmentIdentities?> identities;
+
   /// Namespace that contains the assignment. Defaults to `default`.
   late final pulumi.Output<String> namespace;
+
   /// ARN of the IAM policy to apply to the Amazon QuickSight users and groups specified in this assignment.
   late final pulumi.Output<String?> policyArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -170,19 +177,19 @@ class IamPolicyAssignment extends pulumi.CustomResource {
     IamPolicyAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:quicksight/iamPolicyAssignment:IamPolicyAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assignmentId = registerOutput<String>('assignmentId');
-    this.assignmentName = registerOutput<String>('assignmentName');
-    this.assignmentStatus = registerOutput<String>('assignmentStatus');
-    this.awsAccountId = registerOutput<String>('awsAccountId');
-    this.identities = registerOutput<IamPolicyAssignmentIdentities?>('identities');
-    this.namespace = registerOutput<String>('namespace');
-    this.policyArn = registerOutput<String?>('policyArn');
-    this.region = registerOutput<String>('region');
+         'aws:quicksight/iamPolicyAssignment:IamPolicyAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assignmentId = registerOutput<String>('assignmentId');
+    assignmentName = registerOutput<String>('assignmentName');
+    assignmentStatus = registerOutput<String>('assignmentStatus');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    identities = registerOutput<IamPolicyAssignmentIdentities?>('identities');
+    namespace = registerOutput<String>('namespace');
+    policyArn = registerOutput<String?>('policyArn');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [IamPolicyAssignment] resource's state with the given [name] and [id].
@@ -203,18 +210,18 @@ class IamPolicyAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:quicksight/iamPolicyAssignment:IamPolicyAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assignmentId = registerOutput<String>('assignmentId');
-    this.assignmentName = registerOutput<String>('assignmentName');
-    this.assignmentStatus = registerOutput<String>('assignmentStatus');
-    this.awsAccountId = registerOutput<String>('awsAccountId');
-    this.identities = registerOutput<IamPolicyAssignmentIdentities?>('identities');
-    this.namespace = registerOutput<String>('namespace');
-    this.policyArn = registerOutput<String?>('policyArn');
-    this.region = registerOutput<String>('region');
+         'aws:quicksight/iamPolicyAssignment:IamPolicyAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assignmentId = registerOutput<String>('assignmentId');
+    assignmentName = registerOutput<String>('assignmentName');
+    assignmentStatus = registerOutput<String>('assignmentStatus');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    identities = registerOutput<IamPolicyAssignmentIdentities?>('identities');
+    namespace = registerOutput<String>('namespace');
+    policyArn = registerOutput<String?>('policyArn');
+    region = registerOutput<String>('region');
   }
 }

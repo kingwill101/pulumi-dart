@@ -8,16 +8,22 @@ import 'namespace_discovered_event_data_point.dart';
 class NamespaceDiscoveredEvent {
   /// Array of data points that are part of the event. Each data point can have a per-data point configuration.
   final pulumi.Input<List<NamespaceDiscoveredEventDataPoint>>? dataPoints;
+
   /// Destinations for an event.
   final pulumi.Input<List<EventMqttDestination>>? destinations;
+
   /// Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
   final pulumi.Input<String>? eventConfiguration;
+
   /// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
   final pulumi.Input<String> eventNotifier;
+
   /// UTC timestamp indicating when the event was added or modified.
   final pulumi.Input<String>? lastUpdatedOn;
+
   /// The name of the event.
   final pulumi.Input<String> name;
+
   /// URI or type definition ID.
   final pulumi.Input<String>? typeRef;
 
@@ -41,8 +47,30 @@ class NamespaceDiscoveredEvent {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataPoints': ?pulumi.Input.mapOptionalInputValue<List<NamespaceDiscoveredEventDataPoint>, List<Map<String, dynamic>>>(dataPoints, (value) => pulumi.Input.encodeList<NamespaceDiscoveredEventDataPoint, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'destinations': ?pulumi.Input.mapOptionalInputValue<List<EventMqttDestination>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<EventMqttDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dataPoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NamespaceDiscoveredEventDataPoint>,
+            List<Map<String, dynamic>>
+          >(
+            dataPoints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NamespaceDiscoveredEventDataPoint,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'destinations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<EventMqttDestination>,
+            List<Map<String, dynamic>>
+          >(
+            destinations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  EventMqttDestination,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'eventConfiguration': ?eventConfiguration,
       'eventNotifier': eventNotifier,
       'lastUpdatedOn': ?lastUpdatedOn,
@@ -53,14 +81,47 @@ class NamespaceDiscoveredEvent {
 
   factory NamespaceDiscoveredEvent.fromMap(Map<String, dynamic> map) {
     return NamespaceDiscoveredEvent(
-      dataPoints: map['dataPoints'] == null ? null : (pulumi.Input.decodeList<NamespaceDiscoveredEventDataPoint>(map['dataPoints']!, (value) => NamespaceDiscoveredEventDataPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<EventMqttDestination>(map['destinations']!, (value) => EventMqttDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      eventConfiguration: map['eventConfiguration'] == null ? null : (map['eventConfiguration']! as String).input(),
-      eventNotifier: (map['eventNotifier'] as String).input(),
-      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn']! as String).input(),
-      name: (map['name'] as String).input(),
-      typeRef: map['typeRef'] == null ? null : (map['typeRef']! as String).input(),
+      dataPoints: (() {
+        final guardedValue = map['dataPoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NamespaceDiscoveredEventDataPoint>(
+            guardedValue,
+            (value) => NamespaceDiscoveredEventDataPoint.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      destinations: (() {
+        final guardedValue = map['destinations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<EventMqttDestination>(
+            guardedValue,
+            (value) => EventMqttDestination.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      eventConfiguration: (() {
+        final guardedValue = map['eventConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventNotifier: pulumi.Input.fromValue(map['eventNotifier'] as String),
+      lastUpdatedOn: (() {
+        final guardedValue = map['lastUpdatedOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      typeRef: (() {
+        final guardedValue = map['typeRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

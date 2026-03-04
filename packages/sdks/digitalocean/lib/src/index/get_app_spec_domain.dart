@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppSpecDomain {
   /// The name of the component.
   final pulumi.Input<String> name;
+
   /// The type of the environment variable, `GENERAL` or `SECRET`.
   final pulumi.Input<String> type;
+
   /// Indicates whether the domain includes all sub-domains, in addition to the given domain.
   final pulumi.Input<bool> wildcard;
+
   /// If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
   final pulumi.Input<String>? zone;
 
@@ -35,11 +38,14 @@ class GetAppSpecDomain {
 
   factory GetAppSpecDomain.fromMap(Map<String, dynamic> map) {
     return GetAppSpecDomain(
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
-      wildcard: (map['wildcard'] as bool).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      wildcard: pulumi.Input.fromValue(map['wildcard'] as bool),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -10,20 +10,39 @@ class TlsRouteRuleAction {
 
   /// Creates a new [TlsRouteRuleAction].
   /// [destinations] The destination to which traffic should be forwarded.
-  TlsRouteRuleAction({
-    this.destinations,
-  });
+  TlsRouteRuleAction({this.destinations});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinations': ?pulumi.Input.mapOptionalInputValue<List<TlsRouteRuleActionDestination>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<TlsRouteRuleActionDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'destinations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<TlsRouteRuleActionDestination>,
+            List<Map<String, dynamic>>
+          >(
+            destinations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TlsRouteRuleActionDestination,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory TlsRouteRuleAction.fromMap(Map<String, dynamic> map) {
     return TlsRouteRuleAction(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<TlsRouteRuleActionDestination>(map['destinations']!, (value) => TlsRouteRuleActionDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinations: (() {
+        final guardedValue = map['destinations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<TlsRouteRuleActionDestination>(
+            guardedValue,
+            (value) => TlsRouteRuleActionDestination.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum TargetAvailabilityZone {
   value3("3"),
   valueNA("NA");
 
-  const TargetAvailabilityZone(this.value);
-  final String value;
+  const TargetAvailabilityZone(this.wireValue);
+  final String wireValue;
 
   static TargetAvailabilityZone fromValue(String value) {
     for (final item in TargetAvailabilityZone.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TargetAvailabilityZone value: $value');
   }
 }
-

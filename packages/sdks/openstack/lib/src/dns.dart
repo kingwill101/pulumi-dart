@@ -1,5 +1,3 @@
-library module_dns;
-
 export 'dns/functions.dart';
 export 'dns/get_dns_zone_args.dart';
 export 'dns/get_dns_zone_result.dart';

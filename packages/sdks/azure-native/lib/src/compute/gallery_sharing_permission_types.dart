@@ -4,16 +4,15 @@ enum GallerySharingPermissionTypes {
   groups("Groups"),
   community("Community");
 
-  const GallerySharingPermissionTypes(this.value);
-  final String value;
+  const GallerySharingPermissionTypes(this.wireValue);
+  final String wireValue;
 
   static GallerySharingPermissionTypes fromValue(String value) {
     for (final item in GallerySharingPermissionTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GallerySharingPermissionTypes value: $value');
   }
 }
-

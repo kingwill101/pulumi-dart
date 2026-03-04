@@ -5,11 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool {
   /// The addresses that are part of this pool.
   final pulumi.Input<List<String>>? addresses;
+
   /// This avoids buggy consumer devices mistakenly
   /// dropping IPv4 traffic for those special IP addresses.
   final pulumi.Input<bool>? avoidBuggyIps;
+
   /// If true, prevent IP addresses from being automatically assigned.
   final pulumi.Input<bool>? manualAssign;
+
   /// (Optional)
   final pulumi.Input<String>? pool;
 
@@ -34,13 +37,30 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool {
     };
   }
 
-  factory BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool.fromMap(Map<String, dynamic> map) {
+  factory BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPool(
-      addresses: map['addresses'] == null ? null : ((map['addresses']! as List).cast<String>()).input(),
-      avoidBuggyIps: map['avoidBuggyIps'] == null ? null : (map['avoidBuggyIps']! as bool).input(),
-      manualAssign: map['manualAssign'] == null ? null : (map['manualAssign']! as bool).input(),
-      pool: map['pool'] == null ? null : (map['pool']! as String).input(),
+      addresses: (() {
+        final guardedValue = map['addresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      avoidBuggyIps: (() {
+        final guardedValue = map['avoidBuggyIps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      manualAssign: (() {
+        final guardedValue = map['manualAssign'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      pool: (() {
+        final guardedValue = map['pool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

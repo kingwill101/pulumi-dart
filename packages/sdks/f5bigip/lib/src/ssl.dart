@@ -1,5 +1,3 @@
-library module_ssl;
-
 export 'ssl/certificate.dart';
 export 'ssl/certificate_args.dart';
 export 'ssl/certificate_state.dart';

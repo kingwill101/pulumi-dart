@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_args.dart';
 import 'diagnostics_description_response.dart';
-import 'service_resource_description_response.dart';
 
 /// This type describes an application resource.
 ///
@@ -329,32 +328,46 @@ import 'service_resource_description_response.dart';
 class Application extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Internal - used by Visual Studio to setup the debugging session on the local development environment.
   late final pulumi.Output<String?> debugParams;
+
   /// User readable description of the application.
   late final pulumi.Output<String?> description;
+
   /// Describes the diagnostics definition and usage for an application resource.
   late final pulumi.Output<DiagnosticsDescriptionResponse?> diagnostics;
+
   /// Describes the health state of an application resource.
   late final pulumi.Output<String> healthState;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// State of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Names of the services in the application.
   late final pulumi.Output<List<String>> serviceNames;
+
   /// Describes the services in the application. This property is used to create or modify services of the application. On get only the name of the service is returned. The service description can be obtained by querying for the service resource.
-  late final pulumi.Output<List<ServiceResourceDescriptionResponse>?> services;
+  late final pulumi.Output<List<Map<String, dynamic>>?> services;
+
   /// Status of the application.
   late final pulumi.Output<String> status;
+
   /// Gives additional information about the current status of the application.
   late final pulumi.Output<String> statusDetails;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
+
   /// When the application's health state is not 'Ok', this additional details from service fabric Health Manager for the user to know why the application is marked unhealthy.
   late final pulumi.Output<String> unhealthyEvaluation;
 
@@ -367,25 +380,27 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:servicefabricmesh:Application',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.debugParams = registerOutput<String?>('debugParams');
-    this.description = registerOutput<String?>('description');
-    this.diagnostics = registerOutput<DiagnosticsDescriptionResponse?>('diagnostics');
-    this.healthState = registerOutput<String>('healthState');
-    this.location = registerOutput<String>('location');
+         'azure-native:servicefabricmesh:Application',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    debugParams = registerOutput<String?>('debugParams');
+    description = registerOutput<String?>('description');
+    diagnostics = registerOutput<DiagnosticsDescriptionResponse?>(
+      'diagnostics',
+    );
+    healthState = registerOutput<String>('healthState');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.serviceNames = registerOutput<List<String>>('serviceNames');
-    this.services = registerOutput<List<ServiceResourceDescriptionResponse>?>('services');
-    this.status = registerOutput<String>('status');
-    this.statusDetails = registerOutput<String>('statusDetails');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.unhealthyEvaluation = registerOutput<String>('unhealthyEvaluation');
+    provisioningState = registerOutput<String>('provisioningState');
+    serviceNames = registerOutput<List<String>>('serviceNames');
+    services = registerOutput<List<Map<String, dynamic>>?>('services');
+    status = registerOutput<String>('status');
+    statusDetails = registerOutput<String>('statusDetails');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    unhealthyEvaluation = registerOutput<String>('unhealthyEvaluation');
   }
 }

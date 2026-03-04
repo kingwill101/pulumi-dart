@@ -452,20 +452,28 @@ import 'job_step_output_response.dart';
 class JobStep extends pulumi.CustomResource {
   /// The action payload of the job step.
   late final pulumi.Output<JobStepActionResponse> action;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The resource ID of the job credential that will be used to connect to the targets.
   late final pulumi.Output<String?> credential;
+
   /// Execution options for the job step.
   late final pulumi.Output<JobStepExecutionOptionsResponse?> executionOptions;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Output destination properties of the job step.
   late final pulumi.Output<JobStepOutputResponse?> output;
+
   /// The job step's index within the job. If not specified when creating the job step, it will be created as the last step. If not specified when updating the job step, the step id is not modified.
   late final pulumi.Output<int?> stepId;
+
   /// The resource ID of the target group that the job step will be executed on.
   late final pulumi.Output<String> targetGroup;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -478,19 +486,21 @@ class JobStep extends pulumi.CustomResource {
     JobStepArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:JobStep',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<JobStepActionResponse>('action');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.credential = registerOutput<String?>('credential');
-    this.executionOptions = registerOutput<JobStepExecutionOptionsResponse?>('executionOptions');
+         'azure-native:sql:JobStep',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<JobStepActionResponse>('action');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    credential = registerOutput<String?>('credential');
+    executionOptions = registerOutput<JobStepExecutionOptionsResponse?>(
+      'executionOptions',
+    );
     this.name = registerOutput<String>('name');
-    this.output = registerOutput<JobStepOutputResponse?>('output');
-    this.stepId = registerOutput<int?>('stepId');
-    this.targetGroup = registerOutput<String>('targetGroup');
-    this.type = registerOutput<String>('type');
+    output = registerOutput<JobStepOutputResponse?>('output');
+    stepId = registerOutput<int?>('stepId');
+    targetGroup = registerOutput<String>('targetGroup');
+    type = registerOutput<String>('type');
   }
 }

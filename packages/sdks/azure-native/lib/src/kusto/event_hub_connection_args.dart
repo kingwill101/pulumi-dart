@@ -9,22 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventHubConnectionArgs {
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
+
   /// The event hub consumer group.
   final pulumi.Input<String> consumerGroup;
+
   /// The data format of the message. Optionally the data format can be added to each message.
   final pulumi.Input<String>? dataFormat;
+
   /// The name of the database in the Kusto cluster.
   final pulumi.Input<String> databaseName;
+
   /// The name of the event hub connection.
   final pulumi.Input<String>? eventHubConnectionName;
+
   /// The resource ID of the event hub to be used to create a data connection.
   final pulumi.Input<String> eventHubResourceId;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
   final pulumi.Input<String>? mappingRuleName;
+
   /// The name of the resource group containing the Kusto cluster.
   final pulumi.Input<String> resourceGroupName;
+
   /// The table where the data should be ingested. Optionally the table information can be added to each message.
   final pulumi.Input<String>? tableName;
 
@@ -69,17 +78,40 @@ class EventHubConnectionArgs {
 
   factory EventHubConnectionArgs.fromMap(Map<String, dynamic> map) {
     return EventHubConnectionArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      consumerGroup: (map['consumerGroup'] as String).input(),
-      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat']! as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      eventHubConnectionName: map['eventHubConnectionName'] == null ? null : (map['eventHubConnectionName']! as String).input(),
-      eventHubResourceId: (map['eventHubResourceId'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      consumerGroup: pulumi.Input.fromValue(map['consumerGroup'] as String),
+      dataFormat: (() {
+        final guardedValue = map['dataFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      eventHubConnectionName: (() {
+        final guardedValue = map['eventHubConnectionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventHubResourceId: pulumi.Input.fromValue(
+        map['eventHubResourceId'] as String,
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mappingRuleName: (() {
+        final guardedValue = map['mappingRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tableName: (() {
+        final guardedValue = map['tableName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

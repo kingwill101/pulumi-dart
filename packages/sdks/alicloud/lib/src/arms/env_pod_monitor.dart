@@ -6,7 +6,7 @@ import 'env_pod_monitor_state.dart';
 ///
 /// For information about ARMS Env Pod Monitor and how to use it, see [What is Env Pod Monitor](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-createenvpodmonitor).
 ///
-/// > **NOTE:** Available since v1.212.0.
+/// &gt; **NOTE:** Available since v1.212.0.
 ///
 /// ## Example Usage
 ///
@@ -826,14 +826,19 @@ import 'env_pod_monitor_state.dart';
 class EnvPodMonitor extends pulumi.CustomResource {
   /// Language environment, default is Chinese zh | en.
   late final pulumi.Output<String?> aliyunLang;
+
   /// Yaml configuration string.
   late final pulumi.Output<String> configYaml;
+
   /// The name of the resource.
   late final pulumi.Output<String> envPodMonitorName;
+
   /// Environment id.
   late final pulumi.Output<String> environmentId;
+
   /// Resource namespace.
   late final pulumi.Output<String> namespace;
+
   /// PodMonitor status.
   late final pulumi.Output<String> status;
 
@@ -846,17 +851,17 @@ class EnvPodMonitor extends pulumi.CustomResource {
     EnvPodMonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/envPodMonitor:EnvPodMonitor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aliyunLang = registerOutput<String?>('aliyunLang');
-    this.configYaml = registerOutput<String>('configYaml');
-    this.envPodMonitorName = registerOutput<String>('envPodMonitorName');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.namespace = registerOutput<String>('namespace');
-    this.status = registerOutput<String>('status');
+         'alicloud:arms/envPodMonitor:EnvPodMonitor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aliyunLang = registerOutput<String?>('aliyunLang');
+    configYaml = registerOutput<String>('configYaml');
+    envPodMonitorName = registerOutput<String>('envPodMonitorName');
+    environmentId = registerOutput<String>('environmentId');
+    namespace = registerOutput<String>('namespace');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [EnvPodMonitor] resource's state with the given [name] and [id].
@@ -877,16 +882,16 @@ class EnvPodMonitor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/envPodMonitor:EnvPodMonitor',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aliyunLang = registerOutput<String?>('aliyunLang');
-    this.configYaml = registerOutput<String>('configYaml');
-    this.envPodMonitorName = registerOutput<String>('envPodMonitorName');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.namespace = registerOutput<String>('namespace');
-    this.status = registerOutput<String>('status');
+         'alicloud:arms/envPodMonitor:EnvPodMonitor',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aliyunLang = registerOutput<String?>('aliyunLang');
+    configYaml = registerOutput<String>('configYaml');
+    envPodMonitorName = registerOutput<String>('envPodMonitorName');
+    environmentId = registerOutput<String>('environmentId');
+    namespace = registerOutput<String>('namespace');
+    status = registerOutput<String>('status');
   }
 }

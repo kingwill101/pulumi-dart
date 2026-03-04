@@ -8,16 +8,15 @@ enum TieringMode {
   valueTierAfter("TierAfter"),
   valueDoNotTier("DoNotTier");
 
-  const TieringMode(this.value);
-  final String value;
+  const TieringMode(this.wireValue);
+  final String wireValue;
 
   static TieringMode fromValue(String value) {
     for (final item in TieringMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TieringMode value: $value');
   }
 }
-

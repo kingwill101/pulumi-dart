@@ -6,9 +6,9 @@ import 'get_service_result.dart';
 ///
 /// For information about DataHub and how to use it, see [What is DataHub](https://help.aliyun.com/product/53345.html).
 ///
-/// > **NOTE:** Available in v1.111.0+
+/// &gt; **NOTE:** Available in v1.111.0+
 ///
-/// > **NOTE:** The DataHub service is not support in the international site.
+/// &gt; **NOTE:** The DataHub service is not support in the international site.
 ///
 /// ## Example Usage
 ///

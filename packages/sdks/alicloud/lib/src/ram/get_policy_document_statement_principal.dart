@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyDocumentStatementPrincipal {
   /// The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
   final pulumi.Input<String> entity;
+
   /// The identifiers of the principal.
   final pulumi.Input<List<String>> identifiers;
 
@@ -17,17 +18,17 @@ class GetPolicyDocumentStatementPrincipal {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'entity': entity,
-      'identifiers': identifiers,
-    };
+    return <String, dynamic>{'entity': entity, 'identifiers': identifiers};
   }
 
-  factory GetPolicyDocumentStatementPrincipal.fromMap(Map<String, dynamic> map) {
+  factory GetPolicyDocumentStatementPrincipal.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPolicyDocumentStatementPrincipal(
-      entity: (map['entity'] as String).input(),
-      identifiers: ((map['identifiers'] as List).cast<String>()).input(),
+      entity: pulumi.Input.fromValue(map['entity'] as String),
+      identifiers: pulumi.Input.fromValue(
+        (map['identifiers'] as List).cast<String>(),
+      ),
     );
   }
 }
-

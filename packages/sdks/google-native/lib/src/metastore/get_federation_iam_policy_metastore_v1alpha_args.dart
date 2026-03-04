@@ -33,13 +33,22 @@ class GetFederationIamPolicyMetastoreV1alphaArgs {
     };
   }
 
-  factory GetFederationIamPolicyMetastoreV1alphaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetFederationIamPolicyMetastoreV1alphaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFederationIamPolicyMetastoreV1alphaArgs(
-      federationId: (map['federationId'] as String).input(),
-      location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      federationId: pulumi.Input.fromValue(map['federationId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

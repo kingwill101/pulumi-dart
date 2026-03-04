@@ -7,13 +7,17 @@ import 'role_management_policy_rule_target_response.dart';
 class RoleManagementPolicyAuthenticationContextRuleResponse {
   /// The claim value.
   final pulumi.Input<String>? claimValue;
+
   /// The id of the rule.
   final pulumi.Input<String>? id;
+
   /// The value indicating if rule is enabled.
   final pulumi.Input<bool>? isEnabled;
+
   /// The type of rule
   /// Expected value is 'RoleManagementPolicyAuthenticationContextRule'.
   final pulumi.Input<String> ruleType;
+
   /// The target of the current rule.
   final pulumi.Input<RoleManagementPolicyRuleTargetResponse>? target;
 
@@ -37,18 +41,43 @@ class RoleManagementPolicyAuthenticationContextRuleResponse {
       'id': ?id,
       'isEnabled': ?isEnabled,
       'ruleType': ruleType,
-      'target': ?pulumi.Input.mapOptionalInputValue<RoleManagementPolicyRuleTargetResponse, Map<String, dynamic>>(target, (value) => value.toMap()),
+      'target':
+          ?pulumi.Input.mapOptionalInputValue<
+            RoleManagementPolicyRuleTargetResponse,
+            Map<String, dynamic>
+          >(target, (value) => value.toMap()),
     };
   }
 
-  factory RoleManagementPolicyAuthenticationContextRuleResponse.fromMap(Map<String, dynamic> map) {
+  factory RoleManagementPolicyAuthenticationContextRuleResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RoleManagementPolicyAuthenticationContextRuleResponse(
-      claimValue: map['claimValue'] == null ? null : (map['claimValue']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
-      ruleType: (map['ruleType'] as String).input(),
-      target: map['target'] == null ? null : (RoleManagementPolicyRuleTargetResponse.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      claimValue: (() {
+        final guardedValue = map['claimValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isEnabled: (() {
+        final guardedValue = map['isEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RoleManagementPolicyRuleTargetResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

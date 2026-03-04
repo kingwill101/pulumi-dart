@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProductArgs {
   /// A available region id used to filter market place Ecs images.
   final pulumi.Input<String>? availableRegion;
+
   /// The product code of the market product.
   final pulumi.Input<String> productCode;
 
   /// Creates a new [GetProductArgs].
   /// [availableRegion] A available region id used to filter market place Ecs images.
   /// [productCode] The product code of the market product.
-  GetProductArgs({
-    this.availableRegion,
-    required this.productCode,
-  });
+  GetProductArgs({this.availableRegion, required this.productCode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,12 @@ class GetProductArgs {
 
   factory GetProductArgs.fromMap(Map<String, dynamic> map) {
     return GetProductArgs(
-      availableRegion: map['availableRegion'] == null ? null : (map['availableRegion']! as String).input(),
-      productCode: (map['productCode'] as String).input(),
+      availableRegion: (() {
+        final guardedValue = map['availableRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      productCode: pulumi.Input.fromValue(map['productCode'] as String),
     );
   }
 }
-

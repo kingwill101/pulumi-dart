@@ -15,17 +15,15 @@ class GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenti
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'iam': iam,
-      'scram': scram,
-    };
+    return <String, dynamic>{'iam': iam, 'scram': scram};
   }
 
-  factory GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl.fromMap(Map<String, dynamic> map) {
+  factory GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl(
-      iam: (map['iam'] as bool).input(),
-      scram: (map['scram'] as bool).input(),
+      iam: pulumi.Input.fromValue(map['iam'] as bool),
+      scram: pulumi.Input.fromValue(map['scram'] as bool),
     );
   }
 }
-

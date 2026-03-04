@@ -1,5 +1,3 @@
-library module_storage;
-
 export 'storage/anywhere_cache.dart';
 export 'storage/anywhere_cache_args.dart';
 export 'storage/anywhere_cache_state.dart';

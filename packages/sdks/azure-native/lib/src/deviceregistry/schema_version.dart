@@ -153,20 +153,28 @@ import 'system_data_response.dart';
 class SchemaVersion extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Human-readable description of the schema.
   late final pulumi.Output<String?> description;
+
   /// Hash of the schema content.
   late final pulumi.Output<String> hash;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Schema content.
   late final pulumi.Output<String> schemaContent;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Globally unique, immutable, non-reusable id.
   late final pulumi.Output<String> uuid;
 
@@ -179,19 +187,19 @@ class SchemaVersion extends pulumi.CustomResource {
     SchemaVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:deviceregistry:SchemaVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.hash = registerOutput<String>('hash');
+         'azure-native:deviceregistry:SchemaVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    hash = registerOutput<String>('hash');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.schemaContent = registerOutput<String>('schemaContent');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.uuid = registerOutput<String>('uuid');
+    provisioningState = registerOutput<String>('provisioningState');
+    schemaContent = registerOutput<String>('schemaContent');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
   }
 }

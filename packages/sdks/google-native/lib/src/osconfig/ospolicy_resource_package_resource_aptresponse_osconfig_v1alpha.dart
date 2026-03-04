@@ -14,15 +14,14 @@ class OSPolicyResourcePackageResourceAPTResponseOsconfigV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory OSPolicyResourcePackageResourceAPTResponseOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
+  factory OSPolicyResourcePackageResourceAPTResponseOsconfigV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OSPolicyResourcePackageResourceAPTResponseOsconfigV1alpha(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

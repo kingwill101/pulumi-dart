@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HyperVReplicationPolicyAssociationState {
   /// The ID of the HyperV site to which the policy should be associated. Changing this forces a new association to be created.
   final pulumi.Input<String>? hypervSiteId;
+
   /// The name of the replication policy association. Changing this forces a new association to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the HyperV replication policy which to be associated. Changing this forces a new association to be created.
   final pulumi.Input<String>? policyId;
 
@@ -29,12 +31,25 @@ class HyperVReplicationPolicyAssociationState {
     };
   }
 
-  factory HyperVReplicationPolicyAssociationState.fromMap(Map<String, dynamic> map) {
+  factory HyperVReplicationPolicyAssociationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HyperVReplicationPolicyAssociationState(
-      hypervSiteId: map['hypervSiteId'] == null ? null : (map['hypervSiteId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
+      hypervSiteId: (() {
+        final guardedValue = map['hypervSiteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyId: (() {
+        final guardedValue = map['policyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

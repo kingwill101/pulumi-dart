@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityPoolProviderPrincipalTagState {
   /// An identity pool ID.
   final pulumi.Input<String>? identityPoolId;
+
   /// The name of the identity provider.
   final pulumi.Input<String>? identityProviderName;
+
   /// String to string map of variables.
   final pulumi.Input<Map<String, String>>? principalTags;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// use default (username and clientID) attribute mappings.
   final pulumi.Input<bool>? useDefaults;
 
@@ -39,14 +43,37 @@ class IdentityPoolProviderPrincipalTagState {
     };
   }
 
-  factory IdentityPoolProviderPrincipalTagState.fromMap(Map<String, dynamic> map) {
+  factory IdentityPoolProviderPrincipalTagState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdentityPoolProviderPrincipalTagState(
-      identityPoolId: map['identityPoolId'] == null ? null : ((map['identityPoolId'] as String).input()).input(),
-      identityProviderName: map['identityProviderName'] == null ? null : ((map['identityProviderName'] as String).input()).input(),
-      principalTags: map['principalTags'] == null ? null : (((map['principalTags'] as Map).cast<String, String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      useDefaults: map['useDefaults'] == null ? null : ((map['useDefaults'] as bool).input()).input(),
+      identityPoolId: (() {
+        final guardedValue = map['identityPoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identityProviderName: (() {
+        final guardedValue = map['identityProviderName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalTags: (() {
+        final guardedValue = map['principalTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      useDefaults: (() {
+        final guardedValue = map['useDefaults'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

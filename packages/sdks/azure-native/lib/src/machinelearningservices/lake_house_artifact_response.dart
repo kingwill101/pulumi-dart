@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LakeHouseArtifactResponse {
   /// [Required] OneLake artifact name
   final pulumi.Input<String> artifactName;
+
   /// Enum to determine OneLake artifact type.
   /// Expected value is 'LakeHouse'.
   final pulumi.Input<String> artifactType;
@@ -26,9 +27,8 @@ class LakeHouseArtifactResponse {
 
   factory LakeHouseArtifactResponse.fromMap(Map<String, dynamic> map) {
     return LakeHouseArtifactResponse(
-      artifactName: (map['artifactName'] as String).input(),
-      artifactType: (map['artifactType'] as String).input(),
+      artifactName: pulumi.Input.fromValue(map['artifactName'] as String),
+      artifactType: pulumi.Input.fromValue(map['artifactType'] as String),
     );
   }
 }
-

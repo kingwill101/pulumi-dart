@@ -4,22 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ErrorDetail
 class ErrorDetailResponse {
-  /// <p>The name or code associated with the error.</p>
+  /// &lt;p&gt;The name or code associated with the error.&lt;/p&gt;
   final pulumi.Input<String>? errorCode;
-  /// <p>A list of key value pairs that provides contextual information about why an error occured.</p>
+
+  /// &lt;p&gt;A list of key value pairs that provides contextual information about why an error occured.&lt;/p&gt;
   final pulumi.Input<List<dynamic>>? errorData;
-  /// <p>A message that describes the error.</p>
+
+  /// &lt;p&gt;A message that describes the error.&lt;/p&gt;
   final pulumi.Input<String>? errorMessage;
 
   /// Creates a new [ErrorDetailResponse].
-  /// [errorCode] <p>The name or code associated with the error.</p>
-  /// [errorData] <p>A list of key value pairs that provides contextual information about why an error occured.</p>
-  /// [errorMessage] <p>A message that describes the error.</p>
-  ErrorDetailResponse({
-    this.errorCode,
-    this.errorData,
-    this.errorMessage,
-  });
+  /// [errorCode] &lt;p&gt;The name or code associated with the error.&lt;/p&gt;
+  /// [errorData] &lt;p&gt;A list of key value pairs that provides contextual information about why an error occured.&lt;/p&gt;
+  /// [errorMessage] &lt;p&gt;A message that describes the error.&lt;/p&gt;
+  ErrorDetailResponse({this.errorCode, this.errorData, this.errorMessage});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class ErrorDetailResponse {
 
   factory ErrorDetailResponse.fromMap(Map<String, dynamic> map) {
     return ErrorDetailResponse(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
-      errorData: map['errorData'] == null ? null : ((map['errorData']! as List).cast<dynamic>()).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      errorCode: (() {
+        final guardedValue = map['errorCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      errorData: (() {
+        final guardedValue = map['errorData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
+      })(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class AttachedClusterBinaryAuthorization {
 
   /// Creates a new [AttachedClusterBinaryAuthorization].
   /// [evaluationMode] Configure Binary Authorization evaluation mode.
-  AttachedClusterBinaryAuthorization({
-    this.evaluationMode,
-  });
+  AttachedClusterBinaryAuthorization({this.evaluationMode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'evaluationMode': ?evaluationMode,
-    };
+    return <String, dynamic>{'evaluationMode': ?evaluationMode};
   }
 
   factory AttachedClusterBinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return AttachedClusterBinaryAuthorization(
-      evaluationMode: map['evaluationMode'] == null ? null : (map['evaluationMode']! as String).input(),
+      evaluationMode: (() {
+        final guardedValue = map['evaluationMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

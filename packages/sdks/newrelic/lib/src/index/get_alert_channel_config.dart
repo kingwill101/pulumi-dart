@@ -95,27 +95,110 @@ class GetAlertChannelConfig {
 
   factory GetAlertChannelConfig.fromMap(Map<String, dynamic> map) {
     return GetAlertChannelConfig(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
-      authPassword: map['authPassword'] == null ? null : (map['authPassword']! as String).input(),
-      authType: map['authType'] == null ? null : (map['authType']! as String).input(),
-      authUsername: map['authUsername'] == null ? null : (map['authUsername']! as String).input(),
-      baseUrl: map['baseUrl'] == null ? null : (map['baseUrl']! as String).input(),
-      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
-      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
-      includeJsonAttachment: map['includeJsonAttachment'] == null ? null : (map['includeJsonAttachment']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      payload: map['payload'] == null ? null : ((map['payload']! as Map).cast<String, String>()).input(),
-      payloadString: map['payloadString'] == null ? null : (map['payloadString']! as String).input(),
-      payloadType: map['payloadType'] == null ? null : (map['payloadType']! as String).input(),
-      recipients: map['recipients'] == null ? null : (map['recipients']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      routeKey: map['routeKey'] == null ? null : (map['routeKey']! as String).input(),
-      serviceKey: map['serviceKey'] == null ? null : (map['serviceKey']! as String).input(),
-      tags: map['tags'] == null ? null : (map['tags']! as String).input(),
-      teams: map['teams'] == null ? null : (map['teams']! as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
-      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
+      apiKey: (() {
+        final guardedValue = map['apiKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authPassword: (() {
+        final guardedValue = map['authPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authType: (() {
+        final guardedValue = map['authType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authUsername: (() {
+        final guardedValue = map['authUsername'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      baseUrl: (() {
+        final guardedValue = map['baseUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      channel: (() {
+        final guardedValue = map['channel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      headers: (() {
+        final guardedValue = map['headers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      includeJsonAttachment: (() {
+        final guardedValue = map['includeJsonAttachment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      payload: (() {
+        final guardedValue = map['payload'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      payloadString: (() {
+        final guardedValue = map['payloadString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      payloadType: (() {
+        final guardedValue = map['payloadType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recipients: (() {
+        final guardedValue = map['recipients'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeKey: (() {
+        final guardedValue = map['routeKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceKey: (() {
+        final guardedValue = map['serviceKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      teams: (() {
+        final guardedValue = map['teams'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userId: (() {
+        final guardedValue = map['userId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

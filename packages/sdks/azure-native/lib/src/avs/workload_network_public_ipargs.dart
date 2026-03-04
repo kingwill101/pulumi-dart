@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadNetworkPublicIPArgs {
   /// Display name of the Public IP Block.
   final pulumi.Input<String>? displayName;
+
   /// Number of Public IPs requested.
   final pulumi.Input<double>? numberOfPublicIPs;
+
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
+
   /// ID of the DNS zone.
   final pulumi.Input<String>? publicIPId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -44,12 +48,27 @@ class WorkloadNetworkPublicIPArgs {
 
   factory WorkloadNetworkPublicIPArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkPublicIPArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      numberOfPublicIPs: map['numberOfPublicIPs'] == null ? null : (map['numberOfPublicIPs']! as double).input(),
-      privateCloudName: (map['privateCloudName'] as String).input(),
-      publicIPId: map['publicIPId'] == null ? null : (map['publicIPId']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      numberOfPublicIPs: (() {
+        final guardedValue = map['numberOfPublicIPs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      privateCloudName: pulumi.Input.fromValue(
+        map['privateCloudName'] as String,
+      ),
+      publicIPId: (() {
+        final guardedValue = map['publicIPId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

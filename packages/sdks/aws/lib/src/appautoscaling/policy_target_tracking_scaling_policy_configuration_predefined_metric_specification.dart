@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification {
   /// Metric type.
   final pulumi.Input<String> predefinedMetricType;
+
   /// Reserved for future use if the `predefined_metric_type` is not `ALBRequestCountPerTarget`. If the `predefined_metric_type` is `ALBRequestCountPerTarget`, you must specify this argument. Documentation can be found at: [AWS Predefined Scaling Metric Specification](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_PredefinedScalingMetricSpecification.html). Must be less than or equal to 1023 characters in length.
   final pulumi.Input<String>? resourceLabel;
 
@@ -23,11 +24,18 @@ class PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificatio
     };
   }
 
-  factory PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification.fromMap(Map<String, dynamic> map) {
+  factory PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification(
-      predefinedMetricType: (map['predefinedMetricType'] as String).input(),
-      resourceLabel: map['resourceLabel'] == null ? null : ((map['resourceLabel'] as String).input()).input(),
+      predefinedMetricType: pulumi.Input.fromValue(
+        map['predefinedMetricType'] as String,
+      ),
+      resourceLabel: (() {
+        final guardedValue = map['resourceLabel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

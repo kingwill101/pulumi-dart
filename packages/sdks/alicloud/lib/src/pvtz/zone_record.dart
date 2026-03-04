@@ -154,27 +154,37 @@ import 'zone_record_state.dart';
 class ZoneRecord extends pulumi.CustomResource {
   /// User language.
   late final pulumi.Output<String?> lang;
+
   /// The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
   late final pulumi.Output<int?> priority;
+
   /// The Private Zone Record ID.
   late final pulumi.Output<String> recordId;
+
   /// The remark of the Private Zone Record.
   late final pulumi.Output<String?> remark;
+
   /// The resource record of the Private Zone Record.
   late final pulumi.Output<String> resourceRecord;
+
   /// The rr of the Private Zone Record.
   late final pulumi.Output<String> rr;
+
   /// Resolve record status. Value:
   /// - ENABLE: enable resolution.
   /// - DISABLE: pause parsing.
   late final pulumi.Output<String?> status;
+
   /// The ttl of the Private Zone Record. Default to `60`.
   late final pulumi.Output<int?> ttl;
+
   /// The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
   late final pulumi.Output<String> type;
   late final pulumi.Output<String?> userClientIp;
+
   /// The value of the Private Zone Record.
   late final pulumi.Output<String> value;
+
   /// The name of the Private Zone Record.
   late final pulumi.Output<String> zoneId;
 
@@ -187,23 +197,23 @@ class ZoneRecord extends pulumi.CustomResource {
     ZoneRecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pvtz/zoneRecord:ZoneRecord',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.lang = registerOutput<String?>('lang');
-    this.priority = registerOutput<int?>('priority');
-    this.recordId = registerOutput<String>('recordId');
-    this.remark = registerOutput<String?>('remark');
-    this.resourceRecord = registerOutput<String>('resourceRecord');
-    this.rr = registerOutput<String>('rr');
-    this.status = registerOutput<String?>('status');
-    this.ttl = registerOutput<int?>('ttl');
-    this.type = registerOutput<String>('type');
-    this.userClientIp = registerOutput<String?>('userClientIp');
-    this.value = registerOutput<String>('value');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:pvtz/zoneRecord:ZoneRecord',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    lang = registerOutput<String?>('lang');
+    priority = registerOutput<int?>('priority');
+    recordId = registerOutput<String>('recordId');
+    remark = registerOutput<String?>('remark');
+    resourceRecord = registerOutput<String>('resourceRecord');
+    rr = registerOutput<String>('rr');
+    status = registerOutput<String?>('status');
+    ttl = registerOutput<int?>('ttl');
+    type = registerOutput<String>('type');
+    userClientIp = registerOutput<String?>('userClientIp');
+    value = registerOutput<String>('value');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [ZoneRecord] resource's state with the given [name] and [id].
@@ -224,22 +234,22 @@ class ZoneRecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pvtz/zoneRecord:ZoneRecord',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.lang = registerOutput<String?>('lang');
-    this.priority = registerOutput<int?>('priority');
-    this.recordId = registerOutput<String>('recordId');
-    this.remark = registerOutput<String?>('remark');
-    this.resourceRecord = registerOutput<String>('resourceRecord');
-    this.rr = registerOutput<String>('rr');
-    this.status = registerOutput<String?>('status');
-    this.ttl = registerOutput<int?>('ttl');
-    this.type = registerOutput<String>('type');
-    this.userClientIp = registerOutput<String?>('userClientIp');
-    this.value = registerOutput<String>('value');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:pvtz/zoneRecord:ZoneRecord',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    lang = registerOutput<String?>('lang');
+    priority = registerOutput<int?>('priority');
+    recordId = registerOutput<String>('recordId');
+    remark = registerOutput<String?>('remark');
+    resourceRecord = registerOutput<String>('resourceRecord');
+    rr = registerOutput<String>('rr');
+    status = registerOutput<String?>('status');
+    ttl = registerOutput<int?>('ttl');
+    type = registerOutput<String>('type');
+    userClientIp = registerOutput<String?>('userClientIp');
+    value = registerOutput<String>('value');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

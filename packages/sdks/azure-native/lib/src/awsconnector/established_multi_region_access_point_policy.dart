@@ -4,25 +4,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of EstablishedMultiRegionAccessPointPolicy
 class EstablishedMultiRegionAccessPointPolicy {
-  /// <p>The details of the last established policy.</p>
+  /// &lt;p&gt;The details of the last established policy.&lt;/p&gt;
   final pulumi.Input<String>? policy;
 
   /// Creates a new [EstablishedMultiRegionAccessPointPolicy].
-  /// [policy] <p>The details of the last established policy.</p>
-  EstablishedMultiRegionAccessPointPolicy({
-    this.policy,
-  });
+  /// [policy] &lt;p&gt;The details of the last established policy.&lt;/p&gt;
+  EstablishedMultiRegionAccessPointPolicy({this.policy});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'policy': ?policy,
-    };
+    return <String, dynamic>{'policy': ?policy};
   }
 
-  factory EstablishedMultiRegionAccessPointPolicy.fromMap(Map<String, dynamic> map) {
+  factory EstablishedMultiRegionAccessPointPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EstablishedMultiRegionAccessPointPolicy(
-      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      policy: (() {
+        final guardedValue = map['policy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

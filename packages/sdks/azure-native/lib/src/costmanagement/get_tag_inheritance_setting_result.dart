@@ -6,15 +6,20 @@ import 'tag_inheritance_properties_response.dart';
 class GetTagInheritanceSettingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Specifies the kind of settings.
   /// Expected value is 'taginheritance'.
   final String kind;
+
   /// The name of the resource
   final String name;
+
   /// The properties of the tag inheritance setting.
   final TagInheritancePropertiesResponse properties;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -51,9 +56,10 @@ class GetTagInheritanceSettingResult {
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      properties: TagInheritancePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: TagInheritancePropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

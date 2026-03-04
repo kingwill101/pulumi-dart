@@ -5,16 +5,15 @@ enum ActionEnum {
   valueDenyResetServer("DenyResetServer"),
   valueDenyResetBoth("DenyResetBoth");
 
-  const ActionEnum(this.value);
-  final String value;
+  const ActionEnum(this.wireValue);
+  final String wireValue;
 
   static ActionEnum fromValue(String value) {
     for (final item in ActionEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ActionEnum value: $value');
   }
 }
-

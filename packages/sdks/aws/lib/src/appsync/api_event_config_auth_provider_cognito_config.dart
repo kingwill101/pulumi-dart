@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiEventConfigAuthProviderCognitoConfig {
   /// Regular expression for matching the client ID.
   final pulumi.Input<String>? appIdClientRegex;
+
   /// AWS region where the user pool is located.
   final pulumi.Input<String> awsRegion;
+
   /// ID of the Cognito user pool.
   final pulumi.Input<String> userPoolId;
 
@@ -28,12 +30,17 @@ class ApiEventConfigAuthProviderCognitoConfig {
     };
   }
 
-  factory ApiEventConfigAuthProviderCognitoConfig.fromMap(Map<String, dynamic> map) {
+  factory ApiEventConfigAuthProviderCognitoConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApiEventConfigAuthProviderCognitoConfig(
-      appIdClientRegex: map['appIdClientRegex'] == null ? null : ((map['appIdClientRegex'] as String).input()).input(),
-      awsRegion: (map['awsRegion'] as String).input(),
-      userPoolId: (map['userPoolId'] as String).input(),
+      appIdClientRegex: (() {
+        final guardedValue = map['appIdClientRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      awsRegion: pulumi.Input.fromValue(map['awsRegion'] as String),
+      userPoolId: pulumi.Input.fromValue(map['userPoolId'] as String),
     );
   }
 }
-

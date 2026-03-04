@@ -7,21 +7,29 @@ import 'stack_ensemble_settings_response.dart';
 class ClassificationTrainingSettingsResponse {
   /// Allowed models for classification task.
   final pulumi.Input<List<String>>? allowedTrainingAlgorithms;
+
   /// Blocked models for classification task.
   final pulumi.Input<List<String>>? blockedTrainingAlgorithms;
+
   /// Enable recommendation of DNN models.
   final pulumi.Input<bool>? enableDnnTraining;
+
   /// Flag to turn on explainability on best model.
   final pulumi.Input<bool>? enableModelExplainability;
+
   /// Flag for enabling onnx compatible models.
   final pulumi.Input<bool>? enableOnnxCompatibleModels;
+
   /// Enable stack ensemble run.
   final pulumi.Input<bool>? enableStackEnsemble;
+
   /// Enable voting ensemble run.
   final pulumi.Input<bool>? enableVoteEnsemble;
+
   /// During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
   /// Configure this parameter with a higher value than 300 secs, if more time is needed.
   final pulumi.Input<String>? ensembleModelDownloadTimeout;
+
   /// Stack ensemble settings for stack ensemble run.
   final pulumi.Input<StackEnsembleSettingsResponse>? stackEnsembleSettings;
 
@@ -57,22 +65,67 @@ class ClassificationTrainingSettingsResponse {
       'enableStackEnsemble': ?enableStackEnsemble,
       'enableVoteEnsemble': ?enableVoteEnsemble,
       'ensembleModelDownloadTimeout': ?ensembleModelDownloadTimeout,
-      'stackEnsembleSettings': ?pulumi.Input.mapOptionalInputValue<StackEnsembleSettingsResponse, Map<String, dynamic>>(stackEnsembleSettings, (value) => value.toMap()),
+      'stackEnsembleSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            StackEnsembleSettingsResponse,
+            Map<String, dynamic>
+          >(stackEnsembleSettings, (value) => value.toMap()),
     };
   }
 
-  factory ClassificationTrainingSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory ClassificationTrainingSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClassificationTrainingSettingsResponse(
-      allowedTrainingAlgorithms: map['allowedTrainingAlgorithms'] == null ? null : ((map['allowedTrainingAlgorithms']! as List).cast<String>()).input(),
-      blockedTrainingAlgorithms: map['blockedTrainingAlgorithms'] == null ? null : ((map['blockedTrainingAlgorithms']! as List).cast<String>()).input(),
-      enableDnnTraining: map['enableDnnTraining'] == null ? null : (map['enableDnnTraining']! as bool).input(),
-      enableModelExplainability: map['enableModelExplainability'] == null ? null : (map['enableModelExplainability']! as bool).input(),
-      enableOnnxCompatibleModels: map['enableOnnxCompatibleModels'] == null ? null : (map['enableOnnxCompatibleModels']! as bool).input(),
-      enableStackEnsemble: map['enableStackEnsemble'] == null ? null : (map['enableStackEnsemble']! as bool).input(),
-      enableVoteEnsemble: map['enableVoteEnsemble'] == null ? null : (map['enableVoteEnsemble']! as bool).input(),
-      ensembleModelDownloadTimeout: map['ensembleModelDownloadTimeout'] == null ? null : (map['ensembleModelDownloadTimeout']! as String).input(),
-      stackEnsembleSettings: map['stackEnsembleSettings'] == null ? null : (StackEnsembleSettingsResponse.fromMap((map['stackEnsembleSettings']! as Map).cast<String, dynamic>())).input(),
+      allowedTrainingAlgorithms: (() {
+        final guardedValue = map['allowedTrainingAlgorithms'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      blockedTrainingAlgorithms: (() {
+        final guardedValue = map['blockedTrainingAlgorithms'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      enableDnnTraining: (() {
+        final guardedValue = map['enableDnnTraining'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableModelExplainability: (() {
+        final guardedValue = map['enableModelExplainability'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableOnnxCompatibleModels: (() {
+        final guardedValue = map['enableOnnxCompatibleModels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableStackEnsemble: (() {
+        final guardedValue = map['enableStackEnsemble'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableVoteEnsemble: (() {
+        final guardedValue = map['enableVoteEnsemble'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ensembleModelDownloadTimeout: (() {
+        final guardedValue = map['ensembleModelDownloadTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stackEnsembleSettings: (() {
+        final guardedValue = map['stackEnsembleSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StackEnsembleSettingsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem {
   gts("GTS"),
   all("ALL");
 
-  const EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem(this.value);
-  final String value;
+  const EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem(this.wireValue);
+  final String wireValue;
 
   static EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem fromValue(String value) {
     for (final item in EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmLoggingGwsFieldLimitsLogTypeItem value: $value',
+    );
   }
 }
-

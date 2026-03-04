@@ -10,16 +10,15 @@ enum SchedulerAcceleratorConfigType {
   tpuV2("TPU_V2"),
   tpuV3("TPU_V3");
 
-  const SchedulerAcceleratorConfigType(this.value);
-  final String value;
+  const SchedulerAcceleratorConfigType(this.wireValue);
+  final String wireValue;
 
   static SchedulerAcceleratorConfigType fromValue(String value) {
     for (final item in SchedulerAcceleratorConfigType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SchedulerAcceleratorConfigType value: $value');
   }
 }
-

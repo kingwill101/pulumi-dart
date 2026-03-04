@@ -4,31 +4,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of TagCriterionPairForJob
 class TagCriterionPairForJob {
-  /// <p>The value for the tag key to use in the condition.</p>
+  /// &lt;p&gt;The value for the tag key to use in the condition.&lt;/p&gt;
   final pulumi.Input<String>? key;
-  /// <p>The tag value to use in the condition.</p>
+
+  /// &lt;p&gt;The tag value to use in the condition.&lt;/p&gt;
   final pulumi.Input<String>? value;
 
   /// Creates a new [TagCriterionPairForJob].
-  /// [key] <p>The value for the tag key to use in the condition.</p>
-  /// [value] <p>The tag value to use in the condition.</p>
-  TagCriterionPairForJob({
-    this.key,
-    this.value,
-  });
+  /// [key] &lt;p&gt;The value for the tag key to use in the condition.&lt;/p&gt;
+  /// [value] &lt;p&gt;The tag value to use in the condition.&lt;/p&gt;
+  TagCriterionPairForJob({this.key, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': ?key,
-      'value': ?value,
-    };
+    return <String, dynamic>{'key': ?key, 'value': ?value};
   }
 
   factory TagCriterionPairForJob.fromMap(Map<String, dynamic> map) {
     return TagCriterionPairForJob(
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

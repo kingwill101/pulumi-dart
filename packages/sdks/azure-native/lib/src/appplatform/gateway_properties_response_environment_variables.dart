@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayPropertiesResponseEnvironmentVariables {
   /// Non-sensitive properties
   final pulumi.Input<Map<String, String>>? properties;
+
   /// Sensitive properties
   final pulumi.Input<Map<String, String>>? secrets;
 
@@ -18,17 +19,27 @@ class GatewayPropertiesResponseEnvironmentVariables {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'properties': ?properties,
-      'secrets': ?secrets,
-    };
+    return <String, dynamic>{'properties': ?properties, 'secrets': ?secrets};
   }
 
-  factory GatewayPropertiesResponseEnvironmentVariables.fromMap(Map<String, dynamic> map) {
+  factory GatewayPropertiesResponseEnvironmentVariables.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GatewayPropertiesResponseEnvironmentVariables(
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
-      secrets: map['secrets'] == null ? null : ((map['secrets']! as Map).cast<String, String>()).input(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      secrets: (() {
+        final guardedValue = map['secrets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

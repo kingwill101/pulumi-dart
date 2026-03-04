@@ -9,23 +9,16 @@ class InsightFiltersSeverityLabel {
   /// Creates a new [InsightFiltersSeverityLabel].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersSeverityLabel({
-    required this.comparison,
-    required this.value,
-  });
+  InsightFiltersSeverityLabel({required this.comparison, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comparison': comparison,
-      'value': value,
-    };
+    return <String, dynamic>{'comparison': comparison, 'value': value};
   }
 
   factory InsightFiltersSeverityLabel.fromMap(Map<String, dynamic> map) {
     return InsightFiltersSeverityLabel(
-      comparison: (map['comparison'] as String).input(),
-      value: (map['value'] as String).input(),
+      comparison: pulumi.Input.fromValue(map['comparison'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

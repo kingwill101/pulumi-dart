@@ -4,16 +4,15 @@ enum CommandLineSetting {
   valueAllow("Allow"),
   valueRequire("Require");
 
-  const CommandLineSetting(this.value);
-  final String value;
+  const CommandLineSetting(this.wireValue);
+  final String wireValue;
 
   static CommandLineSetting fromValue(String value) {
     for (final item in CommandLineSetting.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CommandLineSetting value: $value');
   }
 }
-

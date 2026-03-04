@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketObjectCustomerEncryption {
   /// The encryption algorithm.
   final pulumi.Input<String>? encryptionAlgorithm;
+
   /// SHA256 hash value of the encryption key.
   final pulumi.Input<String>? keySha256;
 
   /// Creates a new [BucketObjectCustomerEncryption].
   /// [encryptionAlgorithm] The encryption algorithm.
   /// [keySha256] SHA256 hash value of the encryption key.
-  BucketObjectCustomerEncryption({
-    this.encryptionAlgorithm,
-    this.keySha256,
-  });
+  BucketObjectCustomerEncryption({this.encryptionAlgorithm, this.keySha256});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class BucketObjectCustomerEncryption {
 
   factory BucketObjectCustomerEncryption.fromMap(Map<String, dynamic> map) {
     return BucketObjectCustomerEncryption(
-      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : (map['encryptionAlgorithm']! as String).input(),
-      keySha256: map['keySha256'] == null ? null : (map['keySha256']! as String).input(),
+      encryptionAlgorithm: (() {
+        final guardedValue = map['encryptionAlgorithm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keySha256: (() {
+        final guardedValue = map['keySha256'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -25,12 +25,21 @@ class InternetMonitorInternetMeasurementsLogDeliveryS3Config {
     };
   }
 
-  factory InternetMonitorInternetMeasurementsLogDeliveryS3Config.fromMap(Map<String, dynamic> map) {
+  factory InternetMonitorInternetMeasurementsLogDeliveryS3Config.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InternetMonitorInternetMeasurementsLogDeliveryS3Config(
-      bucketName: (map['bucketName'] as String).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : ((map['bucketPrefix'] as String).input()).input(),
-      logDeliveryStatus: map['logDeliveryStatus'] == null ? null : ((map['logDeliveryStatus'] as String).input()).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      bucketPrefix: (() {
+        final guardedValue = map['bucketPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logDeliveryStatus: (() {
+        final guardedValue = map['logDeliveryStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

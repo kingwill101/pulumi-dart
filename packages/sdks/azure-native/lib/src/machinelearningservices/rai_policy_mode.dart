@@ -4,16 +4,15 @@ enum RaiPolicyMode {
   valueDeferred("Deferred"),
   valueBlocking("Blocking");
 
-  const RaiPolicyMode(this.value);
-  final String value;
+  const RaiPolicyMode(this.wireValue);
+  final String wireValue;
 
   static RaiPolicyMode fromValue(String value) {
     for (final item in RaiPolicyMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RaiPolicyMode value: $value');
   }
 }
-

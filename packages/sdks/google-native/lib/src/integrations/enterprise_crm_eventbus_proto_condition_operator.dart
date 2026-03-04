@@ -10,16 +10,17 @@ enum EnterpriseCrmEventbusProtoConditionOperator {
   isEmpty("IS_EMPTY"),
   isNotEmpty("IS_NOT_EMPTY");
 
-  const EnterpriseCrmEventbusProtoConditionOperator(this.value);
-  final String value;
+  const EnterpriseCrmEventbusProtoConditionOperator(this.wireValue);
+  final String wireValue;
 
   static EnterpriseCrmEventbusProtoConditionOperator fromValue(String value) {
     for (final item in EnterpriseCrmEventbusProtoConditionOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoConditionOperator value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoConditionOperator value: $value',
+    );
   }
 }
-

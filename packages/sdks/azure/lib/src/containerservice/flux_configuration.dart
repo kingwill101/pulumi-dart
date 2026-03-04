@@ -3,7 +3,6 @@ import 'flux_configuration_args.dart';
 import 'flux_configuration_blob_storage.dart';
 import 'flux_configuration_bucket.dart';
 import 'flux_configuration_git_repository.dart';
-import 'flux_configuration_kustomization.dart';
 import 'flux_configuration_state.dart';
 
 /// Manages a Kubernetes Flux Configuration.
@@ -410,7 +409,7 @@ import 'flux_configuration_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.KubernetesConfiguration` - 2024-11-01
@@ -425,20 +424,28 @@ import 'flux_configuration_state.dart';
 class FluxConfiguration extends pulumi.CustomResource {
   /// An `blob_storage` block as defined below.
   late final pulumi.Output<FluxConfigurationBlobStorage?> blobStorage;
+
   /// A `bucket` block as defined below.
   late final pulumi.Output<FluxConfigurationBucket?> bucket;
+
   /// Specifies the Cluster ID. Changing this forces a new Kubernetes Cluster Extension to be created.
   late final pulumi.Output<String> clusterId;
+
   /// Whether the configuration will keep its reconciliation of its kustomizations and sources with the repository. Defaults to `true`.
   late final pulumi.Output<bool?> continuousReconciliationEnabled;
+
   /// A `git_repository` block as defined below.
   late final pulumi.Output<FluxConfigurationGitRepository?> gitRepository;
+
   /// A `kustomizations` block as defined below.
-  late final pulumi.Output<List<FluxConfigurationKustomization>> kustomizations;
+  late final pulumi.Output<List<Map<String, dynamic>>> kustomizations;
+
   /// Specifies the name which should be used for this Kubernetes Flux Configuration. Changing this forces a new Kubernetes Flux Configuration to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the namespace to which this configuration is installed to. Changing this forces a new Kubernetes Flux Configuration to be created.
   late final pulumi.Output<String> namespace;
+
   /// Specifies the scope at which the operator will be installed. Possible values are `cluster` and `namespace`. Defaults to `namespace`. Changing this forces a new Kubernetes Flux Configuration to be created.
   late final pulumi.Output<String?> scope;
 
@@ -451,20 +458,26 @@ class FluxConfiguration extends pulumi.CustomResource {
     FluxConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/fluxConfiguration:FluxConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.blobStorage = registerOutput<FluxConfigurationBlobStorage?>('blobStorage');
-    this.bucket = registerOutput<FluxConfigurationBucket?>('bucket');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.continuousReconciliationEnabled = registerOutput<bool?>('continuousReconciliationEnabled');
-    this.gitRepository = registerOutput<FluxConfigurationGitRepository?>('gitRepository');
-    this.kustomizations = registerOutput<List<FluxConfigurationKustomization>>('kustomizations');
+         'azure:containerservice/fluxConfiguration:FluxConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    blobStorage = registerOutput<FluxConfigurationBlobStorage?>('blobStorage');
+    bucket = registerOutput<FluxConfigurationBucket?>('bucket');
+    clusterId = registerOutput<String>('clusterId');
+    continuousReconciliationEnabled = registerOutput<bool?>(
+      'continuousReconciliationEnabled',
+    );
+    gitRepository = registerOutput<FluxConfigurationGitRepository?>(
+      'gitRepository',
+    );
+    kustomizations = registerOutput<List<Map<String, dynamic>>>(
+      'kustomizations',
+    );
     this.name = registerOutput<String>('name');
-    this.namespace = registerOutput<String>('namespace');
-    this.scope = registerOutput<String?>('scope');
+    namespace = registerOutput<String>('namespace');
+    scope = registerOutput<String?>('scope');
   }
 
   /// Gets an existing [FluxConfiguration] resource's state with the given [name] and [id].
@@ -485,19 +498,25 @@ class FluxConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:containerservice/fluxConfiguration:FluxConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.blobStorage = registerOutput<FluxConfigurationBlobStorage?>('blobStorage');
-    this.bucket = registerOutput<FluxConfigurationBucket?>('bucket');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.continuousReconciliationEnabled = registerOutput<bool?>('continuousReconciliationEnabled');
-    this.gitRepository = registerOutput<FluxConfigurationGitRepository?>('gitRepository');
-    this.kustomizations = registerOutput<List<FluxConfigurationKustomization>>('kustomizations');
+         'azure:containerservice/fluxConfiguration:FluxConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    blobStorage = registerOutput<FluxConfigurationBlobStorage?>('blobStorage');
+    bucket = registerOutput<FluxConfigurationBucket?>('bucket');
+    clusterId = registerOutput<String>('clusterId');
+    continuousReconciliationEnabled = registerOutput<bool?>(
+      'continuousReconciliationEnabled',
+    );
+    gitRepository = registerOutput<FluxConfigurationGitRepository?>(
+      'gitRepository',
+    );
+    kustomizations = registerOutput<List<Map<String, dynamic>>>(
+      'kustomizations',
+    );
     this.name = registerOutput<String>('name');
-    this.namespace = registerOutput<String>('namespace');
-    this.scope = registerOutput<String?>('scope');
+    namespace = registerOutput<String>('namespace');
+    scope = registerOutput<String?>('scope');
   }
 }

@@ -8,20 +8,15 @@ class FleetUpdateRunStageGroup {
 
   /// Creates a new [FleetUpdateRunStageGroup].
   /// [name] The name which should be used for this group.
-  FleetUpdateRunStageGroup({
-    required this.name,
-  });
+  FleetUpdateRunStageGroup({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory FleetUpdateRunStageGroup.fromMap(Map<String, dynamic> map) {
     return FleetUpdateRunStageGroup(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

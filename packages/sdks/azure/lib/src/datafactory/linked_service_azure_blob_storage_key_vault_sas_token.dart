@@ -21,11 +21,14 @@ class LinkedServiceAzureBlobStorageKeyVaultSasToken {
     };
   }
 
-  factory LinkedServiceAzureBlobStorageKeyVaultSasToken.fromMap(Map<String, dynamic> map) {
+  factory LinkedServiceAzureBlobStorageKeyVaultSasToken.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LinkedServiceAzureBlobStorageKeyVaultSasToken(
-      linkedServiceName: (map['linkedServiceName'] as String).input(),
-      secretName: (map['secretName'] as String).input(),
+      linkedServiceName: pulumi.Input.fromValue(
+        map['linkedServiceName'] as String,
+      ),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
     );
   }
 }
-

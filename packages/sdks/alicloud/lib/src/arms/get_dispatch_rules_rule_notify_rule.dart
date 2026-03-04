@@ -6,10 +6,14 @@ import 'get_dispatch_rules_rule_notify_rule_notify_object.dart';
 class GetDispatchRulesRuleNotifyRule {
   /// A list of notification methods.
   final pulumi.Input<List<String>> notifyChannels;
+
   /// (Available since v1.237.0) End time of notification.
   final pulumi.Input<String> notifyEndTime;
+
   /// Sets the notification object.
-  final pulumi.Input<List<GetDispatchRulesRuleNotifyRuleNotifyObject>> notifyObjects;
+  final pulumi.Input<List<GetDispatchRulesRuleNotifyRuleNotifyObject>>
+  notifyObjects;
+
   /// (Available since v1.237.0) Start time of notification.
   final pulumi.Input<String> notifyStartTime;
 
@@ -29,18 +33,37 @@ class GetDispatchRulesRuleNotifyRule {
     return <String, dynamic>{
       'notifyChannels': notifyChannels,
       'notifyEndTime': notifyEndTime,
-      'notifyObjects': pulumi.Input.mapInputValue<List<GetDispatchRulesRuleNotifyRuleNotifyObject>, List<Map<String, dynamic>>>(notifyObjects, (value) => pulumi.Input.encodeList<GetDispatchRulesRuleNotifyRuleNotifyObject, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'notifyObjects':
+          pulumi.Input.mapInputValue<
+            List<GetDispatchRulesRuleNotifyRuleNotifyObject>,
+            List<Map<String, dynamic>>
+          >(
+            notifyObjects,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetDispatchRulesRuleNotifyRuleNotifyObject,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'notifyStartTime': notifyStartTime,
     };
   }
 
   factory GetDispatchRulesRuleNotifyRule.fromMap(Map<String, dynamic> map) {
     return GetDispatchRulesRuleNotifyRule(
-      notifyChannels: ((map['notifyChannels'] as List).cast<String>()).input(),
-      notifyEndTime: (map['notifyEndTime'] as String).input(),
-      notifyObjects: (pulumi.Input.decodeList<GetDispatchRulesRuleNotifyRuleNotifyObject>(map['notifyObjects'], (value) => GetDispatchRulesRuleNotifyRuleNotifyObject.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notifyStartTime: (map['notifyStartTime'] as String).input(),
+      notifyChannels: pulumi.Input.fromValue(
+        (map['notifyChannels'] as List).cast<String>(),
+      ),
+      notifyEndTime: pulumi.Input.fromValue(map['notifyEndTime'] as String),
+      notifyObjects: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetDispatchRulesRuleNotifyRuleNotifyObject>(
+          map['notifyObjects']!,
+          (value) => GetDispatchRulesRuleNotifyRuleNotifyObject.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      notifyStartTime: pulumi.Input.fromValue(map['notifyStartTime'] as String),
     );
   }
 }
-

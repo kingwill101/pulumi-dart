@@ -7,8 +7,10 @@ import 'get_end_user_products_end_user_product.dart';
 class GetEndUserProductsResult {
   /// A list of End User Product Entries. Each element contains the following attributes:
   final List<GetEndUserProductsEndUserProduct> endUserProducts;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of End User Product IDs.
   final List<String> ids;
   final String? nameRegex;
@@ -42,7 +44,11 @@ class GetEndUserProductsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endUserProducts': pulumi.Input.encodeList<GetEndUserProductsEndUserProduct, Map<String, dynamic>>(endUserProducts, (value) => value.toMap()),
+      'endUserProducts':
+          pulumi.Input.encodeList<
+            GetEndUserProductsEndUserProduct,
+            Map<String, dynamic>
+          >(endUserProducts, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -56,16 +62,45 @@ class GetEndUserProductsResult {
 
   factory GetEndUserProductsResult.fromMap(Map<String, dynamic> map) {
     return GetEndUserProductsResult(
-      endUserProducts: pulumi.Input.decodeList<GetEndUserProductsEndUserProduct>(map['endUserProducts'], (value) => GetEndUserProductsEndUserProduct.fromMap((value as Map).cast<String, dynamic>())),
+      endUserProducts:
+          pulumi.Input.decodeList<GetEndUserProductsEndUserProduct>(
+            map['endUserProducts']!,
+            (value) => GetEndUserProductsEndUserProduct.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      sortBy: map['sortBy'] == null ? null : map['sortBy']! as String,
-      sortOrder: map['sortOrder'] == null ? null : map['sortOrder']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      sortBy: (() {
+        final guardedValue = map['sortBy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sortOrder: (() {
+        final guardedValue = map['sortOrder'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

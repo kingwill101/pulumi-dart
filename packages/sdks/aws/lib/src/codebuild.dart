@@ -1,5 +1,3 @@
-library module_codebuild;
-
 export 'codebuild/fleet.dart';
 export 'codebuild/fleet_args.dart';
 export 'codebuild/fleet_compute_configuration.dart';

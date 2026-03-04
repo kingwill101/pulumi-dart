@@ -7,12 +7,16 @@ import 'rules_engine_rule_response.dart';
 class RulesEngineResponse {
   /// Resource ID.
   final pulumi.Input<String> id;
+
   /// Resource name.
   final pulumi.Input<String> name;
+
   /// Resource status.
   final pulumi.Input<String> resourceState;
+
   /// A list of rules that define a particular Rules Engine Configuration.
   final pulumi.Input<List<RulesEngineRuleResponse>>? rules;
+
   /// Resource type.
   final pulumi.Input<String> type;
 
@@ -35,19 +39,40 @@ class RulesEngineResponse {
       'id': id,
       'name': name,
       'resourceState': resourceState,
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<RulesEngineRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<RulesEngineRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RulesEngineRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RulesEngineRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'type': type,
     };
   }
 
   factory RulesEngineResponse.fromMap(Map<String, dynamic> map) {
     return RulesEngineResponse(
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceState: (map['resourceState'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RulesEngineRuleResponse>(map['rules']!, (value) => RulesEngineRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceState: pulumi.Input.fromValue(map['resourceState'] as String),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RulesEngineRuleResponse>(
+            guardedValue,
+            (value) => RulesEngineRuleResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

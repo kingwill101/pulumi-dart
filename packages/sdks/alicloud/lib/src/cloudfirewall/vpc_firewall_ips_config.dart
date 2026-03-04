@@ -12,20 +12,26 @@ import 'vpc_firewall_ips_config_state.dart';
 class VpcFirewallIpsConfig extends pulumi.CustomResource {
   /// Base rule switch. Value:
   late final pulumi.Output<int> basicRules;
+
   /// Virtual patch switch. Value:
   late final pulumi.Output<int> enableAllPatch;
+
   /// Language
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> lang;
+
   /// MemberUid
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> memberUid;
+
   /// IPS rule Group
   late final pulumi.Output<String?> ruleClass;
+
   /// IPS defense mode. Value:
   late final pulumi.Output<int> runMode;
+
   /// The ID of the VPC firewall instance. Value:
   /// - When VPC firewall protects the network instances (including VPC, VBR, and CCN) and the specified VPC, the instance ID uses the CEN instance ID. You can call the DescribeVpcFirewallCenList operation to query the instance ID of CEN.
   /// - When the VPC firewall protects the traffic between two VPCs connected through the express connection, the instance ID uses the VPC firewall instance ID. You can call the DescribeVpcFirewallList operation to query the instance ID of the VPC firewall.
@@ -40,18 +46,18 @@ class VpcFirewallIpsConfig extends pulumi.CustomResource {
     VpcFirewallIpsConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/vpcFirewallIpsConfig:VpcFirewallIpsConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.basicRules = registerOutput<int>('basicRules');
-    this.enableAllPatch = registerOutput<int>('enableAllPatch');
-    this.lang = registerOutput<String?>('lang');
-    this.memberUid = registerOutput<String?>('memberUid');
-    this.ruleClass = registerOutput<String?>('ruleClass');
-    this.runMode = registerOutput<int>('runMode');
-    this.vpcFirewallId = registerOutput<String>('vpcFirewallId');
+         'alicloud:cloudfirewall/vpcFirewallIpsConfig:VpcFirewallIpsConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    basicRules = registerOutput<int>('basicRules');
+    enableAllPatch = registerOutput<int>('enableAllPatch');
+    lang = registerOutput<String?>('lang');
+    memberUid = registerOutput<String?>('memberUid');
+    ruleClass = registerOutput<String?>('ruleClass');
+    runMode = registerOutput<int>('runMode');
+    vpcFirewallId = registerOutput<String>('vpcFirewallId');
   }
 
   /// Gets an existing [VpcFirewallIpsConfig] resource's state with the given [name] and [id].
@@ -72,17 +78,17 @@ class VpcFirewallIpsConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/vpcFirewallIpsConfig:VpcFirewallIpsConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.basicRules = registerOutput<int>('basicRules');
-    this.enableAllPatch = registerOutput<int>('enableAllPatch');
-    this.lang = registerOutput<String?>('lang');
-    this.memberUid = registerOutput<String?>('memberUid');
-    this.ruleClass = registerOutput<String?>('ruleClass');
-    this.runMode = registerOutput<int>('runMode');
-    this.vpcFirewallId = registerOutput<String>('vpcFirewallId');
+         'alicloud:cloudfirewall/vpcFirewallIpsConfig:VpcFirewallIpsConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    basicRules = registerOutput<int>('basicRules');
+    enableAllPatch = registerOutput<int>('enableAllPatch');
+    lang = registerOutput<String?>('lang');
+    memberUid = registerOutput<String?>('memberUid');
+    ruleClass = registerOutput<String?>('ruleClass');
+    runMode = registerOutput<int>('runMode');
+    vpcFirewallId = registerOutput<String>('vpcFirewallId');
   }
 }

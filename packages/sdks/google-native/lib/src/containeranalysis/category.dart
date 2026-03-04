@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Category {
   /// The identifier of the category.
   final pulumi.Input<String>? categoryId;
+
   /// The localized name of the category.
   final pulumi.Input<String>? name;
 
   /// Creates a new [Category].
   /// [categoryId] The identifier of the category.
   /// [name] The localized name of the category.
-  Category({
-    this.categoryId,
-    this.name,
-  });
+  Category({this.categoryId, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'categoryId': ?categoryId,
-      'name': ?name,
-    };
+    return <String, dynamic>{'categoryId': ?categoryId, 'name': ?name};
   }
 
   factory Category.fromMap(Map<String, dynamic> map) {
     return Category(
-      categoryId: map['categoryId'] == null ? null : (map['categoryId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      categoryId: (() {
+        final guardedValue = map['categoryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

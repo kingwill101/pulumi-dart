@@ -7,24 +7,39 @@ import 'issue_model_args.dart';
 class IssueModel extends pulumi.CustomResource {
   /// The time at which this issue model was created.
   late final pulumi.Output<String> createTime;
+
   /// The representative name for the issue model.
   late final pulumi.Output<String> displayName;
+
   /// Configs for the input data that used to create the issue model.
-  late final pulumi.Output<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse> inputDataConfig;
+  late final pulumi.Output<
+    GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse
+  >
+  inputDataConfig;
+
   /// Number of issues in this issue model.
   late final pulumi.Output<String> issueCount;
+
   /// Language of the model.
   late final pulumi.Output<String> languageCode;
   late final pulumi.Output<String> location;
+
   /// Type of the model.
   late final pulumi.Output<String> modelType;
+
   /// Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// State of the model.
   late final pulumi.Output<String> state;
+
   /// Immutable. The issue model's label statistics on its training data.
-  late final pulumi.Output<GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse> trainingStats;
+  late final pulumi.Output<
+    GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse
+  >
+  trainingStats;
+
   /// The most recent time at which the issue model was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -37,22 +52,28 @@ class IssueModel extends pulumi.CustomResource {
     IssueModelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:contactcenterinsights/v1:IssueModel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.displayName = registerOutput<String>('displayName');
-    this.inputDataConfig = registerOutput<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse>('inputDataConfig');
-    this.issueCount = registerOutput<String>('issueCount');
-    this.languageCode = registerOutput<String>('languageCode');
-    this.location = registerOutput<String>('location');
-    this.modelType = registerOutput<String>('modelType');
+         'google-native:contactcenterinsights/v1:IssueModel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    inputDataConfig =
+        registerOutput<
+          GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse
+        >('inputDataConfig');
+    issueCount = registerOutput<String>('issueCount');
+    languageCode = registerOutput<String>('languageCode');
+    location = registerOutput<String>('location');
+    modelType = registerOutput<String>('modelType');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.state = registerOutput<String>('state');
-    this.trainingStats = registerOutput<GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse>('trainingStats');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    trainingStats =
+        registerOutput<
+          GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse
+        >('trainingStats');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

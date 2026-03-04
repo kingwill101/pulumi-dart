@@ -6,16 +6,15 @@ enum RoutineRoutineType {
   tableValuedFunction("TABLE_VALUED_FUNCTION"),
   aggregateFunction("AGGREGATE_FUNCTION");
 
-  const RoutineRoutineType(this.value);
-  final String value;
+  const RoutineRoutineType(this.wireValue);
+  final String wireValue;
 
   static RoutineRoutineType fromValue(String value) {
     for (final item in RoutineRoutineType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RoutineRoutineType value: $value');
   }
 }
-

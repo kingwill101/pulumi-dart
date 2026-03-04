@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntegrationAccountAgreementGuestIdentity {
   /// The authenticating body that provides unique guest identities to organizations.
   final pulumi.Input<String> qualifier;
+
   /// The value that identifies the documents that your logic apps receive.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class IntegrationAccountAgreementGuestIdentity {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'qualifier': qualifier,
-      'value': value,
-    };
+    return <String, dynamic>{'qualifier': qualifier, 'value': value};
   }
 
-  factory IntegrationAccountAgreementGuestIdentity.fromMap(Map<String, dynamic> map) {
+  factory IntegrationAccountAgreementGuestIdentity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IntegrationAccountAgreementGuestIdentity(
-      qualifier: (map['qualifier'] as String).input(),
-      value: (map['value'] as String).input(),
+      qualifier: pulumi.Input.fromValue(map['qualifier'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

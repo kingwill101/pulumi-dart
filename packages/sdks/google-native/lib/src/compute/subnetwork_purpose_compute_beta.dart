@@ -8,16 +8,15 @@ enum SubnetworkPurposeComputeBeta {
   privateServiceConnect("PRIVATE_SERVICE_CONNECT"),
   regionalManagedProxy("REGIONAL_MANAGED_PROXY");
 
-  const SubnetworkPurposeComputeBeta(this.value);
-  final String value;
+  const SubnetworkPurposeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static SubnetworkPurposeComputeBeta fromValue(String value) {
     for (final item in SubnetworkPurposeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SubnetworkPurposeComputeBeta value: $value');
   }
 }
-

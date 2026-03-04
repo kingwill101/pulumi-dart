@@ -8,6 +8,7 @@ class DeliveryRuleRequestHeaderConditionResponse {
   /// Request variable to compare with.
   /// Expected value is 'RequestHeader'.
   final pulumi.Input<String> name;
+
   /// Defines the parameters for the condition.
   final pulumi.Input<RequestHeaderMatchConditionParametersResponse> parameters;
 
@@ -22,15 +23,24 @@ class DeliveryRuleRequestHeaderConditionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': pulumi.Input.mapInputValue<RequestHeaderMatchConditionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            RequestHeaderMatchConditionParametersResponse,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
     };
   }
 
-  factory DeliveryRuleRequestHeaderConditionResponse.fromMap(Map<String, dynamic> map) {
+  factory DeliveryRuleRequestHeaderConditionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeliveryRuleRequestHeaderConditionResponse(
-      name: (map['name'] as String).input(),
-      parameters: (RequestHeaderMatchConditionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: pulumi.Input.fromValue(
+        RequestHeaderMatchConditionParametersResponse.fromMap(
+          (map['parameters']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

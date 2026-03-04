@@ -272,7 +272,7 @@ import 'email_template_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -287,18 +287,24 @@ import 'email_template_state.dart';
 class EmailTemplate extends pulumi.CustomResource {
   /// The name of the API Management Service in which the Email Template should exist. Changing this forces a new API Management Email Template to be created.
   late final pulumi.Output<String> apiManagementName;
+
   /// The body of the Email. Its format has to be a well-formed HTML document.
   ///
-  /// > **Note:** In `subject` and `body` predefined parameters can be used. The available parameters depend on the template. Schema to use a parameter: `$` followed by the `parameter.name` - `$<parameter.name>`. The available parameters can be seen in the Notification templates section of the API-Management Service instance within the Azure Portal.
+  /// &gt; **Note:** In `subject` and `body` predefined parameters can be used. The available parameters depend on the template. Schema to use a parameter: `$` followed by the `parameter.name` - `$&lt;parameter.name&gt;`. The available parameters can be seen in the Notification templates section of the API-Management Service instance within the Azure Portal.
   late final pulumi.Output<String> body;
+
   /// The description of the Email Template.
   late final pulumi.Output<String> description;
+
   /// The name of the Resource Group where the API Management Email Template should exist. Changing this forces a new API Management Email Template to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The subject of the Email.
   late final pulumi.Output<String> subject;
+
   /// The name of the Email Template. Possible values are `AccountClosedDeveloper`, `ApplicationApprovedNotificationMessage`, `ConfirmSignUpIdentityDefault`, `EmailChangeIdentityDefault`, `InviteUserNotificationMessage`, `NewCommentNotificationMessage`, `NewDeveloperNotificationMessage`, `NewIssueNotificationMessage`, `PasswordResetByAdminNotificationMessage`, `PasswordResetIdentityDefault`, `PurchaseDeveloperNotificationMessage`, `QuotaLimitApproachingDeveloperNotificationMessage`, `RejectDeveloperNotificationMessage`, `RequestDeveloperNotificationMessage`. Changing this forces a new API Management Email Template to be created.
   late final pulumi.Output<String> templateName;
+
   /// The title of the Email Template.
   late final pulumi.Output<String> title;
 
@@ -311,18 +317,18 @@ class EmailTemplate extends pulumi.CustomResource {
     EmailTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/emailTemplate:EmailTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.body = registerOutput<String>('body');
-    this.description = registerOutput<String>('description');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subject = registerOutput<String>('subject');
-    this.templateName = registerOutput<String>('templateName');
-    this.title = registerOutput<String>('title');
+         'azure:apimanagement/emailTemplate:EmailTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    body = registerOutput<String>('body');
+    description = registerOutput<String>('description');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subject = registerOutput<String>('subject');
+    templateName = registerOutput<String>('templateName');
+    title = registerOutput<String>('title');
   }
 
   /// Gets an existing [EmailTemplate] resource's state with the given [name] and [id].
@@ -343,17 +349,17 @@ class EmailTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/emailTemplate:EmailTemplate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementName = registerOutput<String>('apiManagementName');
-    this.body = registerOutput<String>('body');
-    this.description = registerOutput<String>('description');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subject = registerOutput<String>('subject');
-    this.templateName = registerOutput<String>('templateName');
-    this.title = registerOutput<String>('title');
+         'azure:apimanagement/emailTemplate:EmailTemplate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    body = registerOutput<String>('body');
+    description = registerOutput<String>('description');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subject = registerOutput<String>('subject');
+    templateName = registerOutput<String>('templateName');
+    title = registerOutput<String>('title');
   }
 }

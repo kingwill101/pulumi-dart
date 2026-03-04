@@ -8,6 +8,7 @@ import 'step_response_networkmanagement_v1beta1.dart';
 class TraceResponseNetworkmanagementV1beta1 {
   /// Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
   final pulumi.Input<EndpointInfoResponseNetworkmanagementV1beta1> endpointInfo;
+
   /// A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted). The steps are ordered by the processing sequence within the simulated network state machine. It is critical to preserve the order of the steps and avoid reordering or sorting them.
   final pulumi.Input<List<StepResponseNetworkmanagementV1beta1>> steps;
 
@@ -21,16 +22,43 @@ class TraceResponseNetworkmanagementV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endpointInfo': pulumi.Input.mapInputValue<EndpointInfoResponseNetworkmanagementV1beta1, Map<String, dynamic>>(endpointInfo, (value) => value.toMap()),
-      'steps': pulumi.Input.mapInputValue<List<StepResponseNetworkmanagementV1beta1>, List<Map<String, dynamic>>>(steps, (value) => pulumi.Input.encodeList<StepResponseNetworkmanagementV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'endpointInfo':
+          pulumi.Input.mapInputValue<
+            EndpointInfoResponseNetworkmanagementV1beta1,
+            Map<String, dynamic>
+          >(endpointInfo, (value) => value.toMap()),
+      'steps':
+          pulumi.Input.mapInputValue<
+            List<StepResponseNetworkmanagementV1beta1>,
+            List<Map<String, dynamic>>
+          >(
+            steps,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StepResponseNetworkmanagementV1beta1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory TraceResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
+  factory TraceResponseNetworkmanagementV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TraceResponseNetworkmanagementV1beta1(
-      endpointInfo: (EndpointInfoResponseNetworkmanagementV1beta1.fromMap((map['endpointInfo'] as Map).cast<String, dynamic>())).input(),
-      steps: (pulumi.Input.decodeList<StepResponseNetworkmanagementV1beta1>(map['steps'], (value) => StepResponseNetworkmanagementV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpointInfo: pulumi.Input.fromValue(
+        EndpointInfoResponseNetworkmanagementV1beta1.fromMap(
+          (map['endpointInfo']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      steps: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<StepResponseNetworkmanagementV1beta1>(
+          map['steps']!,
+          (value) => StepResponseNetworkmanagementV1beta1.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

@@ -8,18 +8,26 @@ import 'reconciliation_policy_properties_response.dart';
 class InstancePropertiesResponse {
   /// State of instance
   final pulumi.Input<String>? activeState;
+
   /// Deployment timestamp of instance
   final pulumi.Input<double> deploymentTimestampEpoch;
+
   /// Provisioning state of resource
   final pulumi.Input<String> provisioningState;
+
   /// Reconciliation policy of instance
-  final pulumi.Input<ReconciliationPolicyPropertiesResponse>? reconciliationPolicy;
+  final pulumi.Input<ReconciliationPolicyPropertiesResponse>?
+  reconciliationPolicy;
+
   /// Scope of instance
   final pulumi.Input<String>? solutionScope;
+
   /// Solution version of instance
   final pulumi.Input<String> solutionVersionId;
+
   /// Status of instance
   final pulumi.Input<DeploymentStatusResponse> status;
+
   /// Target of instance
   final pulumi.Input<String> targetId;
 
@@ -48,25 +56,58 @@ class InstancePropertiesResponse {
       'activeState': ?activeState,
       'deploymentTimestampEpoch': deploymentTimestampEpoch,
       'provisioningState': provisioningState,
-      'reconciliationPolicy': ?pulumi.Input.mapOptionalInputValue<ReconciliationPolicyPropertiesResponse, Map<String, dynamic>>(reconciliationPolicy, (value) => value.toMap()),
+      'reconciliationPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReconciliationPolicyPropertiesResponse,
+            Map<String, dynamic>
+          >(reconciliationPolicy, (value) => value.toMap()),
       'solutionScope': ?solutionScope,
       'solutionVersionId': solutionVersionId,
-      'status': pulumi.Input.mapInputValue<DeploymentStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          pulumi.Input.mapInputValue<
+            DeploymentStatusResponse,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
       'targetId': targetId,
     };
   }
 
   factory InstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InstancePropertiesResponse(
-      activeState: map['activeState'] == null ? null : (map['activeState']! as String).input(),
-      deploymentTimestampEpoch: (map['deploymentTimestampEpoch'] as double).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : (ReconciliationPolicyPropertiesResponse.fromMap((map['reconciliationPolicy']! as Map).cast<String, dynamic>())).input(),
-      solutionScope: map['solutionScope'] == null ? null : (map['solutionScope']! as String).input(),
-      solutionVersionId: (map['solutionVersionId'] as String).input(),
-      status: (DeploymentStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      targetId: (map['targetId'] as String).input(),
+      activeState: (() {
+        final guardedValue = map['activeState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deploymentTimestampEpoch: pulumi.Input.fromValue(
+        map['deploymentTimestampEpoch'] as double,
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      reconciliationPolicy: (() {
+        final guardedValue = map['reconciliationPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ReconciliationPolicyPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      solutionScope: (() {
+        final guardedValue = map['solutionScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      solutionVersionId: pulumi.Input.fromValue(
+        map['solutionVersionId'] as String,
+      ),
+      status: pulumi.Input.fromValue(
+        DeploymentStatusResponse.fromMap(
+          (map['status']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      targetId: pulumi.Input.fromValue(map['targetId'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupFileInfoResponse {
   /// Sequence number of the backup file in the backup set
   final pulumi.Input<int>? familySequenceNumber;
+
   /// Location of the backup file in shared folder
   final pulumi.Input<String>? fileLocation;
+
   /// Status of the backup file during migration
   final pulumi.Input<String>? status;
 
@@ -31,10 +33,21 @@ class BackupFileInfoResponse {
 
   factory BackupFileInfoResponse.fromMap(Map<String, dynamic> map) {
     return BackupFileInfoResponse(
-      familySequenceNumber: map['familySequenceNumber'] == null ? null : (map['familySequenceNumber']! as int).input(),
-      fileLocation: map['fileLocation'] == null ? null : (map['fileLocation']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      familySequenceNumber: (() {
+        final guardedValue = map['familySequenceNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      fileLocation: (() {
+        final guardedValue = map['fileLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

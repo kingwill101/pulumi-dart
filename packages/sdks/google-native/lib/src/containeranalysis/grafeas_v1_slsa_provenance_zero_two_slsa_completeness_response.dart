@@ -26,12 +26,13 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse {
     };
   }
 
-  factory GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse.fromMap(Map<String, dynamic> map) {
+  factory GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse(
-      environment: (map['environment'] as bool).input(),
-      materials: (map['materials'] as bool).input(),
-      parameters: (map['parameters'] as bool).input(),
+      environment: pulumi.Input.fromValue(map['environment'] as bool),
+      materials: pulumi.Input.fromValue(map['materials'] as bool),
+      parameters: pulumi.Input.fromValue(map['parameters'] as bool),
     );
   }
 }
-

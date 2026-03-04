@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheUpgradeSettingsResponse {
   /// When upgradeScheduleEnabled is true, this field holds the user-chosen upgrade time. At the user-chosen time, the firmware update will automatically be installed on the cache.
   final pulumi.Input<String>? scheduledTime;
+
   /// True if the user chooses to select an installation time between now and firmwareUpdateDeadline. Else the firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.
   final pulumi.Input<bool>? upgradeScheduleEnabled;
 
@@ -26,9 +27,16 @@ class CacheUpgradeSettingsResponse {
 
   factory CacheUpgradeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return CacheUpgradeSettingsResponse(
-      scheduledTime: map['scheduledTime'] == null ? null : (map['scheduledTime']! as String).input(),
-      upgradeScheduleEnabled: map['upgradeScheduleEnabled'] == null ? null : (map['upgradeScheduleEnabled']! as bool).input(),
+      scheduledTime: (() {
+        final guardedValue = map['scheduledTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      upgradeScheduleEnabled: (() {
+        final guardedValue = map['upgradeScheduleEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

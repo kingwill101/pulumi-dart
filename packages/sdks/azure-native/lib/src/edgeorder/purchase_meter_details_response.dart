@@ -7,14 +7,19 @@ class PurchaseMeterDetailsResponse {
   /// Represents billing type.
   /// Expected value is 'Purchase'.
   final pulumi.Input<String> billingType;
+
   /// Charging type.
   final pulumi.Input<String> chargingType;
+
   /// Billing unit applicable for Pav2 billing.
   final pulumi.Input<double> multiplier;
+
   /// Product Id.
   final pulumi.Input<String> productId;
+
   /// Sku Id.
   final pulumi.Input<String> skuId;
+
   /// Term Id.
   final pulumi.Input<String> termId;
 
@@ -47,13 +52,12 @@ class PurchaseMeterDetailsResponse {
 
   factory PurchaseMeterDetailsResponse.fromMap(Map<String, dynamic> map) {
     return PurchaseMeterDetailsResponse(
-      billingType: (map['billingType'] as String).input(),
-      chargingType: (map['chargingType'] as String).input(),
-      multiplier: (map['multiplier'] as double).input(),
-      productId: (map['productId'] as String).input(),
-      skuId: (map['skuId'] as String).input(),
-      termId: (map['termId'] as String).input(),
+      billingType: pulumi.Input.fromValue(map['billingType'] as String),
+      chargingType: pulumi.Input.fromValue(map['chargingType'] as String),
+      multiplier: pulumi.Input.fromValue(map['multiplier'] as double),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      skuId: pulumi.Input.fromValue(map['skuId'] as String),
+      termId: pulumi.Input.fromValue(map['termId'] as String),
     );
   }
 }
-

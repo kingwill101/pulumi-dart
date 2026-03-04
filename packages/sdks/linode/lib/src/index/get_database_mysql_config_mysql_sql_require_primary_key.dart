@@ -29,13 +29,14 @@ class GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey {
     };
   }
 
-  factory GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey(
-      description: (map['description'] as String).input(),
-      example: (map['example'] as bool).input(),
-      requiresRestart: (map['requiresRestart'] as bool).input(),
-      type: (map['type'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      example: pulumi.Input.fromValue(map['example'] as bool),
+      requiresRestart: pulumi.Input.fromValue(map['requiresRestart'] as bool),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

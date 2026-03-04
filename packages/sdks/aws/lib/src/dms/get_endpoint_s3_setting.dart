@@ -165,52 +165,84 @@ class GetEndpointS3Setting {
       'serviceAccessRoleArn': serviceAccessRoleArn,
       'timestampColumnName': timestampColumnName,
       'useCsvNoSupValue': useCsvNoSupValue,
-      'useTaskStartTimeForFullLoadTimestamp': useTaskStartTimeForFullLoadTimestamp,
+      'useTaskStartTimeForFullLoadTimestamp':
+          useTaskStartTimeForFullLoadTimestamp,
     };
   }
 
   factory GetEndpointS3Setting.fromMap(Map<String, dynamic> map) {
     return GetEndpointS3Setting(
-      addColumnName: (map['addColumnName'] as bool).input(),
-      bucketFolder: (map['bucketFolder'] as String).input(),
-      bucketName: (map['bucketName'] as String).input(),
-      cannedAclForObjects: (map['cannedAclForObjects'] as String).input(),
-      cdcInsertsAndUpdates: (map['cdcInsertsAndUpdates'] as bool).input(),
-      cdcInsertsOnly: (map['cdcInsertsOnly'] as bool).input(),
-      cdcMaxBatchInterval: (map['cdcMaxBatchInterval'] as int).input(),
-      cdcMinFileSize: (map['cdcMinFileSize'] as int).input(),
-      cdcPath: (map['cdcPath'] as String).input(),
-      compressionType: (map['compressionType'] as String).input(),
-      csvDelimiter: (map['csvDelimiter'] as String).input(),
-      csvNoSupValue: (map['csvNoSupValue'] as String).input(),
-      csvNullValue: (map['csvNullValue'] as String).input(),
-      csvRowDelimiter: (map['csvRowDelimiter'] as String).input(),
-      dataFormat: (map['dataFormat'] as String).input(),
-      dataPageSize: (map['dataPageSize'] as int).input(),
-      datePartitionDelimiter: (map['datePartitionDelimiter'] as String).input(),
-      datePartitionEnabled: (map['datePartitionEnabled'] as bool).input(),
-      datePartitionSequence: (map['datePartitionSequence'] as String).input(),
-      dictPageSizeLimit: (map['dictPageSizeLimit'] as int).input(),
-      enableStatistics: (map['enableStatistics'] as bool).input(),
-      encodingType: (map['encodingType'] as String).input(),
-      encryptionMode: (map['encryptionMode'] as String).input(),
-      externalTableDefinition: (map['externalTableDefinition'] as String).input(),
-      glueCatalogGeneration: (map['glueCatalogGeneration'] as bool).input(),
-      ignoreHeaderRows: (map['ignoreHeaderRows'] as int).input(),
-      ignoreHeadersRow: (map['ignoreHeadersRow'] as int).input(),
-      includeOpForFullLoad: (map['includeOpForFullLoad'] as bool).input(),
-      maxFileSize: (map['maxFileSize'] as int).input(),
-      parquetTimestampInMillisecond: (map['parquetTimestampInMillisecond'] as bool).input(),
-      parquetVersion: (map['parquetVersion'] as String).input(),
-      preserveTransactions: (map['preserveTransactions'] as bool).input(),
-      rfc4180: (map['rfc4180'] as bool).input(),
-      rowGroupLength: (map['rowGroupLength'] as int).input(),
-      serverSideEncryptionKmsKeyId: (map['serverSideEncryptionKmsKeyId'] as String).input(),
-      serviceAccessRoleArn: (map['serviceAccessRoleArn'] as String).input(),
-      timestampColumnName: (map['timestampColumnName'] as String).input(),
-      useCsvNoSupValue: (map['useCsvNoSupValue'] as bool).input(),
-      useTaskStartTimeForFullLoadTimestamp: (map['useTaskStartTimeForFullLoadTimestamp'] as bool).input(),
+      addColumnName: pulumi.Input.fromValue(map['addColumnName'] as bool),
+      bucketFolder: pulumi.Input.fromValue(map['bucketFolder'] as String),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      cannedAclForObjects: pulumi.Input.fromValue(
+        map['cannedAclForObjects'] as String,
+      ),
+      cdcInsertsAndUpdates: pulumi.Input.fromValue(
+        map['cdcInsertsAndUpdates'] as bool,
+      ),
+      cdcInsertsOnly: pulumi.Input.fromValue(map['cdcInsertsOnly'] as bool),
+      cdcMaxBatchInterval: pulumi.Input.fromValue(
+        map['cdcMaxBatchInterval'] as int,
+      ),
+      cdcMinFileSize: pulumi.Input.fromValue(map['cdcMinFileSize'] as int),
+      cdcPath: pulumi.Input.fromValue(map['cdcPath'] as String),
+      compressionType: pulumi.Input.fromValue(map['compressionType'] as String),
+      csvDelimiter: pulumi.Input.fromValue(map['csvDelimiter'] as String),
+      csvNoSupValue: pulumi.Input.fromValue(map['csvNoSupValue'] as String),
+      csvNullValue: pulumi.Input.fromValue(map['csvNullValue'] as String),
+      csvRowDelimiter: pulumi.Input.fromValue(map['csvRowDelimiter'] as String),
+      dataFormat: pulumi.Input.fromValue(map['dataFormat'] as String),
+      dataPageSize: pulumi.Input.fromValue(map['dataPageSize'] as int),
+      datePartitionDelimiter: pulumi.Input.fromValue(
+        map['datePartitionDelimiter'] as String,
+      ),
+      datePartitionEnabled: pulumi.Input.fromValue(
+        map['datePartitionEnabled'] as bool,
+      ),
+      datePartitionSequence: pulumi.Input.fromValue(
+        map['datePartitionSequence'] as String,
+      ),
+      dictPageSizeLimit: pulumi.Input.fromValue(
+        map['dictPageSizeLimit'] as int,
+      ),
+      enableStatistics: pulumi.Input.fromValue(map['enableStatistics'] as bool),
+      encodingType: pulumi.Input.fromValue(map['encodingType'] as String),
+      encryptionMode: pulumi.Input.fromValue(map['encryptionMode'] as String),
+      externalTableDefinition: pulumi.Input.fromValue(
+        map['externalTableDefinition'] as String,
+      ),
+      glueCatalogGeneration: pulumi.Input.fromValue(
+        map['glueCatalogGeneration'] as bool,
+      ),
+      ignoreHeaderRows: pulumi.Input.fromValue(map['ignoreHeaderRows'] as int),
+      ignoreHeadersRow: pulumi.Input.fromValue(map['ignoreHeadersRow'] as int),
+      includeOpForFullLoad: pulumi.Input.fromValue(
+        map['includeOpForFullLoad'] as bool,
+      ),
+      maxFileSize: pulumi.Input.fromValue(map['maxFileSize'] as int),
+      parquetTimestampInMillisecond: pulumi.Input.fromValue(
+        map['parquetTimestampInMillisecond'] as bool,
+      ),
+      parquetVersion: pulumi.Input.fromValue(map['parquetVersion'] as String),
+      preserveTransactions: pulumi.Input.fromValue(
+        map['preserveTransactions'] as bool,
+      ),
+      rfc4180: pulumi.Input.fromValue(map['rfc4180'] as bool),
+      rowGroupLength: pulumi.Input.fromValue(map['rowGroupLength'] as int),
+      serverSideEncryptionKmsKeyId: pulumi.Input.fromValue(
+        map['serverSideEncryptionKmsKeyId'] as String,
+      ),
+      serviceAccessRoleArn: pulumi.Input.fromValue(
+        map['serviceAccessRoleArn'] as String,
+      ),
+      timestampColumnName: pulumi.Input.fromValue(
+        map['timestampColumnName'] as String,
+      ),
+      useCsvNoSupValue: pulumi.Input.fromValue(map['useCsvNoSupValue'] as bool),
+      useTaskStartTimeForFullLoadTimestamp: pulumi.Input.fromValue(
+        map['useTaskStartTimeForFullLoadTimestamp'] as bool,
+      ),
     );
   }
 }
-

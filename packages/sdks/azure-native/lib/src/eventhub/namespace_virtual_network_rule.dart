@@ -138,10 +138,13 @@ import 'namespace_virtual_network_rule_args.dart';
 class NamespaceVirtualNetworkRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// ARM ID of Virtual Network Subnet
   late final pulumi.Output<String?> virtualNetworkSubnetId;
 
@@ -154,14 +157,14 @@ class NamespaceVirtualNetworkRule extends pulumi.CustomResource {
     NamespaceVirtualNetworkRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:eventhub:NamespaceVirtualNetworkRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:eventhub:NamespaceVirtualNetworkRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
-    this.virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
+    type = registerOutput<String>('type');
+    virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
   }
 }

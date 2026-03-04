@@ -1,5 +1,3 @@
-library module_applicationintegration;
-
 export 'applicationintegration/auth_config.dart';
 export 'applicationintegration/auth_config_args.dart';
 export 'applicationintegration/auth_config_client_certificate.dart';

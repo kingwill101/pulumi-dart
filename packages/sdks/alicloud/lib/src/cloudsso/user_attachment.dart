@@ -6,9 +6,9 @@ import 'user_attachment_state.dart';
 ///
 /// For information about Cloud SSO User Attachment and how to use it, see [What is User Attachment](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-addusertogroup).
 ///
-/// > **NOTE:** Available since v1.141.0.
+/// &gt; **NOTE:** Available since v1.141.0.
 ///
-/// > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+/// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 ///
 /// ## Example Usage
 ///
@@ -346,8 +346,10 @@ import 'user_attachment_state.dart';
 class UserAttachment extends pulumi.CustomResource {
   /// The ID of the directory.
   late final pulumi.Output<String> directoryId;
+
   /// The ID of the group.
   late final pulumi.Output<String> groupId;
+
   /// The ID of the user.
   late final pulumi.Output<String> userId;
 
@@ -360,14 +362,14 @@ class UserAttachment extends pulumi.CustomResource {
     UserAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudsso/userAttachment:UserAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.directoryId = registerOutput<String>('directoryId');
-    this.groupId = registerOutput<String>('groupId');
-    this.userId = registerOutput<String>('userId');
+         'alicloud:cloudsso/userAttachment:UserAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    directoryId = registerOutput<String>('directoryId');
+    groupId = registerOutput<String>('groupId');
+    userId = registerOutput<String>('userId');
   }
 
   /// Gets an existing [UserAttachment] resource's state with the given [name] and [id].
@@ -388,13 +390,13 @@ class UserAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudsso/userAttachment:UserAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.directoryId = registerOutput<String>('directoryId');
-    this.groupId = registerOutput<String>('groupId');
-    this.userId = registerOutput<String>('userId');
+         'alicloud:cloudsso/userAttachment:UserAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    directoryId = registerOutput<String>('directoryId');
+    groupId = registerOutput<String>('groupId');
+    userId = registerOutput<String>('userId');
   }
 }

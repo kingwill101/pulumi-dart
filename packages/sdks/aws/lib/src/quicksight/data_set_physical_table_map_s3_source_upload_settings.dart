@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSetPhysicalTableMapS3SourceUploadSettings {
   /// Whether the file has a header row, or the files each have a header row.
   final pulumi.Input<bool>? containsHeader;
+
   /// Delimiter between values in the file.
   final pulumi.Input<String>? delimiter;
+
   /// File format. Valid values are `CSV`, `TSV`, `CLF`, `ELF`, `XLSX`, and `JSON`.
   final pulumi.Input<String>? format;
+
   /// A row number to start reading data from.
   final pulumi.Input<int>? startFromRow;
+
   /// Text qualifier. Valid values are `DOUBLE_QUOTE` and `SINGLE_QUOTE`.
   final pulumi.Input<String>? textQualifier;
 
@@ -38,14 +42,35 @@ class DataSetPhysicalTableMapS3SourceUploadSettings {
     };
   }
 
-  factory DataSetPhysicalTableMapS3SourceUploadSettings.fromMap(Map<String, dynamic> map) {
+  factory DataSetPhysicalTableMapS3SourceUploadSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSetPhysicalTableMapS3SourceUploadSettings(
-      containsHeader: map['containsHeader'] == null ? null : ((map['containsHeader'] as bool).input()).input(),
-      delimiter: map['delimiter'] == null ? null : ((map['delimiter'] as String).input()).input(),
-      format: map['format'] == null ? null : ((map['format'] as String).input()).input(),
-      startFromRow: map['startFromRow'] == null ? null : ((map['startFromRow'] as int).input()).input(),
-      textQualifier: map['textQualifier'] == null ? null : ((map['textQualifier'] as String).input()).input(),
+      containsHeader: (() {
+        final guardedValue = map['containsHeader'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      delimiter: (() {
+        final guardedValue = map['delimiter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startFromRow: (() {
+        final guardedValue = map['startFromRow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      textQualifier: (() {
+        final guardedValue = map['textQualifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

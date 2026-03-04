@@ -10,14 +10,22 @@ import 'enterprise_crm_frontends_eventbus_proto_param_specs_message_response.dar
 class EnterpriseCrmFrontendsEventbusProtoTaskEntityResponse {
   /// True if the task has conflict with vpcsc
   final pulumi.Input<bool> disabledForVpcSc;
+
   /// Metadata inclueds the task name, author and so on.
   final pulumi.Input<EnterpriseCrmEventbusProtoTaskMetadataResponse> metadata;
+
   /// Declarations for inputs/outputs for a TypedTask. This is also associated with the METADATA mask.
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse> paramSpecs;
+  final pulumi.Input<
+    EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse
+  >
+  paramSpecs;
+
   /// Deprecated - statistics from the Monarch query.
   final pulumi.Input<EnterpriseCrmEventbusStatsResponse> stats;
+
   /// Defines the type of the task
   final pulumi.Input<String> taskType;
+
   /// UI configuration for this task Also associated with the METADATA mask.
   final pulumi.Input<EnterpriseCrmEventbusProtoTaskUiConfigResponse> uiConfig;
 
@@ -40,23 +48,56 @@ class EnterpriseCrmFrontendsEventbusProtoTaskEntityResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'disabledForVpcSc': disabledForVpcSc,
-      'metadata': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoTaskMetadataResponse, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'paramSpecs': pulumi.Input.mapInputValue<EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse, Map<String, dynamic>>(paramSpecs, (value) => value.toMap()),
-      'stats': pulumi.Input.mapInputValue<EnterpriseCrmEventbusStatsResponse, Map<String, dynamic>>(stats, (value) => value.toMap()),
+      'metadata':
+          pulumi.Input.mapInputValue<
+            EnterpriseCrmEventbusProtoTaskMetadataResponse,
+            Map<String, dynamic>
+          >(metadata, (value) => value.toMap()),
+      'paramSpecs':
+          pulumi.Input.mapInputValue<
+            EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse,
+            Map<String, dynamic>
+          >(paramSpecs, (value) => value.toMap()),
+      'stats':
+          pulumi.Input.mapInputValue<
+            EnterpriseCrmEventbusStatsResponse,
+            Map<String, dynamic>
+          >(stats, (value) => value.toMap()),
       'taskType': taskType,
-      'uiConfig': pulumi.Input.mapInputValue<EnterpriseCrmEventbusProtoTaskUiConfigResponse, Map<String, dynamic>>(uiConfig, (value) => value.toMap()),
+      'uiConfig':
+          pulumi.Input.mapInputValue<
+            EnterpriseCrmEventbusProtoTaskUiConfigResponse,
+            Map<String, dynamic>
+          >(uiConfig, (value) => value.toMap()),
     };
   }
 
-  factory EnterpriseCrmFrontendsEventbusProtoTaskEntityResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmFrontendsEventbusProtoTaskEntityResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmFrontendsEventbusProtoTaskEntityResponse(
-      disabledForVpcSc: (map['disabledForVpcSc'] as bool).input(),
-      metadata: (EnterpriseCrmEventbusProtoTaskMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      paramSpecs: (EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse.fromMap((map['paramSpecs'] as Map).cast<String, dynamic>())).input(),
-      stats: (EnterpriseCrmEventbusStatsResponse.fromMap((map['stats'] as Map).cast<String, dynamic>())).input(),
-      taskType: (map['taskType'] as String).input(),
-      uiConfig: (EnterpriseCrmEventbusProtoTaskUiConfigResponse.fromMap((map['uiConfig'] as Map).cast<String, dynamic>())).input(),
+      disabledForVpcSc: pulumi.Input.fromValue(map['disabledForVpcSc'] as bool),
+      metadata: pulumi.Input.fromValue(
+        EnterpriseCrmEventbusProtoTaskMetadataResponse.fromMap(
+          (map['metadata']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      paramSpecs: pulumi.Input.fromValue(
+        EnterpriseCrmFrontendsEventbusProtoParamSpecsMessageResponse.fromMap(
+          (map['paramSpecs']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      stats: pulumi.Input.fromValue(
+        EnterpriseCrmEventbusStatsResponse.fromMap(
+          (map['stats']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      taskType: pulumi.Input.fromValue(map['taskType'] as String),
+      uiConfig: pulumi.Input.fromValue(
+        EnterpriseCrmEventbusProtoTaskUiConfigResponse.fromMap(
+          (map['uiConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

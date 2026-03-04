@@ -9,20 +9,19 @@ class ClfsTargetResponse {
 
   /// Creates a new [ClfsTargetResponse].
   /// [target] Resource ID of storage container.
-  ClfsTargetResponse({
-    this.target,
-  });
+  ClfsTargetResponse({this.target});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'target': ?target,
-    };
+    return <String, dynamic>{'target': ?target};
   }
 
   factory ClfsTargetResponse.fromMap(Map<String, dynamic> map) {
     return ClfsTargetResponse(
-      target: map['target'] == null ? null : (map['target']! as String).input(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

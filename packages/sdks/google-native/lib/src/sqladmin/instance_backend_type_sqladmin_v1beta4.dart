@@ -5,16 +5,17 @@ enum InstanceBackendTypeSqladminV1beta4 {
   secondGen("SECOND_GEN"),
   external("EXTERNAL");
 
-  const InstanceBackendTypeSqladminV1beta4(this.value);
-  final String value;
+  const InstanceBackendTypeSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static InstanceBackendTypeSqladminV1beta4 fromValue(String value) {
     for (final item in InstanceBackendTypeSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceBackendTypeSqladminV1beta4 value: $value');
+    throw ArgumentError(
+      'Unknown InstanceBackendTypeSqladminV1beta4 value: $value',
+    );
   }
 }
-

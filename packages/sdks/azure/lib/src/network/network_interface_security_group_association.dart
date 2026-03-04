@@ -352,7 +352,7 @@ import 'network_interface_security_group_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -365,10 +365,11 @@ import 'network_interface_security_group_association_state.dart';
 /// $ pulumi import azure:network/networkInterfaceSecurityGroupAssociation:NetworkInterfaceSecurityGroupAssociation association1 "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/networkInterfaces/example|/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.Network/networkSecurityGroups/group1"
 /// ```
 ///
-/// > **Note:** This ID is specific to this provider - and is of the format `{networkInterfaceId}|{networkSecurityGroupId}`.
+/// &gt; **Note:** This ID is specific to this provider - and is of the format `{networkInterfaceId}|{networkSecurityGroupId}`.
 class NetworkInterfaceSecurityGroupAssociation extends pulumi.CustomResource {
   /// The ID of the Network Interface. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkInterfaceId;
+
   /// The ID of the Network Security Group which should be attached to the Network Interface. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkSecurityGroupId;
 
@@ -381,13 +382,13 @@ class NetworkInterfaceSecurityGroupAssociation extends pulumi.CustomResource {
     NetworkInterfaceSecurityGroupAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkInterfaceSecurityGroupAssociation:NetworkInterfaceSecurityGroupAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
-    this.networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
+         'azure:network/networkInterfaceSecurityGroupAssociation:NetworkInterfaceSecurityGroupAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
   }
 
   /// Gets an existing [NetworkInterfaceSecurityGroupAssociation] resource's state with the given [name] and [id].
@@ -408,12 +409,12 @@ class NetworkInterfaceSecurityGroupAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkInterfaceSecurityGroupAssociation:NetworkInterfaceSecurityGroupAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
-    this.networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
+         'azure:network/networkInterfaceSecurityGroupAssociation:NetworkInterfaceSecurityGroupAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    networkInterfaceId = registerOutput<String>('networkInterfaceId');
+    networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
   }
 }

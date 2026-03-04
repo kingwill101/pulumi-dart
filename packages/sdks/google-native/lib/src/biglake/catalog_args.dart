@@ -16,11 +16,7 @@ class CatalogArgs {
   /// [catalogId] Required. The ID to use for the catalog, which will become the final component of the catalog's resource name.
   /// [location] Optional.
   /// [project] Optional.
-  CatalogArgs({
-    required this.catalogId,
-    this.location,
-    this.project,
-  });
+  CatalogArgs({required this.catalogId, this.location, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +28,17 @@ class CatalogArgs {
 
   factory CatalogArgs.fromMap(Map<String, dynamic> map) {
     return CatalogArgs(
-      catalogId: (map['catalogId'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,6 +8,7 @@ import 'dataplex_config.dart';
 class MetadataIntegrationMetastoreV1alpha {
   /// Optional. The integration config for the Data Catalog service.
   final pulumi.Input<DataCatalogConfigMetastoreV1alpha>? dataCatalogConfig;
+
   /// The integration config for the Dataplex service.
   final pulumi.Input<DataplexConfig>? dataplexConfig;
 
@@ -21,16 +22,39 @@ class MetadataIntegrationMetastoreV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataCatalogConfig': ?pulumi.Input.mapOptionalInputValue<DataCatalogConfigMetastoreV1alpha, Map<String, dynamic>>(dataCatalogConfig, (value) => value.toMap()),
-      'dataplexConfig': ?pulumi.Input.mapOptionalInputValue<DataplexConfig, Map<String, dynamic>>(dataplexConfig, (value) => value.toMap()),
+      'dataCatalogConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataCatalogConfigMetastoreV1alpha,
+            Map<String, dynamic>
+          >(dataCatalogConfig, (value) => value.toMap()),
+      'dataplexConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataplexConfig,
+            Map<String, dynamic>
+          >(dataplexConfig, (value) => value.toMap()),
     };
   }
 
-  factory MetadataIntegrationMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
+  factory MetadataIntegrationMetastoreV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MetadataIntegrationMetastoreV1alpha(
-      dataCatalogConfig: map['dataCatalogConfig'] == null ? null : (DataCatalogConfigMetastoreV1alpha.fromMap((map['dataCatalogConfig']! as Map).cast<String, dynamic>())).input(),
-      dataplexConfig: map['dataplexConfig'] == null ? null : (DataplexConfig.fromMap((map['dataplexConfig']! as Map).cast<String, dynamic>())).input(),
+      dataCatalogConfig: (() {
+        final guardedValue = map['dataCatalogConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataCatalogConfigMetastoreV1alpha.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataplexConfig: (() {
+        final guardedValue = map['dataplexConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataplexConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

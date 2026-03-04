@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PartitionStorageDescriptorSortColumn {
   /// The name of the column.
   final pulumi.Input<String> column;
+
   /// Indicates that the column is sorted in ascending order (== 1), or in descending order (==0).
   final pulumi.Input<int> sortOrder;
 
@@ -17,17 +18,15 @@ class PartitionStorageDescriptorSortColumn {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'column': column,
-      'sortOrder': sortOrder,
-    };
+    return <String, dynamic>{'column': column, 'sortOrder': sortOrder};
   }
 
-  factory PartitionStorageDescriptorSortColumn.fromMap(Map<String, dynamic> map) {
+  factory PartitionStorageDescriptorSortColumn.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PartitionStorageDescriptorSortColumn(
-      column: (map['column'] as String).input(),
-      sortOrder: (map['sortOrder'] as int).input(),
+      column: pulumi.Input.fromValue(map['column'] as String),
+      sortOrder: pulumi.Input.fromValue(map['sortOrder'] as int),
     );
   }
 }
-

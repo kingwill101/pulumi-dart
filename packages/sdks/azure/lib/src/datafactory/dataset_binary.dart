@@ -281,28 +281,40 @@ import 'dataset_binary_state.dart';
 class DatasetBinary extends pulumi.CustomResource {
   /// A map of additional properties to associate with the Data Factory Binary Dataset.
   late final pulumi.Output<Map<String, String>?> additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Binary Dataset.
   late final pulumi.Output<List<String>?> annotations;
+
   /// A `azure_blob_storage_location` block as defined below.
-  late final pulumi.Output<DatasetBinaryAzureBlobStorageLocation?> azureBlobStorageLocation;
+  late final pulumi.Output<DatasetBinaryAzureBlobStorageLocation?>
+  azureBlobStorageLocation;
+
   /// A `compression` block as defined below.
   late final pulumi.Output<DatasetBinaryCompression?> compression;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Dataset.
   late final pulumi.Output<String?> description;
+
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   late final pulumi.Output<String?> folder;
+
   /// A `http_server_location` block as defined below.
   late final pulumi.Output<DatasetBinaryHttpServerLocation?> httpServerLocation;
+
   /// The Data Factory Linked Service name in which to associate the Binary Dataset with.
   late final pulumi.Output<String> linkedServiceName;
+
   /// Specifies the name of the Data Factory Binary Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// Specifies a list of parameters to associate with the Data Factory Binary Dataset.
   ///
   /// The following supported locations for a Binary Dataset. One of these should be specified:
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// A `sftp_server_location` block as defined below.
   late final pulumi.Output<DatasetBinarySftpServerLocation?> sftpServerLocation;
 
@@ -315,23 +327,32 @@ class DatasetBinary extends pulumi.CustomResource {
     DatasetBinaryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/datasetBinary:DatasetBinary',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.azureBlobStorageLocation = registerOutput<DatasetBinaryAzureBlobStorageLocation?>('azureBlobStorageLocation');
-    this.compression = registerOutput<DatasetBinaryCompression?>('compression');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.folder = registerOutput<String?>('folder');
-    this.httpServerLocation = registerOutput<DatasetBinaryHttpServerLocation?>('httpServerLocation');
-    this.linkedServiceName = registerOutput<String>('linkedServiceName');
+         'azure:datafactory/datasetBinary:DatasetBinary',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    azureBlobStorageLocation =
+        registerOutput<DatasetBinaryAzureBlobStorageLocation?>(
+          'azureBlobStorageLocation',
+        );
+    compression = registerOutput<DatasetBinaryCompression?>('compression');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    httpServerLocation = registerOutput<DatasetBinaryHttpServerLocation?>(
+      'httpServerLocation',
+    );
+    linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.sftpServerLocation = registerOutput<DatasetBinarySftpServerLocation?>('sftpServerLocation');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    sftpServerLocation = registerOutput<DatasetBinarySftpServerLocation?>(
+      'sftpServerLocation',
+    );
   }
 
   /// Gets an existing [DatasetBinary] resource's state with the given [name] and [id].
@@ -352,22 +373,31 @@ class DatasetBinary extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/datasetBinary:DatasetBinary',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.azureBlobStorageLocation = registerOutput<DatasetBinaryAzureBlobStorageLocation?>('azureBlobStorageLocation');
-    this.compression = registerOutput<DatasetBinaryCompression?>('compression');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.folder = registerOutput<String?>('folder');
-    this.httpServerLocation = registerOutput<DatasetBinaryHttpServerLocation?>('httpServerLocation');
-    this.linkedServiceName = registerOutput<String>('linkedServiceName');
+         'azure:datafactory/datasetBinary:DatasetBinary',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    azureBlobStorageLocation =
+        registerOutput<DatasetBinaryAzureBlobStorageLocation?>(
+          'azureBlobStorageLocation',
+        );
+    compression = registerOutput<DatasetBinaryCompression?>('compression');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    httpServerLocation = registerOutput<DatasetBinaryHttpServerLocation?>(
+      'httpServerLocation',
+    );
+    linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.sftpServerLocation = registerOutput<DatasetBinarySftpServerLocation?>('sftpServerLocation');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    sftpServerLocation = registerOutput<DatasetBinarySftpServerLocation?>(
+      'sftpServerLocation',
+    );
   }
 }

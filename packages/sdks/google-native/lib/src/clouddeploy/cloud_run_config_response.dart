@@ -9,9 +9,7 @@ class CloudRunConfigResponse {
 
   /// Creates a new [CloudRunConfigResponse].
   /// [automaticTrafficControl] Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
-  CloudRunConfigResponse({
-    required this.automaticTrafficControl,
-  });
+  CloudRunConfigResponse({required this.automaticTrafficControl});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class CloudRunConfigResponse {
 
   factory CloudRunConfigResponse.fromMap(Map<String, dynamic> map) {
     return CloudRunConfigResponse(
-      automaticTrafficControl: (map['automaticTrafficControl'] as bool).input(),
+      automaticTrafficControl: pulumi.Input.fromValue(
+        map['automaticTrafficControl'] as bool,
+      ),
     );
   }
 }
-

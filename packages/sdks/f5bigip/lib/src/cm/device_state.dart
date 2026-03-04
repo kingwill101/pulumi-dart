@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeviceState {
   /// IP address used for config sync
   final pulumi.Input<String>? configsyncIp;
+
   /// IP address used for state mirroring
   final pulumi.Input<String>? mirrorIp;
+
   /// Secondary IP address used for state mirroring
   final pulumi.Input<String>? mirrorSecondaryIp;
+
   /// Address of the Device which needs to be Deviceensed
   final pulumi.Input<String>? name;
 
@@ -36,11 +39,26 @@ class DeviceState {
 
   factory DeviceState.fromMap(Map<String, dynamic> map) {
     return DeviceState(
-      configsyncIp: map['configsyncIp'] == null ? null : (map['configsyncIp']! as String).input(),
-      mirrorIp: map['mirrorIp'] == null ? null : (map['mirrorIp']! as String).input(),
-      mirrorSecondaryIp: map['mirrorSecondaryIp'] == null ? null : (map['mirrorSecondaryIp']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      configsyncIp: (() {
+        final guardedValue = map['configsyncIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mirrorIp: (() {
+        final guardedValue = map['mirrorIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mirrorSecondaryIp: (() {
+        final guardedValue = map['mirrorSecondaryIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceTemplateSpecVolumeNf {
   /// Path exported by the NFS server
   final pulumi.Input<String> path;
+
   /// If true, mount the NFS volume as read only in all mounts. Defaults to false.
   final pulumi.Input<bool> readOnly;
+
   /// IP address or hostname of the NFS server
   final pulumi.Input<String> server;
 
@@ -30,10 +32,9 @@ class GetServiceTemplateSpecVolumeNf {
 
   factory GetServiceTemplateSpecVolumeNf.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecVolumeNf(
-      path: (map['path'] as String).input(),
-      readOnly: (map['readOnly'] as bool).input(),
-      server: (map['server'] as String).input(),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      readOnly: pulumi.Input.fromValue(map['readOnly'] as bool),
+      server: pulumi.Input.fromValue(map['server'] as String),
     );
   }
 }
-

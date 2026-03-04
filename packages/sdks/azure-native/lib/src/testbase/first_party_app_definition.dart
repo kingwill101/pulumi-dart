@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirstPartyAppDefinition {
   /// The architecture of a first party application of a Test Base Account.
   final pulumi.Input<String>? architecture;
+
   /// The channel info of a first party application of a Test Base Account.
   final pulumi.Input<String>? channel;
+
   /// Specifies how the first party applications should be inter-operated with user's application.
   final pulumi.Input<String>? interopExecutionMode;
+
   /// The media name of a first party application of a Test Base Account.
   final pulumi.Input<String>? name;
+
   /// The ring info of a first party application of a Test Base Account.
   final pulumi.Input<String>? ring;
 
@@ -41,12 +45,31 @@ class FirstPartyAppDefinition {
 
   factory FirstPartyAppDefinition.fromMap(Map<String, dynamic> map) {
     return FirstPartyAppDefinition(
-      architecture: map['architecture'] == null ? null : (map['architecture']! as String).input(),
-      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
-      interopExecutionMode: map['interopExecutionMode'] == null ? null : (map['interopExecutionMode']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      ring: map['ring'] == null ? null : (map['ring']! as String).input(),
+      architecture: (() {
+        final guardedValue = map['architecture'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      channel: (() {
+        final guardedValue = map['channel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      interopExecutionMode: (() {
+        final guardedValue = map['interopExecutionMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ring: (() {
+        final guardedValue = map['ring'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

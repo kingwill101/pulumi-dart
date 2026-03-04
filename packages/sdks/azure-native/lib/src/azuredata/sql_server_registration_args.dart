@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlServerRegistrationArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Optional Properties as JSON string
   final pulumi.Input<String>? propertyBag;
+
   /// Resource Group Name
   final pulumi.Input<String>? resourceGroup;
+
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the SQL Server registration.
   final pulumi.Input<String>? sqlServerRegistrationName;
+
   /// Subscription Id
   final pulumi.Input<String>? subscriptionId;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -54,14 +60,41 @@ class SqlServerRegistrationArgs {
 
   factory SqlServerRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return SqlServerRegistrationArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      propertyBag: map['propertyBag'] == null ? null : (map['propertyBag']! as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sqlServerRegistrationName: map['sqlServerRegistrationName'] == null ? null : (map['sqlServerRegistrationName']! as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      propertyBag: (() {
+        final guardedValue = map['propertyBag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroup: (() {
+        final guardedValue = map['resourceGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sqlServerRegistrationName: (() {
+        final guardedValue = map['sqlServerRegistrationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

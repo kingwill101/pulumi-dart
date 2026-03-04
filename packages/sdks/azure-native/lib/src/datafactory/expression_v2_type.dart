@@ -6,16 +6,15 @@ enum ExpressionV2Type {
   valueBinary("Binary"),
   valueNAry("NAry");
 
-  const ExpressionV2Type(this.value);
-  final String value;
+  const ExpressionV2Type(this.wireValue);
+  final String wireValue;
 
   static ExpressionV2Type fromValue(String value) {
     for (final item in ExpressionV2Type.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExpressionV2Type value: $value');
   }
 }
-

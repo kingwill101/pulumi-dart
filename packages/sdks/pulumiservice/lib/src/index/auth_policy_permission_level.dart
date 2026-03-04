@@ -2,16 +2,15 @@ enum AuthPolicyPermissionLevel {
   valueStandard("standard"),
   valueAdmin("admin");
 
-  const AuthPolicyPermissionLevel(this.value);
-  final String value;
+  const AuthPolicyPermissionLevel(this.wireValue);
+  final String wireValue;
 
   static AuthPolicyPermissionLevel fromValue(String value) {
     for (final item in AuthPolicyPermissionLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuthPolicyPermissionLevel value: $value');
   }
 }
-

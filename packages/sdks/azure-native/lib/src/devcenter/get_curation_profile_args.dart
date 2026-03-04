@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCurationProfileArgs {
   /// The name of the curation profile.
   final pulumi.Input<String> curationProfileName;
+
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetCurationProfileArgs {
 
   factory GetCurationProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetCurationProfileArgs(
-      curationProfileName: (map['curationProfileName'] as String).input(),
-      devCenterName: (map['devCenterName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      curationProfileName: pulumi.Input.fromValue(
+        map['curationProfileName'] as String,
+      ),
+      devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

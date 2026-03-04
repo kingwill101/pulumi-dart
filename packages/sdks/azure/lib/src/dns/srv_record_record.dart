@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SrvRecordRecord {
   /// Port the service is listening on.
   final pulumi.Input<int> port;
+
   /// Priority of the SRV record.
   final pulumi.Input<int> priority;
+
   /// FQDN of the service.
   final pulumi.Input<String> target;
+
   /// Weight of the SRV record.
   final pulumi.Input<int> weight;
 
@@ -35,11 +38,10 @@ class SrvRecordRecord {
 
   factory SrvRecordRecord.fromMap(Map<String, dynamic> map) {
     return SrvRecordRecord(
-      port: (map['port'] as int).input(),
-      priority: (map['priority'] as int).input(),
-      target: (map['target'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      target: pulumi.Input.fromValue(map['target'] as String),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

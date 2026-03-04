@@ -5,16 +5,15 @@ enum InstanceBackendType {
   secondGen("SECOND_GEN"),
   external("EXTERNAL");
 
-  const InstanceBackendType(this.value);
-  final String value;
+  const InstanceBackendType(this.wireValue);
+  final String wireValue;
 
   static InstanceBackendType fromValue(String value) {
     for (final item in InstanceBackendType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceBackendType value: $value');
   }
 }
-

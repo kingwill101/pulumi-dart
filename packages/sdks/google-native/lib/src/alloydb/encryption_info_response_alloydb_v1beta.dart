@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionInfoResponseAlloydbV1beta {
   /// Type of encryption.
   final pulumi.Input<String> encryptionType;
+
   /// Cloud KMS key versions that are being used to protect the database or the backup.
   final pulumi.Input<List<String>> kmsKeyVersions;
 
@@ -24,11 +25,14 @@ class EncryptionInfoResponseAlloydbV1beta {
     };
   }
 
-  factory EncryptionInfoResponseAlloydbV1beta.fromMap(Map<String, dynamic> map) {
+  factory EncryptionInfoResponseAlloydbV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EncryptionInfoResponseAlloydbV1beta(
-      encryptionType: (map['encryptionType'] as String).input(),
-      kmsKeyVersions: ((map['kmsKeyVersions'] as List).cast<String>()).input(),
+      encryptionType: pulumi.Input.fromValue(map['encryptionType'] as String),
+      kmsKeyVersions: pulumi.Input.fromValue(
+        (map['kmsKeyVersions'] as List).cast<String>(),
+      ),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpokeStateReasonCountResponse {
   /// The total number of spokes that are inactive for a particular reason and associated with a given hub.
   final pulumi.Input<String> count;
+
   /// The reason that a spoke is inactive.
   final pulumi.Input<String> stateReasonCode;
 
@@ -26,9 +27,8 @@ class SpokeStateReasonCountResponse {
 
   factory SpokeStateReasonCountResponse.fromMap(Map<String, dynamic> map) {
     return SpokeStateReasonCountResponse(
-      count: (map['count'] as String).input(),
-      stateReasonCode: (map['stateReasonCode'] as String).input(),
+      count: pulumi.Input.fromValue(map['count'] as String),
+      stateReasonCode: pulumi.Input.fromValue(map['stateReasonCode'] as String),
     );
   }
 }
-

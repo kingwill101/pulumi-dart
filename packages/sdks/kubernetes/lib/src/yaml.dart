@@ -1,5 +1,3 @@
-library module_yaml;
-
 export 'yaml/config_file.dart';
 export 'yaml/config_file_args.dart';
 export 'yaml/config_file_yaml.dart';

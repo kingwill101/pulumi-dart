@@ -14,15 +14,16 @@ class GoogleCloudRetailV2alphaRuleRemoveFacetActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'attributeNames': attributeNames,
-    };
+    return <String, dynamic>{'attributeNames': attributeNames};
   }
 
-  factory GoogleCloudRetailV2alphaRuleRemoveFacetActionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2alphaRuleRemoveFacetActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRetailV2alphaRuleRemoveFacetActionResponse(
-      attributeNames: ((map['attributeNames'] as List).cast<String>()).input(),
+      attributeNames: pulumi.Input.fromValue(
+        (map['attributeNames'] as List).cast<String>(),
+      ),
     );
   }
 }
-

@@ -10,20 +10,29 @@ class LinuxConfigurationResponse {
 
   /// Creates a new [LinuxConfigurationResponse].
   /// [ssh] Specifies the ssh key configuration for a Linux OS.
-  LinuxConfigurationResponse({
-    this.ssh,
-  });
+  LinuxConfigurationResponse({this.ssh});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ssh': ?pulumi.Input.mapOptionalInputValue<SshConfigurationResponse, Map<String, dynamic>>(ssh, (value) => value.toMap()),
+      'ssh':
+          ?pulumi.Input.mapOptionalInputValue<
+            SshConfigurationResponse,
+            Map<String, dynamic>
+          >(ssh, (value) => value.toMap()),
     };
   }
 
   factory LinuxConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LinuxConfigurationResponse(
-      ssh: map['ssh'] == null ? null : (SshConfigurationResponse.fromMap((map['ssh']! as Map).cast<String, dynamic>())).input(),
+      ssh: (() {
+        final guardedValue = map['ssh'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SshConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

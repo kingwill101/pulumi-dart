@@ -10,16 +10,17 @@ enum IntentDefaultResponsePlatformsItem {
   actionsOnGoogle("ACTIONS_ON_GOOGLE"),
   googleHangouts("GOOGLE_HANGOUTS");
 
-  const IntentDefaultResponsePlatformsItem(this.value);
-  final String value;
+  const IntentDefaultResponsePlatformsItem(this.wireValue);
+  final String wireValue;
 
   static IntentDefaultResponsePlatformsItem fromValue(String value) {
     for (final item in IntentDefaultResponsePlatformsItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown IntentDefaultResponsePlatformsItem value: $value');
+    throw ArgumentError(
+      'Unknown IntentDefaultResponsePlatformsItem value: $value',
+    );
   }
 }
-

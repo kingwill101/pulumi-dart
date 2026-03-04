@@ -8,8 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dataprotection_get_backup_policy_args_doc}
 class GetBackupPolicyArgs {
   final pulumi.Input<String> backupPolicyName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the backup vault.
   final pulumi.Input<String> vaultName;
 
@@ -33,10 +35,13 @@ class GetBackupPolicyArgs {
 
   factory GetBackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupPolicyArgs(
-      backupPolicyName: (map['backupPolicyName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vaultName: (map['vaultName'] as String).input(),
+      backupPolicyName: pulumi.Input.fromValue(
+        map['backupPolicyName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
-

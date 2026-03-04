@@ -419,14 +419,19 @@ import 'content_type_args.dart';
 class ContentType extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Content type description.
   late final pulumi.Output<String?> description;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Content type schema.
   late final pulumi.Output<dynamic> schema;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Content type version.
   late final pulumi.Output<String?> version;
 
@@ -439,16 +444,16 @@ class ContentType extends pulumi.CustomResource {
     ContentTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:ContentType',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
+         'azure-native:apimanagement:ContentType',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.schema = registerOutput<dynamic>('schema');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String?>('version');
+    schema = registerOutput<dynamic>('schema');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
   }
 }

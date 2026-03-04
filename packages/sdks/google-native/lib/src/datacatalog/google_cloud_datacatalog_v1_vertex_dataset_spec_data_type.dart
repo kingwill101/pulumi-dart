@@ -14,16 +14,20 @@ enum GoogleCloudDatacatalogV1VertexDatasetSpecDataType {
   enterpriseKnowledgeGraph("ENTERPRISE_KNOWLEDGE_GRAPH"),
   textPrompt("TEXT_PROMPT");
 
-  const GoogleCloudDatacatalogV1VertexDatasetSpecDataType(this.value);
-  final String value;
+  const GoogleCloudDatacatalogV1VertexDatasetSpecDataType(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudDatacatalogV1VertexDatasetSpecDataType fromValue(String value) {
-    for (final item in GoogleCloudDatacatalogV1VertexDatasetSpecDataType.values) {
-      if (item.value == value) {
+  static GoogleCloudDatacatalogV1VertexDatasetSpecDataType fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDatacatalogV1VertexDatasetSpecDataType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDatacatalogV1VertexDatasetSpecDataType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDatacatalogV1VertexDatasetSpecDataType value: $value',
+    );
   }
 }
-

@@ -9,13 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IpSetArgs {
   /// The ID of an acceleration region.
   final pulumi.Input<String> accelerateRegionId;
+
   /// The ID of the Global Accelerator (GA) instance.
   final pulumi.Input<String> acceleratorId;
+
   /// The bandwidth allocated to the acceleration region.
-  /// > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
+  /// &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
   final pulumi.Input<int>? bandwidth;
+
   /// The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ip_version` can be set to `DUAL_STACK`.
   final pulumi.Input<String>? ipVersion;
+
   /// The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
   final pulumi.Input<String>? ispType;
 
@@ -45,12 +49,25 @@ class IpSetArgs {
 
   factory IpSetArgs.fromMap(Map<String, dynamic> map) {
     return IpSetArgs(
-      accelerateRegionId: (map['accelerateRegionId'] as String).input(),
-      acceleratorId: (map['acceleratorId'] as String).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
-      ispType: map['ispType'] == null ? null : (map['ispType']! as String).input(),
+      accelerateRegionId: pulumi.Input.fromValue(
+        map['accelerateRegionId'] as String,
+      ),
+      acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
+      bandwidth: (() {
+        final guardedValue = map['bandwidth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ipVersion: (() {
+        final guardedValue = map['ipVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ispType: (() {
+        final guardedValue = map['ispType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

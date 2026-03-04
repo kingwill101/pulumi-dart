@@ -17,15 +17,14 @@ class GetOrganizationalUnitDescendantOrganizationalUnitsArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'parentId': parentId,
-    };
+    return <String, dynamic>{'parentId': parentId};
   }
 
-  factory GetOrganizationalUnitDescendantOrganizationalUnitsArgs.fromMap(Map<String, dynamic> map) {
+  factory GetOrganizationalUnitDescendantOrganizationalUnitsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOrganizationalUnitDescendantOrganizationalUnitsArgs(
-      parentId: (map['parentId'] as String).input(),
+      parentId: pulumi.Input.fromValue(map['parentId'] as String),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum FrequencyType {
   valueMinute("Minute"),
   valueSecond("Second");
 
-  const FrequencyType(this.value);
-  final String value;
+  const FrequencyType(this.wireValue);
+  final String wireValue;
 
   static FrequencyType fromValue(String value) {
     for (final item in FrequencyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FrequencyType value: $value');
   }
 }
-

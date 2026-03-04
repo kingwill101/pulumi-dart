@@ -226,7 +226,7 @@ import 'network_security_perimeter_access_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -241,16 +241,22 @@ import 'network_security_perimeter_access_rule_state.dart';
 class NetworkSecurityPerimeterAccessRule extends pulumi.CustomResource {
   /// Specifies a list of CIDRs. Can only be specified when direction is set to `Inbound`. Conflicts with `fqdns`, `service_tags`, `subscription_ids`.
   late final pulumi.Output<List<String>?> addressPrefixes;
+
   /// The direction of the rule. Possible values are `Inbound` and `Outbound`. Changing this forces a new Network Security Perimeter Access Rule to be created.
   late final pulumi.Output<String> direction;
+
   /// Specifies a list of fully qualified domain names. Can only be specified when direction is set to `Outbound`. Conflicts with `address_prefixes`, `service_tags`, and `subscription_ids`.
   late final pulumi.Output<List<String>?> fqdns;
+
   /// The name which should be used for this Network Security Perimeter Access Rule. Changing this forces a new Network Security Perimeter Access Rule to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Network Security Perimeter Profile within which this Access Rule is created. Changing this forces a new Network Security Perimeter Access Rule to be created.
   late final pulumi.Output<String> networkSecurityPerimeterProfileId;
+
   /// Specifies a list of service tags. Can only be specified when direction is set to `Inbound`. Conflicts with `address_prefixes`, `fqdns`, and `subscription_ids`.
   late final pulumi.Output<List<String>?> serviceTags;
+
   /// Specifies a list of subscription IDs this rule applies to. Can only be specified when direction is set to `Inbound`. Conflicts with `address_prefixes`, `fqdns`, and `service_tags`.
   late final pulumi.Output<List<String>?> subscriptionIds;
 
@@ -263,18 +269,20 @@ class NetworkSecurityPerimeterAccessRule extends pulumi.CustomResource {
     NetworkSecurityPerimeterAccessRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkSecurityPerimeterAccessRule:NetworkSecurityPerimeterAccessRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
-    this.direction = registerOutput<String>('direction');
-    this.fqdns = registerOutput<List<String>?>('fqdns');
+         'azure:network/networkSecurityPerimeterAccessRule:NetworkSecurityPerimeterAccessRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
+    direction = registerOutput<String>('direction');
+    fqdns = registerOutput<List<String>?>('fqdns');
     this.name = registerOutput<String>('name');
-    this.networkSecurityPerimeterProfileId = registerOutput<String>('networkSecurityPerimeterProfileId');
-    this.serviceTags = registerOutput<List<String>?>('serviceTags');
-    this.subscriptionIds = registerOutput<List<String>?>('subscriptionIds');
+    networkSecurityPerimeterProfileId = registerOutput<String>(
+      'networkSecurityPerimeterProfileId',
+    );
+    serviceTags = registerOutput<List<String>?>('serviceTags');
+    subscriptionIds = registerOutput<List<String>?>('subscriptionIds');
   }
 
   /// Gets an existing [NetworkSecurityPerimeterAccessRule] resource's state with the given [name] and [id].
@@ -295,17 +303,19 @@ class NetworkSecurityPerimeterAccessRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkSecurityPerimeterAccessRule:NetworkSecurityPerimeterAccessRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
-    this.direction = registerOutput<String>('direction');
-    this.fqdns = registerOutput<List<String>?>('fqdns');
+         'azure:network/networkSecurityPerimeterAccessRule:NetworkSecurityPerimeterAccessRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
+    direction = registerOutput<String>('direction');
+    fqdns = registerOutput<List<String>?>('fqdns');
     this.name = registerOutput<String>('name');
-    this.networkSecurityPerimeterProfileId = registerOutput<String>('networkSecurityPerimeterProfileId');
-    this.serviceTags = registerOutput<List<String>?>('serviceTags');
-    this.subscriptionIds = registerOutput<List<String>?>('subscriptionIds');
+    networkSecurityPerimeterProfileId = registerOutput<String>(
+      'networkSecurityPerimeterProfileId',
+    );
+    serviceTags = registerOutput<List<String>?>('serviceTags');
+    subscriptionIds = registerOutput<List<String>?>('subscriptionIds');
   }
 }

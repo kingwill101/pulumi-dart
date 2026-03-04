@@ -1,23 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getWebAppScmAllowedSlot.
 class GetWebAppScmAllowedSlotResult {
-  /// <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
+  /// &lt;code&gt;true&lt;/code&gt; to allow access to a publishing method; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final bool allow;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource Id.
   final String id;
+
   /// Kind of resource.
   final String? kind;
+
   /// Resource Name.
   final String name;
+
   /// Resource type.
   final String type;
 
   /// Creates a new [GetWebAppScmAllowedSlotResult].
-  /// [allow] <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
+  /// [allow] &lt;code&gt;true&lt;/code&gt; to allow access to a publishing method; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [azureApiVersion] The Azure API version of the resource.
   /// [id] Resource Id.
   /// [kind] Kind of resource.
@@ -48,10 +52,13 @@ class GetWebAppScmAllowedSlotResult {
       allow: map['allow'] as bool,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       type: map['type'] as String,
     );
   }
 }
-

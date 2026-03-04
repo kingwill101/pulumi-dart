@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse {
   /// The ID of the project.
   final pulumi.Input<String> project;
+
   /// The name of the repo. Leave empty for the default repo.
   final pulumi.Input<String> repoName;
 
@@ -18,17 +19,15 @@ class GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': project,
-      'repoName': repoName,
-    };
+    return <String, dynamic>{'project': project, 'repoName': repoName};
   }
 
-  factory GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse(
-      project: (map['project'] as String).input(),
-      repoName: (map['repoName'] as String).input(),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      repoName: pulumi.Input.fromValue(map['repoName'] as String),
     );
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlobalVMShutdownScheduleNotificationSettings {
   /// E-mail address to which the notification will be sent.
   final pulumi.Input<String>? email;
+
   /// Whether to enable pre-shutdown notifications. Possible values are `true` and `false`.
   final pulumi.Input<bool> enabled;
+
   /// Time in minutes between 15 and 120 before a shutdown event at which a notification will be sent. Defaults to `30`.
   final pulumi.Input<int>? timeInMinutes;
+
   /// The webhook URL to which the notification will be sent.
   final pulumi.Input<String>? webhookUrl;
 
@@ -33,13 +36,26 @@ class GlobalVMShutdownScheduleNotificationSettings {
     };
   }
 
-  factory GlobalVMShutdownScheduleNotificationSettings.fromMap(Map<String, dynamic> map) {
+  factory GlobalVMShutdownScheduleNotificationSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GlobalVMShutdownScheduleNotificationSettings(
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      enabled: (map['enabled'] as bool).input(),
-      timeInMinutes: map['timeInMinutes'] == null ? null : (map['timeInMinutes']! as int).input(),
-      webhookUrl: map['webhookUrl'] == null ? null : (map['webhookUrl']! as String).input(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      timeInMinutes: (() {
+        final guardedValue = map['timeInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      webhookUrl: (() {
+        final guardedValue = map['webhookUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

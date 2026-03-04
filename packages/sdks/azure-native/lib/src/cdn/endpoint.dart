@@ -1,16 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'deep_created_custom_domain_response.dart';
-import 'deep_created_origin_group_response.dart';
-import 'deep_created_origin_response.dart';
 import 'endpoint_args.dart';
 import 'endpoint_properties_update_parameters_delivery_policy_response.dart';
 import 'endpoint_properties_update_parameters_web_application_firewall_policy_link_response.dart';
-import 'geo_filter_response.dart';
 import 'resource_reference_response.dart';
 import 'system_data_response.dart';
-import 'url_signing_key_response.dart';
 
-/// CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior. The CDN endpoint uses the URL format <endpointname>.azureedge.net.
+/// CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior. The CDN endpoint uses the URL format &lt;endpointname&gt;.azureedge.net.
 ///
 /// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 ///
@@ -798,56 +793,87 @@ import 'url_signing_key_response.dart';
 class Endpoint extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of content types on which compression applies. The value should be a valid MIME type.
   late final pulumi.Output<List<String>?> contentTypesToCompress;
+
   /// The custom domains under the endpoint.
-  late final pulumi.Output<List<DeepCreatedCustomDomainResponse>> customDomains;
+  late final pulumi.Output<List<Map<String, dynamic>>> customDomains;
+
   /// A reference to the origin group.
   late final pulumi.Output<ResourceReferenceResponse?> defaultOriginGroup;
+
   /// A policy that specifies the delivery rules to be used for an endpoint.
-  late final pulumi.Output<EndpointPropertiesUpdateParametersDeliveryPolicyResponse?> deliveryPolicy;
+  late final pulumi.Output<
+    EndpointPropertiesUpdateParametersDeliveryPolicyResponse?
+  >
+  deliveryPolicy;
+
   /// List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
-  late final pulumi.Output<List<GeoFilterResponse>?> geoFilters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> geoFilters;
+
   /// The host name of the endpoint structured as {endpointName}.{DNSZone}, e.g. contoso.azureedge.net
   late final pulumi.Output<String> hostName;
+
   /// Indicates whether content compression is enabled on CDN. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on CDN when requested content is smaller than 1 byte or larger than 1 MB.
   late final pulumi.Output<bool?> isCompressionEnabled;
+
   /// Indicates whether HTTP traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
   late final pulumi.Output<bool?> isHttpAllowed;
+
   /// Indicates whether HTTPS traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
   late final pulumi.Output<bool?> isHttpsAllowed;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g. Download, Media services. With this information, CDN can apply scenario driven optimization.
   late final pulumi.Output<String?> optimizationType;
+
   /// The origin groups comprising of origins that are used for load balancing the traffic based on availability.
-  late final pulumi.Output<List<DeepCreatedOriginGroupResponse>?> originGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>?> originGroups;
+
   /// The host header value sent to the origin with each request. This property at Endpoint is only allowed when endpoint uses single origin and can be overridden by the same property specified at origin.If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default.
   late final pulumi.Output<String?> originHostHeader;
+
   /// A directory path on the origin that CDN can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
   late final pulumi.Output<String?> originPath;
+
   /// The source of the content being delivered via CDN.
-  late final pulumi.Output<List<DeepCreatedOriginResponse>> origins;
+  late final pulumi.Output<List<Map<String, dynamic>>> origins;
+
   /// Path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the origin path. This property is only relevant when using a single origin.
   late final pulumi.Output<String?> probePath;
+
   /// Provisioning status of the endpoint.
   late final pulumi.Output<String> provisioningState;
+
   /// Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL.
   late final pulumi.Output<String?> queryStringCachingBehavior;
+
   /// Resource status of the endpoint.
   late final pulumi.Output<String> resourceState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// List of keys used to validate the signed URL hashes.
-  late final pulumi.Output<List<UrlSigningKeyResponse>?> urlSigningKeys;
+  late final pulumi.Output<List<Map<String, dynamic>>?> urlSigningKeys;
+
   /// Defines the Web Application Firewall policy for the endpoint (if applicable)
-  late final pulumi.Output<EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse?> webApplicationFirewallPolicyLink;
+  late final pulumi.Output<
+    EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse?
+  >
+  webApplicationFirewallPolicyLink;
 
   /// Creates a new [Endpoint].
   /// [name] The Pulumi resource name.
@@ -858,36 +884,50 @@ class Endpoint extends pulumi.CustomResource {
     EndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cdn:Endpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.contentTypesToCompress = registerOutput<List<String>?>('contentTypesToCompress');
-    this.customDomains = registerOutput<List<DeepCreatedCustomDomainResponse>>('customDomains');
-    this.defaultOriginGroup = registerOutput<ResourceReferenceResponse?>('defaultOriginGroup');
-    this.deliveryPolicy = registerOutput<EndpointPropertiesUpdateParametersDeliveryPolicyResponse?>('deliveryPolicy');
-    this.geoFilters = registerOutput<List<GeoFilterResponse>?>('geoFilters');
-    this.hostName = registerOutput<String>('hostName');
-    this.isCompressionEnabled = registerOutput<bool?>('isCompressionEnabled');
-    this.isHttpAllowed = registerOutput<bool?>('isHttpAllowed');
-    this.isHttpsAllowed = registerOutput<bool?>('isHttpsAllowed');
-    this.location = registerOutput<String>('location');
+         'azure-native:cdn:Endpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contentTypesToCompress = registerOutput<List<String>?>(
+      'contentTypesToCompress',
+    );
+    customDomains = registerOutput<List<Map<String, dynamic>>>('customDomains');
+    defaultOriginGroup = registerOutput<ResourceReferenceResponse?>(
+      'defaultOriginGroup',
+    );
+    deliveryPolicy =
+        registerOutput<
+          EndpointPropertiesUpdateParametersDeliveryPolicyResponse?
+        >('deliveryPolicy');
+    geoFilters = registerOutput<List<Map<String, dynamic>>?>('geoFilters');
+    hostName = registerOutput<String>('hostName');
+    isCompressionEnabled = registerOutput<bool?>('isCompressionEnabled');
+    isHttpAllowed = registerOutput<bool?>('isHttpAllowed');
+    isHttpsAllowed = registerOutput<bool?>('isHttpsAllowed');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.optimizationType = registerOutput<String?>('optimizationType');
-    this.originGroups = registerOutput<List<DeepCreatedOriginGroupResponse>?>('originGroups');
-    this.originHostHeader = registerOutput<String?>('originHostHeader');
-    this.originPath = registerOutput<String?>('originPath');
-    this.origins = registerOutput<List<DeepCreatedOriginResponse>>('origins');
-    this.probePath = registerOutput<String?>('probePath');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.queryStringCachingBehavior = registerOutput<String?>('queryStringCachingBehavior');
-    this.resourceState = registerOutput<String>('resourceState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.urlSigningKeys = registerOutput<List<UrlSigningKeyResponse>?>('urlSigningKeys');
-    this.webApplicationFirewallPolicyLink = registerOutput<EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse?>('webApplicationFirewallPolicyLink');
+    optimizationType = registerOutput<String?>('optimizationType');
+    originGroups = registerOutput<List<Map<String, dynamic>>?>('originGroups');
+    originHostHeader = registerOutput<String?>('originHostHeader');
+    originPath = registerOutput<String?>('originPath');
+    origins = registerOutput<List<Map<String, dynamic>>>('origins');
+    probePath = registerOutput<String?>('probePath');
+    provisioningState = registerOutput<String>('provisioningState');
+    queryStringCachingBehavior = registerOutput<String?>(
+      'queryStringCachingBehavior',
+    );
+    resourceState = registerOutput<String>('resourceState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    urlSigningKeys = registerOutput<List<Map<String, dynamic>>?>(
+      'urlSigningKeys',
+    );
+    webApplicationFirewallPolicyLink =
+        registerOutput<
+          EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse?
+        >('webApplicationFirewallPolicyLink');
   }
 }

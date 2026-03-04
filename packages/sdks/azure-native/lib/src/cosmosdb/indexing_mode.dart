@@ -4,16 +4,15 @@ enum IndexingMode {
   valueLazy("lazy"),
   valueNone("none");
 
-  const IndexingMode(this.value);
-  final String value;
+  const IndexingMode(this.wireValue);
+  final String wireValue;
 
   static IndexingMode fromValue(String value) {
     for (final item in IndexingMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IndexingMode value: $value');
   }
 }
-

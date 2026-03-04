@@ -207,7 +207,7 @@ import 'project_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DevCenter` - 2025-02-01
@@ -226,20 +226,28 @@ import 'project_state.dart';
 class Project extends pulumi.CustomResource {
   /// Description of the project. Changing this forces a new Dev Center Project to be created.
   late final pulumi.Output<String?> description;
+
   /// Resource Id of an associated DevCenter. Changing this forces a new Dev Center Project to be created.
   late final pulumi.Output<String> devCenterId;
+
   /// The URI of the Dev Center resource this project is associated with.
   late final pulumi.Output<String> devCenterUri;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<ProjectIdentity?> identity;
+
   /// The Azure Region where the Dev Center Project should exist. Changing this forces a new Dev Center Project to be created.
   late final pulumi.Output<String> location;
+
   /// When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project.
   late final pulumi.Output<int?> maximumDevBoxesPerUser;
+
   /// Specifies the name of this Dev Center Project. Changing this forces a new Dev Center Project to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the Resource Group within which this Dev Center Project should exist. Changing this forces a new Dev Center Project to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Dev Center Project.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -252,20 +260,20 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devcenter/project:Project',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.devCenterId = registerOutput<String>('devCenterId');
-    this.devCenterUri = registerOutput<String>('devCenterUri');
-    this.identity = registerOutput<ProjectIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.maximumDevBoxesPerUser = registerOutput<int?>('maximumDevBoxesPerUser');
+         'azure:devcenter/project:Project',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    devCenterId = registerOutput<String>('devCenterId');
+    devCenterUri = registerOutput<String>('devCenterUri');
+    identity = registerOutput<ProjectIdentity?>('identity');
+    location = registerOutput<String>('location');
+    maximumDevBoxesPerUser = registerOutput<int?>('maximumDevBoxesPerUser');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -286,19 +294,19 @@ class Project extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devcenter/project:Project',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.devCenterId = registerOutput<String>('devCenterId');
-    this.devCenterUri = registerOutput<String>('devCenterUri');
-    this.identity = registerOutput<ProjectIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.maximumDevBoxesPerUser = registerOutput<int?>('maximumDevBoxesPerUser');
+         'azure:devcenter/project:Project',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    devCenterId = registerOutput<String>('devCenterId');
+    devCenterUri = registerOutput<String>('devCenterUri');
+    identity = registerOutput<ProjectIdentity?>('identity');
+    location = registerOutput<String>('location');
+    maximumDevBoxesPerUser = registerOutput<int?>('maximumDevBoxesPerUser');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

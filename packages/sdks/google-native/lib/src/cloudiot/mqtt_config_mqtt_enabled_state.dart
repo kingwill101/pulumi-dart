@@ -4,16 +4,15 @@ enum MqttConfigMqttEnabledState {
   mqttEnabled("MQTT_ENABLED"),
   mqttDisabled("MQTT_DISABLED");
 
-  const MqttConfigMqttEnabledState(this.value);
-  final String value;
+  const MqttConfigMqttEnabledState(this.wireValue);
+  final String wireValue;
 
   static MqttConfigMqttEnabledState fromValue(String value) {
     for (final item in MqttConfigMqttEnabledState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MqttConfigMqttEnabledState value: $value');
   }
 }
-

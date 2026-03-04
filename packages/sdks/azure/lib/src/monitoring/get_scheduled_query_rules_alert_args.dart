@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetScheduledQueryRulesAlertArgs {
   /// Specifies the name of the scheduled query rule.
   final pulumi.Input<String> name;
+
   /// Specifies the name of the resource group where the scheduled query rule is located.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetScheduledQueryRulesAlertArgs {
 
   factory GetScheduledQueryRulesAlertArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduledQueryRulesAlertArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectorMappingErrorManagementResponse {
   /// The error limit allowed while importing data.
   final pulumi.Input<int>? errorLimit;
+
   /// The type of error management to use for the mapping.
   final pulumi.Input<String> errorManagementType;
 
@@ -24,11 +25,18 @@ class ConnectorMappingErrorManagementResponse {
     };
   }
 
-  factory ConnectorMappingErrorManagementResponse.fromMap(Map<String, dynamic> map) {
+  factory ConnectorMappingErrorManagementResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorMappingErrorManagementResponse(
-      errorLimit: map['errorLimit'] == null ? null : (map['errorLimit']! as int).input(),
-      errorManagementType: (map['errorManagementType'] as String).input(),
+      errorLimit: (() {
+        final guardedValue = map['errorLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      errorManagementType: pulumi.Input.fromValue(
+        map['errorManagementType'] as String,
+      ),
     );
   }
 }
-

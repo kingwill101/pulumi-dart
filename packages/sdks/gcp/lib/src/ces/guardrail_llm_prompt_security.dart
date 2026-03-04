@@ -9,30 +9,52 @@ class GuardrailLlmPromptSecurity {
   /// violating the policy based on the LLM classification.
   /// Structure is documented below.
   final pulumi.Input<GuardrailLlmPromptSecurityCustomPolicy>? customPolicy;
+
   /// Configuration for default system security settings.
   /// Structure is documented below.
-  final pulumi.Input<GuardrailLlmPromptSecurityDefaultSettings>? defaultSettings;
+  final pulumi.Input<GuardrailLlmPromptSecurityDefaultSettings>?
+  defaultSettings;
 
   /// Creates a new [GuardrailLlmPromptSecurity].
   /// [customPolicy] Guardrail that blocks the conversation if the LLM response is considered
   /// [defaultSettings] Configuration for default system security settings.
-  GuardrailLlmPromptSecurity({
-    this.customPolicy,
-    this.defaultSettings,
-  });
+  GuardrailLlmPromptSecurity({this.customPolicy, this.defaultSettings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customPolicy': ?pulumi.Input.mapOptionalInputValue<GuardrailLlmPromptSecurityCustomPolicy, Map<String, dynamic>>(customPolicy, (value) => value.toMap()),
-      'defaultSettings': ?pulumi.Input.mapOptionalInputValue<GuardrailLlmPromptSecurityDefaultSettings, Map<String, dynamic>>(defaultSettings, (value) => value.toMap()),
+      'customPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            GuardrailLlmPromptSecurityCustomPolicy,
+            Map<String, dynamic>
+          >(customPolicy, (value) => value.toMap()),
+      'defaultSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            GuardrailLlmPromptSecurityDefaultSettings,
+            Map<String, dynamic>
+          >(defaultSettings, (value) => value.toMap()),
     };
   }
 
   factory GuardrailLlmPromptSecurity.fromMap(Map<String, dynamic> map) {
     return GuardrailLlmPromptSecurity(
-      customPolicy: map['customPolicy'] == null ? null : (GuardrailLlmPromptSecurityCustomPolicy.fromMap((map['customPolicy']! as Map).cast<String, dynamic>())).input(),
-      defaultSettings: map['defaultSettings'] == null ? null : (GuardrailLlmPromptSecurityDefaultSettings.fromMap((map['defaultSettings']! as Map).cast<String, dynamic>())).input(),
+      customPolicy: (() {
+        final guardedValue = map['customPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GuardrailLlmPromptSecurityCustomPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      defaultSettings: (() {
+        final guardedValue = map['defaultSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GuardrailLlmPromptSecurityDefaultSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

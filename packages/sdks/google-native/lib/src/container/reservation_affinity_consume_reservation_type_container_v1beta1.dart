@@ -5,16 +5,22 @@ enum ReservationAffinityConsumeReservationTypeContainerV1beta1 {
   anyReservation("ANY_RESERVATION"),
   specificReservation("SPECIFIC_RESERVATION");
 
-  const ReservationAffinityConsumeReservationTypeContainerV1beta1(this.value);
-  final String value;
+  const ReservationAffinityConsumeReservationTypeContainerV1beta1(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static ReservationAffinityConsumeReservationTypeContainerV1beta1 fromValue(String value) {
-    for (final item in ReservationAffinityConsumeReservationTypeContainerV1beta1.values) {
-      if (item.value == value) {
+  static ReservationAffinityConsumeReservationTypeContainerV1beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in ReservationAffinityConsumeReservationTypeContainerV1beta1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ReservationAffinityConsumeReservationTypeContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown ReservationAffinityConsumeReservationTypeContainerV1beta1 value: $value',
+    );
   }
 }
-

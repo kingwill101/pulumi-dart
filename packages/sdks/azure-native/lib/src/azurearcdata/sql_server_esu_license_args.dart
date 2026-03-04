@@ -10,12 +10,16 @@ import 'sql_server_esu_license_properties.dart';
 class SqlServerEsuLicenseArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// SQL Server ESU license properties
   final pulumi.Input<SqlServerEsuLicenseProperties> properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of SQL Server ESU License
   final pulumi.Input<String>? sqlServerEsuLicenseName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -36,7 +40,11 @@ class SqlServerEsuLicenseArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': ?location,
-      'properties': pulumi.Input.mapInputValue<SqlServerEsuLicenseProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            SqlServerEsuLicenseProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'sqlServerEsuLicenseName': ?sqlServerEsuLicenseName,
       'tags': ?tags,
@@ -45,12 +53,31 @@ class SqlServerEsuLicenseArgs {
 
   factory SqlServerEsuLicenseArgs.fromMap(Map<String, dynamic> map) {
     return SqlServerEsuLicenseArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: (SqlServerEsuLicenseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sqlServerEsuLicenseName: map['sqlServerEsuLicenseName'] == null ? null : (map['sqlServerEsuLicenseName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: pulumi.Input.fromValue(
+        SqlServerEsuLicenseProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sqlServerEsuLicenseName: (() {
+        final guardedValue = map['sqlServerEsuLicenseName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

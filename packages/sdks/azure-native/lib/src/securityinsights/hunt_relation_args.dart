@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HuntRelationArgs {
   /// The hunt id (GUID)
   final pulumi.Input<String> huntId;
+
   /// The hunt relation id (GUID)
   final pulumi.Input<String>? huntRelationId;
+
   /// List of labels relevant to this hunt
   final pulumi.Input<List<String>>? labels;
+
   /// The id of the related resource
   final pulumi.Input<String> relatedResourceId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -49,13 +54,24 @@ class HuntRelationArgs {
 
   factory HuntRelationArgs.fromMap(Map<String, dynamic> map) {
     return HuntRelationArgs(
-      huntId: (map['huntId'] as String).input(),
-      huntRelationId: map['huntRelationId'] == null ? null : (map['huntRelationId']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
-      relatedResourceId: (map['relatedResourceId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      huntId: pulumi.Input.fromValue(map['huntId'] as String),
+      huntRelationId: (() {
+        final guardedValue = map['huntRelationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      relatedResourceId: pulumi.Input.fromValue(
+        map['relatedResourceId'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

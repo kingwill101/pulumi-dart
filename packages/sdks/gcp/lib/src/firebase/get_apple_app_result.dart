@@ -1,25 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAppleApp.
 class GetAppleAppResult {
   final String apiKeyId;
+
   /// Immutable. The globally unique, Firebase-assigned identifier of the App.
   /// This identifier should be treated as an opaque token, as the data format is not specified.
   final String appId;
+
   /// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
   final String appStoreId;
+
   /// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
   final String bundleId;
   final String deletionPolicy;
+
   /// The user-assigned display name of the App.
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The fully qualified resource name of the App, for example:
   /// projects/projectId/iosApps/appId
   final String name;
   final String? project;
+
   /// The Apple Developer Team ID associated with the App in the App Store.
   final String teamId;
 
@@ -72,9 +78,12 @@ class GetAppleAppResult {
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       teamId: map['teamId'] as String,
     );
   }
 }
-

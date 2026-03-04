@@ -14,7 +14,7 @@ import 'get_zones_result.dart';
 
 /// This data source provides the Gpdb Accounts of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.142.0+.
+/// &gt; **NOTE:** Available in v1.142.0+.
 ///
 /// ## Example Usage
 ///
@@ -192,7 +192,7 @@ Future<GetAccountsResult> getAccounts(
 
 /// This data source provides Gpdb Data Backup available to the user.[What is Data Backup](https://www.alibabacloud.com/help/en/)
 ///
-/// > **NOTE:** Available since v1.231.0.
+/// &gt; **NOTE:** Available since v1.231.0.
 ///
 /// ## Example Usage
 ///
@@ -334,7 +334,7 @@ Future<GetDataBackupsResult> getDataBackups(
 
 /// This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.189.0+.
+/// &gt; **NOTE:** Available in v1.189.0+.
 ///
 /// ## Example Usage
 ///
@@ -501,7 +501,7 @@ Future<GetDbInstancePlansResult> getDbInstancePlans(
 
 /// This data source provides the AnalyticDB for PostgreSQL instances of the current Alibaba Cloud user.
 ///
-/// > **NOTE:**  Available in 1.47.0+
+/// &gt; **NOTE:**  Available in 1.47.0+
 ///
 /// ## Example Usage
 ///
@@ -611,7 +611,7 @@ Future<GetInstancesResult> getInstances(
 
 /// This data source provides Gpdb Logbackup available to the user.[What is Log Backup](https://www.alibabacloud.com/help/en/)
 ///
-/// > **NOTE:** Available since v1.231.0.
+/// &gt; **NOTE:** Available since v1.231.0.
 ///
 /// ## Example Usage
 ///
@@ -776,7 +776,7 @@ Future<GetLogBackupsResult> getLogBackups(
 
 /// This data source provides availability zones for Gpdb that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 ///
-/// > **NOTE:** Available in v1.73.0+.
+/// &gt; **NOTE:** Available in v1.73.0+.
 ///
 /// ## Example Usage
 ///

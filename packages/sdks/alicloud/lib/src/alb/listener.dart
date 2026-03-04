@@ -2,9 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'listener_access_log_tracing_config.dart';
 import 'listener_acl_config.dart';
 import 'listener_args.dart';
-import 'listener_ca_certificate.dart';
 import 'listener_certificates.dart';
-import 'listener_default_action.dart';
 import 'listener_quic_config.dart';
 import 'listener_state.dart';
 import 'listener_xforwarded_for_config.dart';
@@ -15,7 +13,7 @@ import 'listener_xforwarded_for_config.dart';
 ///
 /// For information about Application Load Balancer (ALB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createlistener).
 ///
-/// > **NOTE:** Available since v1.133.0.
+/// &gt; **NOTE:** Available since v1.133.0.
 ///
 /// ## Example Usage
 ///
@@ -858,46 +856,67 @@ import 'listener_xforwarded_for_config.dart';
 class Listener extends pulumi.CustomResource {
   /// Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
   ///
-  /// > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
+  /// &gt; **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
   late final pulumi.Output<bool?> accessLogRecordCustomizedHeadersEnabled;
+
   /// Xtrace Configuration Information. See `access_log_tracing_config` below.
-  late final pulumi.Output<ListenerAccessLogTracingConfig?> accessLogTracingConfig;
+  late final pulumi.Output<ListenerAccessLogTracingConfig?>
+  accessLogTracingConfig;
+
   /// The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
   late final pulumi.Output<ListenerAclConfig> aclConfig;
+
   /// The list of certificates. See `ca_certificates` below.
-  late final pulumi.Output<List<ListenerCaCertificate>?> caCertificates;
+  late final pulumi.Output<List<Map<String, dynamic>>?> caCertificates;
+
   /// Whether to turn on two-way authentication. Value:
   late final pulumi.Output<bool?> caEnabled;
+
   /// The list of certificates. See `certificates` below.
   late final pulumi.Output<ListenerCertificates?> certificates;
+
   /// The Default Rule Action List See `default_actions` below.
-  late final pulumi.Output<List<ListenerDefaultAction>> defaultActions;
+  late final pulumi.Output<List<Map<String, dynamic>>> defaultActions;
+
   /// Whether to PreCheck only this request. Value:
   late final pulumi.Output<bool?> dryRun;
+
   /// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
   late final pulumi.Output<bool> gzipEnabled;
+
   /// Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
   late final pulumi.Output<bool> http2Enabled;
+
   /// Specify the Connection Idle Timeout Value: 1 to 60 seconds.
   late final pulumi.Output<int> idleTimeout;
+
   /// Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
   late final pulumi.Output<String?> listenerDescription;
+
   /// The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
   late final pulumi.Output<int> listenerPort;
+
   /// Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
   late final pulumi.Output<String> listenerProtocol;
+
   /// The SLB Instance Id.
   late final pulumi.Output<String> loadBalancerId;
+
   /// Configuration Associated with the QuIC Listening See `quic_config` below.
   late final pulumi.Output<ListenerQuicConfig> quicConfig;
+
   /// The Specified Request Timeout Time. Value: 1~180 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
   late final pulumi.Output<int> requestTimeout;
+
   /// Security Policy
   late final pulumi.Output<String> securityPolicyId;
+
   /// The Current IP Address of the Listened State
   late final pulumi.Output<String> status;
+
   /// The tag of the resource
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
   late final pulumi.Output<ListenerXForwardedForConfig> xForwardedForConfig;
 
@@ -910,32 +929,42 @@ class Listener extends pulumi.CustomResource {
     ListenerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:alb/listener:Listener',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessLogRecordCustomizedHeadersEnabled = registerOutput<bool?>('accessLogRecordCustomizedHeadersEnabled');
-    this.accessLogTracingConfig = registerOutput<ListenerAccessLogTracingConfig?>('accessLogTracingConfig');
-    this.aclConfig = registerOutput<ListenerAclConfig>('aclConfig');
-    this.caCertificates = registerOutput<List<ListenerCaCertificate>?>('caCertificates');
-    this.caEnabled = registerOutput<bool?>('caEnabled');
-    this.certificates = registerOutput<ListenerCertificates?>('certificates');
-    this.defaultActions = registerOutput<List<ListenerDefaultAction>>('defaultActions');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.gzipEnabled = registerOutput<bool>('gzipEnabled');
-    this.http2Enabled = registerOutput<bool>('http2Enabled');
-    this.idleTimeout = registerOutput<int>('idleTimeout');
-    this.listenerDescription = registerOutput<String?>('listenerDescription');
-    this.listenerPort = registerOutput<int>('listenerPort');
-    this.listenerProtocol = registerOutput<String>('listenerProtocol');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.quicConfig = registerOutput<ListenerQuicConfig>('quicConfig');
-    this.requestTimeout = registerOutput<int>('requestTimeout');
-    this.securityPolicyId = registerOutput<String>('securityPolicyId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.xForwardedForConfig = registerOutput<ListenerXForwardedForConfig>('xForwardedForConfig');
+         'alicloud:alb/listener:Listener',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessLogRecordCustomizedHeadersEnabled = registerOutput<bool?>(
+      'accessLogRecordCustomizedHeadersEnabled',
+    );
+    accessLogTracingConfig = registerOutput<ListenerAccessLogTracingConfig?>(
+      'accessLogTracingConfig',
+    );
+    aclConfig = registerOutput<ListenerAclConfig>('aclConfig');
+    caCertificates = registerOutput<List<Map<String, dynamic>>?>(
+      'caCertificates',
+    );
+    caEnabled = registerOutput<bool?>('caEnabled');
+    certificates = registerOutput<ListenerCertificates?>('certificates');
+    defaultActions = registerOutput<List<Map<String, dynamic>>>(
+      'defaultActions',
+    );
+    dryRun = registerOutput<bool?>('dryRun');
+    gzipEnabled = registerOutput<bool>('gzipEnabled');
+    http2Enabled = registerOutput<bool>('http2Enabled');
+    idleTimeout = registerOutput<int>('idleTimeout');
+    listenerDescription = registerOutput<String?>('listenerDescription');
+    listenerPort = registerOutput<int>('listenerPort');
+    listenerProtocol = registerOutput<String>('listenerProtocol');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    quicConfig = registerOutput<ListenerQuicConfig>('quicConfig');
+    requestTimeout = registerOutput<int>('requestTimeout');
+    securityPolicyId = registerOutput<String>('securityPolicyId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    xForwardedForConfig = registerOutput<ListenerXForwardedForConfig>(
+      'xForwardedForConfig',
+    );
   }
 
   /// Gets an existing [Listener] resource's state with the given [name] and [id].
@@ -956,31 +985,41 @@ class Listener extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:alb/listener:Listener',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessLogRecordCustomizedHeadersEnabled = registerOutput<bool?>('accessLogRecordCustomizedHeadersEnabled');
-    this.accessLogTracingConfig = registerOutput<ListenerAccessLogTracingConfig?>('accessLogTracingConfig');
-    this.aclConfig = registerOutput<ListenerAclConfig>('aclConfig');
-    this.caCertificates = registerOutput<List<ListenerCaCertificate>?>('caCertificates');
-    this.caEnabled = registerOutput<bool?>('caEnabled');
-    this.certificates = registerOutput<ListenerCertificates?>('certificates');
-    this.defaultActions = registerOutput<List<ListenerDefaultAction>>('defaultActions');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.gzipEnabled = registerOutput<bool>('gzipEnabled');
-    this.http2Enabled = registerOutput<bool>('http2Enabled');
-    this.idleTimeout = registerOutput<int>('idleTimeout');
-    this.listenerDescription = registerOutput<String?>('listenerDescription');
-    this.listenerPort = registerOutput<int>('listenerPort');
-    this.listenerProtocol = registerOutput<String>('listenerProtocol');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.quicConfig = registerOutput<ListenerQuicConfig>('quicConfig');
-    this.requestTimeout = registerOutput<int>('requestTimeout');
-    this.securityPolicyId = registerOutput<String>('securityPolicyId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.xForwardedForConfig = registerOutput<ListenerXForwardedForConfig>('xForwardedForConfig');
+         'alicloud:alb/listener:Listener',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessLogRecordCustomizedHeadersEnabled = registerOutput<bool?>(
+      'accessLogRecordCustomizedHeadersEnabled',
+    );
+    accessLogTracingConfig = registerOutput<ListenerAccessLogTracingConfig?>(
+      'accessLogTracingConfig',
+    );
+    aclConfig = registerOutput<ListenerAclConfig>('aclConfig');
+    caCertificates = registerOutput<List<Map<String, dynamic>>?>(
+      'caCertificates',
+    );
+    caEnabled = registerOutput<bool?>('caEnabled');
+    certificates = registerOutput<ListenerCertificates?>('certificates');
+    defaultActions = registerOutput<List<Map<String, dynamic>>>(
+      'defaultActions',
+    );
+    dryRun = registerOutput<bool?>('dryRun');
+    gzipEnabled = registerOutput<bool>('gzipEnabled');
+    http2Enabled = registerOutput<bool>('http2Enabled');
+    idleTimeout = registerOutput<int>('idleTimeout');
+    listenerDescription = registerOutput<String?>('listenerDescription');
+    listenerPort = registerOutput<int>('listenerPort');
+    listenerProtocol = registerOutput<String>('listenerProtocol');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    quicConfig = registerOutput<ListenerQuicConfig>('quicConfig');
+    requestTimeout = registerOutput<int>('requestTimeout');
+    securityPolicyId = registerOutput<String>('securityPolicyId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    xForwardedForConfig = registerOutput<ListenerXForwardedForConfig>(
+      'xForwardedForConfig',
+    );
   }
 }

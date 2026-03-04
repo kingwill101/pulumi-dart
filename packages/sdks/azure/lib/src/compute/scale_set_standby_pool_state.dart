@@ -7,16 +7,22 @@ import 'scale_set_standby_pool_elasticity_profile.dart';
 class ScaleSetStandbyPoolState {
   /// Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to.
   final pulumi.Input<String>? attachedVirtualMachineScaleSetId;
+
   /// An `elasticity_profile` block as defined below.
   final pulumi.Input<ScaleSetStandbyPoolElasticityProfile>? elasticityProfile;
+
   /// Specifies the Azure Region where the Standby Pool should exist. Changing this forces a new Standby Pool to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name which should be used for this Standby Pool. Changing this forces a new Standby Pool to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the name of the Resource Group where the Standby Pool should exist. Changing this forces a new Standby Pool to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Standby Pool.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Specifies the desired state of virtual machines in the pool. Possible values are `Deallocated`, `Hibernated` and `Running`.
   final pulumi.Input<String>? virtualMachineState;
 
@@ -41,7 +47,11 @@ class ScaleSetStandbyPoolState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attachedVirtualMachineScaleSetId': ?attachedVirtualMachineScaleSetId,
-      'elasticityProfile': ?pulumi.Input.mapOptionalInputValue<ScaleSetStandbyPoolElasticityProfile, Map<String, dynamic>>(elasticityProfile, (value) => value.toMap()),
+      'elasticityProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScaleSetStandbyPoolElasticityProfile,
+            Map<String, dynamic>
+          >(elasticityProfile, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
@@ -52,14 +62,47 @@ class ScaleSetStandbyPoolState {
 
   factory ScaleSetStandbyPoolState.fromMap(Map<String, dynamic> map) {
     return ScaleSetStandbyPoolState(
-      attachedVirtualMachineScaleSetId: map['attachedVirtualMachineScaleSetId'] == null ? null : (map['attachedVirtualMachineScaleSetId']! as String).input(),
-      elasticityProfile: map['elasticityProfile'] == null ? null : (ScaleSetStandbyPoolElasticityProfile.fromMap((map['elasticityProfile']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      virtualMachineState: map['virtualMachineState'] == null ? null : (map['virtualMachineState']! as String).input(),
+      attachedVirtualMachineScaleSetId: (() {
+        final guardedValue = map['attachedVirtualMachineScaleSetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      elasticityProfile: (() {
+        final guardedValue = map['elasticityProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScaleSetStandbyPoolElasticityProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      virtualMachineState: (() {
+        final guardedValue = map['virtualMachineState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

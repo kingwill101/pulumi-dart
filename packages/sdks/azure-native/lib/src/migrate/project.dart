@@ -171,16 +171,22 @@ import 'project_properties_response.dart';
 class Project extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// For optimistic concurrency control.
   late final pulumi.Output<String?> eTag;
+
   /// Azure location in which project is created.
   late final pulumi.Output<String?> location;
+
   /// Name of the project.
   late final pulumi.Output<String> name;
+
   /// Properties of the project.
   late final pulumi.Output<ProjectPropertiesResponse> properties;
+
   /// Tags provided by Azure Tagging service.
   late final pulumi.Output<dynamic> tags;
+
   /// Type of the object = [Microsoft.Migrate/assessmentProjects].
   late final pulumi.Output<String> type;
 
@@ -193,17 +199,17 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:Project',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eTag = registerOutput<String?>('eTag');
-    this.location = registerOutput<String?>('location');
+         'azure-native:migrate:Project',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String?>('eTag');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ProjectPropertiesResponse>('properties');
-    this.tags = registerOutput<dynamic>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ProjectPropertiesResponse>('properties');
+    tags = registerOutput<dynamic>('tags');
+    type = registerOutput<String>('type');
   }
 }

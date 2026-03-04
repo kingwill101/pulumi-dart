@@ -8,36 +8,52 @@ import 'system_data_response.dart';
 class GetConsoleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The more detailed status of the console.
   final String detailedStatus;
+
   /// The descriptive message about the current detailed status.
   final String detailedStatusMessage;
+
   /// The indicator of whether the console access is enabled.
   final String enabled;
+
   /// Resource ETag.
   final String etag;
+
   /// The date and time after which the key will be disallowed access.
   final String? expiration;
+
   /// The extended location of the cluster manager associated with the cluster this virtual machine is created on.
   final ExtendedLocationResponse extendedLocation;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// The resource ID of the private link service that is used to provide virtual machine console access.
   final String privateLinkServiceId;
+
   /// The provisioning state of the virtual machine console.
   final String provisioningState;
+
   /// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
   final SshPublicKeyResponse sshPublicKey;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// The unique identifier for the virtual machine that is used to access the console.
   final String virtualMachineAccessId;
 
@@ -108,19 +124,32 @@ class GetConsoleResult {
       detailedStatusMessage: map['detailedStatusMessage'] as String,
       enabled: map['enabled'] as String,
       etag: map['etag'] as String,
-      expiration: map['expiration'] == null ? null : map['expiration']! as String,
-      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      expiration: (() {
+        final guardedValue = map['expiration'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      extendedLocation: ExtendedLocationResponse.fromMap(
+        (map['extendedLocation']! as Map).cast<String, dynamic>(),
+      ),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       privateLinkServiceId: map['privateLinkServiceId'] as String,
       provisioningState: map['provisioningState'] as String,
-      sshPublicKey: SshPublicKeyResponse.fromMap((map['sshPublicKey'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      sshPublicKey: SshPublicKeyResponse.fromMap(
+        (map['sshPublicKey']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
       virtualMachineAccessId: map['virtualMachineAccessId'] as String,
     );
   }
 }
-

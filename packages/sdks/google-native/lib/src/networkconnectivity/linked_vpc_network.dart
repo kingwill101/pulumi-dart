@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedVpcNetwork {
   /// Optional. IP ranges encompassing the subnets to be excluded from peering.
   final pulumi.Input<List<String>>? excludeExportRanges;
+
   /// The URI of the VPC network resource.
   final pulumi.Input<String> uri;
 
   /// Creates a new [LinkedVpcNetwork].
   /// [excludeExportRanges] Optional. IP ranges encompassing the subnets to be excluded from peering.
   /// [uri] The URI of the VPC network resource.
-  LinkedVpcNetwork({
-    this.excludeExportRanges,
-    required this.uri,
-  });
+  LinkedVpcNetwork({this.excludeExportRanges, required this.uri});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,12 @@ class LinkedVpcNetwork {
 
   factory LinkedVpcNetwork.fromMap(Map<String, dynamic> map) {
     return LinkedVpcNetwork(
-      excludeExportRanges: map['excludeExportRanges'] == null ? null : ((map['excludeExportRanges']! as List).cast<String>()).input(),
-      uri: (map['uri'] as String).input(),
+      excludeExportRanges: (() {
+        final guardedValue = map['excludeExportRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

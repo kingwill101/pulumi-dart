@@ -373,7 +373,7 @@ import 'snapshot_policy_weekly_schedule.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.NetApp` - 2025-06-01
@@ -388,22 +388,31 @@ import 'snapshot_policy_weekly_schedule.dart';
 class SnapshotPolicy extends pulumi.CustomResource {
   /// The name of the NetApp Account in which the NetApp Snapshot Policy should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
+
   /// Sets a daily snapshot schedule. A `daily_schedule` block as defined below.
   late final pulumi.Output<SnapshotPolicyDailySchedule?> dailySchedule;
+
   /// Defines that the NetApp Snapshot Policy is enabled or not.
   late final pulumi.Output<bool> enabled;
+
   /// Sets an hourly snapshot schedule. A `hourly_schedule` block as defined below.
   late final pulumi.Output<SnapshotPolicyHourlySchedule?> hourlySchedule;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Sets a monthly snapshot schedule. A `monthly_schedule` block as defined below.
   late final pulumi.Output<SnapshotPolicyMonthlySchedule?> monthlySchedule;
+
   /// The name of the NetApp Snapshot Policy. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group where the NetApp Snapshot Policy should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Sets a weekly snapshot schedule. A `weekly_schedule` block as defined below.
   late final pulumi.Output<SnapshotPolicyWeeklySchedule?> weeklySchedule;
 
@@ -416,21 +425,29 @@ class SnapshotPolicy extends pulumi.CustomResource {
     SnapshotPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:netapp/snapshotPolicy:SnapshotPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.dailySchedule = registerOutput<SnapshotPolicyDailySchedule?>('dailySchedule');
-    this.enabled = registerOutput<bool>('enabled');
-    this.hourlySchedule = registerOutput<SnapshotPolicyHourlySchedule?>('hourlySchedule');
-    this.location = registerOutput<String>('location');
-    this.monthlySchedule = registerOutput<SnapshotPolicyMonthlySchedule?>('monthlySchedule');
+         'azure:netapp/snapshotPolicy:SnapshotPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    dailySchedule = registerOutput<SnapshotPolicyDailySchedule?>(
+      'dailySchedule',
+    );
+    enabled = registerOutput<bool>('enabled');
+    hourlySchedule = registerOutput<SnapshotPolicyHourlySchedule?>(
+      'hourlySchedule',
+    );
+    location = registerOutput<String>('location');
+    monthlySchedule = registerOutput<SnapshotPolicyMonthlySchedule?>(
+      'monthlySchedule',
+    );
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.weeklySchedule = registerOutput<SnapshotPolicyWeeklySchedule?>('weeklySchedule');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    weeklySchedule = registerOutput<SnapshotPolicyWeeklySchedule?>(
+      'weeklySchedule',
+    );
   }
 
   /// Gets an existing [SnapshotPolicy] resource's state with the given [name] and [id].
@@ -451,20 +468,28 @@ class SnapshotPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:netapp/snapshotPolicy:SnapshotPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.dailySchedule = registerOutput<SnapshotPolicyDailySchedule?>('dailySchedule');
-    this.enabled = registerOutput<bool>('enabled');
-    this.hourlySchedule = registerOutput<SnapshotPolicyHourlySchedule?>('hourlySchedule');
-    this.location = registerOutput<String>('location');
-    this.monthlySchedule = registerOutput<SnapshotPolicyMonthlySchedule?>('monthlySchedule');
+         'azure:netapp/snapshotPolicy:SnapshotPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    dailySchedule = registerOutput<SnapshotPolicyDailySchedule?>(
+      'dailySchedule',
+    );
+    enabled = registerOutput<bool>('enabled');
+    hourlySchedule = registerOutput<SnapshotPolicyHourlySchedule?>(
+      'hourlySchedule',
+    );
+    location = registerOutput<String>('location');
+    monthlySchedule = registerOutput<SnapshotPolicyMonthlySchedule?>(
+      'monthlySchedule',
+    );
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.weeklySchedule = registerOutput<SnapshotPolicyWeeklySchedule?>('weeklySchedule');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    weeklySchedule = registerOutput<SnapshotPolicyWeeklySchedule?>(
+      'weeklySchedule',
+    );
   }
 }

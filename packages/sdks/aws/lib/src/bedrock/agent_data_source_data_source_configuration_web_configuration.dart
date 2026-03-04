@@ -5,8 +5,14 @@ import 'agent_data_source_data_source_configuration_web_configuration_crawler_co
 import 'agent_data_source_data_source_configuration_web_configuration_source_configuration.dart';
 
 class AgentDataSourceDataSourceConfigurationWebConfiguration {
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration>? crawlerConfiguration;
-  final pulumi.Input<AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration>? sourceConfiguration;
+  final pulumi.Input<
+    AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration
+  >?
+  crawlerConfiguration;
+  final pulumi.Input<
+    AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration
+  >?
+  sourceConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationWebConfiguration].
   /// [crawlerConfiguration] Optional.
@@ -18,16 +24,41 @@ class AgentDataSourceDataSourceConfigurationWebConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'crawlerConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration, Map<String, dynamic>>(crawlerConfiguration, (value) => value.toMap()),
-      'sourceConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration, Map<String, dynamic>>(sourceConfiguration, (value) => value.toMap()),
+      'crawlerConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration,
+            Map<String, dynamic>
+          >(crawlerConfiguration, (value) => value.toMap()),
+      'sourceConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration,
+            Map<String, dynamic>
+          >(sourceConfiguration, (value) => value.toMap()),
     };
   }
 
-  factory AgentDataSourceDataSourceConfigurationWebConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentDataSourceDataSourceConfigurationWebConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentDataSourceDataSourceConfigurationWebConfiguration(
-      crawlerConfiguration: map['crawlerConfiguration'] == null ? null : ((AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration.fromMap((map['crawlerConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      sourceConfiguration: map['sourceConfiguration'] == null ? null : ((AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration.fromMap((map['sourceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      crawlerConfiguration: (() {
+        final guardedValue = map['crawlerConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sourceConfiguration: (() {
+        final guardedValue = map['sourceConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

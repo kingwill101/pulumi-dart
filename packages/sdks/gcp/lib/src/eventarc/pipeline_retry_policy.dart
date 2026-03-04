@@ -7,10 +7,12 @@ class PipelineRetryPolicy {
   /// be between 1 and 100.
   /// The default value for this field is 5.
   final pulumi.Input<int>? maxAttempts;
+
   /// The maximum amount of seconds to wait between retry attempts. The value
   /// must be between 1 and 600.
   /// The default value for this field is 60.
   final pulumi.Input<String>? maxRetryDelay;
+
   /// The minimum amount of seconds to wait between retry attempts. The value
   /// must be between 1 and 600.
   /// The default value for this field is 5.
@@ -36,10 +38,21 @@ class PipelineRetryPolicy {
 
   factory PipelineRetryPolicy.fromMap(Map<String, dynamic> map) {
     return PipelineRetryPolicy(
-      maxAttempts: map['maxAttempts'] == null ? null : (map['maxAttempts']! as int).input(),
-      maxRetryDelay: map['maxRetryDelay'] == null ? null : (map['maxRetryDelay']! as String).input(),
-      minRetryDelay: map['minRetryDelay'] == null ? null : (map['minRetryDelay']! as String).input(),
+      maxAttempts: (() {
+        final guardedValue = map['maxAttempts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxRetryDelay: (() {
+        final guardedValue = map['maxRetryDelay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minRetryDelay: (() {
+        final guardedValue = map['minRetryDelay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

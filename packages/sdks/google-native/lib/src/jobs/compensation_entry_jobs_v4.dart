@@ -10,14 +10,19 @@ import 'money_jobs_v4.dart';
 class CompensationEntryJobsV4 {
   /// Compensation amount.
   final pulumi.Input<MoneyJobsV4>? amount;
+
   /// Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus.
   final pulumi.Input<String>? description;
+
   /// Expected number of units paid each year. If not specified, when Job.employment_types is FULLTIME, a default value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1
   final pulumi.Input<double>? expectedUnitsPerYear;
+
   /// Compensation range.
   final pulumi.Input<CompensationRangeJobsV4>? range;
+
   /// Compensation type. Default is CompensationType.COMPENSATION_TYPE_UNSPECIFIED.
   final pulumi.Input<CompensationEntryTypeJobsV4>? type;
+
   /// Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
   final pulumi.Input<CompensationEntryUnitJobsV4>? unit;
 
@@ -39,24 +44,73 @@ class CompensationEntryJobsV4 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'amount': ?pulumi.Input.mapOptionalInputValue<MoneyJobsV4, Map<String, dynamic>>(amount, (value) => value.toMap()),
+      'amount':
+          ?pulumi.Input.mapOptionalInputValue<
+            MoneyJobsV4,
+            Map<String, dynamic>
+          >(amount, (value) => value.toMap()),
       'description': ?description,
       'expectedUnitsPerYear': ?expectedUnitsPerYear,
-      'range': ?pulumi.Input.mapOptionalInputValue<CompensationRangeJobsV4, Map<String, dynamic>>(range, (value) => value.toMap()),
-      'type': ?pulumi.Input.mapOptionalInputValue<CompensationEntryTypeJobsV4, String>(type, (value) => value.value),
-      'unit': ?pulumi.Input.mapOptionalInputValue<CompensationEntryUnitJobsV4, String>(unit, (value) => value.value),
+      'range':
+          ?pulumi.Input.mapOptionalInputValue<
+            CompensationRangeJobsV4,
+            Map<String, dynamic>
+          >(range, (value) => value.toMap()),
+      'type':
+          ?pulumi.Input.mapOptionalInputValue<
+            CompensationEntryTypeJobsV4,
+            String
+          >(type, (value) => value.wireValue),
+      'unit':
+          ?pulumi.Input.mapOptionalInputValue<
+            CompensationEntryUnitJobsV4,
+            String
+          >(unit, (value) => value.wireValue),
     };
   }
 
   factory CompensationEntryJobsV4.fromMap(Map<String, dynamic> map) {
     return CompensationEntryJobsV4(
-      amount: map['amount'] == null ? null : (MoneyJobsV4.fromMap((map['amount']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      expectedUnitsPerYear: map['expectedUnitsPerYear'] == null ? null : (map['expectedUnitsPerYear']! as double).input(),
-      range: map['range'] == null ? null : (CompensationRangeJobsV4.fromMap((map['range']! as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (CompensationEntryTypeJobsV4.fromValue(map['type']! as String)).input(),
-      unit: map['unit'] == null ? null : (CompensationEntryUnitJobsV4.fromValue(map['unit']! as String)).input(),
+      amount: (() {
+        final guardedValue = map['amount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MoneyJobsV4.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expectedUnitsPerYear: (() {
+        final guardedValue = map['expectedUnitsPerYear'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      range: (() {
+        final guardedValue = map['range'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CompensationRangeJobsV4.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CompensationEntryTypeJobsV4.fromValue(guardedValue as String),
+        );
+      })(),
+      unit: (() {
+        final guardedValue = map['unit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CompensationEntryUnitJobsV4.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

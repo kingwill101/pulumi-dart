@@ -11,14 +11,18 @@ import 'table_type.dart';
 class TableArgs {
   final pulumi.Input<String> catalogId;
   final pulumi.Input<String> databaseId;
+
   /// The checksum of a table object computed by the server based on the value of other fields. It may be sent on update requests to ensure the client has an up-to-date value before proceeding. It is only checked for update table operations.
   final pulumi.Input<String>? etag;
+
   /// Options of a Hive table.
   final pulumi.Input<HiveTableOptions>? hiveOptions;
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
+
   /// Required. The ID to use for the table, which will become the final component of the table's resource name.
   final pulumi.Input<String> tableId;
+
   /// The table type.
   final pulumi.Input<TableType>? type;
 
@@ -47,25 +51,57 @@ class TableArgs {
       'catalogId': catalogId,
       'databaseId': databaseId,
       'etag': ?etag,
-      'hiveOptions': ?pulumi.Input.mapOptionalInputValue<HiveTableOptions, Map<String, dynamic>>(hiveOptions, (value) => value.toMap()),
+      'hiveOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            HiveTableOptions,
+            Map<String, dynamic>
+          >(hiveOptions, (value) => value.toMap()),
       'location': ?location,
       'project': ?project,
       'tableId': tableId,
-      'type': ?pulumi.Input.mapOptionalInputValue<TableType, String>(type, (value) => value.value),
+      'type': ?pulumi.Input.mapOptionalInputValue<TableType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      catalogId: (map['catalogId'] as String).input(),
-      databaseId: (map['databaseId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      hiveOptions: map['hiveOptions'] == null ? null : (HiveTableOptions.fromMap((map['hiveOptions']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      tableId: (map['tableId'] as String).input(),
-      type: map['type'] == null ? null : (TableType.fromValue(map['type']! as String)).input(),
+      catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
+      databaseId: pulumi.Input.fromValue(map['databaseId'] as String),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hiveOptions: (() {
+        final guardedValue = map['hiveOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HiveTableOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tableId: pulumi.Input.fromValue(map['tableId'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TableType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

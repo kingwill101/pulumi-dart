@@ -4,7 +4,7 @@ import 'project_state.dart';
 
 /// Manages a V3 Project resource within OpenStack Keystone.
 ///
-/// > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+/// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
 /// this resource.
 ///
 /// ## Example Usage
@@ -114,24 +114,31 @@ import 'project_state.dart';
 class Project extends pulumi.CustomResource {
   /// A description of the project.
   late final pulumi.Output<String?> description;
+
   /// The domain this project belongs to.
   late final pulumi.Output<String> domainId;
+
   /// Whether the project is enabled or disabled. Valid
   /// values are `true` and `false`. Default is `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// Whether this project is a domain. Valid values
   /// are `true` and `false`. Default is `false`. Changing this creates a new
   /// project/domain.
   late final pulumi.Output<bool?> isDomain;
+
   /// The name of the project.
   late final pulumi.Output<String> name;
+
   /// The parent of this project. Changing this creates
   /// a new project.
   late final pulumi.Output<String> parentId;
+
   /// The region in which to obtain the V3 Keystone client.
   /// If omitted, the `region` argument of the provider is used. Changing this
   /// creates a new project.
   late final pulumi.Output<String> region;
+
   /// Tags for the project. Changing this updates the existing
   /// project.
   late final pulumi.Output<List<String>?> tags;
@@ -145,19 +152,19 @@ class Project extends pulumi.CustomResource {
     ProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/project:Project',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.domainId = registerOutput<String>('domainId');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.isDomain = registerOutput<bool?>('isDomain');
+         'openstack:identity/project:Project',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    domainId = registerOutput<String>('domainId');
+    enabled = registerOutput<bool?>('enabled');
+    isDomain = registerOutput<bool?>('isDomain');
     this.name = registerOutput<String>('name');
-    this.parentId = registerOutput<String>('parentId');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<List<String>?>('tags');
+    parentId = registerOutput<String>('parentId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<List<String>?>('tags');
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -178,18 +185,18 @@ class Project extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:identity/project:Project',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.domainId = registerOutput<String>('domainId');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.isDomain = registerOutput<bool?>('isDomain');
+         'openstack:identity/project:Project',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    domainId = registerOutput<String>('domainId');
+    enabled = registerOutput<bool?>('enabled');
+    isDomain = registerOutput<bool?>('isDomain');
     this.name = registerOutput<String>('name');
-    this.parentId = registerOutput<String>('parentId');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<List<String>?>('tags');
+    parentId = registerOutput<String>('parentId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<List<String>?>('tags');
   }
 }

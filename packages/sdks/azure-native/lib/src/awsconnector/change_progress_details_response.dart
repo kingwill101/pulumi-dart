@@ -6,26 +6,31 @@ import 'initiated_by_enum_value_response.dart';
 
 /// Definition of ChangeProgressDetails
 class ChangeProgressDetailsResponse {
-  /// <p>The ID of the configuration change.</p>
+  /// &lt;p&gt;The ID of the configuration change.&lt;/p&gt;
   final pulumi.Input<String>? changeId;
-  /// <p>The current status of the configuration change.</p>
+
+  /// &lt;p&gt;The current status of the configuration change.&lt;/p&gt;
   final pulumi.Input<ConfigChangeStatusEnumValueResponse>? configChangeStatus;
-  /// <p>The IAM principal who initiated the configuration change.</p>
+
+  /// &lt;p&gt;The IAM principal who initiated the configuration change.&lt;/p&gt;
   final pulumi.Input<InitiatedByEnumValueResponse>? initiatedBy;
-  /// <p>The last time that the configuration change was updated.</p>
+
+  /// &lt;p&gt;The last time that the configuration change was updated.&lt;/p&gt;
   final pulumi.Input<String>? lastUpdatedTime;
-  /// <p>A message corresponding to the status of the configuration change.</p>
+
+  /// &lt;p&gt;A message corresponding to the status of the configuration change.&lt;/p&gt;
   final pulumi.Input<String>? message;
-  /// <p>The time that the configuration change was initiated, in Universal Coordinated Time (UTC).</p>
+
+  /// &lt;p&gt;The time that the configuration change was initiated, in Universal Coordinated Time (UTC).&lt;/p&gt;
   final pulumi.Input<String>? startTime;
 
   /// Creates a new [ChangeProgressDetailsResponse].
-  /// [changeId] <p>The ID of the configuration change.</p>
-  /// [configChangeStatus] <p>The current status of the configuration change.</p>
-  /// [initiatedBy] <p>The IAM principal who initiated the configuration change.</p>
-  /// [lastUpdatedTime] <p>The last time that the configuration change was updated.</p>
-  /// [message] <p>A message corresponding to the status of the configuration change.</p>
-  /// [startTime] <p>The time that the configuration change was initiated, in Universal Coordinated Time (UTC).</p>
+  /// [changeId] &lt;p&gt;The ID of the configuration change.&lt;/p&gt;
+  /// [configChangeStatus] &lt;p&gt;The current status of the configuration change.&lt;/p&gt;
+  /// [initiatedBy] &lt;p&gt;The IAM principal who initiated the configuration change.&lt;/p&gt;
+  /// [lastUpdatedTime] &lt;p&gt;The last time that the configuration change was updated.&lt;/p&gt;
+  /// [message] &lt;p&gt;A message corresponding to the status of the configuration change.&lt;/p&gt;
+  /// [startTime] &lt;p&gt;The time that the configuration change was initiated, in Universal Coordinated Time (UTC).&lt;/p&gt;
   ChangeProgressDetailsResponse({
     this.changeId,
     this.configChangeStatus,
@@ -38,8 +43,16 @@ class ChangeProgressDetailsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'changeId': ?changeId,
-      'configChangeStatus': ?pulumi.Input.mapOptionalInputValue<ConfigChangeStatusEnumValueResponse, Map<String, dynamic>>(configChangeStatus, (value) => value.toMap()),
-      'initiatedBy': ?pulumi.Input.mapOptionalInputValue<InitiatedByEnumValueResponse, Map<String, dynamic>>(initiatedBy, (value) => value.toMap()),
+      'configChangeStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConfigChangeStatusEnumValueResponse,
+            Map<String, dynamic>
+          >(configChangeStatus, (value) => value.toMap()),
+      'initiatedBy':
+          ?pulumi.Input.mapOptionalInputValue<
+            InitiatedByEnumValueResponse,
+            Map<String, dynamic>
+          >(initiatedBy, (value) => value.toMap()),
       'lastUpdatedTime': ?lastUpdatedTime,
       'message': ?message,
       'startTime': ?startTime,
@@ -48,13 +61,44 @@ class ChangeProgressDetailsResponse {
 
   factory ChangeProgressDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ChangeProgressDetailsResponse(
-      changeId: map['changeId'] == null ? null : (map['changeId']! as String).input(),
-      configChangeStatus: map['configChangeStatus'] == null ? null : (ConfigChangeStatusEnumValueResponse.fromMap((map['configChangeStatus']! as Map).cast<String, dynamic>())).input(),
-      initiatedBy: map['initiatedBy'] == null ? null : (InitiatedByEnumValueResponse.fromMap((map['initiatedBy']! as Map).cast<String, dynamic>())).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime']! as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      changeId: (() {
+        final guardedValue = map['changeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configChangeStatus: (() {
+        final guardedValue = map['configChangeStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConfigChangeStatusEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      initiatedBy: (() {
+        final guardedValue = map['initiatedBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InitiatedByEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      lastUpdatedTime: (() {
+        final guardedValue = map['lastUpdatedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

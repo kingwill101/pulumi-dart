@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvCustomJobsJob {
   /// The YAML configuration string.
   final pulumi.Input<String> configYaml;
+
   /// The name of the custom job.
   final pulumi.Input<String> envCustomJobName;
+
   /// The ID of the environment instance.
   final pulumi.Input<String> environmentId;
-  /// The ID of the custom job. It formats as `<environment_id>:<env_custom_job_name>`.
+
+  /// The ID of the custom job. It formats as `&lt;environment_id&gt;:&lt;env_custom_job_name&gt;`.
   final pulumi.Input<String> id;
+
   /// The region ID.
   final pulumi.Input<String> regionId;
+
   /// The status of the custom job.
   final pulumi.Input<String> status;
 
@@ -20,7 +25,7 @@ class GetEnvCustomJobsJob {
   /// [configYaml] The YAML configuration string.
   /// [envCustomJobName] The name of the custom job.
   /// [environmentId] The ID of the environment instance.
-  /// [id] The ID of the custom job. It formats as `<environment_id>:<env_custom_job_name>`.
+  /// [id] The ID of the custom job. It formats as `&lt;environment_id&gt;:&lt;env_custom_job_name&gt;`.
   /// [regionId] The region ID.
   /// [status] The status of the custom job.
   GetEnvCustomJobsJob({
@@ -45,13 +50,14 @@ class GetEnvCustomJobsJob {
 
   factory GetEnvCustomJobsJob.fromMap(Map<String, dynamic> map) {
     return GetEnvCustomJobsJob(
-      configYaml: (map['configYaml'] as String).input(),
-      envCustomJobName: (map['envCustomJobName'] as String).input(),
-      environmentId: (map['environmentId'] as String).input(),
-      id: (map['id'] as String).input(),
-      regionId: (map['regionId'] as String).input(),
-      status: (map['status'] as String).input(),
+      configYaml: pulumi.Input.fromValue(map['configYaml'] as String),
+      envCustomJobName: pulumi.Input.fromValue(
+        map['envCustomJobName'] as String,
+      ),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

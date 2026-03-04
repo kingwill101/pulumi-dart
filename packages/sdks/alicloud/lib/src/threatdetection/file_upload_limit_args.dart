@@ -12,20 +12,15 @@ class FileUploadLimitArgs {
 
   /// Creates a new [FileUploadLimitArgs].
   /// [limit] File Upload Threshold.
-  FileUploadLimitArgs({
-    required this.limit,
-  });
+  FileUploadLimitArgs({required this.limit});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'limit': limit,
-    };
+    return <String, dynamic>{'limit': limit};
   }
 
   factory FileUploadLimitArgs.fromMap(Map<String, dynamic> map) {
     return FileUploadLimitArgs(
-      limit: (map['limit'] as int).input(),
+      limit: pulumi.Input.fromValue(map['limit'] as int),
     );
   }
 }
-

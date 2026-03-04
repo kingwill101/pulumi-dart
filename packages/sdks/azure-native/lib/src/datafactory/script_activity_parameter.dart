@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScriptActivityParameter {
   /// The direction of the parameter.
   final pulumi.Input<String>? direction;
+
   /// The name of the parameter. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? name;
+
   /// The size of the output direction parameter.
   final pulumi.Input<int>? size;
+
   /// The type of the parameter.
   final pulumi.Input<String>? type;
+
   /// The value of the parameter. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? value;
 
@@ -41,12 +45,31 @@ class ScriptActivityParameter {
 
   factory ScriptActivityParameter.fromMap(Map<String, dynamic> map) {
     return ScriptActivityParameter(
-      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
-      name: map['name'] == null ? null : (map['name']!).input(),
-      size: map['size'] == null ? null : (map['size']! as int).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      value: map['value'] == null ? null : (map['value']!).input(),
+      direction: (() {
+        final guardedValue = map['direction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

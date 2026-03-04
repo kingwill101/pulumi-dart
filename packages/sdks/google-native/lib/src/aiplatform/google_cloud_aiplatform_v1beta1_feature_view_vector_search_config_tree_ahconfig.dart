@@ -13,15 +13,18 @@ class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'leafNodeEmbeddingCount': ?leafNodeEmbeddingCount,
-    };
+    return <String, dynamic>{'leafNodeEmbeddingCount': ?leafNodeEmbeddingCount};
   }
 
-  factory GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig(
-      leafNodeEmbeddingCount: map['leafNodeEmbeddingCount'] == null ? null : (map['leafNodeEmbeddingCount']! as String).input(),
+      leafNodeEmbeddingCount: (() {
+        final guardedValue = map['leafNodeEmbeddingCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

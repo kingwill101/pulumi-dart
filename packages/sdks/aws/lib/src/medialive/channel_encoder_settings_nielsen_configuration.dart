@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelEncoderSettingsNielsenConfiguration {
   /// Enter the Distributor ID assigned to your organization by Nielsen.
   final pulumi.Input<String>? distributorId;
+
   /// Enables Nielsen PCM to ID3 tagging.
   final pulumi.Input<String>? nielsenPcmToId3Tagging;
 
@@ -23,11 +24,20 @@ class ChannelEncoderSettingsNielsenConfiguration {
     };
   }
 
-  factory ChannelEncoderSettingsNielsenConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsNielsenConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsNielsenConfiguration(
-      distributorId: map['distributorId'] == null ? null : ((map['distributorId'] as String).input()).input(),
-      nielsenPcmToId3Tagging: map['nielsenPcmToId3Tagging'] == null ? null : ((map['nielsenPcmToId3Tagging'] as String).input()).input(),
+      distributorId: (() {
+        final guardedValue = map['distributorId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nielsenPcmToId3Tagging: (() {
+        final guardedValue = map['nielsenPcmToId3Tagging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

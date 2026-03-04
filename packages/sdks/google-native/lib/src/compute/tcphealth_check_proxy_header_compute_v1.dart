@@ -3,16 +3,17 @@ enum TCPHealthCheckProxyHeaderComputeV1 {
   none("NONE"),
   proxyV1("PROXY_V1");
 
-  const TCPHealthCheckProxyHeaderComputeV1(this.value);
-  final String value;
+  const TCPHealthCheckProxyHeaderComputeV1(this.wireValue);
+  final String wireValue;
 
   static TCPHealthCheckProxyHeaderComputeV1 fromValue(String value) {
     for (final item in TCPHealthCheckProxyHeaderComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TCPHealthCheckProxyHeaderComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown TCPHealthCheckProxyHeaderComputeV1 value: $value',
+    );
   }
 }
-

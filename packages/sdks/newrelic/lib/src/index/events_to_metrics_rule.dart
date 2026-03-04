@@ -4,8 +4,8 @@ import 'events_to_metrics_rule_state.dart';
 
 /// Use this resource to create, update, and delete New Relic Events to Metrics rules.
 ///
-/// > **IMPORTANT!** Version 2.0.0 of the New Relic Terraform Provider introduces some [additional requirements](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/guides/migration_guide_v2) for configuring the provider.
-/// <br><br>
+/// &gt; **IMPORTANT!** Version 2.0.0 of the New Relic Terraform Provider introduces some [additional requirements](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/guides/migration_guide_v2) for configuring the provider.
+/// &lt;br&gt;&lt;br&gt;
 /// Before upgrading to version 2.0.0 or later, it is recommended to upgrade to the most recent 1.x version of the provider and ensure that your environment successfully runs `pulumi preview` without unexpected changes.
 ///
 /// ## Example Usage
@@ -119,7 +119,7 @@ import 'events_to_metrics_rule_state.dart';
 /// ## Import
 ///
 /// New Relic Events to Metrics rules can be imported using a concatenated string of the format
-/// `<account_id>:<rule_id>`, e.g.
+/// `&lt;account_id&gt;:&lt;rule_id&gt;`, e.g.
 ///
 /// ```bash
 /// $ terraform import newrelic_events_to_metrics_rule.foo 12345:34567
@@ -127,14 +127,19 @@ import 'events_to_metrics_rule_state.dart';
 class EventsToMetricsRule extends pulumi.CustomResource {
   /// Account with the event and where the metrics will be put.
   late final pulumi.Output<String> accountId;
+
   /// Provides additional information about the rule.
   late final pulumi.Output<String?> description;
+
   /// True means this rule is enabled. False means the rule is currently not creating metrics.
   late final pulumi.Output<bool?> enabled;
+
   /// The name of the rule. This must be unique within an account.
   late final pulumi.Output<String> name;
+
   /// Explains how to create metrics from events.
   late final pulumi.Output<String> nrql;
+
   /// The id, uniquely identifying the rule.
   late final pulumi.Output<String> ruleId;
 
@@ -147,17 +152,17 @@ class EventsToMetricsRule extends pulumi.CustomResource {
     EventsToMetricsRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/eventsToMetricsRule:EventsToMetricsRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool?>('enabled');
+         'newrelic:index/eventsToMetricsRule:EventsToMetricsRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
-    this.nrql = registerOutput<String>('nrql');
-    this.ruleId = registerOutput<String>('ruleId');
+    nrql = registerOutput<String>('nrql');
+    ruleId = registerOutput<String>('ruleId');
   }
 
   /// Gets an existing [EventsToMetricsRule] resource's state with the given [name] and [id].
@@ -178,16 +183,16 @@ class EventsToMetricsRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:index/eventsToMetricsRule:EventsToMetricsRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool?>('enabled');
+         'newrelic:index/eventsToMetricsRule:EventsToMetricsRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
-    this.nrql = registerOutput<String>('nrql');
-    this.ruleId = registerOutput<String>('ruleId');
+    nrql = registerOutput<String>('nrql');
+    ruleId = registerOutput<String>('ruleId');
   }
 }

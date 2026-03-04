@@ -1,5 +1,3 @@
-library module_cassandra;
-
 export 'cassandra/backup_plan.dart';
 export 'cassandra/backup_plan_args.dart';
 export 'cassandra/backup_plan_state.dart';

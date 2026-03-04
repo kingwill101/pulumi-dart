@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesDiskMirrorSourceVhostUserUdp {
   /// Sets the bind host address for the UDP connection in the random number generator backend.
   final pulumi.Input<String> bindHost;
+
   /// Specifies the service attribute for binding in the UDP settings.
   final pulumi.Input<String> bindService;
+
   /// Configures the host address used for the connection in the UDP settings.
   final pulumi.Input<String> connectHost;
+
   /// Defines the service attribute for the connection in the UDP settings.
   final pulumi.Input<String> connectService;
 
@@ -33,13 +36,14 @@ class DomainDevicesDiskMirrorSourceVhostUserUdp {
     };
   }
 
-  factory DomainDevicesDiskMirrorSourceVhostUserUdp.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesDiskMirrorSourceVhostUserUdp.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesDiskMirrorSourceVhostUserUdp(
-      bindHost: (map['bindHost'] as String).input(),
-      bindService: (map['bindService'] as String).input(),
-      connectHost: (map['connectHost'] as String).input(),
-      connectService: (map['connectService'] as String).input(),
+      bindHost: pulumi.Input.fromValue(map['bindHost'] as String),
+      bindService: pulumi.Input.fromValue(map['bindService'] as String),
+      connectHost: pulumi.Input.fromValue(map['connectHost'] as String),
+      connectService: pulumi.Input.fromValue(map['connectService'] as String),
     );
   }
 }
-

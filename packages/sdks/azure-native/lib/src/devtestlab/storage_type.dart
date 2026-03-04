@@ -4,16 +4,15 @@ enum StorageType {
   premium("Premium"),
   standardSSD("StandardSSD");
 
-  const StorageType(this.value);
-  final String value;
+  const StorageType(this.wireValue);
+  final String wireValue;
 
   static StorageType fromValue(String value) {
     for (final item in StorageType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StorageType value: $value');
   }
 }
-

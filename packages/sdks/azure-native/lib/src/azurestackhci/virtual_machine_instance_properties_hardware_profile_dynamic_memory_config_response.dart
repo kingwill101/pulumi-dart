@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfigResponse {
   /// Maximum memory in MB
   final pulumi.Input<double>? maximumMemoryMB;
+
   /// Minimum memory in MB
   final pulumi.Input<double>? minimumMemoryMB;
+
   /// Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage of the total memory that the virtual machine instance is thought to need. This only applies to virtual systems with dynamic memory enabled. This property can be in the range of 5 to 2000.
   final pulumi.Input<int>? targetMemoryBuffer;
 
@@ -29,12 +31,25 @@ class VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfigResponse
     };
   }
 
-  factory VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfigResponse(
-      maximumMemoryMB: map['maximumMemoryMB'] == null ? null : (map['maximumMemoryMB']! as double).input(),
-      minimumMemoryMB: map['minimumMemoryMB'] == null ? null : (map['minimumMemoryMB']! as double).input(),
-      targetMemoryBuffer: map['targetMemoryBuffer'] == null ? null : (map['targetMemoryBuffer']! as int).input(),
+      maximumMemoryMB: (() {
+        final guardedValue = map['maximumMemoryMB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      minimumMemoryMB: (() {
+        final guardedValue = map['minimumMemoryMB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      targetMemoryBuffer: (() {
+        final guardedValue = map['targetMemoryBuffer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

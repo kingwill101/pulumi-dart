@@ -11,20 +11,27 @@ import 'store_index_full_text.dart';
 class StoreIndexArgs {
   /// List configurations of field search index. See `field_search` below.
   ///
-  /// > **Note:** At least one of the "full_text" and "field_search" should be specified.
+  /// &gt; **Note:** At least one of the "full_text" and "field_search" should be specified.
   final pulumi.Input<List<StoreIndexFieldSearch>>? fieldSearches;
+
   /// The configuration of full text index. See `full_text` below.
   final pulumi.Input<StoreIndexFullText>? fullText;
+
   /// Whether to enable log reduce. Default to false.
   final pulumi.Input<bool>? logReduce;
+
   /// The black list of log reduce.
   final pulumi.Input<List<String>>? logReduceBlackLists;
+
   /// The white list of log reduce.
   final pulumi.Input<List<String>>? logReduceWhiteLists;
+
   /// The log store name to the query index belongs.
   final pulumi.Input<String> logstore;
+
   /// The max text length.
   final pulumi.Input<int>? maxTextLen;
+
   /// The project name to the log store belongs.
   final pulumi.Input<String> project;
 
@@ -50,8 +57,23 @@ class StoreIndexArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fieldSearches': ?pulumi.Input.mapOptionalInputValue<List<StoreIndexFieldSearch>, List<Map<String, dynamic>>>(fieldSearches, (value) => pulumi.Input.encodeList<StoreIndexFieldSearch, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'fullText': ?pulumi.Input.mapOptionalInputValue<StoreIndexFullText, Map<String, dynamic>>(fullText, (value) => value.toMap()),
+      'fieldSearches':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StoreIndexFieldSearch>,
+            List<Map<String, dynamic>>
+          >(
+            fieldSearches,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StoreIndexFieldSearch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'fullText':
+          ?pulumi.Input.mapOptionalInputValue<
+            StoreIndexFullText,
+            Map<String, dynamic>
+          >(fullText, (value) => value.toMap()),
       'logReduce': ?logReduce,
       'logReduceBlackLists': ?logReduceBlackLists,
       'logReduceWhiteLists': ?logReduceWhiteLists,
@@ -63,15 +85,49 @@ class StoreIndexArgs {
 
   factory StoreIndexArgs.fromMap(Map<String, dynamic> map) {
     return StoreIndexArgs(
-      fieldSearches: map['fieldSearches'] == null ? null : (pulumi.Input.decodeList<StoreIndexFieldSearch>(map['fieldSearches']!, (value) => StoreIndexFieldSearch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fullText: map['fullText'] == null ? null : (StoreIndexFullText.fromMap((map['fullText']! as Map).cast<String, dynamic>())).input(),
-      logReduce: map['logReduce'] == null ? null : (map['logReduce']! as bool).input(),
-      logReduceBlackLists: map['logReduceBlackLists'] == null ? null : ((map['logReduceBlackLists']! as List).cast<String>()).input(),
-      logReduceWhiteLists: map['logReduceWhiteLists'] == null ? null : ((map['logReduceWhiteLists']! as List).cast<String>()).input(),
-      logstore: (map['logstore'] as String).input(),
-      maxTextLen: map['maxTextLen'] == null ? null : (map['maxTextLen']! as int).input(),
-      project: (map['project'] as String).input(),
+      fieldSearches: (() {
+        final guardedValue = map['fieldSearches'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StoreIndexFieldSearch>(
+            guardedValue,
+            (value) => StoreIndexFieldSearch.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      fullText: (() {
+        final guardedValue = map['fullText'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StoreIndexFullText.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      logReduce: (() {
+        final guardedValue = map['logReduce'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logReduceBlackLists: (() {
+        final guardedValue = map['logReduceBlackLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      logReduceWhiteLists: (() {
+        final guardedValue = map['logReduceWhiteLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      logstore: pulumi.Input.fromValue(map['logstore'] as String),
+      maxTextLen: (() {
+        final guardedValue = map['maxTextLen'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
-

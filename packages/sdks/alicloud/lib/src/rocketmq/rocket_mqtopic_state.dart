@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RocketMQTopicState {
   /// The creation time of the resource.
   final pulumi.Input<String>? createTime;
+
   /// Instance ID.
   final pulumi.Input<String>? instanceId;
+
   /// The maximum TPS for message sending.
   final pulumi.Input<int>? maxSendTps;
+
   /// Message type.
   final pulumi.Input<String>? messageType;
+
   /// (Available since v1.247.0) The region ID to which the instance belongs.
   final pulumi.Input<String>? regionId;
+
   /// Custom remarks.
   final pulumi.Input<String>? remark;
+
   /// The status of the resource.
   final pulumi.Input<String>? status;
+
   /// Topic name and identification.
   final pulumi.Input<String>? topicName;
 
@@ -56,15 +63,46 @@ class RocketMQTopicState {
 
   factory RocketMQTopicState.fromMap(Map<String, dynamic> map) {
     return RocketMQTopicState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      maxSendTps: map['maxSendTps'] == null ? null : (map['maxSendTps']! as int).input(),
-      messageType: map['messageType'] == null ? null : (map['messageType']! as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxSendTps: (() {
+        final guardedValue = map['maxSendTps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      messageType: (() {
+        final guardedValue = map['messageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remark: (() {
+        final guardedValue = map['remark'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topicName: (() {
+        final guardedValue = map['topicName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

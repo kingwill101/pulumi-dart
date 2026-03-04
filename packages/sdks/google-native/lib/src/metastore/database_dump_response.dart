@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseDumpResponse {
   /// The type of the database.
   final pulumi.Input<String> databaseType;
+
   /// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
   final pulumi.Input<String> gcsUri;
+
   /// The name of the source database.
   final pulumi.Input<String> sourceDatabase;
+
   /// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
   final pulumi.Input<String> type;
 
@@ -36,11 +39,10 @@ class DatabaseDumpResponse {
 
   factory DatabaseDumpResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseDumpResponse(
-      databaseType: (map['databaseType'] as String).input(),
-      gcsUri: (map['gcsUri'] as String).input(),
-      sourceDatabase: (map['sourceDatabase'] as String).input(),
-      type: (map['type'] as String).input(),
+      databaseType: pulumi.Input.fromValue(map['databaseType'] as String),
+      gcsUri: pulumi.Input.fromValue(map['gcsUri'] as String),
+      sourceDatabase: pulumi.Input.fromValue(map['sourceDatabase'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

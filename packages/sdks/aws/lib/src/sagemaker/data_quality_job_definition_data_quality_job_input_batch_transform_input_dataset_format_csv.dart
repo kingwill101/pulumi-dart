@@ -13,15 +13,18 @@ class DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetForma
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'header': ?header,
-    };
+    return <String, dynamic>{'header': ?header};
   }
 
-  factory DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv.fromMap(Map<String, dynamic> map) {
+  factory DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv(
-      header: map['header'] == null ? null : ((map['header'] as bool).input()).input(),
+      header: (() {
+        final guardedValue = map['header'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

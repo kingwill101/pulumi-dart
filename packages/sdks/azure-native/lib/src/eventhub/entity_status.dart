@@ -10,16 +10,15 @@ enum EntityStatus {
   valueRenaming("Renaming"),
   valueUnknown("Unknown");
 
-  const EntityStatus(this.value);
-  final String value;
+  const EntityStatus(this.wireValue);
+  final String wireValue;
 
   static EntityStatus fromValue(String value) {
     for (final item in EntityStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EntityStatus value: $value');
   }
 }
-

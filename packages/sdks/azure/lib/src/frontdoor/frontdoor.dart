@@ -1,15 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'frontdoor_args.dart';
-import 'frontdoor_backend_pool.dart';
-import 'frontdoor_backend_pool_health_probe.dart';
-import 'frontdoor_backend_pool_load_balancing.dart';
-import 'frontdoor_backend_pool_setting.dart';
-import 'frontdoor_explicit_resource_order.dart';
-import 'frontdoor_frontend_endpoint.dart';
-import 'frontdoor_routing_rule.dart';
 import 'frontdoor_state.dart';
 
-/// !> **IMPORTANT** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
+/// !&gt; **IMPORTANT** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
 ///
 /// Manages an Azure Front Door (classic) instance.
 ///
@@ -21,11 +14,11 @@ import 'frontdoor_state.dart';
 /// * Use Front Door to improve application performance with SSL offload and routing requests to the fastest available application backend.
 /// * Use Front Door for application layer security and DDoS protection for your application.
 ///
-/// !> **Note:** The `custom_https_provisioning_enabled` field and the `custom_https_configuration` block have been removed from the `azure.frontdoor.Frontdoor` resource in the `v2.58.0` provider due to changes made by the service team. If you wish to enable the custom HTTPS configuration functionality within your `azure.frontdoor.Frontdoor` resource moving forward you will need to define a separate `azure.frontdoor.CustomHttpsConfiguration` block in your configuration file.
+/// !&gt; **Note:** The `custom_https_provisioning_enabled` field and the `custom_https_configuration` block have been removed from the `azure.frontdoor.Frontdoor` resource in the `v2.58.0` provider due to changes made by the service team. If you wish to enable the custom HTTPS configuration functionality within your `azure.frontdoor.Frontdoor` resource moving forward you will need to define a separate `azure.frontdoor.CustomHttpsConfiguration` block in your configuration file.
 ///
-/// !> **Note:** With the release of the `v2.58.0` provider, if you run the `apply` command against an existing Front Door resource it **will not** apply the detected changes. Instead it will persist the `explicit_resource_order` mapping structure to the state file. Once this operation has completed the resource will resume functioning normally.This change in behavior in Terraform is due to an issue where the underlying service teams API is now returning the response JSON out of order from the way it was sent to the resource via Terraform causing unexpected discrepancies in the `plan` after the resource has been provisioned. If your pre-existing Front Door instance contains `custom_https_configuration` blocks there are additional steps that will need to be completed to successfully migrate your Front Door onto the `v2.58.0` provider which can be found in this guide.
+/// !&gt; **Note:** With the release of the `v2.58.0` provider, if you run the `apply` command against an existing Front Door resource it **will not** apply the detected changes. Instead it will persist the `explicit_resource_order` mapping structure to the state file. Once this operation has completed the resource will resume functioning normally.This change in behavior in Terraform is due to an issue where the underlying service teams API is now returning the response JSON out of order from the way it was sent to the resource via Terraform causing unexpected discrepancies in the `plan` after the resource has been provisioned. If your pre-existing Front Door instance contains `custom_https_configuration` blocks there are additional steps that will need to be completed to successfully migrate your Front Door onto the `v2.58.0` provider which can be found in this guide.
 ///
-/// !> **Note:** The creation of new Azure Front Door (classic) resources is no longer supported following its deprecation on `April 1, 2025`. However, modifications to existing Azure Front Door (classic) resources will continue to be supported until the API reaches full retirement on `March 31, 2027`.
+/// !&gt; **Note:** The creation of new Azure Front Door (classic) resources is no longer supported following its deprecation on `April 1, 2025`. However, modifications to existing Azure Front Door (classic) resources will continue to be supported until the API reaches full retirement on `March 31, 2027`.
 ///
 /// ## Example Usage
 ///
@@ -417,42 +410,61 @@ import 'frontdoor_state.dart';
 /// ```
 class Frontdoor extends pulumi.CustomResource {
   /// A `backend_pool_health_probe` block as defined below.
-  late final pulumi.Output<List<FrontdoorBackendPoolHealthProbe>> backendPoolHealthProbes;
+  late final pulumi.Output<List<Map<String, dynamic>>> backendPoolHealthProbes;
+
   /// A map/dictionary of Backend Pool Health Probe Names (key) to the Backend Pool Health Probe ID (value)
   late final pulumi.Output<Map<String, String>> backendPoolHealthProbesMap;
+
   /// A map/dictionary of Backend Pool Load Balancing Setting Names (key) to the Backend Pool Load Balancing Setting ID (value)
-  late final pulumi.Output<Map<String, String>> backendPoolLoadBalancingSettingsMap;
+  late final pulumi.Output<Map<String, String>>
+  backendPoolLoadBalancingSettingsMap;
+
   /// A `backend_pool_load_balancing` block as defined below.
-  late final pulumi.Output<List<FrontdoorBackendPoolLoadBalancing>> backendPoolLoadBalancings;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  backendPoolLoadBalancings;
+
   /// A `backend_pool_settings` block as defined below.
-  late final pulumi.Output<List<FrontdoorBackendPoolSetting>> backendPoolSettings;
+  late final pulumi.Output<List<Map<String, dynamic>>> backendPoolSettings;
+
   /// A `backend_pool` block as defined below.
   ///
-  /// > Azure by default allows specifying up to 50 Backend Pools - but this quota can be increased via Microsoft Support.
-  late final pulumi.Output<List<FrontdoorBackendPool>> backendPools;
+  /// &gt; Azure by default allows specifying up to 50 Backend Pools - but this quota can be increased via Microsoft Support.
+  late final pulumi.Output<List<Map<String, dynamic>>> backendPools;
+
   /// A map/dictionary of Backend Pool Names (key) to the Backend Pool ID (value)
   late final pulumi.Output<Map<String, String>> backendPoolsMap;
+
   /// The host that each frontendEndpoint must CNAME to.
   late final pulumi.Output<String> cname;
-  late final pulumi.Output<List<FrontdoorExplicitResourceOrder>> explicitResourceOrders;
+  late final pulumi.Output<List<Map<String, dynamic>>> explicitResourceOrders;
+
   /// A friendly name for the Front Door service.
   late final pulumi.Output<String?> friendlyName;
+
   /// A `frontend_endpoint` block as defined below.
-  late final pulumi.Output<List<FrontdoorFrontendEndpoint>> frontendEndpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>> frontendEndpoints;
+
   /// A map/dictionary of Frontend Endpoint Names (key) to the Frontend Endpoint ID (value)
   late final pulumi.Output<Map<String, String>> frontendEndpointsMap;
+
   /// The unique ID of the Front Door which is embedded into the incoming headers `X-Azure-FDID` attribute and maybe used to filter traffic sent by the Front Door to your backend.
   late final pulumi.Output<String> headerFrontdoorId;
+
   /// Should the Front Door Load Balancer be Enabled? Defaults to `true`.
   late final pulumi.Output<bool?> loadBalancerEnabled;
+
   /// Specifies the name of the Front Door service. Must be globally unique. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the name of the Resource Group in which the Front Door service should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `routing_rule` block as defined below.
-  late final pulumi.Output<List<FrontdoorRoutingRule>> routingRules;
+  late final pulumi.Output<List<Map<String, dynamic>>> routingRules;
+
   /// A map/dictionary of Routing Rule Names (key) to the Routing Rule ID (value)
   late final pulumi.Output<Map<String, String>> routingRulesMap;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -465,30 +477,46 @@ class Frontdoor extends pulumi.CustomResource {
     FrontdoorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:frontdoor/frontdoor:Frontdoor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendPoolHealthProbes = registerOutput<List<FrontdoorBackendPoolHealthProbe>>('backendPoolHealthProbes');
-    this.backendPoolHealthProbesMap = registerOutput<Map<String, String>>('backendPoolHealthProbesMap');
-    this.backendPoolLoadBalancingSettingsMap = registerOutput<Map<String, String>>('backendPoolLoadBalancingSettingsMap');
-    this.backendPoolLoadBalancings = registerOutput<List<FrontdoorBackendPoolLoadBalancing>>('backendPoolLoadBalancings');
-    this.backendPoolSettings = registerOutput<List<FrontdoorBackendPoolSetting>>('backendPoolSettings');
-    this.backendPools = registerOutput<List<FrontdoorBackendPool>>('backendPools');
-    this.backendPoolsMap = registerOutput<Map<String, String>>('backendPoolsMap');
-    this.cname = registerOutput<String>('cname');
-    this.explicitResourceOrders = registerOutput<List<FrontdoorExplicitResourceOrder>>('explicitResourceOrders');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.frontendEndpoints = registerOutput<List<FrontdoorFrontendEndpoint>>('frontendEndpoints');
-    this.frontendEndpointsMap = registerOutput<Map<String, String>>('frontendEndpointsMap');
-    this.headerFrontdoorId = registerOutput<String>('headerFrontdoorId');
-    this.loadBalancerEnabled = registerOutput<bool?>('loadBalancerEnabled');
+         'azure:frontdoor/frontdoor:Frontdoor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendPoolHealthProbes = registerOutput<List<Map<String, dynamic>>>(
+      'backendPoolHealthProbes',
+    );
+    backendPoolHealthProbesMap = registerOutput<Map<String, String>>(
+      'backendPoolHealthProbesMap',
+    );
+    backendPoolLoadBalancingSettingsMap = registerOutput<Map<String, String>>(
+      'backendPoolLoadBalancingSettingsMap',
+    );
+    backendPoolLoadBalancings = registerOutput<List<Map<String, dynamic>>>(
+      'backendPoolLoadBalancings',
+    );
+    backendPoolSettings = registerOutput<List<Map<String, dynamic>>>(
+      'backendPoolSettings',
+    );
+    backendPools = registerOutput<List<Map<String, dynamic>>>('backendPools');
+    backendPoolsMap = registerOutput<Map<String, String>>('backendPoolsMap');
+    cname = registerOutput<String>('cname');
+    explicitResourceOrders = registerOutput<List<Map<String, dynamic>>>(
+      'explicitResourceOrders',
+    );
+    friendlyName = registerOutput<String?>('friendlyName');
+    frontendEndpoints = registerOutput<List<Map<String, dynamic>>>(
+      'frontendEndpoints',
+    );
+    frontendEndpointsMap = registerOutput<Map<String, String>>(
+      'frontendEndpointsMap',
+    );
+    headerFrontdoorId = registerOutput<String>('headerFrontdoorId');
+    loadBalancerEnabled = registerOutput<bool?>('loadBalancerEnabled');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.routingRules = registerOutput<List<FrontdoorRoutingRule>>('routingRules');
-    this.routingRulesMap = registerOutput<Map<String, String>>('routingRulesMap');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routingRules = registerOutput<List<Map<String, dynamic>>>('routingRules');
+    routingRulesMap = registerOutput<Map<String, String>>('routingRulesMap');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Frontdoor] resource's state with the given [name] and [id].
@@ -509,29 +537,45 @@ class Frontdoor extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:frontdoor/frontdoor:Frontdoor',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendPoolHealthProbes = registerOutput<List<FrontdoorBackendPoolHealthProbe>>('backendPoolHealthProbes');
-    this.backendPoolHealthProbesMap = registerOutput<Map<String, String>>('backendPoolHealthProbesMap');
-    this.backendPoolLoadBalancingSettingsMap = registerOutput<Map<String, String>>('backendPoolLoadBalancingSettingsMap');
-    this.backendPoolLoadBalancings = registerOutput<List<FrontdoorBackendPoolLoadBalancing>>('backendPoolLoadBalancings');
-    this.backendPoolSettings = registerOutput<List<FrontdoorBackendPoolSetting>>('backendPoolSettings');
-    this.backendPools = registerOutput<List<FrontdoorBackendPool>>('backendPools');
-    this.backendPoolsMap = registerOutput<Map<String, String>>('backendPoolsMap');
-    this.cname = registerOutput<String>('cname');
-    this.explicitResourceOrders = registerOutput<List<FrontdoorExplicitResourceOrder>>('explicitResourceOrders');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.frontendEndpoints = registerOutput<List<FrontdoorFrontendEndpoint>>('frontendEndpoints');
-    this.frontendEndpointsMap = registerOutput<Map<String, String>>('frontendEndpointsMap');
-    this.headerFrontdoorId = registerOutput<String>('headerFrontdoorId');
-    this.loadBalancerEnabled = registerOutput<bool?>('loadBalancerEnabled');
+         'azure:frontdoor/frontdoor:Frontdoor',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendPoolHealthProbes = registerOutput<List<Map<String, dynamic>>>(
+      'backendPoolHealthProbes',
+    );
+    backendPoolHealthProbesMap = registerOutput<Map<String, String>>(
+      'backendPoolHealthProbesMap',
+    );
+    backendPoolLoadBalancingSettingsMap = registerOutput<Map<String, String>>(
+      'backendPoolLoadBalancingSettingsMap',
+    );
+    backendPoolLoadBalancings = registerOutput<List<Map<String, dynamic>>>(
+      'backendPoolLoadBalancings',
+    );
+    backendPoolSettings = registerOutput<List<Map<String, dynamic>>>(
+      'backendPoolSettings',
+    );
+    backendPools = registerOutput<List<Map<String, dynamic>>>('backendPools');
+    backendPoolsMap = registerOutput<Map<String, String>>('backendPoolsMap');
+    cname = registerOutput<String>('cname');
+    explicitResourceOrders = registerOutput<List<Map<String, dynamic>>>(
+      'explicitResourceOrders',
+    );
+    friendlyName = registerOutput<String?>('friendlyName');
+    frontendEndpoints = registerOutput<List<Map<String, dynamic>>>(
+      'frontendEndpoints',
+    );
+    frontendEndpointsMap = registerOutput<Map<String, String>>(
+      'frontendEndpointsMap',
+    );
+    headerFrontdoorId = registerOutput<String>('headerFrontdoorId');
+    loadBalancerEnabled = registerOutput<bool?>('loadBalancerEnabled');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.routingRules = registerOutput<List<FrontdoorRoutingRule>>('routingRules');
-    this.routingRulesMap = registerOutput<Map<String, String>>('routingRulesMap');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routingRules = registerOutput<List<Map<String, dynamic>>>('routingRules');
+    routingRulesMap = registerOutput<Map<String, String>>('routingRulesMap');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

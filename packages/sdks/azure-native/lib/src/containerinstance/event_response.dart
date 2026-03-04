@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventResponse {
   /// The count of the event.
   final pulumi.Input<int> count;
+
   /// The date-time of the earliest logged event.
   final pulumi.Input<String> firstTimestamp;
+
   /// The date-time of the latest logged event.
   final pulumi.Input<String> lastTimestamp;
+
   /// The event message.
   final pulumi.Input<String> message;
+
   /// The event name.
   final pulumi.Input<String> name;
+
   /// The event type.
   final pulumi.Input<String> type;
 
@@ -46,13 +51,12 @@ class EventResponse {
 
   factory EventResponse.fromMap(Map<String, dynamic> map) {
     return EventResponse(
-      count: (map['count'] as int).input(),
-      firstTimestamp: (map['firstTimestamp'] as String).input(),
-      lastTimestamp: (map['lastTimestamp'] as String).input(),
-      message: (map['message'] as String).input(),
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      count: pulumi.Input.fromValue(map['count'] as int),
+      firstTimestamp: pulumi.Input.fromValue(map['firstTimestamp'] as String),
+      lastTimestamp: pulumi.Input.fromValue(map['lastTimestamp'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

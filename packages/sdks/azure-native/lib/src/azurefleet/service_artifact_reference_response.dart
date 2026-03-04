@@ -12,20 +12,19 @@ class ServiceArtifactReferenceResponse {
 
   /// Creates a new [ServiceArtifactReferenceResponse].
   /// [id] The service artifact reference id in the form of
-  ServiceArtifactReferenceResponse({
-    this.id,
-  });
+  ServiceArtifactReferenceResponse({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory ServiceArtifactReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ServiceArtifactReferenceResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

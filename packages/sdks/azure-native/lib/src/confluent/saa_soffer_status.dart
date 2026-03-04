@@ -11,16 +11,15 @@ enum SaaSOfferStatus {
   unsubscribed("Unsubscribed"),
   updating("Updating");
 
-  const SaaSOfferStatus(this.value);
-  final String value;
+  const SaaSOfferStatus(this.wireValue);
+  final String wireValue;
 
   static SaaSOfferStatus fromValue(String value) {
     for (final item in SaaSOfferStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SaaSOfferStatus value: $value');
   }
 }
-

@@ -3,16 +3,15 @@ enum BlobAuditingPolicyState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const BlobAuditingPolicyState(this.value);
-  final String value;
+  const BlobAuditingPolicyState(this.wireValue);
+  final String wireValue;
 
   static BlobAuditingPolicyState fromValue(String value) {
     for (final item in BlobAuditingPolicyState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BlobAuditingPolicyState value: $value');
   }
 }
-

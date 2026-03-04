@@ -3,16 +3,15 @@ enum AutoExportJobAdminStatus {
   valueEnable("Enable"),
   valueDisable("Disable");
 
-  const AutoExportJobAdminStatus(this.value);
-  final String value;
+  const AutoExportJobAdminStatus(this.wireValue);
+  final String wireValue;
 
   static AutoExportJobAdminStatus fromValue(String value) {
     for (final item in AutoExportJobAdminStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AutoExportJobAdminStatus value: $value');
   }
 }
-

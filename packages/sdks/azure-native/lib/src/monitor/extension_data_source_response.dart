@@ -7,13 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExtensionDataSourceResponse {
   /// The name of the VM extension.
   final pulumi.Input<String> extensionName;
+
   /// The extension settings. The format is specific for particular extension.
   final pulumi.Input<dynamic>? extensionSettings;
+
   /// The list of data sources this extension needs data from.
   final pulumi.Input<List<String>>? inputDataSources;
+
   /// A friendly name for the data source.
   /// This name should be unique across all data sources (regardless of type) within the data collection rule.
   final pulumi.Input<String>? name;
+
   /// List of streams that this data source will be sent to.
   /// A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
   final pulumi.Input<List<String>>? streams;
@@ -44,12 +48,27 @@ class ExtensionDataSourceResponse {
 
   factory ExtensionDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return ExtensionDataSourceResponse(
-      extensionName: (map['extensionName'] as String).input(),
-      extensionSettings: map['extensionSettings'] == null ? null : (map['extensionSettings']!).input(),
-      inputDataSources: map['inputDataSources'] == null ? null : ((map['inputDataSources']! as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      streams: map['streams'] == null ? null : ((map['streams']! as List).cast<String>()).input(),
+      extensionName: pulumi.Input.fromValue(map['extensionName'] as String),
+      extensionSettings: (() {
+        final guardedValue = map['extensionSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      inputDataSources: (() {
+        final guardedValue = map['inputDataSources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      streams: (() {
+        final guardedValue = map['streams'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

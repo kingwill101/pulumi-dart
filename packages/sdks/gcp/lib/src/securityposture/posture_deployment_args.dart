@@ -9,17 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PostureDeploymentArgs {
   /// Description of the posture deployment.
   final pulumi.Input<String>? description;
+
   /// The location of the resource, eg. global`.
   final pulumi.Input<String> location;
+
   /// The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
   final pulumi.Input<String> parent;
+
   /// ID of the posture deployment.
   final pulumi.Input<String> postureDeploymentId;
+
   /// Relative name of the posture which needs to be deployed. It should be in the format:
   /// organizations/{organization_id}/locations/{location}/postures/{posture_id}
   final pulumi.Input<String> postureId;
+
   /// Revision_id the posture which needs to be deployed.
   final pulumi.Input<String> postureRevisionId;
+
   /// The resource on which the posture should be deployed. This can be in one of the following formats:
   /// projects/{project_number},
   /// folders/{folder_number},
@@ -58,14 +64,21 @@ class PostureDeploymentArgs {
 
   factory PostureDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return PostureDeploymentArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      location: (map['location'] as String).input(),
-      parent: (map['parent'] as String).input(),
-      postureDeploymentId: (map['postureDeploymentId'] as String).input(),
-      postureId: (map['postureId'] as String).input(),
-      postureRevisionId: (map['postureRevisionId'] as String).input(),
-      targetResource: (map['targetResource'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
+      postureDeploymentId: pulumi.Input.fromValue(
+        map['postureDeploymentId'] as String,
+      ),
+      postureId: pulumi.Input.fromValue(map['postureId'] as String),
+      postureRevisionId: pulumi.Input.fromValue(
+        map['postureRevisionId'] as String,
+      ),
+      targetResource: pulumi.Input.fromValue(map['targetResource'] as String),
     );
   }
 }
-

@@ -5,9 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseInstanceRestoreBackupContext {
   /// The ID of the backup run to restore from.
   final pulumi.Input<int> backupRunId;
+
   /// The ID of the instance that the backup was taken from. If left empty,
   /// this instance's ID will be used.
   final pulumi.Input<String>? instanceId;
+
   /// The full project ID of the source instance.`
   final pulumi.Input<String>? project;
 
@@ -29,12 +31,21 @@ class DatabaseInstanceRestoreBackupContext {
     };
   }
 
-  factory DatabaseInstanceRestoreBackupContext.fromMap(Map<String, dynamic> map) {
+  factory DatabaseInstanceRestoreBackupContext.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatabaseInstanceRestoreBackupContext(
-      backupRunId: (map['backupRunId'] as int).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      backupRunId: pulumi.Input.fromValue(map['backupRunId'] as int),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

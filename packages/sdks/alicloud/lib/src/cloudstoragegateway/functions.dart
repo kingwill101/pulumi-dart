@@ -20,7 +20,7 @@ import 'get_storage_bundles_result.dart';
 
 /// This data source provides the Cloud Storage Gateway Express Syncs of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.144.0+.
+/// &gt; **NOTE:** Available in v1.144.0+.
 ///
 /// ## Example Usage
 ///
@@ -160,7 +160,7 @@ Future<GetExpressSyncsResult> getExpressSyncs(
 
 /// This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.144.0+.
+/// &gt; **NOTE:** Available in v1.144.0+.
 ///
 /// ## Example Usage
 ///
@@ -338,7 +338,7 @@ Future<GetGatewayBlockVolumesResult> getGatewayBlockVolumes(
 
 /// This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.144.0+.
+/// &gt; **NOTE:** Available in v1.144.0+.
 ///
 /// ## Example Usage
 ///
@@ -539,7 +539,7 @@ Future<GetGatewayCacheDisksResult> getGatewayCacheDisks(
 
 /// This data source provides the Cloud Storage Gateway Gateway File Shares of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.144.0+.
+/// &gt; **NOTE:** Available in v1.144.0+.
 ///
 /// ## Example Usage
 ///
@@ -717,7 +717,7 @@ Future<GetGatewayFileSharesResult> getGatewayFileShares(
 
 /// This data source provides the Cloud Storage Gateway Gateway SMB Users of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.142.0+.
+/// &gt; **NOTE:** Available in v1.142.0+.
 ///
 /// ## Example Usage
 ///
@@ -1043,7 +1043,7 @@ Future<GetGatewaySmbUsersResult> getGatewaySmbUsers(
 
 /// This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.132.0+.
+/// &gt; **NOTE:** Available in v1.132.0+.
 ///
 /// ## Example Usage
 ///
@@ -1193,7 +1193,7 @@ Future<GetGatewaysResult> getGateways(
 ///
 /// For information about Cloud Storage Gateway and how to use it, see [What is Cloud Storage Gateway](https://www.alibabacloud.com/help/en/product/53923.htm).
 ///
-/// > **NOTE:** Available in v1.117.0+
+/// &gt; **NOTE:** Available in v1.117.0+
 ///
 /// ## Example Usage
 ///
@@ -1300,7 +1300,7 @@ Future<GetServiceResult> getService(
 
 /// This data source provides the Cloud Storage Gateway Stocks of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.144.0+.
+/// &gt; **NOTE:** Available in v1.144.0+.
 ///
 /// ## Example Usage
 ///

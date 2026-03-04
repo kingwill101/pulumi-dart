@@ -1,19 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAccount.
 class GetAccountResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
+
   /// The primary key used to authenticate and authorize access to the Maps REST APIs.
   final String primaryAccessKey;
   final String resourceGroupName;
+
   /// The primary key used to authenticate and authorize access to the Maps REST APIs. The second key is given to provide seamless key regeneration.
   final String secondaryAccessKey;
+
   /// The SKU of the Azure Maps Account.
   final String skuName;
   final Map<String, String>? tags;
+
   /// A unique identifier for the Maps Account.
   final String xMsClientId;
 
@@ -58,9 +61,12 @@ class GetAccountResult {
       resourceGroupName: map['resourceGroupName'] as String,
       secondaryAccessKey: map['secondaryAccessKey'] as String,
       skuName: map['skuName'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       xMsClientId: map['xMsClientId'] as String,
     );
   }
 }
-

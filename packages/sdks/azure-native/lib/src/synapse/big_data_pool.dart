@@ -3,7 +3,6 @@ import 'auto_pause_properties_response.dart';
 import 'auto_scale_properties_response.dart';
 import 'big_data_pool_args.dart';
 import 'dynamic_executor_allocation_response.dart';
-import 'library_info_response.dart';
 import 'library_requirements_response.dart';
 import 'spark_config_properties_response.dart';
 
@@ -285,50 +284,75 @@ import 'spark_config_properties_response.dart';
 class BigDataPool extends pulumi.CustomResource {
   /// Auto-pausing properties
   late final pulumi.Output<AutoPausePropertiesResponse?> autoPause;
+
   /// Auto-scaling properties
   late final pulumi.Output<AutoScalePropertiesResponse?> autoScale;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The cache size
   late final pulumi.Output<int?> cacheSize;
+
   /// The time when the Big Data pool was created.
   late final pulumi.Output<String> creationDate;
+
   /// List of custom libraries/packages associated with the spark pool.
-  late final pulumi.Output<List<LibraryInfoResponse>?> customLibraries;
+  late final pulumi.Output<List<Map<String, dynamic>>?> customLibraries;
+
   /// The default folder where Spark logs will be written.
   late final pulumi.Output<String?> defaultSparkLogFolder;
+
   /// Dynamic Executor Allocation
-  late final pulumi.Output<DynamicExecutorAllocationResponse?> dynamicExecutorAllocation;
+  late final pulumi.Output<DynamicExecutorAllocationResponse?>
+  dynamicExecutorAllocation;
+
   /// Whether autotune is required or not.
   late final pulumi.Output<bool?> isAutotuneEnabled;
+
   /// Whether compute isolation is required or not.
   late final pulumi.Output<bool?> isComputeIsolationEnabled;
+
   /// The time when the Big Data pool was updated successfully.
   late final pulumi.Output<String> lastSucceededTimestamp;
+
   /// Library version requirements
   late final pulumi.Output<LibraryRequirementsResponse?> libraryRequirements;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The number of nodes in the Big Data pool.
   late final pulumi.Output<int?> nodeCount;
+
   /// The level of compute power that each node in the Big Data pool has.
   late final pulumi.Output<String?> nodeSize;
+
   /// The kind of nodes that the Big Data pool provides.
   late final pulumi.Output<String?> nodeSizeFamily;
+
   /// The state of the Big Data pool.
   late final pulumi.Output<String?> provisioningState;
+
   /// Whether session level packages enabled.
   late final pulumi.Output<bool?> sessionLevelPackagesEnabled;
+
   /// Spark configuration file to specify additional properties
-  late final pulumi.Output<SparkConfigPropertiesResponse?> sparkConfigProperties;
+  late final pulumi.Output<SparkConfigPropertiesResponse?>
+  sparkConfigProperties;
+
   /// The Spark events folder
   late final pulumi.Output<String?> sparkEventsFolder;
+
   /// The Apache Spark version.
   late final pulumi.Output<String?> sparkVersion;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -341,34 +365,47 @@ class BigDataPool extends pulumi.CustomResource {
     BigDataPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:synapse:BigDataPool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoPause = registerOutput<AutoPausePropertiesResponse?>('autoPause');
-    this.autoScale = registerOutput<AutoScalePropertiesResponse?>('autoScale');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cacheSize = registerOutput<int?>('cacheSize');
-    this.creationDate = registerOutput<String>('creationDate');
-    this.customLibraries = registerOutput<List<LibraryInfoResponse>?>('customLibraries');
-    this.defaultSparkLogFolder = registerOutput<String?>('defaultSparkLogFolder');
-    this.dynamicExecutorAllocation = registerOutput<DynamicExecutorAllocationResponse?>('dynamicExecutorAllocation');
-    this.isAutotuneEnabled = registerOutput<bool?>('isAutotuneEnabled');
-    this.isComputeIsolationEnabled = registerOutput<bool?>('isComputeIsolationEnabled');
-    this.lastSucceededTimestamp = registerOutput<String>('lastSucceededTimestamp');
-    this.libraryRequirements = registerOutput<LibraryRequirementsResponse?>('libraryRequirements');
-    this.location = registerOutput<String>('location');
+         'azure-native:synapse:BigDataPool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoPause = registerOutput<AutoPausePropertiesResponse?>('autoPause');
+    autoScale = registerOutput<AutoScalePropertiesResponse?>('autoScale');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cacheSize = registerOutput<int?>('cacheSize');
+    creationDate = registerOutput<String>('creationDate');
+    customLibraries = registerOutput<List<Map<String, dynamic>>?>(
+      'customLibraries',
+    );
+    defaultSparkLogFolder = registerOutput<String?>('defaultSparkLogFolder');
+    dynamicExecutorAllocation =
+        registerOutput<DynamicExecutorAllocationResponse?>(
+          'dynamicExecutorAllocation',
+        );
+    isAutotuneEnabled = registerOutput<bool?>('isAutotuneEnabled');
+    isComputeIsolationEnabled = registerOutput<bool?>(
+      'isComputeIsolationEnabled',
+    );
+    lastSucceededTimestamp = registerOutput<String>('lastSucceededTimestamp');
+    libraryRequirements = registerOutput<LibraryRequirementsResponse?>(
+      'libraryRequirements',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.nodeCount = registerOutput<int?>('nodeCount');
-    this.nodeSize = registerOutput<String?>('nodeSize');
-    this.nodeSizeFamily = registerOutput<String?>('nodeSizeFamily');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.sessionLevelPackagesEnabled = registerOutput<bool?>('sessionLevelPackagesEnabled');
-    this.sparkConfigProperties = registerOutput<SparkConfigPropertiesResponse?>('sparkConfigProperties');
-    this.sparkEventsFolder = registerOutput<String?>('sparkEventsFolder');
-    this.sparkVersion = registerOutput<String?>('sparkVersion');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    nodeCount = registerOutput<int?>('nodeCount');
+    nodeSize = registerOutput<String?>('nodeSize');
+    nodeSizeFamily = registerOutput<String?>('nodeSizeFamily');
+    provisioningState = registerOutput<String?>('provisioningState');
+    sessionLevelPackagesEnabled = registerOutput<bool?>(
+      'sessionLevelPackagesEnabled',
+    );
+    sparkConfigProperties = registerOutput<SparkConfigPropertiesResponse?>(
+      'sparkConfigProperties',
+    );
+    sparkEventsFolder = registerOutput<String?>('sparkEventsFolder');
+    sparkVersion = registerOutput<String?>('sparkVersion');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

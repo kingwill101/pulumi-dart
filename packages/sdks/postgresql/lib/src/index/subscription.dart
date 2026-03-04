@@ -119,14 +119,19 @@ import 'subscription_state.dart';
 class Subscription extends pulumi.CustomResource {
   /// The connection string to the publisher. It should follow the [keyword/value format](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
   late final pulumi.Output<String> conninfo;
+
   /// Specifies whether the command should create the replication slot on the publisher. Default behavior is true
   late final pulumi.Output<bool?> createSlot;
+
   /// Which database to create the subscription on. Defaults to provider database.
   late final pulumi.Output<String> database;
+
   /// The name of the publication.
   late final pulumi.Output<String> name;
+
   /// Names of the publications on the publisher to subscribe to
   late final pulumi.Output<List<String>> publications;
+
   /// Name of the replication slot to use. The default behavior is to use the name of the subscription for the slot name
   late final pulumi.Output<String?> slotName;
 
@@ -139,17 +144,17 @@ class Subscription extends pulumi.CustomResource {
     SubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'postgresql:index/subscription:Subscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.conninfo = registerOutput<String>('conninfo');
-    this.createSlot = registerOutput<bool?>('createSlot');
-    this.database = registerOutput<String>('database');
+         'postgresql:index/subscription:Subscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    conninfo = registerOutput<String>('conninfo');
+    createSlot = registerOutput<bool?>('createSlot');
+    database = registerOutput<String>('database');
     this.name = registerOutput<String>('name');
-    this.publications = registerOutput<List<String>>('publications');
-    this.slotName = registerOutput<String?>('slotName');
+    publications = registerOutput<List<String>>('publications');
+    slotName = registerOutput<String?>('slotName');
   }
 
   /// Gets an existing [Subscription] resource's state with the given [name] and [id].
@@ -170,16 +175,16 @@ class Subscription extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'postgresql:index/subscription:Subscription',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.conninfo = registerOutput<String>('conninfo');
-    this.createSlot = registerOutput<bool?>('createSlot');
-    this.database = registerOutput<String>('database');
+         'postgresql:index/subscription:Subscription',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    conninfo = registerOutput<String>('conninfo');
+    createSlot = registerOutput<bool?>('createSlot');
+    database = registerOutput<String>('database');
     this.name = registerOutput<String>('name');
-    this.publications = registerOutput<List<String>>('publications');
-    this.slotName = registerOutput<String?>('slotName');
+    publications = registerOutput<List<String>>('publications');
+    slotName = registerOutput<String?>('slotName');
   }
 }

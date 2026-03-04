@@ -4,16 +4,15 @@ enum LogDestinationType {
   kinesisDataFirehose("kinesis-data-firehose"),
   s3("s3");
 
-  const LogDestinationType(this.value);
-  final String value;
+  const LogDestinationType(this.wireValue);
+  final String wireValue;
 
   static LogDestinationType fromValue(String value) {
     for (final item in LogDestinationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LogDestinationType value: $value');
   }
 }
-

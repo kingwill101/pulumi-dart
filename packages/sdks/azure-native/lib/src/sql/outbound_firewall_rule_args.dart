@@ -8,8 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_outbound_firewall_rule_args_doc}
 class OutboundFirewallRuleArgs {
   final pulumi.Input<String>? outboundRuleFqdn;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -33,10 +35,15 @@ class OutboundFirewallRuleArgs {
 
   factory OutboundFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return OutboundFirewallRuleArgs(
-      outboundRuleFqdn: map['outboundRuleFqdn'] == null ? null : (map['outboundRuleFqdn']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
+      outboundRuleFqdn: (() {
+        final guardedValue = map['outboundRuleFqdn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
-

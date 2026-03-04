@@ -104,22 +104,30 @@ import 'namespace_timeouts.dart';
 class Namespace extends pulumi.CustomResource {
   /// ARN of the Namespace.
   late final pulumi.Output<String> arn;
+
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
+
   /// Namespace AWS Region.
   late final pulumi.Output<String> capacityRegion;
+
   /// Creation status of the namespace.
   late final pulumi.Output<String> creationStatus;
+
   /// User identity directory type. Defaults to `QUICKSIGHT`, the only current valid value.
   late final pulumi.Output<String> identityStore;
+
   /// Name of the namespace.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> namespace;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<NamespaceTimeouts?> timeouts;
@@ -133,21 +141,21 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:quicksight/namespace:Namespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.awsAccountId = registerOutput<String>('awsAccountId');
-    this.capacityRegion = registerOutput<String>('capacityRegion');
-    this.creationStatus = registerOutput<String>('creationStatus');
-    this.identityStore = registerOutput<String>('identityStore');
-    this.namespace = registerOutput<String>('namespace');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<NamespaceTimeouts?>('timeouts');
+         'aws:quicksight/namespace:Namespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    capacityRegion = registerOutput<String>('capacityRegion');
+    creationStatus = registerOutput<String>('creationStatus');
+    identityStore = registerOutput<String>('identityStore');
+    namespace = registerOutput<String>('namespace');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<NamespaceTimeouts?>('timeouts');
   }
 
   /// Gets an existing [Namespace] resource's state with the given [name] and [id].
@@ -168,20 +176,20 @@ class Namespace extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:quicksight/namespace:Namespace',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.awsAccountId = registerOutput<String>('awsAccountId');
-    this.capacityRegion = registerOutput<String>('capacityRegion');
-    this.creationStatus = registerOutput<String>('creationStatus');
-    this.identityStore = registerOutput<String>('identityStore');
-    this.namespace = registerOutput<String>('namespace');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.timeouts = registerOutput<NamespaceTimeouts?>('timeouts');
+         'aws:quicksight/namespace:Namespace',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    awsAccountId = registerOutput<String>('awsAccountId');
+    capacityRegion = registerOutput<String>('capacityRegion');
+    creationStatus = registerOutput<String>('creationStatus');
+    identityStore = registerOutput<String>('identityStore');
+    namespace = registerOutput<String>('namespace');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    timeouts = registerOutput<NamespaceTimeouts?>('timeouts');
   }
 }

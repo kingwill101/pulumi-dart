@@ -8,12 +8,14 @@ import 'get_trails_deprecated_trail.dart';
 class GetTrailsDeprecatedResult {
   /// A list of actiontrails. Each element contains the following attributes:
   final List<GetTrailsDeprecatedActiontrail> actiontrails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final bool? includeOrganizationTrail;
   final bool? includeShadowTrails;
   final String? nameRegex;
+
   /// A list of trail names.
   final List<String> names;
   final String? outputFile;
@@ -46,7 +48,11 @@ class GetTrailsDeprecatedResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actiontrails': pulumi.Input.encodeList<GetTrailsDeprecatedActiontrail, Map<String, dynamic>>(actiontrails, (value) => value.toMap()),
+      'actiontrails':
+          pulumi.Input.encodeList<
+            GetTrailsDeprecatedActiontrail,
+            Map<String, dynamic>
+          >(actiontrails, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'includeOrganizationTrail': ?includeOrganizationTrail,
@@ -55,23 +61,56 @@ class GetTrailsDeprecatedResult {
       'names': names,
       'outputFile': ?outputFile,
       'status': ?status,
-      'trails': pulumi.Input.encodeList<GetTrailsDeprecatedTrail, Map<String, dynamic>>(trails, (value) => value.toMap()),
+      'trails':
+          pulumi.Input.encodeList<
+            GetTrailsDeprecatedTrail,
+            Map<String, dynamic>
+          >(trails, (value) => value.toMap()),
     };
   }
 
   factory GetTrailsDeprecatedResult.fromMap(Map<String, dynamic> map) {
     return GetTrailsDeprecatedResult(
-      actiontrails: pulumi.Input.decodeList<GetTrailsDeprecatedActiontrail>(map['actiontrails'], (value) => GetTrailsDeprecatedActiontrail.fromMap((value as Map).cast<String, dynamic>())),
+      actiontrails: pulumi.Input.decodeList<GetTrailsDeprecatedActiontrail>(
+        map['actiontrails']!,
+        (value) => GetTrailsDeprecatedActiontrail.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeOrganizationTrail: map['includeOrganizationTrail'] == null ? null : map['includeOrganizationTrail']! as bool,
-      includeShadowTrails: map['includeShadowTrails'] == null ? null : map['includeShadowTrails']! as bool,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      includeOrganizationTrail: (() {
+        final guardedValue = map['includeOrganizationTrail'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      includeShadowTrails: (() {
+        final guardedValue = map['includeShadowTrails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      trails: pulumi.Input.decodeList<GetTrailsDeprecatedTrail>(map['trails'], (value) => GetTrailsDeprecatedTrail.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      trails: pulumi.Input.decodeList<GetTrailsDeprecatedTrail>(
+        map['trails']!,
+        (value) => GetTrailsDeprecatedTrail.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

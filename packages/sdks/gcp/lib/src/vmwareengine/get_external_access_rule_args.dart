@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExternalAccessRuleArgs {
   /// Name of the resource.
   final pulumi.Input<String> name;
+
   /// The resource name of the network policy that this cluster belongs.
   final pulumi.Input<String> parent;
 
   /// Creates a new [GetExternalAccessRuleArgs].
   /// [name] Name of the resource.
   /// [parent] The resource name of the network policy that this cluster belongs.
-  GetExternalAccessRuleArgs({
-    required this.name,
-    required this.parent,
-  });
+  GetExternalAccessRuleArgs({required this.name, required this.parent});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'parent': parent,
-    };
+    return <String, dynamic>{'name': name, 'parent': parent};
   }
 
   factory GetExternalAccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetExternalAccessRuleArgs(
-      name: (map['name'] as String).input(),
-      parent: (map['parent'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
     );
   }
 }
-

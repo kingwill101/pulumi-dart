@@ -3,16 +3,15 @@ enum ItemScope {
   valueShared("shared"),
   valueUser("user");
 
-  const ItemScope(this.value);
-  final String value;
+  const ItemScope(this.wireValue);
+  final String wireValue;
 
   static ItemScope fromValue(String value) {
     for (final item in ItemScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ItemScope value: $value');
   }
 }
-

@@ -11,16 +11,15 @@ enum RequestHeaderOperator {
   greaterThanOrEqual("GreaterThanOrEqual"),
   regEx("RegEx");
 
-  const RequestHeaderOperator(this.value);
-  final String value;
+  const RequestHeaderOperator(this.wireValue);
+  final String wireValue;
 
   static RequestHeaderOperator fromValue(String value) {
     for (final item in RequestHeaderOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RequestHeaderOperator value: $value');
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicePerimeterSpecEgressPolicyEgressFromSource {
   /// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
   final pulumi.Input<String>? accessLevel;
+
   /// A Google Cloud resource that is allowed to egress the perimeter.
   /// Requests from these resources are allowed to access data outside the perimeter.
   /// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -28,11 +29,20 @@ class ServicePerimeterSpecEgressPolicyEgressFromSource {
     };
   }
 
-  factory ServicePerimeterSpecEgressPolicyEgressFromSource.fromMap(Map<String, dynamic> map) {
+  factory ServicePerimeterSpecEgressPolicyEgressFromSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServicePerimeterSpecEgressPolicyEgressFromSource(
-      accessLevel: map['accessLevel'] == null ? null : (map['accessLevel']! as String).input(),
-      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
+      accessLevel: (() {
+        final guardedValue = map['accessLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resource: (() {
+        final guardedValue = map['resource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

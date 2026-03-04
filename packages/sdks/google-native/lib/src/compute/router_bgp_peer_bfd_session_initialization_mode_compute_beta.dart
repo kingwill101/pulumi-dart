@@ -4,16 +4,20 @@ enum RouterBgpPeerBfdSessionInitializationModeComputeBeta {
   disabled("DISABLED"),
   passive("PASSIVE");
 
-  const RouterBgpPeerBfdSessionInitializationModeComputeBeta(this.value);
-  final String value;
+  const RouterBgpPeerBfdSessionInitializationModeComputeBeta(this.wireValue);
+  final String wireValue;
 
-  static RouterBgpPeerBfdSessionInitializationModeComputeBeta fromValue(String value) {
-    for (final item in RouterBgpPeerBfdSessionInitializationModeComputeBeta.values) {
-      if (item.value == value) {
+  static RouterBgpPeerBfdSessionInitializationModeComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in RouterBgpPeerBfdSessionInitializationModeComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RouterBgpPeerBfdSessionInitializationModeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RouterBgpPeerBfdSessionInitializationModeComputeBeta value: $value',
+    );
   }
 }
-

@@ -10,7 +10,6 @@ import 'app_logging_settings.dart';
 import 'app_model_settings.dart';
 import 'app_state.dart';
 import 'app_time_zone_settings.dart';
-import 'app_variable_declaration.dart';
 
 /// Description
 ///
@@ -2283,124 +2282,156 @@ class App extends pulumi.CustomResource {
   /// the app's resource name. If not provided, a unique ID will be
   /// automatically assigned for the app.
   late final pulumi.Output<String> appId;
+
   /// Configuration for how the input and output audio should be processed and
   /// delivered.
   /// Structure is documented below.
   late final pulumi.Output<AppAudioProcessingConfig?> audioProcessingConfig;
+
   /// The default client certificate settings for the app.
   /// Structure is documented below.
-  late final pulumi.Output<AppClientCertificateSettings?> clientCertificateSettings;
+  late final pulumi.Output<AppClientCertificateSettings?>
+  clientCertificateSettings;
+
   /// Timestamp when the app was created.
   late final pulumi.Output<String> createTime;
+
   /// Data store related settings for the app.
   /// Structure is documented below.
   late final pulumi.Output<AppDataStoreSettings?> dataStoreSettings;
+
   /// A ChannelProfile configures the agent's behavior for a specific communication
   /// channel, such as web UI or telephony.
   /// Structure is documented below.
   late final pulumi.Output<AppDefaultChannelProfile?> defaultChannelProfile;
+
   /// Number of deployments in the app.
   late final pulumi.Output<int> deploymentCount;
+
   /// Human-readable description of the app.
   late final pulumi.Output<String?> description;
+
   /// Display name of the app.
   late final pulumi.Output<String> displayName;
+
   /// Etag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
   late final pulumi.Output<String> etag;
+
   /// Threshold settings for metrics in an Evaluation.
   /// Structure is documented below.
-  late final pulumi.Output<AppEvaluationMetricsThresholds?> evaluationMetricsThresholds;
+  late final pulumi.Output<AppEvaluationMetricsThresholds?>
+  evaluationMetricsThresholds;
+
   /// Instructions for all the agents in the app.
   /// You can use this instruction to set up a stable identity or personality
   /// across all the agents.
   late final pulumi.Output<String?> globalInstruction;
+
   /// List of guardrails for the app.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
   late final pulumi.Output<List<String>?> guardrails;
+
   /// Language settings of the app.
   /// Structure is documented below.
   late final pulumi.Output<AppLanguageSettings?> languageSettings;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
+
   /// Settings to describe the logging behaviors for the app.
   /// Structure is documented below.
   late final pulumi.Output<AppLoggingSettings?> loggingSettings;
+
   /// Metadata about the app. This field can be used to store additional
   /// information relevant to the app's details or intended usages.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// Model settings contains various configurations for the LLM model.
   /// Structure is documented below.
   late final pulumi.Output<AppModelSettings?> modelSettings;
+
   /// Identifier. The unique identifier of the app.
   /// Format: `projects/{project}/locations/{location}/apps/{app}`
   late final pulumi.Output<String> name;
+
   /// Whether the app is pinned in the app list.
   late final pulumi.Output<bool?> pinned;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The root agent is the entry point of the app.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
   late final pulumi.Output<String?> rootAgent;
+
   /// TimeZone settings of the app.
   /// Structure is documented below.
   late final pulumi.Output<AppTimeZoneSettings?> timeZoneSettings;
+
   /// Timestamp when the app was last updated.
   late final pulumi.Output<String> updateTime;
+
   /// The declarations of the variables.
   /// Structure is documented below.
-  late final pulumi.Output<List<AppVariableDeclaration>?> variableDeclarations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> variableDeclarations;
 
   /// Creates a new [App].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [App]. {@macro pulumi_ces_app_app_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  App(
-    String name, {
-    AppArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:ces/app:App',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.audioProcessingConfig = registerOutput<AppAudioProcessingConfig?>('audioProcessingConfig');
-    this.clientCertificateSettings = registerOutput<AppClientCertificateSettings?>('clientCertificateSettings');
-    this.createTime = registerOutput<String>('createTime');
-    this.dataStoreSettings = registerOutput<AppDataStoreSettings?>('dataStoreSettings');
-    this.defaultChannelProfile = registerOutput<AppDefaultChannelProfile?>('defaultChannelProfile');
-    this.deploymentCount = registerOutput<int>('deploymentCount');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.etag = registerOutput<String>('etag');
-    this.evaluationMetricsThresholds = registerOutput<AppEvaluationMetricsThresholds?>('evaluationMetricsThresholds');
-    this.globalInstruction = registerOutput<String?>('globalInstruction');
-    this.guardrails = registerOutput<List<String>?>('guardrails');
-    this.languageSettings = registerOutput<AppLanguageSettings?>('languageSettings');
-    this.location = registerOutput<String>('location');
-    this.loggingSettings = registerOutput<AppLoggingSettings?>('loggingSettings');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
-    this.modelSettings = registerOutput<AppModelSettings?>('modelSettings');
+  App(String name, {AppArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:ces/app:App',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    appId = registerOutput<String>('appId');
+    audioProcessingConfig = registerOutput<AppAudioProcessingConfig?>(
+      'audioProcessingConfig',
+    );
+    clientCertificateSettings = registerOutput<AppClientCertificateSettings?>(
+      'clientCertificateSettings',
+    );
+    createTime = registerOutput<String>('createTime');
+    dataStoreSettings = registerOutput<AppDataStoreSettings?>(
+      'dataStoreSettings',
+    );
+    defaultChannelProfile = registerOutput<AppDefaultChannelProfile?>(
+      'defaultChannelProfile',
+    );
+    deploymentCount = registerOutput<int>('deploymentCount');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    evaluationMetricsThresholds =
+        registerOutput<AppEvaluationMetricsThresholds?>(
+          'evaluationMetricsThresholds',
+        );
+    globalInstruction = registerOutput<String?>('globalInstruction');
+    guardrails = registerOutput<List<String>?>('guardrails');
+    languageSettings = registerOutput<AppLanguageSettings?>('languageSettings');
+    location = registerOutput<String>('location');
+    loggingSettings = registerOutput<AppLoggingSettings?>('loggingSettings');
+    metadata = registerOutput<Map<String, String>?>('metadata');
+    modelSettings = registerOutput<AppModelSettings?>('modelSettings');
     this.name = registerOutput<String>('name');
-    this.pinned = registerOutput<bool?>('pinned');
-    this.project = registerOutput<String>('project');
-    this.rootAgent = registerOutput<String?>('rootAgent');
-    this.timeZoneSettings = registerOutput<AppTimeZoneSettings?>('timeZoneSettings');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.variableDeclarations = registerOutput<List<AppVariableDeclaration>?>('variableDeclarations');
+    pinned = registerOutput<bool?>('pinned');
+    project = registerOutput<String>('project');
+    rootAgent = registerOutput<String?>('rootAgent');
+    timeZoneSettings = registerOutput<AppTimeZoneSettings?>('timeZoneSettings');
+    updateTime = registerOutput<String>('updateTime');
+    variableDeclarations = registerOutput<List<Map<String, dynamic>>?>(
+      'variableDeclarations',
+    );
   }
 
   /// Gets an existing [App] resource's state with the given [name] and [id].
-  static App get(
-    String name,
-    pulumi.Input<String> id, {
-    AppState? state,
-  }) {
+  static App get(String name, pulumi.Input<String> id, {AppState? state}) {
     return App._get(
       name,
       state: state?.toMap(),
@@ -2413,35 +2444,48 @@ class App extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:ces/app:App',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appId = registerOutput<String>('appId');
-    this.audioProcessingConfig = registerOutput<AppAudioProcessingConfig?>('audioProcessingConfig');
-    this.clientCertificateSettings = registerOutput<AppClientCertificateSettings?>('clientCertificateSettings');
-    this.createTime = registerOutput<String>('createTime');
-    this.dataStoreSettings = registerOutput<AppDataStoreSettings?>('dataStoreSettings');
-    this.defaultChannelProfile = registerOutput<AppDefaultChannelProfile?>('defaultChannelProfile');
-    this.deploymentCount = registerOutput<int>('deploymentCount');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.etag = registerOutput<String>('etag');
-    this.evaluationMetricsThresholds = registerOutput<AppEvaluationMetricsThresholds?>('evaluationMetricsThresholds');
-    this.globalInstruction = registerOutput<String?>('globalInstruction');
-    this.guardrails = registerOutput<List<String>?>('guardrails');
-    this.languageSettings = registerOutput<AppLanguageSettings?>('languageSettings');
-    this.location = registerOutput<String>('location');
-    this.loggingSettings = registerOutput<AppLoggingSettings?>('loggingSettings');
-    this.metadata = registerOutput<Map<String, String>?>('metadata');
-    this.modelSettings = registerOutput<AppModelSettings?>('modelSettings');
+         'gcp:ces/app:App',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appId = registerOutput<String>('appId');
+    audioProcessingConfig = registerOutput<AppAudioProcessingConfig?>(
+      'audioProcessingConfig',
+    );
+    clientCertificateSettings = registerOutput<AppClientCertificateSettings?>(
+      'clientCertificateSettings',
+    );
+    createTime = registerOutput<String>('createTime');
+    dataStoreSettings = registerOutput<AppDataStoreSettings?>(
+      'dataStoreSettings',
+    );
+    defaultChannelProfile = registerOutput<AppDefaultChannelProfile?>(
+      'defaultChannelProfile',
+    );
+    deploymentCount = registerOutput<int>('deploymentCount');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    evaluationMetricsThresholds =
+        registerOutput<AppEvaluationMetricsThresholds?>(
+          'evaluationMetricsThresholds',
+        );
+    globalInstruction = registerOutput<String?>('globalInstruction');
+    guardrails = registerOutput<List<String>?>('guardrails');
+    languageSettings = registerOutput<AppLanguageSettings?>('languageSettings');
+    location = registerOutput<String>('location');
+    loggingSettings = registerOutput<AppLoggingSettings?>('loggingSettings');
+    metadata = registerOutput<Map<String, String>?>('metadata');
+    modelSettings = registerOutput<AppModelSettings?>('modelSettings');
     this.name = registerOutput<String>('name');
-    this.pinned = registerOutput<bool?>('pinned');
-    this.project = registerOutput<String>('project');
-    this.rootAgent = registerOutput<String?>('rootAgent');
-    this.timeZoneSettings = registerOutput<AppTimeZoneSettings?>('timeZoneSettings');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.variableDeclarations = registerOutput<List<AppVariableDeclaration>?>('variableDeclarations');
+    pinned = registerOutput<bool?>('pinned');
+    project = registerOutput<String>('project');
+    rootAgent = registerOutput<String?>('rootAgent');
+    timeZoneSettings = registerOutput<AppTimeZoneSettings?>('timeZoneSettings');
+    updateTime = registerOutput<String>('updateTime');
+    variableDeclarations = registerOutput<List<Map<String, dynamic>>?>(
+      'variableDeclarations',
+    );
   }
 }

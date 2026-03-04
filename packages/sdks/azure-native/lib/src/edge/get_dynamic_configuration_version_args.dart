@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDynamicConfigurationVersionArgs {
   /// Name of the Configuration
   final pulumi.Input<String> configurationName;
+
   /// Name of the dynamic configuration
   final pulumi.Input<String> dynamicConfigurationName;
+
   /// The name of the DynamicConfigurationVersion
   final pulumi.Input<String> dynamicConfigurationVersionName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,18 @@ class GetDynamicConfigurationVersionArgs {
 
   factory GetDynamicConfigurationVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetDynamicConfigurationVersionArgs(
-      configurationName: (map['configurationName'] as String).input(),
-      dynamicConfigurationName: (map['dynamicConfigurationName'] as String).input(),
-      dynamicConfigurationVersionName: (map['dynamicConfigurationVersionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      configurationName: pulumi.Input.fromValue(
+        map['configurationName'] as String,
+      ),
+      dynamicConfigurationName: pulumi.Input.fromValue(
+        map['dynamicConfigurationName'] as String,
+      ),
+      dynamicConfigurationVersionName: pulumi.Input.fromValue(
+        map['dynamicConfigurationVersionName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

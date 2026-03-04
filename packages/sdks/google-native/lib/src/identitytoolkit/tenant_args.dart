@@ -17,33 +17,54 @@ import 'google_cloud_identitytoolkit_admin_v2_sms_region_config.dart';
 class TenantArgs {
   /// Whether to allow email/password user authentication.
   final pulumi.Input<bool>? allowPasswordSignup;
+
   /// Whether anonymous users will be auto-deleted after a period of 30 days.
   final pulumi.Input<bool>? autodeleteAnonymousUsers;
+
   /// Options related to how clients making requests on behalf of a project should be configured.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig>? client;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig>?
+  client;
+
   /// Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to sign-in. Admins of the disabled tenant are not able to manage its users.
   final pulumi.Input<bool>? disableAuth;
+
   /// Display name of the tenant.
   final pulumi.Input<String>? displayName;
+
   /// Configuration for settings related to email privacy and public visibility.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig>? emailPrivacyConfig;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig>?
+  emailPrivacyConfig;
+
   /// Whether to enable anonymous user authentication.
   final pulumi.Input<bool>? enableAnonymousUser;
+
   /// Whether to enable email link user authentication.
   final pulumi.Input<bool>? enableEmailLinkSignin;
+
   /// Specify the settings that the tenant could inherit.
   final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2Inheritance>? inheritance;
+
   /// The tenant-level configuration of MFA options.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig>? mfaConfig;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig>?
+  mfaConfig;
+
   /// Configuration related to monitoring project activity.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2MonitoringConfig>? monitoring;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2MonitoringConfig>?
+  monitoring;
+
   /// The tenant-level password policy config
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig>? passwordPolicyConfig;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig>?
+  passwordPolicyConfig;
   final pulumi.Input<String>? project;
+
   /// The tenant-level reCAPTCHA config.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig>? recaptchaConfig;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig>?
+  recaptchaConfig;
+
   /// Configures which regions are enabled for SMS verification code sending.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig>? smsRegionConfig;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig>?
+  smsRegionConfig;
+
   /// A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
   final pulumi.Input<Map<String, String>>? testPhoneNumbers;
 
@@ -87,42 +108,171 @@ class TenantArgs {
     return <String, dynamic>{
       'allowPasswordSignup': ?allowPasswordSignup,
       'autodeleteAnonymousUsers': ?autodeleteAnonymousUsers,
-      'client': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig, Map<String, dynamic>>(client, (value) => value.toMap()),
+      'client':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig,
+            Map<String, dynamic>
+          >(client, (value) => value.toMap()),
       'disableAuth': ?disableAuth,
       'displayName': ?displayName,
-      'emailPrivacyConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig, Map<String, dynamic>>(emailPrivacyConfig, (value) => value.toMap()),
+      'emailPrivacyConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig,
+            Map<String, dynamic>
+          >(emailPrivacyConfig, (value) => value.toMap()),
       'enableAnonymousUser': ?enableAnonymousUser,
       'enableEmailLinkSignin': ?enableEmailLinkSignin,
-      'inheritance': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIdentitytoolkitAdminV2Inheritance, Map<String, dynamic>>(inheritance, (value) => value.toMap()),
-      'mfaConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig, Map<String, dynamic>>(mfaConfig, (value) => value.toMap()),
-      'monitoring': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIdentitytoolkitAdminV2MonitoringConfig, Map<String, dynamic>>(monitoring, (value) => value.toMap()),
-      'passwordPolicyConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig, Map<String, dynamic>>(passwordPolicyConfig, (value) => value.toMap()),
+      'inheritance':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudIdentitytoolkitAdminV2Inheritance,
+            Map<String, dynamic>
+          >(inheritance, (value) => value.toMap()),
+      'mfaConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig,
+            Map<String, dynamic>
+          >(mfaConfig, (value) => value.toMap()),
+      'monitoring':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudIdentitytoolkitAdminV2MonitoringConfig,
+            Map<String, dynamic>
+          >(monitoring, (value) => value.toMap()),
+      'passwordPolicyConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig,
+            Map<String, dynamic>
+          >(passwordPolicyConfig, (value) => value.toMap()),
       'project': ?project,
-      'recaptchaConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig, Map<String, dynamic>>(recaptchaConfig, (value) => value.toMap()),
-      'smsRegionConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig, Map<String, dynamic>>(smsRegionConfig, (value) => value.toMap()),
+      'recaptchaConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig,
+            Map<String, dynamic>
+          >(recaptchaConfig, (value) => value.toMap()),
+      'smsRegionConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig,
+            Map<String, dynamic>
+          >(smsRegionConfig, (value) => value.toMap()),
       'testPhoneNumbers': ?testPhoneNumbers,
     };
   }
 
   factory TenantArgs.fromMap(Map<String, dynamic> map) {
     return TenantArgs(
-      allowPasswordSignup: map['allowPasswordSignup'] == null ? null : (map['allowPasswordSignup']! as bool).input(),
-      autodeleteAnonymousUsers: map['autodeleteAnonymousUsers'] == null ? null : (map['autodeleteAnonymousUsers']! as bool).input(),
-      client: map['client'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig.fromMap((map['client']! as Map).cast<String, dynamic>())).input(),
-      disableAuth: map['disableAuth'] == null ? null : (map['disableAuth']! as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      emailPrivacyConfig: map['emailPrivacyConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig.fromMap((map['emailPrivacyConfig']! as Map).cast<String, dynamic>())).input(),
-      enableAnonymousUser: map['enableAnonymousUser'] == null ? null : (map['enableAnonymousUser']! as bool).input(),
-      enableEmailLinkSignin: map['enableEmailLinkSignin'] == null ? null : (map['enableEmailLinkSignin']! as bool).input(),
-      inheritance: map['inheritance'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2Inheritance.fromMap((map['inheritance']! as Map).cast<String, dynamic>())).input(),
-      mfaConfig: map['mfaConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig.fromMap((map['mfaConfig']! as Map).cast<String, dynamic>())).input(),
-      monitoring: map['monitoring'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2MonitoringConfig.fromMap((map['monitoring']! as Map).cast<String, dynamic>())).input(),
-      passwordPolicyConfig: map['passwordPolicyConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig.fromMap((map['passwordPolicyConfig']! as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      recaptchaConfig: map['recaptchaConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig.fromMap((map['recaptchaConfig']! as Map).cast<String, dynamic>())).input(),
-      smsRegionConfig: map['smsRegionConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig.fromMap((map['smsRegionConfig']! as Map).cast<String, dynamic>())).input(),
-      testPhoneNumbers: map['testPhoneNumbers'] == null ? null : ((map['testPhoneNumbers']! as Map).cast<String, String>()).input(),
+      allowPasswordSignup: (() {
+        final guardedValue = map['allowPasswordSignup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      autodeleteAnonymousUsers: (() {
+        final guardedValue = map['autodeleteAnonymousUsers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      client: (() {
+        final guardedValue = map['client'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      disableAuth: (() {
+        final guardedValue = map['disableAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      emailPrivacyConfig: (() {
+        final guardedValue = map['emailPrivacyConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      enableAnonymousUser: (() {
+        final guardedValue = map['enableAnonymousUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableEmailLinkSignin: (() {
+        final guardedValue = map['enableEmailLinkSignin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      inheritance: (() {
+        final guardedValue = map['inheritance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudIdentitytoolkitAdminV2Inheritance.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mfaConfig: (() {
+        final guardedValue = map['mfaConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      monitoring: (() {
+        final guardedValue = map['monitoring'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudIdentitytoolkitAdminV2MonitoringConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      passwordPolicyConfig: (() {
+        final guardedValue = map['passwordPolicyConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recaptchaConfig: (() {
+        final guardedValue = map['recaptchaConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      smsRegionConfig: (() {
+        final guardedValue = map['smsRegionConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      testPhoneNumbers: (() {
+        final guardedValue = map['testPhoneNumbers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

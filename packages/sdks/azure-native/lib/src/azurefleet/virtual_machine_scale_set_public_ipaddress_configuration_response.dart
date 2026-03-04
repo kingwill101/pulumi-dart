@@ -9,9 +9,14 @@ import 'virtual_machine_scale_set_public_ipaddress_configuration_properties_resp
 class VirtualMachineScaleSetPublicIPAddressConfigurationResponse {
   /// The publicIP address configuration name.
   final pulumi.Input<String> name;
+
   /// Describes a virtual machines scale set IP Configuration's PublicIPAddress
   /// configuration
-  final pulumi.Input<VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse>? properties;
+  final pulumi.Input<
+    VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse
+  >?
+  properties;
+
   /// Describes the public IP Sku. It can only be set with OrchestrationMode as
   /// Flexible.
   final pulumi.Input<PublicIPAddressSkuResponse>? sku;
@@ -29,17 +34,42 @@ class VirtualMachineScaleSetPublicIPAddressConfigurationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
-      'sku': ?pulumi.Input.mapOptionalInputValue<PublicIPAddressSkuResponse, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
+      'sku':
+          ?pulumi.Input.mapOptionalInputValue<
+            PublicIPAddressSkuResponse,
+            Map<String, dynamic>
+          >(sku, (value) => value.toMap()),
     };
   }
 
-  factory VirtualMachineScaleSetPublicIPAddressConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineScaleSetPublicIPAddressConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineScaleSetPublicIPAddressConfigurationResponse(
-      name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      sku: map['sku'] == null ? null : (PublicIPAddressSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PublicIPAddressSkuResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

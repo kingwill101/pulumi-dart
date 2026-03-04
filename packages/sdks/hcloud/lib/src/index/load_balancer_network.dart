@@ -230,12 +230,16 @@ import 'load_balancer_network_state.dart';
 class LoadBalancerNetwork extends pulumi.CustomResource {
   /// Wether the Load Balancer public interface is enabled. Default is `true`.
   late final pulumi.Output<bool> enablePublicInterface;
+
   /// IP to assign to the Load Balancer.
   late final pulumi.Output<String> ip;
+
   /// ID of the Load Balancer.
   late final pulumi.Output<int> loadBalancerId;
+
   /// ID of the Network to attach the Load Balancer to. Using `subnet_id` is preferred. Required if `subnet_id` is not set. If `subnet_id` or `ip` are not set, the Load Balancer will be attached to the last subnet (ordered by `ip_range`).
   late final pulumi.Output<int> networkId;
+
   /// ID of the Subnet to attach the Load Balancer to. Required if `network_id` is not set.
   late final pulumi.Output<String?> subnetId;
 
@@ -248,16 +252,16 @@ class LoadBalancerNetwork extends pulumi.CustomResource {
     LoadBalancerNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/loadBalancerNetwork:LoadBalancerNetwork',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enablePublicInterface = registerOutput<bool>('enablePublicInterface');
-    this.ip = registerOutput<String>('ip');
-    this.loadBalancerId = registerOutput<int>('loadBalancerId');
-    this.networkId = registerOutput<int>('networkId');
-    this.subnetId = registerOutput<String?>('subnetId');
+         'hcloud:index/loadBalancerNetwork:LoadBalancerNetwork',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enablePublicInterface = registerOutput<bool>('enablePublicInterface');
+    ip = registerOutput<String>('ip');
+    loadBalancerId = registerOutput<int>('loadBalancerId');
+    networkId = registerOutput<int>('networkId');
+    subnetId = registerOutput<String?>('subnetId');
   }
 
   /// Gets an existing [LoadBalancerNetwork] resource's state with the given [name] and [id].
@@ -278,15 +282,15 @@ class LoadBalancerNetwork extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/loadBalancerNetwork:LoadBalancerNetwork',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.enablePublicInterface = registerOutput<bool>('enablePublicInterface');
-    this.ip = registerOutput<String>('ip');
-    this.loadBalancerId = registerOutput<int>('loadBalancerId');
-    this.networkId = registerOutput<int>('networkId');
-    this.subnetId = registerOutput<String?>('subnetId');
+         'hcloud:index/loadBalancerNetwork:LoadBalancerNetwork',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    enablePublicInterface = registerOutput<bool>('enablePublicInterface');
+    ip = registerOutput<String>('ip');
+    loadBalancerId = registerOutput<int>('loadBalancerId');
+    networkId = registerOutput<int>('networkId');
+    subnetId = registerOutput<String?>('subnetId');
   }
 }

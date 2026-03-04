@@ -12,22 +12,30 @@ class EntryArgs {
   /// The aspects that are attached to the entry.
   /// Structure is documented below.
   final pulumi.Input<List<EntryAspect>>? aspects;
+
   /// The entry group id of the entry group the entry will be created in.
   final pulumi.Input<String>? entryGroupId;
+
   /// The entry id of the entry.
   final pulumi.Input<String>? entryId;
+
   /// A nested object resource.
   /// Structure is documented below.
   final pulumi.Input<EntryEntrySource>? entrySource;
+
   /// The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
   final pulumi.Input<String> entryType;
+
   /// A name for the entry that can be referenced by an external system. For more information, see https://cloud.google.com/dataplex/docs/fully-qualified-names.
   /// The maximum size of the field is 4000 characters.
   final pulumi.Input<String>? fullyQualifiedName;
+
   /// The location where entry will be created.
   final pulumi.Input<String>? location;
+
   /// The resource name of the parent entry, in the format projects/{project_number}/locations/{locationId}/entryGroups/{entryGroupId}/entries/{entryId}.
   final pulumi.Input<String>? parentEntry;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -56,10 +64,25 @@ class EntryArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aspects': ?pulumi.Input.mapOptionalInputValue<List<EntryAspect>, List<Map<String, dynamic>>>(aspects, (value) => pulumi.Input.encodeList<EntryAspect, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'aspects':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<EntryAspect>,
+            List<Map<String, dynamic>>
+          >(
+            aspects,
+            (value) =>
+                pulumi.Input.encodeList<EntryAspect, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'entryGroupId': ?entryGroupId,
       'entryId': ?entryId,
-      'entrySource': ?pulumi.Input.mapOptionalInputValue<EntryEntrySource, Map<String, dynamic>>(entrySource, (value) => value.toMap()),
+      'entrySource':
+          ?pulumi.Input.mapOptionalInputValue<
+            EntryEntrySource,
+            Map<String, dynamic>
+          >(entrySource, (value) => value.toMap()),
       'entryType': entryType,
       'fullyQualifiedName': ?fullyQualifiedName,
       'location': ?location,
@@ -70,16 +93,57 @@ class EntryArgs {
 
   factory EntryArgs.fromMap(Map<String, dynamic> map) {
     return EntryArgs(
-      aspects: map['aspects'] == null ? null : (pulumi.Input.decodeList<EntryAspect>(map['aspects']!, (value) => EntryAspect.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      entryGroupId: map['entryGroupId'] == null ? null : (map['entryGroupId']! as String).input(),
-      entryId: map['entryId'] == null ? null : (map['entryId']! as String).input(),
-      entrySource: map['entrySource'] == null ? null : (EntryEntrySource.fromMap((map['entrySource']! as Map).cast<String, dynamic>())).input(),
-      entryType: (map['entryType'] as String).input(),
-      fullyQualifiedName: map['fullyQualifiedName'] == null ? null : (map['fullyQualifiedName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      parentEntry: map['parentEntry'] == null ? null : (map['parentEntry']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      aspects: (() {
+        final guardedValue = map['aspects'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<EntryAspect>(
+            guardedValue,
+            (value) =>
+                EntryAspect.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      entryGroupId: (() {
+        final guardedValue = map['entryGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entryId: (() {
+        final guardedValue = map['entryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entrySource: (() {
+        final guardedValue = map['entrySource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EntryEntrySource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      entryType: pulumi.Input.fromValue(map['entryType'] as String),
+      fullyQualifiedName: (() {
+        final guardedValue = map['fullyQualifiedName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentEntry: (() {
+        final guardedValue = map['parentEntry'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

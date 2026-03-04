@@ -1,0 +1,6 @@
+name: awsx-dart-vpc-nodejs-specific-vpc-layout
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX VPC specific subnet layout in Dart.

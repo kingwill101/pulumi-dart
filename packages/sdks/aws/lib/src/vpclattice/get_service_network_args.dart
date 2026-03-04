@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceNetworkArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Identifier of the service network.
   final pulumi.Input<String> serviceNetworkIdentifier;
   final pulumi.Input<Map<String, String>>? tags;
@@ -33,10 +34,21 @@ class GetServiceNetworkArgs {
 
   factory GetServiceNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceNetworkArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      serviceNetworkIdentifier: (map['serviceNetworkIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceNetworkIdentifier: pulumi.Input.fromValue(
+        map['serviceNetworkIdentifier'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

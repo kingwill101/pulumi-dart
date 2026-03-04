@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentDaprComponentSecret {
   /// The identity to use for accessing key vault reference. Possible values are the Resource ID of a User Assigned Managed Identity, or `System` to use the System Assigned Managed Identity.
   final pulumi.Input<String>? identity;
+
   /// The Key Vault Secret ID.
   final pulumi.Input<String>? keyVaultSecretId;
+
   /// The Secret name.
   final pulumi.Input<String> name;
+
   /// The value for this secret.
   final pulumi.Input<String>? value;
 
@@ -35,11 +38,22 @@ class EnvironmentDaprComponentSecret {
 
   factory EnvironmentDaprComponentSecret.fromMap(Map<String, dynamic> map) {
     return EnvironmentDaprComponentSecret(
-      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId']! as String).input(),
-      name: (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultSecretId: (() {
+        final guardedValue = map['keyVaultSecretId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

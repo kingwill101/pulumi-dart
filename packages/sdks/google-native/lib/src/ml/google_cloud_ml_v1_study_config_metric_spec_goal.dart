@@ -4,16 +4,17 @@ enum GoogleCloudMlV1StudyConfigMetricSpecGoal {
   maximize("MAXIMIZE"),
   minimize("MINIMIZE");
 
-  const GoogleCloudMlV1StudyConfigMetricSpecGoal(this.value);
-  final String value;
+  const GoogleCloudMlV1StudyConfigMetricSpecGoal(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudMlV1StudyConfigMetricSpecGoal fromValue(String value) {
     for (final item in GoogleCloudMlV1StudyConfigMetricSpecGoal.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudMlV1StudyConfigMetricSpecGoal value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudMlV1StudyConfigMetricSpecGoal value: $value',
+    );
   }
 }
-

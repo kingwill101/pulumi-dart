@@ -1,24 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getManagedInstanceLongTermRetentionPolicy.
 class GetManagedInstanceLongTermRetentionPolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The BackupStorageAccessTier for the LTR backups
   final String? backupStorageAccessTier;
+
   /// Resource ID.
   final String id;
+
   /// The monthly retention policy for an LTR backup in an ISO 8601 format.
   final String? monthlyRetention;
+
   /// Resource name.
   final String name;
+
   /// Resource type.
   final String type;
+
   /// The week of year to take the yearly backup in an ISO 8601 format.
   final int? weekOfYear;
+
   /// The weekly retention policy for an LTR backup in an ISO 8601 format.
   final String? weeklyRetention;
+
   /// The yearly retention policy for an LTR backup in an ISO 8601 format.
   final String? yearlyRetention;
 
@@ -58,18 +65,39 @@ class GetManagedInstanceLongTermRetentionPolicyResult {
     };
   }
 
-  factory GetManagedInstanceLongTermRetentionPolicyResult.fromMap(Map<String, dynamic> map) {
+  factory GetManagedInstanceLongTermRetentionPolicyResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagedInstanceLongTermRetentionPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      backupStorageAccessTier: map['backupStorageAccessTier'] == null ? null : map['backupStorageAccessTier']! as String,
+      backupStorageAccessTier: (() {
+        final guardedValue = map['backupStorageAccessTier'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      monthlyRetention: map['monthlyRetention'] == null ? null : map['monthlyRetention']! as String,
+      monthlyRetention: (() {
+        final guardedValue = map['monthlyRetention'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       type: map['type'] as String,
-      weekOfYear: map['weekOfYear'] == null ? null : map['weekOfYear']! as int,
-      weeklyRetention: map['weeklyRetention'] == null ? null : map['weeklyRetention']! as String,
-      yearlyRetention: map['yearlyRetention'] == null ? null : map['yearlyRetention']! as String,
+      weekOfYear: (() {
+        final guardedValue = map['weekOfYear'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      weeklyRetention: (() {
+        final guardedValue = map['weeklyRetention'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      yearlyRetention: (() {
+        final guardedValue = map['yearlyRetention'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_managedservices;
-
 export 'managedservices/authorization.dart';
 export 'managedservices/authorization_response.dart';
 export 'managedservices/eligible_approver.dart';

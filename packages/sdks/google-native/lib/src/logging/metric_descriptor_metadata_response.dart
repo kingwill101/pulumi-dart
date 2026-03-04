@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetricDescriptorMetadataResponse {
   /// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
   final pulumi.Input<String> ingestDelay;
+
   /// Deprecated. Must use the MetricDescriptor.launch_stage instead.
   final pulumi.Input<String> launchStage;
+
   /// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
   final pulumi.Input<String> samplePeriod;
 
@@ -31,10 +33,9 @@ class MetricDescriptorMetadataResponse {
 
   factory MetricDescriptorMetadataResponse.fromMap(Map<String, dynamic> map) {
     return MetricDescriptorMetadataResponse(
-      ingestDelay: (map['ingestDelay'] as String).input(),
-      launchStage: (map['launchStage'] as String).input(),
-      samplePeriod: (map['samplePeriod'] as String).input(),
+      ingestDelay: pulumi.Input.fromValue(map['ingestDelay'] as String),
+      launchStage: pulumi.Input.fromValue(map['launchStage'] as String),
+      samplePeriod: pulumi.Input.fromValue(map['samplePeriod'] as String),
     );
   }
 }
-

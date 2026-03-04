@@ -16,16 +16,22 @@ import 'web_app_public_certificate_slot_args.dart';
 class WebAppPublicCertificateSlot extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Public Certificate byte array
   late final pulumi.Output<String?> blob;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Public Certificate Location
   late final pulumi.Output<String?> publicCertificateLocation;
+
   /// Certificate Thumbprint
   late final pulumi.Output<String> thumbprint;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -38,17 +44,19 @@ class WebAppPublicCertificateSlot extends pulumi.CustomResource {
     WebAppPublicCertificateSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:WebAppPublicCertificateSlot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.blob = registerOutput<String?>('blob');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:WebAppPublicCertificateSlot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    blob = registerOutput<String?>('blob');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.publicCertificateLocation = registerOutput<String?>('publicCertificateLocation');
-    this.thumbprint = registerOutput<String>('thumbprint');
-    this.type = registerOutput<String>('type');
+    publicCertificateLocation = registerOutput<String?>(
+      'publicCertificateLocation',
+    );
+    thumbprint = registerOutput<String>('thumbprint');
+    type = registerOutput<String>('type');
   }
 }

@@ -7,11 +7,14 @@ import 'security_group_vpc_association_timeouts.dart';
 class SecurityGroupVpcAssociationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the security group.
   final pulumi.Input<String>? securityGroupId;
+
   /// State of the VPC association. See the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecurityGroupVpcAssociation.html) for possible values.
   final pulumi.Input<String>? state;
   final pulumi.Input<SecurityGroupVpcAssociationTimeouts>? timeouts;
+
   /// The ID of the VPC to make the association with.
   final pulumi.Input<String>? vpcId;
 
@@ -34,19 +37,46 @@ class SecurityGroupVpcAssociationState {
       'region': ?region,
       'securityGroupId': ?securityGroupId,
       'state': ?state,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<SecurityGroupVpcAssociationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecurityGroupVpcAssociationTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'vpcId': ?vpcId,
     };
   }
 
   factory SecurityGroupVpcAssociationState.fromMap(Map<String, dynamic> map) {
     return SecurityGroupVpcAssociationState(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : ((map['securityGroupId'] as String).input()).input(),
-      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((SecurityGroupVpcAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupId: (() {
+        final guardedValue = map['securityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecurityGroupVpcAssociationTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

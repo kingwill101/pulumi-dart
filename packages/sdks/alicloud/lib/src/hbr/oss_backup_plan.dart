@@ -6,11 +6,11 @@ import 'oss_backup_plan_state.dart';
 ///
 /// For information about HBR Oss Backup Plan and how to use it, see [What is Oss Backup Plan](https://www.alibabacloud.com/help/doc-detail/130040.htm).
 ///
-/// > **NOTE:** Available since v1.131.0.
+/// &gt; **NOTE:** Available since v1.131.0.
 ///
-/// > **NOTE:** Deprecated since v1.249.0.
+/// &gt; **NOTE:** Deprecated since v1.249.0.
 ///
-/// > **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource alicloud.hbr.Policy and alicloud_hbr_policy_binding.
+/// &gt; **DEPRECATED:** This resource has been deprecated from version `1.249.0`. Please use new resource alicloud.hbr.Policy and alicloud_hbr_policy_binding.
 ///
 /// ## Example Usage
 ///
@@ -240,25 +240,35 @@ import 'oss_backup_plan_state.dart';
 class OssBackupPlan extends pulumi.CustomResource {
   /// Backup type. Valid values: `COMPLETE`.
   late final pulumi.Output<String> backupType;
+
   /// The name of OSS bucket.
   late final pulumi.Output<String> bucket;
+
   /// The role name created in the original account RAM backup by the cross account managed by the current account.
   late final pulumi.Output<String?> crossAccountRoleName;
+
   /// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
   late final pulumi.Output<String> crossAccountType;
+
   /// The original account ID of the cross account backup managed by the current account.
   late final pulumi.Output<int?> crossAccountUserId;
+
   /// Whether to disable the backup task. Valid values: `true`, `false`.
   late final pulumi.Output<bool> disabled;
+
   /// The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
   late final pulumi.Output<String> ossBackupPlanName;
+
   /// Backup prefix. Once specified, only objects with matching prefixes will be backed up.
   late final pulumi.Output<String?> prefix;
+
   /// Backup retention days, the minimum is 1.
   late final pulumi.Output<String> retention;
+
   /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
   /// * `startTime` Backup start time, UNIX time seconds.
   late final pulumi.Output<String> schedule;
+
   /// The ID of backup vault.
   late final pulumi.Output<String> vaultId;
 
@@ -271,22 +281,22 @@ class OssBackupPlan extends pulumi.CustomResource {
     OssBackupPlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:hbr/ossBackupPlan:OssBackupPlan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupType = registerOutput<String>('backupType');
-    this.bucket = registerOutput<String>('bucket');
-    this.crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
-    this.crossAccountType = registerOutput<String>('crossAccountType');
-    this.crossAccountUserId = registerOutput<int?>('crossAccountUserId');
-    this.disabled = registerOutput<bool>('disabled');
-    this.ossBackupPlanName = registerOutput<String>('ossBackupPlanName');
-    this.prefix = registerOutput<String?>('prefix');
-    this.retention = registerOutput<String>('retention');
-    this.schedule = registerOutput<String>('schedule');
-    this.vaultId = registerOutput<String>('vaultId');
+         'alicloud:hbr/ossBackupPlan:OssBackupPlan',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupType = registerOutput<String>('backupType');
+    bucket = registerOutput<String>('bucket');
+    crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
+    crossAccountType = registerOutput<String>('crossAccountType');
+    crossAccountUserId = registerOutput<int?>('crossAccountUserId');
+    disabled = registerOutput<bool>('disabled');
+    ossBackupPlanName = registerOutput<String>('ossBackupPlanName');
+    prefix = registerOutput<String?>('prefix');
+    retention = registerOutput<String>('retention');
+    schedule = registerOutput<String>('schedule');
+    vaultId = registerOutput<String>('vaultId');
   }
 
   /// Gets an existing [OssBackupPlan] resource's state with the given [name] and [id].
@@ -307,21 +317,21 @@ class OssBackupPlan extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:hbr/ossBackupPlan:OssBackupPlan',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupType = registerOutput<String>('backupType');
-    this.bucket = registerOutput<String>('bucket');
-    this.crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
-    this.crossAccountType = registerOutput<String>('crossAccountType');
-    this.crossAccountUserId = registerOutput<int?>('crossAccountUserId');
-    this.disabled = registerOutput<bool>('disabled');
-    this.ossBackupPlanName = registerOutput<String>('ossBackupPlanName');
-    this.prefix = registerOutput<String?>('prefix');
-    this.retention = registerOutput<String>('retention');
-    this.schedule = registerOutput<String>('schedule');
-    this.vaultId = registerOutput<String>('vaultId');
+         'alicloud:hbr/ossBackupPlan:OssBackupPlan',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backupType = registerOutput<String>('backupType');
+    bucket = registerOutput<String>('bucket');
+    crossAccountRoleName = registerOutput<String?>('crossAccountRoleName');
+    crossAccountType = registerOutput<String>('crossAccountType');
+    crossAccountUserId = registerOutput<int?>('crossAccountUserId');
+    disabled = registerOutput<bool>('disabled');
+    ossBackupPlanName = registerOutput<String>('ossBackupPlanName');
+    prefix = registerOutput<String?>('prefix');
+    retention = registerOutput<String>('retention');
+    schedule = registerOutput<String>('schedule');
+    vaultId = registerOutput<String>('vaultId');
   }
 }

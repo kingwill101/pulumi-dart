@@ -1,5 +1,3 @@
-library module_eais;
-
 export 'eais/client_instance_attachment.dart';
 export 'eais/client_instance_attachment_args.dart';
 export 'eais/client_instance_attachment_state.dart';

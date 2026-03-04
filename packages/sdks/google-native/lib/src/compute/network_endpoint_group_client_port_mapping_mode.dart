@@ -3,16 +3,17 @@ enum NetworkEndpointGroupClientPortMappingMode {
   clientPortPerEndpoint("CLIENT_PORT_PER_ENDPOINT"),
   portMappingDisabled("PORT_MAPPING_DISABLED");
 
-  const NetworkEndpointGroupClientPortMappingMode(this.value);
-  final String value;
+  const NetworkEndpointGroupClientPortMappingMode(this.wireValue);
+  final String wireValue;
 
   static NetworkEndpointGroupClientPortMappingMode fromValue(String value) {
     for (final item in NetworkEndpointGroupClientPortMappingMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkEndpointGroupClientPortMappingMode value: $value');
+    throw ArgumentError(
+      'Unknown NetworkEndpointGroupClientPortMappingMode value: $value',
+    );
   }
 }
-

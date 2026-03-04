@@ -6,10 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceControlTokenState {
   /// The Access Token.
   final pulumi.Input<String>? token;
+
   /// The Access Token Secret.
   ///
-  /// > **Note:** The token used for deploying App Service needs the following permissions: `repo` and `workflow`.
+  /// &gt; **Note:** The token used for deploying App Service needs the following permissions: `repo` and `workflow`.
   final pulumi.Input<String>? tokenSecret;
+
   /// The Token type. Possible values include `Bitbucket`, `Dropbox`, `Github`, and `OneDrive`.
   final pulumi.Input<String>? type;
 
@@ -17,11 +19,7 @@ class SourceControlTokenState {
   /// [token] The Access Token.
   /// [tokenSecret] The Access Token Secret.
   /// [type] The Token type. Possible values include `Bitbucket`, `Dropbox`, `Github`, and `OneDrive`.
-  SourceControlTokenState({
-    this.token,
-    this.tokenSecret,
-    this.type,
-  });
+  SourceControlTokenState({this.token, this.tokenSecret, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,10 +31,21 @@ class SourceControlTokenState {
 
   factory SourceControlTokenState.fromMap(Map<String, dynamic> map) {
     return SourceControlTokenState(
-      token: map['token'] == null ? null : (map['token']! as String).input(),
-      tokenSecret: map['tokenSecret'] == null ? null : (map['tokenSecret']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      token: (() {
+        final guardedValue = map['token'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tokenSecret: (() {
+        final guardedValue = map['tokenSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

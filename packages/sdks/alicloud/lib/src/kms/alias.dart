@@ -4,7 +4,7 @@ import 'alias_state.dart';
 
 /// Create an alias for the master key (CMK).
 ///
-/// > **NOTE:** Available since v1.77.0+.
+/// &gt; **NOTE:** Available since v1.77.0+.
 ///
 /// ## Example Usage
 ///
@@ -141,39 +141,33 @@ import 'alias_state.dart';
 class Alias extends pulumi.CustomResource {
   /// The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
   late final pulumi.Output<String> aliasName;
+
   /// The id of the key.
   ///
-  /// > **NOTE:** Each alias represents only one master key(CMK).
+  /// &gt; **NOTE:** Each alias represents only one master key(CMK).
   ///
-  /// > **NOTE:** Within an area of the same user, alias is not reproducible.
+  /// &gt; **NOTE:** Within an area of the same user, alias is not reproducible.
   ///
-  /// > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
+  /// &gt; **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
   late final pulumi.Output<String> keyId;
 
   /// Creates a new [Alias].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Alias]. {@macro pulumi_kms_alias_alias_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Alias(
-    String name, {
-    AliasArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:kms/alias:Alias',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aliasName = registerOutput<String>('aliasName');
-    this.keyId = registerOutput<String>('keyId');
+  Alias(String name, {AliasArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:kms/alias:Alias',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    aliasName = registerOutput<String>('aliasName');
+    keyId = registerOutput<String>('keyId');
   }
 
   /// Gets an existing [Alias] resource's state with the given [name] and [id].
-  static Alias get(
-    String name,
-    pulumi.Input<String> id, {
-    AliasState? state,
-  }) {
+  static Alias get(String name, pulumi.Input<String> id, {AliasState? state}) {
     return Alias._get(
       name,
       state: state?.toMap(),
@@ -186,12 +180,12 @@ class Alias extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:kms/alias:Alias',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aliasName = registerOutput<String>('aliasName');
-    this.keyId = registerOutput<String>('keyId');
+         'alicloud:kms/alias:Alias',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aliasName = registerOutput<String>('aliasName');
+    keyId = registerOutput<String>('keyId');
   }
 }

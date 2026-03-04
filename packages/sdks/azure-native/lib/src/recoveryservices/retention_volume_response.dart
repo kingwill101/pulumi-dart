@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RetentionVolumeResponse {
   /// The volume capacity.
   final pulumi.Input<double>? capacityInBytes;
+
   /// The free space available in this volume.
   final pulumi.Input<double>? freeSpaceInBytes;
+
   /// The threshold percentage.
   final pulumi.Input<int>? thresholdPercentage;
+
   /// The volume name.
   final pulumi.Input<String>? volumeName;
 
@@ -36,11 +39,26 @@ class RetentionVolumeResponse {
 
   factory RetentionVolumeResponse.fromMap(Map<String, dynamic> map) {
     return RetentionVolumeResponse(
-      capacityInBytes: map['capacityInBytes'] == null ? null : (map['capacityInBytes']! as double).input(),
-      freeSpaceInBytes: map['freeSpaceInBytes'] == null ? null : (map['freeSpaceInBytes']! as double).input(),
-      thresholdPercentage: map['thresholdPercentage'] == null ? null : (map['thresholdPercentage']! as int).input(),
-      volumeName: map['volumeName'] == null ? null : (map['volumeName']! as String).input(),
+      capacityInBytes: (() {
+        final guardedValue = map['capacityInBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      freeSpaceInBytes: (() {
+        final guardedValue = map['freeSpaceInBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      thresholdPercentage: (() {
+        final guardedValue = map['thresholdPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      volumeName: (() {
+        final guardedValue = map['volumeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

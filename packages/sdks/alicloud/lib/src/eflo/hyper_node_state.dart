@@ -7,49 +7,69 @@ import 'hyper_node_data_disk.dart';
 class HyperNodeState {
   /// Cluster ID
   final pulumi.Input<String>? clusterId;
+
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
   final pulumi.Input<List<HyperNodeDataDisk>>? dataDisks;
+
   /// The host name prefix of the sub computing node
   final pulumi.Input<String>? hostname;
+
   /// Number of the cluster to which the hyper computing node belongs
   final pulumi.Input<String>? hpnZone;
+
   /// Login Password of the sub computing node
   final pulumi.Input<String>? loginPassword;
+
   /// The model used by the hyper computing node
   final pulumi.Input<String>? machineType;
+
   /// Node group ID
   final pulumi.Input<String>? nodeGroupId;
+
   /// The duration of the instance purchase, in units.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<int>? paymentDuration;
+
   /// The payment type of the resource
   final pulumi.Input<String>? paymentType;
+
   /// The region ID of the resource
   final pulumi.Input<String>? regionId;
+
   /// Number of auto-renewal cycles
   final pulumi.Input<int>? renewalDuration;
+
   /// Automatic renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. The default ManualRenewal.
   final pulumi.Input<String>? renewalStatus;
+
   /// The ID of the resource group
   final pulumi.Input<String>? resourceGroupId;
+
   /// Hyper Node Architecture
   final pulumi.Input<String>? serverArch;
+
   /// The number of installments of the hyper computing node of the fixed fee installment.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? stageNum;
+
   /// The status of the resource
   final pulumi.Input<String>? status;
+
   /// The tag of the resource
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Custom user data for the sub computing node
   final pulumi.Input<String>? userData;
+
   /// The ID of the vpc to which the sub computing node
   final pulumi.Input<String>? vpcId;
+
   /// The ID of the vswitch to which the sub computing node
   final pulumi.Input<String>? vswitchId;
+
   /// The zone where the hyper compute node is located
   final pulumi.Input<String>? zoneId;
 
@@ -105,7 +125,18 @@ class HyperNodeState {
     return <String, dynamic>{
       'clusterId': ?clusterId,
       'createTime': ?createTime,
-      'dataDisks': ?pulumi.Input.mapOptionalInputValue<List<HyperNodeDataDisk>, List<Map<String, dynamic>>>(dataDisks, (value) => pulumi.Input.encodeList<HyperNodeDataDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dataDisks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<HyperNodeDataDisk>,
+            List<Map<String, dynamic>>
+          >(
+            dataDisks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HyperNodeDataDisk,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'hostname': ?hostname,
       'hpnZone': ?hpnZone,
       'loginPassword': ?loginPassword,
@@ -130,29 +161,125 @@ class HyperNodeState {
 
   factory HyperNodeState.fromMap(Map<String, dynamic> map) {
     return HyperNodeState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<HyperNodeDataDisk>(map['dataDisks']!, (value) => HyperNodeDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
-      hpnZone: map['hpnZone'] == null ? null : (map['hpnZone']! as String).input(),
-      loginPassword: map['loginPassword'] == null ? null : (map['loginPassword']! as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
-      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId']! as String).input(),
-      paymentDuration: map['paymentDuration'] == null ? null : (map['paymentDuration']! as int).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      renewalDuration: map['renewalDuration'] == null ? null : (map['renewalDuration']! as int).input(),
-      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      serverArch: map['serverArch'] == null ? null : (map['serverArch']! as String).input(),
-      stageNum: map['stageNum'] == null ? null : (map['stageNum']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      userData: map['userData'] == null ? null : (map['userData']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataDisks: (() {
+        final guardedValue = map['dataDisks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<HyperNodeDataDisk>(
+            guardedValue,
+            (value) => HyperNodeDataDisk.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      hostname: (() {
+        final guardedValue = map['hostname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hpnZone: (() {
+        final guardedValue = map['hpnZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loginPassword: (() {
+        final guardedValue = map['loginPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      machineType: (() {
+        final guardedValue = map['machineType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeGroupId: (() {
+        final guardedValue = map['nodeGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentDuration: (() {
+        final guardedValue = map['paymentDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      renewalDuration: (() {
+        final guardedValue = map['renewalDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      renewalStatus: (() {
+        final guardedValue = map['renewalStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverArch: (() {
+        final guardedValue = map['serverArch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stageNum: (() {
+        final guardedValue = map['stageNum'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      userData: (() {
+        final guardedValue = map['userData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

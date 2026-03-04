@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class XmlFilterRulesetResponse {
   /// The default XML namespace used for schema validation.
   final pulumi.Input<String>? defaultNamespace;
+
   /// Defines the method for referencing the xml schema.
   final pulumi.Input<String>? reference;
+
   /// The inline XSD schema to be used for validation.
   final pulumi.Input<String>? schema;
 
@@ -31,10 +33,21 @@ class XmlFilterRulesetResponse {
 
   factory XmlFilterRulesetResponse.fromMap(Map<String, dynamic> map) {
     return XmlFilterRulesetResponse(
-      defaultNamespace: map['defaultNamespace'] == null ? null : (map['defaultNamespace']! as String).input(),
-      reference: map['reference'] == null ? null : (map['reference']! as String).input(),
-      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      defaultNamespace: (() {
+        final guardedValue = map['defaultNamespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reference: (() {
+        final guardedValue = map['reference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,8 +8,10 @@ class GetStorageBoxSnapshotsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetStorageBoxSnapshotsSnapshot> snapshots;
+
   /// ID of the Storage Box.
   final int storageBoxId;
+
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   final String? withSelector;
 
@@ -28,7 +30,11 @@ class GetStorageBoxSnapshotsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'snapshots': pulumi.Input.encodeList<GetStorageBoxSnapshotsSnapshot, Map<String, dynamic>>(snapshots, (value) => value.toMap()),
+      'snapshots':
+          pulumi.Input.encodeList<
+            GetStorageBoxSnapshotsSnapshot,
+            Map<String, dynamic>
+          >(snapshots, (value) => value.toMap()),
       'storageBoxId': storageBoxId,
       'withSelector': ?withSelector,
     };
@@ -37,10 +43,18 @@ class GetStorageBoxSnapshotsResult {
   factory GetStorageBoxSnapshotsResult.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxSnapshotsResult(
       id: map['id'] as String,
-      snapshots: pulumi.Input.decodeList<GetStorageBoxSnapshotsSnapshot>(map['snapshots'], (value) => GetStorageBoxSnapshotsSnapshot.fromMap((value as Map).cast<String, dynamic>())),
+      snapshots: pulumi.Input.decodeList<GetStorageBoxSnapshotsSnapshot>(
+        map['snapshots']!,
+        (value) => GetStorageBoxSnapshotsSnapshot.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       storageBoxId: map['storageBoxId'] as int,
-      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

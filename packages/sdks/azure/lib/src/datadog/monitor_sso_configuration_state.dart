@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitorSsoConfigurationState {
   /// The Datadog Monitor Id which should be used for this Datadog Monitor SSO Configuration. Changing this forces a new Datadog Monitor SSO Configuration to be created.
   final pulumi.Input<String>? datadogMonitorId;
+
   /// The application Id to perform SSO operation.
   final pulumi.Input<String>? enterpriseApplicationId;
+
   /// The SingleSignOn URL to login to Datadog org.
   final pulumi.Input<String>? loginUrl;
+
   /// The name of the SingleSignOn configuration. Defaults to `default`.
   final pulumi.Input<String>? name;
+
   /// The state of SingleSignOn configuration. Possible values are `Enable`, `Disable`, `Initial` and `Existing`.
   final pulumi.Input<String>? singleSignOn;
   final pulumi.Input<String>? singleSignOnEnabled;
@@ -45,13 +49,36 @@ class MonitorSsoConfigurationState {
 
   factory MonitorSsoConfigurationState.fromMap(Map<String, dynamic> map) {
     return MonitorSsoConfigurationState(
-      datadogMonitorId: map['datadogMonitorId'] == null ? null : (map['datadogMonitorId']! as String).input(),
-      enterpriseApplicationId: map['enterpriseApplicationId'] == null ? null : (map['enterpriseApplicationId']! as String).input(),
-      loginUrl: map['loginUrl'] == null ? null : (map['loginUrl']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      singleSignOn: map['singleSignOn'] == null ? null : (map['singleSignOn']! as String).input(),
-      singleSignOnEnabled: map['singleSignOnEnabled'] == null ? null : (map['singleSignOnEnabled']! as String).input(),
+      datadogMonitorId: (() {
+        final guardedValue = map['datadogMonitorId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enterpriseApplicationId: (() {
+        final guardedValue = map['enterpriseApplicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loginUrl: (() {
+        final guardedValue = map['loginUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      singleSignOn: (() {
+        final guardedValue = map['singleSignOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      singleSignOnEnabled: (() {
+        final guardedValue = map['singleSignOnEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

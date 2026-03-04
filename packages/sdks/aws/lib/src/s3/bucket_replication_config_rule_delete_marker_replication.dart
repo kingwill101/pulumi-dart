@@ -8,20 +8,17 @@ class BucketReplicationConfigRuleDeleteMarkerReplication {
 
   /// Creates a new [BucketReplicationConfigRuleDeleteMarkerReplication].
   /// [status] Whether delete markers should be replicated. Either `"Enabled"` or `"Disabled"`.
-  BucketReplicationConfigRuleDeleteMarkerReplication({
-    required this.status,
-  });
+  BucketReplicationConfigRuleDeleteMarkerReplication({required this.status});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'status': status,
-    };
+    return <String, dynamic>{'status': status};
   }
 
-  factory BucketReplicationConfigRuleDeleteMarkerReplication.fromMap(Map<String, dynamic> map) {
+  factory BucketReplicationConfigRuleDeleteMarkerReplication.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketReplicationConfigRuleDeleteMarkerReplication(
-      status: (map['status'] as String).input(),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

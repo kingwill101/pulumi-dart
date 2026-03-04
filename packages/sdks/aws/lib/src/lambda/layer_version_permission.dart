@@ -6,7 +6,7 @@ import 'layer_version_permission_state.dart';
 ///
 /// For information about Lambda Layer Permissions and how to use them, see [Using Resource-based Policies for AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html#permissions-resource-xaccountlayer).
 ///
-/// > **Note:** Setting `skip_destroy` to `true` means that the AWS Provider will not destroy any layer version permission, even when running `pulumi destroy`. Layer version permissions are thus intentional dangling resources that are not managed by Pulumi and may incur extra expense in your AWS account.
+/// &gt; **Note:** Setting `skip_destroy` to `true` means that the AWS Provider will not destroy any layer version permission, even when running `pulumi destroy`. Layer version permissions are thus intentional dangling resources that are not managed by Pulumi and may incur extra expense in your AWS account.
 ///
 /// ## Example Usage
 ///
@@ -663,22 +663,31 @@ import 'layer_version_permission_state.dart';
 class LayerVersionPermission extends pulumi.CustomResource {
   /// Action that will be allowed. `lambda:GetLayerVersion` is the standard value for layer access.
   late final pulumi.Output<String> action;
+
   /// Name or ARN of the Lambda Layer.
   late final pulumi.Output<String> layerName;
+
   /// AWS Organization ID that should be able to use your Lambda Layer. `principal` should be set to `*` when `organization_id` is provided.
   late final pulumi.Output<String?> organizationId;
+
   /// Full Lambda Layer Permission policy.
   late final pulumi.Output<String> policy;
+
   /// AWS account ID that should be able to use your Lambda Layer. Use `*` to share with all AWS accounts.
   late final pulumi.Output<String> principal;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Unique identifier for the current revision of the policy.
   late final pulumi.Output<String> revisionId;
+
   /// Whether to retain the permission when the resource is destroyed. Default is `false`.
   late final pulumi.Output<bool?> skipDestroy;
+
   /// Unique identifier for the permission statement.
   late final pulumi.Output<String> statementId;
+
   /// Version of Lambda Layer to grant access to. Note: permissions only apply to a single version of a layer.
   ///
   /// The following arguments are optional:
@@ -693,21 +702,21 @@ class LayerVersionPermission extends pulumi.CustomResource {
     LayerVersionPermissionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lambda/layerVersionPermission:LayerVersionPermission',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String>('action');
-    this.layerName = registerOutput<String>('layerName');
-    this.organizationId = registerOutput<String?>('organizationId');
-    this.policy = registerOutput<String>('policy');
-    this.principal = registerOutput<String>('principal');
-    this.region = registerOutput<String>('region');
-    this.revisionId = registerOutput<String>('revisionId');
-    this.skipDestroy = registerOutput<bool?>('skipDestroy');
-    this.statementId = registerOutput<String>('statementId');
-    this.versionNumber = registerOutput<int>('versionNumber');
+         'aws:lambda/layerVersionPermission:LayerVersionPermission',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String>('action');
+    layerName = registerOutput<String>('layerName');
+    organizationId = registerOutput<String?>('organizationId');
+    policy = registerOutput<String>('policy');
+    principal = registerOutput<String>('principal');
+    region = registerOutput<String>('region');
+    revisionId = registerOutput<String>('revisionId');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    statementId = registerOutput<String>('statementId');
+    versionNumber = registerOutput<int>('versionNumber');
   }
 
   /// Gets an existing [LayerVersionPermission] resource's state with the given [name] and [id].
@@ -728,20 +737,20 @@ class LayerVersionPermission extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lambda/layerVersionPermission:LayerVersionPermission',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String>('action');
-    this.layerName = registerOutput<String>('layerName');
-    this.organizationId = registerOutput<String?>('organizationId');
-    this.policy = registerOutput<String>('policy');
-    this.principal = registerOutput<String>('principal');
-    this.region = registerOutput<String>('region');
-    this.revisionId = registerOutput<String>('revisionId');
-    this.skipDestroy = registerOutput<bool?>('skipDestroy');
-    this.statementId = registerOutput<String>('statementId');
-    this.versionNumber = registerOutput<int>('versionNumber');
+         'aws:lambda/layerVersionPermission:LayerVersionPermission',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String>('action');
+    layerName = registerOutput<String>('layerName');
+    organizationId = registerOutput<String?>('organizationId');
+    policy = registerOutput<String>('policy');
+    principal = registerOutput<String>('principal');
+    region = registerOutput<String>('region');
+    revisionId = registerOutput<String>('revisionId');
+    skipDestroy = registerOutput<bool?>('skipDestroy');
+    statementId = registerOutput<String>('statementId');
+    versionNumber = registerOutput<int>('versionNumber');
   }
 }

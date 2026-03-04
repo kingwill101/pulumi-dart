@@ -4,16 +4,15 @@ enum CacheBehavior {
   override("Override"),
   setIfMissing("SetIfMissing");
 
-  const CacheBehavior(this.value);
-  final String value;
+  const CacheBehavior(this.wireValue);
+  final String wireValue;
 
   static CacheBehavior fromValue(String value) {
     for (final item in CacheBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CacheBehavior value: $value');
   }
 }
-

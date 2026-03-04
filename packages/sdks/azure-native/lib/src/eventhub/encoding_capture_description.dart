@@ -3,16 +3,15 @@ enum EncodingCaptureDescription {
   valueAvro("Avro"),
   valueAvroDeflate("AvroDeflate");
 
-  const EncodingCaptureDescription(this.value);
-  final String value;
+  const EncodingCaptureDescription(this.wireValue);
+  final String wireValue;
 
   static EncodingCaptureDescription fromValue(String value) {
     for (final item in EncodingCaptureDescription.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EncodingCaptureDescription value: $value');
   }
 }
-

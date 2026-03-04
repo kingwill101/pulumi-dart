@@ -4,16 +4,15 @@ enum ShareRootSquash {
   rootSquash("RootSquash"),
   allSquash("AllSquash");
 
-  const ShareRootSquash(this.value);
-  final String value;
+  const ShareRootSquash(this.wireValue);
+  final String wireValue;
 
   static ShareRootSquash fromValue(String value) {
     for (final item in ShareRootSquash.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ShareRootSquash value: $value');
   }
 }
-

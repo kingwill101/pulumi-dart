@@ -1,70 +1,94 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_eventbus_proto_teardown_response.dart';
-import 'enterprise_crm_frontends_eventbus_proto_task_config_response.dart';
-import 'enterprise_crm_frontends_eventbus_proto_trigger_config_response.dart';
 import 'enterprise_crm_frontends_eventbus_proto_workflow_parameters_response.dart';
 import 'google_cloud_integrations_v1alpha_cloud_logging_details_response.dart';
-import 'google_cloud_integrations_v1alpha_error_catcher_config_response.dart';
-import 'google_cloud_integrations_v1alpha_integration_parameter_response.dart';
-import 'google_cloud_integrations_v1alpha_task_config_response.dart';
-import 'google_cloud_integrations_v1alpha_trigger_config_response.dart';
 import 'version_args.dart';
 
 /// Create a integration with a draft version in the specified project.
 /// Auto-naming is currently not supported for this resource.
 class Version extends pulumi.CustomResource {
   /// Optional. Cloud Logging details for the integration version
-  late final pulumi.Output<GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse> cloudLoggingDetails;
+  late final pulumi.Output<
+    GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse
+  >
+  cloudLoggingDetails;
+
   /// Optional. Optional. Indicates if sample workflow should be created.
   late final pulumi.Output<bool?> createSampleIntegrations;
+
   /// Auto-generated.
   late final pulumi.Output<String> createTime;
+
   /// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
   late final pulumi.Output<String> databasePersistencePolicy;
+
   /// Optional. The integration description.
   late final pulumi.Output<String> description;
+
   /// Optional. Error Catch Task configuration for the integration. It's optional.
-  late final pulumi.Output<List<GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse>> errorCatcherConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> errorCatcherConfigs;
   late final pulumi.Output<String> integrationId;
+
   /// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-  late final pulumi.Output<List<GoogleCloudIntegrationsV1alphaIntegrationParameterResponse>> integrationParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>> integrationParameters;
+
   /// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-  late final pulumi.Output<EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse> integrationParametersInternal;
+  late final pulumi.Output<
+    EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse
+  >
+  integrationParametersInternal;
+
   /// Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
   late final pulumi.Output<String> lastModifierEmail;
   late final pulumi.Output<String> location;
+
   /// Optional. The edit lock holder's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
   late final pulumi.Output<String> lockHolder;
+
   /// Auto-generated primary key.
   late final pulumi.Output<String> name;
+
   /// Set this flag to true, if draft version is to be created for a brand new integration. False, if the request is for an existing integration. For backward compatibility reasons, even if this flag is set to `false` and no existing integration is found, a new draft integration will still be created.
   late final pulumi.Output<bool?> newIntegration;
+
   /// Optional. The origin that indicates where this integration is coming from.
   late final pulumi.Output<String> origin;
+
   /// Optional. The id of the template which was used to create this integration_version.
   late final pulumi.Output<String> parentTemplateId;
   late final pulumi.Output<String> productId;
   late final pulumi.Output<String> project;
+
   /// Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
   late final pulumi.Output<String> runAsServiceAccount;
+
   /// Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
   late final pulumi.Output<String> snapshotNumber;
+
   /// User should not set it as an input.
   late final pulumi.Output<String> state;
+
   /// Generated by eventbus. User should not set it as an input.
   late final pulumi.Output<String> status;
+
   /// Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-  late final pulumi.Output<List<GoogleCloudIntegrationsV1alphaTaskConfigResponse>> taskConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> taskConfigs;
+
   /// Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-  late final pulumi.Output<List<EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse>> taskConfigsInternal;
+  late final pulumi.Output<List<Map<String, dynamic>>> taskConfigsInternal;
+
   /// Optional. Contains a graph of tasks that will be executed before putting the event in a terminal state (SUCCEEDED/FAILED/FATAL), regardless of success or failure, similar to "finally" in code.
   late final pulumi.Output<EnterpriseCrmEventbusProtoTeardownResponse> teardown;
+
   /// Optional. Trigger configurations.
-  late final pulumi.Output<List<GoogleCloudIntegrationsV1alphaTriggerConfigResponse>> triggerConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> triggerConfigs;
+
   /// Optional. Trigger configurations.
-  late final pulumi.Output<List<EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse>> triggerConfigsInternal;
+  late final pulumi.Output<List<Map<String, dynamic>>> triggerConfigsInternal;
+
   /// Auto-generated.
   late final pulumi.Output<String> updateTime;
+
   /// Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
   late final pulumi.Output<String> userLabel;
 
@@ -77,39 +101,61 @@ class Version extends pulumi.CustomResource {
     VersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:integrations/v1alpha:Version',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cloudLoggingDetails = registerOutput<GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse>('cloudLoggingDetails');
-    this.createSampleIntegrations = registerOutput<bool?>('createSampleIntegrations');
-    this.createTime = registerOutput<String>('createTime');
-    this.databasePersistencePolicy = registerOutput<String>('databasePersistencePolicy');
-    this.description = registerOutput<String>('description');
-    this.errorCatcherConfigs = registerOutput<List<GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse>>('errorCatcherConfigs');
-    this.integrationId = registerOutput<String>('integrationId');
-    this.integrationParameters = registerOutput<List<GoogleCloudIntegrationsV1alphaIntegrationParameterResponse>>('integrationParameters');
-    this.integrationParametersInternal = registerOutput<EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse>('integrationParametersInternal');
-    this.lastModifierEmail = registerOutput<String>('lastModifierEmail');
-    this.location = registerOutput<String>('location');
-    this.lockHolder = registerOutput<String>('lockHolder');
+         'google-native:integrations/v1alpha:Version',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cloudLoggingDetails =
+        registerOutput<
+          GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse
+        >('cloudLoggingDetails');
+    createSampleIntegrations = registerOutput<bool?>(
+      'createSampleIntegrations',
+    );
+    createTime = registerOutput<String>('createTime');
+    databasePersistencePolicy = registerOutput<String>(
+      'databasePersistencePolicy',
+    );
+    description = registerOutput<String>('description');
+    errorCatcherConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'errorCatcherConfigs',
+    );
+    integrationId = registerOutput<String>('integrationId');
+    integrationParameters = registerOutput<List<Map<String, dynamic>>>(
+      'integrationParameters',
+    );
+    integrationParametersInternal =
+        registerOutput<
+          EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse
+        >('integrationParametersInternal');
+    lastModifierEmail = registerOutput<String>('lastModifierEmail');
+    location = registerOutput<String>('location');
+    lockHolder = registerOutput<String>('lockHolder');
     this.name = registerOutput<String>('name');
-    this.newIntegration = registerOutput<bool?>('newIntegration');
-    this.origin = registerOutput<String>('origin');
-    this.parentTemplateId = registerOutput<String>('parentTemplateId');
-    this.productId = registerOutput<String>('productId');
-    this.project = registerOutput<String>('project');
-    this.runAsServiceAccount = registerOutput<String>('runAsServiceAccount');
-    this.snapshotNumber = registerOutput<String>('snapshotNumber');
-    this.state = registerOutput<String>('state');
-    this.status = registerOutput<String>('status');
-    this.taskConfigs = registerOutput<List<GoogleCloudIntegrationsV1alphaTaskConfigResponse>>('taskConfigs');
-    this.taskConfigsInternal = registerOutput<List<EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse>>('taskConfigsInternal');
-    this.teardown = registerOutput<EnterpriseCrmEventbusProtoTeardownResponse>('teardown');
-    this.triggerConfigs = registerOutput<List<GoogleCloudIntegrationsV1alphaTriggerConfigResponse>>('triggerConfigs');
-    this.triggerConfigsInternal = registerOutput<List<EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse>>('triggerConfigsInternal');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.userLabel = registerOutput<String>('userLabel');
+    newIntegration = registerOutput<bool?>('newIntegration');
+    origin = registerOutput<String>('origin');
+    parentTemplateId = registerOutput<String>('parentTemplateId');
+    productId = registerOutput<String>('productId');
+    project = registerOutput<String>('project');
+    runAsServiceAccount = registerOutput<String>('runAsServiceAccount');
+    snapshotNumber = registerOutput<String>('snapshotNumber');
+    state = registerOutput<String>('state');
+    status = registerOutput<String>('status');
+    taskConfigs = registerOutput<List<Map<String, dynamic>>>('taskConfigs');
+    taskConfigsInternal = registerOutput<List<Map<String, dynamic>>>(
+      'taskConfigsInternal',
+    );
+    teardown = registerOutput<EnterpriseCrmEventbusProtoTeardownResponse>(
+      'teardown',
+    );
+    triggerConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'triggerConfigs',
+    );
+    triggerConfigsInternal = registerOutput<List<Map<String, dynamic>>>(
+      'triggerConfigsInternal',
+    );
+    updateTime = registerOutput<String>('updateTime');
+    userLabel = registerOutput<String>('userLabel');
   }
 }

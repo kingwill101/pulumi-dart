@@ -1,5 +1,3 @@
-library module_quotas;
-
 export 'quotas/application_info.dart';
 export 'quotas/application_info_args.dart';
 export 'quotas/application_info_dimension.dart';

@@ -593,8 +593,10 @@ class EncryptionSpec extends pulumi.CustomResource {
   /// A nested object resource.
   /// Structure is documented below.
   late final pulumi.Output<EncryptionSpecEncryptionSpec> encryptionSpec;
+
   /// The location in which the encryptionSpec is to be initialized.
   late final pulumi.Output<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -608,14 +610,16 @@ class EncryptionSpec extends pulumi.CustomResource {
     EncryptionSpecArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/encryptionSpec:EncryptionSpec',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.encryptionSpec = registerOutput<EncryptionSpecEncryptionSpec>('encryptionSpec');
-    this.location = registerOutput<String>('location');
-    this.project = registerOutput<String>('project');
+         'gcp:diagflow/encryptionSpec:EncryptionSpec',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    encryptionSpec = registerOutput<EncryptionSpecEncryptionSpec>(
+      'encryptionSpec',
+    );
+    location = registerOutput<String>('location');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [EncryptionSpec] resource's state with the given [name] and [id].
@@ -636,13 +640,15 @@ class EncryptionSpec extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/encryptionSpec:EncryptionSpec',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.encryptionSpec = registerOutput<EncryptionSpecEncryptionSpec>('encryptionSpec');
-    this.location = registerOutput<String>('location');
-    this.project = registerOutput<String>('project');
+         'gcp:diagflow/encryptionSpec:EncryptionSpec',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    encryptionSpec = registerOutput<EncryptionSpecEncryptionSpec>(
+      'encryptionSpec',
+    );
+    location = registerOutput<String>('location');
+    project = registerOutput<String>('project');
   }
 }

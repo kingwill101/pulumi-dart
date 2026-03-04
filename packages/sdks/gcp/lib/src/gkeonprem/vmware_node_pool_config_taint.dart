@@ -6,8 +6,10 @@ class VMwareNodePoolConfigTaint {
   /// Available taint effects.
   /// Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
   final pulumi.Input<String>? effect;
+
   /// Key associated with the effect.
   final pulumi.Input<String> key;
+
   /// Value associated with the effect.
   final pulumi.Input<String> value;
 
@@ -22,19 +24,18 @@ class VMwareNodePoolConfigTaint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'effect': ?effect,
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'effect': ?effect, 'key': key, 'value': value};
   }
 
   factory VMwareNodePoolConfigTaint.fromMap(Map<String, dynamic> map) {
     return VMwareNodePoolConfigTaint(
-      effect: map['effect'] == null ? null : (map['effect']! as String).input(),
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      effect: (() {
+        final guardedValue = map['effect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

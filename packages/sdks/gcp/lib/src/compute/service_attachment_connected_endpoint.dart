@@ -6,18 +6,23 @@ class ServiceAttachmentConnectedEndpoint {
   /// (Output)
   /// The url of the consumer network.
   final pulumi.Input<String>? consumerNetwork;
+
   /// (Output)
   /// The URL of the consumer forwarding rule.
   final pulumi.Input<String>? endpoint;
+
   /// (Output)
   /// The nat IPs of the connected endpoint.
   final pulumi.Input<List<String>>? natIps;
+
   /// (Output)
   /// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
   final pulumi.Input<int>? propagatedConnectionCount;
+
   /// (Output)
   /// The PSC connection id of the connected endpoint.
   final pulumi.Input<String>? pscConnectionId;
+
   /// (Output)
   /// The status of the connection from the consumer forwarding rule to
   /// this service attachment.
@@ -52,13 +57,36 @@ class ServiceAttachmentConnectedEndpoint {
 
   factory ServiceAttachmentConnectedEndpoint.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentConnectedEndpoint(
-      consumerNetwork: map['consumerNetwork'] == null ? null : (map['consumerNetwork']! as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
-      natIps: map['natIps'] == null ? null : ((map['natIps']! as List).cast<String>()).input(),
-      propagatedConnectionCount: map['propagatedConnectionCount'] == null ? null : (map['propagatedConnectionCount']! as int).input(),
-      pscConnectionId: map['pscConnectionId'] == null ? null : (map['pscConnectionId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      consumerNetwork: (() {
+        final guardedValue = map['consumerNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      natIps: (() {
+        final guardedValue = map['natIps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      propagatedConnectionCount: (() {
+        final guardedValue = map['propagatedConnectionCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pscConnectionId: (() {
+        final guardedValue = map['pscConnectionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,10 +7,13 @@ import 'cassandra_schema.dart';
 class CassandraTableResource {
   /// Analytical TTL.
   final pulumi.Input<int>? analyticalStorageTtl;
+
   /// Time to live of the Cosmos DB Cassandra table
   final pulumi.Input<int>? defaultTtl;
+
   /// Name of the Cosmos DB Cassandra table
   final pulumi.Input<String> id;
+
   /// Schema of the Cosmos DB Cassandra table
   final pulumi.Input<CassandraSchema>? schema;
 
@@ -31,17 +34,36 @@ class CassandraTableResource {
       'analyticalStorageTtl': ?analyticalStorageTtl,
       'defaultTtl': ?defaultTtl,
       'id': id,
-      'schema': ?pulumi.Input.mapOptionalInputValue<CassandraSchema, Map<String, dynamic>>(schema, (value) => value.toMap()),
+      'schema':
+          ?pulumi.Input.mapOptionalInputValue<
+            CassandraSchema,
+            Map<String, dynamic>
+          >(schema, (value) => value.toMap()),
     };
   }
 
   factory CassandraTableResource.fromMap(Map<String, dynamic> map) {
     return CassandraTableResource(
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl']! as int).input(),
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl']! as int).input(),
-      id: (map['id'] as String).input(),
-      schema: map['schema'] == null ? null : (CassandraSchema.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
+      analyticalStorageTtl: (() {
+        final guardedValue = map['analyticalStorageTtl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      defaultTtl: (() {
+        final guardedValue = map['defaultTtl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      schema: (() {
+        final guardedValue = map['schema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CassandraSchema.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

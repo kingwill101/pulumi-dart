@@ -8,6 +8,7 @@ class DeliveryRuleCacheKeyQueryStringActionResponse {
   /// The name of the action for the delivery rule.
   /// Expected value is 'CacheKeyQueryString'.
   final pulumi.Input<String> name;
+
   /// Defines the parameters for the action.
   final pulumi.Input<CacheKeyQueryStringActionParametersResponse> parameters;
 
@@ -22,15 +23,24 @@ class DeliveryRuleCacheKeyQueryStringActionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameters': pulumi.Input.mapInputValue<CacheKeyQueryStringActionParametersResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            CacheKeyQueryStringActionParametersResponse,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
     };
   }
 
-  factory DeliveryRuleCacheKeyQueryStringActionResponse.fromMap(Map<String, dynamic> map) {
+  factory DeliveryRuleCacheKeyQueryStringActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeliveryRuleCacheKeyQueryStringActionResponse(
-      name: (map['name'] as String).input(),
-      parameters: (CacheKeyQueryStringActionParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameters: pulumi.Input.fromValue(
+        CacheKeyQueryStringActionParametersResponse.fromMap(
+          (map['parameters']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

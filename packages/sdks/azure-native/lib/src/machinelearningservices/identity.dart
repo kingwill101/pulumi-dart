@@ -7,29 +7,39 @@ import 'resource_identity_type.dart';
 class Identity {
   /// The identity type.
   final pulumi.Input<ResourceIdentityType>? type;
+
   /// The user assigned identities associated with the resource.
   final pulumi.Input<List<String>>? userAssignedIdentities;
 
   /// Creates a new [Identity].
   /// [type] The identity type.
   /// [userAssignedIdentities] The user assigned identities associated with the resource.
-  Identity({
-    this.type,
-    this.userAssignedIdentities,
-  });
+  Identity({this.type, this.userAssignedIdentities});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': ?pulumi.Input.mapOptionalInputValue<ResourceIdentityType, String>(type, (value) => value.value),
+      'type': ?pulumi.Input.mapOptionalInputValue<ResourceIdentityType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
       'userAssignedIdentities': ?userAssignedIdentities,
     };
   }
 
   factory Identity.fromMap(Map<String, dynamic> map) {
     return Identity(
-      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type']! as String)).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as List).cast<String>()).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceIdentityType.fromValue(guardedValue as String),
+        );
+      })(),
+      userAssignedIdentities: (() {
+        final guardedValue = map['userAssignedIdentities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

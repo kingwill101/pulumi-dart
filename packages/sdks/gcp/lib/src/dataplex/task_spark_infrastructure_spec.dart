@@ -9,9 +9,11 @@ class TaskSparkInfrastructureSpec {
   /// Compute resources needed for a Task when using Dataproc Serverless.
   /// Structure is documented below.
   final pulumi.Input<TaskSparkInfrastructureSpecBatch>? batch;
+
   /// Container Image Runtime Configuration.
   /// Structure is documented below.
   final pulumi.Input<TaskSparkInfrastructureSpecContainerImage>? containerImage;
+
   /// Vpc network.
   /// Structure is documented below.
   final pulumi.Input<TaskSparkInfrastructureSpecVpcNetwork>? vpcNetwork;
@@ -28,18 +30,53 @@ class TaskSparkInfrastructureSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'batch': ?pulumi.Input.mapOptionalInputValue<TaskSparkInfrastructureSpecBatch, Map<String, dynamic>>(batch, (value) => value.toMap()),
-      'containerImage': ?pulumi.Input.mapOptionalInputValue<TaskSparkInfrastructureSpecContainerImage, Map<String, dynamic>>(containerImage, (value) => value.toMap()),
-      'vpcNetwork': ?pulumi.Input.mapOptionalInputValue<TaskSparkInfrastructureSpecVpcNetwork, Map<String, dynamic>>(vpcNetwork, (value) => value.toMap()),
+      'batch':
+          ?pulumi.Input.mapOptionalInputValue<
+            TaskSparkInfrastructureSpecBatch,
+            Map<String, dynamic>
+          >(batch, (value) => value.toMap()),
+      'containerImage':
+          ?pulumi.Input.mapOptionalInputValue<
+            TaskSparkInfrastructureSpecContainerImage,
+            Map<String, dynamic>
+          >(containerImage, (value) => value.toMap()),
+      'vpcNetwork':
+          ?pulumi.Input.mapOptionalInputValue<
+            TaskSparkInfrastructureSpecVpcNetwork,
+            Map<String, dynamic>
+          >(vpcNetwork, (value) => value.toMap()),
     };
   }
 
   factory TaskSparkInfrastructureSpec.fromMap(Map<String, dynamic> map) {
     return TaskSparkInfrastructureSpec(
-      batch: map['batch'] == null ? null : (TaskSparkInfrastructureSpecBatch.fromMap((map['batch']! as Map).cast<String, dynamic>())).input(),
-      containerImage: map['containerImage'] == null ? null : (TaskSparkInfrastructureSpecContainerImage.fromMap((map['containerImage']! as Map).cast<String, dynamic>())).input(),
-      vpcNetwork: map['vpcNetwork'] == null ? null : (TaskSparkInfrastructureSpecVpcNetwork.fromMap((map['vpcNetwork']! as Map).cast<String, dynamic>())).input(),
+      batch: (() {
+        final guardedValue = map['batch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TaskSparkInfrastructureSpecBatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      containerImage: (() {
+        final guardedValue = map['containerImage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TaskSparkInfrastructureSpecContainerImage.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vpcNetwork: (() {
+        final guardedValue = map['vpcNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TaskSparkInfrastructureSpecVpcNetwork.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

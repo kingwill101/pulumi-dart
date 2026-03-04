@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvCustomJobArgs {
   /// The locale. The default is Chinese zh | en.
   final pulumi.Input<String>? aliyunLang;
+
   /// Yaml configuration string.
   final pulumi.Input<String> configYaml;
+
   /// Custom job name.
   final pulumi.Input<String> envCustomJobName;
+
   /// Environment id.
   final pulumi.Input<String> environmentId;
+
   /// Status: run, stop.
   final pulumi.Input<String>? status;
 
@@ -44,12 +48,21 @@ class EnvCustomJobArgs {
 
   factory EnvCustomJobArgs.fromMap(Map<String, dynamic> map) {
     return EnvCustomJobArgs(
-      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang']! as String).input(),
-      configYaml: (map['configYaml'] as String).input(),
-      envCustomJobName: (map['envCustomJobName'] as String).input(),
-      environmentId: (map['environmentId'] as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      aliyunLang: (() {
+        final guardedValue = map['aliyunLang'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configYaml: pulumi.Input.fromValue(map['configYaml'] as String),
+      envCustomJobName: pulumi.Input.fromValue(
+        map['envCustomJobName'] as String,
+      ),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

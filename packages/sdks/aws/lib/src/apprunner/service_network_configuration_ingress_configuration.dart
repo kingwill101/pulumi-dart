@@ -8,20 +8,21 @@ class ServiceNetworkConfigurationIngressConfiguration {
 
   /// Creates a new [ServiceNetworkConfigurationIngressConfiguration].
   /// [isPubliclyAccessible] Specifies whether your App Runner service is publicly accessible. To make the service publicly accessible set it to True. To make the service privately accessible, from only within an Amazon VPC set it to False.
-  ServiceNetworkConfigurationIngressConfiguration({
-    this.isPubliclyAccessible,
-  });
+  ServiceNetworkConfigurationIngressConfiguration({this.isPubliclyAccessible});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'isPubliclyAccessible': ?isPubliclyAccessible,
-    };
+    return <String, dynamic>{'isPubliclyAccessible': ?isPubliclyAccessible};
   }
 
-  factory ServiceNetworkConfigurationIngressConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ServiceNetworkConfigurationIngressConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceNetworkConfigurationIngressConfiguration(
-      isPubliclyAccessible: map['isPubliclyAccessible'] == null ? null : ((map['isPubliclyAccessible'] as bool).input()).input(),
+      isPubliclyAccessible: (() {
+        final guardedValue = map['isPubliclyAccessible'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

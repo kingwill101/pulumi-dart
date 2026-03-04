@@ -1,5 +1,3 @@
-library module_macie;
-
 export 'macie/custom_data_identifier.dart';
 export 'macie/custom_data_identifier_args.dart';
 export 'macie/custom_data_identifier_state.dart';

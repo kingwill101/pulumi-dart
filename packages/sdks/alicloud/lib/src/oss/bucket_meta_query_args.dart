@@ -12,20 +12,15 @@ class BucketMetaQueryArgs {
 
   /// Creates a new [BucketMetaQueryArgs].
   /// [bucket] The name of the bucket.
-  BucketMetaQueryArgs({
-    required this.bucket,
-  });
+  BucketMetaQueryArgs({required this.bucket});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': bucket,
-    };
+    return <String, dynamic>{'bucket': bucket};
   }
 
   factory BucketMetaQueryArgs.fromMap(Map<String, dynamic> map) {
     return BucketMetaQueryArgs(
-      bucket: (map['bucket'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
     );
   }
 }
-

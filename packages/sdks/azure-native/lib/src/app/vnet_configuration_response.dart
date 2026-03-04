@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VnetConfigurationResponse {
   /// CIDR notation IP range assigned to the Docker bridge, network. Must not overlap with any other provided IP ranges.
   final pulumi.Input<String>? dockerBridgeCidr;
+
   /// Resource ID of a subnet for infrastructure components. Must not overlap with any other provided IP ranges.
   final pulumi.Input<String>? infrastructureSubnetId;
+
   /// Boolean indicating the environment only has an internal load balancer. These environments do not have a public static IP resource. They must provide infrastructureSubnetId if enabling this property
   final pulumi.Input<bool>? internal;
+
   /// IP range in CIDR notation that can be reserved for environment infrastructure IP addresses. Must not overlap with any other provided IP ranges.
   final pulumi.Input<String>? platformReservedCidr;
+
   /// An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server.
   final pulumi.Input<String>? platformReservedDnsIP;
 
@@ -41,12 +45,31 @@ class VnetConfigurationResponse {
 
   factory VnetConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VnetConfigurationResponse(
-      dockerBridgeCidr: map['dockerBridgeCidr'] == null ? null : (map['dockerBridgeCidr']! as String).input(),
-      infrastructureSubnetId: map['infrastructureSubnetId'] == null ? null : (map['infrastructureSubnetId']! as String).input(),
-      internal: map['internal'] == null ? null : (map['internal']! as bool).input(),
-      platformReservedCidr: map['platformReservedCidr'] == null ? null : (map['platformReservedCidr']! as String).input(),
-      platformReservedDnsIP: map['platformReservedDnsIP'] == null ? null : (map['platformReservedDnsIP']! as String).input(),
+      dockerBridgeCidr: (() {
+        final guardedValue = map['dockerBridgeCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      infrastructureSubnetId: (() {
+        final guardedValue = map['infrastructureSubnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      internal: (() {
+        final guardedValue = map['internal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      platformReservedCidr: (() {
+        final guardedValue = map['platformReservedCidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      platformReservedDnsIP: (() {
+        final guardedValue = map['platformReservedDnsIP'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

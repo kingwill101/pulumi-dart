@@ -3,16 +3,15 @@ enum FirewallAllowAzureIpsState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const FirewallAllowAzureIpsState(this.value);
-  final String value;
+  const FirewallAllowAzureIpsState(this.wireValue);
+  final String wireValue;
 
   static FirewallAllowAzureIpsState fromValue(String value) {
     for (final item in FirewallAllowAzureIpsState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FirewallAllowAzureIpsState value: $value');
   }
 }
-

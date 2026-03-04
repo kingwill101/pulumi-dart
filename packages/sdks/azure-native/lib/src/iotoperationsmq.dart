@@ -1,5 +1,3 @@
-library module_iotoperationsmq;
-
 export 'iotoperationsmq/authorization_basic_rule.dart';
 export 'iotoperationsmq/authorization_basic_rule_response.dart';
 export 'iotoperationsmq/authorization_config.dart';

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImportErrorResponse {
   /// The error information.
   final pulumi.Input<String> errorDetails;
+
   /// The severity of the error.
   final pulumi.Input<String> severity;
 
   /// Creates a new [ImportErrorResponse].
   /// [errorDetails] The error information.
   /// [severity] The severity of the error.
-  ImportErrorResponse({
-    required this.errorDetails,
-    required this.severity,
-  });
+  ImportErrorResponse({required this.errorDetails, required this.severity});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,8 @@ class ImportErrorResponse {
 
   factory ImportErrorResponse.fromMap(Map<String, dynamic> map) {
     return ImportErrorResponse(
-      errorDetails: (map['errorDetails'] as String).input(),
-      severity: (map['severity'] as String).input(),
+      errorDetails: pulumi.Input.fromValue(map['errorDetails'] as String),
+      severity: pulumi.Input.fromValue(map['severity'] as String),
     );
   }
 }
-

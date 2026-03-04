@@ -4,16 +4,15 @@ enum ClusterUpdateDesiredStackType {
   ipv4("IPV4"),
   ipv4Ipv6("IPV4_IPV6");
 
-  const ClusterUpdateDesiredStackType(this.value);
-  final String value;
+  const ClusterUpdateDesiredStackType(this.wireValue);
+  final String wireValue;
 
   static ClusterUpdateDesiredStackType fromValue(String value) {
     for (final item in ClusterUpdateDesiredStackType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClusterUpdateDesiredStackType value: $value');
   }
 }
-

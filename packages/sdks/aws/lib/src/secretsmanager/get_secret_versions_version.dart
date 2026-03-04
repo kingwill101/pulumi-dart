@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretVersionsVersion {
   /// Date and time this version of the secret was created.
   final pulumi.Input<String> createdTime;
+
   /// Date that this version of the secret was last accessed.
   final pulumi.Input<String> lastAccessedDate;
+
   /// Unique version identifier of this version of the secret.
   final pulumi.Input<String> versionId;
+
   /// List of staging labels attached to the version.
   final pulumi.Input<List<String>> versionStages;
 
@@ -35,11 +38,14 @@ class GetSecretVersionsVersion {
 
   factory GetSecretVersionsVersion.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionsVersion(
-      createdTime: (map['createdTime'] as String).input(),
-      lastAccessedDate: (map['lastAccessedDate'] as String).input(),
-      versionId: (map['versionId'] as String).input(),
-      versionStages: ((map['versionStages'] as List).cast<String>()).input(),
+      createdTime: pulumi.Input.fromValue(map['createdTime'] as String),
+      lastAccessedDate: pulumi.Input.fromValue(
+        map['lastAccessedDate'] as String,
+      ),
+      versionId: pulumi.Input.fromValue(map['versionId'] as String),
+      versionStages: pulumi.Input.fromValue(
+        (map['versionStages'] as List).cast<String>(),
+      ),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImageOutputResourceContainer {
   /// Set of URIs for created containers.
   final pulumi.Input<List<String>> imageUris;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String> region;
 
@@ -17,17 +18,15 @@ class GetImageOutputResourceContainer {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'imageUris': imageUris,
-      'region': region,
-    };
+    return <String, dynamic>{'imageUris': imageUris, 'region': region};
   }
 
   factory GetImageOutputResourceContainer.fromMap(Map<String, dynamic> map) {
     return GetImageOutputResourceContainer(
-      imageUris: ((map['imageUris'] as List).cast<String>()).input(),
-      region: (map['region'] as String).input(),
+      imageUris: pulumi.Input.fromValue(
+        (map['imageUris'] as List).cast<String>(),
+      ),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

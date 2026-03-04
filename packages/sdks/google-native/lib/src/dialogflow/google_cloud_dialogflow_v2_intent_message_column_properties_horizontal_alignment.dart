@@ -5,16 +5,22 @@ enum GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment {
   center("CENTER"),
   trailing("TRAILING");
 
-  const GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment(this.value);
-  final String value;
+  const GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment fromValue(String value) {
-    for (final item in GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment.values) {
-      if (item.value == value) {
+  static GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment value: $value',
+    );
   }
 }
-

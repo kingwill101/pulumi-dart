@@ -3,16 +3,15 @@ enum PreferredIPVersion {
   valueIPv4("IPv4"),
   valueIPv6("IPv6");
 
-  const PreferredIPVersion(this.value);
-  final String value;
+  const PreferredIPVersion(this.wireValue);
+  final String wireValue;
 
   static PreferredIPVersion fromValue(String value) {
     for (final item in PreferredIPVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PreferredIPVersion value: $value');
   }
 }
-

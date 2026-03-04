@@ -9,20 +9,19 @@ class OrganizationsFeaturesState {
 
   /// Creates a new [OrganizationsFeaturesState].
   /// [enabledFeatures] List of IAM features to enable. Valid values are `RootCredentialsManagement` and `RootSessions`.
-  OrganizationsFeaturesState({
-    this.enabledFeatures,
-  });
+  OrganizationsFeaturesState({this.enabledFeatures});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabledFeatures': ?enabledFeatures,
-    };
+    return <String, dynamic>{'enabledFeatures': ?enabledFeatures};
   }
 
   factory OrganizationsFeaturesState.fromMap(Map<String, dynamic> map) {
     return OrganizationsFeaturesState(
-      enabledFeatures: map['enabledFeatures'] == null ? null : (((map['enabledFeatures'] as List).cast<String>()).input()).input(),
+      enabledFeatures: (() {
+        final guardedValue = map['enabledFeatures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

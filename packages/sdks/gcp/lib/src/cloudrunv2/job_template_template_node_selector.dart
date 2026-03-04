@@ -8,20 +8,15 @@ class JobTemplateTemplateNodeSelector {
 
   /// Creates a new [JobTemplateTemplateNodeSelector].
   /// [accelerator] The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
-  JobTemplateTemplateNodeSelector({
-    required this.accelerator,
-  });
+  JobTemplateTemplateNodeSelector({required this.accelerator});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accelerator': accelerator,
-    };
+    return <String, dynamic>{'accelerator': accelerator};
   }
 
   factory JobTemplateTemplateNodeSelector.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateNodeSelector(
-      accelerator: (map['accelerator'] as String).input(),
+      accelerator: pulumi.Input.fromValue(map['accelerator'] as String),
     );
   }
 }
-

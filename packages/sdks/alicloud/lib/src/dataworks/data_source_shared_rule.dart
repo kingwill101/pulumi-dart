@@ -8,7 +8,7 @@ import 'data_source_shared_rule_state.dart';
 ///
 /// For information about Data Works Data Source Shared Rule and how to use it, see [What is Data Source Shared Rule](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-createdatasourcesharedrule).
 ///
-/// > **NOTE:** Available since v1.237.0.
+/// &gt; **NOTE:** Available since v1.237.0.
 ///
 /// ## Example Usage
 ///
@@ -512,14 +512,19 @@ import 'data_source_shared_rule_state.dart';
 class DataSourceSharedRule extends pulumi.CustomResource {
   /// The creation time of the data source sharing rule.
   late final pulumi.Output<int> createTime;
+
   /// The ID of the data source, that is, the unique identifier of the data source.
   late final pulumi.Output<int> dataSourceId;
+
   /// The data source sharing rule ID, that is, the unique identifier of the data source sharing rule.
   late final pulumi.Output<String> dataSourceSharedRuleId;
+
   /// The environment type of the data source shared to the target project, such as Dev (Development Environment) and Prod (production environment).
   late final pulumi.Output<String> envType;
+
   /// The target user of the data source permission policy, which is null to share to the project.
   late final pulumi.Output<String?> sharedUser;
+
   /// The ID of the project to which the data source is shared.
   late final pulumi.Output<int> targetProjectId;
 
@@ -532,17 +537,17 @@ class DataSourceSharedRule extends pulumi.CustomResource {
     DataSourceSharedRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<int>('createTime');
-    this.dataSourceId = registerOutput<int>('dataSourceId');
-    this.dataSourceSharedRuleId = registerOutput<String>('dataSourceSharedRuleId');
-    this.envType = registerOutput<String>('envType');
-    this.sharedUser = registerOutput<String?>('sharedUser');
-    this.targetProjectId = registerOutput<int>('targetProjectId');
+         'alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<int>('createTime');
+    dataSourceId = registerOutput<int>('dataSourceId');
+    dataSourceSharedRuleId = registerOutput<String>('dataSourceSharedRuleId');
+    envType = registerOutput<String>('envType');
+    sharedUser = registerOutput<String?>('sharedUser');
+    targetProjectId = registerOutput<int>('targetProjectId');
   }
 
   /// Gets an existing [DataSourceSharedRule] resource's state with the given [name] and [id].
@@ -563,16 +568,16 @@ class DataSourceSharedRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<int>('createTime');
-    this.dataSourceId = registerOutput<int>('dataSourceId');
-    this.dataSourceSharedRuleId = registerOutput<String>('dataSourceSharedRuleId');
-    this.envType = registerOutput<String>('envType');
-    this.sharedUser = registerOutput<String?>('sharedUser');
-    this.targetProjectId = registerOutput<int>('targetProjectId');
+         'alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<int>('createTime');
+    dataSourceId = registerOutput<int>('dataSourceId');
+    dataSourceSharedRuleId = registerOutput<String>('dataSourceSharedRuleId');
+    envType = registerOutput<String>('envType');
+    sharedUser = registerOutput<String?>('sharedUser');
+    targetProjectId = registerOutput<int>('targetProjectId');
   }
 }

@@ -10,23 +10,32 @@ import 'parameter_value.dart';
 class TemplateArtifactArgs {
   /// Name of the blueprint artifact.
   final pulumi.Input<String>? artifactName;
+
   /// Name of the blueprint definition.
   final pulumi.Input<String> blueprintName;
+
   /// Artifacts which need to be deployed before the specified artifact.
   final pulumi.Input<List<String>>? dependsOn;
+
   /// Multi-line explain this resource.
   final pulumi.Input<String>? description;
+
   /// One-liner string explain this resource.
   final pulumi.Input<String>? displayName;
+
   /// Specifies the kind of blueprint artifact.
   /// Expected value is 'template'.
   final pulumi.Input<String> kind;
+
   /// Resource Manager template blueprint artifact parameter values.
   final pulumi.Input<Map<String, ParameterValue>> parameters;
+
   /// If applicable, the name of the resource group placeholder to which the Resource Manager template blueprint artifact will be deployed.
   final pulumi.Input<String>? resourceGroup;
+
   /// The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   final pulumi.Input<String> resourceScope;
+
   /// The Resource Manager template blueprint artifact body.
   final pulumi.Input<dynamic> template;
 
@@ -62,7 +71,18 @@ class TemplateArtifactArgs {
       'description': ?description,
       'displayName': ?displayName,
       'kind': kind,
-      'parameters': pulumi.Input.mapInputValue<Map<String, ParameterValue>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterValue, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            Map<String, ParameterValue>,
+            Map<String, Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  ParameterValue,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'resourceGroup': ?resourceGroup,
       'resourceScope': resourceScope,
       'template': template,
@@ -71,17 +91,42 @@ class TemplateArtifactArgs {
 
   factory TemplateArtifactArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArtifactArgs(
-      artifactName: map['artifactName'] == null ? null : (map['artifactName']! as String).input(),
-      blueprintName: (map['blueprintName'] as String).input(),
-      dependsOn: map['dependsOn'] == null ? null : ((map['dependsOn']! as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      kind: (map['kind'] as String).input(),
-      parameters: (pulumi.Input.decodeMapValues<ParameterValue>(map['parameters'], (value) => ParameterValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
-      resourceScope: (map['resourceScope'] as String).input(),
-      template: (map['template']).input(),
+      artifactName: (() {
+        final guardedValue = map['artifactName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      blueprintName: pulumi.Input.fromValue(map['blueprintName'] as String),
+      dependsOn: (() {
+        final guardedValue = map['dependsOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      parameters: pulumi.Input.fromValue(
+        pulumi.Input.decodeMapValues<ParameterValue>(
+          map['parameters']!,
+          (value) =>
+              ParameterValue.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      resourceGroup: (() {
+        final guardedValue = map['resourceGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceScope: pulumi.Input.fromValue(map['resourceScope'] as String),
+      template: pulumi.Input.fromValue(map['template']),
     );
   }
 }
-

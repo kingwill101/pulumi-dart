@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigMapNodeConfigSourcePatch {
   /// KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases.
   final pulumi.Input<String>? kubeletConfigKey;
+
   /// Name is the metadata.name of the referenced ConfigMap. This field is required in all cases.
   final pulumi.Input<String>? name;
+
   /// Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases.
   final pulumi.Input<String>? namespace;
+
   /// ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.
   final pulumi.Input<String>? resourceVersion;
+
   /// UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.
   final pulumi.Input<String>? uid;
 
@@ -41,12 +45,31 @@ class ConfigMapNodeConfigSourcePatch {
 
   factory ConfigMapNodeConfigSourcePatch.fromMap(Map<String, dynamic> map) {
     return ConfigMapNodeConfigSourcePatch(
-      kubeletConfigKey: map['kubeletConfigKey'] == null ? null : (map['kubeletConfigKey']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
-      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion']! as String).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      kubeletConfigKey: (() {
+        final guardedValue = map['kubeletConfigKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceVersion: (() {
+        final guardedValue = map['resourceVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

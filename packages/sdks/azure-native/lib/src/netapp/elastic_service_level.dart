@@ -2,16 +2,15 @@
 enum ElasticServiceLevel {
   zoneRedundant("ZoneRedundant");
 
-  const ElasticServiceLevel(this.value);
-  final String value;
+  const ElasticServiceLevel(this.wireValue);
+  final String wireValue;
 
   static ElasticServiceLevel fromValue(String value) {
     for (final item in ElasticServiceLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ElasticServiceLevel value: $value');
   }
 }
-

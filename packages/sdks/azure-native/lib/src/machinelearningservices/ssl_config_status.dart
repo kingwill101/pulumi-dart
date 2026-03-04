@@ -4,16 +4,15 @@ enum SslConfigStatus {
   valueEnabled("Enabled"),
   valueAuto("Auto");
 
-  const SslConfigStatus(this.value);
-  final String value;
+  const SslConfigStatus(this.wireValue);
+  final String wireValue;
 
   static SslConfigStatus fromValue(String value) {
     for (final item in SslConfigStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SslConfigStatus value: $value');
   }
 }
-

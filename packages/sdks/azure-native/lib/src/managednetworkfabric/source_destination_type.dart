@@ -3,16 +3,15 @@ enum SourceDestinationType {
   valueSourceIP("SourceIP"),
   valueDestinationIP("DestinationIP");
 
-  const SourceDestinationType(this.value);
-  final String value;
+  const SourceDestinationType(this.wireValue);
+  final String wireValue;
 
   static SourceDestinationType fromValue(String value) {
     for (final item in SourceDestinationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SourceDestinationType value: $value');
   }
 }
-

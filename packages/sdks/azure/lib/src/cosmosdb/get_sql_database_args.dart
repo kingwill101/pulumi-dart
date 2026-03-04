@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSqlDatabaseArgs {
   /// The name of the Cosmos DB SQL Database to create the table within.
   final pulumi.Input<String> accountName;
+
   /// Specifies the name of the Cosmos DB SQL Database.
   final pulumi.Input<String> name;
+
   /// The name of the resource group in which the Cosmos DB SQL Database is created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetSqlDatabaseArgs {
 
   factory GetSqlDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlDatabaseArgs(
-      accountName: (map['accountName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

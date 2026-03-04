@@ -6,8 +6,10 @@ import 'cluster_networks_ip_allocation_policy_bond_policy_bond.dart';
 class ClusterNetworksIpAllocationPolicyBondPolicy {
   /// Default bond cluster subnet
   final pulumi.Input<String>? bondDefaultSubnet;
+
   /// Bond information See `bonds` below.
-  final pulumi.Input<List<ClusterNetworksIpAllocationPolicyBondPolicyBond>>? bonds;
+  final pulumi.Input<List<ClusterNetworksIpAllocationPolicyBondPolicyBond>>?
+  bonds;
 
   /// Creates a new [ClusterNetworksIpAllocationPolicyBondPolicy].
   /// [bondDefaultSubnet] Default bond cluster subnet
@@ -20,15 +22,44 @@ class ClusterNetworksIpAllocationPolicyBondPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bondDefaultSubnet': ?bondDefaultSubnet,
-      'bonds': ?pulumi.Input.mapOptionalInputValue<List<ClusterNetworksIpAllocationPolicyBondPolicyBond>, List<Map<String, dynamic>>>(bonds, (value) => pulumi.Input.encodeList<ClusterNetworksIpAllocationPolicyBondPolicyBond, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'bonds':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ClusterNetworksIpAllocationPolicyBondPolicyBond>,
+            List<Map<String, dynamic>>
+          >(
+            bonds,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ClusterNetworksIpAllocationPolicyBondPolicyBond,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory ClusterNetworksIpAllocationPolicyBondPolicy.fromMap(Map<String, dynamic> map) {
+  factory ClusterNetworksIpAllocationPolicyBondPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNetworksIpAllocationPolicyBondPolicy(
-      bondDefaultSubnet: map['bondDefaultSubnet'] == null ? null : (map['bondDefaultSubnet']! as String).input(),
-      bonds: map['bonds'] == null ? null : (pulumi.Input.decodeList<ClusterNetworksIpAllocationPolicyBondPolicyBond>(map['bonds']!, (value) => ClusterNetworksIpAllocationPolicyBondPolicyBond.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bondDefaultSubnet: (() {
+        final guardedValue = map['bondDefaultSubnet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bonds: (() {
+        final guardedValue = map['bonds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            ClusterNetworksIpAllocationPolicyBondPolicyBond
+          >(
+            guardedValue,
+            (value) => ClusterNetworksIpAllocationPolicyBondPolicyBond.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

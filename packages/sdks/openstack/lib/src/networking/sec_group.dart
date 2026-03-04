@@ -13,26 +13,33 @@ class SecGroup extends pulumi.CustomResource {
   /// The collection of tags assigned on the security group, which have
   /// been explicitly and implicitly added.
   late final pulumi.Output<List<String>> allTags;
+
   /// Whether or not to delete the default
   /// egress security rules. This is `false` by default. See the below note
   /// for more information.
   late final pulumi.Output<bool?> deleteDefaultRules;
+
   /// A unique name for the security group.
   late final pulumi.Output<String> description;
+
   /// A unique name for the security group.
   late final pulumi.Output<String> name;
+
   /// The region in which to obtain the V2 networking client.
   /// A networking client is needed to create a port. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// security group.
   late final pulumi.Output<String> region;
+
   /// Indicates if the security group is stateful or
   /// stateless. Update of the stateful argument is allowed when there is no port
   /// associated with the security group. Available only in OpenStack environments
   /// with the `stateful-security-group` extension. Defaults to true.
   late final pulumi.Output<bool> stateful;
+
   /// A set of string tags for the security group.
   late final pulumi.Output<List<String>?> tags;
+
   /// The owner of the security group. Required if admin
   /// wants to create a port for another tenant. Changing this creates a new
   /// security group.
@@ -47,19 +54,19 @@ class SecGroup extends pulumi.CustomResource {
     SecGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/secGroup:SecGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allTags = registerOutput<List<String>>('allTags');
-    this.deleteDefaultRules = registerOutput<bool?>('deleteDefaultRules');
-    this.description = registerOutput<String>('description');
+         'openstack:networking/secGroup:SecGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allTags = registerOutput<List<String>>('allTags');
+    deleteDefaultRules = registerOutput<bool?>('deleteDefaultRules');
+    description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.stateful = registerOutput<bool>('stateful');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.tenantId = registerOutput<String>('tenantId');
+    region = registerOutput<String>('region');
+    stateful = registerOutput<bool>('stateful');
+    tags = registerOutput<List<String>?>('tags');
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [SecGroup] resource's state with the given [name] and [id].
@@ -80,18 +87,18 @@ class SecGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/secGroup:SecGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allTags = registerOutput<List<String>>('allTags');
-    this.deleteDefaultRules = registerOutput<bool?>('deleteDefaultRules');
-    this.description = registerOutput<String>('description');
+         'openstack:networking/secGroup:SecGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allTags = registerOutput<List<String>>('allTags');
+    deleteDefaultRules = registerOutput<bool?>('deleteDefaultRules');
+    description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.stateful = registerOutput<bool>('stateful');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.tenantId = registerOutput<String>('tenantId');
+    region = registerOutput<String>('region');
+    stateful = registerOutput<bool>('stateful');
+    tags = registerOutput<List<String>?>('tags');
+    tenantId = registerOutput<String>('tenantId');
   }
 }

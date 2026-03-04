@@ -132,12 +132,16 @@ import 'association_args.dart';
 class Association extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The association name.
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the association.
   late final pulumi.Output<String> provisioningState;
+
   /// The REST resource instance of the target resource for this association.
   late final pulumi.Output<String?> targetResourceId;
+
   /// The association type.
   late final pulumi.Output<String> type;
 
@@ -150,15 +154,15 @@ class Association extends pulumi.CustomResource {
     AssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:customproviders:Association',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:customproviders:Association',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.targetResourceId = registerOutput<String?>('targetResourceId');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    targetResourceId = registerOutput<String?>('targetResourceId');
+    type = registerOutput<String>('type');
   }
 }

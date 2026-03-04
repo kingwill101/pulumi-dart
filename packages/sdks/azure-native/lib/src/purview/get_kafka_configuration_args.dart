@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKafkaConfigurationArgs {
   /// The name of the account.
   final pulumi.Input<String> accountName;
+
   /// Name of kafka configuration.
   final pulumi.Input<String> kafkaConfigurationName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetKafkaConfigurationArgs {
 
   factory GetKafkaConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetKafkaConfigurationArgs(
-      accountName: (map['accountName'] as String).input(),
-      kafkaConfigurationName: (map['kafkaConfigurationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      kafkaConfigurationName: pulumi.Input.fromValue(
+        map['kafkaConfigurationName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

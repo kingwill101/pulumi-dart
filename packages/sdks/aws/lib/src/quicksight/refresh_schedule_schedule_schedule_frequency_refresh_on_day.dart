@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RefreshScheduleScheduleScheduleFrequencyRefreshOnDay {
   /// The day of the month that you want to schedule refresh on.
   final pulumi.Input<String>? dayOfMonth;
+
   /// The day of the week that you want to schedule a refresh on. Valid values are `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY` and `SATURDAY`.
   final pulumi.Input<String>? dayOfWeek;
 
@@ -23,11 +24,20 @@ class RefreshScheduleScheduleScheduleFrequencyRefreshOnDay {
     };
   }
 
-  factory RefreshScheduleScheduleScheduleFrequencyRefreshOnDay.fromMap(Map<String, dynamic> map) {
+  factory RefreshScheduleScheduleScheduleFrequencyRefreshOnDay.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RefreshScheduleScheduleScheduleFrequencyRefreshOnDay(
-      dayOfMonth: map['dayOfMonth'] == null ? null : ((map['dayOfMonth'] as String).input()).input(),
-      dayOfWeek: map['dayOfWeek'] == null ? null : ((map['dayOfWeek'] as String).input()).input(),
+      dayOfMonth: (() {
+        final guardedValue = map['dayOfMonth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dayOfWeek: (() {
+        final guardedValue = map['dayOfWeek'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

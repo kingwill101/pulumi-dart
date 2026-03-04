@@ -7,22 +7,31 @@ import 'checkpoint.dart';
 class InfrastructureProfile {
   /// Gets or sets the bios guid for the vm.
   final pulumi.Input<String>? biosGuid;
+
   /// Type of checkpoint supported for the vm.
   final pulumi.Input<String>? checkpointType;
+
   /// Checkpoints in the vm.
   final pulumi.Input<List<Checkpoint>>? checkpoints;
+
   /// ARM Id of the cloud resource to use for deploying the vm.
   final pulumi.Input<String>? cloudId;
+
   /// Gets or sets the generation for the vm.
   final pulumi.Input<int>? generation;
+
   /// Gets or sets the inventory Item ID for the resource.
   final pulumi.Input<String>? inventoryItemId;
+
   /// ARM Id of the template resource to use for deploying the vm.
   final pulumi.Input<String>? templateId;
+
   /// Unique ID of the virtual machine.
   final pulumi.Input<String>? uuid;
+
   /// VMName is the name of VM on the SCVMM server.
   final pulumi.Input<String>? vmName;
+
   /// ARM Id of the vmmServer resource in which this resource resides.
   final pulumi.Input<String>? vmmServerId;
 
@@ -54,7 +63,18 @@ class InfrastructureProfile {
     return <String, dynamic>{
       'biosGuid': ?biosGuid,
       'checkpointType': ?checkpointType,
-      'checkpoints': ?pulumi.Input.mapOptionalInputValue<List<Checkpoint>, List<Map<String, dynamic>>>(checkpoints, (value) => pulumi.Input.encodeList<Checkpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'checkpoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Checkpoint>,
+            List<Map<String, dynamic>>
+          >(
+            checkpoints,
+            (value) =>
+                pulumi.Input.encodeList<Checkpoint, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'cloudId': ?cloudId,
       'generation': ?generation,
       'inventoryItemId': ?inventoryItemId,
@@ -67,17 +87,62 @@ class InfrastructureProfile {
 
   factory InfrastructureProfile.fromMap(Map<String, dynamic> map) {
     return InfrastructureProfile(
-      biosGuid: map['biosGuid'] == null ? null : (map['biosGuid']! as String).input(),
-      checkpointType: map['checkpointType'] == null ? null : (map['checkpointType']! as String).input(),
-      checkpoints: map['checkpoints'] == null ? null : (pulumi.Input.decodeList<Checkpoint>(map['checkpoints']!, (value) => Checkpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cloudId: map['cloudId'] == null ? null : (map['cloudId']! as String).input(),
-      generation: map['generation'] == null ? null : (map['generation']! as int).input(),
-      inventoryItemId: map['inventoryItemId'] == null ? null : (map['inventoryItemId']! as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
-      vmName: map['vmName'] == null ? null : (map['vmName']! as String).input(),
-      vmmServerId: map['vmmServerId'] == null ? null : (map['vmmServerId']! as String).input(),
+      biosGuid: (() {
+        final guardedValue = map['biosGuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      checkpointType: (() {
+        final guardedValue = map['checkpointType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      checkpoints: (() {
+        final guardedValue = map['checkpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Checkpoint>(
+            guardedValue,
+            (value) =>
+                Checkpoint.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      cloudId: (() {
+        final guardedValue = map['cloudId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      generation: (() {
+        final guardedValue = map['generation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      inventoryItemId: (() {
+        final guardedValue = map['inventoryItemId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateId: (() {
+        final guardedValue = map['templateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uuid: (() {
+        final guardedValue = map['uuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vmName: (() {
+        final guardedValue = map['vmName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vmmServerId: (() {
+        final guardedValue = map['vmmServerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

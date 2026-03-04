@@ -10,16 +10,15 @@ enum BackendServiceProtocol {
   udp("UDP"),
   unspecified("UNSPECIFIED");
 
-  const BackendServiceProtocol(this.value);
-  final String value;
+  const BackendServiceProtocol(this.wireValue);
+  final String wireValue;
 
   static BackendServiceProtocol fromValue(String value) {
     for (final item in BackendServiceProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackendServiceProtocol value: $value');
   }
 }
-

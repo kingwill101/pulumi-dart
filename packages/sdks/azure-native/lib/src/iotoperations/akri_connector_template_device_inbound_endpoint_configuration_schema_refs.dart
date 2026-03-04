@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs {
   /// The additional configuration schema reference.
   final pulumi.Input<String>? additionalConfigSchemaRef;
+
   /// The default configuration schema reference for datasets.
   final pulumi.Input<String>? defaultDatasetConfigSchemaRef;
+
   /// The default configuration schema reference for events.
   final pulumi.Input<String>? defaultEventsConfigSchemaRef;
+
   /// The default configuration schema reference for process control.
   final pulumi.Input<String>? defaultProcessControlConfigSchemaRef;
+
   /// The default configuration schema reference for streams.
   final pulumi.Input<String>? defaultStreamsConfigSchemaRef;
 
@@ -34,19 +38,41 @@ class AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs {
       'additionalConfigSchemaRef': ?additionalConfigSchemaRef,
       'defaultDatasetConfigSchemaRef': ?defaultDatasetConfigSchemaRef,
       'defaultEventsConfigSchemaRef': ?defaultEventsConfigSchemaRef,
-      'defaultProcessControlConfigSchemaRef': ?defaultProcessControlConfigSchemaRef,
+      'defaultProcessControlConfigSchemaRef':
+          ?defaultProcessControlConfigSchemaRef,
       'defaultStreamsConfigSchemaRef': ?defaultStreamsConfigSchemaRef,
     };
   }
 
-  factory AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs.fromMap(Map<String, dynamic> map) {
+  factory AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs(
-      additionalConfigSchemaRef: map['additionalConfigSchemaRef'] == null ? null : (map['additionalConfigSchemaRef']! as String).input(),
-      defaultDatasetConfigSchemaRef: map['defaultDatasetConfigSchemaRef'] == null ? null : (map['defaultDatasetConfigSchemaRef']! as String).input(),
-      defaultEventsConfigSchemaRef: map['defaultEventsConfigSchemaRef'] == null ? null : (map['defaultEventsConfigSchemaRef']! as String).input(),
-      defaultProcessControlConfigSchemaRef: map['defaultProcessControlConfigSchemaRef'] == null ? null : (map['defaultProcessControlConfigSchemaRef']! as String).input(),
-      defaultStreamsConfigSchemaRef: map['defaultStreamsConfigSchemaRef'] == null ? null : (map['defaultStreamsConfigSchemaRef']! as String).input(),
+      additionalConfigSchemaRef: (() {
+        final guardedValue = map['additionalConfigSchemaRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultDatasetConfigSchemaRef: (() {
+        final guardedValue = map['defaultDatasetConfigSchemaRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultEventsConfigSchemaRef: (() {
+        final guardedValue = map['defaultEventsConfigSchemaRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultProcessControlConfigSchemaRef: (() {
+        final guardedValue = map['defaultProcessControlConfigSchemaRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultStreamsConfigSchemaRef: (() {
+        final guardedValue = map['defaultStreamsConfigSchemaRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

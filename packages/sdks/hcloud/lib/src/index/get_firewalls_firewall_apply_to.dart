@@ -15,17 +15,13 @@ class GetFirewallsFirewallApplyTo {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'labelSelector': labelSelector,
-      'server': server,
-    };
+    return <String, dynamic>{'labelSelector': labelSelector, 'server': server};
   }
 
   factory GetFirewallsFirewallApplyTo.fromMap(Map<String, dynamic> map) {
     return GetFirewallsFirewallApplyTo(
-      labelSelector: (map['labelSelector'] as String).input(),
-      server: (map['server'] as int).input(),
+      labelSelector: pulumi.Input.fromValue(map['labelSelector'] as String),
+      server: pulumi.Input.fromValue(map['server'] as int),
     );
   }
 }
-

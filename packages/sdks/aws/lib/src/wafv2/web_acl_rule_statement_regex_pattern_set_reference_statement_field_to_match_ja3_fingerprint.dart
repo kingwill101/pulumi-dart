@@ -13,15 +13,16 @@ class WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa3Fingerp
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fallbackBehavior': fallbackBehavior,
-    };
+    return <String, dynamic>{'fallbackBehavior': fallbackBehavior};
   }
 
-  factory WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa3Fingerprint.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa3Fingerprint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchJa3Fingerprint(
-      fallbackBehavior: (map['fallbackBehavior'] as String).input(),
+      fallbackBehavior: pulumi.Input.fromValue(
+        map['fallbackBehavior'] as String,
+      ),
     );
   }
 }
-

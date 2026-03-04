@@ -27,10 +27,9 @@ class GetLoadBalancersLoadBalancerTarget {
 
   factory GetLoadBalancersLoadBalancerTarget.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersLoadBalancerTarget(
-      labelSelector: (map['labelSelector'] as String).input(),
-      serverId: (map['serverId'] as int).input(),
-      type: (map['type'] as String).input(),
+      labelSelector: pulumi.Input.fromValue(map['labelSelector'] as String),
+      serverId: pulumi.Input.fromValue(map['serverId'] as int),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

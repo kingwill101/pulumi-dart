@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkingIpArgs {
   /// The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
   final pulumi.Input<int>? linodeId;
+
   /// Whether the IP address is public. Defaults to true.
   final pulumi.Input<bool>? public;
+
   /// The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
   final pulumi.Input<String>? region;
+
   /// Whether the IPv4 address should be reserved.
   final pulumi.Input<bool>? reserved;
+
   /// The type of IP address. (ipv4, ipv6, etc.)
   final pulumi.Input<String>? type;
 
@@ -44,12 +48,31 @@ class NetworkingIpArgs {
 
   factory NetworkingIpArgs.fromMap(Map<String, dynamic> map) {
     return NetworkingIpArgs(
-      linodeId: map['linodeId'] == null ? null : (map['linodeId']! as int).input(),
-      public: map['public'] == null ? null : (map['public']! as bool).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      reserved: map['reserved'] == null ? null : (map['reserved']! as bool).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      linodeId: (() {
+        final guardedValue = map['linodeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      public: (() {
+        final guardedValue = map['public'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reserved: (() {
+        final guardedValue = map['reserved'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

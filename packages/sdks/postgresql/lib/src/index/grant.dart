@@ -6,8 +6,8 @@ import 'grant_state.dart';
 ///
 /// See [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-grant.html)
 ///
-/// > **Note:** This resource needs Postgresql version 9 or above.
-/// > **Note:** Using column & table grants on the _same_ table with the _same_ privileges can lead to unexpected behaviours.
+/// &gt; **Note:** This resource needs Postgresql version 9 or above.
+/// &gt; **Note:** Using column & table grants on the _same_ table with the _same_ privileges can lead to unexpected behaviours.
 ///
 /// ## Usage
 ///
@@ -384,18 +384,25 @@ import 'grant_state.dart';
 class Grant extends pulumi.CustomResource {
   /// The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
   late final pulumi.Output<List<String>?> columns;
+
   /// The database to grant privileges on for this role.
   late final pulumi.Output<String> database;
+
   /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).
   late final pulumi.Output<String> objectType;
+
   /// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
   late final pulumi.Output<List<String>?> objects;
+
   /// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
   late final pulumi.Output<List<String>> privileges;
+
   /// The name of the role to grant privileges on, Set it to "public" for all roles.
   late final pulumi.Output<String> role;
+
   /// The database schema to grant privileges on for this role (Required except if object_type is "database")
   late final pulumi.Output<String?> schema;
+
   /// Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
   late final pulumi.Output<bool?> withGrantOption;
 
@@ -403,32 +410,25 @@ class Grant extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Grant]. {@macro pulumi_index_grant_grant_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Grant(
-    String name, {
-    GrantArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'postgresql:index/grant:Grant',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.columns = registerOutput<List<String>?>('columns');
-    this.database = registerOutput<String>('database');
-    this.objectType = registerOutput<String>('objectType');
-    this.objects = registerOutput<List<String>?>('objects');
-    this.privileges = registerOutput<List<String>>('privileges');
-    this.role = registerOutput<String>('role');
-    this.schema = registerOutput<String?>('schema');
-    this.withGrantOption = registerOutput<bool?>('withGrantOption');
+  Grant(String name, {GrantArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'postgresql:index/grant:Grant',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    columns = registerOutput<List<String>?>('columns');
+    database = registerOutput<String>('database');
+    objectType = registerOutput<String>('objectType');
+    objects = registerOutput<List<String>?>('objects');
+    privileges = registerOutput<List<String>>('privileges');
+    role = registerOutput<String>('role');
+    schema = registerOutput<String?>('schema');
+    withGrantOption = registerOutput<bool?>('withGrantOption');
   }
 
   /// Gets an existing [Grant] resource's state with the given [name] and [id].
-  static Grant get(
-    String name,
-    pulumi.Input<String> id, {
-    GrantState? state,
-  }) {
+  static Grant get(String name, pulumi.Input<String> id, {GrantState? state}) {
     return Grant._get(
       name,
       state: state?.toMap(),
@@ -441,18 +441,18 @@ class Grant extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'postgresql:index/grant:Grant',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.columns = registerOutput<List<String>?>('columns');
-    this.database = registerOutput<String>('database');
-    this.objectType = registerOutput<String>('objectType');
-    this.objects = registerOutput<List<String>?>('objects');
-    this.privileges = registerOutput<List<String>>('privileges');
-    this.role = registerOutput<String>('role');
-    this.schema = registerOutput<String?>('schema');
-    this.withGrantOption = registerOutput<bool?>('withGrantOption');
+         'postgresql:index/grant:Grant',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    columns = registerOutput<List<String>?>('columns');
+    database = registerOutput<String>('database');
+    objectType = registerOutput<String>('objectType');
+    objects = registerOutput<List<String>?>('objects');
+    privileges = registerOutput<List<String>>('privileges');
+    role = registerOutput<String>('role');
+    schema = registerOutput<String?>('schema');
+    withGrantOption = registerOutput<bool?>('withGrantOption');
   }
 }

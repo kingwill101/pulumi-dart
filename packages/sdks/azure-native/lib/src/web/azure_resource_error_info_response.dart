@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureResourceErrorInfoResponse {
   /// The error code.
   final pulumi.Input<String> code;
+
   /// The error details.
   final pulumi.Input<List<AzureResourceErrorInfoResponse>>? details;
+
   /// The error message.
   final pulumi.Input<String> message;
 
@@ -24,17 +26,38 @@ class AzureResourceErrorInfoResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': code,
-      'details': ?pulumi.Input.mapOptionalInputValue<List<AzureResourceErrorInfoResponse>, List<Map<String, dynamic>>>(details, (value) => pulumi.Input.encodeList<AzureResourceErrorInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'details':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AzureResourceErrorInfoResponse>,
+            List<Map<String, dynamic>>
+          >(
+            details,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AzureResourceErrorInfoResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'message': message,
     };
   }
 
   factory AzureResourceErrorInfoResponse.fromMap(Map<String, dynamic> map) {
     return AzureResourceErrorInfoResponse(
-      code: (map['code'] as String).input(),
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<AzureResourceErrorInfoResponse>(map['details']!, (value) => AzureResourceErrorInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      message: (map['message'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      details: (() {
+        final guardedValue = map['details'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AzureResourceErrorInfoResponse>(
+            guardedValue,
+            (value) => AzureResourceErrorInfoResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
-

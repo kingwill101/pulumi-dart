@@ -6,40 +6,57 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolardbxInstanceState {
   /// Compute node specifications.
   final pulumi.Input<String>? cnClass;
+
   /// Number of computing nodes.
   final pulumi.Input<int>? cnNodeCount;
+
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
+
   /// Instance remarks
   final pulumi.Input<String>? description;
+
   /// Storage node specifications.
   final pulumi.Input<String>? dnClass;
+
   /// The number of storage nodes.
   final pulumi.Input<int>? dnNodeCount;
+
   /// Engine version, default 5.7
   final pulumi.Input<String>? engineVersion;
+
   /// Whether the instance is read-only.
   final pulumi.Input<bool>? isReadDbInstance;
+
   /// If the instance is a read-only instance, you must specify the primary instance.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? primaryDbInstanceName;
+
   /// Primary Availability Zone.
   final pulumi.Input<String>? primaryZone;
+
   /// The region ID of the resource
   final pulumi.Input<String>? regionId;
+
   /// The resource group ID can be empty. This parameter is not supported for the time being.
   final pulumi.Input<String>? resourceGroupId;
+
   /// Secondary availability zone.
   final pulumi.Input<String>? secondaryZone;
+
   /// The status of the resource
   final pulumi.Input<String>? status;
+
   /// Third Availability Zone.
   final pulumi.Input<String>? tertiaryZone;
+
   /// Topology type:
   final pulumi.Input<String>? topologyType;
+
   /// The VPC ID.
   final pulumi.Input<String>? vpcId;
+
   /// The ID of the virtual switch.
   final pulumi.Input<String>? vswitchId;
 
@@ -108,25 +125,96 @@ class PolardbxInstanceState {
 
   factory PolardbxInstanceState.fromMap(Map<String, dynamic> map) {
     return PolardbxInstanceState(
-      cnClass: map['cnClass'] == null ? null : (map['cnClass']! as String).input(),
-      cnNodeCount: map['cnNodeCount'] == null ? null : (map['cnNodeCount']! as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      dnClass: map['dnClass'] == null ? null : (map['dnClass']! as String).input(),
-      dnNodeCount: map['dnNodeCount'] == null ? null : (map['dnNodeCount']! as int).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion']! as String).input(),
-      isReadDbInstance: map['isReadDbInstance'] == null ? null : (map['isReadDbInstance']! as bool).input(),
-      primaryDbInstanceName: map['primaryDbInstanceName'] == null ? null : (map['primaryDbInstanceName']! as String).input(),
-      primaryZone: map['primaryZone'] == null ? null : (map['primaryZone']! as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      secondaryZone: map['secondaryZone'] == null ? null : (map['secondaryZone']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tertiaryZone: map['tertiaryZone'] == null ? null : (map['tertiaryZone']! as String).input(),
-      topologyType: map['topologyType'] == null ? null : (map['topologyType']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      cnClass: (() {
+        final guardedValue = map['cnClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cnNodeCount: (() {
+        final guardedValue = map['cnNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnClass: (() {
+        final guardedValue = map['dnClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnNodeCount: (() {
+        final guardedValue = map['dnNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      engineVersion: (() {
+        final guardedValue = map['engineVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isReadDbInstance: (() {
+        final guardedValue = map['isReadDbInstance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      primaryDbInstanceName: (() {
+        final guardedValue = map['primaryDbInstanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryZone: (() {
+        final guardedValue = map['primaryZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secondaryZone: (() {
+        final guardedValue = map['secondaryZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tertiaryZone: (() {
+        final guardedValue = map['tertiaryZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topologyType: (() {
+        final guardedValue = map['topologyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

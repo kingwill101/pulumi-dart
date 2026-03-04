@@ -8,16 +8,15 @@ enum NetworkPeeringPeerNetworkType {
   thirdPartyService("THIRD_PARTY_SERVICE"),
   dellPowerscale("DELL_POWERSCALE");
 
-  const NetworkPeeringPeerNetworkType(this.value);
-  final String value;
+  const NetworkPeeringPeerNetworkType(this.wireValue);
+  final String wireValue;
 
   static NetworkPeeringPeerNetworkType fromValue(String value) {
     for (final item in NetworkPeeringPeerNetworkType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkPeeringPeerNetworkType value: $value');
   }
 }
-

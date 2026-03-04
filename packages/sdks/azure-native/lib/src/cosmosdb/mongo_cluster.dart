@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mongo_cluster_args.dart';
-import 'node_group_spec_response.dart';
 import 'system_data_response.dart';
 
 /// Represents a mongo cluster resource.
@@ -346,28 +345,40 @@ import 'system_data_response.dart';
 class MongoCluster extends pulumi.CustomResource {
   /// The administrator's login for the mongo cluster.
   late final pulumi.Output<String?> administratorLogin;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A status of the mongo cluster.
   late final pulumi.Output<String> clusterStatus;
+
   /// The default mongo connection string for the cluster.
   late final pulumi.Output<String> connectionString;
+
   /// Earliest restore timestamp in UTC ISO8601 format.
   late final pulumi.Output<String> earliestRestoreTime;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The list of node group specs in the cluster.
-  late final pulumi.Output<List<NodeGroupSpecResponse>?> nodeGroupSpecs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> nodeGroupSpecs;
+
   /// A provisioning state of the mongo cluster.
   late final pulumi.Output<String> provisioningState;
+
   /// The Mongo DB server version. Defaults to the latest available version if not specified.
   late final pulumi.Output<String?> serverVersion;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -380,23 +391,25 @@ class MongoCluster extends pulumi.CustomResource {
     MongoClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cosmosdb:MongoCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.administratorLogin = registerOutput<String?>('administratorLogin');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clusterStatus = registerOutput<String>('clusterStatus');
-    this.connectionString = registerOutput<String>('connectionString');
-    this.earliestRestoreTime = registerOutput<String>('earliestRestoreTime');
-    this.location = registerOutput<String>('location');
+         'azure-native:cosmosdb:MongoCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    administratorLogin = registerOutput<String?>('administratorLogin');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterStatus = registerOutput<String>('clusterStatus');
+    connectionString = registerOutput<String>('connectionString');
+    earliestRestoreTime = registerOutput<String>('earliestRestoreTime');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.nodeGroupSpecs = registerOutput<List<NodeGroupSpecResponse>?>('nodeGroupSpecs');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.serverVersion = registerOutput<String?>('serverVersion');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    nodeGroupSpecs = registerOutput<List<Map<String, dynamic>>?>(
+      'nodeGroupSpecs',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    serverVersion = registerOutput<String?>('serverVersion');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -3,16 +3,15 @@ enum IntegrationRuntimeType {
   valueManaged("Managed"),
   valueSelfHosted("SelfHosted");
 
-  const IntegrationRuntimeType(this.value);
-  final String value;
+  const IntegrationRuntimeType(this.wireValue);
+  final String wireValue;
 
   static IntegrationRuntimeType fromValue(String value) {
     for (final item in IntegrationRuntimeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IntegrationRuntimeType value: $value');
   }
 }
-

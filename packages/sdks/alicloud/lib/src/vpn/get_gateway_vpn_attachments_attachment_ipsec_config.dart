@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayVpnAttachmentsAttachmentIpsecConfig {
   /// The second stage negotiated authentication algorithm.Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
   final pulumi.Input<String> ipsecAuthAlg;
+
   /// The encryption algorithm negotiated in the second stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
   final pulumi.Input<String> ipsecEncAlg;
+
   /// The life cycle of SA negotiated in the second stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
   final pulumi.Input<int> ipsecLifetime;
+
   /// The second stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **disabled**, **group1**, **group2**, **group5**, **group14**.
   final pulumi.Input<String> ipsecPfs;
 
@@ -33,13 +36,14 @@ class GetGatewayVpnAttachmentsAttachmentIpsecConfig {
     };
   }
 
-  factory GetGatewayVpnAttachmentsAttachmentIpsecConfig.fromMap(Map<String, dynamic> map) {
+  factory GetGatewayVpnAttachmentsAttachmentIpsecConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGatewayVpnAttachmentsAttachmentIpsecConfig(
-      ipsecAuthAlg: (map['ipsecAuthAlg'] as String).input(),
-      ipsecEncAlg: (map['ipsecEncAlg'] as String).input(),
-      ipsecLifetime: (map['ipsecLifetime'] as int).input(),
-      ipsecPfs: (map['ipsecPfs'] as String).input(),
+      ipsecAuthAlg: pulumi.Input.fromValue(map['ipsecAuthAlg'] as String),
+      ipsecEncAlg: pulumi.Input.fromValue(map['ipsecEncAlg'] as String),
+      ipsecLifetime: pulumi.Input.fromValue(map['ipsecLifetime'] as int),
+      ipsecPfs: pulumi.Input.fromValue(map['ipsecPfs'] as String),
     );
   }
 }
-

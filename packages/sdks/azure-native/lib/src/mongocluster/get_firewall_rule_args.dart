@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFirewallRuleArgs {
   /// The name of the mongo cluster firewall rule.
   final pulumi.Input<String> firewallRuleName;
+
   /// The name of the mongo cluster.
   final pulumi.Input<String> mongoClusterName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetFirewallRuleArgs {
 
   factory GetFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallRuleArgs(
-      firewallRuleName: (map['firewallRuleName'] as String).input(),
-      mongoClusterName: (map['mongoClusterName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      firewallRuleName: pulumi.Input.fromValue(
+        map['firewallRuleName'] as String,
+      ),
+      mongoClusterName: pulumi.Input.fromValue(
+        map['mongoClusterName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

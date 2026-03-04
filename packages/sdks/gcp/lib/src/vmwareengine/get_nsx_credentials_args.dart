@@ -12,20 +12,15 @@ class GetNsxCredentialsArgs {
 
   /// Creates a new [GetNsxCredentialsArgs].
   /// [parent] The resource name of the private cloud which contains the NSX.
-  GetNsxCredentialsArgs({
-    required this.parent,
-  });
+  GetNsxCredentialsArgs({required this.parent});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'parent': parent,
-    };
+    return <String, dynamic>{'parent': parent};
   }
 
   factory GetNsxCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return GetNsxCredentialsArgs(
-      parent: (map['parent'] as String).input(),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
     );
   }
 }
-

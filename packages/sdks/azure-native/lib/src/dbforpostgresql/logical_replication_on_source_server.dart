@@ -3,16 +3,17 @@ enum LogicalReplicationOnSourceServer {
   true_("True"),
   false_("False");
 
-  const LogicalReplicationOnSourceServer(this.value);
-  final String value;
+  const LogicalReplicationOnSourceServer(this.wireValue);
+  final String wireValue;
 
   static LogicalReplicationOnSourceServer fromValue(String value) {
     for (final item in LogicalReplicationOnSourceServer.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown LogicalReplicationOnSourceServer value: $value');
+    throw ArgumentError(
+      'Unknown LogicalReplicationOnSourceServer value: $value',
+    );
   }
 }
-

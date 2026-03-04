@@ -7,12 +7,15 @@ import 'get_env_custom_jobs_job.dart';
 class GetEnvCustomJobsResult {
   /// The ID of the environment instance.
   final String environmentId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
+
   /// A list of ARMS Env Custom Jobs. Each element contains the following attributes:
   final List<GetEnvCustomJobsJob> jobs;
   final String? nameRegex;
+
   /// A list of ARMS Env Custom Job names.
   final List<String> names;
   final String? outputFile;
@@ -40,7 +43,11 @@ class GetEnvCustomJobsResult {
       'environmentId': environmentId,
       'id': id,
       'ids': ids,
-      'jobs': pulumi.Input.encodeList<GetEnvCustomJobsJob, Map<String, dynamic>>(jobs, (value) => value.toMap()),
+      'jobs':
+          pulumi.Input.encodeList<GetEnvCustomJobsJob, Map<String, dynamic>>(
+            jobs,
+            (value) => value.toMap(),
+          ),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
@@ -52,11 +59,22 @@ class GetEnvCustomJobsResult {
       environmentId: map['environmentId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      jobs: pulumi.Input.decodeList<GetEnvCustomJobsJob>(map['jobs'], (value) => GetEnvCustomJobsJob.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      jobs: pulumi.Input.decodeList<GetEnvCustomJobsJob>(
+        map['jobs']!,
+        (value) =>
+            GetEnvCustomJobsJob.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

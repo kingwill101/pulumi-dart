@@ -1,59 +1,59 @@
 // ignore_for_file: non_constant_identifier_names
 
-library pulumi_tls;
-
-import 'package:pulumi_tls/index.dart' as _index;
-import 'package:pulumi_tls/providers.dart' as _providers;
+import 'package:pulumi_tls/index.dart' as module_index;
+import 'package:pulumi_tls/providers.dart' as module_providers;
 
 final index = _IndexModuleNamespace();
 final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
   _IndexModuleNamespace();
-  final CertRequest = _index.CertRequest.new;
-  final CertRequestArgs = _index.CertRequestArgs.new;
-  final CertRequestState = _index.CertRequestState.new;
-  final CertRequestStateArgs = _index.CertRequestState.new;
-  final CertRequestSubject = _index.CertRequestSubject.new;
-  final CertRequestSubjectArgs = _index.CertRequestSubject.new;
-  final GetCertificateArgs = _index.GetCertificateArgs.new;
-  final GetCertificateCertificate = _index.GetCertificateCertificate.new;
-  final GetCertificateCertificateArgs = _index.GetCertificateCertificate.new;
-  final GetCertificateResult = _index.GetCertificateResult.new;
-  final GetCertificateResultArgs = _index.GetCertificateResult.new;
-  final GetPublicKeyArgs = _index.GetPublicKeyArgs.new;
-  final GetPublicKeyResult = _index.GetPublicKeyResult.new;
-  final GetPublicKeyResultArgs = _index.GetPublicKeyResult.new;
-  final LocallySignedCert = _index.LocallySignedCert.new;
-  final LocallySignedCertArgs = _index.LocallySignedCertArgs.new;
-  final LocallySignedCertState = _index.LocallySignedCertState.new;
-  final LocallySignedCertStateArgs = _index.LocallySignedCertState.new;
-  final PrivateKey = _index.PrivateKey.new;
-  final PrivateKeyArgs = _index.PrivateKeyArgs.new;
-  final PrivateKeyState = _index.PrivateKeyState.new;
-  final PrivateKeyStateArgs = _index.PrivateKeyState.new;
-  final ProviderProxy = _index.ProviderProxy.new;
-  final ProviderProxyArgs = _index.ProviderProxy.new;
-  final SelfSignedCert = _index.SelfSignedCert.new;
-  final SelfSignedCertArgs = _index.SelfSignedCertArgs.new;
-  final SelfSignedCertState = _index.SelfSignedCertState.new;
-  final SelfSignedCertStateArgs = _index.SelfSignedCertState.new;
-  final SelfSignedCertSubject = _index.SelfSignedCertSubject.new;
-  final SelfSignedCertSubjectArgs = _index.SelfSignedCertSubject.new;
-  final getCertificate = _index.getCertificate;
-  final getPublicKey = _index.getPublicKey;
+  final CertRequest = module_index.CertRequest.new;
+  final CertRequestArgs = module_index.CertRequestArgs.new;
+  final CertRequestState = module_index.CertRequestState.new;
+  final CertRequestStateArgs = module_index.CertRequestState.new;
+  final CertRequestSubject = module_index.CertRequestSubject.new;
+  final CertRequestSubjectArgs = module_index.CertRequestSubject.new;
+  final GetCertificateArgs = module_index.GetCertificateArgs.new;
+  final GetCertificateCertificate = module_index.GetCertificateCertificate.new;
+  final GetCertificateCertificateArgs =
+      module_index.GetCertificateCertificate.new;
+  final GetCertificateResult = module_index.GetCertificateResult.new;
+  final GetCertificateResultArgs = module_index.GetCertificateResult.new;
+  final GetPublicKeyArgs = module_index.GetPublicKeyArgs.new;
+  final GetPublicKeyResult = module_index.GetPublicKeyResult.new;
+  final GetPublicKeyResultArgs = module_index.GetPublicKeyResult.new;
+  final LocallySignedCert = module_index.LocallySignedCert.new;
+  final LocallySignedCertArgs = module_index.LocallySignedCertArgs.new;
+  final LocallySignedCertState = module_index.LocallySignedCertState.new;
+  final LocallySignedCertStateArgs = module_index.LocallySignedCertState.new;
+  final PrivateKey = module_index.PrivateKey.new;
+  final PrivateKeyArgs = module_index.PrivateKeyArgs.new;
+  final PrivateKeyState = module_index.PrivateKeyState.new;
+  final PrivateKeyStateArgs = module_index.PrivateKeyState.new;
+  final ProviderProxy = module_index.ProviderProxy.new;
+  final ProviderProxyArgs = module_index.ProviderProxy.new;
+  final SelfSignedCert = module_index.SelfSignedCert.new;
+  final SelfSignedCertArgs = module_index.SelfSignedCertArgs.new;
+  final SelfSignedCertState = module_index.SelfSignedCertState.new;
+  final SelfSignedCertStateArgs = module_index.SelfSignedCertState.new;
+  final SelfSignedCertSubject = module_index.SelfSignedCertSubject.new;
+  final SelfSignedCertSubjectArgs = module_index.SelfSignedCertSubject.new;
+  final getCertificate = module_index.getCertificate;
+  final getPublicKey = module_index.getPublicKey;
 }
 
 class _ProvidersModuleNamespace {
   _ProvidersModuleNamespace();
-  final ProviderArgs = _providers.ProviderArgs.new;
-  final ProviderTerraformConfigResult = _providers.ProviderTerraformConfigResult.new;
-  final ProviderTerraformConfigResultArgs = _providers.ProviderTerraformConfigResult.new;
-  final TerraformConfigArgs = _providers.TerraformConfigArgs.new;
-  final TerraformConfigResult = _providers.TerraformConfigResult.new;
-  final TerraformConfigResultArgs = _providers.TerraformConfigResult.new;
-  final Tls = _providers.ProviderProvider.new;
-  final TlsArgs = _providers.ProviderArgs.new;
-  final terraformConfig = _providers.terraformConfig;
+  final ProviderArgs = module_providers.ProviderArgs.new;
+  final ProviderTerraformConfigResult =
+      module_providers.ProviderTerraformConfigResult.new;
+  final ProviderTerraformConfigResultArgs =
+      module_providers.ProviderTerraformConfigResult.new;
+  final TerraformConfigArgs = module_providers.TerraformConfigArgs.new;
+  final TerraformConfigResult = module_providers.TerraformConfigResult.new;
+  final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;
+  final Tls = module_providers.ProviderProvider.new;
+  final TlsArgs = module_providers.ProviderArgs.new;
+  final terraformConfig = module_providers.terraformConfig;
 }
-

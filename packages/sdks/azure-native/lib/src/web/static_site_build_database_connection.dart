@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'static_site_build_database_connection_args.dart';
-import 'static_site_database_connection_configuration_file_overview_response.dart';
 
 /// Static Site Database Connection resource.
 ///
@@ -165,20 +164,28 @@ import 'static_site_database_connection_configuration_file_overview_response.dar
 class StaticSiteBuildDatabaseConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A list of configuration files associated with this database connection.
-  late final pulumi.Output<List<StaticSiteDatabaseConnectionConfigurationFileOverviewResponse>> configurationFiles;
+  late final pulumi.Output<List<Map<String, dynamic>>> configurationFiles;
+
   /// If present, the identity is used in conjunction with connection string to connect to the database. Use of the system-assigned managed identity is indicated with the string 'SystemAssigned', while use of a user-assigned managed identity is indicated with the resource id of the managed identity resource.
   late final pulumi.Output<String?> connectionIdentity;
+
   /// The connection string to use to connect to the database.
   late final pulumi.Output<String?> connectionString;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// The region of the database resource.
   late final pulumi.Output<String> region;
+
   /// The resource id of the database.
   late final pulumi.Output<String> resourceId;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -191,19 +198,21 @@ class StaticSiteBuildDatabaseConnection extends pulumi.CustomResource {
     StaticSiteBuildDatabaseConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:StaticSiteBuildDatabaseConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.configurationFiles = registerOutput<List<StaticSiteDatabaseConnectionConfigurationFileOverviewResponse>>('configurationFiles');
-    this.connectionIdentity = registerOutput<String?>('connectionIdentity');
-    this.connectionString = registerOutput<String?>('connectionString');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:StaticSiteBuildDatabaseConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationFiles = registerOutput<List<Map<String, dynamic>>>(
+      'configurationFiles',
+    );
+    connectionIdentity = registerOutput<String?>('connectionIdentity');
+    connectionString = registerOutput<String?>('connectionString');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.type = registerOutput<String>('type');
+    region = registerOutput<String>('region');
+    resourceId = registerOutput<String>('resourceId');
+    type = registerOutput<String>('type');
   }
 }

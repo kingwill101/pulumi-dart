@@ -6,7 +6,7 @@ import 'custom_routing_endpoint_group_state.dart';
 ///
 /// For information about Global Accelerator (GA) Custom Routing Endpoint Group and how to use it, see [What is Custom Routing Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createcustomroutingendpointgroups).
 ///
-/// > **NOTE:** Available since v1.197.0.
+/// &gt; **NOTE:** Available since v1.197.0.
 ///
 /// ## Example Usage
 ///
@@ -349,14 +349,19 @@ import 'custom_routing_endpoint_group_state.dart';
 class CustomRoutingEndpointGroup extends pulumi.CustomResource {
   /// The ID of the GA instance.
   late final pulumi.Output<String> acceleratorId;
+
   /// The name of the endpoint group.
   late final pulumi.Output<String?> customRoutingEndpointGroupName;
+
   /// The description of the endpoint group.
   late final pulumi.Output<String?> description;
+
   /// The ID of the region in which to create the endpoint group.
   late final pulumi.Output<String> endpointGroupRegion;
+
   /// The ID of the custom routing listener.
   late final pulumi.Output<String> listenerId;
+
   /// The status of the Custom Routing Endpoint Group.
   late final pulumi.Output<String> status;
 
@@ -369,17 +374,19 @@ class CustomRoutingEndpointGroup extends pulumi.CustomResource {
     CustomRoutingEndpointGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.customRoutingEndpointGroupName = registerOutput<String?>('customRoutingEndpointGroupName');
-    this.description = registerOutput<String?>('description');
-    this.endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
-    this.listenerId = registerOutput<String>('listenerId');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    customRoutingEndpointGroupName = registerOutput<String?>(
+      'customRoutingEndpointGroupName',
+    );
+    description = registerOutput<String?>('description');
+    endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
+    listenerId = registerOutput<String>('listenerId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [CustomRoutingEndpointGroup] resource's state with the given [name] and [id].
@@ -400,16 +407,18 @@ class CustomRoutingEndpointGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.customRoutingEndpointGroupName = registerOutput<String?>('customRoutingEndpointGroupName');
-    this.description = registerOutput<String?>('description');
-    this.endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
-    this.listenerId = registerOutput<String>('listenerId');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    customRoutingEndpointGroupName = registerOutput<String?>(
+      'customRoutingEndpointGroupName',
+    );
+    description = registerOutput<String?>('description');
+    endpointGroupRegion = registerOutput<String>('endpointGroupRegion');
+    listenerId = registerOutput<String>('listenerId');
+    status = registerOutput<String>('status');
   }
 }

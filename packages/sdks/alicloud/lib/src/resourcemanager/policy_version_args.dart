@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyVersionArgs {
   /// Specifies whether to set the policy version as the default version. Default to `false`.
   final pulumi.Input<bool>? isDefaultVersion;
+
   /// The content of the policy. The content must be 1 to 2,048 characters in length.
   final pulumi.Input<String> policyDocument;
+
   /// The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
   final pulumi.Input<String> policyName;
 
@@ -34,10 +36,13 @@ class PolicyVersionArgs {
 
   factory PolicyVersionArgs.fromMap(Map<String, dynamic> map) {
     return PolicyVersionArgs(
-      isDefaultVersion: map['isDefaultVersion'] == null ? null : (map['isDefaultVersion']! as bool).input(),
-      policyDocument: (map['policyDocument'] as String).input(),
-      policyName: (map['policyName'] as String).input(),
+      isDefaultVersion: (() {
+        final guardedValue = map['isDefaultVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      policyDocument: pulumi.Input.fromValue(map['policyDocument'] as String),
+      policyName: pulumi.Input.fromValue(map['policyName'] as String),
     );
   }
 }
-

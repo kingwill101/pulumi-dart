@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetActionRuleByNameArgs {
   /// The name of action rule that needs to be fetched
   final pulumi.Input<String> actionRuleName;
+
   /// Resource group name where the resource is created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetActionRuleByNameArgs {
 
   factory GetActionRuleByNameArgs.fromMap(Map<String, dynamic> map) {
     return GetActionRuleByNameArgs(
-      actionRuleName: (map['actionRuleName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      actionRuleName: pulumi.Input.fromValue(map['actionRuleName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

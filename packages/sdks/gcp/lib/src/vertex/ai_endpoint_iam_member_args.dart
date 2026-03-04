@@ -33,7 +33,11 @@ class AiEndpointIamMemberArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<AiEndpointIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            AiEndpointIamMemberCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'endpoint': endpoint,
       'location': ?location,
       'member': member,
@@ -44,13 +48,28 @@ class AiEndpointIamMemberArgs {
 
   factory AiEndpointIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return AiEndpointIamMemberArgs(
-      condition: map['condition'] == null ? null : (AiEndpointIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      endpoint: (map['endpoint'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      member: (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      role: (map['role'] as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AiEndpointIamMemberCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      member: pulumi.Input.fromValue(map['member'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
-

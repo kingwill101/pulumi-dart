@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExtensionActionPointAction {
   /// Information about the action.
   final pulumi.Input<String>? description;
+
   /// The action name.
   final pulumi.Input<String> name;
+
   /// An Amazon Resource Name (ARN) for an Identity and Access Management assume role.
   final pulumi.Input<String>? roleArn;
+
   /// The extension URI associated to the action point in the extension definition. The URI can be an Amazon Resource Name (ARN) for one of the following: an Lambda function, an Amazon Simple Queue Service queue, an Amazon Simple Notification Service topic, or the Amazon EventBridge default event bus.
   final pulumi.Input<String> uri;
 
@@ -35,11 +38,18 @@ class ExtensionActionPointAction {
 
   factory ExtensionActionPointAction.fromMap(Map<String, dynamic> map) {
     return ExtensionActionPointAction(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      name: (map['name'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      uri: (map['uri'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

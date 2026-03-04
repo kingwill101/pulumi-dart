@@ -8,10 +8,13 @@ import 'criterion.dart';
 class RouteMapRule {
   /// List of actions which will be applied on a match.
   final pulumi.Input<List<Action>>? actions;
+
   /// List of matching criterion which will be applied to traffic.
   final pulumi.Input<List<Criterion>>? matchCriteria;
+
   /// The unique name for the rule.
   final pulumi.Input<String>? name;
+
   /// Next step after rule is evaluated. Current supported behaviors are 'Continue'(to next rule) and 'Terminate'.
   final pulumi.Input<String>? nextStepIfMatched;
 
@@ -29,8 +32,28 @@ class RouteMapRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?pulumi.Input.mapOptionalInputValue<List<Action>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<Action, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'matchCriteria': ?pulumi.Input.mapOptionalInputValue<List<Criterion>, List<Map<String, dynamic>>>(matchCriteria, (value) => pulumi.Input.encodeList<Criterion, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'actions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Action>,
+            List<Map<String, dynamic>>
+          >(
+            actions,
+            (value) => pulumi.Input.encodeList<Action, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
+      'matchCriteria':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Criterion>,
+            List<Map<String, dynamic>>
+          >(
+            matchCriteria,
+            (value) => pulumi.Input.encodeList<Criterion, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
       'name': ?name,
       'nextStepIfMatched': ?nextStepIfMatched,
     };
@@ -38,11 +61,37 @@ class RouteMapRule {
 
   factory RouteMapRule.fromMap(Map<String, dynamic> map) {
     return RouteMapRule(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<Action>(map['actions']!, (value) => Action.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchCriteria: map['matchCriteria'] == null ? null : (pulumi.Input.decodeList<Criterion>(map['matchCriteria']!, (value) => Criterion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nextStepIfMatched: map['nextStepIfMatched'] == null ? null : (map['nextStepIfMatched']! as String).input(),
+      actions: (() {
+        final guardedValue = map['actions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Action>(
+            guardedValue,
+            (value) => Action.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      matchCriteria: (() {
+        final guardedValue = map['matchCriteria'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Criterion>(
+            guardedValue,
+            (value) =>
+                Criterion.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nextStepIfMatched: (() {
+        final guardedValue = map['nextStepIfMatched'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

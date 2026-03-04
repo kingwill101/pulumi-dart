@@ -3,16 +3,15 @@ enum PrivateLinkDelegation {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const PrivateLinkDelegation(this.value);
-  final String value;
+  const PrivateLinkDelegation(this.wireValue);
+  final String wireValue;
 
   static PrivateLinkDelegation fromValue(String value) {
     for (final item in PrivateLinkDelegation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PrivateLinkDelegation value: $value');
   }
 }
-

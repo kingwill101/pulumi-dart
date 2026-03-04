@@ -4,16 +4,17 @@ enum SqlOutOfDiskReportSqlOutOfDiskState {
   normal("NORMAL"),
   softShutdown("SOFT_SHUTDOWN");
 
-  const SqlOutOfDiskReportSqlOutOfDiskState(this.value);
-  final String value;
+  const SqlOutOfDiskReportSqlOutOfDiskState(this.wireValue);
+  final String wireValue;
 
   static SqlOutOfDiskReportSqlOutOfDiskState fromValue(String value) {
     for (final item in SqlOutOfDiskReportSqlOutOfDiskState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SqlOutOfDiskReportSqlOutOfDiskState value: $value');
+    throw ArgumentError(
+      'Unknown SqlOutOfDiskReportSqlOutOfDiskState value: $value',
+    );
   }
 }
-

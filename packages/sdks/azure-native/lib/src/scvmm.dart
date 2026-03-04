@@ -1,5 +1,3 @@
-library module_scvmm;
-
 export 'scvmm/allocation_method.dart';
 export 'scvmm/availability_set.dart';
 export 'scvmm/availability_set_args.dart';

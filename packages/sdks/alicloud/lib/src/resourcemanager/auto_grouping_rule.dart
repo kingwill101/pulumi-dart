@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auto_grouping_rule_args.dart';
-import 'auto_grouping_rule_rule_content.dart';
 import 'auto_grouping_rule_state.dart';
 
 /// Provides a Resource Manager Auto Grouping Rule resource.
@@ -9,7 +8,7 @@ import 'auto_grouping_rule_state.dart';
 ///
 /// For information about Resource Manager Auto Grouping Rule and how to use it, see [What is Auto Grouping Rule](https://www.alibabacloud.com/help/en/resource-management/resource-group/developer-reference/api-resourcemanager-2020-03-31-createautogroupingrule-rg).
 ///
-/// > **NOTE:** Available since v1.246.0.
+/// &gt; **NOTE:** Available since v1.246.0.
 ///
 /// ## Example Usage
 ///
@@ -336,26 +335,37 @@ import 'auto_grouping_rule_state.dart';
 class AutoGroupingRule extends pulumi.CustomResource {
   /// The IDs of regions to be excluded. Separate multiple IDs with commas (,).
   late final pulumi.Output<String?> excludeRegionIdsScope;
+
   /// The IDs of resource groups to be excluded. Separate multiple IDs with commas (,).
   late final pulumi.Output<String?> excludeResourceGroupIdsScope;
+
   /// The IDs of resources to be excluded. Separate multiple IDs with commas (,).
   late final pulumi.Output<String?> excludeResourceIdsScope;
+
   /// The resource types to be excluded. Separate multiple resource types with commas (,).
   late final pulumi.Output<String?> excludeResourceTypesScope;
+
   /// The IDs of regions. Separate multiple IDs with commas (,).
   late final pulumi.Output<String?> regionIdsScope;
+
   /// The IDs of resource groups. Separate multiple IDs with commas (,).
   late final pulumi.Output<String?> resourceGroupIdsScope;
+
   /// The IDs of resources. Separate multiple IDs with commas (,).
   late final pulumi.Output<String?> resourceIdsScope;
+
   /// The resource types. Separate multiple resource types with commas (,).
   late final pulumi.Output<String?> resourceTypesScope;
+
   /// The content records of the rule. See `rule_contents` below.
-  late final pulumi.Output<List<AutoGroupingRuleRuleContent>> ruleContents;
+  late final pulumi.Output<List<Map<String, dynamic>>> ruleContents;
+
   /// The description of the rule.
   late final pulumi.Output<String?> ruleDesc;
+
   /// The name of the rule.
   late final pulumi.Output<String> ruleName;
+
   /// The type of the rule. Valid values:
   late final pulumi.Output<String> ruleType;
 
@@ -368,23 +378,29 @@ class AutoGroupingRule extends pulumi.CustomResource {
     AutoGroupingRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/autoGroupingRule:AutoGroupingRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.excludeRegionIdsScope = registerOutput<String?>('excludeRegionIdsScope');
-    this.excludeResourceGroupIdsScope = registerOutput<String?>('excludeResourceGroupIdsScope');
-    this.excludeResourceIdsScope = registerOutput<String?>('excludeResourceIdsScope');
-    this.excludeResourceTypesScope = registerOutput<String?>('excludeResourceTypesScope');
-    this.regionIdsScope = registerOutput<String?>('regionIdsScope');
-    this.resourceGroupIdsScope = registerOutput<String?>('resourceGroupIdsScope');
-    this.resourceIdsScope = registerOutput<String?>('resourceIdsScope');
-    this.resourceTypesScope = registerOutput<String?>('resourceTypesScope');
-    this.ruleContents = registerOutput<List<AutoGroupingRuleRuleContent>>('ruleContents');
-    this.ruleDesc = registerOutput<String?>('ruleDesc');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.ruleType = registerOutput<String>('ruleType');
+         'alicloud:resourcemanager/autoGroupingRule:AutoGroupingRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    excludeRegionIdsScope = registerOutput<String?>('excludeRegionIdsScope');
+    excludeResourceGroupIdsScope = registerOutput<String?>(
+      'excludeResourceGroupIdsScope',
+    );
+    excludeResourceIdsScope = registerOutput<String?>(
+      'excludeResourceIdsScope',
+    );
+    excludeResourceTypesScope = registerOutput<String?>(
+      'excludeResourceTypesScope',
+    );
+    regionIdsScope = registerOutput<String?>('regionIdsScope');
+    resourceGroupIdsScope = registerOutput<String?>('resourceGroupIdsScope');
+    resourceIdsScope = registerOutput<String?>('resourceIdsScope');
+    resourceTypesScope = registerOutput<String?>('resourceTypesScope');
+    ruleContents = registerOutput<List<Map<String, dynamic>>>('ruleContents');
+    ruleDesc = registerOutput<String?>('ruleDesc');
+    ruleName = registerOutput<String>('ruleName');
+    ruleType = registerOutput<String>('ruleType');
   }
 
   /// Gets an existing [AutoGroupingRule] resource's state with the given [name] and [id].
@@ -405,22 +421,28 @@ class AutoGroupingRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/autoGroupingRule:AutoGroupingRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.excludeRegionIdsScope = registerOutput<String?>('excludeRegionIdsScope');
-    this.excludeResourceGroupIdsScope = registerOutput<String?>('excludeResourceGroupIdsScope');
-    this.excludeResourceIdsScope = registerOutput<String?>('excludeResourceIdsScope');
-    this.excludeResourceTypesScope = registerOutput<String?>('excludeResourceTypesScope');
-    this.regionIdsScope = registerOutput<String?>('regionIdsScope');
-    this.resourceGroupIdsScope = registerOutput<String?>('resourceGroupIdsScope');
-    this.resourceIdsScope = registerOutput<String?>('resourceIdsScope');
-    this.resourceTypesScope = registerOutput<String?>('resourceTypesScope');
-    this.ruleContents = registerOutput<List<AutoGroupingRuleRuleContent>>('ruleContents');
-    this.ruleDesc = registerOutput<String?>('ruleDesc');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.ruleType = registerOutput<String>('ruleType');
+         'alicloud:resourcemanager/autoGroupingRule:AutoGroupingRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    excludeRegionIdsScope = registerOutput<String?>('excludeRegionIdsScope');
+    excludeResourceGroupIdsScope = registerOutput<String?>(
+      'excludeResourceGroupIdsScope',
+    );
+    excludeResourceIdsScope = registerOutput<String?>(
+      'excludeResourceIdsScope',
+    );
+    excludeResourceTypesScope = registerOutput<String?>(
+      'excludeResourceTypesScope',
+    );
+    regionIdsScope = registerOutput<String?>('regionIdsScope');
+    resourceGroupIdsScope = registerOutput<String?>('resourceGroupIdsScope');
+    resourceIdsScope = registerOutput<String?>('resourceIdsScope');
+    resourceTypesScope = registerOutput<String?>('resourceTypesScope');
+    ruleContents = registerOutput<List<Map<String, dynamic>>>('ruleContents');
+    ruleDesc = registerOutput<String?>('ruleDesc');
+    ruleName = registerOutput<String>('ruleName');
+    ruleType = registerOutput<String>('ruleType');
   }
 }

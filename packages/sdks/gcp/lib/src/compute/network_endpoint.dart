@@ -8,7 +8,7 @@ import 'network_endpoint_state.dart';
 /// single subnet. **NOTE**: Network endpoints cannot be created outside of a
 /// network endpoint group.
 ///
-/// > **NOTE** In case the Endpoint's Instance is recreated, it's needed to
+/// &gt; **NOTE** In case the Endpoint's Instance is recreated, it's needed to
 /// perform `apply` twice. To avoid situations like this, please use this resource
 /// with the lifecycle `replace_triggered_by` method, with the passed Instance's ID.
 ///
@@ -427,19 +427,24 @@ class NetworkEndpoint extends pulumi.CustomResource {
   /// This is required for network endpoints of type GCE_VM_IP_PORT.
   /// The instance must be in the same zone of network endpoint group.
   late final pulumi.Output<String?> instance;
+
   /// IPv4 address of network endpoint. The IP address must belong
   /// to a VM in GCE (either the primary IP or as part of an aliased IP
   /// range).
   late final pulumi.Output<String> ipAddress;
+
   /// The network endpoint group this endpoint is part of.
   late final pulumi.Output<String> networkEndpointGroup;
+
   /// Port number of network endpoint.
   /// **Note** `port` is required unless the Network Endpoint Group is created
   /// with the type of `GCE_VM_IP`
   late final pulumi.Output<int?> port;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Zone where the containing network endpoint group is located.
   late final pulumi.Output<String> zone;
 
@@ -452,17 +457,17 @@ class NetworkEndpoint extends pulumi.CustomResource {
     NetworkEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/networkEndpoint:NetworkEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instance = registerOutput<String?>('instance');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
-    this.port = registerOutput<int?>('port');
-    this.project = registerOutput<String>('project');
-    this.zone = registerOutput<String>('zone');
+         'gcp:compute/networkEndpoint:NetworkEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instance = registerOutput<String?>('instance');
+    ipAddress = registerOutput<String>('ipAddress');
+    networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
+    port = registerOutput<int?>('port');
+    project = registerOutput<String>('project');
+    zone = registerOutput<String>('zone');
   }
 
   /// Gets an existing [NetworkEndpoint] resource's state with the given [name] and [id].
@@ -483,16 +488,16 @@ class NetworkEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/networkEndpoint:NetworkEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instance = registerOutput<String?>('instance');
-    this.ipAddress = registerOutput<String>('ipAddress');
-    this.networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
-    this.port = registerOutput<int?>('port');
-    this.project = registerOutput<String>('project');
-    this.zone = registerOutput<String>('zone');
+         'gcp:compute/networkEndpoint:NetworkEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instance = registerOutput<String?>('instance');
+    ipAddress = registerOutput<String>('ipAddress');
+    networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
+    port = registerOutput<int?>('port');
+    project = registerOutput<String>('project');
+    zone = registerOutput<String>('zone');
   }
 }

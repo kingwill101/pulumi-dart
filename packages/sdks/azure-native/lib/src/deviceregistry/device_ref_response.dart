@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeviceRefResponse {
   /// Name of the device resource
   final pulumi.Input<String> deviceName;
+
   /// The name of endpoint to use
   final pulumi.Input<String> endpointName;
 
   /// Creates a new [DeviceRefResponse].
   /// [deviceName] Name of the device resource
   /// [endpointName] The name of endpoint to use
-  DeviceRefResponse({
-    required this.deviceName,
-    required this.endpointName,
-  });
+  DeviceRefResponse({required this.deviceName, required this.endpointName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,8 @@ class DeviceRefResponse {
 
   factory DeviceRefResponse.fromMap(Map<String, dynamic> map) {
     return DeviceRefResponse(
-      deviceName: (map['deviceName'] as String).input(),
-      endpointName: (map['endpointName'] as String).input(),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
     );
   }
 }
-

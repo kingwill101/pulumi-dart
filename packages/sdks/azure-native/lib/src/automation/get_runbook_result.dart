@@ -8,44 +8,64 @@ import 'runbook_parameter_response.dart';
 class GetRunbookResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Gets or sets the creation time.
   final String? creationTime;
+
   /// Gets or sets the description.
   final String? description;
+
   /// Gets or sets the draft runbook properties.
   final RunbookDraftResponse? draft;
+
   /// Gets or sets the etag of the resource.
   final String? etag;
+
   /// Fully qualified resource Id for the resource
   final String id;
+
   /// Gets or sets the job count of the runbook.
   final int? jobCount;
+
   /// Gets or sets the last modified by.
   final String? lastModifiedBy;
+
   /// Gets or sets the last modified time.
   final String? lastModifiedTime;
+
   /// The Azure Region where the resource lives
   final String? location;
+
   /// Gets or sets the option to log activity trace of the runbook.
   final int? logActivityTrace;
+
   /// Gets or sets progress log option.
   final bool? logProgress;
+
   /// Gets or sets verbose log option.
   final bool? logVerbose;
+
   /// The name of the resource
   final String name;
+
   /// Gets or sets the runbook output types.
   final List<String>? outputTypes;
+
   /// Gets or sets the runbook parameters.
   final Map<String, RunbookParameterResponse>? parameters;
+
   /// Gets or sets the provisioning state of the runbook.
   final String? provisioningState;
+
   /// Gets or sets the type of the runbook.
   final String? runbookType;
+
   /// Gets or sets the state of the runbook.
   final String? state;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource.
   final String type;
 
@@ -100,7 +120,7 @@ class GetRunbookResult {
       'azureApiVersion': azureApiVersion,
       'creationTime': ?creationTime,
       'description': ?description,
-      'draft': ?draft == null ? null : draft!.toMap(),
+      'draft': ?draft?.toMap(),
       'etag': ?etag,
       'id': id,
       'jobCount': ?jobCount,
@@ -112,7 +132,14 @@ class GetRunbookResult {
       'logVerbose': ?logVerbose,
       'name': name,
       'outputTypes': ?outputTypes,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeMapValues<RunbookParameterResponse, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?(() {
+        final guardedValue = parameters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeMapValues<
+          RunbookParameterResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'provisioningState': ?provisioningState,
       'runbookType': ?runbookType,
       'state': ?state,
@@ -124,27 +151,101 @@ class GetRunbookResult {
   factory GetRunbookResult.fromMap(Map<String, dynamic> map) {
     return GetRunbookResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      creationTime: map['creationTime'] == null ? null : map['creationTime']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      draft: map['draft'] == null ? null : RunbookDraftResponse.fromMap((map['draft']! as Map).cast<String, dynamic>()),
-      etag: map['etag'] == null ? null : map['etag']! as String,
+      creationTime: (() {
+        final guardedValue = map['creationTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      draft: (() {
+        final guardedValue = map['draft'];
+        if (guardedValue == null) return null;
+        return RunbookDraftResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      jobCount: map['jobCount'] == null ? null : map['jobCount']! as int,
-      lastModifiedBy: map['lastModifiedBy'] == null ? null : map['lastModifiedBy']! as String,
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime']! as String,
-      location: map['location'] == null ? null : map['location']! as String,
-      logActivityTrace: map['logActivityTrace'] == null ? null : map['logActivityTrace']! as int,
-      logProgress: map['logProgress'] == null ? null : map['logProgress']! as bool,
-      logVerbose: map['logVerbose'] == null ? null : map['logVerbose']! as bool,
+      jobCount: (() {
+        final guardedValue = map['jobCount'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      lastModifiedBy: (() {
+        final guardedValue = map['lastModifiedBy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      lastModifiedTime: (() {
+        final guardedValue = map['lastModifiedTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      logActivityTrace: (() {
+        final guardedValue = map['logActivityTrace'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      logProgress: (() {
+        final guardedValue = map['logProgress'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      logVerbose: (() {
+        final guardedValue = map['logVerbose'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       name: map['name'] as String,
-      outputTypes: map['outputTypes'] == null ? null : (map['outputTypes']! as List).cast<String>(),
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<RunbookParameterResponse>(map['parameters']!, (value) => RunbookParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
-      runbookType: map['runbookType'] == null ? null : map['runbookType']! as String,
-      state: map['state'] == null ? null : map['state']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      outputTypes: (() {
+        final guardedValue = map['outputTypes'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeMapValues<RunbookParameterResponse>(
+          guardedValue,
+          (value) => RunbookParameterResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      runbookType: (() {
+        final guardedValue = map['runbookType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

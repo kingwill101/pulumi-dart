@@ -8,16 +8,15 @@ enum RosettaNetPipActivityType {
   valueRequestConfirm("RequestConfirm"),
   valueRequestResponse("RequestResponse");
 
-  const RosettaNetPipActivityType(this.value);
-  final String value;
+  const RosettaNetPipActivityType(this.wireValue);
+  final String wireValue;
 
   static RosettaNetPipActivityType fromValue(String value) {
     for (final item in RosettaNetPipActivityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RosettaNetPipActivityType value: $value');
   }
 }
-

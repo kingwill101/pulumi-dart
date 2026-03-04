@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoscaleSettingProfileRuleMetricTriggerDimension {
   /// The name of the dimension.
   final pulumi.Input<String> name;
+
   /// The dimension operator. Possible values are `Equals` and `NotEquals`. `Equals` means being equal to any of the values. `NotEquals` means being not equal to any of the values.
   final pulumi.Input<String> operator;
+
   /// A list of dimension values.
   final pulumi.Input<List<String>> values;
 
@@ -28,12 +30,13 @@ class AutoscaleSettingProfileRuleMetricTriggerDimension {
     };
   }
 
-  factory AutoscaleSettingProfileRuleMetricTriggerDimension.fromMap(Map<String, dynamic> map) {
+  factory AutoscaleSettingProfileRuleMetricTriggerDimension.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutoscaleSettingProfileRuleMetricTriggerDimension(
-      name: (map['name'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

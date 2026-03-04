@@ -3,16 +3,15 @@ enum ResiliencyModel {
   valueSingleHomed("SingleHomed"),
   valueMultiHomed("MultiHomed");
 
-  const ResiliencyModel(this.value);
-  final String value;
+  const ResiliencyModel(this.wireValue);
+  final String wireValue;
 
   static ResiliencyModel fromValue(String value) {
     for (final item in ResiliencyModel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResiliencyModel value: $value');
   }
 }
-

@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackupPlansPlan {
   /// Specifies whether to activate the backup plan.
   final pulumi.Input<bool> active;
+
   /// The backup cycle. Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.
   final pulumi.Input<String> backupPeriod;
+
   /// The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
   final pulumi.Input<String> backupTime;
+
   /// The ID of the cluster for the backup.
   final pulumi.Input<String> clusterId;
+
   /// The time when the backup plan was created.
   final pulumi.Input<String> createTime;
+
   /// The ID of the data center for the backup in the cluster.
   final pulumi.Input<String> dataCenterId;
+
   /// The ID of the Backup Plan.
   final pulumi.Input<String> id;
+
   /// The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days.
   final pulumi.Input<int> retentionPeriod;
 
@@ -55,15 +62,14 @@ class GetBackupPlansPlan {
 
   factory GetBackupPlansPlan.fromMap(Map<String, dynamic> map) {
     return GetBackupPlansPlan(
-      active: (map['active'] as bool).input(),
-      backupPeriod: (map['backupPeriod'] as String).input(),
-      backupTime: (map['backupTime'] as String).input(),
-      clusterId: (map['clusterId'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      dataCenterId: (map['dataCenterId'] as String).input(),
-      id: (map['id'] as String).input(),
-      retentionPeriod: (map['retentionPeriod'] as int).input(),
+      active: pulumi.Input.fromValue(map['active'] as bool),
+      backupPeriod: pulumi.Input.fromValue(map['backupPeriod'] as String),
+      backupTime: pulumi.Input.fromValue(map['backupTime'] as String),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      dataCenterId: pulumi.Input.fromValue(map['dataCenterId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      retentionPeriod: pulumi.Input.fromValue(map['retentionPeriod'] as int),
     );
   }
 }
-

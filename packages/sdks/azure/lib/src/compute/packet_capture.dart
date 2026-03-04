@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'packet_capture_args.dart';
-import 'packet_capture_filter.dart';
 import 'packet_capture_state.dart';
 import 'packet_capture_storage_location.dart';
 
@@ -685,11 +684,11 @@ import 'packet_capture_storage_location.dart';
 /// ```
 ///
 ///
-/// > **Note:** This Resource requires that [the Network Watcher Virtual Machine Extension](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-manage-portal#before-you-begin) is installed on the Virtual Machine before capturing can be enabled which can be installed via the `azure.compute.Extension` resource.
+/// &gt; **Note:** This Resource requires that [the Network Watcher Virtual Machine Extension](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-manage-portal#before-you-begin) is installed on the Virtual Machine before capturing can be enabled which can be installed via the `azure.compute.Extension` resource.
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -703,19 +702,26 @@ import 'packet_capture_storage_location.dart';
 /// ```
 class PacketCapture extends pulumi.CustomResource {
   /// One or more `filter` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<PacketCaptureFilter>?> filters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> filters;
+
   /// The number of bytes captured per packet. The remaining bytes are truncated. Defaults to `0` (Entire Packet Captured). Changing this forces a new resource to be created.
   late final pulumi.Output<int?> maximumBytesPerPacket;
+
   /// Maximum size of the capture in Bytes. Defaults to `1073741824` (1GB). Changing this forces a new resource to be created.
   late final pulumi.Output<int?> maximumBytesPerSession;
+
   /// The maximum duration of the capture session in seconds. Defaults to `18000` (5 hours). Changing this forces a new resource to be created.
   late final pulumi.Output<int?> maximumCaptureDurationInSeconds;
+
   /// The name to use for this Network Packet Capture. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The resource ID of the Network Watcher. Changing this forces a new resource to be created.
   late final pulumi.Output<String> networkWatcherId;
+
   /// A `storage_location` block as defined below. Changing this forces a new resource to be created.
   late final pulumi.Output<PacketCaptureStorageLocation> storageLocation;
+
   /// The resource ID of the target Virtual Machine to capture packets from. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineId;
 
@@ -728,19 +734,23 @@ class PacketCapture extends pulumi.CustomResource {
     PacketCaptureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/packetCapture:PacketCapture',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.filters = registerOutput<List<PacketCaptureFilter>?>('filters');
-    this.maximumBytesPerPacket = registerOutput<int?>('maximumBytesPerPacket');
-    this.maximumBytesPerSession = registerOutput<int?>('maximumBytesPerSession');
-    this.maximumCaptureDurationInSeconds = registerOutput<int?>('maximumCaptureDurationInSeconds');
+         'azure:compute/packetCapture:PacketCapture',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    filters = registerOutput<List<Map<String, dynamic>>?>('filters');
+    maximumBytesPerPacket = registerOutput<int?>('maximumBytesPerPacket');
+    maximumBytesPerSession = registerOutput<int?>('maximumBytesPerSession');
+    maximumCaptureDurationInSeconds = registerOutput<int?>(
+      'maximumCaptureDurationInSeconds',
+    );
     this.name = registerOutput<String>('name');
-    this.networkWatcherId = registerOutput<String>('networkWatcherId');
-    this.storageLocation = registerOutput<PacketCaptureStorageLocation>('storageLocation');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
+    networkWatcherId = registerOutput<String>('networkWatcherId');
+    storageLocation = registerOutput<PacketCaptureStorageLocation>(
+      'storageLocation',
+    );
+    virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 
   /// Gets an existing [PacketCapture] resource's state with the given [name] and [id].
@@ -761,18 +771,22 @@ class PacketCapture extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/packetCapture:PacketCapture',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.filters = registerOutput<List<PacketCaptureFilter>?>('filters');
-    this.maximumBytesPerPacket = registerOutput<int?>('maximumBytesPerPacket');
-    this.maximumBytesPerSession = registerOutput<int?>('maximumBytesPerSession');
-    this.maximumCaptureDurationInSeconds = registerOutput<int?>('maximumCaptureDurationInSeconds');
+         'azure:compute/packetCapture:PacketCapture',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    filters = registerOutput<List<Map<String, dynamic>>?>('filters');
+    maximumBytesPerPacket = registerOutput<int?>('maximumBytesPerPacket');
+    maximumBytesPerSession = registerOutput<int?>('maximumBytesPerSession');
+    maximumCaptureDurationInSeconds = registerOutput<int?>(
+      'maximumCaptureDurationInSeconds',
+    );
     this.name = registerOutput<String>('name');
-    this.networkWatcherId = registerOutput<String>('networkWatcherId');
-    this.storageLocation = registerOutput<PacketCaptureStorageLocation>('storageLocation');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
+    networkWatcherId = registerOutput<String>('networkWatcherId');
+    storageLocation = registerOutput<PacketCaptureStorageLocation>(
+      'storageLocation',
+    );
+    virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 }

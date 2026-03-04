@@ -17,16 +17,15 @@ enum RegionCommitmentTypeComputeV1 {
   memoryOptimizedM3("MEMORY_OPTIMIZED_M3"),
   typeUnspecified("TYPE_UNSPECIFIED");
 
-  const RegionCommitmentTypeComputeV1(this.value);
-  final String value;
+  const RegionCommitmentTypeComputeV1(this.wireValue);
+  final String wireValue;
 
   static RegionCommitmentTypeComputeV1 fromValue(String value) {
     for (final item in RegionCommitmentTypeComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegionCommitmentTypeComputeV1 value: $value');
   }
 }
-

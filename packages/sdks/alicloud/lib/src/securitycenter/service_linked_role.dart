@@ -6,7 +6,7 @@ import 'service_linked_role_state.dart';
 ///
 /// For information about Security Center Service Role and how to use it, see [What is Security Center](https://www.alibabacloud.com/help/en/doc-detail/42302.htm).
 ///
-/// > **NOTE:** Available since v1.142.0.
+/// &gt; **NOTE:** Available since v1.142.0.
 ///
 /// ## Example Usage
 ///
@@ -113,12 +113,12 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     Map<String, dynamic>? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole',
-          name,
-          pulumi.Input.mapToInputs(args ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.status = registerOutput<bool>('status');
+         'alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole',
+         name,
+         pulumi.Input.mapToInputs(args ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    status = registerOutput<bool>('status');
   }
 
   /// Gets an existing [ServiceLinkedRole] resource's state with the given [name] and [id].
@@ -139,11 +139,11 @@ class ServiceLinkedRole extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.status = registerOutput<bool>('status');
+         'alicloud:securitycenter/serviceLinkedRole:ServiceLinkedRole',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    status = registerOutput<bool>('status');
   }
 }

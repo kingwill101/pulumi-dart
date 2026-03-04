@@ -3,16 +3,15 @@ enum UnauthenticatedClientAction {
   valueRedirectToLoginPage("RedirectToLoginPage"),
   valueAllowAnonymous("AllowAnonymous");
 
-  const UnauthenticatedClientAction(this.value);
-  final String value;
+  const UnauthenticatedClientAction(this.wireValue);
+  final String wireValue;
 
   static UnauthenticatedClientAction fromValue(String value) {
     for (final item in UnauthenticatedClientAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UnauthenticatedClientAction value: $value');
   }
 }
-

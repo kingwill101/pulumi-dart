@@ -6,7 +6,10 @@ import 'network_insights_analysis_return_path_component_security_group_rule_port
 class NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule {
   final pulumi.Input<String>? cidr;
   final pulumi.Input<String>? direction;
-  final pulumi.Input<List<NetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange>>? portRanges;
+  final pulumi.Input<
+    List<NetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange>
+  >?
+  portRanges;
   final pulumi.Input<String>? prefixListId;
   final pulumi.Input<String>? protocol;
   final pulumi.Input<String>? securityGroupId;
@@ -31,22 +34,70 @@ class NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule {
     return <String, dynamic>{
       'cidr': ?cidr,
       'direction': ?direction,
-      'portRanges': ?pulumi.Input.mapOptionalInputValue<List<NetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange>, List<Map<String, dynamic>>>(portRanges, (value) => pulumi.Input.encodeList<NetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'portRanges':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              NetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange
+            >,
+            List<Map<String, dynamic>>
+          >(
+            portRanges,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'prefixListId': ?prefixListId,
       'protocol': ?protocol,
       'securityGroupId': ?securityGroupId,
     };
   }
 
-  factory NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule.fromMap(Map<String, dynamic> map) {
+  factory NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInsightsAnalysisReturnPathComponentSecurityGroupRule(
-      cidr: map['cidr'] == null ? null : ((map['cidr'] as String).input()).input(),
-      direction: map['direction'] == null ? null : ((map['direction'] as String).input()).input(),
-      portRanges: map['portRanges'] == null ? null : ((pulumi.Input.decodeList<NetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange>(map['portRanges']!, (value) => NetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      prefixListId: map['prefixListId'] == null ? null : ((map['prefixListId'] as String).input()).input(),
-      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : ((map['securityGroupId'] as String).input()).input(),
+      cidr: (() {
+        final guardedValue = map['cidr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      direction: (() {
+        final guardedValue = map['direction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      portRanges: (() {
+        final guardedValue = map['portRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            NetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange
+          >(
+            guardedValue,
+            (value) =>
+                NetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      prefixListId: (() {
+        final guardedValue = map['prefixListId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupId: (() {
+        final guardedValue = map['securityGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

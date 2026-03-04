@@ -8,7 +8,7 @@ import 'bandwidth_limit_state.dart';
 ///
 /// For information about CEN and how to use it, see [Cross-region interconnection bandwidth](https://www.alibabacloud.com/help/doc-detail/65983.htm)
 ///
-/// > **NOTE:** Available since v1.18.0.
+/// &gt; **NOTE:** Available since v1.18.0.
 ///
 /// ## Example Usage
 ///
@@ -437,10 +437,12 @@ import 'bandwidth_limit_state.dart';
 class BandwidthLimit extends pulumi.CustomResource {
   /// The bandwidth configured for the interconnected regions communication.
   ///
-  /// ->**NOTE:** The `alicloud.cen.BandwidthLimit` resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
+  /// -&gt;**NOTE:** The `alicloud.cen.BandwidthLimit` resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
   late final pulumi.Output<int> bandwidthLimit;
+
   /// The ID of the CEN.
   late final pulumi.Output<String> instanceId;
+
   /// List of the two regions to interconnect. Must be two different regions.
   late final pulumi.Output<List<String>> regionIds;
 
@@ -453,14 +455,14 @@ class BandwidthLimit extends pulumi.CustomResource {
     BandwidthLimitArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/bandwidthLimit:BandwidthLimit',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidthLimit = registerOutput<int>('bandwidthLimit');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.regionIds = registerOutput<List<String>>('regionIds');
+         'alicloud:cen/bandwidthLimit:BandwidthLimit',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidthLimit = registerOutput<int>('bandwidthLimit');
+    instanceId = registerOutput<String>('instanceId');
+    regionIds = registerOutput<List<String>>('regionIds');
   }
 
   /// Gets an existing [BandwidthLimit] resource's state with the given [name] and [id].
@@ -481,13 +483,13 @@ class BandwidthLimit extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/bandwidthLimit:BandwidthLimit',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bandwidthLimit = registerOutput<int>('bandwidthLimit');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.regionIds = registerOutput<List<String>>('regionIds');
+         'alicloud:cen/bandwidthLimit:BandwidthLimit',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bandwidthLimit = registerOutput<int>('bandwidthLimit');
+    instanceId = registerOutput<String>('instanceId');
+    regionIds = registerOutput<List<String>>('regionIds');
   }
 }

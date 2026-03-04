@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AmlFilesystemHealthResponse {
   /// List of AML file system health states.
   final pulumi.Input<String>? state;
+
   /// Server-defined error code for the AML file system health
   final pulumi.Input<String>? statusCode;
+
   /// Describes the health state.
   final pulumi.Input<String>? statusDescription;
 
@@ -31,10 +33,21 @@ class AmlFilesystemHealthResponse {
 
   factory AmlFilesystemHealthResponse.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemHealthResponse(
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode']! as String).input(),
-      statusDescription: map['statusDescription'] == null ? null : (map['statusDescription']! as String).input(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statusCode: (() {
+        final guardedValue = map['statusCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statusDescription: (() {
+        final guardedValue = map['statusDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

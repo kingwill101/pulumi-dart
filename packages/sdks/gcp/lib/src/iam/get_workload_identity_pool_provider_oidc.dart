@@ -12,12 +12,14 @@ class GetWorkloadIdentityPoolProviderOidc {
   /// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
   /// For example:
   /// '''
-  /// //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
-  /// https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+  /// //iam.googleapis.com/projects/&lt;project-number&gt;/locations/&lt;location&gt;/workloadIdentityPools/&lt;pool-id&gt;/providers/&lt;provider-id&gt;
+  /// https://iam.googleapis.com/projects/&lt;project-number&gt;/locations/&lt;location&gt;/workloadIdentityPools/&lt;pool-id&gt;/providers/&lt;provider-id&gt;
   /// '''
   final pulumi.Input<List<String>> allowedAudiences;
+
   /// The OIDC issuer URL.
   final pulumi.Input<String> issuerUri;
+
   /// OIDC JWKs in JSON String format. For details on definition of a
   /// JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
   /// use the 'jwks_uri' from the discovery document fetched from the
@@ -29,9 +31,9 @@ class GetWorkloadIdentityPoolProviderOidc {
   /// "keys": [
   /// {
   /// "kty": "RSA/EC",
-  /// "alg": "<algorithm>",
+  /// "alg": "&lt;algorithm&gt;",
   /// "use": "sig",
-  /// "kid": "<key-id>",
+  /// "kid": "&lt;key-id&gt;",
   /// "n": "",
   /// "e": "",
   /// "x": "",
@@ -61,12 +63,15 @@ class GetWorkloadIdentityPoolProviderOidc {
     };
   }
 
-  factory GetWorkloadIdentityPoolProviderOidc.fromMap(Map<String, dynamic> map) {
+  factory GetWorkloadIdentityPoolProviderOidc.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkloadIdentityPoolProviderOidc(
-      allowedAudiences: ((map['allowedAudiences'] as List).cast<String>()).input(),
-      issuerUri: (map['issuerUri'] as String).input(),
-      jwksJson: (map['jwksJson'] as String).input(),
+      allowedAudiences: pulumi.Input.fromValue(
+        (map['allowedAudiences'] as List).cast<String>(),
+      ),
+      issuerUri: pulumi.Input.fromValue(map['issuerUri'] as String),
+      jwksJson: pulumi.Input.fromValue(map['jwksJson'] as String),
     );
   }
 }
-

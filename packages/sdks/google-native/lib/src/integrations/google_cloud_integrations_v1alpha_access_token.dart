@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudIntegrationsV1alphaAccessToken {
   /// The access token encapsulating the security identity of a process or thread.
   final pulumi.Input<String>? accessToken;
+
   /// The approximate time until the access token retrieved is valid.
   final pulumi.Input<String> accessTokenExpireTime;
+
   /// If the access token will expire, use the refresh token to obtain another access token.
   final pulumi.Input<String>? refreshToken;
+
   /// The approximate time until the refresh token retrieved is valid.
   final pulumi.Input<String>? refreshTokenExpireTime;
+
   /// Only support "bearer" token in v1 as bearer token is the predominant type used with OAuth 2.0.
   final pulumi.Input<String>? tokenType;
 
@@ -39,14 +43,33 @@ class GoogleCloudIntegrationsV1alphaAccessToken {
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaAccessToken.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaAccessToken.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaAccessToken(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as String).input(),
-      accessTokenExpireTime: (map['accessTokenExpireTime'] as String).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken']! as String).input(),
-      refreshTokenExpireTime: map['refreshTokenExpireTime'] == null ? null : (map['refreshTokenExpireTime']! as String).input(),
-      tokenType: map['tokenType'] == null ? null : (map['tokenType']! as String).input(),
+      accessToken: (() {
+        final guardedValue = map['accessToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accessTokenExpireTime: pulumi.Input.fromValue(
+        map['accessTokenExpireTime'] as String,
+      ),
+      refreshToken: (() {
+        final guardedValue = map['refreshToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      refreshTokenExpireTime: (() {
+        final guardedValue = map['refreshTokenExpireTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tokenType: (() {
+        final guardedValue = map['tokenType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

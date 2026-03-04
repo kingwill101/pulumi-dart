@@ -9,20 +9,19 @@ class PscConfig {
 
   /// Creates a new [PscConfig].
   /// [pscEnabled] Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
-  PscConfig({
-    this.pscEnabled,
-  });
+  PscConfig({this.pscEnabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pscEnabled': ?pscEnabled,
-    };
+    return <String, dynamic>{'pscEnabled': ?pscEnabled};
   }
 
   factory PscConfig.fromMap(Map<String, dynamic> map) {
     return PscConfig(
-      pscEnabled: map['pscEnabled'] == null ? null : (map['pscEnabled']! as bool).input(),
+      pscEnabled: (() {
+        final guardedValue = map['pscEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

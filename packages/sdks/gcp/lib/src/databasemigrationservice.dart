@@ -1,5 +1,3 @@
-library module_databasemigrationservice;
-
 export 'databasemigrationservice/connection_profile.dart';
 export 'databasemigrationservice/connection_profile_alloydb.dart';
 export 'databasemigrationservice/connection_profile_alloydb_settings.dart';

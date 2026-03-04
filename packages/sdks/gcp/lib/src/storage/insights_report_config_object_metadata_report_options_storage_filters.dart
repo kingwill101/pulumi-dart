@@ -8,20 +8,21 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageFilters {
 
   /// Creates a new [InsightsReportConfigObjectMetadataReportOptionsStorageFilters].
   /// [bucket] The filter to use when specifying which bucket to generate inventory reports for.
-  InsightsReportConfigObjectMetadataReportOptionsStorageFilters({
-    this.bucket,
-  });
+  InsightsReportConfigObjectMetadataReportOptionsStorageFilters({this.bucket});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': ?bucket,
-    };
+    return <String, dynamic>{'bucket': ?bucket};
   }
 
-  factory InsightsReportConfigObjectMetadataReportOptionsStorageFilters.fromMap(Map<String, dynamic> map) {
+  factory InsightsReportConfigObjectMetadataReportOptionsStorageFilters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InsightsReportConfigObjectMetadataReportOptionsStorageFilters(
-      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      bucket: (() {
+        final guardedValue = map['bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

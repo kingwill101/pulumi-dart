@@ -4,16 +4,15 @@ enum AllowedContentLevel {
   valueMedium("Medium"),
   valueHigh("High");
 
-  const AllowedContentLevel(this.value);
-  final String value;
+  const AllowedContentLevel(this.wireValue);
+  final String wireValue;
 
   static AllowedContentLevel fromValue(String value) {
     for (final item in AllowedContentLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AllowedContentLevel value: $value');
   }
 }
-

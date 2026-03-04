@@ -3,16 +3,17 @@ enum TargetSslProxyProxyHeaderComputeBeta {
   none("NONE"),
   proxyV1("PROXY_V1");
 
-  const TargetSslProxyProxyHeaderComputeBeta(this.value);
-  final String value;
+  const TargetSslProxyProxyHeaderComputeBeta(this.wireValue);
+  final String wireValue;
 
   static TargetSslProxyProxyHeaderComputeBeta fromValue(String value) {
     for (final item in TargetSslProxyProxyHeaderComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TargetSslProxyProxyHeaderComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown TargetSslProxyProxyHeaderComputeBeta value: $value',
+    );
   }
 }
-

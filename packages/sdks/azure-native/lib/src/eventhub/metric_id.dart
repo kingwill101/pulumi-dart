@@ -5,16 +5,15 @@ enum MetricId {
   valueIncomingMessages("IncomingMessages"),
   valueOutgoingMessages("OutgoingMessages");
 
-  const MetricId(this.value);
-  final String value;
+  const MetricId(this.wireValue);
+  final String wireValue;
 
   static MetricId fromValue(String value) {
     for (final item in MetricId.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetricId value: $value');
   }
 }
-

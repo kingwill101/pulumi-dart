@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebApplicationFirewallPolicyArgs {
   /// The name of the policy.
   final pulumi.Input<String> policyName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -27,11 +28,14 @@ class GetWebApplicationFirewallPolicyArgs {
     };
   }
 
-  factory GetWebApplicationFirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetWebApplicationFirewallPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWebApplicationFirewallPolicyArgs(
-      policyName: (map['policyName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      policyName: pulumi.Input.fromValue(map['policyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

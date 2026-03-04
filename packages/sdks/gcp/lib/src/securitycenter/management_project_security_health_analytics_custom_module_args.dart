@@ -10,18 +10,25 @@ import 'management_project_security_health_analytics_custom_module_custom_config
 class ManagementProjectSecurityHealthAnalyticsCustomModuleArgs {
   /// The user specified custom configuration for the module.
   /// Structure is documented below.
-  final pulumi.Input<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig>? customConfig;
+  final pulumi.Input<
+    ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig
+  >?
+  customConfig;
+
   /// The display name of the Security Health Analytics custom module. This
   /// display name becomes the finding category for all findings that are
   /// returned by this custom module. The display name must be between 1 and
   /// 128 characters, start with a lowercase letter, and contain alphanumeric
   /// characters or underscores only.
   final pulumi.Input<String>? displayName;
+
   /// The enablement state of the custom module.
   /// Possible values are: `ENABLED`, `DISABLED`.
   final pulumi.Input<String>? enablementState;
+
   /// Location ID of the parent organization. If not provided, 'global' will be used as the default location.
   final pulumi.Input<String>? location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -42,7 +49,11 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customConfig': ?pulumi.Input.mapOptionalInputValue<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig, Map<String, dynamic>>(customConfig, (value) => value.toMap()),
+      'customConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig,
+            Map<String, dynamic>
+          >(customConfig, (value) => value.toMap()),
       'displayName': ?displayName,
       'enablementState': ?enablementState,
       'location': ?location,
@@ -50,14 +61,39 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleArgs {
     };
   }
 
-  factory ManagementProjectSecurityHealthAnalyticsCustomModuleArgs.fromMap(Map<String, dynamic> map) {
+  factory ManagementProjectSecurityHealthAnalyticsCustomModuleArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagementProjectSecurityHealthAnalyticsCustomModuleArgs(
-      customConfig: map['customConfig'] == null ? null : (ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((map['customConfig']! as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      enablementState: map['enablementState'] == null ? null : (map['enablementState']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      customConfig: (() {
+        final guardedValue = map['customConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enablementState: (() {
+        final guardedValue = map['enablementState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

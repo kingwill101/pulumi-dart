@@ -11,14 +11,18 @@ class EipSegmentAddressState {
   ///
   /// Default value: `5`. Unit: Mbit/s.
   final pulumi.Input<String>? bandwidth;
+
   /// The time when the contiguous Elastic IP address group was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   final pulumi.Input<String>? createTime;
+
   /// The subnet mask of the contiguous EIP group. Valid values:
   final pulumi.Input<String>? eipMask;
+
   /// The metering method of the contiguous EIP group. Valid values:
   /// - `PayByBandwidth` (default)
   /// - `PayByTraffic`
   final pulumi.Input<String>? internetChargeType;
+
   /// The line type. Valid values:
   /// - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
   /// - `BGP_PRO`: BGP (Multi-ISP) Pro line BGP (Multi-ISP) Pro line is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
@@ -35,14 +39,19 @@ class EipSegmentAddressState {
   ///
   /// If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
   final pulumi.Input<String>? isp;
+
   /// The network type. Set the value to `public`, which specifies the public network type.
   final pulumi.Input<String>? netmode;
+
   /// The resource group ID.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The name of the contiguous Elastic IP address group.
   final pulumi.Input<String>? segmentAddressName;
+
   /// The status of the resource
   final pulumi.Input<String>? status;
+
   /// The zone of the contiguous EIP group.
   final pulumi.Input<String>? zone;
 
@@ -87,17 +96,56 @@ class EipSegmentAddressState {
 
   factory EipSegmentAddressState.fromMap(Map<String, dynamic> map) {
     return EipSegmentAddressState(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      eipMask: map['eipMask'] == null ? null : (map['eipMask']! as String).input(),
-      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType']! as String).input(),
-      isp: map['isp'] == null ? null : (map['isp']! as String).input(),
-      netmode: map['netmode'] == null ? null : (map['netmode']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      segmentAddressName: map['segmentAddressName'] == null ? null : (map['segmentAddressName']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
+      bandwidth: (() {
+        final guardedValue = map['bandwidth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eipMask: (() {
+        final guardedValue = map['eipMask'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      internetChargeType: (() {
+        final guardedValue = map['internetChargeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isp: (() {
+        final guardedValue = map['isp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      netmode: (() {
+        final guardedValue = map['netmode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      segmentAddressName: (() {
+        final guardedValue = map['segmentAddressName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

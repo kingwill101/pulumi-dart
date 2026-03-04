@@ -15,15 +15,18 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sectionTypes': ?sectionTypes,
-    };
+    return <String, dynamic>{'sectionTypes': ?sectionTypes};
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections.fromMap(Map<String, dynamic> map) {
+  factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections(
-      sectionTypes: map['sectionTypes'] == null ? null : ((map['sectionTypes']! as List).cast<String>()).input(),
+      sectionTypes: (() {
+        final guardedValue = map['sectionTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

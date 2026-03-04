@@ -6,18 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EipInstanceAttachmentState {
   /// The first ID of the resource
   final pulumi.Input<String>? allocationId;
+
   /// Instance ID
   final pulumi.Input<String>? instanceId;
+
   /// The type of the EIP instance. Value:
   /// - `Nat`:NAT gateway.
   /// - `SlbInstance`: Server Load Balancer (ELB).
   /// - `NetworkInterface`: Secondary ENI.
   /// - `EnsInstance` (default): The ENS instance.
   final pulumi.Input<String>? instanceType;
+
   /// Indicates whether the EIP is a backup EIP. Value:
   /// - true: Spare.
   /// - false: not standby.
   final pulumi.Input<bool>? standby;
+
   /// The status of the EIP.
   final pulumi.Input<String>? status;
 
@@ -47,12 +51,31 @@ class EipInstanceAttachmentState {
 
   factory EipInstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return EipInstanceAttachmentState(
-      allocationId: map['allocationId'] == null ? null : (map['allocationId']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      standby: map['standby'] == null ? null : (map['standby']! as bool).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      allocationId: (() {
+        final guardedValue = map['allocationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      standby: (() {
+        final guardedValue = map['standby'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

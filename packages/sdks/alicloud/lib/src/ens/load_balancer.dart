@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_args.dart';
-import 'load_balancer_backend_server.dart';
 import 'load_balancer_state.dart';
 
 /// Provides a ENS Load Balancer resource.
@@ -9,7 +8,7 @@ import 'load_balancer_state.dart';
 ///
 /// For information about ENS Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createloadbalancer).
 ///
-/// > **NOTE:** Available since v1.213.0.
+/// &gt; **NOTE:** Available since v1.213.0.
 ///
 /// ## Example Usage
 ///
@@ -259,21 +258,29 @@ import 'load_balancer_state.dart';
 /// ```
 class LoadBalancer extends pulumi.CustomResource {
   /// The list of backend servers. See `backend_servers` below.
-  late final pulumi.Output<List<LoadBalancerBackendServer>?> backendServers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> backendServers;
+
   /// The creation Time (UTC) of the load balancing instance.
   late final pulumi.Output<String> createTime;
+
   /// The ID of the ENS node.
   late final pulumi.Output<String> ensRegionId;
+
   /// Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
   late final pulumi.Output<String?> loadBalancerName;
+
   /// Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
   late final pulumi.Output<String> loadBalancerSpec;
+
   /// The network ID of the created edge load balancing (ELB) instance.
   late final pulumi.Output<String> networkId;
+
   /// Server Load Balancer Instance Payment Type. Value:PayAsYouGo
   late final pulumi.Output<String> paymentType;
+
   /// The status of the SLB instance.
   late final pulumi.Output<String> status;
+
   /// The ID of the vSwitch to which the VPC instance belongs.
   late final pulumi.Output<String> vswitchId;
 
@@ -286,20 +293,22 @@ class LoadBalancer extends pulumi.CustomResource {
     LoadBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/loadBalancer:LoadBalancer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendServers = registerOutput<List<LoadBalancerBackendServer>?>('backendServers');
-    this.createTime = registerOutput<String>('createTime');
-    this.ensRegionId = registerOutput<String>('ensRegionId');
-    this.loadBalancerName = registerOutput<String?>('loadBalancerName');
-    this.loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
-    this.networkId = registerOutput<String>('networkId');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.status = registerOutput<String>('status');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:ens/loadBalancer:LoadBalancer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendServers = registerOutput<List<Map<String, dynamic>>?>(
+      'backendServers',
+    );
+    createTime = registerOutput<String>('createTime');
+    ensRegionId = registerOutput<String>('ensRegionId');
+    loadBalancerName = registerOutput<String?>('loadBalancerName');
+    loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
+    networkId = registerOutput<String>('networkId');
+    paymentType = registerOutput<String>('paymentType');
+    status = registerOutput<String>('status');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 
   /// Gets an existing [LoadBalancer] resource's state with the given [name] and [id].
@@ -320,19 +329,21 @@ class LoadBalancer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/loadBalancer:LoadBalancer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backendServers = registerOutput<List<LoadBalancerBackendServer>?>('backendServers');
-    this.createTime = registerOutput<String>('createTime');
-    this.ensRegionId = registerOutput<String>('ensRegionId');
-    this.loadBalancerName = registerOutput<String?>('loadBalancerName');
-    this.loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
-    this.networkId = registerOutput<String>('networkId');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.status = registerOutput<String>('status');
-    this.vswitchId = registerOutput<String>('vswitchId');
+         'alicloud:ens/loadBalancer:LoadBalancer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    backendServers = registerOutput<List<Map<String, dynamic>>?>(
+      'backendServers',
+    );
+    createTime = registerOutput<String>('createTime');
+    ensRegionId = registerOutput<String>('ensRegionId');
+    loadBalancerName = registerOutput<String?>('loadBalancerName');
+    loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
+    networkId = registerOutput<String>('networkId');
+    paymentType = registerOutput<String>('paymentType');
+    status = registerOutput<String>('status');
+    vswitchId = registerOutput<String>('vswitchId');
   }
 }

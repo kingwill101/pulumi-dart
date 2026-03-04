@@ -7,13 +7,20 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_image.dart';
 /// The basic card message. Useful for displaying information.
 class GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
   /// Optional. The collection of card buttons.
-  final pulumi.Input<List<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>>? buttons;
+  final pulumi.Input<
+    List<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>
+  >?
+  buttons;
+
   /// Required, unless image is present. The body text of the card.
   final pulumi.Input<String>? formattedText;
+
   /// Optional. The image for the card.
   final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageImage>? image;
+
   /// Optional. The subtitle of the card.
   final pulumi.Input<String>? subtitle;
+
   /// Optional. The title of the card.
   final pulumi.Input<String>? title;
 
@@ -33,22 +40,72 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buttons': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>, List<Map<String, dynamic>>>(buttons, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'buttons':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>,
+            List<Map<String, dynamic>>
+          >(
+            buttons,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'formattedText': ?formattedText,
-      'image': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2beta1IntentMessageImage, Map<String, dynamic>>(image, (value) => value.toMap()),
+      'image':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2beta1IntentMessageImage,
+            Map<String, dynamic>
+          >(image, (value) => value.toMap()),
       'subtitle': ?subtitle,
       'title': ?title,
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageBasicCard.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageBasicCard.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageBasicCard(
-      buttons: map['buttons'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>(map['buttons']!, (value) => GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      formattedText: map['formattedText'] == null ? null : (map['formattedText']! as String).input(),
-      image: map['image'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageImage.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
-      subtitle: map['subtitle'] == null ? null : (map['subtitle']! as String).input(),
-      title: map['title'] == null ? null : (map['title']! as String).input(),
+      buttons: (() {
+        final guardedValue = map['buttons'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton
+          >(
+            guardedValue,
+            (value) =>
+                GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      formattedText: (() {
+        final guardedValue = map['formattedText'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      image: (() {
+        final guardedValue = map['image'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2beta1IntentMessageImage.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      subtitle: (() {
+        final guardedValue = map['subtitle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      title: (() {
+        final guardedValue = map['title'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

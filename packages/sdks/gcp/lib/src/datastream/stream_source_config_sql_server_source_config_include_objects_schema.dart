@@ -6,9 +6,13 @@ import 'stream_source_config_sql_server_source_config_include_objects_schema_tab
 class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema {
   /// Schema name.
   final pulumi.Input<String> schema;
+
   /// Tables in the schema.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable>>? tables;
+  final pulumi.Input<
+    List<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable>
+  >?
+  tables;
 
   /// Creates a new [StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema].
   /// [schema] Schema name.
@@ -21,15 +25,43 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'schema': schema,
-      'tables': ?pulumi.Input.mapOptionalInputValue<List<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable>, List<Map<String, dynamic>>>(tables, (value) => pulumi.Input.encodeList<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tables':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable
+            >,
+            List<Map<String, dynamic>>
+          >(
+            tables,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema.fromMap(Map<String, dynamic> map) {
+  factory StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema(
-      schema: (map['schema'] as String).input(),
-      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable>(map['tables']!, (value) => StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schema: pulumi.Input.fromValue(map['schema'] as String),
+      tables: (() {
+        final guardedValue = map['tables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable
+          >(
+            guardedValue,
+            (value) =>
+                StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

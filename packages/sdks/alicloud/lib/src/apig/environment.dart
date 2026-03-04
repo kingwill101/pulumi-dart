@@ -8,7 +8,7 @@ import 'environment_state.dart';
 ///
 /// For information about APIG Environment and how to use it, see [What is Environment](https://next.api.aliyun.com/api/APIG/2024-03-27/CreateEnvironment).
 ///
-/// > **NOTE:** Available since v1.240.0.
+/// &gt; **NOTE:** Available since v1.240.0.
 ///
 /// ## Example Usage
 ///
@@ -396,10 +396,13 @@ import 'environment_state.dart';
 class Environment extends pulumi.CustomResource {
   /// Description
   late final pulumi.Output<String?> description;
+
   /// The name of the resource
   late final pulumi.Output<String> environmentName;
+
   /// Gateway id
   late final pulumi.Output<String> gatewayId;
+
   /// The ID of the resource group
   late final pulumi.Output<String> resourceGroupId;
 
@@ -412,15 +415,15 @@ class Environment extends pulumi.CustomResource {
     EnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apig/environment:Environment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.environmentName = registerOutput<String>('environmentName');
-    this.gatewayId = registerOutput<String>('gatewayId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
+         'alicloud:apig/environment:Environment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    environmentName = registerOutput<String>('environmentName');
+    gatewayId = registerOutput<String>('gatewayId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
   }
 
   /// Gets an existing [Environment] resource's state with the given [name] and [id].
@@ -441,14 +444,14 @@ class Environment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:apig/environment:Environment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.environmentName = registerOutput<String>('environmentName');
-    this.gatewayId = registerOutput<String>('gatewayId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
+         'alicloud:apig/environment:Environment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    environmentName = registerOutput<String>('environmentName');
+    gatewayId = registerOutput<String>('gatewayId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
   }
 }

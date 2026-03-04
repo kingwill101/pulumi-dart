@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GlobalSecondaryIndexWarmThroughput {
   /// Number of read operations this index can instantaneously support.
   final pulumi.Input<int> readUnitsPerSecond;
+
   /// Number of write operations this index can instantaneously support.
   final pulumi.Input<int> writeUnitsPerSecond;
 
@@ -25,9 +26,12 @@ class GlobalSecondaryIndexWarmThroughput {
 
   factory GlobalSecondaryIndexWarmThroughput.fromMap(Map<String, dynamic> map) {
     return GlobalSecondaryIndexWarmThroughput(
-      readUnitsPerSecond: (map['readUnitsPerSecond'] as int).input(),
-      writeUnitsPerSecond: (map['writeUnitsPerSecond'] as int).input(),
+      readUnitsPerSecond: pulumi.Input.fromValue(
+        map['readUnitsPerSecond'] as int,
+      ),
+      writeUnitsPerSecond: pulumi.Input.fromValue(
+        map['writeUnitsPerSecond'] as int,
+      ),
     );
   }
 }
-

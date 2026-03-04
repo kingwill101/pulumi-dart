@@ -9,20 +9,15 @@ class GcfsConfigResponseContainerV1beta1 {
 
   /// Creates a new [GcfsConfigResponseContainerV1beta1].
   /// [enabled] Whether to use GCFS.
-  GcfsConfigResponseContainerV1beta1({
-    required this.enabled,
-  });
+  GcfsConfigResponseContainerV1beta1({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory GcfsConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return GcfsConfigResponseContainerV1beta1(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

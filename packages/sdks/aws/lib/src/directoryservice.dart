@@ -1,5 +1,3 @@
-library module_directoryservice;
-
 export 'directoryservice/conditional_forwarder.dart';
 export 'directoryservice/conditional_forwarder_args.dart';
 export 'directoryservice/conditional_forwarder_state.dart';

@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponse {
   /// Description of the bypass traffic rule.
   final pulumi.Input<String>? description;
+
   /// List of destination IP addresses or ranges for this rule.
   final pulumi.Input<List<String>>? destinationAddresses;
+
   /// List of destination IpGroups for this rule.
   final pulumi.Input<List<String>>? destinationIpGroups;
+
   /// List of destination ports or ranges.
   final pulumi.Input<List<String>>? destinationPorts;
+
   /// Name of the bypass traffic rule.
   final pulumi.Input<String>? name;
+
   /// The rule bypass protocol.
   final pulumi.Input<String>? protocol;
+
   /// List of source IP addresses or ranges for this rule.
   final pulumi.Input<List<String>>? sourceAddresses;
+
   /// List of source IpGroups for this rule.
   final pulumi.Input<List<String>>? sourceIpGroups;
 
@@ -54,17 +61,50 @@ class FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponse {
     };
   }
 
-  factory FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponse.fromMap(Map<String, dynamic> map) {
+  factory FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses']! as List).cast<String>()).input(),
-      destinationIpGroups: map['destinationIpGroups'] == null ? null : ((map['destinationIpGroups']! as List).cast<String>()).input(),
-      destinationPorts: map['destinationPorts'] == null ? null : ((map['destinationPorts']! as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses']! as List).cast<String>()).input(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups']! as List).cast<String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationAddresses: (() {
+        final guardedValue = map['destinationAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      destinationIpGroups: (() {
+        final guardedValue = map['destinationIpGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      destinationPorts: (() {
+        final guardedValue = map['destinationPorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceAddresses: (() {
+        final guardedValue = map['sourceAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceIpGroups: (() {
+        final guardedValue = map['sourceIpGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

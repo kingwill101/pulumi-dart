@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpAllocationArgs {
   /// Expands referenced resources.
   final pulumi.Input<String>? expand;
+
   /// The name of the IpAllocation.
   final pulumi.Input<String> ipAllocationName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,17 @@ class GetIpAllocationArgs {
 
   factory GetIpAllocationArgs.fromMap(Map<String, dynamic> map) {
     return GetIpAllocationArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      ipAllocationName: (map['ipAllocationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipAllocationName: pulumi.Input.fromValue(
+        map['ipAllocationName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

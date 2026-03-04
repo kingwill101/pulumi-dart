@@ -9,20 +9,19 @@ class OpsAnalyticsQuery {
 
   /// Creates a new [OpsAnalyticsQuery].
   /// [sql] A SQL query to fetch time series, category series, or numeric series data.
-  OpsAnalyticsQuery({
-    this.sql,
-  });
+  OpsAnalyticsQuery({this.sql});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sql': ?sql,
-    };
+    return <String, dynamic>{'sql': ?sql};
   }
 
   factory OpsAnalyticsQuery.fromMap(Map<String, dynamic> map) {
     return OpsAnalyticsQuery(
-      sql: map['sql'] == null ? null : (map['sql']! as String).input(),
+      sql: (() {
+        final guardedValue = map['sql'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,20 +7,33 @@ import 'schedule_create_notebook_execution_job_request_notebook_execution_job_gc
 class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
   /// The Dataform Repository containing the input notebook.
   /// Structure is documented below.
-  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource>? dataformRepositorySource;
+  final pulumi.Input<
+    ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource
+  >?
+  dataformRepositorySource;
+
   /// Required. The display name of the Notebook Execution.
   final pulumi.Input<String> displayName;
+
   /// Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
   final pulumi.Input<String>? executionTimeout;
+
   /// The user email to run the execution as.
   final pulumi.Input<String>? executionUser;
+
   /// The Cloud Storage uri for the input notebook.
   /// Structure is documented below.
-  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource>? gcsNotebookSource;
+  final pulumi.Input<
+    ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource
+  >?
+  gcsNotebookSource;
+
   /// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
   final pulumi.Input<String> gcsOutputUri;
+
   /// The NotebookRuntimeTemplate to source compute configuration from.
   final pulumi.Input<String> notebookRuntimeTemplateResourceName;
+
   /// The service account to run the execution as.
   final pulumi.Input<String>? serviceAccount;
 
@@ -46,28 +59,68 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataformRepositorySource': ?pulumi.Input.mapOptionalInputValue<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource, Map<String, dynamic>>(dataformRepositorySource, (value) => value.toMap()),
+      'dataformRepositorySource':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource,
+            Map<String, dynamic>
+          >(dataformRepositorySource, (value) => value.toMap()),
       'displayName': displayName,
       'executionTimeout': ?executionTimeout,
       'executionUser': ?executionUser,
-      'gcsNotebookSource': ?pulumi.Input.mapOptionalInputValue<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource, Map<String, dynamic>>(gcsNotebookSource, (value) => value.toMap()),
+      'gcsNotebookSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource,
+            Map<String, dynamic>
+          >(gcsNotebookSource, (value) => value.toMap()),
       'gcsOutputUri': gcsOutputUri,
-      'notebookRuntimeTemplateResourceName': notebookRuntimeTemplateResourceName,
+      'notebookRuntimeTemplateResourceName':
+          notebookRuntimeTemplateResourceName,
       'serviceAccount': ?serviceAccount,
     };
   }
 
-  factory ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob.fromMap(Map<String, dynamic> map) {
+  factory ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob(
-      dataformRepositorySource: map['dataformRepositorySource'] == null ? null : (ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource.fromMap((map['dataformRepositorySource']! as Map).cast<String, dynamic>())).input(),
-      displayName: (map['displayName'] as String).input(),
-      executionTimeout: map['executionTimeout'] == null ? null : (map['executionTimeout']! as String).input(),
-      executionUser: map['executionUser'] == null ? null : (map['executionUser']! as String).input(),
-      gcsNotebookSource: map['gcsNotebookSource'] == null ? null : (ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource.fromMap((map['gcsNotebookSource']! as Map).cast<String, dynamic>())).input(),
-      gcsOutputUri: (map['gcsOutputUri'] as String).input(),
-      notebookRuntimeTemplateResourceName: (map['notebookRuntimeTemplateResourceName'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      dataformRepositorySource: (() {
+        final guardedValue = map['dataformRepositorySource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      executionTimeout: (() {
+        final guardedValue = map['executionTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executionUser: (() {
+        final guardedValue = map['executionUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gcsNotebookSource: (() {
+        final guardedValue = map['gcsNotebookSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      gcsOutputUri: pulumi.Input.fromValue(map['gcsOutputUri'] as String),
+      notebookRuntimeTemplateResourceName: pulumi.Input.fromValue(
+        map['notebookRuntimeTemplateResourceName'] as String,
+      ),
+      serviceAccount: (() {
+        final guardedValue = map['serviceAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

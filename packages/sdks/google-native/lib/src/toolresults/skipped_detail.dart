@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SkippedDetail {
   /// If the App doesn't support the specific API level.
   final pulumi.Input<bool>? incompatibleAppVersion;
+
   /// If the App doesn't run on the specific architecture, for example, x86.
   final pulumi.Input<bool>? incompatibleArchitecture;
+
   /// If the requested OS version doesn't run on the specific device model.
   final pulumi.Input<bool>? incompatibleDevice;
 
@@ -31,10 +33,21 @@ class SkippedDetail {
 
   factory SkippedDetail.fromMap(Map<String, dynamic> map) {
     return SkippedDetail(
-      incompatibleAppVersion: map['incompatibleAppVersion'] == null ? null : (map['incompatibleAppVersion']! as bool).input(),
-      incompatibleArchitecture: map['incompatibleArchitecture'] == null ? null : (map['incompatibleArchitecture']! as bool).input(),
-      incompatibleDevice: map['incompatibleDevice'] == null ? null : (map['incompatibleDevice']! as bool).input(),
+      incompatibleAppVersion: (() {
+        final guardedValue = map['incompatibleAppVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      incompatibleArchitecture: (() {
+        final guardedValue = map['incompatibleArchitecture'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      incompatibleDevice: (() {
+        final guardedValue = map['incompatibleDevice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

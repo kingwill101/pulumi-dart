@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MccIssueResponse {
   /// Mcc cache node issue detail string.
   final pulumi.Input<String> detailString;
+
   /// Mcc cache node issue related help link.
   final pulumi.Input<String> helpLink;
+
   /// Mcc cache node issue end date.
   final pulumi.Input<String> issueEndDate;
+
   /// Mcc cache node issue start date.
   final pulumi.Input<String> issueStartDate;
+
   /// Mcc cache node issue type.
   final pulumi.Input<String> mccIssueType;
+
   /// Mcc cache node issues toastString.
   final pulumi.Input<String> toastString;
 
@@ -46,13 +51,12 @@ class MccIssueResponse {
 
   factory MccIssueResponse.fromMap(Map<String, dynamic> map) {
     return MccIssueResponse(
-      detailString: (map['detailString'] as String).input(),
-      helpLink: (map['helpLink'] as String).input(),
-      issueEndDate: (map['issueEndDate'] as String).input(),
-      issueStartDate: (map['issueStartDate'] as String).input(),
-      mccIssueType: (map['mccIssueType'] as String).input(),
-      toastString: (map['toastString'] as String).input(),
+      detailString: pulumi.Input.fromValue(map['detailString'] as String),
+      helpLink: pulumi.Input.fromValue(map['helpLink'] as String),
+      issueEndDate: pulumi.Input.fromValue(map['issueEndDate'] as String),
+      issueStartDate: pulumi.Input.fromValue(map['issueStartDate'] as String),
+      mccIssueType: pulumi.Input.fromValue(map['mccIssueType'] as String),
+      toastString: pulumi.Input.fromValue(map['toastString'] as String),
     );
   }
 }
-

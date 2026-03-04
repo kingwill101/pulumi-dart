@@ -12,20 +12,15 @@ class PrivateSrvNetworkAddressArgs {
 
   /// Creates a new [PrivateSrvNetworkAddressArgs].
   /// [dbInstanceId] The instance ID.
-  PrivateSrvNetworkAddressArgs({
-    required this.dbInstanceId,
-  });
+  PrivateSrvNetworkAddressArgs({required this.dbInstanceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dbInstanceId': dbInstanceId,
-    };
+    return <String, dynamic>{'dbInstanceId': dbInstanceId};
   }
 
   factory PrivateSrvNetworkAddressArgs.fromMap(Map<String, dynamic> map) {
     return PrivateSrvNetworkAddressArgs(
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
     );
   }
 }
-

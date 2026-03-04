@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapabilityArgs {
   /// Capability name that should be updated on the folder.
   final pulumi.Input<String> capabilityName;
+
   /// Folder on which Capability needs to be updated in the format folders/folder_id.
   final pulumi.Input<String> parent;
+
   /// Capability Value.
   final pulumi.Input<bool> value;
 
@@ -34,10 +36,9 @@ class CapabilityArgs {
 
   factory CapabilityArgs.fromMap(Map<String, dynamic> map) {
     return CapabilityArgs(
-      capabilityName: (map['capabilityName'] as String).input(),
-      parent: (map['parent'] as String).input(),
-      value: (map['value'] as bool).input(),
+      capabilityName: pulumi.Input.fromValue(map['capabilityName'] as String),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
+      value: pulumi.Input.fromValue(map['value'] as bool),
     );
   }
 }
-

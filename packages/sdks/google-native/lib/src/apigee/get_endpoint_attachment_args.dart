@@ -27,9 +27,10 @@ class GetEndpointAttachmentArgs {
 
   factory GetEndpointAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointAttachmentArgs(
-      endpointAttachmentId: (map['endpointAttachmentId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      endpointAttachmentId: pulumi.Input.fromValue(
+        map['endpointAttachmentId'] as String,
+      ),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

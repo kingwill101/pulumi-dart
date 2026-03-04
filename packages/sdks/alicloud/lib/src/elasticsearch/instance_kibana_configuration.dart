@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceKibanaConfiguration {
   /// The number of disks of the Elasticsearch Kibana node. The default value is 1.
   final pulumi.Input<int>? amount;
+
   /// Elasticsearch Kibana node disk size
   final pulumi.Input<int>? disk;
+
   /// Elasticsearch Kibana node disk specifications
   final pulumi.Input<String> spec;
 
@@ -14,26 +16,25 @@ class InstanceKibanaConfiguration {
   /// [amount] The number of disks of the Elasticsearch Kibana node. The default value is 1.
   /// [disk] Elasticsearch Kibana node disk size
   /// [spec] Elasticsearch Kibana node disk specifications
-  InstanceKibanaConfiguration({
-    this.amount,
-    this.disk,
-    required this.spec,
-  });
+  InstanceKibanaConfiguration({this.amount, this.disk, required this.spec});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'amount': ?amount,
-      'disk': ?disk,
-      'spec': spec,
-    };
+    return <String, dynamic>{'amount': ?amount, 'disk': ?disk, 'spec': spec};
   }
 
   factory InstanceKibanaConfiguration.fromMap(Map<String, dynamic> map) {
     return InstanceKibanaConfiguration(
-      amount: map['amount'] == null ? null : (map['amount']! as int).input(),
-      disk: map['disk'] == null ? null : (map['disk']! as int).input(),
-      spec: (map['spec'] as String).input(),
+      amount: (() {
+        final guardedValue = map['amount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      disk: (() {
+        final guardedValue = map['disk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      spec: pulumi.Input.fromValue(map['spec'] as String),
     );
   }
 }
-

@@ -6,11 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MainRouteTableAssociationState {
   /// Used internally, see **Notes** below
   final pulumi.Input<String>? originalRouteTableId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the Route Table to set as the new
   /// main route table for the target VPC
   final pulumi.Input<String>? routeTableId;
+
   /// The ID of the VPC whose main route table should be set
   final pulumi.Input<String>? vpcId;
 
@@ -37,11 +40,26 @@ class MainRouteTableAssociationState {
 
   factory MainRouteTableAssociationState.fromMap(Map<String, dynamic> map) {
     return MainRouteTableAssociationState(
-      originalRouteTableId: map['originalRouteTableId'] == null ? null : ((map['originalRouteTableId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      routeTableId: map['routeTableId'] == null ? null : ((map['routeTableId'] as String).input()).input(),
-      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      originalRouteTableId: (() {
+        final guardedValue = map['originalRouteTableId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeTableId: (() {
+        final guardedValue = map['routeTableId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

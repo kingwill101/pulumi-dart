@@ -7,8 +7,10 @@ import 'network_rule_set_ip_rule_response.dart';
 class NetworkRuleSetPropertiesResponse {
   /// If True, then Network Rule Set is also applied to BuiltIn EventHub EndPoint of IotHub
   final pulumi.Input<bool> applyToBuiltInEventHubEndpoint;
+
   /// Default Action for Network Rule Set
   final pulumi.Input<String>? defaultAction;
+
   /// List of IP Rules
   final pulumi.Input<List<NetworkRuleSetIpRuleResponse>> ipRules;
 
@@ -26,16 +28,39 @@ class NetworkRuleSetPropertiesResponse {
     return <String, dynamic>{
       'applyToBuiltInEventHubEndpoint': applyToBuiltInEventHubEndpoint,
       'defaultAction': ?defaultAction,
-      'ipRules': pulumi.Input.mapInputValue<List<NetworkRuleSetIpRuleResponse>, List<Map<String, dynamic>>>(ipRules, (value) => pulumi.Input.encodeList<NetworkRuleSetIpRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipRules':
+          pulumi.Input.mapInputValue<
+            List<NetworkRuleSetIpRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            ipRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NetworkRuleSetIpRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory NetworkRuleSetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NetworkRuleSetPropertiesResponse(
-      applyToBuiltInEventHubEndpoint: (map['applyToBuiltInEventHubEndpoint'] as bool).input(),
-      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction']! as String).input(),
-      ipRules: (pulumi.Input.decodeList<NetworkRuleSetIpRuleResponse>(map['ipRules'], (value) => NetworkRuleSetIpRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applyToBuiltInEventHubEndpoint: pulumi.Input.fromValue(
+        map['applyToBuiltInEventHubEndpoint'] as bool,
+      ),
+      defaultAction: (() {
+        final guardedValue = map['defaultAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipRules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<NetworkRuleSetIpRuleResponse>(
+          map['ipRules']!,
+          (value) => NetworkRuleSetIpRuleResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

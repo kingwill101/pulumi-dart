@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppSpecWorkerEnv {
   /// The name of the environment variable.
   final pulumi.Input<String>? key;
+
   /// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
   final pulumi.Input<String>? scope;
+
   /// The type of the environment variable, `GENERAL` or `SECRET`.
   final pulumi.Input<String> type;
+
   /// The threshold for the type of the warning.
   final pulumi.Input<String>? value;
 
@@ -17,12 +20,7 @@ class GetAppSpecWorkerEnv {
   /// [scope] The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
   /// [type] The type of the environment variable, `GENERAL` or `SECRET`.
   /// [value] The threshold for the type of the warning.
-  GetAppSpecWorkerEnv({
-    this.key,
-    this.scope,
-    required this.type,
-    this.value,
-  });
+  GetAppSpecWorkerEnv({this.key, this.scope, required this.type, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,11 +33,22 @@ class GetAppSpecWorkerEnv {
 
   factory GetAppSpecWorkerEnv.fromMap(Map<String, dynamic> map) {
     return GetAppSpecWorkerEnv(
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      type: (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

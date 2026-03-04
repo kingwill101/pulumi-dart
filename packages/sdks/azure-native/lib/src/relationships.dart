@@ -1,5 +1,3 @@
-library module_relationships;
-
 export 'relationships/dependency_of_relationship.dart';
 export 'relationships/dependency_of_relationship_args.dart';
 export 'relationships/dependency_of_relationship_properties.dart';

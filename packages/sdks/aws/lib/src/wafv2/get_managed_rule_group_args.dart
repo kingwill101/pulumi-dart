@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedRuleGroupArgs {
   /// Managed rule group name.
   final pulumi.Input<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Whether this is for a global resource type, such as a Amazon CloudFront distribution. For an AWS Amplify application, use `CLOUDFRONT`. Valid values: `CLOUDFRONT`, `REGIONAL`.
   final pulumi.Input<String> scope;
+
   /// Managed rule group vendor name.
   final pulumi.Input<String> vendorName;
+
   /// Version of the rule group.
   final pulumi.Input<String>? versionName;
 
@@ -44,12 +48,19 @@ class GetManagedRuleGroupArgs {
 
   factory GetManagedRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupArgs(
-      name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      scope: (map['scope'] as String).input(),
-      vendorName: (map['vendorName'] as String).input(),
-      versionName: map['versionName'] == null ? null : ((map['versionName'] as String).input()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
+      vendorName: pulumi.Input.fromValue(map['vendorName'] as String),
+      versionName: (() {
+        final guardedValue = map['versionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

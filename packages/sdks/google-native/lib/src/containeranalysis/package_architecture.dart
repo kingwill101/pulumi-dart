@@ -4,16 +4,15 @@ enum PackageArchitecture {
   x86("X86"),
   x64("X64");
 
-  const PackageArchitecture(this.value);
-  final String value;
+  const PackageArchitecture(this.wireValue);
+  final String wireValue;
 
   static PackageArchitecture fromValue(String value) {
     for (final item in PackageArchitecture.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PackageArchitecture value: $value');
   }
 }
-

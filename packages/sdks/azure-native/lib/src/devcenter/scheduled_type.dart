@@ -2,16 +2,15 @@
 enum ScheduledType {
   valueStopDevBox("StopDevBox");
 
-  const ScheduledType(this.value);
-  final String value;
+  const ScheduledType(this.wireValue);
+  final String wireValue;
 
   static ScheduledType fromValue(String value) {
     for (final item in ScheduledType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ScheduledType value: $value');
   }
 }
-

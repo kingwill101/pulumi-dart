@@ -14,15 +14,16 @@ class GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'disallowedRegions': disallowedRegions,
-    };
+    return <String, dynamic>{'disallowedRegions': disallowedRegions};
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse(
-      disallowedRegions: ((map['disallowedRegions'] as List).cast<String>()).input(),
+      disallowedRegions: pulumi.Input.fromValue(
+        (map['disallowedRegions'] as List).cast<String>(),
+      ),
     );
   }
 }
-

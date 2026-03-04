@@ -8,6 +8,7 @@ class SecretStoreBasedAuthCredentialsResponse {
   /// Type of the specific object - used for deserializing
   /// Expected value is 'SecretStoreBasedAuthCredentials'.
   final pulumi.Input<String> objectType;
+
   /// Secret store resource
   final pulumi.Input<SecretStoreResourceResponse>? secretStoreResource;
 
@@ -22,15 +23,28 @@ class SecretStoreBasedAuthCredentialsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'objectType': objectType,
-      'secretStoreResource': ?pulumi.Input.mapOptionalInputValue<SecretStoreResourceResponse, Map<String, dynamic>>(secretStoreResource, (value) => value.toMap()),
+      'secretStoreResource':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecretStoreResourceResponse,
+            Map<String, dynamic>
+          >(secretStoreResource, (value) => value.toMap()),
     };
   }
 
-  factory SecretStoreBasedAuthCredentialsResponse.fromMap(Map<String, dynamic> map) {
+  factory SecretStoreBasedAuthCredentialsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecretStoreBasedAuthCredentialsResponse(
-      objectType: (map['objectType'] as String).input(),
-      secretStoreResource: map['secretStoreResource'] == null ? null : (SecretStoreResourceResponse.fromMap((map['secretStoreResource']! as Map).cast<String, dynamic>())).input(),
+      objectType: pulumi.Input.fromValue(map['objectType'] as String),
+      secretStoreResource: (() {
+        final guardedValue = map['secretStoreResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecretStoreResourceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

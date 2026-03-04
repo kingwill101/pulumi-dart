@@ -9,27 +9,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BlobDataSetMappingArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
+
   /// Container that has the file path.
   final pulumi.Input<String> containerName;
+
   /// The id of the source data set.
   final pulumi.Input<String> dataSetId;
+
   /// The name of the data set mapping to be created.
   final pulumi.Input<String>? dataSetMappingName;
+
   /// File path within the source data set
   final pulumi.Input<String> filePath;
+
   /// Kind of data set mapping.
   /// Expected value is 'Blob'.
   final pulumi.Input<String> kind;
+
   /// File output type
   final pulumi.Input<String>? outputType;
+
   /// Resource group of storage account.
   final pulumi.Input<String> resourceGroup;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the share subscription which will hold the data set sink.
   final pulumi.Input<String> shareSubscriptionName;
+
   /// Storage account name of the source data set.
   final pulumi.Input<String> storageAccountName;
+
   /// Subscription id of storage account.
   final pulumi.Input<String> subscriptionId;
 
@@ -80,19 +91,32 @@ class BlobDataSetMappingArgs {
 
   factory BlobDataSetMappingArgs.fromMap(Map<String, dynamic> map) {
     return BlobDataSetMappingArgs(
-      accountName: (map['accountName'] as String).input(),
-      containerName: (map['containerName'] as String).input(),
-      dataSetId: (map['dataSetId'] as String).input(),
-      dataSetMappingName: map['dataSetMappingName'] == null ? null : (map['dataSetMappingName']! as String).input(),
-      filePath: (map['filePath'] as String).input(),
-      kind: (map['kind'] as String).input(),
-      outputType: map['outputType'] == null ? null : (map['outputType']! as String).input(),
-      resourceGroup: (map['resourceGroup'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),
-      storageAccountName: (map['storageAccountName'] as String).input(),
-      subscriptionId: (map['subscriptionId'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      containerName: pulumi.Input.fromValue(map['containerName'] as String),
+      dataSetId: pulumi.Input.fromValue(map['dataSetId'] as String),
+      dataSetMappingName: (() {
+        final guardedValue = map['dataSetMappingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filePath: pulumi.Input.fromValue(map['filePath'] as String),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      outputType: (() {
+        final guardedValue = map['outputType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      shareSubscriptionName: pulumi.Input.fromValue(
+        map['shareSubscriptionName'] as String,
+      ),
+      storageAccountName: pulumi.Input.fromValue(
+        map['storageAccountName'] as String,
+      ),
+      subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
     );
   }
 }
-

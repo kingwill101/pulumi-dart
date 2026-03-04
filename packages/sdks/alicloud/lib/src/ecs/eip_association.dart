@@ -4,16 +4,16 @@ import 'eip_association_state.dart';
 
 /// Provides a EIP Association resource.
 ///
-/// > **NOTE:** `alicloud.ecs.EipAssociation` is useful in scenarios where EIPs are either
+/// &gt; **NOTE:** `alicloud.ecs.EipAssociation` is useful in scenarios where EIPs are either
 /// pre-existing or distributed to customers or users and therefore cannot be changed.
 ///
-/// > **NOTE:** From version 1.7.1, the resource support to associate EIP to SLB Instance or Nat Gateway.
+/// &gt; **NOTE:** From version 1.7.1, the resource support to associate EIP to SLB Instance or Nat Gateway.
 ///
-/// > **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
+/// &gt; **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
 ///
 /// For information about EIP Association and how to use it, see [What is Association](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-associateeipaddress).
 ///
-/// > **NOTE:** Available since v1.117.0.
+/// &gt; **NOTE:** Available since v1.117.0.
 ///
 /// ## Example Usage
 ///
@@ -467,10 +467,13 @@ import 'eip_association_state.dart';
 class EipAssociation extends pulumi.CustomResource {
   /// The ID of the EIP instance.
   late final pulumi.Output<String> allocationId;
+
   /// Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
   late final pulumi.Output<bool?> force;
+
   /// The ID of the instance with which you want to associate the EIP. You can enter the ID of a NAT gateway, CLB instance, ECS instance, secondary ENI, HAVIP, or IP address.
   late final pulumi.Output<String> instanceId;
+
   /// The type of the instance with which you want to associate the EIP. Valid values:
   /// - `Nat`: NAT gateway
   /// - `SlbInstance`: CLB instance
@@ -479,26 +482,29 @@ class EipAssociation extends pulumi.CustomResource {
   /// - `HaVip`: HAVIP
   /// - `IpAddress`: IP address
   ///
-  /// > **NOTE:**   The default value is `EcsInstance`. If the instance with which you want to associate the EIP is not an ECS instance, this parameter is required.
+  /// &gt; **NOTE:**   The default value is `EcsInstance`. If the instance with which you want to associate the EIP is not an ECS instance, this parameter is required.
   late final pulumi.Output<String> instanceType;
+
   /// The association mode. Valid values:
   /// - `NAT` (default): NAT mode
   /// - `MULTI_BINDED`: multi-EIP-to-ENI mode
   /// - `BINDED`: cut-network interface controller mode
   ///
-  /// > **NOTE:**   This parameter is required only when `instance_type` is set to `NetworkInterface`.
+  /// &gt; **NOTE:**   This parameter is required only when `instance_type` is set to `NetworkInterface`.
   late final pulumi.Output<String> mode;
+
   /// The IP address in the CIDR block of the vSwitch.
   ///
   /// If you leave this parameter empty, the system allocates a private IP address based on the VPC ID and vSwitch ID.
   ///
-  /// > **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+  /// &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
   late final pulumi.Output<String?> privateIpAddress;
+
   /// The ID of the VPC in which an IPv4 gateway is created. The VPC and the EIP must be in the same region.
   ///
   /// When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
   ///
-  /// > **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+  /// &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
   late final pulumi.Output<String?> vpcId;
 
   /// Creates a new [EipAssociation].
@@ -510,18 +516,18 @@ class EipAssociation extends pulumi.CustomResource {
     EipAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/eipAssociation:EipAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocationId = registerOutput<String>('allocationId');
-    this.force = registerOutput<bool?>('force');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.mode = registerOutput<String>('mode');
-    this.privateIpAddress = registerOutput<String?>('privateIpAddress');
-    this.vpcId = registerOutput<String?>('vpcId');
+         'alicloud:ecs/eipAssociation:EipAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocationId = registerOutput<String>('allocationId');
+    force = registerOutput<bool?>('force');
+    instanceId = registerOutput<String>('instanceId');
+    instanceType = registerOutput<String>('instanceType');
+    mode = registerOutput<String>('mode');
+    privateIpAddress = registerOutput<String?>('privateIpAddress');
+    vpcId = registerOutput<String?>('vpcId');
   }
 
   /// Gets an existing [EipAssociation] resource's state with the given [name] and [id].
@@ -542,17 +548,17 @@ class EipAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/eipAssociation:EipAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocationId = registerOutput<String>('allocationId');
-    this.force = registerOutput<bool?>('force');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.mode = registerOutput<String>('mode');
-    this.privateIpAddress = registerOutput<String?>('privateIpAddress');
-    this.vpcId = registerOutput<String?>('vpcId');
+         'alicloud:ecs/eipAssociation:EipAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocationId = registerOutput<String>('allocationId');
+    force = registerOutput<bool?>('force');
+    instanceId = registerOutput<String>('instanceId');
+    instanceType = registerOutput<String>('instanceType');
+    mode = registerOutput<String>('mode');
+    privateIpAddress = registerOutput<String?>('privateIpAddress');
+    vpcId = registerOutput<String?>('vpcId');
   }
 }

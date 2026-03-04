@@ -248,7 +248,7 @@ import 'group_policy_remediation_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Management` - 2021-10-01
@@ -263,18 +263,25 @@ import 'group_policy_remediation_state.dart';
 class GroupPolicyRemediation extends pulumi.CustomResource {
   /// The percentage failure threshold. Possible values range between `0.0` and `1.0`. The remediation will fail if the percentage of failed remediation operations (i.e. failed deployments) exceeds this threshold.
   late final pulumi.Output<double?> failurePercentage;
+
   /// A list of the resource locations that will be remediated.
   late final pulumi.Output<List<String>?> locationFilters;
+
   /// The Management Group ID at which the Policy Remediation should be applied. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managementGroupId;
+
   /// The name of the Policy Remediation. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Determines how many resources to remediate at any given time. Can be used to increase or reduce the pace of the remediation. If not provided, the default parallel deployments value is used.
   late final pulumi.Output<int?> parallelDeployments;
+
   /// The ID of the Policy Assignment that should be remediated.
   late final pulumi.Output<String> policyAssignmentId;
+
   /// The unique ID for the policy definition reference within the policy set definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition.
   late final pulumi.Output<String?> policyDefinitionReferenceId;
+
   /// Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used.
   late final pulumi.Output<int?> resourceCount;
 
@@ -287,19 +294,21 @@ class GroupPolicyRemediation extends pulumi.CustomResource {
     GroupPolicyRemediationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:management/groupPolicyRemediation:GroupPolicyRemediation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.failurePercentage = registerOutput<double?>('failurePercentage');
-    this.locationFilters = registerOutput<List<String>?>('locationFilters');
-    this.managementGroupId = registerOutput<String>('managementGroupId');
+         'azure:management/groupPolicyRemediation:GroupPolicyRemediation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    failurePercentage = registerOutput<double?>('failurePercentage');
+    locationFilters = registerOutput<List<String>?>('locationFilters');
+    managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
-    this.parallelDeployments = registerOutput<int?>('parallelDeployments');
-    this.policyAssignmentId = registerOutput<String>('policyAssignmentId');
-    this.policyDefinitionReferenceId = registerOutput<String?>('policyDefinitionReferenceId');
-    this.resourceCount = registerOutput<int?>('resourceCount');
+    parallelDeployments = registerOutput<int?>('parallelDeployments');
+    policyAssignmentId = registerOutput<String>('policyAssignmentId');
+    policyDefinitionReferenceId = registerOutput<String?>(
+      'policyDefinitionReferenceId',
+    );
+    resourceCount = registerOutput<int?>('resourceCount');
   }
 
   /// Gets an existing [GroupPolicyRemediation] resource's state with the given [name] and [id].
@@ -320,18 +329,20 @@ class GroupPolicyRemediation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:management/groupPolicyRemediation:GroupPolicyRemediation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.failurePercentage = registerOutput<double?>('failurePercentage');
-    this.locationFilters = registerOutput<List<String>?>('locationFilters');
-    this.managementGroupId = registerOutput<String>('managementGroupId');
+         'azure:management/groupPolicyRemediation:GroupPolicyRemediation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    failurePercentage = registerOutput<double?>('failurePercentage');
+    locationFilters = registerOutput<List<String>?>('locationFilters');
+    managementGroupId = registerOutput<String>('managementGroupId');
     this.name = registerOutput<String>('name');
-    this.parallelDeployments = registerOutput<int?>('parallelDeployments');
-    this.policyAssignmentId = registerOutput<String>('policyAssignmentId');
-    this.policyDefinitionReferenceId = registerOutput<String?>('policyDefinitionReferenceId');
-    this.resourceCount = registerOutput<int?>('resourceCount');
+    parallelDeployments = registerOutput<int?>('parallelDeployments');
+    policyAssignmentId = registerOutput<String>('policyAssignmentId');
+    policyDefinitionReferenceId = registerOutput<String?>(
+      'policyDefinitionReferenceId',
+    );
+    resourceCount = registerOutput<int?>('resourceCount');
   }
 }

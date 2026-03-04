@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectedEnvironmentsStorageArgs {
   /// Name of the Environment.
   final pulumi.Input<String> connectedEnvironmentName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the storage.
   final pulumi.Input<String> storageName;
 
@@ -32,12 +34,17 @@ class GetConnectedEnvironmentsStorageArgs {
     };
   }
 
-  factory GetConnectedEnvironmentsStorageArgs.fromMap(Map<String, dynamic> map) {
+  factory GetConnectedEnvironmentsStorageArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConnectedEnvironmentsStorageArgs(
-      connectedEnvironmentName: (map['connectedEnvironmentName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageName: (map['storageName'] as String).input(),
+      connectedEnvironmentName: pulumi.Input.fromValue(
+        map['connectedEnvironmentName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageName: pulumi.Input.fromValue(map['storageName'] as String),
     );
   }
 }
-

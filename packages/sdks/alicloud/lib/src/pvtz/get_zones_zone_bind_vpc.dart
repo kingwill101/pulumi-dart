@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZonesZoneBindVpc {
   /// The region ID of the VPC.
   final pulumi.Input<String> regionId;
+
   /// The name of the region where the VPC resides.
   final pulumi.Input<String> regionName;
+
   /// The ID of the VPC.
   final pulumi.Input<String> vpcId;
+
   /// The Name of the VPC.
   final pulumi.Input<String> vpcName;
 
@@ -35,11 +38,10 @@ class GetZonesZoneBindVpc {
 
   factory GetZonesZoneBindVpc.fromMap(Map<String, dynamic> map) {
     return GetZonesZoneBindVpc(
-      regionId: (map['regionId'] as String).input(),
-      regionName: (map['regionName'] as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      vpcName: (map['vpcName'] as String).input(),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
+      regionName: pulumi.Input.fromValue(map['regionName'] as String),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vpcName: pulumi.Input.fromValue(map['vpcName'] as String),
     );
   }
 }
-

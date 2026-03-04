@@ -322,22 +322,31 @@ import 'single_server_server_security_alert_policy_args.dart';
 class SingleServerServerSecurityAlertPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly
   late final pulumi.Output<List<String>?> disabledAlerts;
+
   /// Specifies that the alert is sent to the account administrators.
   late final pulumi.Output<bool?> emailAccountAdmins;
+
   /// Specifies an array of e-mail addresses to which the alert is sent.
   late final pulumi.Output<List<String>?> emailAddresses;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Specifies the number of days to keep in the Threat Detection audit logs.
   late final pulumi.Output<int?> retentionDays;
+
   /// Specifies the state of the policy, whether it is enabled or disabled.
   late final pulumi.Output<String> state;
+
   /// Specifies the identifier key of the Threat Detection audit storage account.
   late final pulumi.Output<String?> storageAccountAccessKey;
+
   /// Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
   late final pulumi.Output<String?> storageEndpoint;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -350,20 +359,22 @@ class SingleServerServerSecurityAlertPolicy extends pulumi.CustomResource {
     SingleServerServerSecurityAlertPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dbforpostgresql:SingleServerServerSecurityAlertPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
-    this.emailAccountAdmins = registerOutput<bool?>('emailAccountAdmins');
-    this.emailAddresses = registerOutput<List<String>?>('emailAddresses');
+         'azure-native:dbforpostgresql:SingleServerServerSecurityAlertPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
+    emailAccountAdmins = registerOutput<bool?>('emailAccountAdmins');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses');
     this.name = registerOutput<String>('name');
-    this.retentionDays = registerOutput<int?>('retentionDays');
-    this.state = registerOutput<String>('state');
-    this.storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
-    this.storageEndpoint = registerOutput<String?>('storageEndpoint');
-    this.type = registerOutput<String>('type');
+    retentionDays = registerOutput<int?>('retentionDays');
+    state = registerOutput<String>('state');
+    storageAccountAccessKey = registerOutput<String?>(
+      'storageAccountAccessKey',
+    );
+    storageEndpoint = registerOutput<String?>('storageEndpoint');
+    type = registerOutput<String>('type');
   }
 }

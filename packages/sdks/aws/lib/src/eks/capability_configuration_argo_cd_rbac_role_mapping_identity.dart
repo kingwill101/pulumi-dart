@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapabilityConfigurationArgoCdRbacRoleMappingIdentity {
   /// Identity ID.
   final pulumi.Input<String> id;
+
   /// Identity type. Valid values: `SSO_USER`, `SSO_GROUP`.
   final pulumi.Input<String> type;
 
@@ -17,17 +18,15 @@ class CapabilityConfigurationArgoCdRbacRoleMappingIdentity {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'type': type,
-    };
+    return <String, dynamic>{'id': id, 'type': type};
   }
 
-  factory CapabilityConfigurationArgoCdRbacRoleMappingIdentity.fromMap(Map<String, dynamic> map) {
+  factory CapabilityConfigurationArgoCdRbacRoleMappingIdentity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CapabilityConfigurationArgoCdRbacRoleMappingIdentity(
-      id: (map['id'] as String).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

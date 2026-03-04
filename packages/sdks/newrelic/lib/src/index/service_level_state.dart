@@ -8,18 +8,24 @@ import 'service_level_objective.dart';
 class ServiceLevelState {
   /// The description of the SLI.
   final pulumi.Input<String>? description;
+
   /// The events that define the NRDB data for the SLI/SLO calculations.
   /// See Events below for details.
   final pulumi.Input<ServiceLevelEvents>? events;
+
   /// The GUID of the entity (e.g, APM Service, Browser application, Workload, etc.) that you want to relate this SLI to. Note that changing the GUID will force a new resource.
   final pulumi.Input<String>? guid;
+
   /// A short name for the SLI that will help anyone understand what it is about.
   final pulumi.Input<String>? name;
+
   /// The objective of the SLI, only one can be defined.
   /// See Objective below for details.
   final pulumi.Input<ServiceLevelObjective>? objective;
+
   /// The unique entity identifier of the Service Level Indicator in New Relic.
   final pulumi.Input<String>? sliGuid;
+
   /// The unique entity identifier of the Service Level Indicator.
   final pulumi.Input<String>? sliId;
 
@@ -44,10 +50,18 @@ class ServiceLevelState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'events': ?pulumi.Input.mapOptionalInputValue<ServiceLevelEvents, Map<String, dynamic>>(events, (value) => value.toMap()),
+      'events':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceLevelEvents,
+            Map<String, dynamic>
+          >(events, (value) => value.toMap()),
       'guid': ?guid,
       'name': ?name,
-      'objective': ?pulumi.Input.mapOptionalInputValue<ServiceLevelObjective, Map<String, dynamic>>(objective, (value) => value.toMap()),
+      'objective':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceLevelObjective,
+            Map<String, dynamic>
+          >(objective, (value) => value.toMap()),
       'sliGuid': ?sliGuid,
       'sliId': ?sliId,
     };
@@ -55,14 +69,49 @@ class ServiceLevelState {
 
   factory ServiceLevelState.fromMap(Map<String, dynamic> map) {
     return ServiceLevelState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      events: map['events'] == null ? null : (ServiceLevelEvents.fromMap((map['events']! as Map).cast<String, dynamic>())).input(),
-      guid: map['guid'] == null ? null : (map['guid']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      objective: map['objective'] == null ? null : (ServiceLevelObjective.fromMap((map['objective']! as Map).cast<String, dynamic>())).input(),
-      sliGuid: map['sliGuid'] == null ? null : (map['sliGuid']! as String).input(),
-      sliId: map['sliId'] == null ? null : (map['sliId']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      events: (() {
+        final guardedValue = map['events'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceLevelEvents.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      guid: (() {
+        final guardedValue = map['guid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objective: (() {
+        final guardedValue = map['objective'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServiceLevelObjective.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sliGuid: (() {
+        final guardedValue = map['sliGuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sliId: (() {
+        final guardedValue = map['sliId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

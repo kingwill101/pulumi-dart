@@ -13,15 +13,14 @@ class RoutingProfileMediaConcurrencyCrossChannelBehavior {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'behaviorType': behaviorType,
-    };
+    return <String, dynamic>{'behaviorType': behaviorType};
   }
 
-  factory RoutingProfileMediaConcurrencyCrossChannelBehavior.fromMap(Map<String, dynamic> map) {
+  factory RoutingProfileMediaConcurrencyCrossChannelBehavior.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RoutingProfileMediaConcurrencyCrossChannelBehavior(
-      behaviorType: (map['behaviorType'] as String).input(),
+      behaviorType: pulumi.Input.fromValue(map['behaviorType'] as String),
     );
   }
 }
-

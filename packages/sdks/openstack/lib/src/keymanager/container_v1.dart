@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_v1_acl.dart';
 import 'container_v1_args.dart';
-import 'container_v1_consumer.dart';
-import 'container_v1_secret_ref.dart';
 import 'container_v1_state.dart';
 
 /// Manages a V1 Barbican container resource within OpenStack.
@@ -382,7 +380,7 @@ import 'container_v1_state.dart';
 ///
 /// ### Container with the ACL
 ///
-/// > **Note** Only read ACLs are supported
+/// &gt; **Note** Only read ACLs are supported
 ///
 ///
 /// ```typescript
@@ -627,29 +625,39 @@ class ContainerV1 extends pulumi.CustomResource {
   /// the `read` operation is supported. If not specified, the container is
   /// accessible project wide. The `read` structure is described below.
   late final pulumi.Output<ContainerV1Acl> acl;
+
   /// The list of the container consumers. The structure is described below.
-  late final pulumi.Output<List<ContainerV1Consumer>> consumers;
+  late final pulumi.Output<List<Map<String, dynamic>>> consumers;
+
   /// The container reference / where to find the container.
   late final pulumi.Output<String> containerRef;
+
   /// The date the container was created.
   late final pulumi.Output<String> createdAt;
+
   /// The creator of the container.
   late final pulumi.Output<String> creatorId;
+
   /// Human-readable name for the Container. Does not have
   /// to be unique.
   late final pulumi.Output<String> name;
+
   /// The region in which to obtain the V1 KeyManager client.
   /// A KeyManager client is needed to create a container. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// V1 container.
   late final pulumi.Output<String> region;
+
   /// A set of dictionaries containing references to secrets. The structure is described
   /// below.
-  late final pulumi.Output<List<ContainerV1SecretRef>?> secretRefs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> secretRefs;
+
   /// The status of the container.
   late final pulumi.Output<String> status;
+
   /// Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
   late final pulumi.Output<String> type;
+
   /// The date the container was last updated.
   late final pulumi.Output<String> updatedAt;
 
@@ -662,22 +670,22 @@ class ContainerV1 extends pulumi.CustomResource {
     ContainerV1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:keymanager/containerV1:ContainerV1',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acl = registerOutput<ContainerV1Acl>('acl');
-    this.consumers = registerOutput<List<ContainerV1Consumer>>('consumers');
-    this.containerRef = registerOutput<String>('containerRef');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.creatorId = registerOutput<String>('creatorId');
+         'openstack:keymanager/containerV1:ContainerV1',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acl = registerOutput<ContainerV1Acl>('acl');
+    consumers = registerOutput<List<Map<String, dynamic>>>('consumers');
+    containerRef = registerOutput<String>('containerRef');
+    createdAt = registerOutput<String>('createdAt');
+    creatorId = registerOutput<String>('creatorId');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.secretRefs = registerOutput<List<ContainerV1SecretRef>?>('secretRefs');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String>('type');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    region = registerOutput<String>('region');
+    secretRefs = registerOutput<List<Map<String, dynamic>>?>('secretRefs');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 
   /// Gets an existing [ContainerV1] resource's state with the given [name] and [id].
@@ -698,21 +706,21 @@ class ContainerV1 extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:keymanager/containerV1:ContainerV1',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acl = registerOutput<ContainerV1Acl>('acl');
-    this.consumers = registerOutput<List<ContainerV1Consumer>>('consumers');
-    this.containerRef = registerOutput<String>('containerRef');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.creatorId = registerOutput<String>('creatorId');
+         'openstack:keymanager/containerV1:ContainerV1',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acl = registerOutput<ContainerV1Acl>('acl');
+    consumers = registerOutput<List<Map<String, dynamic>>>('consumers');
+    containerRef = registerOutput<String>('containerRef');
+    createdAt = registerOutput<String>('createdAt');
+    creatorId = registerOutput<String>('creatorId');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.secretRefs = registerOutput<List<ContainerV1SecretRef>?>('secretRefs');
-    this.status = registerOutput<String>('status');
-    this.type = registerOutput<String>('type');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    region = registerOutput<String>('region');
+    secretRefs = registerOutput<List<Map<String, dynamic>>?>('secretRefs');
+    status = registerOutput<String>('status');
+    type = registerOutput<String>('type');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 }

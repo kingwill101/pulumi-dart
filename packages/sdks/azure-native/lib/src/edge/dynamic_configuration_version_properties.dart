@@ -9,20 +9,17 @@ class DynamicConfigurationVersionProperties {
 
   /// Creates a new [DynamicConfigurationVersionProperties].
   /// [values] Values of configuration version
-  DynamicConfigurationVersionProperties({
-    required this.values,
-  });
+  DynamicConfigurationVersionProperties({required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'values': values,
-    };
+    return <String, dynamic>{'values': values};
   }
 
-  factory DynamicConfigurationVersionProperties.fromMap(Map<String, dynamic> map) {
+  factory DynamicConfigurationVersionProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DynamicConfigurationVersionProperties(
-      values: (map['values'] as String).input(),
+      values: pulumi.Input.fromValue(map['values'] as String),
     );
   }
 }
-

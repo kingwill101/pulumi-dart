@@ -1,0 +1,6 @@
+name: awsx-dart-vpc-nodejs-custom-provider
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX VPC resources with a custom provider in Dart.

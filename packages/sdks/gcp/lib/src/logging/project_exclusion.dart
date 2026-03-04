@@ -8,7 +8,7 @@ import 'project_exclusion_state.dart';
 /// * How-to Guides
 /// * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
 ///
-/// > You can specify exclusions for log sinks created by the provider by using the exclusions field of `gcp.logging.ProjectSink`
+/// &gt; You can specify exclusions for log sinks created by the provider by using the exclusions field of `gcp.logging.ProjectSink`
 ///
 /// ## Example Usage
 ///
@@ -126,15 +126,19 @@ import 'project_exclusion_state.dart';
 class ProjectExclusion extends pulumi.CustomResource {
   /// A human-readable description.
   late final pulumi.Output<String?> description;
+
   /// Whether this exclusion rule should be disabled or not. This defaults to
   /// false.
   late final pulumi.Output<bool?> disabled;
+
   /// The filter to apply when excluding logs. Only log entries that match the filter are excluded.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
   /// write a filter.
   late final pulumi.Output<String> filter;
+
   /// The name of the logging exclusion.
   late final pulumi.Output<String> name;
+
   /// The project to create the exclusion in. If omitted, the project associated with the provider is
   /// used.
   late final pulumi.Output<String> project;
@@ -148,16 +152,16 @@ class ProjectExclusion extends pulumi.CustomResource {
     ProjectExclusionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:logging/projectExclusion:ProjectExclusion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.disabled = registerOutput<bool?>('disabled');
-    this.filter = registerOutput<String>('filter');
+         'gcp:logging/projectExclusion:ProjectExclusion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    disabled = registerOutput<bool?>('disabled');
+    filter = registerOutput<String>('filter');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [ProjectExclusion] resource's state with the given [name] and [id].
@@ -178,15 +182,15 @@ class ProjectExclusion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:logging/projectExclusion:ProjectExclusion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.disabled = registerOutput<bool?>('disabled');
-    this.filter = registerOutput<String>('filter');
+         'gcp:logging/projectExclusion:ProjectExclusion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    disabled = registerOutput<bool?>('disabled');
+    filter = registerOutput<String>('filter');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
+    project = registerOutput<String>('project');
   }
 }

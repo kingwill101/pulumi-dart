@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FunctionAppActiveSlotState {
   /// The timestamp of the last successful swap with `Production`
   final pulumi.Input<String>? lastSuccessfulSwap;
+
   /// The swap action should overwrite the Production slot's network configuration with the configuration from this slot. Defaults to `true`. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? overwriteNetworkConfig;
+
   /// The ID of the Slot to swap with `Production`.
   final pulumi.Input<String>? slotId;
 
@@ -31,10 +33,21 @@ class FunctionAppActiveSlotState {
 
   factory FunctionAppActiveSlotState.fromMap(Map<String, dynamic> map) {
     return FunctionAppActiveSlotState(
-      lastSuccessfulSwap: map['lastSuccessfulSwap'] == null ? null : (map['lastSuccessfulSwap']! as String).input(),
-      overwriteNetworkConfig: map['overwriteNetworkConfig'] == null ? null : (map['overwriteNetworkConfig']! as bool).input(),
-      slotId: map['slotId'] == null ? null : (map['slotId']! as String).input(),
+      lastSuccessfulSwap: (() {
+        final guardedValue = map['lastSuccessfulSwap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      overwriteNetworkConfig: (() {
+        final guardedValue = map['overwriteNetworkConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      slotId: (() {
+        final guardedValue = map['slotId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

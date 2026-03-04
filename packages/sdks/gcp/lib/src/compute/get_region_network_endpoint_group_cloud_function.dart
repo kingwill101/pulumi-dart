@@ -7,6 +7,7 @@ class GetRegionNetworkEndpointGroupCloudFunction {
   /// The function name is case-sensitive and must be 1-63 characters long.
   /// Example value: "func1".
   final pulumi.Input<String> function;
+
   /// A template to parse function field from a request URL. URL mask allows
   /// for routing to multiple Cloud Functions without having to create
   /// multiple Network Endpoint Groups and backend services.
@@ -25,17 +26,15 @@ class GetRegionNetworkEndpointGroupCloudFunction {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'function': function,
-      'urlMask': urlMask,
-    };
+    return <String, dynamic>{'function': function, 'urlMask': urlMask};
   }
 
-  factory GetRegionNetworkEndpointGroupCloudFunction.fromMap(Map<String, dynamic> map) {
+  factory GetRegionNetworkEndpointGroupCloudFunction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionNetworkEndpointGroupCloudFunction(
-      function: (map['function'] as String).input(),
-      urlMask: (map['urlMask'] as String).input(),
+      function: pulumi.Input.fromValue(map['function'] as String),
+      urlMask: pulumi.Input.fromValue(map['urlMask'] as String),
     );
   }
 }
-

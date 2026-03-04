@@ -6,14 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoutingControlState {
   /// ARN of the routing control.
   final pulumi.Input<String>? arn;
+
   /// ARN of the cluster in which this routing control will reside.
   final pulumi.Input<String>? clusterArn;
+
   /// ARN of the control panel in which this routing control will reside.
   final pulumi.Input<String>? controlPanelArn;
+
   /// The name describing the routing control.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
+
   /// Status of routing control. `PENDING` when it is being created/updated, `PENDING_DELETION` when it is being deleted, and `DEPLOYED` otherwise.
   final pulumi.Input<String>? status;
 
@@ -43,12 +47,31 @@ class RoutingControlState {
 
   factory RoutingControlState.fromMap(Map<String, dynamic> map) {
     return RoutingControlState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      clusterArn: map['clusterArn'] == null ? null : ((map['clusterArn'] as String).input()).input(),
-      controlPanelArn: map['controlPanelArn'] == null ? null : ((map['controlPanelArn'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterArn: (() {
+        final guardedValue = map['clusterArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      controlPanelArn: (() {
+        final guardedValue = map['controlPanelArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

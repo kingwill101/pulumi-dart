@@ -14,16 +14,24 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
   /// NUMERICAL
   /// FRESHNESS
   final pulumi.Input<String>? attributeType;
+
   /// (Output)
   /// The control points used to define the curve. The monotonic function
   /// (defined through the interpolation_type above) passes through the
   /// control points listed here.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint>>? controlPoints;
+  final pulumi.Input<
+    List<
+      AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint
+    >
+  >?
+  controlPoints;
+
   /// (Output)
   /// The name of the field whose value will be used to determine the
   /// boost amount.
   final pulumi.Input<String>? fieldName;
+
   /// (Output)
   /// The interpolation type to be applied to connect the control points
   /// listed below.
@@ -46,19 +54,59 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attributeType': ?attributeType,
-      'controlPoints': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint>, List<Map<String, dynamic>>>(controlPoints, (value) => pulumi.Input.encodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'controlPoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint
+            >,
+            List<Map<String, dynamic>>
+          >(
+            controlPoints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'fieldName': ?fieldName,
       'interpolationType': ?interpolationType,
     };
   }
 
-  factory AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec(
-      attributeType: map['attributeType'] == null ? null : (map['attributeType']! as String).input(),
-      controlPoints: map['controlPoints'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint>(map['controlPoints']!, (value) => AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fieldName: map['fieldName'] == null ? null : (map['fieldName']! as String).input(),
-      interpolationType: map['interpolationType'] == null ? null : (map['interpolationType']! as String).input(),
+      attributeType: (() {
+        final guardedValue = map['attributeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      controlPoints: (() {
+        final guardedValue = map['controlPoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint
+          >(
+            guardedValue,
+            (value) =>
+                AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      fieldName: (() {
+        final guardedValue = map['fieldName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      interpolationType: (() {
+        final guardedValue = map['interpolationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

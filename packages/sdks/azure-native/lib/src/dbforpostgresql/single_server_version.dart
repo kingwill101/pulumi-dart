@@ -7,16 +7,15 @@ enum SingleServerVersion {
   value102("10.2"),
   value11("11");
 
-  const SingleServerVersion(this.value);
-  final String value;
+  const SingleServerVersion(this.wireValue);
+  final String wireValue;
 
   static SingleServerVersion fromValue(String value) {
     for (final item in SingleServerVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SingleServerVersion value: $value');
   }
 }
-

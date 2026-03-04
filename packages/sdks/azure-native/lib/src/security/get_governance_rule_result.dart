@@ -8,38 +8,55 @@ import 'governance_rule_owner_source_response.dart';
 class GetGovernanceRuleResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Description of the governance rule
   final String? description;
+
   /// Display name of the governance rule
   final String displayName;
+
   /// Excluded scopes, filter out the descendants of the scope (on management scopes)
   final List<String>? excludedScopes;
+
   /// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
   final GovernanceRuleEmailNotificationResponse? governanceEmailNotification;
+
   /// Resource Id
   final String id;
+
   /// Defines whether the rule is management scope rule (master connector as a single scope or management scope)
   final bool? includeMemberScopes;
+
   /// Defines whether the rule is active/inactive
   final bool? isDisabled;
+
   /// Defines whether there is a grace period on the governance rule
   final bool? isGracePeriod;
+
   /// The governance rule metadata
   final GovernanceRuleMetadataResponse? metadata;
+
   /// Resource name
   final String name;
+
   /// The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
   final GovernanceRuleOwnerSourceResponse ownerSource;
+
   /// Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
   final String? remediationTimeframe;
+
   /// The governance rule priority, priority to the lower number. Rules with the same priority on the same scope will not be allowed
   final int rulePriority;
+
   /// The rule type of the governance rule, defines the source of the rule e.g. Integrated
   final String ruleType;
+
   /// The governance rule source, what the rule affects, e.g. Assessments
   final String sourceResourceType;
+
   /// The tenantId (GUID)
   final String tenantId;
+
   /// Resource type
   final String type;
 
@@ -89,12 +106,12 @@ class GetGovernanceRuleResult {
       'description': ?description,
       'displayName': displayName,
       'excludedScopes': ?excludedScopes,
-      'governanceEmailNotification': ?governanceEmailNotification == null ? null : governanceEmailNotification!.toMap(),
+      'governanceEmailNotification': ?governanceEmailNotification?.toMap(),
       'id': id,
       'includeMemberScopes': ?includeMemberScopes,
       'isDisabled': ?isDisabled,
       'isGracePeriod': ?isGracePeriod,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'metadata': ?metadata?.toMap(),
       'name': name,
       'ownerSource': ownerSource.toMap(),
       'remediationTimeframe': ?remediationTimeframe,
@@ -109,18 +126,56 @@ class GetGovernanceRuleResult {
   factory GetGovernanceRuleResult.fromMap(Map<String, dynamic> map) {
     return GetGovernanceRuleResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description']! as String,
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       displayName: map['displayName'] as String,
-      excludedScopes: map['excludedScopes'] == null ? null : (map['excludedScopes']! as List).cast<String>(),
-      governanceEmailNotification: map['governanceEmailNotification'] == null ? null : GovernanceRuleEmailNotificationResponse.fromMap((map['governanceEmailNotification']! as Map).cast<String, dynamic>()),
+      excludedScopes: (() {
+        final guardedValue = map['excludedScopes'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      governanceEmailNotification: (() {
+        final guardedValue = map['governanceEmailNotification'];
+        if (guardedValue == null) return null;
+        return GovernanceRuleEmailNotificationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      includeMemberScopes: map['includeMemberScopes'] == null ? null : map['includeMemberScopes']! as bool,
-      isDisabled: map['isDisabled'] == null ? null : map['isDisabled']! as bool,
-      isGracePeriod: map['isGracePeriod'] == null ? null : map['isGracePeriod']! as bool,
-      metadata: map['metadata'] == null ? null : GovernanceRuleMetadataResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
+      includeMemberScopes: (() {
+        final guardedValue = map['includeMemberScopes'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      isDisabled: (() {
+        final guardedValue = map['isDisabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      isGracePeriod: (() {
+        final guardedValue = map['isGracePeriod'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return GovernanceRuleMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       name: map['name'] as String,
-      ownerSource: GovernanceRuleOwnerSourceResponse.fromMap((map['ownerSource'] as Map).cast<String, dynamic>()),
-      remediationTimeframe: map['remediationTimeframe'] == null ? null : map['remediationTimeframe']! as String,
+      ownerSource: GovernanceRuleOwnerSourceResponse.fromMap(
+        (map['ownerSource']! as Map).cast<String, dynamic>(),
+      ),
+      remediationTimeframe: (() {
+        final guardedValue = map['remediationTimeframe'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       rulePriority: map['rulePriority'] as int,
       ruleType: map['ruleType'] as String,
       sourceResourceType: map['sourceResourceType'] as String,
@@ -129,4 +184,3 @@ class GetGovernanceRuleResult {
     );
   }
 }
-

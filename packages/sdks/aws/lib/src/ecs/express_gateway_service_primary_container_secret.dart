@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExpressGatewayServicePrimaryContainerSecret {
   final pulumi.Input<String> name;
+
   /// ARN of the AWS Secrets Manager secret or AWS Systems Manager parameter containing the secret value.
   final pulumi.Input<String> valueFrom;
 
@@ -16,17 +17,15 @@ class ExpressGatewayServicePrimaryContainerSecret {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'valueFrom': valueFrom,
-    };
+    return <String, dynamic>{'name': name, 'valueFrom': valueFrom};
   }
 
-  factory ExpressGatewayServicePrimaryContainerSecret.fromMap(Map<String, dynamic> map) {
+  factory ExpressGatewayServicePrimaryContainerSecret.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExpressGatewayServicePrimaryContainerSecret(
-      name: (map['name'] as String).input(),
-      valueFrom: (map['valueFrom'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      valueFrom: pulumi.Input.fromValue(map['valueFrom'] as String),
     );
   }
 }
-

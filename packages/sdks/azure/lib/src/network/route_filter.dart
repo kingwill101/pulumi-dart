@@ -152,7 +152,7 @@ import 'route_filter_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -167,12 +167,16 @@ import 'route_filter_state.dart';
 class RouteFilter extends pulumi.CustomResource {
   /// The Azure Region where the Route Filter should exist. Changing this forces a new Route Filter to be created.
   late final pulumi.Output<String> location;
+
   /// The Name which should be used for this Route Filter.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Route Filter should exist. Changing this forces a new Route Filter to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `rule` block as defined below.
   late final pulumi.Output<RouteFilterRule> rule;
+
   /// A mapping of tags which should be assigned to the Route Filter.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -185,16 +189,16 @@ class RouteFilter extends pulumi.CustomResource {
     RouteFilterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/routeFilter:RouteFilter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:network/routeFilter:RouteFilter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.rule = registerOutput<RouteFilterRule>('rule');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rule = registerOutput<RouteFilterRule>('rule');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [RouteFilter] resource's state with the given [name] and [id].
@@ -215,15 +219,15 @@ class RouteFilter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/routeFilter:RouteFilter',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.location = registerOutput<String>('location');
+         'azure:network/routeFilter:RouteFilter',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.rule = registerOutput<RouteFilterRule>('rule');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rule = registerOutput<RouteFilterRule>('rule');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

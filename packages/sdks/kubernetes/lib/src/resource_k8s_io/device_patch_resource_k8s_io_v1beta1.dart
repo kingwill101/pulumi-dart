@@ -7,29 +7,42 @@ import 'basic_device_patch_resource_k8s_io_v1beta1.dart';
 class DevicePatchResourceK8sIoV1beta1 {
   /// Basic defines one device instance.
   final pulumi.Input<BasicDevicePatchResourceK8sIoV1beta1>? basic;
+
   /// Name is unique identifier among all devices managed by the driver in the pool. It must be a DNS label.
   final pulumi.Input<String>? name;
 
   /// Creates a new [DevicePatchResourceK8sIoV1beta1].
   /// [basic] Basic defines one device instance.
   /// [name] Name is unique identifier among all devices managed by the driver in the pool. It must be a DNS label.
-  DevicePatchResourceK8sIoV1beta1({
-    this.basic,
-    this.name,
-  });
+  DevicePatchResourceK8sIoV1beta1({this.basic, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basic': ?pulumi.Input.mapOptionalInputValue<BasicDevicePatchResourceK8sIoV1beta1, Map<String, dynamic>>(basic, (value) => value.toMap()),
+      'basic':
+          ?pulumi.Input.mapOptionalInputValue<
+            BasicDevicePatchResourceK8sIoV1beta1,
+            Map<String, dynamic>
+          >(basic, (value) => value.toMap()),
       'name': ?name,
     };
   }
 
   factory DevicePatchResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return DevicePatchResourceK8sIoV1beta1(
-      basic: map['basic'] == null ? null : (BasicDevicePatchResourceK8sIoV1beta1.fromMap((map['basic']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      basic: (() {
+        final guardedValue = map['basic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BasicDevicePatchResourceK8sIoV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedServiceKeyVaultState {
   /// A map of additional properties to associate with the Data Factory Linked Service Key Vault.
   final pulumi.Input<Map<String, String>>? additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Linked Service Key Vault.
   final pulumi.Input<List<String>>? annotations;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String>? dataFactoryId;
+
   /// The description for the Data Factory Linked Service Key Vault.
   final pulumi.Input<String>? description;
+
   /// The integration runtime reference to associate with the Data Factory Linked Service Key Vault.
   final pulumi.Input<String>? integrationRuntimeName;
+
   /// The ID the Azure Key Vault resource.
   final pulumi.Input<String>? keyVaultId;
+
   /// Specifies the name of the Data Factory Linked Service Key Vault. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
+
   /// A map of parameters to associate with the Data Factory Linked Service Key Vault.
   final pulumi.Input<Map<String, String>>? parameters;
 
@@ -56,15 +63,50 @@ class LinkedServiceKeyVaultState {
 
   factory LinkedServiceKeyVaultState.fromMap(Map<String, dynamic> map) {
     return LinkedServiceKeyVaultState(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName']! as String).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      additionalProperties: (() {
+        final guardedValue = map['additionalProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      dataFactoryId: (() {
+        final guardedValue = map['dataFactoryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      integrationRuntimeName: (() {
+        final guardedValue = map['integrationRuntimeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultId: (() {
+        final guardedValue = map['keyVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityServicesResponse {
   /// Anti spyware Profile data
   final pulumi.Input<String>? antiSpywareProfile;
+
   /// anti virus profile data
   final pulumi.Input<String>? antiVirusProfile;
+
   /// DNS Subscription profile data
   final pulumi.Input<String>? dnsSubscription;
+
   /// File blocking profile data
   final pulumi.Input<String>? fileBlockingProfile;
+
   /// Trusted Egress Decryption profile data
   final pulumi.Input<String>? outboundTrustCertificate;
+
   /// Untrusted Egress Decryption profile data
   final pulumi.Input<String>? outboundUnTrustCertificate;
+
   /// URL filtering profile data
   final pulumi.Input<String>? urlFilteringProfile;
+
   /// IPs Vulnerability Profile Data
   final pulumi.Input<String>? vulnerabilityProfile;
 
@@ -56,15 +63,46 @@ class SecurityServicesResponse {
 
   factory SecurityServicesResponse.fromMap(Map<String, dynamic> map) {
     return SecurityServicesResponse(
-      antiSpywareProfile: map['antiSpywareProfile'] == null ? null : (map['antiSpywareProfile']! as String).input(),
-      antiVirusProfile: map['antiVirusProfile'] == null ? null : (map['antiVirusProfile']! as String).input(),
-      dnsSubscription: map['dnsSubscription'] == null ? null : (map['dnsSubscription']! as String).input(),
-      fileBlockingProfile: map['fileBlockingProfile'] == null ? null : (map['fileBlockingProfile']! as String).input(),
-      outboundTrustCertificate: map['outboundTrustCertificate'] == null ? null : (map['outboundTrustCertificate']! as String).input(),
-      outboundUnTrustCertificate: map['outboundUnTrustCertificate'] == null ? null : (map['outboundUnTrustCertificate']! as String).input(),
-      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (map['urlFilteringProfile']! as String).input(),
-      vulnerabilityProfile: map['vulnerabilityProfile'] == null ? null : (map['vulnerabilityProfile']! as String).input(),
+      antiSpywareProfile: (() {
+        final guardedValue = map['antiSpywareProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      antiVirusProfile: (() {
+        final guardedValue = map['antiVirusProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnsSubscription: (() {
+        final guardedValue = map['dnsSubscription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fileBlockingProfile: (() {
+        final guardedValue = map['fileBlockingProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outboundTrustCertificate: (() {
+        final guardedValue = map['outboundTrustCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outboundUnTrustCertificate: (() {
+        final guardedValue = map['outboundUnTrustCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      urlFilteringProfile: (() {
+        final guardedValue = map['urlFilteringProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vulnerabilityProfile: (() {
+        final guardedValue = map['vulnerabilityProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

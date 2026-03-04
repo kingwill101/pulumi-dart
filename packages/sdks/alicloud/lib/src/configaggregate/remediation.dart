@@ -8,7 +8,7 @@ import 'remediation_state.dart';
 ///
 /// For information about Cloud Config (Config) Aggregate Remediation and how to use it, see [What is Aggregate Remediation](https://next.api.alibabacloud.com/document/Config/2020-09-07/CreateAggregateRemediation).
 ///
-/// > **NOTE:** Available since v1.267.0.
+/// &gt; **NOTE:** Available since v1.267.0.
 ///
 /// ## Example Usage
 ///
@@ -509,27 +509,34 @@ class Remediation extends pulumi.CustomResource {
   /// The account Group ID.
   /// For more information about how to obtain the account group ID, see ListAggregators.
   late final pulumi.Output<String> aggregatorId;
+
   /// The rule ID.
   /// For more information about how to obtain the rule ID, see [ListAggregateConfigRules].
   late final pulumi.Output<String> configRuleId;
+
   /// Correction of execution mode. Value:
   /// - NON_EXECUTION: Not executed.
   /// - AUTO_EXECUTION: Automatically executed.
   /// - MANUAL_EXECUTION: Execute manually.
   /// - NOT_CONFIG: Not set.
   late final pulumi.Output<String> invokeType;
+
   /// Multi-account remediation ID
   late final pulumi.Output<String> remediationId;
+
   /// Correct the parameters of the settings.
   /// For more information about how to obtain the parameters of remediation settings, see the parameter 'Template definition' in ListRemediationTemplates '.
   late final pulumi.Output<String> remediationOriginParams;
+
   /// The source of the template to perform the correction. Value:
   /// - ALIYUN (default): Official website template.
   /// - CUSTOM: CUSTOM template.
   /// - NONE: NONE.
   late final pulumi.Output<String?> remediationSourceType;
+
   /// The ID of the correction template.
   late final pulumi.Output<String> remediationTemplateId;
+
   /// Remediation type. Value:
   /// - OOS: Operation and maintenance orchestration (Template correction).
   /// - FC: Function Compute (custom correction).
@@ -544,19 +551,19 @@ class Remediation extends pulumi.CustomResource {
     RemediationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:configaggregate/remediation:Remediation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aggregatorId = registerOutput<String>('aggregatorId');
-    this.configRuleId = registerOutput<String>('configRuleId');
-    this.invokeType = registerOutput<String>('invokeType');
-    this.remediationId = registerOutput<String>('remediationId');
-    this.remediationOriginParams = registerOutput<String>('remediationOriginParams');
-    this.remediationSourceType = registerOutput<String?>('remediationSourceType');
-    this.remediationTemplateId = registerOutput<String>('remediationTemplateId');
-    this.remediationType = registerOutput<String>('remediationType');
+         'alicloud:configaggregate/remediation:Remediation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aggregatorId = registerOutput<String>('aggregatorId');
+    configRuleId = registerOutput<String>('configRuleId');
+    invokeType = registerOutput<String>('invokeType');
+    remediationId = registerOutput<String>('remediationId');
+    remediationOriginParams = registerOutput<String>('remediationOriginParams');
+    remediationSourceType = registerOutput<String?>('remediationSourceType');
+    remediationTemplateId = registerOutput<String>('remediationTemplateId');
+    remediationType = registerOutput<String>('remediationType');
   }
 
   /// Gets an existing [Remediation] resource's state with the given [name] and [id].
@@ -577,18 +584,18 @@ class Remediation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:configaggregate/remediation:Remediation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aggregatorId = registerOutput<String>('aggregatorId');
-    this.configRuleId = registerOutput<String>('configRuleId');
-    this.invokeType = registerOutput<String>('invokeType');
-    this.remediationId = registerOutput<String>('remediationId');
-    this.remediationOriginParams = registerOutput<String>('remediationOriginParams');
-    this.remediationSourceType = registerOutput<String?>('remediationSourceType');
-    this.remediationTemplateId = registerOutput<String>('remediationTemplateId');
-    this.remediationType = registerOutput<String>('remediationType');
+         'alicloud:configaggregate/remediation:Remediation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aggregatorId = registerOutput<String>('aggregatorId');
+    configRuleId = registerOutput<String>('configRuleId');
+    invokeType = registerOutput<String>('invokeType');
+    remediationId = registerOutput<String>('remediationId');
+    remediationOriginParams = registerOutput<String>('remediationOriginParams');
+    remediationSourceType = registerOutput<String?>('remediationSourceType');
+    remediationTemplateId = registerOutput<String>('remediationTemplateId');
+    remediationType = registerOutput<String>('remediationType');
   }
 }

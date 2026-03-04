@@ -9,20 +9,17 @@ class L2ConnectionsPropertiesGroundStation {
 
   /// Creates a new [L2ConnectionsPropertiesGroundStation].
   /// [id] Resource ID.
-  L2ConnectionsPropertiesGroundStation({
-    required this.id,
-  });
+  L2ConnectionsPropertiesGroundStation({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
-  factory L2ConnectionsPropertiesGroundStation.fromMap(Map<String, dynamic> map) {
+  factory L2ConnectionsPropertiesGroundStation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return L2ConnectionsPropertiesGroundStation(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

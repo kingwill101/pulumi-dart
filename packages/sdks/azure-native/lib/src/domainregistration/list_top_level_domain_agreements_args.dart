@@ -7,16 +7,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_domainregistration_list_top_level_domain_agreements_args_doc}
 class ListTopLevelDomainAgreementsArgs {
-  /// If <code>true</code>, then the list of agreements will include agreements for domain transfer as well; otherwise, <code>false</code>.
+  /// If &lt;code&gt;true&lt;/code&gt;, then the list of agreements will include agreements for domain transfer as well; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final pulumi.Input<bool>? forTransfer;
-  /// If <code>true</code>, then the list of agreements will include agreements for domain privacy as well; otherwise, <code>false</code>.
+
+  /// If &lt;code&gt;true&lt;/code&gt;, then the list of agreements will include agreements for domain privacy as well; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final pulumi.Input<bool>? includePrivacy;
+
   /// Name of the top-level domain.
   final pulumi.Input<String> name;
 
   /// Creates a new [ListTopLevelDomainAgreementsArgs].
-  /// [forTransfer] If <code>true</code>, then the list of agreements will include agreements for domain transfer as well; otherwise, <code>false</code>.
-  /// [includePrivacy] If <code>true</code>, then the list of agreements will include agreements for domain privacy as well; otherwise, <code>false</code>.
+  /// [forTransfer] If &lt;code&gt;true&lt;/code&gt;, then the list of agreements will include agreements for domain transfer as well; otherwise, &lt;code&gt;false&lt;/code&gt;.
+  /// [includePrivacy] If &lt;code&gt;true&lt;/code&gt;, then the list of agreements will include agreements for domain privacy as well; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [name] Name of the top-level domain.
   ListTopLevelDomainAgreementsArgs({
     this.forTransfer,
@@ -34,10 +36,17 @@ class ListTopLevelDomainAgreementsArgs {
 
   factory ListTopLevelDomainAgreementsArgs.fromMap(Map<String, dynamic> map) {
     return ListTopLevelDomainAgreementsArgs(
-      forTransfer: map['forTransfer'] == null ? null : (map['forTransfer']! as bool).input(),
-      includePrivacy: map['includePrivacy'] == null ? null : (map['includePrivacy']! as bool).input(),
-      name: (map['name'] as String).input(),
+      forTransfer: (() {
+        final guardedValue = map['forTransfer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      includePrivacy: (() {
+        final guardedValue = map['includePrivacy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

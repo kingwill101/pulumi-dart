@@ -3,16 +3,15 @@ enum MaccEntityType {
   valuePrimary("Primary"),
   valueContributor("Contributor");
 
-  const MaccEntityType(this.value);
-  final String value;
+  const MaccEntityType(this.wireValue);
+  final String wireValue;
 
   static MaccEntityType fromValue(String value) {
     for (final item in MaccEntityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MaccEntityType value: $value');
   }
 }
-

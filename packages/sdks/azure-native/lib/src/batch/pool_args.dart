@@ -23,50 +23,72 @@ import 'user_account.dart';
 class PoolArgs {
   /// A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
   final pulumi.Input<String> accountName;
+
   /// The list of application licenses must be a subset of available Batch service application licenses. If a license is requested which is not supported, pool creation will fail.
   final pulumi.Input<List<String>>? applicationLicenses;
+
   /// Changes to application package references affect all new compute nodes joining the pool, but do not affect compute nodes that are already in the pool until they are rebooted or reimaged. There is a maximum of 10 application package references on any given pool.
   final pulumi.Input<List<ApplicationPackageReference>>? applicationPackages;
+
   /// For Windows compute nodes, the Batch service installs the certificates to the specified certificate store and location. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
   ///
   /// Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
   final pulumi.Input<List<CertificateReference>>? certificates;
+
   /// Deployment configuration properties.
   final pulumi.Input<DeploymentConfiguration>? deploymentConfiguration;
+
   /// The display name need not be unique and can contain any Unicode characters up to a maximum length of 1024.
   final pulumi.Input<String>? displayName;
+
   /// The type of identity used for the Batch Pool.
   final pulumi.Input<BatchPoolIdentity>? identity;
+
   /// This imposes restrictions on which nodes can be assigned to the pool. Enabling this value can reduce the chance of the requested number of nodes to be allocated in the pool. If not specified, this value defaults to 'Disabled'.
   final pulumi.Input<InterNodeCommunicationState>? interNodeCommunication;
+
   /// The Batch service does not assign any meaning to metadata; it is solely for the use of user code.
   final pulumi.Input<List<MetadataItem>>? metadata;
+
   /// This supports Azure Files, NFS, CIFS/SMB, and Blobfuse.
   final pulumi.Input<List<MountConfiguration>>? mountConfiguration;
+
   /// The network configuration for a pool.
   final pulumi.Input<NetworkConfiguration>? networkConfiguration;
+
   /// The pool name. This must be unique within the account.
   final pulumi.Input<String>? poolName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The user-defined tags to be associated with the Azure Batch Pool. When specified, these tags are propagated to the backing Azure resources associated with the pool. This property can only be specified when the Batch account was created with the poolAllocationMode property set to 'UserSubscription'.
   final pulumi.Input<Map<String, String>>? resourceTags;
+
   /// Defines the desired size of the pool. This can either be 'fixedScale' where the requested targetDedicatedNodes is specified, or 'autoScale' which defines a formula which is periodically reevaluated. If this property is not specified, the pool will have a fixed scale with 0 targetDedicatedNodes.
   final pulumi.Input<ScaleSettings>? scaleSettings;
+
   /// In an PATCH (update) operation, this property can be set to an empty object to remove the start task from the pool.
   final pulumi.Input<StartTask>? startTask;
+
   /// The tags of the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// If omitted, the default value is Default.
   final pulumi.Input<NodeCommunicationMode>? targetNodeCommunicationMode;
+
   /// If not specified, the default is spread.
   final pulumi.Input<TaskSchedulingPolicy>? taskSchedulingPolicy;
+
   /// The default value is 1. The maximum value is the smaller of 4 times the number of cores of the vmSize of the pool or 256.
   final pulumi.Input<int>? taskSlotsPerNode;
+
   /// Describes an upgrade policy - automatic, manual, or rolling.
   final pulumi.Input<UpgradePolicy>? upgradePolicy;
+
   /// The list of user accounts to be created on each node in the pool.
   final pulumi.Input<List<UserAccount>>? userAccounts;
+
   /// For information about available VM sizes, see Sizes for Virtual Machines in Azure (https://learn.microsoft.com/azure/virtual-machines/sizes/overview). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
   final pulumi.Input<String>? vmSize;
 
@@ -124,56 +146,295 @@ class PoolArgs {
     return <String, dynamic>{
       'accountName': accountName,
       'applicationLicenses': ?applicationLicenses,
-      'applicationPackages': ?pulumi.Input.mapOptionalInputValue<List<ApplicationPackageReference>, List<Map<String, dynamic>>>(applicationPackages, (value) => pulumi.Input.encodeList<ApplicationPackageReference, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'certificates': ?pulumi.Input.mapOptionalInputValue<List<CertificateReference>, List<Map<String, dynamic>>>(certificates, (value) => pulumi.Input.encodeList<CertificateReference, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'deploymentConfiguration': ?pulumi.Input.mapOptionalInputValue<DeploymentConfiguration, Map<String, dynamic>>(deploymentConfiguration, (value) => value.toMap()),
+      'applicationPackages':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ApplicationPackageReference>,
+            List<Map<String, dynamic>>
+          >(
+            applicationPackages,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApplicationPackageReference,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'certificates':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CertificateReference>,
+            List<Map<String, dynamic>>
+          >(
+            certificates,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CertificateReference,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'deploymentConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentConfiguration,
+            Map<String, dynamic>
+          >(deploymentConfiguration, (value) => value.toMap()),
       'displayName': ?displayName,
-      'identity': ?pulumi.Input.mapOptionalInputValue<BatchPoolIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
-      'interNodeCommunication': ?pulumi.Input.mapOptionalInputValue<InterNodeCommunicationState, String>(interNodeCommunication, (value) => value.value),
-      'metadata': ?pulumi.Input.mapOptionalInputValue<List<MetadataItem>, List<Map<String, dynamic>>>(metadata, (value) => pulumi.Input.encodeList<MetadataItem, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'mountConfiguration': ?pulumi.Input.mapOptionalInputValue<List<MountConfiguration>, List<Map<String, dynamic>>>(mountConfiguration, (value) => pulumi.Input.encodeList<MountConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'networkConfiguration': ?pulumi.Input.mapOptionalInputValue<NetworkConfiguration, Map<String, dynamic>>(networkConfiguration, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            BatchPoolIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
+      'interNodeCommunication':
+          ?pulumi.Input.mapOptionalInputValue<
+            InterNodeCommunicationState,
+            String
+          >(interNodeCommunication, (value) => value.wireValue),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MetadataItem>,
+            List<Map<String, dynamic>>
+          >(
+            metadata,
+            (value) =>
+                pulumi.Input.encodeList<MetadataItem, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'mountConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MountConfiguration>,
+            List<Map<String, dynamic>>
+          >(
+            mountConfiguration,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MountConfiguration,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'networkConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkConfiguration,
+            Map<String, dynamic>
+          >(networkConfiguration, (value) => value.toMap()),
       'poolName': ?poolName,
       'resourceGroupName': resourceGroupName,
       'resourceTags': ?resourceTags,
-      'scaleSettings': ?pulumi.Input.mapOptionalInputValue<ScaleSettings, Map<String, dynamic>>(scaleSettings, (value) => value.toMap()),
-      'startTask': ?pulumi.Input.mapOptionalInputValue<StartTask, Map<String, dynamic>>(startTask, (value) => value.toMap()),
+      'scaleSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScaleSettings,
+            Map<String, dynamic>
+          >(scaleSettings, (value) => value.toMap()),
+      'startTask':
+          ?pulumi.Input.mapOptionalInputValue<StartTask, Map<String, dynamic>>(
+            startTask,
+            (value) => value.toMap(),
+          ),
       'tags': ?tags,
-      'targetNodeCommunicationMode': ?pulumi.Input.mapOptionalInputValue<NodeCommunicationMode, String>(targetNodeCommunicationMode, (value) => value.value),
-      'taskSchedulingPolicy': ?pulumi.Input.mapOptionalInputValue<TaskSchedulingPolicy, Map<String, dynamic>>(taskSchedulingPolicy, (value) => value.toMap()),
+      'targetNodeCommunicationMode':
+          ?pulumi.Input.mapOptionalInputValue<NodeCommunicationMode, String>(
+            targetNodeCommunicationMode,
+            (value) => value.wireValue,
+          ),
+      'taskSchedulingPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            TaskSchedulingPolicy,
+            Map<String, dynamic>
+          >(taskSchedulingPolicy, (value) => value.toMap()),
       'taskSlotsPerNode': ?taskSlotsPerNode,
-      'upgradePolicy': ?pulumi.Input.mapOptionalInputValue<UpgradePolicy, Map<String, dynamic>>(upgradePolicy, (value) => value.toMap()),
-      'userAccounts': ?pulumi.Input.mapOptionalInputValue<List<UserAccount>, List<Map<String, dynamic>>>(userAccounts, (value) => pulumi.Input.encodeList<UserAccount, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'upgradePolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            UpgradePolicy,
+            Map<String, dynamic>
+          >(upgradePolicy, (value) => value.toMap()),
+      'userAccounts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserAccount>,
+            List<Map<String, dynamic>>
+          >(
+            userAccounts,
+            (value) =>
+                pulumi.Input.encodeList<UserAccount, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'vmSize': ?vmSize,
     };
   }
 
   factory PoolArgs.fromMap(Map<String, dynamic> map) {
     return PoolArgs(
-      accountName: (map['accountName'] as String).input(),
-      applicationLicenses: map['applicationLicenses'] == null ? null : ((map['applicationLicenses']! as List).cast<String>()).input(),
-      applicationPackages: map['applicationPackages'] == null ? null : (pulumi.Input.decodeList<ApplicationPackageReference>(map['applicationPackages']!, (value) => ApplicationPackageReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<CertificateReference>(map['certificates']!, (value) => CertificateReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deploymentConfiguration: map['deploymentConfiguration'] == null ? null : (DeploymentConfiguration.fromMap((map['deploymentConfiguration']! as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      identity: map['identity'] == null ? null : (BatchPoolIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      interNodeCommunication: map['interNodeCommunication'] == null ? null : (InterNodeCommunicationState.fromValue(map['interNodeCommunication']! as String)).input(),
-      metadata: map['metadata'] == null ? null : (pulumi.Input.decodeList<MetadataItem>(map['metadata']!, (value) => MetadataItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mountConfiguration: map['mountConfiguration'] == null ? null : (pulumi.Input.decodeList<MountConfiguration>(map['mountConfiguration']!, (value) => MountConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkConfiguration: map['networkConfiguration'] == null ? null : (NetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())).input(),
-      poolName: map['poolName'] == null ? null : (map['poolName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags']! as Map).cast<String, String>()).input(),
-      scaleSettings: map['scaleSettings'] == null ? null : (ScaleSettings.fromMap((map['scaleSettings']! as Map).cast<String, dynamic>())).input(),
-      startTask: map['startTask'] == null ? null : (StartTask.fromMap((map['startTask']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      targetNodeCommunicationMode: map['targetNodeCommunicationMode'] == null ? null : (NodeCommunicationMode.fromValue(map['targetNodeCommunicationMode']! as String)).input(),
-      taskSchedulingPolicy: map['taskSchedulingPolicy'] == null ? null : (TaskSchedulingPolicy.fromMap((map['taskSchedulingPolicy']! as Map).cast<String, dynamic>())).input(),
-      taskSlotsPerNode: map['taskSlotsPerNode'] == null ? null : (map['taskSlotsPerNode']! as int).input(),
-      upgradePolicy: map['upgradePolicy'] == null ? null : (UpgradePolicy.fromMap((map['upgradePolicy']! as Map).cast<String, dynamic>())).input(),
-      userAccounts: map['userAccounts'] == null ? null : (pulumi.Input.decodeList<UserAccount>(map['userAccounts']!, (value) => UserAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      applicationLicenses: (() {
+        final guardedValue = map['applicationLicenses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      applicationPackages: (() {
+        final guardedValue = map['applicationPackages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ApplicationPackageReference>(
+            guardedValue,
+            (value) => ApplicationPackageReference.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      certificates: (() {
+        final guardedValue = map['certificates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CertificateReference>(
+            guardedValue,
+            (value) => CertificateReference.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      deploymentConfiguration: (() {
+        final guardedValue = map['deploymentConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BatchPoolIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      interNodeCommunication: (() {
+        final guardedValue = map['interNodeCommunication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InterNodeCommunicationState.fromValue(guardedValue as String),
+        );
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MetadataItem>(
+            guardedValue,
+            (value) =>
+                MetadataItem.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      mountConfiguration: (() {
+        final guardedValue = map['mountConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MountConfiguration>(
+            guardedValue,
+            (value) => MountConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      networkConfiguration: (() {
+        final guardedValue = map['networkConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NetworkConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      poolName: (() {
+        final guardedValue = map['poolName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceTags: (() {
+        final guardedValue = map['resourceTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      scaleSettings: (() {
+        final guardedValue = map['scaleSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      startTask: (() {
+        final guardedValue = map['startTask'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StartTask.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targetNodeCommunicationMode: (() {
+        final guardedValue = map['targetNodeCommunicationMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NodeCommunicationMode.fromValue(guardedValue as String),
+        );
+      })(),
+      taskSchedulingPolicy: (() {
+        final guardedValue = map['taskSchedulingPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TaskSchedulingPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      taskSlotsPerNode: (() {
+        final guardedValue = map['taskSlotsPerNode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      upgradePolicy: (() {
+        final guardedValue = map['upgradePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      userAccounts: (() {
+        final guardedValue = map['userAccounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserAccount>(
+            guardedValue,
+            (value) =>
+                UserAccount.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      vmSize: (() {
+        final guardedValue = map['vmSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

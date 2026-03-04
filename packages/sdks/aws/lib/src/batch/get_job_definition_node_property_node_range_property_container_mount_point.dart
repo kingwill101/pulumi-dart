@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint {
   /// The absolute file path in the container where the tmpfs volume is mounted.
   final pulumi.Input<String> containerPath;
+
   /// If this value is true, the container has read-only access to the volume.
   final pulumi.Input<bool> readOnly;
+
   /// The name of the volume to mount.
   final pulumi.Input<String> sourceVolume;
 
@@ -28,12 +30,13 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint {
     };
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint.fromMap(Map<String, dynamic> map) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint(
-      containerPath: (map['containerPath'] as String).input(),
-      readOnly: (map['readOnly'] as bool).input(),
-      sourceVolume: (map['sourceVolume'] as String).input(),
+      containerPath: pulumi.Input.fromValue(map['containerPath'] as String),
+      readOnly: pulumi.Input.fromValue(map['readOnly'] as bool),
+      sourceVolume: pulumi.Input.fromValue(map['sourceVolume'] as String),
     );
   }
 }
-

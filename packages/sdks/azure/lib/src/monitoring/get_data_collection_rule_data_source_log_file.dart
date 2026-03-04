@@ -6,12 +6,17 @@ import 'get_data_collection_rule_data_source_log_file_setting.dart';
 class GetDataCollectionRuleDataSourceLogFile {
   /// Specifies a list of file patterns where the log files are located. For example, `C:\\JavaLogs\\*.log`.
   final pulumi.Input<List<String>> filePatterns;
+
   /// The data format of the log files. possible value is `text`.
   final pulumi.Input<String> format;
+
   /// Specifies the name of the Data Collection Rule.
   final pulumi.Input<String> name;
+
   /// A `settings` block as defined below.
-  final pulumi.Input<List<GetDataCollectionRuleDataSourceLogFileSetting>> settings;
+  final pulumi.Input<List<GetDataCollectionRuleDataSourceLogFileSetting>>
+  settings;
+
   /// Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
   final pulumi.Input<List<String>> streams;
 
@@ -34,19 +39,40 @@ class GetDataCollectionRuleDataSourceLogFile {
       'filePatterns': filePatterns,
       'format': format,
       'name': name,
-      'settings': pulumi.Input.mapInputValue<List<GetDataCollectionRuleDataSourceLogFileSetting>, List<Map<String, dynamic>>>(settings, (value) => pulumi.Input.encodeList<GetDataCollectionRuleDataSourceLogFileSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'settings':
+          pulumi.Input.mapInputValue<
+            List<GetDataCollectionRuleDataSourceLogFileSetting>,
+            List<Map<String, dynamic>>
+          >(
+            settings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetDataCollectionRuleDataSourceLogFileSetting,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'streams': streams,
     };
   }
 
-  factory GetDataCollectionRuleDataSourceLogFile.fromMap(Map<String, dynamic> map) {
+  factory GetDataCollectionRuleDataSourceLogFile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataCollectionRuleDataSourceLogFile(
-      filePatterns: ((map['filePatterns'] as List).cast<String>()).input(),
-      format: (map['format'] as String).input(),
-      name: (map['name'] as String).input(),
-      settings: (pulumi.Input.decodeList<GetDataCollectionRuleDataSourceLogFileSetting>(map['settings'], (value) => GetDataCollectionRuleDataSourceLogFileSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      streams: ((map['streams'] as List).cast<String>()).input(),
+      filePatterns: pulumi.Input.fromValue(
+        (map['filePatterns'] as List).cast<String>(),
+      ),
+      format: pulumi.Input.fromValue(map['format'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      settings: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetDataCollectionRuleDataSourceLogFileSetting>(
+          map['settings']!,
+          (value) => GetDataCollectionRuleDataSourceLogFileSetting.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      streams: pulumi.Input.fromValue((map['streams'] as List).cast<String>()),
     );
   }
 }
-

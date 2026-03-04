@@ -4,16 +4,15 @@ enum DiskAccessMode {
   readWriteMany("READ_WRITE_MANY"),
   readWriteSingle("READ_WRITE_SINGLE");
 
-  const DiskAccessMode(this.value);
-  final String value;
+  const DiskAccessMode(this.wireValue);
+  final String wireValue;
 
   static DiskAccessMode fromValue(String value) {
     for (final item in DiskAccessMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiskAccessMode value: $value');
   }
 }
-

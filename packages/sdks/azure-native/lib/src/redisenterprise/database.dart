@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_args.dart';
 import 'database_properties_response_geo_replication.dart';
-import 'module_response.dart';
 import 'persistence_response.dart';
 import 'system_data_response.dart';
 
@@ -618,34 +617,50 @@ import 'system_data_response.dart';
 class Database extends pulumi.CustomResource {
   /// This property can be Enabled/Disabled to allow or deny access with the current access keys. Can be updated even after database is created.
   late final pulumi.Output<String?> accessKeysAuthentication;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted.
   late final pulumi.Output<String?> clientProtocol;
+
   /// Clustering policy - default is OSSCluster. This property can be updated only if the current value is NoCluster. If the value is OSSCluster or EnterpriseCluster, it cannot be updated without deleting the database.
   late final pulumi.Output<String?> clusteringPolicy;
+
   /// Option to defer upgrade when newest version is released - default is NotDeferred. Learn more: https://aka.ms/redisversionupgrade
   late final pulumi.Output<String?> deferUpgrade;
+
   /// Redis eviction policy - default is VolatileLRU
   late final pulumi.Output<String?> evictionPolicy;
+
   /// Optional set of properties to configure geo replication for this database.
-  late final pulumi.Output<DatabasePropertiesResponseGeoReplication?> geoReplication;
+  late final pulumi.Output<DatabasePropertiesResponseGeoReplication?>
+  geoReplication;
+
   /// Optional set of redis modules to enable in this database - modules can only be added at creation time.
-  late final pulumi.Output<List<ModuleResponse>?> modules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> modules;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Persistence settings
   late final pulumi.Output<PersistenceResponse?> persistence;
+
   /// TCP port of the database endpoint. Specified at create time. Defaults to an available port.
   late final pulumi.Output<int?> port;
+
   /// Current provisioning status of the database
   late final pulumi.Output<String> provisioningState;
+
   /// Version of Redis the database is running on, e.g. '6.0'
   late final pulumi.Output<String> redisVersion;
+
   /// Current resource status of the database
   late final pulumi.Output<String> resourceState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -658,26 +673,30 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:redisenterprise:Database',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessKeysAuthentication = registerOutput<String?>('accessKeysAuthentication');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clientProtocol = registerOutput<String?>('clientProtocol');
-    this.clusteringPolicy = registerOutput<String?>('clusteringPolicy');
-    this.deferUpgrade = registerOutput<String?>('deferUpgrade');
-    this.evictionPolicy = registerOutput<String?>('evictionPolicy');
-    this.geoReplication = registerOutput<DatabasePropertiesResponseGeoReplication?>('geoReplication');
-    this.modules = registerOutput<List<ModuleResponse>?>('modules');
+         'azure-native:redisenterprise:Database',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessKeysAuthentication = registerOutput<String?>(
+      'accessKeysAuthentication',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientProtocol = registerOutput<String?>('clientProtocol');
+    clusteringPolicy = registerOutput<String?>('clusteringPolicy');
+    deferUpgrade = registerOutput<String?>('deferUpgrade');
+    evictionPolicy = registerOutput<String?>('evictionPolicy');
+    geoReplication = registerOutput<DatabasePropertiesResponseGeoReplication?>(
+      'geoReplication',
+    );
+    modules = registerOutput<List<Map<String, dynamic>>?>('modules');
     this.name = registerOutput<String>('name');
-    this.persistence = registerOutput<PersistenceResponse?>('persistence');
-    this.port = registerOutput<int?>('port');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.redisVersion = registerOutput<String>('redisVersion');
-    this.resourceState = registerOutput<String>('resourceState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    persistence = registerOutput<PersistenceResponse?>('persistence');
+    port = registerOutput<int?>('port');
+    provisioningState = registerOutput<String>('provisioningState');
+    redisVersion = registerOutput<String>('redisVersion');
+    resourceState = registerOutput<String>('resourceState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

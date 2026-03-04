@@ -6,37 +6,62 @@ import 'target_health_state_enum_enum_value.dart';
 
 /// Definition of TargetHealth
 class TargetHealth {
-  /// <p>A description of the target health that provides additional details. If the state is <code>healthy</code>, a description is not provided.</p>
+  /// &lt;p&gt;A description of the target health that provides additional details. If the state is &lt;code&gt;healthy&lt;/code&gt;, a description is not provided.&lt;/p&gt;
   final pulumi.Input<String>? description;
-  /// <p>The reason code.</p> <p>If the target state is <code>healthy</code>, a reason code is not provided.</p> <p>If the target state is <code>initial</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Elb.RegistrationInProgress</code> - The target is in the process of being registered with the load balancer.</p> </li> <li> <p> <code>Elb.InitialHealthChecking</code> - The load balancer is still sending the target the minimum number of health checks required to determine its health status.</p> </li> </ul> <p>If the target state is <code>unhealthy</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code. Applies only to Application Load Balancers and Gateway Load Balancers.</p> </li> <li> <p> <code>Target.Timeout</code> - The health check requests timed out. Applies only to Application Load Balancers and Gateway Load Balancers.</p> </li> <li> <p> <code>Target.FailedHealthChecks</code> - The load balancer received an error while establishing a connection to the target or the target response was malformed.</p> </li> <li> <p> <code>Elb.InternalError</code> - The health checks failed due to an internal error. Applies only to Application Load Balancers.</p> </li> </ul> <p>If the target state is <code>unused</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.NotRegistered</code> - The target is not registered with the target group.</p> </li> <li> <p> <code>Target.NotInUse</code> - The target group is not used by any load balancer or the target is in an Availability Zone that is not enabled for its load balancer.</p> </li> <li> <p> <code>Target.InvalidState</code> - The target is in the stopped or terminated state.</p> </li> <li> <p> <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.</p> </li> </ul> <p>If the target state is <code>draining</code>, the reason code can be the following value:</p> <ul> <li> <p> <code>Target.DeregistrationInProgress</code> - The target is in the process of being deregistered and the deregistration delay period has not expired.</p> </li> </ul> <p>If the target state is <code>unavailable</code>, the reason code can be the following value:</p> <ul> <li> <p> <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group. Applies only to Application Load Balancers.</p> </li> <li> <p> <code>Elb.InternalError</code> - Target health is unavailable due to an internal error. Applies only to Network Load Balancers.</p> </li> </ul>
+
+  /// &lt;p&gt;The reason code.&lt;/p&gt; &lt;p&gt;If the target state is &lt;code&gt;healthy&lt;/code&gt;, a reason code is not provided.&lt;/p&gt; &lt;p&gt;If the target state is &lt;code&gt;initial&lt;/code&gt;, the reason code can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Elb.RegistrationInProgress&lt;/code&gt; - The target is in the process of being registered with the load balancer.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Elb.InitialHealthChecking&lt;/code&gt; - The load balancer is still sending the target the minimum number of health checks required to determine its health status.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the target state is &lt;code&gt;unhealthy&lt;/code&gt;, the reason code can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.ResponseCodeMismatch&lt;/code&gt; - The health checks did not return an expected HTTP code. Applies only to Application Load Balancers and Gateway Load Balancers.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.Timeout&lt;/code&gt; - The health check requests timed out. Applies only to Application Load Balancers and Gateway Load Balancers.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.FailedHealthChecks&lt;/code&gt; - The load balancer received an error while establishing a connection to the target or the target response was malformed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Elb.InternalError&lt;/code&gt; - The health checks failed due to an internal error. Applies only to Application Load Balancers.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the target state is &lt;code&gt;unused&lt;/code&gt;, the reason code can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.NotRegistered&lt;/code&gt; - The target is not registered with the target group.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.NotInUse&lt;/code&gt; - The target group is not used by any load balancer or the target is in an Availability Zone that is not enabled for its load balancer.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.InvalidState&lt;/code&gt; - The target is in the stopped or terminated state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.IpUnusable&lt;/code&gt; - The target IP address is reserved for use by a load balancer.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the target state is &lt;code&gt;draining&lt;/code&gt;, the reason code can be the following value:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.DeregistrationInProgress&lt;/code&gt; - The target is in the process of being deregistered and the deregistration delay period has not expired.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the target state is &lt;code&gt;unavailable&lt;/code&gt;, the reason code can be the following value:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.HealthCheckDisabled&lt;/code&gt; - Health checks are disabled for the target group. Applies only to Application Load Balancers.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Elb.InternalError&lt;/code&gt; - Target health is unavailable due to an internal error. Applies only to Network Load Balancers.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   final pulumi.Input<TargetHealthReasonEnumEnumValue>? reason;
-  /// <p>The state of the target.</p>
+
+  /// &lt;p&gt;The state of the target.&lt;/p&gt;
   final pulumi.Input<TargetHealthStateEnumEnumValue>? state;
 
   /// Creates a new [TargetHealth].
-  /// [description] <p>A description of the target health that provides additional details. If the state is <code>healthy</code>, a description is not provided.</p>
-  /// [reason] <p>The reason code.</p> <p>If the target state is <code>healthy</code>, a reason code is not provided.</p> <p>If the target state is <code>initial</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Elb.RegistrationInProgress</code> - The target is in the process of being registered with the load balancer.</p> </li> <li> <p> <code>Elb.InitialHealthChecking</code> - The load balancer is still sending the target the minimum number of health checks required to determine its health status.</p> </li> </ul> <p>If the target state is <code>unhealthy</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code. Applies only to Application Load Balancers and Gateway Load Balancers.</p> </li> <li> <p> <code>Target.Timeout</code> - The health check requests timed out. Applies only to Application Load Balancers and Gateway Load Balancers.</p> </li> <li> <p> <code>Target.FailedHealthChecks</code> - The load balancer received an error while establishing a connection to the target or the target response was malformed.</p> </li> <li> <p> <code>Elb.InternalError</code> - The health checks failed due to an internal error. Applies only to Application Load Balancers.</p> </li> </ul> <p>If the target state is <code>unused</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.NotRegistered</code> - The target is not registered with the target group.</p> </li> <li> <p> <code>Target.NotInUse</code> - The target group is not used by any load balancer or the target is in an Availability Zone that is not enabled for its load balancer.</p> </li> <li> <p> <code>Target.InvalidState</code> - The target is in the stopped or terminated state.</p> </li> <li> <p> <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.</p> </li> </ul> <p>If the target state is <code>draining</code>, the reason code can be the following value:</p> <ul> <li> <p> <code>Target.DeregistrationInProgress</code> - The target is in the process of being deregistered and the deregistration delay period has not expired.</p> </li> </ul> <p>If the target state is <code>unavailable</code>, the reason code can be the following value:</p> <ul> <li> <p> <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group. Applies only to Application Load Balancers.</p> </li> <li> <p> <code>Elb.InternalError</code> - Target health is unavailable due to an internal error. Applies only to Network Load Balancers.</p> </li> </ul>
-  /// [state] <p>The state of the target.</p>
-  TargetHealth({
-    this.description,
-    this.reason,
-    this.state,
-  });
+  /// [description] &lt;p&gt;A description of the target health that provides additional details. If the state is &lt;code&gt;healthy&lt;/code&gt;, a description is not provided.&lt;/p&gt;
+  /// [reason] &lt;p&gt;The reason code.&lt;/p&gt; &lt;p&gt;If the target state is &lt;code&gt;healthy&lt;/code&gt;, a reason code is not provided.&lt;/p&gt; &lt;p&gt;If the target state is &lt;code&gt;initial&lt;/code&gt;, the reason code can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Elb.RegistrationInProgress&lt;/code&gt; - The target is in the process of being registered with the load balancer.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Elb.InitialHealthChecking&lt;/code&gt; - The load balancer is still sending the target the minimum number of health checks required to determine its health status.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the target state is &lt;code&gt;unhealthy&lt;/code&gt;, the reason code can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.ResponseCodeMismatch&lt;/code&gt; - The health checks did not return an expected HTTP code. Applies only to Application Load Balancers and Gateway Load Balancers.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.Timeout&lt;/code&gt; - The health check requests timed out. Applies only to Application Load Balancers and Gateway Load Balancers.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.FailedHealthChecks&lt;/code&gt; - The load balancer received an error while establishing a connection to the target or the target response was malformed.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Elb.InternalError&lt;/code&gt; - The health checks failed due to an internal error. Applies only to Application Load Balancers.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the target state is &lt;code&gt;unused&lt;/code&gt;, the reason code can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.NotRegistered&lt;/code&gt; - The target is not registered with the target group.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.NotInUse&lt;/code&gt; - The target group is not used by any load balancer or the target is in an Availability Zone that is not enabled for its load balancer.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.InvalidState&lt;/code&gt; - The target is in the stopped or terminated state.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.IpUnusable&lt;/code&gt; - The target IP address is reserved for use by a load balancer.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the target state is &lt;code&gt;draining&lt;/code&gt;, the reason code can be the following value:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.DeregistrationInProgress&lt;/code&gt; - The target is in the process of being deregistered and the deregistration delay period has not expired.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;p&gt;If the target state is &lt;code&gt;unavailable&lt;/code&gt;, the reason code can be the following value:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Target.HealthCheckDisabled&lt;/code&gt; - Health checks are disabled for the target group. Applies only to Application Load Balancers.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;Elb.InternalError&lt;/code&gt; - Target health is unavailable due to an internal error. Applies only to Network Load Balancers.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+  /// [state] &lt;p&gt;The state of the target.&lt;/p&gt;
+  TargetHealth({this.description, this.reason, this.state});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'reason': ?pulumi.Input.mapOptionalInputValue<TargetHealthReasonEnumEnumValue, Map<String, dynamic>>(reason, (value) => value.toMap()),
-      'state': ?pulumi.Input.mapOptionalInputValue<TargetHealthStateEnumEnumValue, Map<String, dynamic>>(state, (value) => value.toMap()),
+      'reason':
+          ?pulumi.Input.mapOptionalInputValue<
+            TargetHealthReasonEnumEnumValue,
+            Map<String, dynamic>
+          >(reason, (value) => value.toMap()),
+      'state':
+          ?pulumi.Input.mapOptionalInputValue<
+            TargetHealthStateEnumEnumValue,
+            Map<String, dynamic>
+          >(state, (value) => value.toMap()),
     };
   }
 
   factory TargetHealth.fromMap(Map<String, dynamic> map) {
     return TargetHealth(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      reason: map['reason'] == null ? null : (TargetHealthReasonEnumEnumValue.fromMap((map['reason']! as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (TargetHealthStateEnumEnumValue.fromMap((map['state']! as Map).cast<String, dynamic>())).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reason: (() {
+        final guardedValue = map['reason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TargetHealthReasonEnumEnumValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TargetHealthStateEnumEnumValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

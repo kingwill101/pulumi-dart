@@ -6,7 +6,7 @@ import 'gateway_state.dart';
 ///
 /// For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/csg/developer-reference/api-mnz46x).
 ///
-/// > **NOTE:** Available since v1.132.0.
+/// &gt; **NOTE:** Available since v1.132.0.
 ///
 /// ## Example Usage
 ///
@@ -343,27 +343,38 @@ import 'gateway_state.dart';
 class Gateway extends pulumi.CustomResource {
   /// The description of the gateway.
   late final pulumi.Output<String?> description;
+
   /// The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
   late final pulumi.Output<String?> gatewayClass;
+
   /// The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
   late final pulumi.Output<String> gatewayName;
+
   /// The location of the gateway. Valid values: `Cloud`, `On_Premise`.
   late final pulumi.Output<String> location;
   late final pulumi.Output<String?> paymentType;
+
   /// The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
   late final pulumi.Output<int> publicNetworkBandwidth;
+
   /// The detailed reason why you want to delete the gateway.
   late final pulumi.Output<String?> reasonDetail;
+
   /// The type of the reason why you want to delete the gateway.
   late final pulumi.Output<String?> reasonType;
+
   /// Specifies whether to release the gateway after the subscription expires. Valid values:
   late final pulumi.Output<bool?> releaseAfterExpiration;
+
   /// The status of the Gateway.
   late final pulumi.Output<String> status;
+
   /// The ID of the gateway cluster.
   late final pulumi.Output<String> storageBundleId;
+
   /// The type of the gateway. Valid values: `File`, `Iscsi`.
   late final pulumi.Output<String> type;
+
   /// The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
   late final pulumi.Output<String?> vswitchId;
 
@@ -376,24 +387,24 @@ class Gateway extends pulumi.CustomResource {
     GatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudstoragegateway/gateway:Gateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.gatewayClass = registerOutput<String?>('gatewayClass');
-    this.gatewayName = registerOutput<String>('gatewayName');
-    this.location = registerOutput<String>('location');
-    this.paymentType = registerOutput<String?>('paymentType');
-    this.publicNetworkBandwidth = registerOutput<int>('publicNetworkBandwidth');
-    this.reasonDetail = registerOutput<String?>('reasonDetail');
-    this.reasonType = registerOutput<String?>('reasonType');
-    this.releaseAfterExpiration = registerOutput<bool?>('releaseAfterExpiration');
-    this.status = registerOutput<String>('status');
-    this.storageBundleId = registerOutput<String>('storageBundleId');
-    this.type = registerOutput<String>('type');
-    this.vswitchId = registerOutput<String?>('vswitchId');
+         'alicloud:cloudstoragegateway/gateway:Gateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    gatewayClass = registerOutput<String?>('gatewayClass');
+    gatewayName = registerOutput<String>('gatewayName');
+    location = registerOutput<String>('location');
+    paymentType = registerOutput<String?>('paymentType');
+    publicNetworkBandwidth = registerOutput<int>('publicNetworkBandwidth');
+    reasonDetail = registerOutput<String?>('reasonDetail');
+    reasonType = registerOutput<String?>('reasonType');
+    releaseAfterExpiration = registerOutput<bool?>('releaseAfterExpiration');
+    status = registerOutput<String>('status');
+    storageBundleId = registerOutput<String>('storageBundleId');
+    type = registerOutput<String>('type');
+    vswitchId = registerOutput<String?>('vswitchId');
   }
 
   /// Gets an existing [Gateway] resource's state with the given [name] and [id].
@@ -414,23 +425,23 @@ class Gateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudstoragegateway/gateway:Gateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.gatewayClass = registerOutput<String?>('gatewayClass');
-    this.gatewayName = registerOutput<String>('gatewayName');
-    this.location = registerOutput<String>('location');
-    this.paymentType = registerOutput<String?>('paymentType');
-    this.publicNetworkBandwidth = registerOutput<int>('publicNetworkBandwidth');
-    this.reasonDetail = registerOutput<String?>('reasonDetail');
-    this.reasonType = registerOutput<String?>('reasonType');
-    this.releaseAfterExpiration = registerOutput<bool?>('releaseAfterExpiration');
-    this.status = registerOutput<String>('status');
-    this.storageBundleId = registerOutput<String>('storageBundleId');
-    this.type = registerOutput<String>('type');
-    this.vswitchId = registerOutput<String?>('vswitchId');
+         'alicloud:cloudstoragegateway/gateway:Gateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    gatewayClass = registerOutput<String?>('gatewayClass');
+    gatewayName = registerOutput<String>('gatewayName');
+    location = registerOutput<String>('location');
+    paymentType = registerOutput<String?>('paymentType');
+    publicNetworkBandwidth = registerOutput<int>('publicNetworkBandwidth');
+    reasonDetail = registerOutput<String?>('reasonDetail');
+    reasonType = registerOutput<String?>('reasonType');
+    releaseAfterExpiration = registerOutput<bool?>('releaseAfterExpiration');
+    status = registerOutput<String>('status');
+    storageBundleId = registerOutput<String>('storageBundleId');
+    type = registerOutput<String>('type');
+    vswitchId = registerOutput<String?>('vswitchId');
   }
 }

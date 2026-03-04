@@ -1,5 +1,3 @@
-library module_engagementfabric;
-
 export 'engagementfabric/account.dart';
 export 'engagementfabric/account_args.dart';
 export 'engagementfabric/channel.dart';

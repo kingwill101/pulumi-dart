@@ -10,32 +10,46 @@ import 'subnet_response.dart';
 class GetNetworkSecurityGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The default security rules of network security group.
   final List<SecurityRuleResponse> defaultSecurityRules;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// A collection of references to flow log resources.
   final List<FlowLogResponse> flowLogs;
+
   /// When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
   final bool? flushConnection;
+
   /// Resource ID.
   final String? id;
+
   /// Resource location.
   final String? location;
+
   /// Resource name.
   final String name;
+
   /// A collection of references to network interfaces.
   final List<NetworkInterfaceResponse> networkInterfaces;
+
   /// The provisioning state of the network security group resource.
   final String provisioningState;
+
   /// The resource GUID property of the network security group resource.
   final String resourceGuid;
+
   /// A collection of security rules of the network security group.
   final List<SecurityRuleResponse>? securityRules;
+
   /// A collection of references to subnets.
   final List<SubnetResponse> subnets;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Resource type.
   final String type;
 
@@ -76,18 +90,40 @@ class GetNetworkSecurityGroupResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'defaultSecurityRules': pulumi.Input.encodeList<SecurityRuleResponse, Map<String, dynamic>>(defaultSecurityRules, (value) => value.toMap()),
+      'defaultSecurityRules':
+          pulumi.Input.encodeList<SecurityRuleResponse, Map<String, dynamic>>(
+            defaultSecurityRules,
+            (value) => value.toMap(),
+          ),
       'etag': etag,
-      'flowLogs': pulumi.Input.encodeList<FlowLogResponse, Map<String, dynamic>>(flowLogs, (value) => value.toMap()),
+      'flowLogs':
+          pulumi.Input.encodeList<FlowLogResponse, Map<String, dynamic>>(
+            flowLogs,
+            (value) => value.toMap(),
+          ),
       'flushConnection': ?flushConnection,
       'id': ?id,
       'location': ?location,
       'name': name,
-      'networkInterfaces': pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
+      'networkInterfaces':
+          pulumi.Input.encodeList<
+            NetworkInterfaceResponse,
+            Map<String, dynamic>
+          >(networkInterfaces, (value) => value.toMap()),
       'provisioningState': provisioningState,
       'resourceGuid': resourceGuid,
-      'securityRules': ?securityRules == null ? null : pulumi.Input.encodeList<SecurityRuleResponse, Map<String, dynamic>>(securityRules!, (value) => value.toMap()),
-      'subnets': pulumi.Input.encodeList<SubnetResponse, Map<String, dynamic>>(subnets, (value) => value.toMap()),
+      'securityRules': ?(() {
+        final guardedValue = securityRules;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          SecurityRuleResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
+      'subnets': pulumi.Input.encodeList<SubnetResponse, Map<String, dynamic>>(
+        subnets,
+        (value) => value.toMap(),
+      ),
       'tags': ?tags,
       'type': type,
     };
@@ -96,21 +132,63 @@ class GetNetworkSecurityGroupResult {
   factory GetNetworkSecurityGroupResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      defaultSecurityRules: pulumi.Input.decodeList<SecurityRuleResponse>(map['defaultSecurityRules'], (value) => SecurityRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      defaultSecurityRules: pulumi.Input.decodeList<SecurityRuleResponse>(
+        map['defaultSecurityRules']!,
+        (value) => SecurityRuleResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       etag: map['etag'] as String,
-      flowLogs: pulumi.Input.decodeList<FlowLogResponse>(map['flowLogs'], (value) => FlowLogResponse.fromMap((value as Map).cast<String, dynamic>())),
-      flushConnection: map['flushConnection'] == null ? null : map['flushConnection']! as bool,
-      id: map['id'] == null ? null : map['id']! as String,
-      location: map['location'] == null ? null : map['location']! as String,
+      flowLogs: pulumi.Input.decodeList<FlowLogResponse>(
+        map['flowLogs']!,
+        (value) =>
+            FlowLogResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      flushConnection: (() {
+        final guardedValue = map['flushConnection'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponse>(
+        map['networkInterfaces']!,
+        (value) => NetworkInterfaceResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      securityRules: map['securityRules'] == null ? null : pulumi.Input.decodeList<SecurityRuleResponse>(map['securityRules']!, (value) => SecurityRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      subnets: pulumi.Input.decodeList<SubnetResponse>(map['subnets'], (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      securityRules: (() {
+        final guardedValue = map['securityRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<SecurityRuleResponse>(
+          guardedValue,
+          (value) => SecurityRuleResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      subnets: pulumi.Input.decodeList<SubnetResponse>(
+        map['subnets']!,
+        (value) =>
+            SubnetResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

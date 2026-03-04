@@ -9,20 +9,19 @@ class ConfidentialNodes {
 
   /// Creates a new [ConfidentialNodes].
   /// [enabled] Whether Confidential Nodes feature is enabled.
-  ConfidentialNodes({
-    this.enabled,
-  });
+  ConfidentialNodes({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory ConfidentialNodes.fromMap(Map<String, dynamic> map) {
     return ConfidentialNodes(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

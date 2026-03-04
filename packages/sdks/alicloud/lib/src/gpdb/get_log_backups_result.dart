@@ -8,10 +8,13 @@ class GetLogBackupsResult {
   /// The ID of the Master node of the instance.
   final String dbInstanceId;
   final String? endTime;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Logbackup IDs.
   final List<String> ids;
+
   /// A list of Logbackup Entries. Each element contains the following attributes:
   final List<GetLogBackupsLogbackup> logbackups;
   final String? outputFile;
@@ -47,7 +50,11 @@ class GetLogBackupsResult {
       'endTime': ?endTime,
       'id': id,
       'ids': ids,
-      'logbackups': pulumi.Input.encodeList<GetLogBackupsLogbackup, Map<String, dynamic>>(logbackups, (value) => value.toMap()),
+      'logbackups':
+          pulumi.Input.encodeList<GetLogBackupsLogbackup, Map<String, dynamic>>(
+            logbackups,
+            (value) => value.toMap(),
+          ),
       'outputFile': ?outputFile,
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
@@ -58,15 +65,39 @@ class GetLogBackupsResult {
   factory GetLogBackupsResult.fromMap(Map<String, dynamic> map) {
     return GetLogBackupsResult(
       dbInstanceId: map['dbInstanceId'] as String,
-      endTime: map['endTime'] == null ? null : map['endTime']! as String,
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      logbackups: pulumi.Input.decodeList<GetLogBackupsLogbackup>(map['logbackups'], (value) => GetLogBackupsLogbackup.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      startTime: map['startTime'] == null ? null : map['startTime']! as String,
+      logbackups: pulumi.Input.decodeList<GetLogBackupsLogbackup>(
+        map['logbackups']!,
+        (value) => GetLogBackupsLogbackup.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

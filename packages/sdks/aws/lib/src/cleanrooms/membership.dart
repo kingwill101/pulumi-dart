@@ -194,32 +194,47 @@ import 'membership_state.dart';
 class Membership extends pulumi.CustomResource {
   /// The ARN of the membership.
   late final pulumi.Output<String> arn;
+
   /// The ARN of the joined collaboration.
   late final pulumi.Output<String> collaborationArn;
+
   /// The account ID of the collaboration's creator.
   late final pulumi.Output<String> collaborationCreatorAccountId;
+
   /// The display name of the collaboration's creator.
   late final pulumi.Output<String> collaborationCreatorDisplayName;
+
   /// The ID of the collaboration to which the member was invited.
   late final pulumi.Output<String> collaborationId;
+
   /// The name of the joined collaboration.
   late final pulumi.Output<String> collaborationName;
+
   /// The date and time the membership was created.
   late final pulumi.Output<String> createTime;
+
   /// The default configuration for a query result.
-  late final pulumi.Output<MembershipDefaultResultConfiguration?> defaultResultConfiguration;
+  late final pulumi.Output<MembershipDefaultResultConfiguration?>
+  defaultResultConfiguration;
+
   /// The list of abilities for the invited member.
   late final pulumi.Output<List<String>> memberAbilities;
-  late final pulumi.Output<MembershipPaymentConfiguration?> paymentConfiguration;
+  late final pulumi.Output<MembershipPaymentConfiguration?>
+  paymentConfiguration;
+
   /// An indicator as to whether query logging has been enabled or disabled for the membership.
   late final pulumi.Output<String> queryLogStatus;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The status of the membership.
   late final pulumi.Output<String> status;
+
   /// Key value pairs which tag the membership.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The date and time the membership was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -232,27 +247,36 @@ class Membership extends pulumi.CustomResource {
     MembershipArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cleanrooms/membership:Membership',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.collaborationArn = registerOutput<String>('collaborationArn');
-    this.collaborationCreatorAccountId = registerOutput<String>('collaborationCreatorAccountId');
-    this.collaborationCreatorDisplayName = registerOutput<String>('collaborationCreatorDisplayName');
-    this.collaborationId = registerOutput<String>('collaborationId');
-    this.collaborationName = registerOutput<String>('collaborationName');
-    this.createTime = registerOutput<String>('createTime');
-    this.defaultResultConfiguration = registerOutput<MembershipDefaultResultConfiguration?>('defaultResultConfiguration');
-    this.memberAbilities = registerOutput<List<String>>('memberAbilities');
-    this.paymentConfiguration = registerOutput<MembershipPaymentConfiguration?>('paymentConfiguration');
-    this.queryLogStatus = registerOutput<String>('queryLogStatus');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.updateTime = registerOutput<String>('updateTime');
+         'aws:cleanrooms/membership:Membership',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    collaborationArn = registerOutput<String>('collaborationArn');
+    collaborationCreatorAccountId = registerOutput<String>(
+      'collaborationCreatorAccountId',
+    );
+    collaborationCreatorDisplayName = registerOutput<String>(
+      'collaborationCreatorDisplayName',
+    );
+    collaborationId = registerOutput<String>('collaborationId');
+    collaborationName = registerOutput<String>('collaborationName');
+    createTime = registerOutput<String>('createTime');
+    defaultResultConfiguration =
+        registerOutput<MembershipDefaultResultConfiguration?>(
+          'defaultResultConfiguration',
+        );
+    memberAbilities = registerOutput<List<String>>('memberAbilities');
+    paymentConfiguration = registerOutput<MembershipPaymentConfiguration?>(
+      'paymentConfiguration',
+    );
+    queryLogStatus = registerOutput<String>('queryLogStatus');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [Membership] resource's state with the given [name] and [id].
@@ -273,26 +297,35 @@ class Membership extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cleanrooms/membership:Membership',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.collaborationArn = registerOutput<String>('collaborationArn');
-    this.collaborationCreatorAccountId = registerOutput<String>('collaborationCreatorAccountId');
-    this.collaborationCreatorDisplayName = registerOutput<String>('collaborationCreatorDisplayName');
-    this.collaborationId = registerOutput<String>('collaborationId');
-    this.collaborationName = registerOutput<String>('collaborationName');
-    this.createTime = registerOutput<String>('createTime');
-    this.defaultResultConfiguration = registerOutput<MembershipDefaultResultConfiguration?>('defaultResultConfiguration');
-    this.memberAbilities = registerOutput<List<String>>('memberAbilities');
-    this.paymentConfiguration = registerOutput<MembershipPaymentConfiguration?>('paymentConfiguration');
-    this.queryLogStatus = registerOutput<String>('queryLogStatus');
-    this.region = registerOutput<String>('region');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.updateTime = registerOutput<String>('updateTime');
+         'aws:cleanrooms/membership:Membership',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    collaborationArn = registerOutput<String>('collaborationArn');
+    collaborationCreatorAccountId = registerOutput<String>(
+      'collaborationCreatorAccountId',
+    );
+    collaborationCreatorDisplayName = registerOutput<String>(
+      'collaborationCreatorDisplayName',
+    );
+    collaborationId = registerOutput<String>('collaborationId');
+    collaborationName = registerOutput<String>('collaborationName');
+    createTime = registerOutput<String>('createTime');
+    defaultResultConfiguration =
+        registerOutput<MembershipDefaultResultConfiguration?>(
+          'defaultResultConfiguration',
+        );
+    memberAbilities = registerOutput<List<String>>('memberAbilities');
+    paymentConfiguration = registerOutput<MembershipPaymentConfiguration?>(
+      'paymentConfiguration',
+    );
+    queryLogStatus = registerOutput<String>('queryLogStatus');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

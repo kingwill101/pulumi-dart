@@ -6,12 +6,19 @@ import 'domain_devices_disk_mirror_source_reservations_source_tcp_reconnect.dart
 class DomainDevicesDiskMirrorSourceReservationsSourceTcp {
   /// Sets the host address for the TCP connection in the random number generator backend.
   final pulumi.Input<String>? host;
+
   /// Specifies the operation mode for TCP in the random number generator backend.
   final pulumi.Input<String>? mode;
+
   /// Configures reconnect settings for the UNIX domain socket in the backend.
-  final pulumi.Input<DomainDevicesDiskMirrorSourceReservationsSourceTcpReconnect>? reconnect;
+  final pulumi.Input<
+    DomainDevicesDiskMirrorSourceReservationsSourceTcpReconnect
+  >?
+  reconnect;
+
   /// Defines the service attribute for the TCP connection in the random number generator backend.
   final pulumi.Input<String>? service;
+
   /// Enables or disables TLS encryption for the TCP connection in the backend.
   final pulumi.Input<String>? tls;
 
@@ -33,20 +40,49 @@ class DomainDevicesDiskMirrorSourceReservationsSourceTcp {
     return <String, dynamic>{
       'host': ?host,
       'mode': ?mode,
-      'reconnect': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorSourceReservationsSourceTcpReconnect, Map<String, dynamic>>(reconnect, (value) => value.toMap()),
+      'reconnect':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorSourceReservationsSourceTcpReconnect,
+            Map<String, dynamic>
+          >(reconnect, (value) => value.toMap()),
       'service': ?service,
       'tls': ?tls,
     };
   }
 
-  factory DomainDevicesDiskMirrorSourceReservationsSourceTcp.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesDiskMirrorSourceReservationsSourceTcp.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesDiskMirrorSourceReservationsSourceTcp(
-      host: map['host'] == null ? null : (map['host']! as String).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      reconnect: map['reconnect'] == null ? null : (DomainDevicesDiskMirrorSourceReservationsSourceTcpReconnect.fromMap((map['reconnect']! as Map).cast<String, dynamic>())).input(),
-      service: map['service'] == null ? null : (map['service']! as String).input(),
-      tls: map['tls'] == null ? null : (map['tls']! as String).input(),
+      host: (() {
+        final guardedValue = map['host'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reconnect: (() {
+        final guardedValue = map['reconnect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorSourceReservationsSourceTcpReconnect.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tls: (() {
+        final guardedValue = map['tls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -10,20 +10,15 @@ class WindowsConfigurationResponse {
 
   /// Creates a new [WindowsConfigurationResponse].
   /// [osType] The OS Type
-  WindowsConfigurationResponse({
-    required this.osType,
-  });
+  WindowsConfigurationResponse({required this.osType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'osType': osType,
-    };
+    return <String, dynamic>{'osType': osType};
   }
 
   factory WindowsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return WindowsConfigurationResponse(
-      osType: (map['osType'] as String).input(),
+      osType: pulumi.Input.fromValue(map['osType'] as String),
     );
   }
 }
-

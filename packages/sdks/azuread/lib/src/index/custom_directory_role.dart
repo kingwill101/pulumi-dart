@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_directory_role_args.dart';
-import 'custom_directory_role_permission.dart';
 import 'custom_directory_role_state.dart';
 
 /// Manages a Custom Directory Role within Azure Active Directory.
@@ -233,16 +232,22 @@ import 'custom_directory_role_state.dart';
 class CustomDirectoryRole extends pulumi.CustomResource {
   /// The description of the custom directory role.
   late final pulumi.Output<String?> description;
+
   /// The display name of the custom directory role.
   late final pulumi.Output<String> displayName;
+
   /// Indicates whether the role is enabled for assignment.
   late final pulumi.Output<bool> enabled;
+
   /// The object ID of the custom directory role.
   late final pulumi.Output<String> objectId;
+
   /// A collection of `permissions` blocks as documented below.
-  late final pulumi.Output<List<CustomDirectoryRolePermission>> permissions;
+  late final pulumi.Output<List<Map<String, dynamic>>> permissions;
+
   /// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
   late final pulumi.Output<String> templateId;
+
   /// The version of the role definition. This can be any arbitrary string between 1-128 characters.
   late final pulumi.Output<String> version;
 
@@ -255,18 +260,18 @@ class CustomDirectoryRole extends pulumi.CustomResource {
     CustomDirectoryRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/customDirectoryRole:CustomDirectoryRole',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.enabled = registerOutput<bool>('enabled');
-    this.objectId = registerOutput<String>('objectId');
-    this.permissions = registerOutput<List<CustomDirectoryRolePermission>>('permissions');
-    this.templateId = registerOutput<String>('templateId');
-    this.version = registerOutput<String>('version');
+         'azuread:index/customDirectoryRole:CustomDirectoryRole',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool>('enabled');
+    objectId = registerOutput<String>('objectId');
+    permissions = registerOutput<List<Map<String, dynamic>>>('permissions');
+    templateId = registerOutput<String>('templateId');
+    version = registerOutput<String>('version');
   }
 
   /// Gets an existing [CustomDirectoryRole] resource's state with the given [name] and [id].
@@ -287,17 +292,17 @@ class CustomDirectoryRole extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/customDirectoryRole:CustomDirectoryRole',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.enabled = registerOutput<bool>('enabled');
-    this.objectId = registerOutput<String>('objectId');
-    this.permissions = registerOutput<List<CustomDirectoryRolePermission>>('permissions');
-    this.templateId = registerOutput<String>('templateId');
-    this.version = registerOutput<String>('version');
+         'azuread:index/customDirectoryRole:CustomDirectoryRole',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool>('enabled');
+    objectId = registerOutput<String>('objectId');
+    permissions = registerOutput<List<Map<String, dynamic>>>('permissions');
+    templateId = registerOutput<String>('templateId');
+    version = registerOutput<String>('version');
   }
 }

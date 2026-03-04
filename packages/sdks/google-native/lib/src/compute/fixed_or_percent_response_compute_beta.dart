@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FixedOrPercentResponseComputeBeta {
   /// Absolute value of VM instances calculated based on the specific mode. - If the value is fixed, then the calculated value is equal to the fixed value. - If the value is a percent, then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a remainder, the number is rounded.
   final pulumi.Input<int> calculated;
+
   /// Specifies a fixed number of VM instances. This must be a positive integer.
   final pulumi.Input<int> fixed;
+
   /// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
   final pulumi.Input<int> percent;
 
@@ -31,10 +33,9 @@ class FixedOrPercentResponseComputeBeta {
 
   factory FixedOrPercentResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return FixedOrPercentResponseComputeBeta(
-      calculated: (map['calculated'] as int).input(),
-      fixed: (map['fixed'] as int).input(),
-      percent: (map['percent'] as int).input(),
+      calculated: pulumi.Input.fromValue(map['calculated'] as int),
+      fixed: pulumi.Input.fromValue(map['fixed'] as int),
+      percent: pulumi.Input.fromValue(map['percent'] as int),
     );
   }
 }
-

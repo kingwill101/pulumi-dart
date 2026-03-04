@@ -13,15 +13,14 @@ class VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateSds {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretName': secretName,
-    };
+    return <String, dynamic>{'secretName': secretName};
   }
 
-  factory VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateSds.fromMap(Map<String, dynamic> map) {
+  factory VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateSds.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificateSds(
-      secretName: (map['secretName'] as String).input(),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
     );
   }
 }
-

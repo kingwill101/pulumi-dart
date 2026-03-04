@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatastoreArgs {
   /// either regional or zonal location of the resource.
   final pulumi.Input<String> location;
+
   /// Name of the resource.
   final pulumi.Input<String> name;
   final pulumi.Input<String>? project;
@@ -17,11 +18,7 @@ class GetDatastoreArgs {
   /// [location] either regional or zonal location of the resource.
   /// [name] Name of the resource.
   /// [project] Optional.
-  GetDatastoreArgs({
-    required this.location,
-    required this.name,
-    this.project,
-  });
+  GetDatastoreArgs({required this.location, required this.name, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,10 +30,13 @@ class GetDatastoreArgs {
 
   factory GetDatastoreArgs.fromMap(Map<String, dynamic> map) {
     return GetDatastoreArgs(
-      location: (map['location'] as String).input(),
-      name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

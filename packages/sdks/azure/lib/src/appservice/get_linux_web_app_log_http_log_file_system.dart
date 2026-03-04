@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLinuxWebAppLogHttpLogFileSystem {
   /// The retention period in days.
   final pulumi.Input<int> retentionInDays;
+
   /// The maximum size in megabytes that log files can use.
   final pulumi.Input<int> retentionInMb;
 
@@ -25,9 +26,8 @@ class GetLinuxWebAppLogHttpLogFileSystem {
 
   factory GetLinuxWebAppLogHttpLogFileSystem.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppLogHttpLogFileSystem(
-      retentionInDays: (map['retentionInDays'] as int).input(),
-      retentionInMb: (map['retentionInMb'] as int).input(),
+      retentionInDays: pulumi.Input.fromValue(map['retentionInDays'] as int),
+      retentionInMb: pulumi.Input.fromValue(map['retentionInMb'] as int),
     );
   }
 }
-

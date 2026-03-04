@@ -7,22 +7,31 @@ import 'endpoint_access_vpc_endpoint.dart';
 class EndpointAccessState {
   /// The DNS address of the VPC endpoint.
   final pulumi.Input<String>? address;
+
   /// Amazon Resource Name (ARN) of the Redshift Serverless Endpoint Access.
   final pulumi.Input<String>? arn;
+
   /// The name of the endpoint.
   final pulumi.Input<String>? endpointName;
+
   /// The owner Amazon Web Services account for the Amazon Redshift Serverless workgroup.
   final pulumi.Input<String>? ownerAccount;
+
   /// The port that Amazon Redshift Serverless listens on.
   final pulumi.Input<int>? port;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// An array of VPC subnet IDs to associate with the endpoint.
   final pulumi.Input<List<String>>? subnetIds;
+
   /// The VPC endpoint or the Redshift Serverless workgroup. See `VPC Endpoint` below.
   final pulumi.Input<List<EndpointAccessVpcEndpoint>>? vpcEndpoints;
+
   /// An array of security group IDs to associate with the workgroup.
   final pulumi.Input<List<String>>? vpcSecurityGroupIds;
+
   /// The name of the workgroup.
   final pulumi.Input<String>? workgroupName;
 
@@ -59,7 +68,18 @@ class EndpointAccessState {
       'port': ?port,
       'region': ?region,
       'subnetIds': ?subnetIds,
-      'vpcEndpoints': ?pulumi.Input.mapOptionalInputValue<List<EndpointAccessVpcEndpoint>, List<Map<String, dynamic>>>(vpcEndpoints, (value) => pulumi.Input.encodeList<EndpointAccessVpcEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vpcEndpoints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<EndpointAccessVpcEndpoint>,
+            List<Map<String, dynamic>>
+          >(
+            vpcEndpoints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  EndpointAccessVpcEndpoint,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'vpcSecurityGroupIds': ?vpcSecurityGroupIds,
       'workgroupName': ?workgroupName,
     };
@@ -67,17 +87,63 @@ class EndpointAccessState {
 
   factory EndpointAccessState.fromMap(Map<String, dynamic> map) {
     return EndpointAccessState(
-      address: map['address'] == null ? null : ((map['address'] as String).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      endpointName: map['endpointName'] == null ? null : ((map['endpointName'] as String).input()).input(),
-      ownerAccount: map['ownerAccount'] == null ? null : ((map['ownerAccount'] as String).input()).input(),
-      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
-      vpcEndpoints: map['vpcEndpoints'] == null ? null : ((pulumi.Input.decodeList<EndpointAccessVpcEndpoint>(map['vpcEndpoints']!, (value) => EndpointAccessVpcEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : (((map['vpcSecurityGroupIds'] as List).cast<String>()).input()).input(),
-      workgroupName: map['workgroupName'] == null ? null : ((map['workgroupName'] as String).input()).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointName: (() {
+        final guardedValue = map['endpointName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerAccount: (() {
+        final guardedValue = map['ownerAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetIds: (() {
+        final guardedValue = map['subnetIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      vpcEndpoints: (() {
+        final guardedValue = map['vpcEndpoints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<EndpointAccessVpcEndpoint>(
+            guardedValue,
+            (value) => EndpointAccessVpcEndpoint.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      vpcSecurityGroupIds: (() {
+        final guardedValue = map['vpcSecurityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      workgroupName: (() {
+        final guardedValue = map['workgroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

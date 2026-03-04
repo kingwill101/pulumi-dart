@@ -31,11 +31,26 @@ class DomainIdentityCenterOptions {
 
   factory DomainIdentityCenterOptions.fromMap(Map<String, dynamic> map) {
     return DomainIdentityCenterOptions(
-      enabledApiAccess: map['enabledApiAccess'] == null ? null : ((map['enabledApiAccess'] as bool).input()).input(),
-      identityCenterInstanceArn: map['identityCenterInstanceArn'] == null ? null : ((map['identityCenterInstanceArn'] as String).input()).input(),
-      rolesKey: map['rolesKey'] == null ? null : ((map['rolesKey'] as String).input()).input(),
-      subjectKey: map['subjectKey'] == null ? null : ((map['subjectKey'] as String).input()).input(),
+      enabledApiAccess: (() {
+        final guardedValue = map['enabledApiAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      identityCenterInstanceArn: (() {
+        final guardedValue = map['identityCenterInstanceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rolesKey: (() {
+        final guardedValue = map['rolesKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subjectKey: (() {
+        final guardedValue = map['subjectKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

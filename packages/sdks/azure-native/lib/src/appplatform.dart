@@ -1,5 +1,3 @@
-library module_appplatform;
-
 export 'appplatform/accelerator_basic_auth_setting.dart';
 export 'appplatform/accelerator_basic_auth_setting_response.dart';
 export 'appplatform/accelerator_git_repository.dart';

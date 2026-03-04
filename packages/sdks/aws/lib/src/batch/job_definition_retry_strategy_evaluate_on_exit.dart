@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobDefinitionRetryStrategyEvaluateOnExit {
   /// Action to take if all of the specified conditions are met. The values are not case sensitive. Valid values: `retry`, `exit`.
   final pulumi.Input<String> action;
+
   /// Glob pattern to match against the decimal representation of the exit code returned for a job.
   final pulumi.Input<String>? onExitCode;
+
   /// Glob pattern to match against the reason returned for a job.
   final pulumi.Input<String>? onReason;
+
   /// Glob pattern to match against the status reason returned for a job.
   final pulumi.Input<String>? onStatusReason;
 
@@ -33,13 +36,26 @@ class JobDefinitionRetryStrategyEvaluateOnExit {
     };
   }
 
-  factory JobDefinitionRetryStrategyEvaluateOnExit.fromMap(Map<String, dynamic> map) {
+  factory JobDefinitionRetryStrategyEvaluateOnExit.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JobDefinitionRetryStrategyEvaluateOnExit(
-      action: (map['action'] as String).input(),
-      onExitCode: map['onExitCode'] == null ? null : ((map['onExitCode'] as String).input()).input(),
-      onReason: map['onReason'] == null ? null : ((map['onReason'] as String).input()).input(),
-      onStatusReason: map['onStatusReason'] == null ? null : ((map['onStatusReason'] as String).input()).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      onExitCode: (() {
+        final guardedValue = map['onExitCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      onReason: (() {
+        final guardedValue = map['onReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      onStatusReason: (() {
+        final guardedValue = map['onStatusReason'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

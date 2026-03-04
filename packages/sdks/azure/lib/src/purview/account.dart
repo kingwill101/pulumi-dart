@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_args.dart';
 import 'account_identity.dart';
-import 'account_managed_resource.dart';
 import 'account_state.dart';
 
 /// Manages a Purview Account.
@@ -163,7 +162,7 @@ import 'account_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Purview` - 2021-12-01
@@ -178,36 +177,50 @@ import 'account_state.dart';
 class Account extends pulumi.CustomResource {
   /// Atlas Kafka endpoint primary connection string.
   late final pulumi.Output<String> atlasKafkaEndpointPrimaryConnectionString;
+
   /// Atlas Kafka endpoint secondary connection string.
   late final pulumi.Output<String> atlasKafkaEndpointSecondaryConnectionString;
+
   /// Configured in AWS to allow use of the role arn used for scanning
   late final pulumi.Output<String> awsExternalId;
+
   /// Catalog endpoint.
   late final pulumi.Output<String> catalogEndpoint;
+
   /// Guardian endpoint.
   late final pulumi.Output<String> guardianEndpoint;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<AccountIdentity> identity;
+
   /// The Azure Region where the Purview Account should exist. Changing this forces a new Purview Account to be created.
   late final pulumi.Output<String> location;
+
   /// Whether the Purview Account should create a managed Event Hub Namespace. Defaults to `true`.
   ///
-  /// > **Note:** `managed_event_hub_enabled` must be `false` in order to use a Kafka Configuration with the Purview Account.
+  /// &gt; **Note:** `managed_event_hub_enabled` must be `false` in order to use a Kafka Configuration with the Purview Account.
   late final pulumi.Output<bool?> managedEventHubEnabled;
+
   /// The name which should be used for the new Resource Group where Purview Account creates the managed resources. Changing this forces a new Purview Account to be created.
   ///
-  /// > **Note:** `managed_resource_group_name` must be a new Resource Group.
+  /// &gt; **Note:** `managed_resource_group_name` must be a new Resource Group.
   late final pulumi.Output<String> managedResourceGroupName;
+
   /// A `managed_resources` block as defined below.
-  late final pulumi.Output<List<AccountManagedResource>> managedResources;
+  late final pulumi.Output<List<Map<String, dynamic>>> managedResources;
+
   /// The name which should be used for this Purview Account. Changing this forces a new Purview Account to be created.
   late final pulumi.Output<String> name;
+
   /// Should the Purview Account be visible to the public network? Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkEnabled;
+
   /// The name of the Resource Group where the Purview Account should exist. Changing this forces a new Purview Account to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Scan endpoint.
   late final pulumi.Output<String> scanEndpoint;
+
   /// A mapping of tags which should be assigned to the Purview Account.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -220,26 +233,34 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:purview/account:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.atlasKafkaEndpointPrimaryConnectionString = registerOutput<String>('atlasKafkaEndpointPrimaryConnectionString');
-    this.atlasKafkaEndpointSecondaryConnectionString = registerOutput<String>('atlasKafkaEndpointSecondaryConnectionString');
-    this.awsExternalId = registerOutput<String>('awsExternalId');
-    this.catalogEndpoint = registerOutput<String>('catalogEndpoint');
-    this.guardianEndpoint = registerOutput<String>('guardianEndpoint');
-    this.identity = registerOutput<AccountIdentity>('identity');
-    this.location = registerOutput<String>('location');
-    this.managedEventHubEnabled = registerOutput<bool?>('managedEventHubEnabled');
-    this.managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
-    this.managedResources = registerOutput<List<AccountManagedResource>>('managedResources');
+         'azure:purview/account:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    atlasKafkaEndpointPrimaryConnectionString = registerOutput<String>(
+      'atlasKafkaEndpointPrimaryConnectionString',
+    );
+    atlasKafkaEndpointSecondaryConnectionString = registerOutput<String>(
+      'atlasKafkaEndpointSecondaryConnectionString',
+    );
+    awsExternalId = registerOutput<String>('awsExternalId');
+    catalogEndpoint = registerOutput<String>('catalogEndpoint');
+    guardianEndpoint = registerOutput<String>('guardianEndpoint');
+    identity = registerOutput<AccountIdentity>('identity');
+    location = registerOutput<String>('location');
+    managedEventHubEnabled = registerOutput<bool?>('managedEventHubEnabled');
+    managedResourceGroupName = registerOutput<String>(
+      'managedResourceGroupName',
+    );
+    managedResources = registerOutput<List<Map<String, dynamic>>>(
+      'managedResources',
+    );
     this.name = registerOutput<String>('name');
-    this.publicNetworkEnabled = registerOutput<bool?>('publicNetworkEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scanEndpoint = registerOutput<String>('scanEndpoint');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicNetworkEnabled = registerOutput<bool?>('publicNetworkEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scanEndpoint = registerOutput<String>('scanEndpoint');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -260,25 +281,33 @@ class Account extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:purview/account:Account',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.atlasKafkaEndpointPrimaryConnectionString = registerOutput<String>('atlasKafkaEndpointPrimaryConnectionString');
-    this.atlasKafkaEndpointSecondaryConnectionString = registerOutput<String>('atlasKafkaEndpointSecondaryConnectionString');
-    this.awsExternalId = registerOutput<String>('awsExternalId');
-    this.catalogEndpoint = registerOutput<String>('catalogEndpoint');
-    this.guardianEndpoint = registerOutput<String>('guardianEndpoint');
-    this.identity = registerOutput<AccountIdentity>('identity');
-    this.location = registerOutput<String>('location');
-    this.managedEventHubEnabled = registerOutput<bool?>('managedEventHubEnabled');
-    this.managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
-    this.managedResources = registerOutput<List<AccountManagedResource>>('managedResources');
+         'azure:purview/account:Account',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    atlasKafkaEndpointPrimaryConnectionString = registerOutput<String>(
+      'atlasKafkaEndpointPrimaryConnectionString',
+    );
+    atlasKafkaEndpointSecondaryConnectionString = registerOutput<String>(
+      'atlasKafkaEndpointSecondaryConnectionString',
+    );
+    awsExternalId = registerOutput<String>('awsExternalId');
+    catalogEndpoint = registerOutput<String>('catalogEndpoint');
+    guardianEndpoint = registerOutput<String>('guardianEndpoint');
+    identity = registerOutput<AccountIdentity>('identity');
+    location = registerOutput<String>('location');
+    managedEventHubEnabled = registerOutput<bool?>('managedEventHubEnabled');
+    managedResourceGroupName = registerOutput<String>(
+      'managedResourceGroupName',
+    );
+    managedResources = registerOutput<List<Map<String, dynamic>>>(
+      'managedResources',
+    );
     this.name = registerOutput<String>('name');
-    this.publicNetworkEnabled = registerOutput<bool?>('publicNetworkEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scanEndpoint = registerOutput<String>('scanEndpoint');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    publicNetworkEnabled = registerOutput<bool?>('publicNetworkEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scanEndpoint = registerOutput<String>('scanEndpoint');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

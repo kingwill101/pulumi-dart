@@ -7,20 +7,21 @@ class ContainerGroupContainerSecurityContextCapability {
 
   /// Creates a new [ContainerGroupContainerSecurityContextCapability].
   /// [adds] Optional.
-  ContainerGroupContainerSecurityContextCapability({
-    this.adds,
-  });
+  ContainerGroupContainerSecurityContextCapability({this.adds});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'adds': ?adds,
-    };
+    return <String, dynamic>{'adds': ?adds};
   }
 
-  factory ContainerGroupContainerSecurityContextCapability.fromMap(Map<String, dynamic> map) {
+  factory ContainerGroupContainerSecurityContextCapability.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContainerGroupContainerSecurityContextCapability(
-      adds: map['adds'] == null ? null : ((map['adds']! as List).cast<String>()).input(),
+      adds: (() {
+        final guardedValue = map['adds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

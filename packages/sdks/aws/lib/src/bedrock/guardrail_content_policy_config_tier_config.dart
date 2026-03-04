@@ -8,20 +8,17 @@ class GuardrailContentPolicyConfigTierConfig {
 
   /// Creates a new [GuardrailContentPolicyConfigTierConfig].
   /// [tierName] The name of the content policy tier. Valid values include STANDARD or CLASSIC.
-  GuardrailContentPolicyConfigTierConfig({
-    required this.tierName,
-  });
+  GuardrailContentPolicyConfigTierConfig({required this.tierName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tierName': tierName,
-    };
+    return <String, dynamic>{'tierName': tierName};
   }
 
-  factory GuardrailContentPolicyConfigTierConfig.fromMap(Map<String, dynamic> map) {
+  factory GuardrailContentPolicyConfigTierConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GuardrailContentPolicyConfigTierConfig(
-      tierName: (map['tierName'] as String).input(),
+      tierName: pulumi.Input.fromValue(map['tierName'] as String),
     );
   }
 }
-

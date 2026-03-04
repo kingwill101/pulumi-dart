@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpsecServersServerIpsecConfig {
   /// IPsec authentication algorithm.
   final pulumi.Input<String> ipsecAuthAlg;
+
   /// IPsec encryption algorithm.
   final pulumi.Input<String> ipsecEncAlg;
+
   /// IPsec survival time. Unit: seconds.
   final pulumi.Input<int> ipsecLifetime;
+
   /// Diffie-Hellman key exchange algorithm.
   final pulumi.Input<String> ipsecPfs;
 
@@ -35,11 +38,10 @@ class GetIpsecServersServerIpsecConfig {
 
   factory GetIpsecServersServerIpsecConfig.fromMap(Map<String, dynamic> map) {
     return GetIpsecServersServerIpsecConfig(
-      ipsecAuthAlg: (map['ipsecAuthAlg'] as String).input(),
-      ipsecEncAlg: (map['ipsecEncAlg'] as String).input(),
-      ipsecLifetime: (map['ipsecLifetime'] as int).input(),
-      ipsecPfs: (map['ipsecPfs'] as String).input(),
+      ipsecAuthAlg: pulumi.Input.fromValue(map['ipsecAuthAlg'] as String),
+      ipsecEncAlg: pulumi.Input.fromValue(map['ipsecEncAlg'] as String),
+      ipsecLifetime: pulumi.Input.fromValue(map['ipsecLifetime'] as int),
+      ipsecPfs: pulumi.Input.fromValue(map['ipsecPfs'] as String),
     );
   }
 }
-

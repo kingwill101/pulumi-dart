@@ -6,6 +6,7 @@ class RegionBackendServiceSubsetting {
   /// The algorithm used for subsetting.
   /// Possible values are: `CONSISTENT_HASH_SUBSETTING`.
   final pulumi.Input<String> policy;
+
   /// The number of backends per backend group assigned to each proxy instance or each service mesh client.
   /// An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
   /// CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
@@ -18,23 +19,20 @@ class RegionBackendServiceSubsetting {
   /// Creates a new [RegionBackendServiceSubsetting].
   /// [policy] The algorithm used for subsetting.
   /// [subsetSize] The number of backends per backend group assigned to each proxy instance or each service mesh client.
-  RegionBackendServiceSubsetting({
-    required this.policy,
-    this.subsetSize,
-  });
+  RegionBackendServiceSubsetting({required this.policy, this.subsetSize});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'policy': policy,
-      'subsetSize': ?subsetSize,
-    };
+    return <String, dynamic>{'policy': policy, 'subsetSize': ?subsetSize};
   }
 
   factory RegionBackendServiceSubsetting.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceSubsetting(
-      policy: (map['policy'] as String).input(),
-      subsetSize: map['subsetSize'] == null ? null : (map['subsetSize']! as int).input(),
+      policy: pulumi.Input.fromValue(map['policy'] as String),
+      subsetSize: (() {
+        final guardedValue = map['subsetSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

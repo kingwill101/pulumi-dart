@@ -7,8 +7,10 @@ import 'gpu_resource.dart';
 class ResourceLimits {
   /// The CPU limit of this container instance.
   final pulumi.Input<double>? cpu;
+
   /// The GPU limit of this container instance.
   final pulumi.Input<GpuResource>? gpu;
+
   /// The memory limit in GB of this container instance.
   final pulumi.Input<double>? memoryInGB;
 
@@ -16,26 +18,39 @@ class ResourceLimits {
   /// [cpu] The CPU limit of this container instance.
   /// [gpu] The GPU limit of this container instance.
   /// [memoryInGB] The memory limit in GB of this container instance.
-  ResourceLimits({
-    this.cpu,
-    this.gpu,
-    this.memoryInGB,
-  });
+  ResourceLimits({this.cpu, this.gpu, this.memoryInGB});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cpu': ?cpu,
-      'gpu': ?pulumi.Input.mapOptionalInputValue<GpuResource, Map<String, dynamic>>(gpu, (value) => value.toMap()),
+      'gpu':
+          ?pulumi.Input.mapOptionalInputValue<
+            GpuResource,
+            Map<String, dynamic>
+          >(gpu, (value) => value.toMap()),
       'memoryInGB': ?memoryInGB,
     };
   }
 
   factory ResourceLimits.fromMap(Map<String, dynamic> map) {
     return ResourceLimits(
-      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
-      gpu: map['gpu'] == null ? null : (GpuResource.fromMap((map['gpu']! as Map).cast<String, dynamic>())).input(),
-      memoryInGB: map['memoryInGB'] == null ? null : (map['memoryInGB']! as double).input(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      gpu: (() {
+        final guardedValue = map['gpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GpuResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      memoryInGB: (() {
+        final guardedValue = map['memoryInGB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

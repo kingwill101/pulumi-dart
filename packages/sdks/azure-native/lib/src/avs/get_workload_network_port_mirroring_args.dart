@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkloadNetworkPortMirroringArgs {
   /// ID of the NSX port mirroring profile.
   final pulumi.Input<String> portMirroringId;
+
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,17 @@ class GetWorkloadNetworkPortMirroringArgs {
     };
   }
 
-  factory GetWorkloadNetworkPortMirroringArgs.fromMap(Map<String, dynamic> map) {
+  factory GetWorkloadNetworkPortMirroringArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkloadNetworkPortMirroringArgs(
-      portMirroringId: (map['portMirroringId'] as String).input(),
-      privateCloudName: (map['privateCloudName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      portMirroringId: pulumi.Input.fromValue(map['portMirroringId'] as String),
+      privateCloudName: pulumi.Input.fromValue(
+        map['privateCloudName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

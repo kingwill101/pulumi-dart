@@ -8,29 +8,42 @@ import 'frontend_response.dart';
 class CardinalityResponse {
   /// The backend broker desired properties
   final pulumi.Input<BackendChainResponse> backendChain;
+
   /// The frontend desired properties
   final pulumi.Input<FrontendResponse> frontend;
 
   /// Creates a new [CardinalityResponse].
   /// [backendChain] The backend broker desired properties
   /// [frontend] The frontend desired properties
-  CardinalityResponse({
-    required this.backendChain,
-    required this.frontend,
-  });
+  CardinalityResponse({required this.backendChain, required this.frontend});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendChain': pulumi.Input.mapInputValue<BackendChainResponse, Map<String, dynamic>>(backendChain, (value) => value.toMap()),
-      'frontend': pulumi.Input.mapInputValue<FrontendResponse, Map<String, dynamic>>(frontend, (value) => value.toMap()),
+      'backendChain':
+          pulumi.Input.mapInputValue<
+            BackendChainResponse,
+            Map<String, dynamic>
+          >(backendChain, (value) => value.toMap()),
+      'frontend':
+          pulumi.Input.mapInputValue<FrontendResponse, Map<String, dynamic>>(
+            frontend,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory CardinalityResponse.fromMap(Map<String, dynamic> map) {
     return CardinalityResponse(
-      backendChain: (BackendChainResponse.fromMap((map['backendChain'] as Map).cast<String, dynamic>())).input(),
-      frontend: (FrontendResponse.fromMap((map['frontend'] as Map).cast<String, dynamic>())).input(),
+      backendChain: pulumi.Input.fromValue(
+        BackendChainResponse.fromMap(
+          (map['backendChain']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      frontend: pulumi.Input.fromValue(
+        FrontendResponse.fromMap(
+          (map['frontend']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

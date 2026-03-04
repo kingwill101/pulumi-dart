@@ -14,6 +14,7 @@ class DeploymentState {
   /// Default value is `CREATE_OR_ACQUIRE`.
   /// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
   final pulumi.Input<String>? createPolicy;
+
   /// Set the policy to use for deleting new resources on update/delete.
   /// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
   /// resource is deleted after removal from Deployment Manager. If
@@ -23,32 +24,41 @@ class DeploymentState {
   /// Default value is `DELETE`.
   /// Possible values are: `ABANDON`, `DELETE`.
   final pulumi.Input<String>? deletePolicy;
+
   /// Unique identifier for deployment. Output only.
   final pulumi.Input<String>? deploymentId;
+
   /// Optional user-provided description of deployment.
   final pulumi.Input<String>? description;
+
   /// Key-value pairs to apply to this labels.
   /// Structure is documented below.
   final pulumi.Input<List<DeploymentLabel>>? labels;
+
   /// Output only. URL of the manifest representing the last manifest that
   /// was successfully deployed.
   final pulumi.Input<String>? manifest;
+
   /// Unique name for the deployment
   final pulumi.Input<String>? name;
+
   /// If set to true, a deployment is created with "shell" resources
   /// that are not actually instantiated. This allows you to preview a
   /// deployment. It can be updated to false to actually deploy
   /// with real resources.
-  /// ~>**NOTE:** Deployment Manager does not allow update
+  /// ~&gt;**NOTE:** Deployment Manager does not allow update
   /// of a deployment in preview (unless updating to preview=false). Thus,
   /// the provider will force-recreate deployments if either preview is updated
   /// to true or if other fields are updated while preview is true.
   final pulumi.Input<bool>? preview;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Output only. Server defined URL for the resource.
   final pulumi.Input<String>? selfLink;
+
   /// Parameters that define your deployment, including the deployment
   /// configuration and relevant templates.
   /// Structure is documented below.
@@ -86,30 +96,98 @@ class DeploymentState {
       'deletePolicy': ?deletePolicy,
       'deploymentId': ?deploymentId,
       'description': ?description,
-      'labels': ?pulumi.Input.mapOptionalInputValue<List<DeploymentLabel>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<DeploymentLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'labels':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DeploymentLabel>,
+            List<Map<String, dynamic>>
+          >(
+            labels,
+            (value) =>
+                pulumi.Input.encodeList<DeploymentLabel, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'manifest': ?manifest,
       'name': ?name,
       'preview': ?preview,
       'project': ?project,
       'selfLink': ?selfLink,
-      'target': ?pulumi.Input.mapOptionalInputValue<DeploymentTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
+      'target':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentTarget,
+            Map<String, dynamic>
+          >(target, (value) => value.toMap()),
     };
   }
 
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
-      createPolicy: map['createPolicy'] == null ? null : (map['createPolicy']! as String).input(),
-      deletePolicy: map['deletePolicy'] == null ? null : (map['deletePolicy']! as String).input(),
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<DeploymentLabel>(map['labels']!, (value) => DeploymentLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      manifest: map['manifest'] == null ? null : (map['manifest']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      preview: map['preview'] == null ? null : (map['preview']! as bool).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
-      target: map['target'] == null ? null : (DeploymentTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      createPolicy: (() {
+        final guardedValue = map['createPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deletePolicy: (() {
+        final guardedValue = map['deletePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deploymentId: (() {
+        final guardedValue = map['deploymentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DeploymentLabel>(
+            guardedValue,
+            (value) =>
+                DeploymentLabel.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      manifest: (() {
+        final guardedValue = map['manifest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      preview: (() {
+        final guardedValue = map['preview'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selfLink: (() {
+        final guardedValue = map['selfLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentTarget.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

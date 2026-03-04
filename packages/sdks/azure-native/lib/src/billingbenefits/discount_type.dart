@@ -6,16 +6,15 @@ enum DiscountType {
   customPrice("CustomPrice"),
   customPriceMultiCurrency("CustomPriceMultiCurrency");
 
-  const DiscountType(this.value);
-  final String value;
+  const DiscountType(this.wireValue);
+  final String wireValue;
 
   static DiscountType fromValue(String value) {
     for (final item in DiscountType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiscountType value: $value');
   }
 }
-

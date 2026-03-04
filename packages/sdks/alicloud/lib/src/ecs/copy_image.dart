@@ -23,21 +23,21 @@ class CopyImage extends pulumi.CustomResource {
     CopyImageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/copyImage:CopyImage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
-    this.description = registerOutput<String?>('description');
-    this.encrypted = registerOutput<bool?>('encrypted');
-    this.force = registerOutput<bool?>('force');
-    this.imageName = registerOutput<String>('imageName');
-    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+         'alicloud:ecs/copyImage:CopyImage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
+    description = registerOutput<String?>('description');
+    encrypted = registerOutput<bool?>('encrypted');
+    force = registerOutput<bool?>('force');
+    imageName = registerOutput<String>('imageName');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
     this.name = registerOutput<String>('name');
-    this.sourceImageId = registerOutput<String>('sourceImageId');
-    this.sourceRegionId = registerOutput<String>('sourceRegionId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    sourceImageId = registerOutput<String>('sourceImageId');
+    sourceRegionId = registerOutput<String>('sourceRegionId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [CopyImage] resource's state with the given [name] and [id].
@@ -58,20 +58,20 @@ class CopyImage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/copyImage:CopyImage',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
-    this.description = registerOutput<String?>('description');
-    this.encrypted = registerOutput<bool?>('encrypted');
-    this.force = registerOutput<bool?>('force');
-    this.imageName = registerOutput<String>('imageName');
-    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
+         'alicloud:ecs/copyImage:CopyImage',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
+    description = registerOutput<String?>('description');
+    encrypted = registerOutput<bool?>('encrypted');
+    force = registerOutput<bool?>('force');
+    imageName = registerOutput<String>('imageName');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
     this.name = registerOutput<String>('name');
-    this.sourceImageId = registerOutput<String>('sourceImageId');
-    this.sourceRegionId = registerOutput<String>('sourceRegionId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    sourceImageId = registerOutput<String>('sourceImageId');
+    sourceRegionId = registerOutput<String>('sourceRegionId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

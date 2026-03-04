@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HPAConfigResponse {
   /// Percent CPU utilization where HPA triggers autoscaling.
   final pulumi.Input<String> cpuUtilizationThreshold;
+
   /// Percent Memory utilization where HPA triggers autoscaling.
   final pulumi.Input<String> memoryUtilizationThreshold;
 
@@ -26,9 +27,12 @@ class HPAConfigResponse {
 
   factory HPAConfigResponse.fromMap(Map<String, dynamic> map) {
     return HPAConfigResponse(
-      cpuUtilizationThreshold: (map['cpuUtilizationThreshold'] as String).input(),
-      memoryUtilizationThreshold: (map['memoryUtilizationThreshold'] as String).input(),
+      cpuUtilizationThreshold: pulumi.Input.fromValue(
+        map['cpuUtilizationThreshold'] as String,
+      ),
+      memoryUtilizationThreshold: pulumi.Input.fromValue(
+        map['memoryUtilizationThreshold'] as String,
+      ),
     );
   }
 }
-

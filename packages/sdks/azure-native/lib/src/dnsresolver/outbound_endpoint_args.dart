@@ -10,14 +10,19 @@ import 'sub_resource.dart';
 class OutboundEndpointArgs {
   /// The name of the DNS resolver.
   final pulumi.Input<String> dnsResolverName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the outbound endpoint for the DNS resolver.
   final pulumi.Input<String>? outboundEndpointName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The reference to the subnet used for the outbound endpoint.
   final pulumi.Input<SubResource> subnet;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -43,20 +48,40 @@ class OutboundEndpointArgs {
       'location': ?location,
       'outboundEndpointName': ?outboundEndpointName,
       'resourceGroupName': resourceGroupName,
-      'subnet': pulumi.Input.mapInputValue<SubResource, Map<String, dynamic>>(subnet, (value) => value.toMap()),
+      'subnet': pulumi.Input.mapInputValue<SubResource, Map<String, dynamic>>(
+        subnet,
+        (value) => value.toMap(),
+      ),
       'tags': ?tags,
     };
   }
 
   factory OutboundEndpointArgs.fromMap(Map<String, dynamic> map) {
     return OutboundEndpointArgs(
-      dnsResolverName: (map['dnsResolverName'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      outboundEndpointName: map['outboundEndpointName'] == null ? null : (map['outboundEndpointName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subnet: (SubResource.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      dnsResolverName: pulumi.Input.fromValue(map['dnsResolverName'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outboundEndpointName: (() {
+        final guardedValue = map['outboundEndpointName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      subnet: pulumi.Input.fromValue(
+        SubResource.fromMap((map['subnet']! as Map).cast<String, dynamic>()),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

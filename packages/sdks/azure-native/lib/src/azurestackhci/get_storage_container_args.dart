@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStorageContainerArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the storage container
   final pulumi.Input<String> storageContainerName;
 
@@ -29,9 +30,12 @@ class GetStorageContainerArgs {
 
   factory GetStorageContainerArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageContainerArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageContainerName: (map['storageContainerName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageContainerName: pulumi.Input.fromValue(
+        map['storageContainerName'] as String,
+      ),
     );
   }
 }
-

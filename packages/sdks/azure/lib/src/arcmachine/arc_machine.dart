@@ -184,7 +184,7 @@ import 'arc_machine_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.HybridCompute` - 2024-07-10
@@ -199,14 +199,19 @@ import 'arc_machine_state.dart';
 class ArcMachine extends pulumi.CustomResource {
   /// An `identity` block as defined below.
   late final pulumi.Output<ArcMachineIdentity?> identity;
+
   /// The kind of the Arc Machine. Possible values are `AVS`, `AWS`, `EPS`, `GCP`, `HCI`, `SCVMM` and `VMware`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> kind;
+
   /// The Azure Region where the Arc Machine should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the Arc machine. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Arc Machine should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the Arc Machine.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -219,17 +224,17 @@ class ArcMachine extends pulumi.CustomResource {
     ArcMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:arcmachine/arcMachine:ArcMachine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identity = registerOutput<ArcMachineIdentity?>('identity');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
+         'azure:arcmachine/arcMachine:ArcMachine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identity = registerOutput<ArcMachineIdentity?>('identity');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ArcMachine] resource's state with the given [name] and [id].
@@ -250,16 +255,16 @@ class ArcMachine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:arcmachine/arcMachine:ArcMachine',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.identity = registerOutput<ArcMachineIdentity?>('identity');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
+         'azure:arcmachine/arcMachine:ArcMachine',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    identity = registerOutput<ArcMachineIdentity?>('identity');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

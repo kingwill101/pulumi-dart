@@ -1,35 +1,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_gateway_args.dart';
-import 'application_gateway_authentication_certificate.dart';
 import 'application_gateway_autoscale_configuration.dart';
-import 'application_gateway_backend_address_pool.dart';
-import 'application_gateway_backend_http_setting.dart';
-import 'application_gateway_custom_error_configuration.dart';
-import 'application_gateway_frontend_ip_configuration.dart';
-import 'application_gateway_frontend_port.dart';
-import 'application_gateway_gateway_ip_configuration.dart';
 import 'application_gateway_global.dart';
-import 'application_gateway_http_listener.dart';
 import 'application_gateway_identity.dart';
-import 'application_gateway_private_endpoint_connection.dart';
-import 'application_gateway_private_link_configuration.dart';
-import 'application_gateway_probe.dart';
-import 'application_gateway_redirect_configuration.dart';
-import 'application_gateway_request_routing_rule.dart';
-import 'application_gateway_rewrite_rule_set.dart';
 import 'application_gateway_sku.dart';
-import 'application_gateway_ssl_certificate.dart';
 import 'application_gateway_ssl_policy.dart';
-import 'application_gateway_ssl_profile.dart';
 import 'application_gateway_state.dart';
-import 'application_gateway_trusted_client_certificate.dart';
-import 'application_gateway_trusted_root_certificate.dart';
-import 'application_gateway_url_path_map.dart';
 import 'application_gateway_waf_configuration.dart';
 
 /// Manages an Application Gateway.
 ///
-/// > **Note:** The `backend_address_pool`, `backend_http_settings`, `http_listener`, `private_link_configuration`, `request_routing_rule`, `redirect_configuration`, `probe`, `ssl_certificate`,
+/// &gt; **Note:** The `backend_address_pool`, `backend_http_settings`, `http_listener`, `private_link_configuration`, `request_routing_rule`, `redirect_configuration`, `probe`, `ssl_certificate`,
 /// and `frontend_port` properties are Sets as the service API returns these lists of objects in a different order from how the provider sends them. As Sets are stored using a hash, if one
 /// value is added or removed from the Set, Terraform considers the entire list of objects changed and the plan shows that it is removing every value in the list and re-adding it with the
 /// new information. Though Terraform is showing all the values being removed and re-added, we are not actually removing anything unless the user specifies a removal in the configfile.
@@ -686,7 +667,7 @@ import 'application_gateway_waf_configuration.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -700,74 +681,114 @@ import 'application_gateway_waf_configuration.dart';
 /// ```
 class ApplicationGateway extends pulumi.CustomResource {
   /// One or more `authentication_certificate` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewayAuthenticationCertificate>?> authenticationCertificates;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  authenticationCertificates;
+
   /// An `autoscale_configuration` block as defined below.
-  late final pulumi.Output<ApplicationGatewayAutoscaleConfiguration?> autoscaleConfiguration;
+  late final pulumi.Output<ApplicationGatewayAutoscaleConfiguration?>
+  autoscaleConfiguration;
+
   /// One or more `backend_address_pool` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewayBackendAddressPool>> backendAddressPools;
+  late final pulumi.Output<List<Map<String, dynamic>>> backendAddressPools;
+
   /// One or more `backend_http_settings` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewayBackendHttpSetting>> backendHttpSettings;
+  late final pulumi.Output<List<Map<String, dynamic>>> backendHttpSettings;
+
   /// One or more `custom_error_configuration` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewayCustomErrorConfiguration>?> customErrorConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  customErrorConfigurations;
+
   /// Is HTTP2 enabled on the application gateway resource? Defaults to `false`.
   late final pulumi.Output<bool?> enableHttp2;
+
   /// Is FIPS enabled on the Application Gateway?
   late final pulumi.Output<bool?> fipsEnabled;
+
   /// The ID of the Web Application Firewall Policy.
   late final pulumi.Output<String?> firewallPolicyId;
+
   /// Is the Firewall Policy associated with the Application Gateway?
   late final pulumi.Output<bool?> forceFirewallPolicyAssociation;
+
   /// One or more `frontend_ip_configuration` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewayFrontendIpConfiguration>> frontendIpConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>> frontendIpConfigurations;
+
   /// One or more `frontend_port` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewayFrontendPort>> frontendPorts;
+  late final pulumi.Output<List<Map<String, dynamic>>> frontendPorts;
+
   /// One or more `gateway_ip_configuration` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewayGatewayIpConfiguration>> gatewayIpConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>> gatewayIpConfigurations;
+
   /// A `global` block as defined below.
   late final pulumi.Output<ApplicationGatewayGlobal?> global;
+
   /// One or more `http_listener` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewayHttpListener>> httpListeners;
+  late final pulumi.Output<List<Map<String, dynamic>>> httpListeners;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<ApplicationGatewayIdentity?> identity;
+
   /// The Azure region where the Application Gateway should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the Application Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A list of `private_endpoint_connection` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewayPrivateEndpointConnection>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// One or more `private_link_configuration` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewayPrivateLinkConfiguration>?> privateLinkConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  privateLinkConfigurations;
+
   /// One or more `probe` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewayProbe>?> probes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> probes;
+
   /// One or more `redirect_configuration` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewayRedirectConfiguration>?> redirectConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> redirectConfigurations;
+
   /// One or more `request_routing_rule` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewayRequestRoutingRule>> requestRoutingRules;
+  late final pulumi.Output<List<Map<String, dynamic>>> requestRoutingRules;
+
   /// The name of the resource group in which to the Application Gateway should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// One or more `rewrite_rule_set` blocks as defined below. Only valid for v2 WAF and Standard SKUs.
-  late final pulumi.Output<List<ApplicationGatewayRewriteRuleSet>?> rewriteRuleSets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> rewriteRuleSets;
+
   /// A `sku` block as defined below.
   late final pulumi.Output<ApplicationGatewaySku> sku;
+
   /// One or more `ssl_certificate` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewaySslCertificate>?> sslCertificates;
+  late final pulumi.Output<List<Map<String, dynamic>>?> sslCertificates;
+
   /// a `ssl_policy` block as defined below.
   late final pulumi.Output<ApplicationGatewaySslPolicy> sslPolicy;
+
   /// One or more `ssl_profile` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewaySslProfile>?> sslProfiles;
+  late final pulumi.Output<List<Map<String, dynamic>>?> sslProfiles;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// One or more `trusted_client_certificate` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewayTrustedClientCertificate>?> trustedClientCertificates;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  trustedClientCertificates;
+
   /// One or more `trusted_root_certificate` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewayTrustedRootCertificate>?> trustedRootCertificates;
+  late final pulumi.Output<List<Map<String, dynamic>>?> trustedRootCertificates;
+
   /// One or more `url_path_map` blocks as defined below.
-  late final pulumi.Output<List<ApplicationGatewayUrlPathMap>?> urlPathMaps;
+  late final pulumi.Output<List<Map<String, dynamic>>?> urlPathMaps;
+
   /// A `waf_configuration` block as defined below.
-  late final pulumi.Output<ApplicationGatewayWafConfiguration?> wafConfiguration;
+  late final pulumi.Output<ApplicationGatewayWafConfiguration?>
+  wafConfiguration;
+
   /// Specifies a list of Availability Zones in which this Application Gateway should be located. Changing this forces a new Application Gateway to be created.
   ///
-  /// > **Note:** Availability Zones are not supported in all regions at this time, please check the [official documentation](https://docs.microsoft.com/azure/availability-zones/az-overview) for more information. They are also only supported for [v2 SKUs](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
+  /// &gt; **Note:** Availability Zones are not supported in all regions at this time, please check the [official documentation](https://docs.microsoft.com/azure/availability-zones/az-overview) for more information. They are also only supported for [v2 SKUs](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
   late final pulumi.Output<List<String>?> zones;
 
   /// Creates a new [ApplicationGateway].
@@ -779,45 +800,80 @@ class ApplicationGateway extends pulumi.CustomResource {
     ApplicationGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/applicationGateway:ApplicationGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationCertificates = registerOutput<List<ApplicationGatewayAuthenticationCertificate>?>('authenticationCertificates');
-    this.autoscaleConfiguration = registerOutput<ApplicationGatewayAutoscaleConfiguration?>('autoscaleConfiguration');
-    this.backendAddressPools = registerOutput<List<ApplicationGatewayBackendAddressPool>>('backendAddressPools');
-    this.backendHttpSettings = registerOutput<List<ApplicationGatewayBackendHttpSetting>>('backendHttpSettings');
-    this.customErrorConfigurations = registerOutput<List<ApplicationGatewayCustomErrorConfiguration>?>('customErrorConfigurations');
-    this.enableHttp2 = registerOutput<bool?>('enableHttp2');
-    this.fipsEnabled = registerOutput<bool?>('fipsEnabled');
-    this.firewallPolicyId = registerOutput<String?>('firewallPolicyId');
-    this.forceFirewallPolicyAssociation = registerOutput<bool?>('forceFirewallPolicyAssociation');
-    this.frontendIpConfigurations = registerOutput<List<ApplicationGatewayFrontendIpConfiguration>>('frontendIpConfigurations');
-    this.frontendPorts = registerOutput<List<ApplicationGatewayFrontendPort>>('frontendPorts');
-    this.gatewayIpConfigurations = registerOutput<List<ApplicationGatewayGatewayIpConfiguration>>('gatewayIpConfigurations');
-    this.global = registerOutput<ApplicationGatewayGlobal?>('global');
-    this.httpListeners = registerOutput<List<ApplicationGatewayHttpListener>>('httpListeners');
-    this.identity = registerOutput<ApplicationGatewayIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:network/applicationGateway:ApplicationGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationCertificates = registerOutput<List<Map<String, dynamic>>?>(
+      'authenticationCertificates',
+    );
+    autoscaleConfiguration =
+        registerOutput<ApplicationGatewayAutoscaleConfiguration?>(
+          'autoscaleConfiguration',
+        );
+    backendAddressPools = registerOutput<List<Map<String, dynamic>>>(
+      'backendAddressPools',
+    );
+    backendHttpSettings = registerOutput<List<Map<String, dynamic>>>(
+      'backendHttpSettings',
+    );
+    customErrorConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'customErrorConfigurations',
+    );
+    enableHttp2 = registerOutput<bool?>('enableHttp2');
+    fipsEnabled = registerOutput<bool?>('fipsEnabled');
+    firewallPolicyId = registerOutput<String?>('firewallPolicyId');
+    forceFirewallPolicyAssociation = registerOutput<bool?>(
+      'forceFirewallPolicyAssociation',
+    );
+    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'frontendIpConfigurations',
+    );
+    frontendPorts = registerOutput<List<Map<String, dynamic>>>('frontendPorts');
+    gatewayIpConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'gatewayIpConfigurations',
+    );
+    global = registerOutput<ApplicationGatewayGlobal?>('global');
+    httpListeners = registerOutput<List<Map<String, dynamic>>>('httpListeners');
+    identity = registerOutput<ApplicationGatewayIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpointConnections = registerOutput<List<ApplicationGatewayPrivateEndpointConnection>>('privateEndpointConnections');
-    this.privateLinkConfigurations = registerOutput<List<ApplicationGatewayPrivateLinkConfiguration>?>('privateLinkConfigurations');
-    this.probes = registerOutput<List<ApplicationGatewayProbe>?>('probes');
-    this.redirectConfigurations = registerOutput<List<ApplicationGatewayRedirectConfiguration>?>('redirectConfigurations');
-    this.requestRoutingRules = registerOutput<List<ApplicationGatewayRequestRoutingRule>>('requestRoutingRules');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.rewriteRuleSets = registerOutput<List<ApplicationGatewayRewriteRuleSet>?>('rewriteRuleSets');
-    this.sku = registerOutput<ApplicationGatewaySku>('sku');
-    this.sslCertificates = registerOutput<List<ApplicationGatewaySslCertificate>?>('sslCertificates');
-    this.sslPolicy = registerOutput<ApplicationGatewaySslPolicy>('sslPolicy');
-    this.sslProfiles = registerOutput<List<ApplicationGatewaySslProfile>?>('sslProfiles');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.trustedClientCertificates = registerOutput<List<ApplicationGatewayTrustedClientCertificate>?>('trustedClientCertificates');
-    this.trustedRootCertificates = registerOutput<List<ApplicationGatewayTrustedRootCertificate>?>('trustedRootCertificates');
-    this.urlPathMaps = registerOutput<List<ApplicationGatewayUrlPathMap>?>('urlPathMaps');
-    this.wafConfiguration = registerOutput<ApplicationGatewayWafConfiguration?>('wafConfiguration');
-    this.zones = registerOutput<List<String>?>('zones');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    privateLinkConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'privateLinkConfigurations',
+    );
+    probes = registerOutput<List<Map<String, dynamic>>?>('probes');
+    redirectConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'redirectConfigurations',
+    );
+    requestRoutingRules = registerOutput<List<Map<String, dynamic>>>(
+      'requestRoutingRules',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rewriteRuleSets = registerOutput<List<Map<String, dynamic>>?>(
+      'rewriteRuleSets',
+    );
+    sku = registerOutput<ApplicationGatewaySku>('sku');
+    sslCertificates = registerOutput<List<Map<String, dynamic>>?>(
+      'sslCertificates',
+    );
+    sslPolicy = registerOutput<ApplicationGatewaySslPolicy>('sslPolicy');
+    sslProfiles = registerOutput<List<Map<String, dynamic>>?>('sslProfiles');
+    tags = registerOutput<Map<String, String>?>('tags');
+    trustedClientCertificates = registerOutput<List<Map<String, dynamic>>?>(
+      'trustedClientCertificates',
+    );
+    trustedRootCertificates = registerOutput<List<Map<String, dynamic>>?>(
+      'trustedRootCertificates',
+    );
+    urlPathMaps = registerOutput<List<Map<String, dynamic>>?>('urlPathMaps');
+    wafConfiguration = registerOutput<ApplicationGatewayWafConfiguration?>(
+      'wafConfiguration',
+    );
+    zones = registerOutput<List<String>?>('zones');
   }
 
   /// Gets an existing [ApplicationGateway] resource's state with the given [name] and [id].
@@ -838,44 +894,79 @@ class ApplicationGateway extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/applicationGateway:ApplicationGateway',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationCertificates = registerOutput<List<ApplicationGatewayAuthenticationCertificate>?>('authenticationCertificates');
-    this.autoscaleConfiguration = registerOutput<ApplicationGatewayAutoscaleConfiguration?>('autoscaleConfiguration');
-    this.backendAddressPools = registerOutput<List<ApplicationGatewayBackendAddressPool>>('backendAddressPools');
-    this.backendHttpSettings = registerOutput<List<ApplicationGatewayBackendHttpSetting>>('backendHttpSettings');
-    this.customErrorConfigurations = registerOutput<List<ApplicationGatewayCustomErrorConfiguration>?>('customErrorConfigurations');
-    this.enableHttp2 = registerOutput<bool?>('enableHttp2');
-    this.fipsEnabled = registerOutput<bool?>('fipsEnabled');
-    this.firewallPolicyId = registerOutput<String?>('firewallPolicyId');
-    this.forceFirewallPolicyAssociation = registerOutput<bool?>('forceFirewallPolicyAssociation');
-    this.frontendIpConfigurations = registerOutput<List<ApplicationGatewayFrontendIpConfiguration>>('frontendIpConfigurations');
-    this.frontendPorts = registerOutput<List<ApplicationGatewayFrontendPort>>('frontendPorts');
-    this.gatewayIpConfigurations = registerOutput<List<ApplicationGatewayGatewayIpConfiguration>>('gatewayIpConfigurations');
-    this.global = registerOutput<ApplicationGatewayGlobal?>('global');
-    this.httpListeners = registerOutput<List<ApplicationGatewayHttpListener>>('httpListeners');
-    this.identity = registerOutput<ApplicationGatewayIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:network/applicationGateway:ApplicationGateway',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationCertificates = registerOutput<List<Map<String, dynamic>>?>(
+      'authenticationCertificates',
+    );
+    autoscaleConfiguration =
+        registerOutput<ApplicationGatewayAutoscaleConfiguration?>(
+          'autoscaleConfiguration',
+        );
+    backendAddressPools = registerOutput<List<Map<String, dynamic>>>(
+      'backendAddressPools',
+    );
+    backendHttpSettings = registerOutput<List<Map<String, dynamic>>>(
+      'backendHttpSettings',
+    );
+    customErrorConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'customErrorConfigurations',
+    );
+    enableHttp2 = registerOutput<bool?>('enableHttp2');
+    fipsEnabled = registerOutput<bool?>('fipsEnabled');
+    firewallPolicyId = registerOutput<String?>('firewallPolicyId');
+    forceFirewallPolicyAssociation = registerOutput<bool?>(
+      'forceFirewallPolicyAssociation',
+    );
+    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'frontendIpConfigurations',
+    );
+    frontendPorts = registerOutput<List<Map<String, dynamic>>>('frontendPorts');
+    gatewayIpConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'gatewayIpConfigurations',
+    );
+    global = registerOutput<ApplicationGatewayGlobal?>('global');
+    httpListeners = registerOutput<List<Map<String, dynamic>>>('httpListeners');
+    identity = registerOutput<ApplicationGatewayIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpointConnections = registerOutput<List<ApplicationGatewayPrivateEndpointConnection>>('privateEndpointConnections');
-    this.privateLinkConfigurations = registerOutput<List<ApplicationGatewayPrivateLinkConfiguration>?>('privateLinkConfigurations');
-    this.probes = registerOutput<List<ApplicationGatewayProbe>?>('probes');
-    this.redirectConfigurations = registerOutput<List<ApplicationGatewayRedirectConfiguration>?>('redirectConfigurations');
-    this.requestRoutingRules = registerOutput<List<ApplicationGatewayRequestRoutingRule>>('requestRoutingRules');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.rewriteRuleSets = registerOutput<List<ApplicationGatewayRewriteRuleSet>?>('rewriteRuleSets');
-    this.sku = registerOutput<ApplicationGatewaySku>('sku');
-    this.sslCertificates = registerOutput<List<ApplicationGatewaySslCertificate>?>('sslCertificates');
-    this.sslPolicy = registerOutput<ApplicationGatewaySslPolicy>('sslPolicy');
-    this.sslProfiles = registerOutput<List<ApplicationGatewaySslProfile>?>('sslProfiles');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.trustedClientCertificates = registerOutput<List<ApplicationGatewayTrustedClientCertificate>?>('trustedClientCertificates');
-    this.trustedRootCertificates = registerOutput<List<ApplicationGatewayTrustedRootCertificate>?>('trustedRootCertificates');
-    this.urlPathMaps = registerOutput<List<ApplicationGatewayUrlPathMap>?>('urlPathMaps');
-    this.wafConfiguration = registerOutput<ApplicationGatewayWafConfiguration?>('wafConfiguration');
-    this.zones = registerOutput<List<String>?>('zones');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    privateLinkConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'privateLinkConfigurations',
+    );
+    probes = registerOutput<List<Map<String, dynamic>>?>('probes');
+    redirectConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'redirectConfigurations',
+    );
+    requestRoutingRules = registerOutput<List<Map<String, dynamic>>>(
+      'requestRoutingRules',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rewriteRuleSets = registerOutput<List<Map<String, dynamic>>?>(
+      'rewriteRuleSets',
+    );
+    sku = registerOutput<ApplicationGatewaySku>('sku');
+    sslCertificates = registerOutput<List<Map<String, dynamic>>?>(
+      'sslCertificates',
+    );
+    sslPolicy = registerOutput<ApplicationGatewaySslPolicy>('sslPolicy');
+    sslProfiles = registerOutput<List<Map<String, dynamic>>?>('sslProfiles');
+    tags = registerOutput<Map<String, String>?>('tags');
+    trustedClientCertificates = registerOutput<List<Map<String, dynamic>>?>(
+      'trustedClientCertificates',
+    );
+    trustedRootCertificates = registerOutput<List<Map<String, dynamic>>?>(
+      'trustedRootCertificates',
+    );
+    urlPathMaps = registerOutput<List<Map<String, dynamic>>?>('urlPathMaps');
+    wafConfiguration = registerOutput<ApplicationGatewayWafConfiguration?>(
+      'wafConfiguration',
+    );
+    zones = registerOutput<List<String>?>('zones');
   }
 }

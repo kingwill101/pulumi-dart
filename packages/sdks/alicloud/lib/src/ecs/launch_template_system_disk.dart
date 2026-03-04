@@ -12,21 +12,26 @@ class LaunchTemplateSystemDisk {
   ///
   /// Default to `cloud_efficiency`.
   final pulumi.Input<String>? category;
+
   /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
   ///
   /// Default to true
   final pulumi.Input<bool>? deleteWithInstance;
+
   /// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
   final pulumi.Input<String>? description;
+
   /// Encrypted the data in this disk.
   ///
   /// Default to false
   final pulumi.Input<bool>? encrypted;
   final pulumi.Input<String>? iops;
   final pulumi.Input<String>? kmsKeyId;
+
   /// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? performanceLevel;
+
   /// The size of the data disk.
   /// - cloud：[5, 2000]
   /// - cloud_efficiency：[20, 32768]
@@ -73,16 +78,51 @@ class LaunchTemplateSystemDisk {
 
   factory LaunchTemplateSystemDisk.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateSystemDisk(
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
-      iops: map['iops'] == null ? null : (map['iops']! as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
-      size: map['size'] == null ? null : (map['size']! as int).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteWithInstance: (() {
+        final guardedValue = map['deleteWithInstance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      iops: (() {
+        final guardedValue = map['iops'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      performanceLevel: (() {
+        final guardedValue = map['performanceLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

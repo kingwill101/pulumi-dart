@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetShareSubscriptionArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the shareSubscription.
   final pulumi.Input<String> shareSubscriptionName;
 
@@ -34,10 +36,13 @@ class GetShareSubscriptionArgs {
 
   factory GetShareSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetShareSubscriptionArgs(
-      accountName: (map['accountName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      shareSubscriptionName: pulumi.Input.fromValue(
+        map['shareSubscriptionName'] as String,
+      ),
     );
   }
 }
-

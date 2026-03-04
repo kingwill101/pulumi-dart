@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InventoryItemArgs {
   /// Name of the inventoryItem.
   final pulumi.Input<String>? inventoryItemName;
+
   /// They inventory type.
   final pulumi.Input<String> inventoryType;
+
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   final pulumi.Input<String>? kind;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the VMMServer.
   final pulumi.Input<String> vmmServerName;
 
@@ -44,12 +48,21 @@ class InventoryItemArgs {
 
   factory InventoryItemArgs.fromMap(Map<String, dynamic> map) {
     return InventoryItemArgs(
-      inventoryItemName: map['inventoryItemName'] == null ? null : (map['inventoryItemName']! as String).input(),
-      inventoryType: (map['inventoryType'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vmmServerName: (map['vmmServerName'] as String).input(),
+      inventoryItemName: (() {
+        final guardedValue = map['inventoryItemName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inventoryType: pulumi.Input.fromValue(map['inventoryType'] as String),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vmmServerName: pulumi.Input.fromValue(map['vmmServerName'] as String),
     );
   }
 }
-

@@ -344,12 +344,17 @@ import 'professional_service_subscription_level_args.dart';
 class ProfessionalServiceSubscriptionLevel extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// professionalService properties
-  late final pulumi.Output<ProfessionalServiceResourceResponseProperties> properties;
+  late final pulumi.Output<ProfessionalServiceResourceResponseProperties>
+  properties;
+
   /// the resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -362,15 +367,17 @@ class ProfessionalServiceSubscriptionLevel extends pulumi.CustomResource {
     ProfessionalServiceSubscriptionLevelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:professionalservice:ProfessionalServiceSubscriptionLevel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:professionalservice:ProfessionalServiceSubscriptionLevel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ProfessionalServiceResourceResponseProperties>('properties');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ProfessionalServiceResourceResponseProperties>(
+      'properties',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

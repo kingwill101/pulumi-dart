@@ -5,14 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KubernetesClusterHttpProxyConfig {
   /// The proxy address to be used when communicating over HTTP.
   final pulumi.Input<String>? httpProxy;
+
   /// The proxy address to be used when communicating over HTTPS.
   final pulumi.Input<String>? httpsProxy;
+
   /// The list of domains that will not use the proxy for communication.
   ///
-  /// > **Note:** If you specify the `default_node_pool[0].vnet_subnet_id`, be sure to include the Subnet CIDR in the `no_proxy` list.
+  /// &gt; **Note:** If you specify the `default_node_pool[0].vnet_subnet_id`, be sure to include the Subnet CIDR in the `no_proxy` list.
   ///
-  /// > **Note:** You may wish to use Terraform's `ignore_changes` functionality to ignore the changes to this field.
+  /// &gt; **Note:** You may wish to use Terraform's `ignore_changes` functionality to ignore the changes to this field.
   final pulumi.Input<List<String>>? noProxies;
+
   /// The base64 encoded alternative CA certificate content in PEM format.
   final pulumi.Input<String>? trustedCa;
 
@@ -39,11 +42,26 @@ class KubernetesClusterHttpProxyConfig {
 
   factory KubernetesClusterHttpProxyConfig.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterHttpProxyConfig(
-      httpProxy: map['httpProxy'] == null ? null : (map['httpProxy']! as String).input(),
-      httpsProxy: map['httpsProxy'] == null ? null : (map['httpsProxy']! as String).input(),
-      noProxies: map['noProxies'] == null ? null : ((map['noProxies']! as List).cast<String>()).input(),
-      trustedCa: map['trustedCa'] == null ? null : (map['trustedCa']! as String).input(),
+      httpProxy: (() {
+        final guardedValue = map['httpProxy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      httpsProxy: (() {
+        final guardedValue = map['httpsProxy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      noProxies: (() {
+        final guardedValue = map['noProxies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      trustedCa: (() {
+        final guardedValue = map['trustedCa'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

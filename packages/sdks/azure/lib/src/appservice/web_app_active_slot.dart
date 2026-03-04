@@ -552,7 +552,7 @@ import 'web_app_active_slot_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Web` - 2023-12-01
@@ -567,8 +567,10 @@ import 'web_app_active_slot_state.dart';
 class WebAppActiveSlot extends pulumi.CustomResource {
   /// The timestamp of the last successful swap with `Production`.
   late final pulumi.Output<String> lastSuccessfulSwap;
+
   /// The swap action should overwrite the Production slot's network configuration with the configuration from this slot. Defaults to `true`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> overwriteNetworkConfig;
+
   /// The ID of the Slot to swap with `Production`.
   late final pulumi.Output<String> slotId;
 
@@ -581,14 +583,14 @@ class WebAppActiveSlot extends pulumi.CustomResource {
     WebAppActiveSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/webAppActiveSlot:WebAppActiveSlot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.lastSuccessfulSwap = registerOutput<String>('lastSuccessfulSwap');
-    this.overwriteNetworkConfig = registerOutput<bool?>('overwriteNetworkConfig');
-    this.slotId = registerOutput<String>('slotId');
+         'azure:appservice/webAppActiveSlot:WebAppActiveSlot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    lastSuccessfulSwap = registerOutput<String>('lastSuccessfulSwap');
+    overwriteNetworkConfig = registerOutput<bool?>('overwriteNetworkConfig');
+    slotId = registerOutput<String>('slotId');
   }
 
   /// Gets an existing [WebAppActiveSlot] resource's state with the given [name] and [id].
@@ -609,13 +611,13 @@ class WebAppActiveSlot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/webAppActiveSlot:WebAppActiveSlot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.lastSuccessfulSwap = registerOutput<String>('lastSuccessfulSwap');
-    this.overwriteNetworkConfig = registerOutput<bool?>('overwriteNetworkConfig');
-    this.slotId = registerOutput<String>('slotId');
+         'azure:appservice/webAppActiveSlot:WebAppActiveSlot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    lastSuccessfulSwap = registerOutput<String>('lastSuccessfulSwap');
+    overwriteNetworkConfig = registerOutput<bool?>('overwriteNetworkConfig');
+    slotId = registerOutput<String>('slotId');
   }
 }

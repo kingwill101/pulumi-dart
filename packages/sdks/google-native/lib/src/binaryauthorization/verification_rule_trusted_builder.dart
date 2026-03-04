@@ -3,16 +3,15 @@ enum VerificationRuleTrustedBuilder {
   builderUnspecified("BUILDER_UNSPECIFIED"),
   googleCloudBuild("GOOGLE_CLOUD_BUILD");
 
-  const VerificationRuleTrustedBuilder(this.value);
-  final String value;
+  const VerificationRuleTrustedBuilder(this.wireValue);
+  final String wireValue;
 
   static VerificationRuleTrustedBuilder fromValue(String value) {
     for (final item in VerificationRuleTrustedBuilder.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VerificationRuleTrustedBuilder value: $value');
   }
 }
-

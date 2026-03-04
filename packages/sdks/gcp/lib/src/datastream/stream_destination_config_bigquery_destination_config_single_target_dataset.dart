@@ -14,15 +14,14 @@ class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'datasetId': datasetId,
-    };
+    return <String, dynamic>{'datasetId': datasetId};
   }
 
-  factory StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset.fromMap(Map<String, dynamic> map) {
+  factory StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset(
-      datasetId: (map['datasetId'] as String).input(),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
     );
   }
 }
-

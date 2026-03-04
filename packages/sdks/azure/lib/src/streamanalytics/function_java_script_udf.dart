@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'function_java_script_udfargs.dart';
-import 'function_java_script_udfinput.dart';
 import 'function_java_script_udfoutput.dart';
 import 'function_java_script_udfstate.dart';
 
@@ -236,7 +235,7 @@ import 'function_java_script_udfstate.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StreamAnalytics` - 2020-03-01
@@ -250,15 +249,20 @@ import 'function_java_script_udfstate.dart';
 /// ```
 class FunctionJavaScriptUDF extends pulumi.CustomResource {
   /// One or more `input` blocks as defined below.
-  late final pulumi.Output<List<FunctionJavaScriptUDFInput>> inputs;
+  late final pulumi.Output<List<Map<String, dynamic>>> inputs;
+
   /// The name of the JavaScript UDF Function. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// An `output` blocks as defined below.
   late final pulumi.Output<FunctionJavaScriptUDFOutput> output;
+
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The JavaScript of this UDF Function.
   late final pulumi.Output<String> script;
+
   /// The name of the Stream Analytics Job where this Function should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> streamAnalyticsJobName;
 
@@ -271,17 +275,17 @@ class FunctionJavaScriptUDF extends pulumi.CustomResource {
     FunctionJavaScriptUDFArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/functionJavaScriptUDF:FunctionJavaScriptUDF',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.inputs = registerOutput<List<FunctionJavaScriptUDFInput>>('inputs');
+         'azure:streamanalytics/functionJavaScriptUDF:FunctionJavaScriptUDF',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    inputs = registerOutput<List<Map<String, dynamic>>>('inputs');
     this.name = registerOutput<String>('name');
-    this.output = registerOutput<FunctionJavaScriptUDFOutput>('output');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.script = registerOutput<String>('script');
-    this.streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+    output = registerOutput<FunctionJavaScriptUDFOutput>('output');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    script = registerOutput<String>('script');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
   }
 
   /// Gets an existing [FunctionJavaScriptUDF] resource's state with the given [name] and [id].
@@ -302,16 +306,16 @@ class FunctionJavaScriptUDF extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:streamanalytics/functionJavaScriptUDF:FunctionJavaScriptUDF',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.inputs = registerOutput<List<FunctionJavaScriptUDFInput>>('inputs');
+         'azure:streamanalytics/functionJavaScriptUDF:FunctionJavaScriptUDF',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    inputs = registerOutput<List<Map<String, dynamic>>>('inputs');
     this.name = registerOutput<String>('name');
-    this.output = registerOutput<FunctionJavaScriptUDFOutput>('output');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.script = registerOutput<String>('script');
-    this.streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+    output = registerOutput<FunctionJavaScriptUDFOutput>('output');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    script = registerOutput<String>('script');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
   }
 }

@@ -12,20 +12,19 @@ class GetKubernetesVersionsArgs {
 
   /// Creates a new [GetKubernetesVersionsArgs].
   /// [versionPrefix] If provided, Terraform will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
-  GetKubernetesVersionsArgs({
-    this.versionPrefix,
-  });
+  GetKubernetesVersionsArgs({this.versionPrefix});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'versionPrefix': ?versionPrefix,
-    };
+    return <String, dynamic>{'versionPrefix': ?versionPrefix};
   }
 
   factory GetKubernetesVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesVersionsArgs(
-      versionPrefix: map['versionPrefix'] == null ? null : (map['versionPrefix']! as String).input(),
+      versionPrefix: (() {
+        final guardedValue = map['versionPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

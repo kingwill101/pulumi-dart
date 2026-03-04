@@ -7,20 +7,21 @@ class ContainerGroupInitContainerEnvironmentVarFieldRef {
 
   /// Creates a new [ContainerGroupInitContainerEnvironmentVarFieldRef].
   /// [fieldPath] Optional.
-  ContainerGroupInitContainerEnvironmentVarFieldRef({
-    this.fieldPath,
-  });
+  ContainerGroupInitContainerEnvironmentVarFieldRef({this.fieldPath});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fieldPath': ?fieldPath,
-    };
+    return <String, dynamic>{'fieldPath': ?fieldPath};
   }
 
-  factory ContainerGroupInitContainerEnvironmentVarFieldRef.fromMap(Map<String, dynamic> map) {
+  factory ContainerGroupInitContainerEnvironmentVarFieldRef.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContainerGroupInitContainerEnvironmentVarFieldRef(
-      fieldPath: map['fieldPath'] == null ? null : (map['fieldPath']! as String).input(),
+      fieldPath: (() {
+        final guardedValue = map['fieldPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

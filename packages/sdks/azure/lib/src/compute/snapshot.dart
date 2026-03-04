@@ -212,7 +212,7 @@ import 'snapshot_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-03-02
@@ -227,36 +227,50 @@ import 'snapshot_state.dart';
 class Snapshot extends pulumi.CustomResource {
   /// Indicates how the snapshot is to be created. Possible values are `Copy` or `Import`.
   ///
-  /// > **Note:** One of `source_uri`, `source_resource_id` or `storage_account_id` must be specified.
+  /// &gt; **Note:** One of `source_uri`, `source_resource_id` or `storage_account_id` must be specified.
   late final pulumi.Output<String> createOption;
+
   /// Specifies the ID of the Disk Access which should be used for this Snapshot. This is used in conjunction with setting `network_access_policy` to `AllowPrivate`.
   late final pulumi.Output<String?> diskAccessId;
+
   /// The size of the Snapshotted Disk in GB.
   late final pulumi.Output<int> diskSizeGb;
+
   /// A `encryption_settings` block as defined below.
   ///
-  /// > **Note:** Removing `encryption_settings` forces a new resource to be created.
+  /// &gt; **Note:** Removing `encryption_settings` forces a new resource to be created.
   late final pulumi.Output<SnapshotEncryptionSettings?> encryptionSettings;
+
   /// Specifies if the Snapshot is incremental. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> incrementalEnabled;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Snapshot resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Policy for accessing the disk via network. Possible values are `AllowAll`, `AllowPrivate`, or `DenyAll`. Defaults to `AllowAll`.
   late final pulumi.Output<String?> networkAccessPolicy;
+
   /// Policy for controlling export on the disk. Possible values are `true` or `false`. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
+
   /// The name of the resource group in which to create the Snapshot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies a reference to an existing snapshot, when `create_option` is `Copy`. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sourceResourceId;
+
   /// Specifies the URI to a Managed or Unmanaged Disk. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> sourceUri;
+
   /// Specifies the ID of an storage account. Used with `source_uri` to allow authorization during import of unmanaged blobs from a different subscription. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> storageAccountId;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Whether Trusted Launch is enabled for the Snapshot.
   late final pulumi.Output<bool> trustedLaunchEnabled;
 
@@ -269,26 +283,30 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createOption = registerOutput<String>('createOption');
-    this.diskAccessId = registerOutput<String?>('diskAccessId');
-    this.diskSizeGb = registerOutput<int>('diskSizeGb');
-    this.encryptionSettings = registerOutput<SnapshotEncryptionSettings?>('encryptionSettings');
-    this.incrementalEnabled = registerOutput<bool?>('incrementalEnabled');
-    this.location = registerOutput<String>('location');
+         'azure:compute/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createOption = registerOutput<String>('createOption');
+    diskAccessId = registerOutput<String?>('diskAccessId');
+    diskSizeGb = registerOutput<int>('diskSizeGb');
+    encryptionSettings = registerOutput<SnapshotEncryptionSettings?>(
+      'encryptionSettings',
+    );
+    incrementalEnabled = registerOutput<bool?>('incrementalEnabled');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkAccessPolicy = registerOutput<String?>('networkAccessPolicy');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sourceResourceId = registerOutput<String?>('sourceResourceId');
-    this.sourceUri = registerOutput<String?>('sourceUri');
-    this.storageAccountId = registerOutput<String?>('storageAccountId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.trustedLaunchEnabled = registerOutput<bool>('trustedLaunchEnabled');
+    networkAccessPolicy = registerOutput<String?>('networkAccessPolicy');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceResourceId = registerOutput<String?>('sourceResourceId');
+    sourceUri = registerOutput<String?>('sourceUri');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    trustedLaunchEnabled = registerOutput<bool>('trustedLaunchEnabled');
   }
 
   /// Gets an existing [Snapshot] resource's state with the given [name] and [id].
@@ -309,25 +327,29 @@ class Snapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createOption = registerOutput<String>('createOption');
-    this.diskAccessId = registerOutput<String?>('diskAccessId');
-    this.diskSizeGb = registerOutput<int>('diskSizeGb');
-    this.encryptionSettings = registerOutput<SnapshotEncryptionSettings?>('encryptionSettings');
-    this.incrementalEnabled = registerOutput<bool?>('incrementalEnabled');
-    this.location = registerOutput<String>('location');
+         'azure:compute/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createOption = registerOutput<String>('createOption');
+    diskAccessId = registerOutput<String?>('diskAccessId');
+    diskSizeGb = registerOutput<int>('diskSizeGb');
+    encryptionSettings = registerOutput<SnapshotEncryptionSettings?>(
+      'encryptionSettings',
+    );
+    incrementalEnabled = registerOutput<bool?>('incrementalEnabled');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkAccessPolicy = registerOutput<String?>('networkAccessPolicy');
-    this.publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sourceResourceId = registerOutput<String?>('sourceResourceId');
-    this.sourceUri = registerOutput<String?>('sourceUri');
-    this.storageAccountId = registerOutput<String?>('storageAccountId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.trustedLaunchEnabled = registerOutput<bool>('trustedLaunchEnabled');
+    networkAccessPolicy = registerOutput<String?>('networkAccessPolicy');
+    publicNetworkAccessEnabled = registerOutput<bool?>(
+      'publicNetworkAccessEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceResourceId = registerOutput<String?>('sourceResourceId');
+    sourceUri = registerOutput<String?>('sourceUri');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    trustedLaunchEnabled = registerOutput<bool>('trustedLaunchEnabled');
   }
 }

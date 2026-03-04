@@ -1,5 +1,3 @@
-library module_alloydb;
-
 export 'alloydb/backup.dart';
 export 'alloydb/backup_args.dart';
 export 'alloydb/backup_encryption_config.dart';

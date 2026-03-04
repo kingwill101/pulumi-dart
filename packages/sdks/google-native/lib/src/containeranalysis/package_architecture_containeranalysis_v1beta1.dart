@@ -4,16 +4,17 @@ enum PackageArchitectureContaineranalysisV1beta1 {
   x86("X86"),
   x64("X64");
 
-  const PackageArchitectureContaineranalysisV1beta1(this.value);
-  final String value;
+  const PackageArchitectureContaineranalysisV1beta1(this.wireValue);
+  final String wireValue;
 
   static PackageArchitectureContaineranalysisV1beta1 fromValue(String value) {
     for (final item in PackageArchitectureContaineranalysisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PackageArchitectureContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown PackageArchitectureContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

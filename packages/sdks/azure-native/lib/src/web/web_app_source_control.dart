@@ -17,24 +17,35 @@ import 'web_app_source_control_args.dart';
 class WebAppSourceControl extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Name of branch to use for deployment.
   late final pulumi.Output<String?> branch;
-  /// <code>true</code> to enable deployment rollback; otherwise, <code>false</code>.
+
+  /// &lt;code&gt;true&lt;/code&gt; to enable deployment rollback; otherwise, &lt;code&gt;false&lt;/code&gt;.
   late final pulumi.Output<bool?> deploymentRollbackEnabled;
+
   /// If GitHub Action is selected, than the associated configuration.
-  late final pulumi.Output<GitHubActionConfigurationResponse?> gitHubActionConfiguration;
-  /// <code>true</code> if this is deployed via GitHub action.
+  late final pulumi.Output<GitHubActionConfigurationResponse?>
+  gitHubActionConfiguration;
+
+  /// &lt;code&gt;true&lt;/code&gt; if this is deployed via GitHub action.
   late final pulumi.Output<bool?> isGitHubAction;
-  /// <code>true</code> to limit to manual integration; <code>false</code> to enable continuous integration (which configures webhooks into online repos like GitHub).
+
+  /// &lt;code&gt;true&lt;/code&gt; to limit to manual integration; &lt;code&gt;false&lt;/code&gt; to enable continuous integration (which configures webhooks into online repos like GitHub).
   late final pulumi.Output<bool?> isManualIntegration;
-  /// <code>true</code> for a Mercurial repository; <code>false</code> for a Git repository.
+
+  /// &lt;code&gt;true&lt;/code&gt; for a Mercurial repository; &lt;code&gt;false&lt;/code&gt; for a Git repository.
   late final pulumi.Output<bool?> isMercurial;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Repository or source control URL.
   late final pulumi.Output<String?> repoUrl;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -47,21 +58,26 @@ class WebAppSourceControl extends pulumi.CustomResource {
     WebAppSourceControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:WebAppSourceControl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.branch = registerOutput<String?>('branch');
-    this.deploymentRollbackEnabled = registerOutput<bool?>('deploymentRollbackEnabled');
-    this.gitHubActionConfiguration = registerOutput<GitHubActionConfigurationResponse?>('gitHubActionConfiguration');
-    this.isGitHubAction = registerOutput<bool?>('isGitHubAction');
-    this.isManualIntegration = registerOutput<bool?>('isManualIntegration');
-    this.isMercurial = registerOutput<bool?>('isMercurial');
-    this.kind = registerOutput<String?>('kind');
+         'azure-native:web:WebAppSourceControl',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    branch = registerOutput<String?>('branch');
+    deploymentRollbackEnabled = registerOutput<bool?>(
+      'deploymentRollbackEnabled',
+    );
+    gitHubActionConfiguration =
+        registerOutput<GitHubActionConfigurationResponse?>(
+          'gitHubActionConfiguration',
+        );
+    isGitHubAction = registerOutput<bool?>('isGitHubAction');
+    isManualIntegration = registerOutput<bool?>('isManualIntegration');
+    isMercurial = registerOutput<bool?>('isMercurial');
+    kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
-    this.repoUrl = registerOutput<String?>('repoUrl');
-    this.type = registerOutput<String>('type');
+    repoUrl = registerOutput<String?>('repoUrl');
+    type = registerOutput<String>('type');
   }
 }

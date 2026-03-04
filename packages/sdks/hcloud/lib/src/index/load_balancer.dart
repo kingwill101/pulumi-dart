@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_algorithm.dart';
 import 'load_balancer_args.dart';
 import 'load_balancer_state.dart';
-import 'load_balancer_target.dart';
 
 /// Provides a Hetzner Cloud Load Balancer to represent a Load Balancer in the Hetzner Cloud.
 ///
@@ -197,27 +196,37 @@ import 'load_balancer_target.dart';
 class LoadBalancer extends pulumi.CustomResource {
   /// Configuration of the algorithm the Load Balancer use.
   late final pulumi.Output<LoadBalancerAlgorithm> algorithm;
+
   /// Enable or disable delete protection. See "Delete Protection" in the Provider Docs for details.
   late final pulumi.Output<bool?> deleteProtection;
+
   /// (string) IPv4 Address of the Load Balancer.
   late final pulumi.Output<String> ipv4;
+
   /// (string) IPv6 Address of the Load Balancer.
   late final pulumi.Output<String> ipv6;
+
   /// User-defined labels (key-value pairs) should be created with.
   late final pulumi.Output<Map<String, String>> labels;
+
   /// Type of the Load Balancer.
   late final pulumi.Output<String> loadBalancerType;
+
   /// The location name of the Load Balancer. Require when no network_zone is set. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   late final pulumi.Output<String> location;
+
   /// Name of the Load Balancer.
   late final pulumi.Output<String> name;
+
   /// (int) ID of the first private network that this Load Balancer is connected to.
   late final pulumi.Output<int> networkId;
+
   /// (string) IP of the Load Balancer in the first private network that it is connected to.
   late final pulumi.Output<String> networkIp;
+
   /// The Network Zone of the Load Balancer. Require when no location is set.
   late final pulumi.Output<String> networkZone;
-  late final pulumi.Output<List<LoadBalancerTarget>> targets;
+  late final pulumi.Output<List<Map<String, dynamic>>> targets;
 
   /// Creates a new [LoadBalancer].
   /// [name] The Pulumi resource name.
@@ -228,23 +237,23 @@ class LoadBalancer extends pulumi.CustomResource {
     LoadBalancerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/loadBalancer:LoadBalancer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.algorithm = registerOutput<LoadBalancerAlgorithm>('algorithm');
-    this.deleteProtection = registerOutput<bool?>('deleteProtection');
-    this.ipv4 = registerOutput<String>('ipv4');
-    this.ipv6 = registerOutput<String>('ipv6');
-    this.labels = registerOutput<Map<String, String>>('labels');
-    this.loadBalancerType = registerOutput<String>('loadBalancerType');
-    this.location = registerOutput<String>('location');
+         'hcloud:index/loadBalancer:LoadBalancer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    algorithm = registerOutput<LoadBalancerAlgorithm>('algorithm');
+    deleteProtection = registerOutput<bool?>('deleteProtection');
+    ipv4 = registerOutput<String>('ipv4');
+    ipv6 = registerOutput<String>('ipv6');
+    labels = registerOutput<Map<String, String>>('labels');
+    loadBalancerType = registerOutput<String>('loadBalancerType');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkId = registerOutput<int>('networkId');
-    this.networkIp = registerOutput<String>('networkIp');
-    this.networkZone = registerOutput<String>('networkZone');
-    this.targets = registerOutput<List<LoadBalancerTarget>>('targets');
+    networkId = registerOutput<int>('networkId');
+    networkIp = registerOutput<String>('networkIp');
+    networkZone = registerOutput<String>('networkZone');
+    targets = registerOutput<List<Map<String, dynamic>>>('targets');
   }
 
   /// Gets an existing [LoadBalancer] resource's state with the given [name] and [id].
@@ -265,22 +274,22 @@ class LoadBalancer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/loadBalancer:LoadBalancer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.algorithm = registerOutput<LoadBalancerAlgorithm>('algorithm');
-    this.deleteProtection = registerOutput<bool?>('deleteProtection');
-    this.ipv4 = registerOutput<String>('ipv4');
-    this.ipv6 = registerOutput<String>('ipv6');
-    this.labels = registerOutput<Map<String, String>>('labels');
-    this.loadBalancerType = registerOutput<String>('loadBalancerType');
-    this.location = registerOutput<String>('location');
+         'hcloud:index/loadBalancer:LoadBalancer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    algorithm = registerOutput<LoadBalancerAlgorithm>('algorithm');
+    deleteProtection = registerOutput<bool?>('deleteProtection');
+    ipv4 = registerOutput<String>('ipv4');
+    ipv6 = registerOutput<String>('ipv6');
+    labels = registerOutput<Map<String, String>>('labels');
+    loadBalancerType = registerOutput<String>('loadBalancerType');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkId = registerOutput<int>('networkId');
-    this.networkIp = registerOutput<String>('networkIp');
-    this.networkZone = registerOutput<String>('networkZone');
-    this.targets = registerOutput<List<LoadBalancerTarget>>('targets');
+    networkId = registerOutput<int>('networkId');
+    networkIp = registerOutput<String>('networkIp');
+    networkZone = registerOutput<String>('networkZone');
+    targets = registerOutput<List<Map<String, dynamic>>>('targets');
   }
 }

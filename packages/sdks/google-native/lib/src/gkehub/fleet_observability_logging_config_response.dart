@@ -7,8 +7,10 @@ import 'fleet_observability_routing_config_response.dart';
 class FleetObservabilityLoggingConfigResponse {
   /// Specified if applying the default routing config to logs not specified in other configs.
   final pulumi.Input<FleetObservabilityRoutingConfigResponse> defaultConfig;
+
   /// Specified if applying the routing config to all logs for all fleet scopes.
-  final pulumi.Input<FleetObservabilityRoutingConfigResponse> fleetScopeLogsConfig;
+  final pulumi.Input<FleetObservabilityRoutingConfigResponse>
+  fleetScopeLogsConfig;
 
   /// Creates a new [FleetObservabilityLoggingConfigResponse].
   /// [defaultConfig] Specified if applying the default routing config to logs not specified in other configs.
@@ -20,16 +22,33 @@ class FleetObservabilityLoggingConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultConfig': pulumi.Input.mapInputValue<FleetObservabilityRoutingConfigResponse, Map<String, dynamic>>(defaultConfig, (value) => value.toMap()),
-      'fleetScopeLogsConfig': pulumi.Input.mapInputValue<FleetObservabilityRoutingConfigResponse, Map<String, dynamic>>(fleetScopeLogsConfig, (value) => value.toMap()),
+      'defaultConfig':
+          pulumi.Input.mapInputValue<
+            FleetObservabilityRoutingConfigResponse,
+            Map<String, dynamic>
+          >(defaultConfig, (value) => value.toMap()),
+      'fleetScopeLogsConfig':
+          pulumi.Input.mapInputValue<
+            FleetObservabilityRoutingConfigResponse,
+            Map<String, dynamic>
+          >(fleetScopeLogsConfig, (value) => value.toMap()),
     };
   }
 
-  factory FleetObservabilityLoggingConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityLoggingConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityLoggingConfigResponse(
-      defaultConfig: (FleetObservabilityRoutingConfigResponse.fromMap((map['defaultConfig'] as Map).cast<String, dynamic>())).input(),
-      fleetScopeLogsConfig: (FleetObservabilityRoutingConfigResponse.fromMap((map['fleetScopeLogsConfig'] as Map).cast<String, dynamic>())).input(),
+      defaultConfig: pulumi.Input.fromValue(
+        FleetObservabilityRoutingConfigResponse.fromMap(
+          (map['defaultConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      fleetScopeLogsConfig: pulumi.Input.fromValue(
+        FleetObservabilityRoutingConfigResponse.fromMap(
+          (map['fleetScopeLogsConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

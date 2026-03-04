@@ -39,12 +39,23 @@ class GetBareMetalNodePoolArgs {
 
   factory GetBareMetalNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetBareMetalNodePoolArgs(
-      bareMetalClusterId: (map['bareMetalClusterId'] as String).input(),
-      bareMetalNodePoolId: (map['bareMetalNodePoolId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      view: map['view'] == null ? null : (map['view']! as String).input(),
+      bareMetalClusterId: pulumi.Input.fromValue(
+        map['bareMetalClusterId'] as String,
+      ),
+      bareMetalNodePoolId: pulumi.Input.fromValue(
+        map['bareMetalNodePoolId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      view: (() {
+        final guardedValue = map['view'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

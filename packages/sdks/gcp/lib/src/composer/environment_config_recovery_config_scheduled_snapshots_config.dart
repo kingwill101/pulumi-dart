@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
   /// When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
   final pulumi.Input<bool> enabled;
+
   /// Snapshot schedule, in the unix-cron format.
   final pulumi.Input<String>? snapshotCreationSchedule;
+
   /// the URI of a bucket folder where to save the snapshot.
   final pulumi.Input<String>? snapshotLocation;
+
   /// A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
   final pulumi.Input<String>? timeZone;
 
@@ -33,13 +36,26 @@ class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
     };
   }
 
-  factory EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig.fromMap(Map<String, dynamic> map) {
+  factory EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig(
-      enabled: (map['enabled'] as bool).input(),
-      snapshotCreationSchedule: map['snapshotCreationSchedule'] == null ? null : (map['snapshotCreationSchedule']! as String).input(),
-      snapshotLocation: map['snapshotLocation'] == null ? null : (map['snapshotLocation']! as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      snapshotCreationSchedule: (() {
+        final guardedValue = map['snapshotCreationSchedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshotLocation: (() {
+        final guardedValue = map['snapshotLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeZone: (() {
+        final guardedValue = map['timeZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

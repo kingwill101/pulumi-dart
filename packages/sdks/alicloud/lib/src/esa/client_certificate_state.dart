@@ -6,23 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientCertificateState {
   /// ClientCertificate Id
   final pulumi.Input<String>? clientCertId;
+
   /// The time when the certificate was created.
   final pulumi.Input<String>? createTime;
+
   /// Certificate signing request content.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? csr;
+
   /// The private key algorithm type.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? pkeyType;
+
   /// Site Id
   final pulumi.Input<String>? siteId;
+
   /// The certificate status. Valid values: `revoked`, `active`.
   final pulumi.Input<String>? status;
+
   /// Certificate validity period.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<String>? validityDays;
 
   /// Creates a new [ClientCertificateState].
@@ -57,14 +63,41 @@ class ClientCertificateState {
 
   factory ClientCertificateState.fromMap(Map<String, dynamic> map) {
     return ClientCertificateState(
-      clientCertId: map['clientCertId'] == null ? null : (map['clientCertId']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      csr: map['csr'] == null ? null : (map['csr']! as String).input(),
-      pkeyType: map['pkeyType'] == null ? null : (map['pkeyType']! as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      validityDays: map['validityDays'] == null ? null : (map['validityDays']! as String).input(),
+      clientCertId: (() {
+        final guardedValue = map['clientCertId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      csr: (() {
+        final guardedValue = map['csr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pkeyType: (() {
+        final guardedValue = map['pkeyType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      siteId: (() {
+        final guardedValue = map['siteId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      validityDays: (() {
+        final guardedValue = map['validityDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

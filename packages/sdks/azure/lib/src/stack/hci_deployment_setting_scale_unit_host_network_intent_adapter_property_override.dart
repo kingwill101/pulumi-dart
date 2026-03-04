@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HciDeploymentSettingScaleUnitHostNetworkIntentAdapterPropertyOverride {
   /// The jumbo frame size of the adapter. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String>? jumboPacket;
+
   /// The network direct of the adapter. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String>? networkDirect;
+
   /// The network direct technology of the adapter. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
   final pulumi.Input<String>? networkDirectTechnology;
 
@@ -28,12 +30,25 @@ class HciDeploymentSettingScaleUnitHostNetworkIntentAdapterPropertyOverride {
     };
   }
 
-  factory HciDeploymentSettingScaleUnitHostNetworkIntentAdapterPropertyOverride.fromMap(Map<String, dynamic> map) {
+  factory HciDeploymentSettingScaleUnitHostNetworkIntentAdapterPropertyOverride.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HciDeploymentSettingScaleUnitHostNetworkIntentAdapterPropertyOverride(
-      jumboPacket: map['jumboPacket'] == null ? null : (map['jumboPacket']! as String).input(),
-      networkDirect: map['networkDirect'] == null ? null : (map['networkDirect']! as String).input(),
-      networkDirectTechnology: map['networkDirectTechnology'] == null ? null : (map['networkDirectTechnology']! as String).input(),
+      jumboPacket: (() {
+        final guardedValue = map['jumboPacket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkDirect: (() {
+        final guardedValue = map['networkDirect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkDirectTechnology: (() {
+        final guardedValue = map['networkDirectTechnology'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

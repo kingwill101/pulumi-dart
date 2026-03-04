@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepoSource {
   /// Name of the branch to build.
   final pulumi.Input<String>? branchName;
+
   /// Explicit commit SHA to build.
   final pulumi.Input<String>? commitSha;
+
   /// ID of the project that owns the repo.
   final pulumi.Input<String>? project;
+
   /// Name of the repo.
   final pulumi.Input<String>? repoName;
+
   /// Name of the tag to build.
   final pulumi.Input<String>? tagName;
 
@@ -41,12 +45,31 @@ class RepoSource {
 
   factory RepoSource.fromMap(Map<String, dynamic> map) {
     return RepoSource(
-      branchName: map['branchName'] == null ? null : (map['branchName']! as String).input(),
-      commitSha: map['commitSha'] == null ? null : (map['commitSha']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      repoName: map['repoName'] == null ? null : (map['repoName']! as String).input(),
-      tagName: map['tagName'] == null ? null : (map['tagName']! as String).input(),
+      branchName: (() {
+        final guardedValue = map['branchName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      commitSha: (() {
+        final guardedValue = map['commitSha'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repoName: (() {
+        final guardedValue = map['repoName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tagName: (() {
+        final guardedValue = map['tagName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

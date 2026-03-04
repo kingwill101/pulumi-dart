@@ -39,12 +39,19 @@ class GetConfigApigatewayV1betaArgs {
 
   factory GetConfigApigatewayV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigApigatewayV1betaArgs(
-      apiId: (map['apiId'] as String).input(),
-      configId: (map['configId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      view: map['view'] == null ? null : (map['view']! as String).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      configId: pulumi.Input.fromValue(map['configId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      view: (() {
+        final guardedValue = map['view'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

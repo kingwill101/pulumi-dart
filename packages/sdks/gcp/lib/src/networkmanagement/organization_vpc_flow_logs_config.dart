@@ -132,8 +132,10 @@ class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
   /// Optional. The aggregation interval for the logs. Default value is
   /// INTERVAL_5_SEC.   Possible values: INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
   late final pulumi.Output<String> aggregationInterval;
+
   /// Output only. The time the config was created.
   late final pulumi.Output<String> createTime;
+
   /// Determines whether to include cross project annotations in the logs.
   /// This field is available only for organization configurations. If not
   /// specified in org configs will be set to CROSS_PROJECT_METADATA_ENABLED.
@@ -142,47 +144,61 @@ class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
   /// CROSS_PROJECT_METADATA_DISABLED
   /// Possible values are: `CROSS_PROJECT_METADATA_ENABLED`, `CROSS_PROJECT_METADATA_DISABLED`.
   late final pulumi.Output<String> crossProjectMetadata;
+
   /// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
   /// of 512 characters.
   late final pulumi.Output<String?> description;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// Optional. Export filter used to define which VPC Flow Logs should be logged.
   late final pulumi.Output<String?> filterExpr;
+
   /// Optional. The value of the field must be in (0, 1]. The sampling rate
   /// of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the
   /// sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use
   /// the state field instead. Default value is 1.0
   late final pulumi.Output<double> flowSampling;
+
   /// Optional. Resource labels to represent the user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// Resource ID segment making up resource `name`. It identifies the resource
   /// within its parent collection as described in https://google.aip.dev/122. See documentation
   /// for resource type `networkmanagement.googleapis.com/VpcFlowLogsConfig`.
   late final pulumi.Output<String> location;
+
   /// Optional. Configures whether all, none or a subset of metadata fields
   /// should be added to the reported VPC flow logs. Default value is INCLUDE_ALL_METADATA.
   /// Possible values:  METADATA_UNSPECIFIED INCLUDE_ALL_METADATA EXCLUDE_ALL_METADATA CUSTOM_METADATA
   late final pulumi.Output<String> metadata;
+
   /// Optional. Custom metadata fields to include in the reported VPC flow
   /// logs. Can only be specified if \"metadata\" was set to CUSTOM_METADATA.
   late final pulumi.Output<List<String>?> metadataFields;
+
   /// Identifier. Unique name of the configuration using the form:     `organizations/{org_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
   late final pulumi.Output<String> name;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> organization;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// Optional. The state of the VPC Flow Log configuration. Default value
   /// is ENABLED. When creating a new configuration, it must be enabled.
   /// Possible values: ENABLED DISABLED
   late final pulumi.Output<String> state;
+
   /// Output only. The time the config was updated.
   late final pulumi.Output<String> updateTime;
+
   /// Required. ID of the `VpcFlowLogsConfig`.
   late final pulumi.Output<String> vpcFlowLogsConfigId;
 
@@ -195,28 +211,28 @@ class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
     OrganizationVpcFlowLogsConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aggregationInterval = registerOutput<String>('aggregationInterval');
-    this.createTime = registerOutput<String>('createTime');
-    this.crossProjectMetadata = registerOutput<String>('crossProjectMetadata');
-    this.description = registerOutput<String?>('description');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.filterExpr = registerOutput<String?>('filterExpr');
-    this.flowSampling = registerOutput<double>('flowSampling');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
-    this.metadata = registerOutput<String>('metadata');
-    this.metadataFields = registerOutput<List<String>?>('metadataFields');
+         'gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aggregationInterval = registerOutput<String>('aggregationInterval');
+    createTime = registerOutput<String>('createTime');
+    crossProjectMetadata = registerOutput<String>('crossProjectMetadata');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    filterExpr = registerOutput<String?>('filterExpr');
+    flowSampling = registerOutput<double>('flowSampling');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
+    metadata = registerOutput<String>('metadata');
+    metadataFields = registerOutput<List<String>?>('metadataFields');
     this.name = registerOutput<String>('name');
-    this.organization = registerOutput<String>('organization');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.state = registerOutput<String>('state');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.vpcFlowLogsConfigId = registerOutput<String>('vpcFlowLogsConfigId');
+    organization = registerOutput<String>('organization');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    vpcFlowLogsConfigId = registerOutput<String>('vpcFlowLogsConfigId');
   }
 
   /// Gets an existing [OrganizationVpcFlowLogsConfig] resource's state with the given [name] and [id].
@@ -237,27 +253,27 @@ class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aggregationInterval = registerOutput<String>('aggregationInterval');
-    this.createTime = registerOutput<String>('createTime');
-    this.crossProjectMetadata = registerOutput<String>('crossProjectMetadata');
-    this.description = registerOutput<String?>('description');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.filterExpr = registerOutput<String?>('filterExpr');
-    this.flowSampling = registerOutput<double>('flowSampling');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.location = registerOutput<String>('location');
-    this.metadata = registerOutput<String>('metadata');
-    this.metadataFields = registerOutput<List<String>?>('metadataFields');
+         'gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aggregationInterval = registerOutput<String>('aggregationInterval');
+    createTime = registerOutput<String>('createTime');
+    crossProjectMetadata = registerOutput<String>('crossProjectMetadata');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    filterExpr = registerOutput<String?>('filterExpr');
+    flowSampling = registerOutput<double>('flowSampling');
+    labels = registerOutput<Map<String, String>?>('labels');
+    location = registerOutput<String>('location');
+    metadata = registerOutput<String>('metadata');
+    metadataFields = registerOutput<List<String>?>('metadataFields');
     this.name = registerOutput<String>('name');
-    this.organization = registerOutput<String>('organization');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    organization = registerOutput<String>('organization');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.state = registerOutput<String>('state');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.vpcFlowLogsConfigId = registerOutput<String>('vpcFlowLogsConfigId');
+    updateTime = registerOutput<String>('updateTime');
+    vpcFlowLogsConfigId = registerOutput<String>('vpcFlowLogsConfigId');
   }
 }

@@ -7,16 +7,15 @@ enum ManagedServerCreateMode {
   valueDefault("Default"),
   valuePointInTimeRestore("PointInTimeRestore");
 
-  const ManagedServerCreateMode(this.value);
-  final String value;
+  const ManagedServerCreateMode(this.wireValue);
+  final String wireValue;
 
   static ManagedServerCreateMode fromValue(String value) {
     for (final item in ManagedServerCreateMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManagedServerCreateMode value: $value');
   }
 }
-

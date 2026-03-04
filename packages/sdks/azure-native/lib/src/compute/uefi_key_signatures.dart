@@ -7,10 +7,13 @@ import 'uefi_key.dart';
 class UefiKeySignatures {
   /// The database of UEFI keys for this image version.
   final pulumi.Input<List<UefiKey>>? db;
+
   /// The database of revoked UEFI keys for this image version.
   final pulumi.Input<List<UefiKey>>? dbx;
+
   /// The Key Encryption Keys of this image version.
   final pulumi.Input<List<UefiKey>>? kek;
+
   /// The Platform Key of this image version.
   final pulumi.Input<UefiKey>? pk;
 
@@ -19,29 +22,89 @@ class UefiKeySignatures {
   /// [dbx] The database of revoked UEFI keys for this image version.
   /// [kek] The Key Encryption Keys of this image version.
   /// [pk] The Platform Key of this image version.
-  UefiKeySignatures({
-    this.db,
-    this.dbx,
-    this.kek,
-    this.pk,
-  });
+  UefiKeySignatures({this.db, this.dbx, this.kek, this.pk});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'db': ?pulumi.Input.mapOptionalInputValue<List<UefiKey>, List<Map<String, dynamic>>>(db, (value) => pulumi.Input.encodeList<UefiKey, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'dbx': ?pulumi.Input.mapOptionalInputValue<List<UefiKey>, List<Map<String, dynamic>>>(dbx, (value) => pulumi.Input.encodeList<UefiKey, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'kek': ?pulumi.Input.mapOptionalInputValue<List<UefiKey>, List<Map<String, dynamic>>>(kek, (value) => pulumi.Input.encodeList<UefiKey, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'pk': ?pulumi.Input.mapOptionalInputValue<UefiKey, Map<String, dynamic>>(pk, (value) => value.toMap()),
+      'db':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UefiKey>,
+            List<Map<String, dynamic>>
+          >(
+            db,
+            (value) => pulumi.Input.encodeList<UefiKey, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
+      'dbx':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UefiKey>,
+            List<Map<String, dynamic>>
+          >(
+            dbx,
+            (value) => pulumi.Input.encodeList<UefiKey, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
+      'kek':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UefiKey>,
+            List<Map<String, dynamic>>
+          >(
+            kek,
+            (value) => pulumi.Input.encodeList<UefiKey, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
+      'pk': ?pulumi.Input.mapOptionalInputValue<UefiKey, Map<String, dynamic>>(
+        pk,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory UefiKeySignatures.fromMap(Map<String, dynamic> map) {
     return UefiKeySignatures(
-      db: map['db'] == null ? null : (pulumi.Input.decodeList<UefiKey>(map['db']!, (value) => UefiKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dbx: map['dbx'] == null ? null : (pulumi.Input.decodeList<UefiKey>(map['dbx']!, (value) => UefiKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kek: map['kek'] == null ? null : (pulumi.Input.decodeList<UefiKey>(map['kek']!, (value) => UefiKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pk: map['pk'] == null ? null : (UefiKey.fromMap((map['pk']! as Map).cast<String, dynamic>())).input(),
+      db: (() {
+        final guardedValue = map['db'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UefiKey>(
+            guardedValue,
+            (value) => UefiKey.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      dbx: (() {
+        final guardedValue = map['dbx'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UefiKey>(
+            guardedValue,
+            (value) => UefiKey.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      kek: (() {
+        final guardedValue = map['kek'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UefiKey>(
+            guardedValue,
+            (value) => UefiKey.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      pk: (() {
+        final guardedValue = map['pk'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UefiKey.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

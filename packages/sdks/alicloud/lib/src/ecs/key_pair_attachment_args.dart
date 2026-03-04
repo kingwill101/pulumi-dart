@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyPairAttachmentArgs {
   /// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
   final pulumi.Input<bool>? force;
+
   /// The list of ECS instance's IDs.
   final pulumi.Input<List<String>> instanceIds;
+
   /// The name of key pair used to bind.
   final pulumi.Input<String>? keyName;
   final pulumi.Input<String>? keyPairName;
@@ -38,11 +40,24 @@ class KeyPairAttachmentArgs {
 
   factory KeyPairAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return KeyPairAttachmentArgs(
-      force: map['force'] == null ? null : (map['force']! as bool).input(),
-      instanceIds: ((map['instanceIds'] as List).cast<String>()).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
-      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName']! as String).input(),
+      force: (() {
+        final guardedValue = map['force'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      instanceIds: pulumi.Input.fromValue(
+        (map['instanceIds'] as List).cast<String>(),
+      ),
+      keyName: (() {
+        final guardedValue = map['keyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyPairName: (() {
+        final guardedValue = map['keyPairName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

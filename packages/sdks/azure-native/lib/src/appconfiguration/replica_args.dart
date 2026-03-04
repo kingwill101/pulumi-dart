@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReplicaArgs {
   /// The name of the configuration store.
   final pulumi.Input<String> configStoreName;
+
   /// The location of the replica.
   final pulumi.Input<String>? location;
+
   /// The name of the replica.
   final pulumi.Input<String>? replicaName;
+
   /// The name of the resource group to which the container registry belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,20 @@ class ReplicaArgs {
 
   factory ReplicaArgs.fromMap(Map<String, dynamic> map) {
     return ReplicaArgs(
-      configStoreName: (map['configStoreName'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      replicaName: map['replicaName'] == null ? null : (map['replicaName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      configStoreName: pulumi.Input.fromValue(map['configStoreName'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replicaName: (() {
+        final guardedValue = map['replicaName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

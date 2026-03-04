@@ -5,16 +5,15 @@ enum ShareAccessTier {
   valueCool("Cool"),
   valuePremium("Premium");
 
-  const ShareAccessTier(this.value);
-  final String value;
+  const ShareAccessTier(this.wireValue);
+  final String wireValue;
 
   static ShareAccessTier fromValue(String value) {
     for (final item in ShareAccessTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ShareAccessTier value: $value');
   }
 }
-

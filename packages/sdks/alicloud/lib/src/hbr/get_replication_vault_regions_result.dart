@@ -24,16 +24,28 @@ class GetReplicationVaultRegionsResult {
     return <String, dynamic>{
       'id': id,
       'outputFile': ?outputFile,
-      'regions': pulumi.Input.encodeList<GetReplicationVaultRegionsRegion, Map<String, dynamic>>(regions, (value) => value.toMap()),
+      'regions':
+          pulumi.Input.encodeList<
+            GetReplicationVaultRegionsRegion,
+            Map<String, dynamic>
+          >(regions, (value) => value.toMap()),
     };
   }
 
   factory GetReplicationVaultRegionsResult.fromMap(Map<String, dynamic> map) {
     return GetReplicationVaultRegionsResult(
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      regions: pulumi.Input.decodeList<GetReplicationVaultRegionsRegion>(map['regions'], (value) => GetReplicationVaultRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      regions: pulumi.Input.decodeList<GetReplicationVaultRegionsRegion>(
+        map['regions']!,
+        (value) => GetReplicationVaultRegionsRegion.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

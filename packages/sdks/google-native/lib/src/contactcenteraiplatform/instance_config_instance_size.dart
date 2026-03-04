@@ -9,16 +9,15 @@ enum InstanceConfigInstanceSize {
   standard3xlarge("STANDARD_3XLARGE"),
   devXsmall("DEV_XSMALL");
 
-  const InstanceConfigInstanceSize(this.value);
-  final String value;
+  const InstanceConfigInstanceSize(this.wireValue);
+  final String wireValue;
 
   static InstanceConfigInstanceSize fromValue(String value) {
     for (final item in InstanceConfigInstanceSize.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceConfigInstanceSize value: $value');
   }
 }
-

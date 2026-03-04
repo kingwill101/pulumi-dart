@@ -9,20 +9,21 @@ class CostManagementConfigContainerV1beta1 {
 
   /// Creates a new [CostManagementConfigContainerV1beta1].
   /// [enabled] Whether the feature is enabled or not.
-  CostManagementConfigContainerV1beta1({
-    this.enabled,
-  });
+  CostManagementConfigContainerV1beta1({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
-  factory CostManagementConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CostManagementConfigContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CostManagementConfigContainerV1beta1(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -263,7 +263,7 @@ import 'workspace_policy_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2024-05-01
@@ -278,11 +278,13 @@ import 'workspace_policy_state.dart';
 class WorkspacePolicy extends pulumi.CustomResource {
   /// Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> apiManagementWorkspaceId;
+
   /// Specifies the API Management Workspace Policy as an XML string.
   late final pulumi.Output<String> xmlContent;
+
   /// Specifies a publicly accessible URL to a policy XML document.
   ///
-  /// > **Note:** Exactly one of `xml_content` or `xml_link` must be specified.
+  /// &gt; **Note:** Exactly one of `xml_content` or `xml_link` must be specified.
   late final pulumi.Output<String?> xmlLink;
 
   /// Creates a new [WorkspacePolicy].
@@ -294,14 +296,16 @@ class WorkspacePolicy extends pulumi.CustomResource {
     WorkspacePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/workspacePolicy:WorkspacePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
-    this.xmlContent = registerOutput<String>('xmlContent');
-    this.xmlLink = registerOutput<String?>('xmlLink');
+         'azure:apimanagement/workspacePolicy:WorkspacePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementWorkspaceId = registerOutput<String>(
+      'apiManagementWorkspaceId',
+    );
+    xmlContent = registerOutput<String>('xmlContent');
+    xmlLink = registerOutput<String?>('xmlLink');
   }
 
   /// Gets an existing [WorkspacePolicy] resource's state with the given [name] and [id].
@@ -322,13 +326,15 @@ class WorkspacePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/workspacePolicy:WorkspacePolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
-    this.xmlContent = registerOutput<String>('xmlContent');
-    this.xmlLink = registerOutput<String?>('xmlLink');
+         'azure:apimanagement/workspacePolicy:WorkspacePolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementWorkspaceId = registerOutput<String>(
+      'apiManagementWorkspaceId',
+    );
+    xmlContent = registerOutput<String>('xmlContent');
+    xmlLink = registerOutput<String?>('xmlLink');
   }
 }

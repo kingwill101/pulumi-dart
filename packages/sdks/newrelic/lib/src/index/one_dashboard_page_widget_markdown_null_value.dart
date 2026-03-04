@@ -6,8 +6,12 @@ import 'one_dashboard_page_widget_markdown_null_value_series_override.dart';
 class OneDashboardPageWidgetMarkdownNullValue {
   /// Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
   final pulumi.Input<String>? nullValue;
+
   /// (Optional) A Nested block which will take two string attributes `color` and `series_name`. This nested block is used to customize colors of individual.
-  final pulumi.Input<List<OneDashboardPageWidgetMarkdownNullValueSeriesOverride>>? seriesOverrides;
+  final pulumi.Input<
+    List<OneDashboardPageWidgetMarkdownNullValueSeriesOverride>
+  >?
+  seriesOverrides;
 
   /// Creates a new [OneDashboardPageWidgetMarkdownNullValue].
   /// [nullValue] Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
@@ -20,15 +24,45 @@ class OneDashboardPageWidgetMarkdownNullValue {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nullValue': ?nullValue,
-      'seriesOverrides': ?pulumi.Input.mapOptionalInputValue<List<OneDashboardPageWidgetMarkdownNullValueSeriesOverride>, List<Map<String, dynamic>>>(seriesOverrides, (value) => pulumi.Input.encodeList<OneDashboardPageWidgetMarkdownNullValueSeriesOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'seriesOverrides':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<OneDashboardPageWidgetMarkdownNullValueSeriesOverride>,
+            List<Map<String, dynamic>>
+          >(
+            seriesOverrides,
+            (value) =>
+                pulumi.Input.encodeList<
+                  OneDashboardPageWidgetMarkdownNullValueSeriesOverride,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory OneDashboardPageWidgetMarkdownNullValue.fromMap(Map<String, dynamic> map) {
+  factory OneDashboardPageWidgetMarkdownNullValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OneDashboardPageWidgetMarkdownNullValue(
-      nullValue: map['nullValue'] == null ? null : (map['nullValue']! as String).input(),
-      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetMarkdownNullValueSeriesOverride>(map['seriesOverrides']!, (value) => OneDashboardPageWidgetMarkdownNullValueSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nullValue: (() {
+        final guardedValue = map['nullValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      seriesOverrides: (() {
+        final guardedValue = map['seriesOverrides'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            OneDashboardPageWidgetMarkdownNullValueSeriesOverride
+          >(
+            guardedValue,
+            (value) =>
+                OneDashboardPageWidgetMarkdownNullValueSeriesOverride.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

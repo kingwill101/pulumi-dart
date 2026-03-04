@@ -7,9 +7,15 @@ import 'google_cloud_datacatalog_v1_dataplex_table_spec_response.dart';
 /// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
 class GoogleCloudDatacatalogV1DatabaseTableSpecResponse {
   /// Spec what aplies to tables that are actually views. Not set for "real" tables.
-  final pulumi.Input<GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse> databaseViewSpec;
+  final pulumi.Input<
+    GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse
+  >
+  databaseViewSpec;
+
   /// Fields specific to a Dataplex table and present only in the Dataplex table entries.
-  final pulumi.Input<GoogleCloudDatacatalogV1DataplexTableSpecResponse> dataplexTable;
+  final pulumi.Input<GoogleCloudDatacatalogV1DataplexTableSpecResponse>
+  dataplexTable;
+
   /// Type of this table.
   final pulumi.Input<String> type;
 
@@ -25,18 +31,35 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'databaseViewSpec': pulumi.Input.mapInputValue<GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse, Map<String, dynamic>>(databaseViewSpec, (value) => value.toMap()),
-      'dataplexTable': pulumi.Input.mapInputValue<GoogleCloudDatacatalogV1DataplexTableSpecResponse, Map<String, dynamic>>(dataplexTable, (value) => value.toMap()),
+      'databaseViewSpec':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse,
+            Map<String, dynamic>
+          >(databaseViewSpec, (value) => value.toMap()),
+      'dataplexTable':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDatacatalogV1DataplexTableSpecResponse,
+            Map<String, dynamic>
+          >(dataplexTable, (value) => value.toMap()),
       'type': type,
     };
   }
 
-  factory GoogleCloudDatacatalogV1DatabaseTableSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1DatabaseTableSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1DatabaseTableSpecResponse(
-      databaseViewSpec: (GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse.fromMap((map['databaseViewSpec'] as Map).cast<String, dynamic>())).input(),
-      dataplexTable: (GoogleCloudDatacatalogV1DataplexTableSpecResponse.fromMap((map['dataplexTable'] as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
+      databaseViewSpec: pulumi.Input.fromValue(
+        GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse.fromMap(
+          (map['databaseViewSpec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      dataplexTable: pulumi.Input.fromValue(
+        GoogleCloudDatacatalogV1DataplexTableSpecResponse.fromMap(
+          (map['dataplexTable']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

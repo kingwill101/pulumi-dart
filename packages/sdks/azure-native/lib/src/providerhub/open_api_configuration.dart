@@ -9,20 +9,29 @@ class OpenApiConfiguration {
 
   /// Creates a new [OpenApiConfiguration].
   /// [validation] The open api validation.
-  OpenApiConfiguration({
-    this.validation,
-  });
+  OpenApiConfiguration({this.validation});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'validation': ?pulumi.Input.mapOptionalInputValue<OpenApiValidation, Map<String, dynamic>>(validation, (value) => value.toMap()),
+      'validation':
+          ?pulumi.Input.mapOptionalInputValue<
+            OpenApiValidation,
+            Map<String, dynamic>
+          >(validation, (value) => value.toMap()),
     };
   }
 
   factory OpenApiConfiguration.fromMap(Map<String, dynamic> map) {
     return OpenApiConfiguration(
-      validation: map['validation'] == null ? null : (OpenApiValidation.fromMap((map['validation']! as Map).cast<String, dynamic>())).input(),
+      validation: (() {
+        final guardedValue = map['validation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OpenApiValidation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_storage;
-
 export 'storage/account.dart';
 export 'storage/account_args.dart';
 export 'storage/account_azure_files_authentication.dart';

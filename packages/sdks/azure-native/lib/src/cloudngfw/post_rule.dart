@@ -4,7 +4,6 @@ import 'destination_addr_response.dart';
 import 'post_rule_args.dart';
 import 'source_addr_response.dart';
 import 'system_data_response.dart';
-import 'tag_info_response.dart';
 
 /// PostRulestack rule list
 ///
@@ -537,49 +536,71 @@ import 'tag_info_response.dart';
 class PostRule extends pulumi.CustomResource {
   /// rule action
   late final pulumi.Output<String?> actionType;
+
   /// array of rule applications
   late final pulumi.Output<List<String>?> applications;
+
   /// rule comment
   late final pulumi.Output<String?> auditComment;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// rule category
   late final pulumi.Output<CategoryResponse?> category;
+
   /// enable or disable decryption
   late final pulumi.Output<String?> decryptionRuleType;
+
   /// rule description
   late final pulumi.Output<String?> description;
+
   /// destination address
   late final pulumi.Output<DestinationAddrResponse?> destination;
+
   /// enable or disable logging
   late final pulumi.Output<String?> enableLogging;
+
   /// etag info
   late final pulumi.Output<String?> etag;
+
   /// inbound Inspection Certificate
   late final pulumi.Output<String?> inboundInspectionCertificate;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// cidr should not be 'any'
   late final pulumi.Output<String?> negateDestination;
+
   /// cidr should not be 'any'
   late final pulumi.Output<String?> negateSource;
   late final pulumi.Output<int> priority;
+
   /// any, application-default, TCP:number, UDP:number
   late final pulumi.Output<String?> protocol;
+
   /// prot port list
   late final pulumi.Output<List<String>?> protocolPortList;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// rule name
   late final pulumi.Output<String> ruleName;
+
   /// state of this rule
   late final pulumi.Output<String?> ruleState;
+
   /// source address
   late final pulumi.Output<SourceAddrResponse?> source;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// tag for rule
-  late final pulumi.Output<List<TagInfoResponse>?> tags;
+  late final pulumi.Output<List<Map<String, dynamic>>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -592,34 +613,36 @@ class PostRule extends pulumi.CustomResource {
     PostRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cloudngfw:PostRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actionType = registerOutput<String?>('actionType');
-    this.applications = registerOutput<List<String>?>('applications');
-    this.auditComment = registerOutput<String?>('auditComment');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.category = registerOutput<CategoryResponse?>('category');
-    this.decryptionRuleType = registerOutput<String?>('decryptionRuleType');
-    this.description = registerOutput<String?>('description');
-    this.destination = registerOutput<DestinationAddrResponse?>('destination');
-    this.enableLogging = registerOutput<String?>('enableLogging');
-    this.etag = registerOutput<String?>('etag');
-    this.inboundInspectionCertificate = registerOutput<String?>('inboundInspectionCertificate');
+         'azure-native:cloudngfw:PostRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actionType = registerOutput<String?>('actionType');
+    applications = registerOutput<List<String>?>('applications');
+    auditComment = registerOutput<String?>('auditComment');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    category = registerOutput<CategoryResponse?>('category');
+    decryptionRuleType = registerOutput<String?>('decryptionRuleType');
+    description = registerOutput<String?>('description');
+    destination = registerOutput<DestinationAddrResponse?>('destination');
+    enableLogging = registerOutput<String?>('enableLogging');
+    etag = registerOutput<String?>('etag');
+    inboundInspectionCertificate = registerOutput<String?>(
+      'inboundInspectionCertificate',
+    );
     this.name = registerOutput<String>('name');
-    this.negateDestination = registerOutput<String?>('negateDestination');
-    this.negateSource = registerOutput<String?>('negateSource');
-    this.priority = registerOutput<int>('priority');
-    this.protocol = registerOutput<String?>('protocol');
-    this.protocolPortList = registerOutput<List<String>?>('protocolPortList');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.ruleState = registerOutput<String?>('ruleState');
-    this.source = registerOutput<SourceAddrResponse?>('source');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<List<TagInfoResponse>?>('tags');
-    this.type = registerOutput<String>('type');
+    negateDestination = registerOutput<String?>('negateDestination');
+    negateSource = registerOutput<String?>('negateSource');
+    priority = registerOutput<int>('priority');
+    protocol = registerOutput<String?>('protocol');
+    protocolPortList = registerOutput<List<String>?>('protocolPortList');
+    provisioningState = registerOutput<String>('provisioningState');
+    ruleName = registerOutput<String>('ruleName');
+    ruleState = registerOutput<String?>('ruleState');
+    source = registerOutput<SourceAddrResponse?>('source');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<List<Map<String, dynamic>>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

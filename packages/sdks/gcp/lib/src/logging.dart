@@ -1,5 +1,3 @@
-library module_logging;
-
 export 'logging/billing_account_bucket_config.dart';
 export 'logging/billing_account_bucket_config_args.dart';
 export 'logging/billing_account_bucket_config_cmek_settings.dart';

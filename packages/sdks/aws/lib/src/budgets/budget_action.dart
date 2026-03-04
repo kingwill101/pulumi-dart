@@ -3,7 +3,6 @@ import 'budget_action_action_threshold.dart';
 import 'budget_action_args.dart';
 import 'budget_action_definition.dart';
 import 'budget_action_state.dart';
-import 'budget_action_subscriber.dart';
 
 /// Provides a budget action resource. Budget actions are cost savings controls that run either automatically on your behalf or by using a workflow approval process.
 ///
@@ -561,30 +560,43 @@ import 'budget_action_subscriber.dart';
 class BudgetAction extends pulumi.CustomResource {
   /// The ID of the target account for budget. Will use current user's account_id by default if omitted.
   late final pulumi.Output<String> accountId;
+
   /// The id of the budget action.
   late final pulumi.Output<String> actionId;
+
   /// The trigger threshold of the action. See Action Threshold.
   late final pulumi.Output<BudgetActionActionThreshold> actionThreshold;
+
   /// The type of action. This defines the type of tasks that can be carried out by this action. This field also determines the format for definition. Valid values are `APPLY_IAM_POLICY`, `APPLY_SCP_POLICY`, and `RUN_SSM_DOCUMENTS`.
   late final pulumi.Output<String> actionType;
+
   /// This specifies if the action needs manual or automatic approval. Valid values are `AUTOMATIC` and `MANUAL`.
   late final pulumi.Output<String> approvalModel;
+
   /// The ARN of the budget action.
   late final pulumi.Output<String> arn;
+
   /// The name of a budget.
   late final pulumi.Output<String> budgetName;
+
   /// Specifies all of the type-specific parameters. See Definition.
   late final pulumi.Output<BudgetActionDefinition> definition;
+
   /// The role passed for action execution and reversion. Roles and actions must be in the same account.
   late final pulumi.Output<String> executionRoleArn;
+
   /// The type of a notification. Valid values are `ACTUAL` or `FORECASTED`.
   late final pulumi.Output<String> notificationType;
+
   /// The status of the budget action.
   late final pulumi.Output<String> status;
+
   /// A list of subscribers. See Subscriber.
-  late final pulumi.Output<List<BudgetActionSubscriber>> subscribers;
+  late final pulumi.Output<List<Map<String, dynamic>>> subscribers;
+
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -597,25 +609,27 @@ class BudgetAction extends pulumi.CustomResource {
     BudgetActionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:budgets/budgetAction:BudgetAction',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.actionId = registerOutput<String>('actionId');
-    this.actionThreshold = registerOutput<BudgetActionActionThreshold>('actionThreshold');
-    this.actionType = registerOutput<String>('actionType');
-    this.approvalModel = registerOutput<String>('approvalModel');
-    this.arn = registerOutput<String>('arn');
-    this.budgetName = registerOutput<String>('budgetName');
-    this.definition = registerOutput<BudgetActionDefinition>('definition');
-    this.executionRoleArn = registerOutput<String>('executionRoleArn');
-    this.notificationType = registerOutput<String>('notificationType');
-    this.status = registerOutput<String>('status');
-    this.subscribers = registerOutput<List<BudgetActionSubscriber>>('subscribers');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:budgets/budgetAction:BudgetAction',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    actionId = registerOutput<String>('actionId');
+    actionThreshold = registerOutput<BudgetActionActionThreshold>(
+      'actionThreshold',
+    );
+    actionType = registerOutput<String>('actionType');
+    approvalModel = registerOutput<String>('approvalModel');
+    arn = registerOutput<String>('arn');
+    budgetName = registerOutput<String>('budgetName');
+    definition = registerOutput<BudgetActionDefinition>('definition');
+    executionRoleArn = registerOutput<String>('executionRoleArn');
+    notificationType = registerOutput<String>('notificationType');
+    status = registerOutput<String>('status');
+    subscribers = registerOutput<List<Map<String, dynamic>>>('subscribers');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [BudgetAction] resource's state with the given [name] and [id].
@@ -636,24 +650,26 @@ class BudgetAction extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:budgets/budgetAction:BudgetAction',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.actionId = registerOutput<String>('actionId');
-    this.actionThreshold = registerOutput<BudgetActionActionThreshold>('actionThreshold');
-    this.actionType = registerOutput<String>('actionType');
-    this.approvalModel = registerOutput<String>('approvalModel');
-    this.arn = registerOutput<String>('arn');
-    this.budgetName = registerOutput<String>('budgetName');
-    this.definition = registerOutput<BudgetActionDefinition>('definition');
-    this.executionRoleArn = registerOutput<String>('executionRoleArn');
-    this.notificationType = registerOutput<String>('notificationType');
-    this.status = registerOutput<String>('status');
-    this.subscribers = registerOutput<List<BudgetActionSubscriber>>('subscribers');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:budgets/budgetAction:BudgetAction',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    actionId = registerOutput<String>('actionId');
+    actionThreshold = registerOutput<BudgetActionActionThreshold>(
+      'actionThreshold',
+    );
+    actionType = registerOutput<String>('actionType');
+    approvalModel = registerOutput<String>('approvalModel');
+    arn = registerOutput<String>('arn');
+    budgetName = registerOutput<String>('budgetName');
+    definition = registerOutput<BudgetActionDefinition>('definition');
+    executionRoleArn = registerOutput<String>('executionRoleArn');
+    notificationType = registerOutput<String>('notificationType');
+    status = registerOutput<String>('status');
+    subscribers = registerOutput<List<Map<String, dynamic>>>('subscribers');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

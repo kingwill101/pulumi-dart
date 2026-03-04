@@ -10,16 +10,22 @@ import 'virtual_machine_group_wsfc_domain_profile.dart';
 class VirtualMachineGroupArgs {
   /// The Azure Region where the Microsoft SQL Virtual Machine Group should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name which should be used for the Microsoft SQL Virtual Machine Group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the Microsoft SQL Virtual Machine Group should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The offer type of the marketplace image cluster to be used by the SQL Virtual Machine Group. Changing this forces a new resource to be created.
   final pulumi.Input<String> sqlImageOffer;
+
   /// The sku type of the marketplace image cluster to be used by the SQL Virtual Machine Group. Possible values are `Developer` and `Enterprise`.
   final pulumi.Input<String> sqlImageSku;
+
   /// A mapping of tags which should be assigned to the Microsoft SQL Virtual Machine Group.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A `wsfc_domain_profile` block as defined below.
   final pulumi.Input<VirtualMachineGroupWsfcDomainProfile> wsfcDomainProfile;
 
@@ -49,20 +55,43 @@ class VirtualMachineGroupArgs {
       'sqlImageOffer': sqlImageOffer,
       'sqlImageSku': sqlImageSku,
       'tags': ?tags,
-      'wsfcDomainProfile': pulumi.Input.mapInputValue<VirtualMachineGroupWsfcDomainProfile, Map<String, dynamic>>(wsfcDomainProfile, (value) => value.toMap()),
+      'wsfcDomainProfile':
+          pulumi.Input.mapInputValue<
+            VirtualMachineGroupWsfcDomainProfile,
+            Map<String, dynamic>
+          >(wsfcDomainProfile, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachineGroupArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineGroupArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sqlImageOffer: (map['sqlImageOffer'] as String).input(),
-      sqlImageSku: (map['sqlImageSku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      wsfcDomainProfile: (VirtualMachineGroupWsfcDomainProfile.fromMap((map['wsfcDomainProfile'] as Map).cast<String, dynamic>())).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sqlImageOffer: pulumi.Input.fromValue(map['sqlImageOffer'] as String),
+      sqlImageSku: pulumi.Input.fromValue(map['sqlImageSku'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      wsfcDomainProfile: pulumi.Input.fromValue(
+        VirtualMachineGroupWsfcDomainProfile.fromMap(
+          (map['wsfcDomainProfile']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

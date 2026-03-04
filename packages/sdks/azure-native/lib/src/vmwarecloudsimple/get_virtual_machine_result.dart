@@ -11,58 +11,85 @@ import 'virtual_nic_response.dart';
 class GetVirtualMachineResult {
   /// The amount of memory
   final int amountOfRam;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The list of Virtual Disks' Controllers
   final List<VirtualDiskControllerResponse> controllers;
+
   /// Virtual machine properties
   final GuestOSCustomizationResponse? customization;
+
   /// The list of Virtual Disks
   final List<VirtualDiskResponse>? disks;
+
   /// The DNS name of Virtual Machine in VCenter
   final String dnsname;
+
   /// Expose Guest OS or not
   final bool? exposeToGuestVM;
+
   /// The path to virtual machine folder in VCenter
   final String folder;
+
   /// The name of Guest OS
   final String guestOS;
+
   /// The Guest OS type
   final String guestOSType;
+
   /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/virtualMachines/{virtualMachineName}
   final String id;
+
   /// Azure region
   final String location;
+
   /// {virtualMachineName}
   final String name;
+
   /// The list of Virtual NICs
   final List<VirtualNicResponse>? nics;
+
   /// The number of CPU cores
   final int numberOfCores;
+
   /// Password for login. Deprecated - use customization property
   final String? password;
+
   /// Private Cloud Id
   final String privateCloudId;
+
   /// The provisioning status of the resource
   final String provisioningState;
+
   /// The public ip of Virtual Machine
   final String publicIP;
+
   /// Virtual Machines Resource Pool
   final ResourcePoolResponse? resourcePool;
+
   /// The status of Virtual machine
   final String status;
+
   /// The list of tags
   final Map<String, String>? tags;
+
   /// Virtual Machine Template Id
   final String? templateId;
+
   /// {resourceProviderNamespace}/{resourceType}
   final String type;
+
   /// Username for login. Deprecated - use customization property
   final String? username;
+
   /// The list of Virtual VSphere Networks
   final List<String>? vSphereNetworks;
+
   /// The internal id of Virtual Machine in VCenter
   final String vmId;
+
   /// VMware tools version
   final String vmwaretools;
 
@@ -130,9 +157,20 @@ class GetVirtualMachineResult {
     return <String, dynamic>{
       'amountOfRam': amountOfRam,
       'azureApiVersion': azureApiVersion,
-      'controllers': pulumi.Input.encodeList<VirtualDiskControllerResponse, Map<String, dynamic>>(controllers, (value) => value.toMap()),
-      'customization': ?customization == null ? null : customization!.toMap(),
-      'disks': ?disks == null ? null : pulumi.Input.encodeList<VirtualDiskResponse, Map<String, dynamic>>(disks!, (value) => value.toMap()),
+      'controllers':
+          pulumi.Input.encodeList<
+            VirtualDiskControllerResponse,
+            Map<String, dynamic>
+          >(controllers, (value) => value.toMap()),
+      'customization': ?customization?.toMap(),
+      'disks': ?(() {
+        final guardedValue = disks;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          VirtualDiskResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'dnsname': dnsname,
       'exposeToGuestVM': ?exposeToGuestVM,
       'folder': folder,
@@ -141,13 +179,20 @@ class GetVirtualMachineResult {
       'id': id,
       'location': location,
       'name': name,
-      'nics': ?nics == null ? null : pulumi.Input.encodeList<VirtualNicResponse, Map<String, dynamic>>(nics!, (value) => value.toMap()),
+      'nics': ?(() {
+        final guardedValue = nics;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          VirtualNicResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'numberOfCores': numberOfCores,
       'password': ?password,
       'privateCloudId': privateCloudId,
       'provisioningState': provisioningState,
       'publicIP': publicIP,
-      'resourcePool': ?resourcePool == null ? null : resourcePool!.toMap(),
+      'resourcePool': ?resourcePool?.toMap(),
       'status': status,
       'tags': ?tags,
       'templateId': ?templateId,
@@ -163,33 +208,91 @@ class GetVirtualMachineResult {
     return GetVirtualMachineResult(
       amountOfRam: map['amountOfRam'] as int,
       azureApiVersion: map['azureApiVersion'] as String,
-      controllers: pulumi.Input.decodeList<VirtualDiskControllerResponse>(map['controllers'], (value) => VirtualDiskControllerResponse.fromMap((value as Map).cast<String, dynamic>())),
-      customization: map['customization'] == null ? null : GuestOSCustomizationResponse.fromMap((map['customization']! as Map).cast<String, dynamic>()),
-      disks: map['disks'] == null ? null : pulumi.Input.decodeList<VirtualDiskResponse>(map['disks']!, (value) => VirtualDiskResponse.fromMap((value as Map).cast<String, dynamic>())),
+      controllers: pulumi.Input.decodeList<VirtualDiskControllerResponse>(
+        map['controllers']!,
+        (value) => VirtualDiskControllerResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      customization: (() {
+        final guardedValue = map['customization'];
+        if (guardedValue == null) return null;
+        return GuestOSCustomizationResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      disks: (() {
+        final guardedValue = map['disks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<VirtualDiskResponse>(
+          guardedValue,
+          (value) => VirtualDiskResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       dnsname: map['dnsname'] as String,
-      exposeToGuestVM: map['exposeToGuestVM'] == null ? null : map['exposeToGuestVM']! as bool,
+      exposeToGuestVM: (() {
+        final guardedValue = map['exposeToGuestVM'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       folder: map['folder'] as String,
       guestOS: map['guestOS'] as String,
       guestOSType: map['guestOSType'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      nics: map['nics'] == null ? null : pulumi.Input.decodeList<VirtualNicResponse>(map['nics']!, (value) => VirtualNicResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nics: (() {
+        final guardedValue = map['nics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<VirtualNicResponse>(
+          guardedValue,
+          (value) => VirtualNicResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       numberOfCores: map['numberOfCores'] as int,
-      password: map['password'] == null ? null : map['password']! as String,
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       privateCloudId: map['privateCloudId'] as String,
       provisioningState: map['provisioningState'] as String,
       publicIP: map['publicIP'] as String,
-      resourcePool: map['resourcePool'] == null ? null : ResourcePoolResponse.fromMap((map['resourcePool']! as Map).cast<String, dynamic>()),
+      resourcePool: (() {
+        final guardedValue = map['resourcePool'];
+        if (guardedValue == null) return null;
+        return ResourcePoolResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       status: map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      templateId: map['templateId'] == null ? null : map['templateId']! as String,
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      templateId: (() {
+        final guardedValue = map['templateId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
-      username: map['username'] == null ? null : map['username']! as String,
-      vSphereNetworks: map['vSphereNetworks'] == null ? null : (map['vSphereNetworks']! as List).cast<String>(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      vSphereNetworks: (() {
+        final guardedValue = map['vSphereNetworks'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       vmId: map['vmId'] as String,
       vmwaretools: map['vmwaretools'] as String,
     );
   }
 }
-

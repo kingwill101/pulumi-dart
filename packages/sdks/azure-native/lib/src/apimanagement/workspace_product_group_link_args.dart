@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceProductGroupLinkArgs {
   /// Full resource Id of a group.
   final pulumi.Input<String> groupId;
+
   /// Product-Group link identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String>? groupLinkId;
+
   /// Product identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> productId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
+
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> workspaceId;
 
@@ -49,13 +54,18 @@ class WorkspaceProductGroupLinkArgs {
 
   factory WorkspaceProductGroupLinkArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceProductGroupLinkArgs(
-      groupId: (map['groupId'] as String).input(),
-      groupLinkId: map['groupLinkId'] == null ? null : (map['groupLinkId']! as String).input(),
-      productId: (map['productId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      groupLinkId: (() {
+        final guardedValue = map['groupLinkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CisBenchmarkResponseContaineranalysisV1alpha1 {
   /// The profile level of this CIS benchmark check.
   final pulumi.Input<int> profileLevel;
+
   /// The severity level of this CIS benchmark check.
   final pulumi.Input<String> severity;
 
@@ -24,11 +25,12 @@ class CisBenchmarkResponseContaineranalysisV1alpha1 {
     };
   }
 
-  factory CisBenchmarkResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory CisBenchmarkResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CisBenchmarkResponseContaineranalysisV1alpha1(
-      profileLevel: (map['profileLevel'] as int).input(),
-      severity: (map['severity'] as String).input(),
+      profileLevel: pulumi.Input.fromValue(map['profileLevel'] as int),
+      severity: pulumi.Input.fromValue(map['severity'] as String),
     );
   }
 }
-

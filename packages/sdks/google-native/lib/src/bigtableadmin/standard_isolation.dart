@@ -10,20 +10,27 @@ class StandardIsolation {
 
   /// Creates a new [StandardIsolation].
   /// [priority] The priority of requests sent using this app profile.
-  StandardIsolation({
-    this.priority,
-  });
+  StandardIsolation({this.priority});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'priority': ?pulumi.Input.mapOptionalInputValue<StandardIsolationPriority, String>(priority, (value) => value.value),
+      'priority':
+          ?pulumi.Input.mapOptionalInputValue<
+            StandardIsolationPriority,
+            String
+          >(priority, (value) => value.wireValue),
     };
   }
 
   factory StandardIsolation.fromMap(Map<String, dynamic> map) {
     return StandardIsolation(
-      priority: map['priority'] == null ? null : (StandardIsolationPriority.fromValue(map['priority']! as String)).input(),
+      priority: (() {
+        final guardedValue = map['priority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StandardIsolationPriority.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

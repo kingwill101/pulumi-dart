@@ -7,14 +7,20 @@ import 'google_privacy_dlp_v2_deidentify_config_response.dart';
 class GooglePrivacyDlpV2DeidentifyTemplateResponse {
   /// The creation timestamp of an inspectTemplate.
   final pulumi.Input<String> createTime;
+
   /// The core content of the template.
-  final pulumi.Input<GooglePrivacyDlpV2DeidentifyConfigResponse> deidentifyConfig;
+  final pulumi.Input<GooglePrivacyDlpV2DeidentifyConfigResponse>
+  deidentifyConfig;
+
   /// Short description (max 256 chars).
   final pulumi.Input<String> description;
+
   /// Display name (max 256 chars).
   final pulumi.Input<String> displayName;
+
   /// The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
   final pulumi.Input<String> name;
+
   /// The last update timestamp of an inspectTemplate.
   final pulumi.Input<String> updateTime;
 
@@ -37,7 +43,11 @@ class GooglePrivacyDlpV2DeidentifyTemplateResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
-      'deidentifyConfig': pulumi.Input.mapInputValue<GooglePrivacyDlpV2DeidentifyConfigResponse, Map<String, dynamic>>(deidentifyConfig, (value) => value.toMap()),
+      'deidentifyConfig':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2DeidentifyConfigResponse,
+            Map<String, dynamic>
+          >(deidentifyConfig, (value) => value.toMap()),
       'description': description,
       'displayName': displayName,
       'name': name,
@@ -45,15 +55,20 @@ class GooglePrivacyDlpV2DeidentifyTemplateResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2DeidentifyTemplateResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DeidentifyTemplateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2DeidentifyTemplateResponse(
-      createTime: (map['createTime'] as String).input(),
-      deidentifyConfig: (GooglePrivacyDlpV2DeidentifyConfigResponse.fromMap((map['deidentifyConfig'] as Map).cast<String, dynamic>())).input(),
-      description: (map['description'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      name: (map['name'] as String).input(),
-      updateTime: (map['updateTime'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      deidentifyConfig: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2DeidentifyConfigResponse.fromMap(
+          (map['deidentifyConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
-

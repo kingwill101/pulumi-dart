@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudContentwarehouseV1PublishActionResponse {
   /// Messages to be published.
   final pulumi.Input<List<String>> messages;
+
   /// The topic id in the Pub/Sub service for which messages will be published to.
   final pulumi.Input<String> topicId;
 
@@ -18,17 +19,17 @@ class GoogleCloudContentwarehouseV1PublishActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'messages': messages,
-      'topicId': topicId,
-    };
+    return <String, dynamic>{'messages': messages, 'topicId': topicId};
   }
 
-  factory GoogleCloudContentwarehouseV1PublishActionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1PublishActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContentwarehouseV1PublishActionResponse(
-      messages: ((map['messages'] as List).cast<String>()).input(),
-      topicId: (map['topicId'] as String).input(),
+      messages: pulumi.Input.fromValue(
+        (map['messages'] as List).cast<String>(),
+      ),
+      topicId: pulumi.Input.fromValue(map['topicId'] as String),
     );
   }
 }
-

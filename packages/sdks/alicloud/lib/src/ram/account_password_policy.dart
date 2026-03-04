@@ -234,20 +234,28 @@ import 'account_password_policy_state.dart';
 class AccountPasswordPolicy extends pulumi.CustomResource {
   /// Specifies if a password can expire in a hard way. Default to false.
   late final pulumi.Output<bool?> hardExpiry;
+
   /// Maximum logon attempts with an incorrect password within an hour. Valid value range: [0-32]. Default to 5.
   late final pulumi.Output<int?> maxLoginAttempts;
+
   /// The number of days after which password expires. A value of 0 indicates that the password never expires. Valid value range: [0-1095]. Default to 0.
   late final pulumi.Output<int?> maxPasswordAge;
+
   /// Minimal required length of password for a user. Valid value range: [8-32]. Default to 12.
   late final pulumi.Output<int?> minimumPasswordLength;
+
   /// User is not allowed to use the latest number of passwords specified in this parameter. A value of 0 indicates the password history check policy is disabled. Valid value range: [0-24]. Default to 0.
   late final pulumi.Output<int?> passwordReusePrevention;
+
   /// Specifies if the occurrence of a lowercase character in the password is mandatory. Default to true.
   late final pulumi.Output<bool?> requireLowercaseCharacters;
+
   /// Specifies if the occurrence of a number in the password is mandatory. Default to true.
   late final pulumi.Output<bool?> requireNumbers;
+
   /// Specifies if the occurrence of a special character in the password is mandatory. Default to true.
   late final pulumi.Output<bool?> requireSymbols;
+
   /// Specifies if the occurrence of an uppercase character in the password is mandatory. Default to true.
   late final pulumi.Output<bool?> requireUppercaseCharacters;
 
@@ -260,20 +268,24 @@ class AccountPasswordPolicy extends pulumi.CustomResource {
     AccountPasswordPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.hardExpiry = registerOutput<bool?>('hardExpiry');
-    this.maxLoginAttempts = registerOutput<int?>('maxLoginAttempts');
-    this.maxPasswordAge = registerOutput<int?>('maxPasswordAge');
-    this.minimumPasswordLength = registerOutput<int?>('minimumPasswordLength');
-    this.passwordReusePrevention = registerOutput<int?>('passwordReusePrevention');
-    this.requireLowercaseCharacters = registerOutput<bool?>('requireLowercaseCharacters');
-    this.requireNumbers = registerOutput<bool?>('requireNumbers');
-    this.requireSymbols = registerOutput<bool?>('requireSymbols');
-    this.requireUppercaseCharacters = registerOutput<bool?>('requireUppercaseCharacters');
+         'alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    hardExpiry = registerOutput<bool?>('hardExpiry');
+    maxLoginAttempts = registerOutput<int?>('maxLoginAttempts');
+    maxPasswordAge = registerOutput<int?>('maxPasswordAge');
+    minimumPasswordLength = registerOutput<int?>('minimumPasswordLength');
+    passwordReusePrevention = registerOutput<int?>('passwordReusePrevention');
+    requireLowercaseCharacters = registerOutput<bool?>(
+      'requireLowercaseCharacters',
+    );
+    requireNumbers = registerOutput<bool?>('requireNumbers');
+    requireSymbols = registerOutput<bool?>('requireSymbols');
+    requireUppercaseCharacters = registerOutput<bool?>(
+      'requireUppercaseCharacters',
+    );
   }
 
   /// Gets an existing [AccountPasswordPolicy] resource's state with the given [name] and [id].
@@ -294,19 +306,23 @@ class AccountPasswordPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.hardExpiry = registerOutput<bool?>('hardExpiry');
-    this.maxLoginAttempts = registerOutput<int?>('maxLoginAttempts');
-    this.maxPasswordAge = registerOutput<int?>('maxPasswordAge');
-    this.minimumPasswordLength = registerOutput<int?>('minimumPasswordLength');
-    this.passwordReusePrevention = registerOutput<int?>('passwordReusePrevention');
-    this.requireLowercaseCharacters = registerOutput<bool?>('requireLowercaseCharacters');
-    this.requireNumbers = registerOutput<bool?>('requireNumbers');
-    this.requireSymbols = registerOutput<bool?>('requireSymbols');
-    this.requireUppercaseCharacters = registerOutput<bool?>('requireUppercaseCharacters');
+         'alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    hardExpiry = registerOutput<bool?>('hardExpiry');
+    maxLoginAttempts = registerOutput<int?>('maxLoginAttempts');
+    maxPasswordAge = registerOutput<int?>('maxPasswordAge');
+    minimumPasswordLength = registerOutput<int?>('minimumPasswordLength');
+    passwordReusePrevention = registerOutput<int?>('passwordReusePrevention');
+    requireLowercaseCharacters = registerOutput<bool?>(
+      'requireLowercaseCharacters',
+    );
+    requireNumbers = registerOutput<bool?>('requireNumbers');
+    requireSymbols = registerOutput<bool?>('requireSymbols');
+    requireUppercaseCharacters = registerOutput<bool?>(
+      'requireUppercaseCharacters',
+    );
   }
 }

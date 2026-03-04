@@ -8,20 +8,15 @@ class GetClustersClusterApplication {
 
   /// Creates a new [GetClustersClusterApplication].
   /// [tag] Application Tags.
-  GetClustersClusterApplication({
-    required this.tag,
-  });
+  GetClustersClusterApplication({required this.tag});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tag': tag,
-    };
+    return <String, dynamic>{'tag': tag};
   }
 
   factory GetClustersClusterApplication.fromMap(Map<String, dynamic> map) {
     return GetClustersClusterApplication(
-      tag: (map['tag'] as String).input(),
+      tag: pulumi.Input.fromValue(map['tag'] as String),
     );
   }
 }
-

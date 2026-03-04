@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSubnetIdsV2.
 class GetSubnetIdsV2Result {
   final String? cidr;
@@ -8,6 +7,7 @@ class GetSubnetIdsV2Result {
   final bool? dhcpEnabled;
   final bool? dnsPublishFixedIp;
   final String? gatewayIp;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -96,27 +96,90 @@ class GetSubnetIdsV2Result {
 
   factory GetSubnetIdsV2Result.fromMap(Map<String, dynamic> map) {
     return GetSubnetIdsV2Result(
-      cidr: map['cidr'] == null ? null : map['cidr']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      dhcpEnabled: map['dhcpEnabled'] == null ? null : map['dhcpEnabled']! as bool,
-      dnsPublishFixedIp: map['dnsPublishFixedIp'] == null ? null : map['dnsPublishFixedIp']! as bool,
-      gatewayIp: map['gatewayIp'] == null ? null : map['gatewayIp']! as String,
+      cidr: (() {
+        final guardedValue = map['cidr'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      dhcpEnabled: (() {
+        final guardedValue = map['dhcpEnabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      dnsPublishFixedIp: (() {
+        final guardedValue = map['dnsPublishFixedIp'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      gatewayIp: (() {
+        final guardedValue = map['gatewayIp'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      ipVersion: map['ipVersion'] == null ? null : map['ipVersion']! as int,
-      ipv6AddressMode: map['ipv6AddressMode'] == null ? null : map['ipv6AddressMode']! as String,
+      ipVersion: (() {
+        final guardedValue = map['ipVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      ipv6AddressMode: (() {
+        final guardedValue = map['ipv6AddressMode'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       ipv6RaMode: map['ipv6RaMode'] as String,
-      name: map['name'] == null ? null : map['name']! as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
-      networkId: map['networkId'] == null ? null : map['networkId']! as String,
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      networkId: (() {
+        final guardedValue = map['networkId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       region: map['region'] as String,
-      segmentId: map['segmentId'] == null ? null : map['segmentId']! as String,
-      sortDirection: map['sortDirection'] == null ? null : map['sortDirection']! as String,
-      sortKey: map['sortKey'] == null ? null : map['sortKey']! as String,
-      subnetpoolId: map['subnetpoolId'] == null ? null : map['subnetpoolId']! as String,
-      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
-      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
+      segmentId: (() {
+        final guardedValue = map['segmentId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sortDirection: (() {
+        final guardedValue = map['sortDirection'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sortKey: (() {
+        final guardedValue = map['sortKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      subnetpoolId: (() {
+        final guardedValue = map['subnetpoolId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

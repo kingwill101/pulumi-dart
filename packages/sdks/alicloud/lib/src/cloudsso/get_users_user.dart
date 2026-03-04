@@ -6,28 +6,40 @@ import 'get_users_user_mfa_device.dart';
 class GetUsersUser {
   /// The create time of the user.
   final pulumi.Input<String> createTime;
+
   /// The description of user.
   final pulumi.Input<String> description;
+
   /// The ID of the Directory.
   final pulumi.Input<String> directoryId;
+
   /// The display name of user.
   final pulumi.Input<String> displayName;
+
   /// The User's Contact Email Address.
   final pulumi.Input<String> email;
+
   /// The first name of user.
   final pulumi.Input<String> firstName;
+
   /// The ID of the User.
   final pulumi.Input<String> id;
+
   /// The last name of user.
   final pulumi.Input<String> lastName;
+
   /// The List of MFA Device for User.
   final pulumi.Input<List<GetUsersUserMfaDevice>> mfaDevices;
+
   /// ProvisionType.
   final pulumi.Input<String> provisionType;
+
   /// User status. Valid values: `Enabled` and `Disabled`.
   final pulumi.Input<String> status;
+
   /// The User ID of the group.
   final pulumi.Input<String> userId;
+
   /// The name of user.
   final pulumi.Input<String> userName;
 
@@ -71,7 +83,18 @@ class GetUsersUser {
       'firstName': firstName,
       'id': id,
       'lastName': lastName,
-      'mfaDevices': pulumi.Input.mapInputValue<List<GetUsersUserMfaDevice>, List<Map<String, dynamic>>>(mfaDevices, (value) => pulumi.Input.encodeList<GetUsersUserMfaDevice, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'mfaDevices':
+          pulumi.Input.mapInputValue<
+            List<GetUsersUserMfaDevice>,
+            List<Map<String, dynamic>>
+          >(
+            mfaDevices,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetUsersUserMfaDevice,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'provisionType': provisionType,
       'status': status,
       'userId': userId,
@@ -81,20 +104,26 @@ class GetUsersUser {
 
   factory GetUsersUser.fromMap(Map<String, dynamic> map) {
     return GetUsersUser(
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      directoryId: (map['directoryId'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      email: (map['email'] as String).input(),
-      firstName: (map['firstName'] as String).input(),
-      id: (map['id'] as String).input(),
-      lastName: (map['lastName'] as String).input(),
-      mfaDevices: (pulumi.Input.decodeList<GetUsersUserMfaDevice>(map['mfaDevices'], (value) => GetUsersUserMfaDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisionType: (map['provisionType'] as String).input(),
-      status: (map['status'] as String).input(),
-      userId: (map['userId'] as String).input(),
-      userName: (map['userName'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      firstName: pulumi.Input.fromValue(map['firstName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      lastName: pulumi.Input.fromValue(map['lastName'] as String),
+      mfaDevices: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetUsersUserMfaDevice>(
+          map['mfaDevices']!,
+          (value) => GetUsersUserMfaDevice.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      provisionType: pulumi.Input.fromValue(map['provisionType'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
-

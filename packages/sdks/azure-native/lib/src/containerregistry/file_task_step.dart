@@ -7,15 +7,20 @@ import 'set_value.dart';
 class FileTaskStep {
   /// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
   final pulumi.Input<String>? contextAccessToken;
+
   /// The URL(absolute or relative) of the source context for the task step.
   final pulumi.Input<String>? contextPath;
+
   /// The task template/definition file path relative to the source context.
   final pulumi.Input<String> taskFilePath;
+
   /// The type of the step.
   /// Expected value is 'FileTask'.
   final pulumi.Input<String> type;
+
   /// The collection of overridable values that can be passed when running a task.
   final pulumi.Input<List<SetValue>>? values;
+
   /// The task values/parameters file path relative to the source context.
   final pulumi.Input<String>? valuesFilePath;
 
@@ -41,20 +46,50 @@ class FileTaskStep {
       'contextPath': ?contextPath,
       'taskFilePath': taskFilePath,
       'type': type,
-      'values': ?pulumi.Input.mapOptionalInputValue<List<SetValue>, List<Map<String, dynamic>>>(values, (value) => pulumi.Input.encodeList<SetValue, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'values':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SetValue>,
+            List<Map<String, dynamic>>
+          >(
+            values,
+            (value) => pulumi.Input.encodeList<SetValue, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
       'valuesFilePath': ?valuesFilePath,
     };
   }
 
   factory FileTaskStep.fromMap(Map<String, dynamic> map) {
     return FileTaskStep(
-      contextAccessToken: map['contextAccessToken'] == null ? null : (map['contextAccessToken']! as String).input(),
-      contextPath: map['contextPath'] == null ? null : (map['contextPath']! as String).input(),
-      taskFilePath: (map['taskFilePath'] as String).input(),
-      type: (map['type'] as String).input(),
-      values: map['values'] == null ? null : (pulumi.Input.decodeList<SetValue>(map['values']!, (value) => SetValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      valuesFilePath: map['valuesFilePath'] == null ? null : (map['valuesFilePath']! as String).input(),
+      contextAccessToken: (() {
+        final guardedValue = map['contextAccessToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contextPath: (() {
+        final guardedValue = map['contextPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      taskFilePath: pulumi.Input.fromValue(map['taskFilePath'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SetValue>(
+            guardedValue,
+            (value) => SetValue.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      valuesFilePath: (() {
+        final guardedValue = map['valuesFilePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

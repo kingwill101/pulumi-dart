@@ -18,6 +18,7 @@ class RegionBackendServiceHaPolicy {
   /// are quickly delivered to that VM.
   /// Possible values are: `DISABLED`, `GARP_RA`.
   final pulumi.Input<String>? fastIpMove;
+
   /// Selects one of the network endpoints attached to the backend NEGs of this service as the
   /// active endpoint (the leader) that receives all traffic.
   /// Structure is documented below.
@@ -26,23 +27,35 @@ class RegionBackendServiceHaPolicy {
   /// Creates a new [RegionBackendServiceHaPolicy].
   /// [fastIpMove] Specifies whether fast IP move is enabled, and if so, the mechanism to achieve it.
   /// [leader] Selects one of the network endpoints attached to the backend NEGs of this service as the
-  RegionBackendServiceHaPolicy({
-    this.fastIpMove,
-    this.leader,
-  });
+  RegionBackendServiceHaPolicy({this.fastIpMove, this.leader});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fastIpMove': ?fastIpMove,
-      'leader': ?pulumi.Input.mapOptionalInputValue<RegionBackendServiceHaPolicyLeader, Map<String, dynamic>>(leader, (value) => value.toMap()),
+      'leader':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegionBackendServiceHaPolicyLeader,
+            Map<String, dynamic>
+          >(leader, (value) => value.toMap()),
     };
   }
 
   factory RegionBackendServiceHaPolicy.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceHaPolicy(
-      fastIpMove: map['fastIpMove'] == null ? null : (map['fastIpMove']! as String).input(),
-      leader: map['leader'] == null ? null : (RegionBackendServiceHaPolicyLeader.fromMap((map['leader']! as Map).cast<String, dynamic>())).input(),
+      fastIpMove: (() {
+        final guardedValue = map['fastIpMove'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      leader: (() {
+        final guardedValue = map['leader'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegionBackendServiceHaPolicyLeader.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

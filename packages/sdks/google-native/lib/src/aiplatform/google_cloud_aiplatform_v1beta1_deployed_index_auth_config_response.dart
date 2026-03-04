@@ -6,7 +6,10 @@ import 'google_cloud_aiplatform_v1beta1_deployed_index_auth_config_auth_provider
 /// Used to set up the auth on the DeployedIndex's private endpoint.
 class GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponse {
   /// Defines the authentication provider that the DeployedIndex uses.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse> authProvider;
+  final pulumi.Input<
+    GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse
+  >
+  authProvider;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponse].
   /// [authProvider] Defines the authentication provider that the DeployedIndex uses.
@@ -16,14 +19,23 @@ class GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authProvider': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse, Map<String, dynamic>>(authProvider, (value) => value.toMap()),
+      'authProvider':
+          pulumi.Input.mapInputValue<
+            GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse,
+            Map<String, dynamic>
+          >(authProvider, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponse(
-      authProvider: (GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse.fromMap((map['authProvider'] as Map).cast<String, dynamic>())).input(),
+      authProvider: pulumi.Input.fromValue(
+        GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse.fromMap(
+          (map['authProvider']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

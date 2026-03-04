@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomRoutingEndpointGroupArgs {
   /// The ID of the GA instance.
   final pulumi.Input<String> acceleratorId;
+
   /// The name of the endpoint group.
   final pulumi.Input<String>? customRoutingEndpointGroupName;
+
   /// The description of the endpoint group.
   final pulumi.Input<String>? description;
+
   /// The ID of the region in which to create the endpoint group.
   final pulumi.Input<String> endpointGroupRegion;
+
   /// The ID of the custom routing listener.
   final pulumi.Input<String> listenerId;
 
@@ -44,12 +48,21 @@ class CustomRoutingEndpointGroupArgs {
 
   factory CustomRoutingEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointGroupArgs(
-      acceleratorId: (map['acceleratorId'] as String).input(),
-      customRoutingEndpointGroupName: map['customRoutingEndpointGroupName'] == null ? null : (map['customRoutingEndpointGroupName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      endpointGroupRegion: (map['endpointGroupRegion'] as String).input(),
-      listenerId: (map['listenerId'] as String).input(),
+      acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
+      customRoutingEndpointGroupName: (() {
+        final guardedValue = map['customRoutingEndpointGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointGroupRegion: pulumi.Input.fromValue(
+        map['endpointGroupRegion'] as String,
+      ),
+      listenerId: pulumi.Input.fromValue(map['listenerId'] as String),
     );
   }
 }
-

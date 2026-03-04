@@ -6,10 +6,16 @@ import 'plan_workflow_step_arc_routing_control_config_region_and_routing_control
 class PlanWorkflowStepArcRoutingControlConfig {
   /// ARN of the cross-account role to assume.
   final pulumi.Input<String>? crossAccountRole;
+
   /// External ID for cross-account role assumption.
   final pulumi.Input<String>? externalId;
+
   /// List of regions and their routing controls. See Region and Routing Controls below.
-  final pulumi.Input<List<PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl>>? regionAndRoutingControls;
+  final pulumi.Input<
+    List<PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl>
+  >?
+  regionAndRoutingControls;
+
   /// Timeout in minutes.
   final pulumi.Input<int>? timeoutMinutes;
 
@@ -29,18 +35,58 @@ class PlanWorkflowStepArcRoutingControlConfig {
     return <String, dynamic>{
       'crossAccountRole': ?crossAccountRole,
       'externalId': ?externalId,
-      'regionAndRoutingControls': ?pulumi.Input.mapOptionalInputValue<List<PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl>, List<Map<String, dynamic>>>(regionAndRoutingControls, (value) => pulumi.Input.encodeList<PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'regionAndRoutingControls':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl
+            >,
+            List<Map<String, dynamic>>
+          >(
+            regionAndRoutingControls,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'timeoutMinutes': ?timeoutMinutes,
     };
   }
 
-  factory PlanWorkflowStepArcRoutingControlConfig.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepArcRoutingControlConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepArcRoutingControlConfig(
-      crossAccountRole: map['crossAccountRole'] == null ? null : ((map['crossAccountRole'] as String).input()).input(),
-      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
-      regionAndRoutingControls: map['regionAndRoutingControls'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl>(map['regionAndRoutingControls']!, (value) => PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : ((map['timeoutMinutes'] as int).input()).input(),
+      crossAccountRole: (() {
+        final guardedValue = map['crossAccountRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      externalId: (() {
+        final guardedValue = map['externalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionAndRoutingControls: (() {
+        final guardedValue = map['regionAndRoutingControls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl
+          >(
+            guardedValue,
+            (value) =>
+                PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      timeoutMinutes: (() {
+        final guardedValue = map['timeoutMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

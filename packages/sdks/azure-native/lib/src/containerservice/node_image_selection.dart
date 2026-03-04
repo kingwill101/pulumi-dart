@@ -9,20 +9,15 @@ class NodeImageSelection {
 
   /// Creates a new [NodeImageSelection].
   /// [type] The node image upgrade type.
-  NodeImageSelection({
-    required this.type,
-  });
+  NodeImageSelection({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory NodeImageSelection.fromMap(Map<String, dynamic> map) {
     return NodeImageSelection(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

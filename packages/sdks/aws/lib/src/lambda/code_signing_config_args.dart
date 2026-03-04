@@ -13,12 +13,16 @@ class CodeSigningConfigArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<CodeSigningConfigAllowedPublishers> allowedPublishers;
+
   /// Descriptive name for this code signing configuration.
   final pulumi.Input<String>? description;
+
   /// Configuration block of code signing policies that define the actions to take if the validation checks fail. See below.
   final pulumi.Input<CodeSigningConfigPolicies>? policies;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -38,9 +42,17 @@ class CodeSigningConfigArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedPublishers': pulumi.Input.mapInputValue<CodeSigningConfigAllowedPublishers, Map<String, dynamic>>(allowedPublishers, (value) => value.toMap()),
+      'allowedPublishers':
+          pulumi.Input.mapInputValue<
+            CodeSigningConfigAllowedPublishers,
+            Map<String, dynamic>
+          >(allowedPublishers, (value) => value.toMap()),
       'description': ?description,
-      'policies': ?pulumi.Input.mapOptionalInputValue<CodeSigningConfigPolicies, Map<String, dynamic>>(policies, (value) => value.toMap()),
+      'policies':
+          ?pulumi.Input.mapOptionalInputValue<
+            CodeSigningConfigPolicies,
+            Map<String, dynamic>
+          >(policies, (value) => value.toMap()),
       'region': ?region,
       'tags': ?tags,
     };
@@ -48,12 +60,37 @@ class CodeSigningConfigArgs {
 
   factory CodeSigningConfigArgs.fromMap(Map<String, dynamic> map) {
     return CodeSigningConfigArgs(
-      allowedPublishers: (CodeSigningConfigAllowedPublishers.fromMap((map['allowedPublishers']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      policies: map['policies'] == null ? null : ((CodeSigningConfigPolicies.fromMap((map['policies']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      allowedPublishers: pulumi.Input.fromValue(
+        CodeSigningConfigAllowedPublishers.fromMap(
+          (map['allowedPublishers']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policies: (() {
+        final guardedValue = map['policies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CodeSigningConfigPolicies.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

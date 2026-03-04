@@ -1,5 +1,3 @@
-library module_aadiam;
-
 export 'aadiam/category.dart';
 export 'aadiam/diagnostic_setting.dart';
 export 'aadiam/diagnostic_setting_args.dart';

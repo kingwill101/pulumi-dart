@@ -5,9 +5,9 @@ import 'bucket_acl_state.dart';
 
 /// Provides an S3 bucket ACL resource.
 ///
-/// > **Note:** destroy does not delete the S3 Bucket ACL but does remove the resource from state.
+/// &gt; **Note:** destroy does not delete the S3 Bucket ACL but does remove the resource from state.
 ///
-/// > This resource cannot be used with S3 directory buckets.
+/// &gt; This resource cannot be used with S3 directory buckets.
 ///
 /// ## Example Usage
 ///
@@ -196,7 +196,7 @@ import 'bucket_acl_state.dart';
 ///
 /// ### With `public-read` ACL
 ///
-/// > This example explicitly disables the default S3 bucket security settings. This
+/// &gt; This example explicitly disables the default S3 bucket security settings. This
 /// should be done with caution, as all bucket objects become publicly exposed.
 ///
 ///
@@ -816,12 +816,16 @@ import 'bucket_acl_state.dart';
 class BucketAcl extends pulumi.CustomResource {
   /// Configuration block that sets the ACL permissions for an object per grantee. See below.
   late final pulumi.Output<BucketAclAccessControlPolicy> accessControlPolicy;
+
   /// Specifies the Canned ACL to apply to the bucket. Valid values: `private`, `public-read`, `public-read-write`, `aws-exec-read`, `authenticated-read`, `bucket-owner-read`, `bucket-owner-full-control`, `log-delivery-write`. Full details are available on the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
   late final pulumi.Output<String?> acl;
+
   /// Bucket to which to apply the ACL.
   late final pulumi.Output<String> bucket;
+
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -834,16 +838,18 @@ class BucketAcl extends pulumi.CustomResource {
     BucketAclArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketAcl:BucketAcl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessControlPolicy = registerOutput<BucketAclAccessControlPolicy>('accessControlPolicy');
-    this.acl = registerOutput<String?>('acl');
-    this.bucket = registerOutput<String>('bucket');
-    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
-    this.region = registerOutput<String>('region');
+         'aws:s3/bucketAcl:BucketAcl',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessControlPolicy = registerOutput<BucketAclAccessControlPolicy>(
+      'accessControlPolicy',
+    );
+    acl = registerOutput<String?>('acl');
+    bucket = registerOutput<String>('bucket');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [BucketAcl] resource's state with the given [name] and [id].
@@ -864,15 +870,17 @@ class BucketAcl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketAcl:BucketAcl',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessControlPolicy = registerOutput<BucketAclAccessControlPolicy>('accessControlPolicy');
-    this.acl = registerOutput<String?>('acl');
-    this.bucket = registerOutput<String>('bucket');
-    this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
-    this.region = registerOutput<String>('region');
+         'aws:s3/bucketAcl:BucketAcl',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessControlPolicy = registerOutput<BucketAclAccessControlPolicy>(
+      'accessControlPolicy',
+    );
+    acl = registerOutput<String?>('acl');
+    bucket = registerOutput<String>('bucket');
+    expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
+    region = registerOutput<String>('region');
   }
 }

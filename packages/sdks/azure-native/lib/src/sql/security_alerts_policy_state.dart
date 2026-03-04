@@ -3,16 +3,15 @@ enum SecurityAlertsPolicyState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const SecurityAlertsPolicyState(this.value);
-  final String value;
+  const SecurityAlertsPolicyState(this.wireValue);
+  final String wireValue;
 
   static SecurityAlertsPolicyState fromValue(String value) {
     for (final item in SecurityAlertsPolicyState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecurityAlertsPolicyState value: $value');
   }
 }
-

@@ -17,15 +17,16 @@ class GetAccessReviewScheduleDefinitionByIdArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'scheduleDefinitionId': scheduleDefinitionId,
-    };
+    return <String, dynamic>{'scheduleDefinitionId': scheduleDefinitionId};
   }
 
-  factory GetAccessReviewScheduleDefinitionByIdArgs.fromMap(Map<String, dynamic> map) {
+  factory GetAccessReviewScheduleDefinitionByIdArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAccessReviewScheduleDefinitionByIdArgs(
-      scheduleDefinitionId: (map['scheduleDefinitionId'] as String).input(),
+      scheduleDefinitionId: pulumi.Input.fromValue(
+        map['scheduleDefinitionId'] as String,
+      ),
     );
   }
 }
-

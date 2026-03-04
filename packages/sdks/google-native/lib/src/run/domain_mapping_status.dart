@@ -8,12 +8,16 @@ import 'resource_record.dart';
 class DomainMappingStatus {
   /// Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
   final pulumi.Input<List<GoogleCloudRunV1Condition>>? conditions;
+
   /// The name of the route that the mapping currently points to.
   final pulumi.Input<String>? mappedRouteName;
+
   /// ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
   final pulumi.Input<int>? observedGeneration;
+
   /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
   final pulumi.Input<List<ResourceRecord>>? resourceRecords;
+
   /// Optional. Not supported by Cloud Run.
   final pulumi.Input<String>? url;
 
@@ -33,22 +37,76 @@ class DomainMappingStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudRunV1Condition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<GoogleCloudRunV1Condition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GoogleCloudRunV1Condition>,
+            List<Map<String, dynamic>>
+          >(
+            conditions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudRunV1Condition,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'mappedRouteName': ?mappedRouteName,
       'observedGeneration': ?observedGeneration,
-      'resourceRecords': ?pulumi.Input.mapOptionalInputValue<List<ResourceRecord>, List<Map<String, dynamic>>>(resourceRecords, (value) => pulumi.Input.encodeList<ResourceRecord, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resourceRecords':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceRecord>,
+            List<Map<String, dynamic>>
+          >(
+            resourceRecords,
+            (value) =>
+                pulumi.Input.encodeList<ResourceRecord, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'url': ?url,
     };
   }
 
   factory DomainMappingStatus.fromMap(Map<String, dynamic> map) {
     return DomainMappingStatus(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV1Condition>(map['conditions']!, (value) => GoogleCloudRunV1Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mappedRouteName: map['mappedRouteName'] == null ? null : (map['mappedRouteName']! as String).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
-      resourceRecords: map['resourceRecords'] == null ? null : (pulumi.Input.decodeList<ResourceRecord>(map['resourceRecords']!, (value) => ResourceRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GoogleCloudRunV1Condition>(
+            guardedValue,
+            (value) => GoogleCloudRunV1Condition.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      mappedRouteName: (() {
+        final guardedValue = map['mappedRouteName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      observedGeneration: (() {
+        final guardedValue = map['observedGeneration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceRecords: (() {
+        final guardedValue = map['resourceRecords'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceRecord>(
+            guardedValue,
+            (value) =>
+                ResourceRecord.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

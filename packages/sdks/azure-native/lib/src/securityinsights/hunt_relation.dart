@@ -159,22 +159,31 @@ import 'system_data_response.dart';
 class HuntRelation extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
+
   /// List of labels relevant to this hunt
   late final pulumi.Output<List<String>?> labels;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The id of the related resource
   late final pulumi.Output<String> relatedResourceId;
+
   /// The resource that the relation is related to
   late final pulumi.Output<String> relatedResourceKind;
+
   /// The name of the related resource
   late final pulumi.Output<String> relatedResourceName;
+
   /// The type of the hunt relation
   late final pulumi.Output<String> relationType;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -187,20 +196,20 @@ class HuntRelation extends pulumi.CustomResource {
     HuntRelationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:securityinsights:HuntRelation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String?>('etag');
-    this.labels = registerOutput<List<String>?>('labels');
+         'azure-native:securityinsights:HuntRelation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.relatedResourceId = registerOutput<String>('relatedResourceId');
-    this.relatedResourceKind = registerOutput<String>('relatedResourceKind');
-    this.relatedResourceName = registerOutput<String>('relatedResourceName');
-    this.relationType = registerOutput<String>('relationType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    relatedResourceId = registerOutput<String>('relatedResourceId');
+    relatedResourceKind = registerOutput<String>('relatedResourceKind');
+    relatedResourceName = registerOutput<String>('relatedResourceName');
+    relationType = registerOutput<String>('relationType');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

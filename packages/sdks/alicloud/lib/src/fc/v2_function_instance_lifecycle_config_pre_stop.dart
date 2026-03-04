@@ -5,29 +5,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2FunctionInstanceLifecycleConfigPreStop {
   /// entry point of function.
   final pulumi.Input<String>? handler;
+
   /// max running time of function.
   final pulumi.Input<int>? timeout;
 
   /// Creates a new [V2FunctionInstanceLifecycleConfigPreStop].
   /// [handler] entry point of function.
   /// [timeout] max running time of function.
-  V2FunctionInstanceLifecycleConfigPreStop({
-    this.handler,
-    this.timeout,
-  });
+  V2FunctionInstanceLifecycleConfigPreStop({this.handler, this.timeout});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'handler': ?handler,
-      'timeout': ?timeout,
-    };
+    return <String, dynamic>{'handler': ?handler, 'timeout': ?timeout};
   }
 
-  factory V2FunctionInstanceLifecycleConfigPreStop.fromMap(Map<String, dynamic> map) {
+  factory V2FunctionInstanceLifecycleConfigPreStop.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2FunctionInstanceLifecycleConfigPreStop(
-      handler: map['handler'] == null ? null : (map['handler']! as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      handler: (() {
+        final guardedValue = map['handler'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

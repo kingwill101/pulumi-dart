@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PerNodeRemoteSupportSessionResponse {
   /// Remote Support Access Level
   final pulumi.Input<String> accessLevel;
+
   /// Duration of Remote Support Enablement
   final pulumi.Input<double> duration;
+
   /// Name of the node
   final pulumi.Input<String> nodeName;
+
   /// Remote Support Session EndTime on the Node
   final pulumi.Input<String> sessionEndTime;
+
   /// Remote Support Session StartTime on the Node
   final pulumi.Input<String> sessionStartTime;
 
@@ -39,14 +43,17 @@ class PerNodeRemoteSupportSessionResponse {
     };
   }
 
-  factory PerNodeRemoteSupportSessionResponse.fromMap(Map<String, dynamic> map) {
+  factory PerNodeRemoteSupportSessionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PerNodeRemoteSupportSessionResponse(
-      accessLevel: (map['accessLevel'] as String).input(),
-      duration: (map['duration'] as double).input(),
-      nodeName: (map['nodeName'] as String).input(),
-      sessionEndTime: (map['sessionEndTime'] as String).input(),
-      sessionStartTime: (map['sessionStartTime'] as String).input(),
+      accessLevel: pulumi.Input.fromValue(map['accessLevel'] as String),
+      duration: pulumi.Input.fromValue(map['duration'] as double),
+      nodeName: pulumi.Input.fromValue(map['nodeName'] as String),
+      sessionEndTime: pulumi.Input.fromValue(map['sessionEndTime'] as String),
+      sessionStartTime: pulumi.Input.fromValue(
+        map['sessionStartTime'] as String,
+      ),
     );
   }
 }
-

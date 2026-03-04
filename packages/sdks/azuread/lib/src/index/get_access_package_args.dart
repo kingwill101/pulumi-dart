@@ -9,22 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessPackageArgs {
   /// The ID of the Catalog this access package is in.
   final pulumi.Input<String>? catalogId;
+
   /// The display name of the access package.
   final pulumi.Input<String>? displayName;
+
   /// The ID of this access package.
   ///
-  /// > Either `object_id`, or both `catalog_id` and `display_name`, must be specified.
+  /// &gt; Either `object_id`, or both `catalog_id` and `display_name`, must be specified.
   final pulumi.Input<String>? objectId;
 
   /// Creates a new [GetAccessPackageArgs].
   /// [catalogId] The ID of the Catalog this access package is in.
   /// [displayName] The display name of the access package.
   /// [objectId] The ID of this access package.
-  GetAccessPackageArgs({
-    this.catalogId,
-    this.displayName,
-    this.objectId,
-  });
+  GetAccessPackageArgs({this.catalogId, this.displayName, this.objectId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,10 +34,21 @@ class GetAccessPackageArgs {
 
   factory GetAccessPackageArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPackageArgs(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      catalogId: (() {
+        final guardedValue = map['catalogId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectId: (() {
+        final guardedValue = map['objectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

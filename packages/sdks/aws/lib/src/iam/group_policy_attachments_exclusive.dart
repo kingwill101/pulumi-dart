@@ -4,9 +4,9 @@ import 'group_policy_attachments_exclusive_state.dart';
 
 /// Resource for maintaining exclusive management of managed IAM policies assigned to an AWS IAM (Identity & Access Management) group.
 ///
-/// !> This resource takes exclusive ownership over managed IAM policies attached to a group. This includes removal of managed IAM policies which are not explicitly configured. To prevent persistent drift, ensure any `aws.iam.GroupPolicyAttachment` resources managed alongside this resource are included in the `policy_arns` argument.
+/// !&gt; This resource takes exclusive ownership over managed IAM policies attached to a group. This includes removal of managed IAM policies which are not explicitly configured. To prevent persistent drift, ensure any `aws.iam.GroupPolicyAttachment` resources managed alongside this resource are included in the `policy_arns` argument.
 ///
-/// > Destruction of this resource means Terraform will no longer manage reconciliation of the configured policy attachments. It **will not** detach the configured policies from the group.
+/// &gt; Destruction of this resource means Terraform will no longer manage reconciliation of the configured policy attachments. It **will not** detach the configured policies from the group.
 ///
 /// ## Example Usage
 ///
@@ -116,7 +116,7 @@ import 'group_policy_attachments_exclusive_state.dart';
 ///
 /// To automatically remove any configured managed IAM policies, set the `policy_arns` argument to an empty list.
 ///
-/// > This will not **prevent** managed IAM policies from being assigned to a group via Terraform (or any other interface). This resource enables bringing managed IAM policy assignments into a configured state, however, this reconciliation happens only when `apply` is proactively run.
+/// &gt; This will not **prevent** managed IAM policies from being assigned to a group via Terraform (or any other interface). This resource enables bringing managed IAM policy assignments into a configured state, however, this reconciliation happens only when `apply` is proactively run.
 ///
 ///
 /// ```typescript
@@ -222,6 +222,7 @@ import 'group_policy_attachments_exclusive_state.dart';
 class GroupPolicyAttachmentsExclusive extends pulumi.CustomResource {
   /// IAM group name.
   late final pulumi.Output<String> groupName;
+
   /// A list of managed IAM policy ARNs to be attached to the group. Policies attached to this group but not configured in this argument will be removed.
   late final pulumi.Output<List<String>> policyArns;
 
@@ -234,13 +235,13 @@ class GroupPolicyAttachmentsExclusive extends pulumi.CustomResource {
     GroupPolicyAttachmentsExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/groupPolicyAttachmentsExclusive:GroupPolicyAttachmentsExclusive',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.groupName = registerOutput<String>('groupName');
-    this.policyArns = registerOutput<List<String>>('policyArns');
+         'aws:iam/groupPolicyAttachmentsExclusive:GroupPolicyAttachmentsExclusive',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    groupName = registerOutput<String>('groupName');
+    policyArns = registerOutput<List<String>>('policyArns');
   }
 
   /// Gets an existing [GroupPolicyAttachmentsExclusive] resource's state with the given [name] and [id].
@@ -261,12 +262,12 @@ class GroupPolicyAttachmentsExclusive extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/groupPolicyAttachmentsExclusive:GroupPolicyAttachmentsExclusive',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.groupName = registerOutput<String>('groupName');
-    this.policyArns = registerOutput<List<String>>('policyArns');
+         'aws:iam/groupPolicyAttachmentsExclusive:GroupPolicyAttachmentsExclusive',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    groupName = registerOutput<String>('groupName');
+    policyArns = registerOutput<List<String>>('policyArns');
   }
 }

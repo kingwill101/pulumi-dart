@@ -5,14 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxSecuritySettingsAudioExportSettings {
   /// Filename pattern for exported audio.
   final pulumi.Input<String>? audioExportPattern;
+
   /// File format for exported audio file. Currently only in telephony recordings.
   /// * MULAW: G.711 mu-law PCM with 8kHz sample rate.
   /// * MP3: MP3 file format.
   /// * OGG: OGG Vorbis.
   /// Possible values are: `MULAW`, `MP3`, `OGG`.
   final pulumi.Input<String>? audioFormat;
+
   /// Enable audio redaction if it is true.
   final pulumi.Input<bool>? enableAudioRedaction;
+
   /// Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
   final pulumi.Input<String>? gcsBucket;
 
@@ -37,13 +40,30 @@ class CxSecuritySettingsAudioExportSettings {
     };
   }
 
-  factory CxSecuritySettingsAudioExportSettings.fromMap(Map<String, dynamic> map) {
+  factory CxSecuritySettingsAudioExportSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxSecuritySettingsAudioExportSettings(
-      audioExportPattern: map['audioExportPattern'] == null ? null : (map['audioExportPattern']! as String).input(),
-      audioFormat: map['audioFormat'] == null ? null : (map['audioFormat']! as String).input(),
-      enableAudioRedaction: map['enableAudioRedaction'] == null ? null : (map['enableAudioRedaction']! as bool).input(),
-      gcsBucket: map['gcsBucket'] == null ? null : (map['gcsBucket']! as String).input(),
+      audioExportPattern: (() {
+        final guardedValue = map['audioExportPattern'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      audioFormat: (() {
+        final guardedValue = map['audioFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableAudioRedaction: (() {
+        final guardedValue = map['enableAudioRedaction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      gcsBucket: (() {
+        final guardedValue = map['gcsBucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

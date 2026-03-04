@@ -6,6 +6,7 @@ import 'get_activations_activation.dart';
 /// Result data returned by getActivations.
 class GetActivationsResult {
   final List<GetActivationsActivation> activations;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -37,7 +38,11 @@ class GetActivationsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activations': pulumi.Input.encodeList<GetActivationsActivation, Map<String, dynamic>>(activations, (value) => value.toMap()),
+      'activations':
+          pulumi.Input.encodeList<
+            GetActivationsActivation,
+            Map<String, dynamic>
+          >(activations, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'instanceName': ?instanceName,
@@ -50,15 +55,35 @@ class GetActivationsResult {
 
   factory GetActivationsResult.fromMap(Map<String, dynamic> map) {
     return GetActivationsResult(
-      activations: pulumi.Input.decodeList<GetActivationsActivation>(map['activations'], (value) => GetActivationsActivation.fromMap((value as Map).cast<String, dynamic>())),
+      activations: pulumi.Input.decodeList<GetActivationsActivation>(
+        map['activations']!,
+        (value) => GetActivationsActivation.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceName: map['instanceName'] == null ? null : map['instanceName']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      instanceName: (() {
+        final guardedValue = map['instanceName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       totalCount: map['totalCount'] as int,
     );
   }
 }
-

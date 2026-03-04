@@ -3,16 +3,15 @@ enum ManagedPEStatus {
   valueActive("Active"),
   valueNotApplicable("NotApplicable");
 
-  const ManagedPEStatus(this.value);
-  final String value;
+  const ManagedPEStatus(this.wireValue);
+  final String wireValue;
 
   static ManagedPEStatus fromValue(String value) {
     for (final item in ManagedPEStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManagedPEStatus value: $value');
   }
 }
-

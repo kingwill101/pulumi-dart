@@ -2680,7 +2680,7 @@ Future<GetInstanceTypesResult> getInstanceTypes(
 ///
 ///
 ///
-/// > **Note:** It's strongly discouraged to use this data source for querying ephemeral
+/// &gt; **Note:** It's strongly discouraged to use this data source for querying ephemeral
 /// instances (e.g., managed via autoscaling group), as the output may change at any time
 /// and you'd need to re-run `apply` every time an instance comes up or dies.
 ///
@@ -3033,7 +3033,7 @@ Future<GetInternetGatewayResult> getInternetGateway(
 
 /// Previews a CIDR from an IPAM address pool. Only works for private IPv4.
 ///
-/// > **NOTE:** This functionality is also encapsulated in a resource sharing the same name. The data source can be used when you need to use the cidr in a calculation of the same Root module, `count` for example. However, once a cidr range has been allocated that was previewed, the next refresh will find a **new** cidr and may force new resources downstream. Make sure to use `ignore_changes` if this is undesirable.
+/// &gt; **NOTE:** This functionality is also encapsulated in a resource sharing the same name. The data source can be used when you need to use the cidr in a calculation of the same Root module, `count` for example. However, once a cidr range has been allocated that was previewed, the next refresh will find a **new** cidr and may force new resources downstream. Make sure to use `ignore_changes` if this is undesirable.
 ///
 /// ## Example Usage
 ///
@@ -4183,7 +4183,8 @@ Future<GetLocalGatewayVirtualInterfaceResult> getLocalGatewayVirtualInterface(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_local_gateway_virtual_interface_group_get_local_gateway_virtual_interface_group_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetLocalGatewayVirtualInterfaceGroupResult> getLocalGatewayVirtualInterfaceGroup(
+Future<GetLocalGatewayVirtualInterfaceGroupResult>
+getLocalGatewayVirtualInterfaceGroup(
   GetLocalGatewayVirtualInterfaceGroupArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -4279,7 +4280,8 @@ Future<GetLocalGatewayVirtualInterfaceGroupResult> getLocalGatewayVirtualInterfa
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_ec2_get_local_gateway_virtual_interface_groups_get_local_gateway_virtual_interface_groups_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetLocalGatewayVirtualInterfaceGroupsResult> getLocalGatewayVirtualInterfaceGroups(
+Future<GetLocalGatewayVirtualInterfaceGroupsResult>
+getLocalGatewayVirtualInterfaceGroups(
   GetLocalGatewayVirtualInterfaceGroupsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -7786,7 +7788,7 @@ Future<GetSerialConsoleAccessResult> getSerialConsoleAccess(
   return GetSerialConsoleAccessResult.fromMap(result);
 }
 
-/// > There is only a single spot data feed subscription per account.
+/// &gt; There is only a single spot data feed subscription per account.
 ///
 /// Data source for accessing an AWS EC2 (Elastic Compute Cloud) spot data feed subscription.
 ///

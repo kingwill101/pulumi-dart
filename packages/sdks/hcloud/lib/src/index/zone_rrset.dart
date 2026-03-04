@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'zone_rrset_args.dart';
-import 'zone_rrset_record.dart';
 import 'zone_rrset_state.dart';
 
 /// Provides a Hetzner Cloud Zone Resource Record Set (RRSet) resource.
@@ -37,16 +36,22 @@ import 'zone_rrset_state.dart';
 class ZoneRrset extends pulumi.CustomResource {
   /// Whether change protection is enabled.
   late final pulumi.Output<bool> changeProtection;
+
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   late final pulumi.Output<Map<String, String>> labels;
+
   /// Name of the Zone RRSet.
   late final pulumi.Output<String> name;
+
   /// Records of the Zone RRSet.
-  late final pulumi.Output<List<ZoneRrsetRecord>> records;
+  late final pulumi.Output<List<Map<String, dynamic>>> records;
+
   /// Time To Live (TTL) of the Zone RRSet.
   late final pulumi.Output<int?> ttl;
+
   /// Type of the Zone RRSet.
   late final pulumi.Output<String> type;
+
   /// ID or Name of the parent Zone.
   late final pulumi.Output<String> zone;
 
@@ -59,18 +64,18 @@ class ZoneRrset extends pulumi.CustomResource {
     ZoneRrsetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/zoneRrset:ZoneRrset',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.changeProtection = registerOutput<bool>('changeProtection');
-    this.labels = registerOutput<Map<String, String>>('labels');
+         'hcloud:index/zoneRrset:ZoneRrset',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    changeProtection = registerOutput<bool>('changeProtection');
+    labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');
-    this.records = registerOutput<List<ZoneRrsetRecord>>('records');
-    this.ttl = registerOutput<int?>('ttl');
-    this.type = registerOutput<String>('type');
-    this.zone = registerOutput<String>('zone');
+    records = registerOutput<List<Map<String, dynamic>>>('records');
+    ttl = registerOutput<int?>('ttl');
+    type = registerOutput<String>('type');
+    zone = registerOutput<String>('zone');
   }
 
   /// Gets an existing [ZoneRrset] resource's state with the given [name] and [id].
@@ -91,17 +96,17 @@ class ZoneRrset extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/zoneRrset:ZoneRrset',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.changeProtection = registerOutput<bool>('changeProtection');
-    this.labels = registerOutput<Map<String, String>>('labels');
+         'hcloud:index/zoneRrset:ZoneRrset',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    changeProtection = registerOutput<bool>('changeProtection');
+    labels = registerOutput<Map<String, String>>('labels');
     this.name = registerOutput<String>('name');
-    this.records = registerOutput<List<ZoneRrsetRecord>>('records');
-    this.ttl = registerOutput<int?>('ttl');
-    this.type = registerOutput<String>('type');
-    this.zone = registerOutput<String>('zone');
+    records = registerOutput<List<Map<String, dynamic>>>('records');
+    ttl = registerOutput<int?>('ttl');
+    type = registerOutput<String>('type');
+    zone = registerOutput<String>('zone');
   }
 }

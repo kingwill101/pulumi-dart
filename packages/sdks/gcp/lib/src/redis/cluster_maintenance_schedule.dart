@@ -8,12 +8,14 @@ class ClusterMaintenanceSchedule {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
   final pulumi.Input<String>? endTime;
+
   /// (Output)
   /// Output only. The deadline that the maintenance schedule start time
   /// can not go beyond, including reschedule.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
   final pulumi.Input<String>? scheduleDeadlineTime;
+
   /// (Output)
   /// Output only. The start time of any upcoming scheduled maintenance for this cluster.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -40,10 +42,21 @@ class ClusterMaintenanceSchedule {
 
   factory ClusterMaintenanceSchedule.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenanceSchedule(
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      scheduleDeadlineTime: map['scheduleDeadlineTime'] == null ? null : (map['scheduleDeadlineTime']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scheduleDeadlineTime: (() {
+        final guardedValue = map['scheduleDeadlineTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

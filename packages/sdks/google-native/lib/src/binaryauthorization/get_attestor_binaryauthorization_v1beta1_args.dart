@@ -19,17 +19,19 @@ class GetAttestorBinaryauthorizationV1beta1Args {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'attestorId': attestorId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'attestorId': attestorId, 'project': ?project};
   }
 
-  factory GetAttestorBinaryauthorizationV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetAttestorBinaryauthorizationV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAttestorBinaryauthorizationV1beta1Args(
-      attestorId: (map['attestorId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      attestorId: pulumi.Input.fromValue(map['attestorId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

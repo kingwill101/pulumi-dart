@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firmware_args.dart';
-import 'status_message_response.dart';
 import 'system_data_response.dart';
 
 /// Firmware definition
@@ -315,28 +314,40 @@ import 'system_data_response.dart';
 class Firmware extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// User-specified description of the firmware.
   late final pulumi.Output<String?> description;
+
   /// File name for a firmware that user uploaded.
   late final pulumi.Output<String?> fileName;
+
   /// File size of the uploaded firmware image.
   late final pulumi.Output<double?> fileSize;
+
   /// Firmware model.
   late final pulumi.Output<String?> model;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The status of firmware scan.
   late final pulumi.Output<String?> status;
+
   /// A list of errors or other messages generated during firmware analysis
-  late final pulumi.Output<List<StatusMessageResponse>?> statusMessages;
+  late final pulumi.Output<List<Map<String, dynamic>>?> statusMessages;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Firmware vendor.
   late final pulumi.Output<String?> vendor;
+
   /// Firmware version.
   late final pulumi.Output<String?> version;
 
@@ -349,23 +360,25 @@ class Firmware extends pulumi.CustomResource {
     FirmwareArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:iotfirmwaredefense:Firmware',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.fileName = registerOutput<String?>('fileName');
-    this.fileSize = registerOutput<double?>('fileSize');
-    this.model = registerOutput<String?>('model');
+         'azure-native:iotfirmwaredefense:Firmware',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    fileName = registerOutput<String?>('fileName');
+    fileSize = registerOutput<double?>('fileSize');
+    model = registerOutput<String?>('model');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<String?>('status');
-    this.statusMessages = registerOutput<List<StatusMessageResponse>?>('statusMessages');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.vendor = registerOutput<String?>('vendor');
-    this.version = registerOutput<String?>('version');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String?>('status');
+    statusMessages = registerOutput<List<Map<String, dynamic>>?>(
+      'statusMessages',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    vendor = registerOutput<String?>('vendor');
+    version = registerOutput<String?>('version');
   }
 }

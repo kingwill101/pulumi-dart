@@ -9,9 +9,7 @@ class GoogleCloudAiplatformV1beta1TrainingConfig {
 
   /// Creates a new [GoogleCloudAiplatformV1beta1TrainingConfig].
   /// [timeoutTrainingMilliHours] The timeout hours for the CMLE training job, expressed in milli hours i.e. 1,000 value in this field means 1 hour.
-  GoogleCloudAiplatformV1beta1TrainingConfig({
-    this.timeoutTrainingMilliHours,
-  });
+  GoogleCloudAiplatformV1beta1TrainingConfig({this.timeoutTrainingMilliHours});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class GoogleCloudAiplatformV1beta1TrainingConfig {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1TrainingConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1TrainingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1TrainingConfig(
-      timeoutTrainingMilliHours: map['timeoutTrainingMilliHours'] == null ? null : (map['timeoutTrainingMilliHours']! as String).input(),
+      timeoutTrainingMilliHours: (() {
+        final guardedValue = map['timeoutTrainingMilliHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

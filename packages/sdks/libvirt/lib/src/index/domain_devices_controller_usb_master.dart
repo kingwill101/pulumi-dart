@@ -8,20 +8,15 @@ class DomainDevicesControllerUsbMaster {
 
   /// Creates a new [DomainDevicesControllerUsbMaster].
   /// [startPort] Sets the starting port number for the master USB controller device configuration.
-  DomainDevicesControllerUsbMaster({
-    required this.startPort,
-  });
+  DomainDevicesControllerUsbMaster({required this.startPort});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'startPort': startPort,
-    };
+    return <String, dynamic>{'startPort': startPort};
   }
 
   factory DomainDevicesControllerUsbMaster.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerUsbMaster(
-      startPort: (map['startPort'] as double).input(),
+      startPort: pulumi.Input.fromValue(map['startPort'] as double),
     );
   }
 }
-

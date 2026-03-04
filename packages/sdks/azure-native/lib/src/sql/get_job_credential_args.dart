@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobCredentialArgs {
   /// The name of the credential.
   final pulumi.Input<String> credentialName;
+
   /// The name of the job agent.
   final pulumi.Input<String> jobAgentName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -39,11 +42,12 @@ class GetJobCredentialArgs {
 
   factory GetJobCredentialArgs.fromMap(Map<String, dynamic> map) {
     return GetJobCredentialArgs(
-      credentialName: (map['credentialName'] as String).input(),
-      jobAgentName: (map['jobAgentName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
+      credentialName: pulumi.Input.fromValue(map['credentialName'] as String),
+      jobAgentName: pulumi.Input.fromValue(map['jobAgentName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }
 }
-

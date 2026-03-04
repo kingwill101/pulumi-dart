@@ -9,16 +9,22 @@ class AzureVmWorkloadProtectionPolicyResponse {
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'AzureWorkload'.
   final pulumi.Input<String> backupManagementType;
+
   /// Fix the policy inconsistency
   final pulumi.Input<bool>? makePolicyConsistent;
+
   /// Number of items associated with this policy.
   final pulumi.Input<int>? protectedItemsCount;
+
   /// ResourceGuard Operation Requests
   final pulumi.Input<List<String>>? resourceGuardOperationRequests;
+
   /// Common settings for the backup management
   final pulumi.Input<SettingsResponse>? settings;
+
   /// List of sub-protection policies which includes schedule and retention
   final pulumi.Input<List<SubProtectionPolicyResponse>>? subProtectionPolicy;
+
   /// Type of workload for the backup management
   final pulumi.Input<String>? workLoadType;
 
@@ -46,22 +52,75 @@ class AzureVmWorkloadProtectionPolicyResponse {
       'makePolicyConsistent': ?makePolicyConsistent,
       'protectedItemsCount': ?protectedItemsCount,
       'resourceGuardOperationRequests': ?resourceGuardOperationRequests,
-      'settings': ?pulumi.Input.mapOptionalInputValue<SettingsResponse, Map<String, dynamic>>(settings, (value) => value.toMap()),
-      'subProtectionPolicy': ?pulumi.Input.mapOptionalInputValue<List<SubProtectionPolicyResponse>, List<Map<String, dynamic>>>(subProtectionPolicy, (value) => pulumi.Input.encodeList<SubProtectionPolicyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'settings':
+          ?pulumi.Input.mapOptionalInputValue<
+            SettingsResponse,
+            Map<String, dynamic>
+          >(settings, (value) => value.toMap()),
+      'subProtectionPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SubProtectionPolicyResponse>,
+            List<Map<String, dynamic>>
+          >(
+            subProtectionPolicy,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SubProtectionPolicyResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'workLoadType': ?workLoadType,
     };
   }
 
-  factory AzureVmWorkloadProtectionPolicyResponse.fromMap(Map<String, dynamic> map) {
+  factory AzureVmWorkloadProtectionPolicyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureVmWorkloadProtectionPolicyResponse(
-      backupManagementType: (map['backupManagementType'] as String).input(),
-      makePolicyConsistent: map['makePolicyConsistent'] == null ? null : (map['makePolicyConsistent']! as bool).input(),
-      protectedItemsCount: map['protectedItemsCount'] == null ? null : (map['protectedItemsCount']! as int).input(),
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests']! as List).cast<String>()).input(),
-      settings: map['settings'] == null ? null : (SettingsResponse.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
-      subProtectionPolicy: map['subProtectionPolicy'] == null ? null : (pulumi.Input.decodeList<SubProtectionPolicyResponse>(map['subProtectionPolicy']!, (value) => SubProtectionPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workLoadType: map['workLoadType'] == null ? null : (map['workLoadType']! as String).input(),
+      backupManagementType: pulumi.Input.fromValue(
+        map['backupManagementType'] as String,
+      ),
+      makePolicyConsistent: (() {
+        final guardedValue = map['makePolicyConsistent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      protectedItemsCount: (() {
+        final guardedValue = map['protectedItemsCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceGuardOperationRequests: (() {
+        final guardedValue = map['resourceGuardOperationRequests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      settings: (() {
+        final guardedValue = map['settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SettingsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      subProtectionPolicy: (() {
+        final guardedValue = map['subProtectionPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SubProtectionPolicyResponse>(
+            guardedValue,
+            (value) => SubProtectionPolicyResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      workLoadType: (() {
+        final guardedValue = map['workLoadType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

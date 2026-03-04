@@ -7,8 +7,10 @@ import 'vulnerability_location.dart';
 class PackageIssueContaineranalysisV1alpha1 {
   /// The location of the vulnerability.
   final pulumi.Input<VulnerabilityLocation>? affectedLocation;
+
   /// The location of the available fix for vulnerability.
   final pulumi.Input<VulnerabilityLocation>? fixedLocation;
+
   /// The type of package (e.g. OS, MAVEN, GO).
   final pulumi.Input<String>? packageType;
   final pulumi.Input<String>? severityName;
@@ -27,20 +29,53 @@ class PackageIssueContaineranalysisV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'affectedLocation': ?pulumi.Input.mapOptionalInputValue<VulnerabilityLocation, Map<String, dynamic>>(affectedLocation, (value) => value.toMap()),
-      'fixedLocation': ?pulumi.Input.mapOptionalInputValue<VulnerabilityLocation, Map<String, dynamic>>(fixedLocation, (value) => value.toMap()),
+      'affectedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            VulnerabilityLocation,
+            Map<String, dynamic>
+          >(affectedLocation, (value) => value.toMap()),
+      'fixedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            VulnerabilityLocation,
+            Map<String, dynamic>
+          >(fixedLocation, (value) => value.toMap()),
       'packageType': ?packageType,
       'severityName': ?severityName,
     };
   }
 
-  factory PackageIssueContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory PackageIssueContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PackageIssueContaineranalysisV1alpha1(
-      affectedLocation: map['affectedLocation'] == null ? null : (VulnerabilityLocation.fromMap((map['affectedLocation']! as Map).cast<String, dynamic>())).input(),
-      fixedLocation: map['fixedLocation'] == null ? null : (VulnerabilityLocation.fromMap((map['fixedLocation']! as Map).cast<String, dynamic>())).input(),
-      packageType: map['packageType'] == null ? null : (map['packageType']! as String).input(),
-      severityName: map['severityName'] == null ? null : (map['severityName']! as String).input(),
+      affectedLocation: (() {
+        final guardedValue = map['affectedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VulnerabilityLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fixedLocation: (() {
+        final guardedValue = map['fixedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VulnerabilityLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      packageType: (() {
+        final guardedValue = map['packageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      severityName: (() {
+        final guardedValue = map['severityName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

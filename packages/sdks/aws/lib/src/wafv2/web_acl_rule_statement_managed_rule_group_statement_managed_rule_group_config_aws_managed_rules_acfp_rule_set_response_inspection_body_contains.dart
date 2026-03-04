@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionBodyContains {
   /// Strings in the body of the response that indicate a failed login attempt.
   final pulumi.Input<List<String>> failureStrings;
+
   /// Strings in the body of the response that indicate a successful login attempt.
   final pulumi.Input<List<String>> successStrings;
 
@@ -23,11 +24,16 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
     };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionBodyContains.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionBodyContains.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionBodyContains(
-      failureStrings: ((map['failureStrings'] as List).cast<String>()).input(),
-      successStrings: ((map['successStrings'] as List).cast<String>()).input(),
+      failureStrings: pulumi.Input.fromValue(
+        (map['failureStrings'] as List).cast<String>(),
+      ),
+      successStrings: pulumi.Input.fromValue(
+        (map['successStrings'] as List).cast<String>(),
+      ),
     );
   }
 }
-

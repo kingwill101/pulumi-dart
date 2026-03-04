@@ -3,16 +3,17 @@ enum SchedulingProvisioningModelComputeV1 {
   spot("SPOT"),
   standard("STANDARD");
 
-  const SchedulingProvisioningModelComputeV1(this.value);
-  final String value;
+  const SchedulingProvisioningModelComputeV1(this.wireValue);
+  final String wireValue;
 
   static SchedulingProvisioningModelComputeV1 fromValue(String value) {
     for (final item in SchedulingProvisioningModelComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SchedulingProvisioningModelComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown SchedulingProvisioningModelComputeV1 value: $value',
+    );
   }
 }
-

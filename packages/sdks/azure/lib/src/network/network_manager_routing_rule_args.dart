@@ -11,12 +11,16 @@ import 'network_manager_routing_rule_next_hop.dart';
 class NetworkManagerRoutingRuleArgs {
   /// A description for the routing rule.
   final pulumi.Input<String>? description;
+
   /// A `destination` block as defined below.
   final pulumi.Input<NetworkManagerRoutingRuleDestination> destination;
+
   /// The name of the Network Manager Routing Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// A `next_hop` block as defined below.
   final pulumi.Input<NetworkManagerRoutingRuleNextHop> nextHop;
+
   /// The ID of the Network Manager Routing Rule Collection to which this rule belongs. Changing this forces a new resource to be created.
   final pulumi.Input<String> ruleCollectionId;
 
@@ -37,21 +41,46 @@ class NetworkManagerRoutingRuleArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'destination': pulumi.Input.mapInputValue<NetworkManagerRoutingRuleDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
+      'destination':
+          pulumi.Input.mapInputValue<
+            NetworkManagerRoutingRuleDestination,
+            Map<String, dynamic>
+          >(destination, (value) => value.toMap()),
       'name': ?name,
-      'nextHop': pulumi.Input.mapInputValue<NetworkManagerRoutingRuleNextHop, Map<String, dynamic>>(nextHop, (value) => value.toMap()),
+      'nextHop':
+          pulumi.Input.mapInputValue<
+            NetworkManagerRoutingRuleNextHop,
+            Map<String, dynamic>
+          >(nextHop, (value) => value.toMap()),
       'ruleCollectionId': ruleCollectionId,
     };
   }
 
   factory NetworkManagerRoutingRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerRoutingRuleArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      destination: (NetworkManagerRoutingRuleDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nextHop: (NetworkManagerRoutingRuleNextHop.fromMap((map['nextHop'] as Map).cast<String, dynamic>())).input(),
-      ruleCollectionId: (map['ruleCollectionId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destination: pulumi.Input.fromValue(
+        NetworkManagerRoutingRuleDestination.fromMap(
+          (map['destination']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nextHop: pulumi.Input.fromValue(
+        NetworkManagerRoutingRuleNextHop.fromMap(
+          (map['nextHop']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      ruleCollectionId: pulumi.Input.fromValue(
+        map['ruleCollectionId'] as String,
+      ),
     );
   }
 }
-

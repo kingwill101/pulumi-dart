@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiConnectionTestLinkResponse {
   /// HTTP Method
   final pulumi.Input<String>? method;
+
   /// Test link request URI
   final pulumi.Input<String>? requestUri;
 
   /// Creates a new [ApiConnectionTestLinkResponse].
   /// [method] HTTP Method
   /// [requestUri] Test link request URI
-  ApiConnectionTestLinkResponse({
-    this.method,
-    this.requestUri,
-  });
+  ApiConnectionTestLinkResponse({this.method, this.requestUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'method': ?method,
-      'requestUri': ?requestUri,
-    };
+    return <String, dynamic>{'method': ?method, 'requestUri': ?requestUri};
   }
 
   factory ApiConnectionTestLinkResponse.fromMap(Map<String, dynamic> map) {
     return ApiConnectionTestLinkResponse(
-      method: map['method'] == null ? null : (map['method']! as String).input(),
-      requestUri: map['requestUri'] == null ? null : (map['requestUri']! as String).input(),
+      method: (() {
+        final guardedValue = map['method'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestUri: (() {
+        final guardedValue = map['requestUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse {
   /// The add-on that this search engine enables.
   final pulumi.Input<List<String>> searchAddOns;
+
   /// The search feature tier of this engine. Different tiers might have different pricing. To learn more, please check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
   final pulumi.Input<String> searchTier;
 
@@ -24,11 +25,14 @@ class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse {
     };
   }
 
-  factory GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse(
-      searchAddOns: ((map['searchAddOns'] as List).cast<String>()).input(),
-      searchTier: (map['searchTier'] as String).input(),
+      searchAddOns: pulumi.Input.fromValue(
+        (map['searchAddOns'] as List).cast<String>(),
+      ),
+      searchTier: pulumi.Input.fromValue(map['searchTier'] as String),
     );
   }
 }
-

@@ -8,18 +8,25 @@ import 'system_data_response.dart';
 class DeploymentResponse {
   /// Images deployed
   final pulumi.Input<List<ImageResponse>>? deployedImages;
+
   /// Deployment date UTC
   final pulumi.Input<String> deploymentDateUtc;
+
   /// Deployment ID
   final pulumi.Input<String>? deploymentId;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
+
   /// The name of the resource
   final pulumi.Input<String> name;
+
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 
@@ -45,28 +52,64 @@ class DeploymentResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deployedImages': ?pulumi.Input.mapOptionalInputValue<List<ImageResponse>, List<Map<String, dynamic>>>(deployedImages, (value) => pulumi.Input.encodeList<ImageResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deployedImages':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ImageResponse>,
+            List<Map<String, dynamic>>
+          >(
+            deployedImages,
+            (value) =>
+                pulumi.Input.encodeList<ImageResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'deploymentDateUtc': deploymentDateUtc,
       'deploymentId': ?deploymentId,
       'id': id,
       'name': name,
       'provisioningState': provisioningState,
-      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
+      'systemData':
+          pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(
+            systemData,
+            (value) => value.toMap(),
+          ),
       'type': type,
     };
   }
 
   factory DeploymentResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentResponse(
-      deployedImages: map['deployedImages'] == null ? null : (pulumi.Input.decodeList<ImageResponse>(map['deployedImages']!, (value) => ImageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deploymentDateUtc: (map['deploymentDateUtc'] as String).input(),
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
+      deployedImages: (() {
+        final guardedValue = map['deployedImages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ImageResponse>(
+            guardedValue,
+            (value) =>
+                ImageResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      deploymentDateUtc: pulumi.Input.fromValue(
+        map['deploymentDateUtc'] as String,
+      ),
+      deploymentId: (() {
+        final guardedValue = map['deploymentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      systemData: pulumi.Input.fromValue(
+        SystemDataResponse.fromMap(
+          (map['systemData']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum KafkaAcks {
   one("one"),
   all("all");
 
-  const KafkaAcks(this.value);
-  final String value;
+  const KafkaAcks(this.wireValue);
+  final String wireValue;
 
   static KafkaAcks fromValue(String value) {
     for (final item in KafkaAcks.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KafkaAcks value: $value');
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'geo_match_set_args.dart';
-import 'geo_match_set_geo_match_constraint.dart';
 import 'geo_match_set_state.dart';
 
 /// Provides a WAF Geo Match Set Resource
@@ -164,8 +163,10 @@ import 'geo_match_set_state.dart';
 class GeoMatchSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN)
   late final pulumi.Output<String> arn;
+
   /// The GeoMatchConstraint objects which contain the country that you want AWS WAF to search for.
-  late final pulumi.Output<List<GeoMatchSetGeoMatchConstraint>?> geoMatchConstraints;
+  late final pulumi.Output<List<Map<String, dynamic>>?> geoMatchConstraints;
+
   /// The name or description of the GeoMatchSet.
   late final pulumi.Output<String> name;
 
@@ -178,13 +179,15 @@ class GeoMatchSet extends pulumi.CustomResource {
     GeoMatchSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:waf/geoMatchSet:GeoMatchSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.geoMatchConstraints = registerOutput<List<GeoMatchSetGeoMatchConstraint>?>('geoMatchConstraints');
+         'aws:waf/geoMatchSet:GeoMatchSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    geoMatchConstraints = registerOutput<List<Map<String, dynamic>>?>(
+      'geoMatchConstraints',
+    );
     this.name = registerOutput<String>('name');
   }
 
@@ -206,13 +209,15 @@ class GeoMatchSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:waf/geoMatchSet:GeoMatchSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.geoMatchConstraints = registerOutput<List<GeoMatchSetGeoMatchConstraint>?>('geoMatchConstraints');
+         'aws:waf/geoMatchSet:GeoMatchSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    geoMatchConstraints = registerOutput<List<Map<String, dynamic>>?>(
+      'geoMatchConstraints',
+    );
     this.name = registerOutput<String>('name');
   }
 }

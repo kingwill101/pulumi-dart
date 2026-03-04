@@ -9,16 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceAttachmentArgs {
   /// The account ID to which the CEN instance belongs.
   ///
-  /// ->**NOTE:** Ensure that the child instance is not used in Express Connect.
+  /// -&gt;**NOTE:** Ensure that the child instance is not used in Express Connect.
   final pulumi.Input<int>? cenOwnerId;
+
   /// The ID of the child instance to attach.
   final pulumi.Input<String> childInstanceId;
+
   /// The uid of the child instance. Only used when attach a child instance of other account.
   final pulumi.Input<int>? childInstanceOwnerId;
+
   /// The region ID of the child instance to attach.
   final pulumi.Input<String> childInstanceRegionId;
+
   /// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
   final pulumi.Input<String> childInstanceType;
+
   /// The ID of the CEN.
   final pulumi.Input<String> instanceId;
 
@@ -51,13 +56,24 @@ class InstanceAttachmentArgs {
 
   factory InstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentArgs(
-      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId']! as int).input(),
-      childInstanceId: (map['childInstanceId'] as String).input(),
-      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : (map['childInstanceOwnerId']! as int).input(),
-      childInstanceRegionId: (map['childInstanceRegionId'] as String).input(),
-      childInstanceType: (map['childInstanceType'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
+      cenOwnerId: (() {
+        final guardedValue = map['cenOwnerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      childInstanceId: pulumi.Input.fromValue(map['childInstanceId'] as String),
+      childInstanceOwnerId: (() {
+        final guardedValue = map['childInstanceOwnerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      childInstanceRegionId: pulumi.Input.fromValue(
+        map['childInstanceRegionId'] as String,
+      ),
+      childInstanceType: pulumi.Input.fromValue(
+        map['childInstanceType'] as String,
+      ),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
     );
   }
 }
-

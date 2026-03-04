@@ -6,36 +6,52 @@ import 'google_cloud_integrations_v1alpha_credential_response.dart';
 class GetAuthConfigResult {
   /// Certificate id for client certificate
   final String certificateId;
+
   /// The timestamp when the auth config is created.
   final String createTime;
+
   /// The creator's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
   final String creatorEmail;
+
   /// Credential type of the encrypted credential.
   final String credentialType;
+
   /// Raw auth credentials.
   final GoogleCloudIntegrationsV1alphaCredentialResponse decryptedCredential;
+
   /// A description of the auth config.
   final String description;
+
   /// The name of the auth config.
   final String displayName;
+
   /// Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.
   final String encryptedCredential;
+
   /// User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.
   final List<String> expiryNotificationDuration;
+
   /// The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
   final String lastModifierEmail;
+
   /// Resource name of the SFDC instance projects/{project}/locations/{location}/authConfigs/{authConfig}.
   final String name;
+
   /// User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
   final String overrideValidTime;
+
   /// The reason / details of the current status.
   final String reason;
+
   /// The status of the auth config.
   final String state;
+
   /// The timestamp when the auth config is modified.
   final String updateTime;
+
   /// The time until the auth config is valid. Empty or max value is considered the auth config won't expire.
   final String validTime;
+
   /// The visibility of the auth config.
   final String visibility;
 
@@ -105,11 +121,15 @@ class GetAuthConfigResult {
       createTime: map['createTime'] as String,
       creatorEmail: map['creatorEmail'] as String,
       credentialType: map['credentialType'] as String,
-      decryptedCredential: GoogleCloudIntegrationsV1alphaCredentialResponse.fromMap((map['decryptedCredential'] as Map).cast<String, dynamic>()),
+      decryptedCredential:
+          GoogleCloudIntegrationsV1alphaCredentialResponse.fromMap(
+            (map['decryptedCredential']! as Map).cast<String, dynamic>(),
+          ),
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       encryptedCredential: map['encryptedCredential'] as String,
-      expiryNotificationDuration: (map['expiryNotificationDuration'] as List).cast<String>(),
+      expiryNotificationDuration: (map['expiryNotificationDuration'] as List)
+          .cast<String>(),
       lastModifierEmail: map['lastModifierEmail'] as String,
       name: map['name'] as String,
       overrideValidTime: map['overrideValidTime'] as String,
@@ -121,4 +141,3 @@ class GetAuthConfigResult {
     );
   }
 }
-

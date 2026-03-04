@@ -1,5 +1,3 @@
-library module_cas;
-
 export 'cas/certificate.dart';
 export 'cas/certificate_args.dart';
 export 'cas/certificate_state.dart';

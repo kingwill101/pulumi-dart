@@ -9,20 +9,19 @@ class GPUProfileResponse {
 
   /// Creates a new [GPUProfileResponse].
   /// [driver] Whether to install GPU drivers. When it's not specified, default is Install.
-  GPUProfileResponse({
-    this.driver,
-  });
+  GPUProfileResponse({this.driver});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'driver': ?driver,
-    };
+    return <String, dynamic>{'driver': ?driver};
   }
 
   factory GPUProfileResponse.fromMap(Map<String, dynamic> map) {
     return GPUProfileResponse(
-      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
+      driver: (() {
+        final guardedValue = map['driver'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

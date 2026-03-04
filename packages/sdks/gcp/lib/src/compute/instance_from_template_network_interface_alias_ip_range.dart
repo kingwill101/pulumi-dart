@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceFromTemplateNetworkInterfaceAliasIpRange {
   /// The IP CIDR range represented by this alias IP range.
   final pulumi.Input<String> ipCidrRange;
+
   /// The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.
   final pulumi.Input<String>? subnetworkRangeName;
 
@@ -23,11 +24,16 @@ class InstanceFromTemplateNetworkInterfaceAliasIpRange {
     };
   }
 
-  factory InstanceFromTemplateNetworkInterfaceAliasIpRange.fromMap(Map<String, dynamic> map) {
+  factory InstanceFromTemplateNetworkInterfaceAliasIpRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceFromTemplateNetworkInterfaceAliasIpRange(
-      ipCidrRange: (map['ipCidrRange'] as String).input(),
-      subnetworkRangeName: map['subnetworkRangeName'] == null ? null : (map['subnetworkRangeName']! as String).input(),
+      ipCidrRange: pulumi.Input.fromValue(map['ipCidrRange'] as String),
+      subnetworkRangeName: (() {
+        final guardedValue = map['subnetworkRangeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

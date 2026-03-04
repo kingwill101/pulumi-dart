@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TransitGatewayConnectPeerAssociationState {
   /// ID of the device.
   final pulumi.Input<String>? deviceId;
+
   /// ID of the global network.
   final pulumi.Input<String>? globalNetworkId;
+
   /// ID of the link.
   final pulumi.Input<String>? linkId;
+
   /// ARN of the Connect peer.
   ///
   /// The following arguments are optional:
@@ -36,13 +39,30 @@ class TransitGatewayConnectPeerAssociationState {
     };
   }
 
-  factory TransitGatewayConnectPeerAssociationState.fromMap(Map<String, dynamic> map) {
+  factory TransitGatewayConnectPeerAssociationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TransitGatewayConnectPeerAssociationState(
-      deviceId: map['deviceId'] == null ? null : ((map['deviceId'] as String).input()).input(),
-      globalNetworkId: map['globalNetworkId'] == null ? null : ((map['globalNetworkId'] as String).input()).input(),
-      linkId: map['linkId'] == null ? null : ((map['linkId'] as String).input()).input(),
-      transitGatewayConnectPeerArn: map['transitGatewayConnectPeerArn'] == null ? null : ((map['transitGatewayConnectPeerArn'] as String).input()).input(),
+      deviceId: (() {
+        final guardedValue = map['deviceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      globalNetworkId: (() {
+        final guardedValue = map['globalNetworkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkId: (() {
+        final guardedValue = map['linkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transitGatewayConnectPeerArn: (() {
+        final guardedValue = map['transitGatewayConnectPeerArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

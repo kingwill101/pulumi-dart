@@ -7,17 +7,20 @@ class RoutineArgument {
   /// Default value is `FIXED_TYPE`.
   /// Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
   final pulumi.Input<String>? argumentKind;
+
   /// A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
-  /// ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+  /// ~&gt;**NOTE**: Because this field expects a JSON string, any changes to the string
   /// will create a diff, even if the JSON itself hasn't changed. If the API returns
   /// a different value for the same schema, e.g. it switched the order of values
   /// or replaced STRUCT field type with RECORD field type, we currently cannot
   /// suppress the recurring diff this causes. As a workaround, we recommend using
   /// the schema as returned by the API.
   final pulumi.Input<String>? dataType;
+
   /// Specifies whether the argument is input or output. Can be set for procedures only.
   /// Possible values are: `IN`, `OUT`, `INOUT`.
   final pulumi.Input<String>? mode;
+
   /// The name of this argument. Can be absent for function return argument.
   final pulumi.Input<String>? name;
 
@@ -26,12 +29,7 @@ class RoutineArgument {
   /// [dataType] A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
   /// [mode] Specifies whether the argument is input or output. Can be set for procedures only.
   /// [name] The name of this argument. Can be absent for function return argument.
-  RoutineArgument({
-    this.argumentKind,
-    this.dataType,
-    this.mode,
-    this.name,
-  });
+  RoutineArgument({this.argumentKind, this.dataType, this.mode, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,11 +42,26 @@ class RoutineArgument {
 
   factory RoutineArgument.fromMap(Map<String, dynamic> map) {
     return RoutineArgument(
-      argumentKind: map['argumentKind'] == null ? null : (map['argumentKind']! as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      argumentKind: (() {
+        final guardedValue = map['argumentKind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataType: (() {
+        final guardedValue = map['dataType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

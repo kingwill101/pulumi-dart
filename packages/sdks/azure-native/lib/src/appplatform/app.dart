@@ -19,16 +19,22 @@ import 'system_data_response.dart';
 class App extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The Managed Identity type of the app resource
   late final pulumi.Output<ManagedIdentityPropertiesResponse?> identity;
+
   /// The GEO location of the application, always the same with its parent resource
   late final pulumi.Output<String?> location;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// Properties of the App resource
   late final pulumi.Output<AppResourcePropertiesResponse> properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -36,22 +42,19 @@ class App extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [App]. {@macro pulumi_appplatform_app_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  App(
-    String name, {
-    AppArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:appplatform:App',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<ManagedIdentityPropertiesResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+  App(String name, {AppArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:appplatform:App',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<ManagedIdentityPropertiesResponse?>('identity');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<AppResourcePropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<AppResourcePropertiesResponse>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

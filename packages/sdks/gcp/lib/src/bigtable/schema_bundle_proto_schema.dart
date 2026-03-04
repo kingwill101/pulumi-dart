@@ -8,20 +8,17 @@ class SchemaBundleProtoSchema {
 
   /// Creates a new [SchemaBundleProtoSchema].
   /// [protoDescriptors] Base64 encoded content of the file.
-  SchemaBundleProtoSchema({
-    required this.protoDescriptors,
-  });
+  SchemaBundleProtoSchema({required this.protoDescriptors});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'protoDescriptors': protoDescriptors,
-    };
+    return <String, dynamic>{'protoDescriptors': protoDescriptors};
   }
 
   factory SchemaBundleProtoSchema.fromMap(Map<String, dynamic> map) {
     return SchemaBundleProtoSchema(
-      protoDescriptors: (map['protoDescriptors'] as String).input(),
+      protoDescriptors: pulumi.Input.fromValue(
+        map['protoDescriptors'] as String,
+      ),
     );
   }
 }
-

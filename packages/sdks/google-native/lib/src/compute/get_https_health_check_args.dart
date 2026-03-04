@@ -13,10 +13,7 @@ class GetHttpsHealthCheckArgs {
   /// Creates a new [GetHttpsHealthCheckArgs].
   /// [httpsHealthCheck] Required.
   /// [project] Optional.
-  GetHttpsHealthCheckArgs({
-    required this.httpsHealthCheck,
-    this.project,
-  });
+  GetHttpsHealthCheckArgs({required this.httpsHealthCheck, this.project});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +24,14 @@ class GetHttpsHealthCheckArgs {
 
   factory GetHttpsHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return GetHttpsHealthCheckArgs(
-      httpsHealthCheck: (map['httpsHealthCheck'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      httpsHealthCheck: pulumi.Input.fromValue(
+        map['httpsHealthCheck'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

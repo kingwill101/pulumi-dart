@@ -1,5 +1,3 @@
-library module_privatelink;
-
 export 'privatelink/functions.dart';
 export 'privatelink/get_service_args.dart';
 export 'privatelink/get_service_result.dart';

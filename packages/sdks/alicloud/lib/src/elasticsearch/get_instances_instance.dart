@@ -67,20 +67,23 @@ class GetInstancesInstance {
 
   factory GetInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstance(
-      createdAt: (map['createdAt'] as String).input(),
-      dataNodeAmount: (map['dataNodeAmount'] as int).input(),
-      dataNodeDiskSize: (map['dataNodeDiskSize'] as int).input(),
-      dataNodeDiskType: (map['dataNodeDiskType'] as String).input(),
-      dataNodeSpec: (map['dataNodeSpec'] as String).input(),
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceChargeType: (map['instanceChargeType'] as String).input(),
-      status: (map['status'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
-      updatedAt: (map['updatedAt'] as String).input(),
-      version: (map['version'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      dataNodeAmount: pulumi.Input.fromValue(map['dataNodeAmount'] as int),
+      dataNodeDiskSize: pulumi.Input.fromValue(map['dataNodeDiskSize'] as int),
+      dataNodeDiskType: pulumi.Input.fromValue(
+        map['dataNodeDiskType'] as String,
+      ),
+      dataNodeSpec: pulumi.Input.fromValue(map['dataNodeSpec'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceChargeType: pulumi.Input.fromValue(
+        map['instanceChargeType'] as String,
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
+      updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
-

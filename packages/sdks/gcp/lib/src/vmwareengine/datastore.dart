@@ -591,12 +591,16 @@ import 'datastore_state.dart';
 class Datastore extends pulumi.CustomResource {
   /// Clusters to which the datastore is attached.
   late final pulumi.Output<List<String>> clusters;
+
   /// Creation time of this resource.
   late final pulumi.Output<String> createTime;
+
   /// User-provided description for this datastore
   late final pulumi.Output<String?> description;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
+
   /// The user-provided identifier of the datastore to be created.
   /// This identifier must be unique among each `Datastore` within the parent
   /// and becomes the final token in the name URI.
@@ -608,12 +612,15 @@ class Datastore extends pulumi.CustomResource {
   /// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
   /// (section 3.5)
   late final pulumi.Output<String> name;
+
   /// The NFS datastore configuration.
   /// Structure is documented below.
   late final pulumi.Output<DatastoreNfsDatastore> nfsDatastore;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The state of the Datastore.
   /// Possible values:
   /// CREATING
@@ -623,8 +630,10 @@ class Datastore extends pulumi.CustomResource {
   /// SOFT_DELETING
   /// SOFT_DELETED
   late final pulumi.Output<String> state;
+
   /// System-generated unique identifier for the resource.
   late final pulumi.Output<String> uid;
+
   /// Last update time of this resource.
   late final pulumi.Output<String> updateTime;
 
@@ -637,21 +646,21 @@ class Datastore extends pulumi.CustomResource {
     DatastoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vmwareengine/datastore:Datastore',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusters = registerOutput<List<String>>('clusters');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String>('location');
+         'gcp:vmwareengine/datastore:Datastore',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusters = registerOutput<List<String>>('clusters');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.nfsDatastore = registerOutput<DatastoreNfsDatastore>('nfsDatastore');
-    this.project = registerOutput<String>('project');
-    this.state = registerOutput<String>('state');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
+    nfsDatastore = registerOutput<DatastoreNfsDatastore>('nfsDatastore');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [Datastore] resource's state with the given [name] and [id].
@@ -672,20 +681,20 @@ class Datastore extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vmwareengine/datastore:Datastore',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusters = registerOutput<List<String>>('clusters');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.location = registerOutput<String>('location');
+         'gcp:vmwareengine/datastore:Datastore',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusters = registerOutput<List<String>>('clusters');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.nfsDatastore = registerOutput<DatastoreNfsDatastore>('nfsDatastore');
-    this.project = registerOutput<String>('project');
+    nfsDatastore = registerOutput<DatastoreNfsDatastore>('nfsDatastore');
+    project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -6,6 +6,7 @@ class URLMapDefaultRouteActionFaultInjectionPolicyAbort {
   /// The HTTP status code used to abort the request.
   /// The value must be between 200 and 599 inclusive.
   final pulumi.Input<int>? httpStatus;
+
   /// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
   /// The value must be between 0.0 and 100.0 inclusive.
   final pulumi.Input<double>? percentage;
@@ -25,11 +26,20 @@ class URLMapDefaultRouteActionFaultInjectionPolicyAbort {
     };
   }
 
-  factory URLMapDefaultRouteActionFaultInjectionPolicyAbort.fromMap(Map<String, dynamic> map) {
+  factory URLMapDefaultRouteActionFaultInjectionPolicyAbort.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return URLMapDefaultRouteActionFaultInjectionPolicyAbort(
-      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus']! as int).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage']! as double).input(),
+      httpStatus: (() {
+        final guardedValue = map['httpStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      percentage: (() {
+        final guardedValue = map['percentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

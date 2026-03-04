@@ -6,14 +6,22 @@ import 'integration_account_batch_configuration_release_criteria_recurrence_sche
 class IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence {
   /// The end time of the schedule, formatted as an RFC3339 string.
   final pulumi.Input<String>? endTime;
+
   /// The frequency of the schedule. Possible values are `Day`, `Hour`, `Minute`, `Month`, `NotSpecified`, `Second`, `Week` and `Year`.
   final pulumi.Input<String> frequency;
+
   /// The number of `frequency`s between runs.
   final pulumi.Input<int> interval;
+
   /// A `schedule` block as documented below.
-  final pulumi.Input<IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule>? schedule;
+  final pulumi.Input<
+    IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule
+  >?
+  schedule;
+
   /// The start time of the schedule, formatted as an RFC3339 string.
   final pulumi.Input<String>? startTime;
+
   /// The timezone of the start/end time.
   final pulumi.Input<String>? timeZone;
 
@@ -38,21 +46,46 @@ class IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence {
       'endTime': ?endTime,
       'frequency': frequency,
       'interval': interval,
-      'schedule': ?pulumi.Input.mapOptionalInputValue<IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
+      'schedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule,
+            Map<String, dynamic>
+          >(schedule, (value) => value.toMap()),
       'startTime': ?startTime,
       'timeZone': ?timeZone,
     };
   }
 
-  factory IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence.fromMap(Map<String, dynamic> map) {
+  factory IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence(
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      frequency: (map['frequency'] as String).input(),
-      interval: (map['interval'] as int).input(),
-      schedule: map['schedule'] == null ? null : (IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      frequency: pulumi.Input.fromValue(map['frequency'] as String),
+      interval: pulumi.Input.fromValue(map['interval'] as int),
+      schedule: (() {
+        final guardedValue = map['schedule'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeZone: (() {
+        final guardedValue = map['timeZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

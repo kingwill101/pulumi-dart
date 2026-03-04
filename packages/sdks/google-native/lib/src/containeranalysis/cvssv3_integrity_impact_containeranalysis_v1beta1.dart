@@ -4,16 +4,17 @@ enum CVSSv3IntegrityImpactContaineranalysisV1beta1 {
   impactLow("IMPACT_LOW"),
   impactNone("IMPACT_NONE");
 
-  const CVSSv3IntegrityImpactContaineranalysisV1beta1(this.value);
-  final String value;
+  const CVSSv3IntegrityImpactContaineranalysisV1beta1(this.wireValue);
+  final String wireValue;
 
   static CVSSv3IntegrityImpactContaineranalysisV1beta1 fromValue(String value) {
     for (final item in CVSSv3IntegrityImpactContaineranalysisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CVSSv3IntegrityImpactContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown CVSSv3IntegrityImpactContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

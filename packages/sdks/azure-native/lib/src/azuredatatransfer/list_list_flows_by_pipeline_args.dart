@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListListFlowsByPipelineArgs {
   /// The name of the pipeline on which to operate.
   final pulumi.Input<String> pipelineName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Connection ID to target
   final pulumi.Input<List<String>>? value;
 
@@ -34,10 +36,15 @@ class ListListFlowsByPipelineArgs {
 
   factory ListListFlowsByPipelineArgs.fromMap(Map<String, dynamic> map) {
     return ListListFlowsByPipelineArgs(
-      pipelineName: (map['pipelineName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      value: map['value'] == null ? null : ((map['value']! as List).cast<String>()).input(),
+      pipelineName: pulumi.Input.fromValue(map['pipelineName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

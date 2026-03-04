@@ -8,20 +8,21 @@ class PacketMirroringForwardingRuleInfoComputeV1 {
 
   /// Creates a new [PacketMirroringForwardingRuleInfoComputeV1].
   /// [url] Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
-  PacketMirroringForwardingRuleInfoComputeV1({
-    this.url,
-  });
+  PacketMirroringForwardingRuleInfoComputeV1({this.url});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'url': ?url,
-    };
+    return <String, dynamic>{'url': ?url};
   }
 
-  factory PacketMirroringForwardingRuleInfoComputeV1.fromMap(Map<String, dynamic> map) {
+  factory PacketMirroringForwardingRuleInfoComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PacketMirroringForwardingRuleInfoComputeV1(
-      url: map['url'] == null ? null : (map['url']! as String).input(),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'get_containers_container.dart';
 class GetContainersResult {
   /// A `containers` block as defined below.
   final List<GetContainersContainer> containers;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? namePrefix;
@@ -26,7 +27,11 @@ class GetContainersResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containers': pulumi.Input.encodeList<GetContainersContainer, Map<String, dynamic>>(containers, (value) => value.toMap()),
+      'containers':
+          pulumi.Input.encodeList<GetContainersContainer, Map<String, dynamic>>(
+            containers,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'namePrefix': ?namePrefix,
       'storageAccountId': storageAccountId,
@@ -35,11 +40,19 @@ class GetContainersResult {
 
   factory GetContainersResult.fromMap(Map<String, dynamic> map) {
     return GetContainersResult(
-      containers: pulumi.Input.decodeList<GetContainersContainer>(map['containers'], (value) => GetContainersContainer.fromMap((value as Map).cast<String, dynamic>())),
+      containers: pulumi.Input.decodeList<GetContainersContainer>(
+        map['containers']!,
+        (value) => GetContainersContainer.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
-      namePrefix: map['namePrefix'] == null ? null : map['namePrefix']! as String,
+      namePrefix: (() {
+        final guardedValue = map['namePrefix'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       storageAccountId: map['storageAccountId'] as String,
     );
   }
 }
-

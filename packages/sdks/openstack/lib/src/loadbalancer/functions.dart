@@ -119,7 +119,7 @@ Future<GetFlavorV2Result> getFlavorV2(
 
 /// Use this data source to get the ID of an OpenStack Load Balancer flavorprofile.
 ///
-/// > **Note:** This usually requires admin privileges.
+/// &gt; **Note:** This usually requires admin privileges.
 ///
 /// ## Example Usage
 ///
@@ -226,7 +226,7 @@ Future<GetFlavorprofileV2Result> getFlavorprofileV2(
 
 /// Use this data source to get the ID of an OpenStack Load Balancer flavor.
 ///
-/// > **Note:** This data source is deprecated, please use `openstack.loadbalancer.FlavorV2` instead.
+/// &gt; **Note:** This data source is deprecated, please use `openstack.loadbalancer.FlavorV2` instead.
 ///
 /// ## Example Usage
 ///

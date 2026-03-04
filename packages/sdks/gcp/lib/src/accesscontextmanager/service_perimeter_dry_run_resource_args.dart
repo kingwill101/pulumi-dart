@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicePerimeterDryRunResourceArgs {
   /// The name of the Service Perimeter to add this resource to.
   final pulumi.Input<String> perimeterName;
+
   /// A GCP resource that is inside of the service perimeter.
   /// Currently only projects are allowed.
   /// Format: projects/{project_number}
@@ -31,9 +32,8 @@ class ServicePerimeterDryRunResourceArgs {
 
   factory ServicePerimeterDryRunResourceArgs.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterDryRunResourceArgs(
-      perimeterName: (map['perimeterName'] as String).input(),
-      resource: (map['resource'] as String).input(),
+      perimeterName: pulumi.Input.fromValue(map['perimeterName'] as String),
+      resource: pulumi.Input.fromValue(map['resource'] as String),
     );
   }
 }
-

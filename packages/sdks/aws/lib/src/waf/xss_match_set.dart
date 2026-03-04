@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'xss_match_set_args.dart';
 import 'xss_match_set_state.dart';
-import 'xss_match_set_xss_match_tuple.dart';
 
 /// Provides a WAF XSS Match Set Resource
 ///
@@ -189,10 +188,12 @@ import 'xss_match_set_xss_match_tuple.dart';
 class XssMatchSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN)
   late final pulumi.Output<String> arn;
+
   /// The name or description of the SizeConstraintSet.
   late final pulumi.Output<String> name;
+
   /// The parts of web requests that you want to inspect for cross-site scripting attacks.
-  late final pulumi.Output<List<XssMatchSetXssMatchTuple>?> xssMatchTuples;
+  late final pulumi.Output<List<Map<String, dynamic>>?> xssMatchTuples;
 
   /// Creates a new [XssMatchSet].
   /// [name] The Pulumi resource name.
@@ -203,14 +204,16 @@ class XssMatchSet extends pulumi.CustomResource {
     XssMatchSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:waf/xssMatchSet:XssMatchSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:waf/xssMatchSet:XssMatchSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.xssMatchTuples = registerOutput<List<XssMatchSetXssMatchTuple>?>('xssMatchTuples');
+    xssMatchTuples = registerOutput<List<Map<String, dynamic>>?>(
+      'xssMatchTuples',
+    );
   }
 
   /// Gets an existing [XssMatchSet] resource's state with the given [name] and [id].
@@ -231,13 +234,15 @@ class XssMatchSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:waf/xssMatchSet:XssMatchSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:waf/xssMatchSet:XssMatchSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.xssMatchTuples = registerOutput<List<XssMatchSetXssMatchTuple>?>('xssMatchTuples');
+    xssMatchTuples = registerOutput<List<Map<String, dynamic>>?>(
+      'xssMatchTuples',
+    );
   }
 }

@@ -9,7 +9,7 @@ import 'coo_web_cc_rule_state.dart';
 ///
 /// For information about DdosCoo Web Cc Rule and how to use it, see [What is Web Cc Rule](https://next.api.alibabacloud.com/document/ddoscoo/2020-01-01/ConfigWebCCRuleV2).
 ///
-/// > **NOTE:** Available since v1.271.0.
+/// &gt; **NOTE:** Available since v1.271.0.
 ///
 /// ## Example Usage
 ///
@@ -508,10 +508,12 @@ import 'coo_web_cc_rule_state.dart';
 class CooWebCcRule extends pulumi.CustomResource {
   /// The domain name of the website service.
   ///
-  /// > **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
+  /// &gt; **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
   late final pulumi.Output<String> domain;
+
   /// Rule name.
   late final pulumi.Output<String> name;
+
   /// Rule details.   See `rule_detail` below.
   late final pulumi.Output<CooWebCcRuleRuleDetail> ruleDetail;
 
@@ -524,14 +526,14 @@ class CooWebCcRule extends pulumi.CustomResource {
     CooWebCcRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ddos/cooWebCcRule:CooWebCcRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domain = registerOutput<String>('domain');
+         'alicloud:ddos/cooWebCcRule:CooWebCcRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domain = registerOutput<String>('domain');
     this.name = registerOutput<String>('name');
-    this.ruleDetail = registerOutput<CooWebCcRuleRuleDetail>('ruleDetail');
+    ruleDetail = registerOutput<CooWebCcRuleRuleDetail>('ruleDetail');
   }
 
   /// Gets an existing [CooWebCcRule] resource's state with the given [name] and [id].
@@ -552,13 +554,13 @@ class CooWebCcRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ddos/cooWebCcRule:CooWebCcRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.domain = registerOutput<String>('domain');
+         'alicloud:ddos/cooWebCcRule:CooWebCcRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    domain = registerOutput<String>('domain');
     this.name = registerOutput<String>('name');
-    this.ruleDetail = registerOutput<CooWebCcRuleRuleDetail>('ruleDetail');
+    ruleDetail = registerOutput<CooWebCcRuleRuleDetail>('ruleDetail');
   }
 }

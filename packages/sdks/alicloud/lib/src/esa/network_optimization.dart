@@ -8,7 +8,7 @@ import 'network_optimization_state.dart';
 ///
 /// For information about ESA Network Optimization and how to use it, see [What is Network Optimization](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateNetworkOptimization).
 ///
-/// > **NOTE:** Available since v1.244.0.
+/// &gt; **NOTE:** Available since v1.244.0.
 ///
 /// ## Example Usage
 ///
@@ -281,28 +281,39 @@ import 'network_optimization_state.dart';
 class NetworkOptimization extends pulumi.CustomResource {
   /// ConfigId of the configuration, which can be obtained by calling the ListNetworkOptimizations.
   late final pulumi.Output<int> configId;
+
   /// Whether to enable GRPC, default is disabled. Value range:
   late final pulumi.Output<String?> grpc;
+
   /// Whether to enable HTTP2 origin, default is disabled. Value range:
   late final pulumi.Output<String?> http2Origin;
+
   /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
   /// - Match all incoming requests: value set to true
   /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
   late final pulumi.Output<String?> rule;
+
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   late final pulumi.Output<String?> ruleEnable;
+
   /// Rule name.
   late final pulumi.Output<String?> ruleName;
+
   /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
   late final pulumi.Output<int> sequence;
+
   /// Site ID.
   late final pulumi.Output<String> siteId;
+
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   late final pulumi.Output<int?> siteVersion;
+
   /// Whether to enable smart routing service, default is disabled. Value range:
   late final pulumi.Output<String?> smartRouting;
+
   /// Maximum upload file size, in MB, value range: 100～500.
   late final pulumi.Output<String?> uploadMaxFilesize;
+
   /// Whether to enable Websocket, default is enabled. Value range:
   late final pulumi.Output<String?> websocket;
 
@@ -315,23 +326,23 @@ class NetworkOptimization extends pulumi.CustomResource {
     NetworkOptimizationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/networkOptimization:NetworkOptimization',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configId = registerOutput<int>('configId');
-    this.grpc = registerOutput<String?>('grpc');
-    this.http2Origin = registerOutput<String?>('http2Origin');
-    this.rule = registerOutput<String?>('rule');
-    this.ruleEnable = registerOutput<String?>('ruleEnable');
-    this.ruleName = registerOutput<String?>('ruleName');
-    this.sequence = registerOutput<int>('sequence');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteVersion = registerOutput<int?>('siteVersion');
-    this.smartRouting = registerOutput<String?>('smartRouting');
-    this.uploadMaxFilesize = registerOutput<String?>('uploadMaxFilesize');
-    this.websocket = registerOutput<String?>('websocket');
+         'alicloud:esa/networkOptimization:NetworkOptimization',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configId = registerOutput<int>('configId');
+    grpc = registerOutput<String?>('grpc');
+    http2Origin = registerOutput<String?>('http2Origin');
+    rule = registerOutput<String?>('rule');
+    ruleEnable = registerOutput<String?>('ruleEnable');
+    ruleName = registerOutput<String?>('ruleName');
+    sequence = registerOutput<int>('sequence');
+    siteId = registerOutput<String>('siteId');
+    siteVersion = registerOutput<int?>('siteVersion');
+    smartRouting = registerOutput<String?>('smartRouting');
+    uploadMaxFilesize = registerOutput<String?>('uploadMaxFilesize');
+    websocket = registerOutput<String?>('websocket');
   }
 
   /// Gets an existing [NetworkOptimization] resource's state with the given [name] and [id].
@@ -352,22 +363,22 @@ class NetworkOptimization extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/networkOptimization:NetworkOptimization',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configId = registerOutput<int>('configId');
-    this.grpc = registerOutput<String?>('grpc');
-    this.http2Origin = registerOutput<String?>('http2Origin');
-    this.rule = registerOutput<String?>('rule');
-    this.ruleEnable = registerOutput<String?>('ruleEnable');
-    this.ruleName = registerOutput<String?>('ruleName');
-    this.sequence = registerOutput<int>('sequence');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteVersion = registerOutput<int?>('siteVersion');
-    this.smartRouting = registerOutput<String?>('smartRouting');
-    this.uploadMaxFilesize = registerOutput<String?>('uploadMaxFilesize');
-    this.websocket = registerOutput<String?>('websocket');
+         'alicloud:esa/networkOptimization:NetworkOptimization',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configId = registerOutput<int>('configId');
+    grpc = registerOutput<String?>('grpc');
+    http2Origin = registerOutput<String?>('http2Origin');
+    rule = registerOutput<String?>('rule');
+    ruleEnable = registerOutput<String?>('ruleEnable');
+    ruleName = registerOutput<String?>('ruleName');
+    sequence = registerOutput<int>('sequence');
+    siteId = registerOutput<String>('siteId');
+    siteVersion = registerOutput<int?>('siteVersion');
+    smartRouting = registerOutput<String?>('smartRouting');
+    uploadMaxFilesize = registerOutput<String?>('uploadMaxFilesize');
+    websocket = registerOutput<String?>('websocket');
   }
 }

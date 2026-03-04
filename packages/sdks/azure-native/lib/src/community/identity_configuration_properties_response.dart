@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityConfigurationPropertiesResponse {
   /// The name of the authentication policy registered in ADB2C for the Community Training Resource
   final pulumi.Input<String>? b2cAuthenticationPolicy;
+
   /// The name of the password reset policy registered in ADB2C for the Community Training Resource
   final pulumi.Input<String>? b2cPasswordResetPolicy;
+
   /// The clientId of the application registered in the selected identity provider for the Community Training Resource
   final pulumi.Input<String> clientId;
+
   /// The client secret of the application registered in the selected identity provider for the Community Training Resource
   final pulumi.Input<String> clientSecret;
+
   /// The custom login parameters for the Community Training Resource
   final pulumi.Input<String>? customLoginParameters;
+
   /// The domain name of the selected identity provider for the Community Training Resource
   final pulumi.Input<String> domainName;
+
   /// The identity type of the Community Training Resource
   final pulumi.Input<String> identityType;
+
   /// To indicate whether the Community Training Resource has Teams enabled
   final pulumi.Input<bool>? teamsEnabled;
+
   /// The tenantId of the selected identity provider for the Community Training Resource
   final pulumi.Input<String> tenantId;
 
@@ -59,18 +67,35 @@ class IdentityConfigurationPropertiesResponse {
     };
   }
 
-  factory IdentityConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory IdentityConfigurationPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdentityConfigurationPropertiesResponse(
-      b2cAuthenticationPolicy: map['b2cAuthenticationPolicy'] == null ? null : (map['b2cAuthenticationPolicy']! as String).input(),
-      b2cPasswordResetPolicy: map['b2cPasswordResetPolicy'] == null ? null : (map['b2cPasswordResetPolicy']! as String).input(),
-      clientId: (map['clientId'] as String).input(),
-      clientSecret: (map['clientSecret'] as String).input(),
-      customLoginParameters: map['customLoginParameters'] == null ? null : (map['customLoginParameters']! as String).input(),
-      domainName: (map['domainName'] as String).input(),
-      identityType: (map['identityType'] as String).input(),
-      teamsEnabled: map['teamsEnabled'] == null ? null : (map['teamsEnabled']! as bool).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      b2cAuthenticationPolicy: (() {
+        final guardedValue = map['b2cAuthenticationPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      b2cPasswordResetPolicy: (() {
+        final guardedValue = map['b2cPasswordResetPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
+      clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
+      customLoginParameters: (() {
+        final guardedValue = map['customLoginParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      identityType: pulumi.Input.fromValue(map['identityType'] as String),
+      teamsEnabled: (() {
+        final guardedValue = map['teamsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

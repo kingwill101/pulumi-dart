@@ -1,5 +1,3 @@
-library module_communication;
-
 export 'communication/email_service.dart';
 export 'communication/email_service_args.dart';
 export 'communication/email_service_domain.dart';

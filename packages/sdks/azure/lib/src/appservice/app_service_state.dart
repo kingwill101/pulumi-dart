@@ -15,56 +15,82 @@ import 'app_service_storage_account.dart';
 class AppServiceState {
   /// The ID of the App Service Plan within which to create this App Service.
   final pulumi.Input<String>? appServicePlanId;
+
   /// A key-value pair of App Settings.
   final pulumi.Input<Map<String, String>>? appSettings;
+
   /// A `auth_settings` block as defined below.
   final pulumi.Input<AppServiceAuthSettings>? authSettings;
+
   /// A `backup` block as defined below.
   final pulumi.Input<AppServiceBackup>? backup;
+
   /// Should the App Service send session affinity cookies, which route client requests in the same session to the same instance?
   final pulumi.Input<bool>? clientAffinityEnabled;
+
   /// Does the App Service require client certificates for incoming requests? Defaults to `false`.
   final pulumi.Input<bool>? clientCertEnabled;
+
   /// Mode of client certificates for this App Service. Possible values are `Required`, `Optional` and `OptionalInteractiveUser`. If this parameter is set, `client_cert_enabled` must be set to `true`, otherwise this parameter is ignored.
   final pulumi.Input<String>? clientCertMode;
+
   /// One or more `connection_string` blocks as defined below.
   final pulumi.Input<List<AppServiceConnectionString>>? connectionStrings;
+
   /// An identifier used by App Service to perform domain ownership verification via DNS TXT record.
   final pulumi.Input<String>? customDomainVerificationId;
+
   /// The Default Hostname associated with the App Service - such as `mysite.azurewebsites.net`
   final pulumi.Input<String>? defaultSiteHostname;
+
   /// Is the App Service Enabled? Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// Can the App Service only be accessed via HTTPS? Defaults to `false`.
   final pulumi.Input<bool>? httpsOnly;
+
   /// An `identity` block as defined below.
   final pulumi.Input<AppServiceIdentity>? identity;
+
   /// The User Assigned Identity Id used for looking up KeyVault secrets. The identity must be assigned to the application. [For more information see - Access vaults with a user-assigned identity](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#access-vaults-with-a-user-assigned-identity)
   final pulumi.Input<String>? keyVaultReferenceIdentityId;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// A `logs` block as defined below.
   final pulumi.Input<AppServiceLogs>? logs;
+
   /// Specifies the name of the App Service. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12"]`
   final pulumi.Input<List<String>>? outboundIpAddressLists;
+
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`
   final pulumi.Input<String>? outboundIpAddresses;
+
   /// A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12", "52.143.43.17"]` - not all of which are necessarily in use. Superset of `outbound_ip_address_list`.
   final pulumi.Input<List<String>>? possibleOutboundIpAddressLists;
+
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
   final pulumi.Input<String>? possibleOutboundIpAddresses;
+
   /// The name of the resource group in which to create the App Service. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A `site_config` block as defined below.
   final pulumi.Input<AppServiceSiteConfig>? siteConfig;
+
   /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service.
   final pulumi.Input<List<AppServiceSiteCredential>>? siteCredentials;
+
   /// A `source_control` block as defined below.
   final pulumi.Input<AppServiceSourceControl>? sourceControl;
+
   /// One or more `storage_account` blocks as defined below.
   final pulumi.Input<List<AppServiceStorageAccount>>? storageAccounts;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -130,64 +156,275 @@ class AppServiceState {
     return <String, dynamic>{
       'appServicePlanId': ?appServicePlanId,
       'appSettings': ?appSettings,
-      'authSettings': ?pulumi.Input.mapOptionalInputValue<AppServiceAuthSettings, Map<String, dynamic>>(authSettings, (value) => value.toMap()),
-      'backup': ?pulumi.Input.mapOptionalInputValue<AppServiceBackup, Map<String, dynamic>>(backup, (value) => value.toMap()),
+      'authSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppServiceAuthSettings,
+            Map<String, dynamic>
+          >(authSettings, (value) => value.toMap()),
+      'backup':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppServiceBackup,
+            Map<String, dynamic>
+          >(backup, (value) => value.toMap()),
       'clientAffinityEnabled': ?clientAffinityEnabled,
       'clientCertEnabled': ?clientCertEnabled,
       'clientCertMode': ?clientCertMode,
-      'connectionStrings': ?pulumi.Input.mapOptionalInputValue<List<AppServiceConnectionString>, List<Map<String, dynamic>>>(connectionStrings, (value) => pulumi.Input.encodeList<AppServiceConnectionString, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'connectionStrings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppServiceConnectionString>,
+            List<Map<String, dynamic>>
+          >(
+            connectionStrings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppServiceConnectionString,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'customDomainVerificationId': ?customDomainVerificationId,
       'defaultSiteHostname': ?defaultSiteHostname,
       'enabled': ?enabled,
       'httpsOnly': ?httpsOnly,
-      'identity': ?pulumi.Input.mapOptionalInputValue<AppServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppServiceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'keyVaultReferenceIdentityId': ?keyVaultReferenceIdentityId,
       'location': ?location,
-      'logs': ?pulumi.Input.mapOptionalInputValue<AppServiceLogs, Map<String, dynamic>>(logs, (value) => value.toMap()),
+      'logs':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppServiceLogs,
+            Map<String, dynamic>
+          >(logs, (value) => value.toMap()),
       'name': ?name,
       'outboundIpAddressLists': ?outboundIpAddressLists,
       'outboundIpAddresses': ?outboundIpAddresses,
       'possibleOutboundIpAddressLists': ?possibleOutboundIpAddressLists,
       'possibleOutboundIpAddresses': ?possibleOutboundIpAddresses,
       'resourceGroupName': ?resourceGroupName,
-      'siteConfig': ?pulumi.Input.mapOptionalInputValue<AppServiceSiteConfig, Map<String, dynamic>>(siteConfig, (value) => value.toMap()),
-      'siteCredentials': ?pulumi.Input.mapOptionalInputValue<List<AppServiceSiteCredential>, List<Map<String, dynamic>>>(siteCredentials, (value) => pulumi.Input.encodeList<AppServiceSiteCredential, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'sourceControl': ?pulumi.Input.mapOptionalInputValue<AppServiceSourceControl, Map<String, dynamic>>(sourceControl, (value) => value.toMap()),
-      'storageAccounts': ?pulumi.Input.mapOptionalInputValue<List<AppServiceStorageAccount>, List<Map<String, dynamic>>>(storageAccounts, (value) => pulumi.Input.encodeList<AppServiceStorageAccount, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'siteConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppServiceSiteConfig,
+            Map<String, dynamic>
+          >(siteConfig, (value) => value.toMap()),
+      'siteCredentials':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppServiceSiteCredential>,
+            List<Map<String, dynamic>>
+          >(
+            siteCredentials,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppServiceSiteCredential,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'sourceControl':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppServiceSourceControl,
+            Map<String, dynamic>
+          >(sourceControl, (value) => value.toMap()),
+      'storageAccounts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppServiceStorageAccount>,
+            List<Map<String, dynamic>>
+          >(
+            storageAccounts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppServiceStorageAccount,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tags': ?tags,
     };
   }
 
   factory AppServiceState.fromMap(Map<String, dynamic> map) {
     return AppServiceState(
-      appServicePlanId: map['appServicePlanId'] == null ? null : (map['appServicePlanId']! as String).input(),
-      appSettings: map['appSettings'] == null ? null : ((map['appSettings']! as Map).cast<String, String>()).input(),
-      authSettings: map['authSettings'] == null ? null : (AppServiceAuthSettings.fromMap((map['authSettings']! as Map).cast<String, dynamic>())).input(),
-      backup: map['backup'] == null ? null : (AppServiceBackup.fromMap((map['backup']! as Map).cast<String, dynamic>())).input(),
-      clientAffinityEnabled: map['clientAffinityEnabled'] == null ? null : (map['clientAffinityEnabled']! as bool).input(),
-      clientCertEnabled: map['clientCertEnabled'] == null ? null : (map['clientCertEnabled']! as bool).input(),
-      clientCertMode: map['clientCertMode'] == null ? null : (map['clientCertMode']! as String).input(),
-      connectionStrings: map['connectionStrings'] == null ? null : (pulumi.Input.decodeList<AppServiceConnectionString>(map['connectionStrings']!, (value) => AppServiceConnectionString.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customDomainVerificationId: map['customDomainVerificationId'] == null ? null : (map['customDomainVerificationId']! as String).input(),
-      defaultSiteHostname: map['defaultSiteHostname'] == null ? null : (map['defaultSiteHostname']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly']! as bool).input(),
-      identity: map['identity'] == null ? null : (AppServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      keyVaultReferenceIdentityId: map['keyVaultReferenceIdentityId'] == null ? null : (map['keyVaultReferenceIdentityId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      logs: map['logs'] == null ? null : (AppServiceLogs.fromMap((map['logs']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      outboundIpAddressLists: map['outboundIpAddressLists'] == null ? null : ((map['outboundIpAddressLists']! as List).cast<String>()).input(),
-      outboundIpAddresses: map['outboundIpAddresses'] == null ? null : (map['outboundIpAddresses']! as String).input(),
-      possibleOutboundIpAddressLists: map['possibleOutboundIpAddressLists'] == null ? null : ((map['possibleOutboundIpAddressLists']! as List).cast<String>()).input(),
-      possibleOutboundIpAddresses: map['possibleOutboundIpAddresses'] == null ? null : (map['possibleOutboundIpAddresses']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      siteConfig: map['siteConfig'] == null ? null : (AppServiceSiteConfig.fromMap((map['siteConfig']! as Map).cast<String, dynamic>())).input(),
-      siteCredentials: map['siteCredentials'] == null ? null : (pulumi.Input.decodeList<AppServiceSiteCredential>(map['siteCredentials']!, (value) => AppServiceSiteCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceControl: map['sourceControl'] == null ? null : (AppServiceSourceControl.fromMap((map['sourceControl']! as Map).cast<String, dynamic>())).input(),
-      storageAccounts: map['storageAccounts'] == null ? null : (pulumi.Input.decodeList<AppServiceStorageAccount>(map['storageAccounts']!, (value) => AppServiceStorageAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      appServicePlanId: (() {
+        final guardedValue = map['appServicePlanId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      appSettings: (() {
+        final guardedValue = map['appSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      authSettings: (() {
+        final guardedValue = map['authSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppServiceAuthSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      backup: (() {
+        final guardedValue = map['backup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppServiceBackup.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      clientAffinityEnabled: (() {
+        final guardedValue = map['clientAffinityEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      clientCertEnabled: (() {
+        final guardedValue = map['clientCertEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      clientCertMode: (() {
+        final guardedValue = map['clientCertMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionStrings: (() {
+        final guardedValue = map['connectionStrings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AppServiceConnectionString>(
+            guardedValue,
+            (value) => AppServiceConnectionString.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      customDomainVerificationId: (() {
+        final guardedValue = map['customDomainVerificationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultSiteHostname: (() {
+        final guardedValue = map['defaultSiteHostname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      httpsOnly: (() {
+        final guardedValue = map['httpsOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppServiceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      keyVaultReferenceIdentityId: (() {
+        final guardedValue = map['keyVaultReferenceIdentityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logs: (() {
+        final guardedValue = map['logs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppServiceLogs.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outboundIpAddressLists: (() {
+        final guardedValue = map['outboundIpAddressLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outboundIpAddresses: (() {
+        final guardedValue = map['outboundIpAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      possibleOutboundIpAddressLists: (() {
+        final guardedValue = map['possibleOutboundIpAddressLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      possibleOutboundIpAddresses: (() {
+        final guardedValue = map['possibleOutboundIpAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      siteConfig: (() {
+        final guardedValue = map['siteConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppServiceSiteConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      siteCredentials: (() {
+        final guardedValue = map['siteCredentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AppServiceSiteCredential>(
+            guardedValue,
+            (value) => AppServiceSiteCredential.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      sourceControl: (() {
+        final guardedValue = map['sourceControl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppServiceSourceControl.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      storageAccounts: (() {
+        final guardedValue = map['storageAccounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AppServiceStorageAccount>(
+            guardedValue,
+            (value) => AppServiceStorageAccount.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

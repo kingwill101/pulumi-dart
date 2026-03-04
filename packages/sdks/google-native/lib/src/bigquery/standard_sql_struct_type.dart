@@ -10,20 +10,39 @@ class StandardSqlStructType {
 
   /// Creates a new [StandardSqlStructType].
   /// [fields] Fields within the struct.
-  StandardSqlStructType({
-    this.fields,
-  });
+  StandardSqlStructType({this.fields});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fields': ?pulumi.Input.mapOptionalInputValue<List<StandardSqlField>, List<Map<String, dynamic>>>(fields, (value) => pulumi.Input.encodeList<StandardSqlField, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'fields':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StandardSqlField>,
+            List<Map<String, dynamic>>
+          >(
+            fields,
+            (value) =>
+                pulumi.Input.encodeList<StandardSqlField, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory StandardSqlStructType.fromMap(Map<String, dynamic> map) {
     return StandardSqlStructType(
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<StandardSqlField>(map['fields']!, (value) => StandardSqlField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fields: (() {
+        final guardedValue = map['fields'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StandardSqlField>(
+            guardedValue,
+            (value) => StandardSqlField.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

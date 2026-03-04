@@ -7,6 +7,7 @@ import 'get_groups_group.dart';
 class GetGroupsResult {
   /// The list of groups under the provided customer or namespace. Structure is documented below.
   final List<GetGroupsGroup> groups;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String parent;
@@ -23,7 +24,10 @@ class GetGroupsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groups': pulumi.Input.encodeList<GetGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'groups': pulumi.Input.encodeList<GetGroupsGroup, Map<String, dynamic>>(
+        groups,
+        (value) => value.toMap(),
+      ),
       'id': id,
       'parent': parent,
     };
@@ -31,10 +35,13 @@ class GetGroupsResult {
 
   factory GetGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetGroupsResult(
-      groups: pulumi.Input.decodeList<GetGroupsGroup>(map['groups'], (value) => GetGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
+      groups: pulumi.Input.decodeList<GetGroupsGroup>(
+        map['groups']!,
+        (value) =>
+            GetGroupsGroup.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       parent: map['parent'] as String,
     );
   }
 }
-

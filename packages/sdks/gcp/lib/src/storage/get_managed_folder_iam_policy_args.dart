@@ -19,17 +19,13 @@ class GetManagedFolderIamPolicyArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': bucket,
-      'managedFolder': managedFolder,
-    };
+    return <String, dynamic>{'bucket': bucket, 'managedFolder': managedFolder};
   }
 
   factory GetManagedFolderIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedFolderIamPolicyArgs(
-      bucket: (map['bucket'] as String).input(),
-      managedFolder: (map['managedFolder'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      managedFolder: pulumi.Input.fromValue(map['managedFolder'] as String),
     );
   }
 }
-

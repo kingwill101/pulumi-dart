@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSiteCertificateArgs {
   /// Name of the certificate.
   final pulumi.Input<String> certificateName;
+
   /// Name of the site.
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetSiteCertificateArgs {
 
   factory GetSiteCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetSiteCertificateArgs(
-      certificateName: (map['certificateName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      certificateName: pulumi.Input.fromValue(map['certificateName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

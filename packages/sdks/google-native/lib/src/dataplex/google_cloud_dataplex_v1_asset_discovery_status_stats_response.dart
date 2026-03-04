@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponse {
   /// The count of data items within the referenced resource.
   final pulumi.Input<String> dataItems;
+
   /// The number of stored data bytes within the referenced resource.
   final pulumi.Input<String> dataSize;
+
   /// The count of fileset entities within the referenced resource.
   final pulumi.Input<String> filesets;
+
   /// The count of table entities within the referenced resource.
   final pulumi.Input<String> tables;
 
@@ -34,13 +37,14 @@ class GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponse {
     };
   }
 
-  factory GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponse(
-      dataItems: (map['dataItems'] as String).input(),
-      dataSize: (map['dataSize'] as String).input(),
-      filesets: (map['filesets'] as String).input(),
-      tables: (map['tables'] as String).input(),
+      dataItems: pulumi.Input.fromValue(map['dataItems'] as String),
+      dataSize: pulumi.Input.fromValue(map['dataSize'] as String),
+      filesets: pulumi.Input.fromValue(map['filesets'] as String),
+      tables: pulumi.Input.fromValue(map['tables'] as String),
     );
   }
 }
-

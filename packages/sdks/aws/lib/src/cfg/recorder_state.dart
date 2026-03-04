@@ -8,12 +8,16 @@ import 'recorder_recording_mode.dart';
 class RecorderState {
   /// The name of the recorder. Defaults to `default`. Changing it recreates the resource.
   final pulumi.Input<String>? name;
+
   /// Recording group - see below.
   final pulumi.Input<RecorderRecordingGroup>? recordingGroup;
+
   /// Recording mode - see below.
   final pulumi.Input<RecorderRecordingMode>? recordingMode;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Amazon Resource Name (ARN) of the IAM role. Used to make read or write requests to the delivery channel and to describe the AWS resources associated with the account. See [AWS Docs](http://docs.aws.amazon.com/config/latest/developerguide/iamrole-permissions.html) for more details.
   final pulumi.Input<String>? roleArn;
 
@@ -34,8 +38,16 @@ class RecorderState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'recordingGroup': ?pulumi.Input.mapOptionalInputValue<RecorderRecordingGroup, Map<String, dynamic>>(recordingGroup, (value) => value.toMap()),
-      'recordingMode': ?pulumi.Input.mapOptionalInputValue<RecorderRecordingMode, Map<String, dynamic>>(recordingMode, (value) => value.toMap()),
+      'recordingGroup':
+          ?pulumi.Input.mapOptionalInputValue<
+            RecorderRecordingGroup,
+            Map<String, dynamic>
+          >(recordingGroup, (value) => value.toMap()),
+      'recordingMode':
+          ?pulumi.Input.mapOptionalInputValue<
+            RecorderRecordingMode,
+            Map<String, dynamic>
+          >(recordingMode, (value) => value.toMap()),
       'region': ?region,
       'roleArn': ?roleArn,
     };
@@ -43,12 +55,39 @@ class RecorderState {
 
   factory RecorderState.fromMap(Map<String, dynamic> map) {
     return RecorderState(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      recordingGroup: map['recordingGroup'] == null ? null : ((RecorderRecordingGroup.fromMap((map['recordingGroup']! as Map).cast<String, dynamic>())).input()).input(),
-      recordingMode: map['recordingMode'] == null ? null : ((RecorderRecordingMode.fromMap((map['recordingMode']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recordingGroup: (() {
+        final guardedValue = map['recordingGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RecorderRecordingGroup.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      recordingMode: (() {
+        final guardedValue = map['recordingMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RecorderRecordingMode.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

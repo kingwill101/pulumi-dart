@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDefaultDatabaseModule {
   /// The configuration options for the module.
   final pulumi.Input<String> args;
+
   /// The name of the Managed Redis instance.
   final pulumi.Input<String> name;
+
   /// The version of the module.
   final pulumi.Input<String> version;
 
@@ -21,19 +23,14 @@ class GetDefaultDatabaseModule {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'args': args,
-      'name': name,
-      'version': version,
-    };
+    return <String, dynamic>{'args': args, 'name': name, 'version': version};
   }
 
   factory GetDefaultDatabaseModule.fromMap(Map<String, dynamic> map) {
     return GetDefaultDatabaseModule(
-      args: (map['args'] as String).input(),
-      name: (map['name'] as String).input(),
-      version: (map['version'] as String).input(),
+      args: pulumi.Input.fromValue(map['args'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

@@ -1,0 +1,6 @@
+name: awsx-dart-vpc-nodejs-vpc-ipv6-assignment
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX VPC IPv6 assignment example in Dart.

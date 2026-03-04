@@ -1,5 +1,3 @@
-library module_vpnaas;
-
 export 'vpnaas/endpoint_group.dart';
 export 'vpnaas/endpoint_group_args.dart';
 export 'vpnaas/endpoint_group_state.dart';

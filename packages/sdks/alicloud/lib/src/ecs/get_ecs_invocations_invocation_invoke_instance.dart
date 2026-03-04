@@ -5,32 +5,44 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsInvocationsInvocationInvokeInstance {
   /// The start time of the execution.
   final pulumi.Input<String> creationTime;
+
   /// The size of truncated and discarded text when the value of the Output response parameter exceeds 24 KB in size.
   final pulumi.Input<int> dropped;
   final pulumi.Input<String> errorCode;
+
   /// Details about the reason why the command failed to be sent or run.
   final pulumi.Input<String> errorInfo;
+
   /// The exit code of the execution.
   final pulumi.Input<int> exitCode;
+
   /// The end time of the execution.
   final pulumi.Input<String> finishTime;
+
   /// The ID of the instance.
   final pulumi.Input<String> instanceId;
   final pulumi.Input<String> instanceInvokeStatus;
+
   /// The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
   final pulumi.Input<String> invocationStatus;
+
   /// The output of the command.
   final pulumi.Input<String> output;
+
   /// The number of times that the command is run on the instance.
   final pulumi.Input<int> repeats;
+
   /// The time when the command started to be run on the instance.
   final pulumi.Input<String> startTime;
+
   /// The time when the command stopped being run on the instance. If you call the StopInvocation operation to manually stop the execution, the value is the time when you call the operation.
   final pulumi.Input<String> stopTime;
+
   /// Indicates whether the commands are to be automatically run.
   /// * `error_code	` - The code that indicates why the command failed to be sent or run.
   /// * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
   final pulumi.Input<bool> timed;
+
   /// The time when the execution state was updated.
   final pulumi.Input<String> updateTime;
 
@@ -88,24 +100,29 @@ class GetEcsInvocationsInvocationInvokeInstance {
     };
   }
 
-  factory GetEcsInvocationsInvocationInvokeInstance.fromMap(Map<String, dynamic> map) {
+  factory GetEcsInvocationsInvocationInvokeInstance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEcsInvocationsInvocationInvokeInstance(
-      creationTime: (map['creationTime'] as String).input(),
-      dropped: (map['dropped'] as int).input(),
-      errorCode: (map['errorCode'] as String).input(),
-      errorInfo: (map['errorInfo'] as String).input(),
-      exitCode: (map['exitCode'] as int).input(),
-      finishTime: (map['finishTime'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceInvokeStatus: (map['instanceInvokeStatus'] as String).input(),
-      invocationStatus: (map['invocationStatus'] as String).input(),
-      output: (map['output'] as String).input(),
-      repeats: (map['repeats'] as int).input(),
-      startTime: (map['startTime'] as String).input(),
-      stopTime: (map['stopTime'] as String).input(),
-      timed: (map['timed'] as bool).input(),
-      updateTime: (map['updateTime'] as String).input(),
+      creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
+      dropped: pulumi.Input.fromValue(map['dropped'] as int),
+      errorCode: pulumi.Input.fromValue(map['errorCode'] as String),
+      errorInfo: pulumi.Input.fromValue(map['errorInfo'] as String),
+      exitCode: pulumi.Input.fromValue(map['exitCode'] as int),
+      finishTime: pulumi.Input.fromValue(map['finishTime'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceInvokeStatus: pulumi.Input.fromValue(
+        map['instanceInvokeStatus'] as String,
+      ),
+      invocationStatus: pulumi.Input.fromValue(
+        map['invocationStatus'] as String,
+      ),
+      output: pulumi.Input.fromValue(map['output'] as String),
+      repeats: pulumi.Input.fromValue(map['repeats'] as int),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      stopTime: pulumi.Input.fromValue(map['stopTime'] as String),
+      timed: pulumi.Input.fromValue(map['timed'] as bool),
+      updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }
 }
-

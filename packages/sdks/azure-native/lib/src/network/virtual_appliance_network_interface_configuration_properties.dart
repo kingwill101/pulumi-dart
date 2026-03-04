@@ -15,14 +15,37 @@ class VirtualApplianceNetworkInterfaceConfigurationProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipConfigurations': ?pulumi.Input.mapOptionalInputValue<List<VirtualApplianceIPConfiguration>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<VirtualApplianceIPConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipConfigurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VirtualApplianceIPConfiguration>,
+            List<Map<String, dynamic>>
+          >(
+            ipConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualApplianceIPConfiguration,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory VirtualApplianceNetworkInterfaceConfigurationProperties.fromMap(Map<String, dynamic> map) {
+  factory VirtualApplianceNetworkInterfaceConfigurationProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualApplianceNetworkInterfaceConfigurationProperties(
-      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualApplianceIPConfiguration>(map['ipConfigurations']!, (value) => VirtualApplianceIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipConfigurations: (() {
+        final guardedValue = map['ipConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VirtualApplianceIPConfiguration>(
+            guardedValue,
+            (value) => VirtualApplianceIPConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

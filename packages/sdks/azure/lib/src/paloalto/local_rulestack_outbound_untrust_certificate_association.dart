@@ -205,11 +205,12 @@ import 'local_rulestack_outbound_untrust_certificate_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `PaloAltoNetworks.Cloudngfw` - 2022-08-29
-class LocalRulestackOutboundUntrustCertificateAssociation extends pulumi.CustomResource {
+class LocalRulestackOutboundUntrustCertificateAssociation
+    extends pulumi.CustomResource {
   /// The ID of the Certificate to use as the Outbound Untrust Certificate. Changing this forces a new Palo Alto Networks Rulestack Outbound Untrust Certificate Association to be created.
   late final pulumi.Output<String> certificateId;
 
@@ -222,12 +223,12 @@ class LocalRulestackOutboundUntrustCertificateAssociation extends pulumi.CustomR
     LocalRulestackOutboundUntrustCertificateAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:paloalto/localRulestackOutboundUntrustCertificateAssociation:LocalRulestackOutboundUntrustCertificateAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateId = registerOutput<String>('certificateId');
+         'azure:paloalto/localRulestackOutboundUntrustCertificateAssociation:LocalRulestackOutboundUntrustCertificateAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateId = registerOutput<String>('certificateId');
   }
 
   /// Gets an existing [LocalRulestackOutboundUntrustCertificateAssociation] resource's state with the given [name] and [id].
@@ -248,11 +249,11 @@ class LocalRulestackOutboundUntrustCertificateAssociation extends pulumi.CustomR
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:paloalto/localRulestackOutboundUntrustCertificateAssociation:LocalRulestackOutboundUntrustCertificateAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateId = registerOutput<String>('certificateId');
+         'azure:paloalto/localRulestackOutboundUntrustCertificateAssociation:LocalRulestackOutboundUntrustCertificateAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateId = registerOutput<String>('certificateId');
   }
 }

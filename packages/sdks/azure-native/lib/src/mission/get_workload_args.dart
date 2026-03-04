@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkloadArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the enclaveResource Resource
   final pulumi.Input<String> virtualEnclaveName;
+
   /// The name of the workloadResource Resource
   final pulumi.Input<String> workloadName;
 
@@ -34,10 +36,13 @@ class GetWorkloadArgs {
 
   factory GetWorkloadArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      virtualEnclaveName: (map['virtualEnclaveName'] as String).input(),
-      workloadName: (map['workloadName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      virtualEnclaveName: pulumi.Input.fromValue(
+        map['virtualEnclaveName'] as String,
+      ),
+      workloadName: pulumi.Input.fromValue(map['workloadName'] as String),
     );
   }
 }
-

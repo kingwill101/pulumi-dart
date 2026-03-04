@@ -1,5 +1,3 @@
-library module_sns;
-
 export 'sns/data_protection_policy.dart';
 export 'sns/data_protection_policy_args.dart';
 export 'sns/data_protection_policy_state.dart';

@@ -8,20 +8,21 @@ class VirtualMachinePropertiesResponseNetworkInterfaces {
 
   /// Creates a new [VirtualMachinePropertiesResponseNetworkInterfaces].
   /// [id] ID - Resource Id of the network interface
-  VirtualMachinePropertiesResponseNetworkInterfaces({
-    this.id,
-  });
+  VirtualMachinePropertiesResponseNetworkInterfaces({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
-  factory VirtualMachinePropertiesResponseNetworkInterfaces.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachinePropertiesResponseNetworkInterfaces.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachinePropertiesResponseNetworkInterfaces(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

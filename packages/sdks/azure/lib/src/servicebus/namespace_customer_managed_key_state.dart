@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceCustomerManagedKeyState {
   /// Used to specify whether enable Infrastructure Encryption. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? infrastructureEncryptionEnabled;
+
   /// The ID of the Key Vault Key which should be used to Encrypt the data in this Service Bus Namespace.
   final pulumi.Input<String>? keyVaultKeyId;
+
   /// The ID of the Service Bus namespace. Changing this forces a new resource to be created.
   final pulumi.Input<String>? namespaceId;
 
@@ -31,10 +33,21 @@ class NamespaceCustomerManagedKeyState {
 
   factory NamespaceCustomerManagedKeyState.fromMap(Map<String, dynamic> map) {
     return NamespaceCustomerManagedKeyState(
-      infrastructureEncryptionEnabled: map['infrastructureEncryptionEnabled'] == null ? null : (map['infrastructureEncryptionEnabled']! as bool).input(),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId']! as String).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
+      infrastructureEncryptionEnabled: (() {
+        final guardedValue = map['infrastructureEncryptionEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      keyVaultKeyId: (() {
+        final guardedValue = map['keyVaultKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceId: (() {
+        final guardedValue = map['namespaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

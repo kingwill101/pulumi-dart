@@ -167,22 +167,31 @@ import 'system_data_response.dart';
 class AvailabilitySet extends pulumi.CustomResource {
   /// Name of the availability set.
   late final pulumi.Output<String?> availabilitySetName;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// Gets or sets the location.
   late final pulumi.Output<String?> location;
+
   /// Resource Name
   late final pulumi.Output<String> name;
+
   /// Gets or sets the provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource Type
   late final pulumi.Output<String> type;
+
   /// ARM Id of the vmmServer resource in which this resource resides.
   late final pulumi.Output<String?> vmmServerId;
 
@@ -195,20 +204,22 @@ class AvailabilitySet extends pulumi.CustomResource {
     AvailabilitySetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:scvmm:AvailabilitySet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.availabilitySetName = registerOutput<String?>('availabilitySetName');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.location = registerOutput<String?>('location');
+         'azure-native:scvmm:AvailabilitySet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    availabilitySetName = registerOutput<String?>('availabilitySetName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.vmmServerId = registerOutput<String?>('vmmServerId');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    vmmServerId = registerOutput<String?>('vmmServerId');
   }
 }

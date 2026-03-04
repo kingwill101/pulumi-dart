@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NlpVerticalLimitSettingsResponse {
   /// Maximum Concurrent AutoML iterations.
   final pulumi.Input<int>? maxConcurrentTrials;
+
   /// Number of AutoML iterations.
   final pulumi.Input<int>? maxTrials;
+
   /// AutoML job timeout.
   final pulumi.Input<String>? timeout;
 
@@ -31,10 +33,21 @@ class NlpVerticalLimitSettingsResponse {
 
   factory NlpVerticalLimitSettingsResponse.fromMap(Map<String, dynamic> map) {
     return NlpVerticalLimitSettingsResponse(
-      maxConcurrentTrials: map['maxConcurrentTrials'] == null ? null : (map['maxConcurrentTrials']! as int).input(),
-      maxTrials: map['maxTrials'] == null ? null : (map['maxTrials']! as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      maxConcurrentTrials: (() {
+        final guardedValue = map['maxConcurrentTrials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxTrials: (() {
+        final guardedValue = map['maxTrials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

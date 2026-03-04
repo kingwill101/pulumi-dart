@@ -340,71 +340,104 @@ import 'web_app_assessment_v2_operation_args.dart';
 /// ```
 class WebAppAssessmentV2Operation extends pulumi.CustomResource {
   /// Gets or sets user configurable app service container database settings.
-  late final pulumi.Output<AppSvcContainerSettingsResponse?> appSvcContainerSettings;
+  late final pulumi.Output<AppSvcContainerSettingsResponse?>
+  appSvcContainerSettings;
+
   /// Gets or sets user configurable app service native settings.
   late final pulumi.Output<AppSvcNativeSettingsResponse?> appSvcNativeSettings;
+
   /// Assessment type of the assessment.
   late final pulumi.Output<String?> assessmentType;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Azure Location or Azure region where to which the machines will be migrated.
   late final pulumi.Output<String?> azureLocation;
+
   /// Azure Offer Code.
   late final pulumi.Output<String?> azureOfferCode;
+
   /// Gets or sets a value indicating azure security offering type.
   late final pulumi.Output<String?> azureSecurityOfferingType;
+
   /// Confidence Rating in Percentage.
   late final pulumi.Output<double?> confidenceRatingInPercentage;
+
   /// Date and Time when assessment was created.
   late final pulumi.Output<String> createdTimestamp;
+
   /// Currency in which prices should be reported.
   late final pulumi.Output<String?> currency;
+
   /// Custom discount percentage.
   late final pulumi.Output<double?> discountPercentage;
+
   /// Gets or sets user configurable discovered entity settings.
-  late final pulumi.Output<DiscoveredEntityLightSummaryResponse?> discoveredEntityLightSummary;
+  late final pulumi.Output<DiscoveredEntityLightSummaryResponse?>
+  discoveredEntityLightSummary;
+
   /// Gets or sets the Enterprise agreement subscription id.
   late final pulumi.Output<String?> eaSubscriptionId;
+
   /// Gets or sets the duration for which the entity (Web app, VMs) are up in the
   /// on-premises environment.
   late final pulumi.Output<EntityUptimeResponse?> entityUptime;
+
   /// Gets or sets user configurable setting to display the environment type.
   late final pulumi.Output<String?> environmentType;
+
   /// Gets the group type for the assessment.
   late final pulumi.Output<String?> groupType;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Percentile of the utilization data values to be considered while assessing
   /// machines.
   late final pulumi.Output<String?> percentile;
+
   /// Gets or sets the end time to consider performance data for assessment.
   late final pulumi.Output<String?> perfDataEndTime;
+
   /// Gets or sets the start time to consider performance data for assessment.
   late final pulumi.Output<String?> perfDataStartTime;
+
   /// Last time when rates were queried.
   late final pulumi.Output<String> pricesTimestamp;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// Reserved instance.
   late final pulumi.Output<String?> reservedInstance;
+
   /// Percentage of buffer that user wants on performance metrics when recommending
   /// Azure sizes.
   late final pulumi.Output<double?> scalingFactor;
+
   /// Schema version.
   late final pulumi.Output<String> schemaVersion;
+
   /// Assessment sizing criterion.
   late final pulumi.Output<String?> sizingCriterion;
+
   /// User configurable setting to display the Stage of Assessment.
   late final pulumi.Output<String> stage;
+
   /// Whether assessment is in valid state and all machines have been assessed.
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Time Range for which the historic utilization data should be considered for
   /// assessment.
   late final pulumi.Output<String?> timeRange;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Date and Time when assessment was last updated.
   late final pulumi.Output<String> updatedTimestamp;
 
@@ -417,42 +450,53 @@ class WebAppAssessmentV2Operation extends pulumi.CustomResource {
     WebAppAssessmentV2OperationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:WebAppAssessmentV2Operation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appSvcContainerSettings = registerOutput<AppSvcContainerSettingsResponse?>('appSvcContainerSettings');
-    this.appSvcNativeSettings = registerOutput<AppSvcNativeSettingsResponse?>('appSvcNativeSettings');
-    this.assessmentType = registerOutput<String?>('assessmentType');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.azureLocation = registerOutput<String?>('azureLocation');
-    this.azureOfferCode = registerOutput<String?>('azureOfferCode');
-    this.azureSecurityOfferingType = registerOutput<String?>('azureSecurityOfferingType');
-    this.confidenceRatingInPercentage = registerOutput<double?>('confidenceRatingInPercentage');
-    this.createdTimestamp = registerOutput<String>('createdTimestamp');
-    this.currency = registerOutput<String?>('currency');
-    this.discountPercentage = registerOutput<double?>('discountPercentage');
-    this.discoveredEntityLightSummary = registerOutput<DiscoveredEntityLightSummaryResponse?>('discoveredEntityLightSummary');
-    this.eaSubscriptionId = registerOutput<String?>('eaSubscriptionId');
-    this.entityUptime = registerOutput<EntityUptimeResponse?>('entityUptime');
-    this.environmentType = registerOutput<String?>('environmentType');
-    this.groupType = registerOutput<String?>('groupType');
+         'azure-native:migrate:WebAppAssessmentV2Operation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appSvcContainerSettings = registerOutput<AppSvcContainerSettingsResponse?>(
+      'appSvcContainerSettings',
+    );
+    appSvcNativeSettings = registerOutput<AppSvcNativeSettingsResponse?>(
+      'appSvcNativeSettings',
+    );
+    assessmentType = registerOutput<String?>('assessmentType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureLocation = registerOutput<String?>('azureLocation');
+    azureOfferCode = registerOutput<String?>('azureOfferCode');
+    azureSecurityOfferingType = registerOutput<String?>(
+      'azureSecurityOfferingType',
+    );
+    confidenceRatingInPercentage = registerOutput<double?>(
+      'confidenceRatingInPercentage',
+    );
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    currency = registerOutput<String?>('currency');
+    discountPercentage = registerOutput<double?>('discountPercentage');
+    discoveredEntityLightSummary =
+        registerOutput<DiscoveredEntityLightSummaryResponse?>(
+          'discoveredEntityLightSummary',
+        );
+    eaSubscriptionId = registerOutput<String?>('eaSubscriptionId');
+    entityUptime = registerOutput<EntityUptimeResponse?>('entityUptime');
+    environmentType = registerOutput<String?>('environmentType');
+    groupType = registerOutput<String?>('groupType');
     this.name = registerOutput<String>('name');
-    this.percentile = registerOutput<String?>('percentile');
-    this.perfDataEndTime = registerOutput<String?>('perfDataEndTime');
-    this.perfDataStartTime = registerOutput<String?>('perfDataStartTime');
-    this.pricesTimestamp = registerOutput<String>('pricesTimestamp');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.reservedInstance = registerOutput<String?>('reservedInstance');
-    this.scalingFactor = registerOutput<double?>('scalingFactor');
-    this.schemaVersion = registerOutput<String>('schemaVersion');
-    this.sizingCriterion = registerOutput<String?>('sizingCriterion');
-    this.stage = registerOutput<String>('stage');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.timeRange = registerOutput<String?>('timeRange');
-    this.type = registerOutput<String>('type');
-    this.updatedTimestamp = registerOutput<String>('updatedTimestamp');
+    percentile = registerOutput<String?>('percentile');
+    perfDataEndTime = registerOutput<String?>('perfDataEndTime');
+    perfDataStartTime = registerOutput<String?>('perfDataStartTime');
+    pricesTimestamp = registerOutput<String>('pricesTimestamp');
+    provisioningState = registerOutput<String>('provisioningState');
+    reservedInstance = registerOutput<String?>('reservedInstance');
+    scalingFactor = registerOutput<double?>('scalingFactor');
+    schemaVersion = registerOutput<String>('schemaVersion');
+    sizingCriterion = registerOutput<String?>('sizingCriterion');
+    stage = registerOutput<String>('stage');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    timeRange = registerOutput<String?>('timeRange');
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
   }
 }

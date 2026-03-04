@@ -343,12 +343,17 @@ import 'system_data_response.dart';
 class ManagedEnvironmentsStorage extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Storage properties
-  late final pulumi.Output<ManagedEnvironmentStorageResponseProperties> properties;
+  late final pulumi.Output<ManagedEnvironmentStorageResponseProperties>
+  properties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -361,15 +366,17 @@ class ManagedEnvironmentsStorage extends pulumi.CustomResource {
     ManagedEnvironmentsStorageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:app:ManagedEnvironmentsStorage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:app:ManagedEnvironmentsStorage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ManagedEnvironmentStorageResponseProperties>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ManagedEnvironmentStorageResponseProperties>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

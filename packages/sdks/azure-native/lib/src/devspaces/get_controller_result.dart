@@ -6,26 +6,37 @@ import 'sku_response.dart';
 class GetControllerResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// DNS name for accessing DataPlane services
   final String dataPlaneFqdn;
+
   /// DNS suffix for public endpoints running in the Azure Dev Spaces Controller.
   final String hostSuffix;
+
   /// Fully qualified resource Id for the resource.
   final String id;
+
   /// Region where the Azure resource is located.
   final String location;
+
   /// The name of the resource.
   final String name;
+
   /// Provisioning state of the Azure Dev Spaces Controller.
   final String provisioningState;
+
   /// Model representing SKU for Azure Dev Spaces Controller.
   final SkuResponse sku;
+
   /// Tags for the Azure resource.
   final Map<String, String>? tags;
+
   /// DNS of the target container host's API server
   final String targetContainerHostApiServerFqdn;
+
   /// Resource ID of the target container host
   final String targetContainerHostResourceId;
+
   /// The type of the resource.
   final String type;
 
@@ -83,12 +94,17 @@ class GetControllerResult {
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sku: SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      targetContainerHostApiServerFqdn: map['targetContainerHostApiServerFqdn'] as String,
-      targetContainerHostResourceId: map['targetContainerHostResourceId'] as String,
+      sku: SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      targetContainerHostApiServerFqdn:
+          map['targetContainerHostApiServerFqdn'] as String,
+      targetContainerHostResourceId:
+          map['targetContainerHostResourceId'] as String,
       type: map['type'] as String,
     );
   }
 }
-

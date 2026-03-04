@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RequestsBasedTriggerResponse {
   /// Request Count.
   final pulumi.Input<int>? count;
+
   /// Time interval.
   final pulumi.Input<String>? timeInterval;
 
   /// Creates a new [RequestsBasedTriggerResponse].
   /// [count] Request Count.
   /// [timeInterval] Time interval.
-  RequestsBasedTriggerResponse({
-    this.count,
-    this.timeInterval,
-  });
+  RequestsBasedTriggerResponse({this.count, this.timeInterval});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': ?count,
-      'timeInterval': ?timeInterval,
-    };
+    return <String, dynamic>{'count': ?count, 'timeInterval': ?timeInterval};
   }
 
   factory RequestsBasedTriggerResponse.fromMap(Map<String, dynamic> map) {
     return RequestsBasedTriggerResponse(
-      count: map['count'] == null ? null : (map['count']! as int).input(),
-      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval']! as String).input(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timeInterval: (() {
+        final guardedValue = map['timeInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

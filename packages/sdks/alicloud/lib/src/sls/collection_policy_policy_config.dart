@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CollectionPolicyPolicyConfig {
   /// The set of instance IDs. This parameter is valid only when resourceMode is set to instanceMode. Only instances whose IDs are included in this set are collected.
   final pulumi.Input<List<String>>? instanceIds;
+
   /// The set of regions to which instances belong. This parameter is valid only when resourceMode is set to attributeMode and supports wildcards. If the region set filter is an empty array, no region-based filtering is applied, and all instances satisfy the region condition. Otherwise, only instances whose region attribute is included in this region set are collected. The region set and resource tags work together. An instance is collected only if it satisfies both conditions.
   final pulumi.Input<List<String>>? regions;
+
   /// Resource collection mode. If set to all, all instances under the account are collected into the default Logstore. If set to attributeMode, instances are filtered based on their region attributes and resource tags. If set to instanceMode, instances are filtered by their instance IDs.
   final pulumi.Input<String> resourceMode;
+
   /// Resource tags. This parameter is valid only when resourceMode is set to attributeMode.
   /// If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
   /// Resource tags and the region set of the instance work together. An instance is collected only if it satisfies both conditions.
@@ -37,11 +40,24 @@ class CollectionPolicyPolicyConfig {
 
   factory CollectionPolicyPolicyConfig.fromMap(Map<String, dynamic> map) {
     return CollectionPolicyPolicyConfig(
-      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds']! as List).cast<String>()).input(),
-      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
-      resourceMode: (map['resourceMode'] as String).input(),
-      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags']! as Map).cast<String, String>()).input(),
+      instanceIds: (() {
+        final guardedValue = map['instanceIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      regions: (() {
+        final guardedValue = map['regions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      resourceMode: pulumi.Input.fromValue(map['resourceMode'] as String),
+      resourceTags: (() {
+        final guardedValue = map['resourceTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

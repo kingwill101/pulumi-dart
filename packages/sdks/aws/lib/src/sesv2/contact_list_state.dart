@@ -6,21 +6,28 @@ import 'contact_list_topic.dart';
 /// Input properties used for looking up and filtering ContactList resources.
 class ContactListState {
   final pulumi.Input<String>? arn;
+
   /// Name of the contact list.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? contactListName;
+
   /// Timestamp noting when the contact list was created in ISO 8601 format.
   final pulumi.Input<String>? createdTimestamp;
+
   /// Description of what the contact list is about.
   final pulumi.Input<String>? description;
+
   /// Timestamp noting the last time the contact list was updated in ISO 8601 format.
   final pulumi.Input<String>? lastUpdatedTimestamp;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value map of resource tags for the contact list. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// Configuration block(s) with topic for the contact list. Detailed below.
   final pulumi.Input<List<ContactListTopic>>? topics;
 
@@ -56,22 +63,79 @@ class ContactListState {
       'region': ?region,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'topics': ?pulumi.Input.mapOptionalInputValue<List<ContactListTopic>, List<Map<String, dynamic>>>(topics, (value) => pulumi.Input.encodeList<ContactListTopic, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'topics':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ContactListTopic>,
+            List<Map<String, dynamic>>
+          >(
+            topics,
+            (value) =>
+                pulumi.Input.encodeList<ContactListTopic, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory ContactListState.fromMap(Map<String, dynamic> map) {
     return ContactListState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      contactListName: map['contactListName'] == null ? null : ((map['contactListName'] as String).input()).input(),
-      createdTimestamp: map['createdTimestamp'] == null ? null : ((map['createdTimestamp'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      lastUpdatedTimestamp: map['lastUpdatedTimestamp'] == null ? null : ((map['lastUpdatedTimestamp'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      topics: map['topics'] == null ? null : ((pulumi.Input.decodeList<ContactListTopic>(map['topics']!, (value) => ContactListTopic.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contactListName: (() {
+        final guardedValue = map['contactListName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdTimestamp: (() {
+        final guardedValue = map['createdTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastUpdatedTimestamp: (() {
+        final guardedValue = map['lastUpdatedTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      topics: (() {
+        final guardedValue = map['topics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ContactListTopic>(
+            guardedValue,
+            (value) => ContactListTopic.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

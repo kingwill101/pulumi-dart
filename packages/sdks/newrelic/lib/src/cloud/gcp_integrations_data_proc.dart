@@ -8,20 +8,19 @@ class GcpIntegrationsDataProc {
 
   /// Creates a new [GcpIntegrationsDataProc].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsDataProc({
-    this.metricsPollingInterval,
-  });
+  GcpIntegrationsDataProc({this.metricsPollingInterval});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'metricsPollingInterval': ?metricsPollingInterval,
-    };
+    return <String, dynamic>{'metricsPollingInterval': ?metricsPollingInterval};
   }
 
   factory GcpIntegrationsDataProc.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsDataProc(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
+      metricsPollingInterval: (() {
+        final guardedValue = map['metricsPollingInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

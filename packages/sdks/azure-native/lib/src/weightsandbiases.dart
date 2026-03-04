@@ -1,5 +1,3 @@
-library module_weightsandbiases;
-
 export 'weightsandbiases/functions.dart';
 export 'weightsandbiases/get_instance_args.dart';
 export 'weightsandbiases/get_instance_result.dart';

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDpsSharedAccessPolicyArgs {
   /// Specifies the name of the IoT Hub Device Provisioning service to which the Shared Access Policy belongs.
   final pulumi.Input<String> iothubDpsName;
+
   /// Specifies the name of the IotHub Shared Access Policy.
   final pulumi.Input<String> name;
+
   /// Specifies the name of the resource group under which the IotHub Shared Access Policy resource exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetDpsSharedAccessPolicyArgs {
 
   factory GetDpsSharedAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDpsSharedAccessPolicyArgs(
-      iothubDpsName: (map['iothubDpsName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      iothubDpsName: pulumi.Input.fromValue(map['iothubDpsName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

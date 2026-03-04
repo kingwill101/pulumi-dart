@@ -1,5 +1,3 @@
-library module_waf;
-
 export 'waf/functions.dart';
 export 'waf/get_firewall_policy_args.dart';
 export 'waf/get_firewall_policy_result.dart';

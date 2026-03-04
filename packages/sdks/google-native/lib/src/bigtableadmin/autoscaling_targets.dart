@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutoscalingTargets {
   /// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error.
   final pulumi.Input<int>? cpuUtilizationPercent;
+
   /// The storage utilization that the Autoscaler should be trying to achieve. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16TiB) for an HDD cluster, otherwise it will return INVALID_ARGUMENT error. If this value is set to 0, it will be treated as if it were set to the default value: 2560 for SSD, 8192 for HDD.
   final pulumi.Input<int>? storageUtilizationGibPerNode;
 
@@ -26,9 +27,16 @@ class AutoscalingTargets {
 
   factory AutoscalingTargets.fromMap(Map<String, dynamic> map) {
     return AutoscalingTargets(
-      cpuUtilizationPercent: map['cpuUtilizationPercent'] == null ? null : (map['cpuUtilizationPercent']! as int).input(),
-      storageUtilizationGibPerNode: map['storageUtilizationGibPerNode'] == null ? null : (map['storageUtilizationGibPerNode']! as int).input(),
+      cpuUtilizationPercent: (() {
+        final guardedValue = map['cpuUtilizationPercent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      storageUtilizationGibPerNode: (() {
+        final guardedValue = map['storageUtilizationGibPerNode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

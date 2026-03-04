@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnConnectionRouteState {
   /// The CIDR block associated with the local subnet of the customer network.
   final pulumi.Input<String>? destinationCidrBlock;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the VPN connection.
   final pulumi.Input<String>? vpnConnectionId;
 
@@ -31,10 +33,21 @@ class VpnConnectionRouteState {
 
   factory VpnConnectionRouteState.fromMap(Map<String, dynamic> map) {
     return VpnConnectionRouteState(
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : ((map['destinationCidrBlock'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      vpnConnectionId: map['vpnConnectionId'] == null ? null : ((map['vpnConnectionId'] as String).input()).input(),
+      destinationCidrBlock: (() {
+        final guardedValue = map['destinationCidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpnConnectionId: (() {
+        final guardedValue = map['vpnConnectionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -20,20 +20,28 @@ import 'system_data_response.dart';
 class Grafana extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The managed identity of the grafana resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The geo-location where the grafana resource lives
   late final pulumi.Output<String?> location;
+
   /// Name of the grafana resource.
   late final pulumi.Output<String> name;
+
   /// Properties specific to the grafana resource.
   late final pulumi.Output<ManagedGrafanaPropertiesResponse> properties;
+
   /// The Sku of the grafana resource.
   late final pulumi.Output<ResourceSkuResponse?> sku;
+
   /// The system meta data relating to this grafana resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The tags for grafana resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the grafana resource.
   late final pulumi.Output<String> type;
 
@@ -46,19 +54,19 @@ class Grafana extends pulumi.CustomResource {
     GrafanaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dashboard:Grafana',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+         'azure-native:dashboard:Grafana',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ManagedGrafanaPropertiesResponse>('properties');
-    this.sku = registerOutput<ResourceSkuResponse?>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ManagedGrafanaPropertiesResponse>('properties');
+    sku = registerOutput<ResourceSkuResponse?>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSnapshotArgs {
   /// The human-readable description of the snapshot.
   final pulumi.Input<String>? description;
+
   /// The name of the snapshot.
   final pulumi.Input<String>? name;
+
   /// The region in which to obtain the V2 Shared File System client.
   final pulumi.Input<String>? region;
+
   /// The UUID of the source share that was used to create the snapshot.
   final pulumi.Input<String>? shareId;
+
   /// A snapshot status filter. A valid value is `available`, `error`,
   /// `creating`, `deleting`, `manage_starting`, `manage_error`, `unmanage_starting`,
   /// `unmanage_error` or `error_deleting`.
@@ -46,12 +50,31 @@ class GetSnapshotArgs {
 
   factory GetSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      shareId: map['shareId'] == null ? null : (map['shareId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shareId: (() {
+        final guardedValue = map['shareId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

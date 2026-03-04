@@ -9,20 +9,21 @@ class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor {
 
   /// Creates a new [WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor].
   /// [pemCertificate] PEM certificate of the PKI used for validation. Must only contain one
-  WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor({
-    this.pemCertificate,
-  });
+  WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor({this.pemCertificate});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pemCertificate': ?pemCertificate,
-    };
+    return <String, dynamic>{'pemCertificate': ?pemCertificate};
   }
 
-  factory WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor.fromMap(Map<String, dynamic> map) {
+  factory WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor(
-      pemCertificate: map['pemCertificate'] == null ? null : (map['pemCertificate']! as String).input(),
+      pemCertificate: (() {
+        final guardedValue = map['pemCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

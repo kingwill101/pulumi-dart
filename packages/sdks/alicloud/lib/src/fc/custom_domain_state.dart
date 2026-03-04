@@ -8,18 +8,25 @@ import 'custom_domain_route_config.dart';
 class CustomDomainState {
   /// The account id.
   final pulumi.Input<String>? accountId;
+
   /// The api version of Function Compute.
   final pulumi.Input<String>? apiVersion;
+
   /// The configuration of HTTPS certificate.See `cert_config` below.
   final pulumi.Input<CustomDomainCertConfig>? certConfig;
+
   /// The date this resource was created.
   final pulumi.Input<String>? createdTime;
+
   /// The custom domain name. For example, "example.com".
   final pulumi.Input<String>? domainName;
+
   /// The date this resource was last modified.
   final pulumi.Input<String>? lastModifiedTime;
+
   /// The protocol, `HTTP` or `HTTP,HTTPS`.
   final pulumi.Input<String>? protocol;
+
   /// The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
   final pulumi.Input<List<CustomDomainRouteConfig>>? routeConfigs;
 
@@ -47,26 +54,83 @@ class CustomDomainState {
     return <String, dynamic>{
       'accountId': ?accountId,
       'apiVersion': ?apiVersion,
-      'certConfig': ?pulumi.Input.mapOptionalInputValue<CustomDomainCertConfig, Map<String, dynamic>>(certConfig, (value) => value.toMap()),
+      'certConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomDomainCertConfig,
+            Map<String, dynamic>
+          >(certConfig, (value) => value.toMap()),
       'createdTime': ?createdTime,
       'domainName': ?domainName,
       'lastModifiedTime': ?lastModifiedTime,
       'protocol': ?protocol,
-      'routeConfigs': ?pulumi.Input.mapOptionalInputValue<List<CustomDomainRouteConfig>, List<Map<String, dynamic>>>(routeConfigs, (value) => pulumi.Input.encodeList<CustomDomainRouteConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routeConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CustomDomainRouteConfig>,
+            List<Map<String, dynamic>>
+          >(
+            routeConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CustomDomainRouteConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory CustomDomainState.fromMap(Map<String, dynamic> map) {
     return CustomDomainState(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      certConfig: map['certConfig'] == null ? null : (CustomDomainCertConfig.fromMap((map['certConfig']! as Map).cast<String, dynamic>())).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime']! as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      routeConfigs: map['routeConfigs'] == null ? null : (pulumi.Input.decodeList<CustomDomainRouteConfig>(map['routeConfigs']!, (value) => CustomDomainRouteConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certConfig: (() {
+        final guardedValue = map['certConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CustomDomainCertConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      createdTime: (() {
+        final guardedValue = map['createdTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastModifiedTime: (() {
+        final guardedValue = map['lastModifiedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeConfigs: (() {
+        final guardedValue = map['routeConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CustomDomainRouteConfig>(
+            guardedValue,
+            (value) => CustomDomainRouteConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

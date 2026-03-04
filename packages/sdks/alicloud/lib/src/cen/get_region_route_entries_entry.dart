@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionRouteEntriesEntry {
   /// The destination CIDR block of the route entry.
   final pulumi.Input<String> cidrBlock;
+
   /// ID of the next hop.
   final pulumi.Input<String> nextHopId;
+
   /// ID of the region where the next hop is located.
   final pulumi.Input<String> nextHopRegionId;
+
   /// Type of the next hop.
   final pulumi.Input<String> nextHopType;
+
   /// Type of the route entry.
   final pulumi.Input<String> type;
 
@@ -40,12 +44,11 @@ class GetRegionRouteEntriesEntry {
 
   factory GetRegionRouteEntriesEntry.fromMap(Map<String, dynamic> map) {
     return GetRegionRouteEntriesEntry(
-      cidrBlock: (map['cidrBlock'] as String).input(),
-      nextHopId: (map['nextHopId'] as String).input(),
-      nextHopRegionId: (map['nextHopRegionId'] as String).input(),
-      nextHopType: (map['nextHopType'] as String).input(),
-      type: (map['type'] as String).input(),
+      cidrBlock: pulumi.Input.fromValue(map['cidrBlock'] as String),
+      nextHopId: pulumi.Input.fromValue(map['nextHopId'] as String),
+      nextHopRegionId: pulumi.Input.fromValue(map['nextHopRegionId'] as String),
+      nextHopType: pulumi.Input.fromValue(map['nextHopType'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

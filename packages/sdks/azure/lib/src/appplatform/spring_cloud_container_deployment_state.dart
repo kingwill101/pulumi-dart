@@ -7,26 +7,37 @@ import 'spring_cloud_container_deployment_quota.dart';
 class SpringCloudContainerDeploymentState {
   /// A JSON object that contains the addon configurations of the Spring Cloud Container Deployment.
   final pulumi.Input<String>? addonJson;
+
   /// Specifies a list of Spring Cloud Application Performance Monitoring IDs.
   final pulumi.Input<List<String>>? applicationPerformanceMonitoringIds;
+
   /// Specifies the arguments to the entrypoint. The docker image's `CMD` is used if not specified.
   final pulumi.Input<List<String>>? arguments;
+
   /// Specifies the entrypoint array. It will not be executed within a shell. The docker image's `ENTRYPOINT` is used if not specified.
   final pulumi.Input<List<String>>? commands;
+
   /// Specifies the environment variables of the Spring Cloud Deployment as a map of key-value pairs.
   final pulumi.Input<Map<String, String>>? environmentVariables;
-  /// Container image of the custom container. This should be in the form of `<repository>:<tag>` without the server name of the registry.
+
+  /// Container image of the custom container. This should be in the form of `&lt;repository&gt;:&lt;tag&gt;` without the server name of the registry.
   final pulumi.Input<String>? image;
+
   /// Specifies the required instance count of the Spring Cloud Deployment. Possible Values are between `1` and `500`. Defaults to `1` if not specified.
   final pulumi.Input<int>? instanceCount;
+
   /// Specifies the language framework of the container image. The only possible value is `springboot`.
   final pulumi.Input<String>? languageFramework;
+
   /// The name which should be used for this Spring Cloud Container Deployment. Changing this forces a new Spring Cloud Container Deployment to be created.
   final pulumi.Input<String>? name;
+
   /// A `quota` block as defined below.
   final pulumi.Input<SpringCloudContainerDeploymentQuota>? quota;
+
   /// The name of the registry that contains the container image.
   final pulumi.Input<String>? server;
+
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Container Deployment to be created.
   final pulumi.Input<String>? springCloudAppId;
 
@@ -36,7 +47,7 @@ class SpringCloudContainerDeploymentState {
   /// [arguments] Specifies the arguments to the entrypoint. The docker image's `CMD` is used if not specified.
   /// [commands] Specifies the entrypoint array. It will not be executed within a shell. The docker image's `ENTRYPOINT` is used if not specified.
   /// [environmentVariables] Specifies the environment variables of the Spring Cloud Deployment as a map of key-value pairs.
-  /// [image] Container image of the custom container. This should be in the form of `<repository>:<tag>` without the server name of the registry.
+  /// [image] Container image of the custom container. This should be in the form of `&lt;repository&gt;:&lt;tag&gt;` without the server name of the registry.
   /// [instanceCount] Specifies the required instance count of the Spring Cloud Deployment. Possible Values are between `1` and `500`. Defaults to `1` if not specified.
   /// [languageFramework] Specifies the language framework of the container image. The only possible value is `springboot`.
   /// [name] The name which should be used for this Spring Cloud Container Deployment. Changing this forces a new Spring Cloud Container Deployment to be created.
@@ -61,7 +72,8 @@ class SpringCloudContainerDeploymentState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addonJson': ?addonJson,
-      'applicationPerformanceMonitoringIds': ?applicationPerformanceMonitoringIds,
+      'applicationPerformanceMonitoringIds':
+          ?applicationPerformanceMonitoringIds,
       'arguments': ?arguments,
       'commands': ?commands,
       'environmentVariables': ?environmentVariables,
@@ -69,27 +81,86 @@ class SpringCloudContainerDeploymentState {
       'instanceCount': ?instanceCount,
       'languageFramework': ?languageFramework,
       'name': ?name,
-      'quota': ?pulumi.Input.mapOptionalInputValue<SpringCloudContainerDeploymentQuota, Map<String, dynamic>>(quota, (value) => value.toMap()),
+      'quota':
+          ?pulumi.Input.mapOptionalInputValue<
+            SpringCloudContainerDeploymentQuota,
+            Map<String, dynamic>
+          >(quota, (value) => value.toMap()),
       'server': ?server,
       'springCloudAppId': ?springCloudAppId,
     };
   }
 
-  factory SpringCloudContainerDeploymentState.fromMap(Map<String, dynamic> map) {
+  factory SpringCloudContainerDeploymentState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpringCloudContainerDeploymentState(
-      addonJson: map['addonJson'] == null ? null : (map['addonJson']! as String).input(),
-      applicationPerformanceMonitoringIds: map['applicationPerformanceMonitoringIds'] == null ? null : ((map['applicationPerformanceMonitoringIds']! as List).cast<String>()).input(),
-      arguments: map['arguments'] == null ? null : ((map['arguments']! as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables']! as Map).cast<String, String>()).input(),
-      image: map['image'] == null ? null : (map['image']! as String).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
-      languageFramework: map['languageFramework'] == null ? null : (map['languageFramework']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      quota: map['quota'] == null ? null : (SpringCloudContainerDeploymentQuota.fromMap((map['quota']! as Map).cast<String, dynamic>())).input(),
-      server: map['server'] == null ? null : (map['server']! as String).input(),
-      springCloudAppId: map['springCloudAppId'] == null ? null : (map['springCloudAppId']! as String).input(),
+      addonJson: (() {
+        final guardedValue = map['addonJson'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      applicationPerformanceMonitoringIds: (() {
+        final guardedValue = map['applicationPerformanceMonitoringIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      arguments: (() {
+        final guardedValue = map['arguments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      commands: (() {
+        final guardedValue = map['commands'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      environmentVariables: (() {
+        final guardedValue = map['environmentVariables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      image: (() {
+        final guardedValue = map['image'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceCount: (() {
+        final guardedValue = map['instanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      languageFramework: (() {
+        final guardedValue = map['languageFramework'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      quota: (() {
+        final guardedValue = map['quota'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SpringCloudContainerDeploymentQuota.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      server: (() {
+        final guardedValue = map['server'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      springCloudAppId: (() {
+        final guardedValue = map['springCloudAppId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

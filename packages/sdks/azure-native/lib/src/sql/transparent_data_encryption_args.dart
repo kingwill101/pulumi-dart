@@ -10,12 +10,16 @@ import 'transparent_data_encryption_state.dart';
 class TransparentDataEncryptionArgs {
   /// The name of the logical database for which the security alert policy is defined.
   final pulumi.Input<String> databaseName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
+
   /// Specifies the state of the transparent data encryption.
   final pulumi.Input<TransparentDataEncryptionState> state;
+
   /// The name of the transparent data encryption configuration.
   final pulumi.Input<String>? tdeName;
 
@@ -38,19 +42,30 @@ class TransparentDataEncryptionArgs {
       'databaseName': databaseName,
       'resourceGroupName': resourceGroupName,
       'serverName': serverName,
-      'state': pulumi.Input.mapInputValue<TransparentDataEncryptionState, String>(state, (value) => value.value),
+      'state':
+          pulumi.Input.mapInputValue<TransparentDataEncryptionState, String>(
+            state,
+            (value) => value.wireValue,
+          ),
       'tdeName': ?tdeName,
     };
   }
 
   factory TransparentDataEncryptionArgs.fromMap(Map<String, dynamic> map) {
     return TransparentDataEncryptionArgs(
-      databaseName: (map['databaseName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      state: (TransparentDataEncryptionState.fromValue(map['state'] as String)).input(),
-      tdeName: map['tdeName'] == null ? null : (map['tdeName']! as String).input(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      state: pulumi.Input.fromValue(
+        TransparentDataEncryptionState.fromValue(map['state']! as String),
+      ),
+      tdeName: (() {
+        final guardedValue = map['tdeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,8 +7,12 @@ import 'google_cloud_beyondcorp_appconnections_v1_app_connection_gateway_type.da
 class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
   /// AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
   final pulumi.Input<String> appGateway;
+
   /// The type of hosting used by the gateway.
-  final pulumi.Input<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType> type;
+  final pulumi.Input<
+    GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType
+  >
+  type;
 
   /// Creates a new [GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway].
   /// [appGateway] AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
@@ -21,15 +25,24 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appGateway': appGateway,
-      'type': pulumi.Input.mapInputValue<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType, String>(type, (value) => value.value),
+      'type':
+          pulumi.Input.mapInputValue<
+            GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType,
+            String
+          >(type, (value) => value.wireValue),
     };
   }
 
-  factory GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway(
-      appGateway: (map['appGateway'] as String).input(),
-      type: (GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType.fromValue(map['type'] as String)).input(),
+      appGateway: pulumi.Input.fromValue(map['appGateway'] as String),
+      type: pulumi.Input.fromValue(
+        GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType.fromValue(
+          map['type']! as String,
+        ),
+      ),
     );
   }
 }
-

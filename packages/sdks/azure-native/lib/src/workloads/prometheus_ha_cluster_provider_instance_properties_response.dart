@@ -6,17 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrometheusHaClusterProviderInstancePropertiesResponse {
   /// Gets or sets the clusterName.
   final pulumi.Input<String>? clusterName;
+
   /// Gets or sets the target machine name.
   final pulumi.Input<String>? hostname;
+
   /// URL of the Node Exporter endpoint.
   final pulumi.Input<String>? prometheusUrl;
+
   /// The provider type. For example, the value can be SapHana.
   /// Expected value is 'PrometheusHaCluster'.
   final pulumi.Input<String> providerType;
+
   /// Gets or sets the cluster sid.
   final pulumi.Input<String>? sid;
+
   /// Gets or sets the blob URI to SSL certificate for the HA cluster exporter.
   final pulumi.Input<String>? sslCertificateUri;
+
   /// Gets or sets certificate preference if secure communication is enabled.
   final pulumi.Input<String>? sslPreference;
 
@@ -50,16 +56,41 @@ class PrometheusHaClusterProviderInstancePropertiesResponse {
     };
   }
 
-  factory PrometheusHaClusterProviderInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory PrometheusHaClusterProviderInstancePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrometheusHaClusterProviderInstancePropertiesResponse(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
-      prometheusUrl: map['prometheusUrl'] == null ? null : (map['prometheusUrl']! as String).input(),
-      providerType: (map['providerType'] as String).input(),
-      sid: map['sid'] == null ? null : (map['sid']! as String).input(),
-      sslCertificateUri: map['sslCertificateUri'] == null ? null : (map['sslCertificateUri']! as String).input(),
-      sslPreference: map['sslPreference'] == null ? null : (map['sslPreference']! as String).input(),
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostname: (() {
+        final guardedValue = map['hostname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prometheusUrl: (() {
+        final guardedValue = map['prometheusUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      providerType: pulumi.Input.fromValue(map['providerType'] as String),
+      sid: (() {
+        final guardedValue = map['sid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslCertificateUri: (() {
+        final guardedValue = map['sslCertificateUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sslPreference: (() {
+        final guardedValue = map['sslPreference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

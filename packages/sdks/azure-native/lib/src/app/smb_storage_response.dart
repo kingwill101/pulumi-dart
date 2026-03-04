@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SmbStorageResponse {
   /// Access mode for storage
   final pulumi.Input<String>? accessMode;
+
   /// The domain name for the user.
   final pulumi.Input<String>? domain;
+
   /// The host name or IP address of the SMB server.
   final pulumi.Input<String>? host;
+
   /// The password for the user.
   final pulumi.Input<String>? password;
+
   /// The path to the SMB shared folder.
   final pulumi.Input<String>? shareName;
+
   /// The user to log on to the SMB server.
   final pulumi.Input<String>? username;
 
@@ -46,13 +51,36 @@ class SmbStorageResponse {
 
   factory SmbStorageResponse.fromMap(Map<String, dynamic> map) {
     return SmbStorageResponse(
-      accessMode: map['accessMode'] == null ? null : (map['accessMode']! as String).input(),
-      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
-      host: map['host'] == null ? null : (map['host']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      accessMode: (() {
+        final guardedValue = map['accessMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      host: (() {
+        final guardedValue = map['host'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shareName: (() {
+        final guardedValue = map['shareName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

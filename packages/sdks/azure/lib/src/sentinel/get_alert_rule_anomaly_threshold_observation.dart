@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAlertRuleAnomalyThresholdObservation {
   /// The description of the threshold observation.
   final pulumi.Input<String> description;
+
   /// The max value of the threshold observation.
   final pulumi.Input<String> max;
+
   /// The min value of the threshold observation.
   final pulumi.Input<String> min;
+
   /// The guid of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
   final pulumi.Input<String> name;
+
   /// The value of the threshold observation.
   final pulumi.Input<String> value;
 
@@ -38,14 +42,15 @@ class GetAlertRuleAnomalyThresholdObservation {
     };
   }
 
-  factory GetAlertRuleAnomalyThresholdObservation.fromMap(Map<String, dynamic> map) {
+  factory GetAlertRuleAnomalyThresholdObservation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAlertRuleAnomalyThresholdObservation(
-      description: (map['description'] as String).input(),
-      max: (map['max'] as String).input(),
-      min: (map['min'] as String).input(),
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      max: pulumi.Input.fromValue(map['max'] as String),
+      min: pulumi.Input.fromValue(map['min'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

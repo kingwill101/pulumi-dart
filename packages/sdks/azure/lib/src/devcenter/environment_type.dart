@@ -210,7 +210,7 @@ import 'environment_type_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DevCenter` - 2025-02-01
@@ -225,8 +225,10 @@ import 'environment_type_state.dart';
 class EnvironmentType extends pulumi.CustomResource {
   /// The ID of the associated Dev Center. Changing this forces a new resource to be created.
   late final pulumi.Output<String> devCenterId;
+
   /// Specifies the name of this Dev Center Environment Type. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A mapping of tags which should be assigned to the Dev Center Environment Type.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -239,14 +241,14 @@ class EnvironmentType extends pulumi.CustomResource {
     EnvironmentTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devcenter/environmentType:EnvironmentType',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.devCenterId = registerOutput<String>('devCenterId');
+         'azure:devcenter/environmentType:EnvironmentType',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [EnvironmentType] resource's state with the given [name] and [id].
@@ -267,13 +269,13 @@ class EnvironmentType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devcenter/environmentType:EnvironmentType',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.devCenterId = registerOutput<String>('devCenterId');
+         'azure:devcenter/environmentType:EnvironmentType',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

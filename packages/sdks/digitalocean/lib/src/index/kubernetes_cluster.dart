@@ -2,9 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kubernetes_cluster_amd_gpu_device_metrics_exporter_plugin.dart';
 import 'kubernetes_cluster_amd_gpu_device_plugin.dart';
 import 'kubernetes_cluster_args.dart';
-import 'kubernetes_cluster_cluster_autoscaler_configuration.dart';
 import 'kubernetes_cluster_control_plane_firewall.dart';
-import 'kubernetes_cluster_kube_config.dart';
 import 'kubernetes_cluster_maintenance_policy.dart';
 import 'kubernetes_cluster_node_pool.dart';
 import 'kubernetes_cluster_nvidia_gpu_device_plugin.dart';
@@ -333,7 +331,7 @@ import 'kubernetes_cluster_state.dart';
 ///
 ///
 /// Note that, currently, each node pool must always have at least one node and when using autoscaling the min_nodes must be greater than or equal to 1.
-/// > Autoscaling to zero (`min_nodes=0`) is in [private preview](https://docs.digitalocean.com/release-notes/kubernetes/#2025-01-07) and not available for public use.
+/// &gt; Autoscaling to zero (`min_nodes=0`) is in [private preview](https://docs.digitalocean.com/release-notes/kubernetes/#2025-01-07) and not available for public use.
 ///
 /// ### Auto Upgrade Example
 ///
@@ -536,7 +534,7 @@ import 'kubernetes_cluster_state.dart';
 /// The cluster's kubeconfig is exported as an attribute allowing you to use it with
 /// the Kubernetes Terraform provider.
 ///
-/// > When using interpolation to pass credentials from a `digitalocean.KubernetesCluster`
+/// &gt; When using interpolation to pass credentials from a `digitalocean.KubernetesCluster`
 /// resource to the Kubernetes provider, the cluster resource generally should not
 /// be created in the same Terraform module where Kubernetes provider resources are
 /// also used. This can lead to unpredictable errors which are hard to debug and
@@ -720,60 +718,94 @@ import 'kubernetes_cluster_state.dart';
 /// ```
 class KubernetesCluster extends pulumi.CustomResource {
   /// Block containing options for the AMD GPU device metrics exporter component.
-  late final pulumi.Output<KubernetesClusterAmdGpuDeviceMetricsExporterPlugin> amdGpuDeviceMetricsExporterPlugin;
+  late final pulumi.Output<KubernetesClusterAmdGpuDeviceMetricsExporterPlugin>
+  amdGpuDeviceMetricsExporterPlugin;
+
   /// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
-  late final pulumi.Output<KubernetesClusterAmdGpuDevicePlugin> amdGpuDevicePlugin;
+  late final pulumi.Output<KubernetesClusterAmdGpuDevicePlugin>
+  amdGpuDevicePlugin;
+
   /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
   late final pulumi.Output<bool?> autoUpgrade;
+
   /// Block containing options for cluster auto-scaling.
-  late final pulumi.Output<List<KubernetesClusterClusterAutoscalerConfiguration>?> clusterAutoscalerConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  clusterAutoscalerConfigurations;
+
   /// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
   late final pulumi.Output<String> clusterSubnet;
+
   /// The uniform resource name (URN) for the Kubernetes cluster.
   late final pulumi.Output<String> clusterUrn;
+
   /// A block representing the cluster's control plane firewall
-  late final pulumi.Output<KubernetesClusterControlPlaneFirewall> controlPlaneFirewall;
+  late final pulumi.Output<KubernetesClusterControlPlaneFirewall>
+  controlPlaneFirewall;
+
   /// The date and time when the node was created.
   late final pulumi.Output<String> createdAt;
+
   /// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
   late final pulumi.Output<bool?> destroyAllAssociatedResources;
+
   /// The base URL of the API server on the Kubernetes master node.
   late final pulumi.Output<String> endpoint;
+
   /// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
   late final pulumi.Output<bool?> ha;
+
   /// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
   late final pulumi.Output<String> ipv4Address;
+
   /// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-  late final pulumi.Output<List<KubernetesClusterKubeConfig>> kubeConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> kubeConfigs;
+
   /// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
   late final pulumi.Output<int?> kubeconfigExpireSeconds;
+
   /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
-  late final pulumi.Output<KubernetesClusterMaintenancePolicy> maintenancePolicy;
+  late final pulumi.Output<KubernetesClusterMaintenancePolicy>
+  maintenancePolicy;
+
   /// A name for the Kubernetes cluster.
   late final pulumi.Output<String> name;
+
   /// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
   late final pulumi.Output<KubernetesClusterNodePool> nodePool;
+
   /// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
-  late final pulumi.Output<KubernetesClusterNvidiaGpuDevicePlugin> nvidiaGpuDevicePlugin;
-  late final pulumi.Output<KubernetesClusterRdmaSharedDevicePlugin> rdmaSharedDevicePlugin;
+  late final pulumi.Output<KubernetesClusterNvidiaGpuDevicePlugin>
+  nvidiaGpuDevicePlugin;
+  late final pulumi.Output<KubernetesClusterRdmaSharedDevicePlugin>
+  rdmaSharedDevicePlugin;
+
   /// The slug identifier for the region where the Kubernetes cluster will be created.
   late final pulumi.Output<String> region;
+
   /// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
   late final pulumi.Output<bool?> registryIntegration;
+
   /// Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
   late final pulumi.Output<KubernetesClusterRoutingAgent> routingAgent;
+
   /// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
   late final pulumi.Output<String> serviceSubnet;
+
   /// A string indicating the current status of the individual node.
   late final pulumi.Output<String> status;
+
   /// Enable/disable surge upgrades for a cluster. Default: true
   late final pulumi.Output<bool?> surgeUpgrade;
+
   /// A list of tag names to be applied to the Kubernetes cluster.
   late final pulumi.Output<List<String>?> tags;
+
   /// The date and time when the node was last updated.
   late final pulumi.Output<String> updatedAt;
+
   /// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
   late final pulumi.Output<String> version;
+
   /// The ID of the VPC where the Kubernetes cluster will be located.
   late final pulumi.Output<String> vpcUuid;
 
@@ -786,40 +818,63 @@ class KubernetesCluster extends pulumi.CustomResource {
     KubernetesClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/kubernetesCluster:KubernetesCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.amdGpuDeviceMetricsExporterPlugin = registerOutput<KubernetesClusterAmdGpuDeviceMetricsExporterPlugin>('amdGpuDeviceMetricsExporterPlugin');
-    this.amdGpuDevicePlugin = registerOutput<KubernetesClusterAmdGpuDevicePlugin>('amdGpuDevicePlugin');
-    this.autoUpgrade = registerOutput<bool?>('autoUpgrade');
-    this.clusterAutoscalerConfigurations = registerOutput<List<KubernetesClusterClusterAutoscalerConfiguration>?>('clusterAutoscalerConfigurations');
-    this.clusterSubnet = registerOutput<String>('clusterSubnet');
-    this.clusterUrn = registerOutput<String>('clusterUrn');
-    this.controlPlaneFirewall = registerOutput<KubernetesClusterControlPlaneFirewall>('controlPlaneFirewall');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.destroyAllAssociatedResources = registerOutput<bool?>('destroyAllAssociatedResources');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.ha = registerOutput<bool?>('ha');
-    this.ipv4Address = registerOutput<String>('ipv4Address');
-    this.kubeConfigs = registerOutput<List<KubernetesClusterKubeConfig>>('kubeConfigs');
-    this.kubeconfigExpireSeconds = registerOutput<int?>('kubeconfigExpireSeconds');
-    this.maintenancePolicy = registerOutput<KubernetesClusterMaintenancePolicy>('maintenancePolicy');
+         'digitalocean:index/kubernetesCluster:KubernetesCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    amdGpuDeviceMetricsExporterPlugin =
+        registerOutput<KubernetesClusterAmdGpuDeviceMetricsExporterPlugin>(
+          'amdGpuDeviceMetricsExporterPlugin',
+        );
+    amdGpuDevicePlugin = registerOutput<KubernetesClusterAmdGpuDevicePlugin>(
+      'amdGpuDevicePlugin',
+    );
+    autoUpgrade = registerOutput<bool?>('autoUpgrade');
+    clusterAutoscalerConfigurations =
+        registerOutput<List<Map<String, dynamic>>?>(
+          'clusterAutoscalerConfigurations',
+        );
+    clusterSubnet = registerOutput<String>('clusterSubnet');
+    clusterUrn = registerOutput<String>('clusterUrn');
+    controlPlaneFirewall =
+        registerOutput<KubernetesClusterControlPlaneFirewall>(
+          'controlPlaneFirewall',
+        );
+    createdAt = registerOutput<String>('createdAt');
+    destroyAllAssociatedResources = registerOutput<bool?>(
+      'destroyAllAssociatedResources',
+    );
+    endpoint = registerOutput<String>('endpoint');
+    ha = registerOutput<bool?>('ha');
+    ipv4Address = registerOutput<String>('ipv4Address');
+    kubeConfigs = registerOutput<List<Map<String, dynamic>>>('kubeConfigs');
+    kubeconfigExpireSeconds = registerOutput<int?>('kubeconfigExpireSeconds');
+    maintenancePolicy = registerOutput<KubernetesClusterMaintenancePolicy>(
+      'maintenancePolicy',
+    );
     this.name = registerOutput<String>('name');
-    this.nodePool = registerOutput<KubernetesClusterNodePool>('nodePool');
-    this.nvidiaGpuDevicePlugin = registerOutput<KubernetesClusterNvidiaGpuDevicePlugin>('nvidiaGpuDevicePlugin');
-    this.rdmaSharedDevicePlugin = registerOutput<KubernetesClusterRdmaSharedDevicePlugin>('rdmaSharedDevicePlugin');
-    this.region = registerOutput<String>('region');
-    this.registryIntegration = registerOutput<bool?>('registryIntegration');
-    this.routingAgent = registerOutput<KubernetesClusterRoutingAgent>('routingAgent');
-    this.serviceSubnet = registerOutput<String>('serviceSubnet');
-    this.status = registerOutput<String>('status');
-    this.surgeUpgrade = registerOutput<bool?>('surgeUpgrade');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.updatedAt = registerOutput<String>('updatedAt');
-    this.version = registerOutput<String>('version');
-    this.vpcUuid = registerOutput<String>('vpcUuid');
+    nodePool = registerOutput<KubernetesClusterNodePool>('nodePool');
+    nvidiaGpuDevicePlugin =
+        registerOutput<KubernetesClusterNvidiaGpuDevicePlugin>(
+          'nvidiaGpuDevicePlugin',
+        );
+    rdmaSharedDevicePlugin =
+        registerOutput<KubernetesClusterRdmaSharedDevicePlugin>(
+          'rdmaSharedDevicePlugin',
+        );
+    region = registerOutput<String>('region');
+    registryIntegration = registerOutput<bool?>('registryIntegration');
+    routingAgent = registerOutput<KubernetesClusterRoutingAgent>(
+      'routingAgent',
+    );
+    serviceSubnet = registerOutput<String>('serviceSubnet');
+    status = registerOutput<String>('status');
+    surgeUpgrade = registerOutput<bool?>('surgeUpgrade');
+    tags = registerOutput<List<String>?>('tags');
+    updatedAt = registerOutput<String>('updatedAt');
+    version = registerOutput<String>('version');
+    vpcUuid = registerOutput<String>('vpcUuid');
   }
 
   /// Gets an existing [KubernetesCluster] resource's state with the given [name] and [id].
@@ -840,39 +895,62 @@ class KubernetesCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/kubernetesCluster:KubernetesCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.amdGpuDeviceMetricsExporterPlugin = registerOutput<KubernetesClusterAmdGpuDeviceMetricsExporterPlugin>('amdGpuDeviceMetricsExporterPlugin');
-    this.amdGpuDevicePlugin = registerOutput<KubernetesClusterAmdGpuDevicePlugin>('amdGpuDevicePlugin');
-    this.autoUpgrade = registerOutput<bool?>('autoUpgrade');
-    this.clusterAutoscalerConfigurations = registerOutput<List<KubernetesClusterClusterAutoscalerConfiguration>?>('clusterAutoscalerConfigurations');
-    this.clusterSubnet = registerOutput<String>('clusterSubnet');
-    this.clusterUrn = registerOutput<String>('clusterUrn');
-    this.controlPlaneFirewall = registerOutput<KubernetesClusterControlPlaneFirewall>('controlPlaneFirewall');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.destroyAllAssociatedResources = registerOutput<bool?>('destroyAllAssociatedResources');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.ha = registerOutput<bool?>('ha');
-    this.ipv4Address = registerOutput<String>('ipv4Address');
-    this.kubeConfigs = registerOutput<List<KubernetesClusterKubeConfig>>('kubeConfigs');
-    this.kubeconfigExpireSeconds = registerOutput<int?>('kubeconfigExpireSeconds');
-    this.maintenancePolicy = registerOutput<KubernetesClusterMaintenancePolicy>('maintenancePolicy');
+         'digitalocean:index/kubernetesCluster:KubernetesCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    amdGpuDeviceMetricsExporterPlugin =
+        registerOutput<KubernetesClusterAmdGpuDeviceMetricsExporterPlugin>(
+          'amdGpuDeviceMetricsExporterPlugin',
+        );
+    amdGpuDevicePlugin = registerOutput<KubernetesClusterAmdGpuDevicePlugin>(
+      'amdGpuDevicePlugin',
+    );
+    autoUpgrade = registerOutput<bool?>('autoUpgrade');
+    clusterAutoscalerConfigurations =
+        registerOutput<List<Map<String, dynamic>>?>(
+          'clusterAutoscalerConfigurations',
+        );
+    clusterSubnet = registerOutput<String>('clusterSubnet');
+    clusterUrn = registerOutput<String>('clusterUrn');
+    controlPlaneFirewall =
+        registerOutput<KubernetesClusterControlPlaneFirewall>(
+          'controlPlaneFirewall',
+        );
+    createdAt = registerOutput<String>('createdAt');
+    destroyAllAssociatedResources = registerOutput<bool?>(
+      'destroyAllAssociatedResources',
+    );
+    endpoint = registerOutput<String>('endpoint');
+    ha = registerOutput<bool?>('ha');
+    ipv4Address = registerOutput<String>('ipv4Address');
+    kubeConfigs = registerOutput<List<Map<String, dynamic>>>('kubeConfigs');
+    kubeconfigExpireSeconds = registerOutput<int?>('kubeconfigExpireSeconds');
+    maintenancePolicy = registerOutput<KubernetesClusterMaintenancePolicy>(
+      'maintenancePolicy',
+    );
     this.name = registerOutput<String>('name');
-    this.nodePool = registerOutput<KubernetesClusterNodePool>('nodePool');
-    this.nvidiaGpuDevicePlugin = registerOutput<KubernetesClusterNvidiaGpuDevicePlugin>('nvidiaGpuDevicePlugin');
-    this.rdmaSharedDevicePlugin = registerOutput<KubernetesClusterRdmaSharedDevicePlugin>('rdmaSharedDevicePlugin');
-    this.region = registerOutput<String>('region');
-    this.registryIntegration = registerOutput<bool?>('registryIntegration');
-    this.routingAgent = registerOutput<KubernetesClusterRoutingAgent>('routingAgent');
-    this.serviceSubnet = registerOutput<String>('serviceSubnet');
-    this.status = registerOutput<String>('status');
-    this.surgeUpgrade = registerOutput<bool?>('surgeUpgrade');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.updatedAt = registerOutput<String>('updatedAt');
-    this.version = registerOutput<String>('version');
-    this.vpcUuid = registerOutput<String>('vpcUuid');
+    nodePool = registerOutput<KubernetesClusterNodePool>('nodePool');
+    nvidiaGpuDevicePlugin =
+        registerOutput<KubernetesClusterNvidiaGpuDevicePlugin>(
+          'nvidiaGpuDevicePlugin',
+        );
+    rdmaSharedDevicePlugin =
+        registerOutput<KubernetesClusterRdmaSharedDevicePlugin>(
+          'rdmaSharedDevicePlugin',
+        );
+    region = registerOutput<String>('region');
+    registryIntegration = registerOutput<bool?>('registryIntegration');
+    routingAgent = registerOutput<KubernetesClusterRoutingAgent>(
+      'routingAgent',
+    );
+    serviceSubnet = registerOutput<String>('serviceSubnet');
+    status = registerOutput<String>('status');
+    surgeUpgrade = registerOutput<bool?>('surgeUpgrade');
+    tags = registerOutput<List<String>?>('tags');
+    updatedAt = registerOutput<String>('updatedAt');
+    version = registerOutput<String>('version');
+    vpcUuid = registerOutput<String>('vpcUuid');
   }
 }

@@ -10,20 +10,39 @@ class SitePropertiesFormat {
 
   /// Creates a new [SitePropertiesFormat].
   /// [nfvis] List of NFVIs
-  SitePropertiesFormat({
-    this.nfvis,
-  });
+  SitePropertiesFormat({this.nfvis});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nfvis': ?pulumi.Input.mapOptionalInputValue<List<AzureArcK8sClusterNFVIDetails>, List<Map<String, dynamic>>>(nfvis, (value) => pulumi.Input.encodeList<AzureArcK8sClusterNFVIDetails, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nfvis':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AzureArcK8sClusterNFVIDetails>,
+            List<Map<String, dynamic>>
+          >(
+            nfvis,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AzureArcK8sClusterNFVIDetails,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory SitePropertiesFormat.fromMap(Map<String, dynamic> map) {
     return SitePropertiesFormat(
-      nfvis: map['nfvis'] == null ? null : (pulumi.Input.decodeList<AzureArcK8sClusterNFVIDetails>(map['nfvis']!, (value) => AzureArcK8sClusterNFVIDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nfvis: (() {
+        final guardedValue = map['nfvis'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AzureArcK8sClusterNFVIDetails>(
+            guardedValue,
+            (value) => AzureArcK8sClusterNFVIDetails.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

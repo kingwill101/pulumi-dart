@@ -8,6 +8,7 @@ import 'resource_claim_spec_resource_k8s_io_v1alpha2.dart';
 class ResourceClaimTemplateSpecResourceK8sIoV1alpha2 {
   /// ObjectMeta may contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
   final pulumi.Input<ObjectMeta>? metadata;
+
   /// Spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here.
   final pulumi.Input<ResourceClaimSpecResourceK8sIoV1alpha2> spec;
 
@@ -21,16 +22,35 @@ class ResourceClaimTemplateSpecResourceK8sIoV1alpha2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'spec': pulumi.Input.mapInputValue<ResourceClaimSpecResourceK8sIoV1alpha2, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(
+            metadata,
+            (value) => value.toMap(),
+          ),
+      'spec':
+          pulumi.Input.mapInputValue<
+            ResourceClaimSpecResourceK8sIoV1alpha2,
+            Map<String, dynamic>
+          >(spec, (value) => value.toMap()),
     };
   }
 
-  factory ResourceClaimTemplateSpecResourceK8sIoV1alpha2.fromMap(Map<String, dynamic> map) {
+  factory ResourceClaimTemplateSpecResourceK8sIoV1alpha2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceClaimTemplateSpecResourceK8sIoV1alpha2(
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      spec: (ResourceClaimSpecResourceK8sIoV1alpha2.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      spec: pulumi.Input.fromValue(
+        ResourceClaimSpecResourceK8sIoV1alpha2.fromMap(
+          (map['spec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

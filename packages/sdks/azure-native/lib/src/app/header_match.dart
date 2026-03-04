@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HeaderMatch {
   /// Exact value of the header
   final pulumi.Input<String>? exactMatch;
+
   /// Name of the header
   final pulumi.Input<String>? header;
+
   /// Prefix value of the header
   final pulumi.Input<String>? prefixMatch;
+
   /// Regex value of the header
   final pulumi.Input<String>? regexMatch;
+
   /// Suffix value of the header
   final pulumi.Input<String>? suffixMatch;
 
@@ -41,12 +45,31 @@ class HeaderMatch {
 
   factory HeaderMatch.fromMap(Map<String, dynamic> map) {
     return HeaderMatch(
-      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch']! as String).input(),
-      header: map['header'] == null ? null : (map['header']! as String).input(),
-      prefixMatch: map['prefixMatch'] == null ? null : (map['prefixMatch']! as String).input(),
-      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch']! as String).input(),
-      suffixMatch: map['suffixMatch'] == null ? null : (map['suffixMatch']! as String).input(),
+      exactMatch: (() {
+        final guardedValue = map['exactMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      header: (() {
+        final guardedValue = map['header'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prefixMatch: (() {
+        final guardedValue = map['prefixMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regexMatch: (() {
+        final guardedValue = map['regexMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      suffixMatch: (() {
+        final guardedValue = map['suffixMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectEnvironmentDockerServer {
   /// Compute type for the Docker server. Valid values: `BUILD_GENERAL1_SMALL`, `BUILD_GENERAL1_MEDIUM`, `BUILD_GENERAL1_LARGE`, `BUILD_GENERAL1_XLARGE`, and `BUILD_GENERAL1_2XLARGE`.
   final pulumi.Input<String> computeType;
+
   /// List of security group IDs to assign to the Docker server.
   final pulumi.Input<List<String>>? securityGroupIds;
 
@@ -25,9 +26,12 @@ class ProjectEnvironmentDockerServer {
 
   factory ProjectEnvironmentDockerServer.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironmentDockerServer(
-      computeType: (map['computeType'] as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
+      computeType: pulumi.Input.fromValue(map['computeType'] as String),
+      securityGroupIds: (() {
+        final guardedValue = map['securityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

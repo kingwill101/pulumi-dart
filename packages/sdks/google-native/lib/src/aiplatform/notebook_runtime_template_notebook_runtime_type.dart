@@ -4,16 +4,17 @@ enum NotebookRuntimeTemplateNotebookRuntimeType {
   userDefined("USER_DEFINED"),
   oneClick("ONE_CLICK");
 
-  const NotebookRuntimeTemplateNotebookRuntimeType(this.value);
-  final String value;
+  const NotebookRuntimeTemplateNotebookRuntimeType(this.wireValue);
+  final String wireValue;
 
   static NotebookRuntimeTemplateNotebookRuntimeType fromValue(String value) {
     for (final item in NotebookRuntimeTemplateNotebookRuntimeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NotebookRuntimeTemplateNotebookRuntimeType value: $value');
+    throw ArgumentError(
+      'Unknown NotebookRuntimeTemplateNotebookRuntimeType value: $value',
+    );
   }
 }
-

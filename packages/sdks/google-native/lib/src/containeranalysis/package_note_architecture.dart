@@ -4,16 +4,15 @@ enum PackageNoteArchitecture {
   x86("X86"),
   x64("X64");
 
-  const PackageNoteArchitecture(this.value);
-  final String value;
+  const PackageNoteArchitecture(this.wireValue);
+  final String wireValue;
 
   static PackageNoteArchitecture fromValue(String value) {
     for (final item in PackageNoteArchitecture.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PackageNoteArchitecture value: $value');
   }
 }
-

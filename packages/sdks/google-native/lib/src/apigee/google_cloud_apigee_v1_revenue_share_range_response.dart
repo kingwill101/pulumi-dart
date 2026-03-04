@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1RevenueShareRangeResponse {
   /// Ending value of the range. Set to 0 or `null` for the last range of values.
   final pulumi.Input<String> end;
+
   /// Percentage of the revenue to be shared with the developer. For example, to share 21 percent of the total revenue with the developer, set this value to 21. Specify a decimal number with a maximum of two digits following the decimal point.
   final pulumi.Input<double> sharePercentage;
+
   /// Starting value of the range. Set to 0 or `null` for the initial range of values.
   final pulumi.Input<String> start;
 
@@ -29,12 +31,13 @@ class GoogleCloudApigeeV1RevenueShareRangeResponse {
     };
   }
 
-  factory GoogleCloudApigeeV1RevenueShareRangeResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1RevenueShareRangeResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1RevenueShareRangeResponse(
-      end: (map['end'] as String).input(),
-      sharePercentage: (map['sharePercentage'] as double).input(),
-      start: (map['start'] as String).input(),
+      end: pulumi.Input.fromValue(map['end'] as String),
+      sharePercentage: pulumi.Input.fromValue(map['sharePercentage'] as double),
+      start: pulumi.Input.fromValue(map['start'] as String),
     );
   }
 }
-

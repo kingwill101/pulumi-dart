@@ -1,5 +1,3 @@
-library module_loganalytics;
-
 export 'loganalytics/cluster.dart';
 export 'loganalytics/cluster_args.dart';
 export 'loganalytics/cluster_customer_managed_key.dart';

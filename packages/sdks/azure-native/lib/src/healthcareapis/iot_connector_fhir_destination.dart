@@ -309,20 +309,28 @@ import 'system_data_response.dart';
 class IotConnectorFhirDestination extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// An etag associated with the resource, used for optimistic concurrency when editing it.
   late final pulumi.Output<String?> etag;
+
   /// FHIR Mappings
   late final pulumi.Output<IotMappingPropertiesResponse> fhirMapping;
+
   /// Fully qualified resource id of the FHIR service to connect to.
   late final pulumi.Output<String> fhirServiceResourceId;
+
   /// The resource location.
   late final pulumi.Output<String?> location;
+
   /// The resource name.
   late final pulumi.Output<String> name;
+
   /// Determines how resource identity is resolved on the destination.
   late final pulumi.Output<String> resourceIdentityResolutionType;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -335,19 +343,21 @@ class IotConnectorFhirDestination extends pulumi.CustomResource {
     IotConnectorFhirDestinationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:healthcareapis:IotConnectorFhirDestination',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String?>('etag');
-    this.fhirMapping = registerOutput<IotMappingPropertiesResponse>('fhirMapping');
-    this.fhirServiceResourceId = registerOutput<String>('fhirServiceResourceId');
-    this.location = registerOutput<String?>('location');
+         'azure-native:healthcareapis:IotConnectorFhirDestination',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    fhirMapping = registerOutput<IotMappingPropertiesResponse>('fhirMapping');
+    fhirServiceResourceId = registerOutput<String>('fhirServiceResourceId');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.resourceIdentityResolutionType = registerOutput<String>('resourceIdentityResolutionType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    resourceIdentityResolutionType = registerOutput<String>(
+      'resourceIdentityResolutionType',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

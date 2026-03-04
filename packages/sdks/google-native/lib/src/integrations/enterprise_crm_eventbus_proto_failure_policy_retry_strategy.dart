@@ -9,16 +9,20 @@ enum EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy {
   exponentialBackoff("EXPONENTIAL_BACKOFF"),
   restartWorkflowWithBackoff("RESTART_WORKFLOW_WITH_BACKOFF");
 
-  const EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy(this.value);
-  final String value;
+  const EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy(this.wireValue);
+  final String wireValue;
 
-  static EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy fromValue(String value) {
-    for (final item in EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy.values) {
-      if (item.value == value) {
+  static EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy value: $value',
+    );
   }
 }
-

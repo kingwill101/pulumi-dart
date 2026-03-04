@@ -6,6 +6,7 @@ class PartitionStorageDescriptorColumn {
   /// Free-form text comment.
   final pulumi.Input<String>? comment;
   final pulumi.Input<String> name;
+
   /// The datatype of data in the Column.
   final pulumi.Input<String>? type;
 
@@ -20,19 +21,22 @@ class PartitionStorageDescriptorColumn {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comment': ?comment,
-      'name': name,
-      'type': ?type,
-    };
+    return <String, dynamic>{'comment': ?comment, 'name': name, 'type': ?type};
   }
 
   factory PartitionStorageDescriptorColumn.fromMap(Map<String, dynamic> map) {
     return PartitionStorageDescriptorColumn(
-      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
-      name: (map['name'] as String).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

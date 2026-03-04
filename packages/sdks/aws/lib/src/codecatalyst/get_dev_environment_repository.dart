@@ -23,9 +23,8 @@ class GetDevEnvironmentRepository {
 
   factory GetDevEnvironmentRepository.fromMap(Map<String, dynamic> map) {
     return GetDevEnvironmentRepository(
-      branchName: (map['branchName'] as String).input(),
-      repositoryName: (map['repositoryName'] as String).input(),
+      branchName: pulumi.Input.fromValue(map['branchName'] as String),
+      repositoryName: pulumi.Input.fromValue(map['repositoryName'] as String),
     );
   }
 }
-

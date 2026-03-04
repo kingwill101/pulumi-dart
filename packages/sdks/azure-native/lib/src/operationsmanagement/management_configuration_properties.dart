@@ -7,10 +7,13 @@ import 'arm_template_parameter.dart';
 class ManagementConfigurationProperties {
   /// The applicationId of the appliance for this Management.
   final pulumi.Input<String>? applicationId;
+
   /// Parameters to run the ARM template
   final pulumi.Input<List<ArmTemplateParameter>> parameters;
+
   /// The type of the parent resource.
   final pulumi.Input<String> parentResourceType;
+
   /// The Json object containing the ARM template to deploy
   final pulumi.Input<dynamic> template;
 
@@ -29,7 +32,18 @@ class ManagementConfigurationProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationId': ?applicationId,
-      'parameters': pulumi.Input.mapInputValue<List<ArmTemplateParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<ArmTemplateParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            List<ArmTemplateParameter>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ArmTemplateParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'parentResourceType': parentResourceType,
       'template': template,
     };
@@ -37,11 +51,23 @@ class ManagementConfigurationProperties {
 
   factory ManagementConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return ManagementConfigurationProperties(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
-      parameters: (pulumi.Input.decodeList<ArmTemplateParameter>(map['parameters'], (value) => ArmTemplateParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parentResourceType: (map['parentResourceType'] as String).input(),
-      template: (map['template']).input(),
+      applicationId: (() {
+        final guardedValue = map['applicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ArmTemplateParameter>(
+          map['parameters']!,
+          (value) => ArmTemplateParameter.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      parentResourceType: pulumi.Input.fromValue(
+        map['parentResourceType'] as String,
+      ),
+      template: pulumi.Input.fromValue(map['template']),
     );
   }
 }
-

@@ -10,20 +10,27 @@ class BrokerAuthenticatorCustomAuthResponse {
 
   /// Creates a new [BrokerAuthenticatorCustomAuthResponse].
   /// [x509] X509 Custom Auth type details.
-  BrokerAuthenticatorCustomAuthResponse({
-    required this.x509,
-  });
+  BrokerAuthenticatorCustomAuthResponse({required this.x509});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'x509': pulumi.Input.mapInputValue<BrokerAuthenticatorCustomAuthX509Response, Map<String, dynamic>>(x509, (value) => value.toMap()),
+      'x509':
+          pulumi.Input.mapInputValue<
+            BrokerAuthenticatorCustomAuthX509Response,
+            Map<String, dynamic>
+          >(x509, (value) => value.toMap()),
     };
   }
 
-  factory BrokerAuthenticatorCustomAuthResponse.fromMap(Map<String, dynamic> map) {
+  factory BrokerAuthenticatorCustomAuthResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BrokerAuthenticatorCustomAuthResponse(
-      x509: (BrokerAuthenticatorCustomAuthX509Response.fromMap((map['x509'] as Map).cast<String, dynamic>())).input(),
+      x509: pulumi.Input.fromValue(
+        BrokerAuthenticatorCustomAuthX509Response.fromMap(
+          (map['x509']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

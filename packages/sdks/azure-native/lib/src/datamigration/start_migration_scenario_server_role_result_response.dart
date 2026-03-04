@@ -7,8 +7,10 @@ import 'reportable_exception_response.dart';
 class StartMigrationScenarioServerRoleResultResponse {
   /// Migration exceptions and warnings.
   final pulumi.Input<List<ReportableExceptionResponse>> exceptionsAndWarnings;
+
   /// Name of server role.
   final pulumi.Input<String> name;
+
   /// Current state of migration
   final pulumi.Input<String> state;
 
@@ -24,18 +26,37 @@ class StartMigrationScenarioServerRoleResultResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exceptionsAndWarnings': pulumi.Input.mapInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(exceptionsAndWarnings, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'exceptionsAndWarnings':
+          pulumi.Input.mapInputValue<
+            List<ReportableExceptionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            exceptionsAndWarnings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReportableExceptionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': name,
       'state': state,
     };
   }
 
-  factory StartMigrationScenarioServerRoleResultResponse.fromMap(Map<String, dynamic> map) {
+  factory StartMigrationScenarioServerRoleResultResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StartMigrationScenarioServerRoleResultResponse(
-      exceptionsAndWarnings: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: (map['name'] as String).input(),
-      state: (map['state'] as String).input(),
+      exceptionsAndWarnings: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ReportableExceptionResponse>(
+          map['exceptionsAndWarnings']!,
+          (value) => ReportableExceptionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

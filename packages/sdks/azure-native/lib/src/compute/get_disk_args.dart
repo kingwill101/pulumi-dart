@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDiskArgs {
   /// The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
   final pulumi.Input<String> diskName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetDiskArgs].
   /// [diskName] The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDiskArgs({
-    required this.diskName,
-    required this.resourceGroupName,
-  });
+  GetDiskArgs({required this.diskName, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetDiskArgs {
 
   factory GetDiskArgs.fromMap(Map<String, dynamic> map) {
     return GetDiskArgs(
-      diskName: (map['diskName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      diskName: pulumi.Input.fromValue(map['diskName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

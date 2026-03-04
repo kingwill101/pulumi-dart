@@ -8,7 +8,7 @@ import 'bucket_logging_state.dart';
 ///
 /// For information about OSS Bucket Logging and how to use it, see [What is Bucket Logging](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketLogging).
 ///
-/// > **NOTE:** Available since v1.222.0.
+/// &gt; **NOTE:** Available since v1.222.0.
 ///
 /// ## Example Usage
 ///
@@ -217,10 +217,13 @@ import 'bucket_logging_state.dart';
 class BucketLoggingOss extends pulumi.CustomResource {
   /// The name of the bucket
   late final pulumi.Output<String> bucket;
+
   /// Authorization role used for bucket logging
   late final pulumi.Output<String?> loggingRole;
+
   /// The bucket that stores access logs.
   late final pulumi.Output<String> targetBucket;
+
   /// The prefix of the saved log objects. This element can be left empty.
   late final pulumi.Output<String?> targetPrefix;
 
@@ -233,15 +236,15 @@ class BucketLoggingOss extends pulumi.CustomResource {
     BucketLoggingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketLogging:BucketLogging',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.loggingRole = registerOutput<String?>('loggingRole');
-    this.targetBucket = registerOutput<String>('targetBucket');
-    this.targetPrefix = registerOutput<String?>('targetPrefix');
+         'alicloud:oss/bucketLogging:BucketLogging',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    loggingRole = registerOutput<String?>('loggingRole');
+    targetBucket = registerOutput<String>('targetBucket');
+    targetPrefix = registerOutput<String?>('targetPrefix');
   }
 
   /// Gets an existing [BucketLoggingOss] resource's state with the given [name] and [id].
@@ -262,14 +265,14 @@ class BucketLoggingOss extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketLogging:BucketLogging',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.loggingRole = registerOutput<String?>('loggingRole');
-    this.targetBucket = registerOutput<String>('targetBucket');
-    this.targetPrefix = registerOutput<String?>('targetPrefix');
+         'alicloud:oss/bucketLogging:BucketLogging',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    loggingRole = registerOutput<String?>('loggingRole');
+    targetBucket = registerOutput<String>('targetBucket');
+    targetPrefix = registerOutput<String?>('targetPrefix');
   }
 }

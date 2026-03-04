@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceProviderManifestPropertiesRequestHeaderOptionsResponse {
   /// The opt in headers.
   final pulumi.Input<String>? optInHeaders;
+
   /// The opt out headers.
   final pulumi.Input<String>? optOutHeaders;
 
@@ -24,11 +25,20 @@ class ResourceProviderManifestPropertiesRequestHeaderOptionsResponse {
     };
   }
 
-  factory ResourceProviderManifestPropertiesRequestHeaderOptionsResponse.fromMap(Map<String, dynamic> map) {
+  factory ResourceProviderManifestPropertiesRequestHeaderOptionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceProviderManifestPropertiesRequestHeaderOptionsResponse(
-      optInHeaders: map['optInHeaders'] == null ? null : (map['optInHeaders']! as String).input(),
-      optOutHeaders: map['optOutHeaders'] == null ? null : (map['optOutHeaders']! as String).input(),
+      optInHeaders: (() {
+        final guardedValue = map['optInHeaders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      optOutHeaders: (() {
+        final guardedValue = map['optOutHeaders'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

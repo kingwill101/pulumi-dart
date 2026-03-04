@@ -31,10 +31,13 @@ class GetJobTriggerArgs {
 
   factory GetJobTriggerArgs.fromMap(Map<String, dynamic> map) {
     return GetJobTriggerArgs(
-      jobTriggerId: (map['jobTriggerId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      jobTriggerId: pulumi.Input.fromValue(map['jobTriggerId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

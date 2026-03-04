@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryEndpointTrustedSigningKeyConfigMapResponse {
   /// The name of the configmap.
   final pulumi.Input<String> configMapRef;
+
   /// RegistryEndpointTrustedSigningKeyType values
   /// Expected value is 'ConfigMap'.
   final pulumi.Input<String> type;
@@ -19,17 +20,15 @@ class RegistryEndpointTrustedSigningKeyConfigMapResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'configMapRef': configMapRef,
-      'type': type,
-    };
+    return <String, dynamic>{'configMapRef': configMapRef, 'type': type};
   }
 
-  factory RegistryEndpointTrustedSigningKeyConfigMapResponse.fromMap(Map<String, dynamic> map) {
+  factory RegistryEndpointTrustedSigningKeyConfigMapResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegistryEndpointTrustedSigningKeyConfigMapResponse(
-      configMapRef: (map['configMapRef'] as String).input(),
-      type: (map['type'] as String).input(),
+      configMapRef: pulumi.Input.fromValue(map['configMapRef'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

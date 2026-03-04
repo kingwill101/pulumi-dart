@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAppHybridConnectionArgs {
   /// The name of the web app.
   final pulumi.Input<String> name;
+
   /// The namespace for this hybrid connection.
   final pulumi.Input<String> namespaceName;
+
   /// The relay name for this hybrid connection.
   final pulumi.Input<String> relayName;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,12 @@ class GetWebAppHybridConnectionArgs {
 
   factory GetWebAppHybridConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppHybridConnectionArgs(
-      name: (map['name'] as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      relayName: (map['relayName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      relayName: pulumi.Input.fromValue(map['relayName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

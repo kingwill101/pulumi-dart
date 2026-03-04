@@ -7,10 +7,14 @@ import 'nfs_export_options_response_file_v1beta1.dart';
 class FileShareConfigResponseFileV1beta1 {
   /// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
   final pulumi.Input<String> capacityGb;
+
   /// The name of the file share (must be 32 characters or less for Enterprise and High Scale SSD tiers and 16 characters or less for all other tiers).
   final pulumi.Input<String> name;
+
   /// Nfs Export Options. There is a limit of 10 export options per file share.
-  final pulumi.Input<List<NfsExportOptionsResponseFileV1beta1>> nfsExportOptions;
+  final pulumi.Input<List<NfsExportOptionsResponseFileV1beta1>>
+  nfsExportOptions;
+
   /// The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
   final pulumi.Input<String> sourceBackup;
 
@@ -30,18 +34,35 @@ class FileShareConfigResponseFileV1beta1 {
     return <String, dynamic>{
       'capacityGb': capacityGb,
       'name': name,
-      'nfsExportOptions': pulumi.Input.mapInputValue<List<NfsExportOptionsResponseFileV1beta1>, List<Map<String, dynamic>>>(nfsExportOptions, (value) => pulumi.Input.encodeList<NfsExportOptionsResponseFileV1beta1, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nfsExportOptions':
+          pulumi.Input.mapInputValue<
+            List<NfsExportOptionsResponseFileV1beta1>,
+            List<Map<String, dynamic>>
+          >(
+            nfsExportOptions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NfsExportOptionsResponseFileV1beta1,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'sourceBackup': sourceBackup,
     };
   }
 
   factory FileShareConfigResponseFileV1beta1.fromMap(Map<String, dynamic> map) {
     return FileShareConfigResponseFileV1beta1(
-      capacityGb: (map['capacityGb'] as String).input(),
-      name: (map['name'] as String).input(),
-      nfsExportOptions: (pulumi.Input.decodeList<NfsExportOptionsResponseFileV1beta1>(map['nfsExportOptions'], (value) => NfsExportOptionsResponseFileV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceBackup: (map['sourceBackup'] as String).input(),
+      capacityGb: pulumi.Input.fromValue(map['capacityGb'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      nfsExportOptions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<NfsExportOptionsResponseFileV1beta1>(
+          map['nfsExportOptions']!,
+          (value) => NfsExportOptionsResponseFileV1beta1.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      sourceBackup: pulumi.Input.fromValue(map['sourceBackup'] as String),
     );
   }
 }
-

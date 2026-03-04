@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessRulesArgs {
   /// The resource ID of the Access Group.
   final pulumi.Input<String> accessGroupId;
+
   /// A list of Access Rule IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -18,11 +20,7 @@ class GetAccessRulesArgs {
   /// [accessGroupId] The resource ID of the Access Group.
   /// [ids] A list of Access Rule IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAccessRulesArgs({
-    required this.accessGroupId,
-    this.ids,
-    this.outputFile,
-  });
+  GetAccessRulesArgs({required this.accessGroupId, this.ids, this.outputFile});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,17 @@ class GetAccessRulesArgs {
 
   factory GetAccessRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessRulesArgs(
-      accessGroupId: (map['accessGroupId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      accessGroupId: pulumi.Input.fromValue(map['accessGroupId'] as String),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

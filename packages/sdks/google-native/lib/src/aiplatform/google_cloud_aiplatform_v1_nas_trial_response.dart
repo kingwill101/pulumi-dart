@@ -7,10 +7,14 @@ import 'google_cloud_aiplatform_v1_measurement_response.dart';
 class GoogleCloudAiplatformV1NasTrialResponse {
   /// Time when the NasTrial's status changed to `SUCCEEDED` or `INFEASIBLE`.
   final pulumi.Input<String> endTime;
+
   /// The final measurement containing the objective value.
-  final pulumi.Input<GoogleCloudAiplatformV1MeasurementResponse> finalMeasurement;
+  final pulumi.Input<GoogleCloudAiplatformV1MeasurementResponse>
+  finalMeasurement;
+
   /// Time when the NasTrial was started.
   final pulumi.Input<String> startTime;
+
   /// The detailed state of the NasTrial.
   final pulumi.Input<String> state;
 
@@ -29,19 +33,28 @@ class GoogleCloudAiplatformV1NasTrialResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endTime': endTime,
-      'finalMeasurement': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1MeasurementResponse, Map<String, dynamic>>(finalMeasurement, (value) => value.toMap()),
+      'finalMeasurement':
+          pulumi.Input.mapInputValue<
+            GoogleCloudAiplatformV1MeasurementResponse,
+            Map<String, dynamic>
+          >(finalMeasurement, (value) => value.toMap()),
       'startTime': startTime,
       'state': state,
     };
   }
 
-  factory GoogleCloudAiplatformV1NasTrialResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1NasTrialResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1NasTrialResponse(
-      endTime: (map['endTime'] as String).input(),
-      finalMeasurement: (GoogleCloudAiplatformV1MeasurementResponse.fromMap((map['finalMeasurement'] as Map).cast<String, dynamic>())).input(),
-      startTime: (map['startTime'] as String).input(),
-      state: (map['state'] as String).input(),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      finalMeasurement: pulumi.Input.fromValue(
+        GoogleCloudAiplatformV1MeasurementResponse.fromMap(
+          (map['finalMeasurement']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

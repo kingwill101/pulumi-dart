@@ -6,12 +6,16 @@ import 'target_directory_result_properties_response.dart';
 class GetSubscriptionTarDirectoryResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified ID for the Subscription Changed Directory resource.
   final String id;
+
   /// Subscription Name.
   final String name;
+
   /// Subscription Changed Target Directory response properties.
   final TargetDirectoryResultPropertiesResponse properties;
+
   /// Resource type, Microsoft.Subscription/changeTenantRequest.
   final String type;
 
@@ -44,9 +48,10 @@ class GetSubscriptionTarDirectoryResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: TargetDirectoryResultPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: TargetDirectoryResultPropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

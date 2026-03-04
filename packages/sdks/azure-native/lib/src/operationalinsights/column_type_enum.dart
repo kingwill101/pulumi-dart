@@ -9,16 +9,15 @@ enum ColumnTypeEnum {
   valueGuid("guid"),
   valueDynamic("dynamic");
 
-  const ColumnTypeEnum(this.value);
-  final String value;
+  const ColumnTypeEnum(this.wireValue);
+  final String wireValue;
 
   static ColumnTypeEnum fromValue(String value) {
     for (final item in ColumnTypeEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ColumnTypeEnum value: $value');
   }
 }
-

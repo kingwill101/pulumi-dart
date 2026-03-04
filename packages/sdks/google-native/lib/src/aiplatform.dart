@@ -1,5 +1,3 @@
-library module_aiplatform;
-
 export 'aiplatform/artifact.dart';
 export 'aiplatform/artifact_aiplatform_v1beta1.dart';
 export 'aiplatform/artifact_aiplatform_v1beta1_args.dart';

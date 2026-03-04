@@ -7,14 +7,20 @@ import 'interconnect_attachment_l2_forwarding_geneve_header.dart';
 class InterconnectAttachmentL2Forwarding {
   /// A map of VLAN tags to appliances and optional inner mapping rules.
   /// Structure is documented below.
-  final pulumi.Input<List<InterconnectAttachmentL2ForwardingApplianceMapping>>? applianceMappings;
+  final pulumi.Input<List<InterconnectAttachmentL2ForwardingApplianceMapping>>?
+  applianceMappings;
+
   /// The default appliance IP address.
   final pulumi.Input<String>? defaultApplianceIpAddress;
+
   /// GeneveHeader related configurations.
   /// Structure is documented below.
-  final pulumi.Input<InterconnectAttachmentL2ForwardingGeneveHeader>? geneveHeader;
+  final pulumi.Input<InterconnectAttachmentL2ForwardingGeneveHeader>?
+  geneveHeader;
+
   /// URL of the network to which this attachment belongs.
   final pulumi.Input<String>? network;
+
   /// The tunnel endpoint IP address.
   final pulumi.Input<String>? tunnelEndpointIpAddress;
 
@@ -34,9 +40,24 @@ class InterconnectAttachmentL2Forwarding {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applianceMappings': ?pulumi.Input.mapOptionalInputValue<List<InterconnectAttachmentL2ForwardingApplianceMapping>, List<Map<String, dynamic>>>(applianceMappings, (value) => pulumi.Input.encodeList<InterconnectAttachmentL2ForwardingApplianceMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'applianceMappings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InterconnectAttachmentL2ForwardingApplianceMapping>,
+            List<Map<String, dynamic>>
+          >(
+            applianceMappings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InterconnectAttachmentL2ForwardingApplianceMapping,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'defaultApplianceIpAddress': ?defaultApplianceIpAddress,
-      'geneveHeader': ?pulumi.Input.mapOptionalInputValue<InterconnectAttachmentL2ForwardingGeneveHeader, Map<String, dynamic>>(geneveHeader, (value) => value.toMap()),
+      'geneveHeader':
+          ?pulumi.Input.mapOptionalInputValue<
+            InterconnectAttachmentL2ForwardingGeneveHeader,
+            Map<String, dynamic>
+          >(geneveHeader, (value) => value.toMap()),
       'network': ?network,
       'tunnelEndpointIpAddress': ?tunnelEndpointIpAddress,
     };
@@ -44,12 +65,45 @@ class InterconnectAttachmentL2Forwarding {
 
   factory InterconnectAttachmentL2Forwarding.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentL2Forwarding(
-      applianceMappings: map['applianceMappings'] == null ? null : (pulumi.Input.decodeList<InterconnectAttachmentL2ForwardingApplianceMapping>(map['applianceMappings']!, (value) => InterconnectAttachmentL2ForwardingApplianceMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultApplianceIpAddress: map['defaultApplianceIpAddress'] == null ? null : (map['defaultApplianceIpAddress']! as String).input(),
-      geneveHeader: map['geneveHeader'] == null ? null : (InterconnectAttachmentL2ForwardingGeneveHeader.fromMap((map['geneveHeader']! as Map).cast<String, dynamic>())).input(),
-      network: map['network'] == null ? null : (map['network']! as String).input(),
-      tunnelEndpointIpAddress: map['tunnelEndpointIpAddress'] == null ? null : (map['tunnelEndpointIpAddress']! as String).input(),
+      applianceMappings: (() {
+        final guardedValue = map['applianceMappings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            InterconnectAttachmentL2ForwardingApplianceMapping
+          >(
+            guardedValue,
+            (value) =>
+                InterconnectAttachmentL2ForwardingApplianceMapping.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      defaultApplianceIpAddress: (() {
+        final guardedValue = map['defaultApplianceIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      geneveHeader: (() {
+        final guardedValue = map['geneveHeader'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InterconnectAttachmentL2ForwardingGeneveHeader.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      network: (() {
+        final guardedValue = map['network'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tunnelEndpointIpAddress: (() {
+        final guardedValue = map['tunnelEndpointIpAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,13 +7,18 @@ import 'product_feature.dart';
 /// License Profile Instance View in Machine Properties.
 class LicenseProfileMachineInstanceView {
   /// Properties for the Machine ESU profile.
-  final pulumi.Input<LicenseProfileMachineInstanceViewEsuProperties>? esuProfile;
+  final pulumi.Input<LicenseProfileMachineInstanceViewEsuProperties>?
+  esuProfile;
+
   /// The list of product features.
   final pulumi.Input<List<ProductFeature>>? productFeatures;
+
   /// Indicates the product type of the license.
   final pulumi.Input<String>? productType;
+
   /// Specifies if this machine is licensed as part of a Software Assurance agreement.
   final pulumi.Input<bool>? softwareAssuranceCustomer;
+
   /// Indicates the subscription status of the product.
   final pulumi.Input<String>? subscriptionStatus;
 
@@ -33,8 +38,23 @@ class LicenseProfileMachineInstanceView {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'esuProfile': ?pulumi.Input.mapOptionalInputValue<LicenseProfileMachineInstanceViewEsuProperties, Map<String, dynamic>>(esuProfile, (value) => value.toMap()),
-      'productFeatures': ?pulumi.Input.mapOptionalInputValue<List<ProductFeature>, List<Map<String, dynamic>>>(productFeatures, (value) => pulumi.Input.encodeList<ProductFeature, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'esuProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            LicenseProfileMachineInstanceViewEsuProperties,
+            Map<String, dynamic>
+          >(esuProfile, (value) => value.toMap()),
+      'productFeatures':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ProductFeature>,
+            List<Map<String, dynamic>>
+          >(
+            productFeatures,
+            (value) =>
+                pulumi.Input.encodeList<ProductFeature, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'productType': ?productType,
       'softwareAssuranceCustomer': ?softwareAssuranceCustomer,
       'subscriptionStatus': ?subscriptionStatus,
@@ -43,12 +63,41 @@ class LicenseProfileMachineInstanceView {
 
   factory LicenseProfileMachineInstanceView.fromMap(Map<String, dynamic> map) {
     return LicenseProfileMachineInstanceView(
-      esuProfile: map['esuProfile'] == null ? null : (LicenseProfileMachineInstanceViewEsuProperties.fromMap((map['esuProfile']! as Map).cast<String, dynamic>())).input(),
-      productFeatures: map['productFeatures'] == null ? null : (pulumi.Input.decodeList<ProductFeature>(map['productFeatures']!, (value) => ProductFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      productType: map['productType'] == null ? null : (map['productType']! as String).input(),
-      softwareAssuranceCustomer: map['softwareAssuranceCustomer'] == null ? null : (map['softwareAssuranceCustomer']! as bool).input(),
-      subscriptionStatus: map['subscriptionStatus'] == null ? null : (map['subscriptionStatus']! as String).input(),
+      esuProfile: (() {
+        final guardedValue = map['esuProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LicenseProfileMachineInstanceViewEsuProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      productFeatures: (() {
+        final guardedValue = map['productFeatures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ProductFeature>(
+            guardedValue,
+            (value) =>
+                ProductFeature.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      productType: (() {
+        final guardedValue = map['productType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      softwareAssuranceCustomer: (() {
+        final guardedValue = map['softwareAssuranceCustomer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      subscriptionStatus: (() {
+        final guardedValue = map['subscriptionStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

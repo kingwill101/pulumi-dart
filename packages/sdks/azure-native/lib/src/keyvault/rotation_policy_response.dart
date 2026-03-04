@@ -7,29 +7,60 @@ import 'lifetime_action_response.dart';
 class RotationPolicyResponse {
   /// The attributes of key rotation policy.
   final pulumi.Input<KeyRotationPolicyAttributesResponse>? attributes;
+
   /// The lifetimeActions for key rotation action.
   final pulumi.Input<List<LifetimeActionResponse>>? lifetimeActions;
 
   /// Creates a new [RotationPolicyResponse].
   /// [attributes] The attributes of key rotation policy.
   /// [lifetimeActions] The lifetimeActions for key rotation action.
-  RotationPolicyResponse({
-    this.attributes,
-    this.lifetimeActions,
-  });
+  RotationPolicyResponse({this.attributes, this.lifetimeActions});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes': ?pulumi.Input.mapOptionalInputValue<KeyRotationPolicyAttributesResponse, Map<String, dynamic>>(attributes, (value) => value.toMap()),
-      'lifetimeActions': ?pulumi.Input.mapOptionalInputValue<List<LifetimeActionResponse>, List<Map<String, dynamic>>>(lifetimeActions, (value) => pulumi.Input.encodeList<LifetimeActionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'attributes':
+          ?pulumi.Input.mapOptionalInputValue<
+            KeyRotationPolicyAttributesResponse,
+            Map<String, dynamic>
+          >(attributes, (value) => value.toMap()),
+      'lifetimeActions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<LifetimeActionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            lifetimeActions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LifetimeActionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory RotationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RotationPolicyResponse(
-      attributes: map['attributes'] == null ? null : (KeyRotationPolicyAttributesResponse.fromMap((map['attributes']! as Map).cast<String, dynamic>())).input(),
-      lifetimeActions: map['lifetimeActions'] == null ? null : (pulumi.Input.decodeList<LifetimeActionResponse>(map['lifetimeActions']!, (value) => LifetimeActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attributes: (() {
+        final guardedValue = map['attributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KeyRotationPolicyAttributesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      lifetimeActions: (() {
+        final guardedValue = map['lifetimeActions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<LifetimeActionResponse>(
+            guardedValue,
+            (value) => LifetimeActionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

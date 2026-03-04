@@ -8,29 +8,60 @@ import 'osdisk_image_encryption_response.dart';
 class EncryptionImagesResponse {
   /// A list of encryption specifications for data disk images.
   final pulumi.Input<List<DataDiskImageEncryptionResponse>>? dataDiskImages;
+
   /// Contains encryption settings for an OS disk image.
   final pulumi.Input<OSDiskImageEncryptionResponse>? osDiskImage;
 
   /// Creates a new [EncryptionImagesResponse].
   /// [dataDiskImages] A list of encryption specifications for data disk images.
   /// [osDiskImage] Contains encryption settings for an OS disk image.
-  EncryptionImagesResponse({
-    this.dataDiskImages,
-    this.osDiskImage,
-  });
+  EncryptionImagesResponse({this.dataDiskImages, this.osDiskImage});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataDiskImages': ?pulumi.Input.mapOptionalInputValue<List<DataDiskImageEncryptionResponse>, List<Map<String, dynamic>>>(dataDiskImages, (value) => pulumi.Input.encodeList<DataDiskImageEncryptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'osDiskImage': ?pulumi.Input.mapOptionalInputValue<OSDiskImageEncryptionResponse, Map<String, dynamic>>(osDiskImage, (value) => value.toMap()),
+      'dataDiskImages':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DataDiskImageEncryptionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            dataDiskImages,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DataDiskImageEncryptionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'osDiskImage':
+          ?pulumi.Input.mapOptionalInputValue<
+            OSDiskImageEncryptionResponse,
+            Map<String, dynamic>
+          >(osDiskImage, (value) => value.toMap()),
     };
   }
 
   factory EncryptionImagesResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionImagesResponse(
-      dataDiskImages: map['dataDiskImages'] == null ? null : (pulumi.Input.decodeList<DataDiskImageEncryptionResponse>(map['dataDiskImages']!, (value) => DataDiskImageEncryptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      osDiskImage: map['osDiskImage'] == null ? null : (OSDiskImageEncryptionResponse.fromMap((map['osDiskImage']! as Map).cast<String, dynamic>())).input(),
+      dataDiskImages: (() {
+        final guardedValue = map['dataDiskImages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DataDiskImageEncryptionResponse>(
+            guardedValue,
+            (value) => DataDiskImageEncryptionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      osDiskImage: (() {
+        final guardedValue = map['osDiskImage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          OSDiskImageEncryptionResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

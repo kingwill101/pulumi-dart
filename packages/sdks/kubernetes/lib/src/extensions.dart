@@ -1,5 +1,3 @@
-library module_extensions;
-
 export 'extensions/allowed_csidriver.dart';
 export 'extensions/allowed_csidriver_patch.dart';
 export 'extensions/allowed_flex_volume.dart';

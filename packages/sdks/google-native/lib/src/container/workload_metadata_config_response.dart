@@ -9,20 +9,15 @@ class WorkloadMetadataConfigResponse {
 
   /// Creates a new [WorkloadMetadataConfigResponse].
   /// [mode] Mode is the configuration for how to expose metadata to workloads running on the node pool.
-  WorkloadMetadataConfigResponse({
-    required this.mode,
-  });
+  WorkloadMetadataConfigResponse({required this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': mode,
-    };
+    return <String, dynamic>{'mode': mode};
   }
 
   factory WorkloadMetadataConfigResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadMetadataConfigResponse(
-      mode: (map['mode'] as String).input(),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

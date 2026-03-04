@@ -151,40 +151,58 @@ import 'system_data_response.dart';
 class ShareSubscription extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Time at which the share subscription was created.
   late final pulumi.Output<String> createdAt;
+
   /// The expiration date of the share subscription.
   late final pulumi.Output<String?> expirationDate;
+
   /// The invitation id.
   late final pulumi.Output<String> invitationId;
+
   /// Name of the azure resource
   late final pulumi.Output<String> name;
+
   /// Email of the provider who created the resource
   late final pulumi.Output<String> providerEmail;
+
   /// Name of the provider who created the resource
   late final pulumi.Output<String> providerName;
+
   /// Tenant name of the provider who created the resource
   late final pulumi.Output<String> providerTenantName;
+
   /// Provisioning state of the share subscription
   late final pulumi.Output<String> provisioningState;
+
   /// Description of share
   late final pulumi.Output<String> shareDescription;
+
   /// Kind of share
   late final pulumi.Output<String> shareKind;
+
   /// Name of the share
   late final pulumi.Output<String> shareName;
+
   /// Gets the current status of share subscription.
   late final pulumi.Output<String> shareSubscriptionStatus;
+
   /// Terms of a share
   late final pulumi.Output<String> shareTerms;
+
   /// Source share location.
   late final pulumi.Output<String> sourceShareLocation;
+
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Type of the azure resource
   late final pulumi.Output<String> type;
+
   /// Email of the user who created the resource
   late final pulumi.Output<String> userEmail;
+
   /// Name of the user who created the resource
   late final pulumi.Output<String> userName;
 
@@ -197,29 +215,29 @@ class ShareSubscription extends pulumi.CustomResource {
     ShareSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datashare:ShareSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.expirationDate = registerOutput<String?>('expirationDate');
-    this.invitationId = registerOutput<String>('invitationId');
+         'azure-native:datashare:ShareSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAt = registerOutput<String>('createdAt');
+    expirationDate = registerOutput<String?>('expirationDate');
+    invitationId = registerOutput<String>('invitationId');
     this.name = registerOutput<String>('name');
-    this.providerEmail = registerOutput<String>('providerEmail');
-    this.providerName = registerOutput<String>('providerName');
-    this.providerTenantName = registerOutput<String>('providerTenantName');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.shareDescription = registerOutput<String>('shareDescription');
-    this.shareKind = registerOutput<String>('shareKind');
-    this.shareName = registerOutput<String>('shareName');
-    this.shareSubscriptionStatus = registerOutput<String>('shareSubscriptionStatus');
-    this.shareTerms = registerOutput<String>('shareTerms');
-    this.sourceShareLocation = registerOutput<String>('sourceShareLocation');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.userEmail = registerOutput<String>('userEmail');
-    this.userName = registerOutput<String>('userName');
+    providerEmail = registerOutput<String>('providerEmail');
+    providerName = registerOutput<String>('providerName');
+    providerTenantName = registerOutput<String>('providerTenantName');
+    provisioningState = registerOutput<String>('provisioningState');
+    shareDescription = registerOutput<String>('shareDescription');
+    shareKind = registerOutput<String>('shareKind');
+    shareName = registerOutput<String>('shareName');
+    shareSubscriptionStatus = registerOutput<String>('shareSubscriptionStatus');
+    shareTerms = registerOutput<String>('shareTerms');
+    sourceShareLocation = registerOutput<String>('sourceShareLocation');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    userEmail = registerOutput<String>('userEmail');
+    userName = registerOutput<String>('userName');
   }
 }

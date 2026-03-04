@@ -9,20 +9,19 @@ class NetworkInterfaceStatusEnumValue {
 
   /// Creates a new [NetworkInterfaceStatusEnumValue].
   /// [value] Property value
-  NetworkInterfaceStatusEnumValue({
-    this.value,
-  });
+  NetworkInterfaceStatusEnumValue({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
   factory NetworkInterfaceStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceStatusEnumValue(
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

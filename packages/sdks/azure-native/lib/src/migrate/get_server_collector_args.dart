@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerCollectorArgs {
   /// Name of the Azure Migrate project.
   final pulumi.Input<String> projectName;
+
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
+
   /// Unique name of a Server collector within a project.
   final pulumi.Input<String> serverCollectorName;
 
@@ -34,10 +36,13 @@ class GetServerCollectorArgs {
 
   factory GetServerCollectorArgs.fromMap(Map<String, dynamic> map) {
     return GetServerCollectorArgs(
-      projectName: (map['projectName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverCollectorName: (map['serverCollectorName'] as String).input(),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverCollectorName: pulumi.Input.fromValue(
+        map['serverCollectorName'] as String,
+      ),
     );
   }
 }
-

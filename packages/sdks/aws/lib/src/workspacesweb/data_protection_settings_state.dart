@@ -7,24 +7,34 @@ import 'data_protection_settings_inline_redaction_configuration.dart';
 class DataProtectionSettingsState {
   /// Additional encryption context for the data protection settings.
   final pulumi.Input<Map<String, String>>? additionalEncryptionContext;
+
   /// List of web portal ARNs that this data protection settings resource is associated with.
   final pulumi.Input<List<String>>? associatedPortalArns;
+
   /// ARN of the customer managed KMS key.
   final pulumi.Input<String>? customerManagedKey;
+
   /// ARN of the data protection settings resource.
   final pulumi.Input<String>? dataProtectionSettingsArn;
+
   /// The description of the data protection settings.
   final pulumi.Input<String>? description;
+
   /// The display name of the data protection settings.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? displayName;
+
   /// The inline redaction configuration of the data protection settings. Detailed below.
-  final pulumi.Input<DataProtectionSettingsInlineRedactionConfiguration>? inlineRedactionConfiguration;
+  final pulumi.Input<DataProtectionSettingsInlineRedactionConfiguration>?
+  inlineRedactionConfiguration;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -60,7 +70,11 @@ class DataProtectionSettingsState {
       'dataProtectionSettingsArn': ?dataProtectionSettingsArn,
       'description': ?description,
       'displayName': ?displayName,
-      'inlineRedactionConfiguration': ?pulumi.Input.mapOptionalInputValue<DataProtectionSettingsInlineRedactionConfiguration, Map<String, dynamic>>(inlineRedactionConfiguration, (value) => value.toMap()),
+      'inlineRedactionConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataProtectionSettingsInlineRedactionConfiguration,
+            Map<String, dynamic>
+          >(inlineRedactionConfiguration, (value) => value.toMap()),
       'region': ?region,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
@@ -69,17 +83,66 @@ class DataProtectionSettingsState {
 
   factory DataProtectionSettingsState.fromMap(Map<String, dynamic> map) {
     return DataProtectionSettingsState(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : (((map['additionalEncryptionContext'] as Map).cast<String, String>()).input()).input(),
-      associatedPortalArns: map['associatedPortalArns'] == null ? null : (((map['associatedPortalArns'] as List).cast<String>()).input()).input(),
-      customerManagedKey: map['customerManagedKey'] == null ? null : ((map['customerManagedKey'] as String).input()).input(),
-      dataProtectionSettingsArn: map['dataProtectionSettingsArn'] == null ? null : ((map['dataProtectionSettingsArn'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      displayName: map['displayName'] == null ? null : ((map['displayName'] as String).input()).input(),
-      inlineRedactionConfiguration: map['inlineRedactionConfiguration'] == null ? null : ((DataProtectionSettingsInlineRedactionConfiguration.fromMap((map['inlineRedactionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      additionalEncryptionContext: (() {
+        final guardedValue = map['additionalEncryptionContext'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      associatedPortalArns: (() {
+        final guardedValue = map['associatedPortalArns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      customerManagedKey: (() {
+        final guardedValue = map['customerManagedKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataProtectionSettingsArn: (() {
+        final guardedValue = map['dataProtectionSettingsArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inlineRedactionConfiguration: (() {
+        final guardedValue = map['inlineRedactionConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataProtectionSettingsInlineRedactionConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

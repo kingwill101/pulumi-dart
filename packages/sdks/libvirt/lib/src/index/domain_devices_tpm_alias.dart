@@ -8,20 +8,15 @@ class DomainDevicesTpmAlias {
 
   /// Creates a new [DomainDevicesTpmAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesTpmAlias({
-    required this.name,
-  });
+  DomainDevicesTpmAlias({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory DomainDevicesTpmAlias.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmAlias(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

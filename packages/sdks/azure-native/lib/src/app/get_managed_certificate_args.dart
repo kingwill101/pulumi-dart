@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedCertificateArgs {
   /// Name of the Managed Environment.
   final pulumi.Input<String> environmentName;
+
   /// Name of the Managed Certificate.
   final pulumi.Input<String> managedCertificateName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetManagedCertificateArgs {
 
   factory GetManagedCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedCertificateArgs(
-      environmentName: (map['environmentName'] as String).input(),
-      managedCertificateName: (map['managedCertificateName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
+      managedCertificateName: pulumi.Input.fromValue(
+        map['managedCertificateName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

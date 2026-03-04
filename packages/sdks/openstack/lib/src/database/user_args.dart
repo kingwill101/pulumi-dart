@@ -10,12 +10,16 @@ class UserArgs {
   /// A list of database user should have access to.
   final pulumi.Input<List<String>>? databases;
   final pulumi.Input<String>? host;
+
   /// The ID for the database instance.
   final pulumi.Input<String> instanceId;
+
   /// A unique name for the resource.
   final pulumi.Input<String>? name;
+
   /// User's password.
   final pulumi.Input<String> password;
+
   /// The region in which to create the db user. Changing
   /// this creates a new user.
   final pulumi.Input<String>? region;
@@ -49,13 +53,28 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      databases: map['databases'] == null ? null : ((map['databases']! as List).cast<String>()).input(),
-      host: map['host'] == null ? null : (map['host']! as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      password: (map['password'] as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      databases: (() {
+        final guardedValue = map['databases'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      host: (() {
+        final guardedValue = map['host'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

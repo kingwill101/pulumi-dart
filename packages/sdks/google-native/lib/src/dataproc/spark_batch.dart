@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SparkBatch {
   /// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
   final pulumi.Input<List<String>>? archiveUris;
+
   /// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
   final pulumi.Input<List<String>>? args;
+
   /// Optional. HCFS URIs of files to be placed in the working directory of each executor.
   final pulumi.Input<List<String>>? fileUris;
+
   /// Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
   final pulumi.Input<List<String>>? jarFileUris;
+
   /// Optional. The name of the driver main class. The jar file that contains the class must be in the classpath or specified in jar_file_uris.
   final pulumi.Input<String>? mainClass;
+
   /// Optional. The HCFS URI of the jar file that contains the main class.
   final pulumi.Input<String>? mainJarFileUri;
 
@@ -46,13 +51,36 @@ class SparkBatch {
 
   factory SparkBatch.fromMap(Map<String, dynamic> map) {
     return SparkBatch(
-      archiveUris: map['archiveUris'] == null ? null : ((map['archiveUris']! as List).cast<String>()).input(),
-      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
-      fileUris: map['fileUris'] == null ? null : ((map['fileUris']! as List).cast<String>()).input(),
-      jarFileUris: map['jarFileUris'] == null ? null : ((map['jarFileUris']! as List).cast<String>()).input(),
-      mainClass: map['mainClass'] == null ? null : (map['mainClass']! as String).input(),
-      mainJarFileUri: map['mainJarFileUri'] == null ? null : (map['mainJarFileUri']! as String).input(),
+      archiveUris: (() {
+        final guardedValue = map['archiveUris'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      args: (() {
+        final guardedValue = map['args'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      fileUris: (() {
+        final guardedValue = map['fileUris'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      jarFileUris: (() {
+        final guardedValue = map['jarFileUris'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      mainClass: (() {
+        final guardedValue = map['mainClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mainJarFileUri: (() {
+        final guardedValue = map['mainJarFileUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

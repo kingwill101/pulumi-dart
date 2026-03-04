@@ -5,22 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGenaiAgentsByOpenaiApiKeyAgentFunction {
   /// API Key value
   final pulumi.Input<String>? apiKey;
+
   /// Created At timestamp for the Function
   final pulumi.Input<String> createdAt;
+
   /// Description of the Function
   final pulumi.Input<String>? description;
+
   /// Name of function
   final pulumi.Input<String>? faasname;
+
   /// Namespace of function
   final pulumi.Input<String>? faasnamespace;
+
   /// Guardrail UUID for the Function
   final pulumi.Input<String>? guardrailUuid;
+
   /// Name of function
   final pulumi.Input<String>? name;
+
   /// Updated At timestamp for the Agent
   final pulumi.Input<String> updatedAt;
+
   /// Url of the Deployment
   final pulumi.Input<String>? url;
+
   /// API Key value
   final pulumi.Input<String>? uuid;
 
@@ -63,19 +72,52 @@ class GetGenaiAgentsByOpenaiApiKeyAgentFunction {
     };
   }
 
-  factory GetGenaiAgentsByOpenaiApiKeyAgentFunction.fromMap(Map<String, dynamic> map) {
+  factory GetGenaiAgentsByOpenaiApiKeyAgentFunction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGenaiAgentsByOpenaiApiKeyAgentFunction(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
-      createdAt: (map['createdAt'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      faasname: map['faasname'] == null ? null : (map['faasname']! as String).input(),
-      faasnamespace: map['faasnamespace'] == null ? null : (map['faasnamespace']! as String).input(),
-      guardrailUuid: map['guardrailUuid'] == null ? null : (map['guardrailUuid']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      updatedAt: (map['updatedAt'] as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
+      apiKey: (() {
+        final guardedValue = map['apiKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      faasname: (() {
+        final guardedValue = map['faasname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      faasnamespace: (() {
+        final guardedValue = map['faasnamespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      guardrailUuid: (() {
+        final guardedValue = map['guardrailUuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uuid: (() {
+        final guardedValue = map['uuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

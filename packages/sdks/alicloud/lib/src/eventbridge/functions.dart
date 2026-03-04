@@ -10,7 +10,7 @@ import 'get_service_result.dart';
 
 /// This data source provides the Event Bridge Event Buses of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.129.0+.
+/// &gt; **NOTE:** Available in v1.129.0+.
 ///
 /// ## Example Usage
 ///
@@ -150,7 +150,7 @@ Future<GetEventBusesResult> getEventBuses(
 
 /// This data source provides the Event Bridge Event Sources of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.130.0+.
+/// &gt; **NOTE:** Available in v1.130.0+.
 ///
 /// ## Example Usage
 ///
@@ -281,7 +281,7 @@ Future<GetEventSourcesResult> getEventSources(
 
 /// This data source provides the Event Bridge Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.129.0+.
+/// &gt; **NOTE:** Available in v1.129.0+.
 ///
 /// ## Example Usage
 ///
@@ -420,7 +420,7 @@ Future<GetRulesResult> getRules(
 ///
 /// For information about Event Bridge and how to use it, see [What is Event Bridge](https://www.alibabacloud.com/help/en/doc-detail/163239.htm).
 ///
-/// > **NOTE:** Available since v1.126.0.
+/// &gt; **NOTE:** Available since v1.126.0.
 ///
 /// ## Example Usage
 ///

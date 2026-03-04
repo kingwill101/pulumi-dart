@@ -10,8 +10,10 @@ import 'vpc_endpoint_vpc_options.dart';
 class VpcEndpointArgs {
   /// Specifies the Amazon Resource Name (ARN) of the domain to create the endpoint for
   final pulumi.Input<String> domainArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Options to specify the subnets and security groups for the endpoint.
   final pulumi.Input<VpcEndpointVpcOptions> vpcOptions;
 
@@ -29,16 +31,27 @@ class VpcEndpointArgs {
     return <String, dynamic>{
       'domainArn': domainArn,
       'region': ?region,
-      'vpcOptions': pulumi.Input.mapInputValue<VpcEndpointVpcOptions, Map<String, dynamic>>(vpcOptions, (value) => value.toMap()),
+      'vpcOptions':
+          pulumi.Input.mapInputValue<
+            VpcEndpointVpcOptions,
+            Map<String, dynamic>
+          >(vpcOptions, (value) => value.toMap()),
     };
   }
 
   factory VpcEndpointArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointArgs(
-      domainArn: (map['domainArn'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      vpcOptions: (VpcEndpointVpcOptions.fromMap((map['vpcOptions']! as Map).cast<String, dynamic>())).input(),
+      domainArn: pulumi.Input.fromValue(map['domainArn'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcOptions: pulumi.Input.fromValue(
+        VpcEndpointVpcOptions.fromMap(
+          (map['vpcOptions']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

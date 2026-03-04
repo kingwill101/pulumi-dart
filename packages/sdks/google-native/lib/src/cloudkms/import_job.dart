@@ -9,27 +9,37 @@ import 'wrapping_public_key_response.dart';
 class ImportJob extends pulumi.CustomResource {
   /// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen ImportMethod is one with a protection level of HSM.
   late final pulumi.Output<KeyOperationAttestationResponse> attestation;
+
   /// The time at which this ImportJob was created.
   late final pulumi.Output<String> createTime;
+
   /// The time this ImportJob expired. Only present if state is EXPIRED.
   late final pulumi.Output<String> expireEventTime;
+
   /// The time at which this ImportJob is scheduled for expiration and can no longer be used to import key material.
   late final pulumi.Output<String> expireTime;
+
   /// The time this ImportJob's key material was generated.
   late final pulumi.Output<String> generateTime;
+
   /// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
   late final pulumi.Output<String> importJobId;
+
   /// Immutable. The wrapping method to be used for incoming key material.
   late final pulumi.Output<String> importMethod;
   late final pulumi.Output<String> keyRingId;
   late final pulumi.Output<String> location;
+
   /// The resource name for this ImportJob in the format `projects/*/locations/*/keyRings/*/importJobs/*`.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
   late final pulumi.Output<String> protectionLevel;
+
   /// The public key with which to wrap key material prior to import. Only returned if state is ACTIVE.
   late final pulumi.Output<WrappingPublicKeyResponse> publicKey;
+
   /// The current state of the ImportJob, indicating if it can be used.
   late final pulumi.Output<String> state;
 
@@ -42,24 +52,26 @@ class ImportJob extends pulumi.CustomResource {
     ImportJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:cloudkms/v1:ImportJob',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attestation = registerOutput<KeyOperationAttestationResponse>('attestation');
-    this.createTime = registerOutput<String>('createTime');
-    this.expireEventTime = registerOutput<String>('expireEventTime');
-    this.expireTime = registerOutput<String>('expireTime');
-    this.generateTime = registerOutput<String>('generateTime');
-    this.importJobId = registerOutput<String>('importJobId');
-    this.importMethod = registerOutput<String>('importMethod');
-    this.keyRingId = registerOutput<String>('keyRingId');
-    this.location = registerOutput<String>('location');
+         'google-native:cloudkms/v1:ImportJob',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attestation = registerOutput<KeyOperationAttestationResponse>(
+      'attestation',
+    );
+    createTime = registerOutput<String>('createTime');
+    expireEventTime = registerOutput<String>('expireEventTime');
+    expireTime = registerOutput<String>('expireTime');
+    generateTime = registerOutput<String>('generateTime');
+    importJobId = registerOutput<String>('importJobId');
+    importMethod = registerOutput<String>('importMethod');
+    keyRingId = registerOutput<String>('keyRingId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.protectionLevel = registerOutput<String>('protectionLevel');
-    this.publicKey = registerOutput<WrappingPublicKeyResponse>('publicKey');
-    this.state = registerOutput<String>('state');
+    project = registerOutput<String>('project');
+    protectionLevel = registerOutput<String>('protectionLevel');
+    publicKey = registerOutput<WrappingPublicKeyResponse>('publicKey');
+    state = registerOutput<String>('state');
   }
 }

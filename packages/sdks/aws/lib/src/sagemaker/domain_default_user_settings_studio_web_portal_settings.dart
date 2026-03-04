@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDefaultUserSettingsStudioWebPortalSettings {
   /// The Applications supported in Studio that are hidden from the Studio left navigation pane.
   final pulumi.Input<List<String>>? hiddenAppTypes;
+
   /// The instance types you are hiding from the Studio user interface.
   final pulumi.Input<List<String>>? hiddenInstanceTypes;
+
   /// The machine learning tools that are hidden from the Studio left navigation pane.
   final pulumi.Input<List<String>>? hiddenMlTools;
 
@@ -28,12 +30,25 @@ class DomainDefaultUserSettingsStudioWebPortalSettings {
     };
   }
 
-  factory DomainDefaultUserSettingsStudioWebPortalSettings.fromMap(Map<String, dynamic> map) {
+  factory DomainDefaultUserSettingsStudioWebPortalSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDefaultUserSettingsStudioWebPortalSettings(
-      hiddenAppTypes: map['hiddenAppTypes'] == null ? null : (((map['hiddenAppTypes'] as List).cast<String>()).input()).input(),
-      hiddenInstanceTypes: map['hiddenInstanceTypes'] == null ? null : (((map['hiddenInstanceTypes'] as List).cast<String>()).input()).input(),
-      hiddenMlTools: map['hiddenMlTools'] == null ? null : (((map['hiddenMlTools'] as List).cast<String>()).input()).input(),
+      hiddenAppTypes: (() {
+        final guardedValue = map['hiddenAppTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      hiddenInstanceTypes: (() {
+        final guardedValue = map['hiddenInstanceTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      hiddenMlTools: (() {
+        final guardedValue = map['hiddenMlTools'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'template_state.dart';
 ///
 /// For information about ROS Template and how to use it, see [What is Template](https://www.alibabacloud.com/help/en/doc-detail/141851.htm).
 ///
-/// > **NOTE:** Available in v1.108.0+.
+/// &gt; **NOTE:** Available in v1.108.0+.
 ///
 /// ## Example Usage
 ///
@@ -135,12 +135,16 @@ import 'template_state.dart';
 class Template extends pulumi.CustomResource {
   /// The description of the template. The description can be up to 256 characters in length.
   late final pulumi.Output<String?> description;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
   late final pulumi.Output<String?> templateBody;
+
   /// The name of the template. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
   late final pulumi.Output<String> templateName;
+
   /// The template url.
   late final pulumi.Output<String?> templateUrl;
 
@@ -153,16 +157,16 @@ class Template extends pulumi.CustomResource {
     TemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ros/template:Template',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateBody = registerOutput<String?>('templateBody');
-    this.templateName = registerOutput<String>('templateName');
-    this.templateUrl = registerOutput<String?>('templateUrl');
+         'alicloud:ros/template:Template',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateBody = registerOutput<String?>('templateBody');
+    templateName = registerOutput<String>('templateName');
+    templateUrl = registerOutput<String?>('templateUrl');
   }
 
   /// Gets an existing [Template] resource's state with the given [name] and [id].
@@ -183,15 +187,15 @@ class Template extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ros/template:Template',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateBody = registerOutput<String?>('templateBody');
-    this.templateName = registerOutput<String>('templateName');
-    this.templateUrl = registerOutput<String?>('templateUrl');
+         'alicloud:ros/template:Template',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateBody = registerOutput<String?>('templateBody');
+    templateName = registerOutput<String>('templateName');
+    templateUrl = registerOutput<String?>('templateUrl');
   }
 }

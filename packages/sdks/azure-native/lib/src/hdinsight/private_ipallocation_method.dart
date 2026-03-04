@@ -3,16 +3,15 @@ enum PrivateIPAllocationMethod {
   valueDynamic("dynamic"),
   valueStatic("static");
 
-  const PrivateIPAllocationMethod(this.value);
-  final String value;
+  const PrivateIPAllocationMethod(this.wireValue);
+  final String wireValue;
 
   static PrivateIPAllocationMethod fromValue(String value) {
     for (final item in PrivateIPAllocationMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PrivateIPAllocationMethod value: $value');
   }
 }
-

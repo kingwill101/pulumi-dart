@@ -31,10 +31,9 @@ class GetApicategoryArgs {
 
   factory GetApicategoryArgs.fromMap(Map<String, dynamic> map) {
     return GetApicategoryArgs(
-      apicategoryId: (map['apicategoryId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      siteId: (map['siteId'] as String).input(),
+      apicategoryId: pulumi.Input.fromValue(map['apicategoryId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      siteId: pulumi.Input.fromValue(map['siteId'] as String),
     );
   }
 }
-

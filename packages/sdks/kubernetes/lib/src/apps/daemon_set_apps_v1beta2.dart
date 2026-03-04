@@ -9,12 +9,16 @@ import 'daemon_set_status_apps_v1beta2.dart';
 class DaemonSetAppsV1beta2 {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
+
   /// Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   final pulumi.Input<ObjectMeta>? metadata;
+
   /// The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   final pulumi.Input<DaemonSetSpecAppsV1beta2>? spec;
+
   /// The current status of this daemon set. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   final pulumi.Input<DaemonSetStatusAppsV1beta2>? status;
 
@@ -36,20 +40,61 @@ class DaemonSetAppsV1beta2 {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'spec': ?pulumi.Input.mapOptionalInputValue<DaemonSetSpecAppsV1beta2, Map<String, dynamic>>(spec, (value) => value.toMap()),
-      'status': ?pulumi.Input.mapOptionalInputValue<DaemonSetStatusAppsV1beta2, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(
+            metadata,
+            (value) => value.toMap(),
+          ),
+      'spec':
+          ?pulumi.Input.mapOptionalInputValue<
+            DaemonSetSpecAppsV1beta2,
+            Map<String, dynamic>
+          >(spec, (value) => value.toMap()),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            DaemonSetStatusAppsV1beta2,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
     };
   }
 
   factory DaemonSetAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return DaemonSetAppsV1beta2(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (DaemonSetSpecAppsV1beta2.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (DaemonSetStatusAppsV1beta2.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      spec: (() {
+        final guardedValue = map['spec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DaemonSetSpecAppsV1beta2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DaemonSetStatusAppsV1beta2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

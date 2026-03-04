@@ -1,5 +1,3 @@
-library module_bigqueryanalyticshub;
-
 export 'bigqueryanalyticshub/data_exchange.dart';
 export 'bigqueryanalyticshub/data_exchange_args.dart';
 export 'bigqueryanalyticshub/data_exchange_iam_binding.dart';

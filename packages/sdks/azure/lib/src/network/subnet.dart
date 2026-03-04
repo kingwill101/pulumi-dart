@@ -1,12 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnet_args.dart';
-import 'subnet_delegation.dart';
 import 'subnet_ip_address_pool.dart';
 import 'subnet_state.dart';
 
 /// Manages a subnet. Subnets represent network segments within the IP space defined by the virtual network.
 ///
-/// > **NOTE on Virtual Networks and Subnet's:** This provider currently
+/// &gt; **NOTE on Virtual Networks and Subnet's:** This provider currently
 /// provides both a standalone Subnet resource, and allows for Subnets to be defined in-line within the Virtual Network resource.
 /// At this time you cannot use a Virtual Network with in-line Subnets in conjunction with any Subnet resources. Doing so will cause a conflict of Subnet configurations and will overwrite Subnets.
 ///
@@ -277,7 +276,7 @@ import 'subnet_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -292,44 +291,55 @@ import 'subnet_state.dart';
 class Subnet extends pulumi.CustomResource {
   /// The address prefixes to use for the subnet.
   ///
-  /// > **Note:** Exactly one of `address_prefixes` or `ip_address_pool` must be specified.
+  /// &gt; **Note:** Exactly one of `address_prefixes` or `ip_address_pool` must be specified.
   late final pulumi.Output<List<String>?> addressPrefixes;
+
   /// Enable default outbound access to the internet for the subnet. Defaults to `true`.
   late final pulumi.Output<bool?> defaultOutboundAccessEnabled;
+
   /// One or more `delegation` blocks as defined below.
-  late final pulumi.Output<List<SubnetDelegation>?> delegations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> delegations;
+
   /// An `ip_address_pool` block as defined below.
   ///
-  /// > **Note:** Exactly one of `address_prefixes` or `ip_address_pool` must be specified.
+  /// &gt; **Note:** Exactly one of `address_prefixes` or `ip_address_pool` must be specified.
   late final pulumi.Output<SubnetIpAddressPool?> ipAddressPool;
+
   /// The name of the subnet. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Enable or Disable network policies for the private endpoint on the subnet. Possible values are `Disabled`, `Enabled`, `NetworkSecurityGroupEnabled` and `RouteTableEnabled`. Defaults to `Disabled`.
   ///
-  /// > **NOTE:** If you don't want to use network policies like user-defined Routes and Network Security Groups, you need to set `private_endpoint_network_policies` in the subnet to `Disabled`. This setting only applies to Private Endpoints in the Subnet and affects all Private Endpoints in the Subnet. For other resources in the Subnet, access is controlled based via the Network Security Group which can be configured using the `azure.network.SubnetNetworkSecurityGroupAssociation` resource.
+  /// &gt; **NOTE:** If you don't want to use network policies like user-defined Routes and Network Security Groups, you need to set `private_endpoint_network_policies` in the subnet to `Disabled`. This setting only applies to Private Endpoints in the Subnet and affects all Private Endpoints in the Subnet. For other resources in the Subnet, access is controlled based via the Network Security Group which can be configured using the `azure.network.SubnetNetworkSecurityGroupAssociation` resource.
   ///
-  /// > **NOTE:** If you want to use network policies like user-defined Routes and Network Security Groups, you need to set the `private_endpoint_network_policies` in the Subnet to `Enabled`/`NetworkSecurityGroupEnabled`/`RouteTableEnabled`. This setting only applies to Private Endpoints in the Subnet and affects all Private Endpoints in the Subnet. For other resources in the Subnet, access is controlled based via the Network Security Group which can be configured using the `azure.network.SubnetNetworkSecurityGroupAssociation` resource.
+  /// &gt; **NOTE:** If you want to use network policies like user-defined Routes and Network Security Groups, you need to set the `private_endpoint_network_policies` in the Subnet to `Enabled`/`NetworkSecurityGroupEnabled`/`RouteTableEnabled`. This setting only applies to Private Endpoints in the Subnet and affects all Private Endpoints in the Subnet. For other resources in the Subnet, access is controlled based via the Network Security Group which can be configured using the `azure.network.SubnetNetworkSecurityGroupAssociation` resource.
   ///
-  /// > **NOTE:** See more details from [Manage network policies for Private Endpoints](https://learn.microsoft.com/en-gb/azure/private-link/disable-private-endpoint-network-policy?tabs=network-policy-portal).
+  /// &gt; **NOTE:** See more details from [Manage network policies for Private Endpoints](https://learn.microsoft.com/en-gb/azure/private-link/disable-private-endpoint-network-policy?tabs=network-policy-portal).
   late final pulumi.Output<String?> privateEndpointNetworkPolicies;
+
   /// Enable or Disable network policies for the private link service on the subnet. Defaults to `true`.
   ///
-  /// > **NOTE:** When configuring Azure Private Link service, the explicit setting `private_link_service_network_policies_enabled` must be set to `false` in the subnet since Private Link Service does not support network policies like user-defined Routes and Network Security Groups. This setting only affects the Private Link service. For other resources in the subnet, access is controlled based on the Network Security Group which can be configured using the `azure.network.SubnetNetworkSecurityGroupAssociation` resource. See more details from [Manage network policies for Private Link Services](https://learn.microsoft.com/en-gb/azure/private-link/disable-private-link-service-network-policy?tabs=private-link-network-policy-powershell).
+  /// &gt; **NOTE:** When configuring Azure Private Link service, the explicit setting `private_link_service_network_policies_enabled` must be set to `false` in the subnet since Private Link Service does not support network policies like user-defined Routes and Network Security Groups. This setting only affects the Private Link service. For other resources in the subnet, access is controlled based on the Network Security Group which can be configured using the `azure.network.SubnetNetworkSecurityGroupAssociation` resource. See more details from [Manage network policies for Private Link Services](https://learn.microsoft.com/en-gb/azure/private-link/disable-private-link-service-network-policy?tabs=private-link-network-policy-powershell).
   late final pulumi.Output<bool?> privateLinkServiceNetworkPoliciesEnabled;
+
   /// The name of the resource group in which to create the subnet. This must be the resource group that the virtual network resides in. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The list of IDs of Service Endpoint Policies to associate with the subnet.
   late final pulumi.Output<List<String>?> serviceEndpointPolicyIds;
+
   /// The list of Service endpoints to associate with the subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`, `Microsoft.Sql`, `Microsoft.Storage`, `Microsoft.Storage.Global` and `Microsoft.Web`.
   ///
-  /// > **NOTE:** In order to use `Microsoft.Storage.Global` service endpoint (which allows access to virtual networks in other regions), you must enable the `AllowGlobalTagsForStorage` feature in your subscription. This is currently a preview feature, please see the [official documentation](https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security?tabs=azure-cli#enabling-access-to-virtual-networks-in-other-regions-preview) for more information.
+  /// &gt; **NOTE:** In order to use `Microsoft.Storage.Global` service endpoint (which allows access to virtual networks in other regions), you must enable the `AllowGlobalTagsForStorage` feature in your subscription. This is currently a preview feature, please see the [official documentation](https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security?tabs=azure-cli#enabling-access-to-virtual-networks-in-other-regions-preview) for more information.
   late final pulumi.Output<List<String>?> serviceEndpoints;
+
   /// The sharing scope of the subnet. Possible value is `Tenant`.
   ///
-  /// > **Note:** This property cannot be set if `default_outbound_access_enabled` is set to `true`.
+  /// &gt; **Note:** This property cannot be set if `default_outbound_access_enabled` is set to `true`.
   ///
-  /// !> **Note:** The `sharing_scope` property is only available to users who have been explicitly registered and granted access by the Azure Networking Product Group.
+  /// !&gt; **Note:** The `sharing_scope` property is only available to users who have been explicitly registered and granted access by the Azure Networking Product Group.
   late final pulumi.Output<String?> sharingScope;
+
   /// The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualNetworkName;
 
@@ -337,28 +347,33 @@ class Subnet extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Subnet]. {@macro pulumi_network_subnet_subnet_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Subnet(
-    String name, {
-    SubnetArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure:network/subnet:Subnet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
-    this.defaultOutboundAccessEnabled = registerOutput<bool?>('defaultOutboundAccessEnabled');
-    this.delegations = registerOutput<List<SubnetDelegation>?>('delegations');
-    this.ipAddressPool = registerOutput<SubnetIpAddressPool?>('ipAddressPool');
+  Subnet(String name, {SubnetArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure:network/subnet:Subnet',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
+    defaultOutboundAccessEnabled = registerOutput<bool?>(
+      'defaultOutboundAccessEnabled',
+    );
+    delegations = registerOutput<List<Map<String, dynamic>>?>('delegations');
+    ipAddressPool = registerOutput<SubnetIpAddressPool?>('ipAddressPool');
     this.name = registerOutput<String>('name');
-    this.privateEndpointNetworkPolicies = registerOutput<String?>('privateEndpointNetworkPolicies');
-    this.privateLinkServiceNetworkPoliciesEnabled = registerOutput<bool?>('privateLinkServiceNetworkPoliciesEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serviceEndpointPolicyIds = registerOutput<List<String>?>('serviceEndpointPolicyIds');
-    this.serviceEndpoints = registerOutput<List<String>?>('serviceEndpoints');
-    this.sharingScope = registerOutput<String?>('sharingScope');
-    this.virtualNetworkName = registerOutput<String>('virtualNetworkName');
+    privateEndpointNetworkPolicies = registerOutput<String?>(
+      'privateEndpointNetworkPolicies',
+    );
+    privateLinkServiceNetworkPoliciesEnabled = registerOutput<bool?>(
+      'privateLinkServiceNetworkPoliciesEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceEndpointPolicyIds = registerOutput<List<String>?>(
+      'serviceEndpointPolicyIds',
+    );
+    serviceEndpoints = registerOutput<List<String>?>('serviceEndpoints');
+    sharingScope = registerOutput<String?>('sharingScope');
+    virtualNetworkName = registerOutput<String>('virtualNetworkName');
   }
 
   /// Gets an existing [Subnet] resource's state with the given [name] and [id].
@@ -379,22 +394,30 @@ class Subnet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/subnet:Subnet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
-    this.defaultOutboundAccessEnabled = registerOutput<bool?>('defaultOutboundAccessEnabled');
-    this.delegations = registerOutput<List<SubnetDelegation>?>('delegations');
-    this.ipAddressPool = registerOutput<SubnetIpAddressPool?>('ipAddressPool');
+         'azure:network/subnet:Subnet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
+    defaultOutboundAccessEnabled = registerOutput<bool?>(
+      'defaultOutboundAccessEnabled',
+    );
+    delegations = registerOutput<List<Map<String, dynamic>>?>('delegations');
+    ipAddressPool = registerOutput<SubnetIpAddressPool?>('ipAddressPool');
     this.name = registerOutput<String>('name');
-    this.privateEndpointNetworkPolicies = registerOutput<String?>('privateEndpointNetworkPolicies');
-    this.privateLinkServiceNetworkPoliciesEnabled = registerOutput<bool?>('privateLinkServiceNetworkPoliciesEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serviceEndpointPolicyIds = registerOutput<List<String>?>('serviceEndpointPolicyIds');
-    this.serviceEndpoints = registerOutput<List<String>?>('serviceEndpoints');
-    this.sharingScope = registerOutput<String?>('sharingScope');
-    this.virtualNetworkName = registerOutput<String>('virtualNetworkName');
+    privateEndpointNetworkPolicies = registerOutput<String?>(
+      'privateEndpointNetworkPolicies',
+    );
+    privateLinkServiceNetworkPoliciesEnabled = registerOutput<bool?>(
+      'privateLinkServiceNetworkPoliciesEnabled',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceEndpointPolicyIds = registerOutput<List<String>?>(
+      'serviceEndpointPolicyIds',
+    );
+    serviceEndpoints = registerOutput<List<String>?>('serviceEndpoints');
+    sharingScope = registerOutput<String?>('sharingScope');
+    virtualNetworkName = registerOutput<String>('virtualNetworkName');
   }
 }

@@ -7,8 +7,10 @@ import 'query_parameter_value_response.dart';
 class QueryParameterResponse {
   /// [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
   final pulumi.Input<String> name;
+
   /// [Required] The type of this parameter.
   final pulumi.Input<QueryParameterTypeResponse> parameterType;
+
   /// [Required] The value of this parameter.
   final pulumi.Input<QueryParameterValueResponse> parameterValue;
 
@@ -25,17 +27,32 @@ class QueryParameterResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'parameterType': pulumi.Input.mapInputValue<QueryParameterTypeResponse, Map<String, dynamic>>(parameterType, (value) => value.toMap()),
-      'parameterValue': pulumi.Input.mapInputValue<QueryParameterValueResponse, Map<String, dynamic>>(parameterValue, (value) => value.toMap()),
+      'parameterType':
+          pulumi.Input.mapInputValue<
+            QueryParameterTypeResponse,
+            Map<String, dynamic>
+          >(parameterType, (value) => value.toMap()),
+      'parameterValue':
+          pulumi.Input.mapInputValue<
+            QueryParameterValueResponse,
+            Map<String, dynamic>
+          >(parameterValue, (value) => value.toMap()),
     };
   }
 
   factory QueryParameterResponse.fromMap(Map<String, dynamic> map) {
     return QueryParameterResponse(
-      name: (map['name'] as String).input(),
-      parameterType: (QueryParameterTypeResponse.fromMap((map['parameterType'] as Map).cast<String, dynamic>())).input(),
-      parameterValue: (QueryParameterValueResponse.fromMap((map['parameterValue'] as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parameterType: pulumi.Input.fromValue(
+        QueryParameterTypeResponse.fromMap(
+          (map['parameterType']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      parameterValue: pulumi.Input.fromValue(
+        QueryParameterValueResponse.fromMap(
+          (map['parameterValue']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

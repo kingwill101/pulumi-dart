@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageTemplateManagedImageSource {
   /// ARM resource id of the managed image in customer subscription
   final pulumi.Input<String> imageId;
+
   /// Specifies the type of source image you want to start with.
   /// Expected value is 'ManagedImage'.
   final pulumi.Input<String> type;
@@ -13,23 +14,16 @@ class ImageTemplateManagedImageSource {
   /// Creates a new [ImageTemplateManagedImageSource].
   /// [imageId] ARM resource id of the managed image in customer subscription
   /// [type] Specifies the type of source image you want to start with.
-  ImageTemplateManagedImageSource({
-    required this.imageId,
-    required this.type,
-  });
+  ImageTemplateManagedImageSource({required this.imageId, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'imageId': imageId,
-      'type': type,
-    };
+    return <String, dynamic>{'imageId': imageId, 'type': type};
   }
 
   factory ImageTemplateManagedImageSource.fromMap(Map<String, dynamic> map) {
     return ImageTemplateManagedImageSource(
-      imageId: (map['imageId'] as String).input(),
-      type: (map['type'] as String).input(),
+      imageId: pulumi.Input.fromValue(map['imageId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

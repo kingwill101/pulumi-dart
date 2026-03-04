@@ -5,16 +5,15 @@ enum ClientTlsSettingsMode {
   mutual("MUTUAL"),
   simple("SIMPLE");
 
-  const ClientTlsSettingsMode(this.value);
-  final String value;
+  const ClientTlsSettingsMode(this.wireValue);
+  final String wireValue;
 
   static ClientTlsSettingsMode fromValue(String value) {
     for (final item in ClientTlsSettingsMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClientTlsSettingsMode value: $value');
   }
 }
-

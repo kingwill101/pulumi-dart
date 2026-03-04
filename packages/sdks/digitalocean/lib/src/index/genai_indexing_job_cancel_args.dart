@@ -12,20 +12,15 @@ class GenaiIndexingJobCancelArgs {
 
   /// Creates a new [GenaiIndexingJobCancelArgs].
   /// [uuid] The UUID of the indexing job to cancel.
-  GenaiIndexingJobCancelArgs({
-    required this.uuid,
-  });
+  GenaiIndexingJobCancelArgs({required this.uuid});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uuid': uuid,
-    };
+    return <String, dynamic>{'uuid': uuid};
   }
 
   factory GenaiIndexingJobCancelArgs.fromMap(Map<String, dynamic> map) {
     return GenaiIndexingJobCancelArgs(
-      uuid: (map['uuid'] as String).input(),
+      uuid: pulumi.Input.fromValue(map['uuid'] as String),
     );
   }
 }
-

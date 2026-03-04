@@ -10,6 +10,7 @@ class ProtocolMountTargetArgs {
   /// The permission group name.
   /// Default value: DEFAULT_VPC_GROUP_NAME
   final pulumi.Input<String>? accessGroupName;
+
   /// Description of the protocol service mount target. Display as the export directory name in the console.
   ///
   /// Limitations:
@@ -18,8 +19,10 @@ class ProtocolMountTargetArgs {
   /// - Can contain numbers, colons (:), underscores (_), or dashes (-).
   final pulumi.Input<String>? description;
   final pulumi.Input<bool>? dryRun;
+
   /// The ID of the file system.
   final pulumi.Input<String> fileSystemId;
+
   /// The ID of the Fileset to be mounted.
   ///
   /// Limitations:
@@ -27,6 +30,7 @@ class ProtocolMountTargetArgs {
   /// - A Fileset allows only one export directory to be created.
   /// - Fileset and Path can and must specify only one.
   final pulumi.Input<String>? fsetId;
+
   /// The path of the CPFS directory to be mounted.
   ///
   /// Limitations:
@@ -39,12 +43,16 @@ class ProtocolMountTargetArgs {
   /// - Use UTF-8 encoding.
   /// - Must start and end with a forward slash (/) and root directory is/.
   final pulumi.Input<String>? path;
+
   /// Protocol Service ID
   final pulumi.Input<String> protocolServiceId;
+
   /// The VPC ID of the protocol service mount point.
   final pulumi.Input<String>? vpcId;
+
   /// The vSwitch ID of the protocol service mount target.
   final pulumi.Input<String>? vswitchId;
+
   /// The vSwitch IDs of the protocol service mount target.
   /// When the storage redundancy type of the file system is ZRS, if VpcId is set, the vSwitch ID of three different zones under the Vpc must be set in this field.
   final pulumi.Input<List<String>>? vswitchIds;
@@ -90,17 +98,50 @@ class ProtocolMountTargetArgs {
 
   factory ProtocolMountTargetArgs.fromMap(Map<String, dynamic> map) {
     return ProtocolMountTargetArgs(
-      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      fileSystemId: (map['fileSystemId'] as String).input(),
-      fsetId: map['fsetId'] == null ? null : (map['fsetId']! as String).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      protocolServiceId: (map['protocolServiceId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
-      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds']! as List).cast<String>()).input(),
+      accessGroupName: (() {
+        final guardedValue = map['accessGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
+      fsetId: (() {
+        final guardedValue = map['fsetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocolServiceId: pulumi.Input.fromValue(
+        map['protocolServiceId'] as String,
+      ),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchIds: (() {
+        final guardedValue = map['vswitchIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -7,18 +7,25 @@ class MLTableDataResponse {
   /// Enum to determine the type of data.
   /// Expected value is 'mltable'.
   final pulumi.Input<String> dataType;
+
   /// [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330
   final pulumi.Input<String> dataUri;
+
   /// The asset description text.
   final pulumi.Input<String>? description;
+
   /// If the name version are system generated (anonymous registration).
   final pulumi.Input<bool>? isAnonymous;
+
   /// Is the asset archived?
   final pulumi.Input<bool>? isArchived;
+
   /// The asset property dictionary.
   final pulumi.Input<Map<String, String>>? properties;
+
   /// Uris referenced in the MLTable definition (required for lineage)
   final pulumi.Input<List<String>>? referencedUris;
+
   /// Tag dictionary. Tags can be added, removed, and updated.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -57,15 +64,42 @@ class MLTableDataResponse {
 
   factory MLTableDataResponse.fromMap(Map<String, dynamic> map) {
     return MLTableDataResponse(
-      dataType: (map['dataType'] as String).input(),
-      dataUri: (map['dataUri'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous']! as bool).input(),
-      isArchived: map['isArchived'] == null ? null : (map['isArchived']! as bool).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
-      referencedUris: map['referencedUris'] == null ? null : ((map['referencedUris']! as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      dataType: pulumi.Input.fromValue(map['dataType'] as String),
+      dataUri: pulumi.Input.fromValue(map['dataUri'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isAnonymous: (() {
+        final guardedValue = map['isAnonymous'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isArchived: (() {
+        final guardedValue = map['isArchived'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      referencedUris: (() {
+        final guardedValue = map['referencedUris'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

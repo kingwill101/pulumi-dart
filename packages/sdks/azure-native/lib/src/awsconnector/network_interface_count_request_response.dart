@@ -6,29 +6,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterfaceCountRequestResponse {
   /// The maximum number of network interfaces.
   final pulumi.Input<int>? max;
+
   /// The minimum number of network interfaces.
   final pulumi.Input<int>? min;
 
   /// Creates a new [NetworkInterfaceCountRequestResponse].
   /// [max] The maximum number of network interfaces.
   /// [min] The minimum number of network interfaces.
-  NetworkInterfaceCountRequestResponse({
-    this.max,
-    this.min,
-  });
+  NetworkInterfaceCountRequestResponse({this.max, this.min});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'max': ?max,
-      'min': ?min,
-    };
+    return <String, dynamic>{'max': ?max, 'min': ?min};
   }
 
-  factory NetworkInterfaceCountRequestResponse.fromMap(Map<String, dynamic> map) {
+  factory NetworkInterfaceCountRequestResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInterfaceCountRequestResponse(
-      max: map['max'] == null ? null : (map['max']! as int).input(),
-      min: map['min'] == null ? null : (map['min']! as int).input(),
+      max: (() {
+        final guardedValue = map['max'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      min: (() {
+        final guardedValue = map['min'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -9,17 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShareAccessArgs {
   /// The access level to the share. Can either be `rw` or `ro`.
   final pulumi.Input<String> accessLevel;
+
   /// The value that defines the access. Can either be an IP
   /// address or a username verified by configured Security Service of the Share Network.
   final pulumi.Input<String> accessTo;
+
   /// The access rule type. Can either be an ip, user,
   /// cert, or cephx. cephx support requires an OpenStack environment that supports
   /// Shared Filesystem microversion 2.13 (Mitaka) or later.
   final pulumi.Input<String> accessType;
+
   /// The region in which to obtain the V2 Shared File System
   /// client. A Shared File System client is needed to create a share access.
   /// Changing this creates a new share access.
   final pulumi.Input<String>? region;
+
   /// The UUID of the share to which you are granted access.
   final pulumi.Input<String> shareId;
 
@@ -49,12 +53,15 @@ class ShareAccessArgs {
 
   factory ShareAccessArgs.fromMap(Map<String, dynamic> map) {
     return ShareAccessArgs(
-      accessLevel: (map['accessLevel'] as String).input(),
-      accessTo: (map['accessTo'] as String).input(),
-      accessType: (map['accessType'] as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      shareId: (map['shareId'] as String).input(),
+      accessLevel: pulumi.Input.fromValue(map['accessLevel'] as String),
+      accessTo: pulumi.Input.fromValue(map['accessTo'] as String),
+      accessType: pulumi.Input.fromValue(map['accessType'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shareId: pulumi.Input.fromValue(map['shareId'] as String),
     );
   }
 }
-

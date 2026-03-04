@@ -3,16 +3,17 @@ enum VirtualNetworkGatewayConnectionProtocol {
   valueIKEv2("IKEv2"),
   valueIKEv1("IKEv1");
 
-  const VirtualNetworkGatewayConnectionProtocol(this.value);
-  final String value;
+  const VirtualNetworkGatewayConnectionProtocol(this.wireValue);
+  final String wireValue;
 
   static VirtualNetworkGatewayConnectionProtocol fromValue(String value) {
     for (final item in VirtualNetworkGatewayConnectionProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VirtualNetworkGatewayConnectionProtocol value: $value');
+    throw ArgumentError(
+      'Unknown VirtualNetworkGatewayConnectionProtocol value: $value',
+    );
   }
 }
-

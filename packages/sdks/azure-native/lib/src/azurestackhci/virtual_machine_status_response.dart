@@ -7,11 +7,14 @@ import 'virtual_machine_status_response_provisioning_status.dart';
 class VirtualMachineStatusResponse {
   /// VirtualMachine provisioning error code
   final pulumi.Input<String>? errorCode;
+
   /// Descriptive error message
   final pulumi.Input<String>? errorMessage;
+
   /// The power state of the virtual machine
   final pulumi.Input<String>? powerState;
-  final pulumi.Input<VirtualMachineStatusResponseProvisioningStatus>? provisioningStatus;
+  final pulumi.Input<VirtualMachineStatusResponseProvisioningStatus>?
+  provisioningStatus;
 
   /// Creates a new [VirtualMachineStatusResponse].
   /// [errorCode] VirtualMachine provisioning error code
@@ -30,17 +33,40 @@ class VirtualMachineStatusResponse {
       'errorCode': ?errorCode,
       'errorMessage': ?errorMessage,
       'powerState': ?powerState,
-      'provisioningStatus': ?pulumi.Input.mapOptionalInputValue<VirtualMachineStatusResponseProvisioningStatus, Map<String, dynamic>>(provisioningStatus, (value) => value.toMap()),
+      'provisioningStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineStatusResponseProvisioningStatus,
+            Map<String, dynamic>
+          >(provisioningStatus, (value) => value.toMap()),
     };
   }
 
   factory VirtualMachineStatusResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineStatusResponse(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
-      powerState: map['powerState'] == null ? null : (map['powerState']! as String).input(),
-      provisioningStatus: map['provisioningStatus'] == null ? null : (VirtualMachineStatusResponseProvisioningStatus.fromMap((map['provisioningStatus']! as Map).cast<String, dynamic>())).input(),
+      errorCode: (() {
+        final guardedValue = map['errorCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      powerState: (() {
+        final guardedValue = map['powerState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningStatus: (() {
+        final guardedValue = map['provisioningStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineStatusResponseProvisioningStatus.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class ManagedRGConfiguration {
 
   /// Creates a new [ManagedRGConfiguration].
   /// [name] Managed resource group name
-  ManagedRGConfiguration({
-    this.name,
-  });
+  ManagedRGConfiguration({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory ManagedRGConfiguration.fromMap(Map<String, dynamic> map) {
     return ManagedRGConfiguration(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

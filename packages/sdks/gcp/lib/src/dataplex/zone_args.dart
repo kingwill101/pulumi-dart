@@ -11,25 +11,34 @@ import 'zone_resource_spec.dart';
 class ZoneArgs {
   /// Optional. Description of the zone.
   final pulumi.Input<String>? description;
+
   /// Required. Specification of the discovery feature applied to data in this zone.
   final pulumi.Input<ZoneDiscoverySpec> discoverySpec;
+
   /// Optional. User friendly display name.
   final pulumi.Input<String>? displayName;
+
   /// Optional. User defined labels for the zone.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The lake for the resource
   final pulumi.Input<String> lake;
+
   /// The location for the resource
   final pulumi.Input<String> location;
+
   /// The name of the zone.
   final pulumi.Input<String>? name;
+
   /// The project for the resource
   final pulumi.Input<String>? project;
+
   /// Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
   final pulumi.Input<ZoneResourceSpec> resourceSpec;
+
   /// Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
   final pulumi.Input<String> type;
 
@@ -60,31 +69,68 @@ class ZoneArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'discoverySpec': pulumi.Input.mapInputValue<ZoneDiscoverySpec, Map<String, dynamic>>(discoverySpec, (value) => value.toMap()),
+      'discoverySpec':
+          pulumi.Input.mapInputValue<ZoneDiscoverySpec, Map<String, dynamic>>(
+            discoverySpec,
+            (value) => value.toMap(),
+          ),
       'displayName': ?displayName,
       'labels': ?labels,
       'lake': lake,
       'location': location,
       'name': ?name,
       'project': ?project,
-      'resourceSpec': pulumi.Input.mapInputValue<ZoneResourceSpec, Map<String, dynamic>>(resourceSpec, (value) => value.toMap()),
+      'resourceSpec':
+          pulumi.Input.mapInputValue<ZoneResourceSpec, Map<String, dynamic>>(
+            resourceSpec,
+            (value) => value.toMap(),
+          ),
       'type': type,
     };
   }
 
   factory ZoneArgs.fromMap(Map<String, dynamic> map) {
     return ZoneArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      discoverySpec: (ZoneDiscoverySpec.fromMap((map['discoverySpec'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      lake: (map['lake'] as String).input(),
-      location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      resourceSpec: (ZoneResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      discoverySpec: pulumi.Input.fromValue(
+        ZoneDiscoverySpec.fromMap(
+          (map['discoverySpec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      lake: pulumi.Input.fromValue(map['lake'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceSpec: pulumi.Input.fromValue(
+        ZoneResourceSpec.fromMap(
+          (map['resourceSpec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

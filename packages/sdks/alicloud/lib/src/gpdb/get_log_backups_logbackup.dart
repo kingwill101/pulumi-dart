@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLogBackupsLogbackup {
   /// The ID of the Master node of the instance.
   final pulumi.Input<String> dbInstanceId;
+
   /// The first ID of the resource
   final pulumi.Input<String> logBackupId;
+
   /// Log file name (OSS path).
   final pulumi.Input<String> logFileName;
+
   /// Size of the backup log file. Unit: Byte.
   final pulumi.Input<int> logFileSize;
+
   /// The log timestamp.
   final pulumi.Input<String> logTime;
+
   /// Total number of records.
   final pulumi.Input<int> recordTotal;
+
   /// The node name.
   final pulumi.Input<String> segmentName;
 
@@ -50,14 +56,13 @@ class GetLogBackupsLogbackup {
 
   factory GetLogBackupsLogbackup.fromMap(Map<String, dynamic> map) {
     return GetLogBackupsLogbackup(
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      logBackupId: (map['logBackupId'] as String).input(),
-      logFileName: (map['logFileName'] as String).input(),
-      logFileSize: (map['logFileSize'] as int).input(),
-      logTime: (map['logTime'] as String).input(),
-      recordTotal: (map['recordTotal'] as int).input(),
-      segmentName: (map['segmentName'] as String).input(),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      logBackupId: pulumi.Input.fromValue(map['logBackupId'] as String),
+      logFileName: pulumi.Input.fromValue(map['logFileName'] as String),
+      logFileSize: pulumi.Input.fromValue(map['logFileSize'] as int),
+      logTime: pulumi.Input.fromValue(map['logTime'] as String),
+      recordTotal: pulumi.Input.fromValue(map['recordTotal'] as int),
+      segmentName: pulumi.Input.fromValue(map['segmentName'] as String),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum StandardTierStorageRedundancy {
   valueGeoRedundant("GeoRedundant"),
   valueZoneRedundant("ZoneRedundant");
 
-  const StandardTierStorageRedundancy(this.value);
-  final String value;
+  const StandardTierStorageRedundancy(this.wireValue);
+  final String wireValue;
 
   static StandardTierStorageRedundancy fromValue(String value) {
     for (final item in StandardTierStorageRedundancy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StandardTierStorageRedundancy value: $value');
   }
 }
-

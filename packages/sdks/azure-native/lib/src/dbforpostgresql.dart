@@ -1,5 +1,3 @@
-library module_dbforpostgresql;
-
 export 'dbforpostgresql/active_directory_auth.dart';
 export 'dbforpostgresql/admin_credentials.dart';
 export 'dbforpostgresql/administrator.dart';

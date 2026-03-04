@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReceiptRuleLambdaAction {
   /// The ARN of the Lambda function to invoke
   final pulumi.Input<String> functionArn;
+
   /// `Event` or `RequestResponse`
   final pulumi.Input<String>? invocationType;
+
   /// The position of the action in the receipt rule
   final pulumi.Input<int> position;
+
   /// The ARN of an SNS topic to notify
   final pulumi.Input<String>? topicArn;
 
@@ -35,11 +38,18 @@ class ReceiptRuleLambdaAction {
 
   factory ReceiptRuleLambdaAction.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleLambdaAction(
-      functionArn: (map['functionArn'] as String).input(),
-      invocationType: map['invocationType'] == null ? null : ((map['invocationType'] as String).input()).input(),
-      position: (map['position'] as int).input(),
-      topicArn: map['topicArn'] == null ? null : ((map['topicArn'] as String).input()).input(),
+      functionArn: pulumi.Input.fromValue(map['functionArn'] as String),
+      invocationType: (() {
+        final guardedValue = map['invocationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      position: pulumi.Input.fromValue(map['position'] as int),
+      topicArn: (() {
+        final guardedValue = map['topicArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,21 @@ class AppliancePropertiesInfrastructureConfig {
 
   /// Creates a new [AppliancePropertiesInfrastructureConfig].
   /// [provider] Information about the connected appliance.
-  AppliancePropertiesInfrastructureConfig({
-    this.provider,
-  });
+  AppliancePropertiesInfrastructureConfig({this.provider});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'provider': ?provider,
-    };
+    return <String, dynamic>{'provider': ?provider};
   }
 
-  factory AppliancePropertiesInfrastructureConfig.fromMap(Map<String, dynamic> map) {
+  factory AppliancePropertiesInfrastructureConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppliancePropertiesInfrastructureConfig(
-      provider: map['provider'] == null ? null : (map['provider']! as String).input(),
+      provider: (() {
+        final guardedValue = map['provider'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

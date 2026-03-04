@@ -9,20 +9,17 @@ class GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse].
   /// [type] The type of the feature that enabled for fulfillment.
-  GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse({
-    required this.type,
-  });
+  GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
-  factory GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

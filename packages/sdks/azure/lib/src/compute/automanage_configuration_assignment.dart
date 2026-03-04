@@ -491,7 +491,7 @@ import 'automanage_configuration_assignment_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-05-04
@@ -506,6 +506,7 @@ import 'automanage_configuration_assignment_state.dart';
 class AutomanageConfigurationAssignment extends pulumi.CustomResource {
   /// The ARM resource ID of the Automanage Configuration to assign to the Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<String> configurationId;
+
   /// The ARM resource ID of the Virtual Machine to assign the Automanage Configuration to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> virtualMachineId;
 
@@ -518,13 +519,13 @@ class AutomanageConfigurationAssignment extends pulumi.CustomResource {
     AutomanageConfigurationAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/automanageConfigurationAssignment:AutomanageConfigurationAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configurationId = registerOutput<String>('configurationId');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
+         'azure:compute/automanageConfigurationAssignment:AutomanageConfigurationAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configurationId = registerOutput<String>('configurationId');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 
   /// Gets an existing [AutomanageConfigurationAssignment] resource's state with the given [name] and [id].
@@ -545,12 +546,12 @@ class AutomanageConfigurationAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/automanageConfigurationAssignment:AutomanageConfigurationAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configurationId = registerOutput<String>('configurationId');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
+         'azure:compute/automanageConfigurationAssignment:AutomanageConfigurationAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configurationId = registerOutput<String>('configurationId');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 }

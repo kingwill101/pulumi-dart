@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallDeviceState {
   /// When the Firewall Device was last created.
   final pulumi.Input<String>? created;
+
   /// The unique ID of the entity to attach.
   final pulumi.Input<int>? entityId;
+
   /// The type of the entity to attach. (default: `linode`)
   final pulumi.Input<String>? entityType;
+
   /// The unique ID of the target Firewall.
   final pulumi.Input<int>? firewallId;
+
   /// When the Firewall Device was last updated.
   final pulumi.Input<String>? updated;
 
@@ -41,12 +45,31 @@ class FirewallDeviceState {
 
   factory FirewallDeviceState.fromMap(Map<String, dynamic> map) {
     return FirewallDeviceState(
-      created: map['created'] == null ? null : (map['created']! as String).input(),
-      entityId: map['entityId'] == null ? null : (map['entityId']! as int).input(),
-      entityType: map['entityType'] == null ? null : (map['entityType']! as String).input(),
-      firewallId: map['firewallId'] == null ? null : (map['firewallId']! as int).input(),
-      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
+      created: (() {
+        final guardedValue = map['created'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entityId: (() {
+        final guardedValue = map['entityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      entityType: (() {
+        final guardedValue = map['entityType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallId: (() {
+        final guardedValue = map['firewallId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      updated: (() {
+        final guardedValue = map['updated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

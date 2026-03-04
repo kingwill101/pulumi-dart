@@ -3,16 +3,15 @@ enum LicenseProfileProductType {
   valueWindowsServer("WindowsServer"),
   valueWindowsIoTEnterprise("WindowsIoTEnterprise");
 
-  const LicenseProfileProductType(this.value);
-  final String value;
+  const LicenseProfileProductType(this.wireValue);
+  final String wireValue;
 
   static LicenseProfileProductType fromValue(String value) {
     for (final item in LicenseProfileProductType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LicenseProfileProductType value: $value');
   }
 }
-

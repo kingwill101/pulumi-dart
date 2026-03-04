@@ -32,6 +32,7 @@ class SubscriptionMessageTransformJavascriptUdf {
   /// }
   /// ```
   final pulumi.Input<String> code;
+
   /// Name of the JavaScript function that should be applied to Pub/Sub messages.
   final pulumi.Input<String> functionName;
 
@@ -44,17 +45,15 @@ class SubscriptionMessageTransformJavascriptUdf {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-      'functionName': functionName,
-    };
+    return <String, dynamic>{'code': code, 'functionName': functionName};
   }
 
-  factory SubscriptionMessageTransformJavascriptUdf.fromMap(Map<String, dynamic> map) {
+  factory SubscriptionMessageTransformJavascriptUdf.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SubscriptionMessageTransformJavascriptUdf(
-      code: (map['code'] as String).input(),
-      functionName: (map['functionName'] as String).input(),
+      code: pulumi.Input.fromValue(map['code'] as String),
+      functionName: pulumi.Input.fromValue(map['functionName'] as String),
     );
   }
 }
-

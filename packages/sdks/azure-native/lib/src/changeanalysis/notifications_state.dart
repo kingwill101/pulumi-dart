@@ -4,16 +4,15 @@ enum NotificationsState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const NotificationsState(this.value);
-  final String value;
+  const NotificationsState(this.wireValue);
+  final String wireValue;
 
   static NotificationsState fromValue(String value) {
     for (final item in NotificationsState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NotificationsState value: $value');
   }
 }
-

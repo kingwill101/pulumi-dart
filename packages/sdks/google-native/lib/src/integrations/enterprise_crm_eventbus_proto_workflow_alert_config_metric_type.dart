@@ -11,16 +11,20 @@ enum EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType {
   taskAverageDuration("TASK_AVERAGE_DURATION"),
   taskPercentileDuration("TASK_PERCENTILE_DURATION");
 
-  const EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType(this.value);
-  final String value;
+  const EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType(this.wireValue);
+  final String wireValue;
 
-  static EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType fromValue(String value) {
-    for (final item in EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType.values) {
-      if (item.value == value) {
+  static EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType value: $value',
+    );
   }
 }
-

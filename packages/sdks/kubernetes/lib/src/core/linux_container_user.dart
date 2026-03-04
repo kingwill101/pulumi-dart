@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxContainerUser {
   /// GID is the primary gid initially attached to the first process in the container
   final pulumi.Input<int> gid;
+
   /// SupplementalGroups are the supplemental groups initially attached to the first process in the container
   final pulumi.Input<List<int>>? supplementalGroups;
+
   /// UID is the primary uid initially attached to the first process in the container
   final pulumi.Input<int> uid;
 
@@ -31,10 +33,13 @@ class LinuxContainerUser {
 
   factory LinuxContainerUser.fromMap(Map<String, dynamic> map) {
     return LinuxContainerUser(
-      gid: (map['gid'] as int).input(),
-      supplementalGroups: map['supplementalGroups'] == null ? null : ((map['supplementalGroups']! as List).cast<int>()).input(),
-      uid: (map['uid'] as int).input(),
+      gid: pulumi.Input.fromValue(map['gid'] as int),
+      supplementalGroups: (() {
+        final guardedValue = map['supplementalGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      uid: pulumi.Input.fromValue(map['uid'] as int),
     );
   }
 }
-

@@ -158,7 +158,7 @@ import 'placement_group_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-03-01
@@ -173,19 +173,24 @@ import 'placement_group_state.dart';
 class PlacementGroup extends pulumi.CustomResource {
   /// Specifies the supported sizes of Virtual Machines that can be created in the Proximity Placement Group.
   ///
-  /// > **Note:** Removing `allowed_vm_sizes` after it is set forces a new resource to be created.
+  /// &gt; **Note:** Removing `allowed_vm_sizes` after it is set forces a new resource to be created.
   late final pulumi.Output<List<String>?> allowedVmSizes;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the proximity placement group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which to create the availability set. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the supported zone of the Proximity Placement Group. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** `allowed_vm_sizes` must be set when `zone` is specified.
+  /// &gt; **Note:** `allowed_vm_sizes` must be set when `zone` is specified.
   late final pulumi.Output<String?> zone;
 
   /// Creates a new [PlacementGroup].
@@ -197,17 +202,17 @@ class PlacementGroup extends pulumi.CustomResource {
     PlacementGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:proximity/placementGroup:PlacementGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedVmSizes = registerOutput<List<String>?>('allowedVmSizes');
-    this.location = registerOutput<String>('location');
+         'azure:proximity/placementGroup:PlacementGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedVmSizes = registerOutput<List<String>?>('allowedVmSizes');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zone = registerOutput<String?>('zone');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zone = registerOutput<String?>('zone');
   }
 
   /// Gets an existing [PlacementGroup] resource's state with the given [name] and [id].
@@ -228,16 +233,16 @@ class PlacementGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:proximity/placementGroup:PlacementGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedVmSizes = registerOutput<List<String>?>('allowedVmSizes');
-    this.location = registerOutput<String>('location');
+         'azure:proximity/placementGroup:PlacementGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedVmSizes = registerOutput<List<String>?>('allowedVmSizes');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.zone = registerOutput<String?>('zone');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    zone = registerOutput<String?>('zone');
   }
 }

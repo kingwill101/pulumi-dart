@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RedirectResponse {
   /// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
   final pulumi.Input<String> glob;
+
   /// The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
   final pulumi.Input<String> location;
+
   /// The user-supplied RE2 regular expression to match against the request URL path.
   final pulumi.Input<String> regex;
+
   /// The status HTTP code to return in the response. It must be a valid 3xx status code.
   final pulumi.Input<int> statusCode;
 
@@ -36,11 +39,10 @@ class RedirectResponse {
 
   factory RedirectResponse.fromMap(Map<String, dynamic> map) {
     return RedirectResponse(
-      glob: (map['glob'] as String).input(),
-      location: (map['location'] as String).input(),
-      regex: (map['regex'] as String).input(),
-      statusCode: (map['statusCode'] as int).input(),
+      glob: pulumi.Input.fromValue(map['glob'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      regex: pulumi.Input.fromValue(map['regex'] as String),
+      statusCode: pulumi.Input.fromValue(map['statusCode'] as int),
     );
   }
 }
-

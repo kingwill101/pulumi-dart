@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateLinkScopedResourceArgs {
   /// The kind of scoped Azure monitor resource.
   final pulumi.Input<String>? kind;
+
   /// The resource id of the scoped Azure monitor resource.
   final pulumi.Input<String>? linkedResourceId;
+
   /// The name of the scoped resource object.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Azure Monitor PrivateLinkScope resource.
   final pulumi.Input<String> scopeName;
+
   /// The location of a scoped subscription. Only needs to be specified for metric dataplane subscriptions.
   final pulumi.Input<String>? subscriptionLocation;
 
@@ -49,13 +54,30 @@ class PrivateLinkScopedResourceArgs {
 
   factory PrivateLinkScopedResourceArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkScopedResourceArgs(
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      linkedResourceId: map['linkedResourceId'] == null ? null : (map['linkedResourceId']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scopeName: (map['scopeName'] as String).input(),
-      subscriptionLocation: map['subscriptionLocation'] == null ? null : (map['subscriptionLocation']! as String).input(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkedResourceId: (() {
+        final guardedValue = map['linkedResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      scopeName: pulumi.Input.fromValue(map['scopeName'] as String),
+      subscriptionLocation: (() {
+        final guardedValue = map['subscriptionLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

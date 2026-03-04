@@ -17,16 +17,15 @@ enum EventHubDataFormat {
   valueAPACHEAVRO("APACHEAVRO"),
   valueW3CLOGFILE("W3CLOGFILE");
 
-  const EventHubDataFormat(this.value);
-  final String value;
+  const EventHubDataFormat(this.wireValue);
+  final String wireValue;
 
   static EventHubDataFormat fromValue(String value) {
     for (final item in EventHubDataFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EventHubDataFormat value: $value');
   }
 }
-

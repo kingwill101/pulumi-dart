@@ -8,7 +8,7 @@ import 'scheduled_preload_job_state.dart';
 ///
 /// For information about ESA Scheduled Preload Job and how to use it, see [What is Scheduled Preload Job](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateScheduledPreloadJob).
 ///
-/// > **NOTE:** Available since v1.248.0.
+/// &gt; **NOTE:** Available since v1.248.0.
 ///
 /// ## Example Usage
 ///
@@ -206,21 +206,27 @@ import 'scheduled_preload_job_state.dart';
 class ScheduledPreloadJob extends pulumi.CustomResource {
   /// The time when the task was created.
   late final pulumi.Output<String> createTime;
+
   /// The method to submit the URLs to be prefetched.
   late final pulumi.Output<String> insertWay;
+
   /// Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> ossUrl;
+
   /// The ID of the prefetch task.
   late final pulumi.Output<String> scheduledPreloadJobId;
+
   /// The task name.
   late final pulumi.Output<String> scheduledPreloadJobName;
+
   /// The site ID.
   late final pulumi.Output<String> siteId;
+
   /// A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> urlList;
 
   /// Creates a new [ScheduledPreloadJob].
@@ -232,18 +238,18 @@ class ScheduledPreloadJob extends pulumi.CustomResource {
     ScheduledPreloadJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.insertWay = registerOutput<String>('insertWay');
-    this.ossUrl = registerOutput<String?>('ossUrl');
-    this.scheduledPreloadJobId = registerOutput<String>('scheduledPreloadJobId');
-    this.scheduledPreloadJobName = registerOutput<String>('scheduledPreloadJobName');
-    this.siteId = registerOutput<String>('siteId');
-    this.urlList = registerOutput<String?>('urlList');
+         'alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    insertWay = registerOutput<String>('insertWay');
+    ossUrl = registerOutput<String?>('ossUrl');
+    scheduledPreloadJobId = registerOutput<String>('scheduledPreloadJobId');
+    scheduledPreloadJobName = registerOutput<String>('scheduledPreloadJobName');
+    siteId = registerOutput<String>('siteId');
+    urlList = registerOutput<String?>('urlList');
   }
 
   /// Gets an existing [ScheduledPreloadJob] resource's state with the given [name] and [id].
@@ -264,17 +270,17 @@ class ScheduledPreloadJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.insertWay = registerOutput<String>('insertWay');
-    this.ossUrl = registerOutput<String?>('ossUrl');
-    this.scheduledPreloadJobId = registerOutput<String>('scheduledPreloadJobId');
-    this.scheduledPreloadJobName = registerOutput<String>('scheduledPreloadJobName');
-    this.siteId = registerOutput<String>('siteId');
-    this.urlList = registerOutput<String?>('urlList');
+         'alicloud:esa/scheduledPreloadJob:ScheduledPreloadJob',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    insertWay = registerOutput<String>('insertWay');
+    ossUrl = registerOutput<String?>('ossUrl');
+    scheduledPreloadJobId = registerOutput<String>('scheduledPreloadJobId');
+    scheduledPreloadJobName = registerOutput<String>('scheduledPreloadJobName');
+    siteId = registerOutput<String>('siteId');
+    urlList = registerOutput<String?>('urlList');
   }
 }

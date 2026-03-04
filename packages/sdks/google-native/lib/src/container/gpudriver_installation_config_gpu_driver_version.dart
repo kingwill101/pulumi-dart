@@ -5,16 +5,17 @@ enum GPUDriverInstallationConfigGpuDriverVersion {
   default_("DEFAULT"),
   latest("LATEST");
 
-  const GPUDriverInstallationConfigGpuDriverVersion(this.value);
-  final String value;
+  const GPUDriverInstallationConfigGpuDriverVersion(this.wireValue);
+  final String wireValue;
 
   static GPUDriverInstallationConfigGpuDriverVersion fromValue(String value) {
     for (final item in GPUDriverInstallationConfigGpuDriverVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GPUDriverInstallationConfigGpuDriverVersion value: $value');
+    throw ArgumentError(
+      'Unknown GPUDriverInstallationConfigGpuDriverVersion value: $value',
+    );
   }
 }
-

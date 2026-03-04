@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterIstio {
   /// The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the cluster_name resource label in k8s_cluster resources.
   final pulumi.Input<String>? clusterName;
+
   /// The location of the Kubernetes cluster in which this Istio service is defined. Corresponds to the location resource label in k8s_cluster resources.
   final pulumi.Input<String>? location;
+
   /// The name of the Istio service underlying this service. Corresponds to the destination_service_name metric label in Istio metrics.
   final pulumi.Input<String>? serviceName;
+
   /// The namespace of the Istio service underlying this service. Corresponds to the destination_service_namespace metric label in Istio metrics.
   final pulumi.Input<String>? serviceNamespace;
 
@@ -36,11 +39,26 @@ class ClusterIstio {
 
   factory ClusterIstio.fromMap(Map<String, dynamic> map) {
     return ClusterIstio(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
-      serviceNamespace: map['serviceNamespace'] == null ? null : (map['serviceNamespace']! as String).input(),
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceName: (() {
+        final guardedValue = map['serviceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceNamespace: (() {
+        final guardedValue = map['serviceNamespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum LlmDiagnosticSettings {
   valueEnabled("enabled"),
   valueDisabled("disabled");
 
-  const LlmDiagnosticSettings(this.value);
-  final String value;
+  const LlmDiagnosticSettings(this.wireValue);
+  final String wireValue;
 
   static LlmDiagnosticSettings fromValue(String value) {
     for (final item in LlmDiagnosticSettings.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LlmDiagnosticSettings value: $value');
   }
 }
-

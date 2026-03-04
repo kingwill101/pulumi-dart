@@ -4,16 +4,15 @@ enum OsLicense {
   yes("Yes"),
   no("No");
 
-  const OsLicense(this.value);
-  final String value;
+  const OsLicense(this.wireValue);
+  final String wireValue;
 
   static OsLicense fromValue(String value) {
     for (final item in OsLicense.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OsLicense value: $value');
   }
 }
-

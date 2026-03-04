@@ -10,20 +10,27 @@ class GuestOsFeatureComputeBeta {
 
   /// Creates a new [GuestOsFeatureComputeBeta].
   /// [type] The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
-  GuestOsFeatureComputeBeta({
-    this.type,
-  });
+  GuestOsFeatureComputeBeta({this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': ?pulumi.Input.mapOptionalInputValue<GuestOsFeatureTypeComputeBeta, String>(type, (value) => value.value),
+      'type':
+          ?pulumi.Input.mapOptionalInputValue<
+            GuestOsFeatureTypeComputeBeta,
+            String
+          >(type, (value) => value.wireValue),
     };
   }
 
   factory GuestOsFeatureComputeBeta.fromMap(Map<String, dynamic> map) {
     return GuestOsFeatureComputeBeta(
-      type: map['type'] == null ? null : (GuestOsFeatureTypeComputeBeta.fromValue(map['type']! as String)).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GuestOsFeatureTypeComputeBeta.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

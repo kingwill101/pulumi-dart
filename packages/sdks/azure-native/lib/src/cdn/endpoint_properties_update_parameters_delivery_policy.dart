@@ -7,6 +7,7 @@ import 'delivery_rule.dart';
 class EndpointPropertiesUpdateParametersDeliveryPolicy {
   /// User-friendly description of the policy.
   final pulumi.Input<String>? description;
+
   /// A list of the delivery rules.
   final pulumi.Input<List<DeliveryRule>> rules;
 
@@ -21,15 +22,37 @@ class EndpointPropertiesUpdateParametersDeliveryPolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'rules': pulumi.Input.mapInputValue<List<DeliveryRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<DeliveryRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          pulumi.Input.mapInputValue<
+            List<DeliveryRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<DeliveryRule, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
-  factory EndpointPropertiesUpdateParametersDeliveryPolicy.fromMap(Map<String, dynamic> map) {
+  factory EndpointPropertiesUpdateParametersDeliveryPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EndpointPropertiesUpdateParametersDeliveryPolicy(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      rules: (pulumi.Input.decodeList<DeliveryRule>(map['rules'], (value) => DeliveryRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<DeliveryRule>(
+          map['rules']!,
+          (value) =>
+              DeliveryRule.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
     );
   }
 }
-

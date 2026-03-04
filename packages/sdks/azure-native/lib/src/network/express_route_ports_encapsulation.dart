@@ -3,16 +3,15 @@ enum ExpressRoutePortsEncapsulation {
   valueDot1Q("Dot1Q"),
   valueQinQ("QinQ");
 
-  const ExpressRoutePortsEncapsulation(this.value);
-  final String value;
+  const ExpressRoutePortsEncapsulation(this.wireValue);
+  final String wireValue;
 
   static ExpressRoutePortsEncapsulation fromValue(String value) {
     for (final item in ExpressRoutePortsEncapsulation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExpressRoutePortsEncapsulation value: $value');
   }
 }
-

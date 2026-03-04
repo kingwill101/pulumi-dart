@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GrpcRouteRuleActionFaultInjectionPolicyAbort {
   /// The HTTP status code used to abort the request.
   final pulumi.Input<int>? httpStatus;
+
   /// The percentage of traffic which will be aborted.
   final pulumi.Input<int>? percentage;
 
@@ -23,11 +24,20 @@ class GrpcRouteRuleActionFaultInjectionPolicyAbort {
     };
   }
 
-  factory GrpcRouteRuleActionFaultInjectionPolicyAbort.fromMap(Map<String, dynamic> map) {
+  factory GrpcRouteRuleActionFaultInjectionPolicyAbort.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrpcRouteRuleActionFaultInjectionPolicyAbort(
-      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus']! as int).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage']! as int).input(),
+      httpStatus: (() {
+        final guardedValue = map['httpStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      percentage: (() {
+        final guardedValue = map['percentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -8,22 +8,32 @@ import 'system_data_response.dart';
 class GetManagedClusterSnapshotResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// CreationData to be used to specify the source resource ID to create this snapshot.
   final CreationDataResponse? creationData;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// What the properties will be showed when getting managed cluster snapshot. Those properties are read-only.
-  final ManagedClusterPropertiesForSnapshotResponse managedClusterPropertiesReadOnly;
+  final ManagedClusterPropertiesForSnapshotResponse
+  managedClusterPropertiesReadOnly;
+
   /// The name of the resource
   final String name;
+
   /// The type of a snapshot. The default is NodePool.
   final String? snapshotType;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -54,10 +64,11 @@ class GetManagedClusterSnapshotResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'creationData': ?creationData == null ? null : creationData!.toMap(),
+      'creationData': ?creationData?.toMap(),
       'id': id,
       'location': location,
-      'managedClusterPropertiesReadOnly': managedClusterPropertiesReadOnly.toMap(),
+      'managedClusterPropertiesReadOnly': managedClusterPropertiesReadOnly
+          .toMap(),
       'name': name,
       'snapshotType': ?snapshotType,
       'systemData': systemData.toMap(),
@@ -69,16 +80,35 @@ class GetManagedClusterSnapshotResult {
   factory GetManagedClusterSnapshotResult.fromMap(Map<String, dynamic> map) {
     return GetManagedClusterSnapshotResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      creationData: map['creationData'] == null ? null : CreationDataResponse.fromMap((map['creationData']! as Map).cast<String, dynamic>()),
+      creationData: (() {
+        final guardedValue = map['creationData'];
+        if (guardedValue == null) return null;
+        return CreationDataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
       location: map['location'] as String,
-      managedClusterPropertiesReadOnly: ManagedClusterPropertiesForSnapshotResponse.fromMap((map['managedClusterPropertiesReadOnly'] as Map).cast<String, dynamic>()),
+      managedClusterPropertiesReadOnly:
+          ManagedClusterPropertiesForSnapshotResponse.fromMap(
+            (map['managedClusterPropertiesReadOnly']! as Map)
+                .cast<String, dynamic>(),
+          ),
       name: map['name'] as String,
-      snapshotType: map['snapshotType'] == null ? null : map['snapshotType']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      snapshotType: (() {
+        final guardedValue = map['snapshotType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

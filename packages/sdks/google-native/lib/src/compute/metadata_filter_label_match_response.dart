@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetadataFilterLabelMatchResponse {
   /// Name of metadata label. The name can have a maximum length of 1024 characters and must be at least 1 character long.
   final pulumi.Input<String> name;
+
   /// The value of the label must match the specified value. value can have a maximum length of 1024 characters.
   final pulumi.Input<String> value;
 
   /// Creates a new [MetadataFilterLabelMatchResponse].
   /// [name] Name of metadata label. The name can have a maximum length of 1024 characters and must be at least 1 character long.
   /// [value] The value of the label must match the specified value. value can have a maximum length of 1024 characters.
-  MetadataFilterLabelMatchResponse({
-    required this.name,
-    required this.value,
-  });
+  MetadataFilterLabelMatchResponse({required this.name, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
   factory MetadataFilterLabelMatchResponse.fromMap(Map<String, dynamic> map) {
     return MetadataFilterLabelMatchResponse(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

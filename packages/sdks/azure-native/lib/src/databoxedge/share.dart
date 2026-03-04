@@ -1,11 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_container_info_response.dart';
-import 'client_access_right_response.dart';
-import 'mount_point_map_response.dart';
 import 'refresh_details_response.dart';
 import 'share_args.dart';
 import 'system_data_response.dart';
-import 'user_access_right_response.dart';
 
 /// Represents a share on the  Data Box Edge/Gateway device.
 ///
@@ -231,60 +228,76 @@ import 'user_access_right_response.dart';
 class Share extends pulumi.CustomResource {
   /// Access protocol to be used by the share.
   late final pulumi.Output<String> accessProtocol;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Azure container mapping for the share.
   late final pulumi.Output<AzureContainerInfoResponse?> azureContainerInfo;
+
   /// List of IP addresses and corresponding access rights on the share(required for NFS protocol).
-  late final pulumi.Output<List<ClientAccessRightResponse>?> clientAccessRights;
+  late final pulumi.Output<List<Map<String, dynamic>>?> clientAccessRights;
+
   /// Data policy of the share.
   late final pulumi.Output<String?> dataPolicy;
+
   /// Description for the share.
   late final pulumi.Output<String?> description;
+
   /// Current monitoring status of the share.
   late final pulumi.Output<String> monitoringStatus;
+
   /// The object name.
   late final pulumi.Output<String> name;
+
   /// Details of the refresh job on this share.
   late final pulumi.Output<RefreshDetailsResponse?> refreshDetails;
+
   /// Share mount point to the role.
-  late final pulumi.Output<List<MountPointMapResponse>> shareMappings;
+  late final pulumi.Output<List<Map<String, dynamic>>> shareMappings;
+
   /// Current status of the share.
   late final pulumi.Output<String> shareStatus;
+
   /// Metadata pertaining to creation and last modification of Share
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
+
   /// Mapping of users and corresponding access rights on the share (required for SMB protocol).
-  late final pulumi.Output<List<UserAccessRightResponse>?> userAccessRights;
+  late final pulumi.Output<List<Map<String, dynamic>>?> userAccessRights;
 
   /// Creates a new [Share].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Share]. {@macro pulumi_databoxedge_share_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Share(
-    String name, {
-    ShareArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:databoxedge:Share',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessProtocol = registerOutput<String>('accessProtocol');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.azureContainerInfo = registerOutput<AzureContainerInfoResponse?>('azureContainerInfo');
-    this.clientAccessRights = registerOutput<List<ClientAccessRightResponse>?>('clientAccessRights');
-    this.dataPolicy = registerOutput<String?>('dataPolicy');
-    this.description = registerOutput<String?>('description');
-    this.monitoringStatus = registerOutput<String>('monitoringStatus');
+  Share(String name, {ShareArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:databoxedge:Share',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    accessProtocol = registerOutput<String>('accessProtocol');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureContainerInfo = registerOutput<AzureContainerInfoResponse?>(
+      'azureContainerInfo',
+    );
+    clientAccessRights = registerOutput<List<Map<String, dynamic>>?>(
+      'clientAccessRights',
+    );
+    dataPolicy = registerOutput<String?>('dataPolicy');
+    description = registerOutput<String?>('description');
+    monitoringStatus = registerOutput<String>('monitoringStatus');
     this.name = registerOutput<String>('name');
-    this.refreshDetails = registerOutput<RefreshDetailsResponse?>('refreshDetails');
-    this.shareMappings = registerOutput<List<MountPointMapResponse>>('shareMappings');
-    this.shareStatus = registerOutput<String>('shareStatus');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.userAccessRights = registerOutput<List<UserAccessRightResponse>?>('userAccessRights');
+    refreshDetails = registerOutput<RefreshDetailsResponse?>('refreshDetails');
+    shareMappings = registerOutput<List<Map<String, dynamic>>>('shareMappings');
+    shareStatus = registerOutput<String>('shareStatus');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    userAccessRights = registerOutput<List<Map<String, dynamic>>?>(
+      'userAccessRights',
+    );
   }
 }

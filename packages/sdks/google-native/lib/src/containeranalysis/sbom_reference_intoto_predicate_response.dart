@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SbomReferenceIntotoPredicateResponse {
   /// A map of algorithm to digest of the contents of the SBOM.
   final pulumi.Input<Map<String, String>> digest;
+
   /// The location of the SBOM.
   final pulumi.Input<String> location;
+
   /// The mime type of the SBOM.
   final pulumi.Input<String> mimeType;
+
   /// The person or system referring this predicate to the consumer.
   final pulumi.Input<String> referrerId;
 
@@ -34,13 +37,16 @@ class SbomReferenceIntotoPredicateResponse {
     };
   }
 
-  factory SbomReferenceIntotoPredicateResponse.fromMap(Map<String, dynamic> map) {
+  factory SbomReferenceIntotoPredicateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SbomReferenceIntotoPredicateResponse(
-      digest: ((map['digest'] as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      mimeType: (map['mimeType'] as String).input(),
-      referrerId: (map['referrerId'] as String).input(),
+      digest: pulumi.Input.fromValue(
+        (map['digest'] as Map).cast<String, String>(),
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      mimeType: pulumi.Input.fromValue(map['mimeType'] as String),
+      referrerId: pulumi.Input.fromValue(map['referrerId'] as String),
     );
   }
 }
-

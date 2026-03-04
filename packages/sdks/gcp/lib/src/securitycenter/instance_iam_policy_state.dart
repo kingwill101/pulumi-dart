@@ -5,12 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering InstanceIamPolicy resources.
 class InstanceIamPolicyState {
   final pulumi.Input<String>? etag;
+
   /// The ID of the instance or a fully qualified identifier for the instance.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? policyData;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region of the Data Fusion instance.
   final pulumi.Input<String>? region;
 
@@ -40,12 +43,31 @@ class InstanceIamPolicyState {
 
   factory InstanceIamPolicyState.fromMap(Map<String, dynamic> map) {
     return InstanceIamPolicyState(
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyData: (() {
+        final guardedValue = map['policyData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

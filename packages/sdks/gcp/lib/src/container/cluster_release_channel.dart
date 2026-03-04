@@ -14,20 +14,15 @@ class ClusterReleaseChannel {
 
   /// Creates a new [ClusterReleaseChannel].
   /// [channel] The selected release channel.
-  ClusterReleaseChannel({
-    required this.channel,
-  });
+  ClusterReleaseChannel({required this.channel});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'channel': channel,
-    };
+    return <String, dynamic>{'channel': channel};
   }
 
   factory ClusterReleaseChannel.fromMap(Map<String, dynamic> map) {
     return ClusterReleaseChannel(
-      channel: (map['channel'] as String).input(),
+      channel: pulumi.Input.fromValue(map['channel'] as String),
     );
   }
 }
-

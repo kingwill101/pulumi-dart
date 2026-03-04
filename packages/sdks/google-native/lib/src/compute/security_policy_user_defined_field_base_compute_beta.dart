@@ -5,16 +5,17 @@ enum SecurityPolicyUserDefinedFieldBaseComputeBeta {
   tcp("TCP"),
   udp("UDP");
 
-  const SecurityPolicyUserDefinedFieldBaseComputeBeta(this.value);
-  final String value;
+  const SecurityPolicyUserDefinedFieldBaseComputeBeta(this.wireValue);
+  final String wireValue;
 
   static SecurityPolicyUserDefinedFieldBaseComputeBeta fromValue(String value) {
     for (final item in SecurityPolicyUserDefinedFieldBaseComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityPolicyUserDefinedFieldBaseComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown SecurityPolicyUserDefinedFieldBaseComputeBeta value: $value',
+    );
   }
 }
-

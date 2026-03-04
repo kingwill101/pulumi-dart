@@ -9,20 +9,19 @@ class BareMetalAdminVipConfig {
 
   /// Creates a new [BareMetalAdminVipConfig].
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes API of this bare metal admin cluster.
-  BareMetalAdminVipConfig({
-    this.controlPlaneVip,
-  });
+  BareMetalAdminVipConfig({this.controlPlaneVip});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'controlPlaneVip': ?controlPlaneVip,
-    };
+    return <String, dynamic>{'controlPlaneVip': ?controlPlaneVip};
   }
 
   factory BareMetalAdminVipConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminVipConfig(
-      controlPlaneVip: map['controlPlaneVip'] == null ? null : (map['controlPlaneVip']! as String).input(),
+      controlPlaneVip: (() {
+        final guardedValue = map['controlPlaneVip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

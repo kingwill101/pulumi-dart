@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1BatchPredictionJobOutputInfoResponse {
   /// The path of the BigQuery dataset created, in `bq://projectId.bqDatasetId` format, into which the prediction output is written.
   final pulumi.Input<String> bigqueryOutputDataset;
+
   /// The name of the BigQuery table created, in `predictions_` format, into which the prediction output is written. Can be used by UI to generate the BigQuery output path, for example.
   final pulumi.Input<String> bigqueryOutputTable;
+
   /// The full path of the Cloud Storage directory created, into which the prediction output is written.
   final pulumi.Input<String> gcsOutputDirectory;
 
@@ -29,12 +31,19 @@ class GoogleCloudAiplatformV1BatchPredictionJobOutputInfoResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1BatchPredictionJobOutputInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1BatchPredictionJobOutputInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1BatchPredictionJobOutputInfoResponse(
-      bigqueryOutputDataset: (map['bigqueryOutputDataset'] as String).input(),
-      bigqueryOutputTable: (map['bigqueryOutputTable'] as String).input(),
-      gcsOutputDirectory: (map['gcsOutputDirectory'] as String).input(),
+      bigqueryOutputDataset: pulumi.Input.fromValue(
+        map['bigqueryOutputDataset'] as String,
+      ),
+      bigqueryOutputTable: pulumi.Input.fromValue(
+        map['bigqueryOutputTable'] as String,
+      ),
+      gcsOutputDirectory: pulumi.Input.fromValue(
+        map['gcsOutputDirectory'] as String,
+      ),
     );
   }
 }
-

@@ -9,20 +9,17 @@ class GoogleCloudAiplatformV1SampledShapleyAttribution {
 
   /// Creates a new [GoogleCloudAiplatformV1SampledShapleyAttribution].
   /// [pathCount] The number of feature permutations to consider when approximating the Shapley values. Valid range of its value is [1, 50], inclusively.
-  GoogleCloudAiplatformV1SampledShapleyAttribution({
-    required this.pathCount,
-  });
+  GoogleCloudAiplatformV1SampledShapleyAttribution({required this.pathCount});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pathCount': pathCount,
-    };
+    return <String, dynamic>{'pathCount': pathCount};
   }
 
-  factory GoogleCloudAiplatformV1SampledShapleyAttribution.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1SampledShapleyAttribution.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1SampledShapleyAttribution(
-      pathCount: (map['pathCount'] as int).input(),
+      pathCount: pulumi.Input.fromValue(map['pathCount'] as int),
     );
   }
 }
-

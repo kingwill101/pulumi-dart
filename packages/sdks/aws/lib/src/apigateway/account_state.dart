@@ -7,12 +7,16 @@ import 'account_throttle_setting.dart';
 class AccountState {
   /// The version of the API keys used for the account.
   final pulumi.Input<String>? apiKeyVersion;
+
   /// ARN of an IAM role for CloudWatch (to allow logging & monitoring). See more [in AWS Docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-stage-settings.html#how-to-stage-settings-console). Logging & monitoring can be enabled/disabled and otherwise tuned on the API Gateway Stage level.
   final pulumi.Input<String>? cloudwatchRoleArn;
+
   /// A list of features supported for the account.
   final pulumi.Input<List<String>>? features;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Account-Level throttle settings. See exported fields below.
   final pulumi.Input<List<AccountThrottleSetting>>? throttleSettings;
 
@@ -36,18 +40,55 @@ class AccountState {
       'cloudwatchRoleArn': ?cloudwatchRoleArn,
       'features': ?features,
       'region': ?region,
-      'throttleSettings': ?pulumi.Input.mapOptionalInputValue<List<AccountThrottleSetting>, List<Map<String, dynamic>>>(throttleSettings, (value) => pulumi.Input.encodeList<AccountThrottleSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'throttleSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AccountThrottleSetting>,
+            List<Map<String, dynamic>>
+          >(
+            throttleSettings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AccountThrottleSetting,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      apiKeyVersion: map['apiKeyVersion'] == null ? null : ((map['apiKeyVersion'] as String).input()).input(),
-      cloudwatchRoleArn: map['cloudwatchRoleArn'] == null ? null : ((map['cloudwatchRoleArn'] as String).input()).input(),
-      features: map['features'] == null ? null : (((map['features'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      throttleSettings: map['throttleSettings'] == null ? null : ((pulumi.Input.decodeList<AccountThrottleSetting>(map['throttleSettings']!, (value) => AccountThrottleSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      apiKeyVersion: (() {
+        final guardedValue = map['apiKeyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudwatchRoleArn: (() {
+        final guardedValue = map['cloudwatchRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      features: (() {
+        final guardedValue = map['features'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      throttleSettings: (() {
+        final guardedValue = map['throttleSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AccountThrottleSetting>(
+            guardedValue,
+            (value) => AccountThrottleSetting.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

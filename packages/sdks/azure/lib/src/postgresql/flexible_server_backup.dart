@@ -205,7 +205,7 @@ import 'flexible_server_backup_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DBforPostgreSQL` - 2025-08-01
@@ -220,8 +220,10 @@ import 'flexible_server_backup_state.dart';
 class FlexibleServerBackup extends pulumi.CustomResource {
   /// The Time (ISO8601 format) at which the backup was completed.
   late final pulumi.Output<String> completedTime;
+
   /// Specifies the name of this PostgreSQL Flexible Server Backup. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the PostgreSQL Flexible Server from which to create this PostgreSQL Flexible Server Backup. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverId;
 
@@ -234,14 +236,14 @@ class FlexibleServerBackup extends pulumi.CustomResource {
     FlexibleServerBackupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:postgresql/flexibleServerBackup:FlexibleServerBackup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.completedTime = registerOutput<String>('completedTime');
+         'azure:postgresql/flexibleServerBackup:FlexibleServerBackup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    completedTime = registerOutput<String>('completedTime');
     this.name = registerOutput<String>('name');
-    this.serverId = registerOutput<String>('serverId');
+    serverId = registerOutput<String>('serverId');
   }
 
   /// Gets an existing [FlexibleServerBackup] resource's state with the given [name] and [id].
@@ -262,13 +264,13 @@ class FlexibleServerBackup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:postgresql/flexibleServerBackup:FlexibleServerBackup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.completedTime = registerOutput<String>('completedTime');
+         'azure:postgresql/flexibleServerBackup:FlexibleServerBackup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    completedTime = registerOutput<String>('completedTime');
     this.name = registerOutput<String>('name');
-    this.serverId = registerOutput<String>('serverId');
+    serverId = registerOutput<String>('serverId');
   }
 }

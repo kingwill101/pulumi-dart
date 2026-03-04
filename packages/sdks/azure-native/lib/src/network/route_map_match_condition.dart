@@ -6,16 +6,15 @@ enum RouteMapMatchCondition {
   valueNotContains("NotContains"),
   valueNotEquals("NotEquals");
 
-  const RouteMapMatchCondition(this.value);
-  final String value;
+  const RouteMapMatchCondition(this.wireValue);
+  final String wireValue;
 
   static RouteMapMatchCondition fromValue(String value) {
     for (final item in RouteMapMatchCondition.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RouteMapMatchCondition value: $value');
   }
 }
-

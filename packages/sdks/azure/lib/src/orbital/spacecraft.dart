@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spacecraft_args.dart';
-import 'spacecraft_link.dart';
 import 'spacecraft_state.dart';
 
 /// Manages a Spacecraft.
 ///
-/// > **Note:** The `azure.orbital.Spacecraft` resource has been deprecated and will be removed in v5.0 of the AzureRM Provider.
+/// &gt; **Note:** The `azure.orbital.Spacecraft` resource has been deprecated and will be removed in v5.0 of the AzureRM Provider.
 ///
 /// ## Example Usage
 ///
@@ -244,7 +243,7 @@ import 'spacecraft_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Orbital` - 2022-11-01
@@ -258,19 +257,26 @@ import 'spacecraft_state.dart';
 /// ```
 class Spacecraft extends pulumi.CustomResource {
   /// A `links` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<SpacecraftLink>> links;
+  late final pulumi.Output<List<Map<String, dynamic>>> links;
+
   /// The location where the Spacecraft exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the Spacecraft. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// NORAD ID of the Spacecraft.
   late final pulumi.Output<String> noradId;
+
   /// The name of the Resource Group where the Spacecraft exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Title of the two line elements (TLE).
   late final pulumi.Output<String> titleLine;
+
   /// A list of the two line elements (TLE), the first string being the first of the TLE, the second string being the second line of the TLE. Changing this forces a new resource to be created.
   late final pulumi.Output<List<String>> twoLineElements;
 
@@ -283,19 +289,19 @@ class Spacecraft extends pulumi.CustomResource {
     SpacecraftArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:orbital/spacecraft:Spacecraft',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.links = registerOutput<List<SpacecraftLink>>('links');
-    this.location = registerOutput<String>('location');
+         'azure:orbital/spacecraft:Spacecraft',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    links = registerOutput<List<Map<String, dynamic>>>('links');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.noradId = registerOutput<String>('noradId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.titleLine = registerOutput<String>('titleLine');
-    this.twoLineElements = registerOutput<List<String>>('twoLineElements');
+    noradId = registerOutput<String>('noradId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    titleLine = registerOutput<String>('titleLine');
+    twoLineElements = registerOutput<List<String>>('twoLineElements');
   }
 
   /// Gets an existing [Spacecraft] resource's state with the given [name] and [id].
@@ -316,18 +322,18 @@ class Spacecraft extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:orbital/spacecraft:Spacecraft',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.links = registerOutput<List<SpacecraftLink>>('links');
-    this.location = registerOutput<String>('location');
+         'azure:orbital/spacecraft:Spacecraft',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    links = registerOutput<List<Map<String, dynamic>>>('links');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.noradId = registerOutput<String>('noradId');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.titleLine = registerOutput<String>('titleLine');
-    this.twoLineElements = registerOutput<List<String>>('twoLineElements');
+    noradId = registerOutput<String>('noradId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    titleLine = registerOutput<String>('titleLine');
+    twoLineElements = registerOutput<List<String>>('twoLineElements');
   }
 }

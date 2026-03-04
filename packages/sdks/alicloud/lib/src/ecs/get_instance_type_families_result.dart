@@ -6,10 +6,13 @@ import 'get_instance_type_families_family.dart';
 /// Result data returned by getInstanceTypeFamilies.
 class GetInstanceTypeFamiliesResult {
   final List<GetInstanceTypeFamiliesFamily> families;
+
   /// The generation of the instance type family.
   final String? generation;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of instance type family IDs.
   final List<String> ids;
   final String? instanceChargeType;
@@ -39,7 +42,11 @@ class GetInstanceTypeFamiliesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'families': pulumi.Input.encodeList<GetInstanceTypeFamiliesFamily, Map<String, dynamic>>(families, (value) => value.toMap()),
+      'families':
+          pulumi.Input.encodeList<
+            GetInstanceTypeFamiliesFamily,
+            Map<String, dynamic>
+          >(families, (value) => value.toMap()),
       'generation': ?generation,
       'id': id,
       'ids': ids,
@@ -52,15 +59,39 @@ class GetInstanceTypeFamiliesResult {
 
   factory GetInstanceTypeFamiliesResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeFamiliesResult(
-      families: pulumi.Input.decodeList<GetInstanceTypeFamiliesFamily>(map['families'], (value) => GetInstanceTypeFamiliesFamily.fromMap((value as Map).cast<String, dynamic>())),
-      generation: map['generation'] == null ? null : map['generation']! as String,
+      families: pulumi.Input.decodeList<GetInstanceTypeFamiliesFamily>(
+        map['families']!,
+        (value) => GetInstanceTypeFamiliesFamily.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      generation: (() {
+        final guardedValue = map['generation'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      spotStrategy: map['spotStrategy'] == null ? null : map['spotStrategy']! as String,
-      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
+      instanceChargeType: (() {
+        final guardedValue = map['instanceChargeType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      spotStrategy: (() {
+        final guardedValue = map['spotStrategy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

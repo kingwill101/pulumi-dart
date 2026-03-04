@@ -29,12 +29,19 @@ class GetServiceBindingNetworkservicesV1beta1Args {
     };
   }
 
-  factory GetServiceBindingNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetServiceBindingNetworkservicesV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceBindingNetworkservicesV1beta1Args(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      serviceBindingId: (map['serviceBindingId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceBindingId: pulumi.Input.fromValue(
+        map['serviceBindingId'] as String,
+      ),
     );
   }
 }
-

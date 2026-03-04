@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpConnectionPoolResponse {
   /// Maximum number of pending http1 requests allowed
   final pulumi.Input<int>? http1MaxPendingRequests;
+
   /// Maximum number of http2 requests allowed
   final pulumi.Input<int>? http2MaxRequests;
 
@@ -26,9 +27,16 @@ class HttpConnectionPoolResponse {
 
   factory HttpConnectionPoolResponse.fromMap(Map<String, dynamic> map) {
     return HttpConnectionPoolResponse(
-      http1MaxPendingRequests: map['http1MaxPendingRequests'] == null ? null : (map['http1MaxPendingRequests']! as int).input(),
-      http2MaxRequests: map['http2MaxRequests'] == null ? null : (map['http2MaxRequests']! as int).input(),
+      http1MaxPendingRequests: (() {
+        final guardedValue = map['http1MaxPendingRequests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      http2MaxRequests: (() {
+        final guardedValue = map['http2MaxRequests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

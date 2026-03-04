@@ -8,7 +8,7 @@ import 'product_state.dart';
 ///
 /// For information about Service Catalog Product and how to use it, see [What is Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createproduct).
 ///
-/// > **NOTE:** Available since v1.230.0.
+/// &gt; **NOTE:** Available since v1.230.0.
 ///
 /// ## Example Usage
 ///
@@ -153,12 +153,16 @@ import 'product_state.dart';
 class Product extends pulumi.CustomResource {
   /// The creation time of the product
   late final pulumi.Output<String> createTime;
+
   /// The description of the product
   late final pulumi.Output<String?> description;
+
   /// The name of the product
   late final pulumi.Output<String> productName;
+
   /// The type of the product
   late final pulumi.Output<String> productType;
+
   /// The provider name of the product
   late final pulumi.Output<String> providerName;
 
@@ -171,16 +175,16 @@ class Product extends pulumi.CustomResource {
     ProductArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:servicecatalog/product:Product',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.productName = registerOutput<String>('productName');
-    this.productType = registerOutput<String>('productType');
-    this.providerName = registerOutput<String>('providerName');
+         'alicloud:servicecatalog/product:Product',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    productName = registerOutput<String>('productName');
+    productType = registerOutput<String>('productType');
+    providerName = registerOutput<String>('providerName');
   }
 
   /// Gets an existing [Product] resource's state with the given [name] and [id].
@@ -201,15 +205,15 @@ class Product extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:servicecatalog/product:Product',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.productName = registerOutput<String>('productName');
-    this.productType = registerOutput<String>('productType');
-    this.providerName = registerOutput<String>('providerName');
+         'alicloud:servicecatalog/product:Product',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    productName = registerOutput<String>('productName');
+    productType = registerOutput<String>('productType');
+    providerName = registerOutput<String>('providerName');
   }
 }

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImagesImageDiskDeviceMapping {
   /// The device information of the created disk: such as /dev/xvdb.
   final pulumi.Input<String> device;
+
   /// The size of the created disk.
   final pulumi.Input<String> size;
+
   /// The ID of the snapshot used to create the custom image.
   final pulumi.Input<String> snapshotId;
 
@@ -30,10 +32,9 @@ class GetImagesImageDiskDeviceMapping {
 
   factory GetImagesImageDiskDeviceMapping.fromMap(Map<String, dynamic> map) {
     return GetImagesImageDiskDeviceMapping(
-      device: (map['device'] as String).input(),
-      size: (map['size'] as String).input(),
-      snapshotId: (map['snapshotId'] as String).input(),
+      device: pulumi.Input.fromValue(map['device'] as String),
+      size: pulumi.Input.fromValue(map['size'] as String),
+      snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
     );
   }
 }
-

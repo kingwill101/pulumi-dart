@@ -8,32 +8,41 @@ class BgpSpeakerV2State {
   /// A boolean value indicating
   /// whether to advertise floating IP host routes. Defaults to `true`.
   final pulumi.Input<bool>? advertiseFloatingIpHostRoutes;
+
   /// A boolean value indicating whether to
   /// advertise tenant networks. Defaults to `true`.
   final pulumi.Input<bool>? advertiseTenantNetworks;
+
   /// A list of dictionaries containing the `destination` and
   /// `next_hop` for each route advertised by the BGP speaker. This attribute is
   /// only populated after the BGP speaker has been created and has established BGP
   /// sessions with its peers.
   final pulumi.Input<List<BgpSpeakerV2AdvertisedRoute>>? advertisedRoutes;
+
   /// The IP version of the BGP speaker. Valid values are
   /// `4` or `6`. Defaults to `4`. Changing this creates a new BGP speaker.
   final pulumi.Input<int>? ipVersion;
+
   /// The local autonomous system number (ASN) for the BGP
   /// speaker. This is a mandatory field and must be specified. Changing this
   /// creates a new BGP speaker.
   final pulumi.Input<int>? localAs;
+
   /// A name for the BGP speaker.
   final pulumi.Input<String>? name;
+
   /// A list of network IDs to associate with the BGP speaker.
   final pulumi.Input<List<String>>? networks;
+
   /// A list of BGP peer IDs to associate with the BGP speaker.
   final pulumi.Input<List<String>>? peers;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a Neutron network. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new BGP
   /// speaker.
   final pulumi.Input<String>? region;
+
   /// The tenant/project ID. Required if admin privileges
   /// are used. Changing this creates a new BGP speaker.
   final pulumi.Input<String>? tenantId;
@@ -66,7 +75,18 @@ class BgpSpeakerV2State {
     return <String, dynamic>{
       'advertiseFloatingIpHostRoutes': ?advertiseFloatingIpHostRoutes,
       'advertiseTenantNetworks': ?advertiseTenantNetworks,
-      'advertisedRoutes': ?pulumi.Input.mapOptionalInputValue<List<BgpSpeakerV2AdvertisedRoute>, List<Map<String, dynamic>>>(advertisedRoutes, (value) => pulumi.Input.encodeList<BgpSpeakerV2AdvertisedRoute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'advertisedRoutes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BgpSpeakerV2AdvertisedRoute>,
+            List<Map<String, dynamic>>
+          >(
+            advertisedRoutes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BgpSpeakerV2AdvertisedRoute,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ipVersion': ?ipVersion,
       'localAs': ?localAs,
       'name': ?name,
@@ -79,17 +99,63 @@ class BgpSpeakerV2State {
 
   factory BgpSpeakerV2State.fromMap(Map<String, dynamic> map) {
     return BgpSpeakerV2State(
-      advertiseFloatingIpHostRoutes: map['advertiseFloatingIpHostRoutes'] == null ? null : (map['advertiseFloatingIpHostRoutes']! as bool).input(),
-      advertiseTenantNetworks: map['advertiseTenantNetworks'] == null ? null : (map['advertiseTenantNetworks']! as bool).input(),
-      advertisedRoutes: map['advertisedRoutes'] == null ? null : (pulumi.Input.decodeList<BgpSpeakerV2AdvertisedRoute>(map['advertisedRoutes']!, (value) => BgpSpeakerV2AdvertisedRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as int).input(),
-      localAs: map['localAs'] == null ? null : (map['localAs']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networks: map['networks'] == null ? null : ((map['networks']! as List).cast<String>()).input(),
-      peers: map['peers'] == null ? null : ((map['peers']! as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      advertiseFloatingIpHostRoutes: (() {
+        final guardedValue = map['advertiseFloatingIpHostRoutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      advertiseTenantNetworks: (() {
+        final guardedValue = map['advertiseTenantNetworks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      advertisedRoutes: (() {
+        final guardedValue = map['advertisedRoutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BgpSpeakerV2AdvertisedRoute>(
+            guardedValue,
+            (value) => BgpSpeakerV2AdvertisedRoute.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ipVersion: (() {
+        final guardedValue = map['ipVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      localAs: (() {
+        final guardedValue = map['localAs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networks: (() {
+        final guardedValue = map['networks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      peers: (() {
+        final guardedValue = map['peers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

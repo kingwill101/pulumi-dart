@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessPolicyArgs {
   /// The name of the Time Series Insights access policy associated with the specified environment.
   final pulumi.Input<String> accessPolicyName;
+
   /// The name of the Time Series Insights environment associated with the specified resource group.
   final pulumi.Input<String> environmentName;
+
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetAccessPolicyArgs {
 
   factory GetAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPolicyArgs(
-      accessPolicyName: (map['accessPolicyName'] as String).input(),
-      environmentName: (map['environmentName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accessPolicyName: pulumi.Input.fromValue(
+        map['accessPolicyName'] as String,
+      ),
+      environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

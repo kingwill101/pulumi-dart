@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPolicyArgs {
   /// The name of the namespace.
   final pulumi.Input<String> namespaceName;
+
   /// The name of the Policy tracked resource.
   final pulumi.Input<String> policyName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetPolicyArgs {
 
   factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyArgs(
-      namespaceName: (map['namespaceName'] as String).input(),
-      policyName: (map['policyName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      policyName: pulumi.Input.fromValue(map['policyName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

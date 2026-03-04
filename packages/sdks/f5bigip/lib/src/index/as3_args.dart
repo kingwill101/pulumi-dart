@@ -10,12 +10,16 @@ import 'as3_delete_apps.dart';
 class As3Args {
   /// List of applications currently deployed on the Big-Ip
   final pulumi.Input<String>? applicationList;
+
   /// Path/Filename of Declarative AS3 JSON which is a json file used with builtin ```file``` function
   final pulumi.Input<String>? as3Json;
+
   /// A map that allows you to configure specific behavior controls for the AS3 declaration. Each key represents a particular control setting, and the corresponding value defines its configuration.
   final pulumi.Input<Map<String, String>>? controls;
+
   /// Block for specifying tenant name and applications to delete from BIG-IP. **Mutually exclusive with `as3_json`**: only one of `delete_apps` or `as3_json` can be set in a resource block.
   final pulumi.Input<As3DeleteApps>? deleteApps;
+
   /// Set True if you want to ignore metadata changes during update. By default it is set to false
   ///
   /// * `as3_example1.json` - Example  AS3 Declarative JSON file with single tenant
@@ -200,14 +204,18 @@ class As3Args {
   ///
   /// The `f5bigip.As3` resource allows you to **post full AS3 declarations** or **selectively delete one or more applications** from a specific tenant in BIG-IP.
   ///
-  /// > **Note**: `delete_apps` and `as3_json` are **mutually exclusive**. You must use only one of them in a single `f5bigip.As3` resource block.
+  /// &gt; **Note**: `delete_apps` and `as3_json` are **mutually exclusive**. You must use only one of them in a single `f5bigip.As3` resource block.
   final pulumi.Input<bool>? ignoreMetadata;
+
   /// ID of AS3 post declaration async task
   final pulumi.Input<String>? taskId;
+
   /// If there are multiple tenants on a BIG-IP, this attribute helps the user to set a particular tenant to which he want to reflect the changes. Other tenants will neither be created nor be modified.
   final pulumi.Input<String>? tenantFilter;
+
   /// List of tenants currently deployed on the Big-Ip
   final pulumi.Input<String>? tenantList;
+
   /// Name of Tenant. This name is used only in the case of Per-Application Deployment. If it is not provided, then a random name would be generated.
   final pulumi.Input<String>? tenantName;
 
@@ -238,7 +246,11 @@ class As3Args {
       'applicationList': ?applicationList,
       'as3Json': ?as3Json,
       'controls': ?controls,
-      'deleteApps': ?pulumi.Input.mapOptionalInputValue<As3DeleteApps, Map<String, dynamic>>(deleteApps, (value) => value.toMap()),
+      'deleteApps':
+          ?pulumi.Input.mapOptionalInputValue<
+            As3DeleteApps,
+            Map<String, dynamic>
+          >(deleteApps, (value) => value.toMap()),
       'ignoreMetadata': ?ignoreMetadata,
       'taskId': ?taskId,
       'tenantFilter': ?tenantFilter,
@@ -249,16 +261,55 @@ class As3Args {
 
   factory As3Args.fromMap(Map<String, dynamic> map) {
     return As3Args(
-      applicationList: map['applicationList'] == null ? null : (map['applicationList']! as String).input(),
-      as3Json: map['as3Json'] == null ? null : (map['as3Json']! as String).input(),
-      controls: map['controls'] == null ? null : ((map['controls']! as Map).cast<String, String>()).input(),
-      deleteApps: map['deleteApps'] == null ? null : (As3DeleteApps.fromMap((map['deleteApps']! as Map).cast<String, dynamic>())).input(),
-      ignoreMetadata: map['ignoreMetadata'] == null ? null : (map['ignoreMetadata']! as bool).input(),
-      taskId: map['taskId'] == null ? null : (map['taskId']! as String).input(),
-      tenantFilter: map['tenantFilter'] == null ? null : (map['tenantFilter']! as String).input(),
-      tenantList: map['tenantList'] == null ? null : (map['tenantList']! as String).input(),
-      tenantName: map['tenantName'] == null ? null : (map['tenantName']! as String).input(),
+      applicationList: (() {
+        final guardedValue = map['applicationList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      as3Json: (() {
+        final guardedValue = map['as3Json'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      controls: (() {
+        final guardedValue = map['controls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      deleteApps: (() {
+        final guardedValue = map['deleteApps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          As3DeleteApps.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      ignoreMetadata: (() {
+        final guardedValue = map['ignoreMetadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      taskId: (() {
+        final guardedValue = map['taskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantFilter: (() {
+        final guardedValue = map['tenantFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantList: (() {
+        final guardedValue = map['tenantList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantName: (() {
+        final guardedValue = map['tenantName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

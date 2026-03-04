@@ -259,21 +259,28 @@ import 'v2models_bot_locale_voice_settings.dart';
 class V2modelsBotLocale extends pulumi.CustomResource {
   /// Identifier of the bot to create the locale for.
   late final pulumi.Output<String> botId;
+
   /// Version of the bot to create the locale for. This can only be the draft version of the bot.
   late final pulumi.Output<String> botVersion;
+
   /// Description of the bot locale. Use this to help identify the bot locale in lists.
   late final pulumi.Output<String?> description;
+
   /// Identifier of the language and locale that the bot will be used in. The string must match one of the supported locales. All of the intents, slot types, and slots used in the bot must have the same locale. For more information, see Supported languages (https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html)
   late final pulumi.Output<String> localeId;
+
   /// Determines the threshold where Amazon Lex will insert the AMAZON.FallbackIntent, AMAZON.KendraSearchIntent, or both when returning alternative intents.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<double> nLuIntentConfidenceThreshold;
+
   /// Specified locale name.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<V2modelsBotLocaleTimeouts?> timeouts;
+
   /// Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. See `voice_settings`.
   late final pulumi.Output<V2modelsBotLocaleVoiceSettings?> voiceSettings;
 
@@ -286,20 +293,24 @@ class V2modelsBotLocale extends pulumi.CustomResource {
     V2modelsBotLocaleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lex/v2modelsBotLocale:V2modelsBotLocale',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botId = registerOutput<String>('botId');
-    this.botVersion = registerOutput<String>('botVersion');
-    this.description = registerOutput<String?>('description');
-    this.localeId = registerOutput<String>('localeId');
-    this.nLuIntentConfidenceThreshold = registerOutput<double>('nLuIntentConfidenceThreshold');
+         'aws:lex/v2modelsBotLocale:V2modelsBotLocale',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botId = registerOutput<String>('botId');
+    botVersion = registerOutput<String>('botVersion');
+    description = registerOutput<String?>('description');
+    localeId = registerOutput<String>('localeId');
+    nLuIntentConfidenceThreshold = registerOutput<double>(
+      'nLuIntentConfidenceThreshold',
+    );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.timeouts = registerOutput<V2modelsBotLocaleTimeouts?>('timeouts');
-    this.voiceSettings = registerOutput<V2modelsBotLocaleVoiceSettings?>('voiceSettings');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<V2modelsBotLocaleTimeouts?>('timeouts');
+    voiceSettings = registerOutput<V2modelsBotLocaleVoiceSettings?>(
+      'voiceSettings',
+    );
   }
 
   /// Gets an existing [V2modelsBotLocale] resource's state with the given [name] and [id].
@@ -320,19 +331,23 @@ class V2modelsBotLocale extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lex/v2modelsBotLocale:V2modelsBotLocale',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.botId = registerOutput<String>('botId');
-    this.botVersion = registerOutput<String>('botVersion');
-    this.description = registerOutput<String?>('description');
-    this.localeId = registerOutput<String>('localeId');
-    this.nLuIntentConfidenceThreshold = registerOutput<double>('nLuIntentConfidenceThreshold');
+         'aws:lex/v2modelsBotLocale:V2modelsBotLocale',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    botId = registerOutput<String>('botId');
+    botVersion = registerOutput<String>('botVersion');
+    description = registerOutput<String?>('description');
+    localeId = registerOutput<String>('localeId');
+    nLuIntentConfidenceThreshold = registerOutput<double>(
+      'nLuIntentConfidenceThreshold',
+    );
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.timeouts = registerOutput<V2modelsBotLocaleTimeouts?>('timeouts');
-    this.voiceSettings = registerOutput<V2modelsBotLocaleVoiceSettings?>('voiceSettings');
+    region = registerOutput<String>('region');
+    timeouts = registerOutput<V2modelsBotLocaleTimeouts?>('timeouts');
+    voiceSettings = registerOutput<V2modelsBotLocaleVoiceSettings?>(
+      'voiceSettings',
+    );
   }
 }

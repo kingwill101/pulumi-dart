@@ -7,14 +7,19 @@ import 'domain_redirect_response.dart';
 class GetDomainResult {
   /// The domain name of the association.
   final String domainName;
+
   /// If set, the domain should redirect with the provided parameters.
   final DomainRedirectResponse domainRedirect;
+
   /// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
   final DomainProvisioningResponse provisioning;
+
   /// The site name of the association.
   final String site;
+
   /// Additional status of the domain association.
   final String status;
+
   /// The time at which the domain was last updated.
   final String updateTime;
 
@@ -48,12 +53,15 @@ class GetDomainResult {
   factory GetDomainResult.fromMap(Map<String, dynamic> map) {
     return GetDomainResult(
       domainName: map['domainName'] as String,
-      domainRedirect: DomainRedirectResponse.fromMap((map['domainRedirect'] as Map).cast<String, dynamic>()),
-      provisioning: DomainProvisioningResponse.fromMap((map['provisioning'] as Map).cast<String, dynamic>()),
+      domainRedirect: DomainRedirectResponse.fromMap(
+        (map['domainRedirect']! as Map).cast<String, dynamic>(),
+      ),
+      provisioning: DomainProvisioningResponse.fromMap(
+        (map['provisioning']! as Map).cast<String, dynamic>(),
+      ),
       site: map['site'] as String,
       status: map['status'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

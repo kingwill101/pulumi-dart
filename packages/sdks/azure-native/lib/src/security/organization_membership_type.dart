@@ -3,16 +3,15 @@ enum OrganizationMembershipType {
   valueMember("Member"),
   valueOrganization("Organization");
 
-  const OrganizationMembershipType(this.value);
-  final String value;
+  const OrganizationMembershipType(this.wireValue);
+  final String wireValue;
 
   static OrganizationMembershipType fromValue(String value) {
     for (final item in OrganizationMembershipType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OrganizationMembershipType value: $value');
   }
 }
-

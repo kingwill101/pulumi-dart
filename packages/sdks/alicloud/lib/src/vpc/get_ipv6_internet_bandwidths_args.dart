@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIpv6InternetBandwidthsArgs {
   /// A list of Ipv6 Internet Bandwidth IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The ID of the IPv6 address.
   final pulumi.Input<String>? ipv6AddressId;
+
   /// The ID of the Ipv6 Internet Bandwidth.
   final pulumi.Input<String>? ipv6InternetBandwidthId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
   final pulumi.Input<String>? status;
 
@@ -44,12 +48,31 @@ class GetIpv6InternetBandwidthsArgs {
 
   factory GetIpv6InternetBandwidthsArgs.fromMap(Map<String, dynamic> map) {
     return GetIpv6InternetBandwidthsArgs(
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      ipv6AddressId: map['ipv6AddressId'] == null ? null : (map['ipv6AddressId']! as String).input(),
-      ipv6InternetBandwidthId: map['ipv6InternetBandwidthId'] == null ? null : (map['ipv6InternetBandwidthId']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ipv6AddressId: (() {
+        final guardedValue = map['ipv6AddressId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6InternetBandwidthId: (() {
+        final guardedValue = map['ipv6InternetBandwidthId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

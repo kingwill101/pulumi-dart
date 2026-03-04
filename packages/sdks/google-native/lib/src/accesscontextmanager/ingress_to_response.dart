@@ -7,29 +7,46 @@ import 'api_operation_response.dart';
 class IngressToResponse {
   /// A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter.
   final pulumi.Input<List<ApiOperationResponse>> operations;
+
   /// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed.
   final pulumi.Input<List<String>> resources;
 
   /// Creates a new [IngressToResponse].
   /// [operations] A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter.
   /// [resources] A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed.
-  IngressToResponse({
-    required this.operations,
-    required this.resources,
-  });
+  IngressToResponse({required this.operations, required this.resources});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'operations': pulumi.Input.mapInputValue<List<ApiOperationResponse>, List<Map<String, dynamic>>>(operations, (value) => pulumi.Input.encodeList<ApiOperationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'operations':
+          pulumi.Input.mapInputValue<
+            List<ApiOperationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            operations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ApiOperationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'resources': resources,
     };
   }
 
   factory IngressToResponse.fromMap(Map<String, dynamic> map) {
     return IngressToResponse(
-      operations: (pulumi.Input.decodeList<ApiOperationResponse>(map['operations'], (value) => ApiOperationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resources: ((map['resources'] as List).cast<String>()).input(),
+      operations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ApiOperationResponse>(
+          map['operations']!,
+          (value) => ApiOperationResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      resources: pulumi.Input.fromValue(
+        (map['resources'] as List).cast<String>(),
+      ),
     );
   }
 }
-

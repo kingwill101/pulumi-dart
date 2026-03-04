@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerEventResponse {
   /// The count of the event.
   final pulumi.Input<int>? count;
+
   /// Date/time of the first event.
   final pulumi.Input<String>? firstTimestamp;
+
   /// Date/time of the last event.
   final pulumi.Input<String>? lastTimestamp;
+
   /// The event message
   final pulumi.Input<String>? message;
+
   /// The name of the container event.
   final pulumi.Input<String>? name;
+
   /// The event type.
   final pulumi.Input<String>? type;
 
@@ -46,13 +51,36 @@ class ContainerEventResponse {
 
   factory ContainerEventResponse.fromMap(Map<String, dynamic> map) {
     return ContainerEventResponse(
-      count: map['count'] == null ? null : (map['count']! as int).input(),
-      firstTimestamp: map['firstTimestamp'] == null ? null : (map['firstTimestamp']! as String).input(),
-      lastTimestamp: map['lastTimestamp'] == null ? null : (map['lastTimestamp']! as String).input(),
-      message: map['message'] == null ? null : (map['message']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      count: (() {
+        final guardedValue = map['count'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      firstTimestamp: (() {
+        final guardedValue = map['firstTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastTimestamp: (() {
+        final guardedValue = map['lastTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      message: (() {
+        final guardedValue = map['message'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

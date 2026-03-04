@@ -21,16 +21,20 @@ enum EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId {
   cloudSql("CLOUD_SQL"),
   genericConnectorTask("GENERIC_CONNECTOR_TASK");
 
-  const EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId(this.value);
-  final String value;
+  const EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId(this.wireValue);
+  final String wireValue;
 
-  static EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId fromValue(String value) {
-    for (final item in EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId.values) {
-      if (item.value == value) {
+  static EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId value: $value',
+    );
   }
 }
-

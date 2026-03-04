@@ -9,20 +9,19 @@ class DockerResponse {
 
   /// Creates a new [DockerResponse].
   /// [privileged] Indicate whether container shall run in privileged or non-privileged mode.
-  DockerResponse({
-    this.privileged,
-  });
+  DockerResponse({this.privileged});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'privileged': ?privileged,
-    };
+    return <String, dynamic>{'privileged': ?privileged};
   }
 
   factory DockerResponse.fromMap(Map<String, dynamic> map) {
     return DockerResponse(
-      privileged: map['privileged'] == null ? null : (map['privileged']! as bool).input(),
+      privileged: (() {
+        final guardedValue = map['privileged'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_automation;
-
 export 'automation/account.dart';
 export 'automation/account_args.dart';
 export 'automation/account_encryption.dart';

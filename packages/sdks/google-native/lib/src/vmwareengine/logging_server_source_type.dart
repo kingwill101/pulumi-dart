@@ -4,16 +4,15 @@ enum LoggingServerSourceType {
   esxi("ESXI"),
   vcsa("VCSA");
 
-  const LoggingServerSourceType(this.value);
-  final String value;
+  const LoggingServerSourceType(this.wireValue);
+  final String wireValue;
 
   static LoggingServerSourceType fromValue(String value) {
     for (final item in LoggingServerSourceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LoggingServerSourceType value: $value');
   }
 }
-

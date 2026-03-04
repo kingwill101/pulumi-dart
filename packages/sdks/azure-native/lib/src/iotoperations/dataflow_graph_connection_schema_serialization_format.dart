@@ -5,16 +5,20 @@ enum DataflowGraphConnectionSchemaSerializationFormat {
   parquet("Parquet"),
   avro("Avro");
 
-  const DataflowGraphConnectionSchemaSerializationFormat(this.value);
-  final String value;
+  const DataflowGraphConnectionSchemaSerializationFormat(this.wireValue);
+  final String wireValue;
 
-  static DataflowGraphConnectionSchemaSerializationFormat fromValue(String value) {
-    for (final item in DataflowGraphConnectionSchemaSerializationFormat.values) {
-      if (item.value == value) {
+  static DataflowGraphConnectionSchemaSerializationFormat fromValue(
+    String value,
+  ) {
+    for (final item
+        in DataflowGraphConnectionSchemaSerializationFormat.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DataflowGraphConnectionSchemaSerializationFormat value: $value');
+    throw ArgumentError(
+      'Unknown DataflowGraphConnectionSchemaSerializationFormat value: $value',
+    );
   }
 }
-

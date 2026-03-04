@@ -6,16 +6,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcEndpointLinkedVpcState {
   /// Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
   final pulumi.Input<bool>? enableCreateDnsRecordInPvzt;
+
   /// The ID of the instance.
   final pulumi.Input<String>? instanceId;
+
   /// The name of the module that you want to access. Valid Values:
   /// - `Registry`: the image repository.
   /// - `Chart`: a Helm chart.
   final pulumi.Input<String>? moduleName;
+
   /// The status of the Vpc Endpoint Linked Vpc.
   final pulumi.Input<String>? status;
+
   /// The ID of the VPC.
   final pulumi.Input<String>? vpcId;
+
   /// The ID of the vSwitch.
   final pulumi.Input<String>? vswitchId;
 
@@ -48,13 +53,36 @@ class VpcEndpointLinkedVpcState {
 
   factory VpcEndpointLinkedVpcState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointLinkedVpcState(
-      enableCreateDnsRecordInPvzt: map['enableCreateDnsRecordInPvzt'] == null ? null : (map['enableCreateDnsRecordInPvzt']! as bool).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      moduleName: map['moduleName'] == null ? null : (map['moduleName']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      enableCreateDnsRecordInPvzt: (() {
+        final guardedValue = map['enableCreateDnsRecordInPvzt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      moduleName: (() {
+        final guardedValue = map['moduleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

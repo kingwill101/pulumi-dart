@@ -4,16 +4,17 @@ enum GlobalAddressAddressTypeComputeBeta {
   internal("INTERNAL"),
   unspecifiedType("UNSPECIFIED_TYPE");
 
-  const GlobalAddressAddressTypeComputeBeta(this.value);
-  final String value;
+  const GlobalAddressAddressTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static GlobalAddressAddressTypeComputeBeta fromValue(String value) {
     for (final item in GlobalAddressAddressTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalAddressAddressTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown GlobalAddressAddressTypeComputeBeta value: $value',
+    );
   }
 }
-

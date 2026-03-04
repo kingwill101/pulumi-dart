@@ -9,20 +9,39 @@ class DomainSysInfoFwCfg {
 
   /// Creates a new [DomainSysInfoFwCfg].
   /// [entries] Sets individual entries for the firmware configuration.
-  DomainSysInfoFwCfg({
-    this.entries,
-  });
+  DomainSysInfoFwCfg({this.entries});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entries': ?pulumi.Input.mapOptionalInputValue<List<DomainSysInfoFwCfgEntry>, List<Map<String, dynamic>>>(entries, (value) => pulumi.Input.encodeList<DomainSysInfoFwCfgEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'entries':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DomainSysInfoFwCfgEntry>,
+            List<Map<String, dynamic>>
+          >(
+            entries,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DomainSysInfoFwCfgEntry,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DomainSysInfoFwCfg.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoFwCfg(
-      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoFwCfgEntry>(map['entries']!, (value) => DomainSysInfoFwCfgEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entries: (() {
+        final guardedValue = map['entries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DomainSysInfoFwCfgEntry>(
+            guardedValue,
+            (value) => DomainSysInfoFwCfgEntry.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

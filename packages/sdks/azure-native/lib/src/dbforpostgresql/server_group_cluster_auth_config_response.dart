@@ -22,11 +22,20 @@ class ServerGroupClusterAuthConfigResponse {
     };
   }
 
-  factory ServerGroupClusterAuthConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory ServerGroupClusterAuthConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServerGroupClusterAuthConfigResponse(
-      activeDirectoryAuth: map['activeDirectoryAuth'] == null ? null : (map['activeDirectoryAuth']! as String).input(),
-      passwordAuth: map['passwordAuth'] == null ? null : (map['passwordAuth']! as String).input(),
+      activeDirectoryAuth: (() {
+        final guardedValue = map['activeDirectoryAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      passwordAuth: (() {
+        final guardedValue = map['passwordAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum SubnetworkLogConfigMetadataComputeV1 {
   excludeAllMetadata("EXCLUDE_ALL_METADATA"),
   includeAllMetadata("INCLUDE_ALL_METADATA");
 
-  const SubnetworkLogConfigMetadataComputeV1(this.value);
-  final String value;
+  const SubnetworkLogConfigMetadataComputeV1(this.wireValue);
+  final String wireValue;
 
   static SubnetworkLogConfigMetadataComputeV1 fromValue(String value) {
     for (final item in SubnetworkLogConfigMetadataComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SubnetworkLogConfigMetadataComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown SubnetworkLogConfigMetadataComputeV1 value: $value',
+    );
   }
 }
-

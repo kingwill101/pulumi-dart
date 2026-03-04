@@ -7,20 +7,28 @@ import 'v3_async_invoke_config_destination_config.dart';
 class V3AsyncInvokeConfigState {
   /// Whether to enable an asynchronous task
   final pulumi.Input<bool>? asyncTask;
+
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
+
   /// Target Configuration See `destination_config` below.
   final pulumi.Input<V3AsyncInvokeConfigDestinationConfig>? destinationConfig;
+
   /// (Available since v1.234.0) Function resource identification
   final pulumi.Input<String>? functionArn;
+
   /// Function Name
   final pulumi.Input<String>? functionName;
+
   /// (Available since v1.234.0) Last modification time
   final pulumi.Input<String>? lastModifiedTime;
+
   /// Event maximum survival time
   final pulumi.Input<int>? maxAsyncEventAgeInSeconds;
+
   /// Number of Asynchronous call retries
   final pulumi.Input<int>? maxAsyncRetryAttempts;
+
   /// Function version or alias
   final pulumi.Input<String>? qualifier;
 
@@ -50,7 +58,11 @@ class V3AsyncInvokeConfigState {
     return <String, dynamic>{
       'asyncTask': ?asyncTask,
       'createTime': ?createTime,
-      'destinationConfig': ?pulumi.Input.mapOptionalInputValue<V3AsyncInvokeConfigDestinationConfig, Map<String, dynamic>>(destinationConfig, (value) => value.toMap()),
+      'destinationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            V3AsyncInvokeConfigDestinationConfig,
+            Map<String, dynamic>
+          >(destinationConfig, (value) => value.toMap()),
       'functionArn': ?functionArn,
       'functionName': ?functionName,
       'lastModifiedTime': ?lastModifiedTime,
@@ -62,16 +74,55 @@ class V3AsyncInvokeConfigState {
 
   factory V3AsyncInvokeConfigState.fromMap(Map<String, dynamic> map) {
     return V3AsyncInvokeConfigState(
-      asyncTask: map['asyncTask'] == null ? null : (map['asyncTask']! as bool).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      destinationConfig: map['destinationConfig'] == null ? null : (V3AsyncInvokeConfigDestinationConfig.fromMap((map['destinationConfig']! as Map).cast<String, dynamic>())).input(),
-      functionArn: map['functionArn'] == null ? null : (map['functionArn']! as String).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
-      maxAsyncEventAgeInSeconds: map['maxAsyncEventAgeInSeconds'] == null ? null : (map['maxAsyncEventAgeInSeconds']! as int).input(),
-      maxAsyncRetryAttempts: map['maxAsyncRetryAttempts'] == null ? null : (map['maxAsyncRetryAttempts']! as int).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier']! as String).input(),
+      asyncTask: (() {
+        final guardedValue = map['asyncTask'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationConfig: (() {
+        final guardedValue = map['destinationConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          V3AsyncInvokeConfigDestinationConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      functionArn: (() {
+        final guardedValue = map['functionArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      functionName: (() {
+        final guardedValue = map['functionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastModifiedTime: (() {
+        final guardedValue = map['lastModifiedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maxAsyncEventAgeInSeconds: (() {
+        final guardedValue = map['maxAsyncEventAgeInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxAsyncRetryAttempts: (() {
+        final guardedValue = map['maxAsyncRetryAttempts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      qualifier: (() {
+        final guardedValue = map['qualifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

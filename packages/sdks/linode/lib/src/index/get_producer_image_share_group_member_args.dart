@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProducerImageShareGroupMemberArgs {
   /// The ID of the Image Share Group the member belongs to.
   final pulumi.Input<int> sharegroupId;
+
   /// The UUID of member's token.
   final pulumi.Input<String> tokenUuid;
 
@@ -27,11 +28,12 @@ class GetProducerImageShareGroupMemberArgs {
     };
   }
 
-  factory GetProducerImageShareGroupMemberArgs.fromMap(Map<String, dynamic> map) {
+  factory GetProducerImageShareGroupMemberArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetProducerImageShareGroupMemberArgs(
-      sharegroupId: (map['sharegroupId'] as int).input(),
-      tokenUuid: (map['tokenUuid'] as String).input(),
+      sharegroupId: pulumi.Input.fromValue(map['sharegroupId'] as int),
+      tokenUuid: pulumi.Input.fromValue(map['tokenUuid'] as String),
     );
   }
 }
-

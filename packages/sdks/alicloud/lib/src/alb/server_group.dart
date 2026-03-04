@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'server_group_args.dart';
 import 'server_group_connection_drain_config.dart';
 import 'server_group_health_check_config.dart';
-import 'server_group_server.dart';
 import 'server_group_slow_start_config.dart';
 import 'server_group_state.dart';
 import 'server_group_sticky_session_config.dart';
@@ -14,7 +13,7 @@ import 'server_group_uch_config.dart';
 ///
 /// For information about Application Load Balancer (ALB) Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
 ///
-/// > **NOTE:** Available since v1.131.0.
+/// &gt; **NOTE:** Available since v1.131.0.
 ///
 /// ## Example Usage
 ///
@@ -665,23 +664,31 @@ import 'server_group_uch_config.dart';
 /// ```
 class ServerGroup extends pulumi.CustomResource {
   /// Elegant interrupt configuration. See `connection_drain_config` below.
-  late final pulumi.Output<ServerGroupConnectionDrainConfig> connectionDrainConfig;
+  late final pulumi.Output<ServerGroupConnectionDrainConfig>
+  connectionDrainConfig;
+
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
   late final pulumi.Output<bool> crossZoneEnabled;
+
   /// Whether to PreCheck only this request. Value:
   /// true: Send a check request,
   /// false (default): Send a normal request.
   late final pulumi.Output<bool?> dryRun;
+
   /// The configuration of health checks See `health_check_config` below.
   late final pulumi.Output<ServerGroupHealthCheckConfig> healthCheckConfig;
+
   /// The ID of the resource group to which you want to transfer the cloud resource.
   ///
-  /// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+  /// &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
   late final pulumi.Output<String?> healthCheckTemplateId;
+
   /// Enable Ipv6
   late final pulumi.Output<bool?> ipv6Enabled;
+
   /// The backend protocol. Valid values:
   ///
   /// *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
@@ -690,10 +697,12 @@ class ServerGroup extends pulumi.CustomResource {
   ///
   /// *   `gRPC`: allows you to associate an HTTPS or QUIC listener with the server group.
   ///
-  /// > **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
+  /// &gt; **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
   late final pulumi.Output<String> protocol;
+
   /// Elegant interrupt configuration.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The scheduling algorithm. Valid values:
   ///
   /// *   `Wrr` (default): The weighted round-robin algorithm is used. Backend servers that have higher weights receive more requests than those that have lower weights.
@@ -702,35 +711,46 @@ class ServerGroup extends pulumi.CustomResource {
   ///
   /// *   `Sch`: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
   ///
-  /// > **NOTE:**  This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
+  /// &gt; **NOTE:**  This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
   late final pulumi.Output<String> scheduler;
+
   /// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
   late final pulumi.Output<String> serverGroupName;
+
   /// The type of server group. Valid values:
   ///
   /// - `Instance` (default): allows you to add servers by specifying `Ecs`, `Eni`, or `Eci`.
   /// - `Ip`: allows you to add servers by specifying IP addresses.
   /// - `Fc`: allows you to add servers by specifying functions of Function Compute.
   late final pulumi.Output<String> serverGroupType;
+
   /// List of servers. See `servers` below.
-  late final pulumi.Output<List<ServerGroupServer>?> servers;
+  late final pulumi.Output<List<Map<String, dynamic>>?> servers;
+
   /// Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
   late final pulumi.Output<String?> serviceName;
+
   /// Slow start configuration. See `slow_start_config` below.
   late final pulumi.Output<ServerGroupSlowStartConfig> slowStartConfig;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
+
   /// The configuration of health checks See `sticky_session_config` below.
   late final pulumi.Output<ServerGroupStickySessionConfig?> stickySessionConfig;
+
   /// The creation time of the resource
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Url consistency hash parameter configuration See `uch_config` below.
   late final pulumi.Output<ServerGroupUchConfig?> uchConfig;
+
   /// Specifies whether to enable persistent TCP connections.
   late final pulumi.Output<bool?> upstreamKeepaliveEnabled;
+
   /// The ID of the virtual private cloud (VPC). You can add only servers that are deployed in the specified VPC to the server group.
   ///
-  /// > **NOTE:**   This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
+  /// &gt; **NOTE:**   This parameter takes effect when the `ServerGroupType` parameter is set to `Instance` or `Ip`.
   late final pulumi.Output<String?> vpcId;
 
   /// Creates a new [ServerGroup].
@@ -742,32 +762,42 @@ class ServerGroup extends pulumi.CustomResource {
     ServerGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:alb/serverGroup:ServerGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionDrainConfig = registerOutput<ServerGroupConnectionDrainConfig>('connectionDrainConfig');
-    this.createTime = registerOutput<String>('createTime');
-    this.crossZoneEnabled = registerOutput<bool>('crossZoneEnabled');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.healthCheckConfig = registerOutput<ServerGroupHealthCheckConfig>('healthCheckConfig');
-    this.healthCheckTemplateId = registerOutput<String?>('healthCheckTemplateId');
-    this.ipv6Enabled = registerOutput<bool?>('ipv6Enabled');
-    this.protocol = registerOutput<String>('protocol');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.scheduler = registerOutput<String>('scheduler');
-    this.serverGroupName = registerOutput<String>('serverGroupName');
-    this.serverGroupType = registerOutput<String>('serverGroupType');
-    this.servers = registerOutput<List<ServerGroupServer>?>('servers');
-    this.serviceName = registerOutput<String?>('serviceName');
-    this.slowStartConfig = registerOutput<ServerGroupSlowStartConfig>('slowStartConfig');
-    this.status = registerOutput<String>('status');
-    this.stickySessionConfig = registerOutput<ServerGroupStickySessionConfig?>('stickySessionConfig');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.uchConfig = registerOutput<ServerGroupUchConfig?>('uchConfig');
-    this.upstreamKeepaliveEnabled = registerOutput<bool?>('upstreamKeepaliveEnabled');
-    this.vpcId = registerOutput<String?>('vpcId');
+         'alicloud:alb/serverGroup:ServerGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionDrainConfig = registerOutput<ServerGroupConnectionDrainConfig>(
+      'connectionDrainConfig',
+    );
+    createTime = registerOutput<String>('createTime');
+    crossZoneEnabled = registerOutput<bool>('crossZoneEnabled');
+    dryRun = registerOutput<bool?>('dryRun');
+    healthCheckConfig = registerOutput<ServerGroupHealthCheckConfig>(
+      'healthCheckConfig',
+    );
+    healthCheckTemplateId = registerOutput<String?>('healthCheckTemplateId');
+    ipv6Enabled = registerOutput<bool?>('ipv6Enabled');
+    protocol = registerOutput<String>('protocol');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    scheduler = registerOutput<String>('scheduler');
+    serverGroupName = registerOutput<String>('serverGroupName');
+    serverGroupType = registerOutput<String>('serverGroupType');
+    servers = registerOutput<List<Map<String, dynamic>>?>('servers');
+    serviceName = registerOutput<String?>('serviceName');
+    slowStartConfig = registerOutput<ServerGroupSlowStartConfig>(
+      'slowStartConfig',
+    );
+    status = registerOutput<String>('status');
+    stickySessionConfig = registerOutput<ServerGroupStickySessionConfig?>(
+      'stickySessionConfig',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    uchConfig = registerOutput<ServerGroupUchConfig?>('uchConfig');
+    upstreamKeepaliveEnabled = registerOutput<bool?>(
+      'upstreamKeepaliveEnabled',
+    );
+    vpcId = registerOutput<String?>('vpcId');
   }
 
   /// Gets an existing [ServerGroup] resource's state with the given [name] and [id].
@@ -788,31 +818,41 @@ class ServerGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:alb/serverGroup:ServerGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionDrainConfig = registerOutput<ServerGroupConnectionDrainConfig>('connectionDrainConfig');
-    this.createTime = registerOutput<String>('createTime');
-    this.crossZoneEnabled = registerOutput<bool>('crossZoneEnabled');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.healthCheckConfig = registerOutput<ServerGroupHealthCheckConfig>('healthCheckConfig');
-    this.healthCheckTemplateId = registerOutput<String?>('healthCheckTemplateId');
-    this.ipv6Enabled = registerOutput<bool?>('ipv6Enabled');
-    this.protocol = registerOutput<String>('protocol');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.scheduler = registerOutput<String>('scheduler');
-    this.serverGroupName = registerOutput<String>('serverGroupName');
-    this.serverGroupType = registerOutput<String>('serverGroupType');
-    this.servers = registerOutput<List<ServerGroupServer>?>('servers');
-    this.serviceName = registerOutput<String?>('serviceName');
-    this.slowStartConfig = registerOutput<ServerGroupSlowStartConfig>('slowStartConfig');
-    this.status = registerOutput<String>('status');
-    this.stickySessionConfig = registerOutput<ServerGroupStickySessionConfig?>('stickySessionConfig');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.uchConfig = registerOutput<ServerGroupUchConfig?>('uchConfig');
-    this.upstreamKeepaliveEnabled = registerOutput<bool?>('upstreamKeepaliveEnabled');
-    this.vpcId = registerOutput<String?>('vpcId');
+         'alicloud:alb/serverGroup:ServerGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionDrainConfig = registerOutput<ServerGroupConnectionDrainConfig>(
+      'connectionDrainConfig',
+    );
+    createTime = registerOutput<String>('createTime');
+    crossZoneEnabled = registerOutput<bool>('crossZoneEnabled');
+    dryRun = registerOutput<bool?>('dryRun');
+    healthCheckConfig = registerOutput<ServerGroupHealthCheckConfig>(
+      'healthCheckConfig',
+    );
+    healthCheckTemplateId = registerOutput<String?>('healthCheckTemplateId');
+    ipv6Enabled = registerOutput<bool?>('ipv6Enabled');
+    protocol = registerOutput<String>('protocol');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    scheduler = registerOutput<String>('scheduler');
+    serverGroupName = registerOutput<String>('serverGroupName');
+    serverGroupType = registerOutput<String>('serverGroupType');
+    servers = registerOutput<List<Map<String, dynamic>>?>('servers');
+    serviceName = registerOutput<String?>('serviceName');
+    slowStartConfig = registerOutput<ServerGroupSlowStartConfig>(
+      'slowStartConfig',
+    );
+    status = registerOutput<String>('status');
+    stickySessionConfig = registerOutput<ServerGroupStickySessionConfig?>(
+      'stickySessionConfig',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    uchConfig = registerOutput<ServerGroupUchConfig?>('uchConfig');
+    upstreamKeepaliveEnabled = registerOutput<bool?>(
+      'upstreamKeepaliveEnabled',
+    );
+    vpcId = registerOutput<String?>('vpcId');
   }
 }

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_map_args.dart';
-import 'certificate_map_gclb_target.dart';
 import 'certificate_map_state.dart';
 
 /// CertificateMap defines a collection of certificate configurations,
@@ -159,27 +158,35 @@ class CertificateMap extends pulumi.CustomResource {
   /// accurate to nanoseconds with up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+
   /// A human-readable description of the resource.
   late final pulumi.Output<String?> description;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// A list of target proxies that use this Certificate Map
   /// Structure is documented below.
-  late final pulumi.Output<List<CertificateMapGclbTarget>> gclbTargets;
+  late final pulumi.Output<List<Map<String, dynamic>>> gclbTargets;
+
   /// Set of labels associated with a Certificate Map resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// A user-defined name of the Certificate Map. Certificate Map names must be unique
   /// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
   /// accurate to nanoseconds with up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -194,20 +201,20 @@ class CertificateMap extends pulumi.CustomResource {
     CertificateMapArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:certificatemanager/certificateMap:CertificateMap',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.gclbTargets = registerOutput<List<CertificateMapGclbTarget>>('gclbTargets');
-    this.labels = registerOutput<Map<String, String>?>('labels');
+         'gcp:certificatemanager/certificateMap:CertificateMap',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    gclbTargets = registerOutput<List<Map<String, dynamic>>>('gclbTargets');
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [CertificateMap] resource's state with the given [name] and [id].
@@ -228,19 +235,19 @@ class CertificateMap extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:certificatemanager/certificateMap:CertificateMap',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.gclbTargets = registerOutput<List<CertificateMapGclbTarget>>('gclbTargets');
-    this.labels = registerOutput<Map<String, String>?>('labels');
+         'gcp:certificatemanager/certificateMap:CertificateMap',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    gclbTargets = registerOutput<List<Map<String, dynamic>>>('gclbTargets');
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.updateTime = registerOutput<String>('updateTime');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

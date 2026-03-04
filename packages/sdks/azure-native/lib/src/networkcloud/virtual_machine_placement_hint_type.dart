@@ -3,16 +3,17 @@ enum VirtualMachinePlacementHintType {
   valueAffinity("Affinity"),
   valueAntiAffinity("AntiAffinity");
 
-  const VirtualMachinePlacementHintType(this.value);
-  final String value;
+  const VirtualMachinePlacementHintType(this.wireValue);
+  final String wireValue;
 
   static VirtualMachinePlacementHintType fromValue(String value) {
     for (final item in VirtualMachinePlacementHintType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VirtualMachinePlacementHintType value: $value');
+    throw ArgumentError(
+      'Unknown VirtualMachinePlacementHintType value: $value',
+    );
   }
 }
-

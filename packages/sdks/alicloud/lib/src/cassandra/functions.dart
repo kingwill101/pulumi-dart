@@ -10,9 +10,9 @@ import 'get_zones_result.dart';
 
 /// This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.128.0+.
+/// &gt; **NOTE:** Available in v1.128.0+.
 ///
-/// > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+/// &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 ///
 /// ## Example Usage
 ///
@@ -132,9 +132,9 @@ Future<GetBackupPlansResult> getBackupPlans(
 /// The `alicloud.cassandra.getClusters` data source provides a collection of Cassandra clusters available in Alicloud account.
 /// Filters support regular expression for the cluster name, ids or tags.
 ///
-/// > **NOTE:**  Available in 1.88.0+.
+/// &gt; **NOTE:**  Available in 1.88.0+.
 ///
-/// > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+/// &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 ///
 /// ## Example Usage
 ///
@@ -242,9 +242,9 @@ Future<GetClustersResult> getClusters(
 /// The `alicloud.cassandra.getDataCenters` data source provides a collection of Cassandra Data Centers available in Alicloud account.
 /// Filters support regular expression for the cluster name or ids.
 ///
-/// > **NOTE:**  Available in 1.88.0+.
+/// &gt; **NOTE:**  Available in 1.88.0+.
 ///
-/// > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+/// &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 ///
 /// ## Example Usage
 ///
@@ -357,9 +357,9 @@ Future<GetDataCentersResult> getDataCenters(
 
 /// This data source provides availability zones for Cassandra that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 ///
-/// > **NOTE:** Available in v1.88.0+.
+/// &gt; **NOTE:** Available in v1.88.0+.
 ///
-/// > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+/// &gt; **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 ///
 /// ## Example Usage
 ///

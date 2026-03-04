@@ -11,11 +11,17 @@ import 'google_cloud_securitycenter_v1_custom_config.dart';
 class FolderSecurityHealthAnalyticsSettingCustomModuleArgs {
   /// The user specified custom configuration for the module.
   final pulumi.Input<GoogleCloudSecuritycenterV1CustomConfig>? customConfig;
+
   /// The display name of the Security Health Analytics custom module. This display name becomes the finding category for all findings that are returned by this custom module. The display name must be between 1 and 128 characters, start with a lowercase letter, and contain alphanumeric characters or underscores only.
   final pulumi.Input<String>? displayName;
+
   /// The enablement state of the custom module.
-  final pulumi.Input<FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState>? enablementState;
+  final pulumi.Input<
+    FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState
+  >?
+  enablementState;
   final pulumi.Input<String> folderId;
+
   /// Immutable. The resource name of the custom module. Its format is "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}", or "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}" The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
   final pulumi.Input<String>? name;
 
@@ -35,22 +41,55 @@ class FolderSecurityHealthAnalyticsSettingCustomModuleArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudSecuritycenterV1CustomConfig, Map<String, dynamic>>(customConfig, (value) => value.toMap()),
+      'customConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudSecuritycenterV1CustomConfig,
+            Map<String, dynamic>
+          >(customConfig, (value) => value.toMap()),
       'displayName': ?displayName,
-      'enablementState': ?pulumi.Input.mapOptionalInputValue<FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState, String>(enablementState, (value) => value.value),
+      'enablementState':
+          ?pulumi.Input.mapOptionalInputValue<
+            FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState,
+            String
+          >(enablementState, (value) => value.wireValue),
       'folderId': folderId,
       'name': ?name,
     };
   }
 
-  factory FolderSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
+  factory FolderSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FolderSecurityHealthAnalyticsSettingCustomModuleArgs(
-      customConfig: map['customConfig'] == null ? null : (GoogleCloudSecuritycenterV1CustomConfig.fromMap((map['customConfig']! as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      enablementState: map['enablementState'] == null ? null : (FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState.fromValue(map['enablementState']! as String)).input(),
-      folderId: (map['folderId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      customConfig: (() {
+        final guardedValue = map['customConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudSecuritycenterV1CustomConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enablementState: (() {
+        final guardedValue = map['enablementState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      folderId: pulumi.Input.fromValue(map['folderId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

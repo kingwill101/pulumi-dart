@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultCertificateSourceParametersResponse {
   /// Describes the action that shall be taken when the certificate is removed from Key Vault.
   final pulumi.Input<String> deleteRule;
+
   /// Resource group of the user's Key Vault containing the SSL certificate
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of Key Vault Secret (representing the full certificate PFX) in Key Vault.
   final pulumi.Input<String> secretName;
+
   /// The version(GUID) of Key Vault Secret in Key Vault.
   final pulumi.Input<String>? secretVersion;
+
   /// Subscription Id of the user's Key Vault containing the SSL certificate
   final pulumi.Input<String> subscriptionId;
+
   /// Expected value is 'KeyVaultCertificateSourceParameters'.
   final pulumi.Input<String> typeName;
+
   /// Describes the action that shall be taken when the certificate is updated in Key Vault.
   final pulumi.Input<String> updateRule;
+
   /// The name of the user's Key Vault containing the SSL certificate
   final pulumi.Input<String> vaultName;
 
@@ -54,17 +61,24 @@ class KeyVaultCertificateSourceParametersResponse {
     };
   }
 
-  factory KeyVaultCertificateSourceParametersResponse.fromMap(Map<String, dynamic> map) {
+  factory KeyVaultCertificateSourceParametersResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KeyVaultCertificateSourceParametersResponse(
-      deleteRule: (map['deleteRule'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      secretName: (map['secretName'] as String).input(),
-      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion']! as String).input(),
-      subscriptionId: (map['subscriptionId'] as String).input(),
-      typeName: (map['typeName'] as String).input(),
-      updateRule: (map['updateRule'] as String).input(),
-      vaultName: (map['vaultName'] as String).input(),
+      deleteRule: pulumi.Input.fromValue(map['deleteRule'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      secretName: pulumi.Input.fromValue(map['secretName'] as String),
+      secretVersion: (() {
+        final guardedValue = map['secretVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
+      typeName: pulumi.Input.fromValue(map['typeName'] as String),
+      updateRule: pulumi.Input.fromValue(map['updateRule'] as String),
+      vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
-

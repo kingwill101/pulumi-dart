@@ -9,12 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteEntryArgs {
   /// The destination CIDR block of the route entry to publish.
   ///
-  /// ->**NOTE:** The "alicloud_cen_instance_route_entries" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
+  /// -&gt;**NOTE:** The "alicloud_cen_instance_route_entries" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
   ///
-  /// ->**NOTE:** The "alicloud.cen.InstanceAttachment" resource should depend on the related "alicloud.vpc.Switch" resource.
+  /// -&gt;**NOTE:** The "alicloud.cen.InstanceAttachment" resource should depend on the related "alicloud.vpc.Switch" resource.
   final pulumi.Input<String> cidrBlock;
+
   /// The ID of the CEN.
   final pulumi.Input<String> instanceId;
+
   /// The route table of the attached VBR or VPC.
   final pulumi.Input<String> routeTableId;
 
@@ -38,10 +40,9 @@ class RouteEntryArgs {
 
   factory RouteEntryArgs.fromMap(Map<String, dynamic> map) {
     return RouteEntryArgs(
-      cidrBlock: (map['cidrBlock'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      routeTableId: (map['routeTableId'] as String).input(),
+      cidrBlock: pulumi.Input.fromValue(map['cidrBlock'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      routeTableId: pulumi.Input.fromValue(map['routeTableId'] as String),
     );
   }
 }
-

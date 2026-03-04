@@ -9,20 +9,17 @@ class DataflowEndpointAuthenticationServiceAccountToken {
 
   /// Creates a new [DataflowEndpointAuthenticationServiceAccountToken].
   /// [audience] Audience of the service account. Optional, defaults to the broker internal service account audience.
-  DataflowEndpointAuthenticationServiceAccountToken({
-    required this.audience,
-  });
+  DataflowEndpointAuthenticationServiceAccountToken({required this.audience});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'audience': audience,
-    };
+    return <String, dynamic>{'audience': audience};
   }
 
-  factory DataflowEndpointAuthenticationServiceAccountToken.fromMap(Map<String, dynamic> map) {
+  factory DataflowEndpointAuthenticationServiceAccountToken.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataflowEndpointAuthenticationServiceAccountToken(
-      audience: (map['audience'] as String).input(),
+      audience: pulumi.Input.fromValue(map['audience'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_iap;
-
 export 'iap/app_engine_service_iam_binding.dart';
 export 'iap/app_engine_service_iam_binding_args.dart';
 export 'iap/app_engine_service_iam_binding_condition.dart';

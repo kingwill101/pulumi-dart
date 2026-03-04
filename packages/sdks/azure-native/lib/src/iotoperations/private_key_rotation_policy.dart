@@ -1,18 +1,17 @@
 /// cert-manager private key rotationPolicy.
 enum PrivateKeyRotationPolicy {
   always("Always"),
-  never("Never");
+  never_("Never");
 
-  const PrivateKeyRotationPolicy(this.value);
-  final String value;
+  const PrivateKeyRotationPolicy(this.wireValue);
+  final String wireValue;
 
   static PrivateKeyRotationPolicy fromValue(String value) {
     for (final item in PrivateKeyRotationPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PrivateKeyRotationPolicy value: $value');
   }
 }
-

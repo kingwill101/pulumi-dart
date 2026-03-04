@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContactsPropertiesResponseAntennaConfiguration {
   /// The destination IP a packet can be sent to. This would for example be the TCP endpoint you would send data to.
   final pulumi.Input<String>? destinationIp;
+
   /// List of Source IP
   final pulumi.Input<List<String>>? sourceIps;
 
@@ -24,11 +25,20 @@ class ContactsPropertiesResponseAntennaConfiguration {
     };
   }
 
-  factory ContactsPropertiesResponseAntennaConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ContactsPropertiesResponseAntennaConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContactsPropertiesResponseAntennaConfiguration(
-      destinationIp: map['destinationIp'] == null ? null : (map['destinationIp']! as String).input(),
-      sourceIps: map['sourceIps'] == null ? null : ((map['sourceIps']! as List).cast<String>()).input(),
+      destinationIp: (() {
+        final guardedValue = map['destinationIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceIps: (() {
+        final guardedValue = map['sourceIps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

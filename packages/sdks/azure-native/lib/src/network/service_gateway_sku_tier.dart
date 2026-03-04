@@ -2,16 +2,15 @@
 enum ServiceGatewaySkuTier {
   valueRegional("Regional");
 
-  const ServiceGatewaySkuTier(this.value);
-  final String value;
+  const ServiceGatewaySkuTier(this.wireValue);
+  final String wireValue;
 
   static ServiceGatewaySkuTier fromValue(String value) {
     for (final item in ServiceGatewaySkuTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceGatewaySkuTier value: $value');
   }
 }
-

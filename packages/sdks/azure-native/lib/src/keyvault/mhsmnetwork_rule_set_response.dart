@@ -8,10 +8,13 @@ import 'mhsmvirtual_network_rule_response.dart';
 class MHSMNetworkRuleSetResponse {
   /// Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If not specified the default is 'AzureServices'.
   final pulumi.Input<String>? bypass;
+
   /// The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
   final pulumi.Input<String>? defaultAction;
+
   /// The list of IP address rules.
   final pulumi.Input<List<MHSMIPRuleResponse>>? ipRules;
+
   /// The list of virtual network rules.
   final pulumi.Input<List<MHSMVirtualNetworkRuleResponse>>? virtualNetworkRules;
 
@@ -31,18 +34,69 @@ class MHSMNetworkRuleSetResponse {
     return <String, dynamic>{
       'bypass': ?bypass,
       'defaultAction': ?defaultAction,
-      'ipRules': ?pulumi.Input.mapOptionalInputValue<List<MHSMIPRuleResponse>, List<Map<String, dynamic>>>(ipRules, (value) => pulumi.Input.encodeList<MHSMIPRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'virtualNetworkRules': ?pulumi.Input.mapOptionalInputValue<List<MHSMVirtualNetworkRuleResponse>, List<Map<String, dynamic>>>(virtualNetworkRules, (value) => pulumi.Input.encodeList<MHSMVirtualNetworkRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MHSMIPRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            ipRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MHSMIPRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'virtualNetworkRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MHSMVirtualNetworkRuleResponse>,
+            List<Map<String, dynamic>>
+          >(
+            virtualNetworkRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MHSMVirtualNetworkRuleResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory MHSMNetworkRuleSetResponse.fromMap(Map<String, dynamic> map) {
     return MHSMNetworkRuleSetResponse(
-      bypass: map['bypass'] == null ? null : (map['bypass']! as String).input(),
-      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction']! as String).input(),
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<MHSMIPRuleResponse>(map['ipRules']!, (value) => MHSMIPRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<MHSMVirtualNetworkRuleResponse>(map['virtualNetworkRules']!, (value) => MHSMVirtualNetworkRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bypass: (() {
+        final guardedValue = map['bypass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultAction: (() {
+        final guardedValue = map['defaultAction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipRules: (() {
+        final guardedValue = map['ipRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MHSMIPRuleResponse>(
+            guardedValue,
+            (value) => MHSMIPRuleResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      virtualNetworkRules: (() {
+        final guardedValue = map['virtualNetworkRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MHSMVirtualNetworkRuleResponse>(
+            guardedValue,
+            (value) => MHSMVirtualNetworkRuleResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

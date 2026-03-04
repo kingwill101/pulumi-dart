@@ -4,16 +4,15 @@ enum MetadataOptionsSymlink {
   symlinkSkip("SYMLINK_SKIP"),
   symlinkPreserve("SYMLINK_PRESERVE");
 
-  const MetadataOptionsSymlink(this.value);
-  final String value;
+  const MetadataOptionsSymlink(this.wireValue);
+  final String wireValue;
 
   static MetadataOptionsSymlink fromValue(String value) {
     for (final item in MetadataOptionsSymlink.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetadataOptionsSymlink value: $value');
   }
 }
-

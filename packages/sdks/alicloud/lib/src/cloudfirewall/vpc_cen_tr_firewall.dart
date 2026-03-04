@@ -8,7 +8,7 @@ import 'vpc_cen_tr_firewall_state.dart';
 ///
 /// For information about Cloud Firewall Vpc Cen Tr Firewall and how to use it, see [What is Vpc Cen Tr Firewall](https://www.alibabacloud.com/help/en/cloud-firewall/cloudfirewall/developer-reference/api-cloudfw-2017-12-07-createtrfirewallv2).
 ///
-/// > **NOTE:** Available since v1.228.0.
+/// &gt; **NOTE:** Available since v1.228.0.
 ///
 /// ## Example Usage
 ///
@@ -772,38 +772,53 @@ import 'vpc_cen_tr_firewall_state.dart';
 class VpcCenTrFirewall extends pulumi.CustomResource {
   /// The ID of the Cloud Enterprise Network (CEN) instance.
   late final pulumi.Output<String> cenId;
+
   /// The description of the firewall.
   late final pulumi.Output<String?> firewallDescription;
+
   /// The ID of the firewall ENI.
   late final pulumi.Output<String> firewallEniId;
+
   /// The ID of the VPC where the firewall ENI resides.
   late final pulumi.Output<String> firewallEniVpcId;
+
   /// The name of the Cloud Firewall.
   late final pulumi.Output<String> firewallName;
+
   /// The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
   late final pulumi.Output<String> firewallSubnetCidr;
+
   /// The ID of the firewall VPC connection.
   late final pulumi.Output<String> firewallVpcAttachmentId;
+
   /// The CIDR block of the firewall VPC in automatic mode.
   late final pulumi.Output<String> firewallVpcCidr;
+
   /// The region ID of the transit router instance.
   late final pulumi.Output<String> regionNo;
+
   /// The routing mode. Valid values:
   late final pulumi.Output<String> routeMode;
+
   /// The status of the firewall.
   late final pulumi.Output<String> status;
+
   /// The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
   late final pulumi.Output<String> trAttachmentMasterCidr;
+
   /// The primary zone of the vSwitch.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> trAttachmentMasterZone;
+
   /// The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
   late final pulumi.Output<String> trAttachmentSlaveCidr;
+
   /// The secondary zone of the vSwitch.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   late final pulumi.Output<String?> trAttachmentSlaveZone;
+
   /// The ID of the Transit Router instance.
   late final pulumi.Output<String> transitRouterId;
 
@@ -816,27 +831,27 @@ class VpcCenTrFirewall extends pulumi.CustomResource {
     VpcCenTrFirewallArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenId = registerOutput<String>('cenId');
-    this.firewallDescription = registerOutput<String?>('firewallDescription');
-    this.firewallEniId = registerOutput<String>('firewallEniId');
-    this.firewallEniVpcId = registerOutput<String>('firewallEniVpcId');
-    this.firewallName = registerOutput<String>('firewallName');
-    this.firewallSubnetCidr = registerOutput<String>('firewallSubnetCidr');
-    this.firewallVpcAttachmentId = registerOutput<String>('firewallVpcAttachmentId');
-    this.firewallVpcCidr = registerOutput<String>('firewallVpcCidr');
-    this.regionNo = registerOutput<String>('regionNo');
-    this.routeMode = registerOutput<String>('routeMode');
-    this.status = registerOutput<String>('status');
-    this.trAttachmentMasterCidr = registerOutput<String>('trAttachmentMasterCidr');
-    this.trAttachmentMasterZone = registerOutput<String?>('trAttachmentMasterZone');
-    this.trAttachmentSlaveCidr = registerOutput<String>('trAttachmentSlaveCidr');
-    this.trAttachmentSlaveZone = registerOutput<String?>('trAttachmentSlaveZone');
-    this.transitRouterId = registerOutput<String>('transitRouterId');
+         'alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenId = registerOutput<String>('cenId');
+    firewallDescription = registerOutput<String?>('firewallDescription');
+    firewallEniId = registerOutput<String>('firewallEniId');
+    firewallEniVpcId = registerOutput<String>('firewallEniVpcId');
+    firewallName = registerOutput<String>('firewallName');
+    firewallSubnetCidr = registerOutput<String>('firewallSubnetCidr');
+    firewallVpcAttachmentId = registerOutput<String>('firewallVpcAttachmentId');
+    firewallVpcCidr = registerOutput<String>('firewallVpcCidr');
+    regionNo = registerOutput<String>('regionNo');
+    routeMode = registerOutput<String>('routeMode');
+    status = registerOutput<String>('status');
+    trAttachmentMasterCidr = registerOutput<String>('trAttachmentMasterCidr');
+    trAttachmentMasterZone = registerOutput<String?>('trAttachmentMasterZone');
+    trAttachmentSlaveCidr = registerOutput<String>('trAttachmentSlaveCidr');
+    trAttachmentSlaveZone = registerOutput<String?>('trAttachmentSlaveZone');
+    transitRouterId = registerOutput<String>('transitRouterId');
   }
 
   /// Gets an existing [VpcCenTrFirewall] resource's state with the given [name] and [id].
@@ -857,26 +872,26 @@ class VpcCenTrFirewall extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenId = registerOutput<String>('cenId');
-    this.firewallDescription = registerOutput<String?>('firewallDescription');
-    this.firewallEniId = registerOutput<String>('firewallEniId');
-    this.firewallEniVpcId = registerOutput<String>('firewallEniVpcId');
-    this.firewallName = registerOutput<String>('firewallName');
-    this.firewallSubnetCidr = registerOutput<String>('firewallSubnetCidr');
-    this.firewallVpcAttachmentId = registerOutput<String>('firewallVpcAttachmentId');
-    this.firewallVpcCidr = registerOutput<String>('firewallVpcCidr');
-    this.regionNo = registerOutput<String>('regionNo');
-    this.routeMode = registerOutput<String>('routeMode');
-    this.status = registerOutput<String>('status');
-    this.trAttachmentMasterCidr = registerOutput<String>('trAttachmentMasterCidr');
-    this.trAttachmentMasterZone = registerOutput<String?>('trAttachmentMasterZone');
-    this.trAttachmentSlaveCidr = registerOutput<String>('trAttachmentSlaveCidr');
-    this.trAttachmentSlaveZone = registerOutput<String?>('trAttachmentSlaveZone');
-    this.transitRouterId = registerOutput<String>('transitRouterId');
+         'alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenId = registerOutput<String>('cenId');
+    firewallDescription = registerOutput<String?>('firewallDescription');
+    firewallEniId = registerOutput<String>('firewallEniId');
+    firewallEniVpcId = registerOutput<String>('firewallEniVpcId');
+    firewallName = registerOutput<String>('firewallName');
+    firewallSubnetCidr = registerOutput<String>('firewallSubnetCidr');
+    firewallVpcAttachmentId = registerOutput<String>('firewallVpcAttachmentId');
+    firewallVpcCidr = registerOutput<String>('firewallVpcCidr');
+    regionNo = registerOutput<String>('regionNo');
+    routeMode = registerOutput<String>('routeMode');
+    status = registerOutput<String>('status');
+    trAttachmentMasterCidr = registerOutput<String>('trAttachmentMasterCidr');
+    trAttachmentMasterZone = registerOutput<String?>('trAttachmentMasterZone');
+    trAttachmentSlaveCidr = registerOutput<String>('trAttachmentSlaveCidr');
+    trAttachmentSlaveZone = registerOutput<String?>('trAttachmentSlaveZone');
+    transitRouterId = registerOutput<String>('transitRouterId');
   }
 }

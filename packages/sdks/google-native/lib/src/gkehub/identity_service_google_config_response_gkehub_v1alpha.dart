@@ -9,20 +9,17 @@ class IdentityServiceGoogleConfigResponseGkehubV1alpha {
 
   /// Creates a new [IdentityServiceGoogleConfigResponseGkehubV1alpha].
   /// [disable] Disable automatic configuration of Google Plugin on supported platforms.
-  IdentityServiceGoogleConfigResponseGkehubV1alpha({
-    required this.disable,
-  });
+  IdentityServiceGoogleConfigResponseGkehubV1alpha({required this.disable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'disable': disable,
-    };
+    return <String, dynamic>{'disable': disable};
   }
 
-  factory IdentityServiceGoogleConfigResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory IdentityServiceGoogleConfigResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdentityServiceGoogleConfigResponseGkehubV1alpha(
-      disable: (map['disable'] as bool).input(),
+      disable: pulumi.Input.fromValue(map['disable'] as bool),
     );
   }
 }
-

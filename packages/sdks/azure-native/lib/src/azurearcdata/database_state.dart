@@ -10,16 +10,15 @@ enum DatabaseState {
   valueCopying("Copying"),
   valueOfflineSecondary("OfflineSecondary");
 
-  const DatabaseState(this.value);
-  final String value;
+  const DatabaseState(this.wireValue);
+  final String wireValue;
 
   static DatabaseState fromValue(String value) {
     for (final item in DatabaseState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatabaseState value: $value');
   }
 }
-

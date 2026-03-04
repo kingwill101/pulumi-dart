@@ -25,12 +25,15 @@ class GetVirtualNodeSpecServiceDiscoveryAwsCloudMap {
     };
   }
 
-  factory GetVirtualNodeSpecServiceDiscoveryAwsCloudMap.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecServiceDiscoveryAwsCloudMap.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNodeSpecServiceDiscoveryAwsCloudMap(
-      attributes: ((map['attributes'] as Map).cast<String, String>()).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      attributes: pulumi.Input.fromValue(
+        (map['attributes'] as Map).cast<String, String>(),
+      ),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

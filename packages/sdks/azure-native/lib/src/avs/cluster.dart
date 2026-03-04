@@ -161,22 +161,31 @@ import 'system_data_response.dart';
 class Cluster extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The identity
   late final pulumi.Output<int> clusterId;
+
   /// The cluster size
   late final pulumi.Output<int?> clusterSize;
+
   /// The hosts
   late final pulumi.Output<List<String>?> hosts;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The state of the cluster provisioning
   late final pulumi.Output<String> provisioningState;
+
   /// The SKU (Stock Keeping Unit) assigned to this resource.
   late final pulumi.Output<SkuResponse> sku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Name of the vsan datastore associated with the cluster
   late final pulumi.Output<String?> vsanDatastoreName;
 
@@ -189,20 +198,20 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:avs:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clusterId = registerOutput<int>('clusterId');
-    this.clusterSize = registerOutput<int?>('clusterSize');
-    this.hosts = registerOutput<List<String>?>('hosts');
+         'azure-native:avs:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterId = registerOutput<int>('clusterId');
+    clusterSize = registerOutput<int?>('clusterSize');
+    hosts = registerOutput<List<String>?>('hosts');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.vsanDatastoreName = registerOutput<String?>('vsanDatastoreName');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<SkuResponse>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    vsanDatastoreName = registerOutput<String?>('vsanDatastoreName');
   }
 }

@@ -6,14 +6,20 @@ import 'posture_policy_set_policy_constraint_security_health_analytics_custom_mo
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule {
   /// Custom module details.
   /// Structure is documented below.
-  final pulumi.Input<PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfig> config;
+  final pulumi.Input<
+    PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfig
+  >
+  config;
+
   /// The display name of the Security Health Analytics custom module. This
   /// display name becomes the finding category for all findings that are
   /// returned by this custom module.
   final pulumi.Input<String>? displayName;
+
   /// (Output)
   /// A server generated id of custom module.
   final pulumi.Input<String>? id;
+
   /// The state of enablement for the module at its level of the resource hierarchy.
   /// Possible values are: `ENABLEMENT_STATE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
   final pulumi.Input<String>? moduleEnablementState;
@@ -32,20 +38,41 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config': pulumi.Input.mapInputValue<PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
+      'config':
+          pulumi.Input.mapInputValue<
+            PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfig,
+            Map<String, dynamic>
+          >(config, (value) => value.toMap()),
       'displayName': ?displayName,
       'id': ?id,
       'moduleEnablementState': ?moduleEnablementState,
     };
   }
 
-  factory PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule.fromMap(Map<String, dynamic> map) {
+  factory PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule(
-      config: (PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      moduleEnablementState: map['moduleEnablementState'] == null ? null : (map['moduleEnablementState']! as String).input(),
+      config: pulumi.Input.fromValue(
+        PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfig.fromMap(
+          (map['config']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      moduleEnablementState: (() {
+        final guardedValue = map['moduleEnablementState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

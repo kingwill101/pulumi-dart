@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'firewall_policy_filter_rule_response.dart';
 import 'firewall_policy_rule_group_args.dart';
 
 /// Rule Group resource.
@@ -494,16 +493,22 @@ import 'firewall_policy_rule_group_args.dart';
 class FirewallPolicyRuleGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// Priority of the Firewall Policy Rule Group resource.
   late final pulumi.Output<int?> priority;
+
   /// The provisioning state of the firewall policy rule group resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Group of Firewall Policy rules.
-  late final pulumi.Output<List<FirewallPolicyFilterRuleResponse>?> rules;
+  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+
   /// Rule Group type.
   late final pulumi.Output<String> type;
 
@@ -516,17 +521,17 @@ class FirewallPolicyRuleGroup extends pulumi.CustomResource {
     FirewallPolicyRuleGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:FirewallPolicyRuleGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:network:FirewallPolicyRuleGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
-    this.priority = registerOutput<int?>('priority');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.rules = registerOutput<List<FirewallPolicyFilterRuleResponse>?>('rules');
-    this.type = registerOutput<String>('type');
+    priority = registerOutput<int?>('priority');
+    provisioningState = registerOutput<String>('provisioningState');
+    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    type = registerOutput<String>('type');
   }
 }

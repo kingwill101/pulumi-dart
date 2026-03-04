@@ -6,29 +6,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1CustomReportMetric {
   /// aggregate function
   final pulumi.Input<String>? function;
+
   /// name of the metric
   final pulumi.Input<String>? name;
 
   /// Creates a new [GoogleCloudApigeeV1CustomReportMetric].
   /// [function] aggregate function
   /// [name] name of the metric
-  GoogleCloudApigeeV1CustomReportMetric({
-    this.function,
-    this.name,
-  });
+  GoogleCloudApigeeV1CustomReportMetric({this.function, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'function': ?function,
-      'name': ?name,
-    };
+    return <String, dynamic>{'function': ?function, 'name': ?name};
   }
 
-  factory GoogleCloudApigeeV1CustomReportMetric.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1CustomReportMetric.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1CustomReportMetric(
-      function: map['function'] == null ? null : (map['function']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      function: (() {
+        final guardedValue = map['function'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

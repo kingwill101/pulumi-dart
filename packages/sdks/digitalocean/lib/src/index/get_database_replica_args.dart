@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseReplicaArgs {
   /// The ID of the original source database cluster.
   final pulumi.Input<String> clusterId;
+
   /// The name for the database replica.
   final pulumi.Input<String> name;
+
   /// A list of tag names to be applied to the database replica.
   final pulumi.Input<List<String>>? tags;
 
@@ -34,10 +36,13 @@ class GetDatabaseReplicaArgs {
 
   factory GetDatabaseReplicaArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseReplicaArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      name: (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

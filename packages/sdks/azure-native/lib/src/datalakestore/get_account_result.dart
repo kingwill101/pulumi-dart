@@ -11,52 +11,76 @@ import 'virtual_network_rule_response.dart';
 class GetAccountResult {
   /// The unique identifier associated with this Data Lake Store account.
   final String accountId;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The account creation time.
   final String creationTime;
+
   /// The commitment tier in use for the current month.
   final String currentTier;
+
   /// The default owner group for all new folders and files created in the Data Lake Store account.
   final String defaultGroup;
+
   /// The Key Vault encryption configuration.
   final EncryptionConfigResponse encryptionConfig;
+
   /// The current state of encryption provisioning for this Data Lake Store account.
   final String encryptionProvisioningState;
+
   /// The current state of encryption for this Data Lake Store account.
   final String encryptionState;
+
   /// The full CName endpoint for this account.
   final String endpoint;
+
   /// The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
   final String firewallAllowAzureIps;
+
   /// The list of firewall rules associated with this Data Lake Store account.
   final List<FirewallRuleResponse> firewallRules;
+
   /// The current state of the IP address firewall for this Data Lake Store account.
   final String firewallState;
+
   /// The resource identifier.
   final String id;
+
   /// The Key Vault encryption identity, if any.
   final EncryptionIdentityResponse identity;
+
   /// The account last modified time.
   final String lastModifiedTime;
+
   /// The resource location.
   final String location;
+
   /// The resource name.
   final String name;
+
   /// The commitment tier to use for next month.
   final String newTier;
+
   /// The provisioning status of the Data Lake Store account.
   final String provisioningState;
+
   /// The state of the Data Lake Store account.
   final String state;
+
   /// The resource tags.
   final Map<String, String> tags;
+
   /// The current state of the trusted identity provider feature for this Data Lake Store account.
   final String trustedIdProviderState;
+
   /// The list of trusted identity providers associated with this Data Lake Store account.
   final List<TrustedIdProviderResponse> trustedIdProviders;
+
   /// The resource type.
   final String type;
+
   /// The list of virtual network rules associated with this Data Lake Store account.
   final List<VirtualNetworkRuleResponse> virtualNetworkRules;
 
@@ -126,7 +150,11 @@ class GetAccountResult {
       'encryptionState': encryptionState,
       'endpoint': endpoint,
       'firewallAllowAzureIps': firewallAllowAzureIps,
-      'firewallRules': pulumi.Input.encodeList<FirewallRuleResponse, Map<String, dynamic>>(firewallRules, (value) => value.toMap()),
+      'firewallRules':
+          pulumi.Input.encodeList<FirewallRuleResponse, Map<String, dynamic>>(
+            firewallRules,
+            (value) => value.toMap(),
+          ),
       'firewallState': firewallState,
       'id': id,
       'identity': identity.toMap(),
@@ -138,9 +166,17 @@ class GetAccountResult {
       'state': state,
       'tags': tags,
       'trustedIdProviderState': trustedIdProviderState,
-      'trustedIdProviders': pulumi.Input.encodeList<TrustedIdProviderResponse, Map<String, dynamic>>(trustedIdProviders, (value) => value.toMap()),
+      'trustedIdProviders':
+          pulumi.Input.encodeList<
+            TrustedIdProviderResponse,
+            Map<String, dynamic>
+          >(trustedIdProviders, (value) => value.toMap()),
       'type': type,
-      'virtualNetworkRules': pulumi.Input.encodeList<VirtualNetworkRuleResponse, Map<String, dynamic>>(virtualNetworkRules, (value) => value.toMap()),
+      'virtualNetworkRules':
+          pulumi.Input.encodeList<
+            VirtualNetworkRuleResponse,
+            Map<String, dynamic>
+          >(virtualNetworkRules, (value) => value.toMap()),
     };
   }
 
@@ -151,15 +187,24 @@ class GetAccountResult {
       creationTime: map['creationTime'] as String,
       currentTier: map['currentTier'] as String,
       defaultGroup: map['defaultGroup'] as String,
-      encryptionConfig: EncryptionConfigResponse.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>()),
+      encryptionConfig: EncryptionConfigResponse.fromMap(
+        (map['encryptionConfig']! as Map).cast<String, dynamic>(),
+      ),
       encryptionProvisioningState: map['encryptionProvisioningState'] as String,
       encryptionState: map['encryptionState'] as String,
       endpoint: map['endpoint'] as String,
       firewallAllowAzureIps: map['firewallAllowAzureIps'] as String,
-      firewallRules: pulumi.Input.decodeList<FirewallRuleResponse>(map['firewallRules'], (value) => FirewallRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      firewallRules: pulumi.Input.decodeList<FirewallRuleResponse>(
+        map['firewallRules']!,
+        (value) => FirewallRuleResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       firewallState: map['firewallState'] as String,
       id: map['id'] as String,
-      identity: EncryptionIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: EncryptionIdentityResponse.fromMap(
+        (map['identity']! as Map).cast<String, dynamic>(),
+      ),
       lastModifiedTime: map['lastModifiedTime'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
@@ -168,10 +213,19 @@ class GetAccountResult {
       state: map['state'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       trustedIdProviderState: map['trustedIdProviderState'] as String,
-      trustedIdProviders: pulumi.Input.decodeList<TrustedIdProviderResponse>(map['trustedIdProviders'], (value) => TrustedIdProviderResponse.fromMap((value as Map).cast<String, dynamic>())),
+      trustedIdProviders: pulumi.Input.decodeList<TrustedIdProviderResponse>(
+        map['trustedIdProviders']!,
+        (value) => TrustedIdProviderResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       type: map['type'] as String,
-      virtualNetworkRules: pulumi.Input.decodeList<VirtualNetworkRuleResponse>(map['virtualNetworkRules'], (value) => VirtualNetworkRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      virtualNetworkRules: pulumi.Input.decodeList<VirtualNetworkRuleResponse>(
+        map['virtualNetworkRules']!,
+        (value) => VirtualNetworkRuleResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum HttpCorrelationProtocol {
   valueLegacy("Legacy"),
   valueW3C("W3C");
 
-  const HttpCorrelationProtocol(this.value);
-  final String value;
+  const HttpCorrelationProtocol(this.wireValue);
+  final String wireValue;
 
   static HttpCorrelationProtocol fromValue(String value) {
     for (final item in HttpCorrelationProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HttpCorrelationProtocol value: $value');
   }
 }
-

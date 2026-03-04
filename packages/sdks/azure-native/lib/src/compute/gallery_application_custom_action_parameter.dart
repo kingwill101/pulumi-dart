@@ -7,12 +7,16 @@ import 'gallery_application_custom_action_parameter_type.dart';
 class GalleryApplicationCustomActionParameter {
   /// The default value of the parameter.  Only applies to string types
   final pulumi.Input<String>? defaultValue;
+
   /// A description to help users understand what this parameter means
   final pulumi.Input<String>? description;
+
   /// The name of the custom action.  Must be unique within the Gallery Application Version.
   final pulumi.Input<String> name;
+
   /// Indicates whether this parameter must be passed when running the custom action.
   final pulumi.Input<bool>? required;
+
   /// Specifies the type of the custom action parameter. Possible values are: String, ConfigurationDataBlob or LogOutputBlob
   final pulumi.Input<GalleryApplicationCustomActionParameterType>? type;
 
@@ -36,18 +40,43 @@ class GalleryApplicationCustomActionParameter {
       'description': ?description,
       'name': name,
       'required': ?required,
-      'type': ?pulumi.Input.mapOptionalInputValue<GalleryApplicationCustomActionParameterType, String>(type, (value) => value.value),
+      'type':
+          ?pulumi.Input.mapOptionalInputValue<
+            GalleryApplicationCustomActionParameterType,
+            String
+          >(type, (value) => value.wireValue),
     };
   }
 
-  factory GalleryApplicationCustomActionParameter.fromMap(Map<String, dynamic> map) {
+  factory GalleryApplicationCustomActionParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GalleryApplicationCustomActionParameter(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: (map['name'] as String).input(),
-      required: map['required'] == null ? null : (map['required']! as bool).input(),
-      type: map['type'] == null ? null : (GalleryApplicationCustomActionParameterType.fromValue(map['type']! as String)).input(),
+      defaultValue: (() {
+        final guardedValue = map['defaultValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      required: (() {
+        final guardedValue = map['required'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GalleryApplicationCustomActionParameterType.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

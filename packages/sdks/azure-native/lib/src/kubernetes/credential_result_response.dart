@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CredentialResultResponse {
   /// The name of the credential.
   final pulumi.Input<String> name;
+
   /// Base64-encoded Kubernetes configuration file.
   final pulumi.Input<String> value;
 
   /// Creates a new [CredentialResultResponse].
   /// [name] The name of the credential.
   /// [value] Base64-encoded Kubernetes configuration file.
-  CredentialResultResponse({
-    required this.name,
-    required this.value,
-  });
+  CredentialResultResponse({required this.name, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
   factory CredentialResultResponse.fromMap(Map<String, dynamic> map) {
     return CredentialResultResponse(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

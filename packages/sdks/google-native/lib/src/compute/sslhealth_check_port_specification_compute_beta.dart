@@ -4,16 +4,17 @@ enum SSLHealthCheckPortSpecificationComputeBeta {
   useNamedPort("USE_NAMED_PORT"),
   useServingPort("USE_SERVING_PORT");
 
-  const SSLHealthCheckPortSpecificationComputeBeta(this.value);
-  final String value;
+  const SSLHealthCheckPortSpecificationComputeBeta(this.wireValue);
+  final String wireValue;
 
   static SSLHealthCheckPortSpecificationComputeBeta fromValue(String value) {
     for (final item in SSLHealthCheckPortSpecificationComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SSLHealthCheckPortSpecificationComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown SSLHealthCheckPortSpecificationComputeBeta value: $value',
+    );
   }
 }
-

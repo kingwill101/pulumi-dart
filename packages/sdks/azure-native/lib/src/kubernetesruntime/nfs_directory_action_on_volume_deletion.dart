@@ -3,16 +3,17 @@ enum NfsDirectoryActionOnVolumeDeletion {
   delete("Delete"),
   retain("Retain");
 
-  const NfsDirectoryActionOnVolumeDeletion(this.value);
-  final String value;
+  const NfsDirectoryActionOnVolumeDeletion(this.wireValue);
+  final String wireValue;
 
   static NfsDirectoryActionOnVolumeDeletion fromValue(String value) {
     for (final item in NfsDirectoryActionOnVolumeDeletion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NfsDirectoryActionOnVolumeDeletion value: $value');
+    throw ArgumentError(
+      'Unknown NfsDirectoryActionOnVolumeDeletion value: $value',
+    );
   }
 }
-

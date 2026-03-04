@@ -6,30 +6,74 @@ import 'software_update_configuration_target_non_azure_query.dart';
 
 class SoftwareUpdateConfigurationTarget {
   /// One or more `azure_query` blocks as defined above.
-  final pulumi.Input<List<SoftwareUpdateConfigurationTargetAzureQuery>>? azureQueries;
+  final pulumi.Input<List<SoftwareUpdateConfigurationTargetAzureQuery>>?
+  azureQueries;
+
   /// One or more `non_azure_query` blocks as defined above.
-  final pulumi.Input<List<SoftwareUpdateConfigurationTargetNonAzureQuery>>? nonAzureQueries;
+  final pulumi.Input<List<SoftwareUpdateConfigurationTargetNonAzureQuery>>?
+  nonAzureQueries;
 
   /// Creates a new [SoftwareUpdateConfigurationTarget].
   /// [azureQueries] One or more `azure_query` blocks as defined above.
   /// [nonAzureQueries] One or more `non_azure_query` blocks as defined above.
-  SoftwareUpdateConfigurationTarget({
-    this.azureQueries,
-    this.nonAzureQueries,
-  });
+  SoftwareUpdateConfigurationTarget({this.azureQueries, this.nonAzureQueries});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureQueries': ?pulumi.Input.mapOptionalInputValue<List<SoftwareUpdateConfigurationTargetAzureQuery>, List<Map<String, dynamic>>>(azureQueries, (value) => pulumi.Input.encodeList<SoftwareUpdateConfigurationTargetAzureQuery, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'nonAzureQueries': ?pulumi.Input.mapOptionalInputValue<List<SoftwareUpdateConfigurationTargetNonAzureQuery>, List<Map<String, dynamic>>>(nonAzureQueries, (value) => pulumi.Input.encodeList<SoftwareUpdateConfigurationTargetNonAzureQuery, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'azureQueries':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SoftwareUpdateConfigurationTargetAzureQuery>,
+            List<Map<String, dynamic>>
+          >(
+            azureQueries,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SoftwareUpdateConfigurationTargetAzureQuery,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'nonAzureQueries':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SoftwareUpdateConfigurationTargetNonAzureQuery>,
+            List<Map<String, dynamic>>
+          >(
+            nonAzureQueries,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SoftwareUpdateConfigurationTargetNonAzureQuery,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory SoftwareUpdateConfigurationTarget.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationTarget(
-      azureQueries: map['azureQueries'] == null ? null : (pulumi.Input.decodeList<SoftwareUpdateConfigurationTargetAzureQuery>(map['azureQueries']!, (value) => SoftwareUpdateConfigurationTargetAzureQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nonAzureQueries: map['nonAzureQueries'] == null ? null : (pulumi.Input.decodeList<SoftwareUpdateConfigurationTargetNonAzureQuery>(map['nonAzureQueries']!, (value) => SoftwareUpdateConfigurationTargetNonAzureQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      azureQueries: (() {
+        final guardedValue = map['azureQueries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SoftwareUpdateConfigurationTargetAzureQuery>(
+            guardedValue,
+            (value) => SoftwareUpdateConfigurationTargetAzureQuery.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      nonAzureQueries: (() {
+        final guardedValue = map['nonAzureQueries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi
+              .Input.decodeList<SoftwareUpdateConfigurationTargetNonAzureQuery>(
+            guardedValue,
+            (value) => SoftwareUpdateConfigurationTargetNonAzureQuery.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

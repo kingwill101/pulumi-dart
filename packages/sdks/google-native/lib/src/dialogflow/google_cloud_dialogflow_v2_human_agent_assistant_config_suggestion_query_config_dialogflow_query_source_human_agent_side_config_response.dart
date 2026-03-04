@@ -14,15 +14,14 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialo
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'agent': agent,
-    };
+    return <String, dynamic>{'agent': agent};
   }
 
-  factory GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfigResponse(
-      agent: (map['agent'] as String).input(),
+      agent: pulumi.Input.fromValue(map['agent'] as String),
     );
   }
 }
-

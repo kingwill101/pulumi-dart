@@ -1,5 +1,3 @@
-library module_mse;
-
 export 'mse/cluster.dart';
 export 'mse/cluster_args.dart';
 export 'mse/cluster_state.dart';

@@ -17,6 +17,7 @@ class GetAccountArgs {
   /// * The email address of the service account (e.g.
   /// `my-service@my-project.iam.gserviceaccount.com`)
   final pulumi.Input<String> accountId;
+
   /// The ID of the project that the service account is present in.
   /// Defaults to the provider project configuration.
   final pulumi.Input<String>? project;
@@ -24,23 +25,20 @@ class GetAccountArgs {
   /// Creates a new [GetAccountArgs].
   /// [accountId] The Google service account ID. This be one of:
   /// [project] The ID of the project that the service account is present in.
-  GetAccountArgs({
-    required this.accountId,
-    this.project,
-  });
+  GetAccountArgs({required this.accountId, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accountId': accountId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'accountId': accountId, 'project': ?project};
   }
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
-      accountId: (map['accountId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

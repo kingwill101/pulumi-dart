@@ -1,5 +1,3 @@
-library module_cloudauth;
-
 export 'cloudauth/face_config.dart';
 export 'cloudauth/face_config_args.dart';
 export 'cloudauth/face_config_state.dart';

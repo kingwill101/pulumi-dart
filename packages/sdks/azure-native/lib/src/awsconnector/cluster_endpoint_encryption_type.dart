@@ -3,16 +3,15 @@ enum ClusterEndpointEncryptionType {
   nONE("NONE"),
   tLS("TLS");
 
-  const ClusterEndpointEncryptionType(this.value);
-  final String value;
+  const ClusterEndpointEncryptionType(this.wireValue);
+  final String wireValue;
 
   static ClusterEndpointEncryptionType fromValue(String value) {
     for (final item in ClusterEndpointEncryptionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClusterEndpointEncryptionType value: $value');
   }
 }
-

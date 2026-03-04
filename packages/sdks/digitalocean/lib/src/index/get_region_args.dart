@@ -12,20 +12,13 @@ class GetRegionArgs {
 
   /// Creates a new [GetRegionArgs].
   /// [slug] A human-readable string that is used as a unique identifier for each region.
-  GetRegionArgs({
-    required this.slug,
-  });
+  GetRegionArgs({required this.slug});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'slug': slug,
-    };
+    return <String, dynamic>{'slug': slug};
   }
 
   factory GetRegionArgs.fromMap(Map<String, dynamic> map) {
-    return GetRegionArgs(
-      slug: (map['slug'] as String).input(),
-    );
+    return GetRegionArgs(slug: pulumi.Input.fromValue(map['slug'] as String));
   }
 }
-

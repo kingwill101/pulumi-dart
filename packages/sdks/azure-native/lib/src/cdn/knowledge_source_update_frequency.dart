@@ -5,16 +5,15 @@ enum KnowledgeSourceUpdateFrequency {
   weekly("Weekly"),
   monthly("Monthly");
 
-  const KnowledgeSourceUpdateFrequency(this.value);
-  final String value;
+  const KnowledgeSourceUpdateFrequency(this.wireValue);
+  final String wireValue;
 
   static KnowledgeSourceUpdateFrequency fromValue(String value) {
     for (final item in KnowledgeSourceUpdateFrequency.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KnowledgeSourceUpdateFrequency value: $value');
   }
 }
-

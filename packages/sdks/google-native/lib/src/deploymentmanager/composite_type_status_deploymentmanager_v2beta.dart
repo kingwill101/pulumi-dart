@@ -4,16 +4,17 @@ enum CompositeTypeStatusDeploymentmanagerV2beta {
   experimental("EXPERIMENTAL"),
   supported("SUPPORTED");
 
-  const CompositeTypeStatusDeploymentmanagerV2beta(this.value);
-  final String value;
+  const CompositeTypeStatusDeploymentmanagerV2beta(this.wireValue);
+  final String wireValue;
 
   static CompositeTypeStatusDeploymentmanagerV2beta fromValue(String value) {
     for (final item in CompositeTypeStatusDeploymentmanagerV2beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CompositeTypeStatusDeploymentmanagerV2beta value: $value');
+    throw ArgumentError(
+      'Unknown CompositeTypeStatusDeploymentmanagerV2beta value: $value',
+    );
   }
 }
-

@@ -15,17 +15,15 @@ class GetVirtualGatewaySpecListenerPortMapping {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'port': port,
-      'protocol': protocol,
-    };
+    return <String, dynamic>{'port': port, 'protocol': protocol};
   }
 
-  factory GetVirtualGatewaySpecListenerPortMapping.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualGatewaySpecListenerPortMapping.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualGatewaySpecListenerPortMapping(
-      port: (map['port'] as int).input(),
-      protocol: (map['protocol'] as String).input(),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
 }
-

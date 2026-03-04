@@ -6,9 +6,9 @@ import 'network_attachment_state.dart';
 ///
 /// For information about Cloud Connect Network Attachment and how to use it, see [What is Cloud Connect Network Attachment](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/bindsmartaccessgateway).
 ///
-/// > **NOTE:** Available since v1.64.0.
+/// &gt; **NOTE:** Available since v1.64.0.
 ///
-/// > **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+/// &gt; **NOTE:** Only the following regions support. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
 ///
 /// ## Example Usage
 ///
@@ -199,6 +199,7 @@ import 'network_attachment_state.dart';
 class NetworkAttachment extends pulumi.CustomResource {
   /// The ID of the CCN instance.
   late final pulumi.Output<String> ccnId;
+
   /// The ID of the Smart Access Gateway instance.
   late final pulumi.Output<String> sagId;
 
@@ -211,13 +212,13 @@ class NetworkAttachment extends pulumi.CustomResource {
     NetworkAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudconnect/networkAttachment:NetworkAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ccnId = registerOutput<String>('ccnId');
-    this.sagId = registerOutput<String>('sagId');
+         'alicloud:cloudconnect/networkAttachment:NetworkAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ccnId = registerOutput<String>('ccnId');
+    sagId = registerOutput<String>('sagId');
   }
 
   /// Gets an existing [NetworkAttachment] resource's state with the given [name] and [id].
@@ -238,12 +239,12 @@ class NetworkAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudconnect/networkAttachment:NetworkAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ccnId = registerOutput<String>('ccnId');
-    this.sagId = registerOutput<String>('sagId');
+         'alicloud:cloudconnect/networkAttachment:NetworkAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ccnId = registerOutput<String>('ccnId');
+    sagId = registerOutput<String>('sagId');
   }
 }

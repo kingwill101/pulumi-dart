@@ -8,31 +8,41 @@ import 'prevention_job_trigger_trigger.dart';
 class PreventionJobTriggerState {
   /// The creation timestamp of an inspectTemplate. Set by the server.
   final pulumi.Input<String>? createTime;
+
   /// A description of the job trigger.
   final pulumi.Input<String>? description;
+
   /// User set display name of the job trigger.
   final pulumi.Input<String>? displayName;
+
   /// Controls what and how to inspect for findings.
   /// Structure is documented below.
   final pulumi.Input<PreventionJobTriggerInspectJob>? inspectJob;
+
   /// The timestamp of the last time this trigger executed.
   final pulumi.Input<String>? lastRunTime;
+
   /// The resource name of the job trigger. Set by the server.
   final pulumi.Input<String>? name;
+
   /// The parent of the trigger, either in the format `projects/{{project}}`
   /// or `projects/{{project}}/locations/{{location}}`
   final pulumi.Input<String>? parent;
+
   /// Whether the trigger is currently active.
   /// Default value is `HEALTHY`.
   /// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
   final pulumi.Input<String>? status;
+
   /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// that is, it must match the regular expression: [a-zA-Z\d-_]+.
   /// The maximum length is 100 characters. Can be empty to allow the system to generate one.
   final pulumi.Input<String>? triggerId;
+
   /// What event needs to occur for a new job to be started.
   /// Structure is documented below.
   final pulumi.Input<List<PreventionJobTriggerTrigger>>? triggers;
+
   /// The last update timestamp of an inspectTemplate. Set by the server.
   final pulumi.Input<String>? updateTime;
 
@@ -67,31 +77,100 @@ class PreventionJobTriggerState {
       'createTime': ?createTime,
       'description': ?description,
       'displayName': ?displayName,
-      'inspectJob': ?pulumi.Input.mapOptionalInputValue<PreventionJobTriggerInspectJob, Map<String, dynamic>>(inspectJob, (value) => value.toMap()),
+      'inspectJob':
+          ?pulumi.Input.mapOptionalInputValue<
+            PreventionJobTriggerInspectJob,
+            Map<String, dynamic>
+          >(inspectJob, (value) => value.toMap()),
       'lastRunTime': ?lastRunTime,
       'name': ?name,
       'parent': ?parent,
       'status': ?status,
       'triggerId': ?triggerId,
-      'triggers': ?pulumi.Input.mapOptionalInputValue<List<PreventionJobTriggerTrigger>, List<Map<String, dynamic>>>(triggers, (value) => pulumi.Input.encodeList<PreventionJobTriggerTrigger, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'triggers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PreventionJobTriggerTrigger>,
+            List<Map<String, dynamic>>
+          >(
+            triggers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PreventionJobTriggerTrigger,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'updateTime': ?updateTime,
     };
   }
 
   factory PreventionJobTriggerState.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      inspectJob: map['inspectJob'] == null ? null : (PreventionJobTriggerInspectJob.fromMap((map['inspectJob']! as Map).cast<String, dynamic>())).input(),
-      lastRunTime: map['lastRunTime'] == null ? null : (map['lastRunTime']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      triggerId: map['triggerId'] == null ? null : (map['triggerId']! as String).input(),
-      triggers: map['triggers'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerTrigger>(map['triggers']!, (value) => PreventionJobTriggerTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inspectJob: (() {
+        final guardedValue = map['inspectJob'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PreventionJobTriggerInspectJob.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      lastRunTime: (() {
+        final guardedValue = map['lastRunTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parent: (() {
+        final guardedValue = map['parent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      triggerId: (() {
+        final guardedValue = map['triggerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      triggers: (() {
+        final guardedValue = map['triggers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PreventionJobTriggerTrigger>(
+            guardedValue,
+            (value) => PreventionJobTriggerTrigger.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

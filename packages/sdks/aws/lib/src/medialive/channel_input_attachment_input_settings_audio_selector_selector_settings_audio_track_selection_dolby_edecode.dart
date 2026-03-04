@@ -13,15 +13,16 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrack
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'programSelection': programSelection,
-    };
+    return <String, dynamic>{'programSelection': programSelection};
   }
 
-  factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionDolbyEDecode.fromMap(Map<String, dynamic> map) {
+  factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionDolbyEDecode.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionDolbyEDecode(
-      programSelection: (map['programSelection'] as String).input(),
+      programSelection: pulumi.Input.fromValue(
+        map['programSelection'] as String,
+      ),
     );
   }
 }
-

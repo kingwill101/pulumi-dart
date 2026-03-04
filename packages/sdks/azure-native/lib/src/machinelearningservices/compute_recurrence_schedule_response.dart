@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeRecurrenceScheduleResponse {
   /// [Required] List of hours for the schedule.
   final pulumi.Input<List<int>> hours;
+
   /// [Required] List of minutes for the schedule.
   final pulumi.Input<List<int>> minutes;
+
   /// List of month days for the schedule
   final pulumi.Input<List<int>>? monthDays;
+
   /// List of days for the schedule.
   final pulumi.Input<List<String>>? weekDays;
 
@@ -35,11 +38,18 @@ class ComputeRecurrenceScheduleResponse {
 
   factory ComputeRecurrenceScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ComputeRecurrenceScheduleResponse(
-      hours: ((map['hours'] as List).cast<int>()).input(),
-      minutes: ((map['minutes'] as List).cast<int>()).input(),
-      monthDays: map['monthDays'] == null ? null : ((map['monthDays']! as List).cast<int>()).input(),
-      weekDays: map['weekDays'] == null ? null : ((map['weekDays']! as List).cast<String>()).input(),
+      hours: pulumi.Input.fromValue((map['hours'] as List).cast<int>()),
+      minutes: pulumi.Input.fromValue((map['minutes'] as List).cast<int>()),
+      monthDays: (() {
+        final guardedValue = map['monthDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      weekDays: (() {
+        final guardedValue = map['weekDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

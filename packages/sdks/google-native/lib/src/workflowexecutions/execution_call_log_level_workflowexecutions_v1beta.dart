@@ -4,16 +4,17 @@ enum ExecutionCallLogLevelWorkflowexecutionsV1beta {
   logAllCalls("LOG_ALL_CALLS"),
   logErrorsOnly("LOG_ERRORS_ONLY");
 
-  const ExecutionCallLogLevelWorkflowexecutionsV1beta(this.value);
-  final String value;
+  const ExecutionCallLogLevelWorkflowexecutionsV1beta(this.wireValue);
+  final String wireValue;
 
   static ExecutionCallLogLevelWorkflowexecutionsV1beta fromValue(String value) {
     for (final item in ExecutionCallLogLevelWorkflowexecutionsV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ExecutionCallLogLevelWorkflowexecutionsV1beta value: $value');
+    throw ArgumentError(
+      'Unknown ExecutionCallLogLevelWorkflowexecutionsV1beta value: $value',
+    );
   }
 }
-

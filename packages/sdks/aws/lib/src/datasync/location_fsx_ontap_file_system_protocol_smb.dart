@@ -6,10 +6,14 @@ import 'location_fsx_ontap_file_system_protocol_smb_mount_options.dart';
 class LocationFsxOntapFileSystemProtocolSmb {
   /// Fully qualified domain name of the Microsoft Active Directory (AD) that your storage virtual machine belongs to.
   final pulumi.Input<String>? domain;
+
   /// Mount options that are available for DataSync to access an SMB location. See SMB Mount Options below.
-  final pulumi.Input<LocationFsxOntapFileSystemProtocolSmbMountOptions> mountOptions;
+  final pulumi.Input<LocationFsxOntapFileSystemProtocolSmbMountOptions>
+  mountOptions;
+
   /// Password of a user who has permission to access your SVM.
   final pulumi.Input<String> password;
+
   /// Username that can mount the location and access the files, folders, and metadata that you need in the SVM.
   final pulumi.Input<String> user;
 
@@ -28,19 +32,32 @@ class LocationFsxOntapFileSystemProtocolSmb {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'domain': ?domain,
-      'mountOptions': pulumi.Input.mapInputValue<LocationFsxOntapFileSystemProtocolSmbMountOptions, Map<String, dynamic>>(mountOptions, (value) => value.toMap()),
+      'mountOptions':
+          pulumi.Input.mapInputValue<
+            LocationFsxOntapFileSystemProtocolSmbMountOptions,
+            Map<String, dynamic>
+          >(mountOptions, (value) => value.toMap()),
       'password': password,
       'user': user,
     };
   }
 
-  factory LocationFsxOntapFileSystemProtocolSmb.fromMap(Map<String, dynamic> map) {
+  factory LocationFsxOntapFileSystemProtocolSmb.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LocationFsxOntapFileSystemProtocolSmb(
-      domain: map['domain'] == null ? null : ((map['domain'] as String).input()).input(),
-      mountOptions: (LocationFsxOntapFileSystemProtocolSmbMountOptions.fromMap((map['mountOptions']! as Map).cast<String, dynamic>())).input(),
-      password: (map['password'] as String).input(),
-      user: (map['user'] as String).input(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mountOptions: pulumi.Input.fromValue(
+        LocationFsxOntapFileSystemProtocolSmbMountOptions.fromMap(
+          (map['mountOptions']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      user: pulumi.Input.fromValue(map['user'] as String),
     );
   }
 }
-

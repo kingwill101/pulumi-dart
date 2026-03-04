@@ -6,11 +6,14 @@ class TableMaterializedView {
   /// Allow non incremental materialized view definition.
   /// The default value is false.
   final pulumi.Input<bool>? allowNonIncrementalDefinition;
+
   /// Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
   /// The default value is true.
   final pulumi.Input<bool>? enableRefresh;
+
   /// A query whose result is persisted.
   final pulumi.Input<String> query;
+
   /// The maximum frequency at which this materialized view will be refreshed.
   /// The default value is 1800000
   final pulumi.Input<int>? refreshIntervalMs;
@@ -38,11 +41,22 @@ class TableMaterializedView {
 
   factory TableMaterializedView.fromMap(Map<String, dynamic> map) {
     return TableMaterializedView(
-      allowNonIncrementalDefinition: map['allowNonIncrementalDefinition'] == null ? null : (map['allowNonIncrementalDefinition']! as bool).input(),
-      enableRefresh: map['enableRefresh'] == null ? null : (map['enableRefresh']! as bool).input(),
-      query: (map['query'] as String).input(),
-      refreshIntervalMs: map['refreshIntervalMs'] == null ? null : (map['refreshIntervalMs']! as int).input(),
+      allowNonIncrementalDefinition: (() {
+        final guardedValue = map['allowNonIncrementalDefinition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableRefresh: (() {
+        final guardedValue = map['enableRefresh'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      query: pulumi.Input.fromValue(map['query'] as String),
+      refreshIntervalMs: (() {
+        final guardedValue = map['refreshIntervalMs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

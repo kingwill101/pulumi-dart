@@ -3,16 +3,17 @@ enum PasswordValidationPolicyComplexity {
   complexityUnspecified("COMPLEXITY_UNSPECIFIED"),
   complexityDefault("COMPLEXITY_DEFAULT");
 
-  const PasswordValidationPolicyComplexity(this.value);
-  final String value;
+  const PasswordValidationPolicyComplexity(this.wireValue);
+  final String wireValue;
 
   static PasswordValidationPolicyComplexity fromValue(String value) {
     for (final item in PasswordValidationPolicyComplexity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PasswordValidationPolicyComplexity value: $value');
+    throw ArgumentError(
+      'Unknown PasswordValidationPolicyComplexity value: $value',
+    );
   }
 }
-

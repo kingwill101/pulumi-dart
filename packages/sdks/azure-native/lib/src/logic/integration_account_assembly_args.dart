@@ -10,14 +10,19 @@ import 'assembly_properties.dart';
 class IntegrationAccountAssemblyArgs {
   /// The assembly artifact name.
   final pulumi.Input<String>? assemblyArtifactName;
+
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
+
   /// The resource location.
   final pulumi.Input<String>? location;
+
   /// The assembly properties.
   final pulumi.Input<AssemblyProperties> properties;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -42,7 +47,11 @@ class IntegrationAccountAssemblyArgs {
       'assemblyArtifactName': ?assemblyArtifactName,
       'integrationAccountName': integrationAccountName,
       'location': ?location,
-      'properties': pulumi.Input.mapInputValue<AssemblyProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<AssemblyProperties, Map<String, dynamic>>(
+            properties,
+            (value) => value.toMap(),
+          ),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -50,13 +59,34 @@ class IntegrationAccountAssemblyArgs {
 
   factory IntegrationAccountAssemblyArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountAssemblyArgs(
-      assemblyArtifactName: map['assemblyArtifactName'] == null ? null : (map['assemblyArtifactName']! as String).input(),
-      integrationAccountName: (map['integrationAccountName'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: (AssemblyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      assemblyArtifactName: (() {
+        final guardedValue = map['assemblyArtifactName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      integrationAccountName: pulumi.Input.fromValue(
+        map['integrationAccountName'] as String,
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: pulumi.Input.fromValue(
+        AssemblyProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceMasterUserSecret {
   /// The Amazon Web Services KMS key identifier that is used to encrypt the secret.
   final pulumi.Input<String> kmsKeyId;
+
   /// The Amazon Resource Name (ARN) of the secret.
   final pulumi.Input<String> secretArn;
+
   /// The status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
   final pulumi.Input<String> secretStatus;
 
@@ -30,10 +32,9 @@ class GetInstanceMasterUserSecret {
 
   factory GetInstanceMasterUserSecret.fromMap(Map<String, dynamic> map) {
     return GetInstanceMasterUserSecret(
-      kmsKeyId: (map['kmsKeyId'] as String).input(),
-      secretArn: (map['secretArn'] as String).input(),
-      secretStatus: (map['secretStatus'] as String).input(),
+      kmsKeyId: pulumi.Input.fromValue(map['kmsKeyId'] as String),
+      secretArn: pulumi.Input.fromValue(map['secretArn'] as String),
+      secretStatus: pulumi.Input.fromValue(map['secretStatus'] as String),
     );
   }
 }
-

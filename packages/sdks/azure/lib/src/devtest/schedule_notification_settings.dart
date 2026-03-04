@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduleNotificationSettings {
   /// The status of the notification. Possible values are `Enabled` and `Disabled`. Defaults to `Disabled`
   final pulumi.Input<String>? status;
+
   /// Time in minutes before event at which notification will be sent.
   final pulumi.Input<int>? timeInMinutes;
+
   /// The webhook URL to which the notification will be sent.
   final pulumi.Input<String>? webhookUrl;
 
@@ -30,10 +32,21 @@ class ScheduleNotificationSettings {
 
   factory ScheduleNotificationSettings.fromMap(Map<String, dynamic> map) {
     return ScheduleNotificationSettings(
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      timeInMinutes: map['timeInMinutes'] == null ? null : (map['timeInMinutes']! as int).input(),
-      webhookUrl: map['webhookUrl'] == null ? null : (map['webhookUrl']! as String).input(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeInMinutes: (() {
+        final guardedValue = map['timeInMinutes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      webhookUrl: (() {
+        final guardedValue = map['webhookUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionState {
   /// The name of the Bot Resource this connection will be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String>? botName;
+
   /// The Client ID that will be used to authenticate with the service provider.
   final pulumi.Input<String>? clientId;
+
   /// The Client Secret that will be used to authenticate with the service provider.
   final pulumi.Input<String>? clientSecret;
+
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the Bot Connection. Changing this forces a new resource to be created. Must be globally unique.
   final pulumi.Input<String>? name;
+
   /// A map of additional parameters to apply to the connection.
   final pulumi.Input<Map<String, String>>? parameters;
+
   /// The name of the resource group in which to create the Bot Connection. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The Scopes at which the connection should be applied.
   final pulumi.Input<String>? scopes;
+
   /// The name of the service provider that will be associated with this connection. Changing this forces a new resource to be created.
   final pulumi.Input<String>? serviceProviderName;
 
@@ -61,16 +69,53 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      botName: map['botName'] == null ? null : (map['botName']! as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      scopes: map['scopes'] == null ? null : (map['scopes']! as String).input(),
-      serviceProviderName: map['serviceProviderName'] == null ? null : (map['serviceProviderName']! as String).input(),
+      botName: (() {
+        final guardedValue = map['botName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scopes: (() {
+        final guardedValue = map['scopes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceProviderName: (() {
+        final guardedValue = map['serviceProviderName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

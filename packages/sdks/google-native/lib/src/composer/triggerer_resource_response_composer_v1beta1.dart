@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TriggererResourceResponseComposerV1beta1 {
   /// Optional. The number of triggerers.
   final pulumi.Input<int> count;
+
   /// Optional. CPU request and limit for a single Airflow triggerer replica.
   final pulumi.Input<double> cpu;
+
   /// Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
   final pulumi.Input<double> memoryGb;
 
@@ -22,19 +24,16 @@ class TriggererResourceResponseComposerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': count,
-      'cpu': cpu,
-      'memoryGb': memoryGb,
-    };
+    return <String, dynamic>{'count': count, 'cpu': cpu, 'memoryGb': memoryGb};
   }
 
-  factory TriggererResourceResponseComposerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory TriggererResourceResponseComposerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TriggererResourceResponseComposerV1beta1(
-      count: (map['count'] as int).input(),
-      cpu: (map['cpu'] as double).input(),
-      memoryGb: (map['memoryGb'] as double).input(),
+      count: pulumi.Input.fromValue(map['count'] as int),
+      cpu: pulumi.Input.fromValue(map['cpu'] as double),
+      memoryGb: pulumi.Input.fromValue(map['memoryGb'] as double),
     );
   }
 }
-

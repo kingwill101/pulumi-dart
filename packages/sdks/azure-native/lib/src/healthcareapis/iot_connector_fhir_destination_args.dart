@@ -10,18 +10,25 @@ import 'iot_mapping_properties.dart';
 class IotConnectorFhirDestinationArgs {
   /// The name of IoT Connector FHIR destination resource.
   final pulumi.Input<String>? fhirDestinationName;
+
   /// FHIR Mappings
   final pulumi.Input<IotMappingProperties> fhirMapping;
+
   /// Fully qualified resource id of the FHIR service to connect to.
   final pulumi.Input<String> fhirServiceResourceId;
+
   /// The name of IoT Connector resource.
   final pulumi.Input<String> iotConnectorName;
+
   /// The resource location.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group that contains the service instance.
   final pulumi.Input<String> resourceGroupName;
+
   /// Determines how resource identity is resolved on the destination.
   final pulumi.Input<String> resourceIdentityResolutionType;
+
   /// The name of workspace resource.
   final pulumi.Input<String> workspaceName;
 
@@ -48,7 +55,11 @@ class IotConnectorFhirDestinationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fhirDestinationName': ?fhirDestinationName,
-      'fhirMapping': pulumi.Input.mapInputValue<IotMappingProperties, Map<String, dynamic>>(fhirMapping, (value) => value.toMap()),
+      'fhirMapping':
+          pulumi.Input.mapInputValue<
+            IotMappingProperties,
+            Map<String, dynamic>
+          >(fhirMapping, (value) => value.toMap()),
       'fhirServiceResourceId': fhirServiceResourceId,
       'iotConnectorName': iotConnectorName,
       'location': ?location,
@@ -60,15 +71,34 @@ class IotConnectorFhirDestinationArgs {
 
   factory IotConnectorFhirDestinationArgs.fromMap(Map<String, dynamic> map) {
     return IotConnectorFhirDestinationArgs(
-      fhirDestinationName: map['fhirDestinationName'] == null ? null : (map['fhirDestinationName']! as String).input(),
-      fhirMapping: (IotMappingProperties.fromMap((map['fhirMapping'] as Map).cast<String, dynamic>())).input(),
-      fhirServiceResourceId: (map['fhirServiceResourceId'] as String).input(),
-      iotConnectorName: (map['iotConnectorName'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceIdentityResolutionType: (map['resourceIdentityResolutionType'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      fhirDestinationName: (() {
+        final guardedValue = map['fhirDestinationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fhirMapping: pulumi.Input.fromValue(
+        IotMappingProperties.fromMap(
+          (map['fhirMapping']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      fhirServiceResourceId: pulumi.Input.fromValue(
+        map['fhirServiceResourceId'] as String,
+      ),
+      iotConnectorName: pulumi.Input.fromValue(
+        map['iotConnectorName'] as String,
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceIdentityResolutionType: pulumi.Input.fromValue(
+        map['resourceIdentityResolutionType'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

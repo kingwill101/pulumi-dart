@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataStoreInfoBaseResponse {
   /// type of datastore; Operational/Vault/Archive
   final pulumi.Input<String> dataStoreType;
+
   /// Type of Datasource object, used to initialize the right inherited type
   final pulumi.Input<String> objectType;
 
@@ -26,9 +27,8 @@ class DataStoreInfoBaseResponse {
 
   factory DataStoreInfoBaseResponse.fromMap(Map<String, dynamic> map) {
     return DataStoreInfoBaseResponse(
-      dataStoreType: (map['dataStoreType'] as String).input(),
-      objectType: (map['objectType'] as String).input(),
+      dataStoreType: pulumi.Input.fromValue(map['dataStoreType'] as String),
+      objectType: pulumi.Input.fromValue(map['objectType'] as String),
     );
   }
 }
-

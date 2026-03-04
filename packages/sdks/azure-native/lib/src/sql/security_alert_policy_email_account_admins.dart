@@ -3,16 +3,17 @@ enum SecurityAlertPolicyEmailAccountAdmins {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const SecurityAlertPolicyEmailAccountAdmins(this.value);
-  final String value;
+  const SecurityAlertPolicyEmailAccountAdmins(this.wireValue);
+  final String wireValue;
 
   static SecurityAlertPolicyEmailAccountAdmins fromValue(String value) {
     for (final item in SecurityAlertPolicyEmailAccountAdmins.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityAlertPolicyEmailAccountAdmins value: $value');
+    throw ArgumentError(
+      'Unknown SecurityAlertPolicyEmailAccountAdmins value: $value',
+    );
   }
 }
-

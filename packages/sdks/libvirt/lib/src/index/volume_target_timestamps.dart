@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeTargetTimestamps {
   /// Sets the last access time timestamp for the storage volume target.
   final pulumi.Input<String> atime;
+
   /// Specifies the last status change time for the storage volume target.
   final pulumi.Input<String> ctime;
+
   /// Sets the last modification time for the storage volume target.
   final pulumi.Input<String> mtime;
 
@@ -21,19 +23,14 @@ class VolumeTargetTimestamps {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'atime': atime,
-      'ctime': ctime,
-      'mtime': mtime,
-    };
+    return <String, dynamic>{'atime': atime, 'ctime': ctime, 'mtime': mtime};
   }
 
   factory VolumeTargetTimestamps.fromMap(Map<String, dynamic> map) {
     return VolumeTargetTimestamps(
-      atime: (map['atime'] as String).input(),
-      ctime: (map['ctime'] as String).input(),
-      mtime: (map['mtime'] as String).input(),
+      atime: pulumi.Input.fromValue(map['atime'] as String),
+      ctime: pulumi.Input.fromValue(map['ctime'] as String),
+      mtime: pulumi.Input.fromValue(map['mtime'] as String),
     );
   }
 }
-

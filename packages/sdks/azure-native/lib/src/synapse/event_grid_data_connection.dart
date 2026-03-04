@@ -145,33 +145,47 @@ import 'system_data_response.dart';
 class EventGridDataConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of blob storage event type to process.
   late final pulumi.Output<String?> blobStorageEventType;
+
   /// The event hub consumer group.
   late final pulumi.Output<String> consumerGroup;
+
   /// The data format of the message. Optionally the data format can be added to each message.
   late final pulumi.Output<String?> dataFormat;
+
   /// The resource ID where the event grid is configured to send events.
   late final pulumi.Output<String> eventHubResourceId;
+
   /// A Boolean value that, if set to true, indicates that ingestion should ignore the first record of every file
   late final pulumi.Output<bool?> ignoreFirstRecord;
+
   /// Kind of the endpoint for the data connection
   /// Expected value is 'EventGrid'.
   late final pulumi.Output<String> kind;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
   late final pulumi.Output<String?> mappingRuleName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioned state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The resource ID of the storage account where the data resides.
   late final pulumi.Output<String> storageAccountResourceId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The table where the data should be ingested. Optionally the table information can be added to each message.
   late final pulumi.Output<String?> tableName;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -184,25 +198,27 @@ class EventGridDataConnection extends pulumi.CustomResource {
     EventGridDataConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:synapse:EventGridDataConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.blobStorageEventType = registerOutput<String?>('blobStorageEventType');
-    this.consumerGroup = registerOutput<String>('consumerGroup');
-    this.dataFormat = registerOutput<String?>('dataFormat');
-    this.eventHubResourceId = registerOutput<String>('eventHubResourceId');
-    this.ignoreFirstRecord = registerOutput<bool?>('ignoreFirstRecord');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String?>('location');
-    this.mappingRuleName = registerOutput<String?>('mappingRuleName');
+         'azure-native:synapse:EventGridDataConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    blobStorageEventType = registerOutput<String?>('blobStorageEventType');
+    consumerGroup = registerOutput<String>('consumerGroup');
+    dataFormat = registerOutput<String?>('dataFormat');
+    eventHubResourceId = registerOutput<String>('eventHubResourceId');
+    ignoreFirstRecord = registerOutput<bool?>('ignoreFirstRecord');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String?>('location');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.storageAccountResourceId = registerOutput<String>('storageAccountResourceId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tableName = registerOutput<String?>('tableName');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    storageAccountResourceId = registerOutput<String>(
+      'storageAccountResourceId',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tableName = registerOutput<String?>('tableName');
+    type = registerOutput<String>('type');
   }
 }

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DistributionCacheBehaviorSettingsForwardedQueryStrings {
   /// Whether the distribution forwards and caches based on query strings.
   final pulumi.Input<bool>? option;
+
   /// Specific query strings that the distribution forwards to the origin.
   final pulumi.Input<List<String>>? queryStringsAllowedLists;
 
@@ -23,11 +24,20 @@ class DistributionCacheBehaviorSettingsForwardedQueryStrings {
     };
   }
 
-  factory DistributionCacheBehaviorSettingsForwardedQueryStrings.fromMap(Map<String, dynamic> map) {
+  factory DistributionCacheBehaviorSettingsForwardedQueryStrings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DistributionCacheBehaviorSettingsForwardedQueryStrings(
-      option: map['option'] == null ? null : ((map['option'] as bool).input()).input(),
-      queryStringsAllowedLists: map['queryStringsAllowedLists'] == null ? null : (((map['queryStringsAllowedLists'] as List).cast<String>()).input()).input(),
+      option: (() {
+        final guardedValue = map['option'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      queryStringsAllowedLists: (() {
+        final guardedValue = map['queryStringsAllowedLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

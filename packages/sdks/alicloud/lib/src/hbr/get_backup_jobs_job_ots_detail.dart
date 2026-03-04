@@ -7,20 +7,17 @@ class GetBackupJobsJobOtsDetail {
 
   /// Creates a new [GetBackupJobsJobOtsDetail].
   /// [tableNames] Required.
-  GetBackupJobsJobOtsDetail({
-    required this.tableNames,
-  });
+  GetBackupJobsJobOtsDetail({required this.tableNames});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tableNames': tableNames,
-    };
+    return <String, dynamic>{'tableNames': tableNames};
   }
 
   factory GetBackupJobsJobOtsDetail.fromMap(Map<String, dynamic> map) {
     return GetBackupJobsJobOtsDetail(
-      tableNames: ((map['tableNames'] as List).cast<String>()).input(),
+      tableNames: pulumi.Input.fromValue(
+        (map['tableNames'] as List).cast<String>(),
+      ),
     );
   }
 }
-

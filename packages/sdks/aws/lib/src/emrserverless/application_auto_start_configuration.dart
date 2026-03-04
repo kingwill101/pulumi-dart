@@ -8,20 +8,19 @@ class ApplicationAutoStartConfiguration {
 
   /// Creates a new [ApplicationAutoStartConfiguration].
   /// [enabled] Enables the application to automatically start on job submission. Defaults to `true`.
-  ApplicationAutoStartConfiguration({
-    this.enabled,
-  });
+  ApplicationAutoStartConfiguration({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory ApplicationAutoStartConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationAutoStartConfiguration(
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

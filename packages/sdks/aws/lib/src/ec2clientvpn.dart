@@ -1,5 +1,3 @@
-library module_ec2clientvpn;
-
 export 'ec2clientvpn/authorization_rule.dart';
 export 'ec2clientvpn/authorization_rule_args.dart';
 export 'ec2clientvpn/authorization_rule_state.dart';

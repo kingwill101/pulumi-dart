@@ -3,16 +3,15 @@ enum DatasetType {
   valueTabular("tabular"),
   valueFile("file");
 
-  const DatasetType(this.value);
-  final String value;
+  const DatasetType(this.wireValue);
+  final String wireValue;
 
   static DatasetType fromValue(String value) {
     for (final item in DatasetType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatasetType value: $value');
   }
 }
-

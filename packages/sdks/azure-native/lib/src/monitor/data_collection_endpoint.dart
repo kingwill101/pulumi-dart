@@ -8,7 +8,6 @@ import 'data_collection_endpoint_response_logs_ingestion.dart';
 import 'data_collection_endpoint_response_metadata.dart';
 import 'data_collection_endpoint_response_metrics_ingestion.dart';
 import 'data_collection_endpoint_response_network_acls.dart';
-import 'private_link_scoped_resource_response.dart';
 
 /// Definition of ARM tracked top level resource.
 ///
@@ -162,40 +161,66 @@ import 'private_link_scoped_resource_response.dart';
 class DataCollectionEndpoint extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The endpoint used by clients to access their configuration.
-  late final pulumi.Output<DataCollectionEndpointResponseConfigurationAccess?> configurationAccess;
+  late final pulumi.Output<DataCollectionEndpointResponseConfigurationAccess?>
+  configurationAccess;
+
   /// Description of the data collection endpoint.
   late final pulumi.Output<String?> description;
+
   /// Resource entity tag (ETag).
   late final pulumi.Output<String> etag;
+
   /// Failover configuration on this endpoint. This property is READ-ONLY.
-  late final pulumi.Output<DataCollectionEndpointResponseFailoverConfiguration> failoverConfiguration;
+  late final pulumi.Output<DataCollectionEndpointResponseFailoverConfiguration>
+  failoverConfiguration;
+
   /// Managed service identity of the resource.
-  late final pulumi.Output<DataCollectionEndpointResourceResponseIdentity?> identity;
+  late final pulumi.Output<DataCollectionEndpointResourceResponseIdentity?>
+  identity;
+
   /// The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
   late final pulumi.Output<String?> immutableId;
+
   /// The kind of the resource.
   late final pulumi.Output<String?> kind;
+
   /// The geo-location where the resource lives.
   late final pulumi.Output<String> location;
+
   /// The endpoint used by clients to ingest logs.
-  late final pulumi.Output<DataCollectionEndpointResponseLogsIngestion?> logsIngestion;
+  late final pulumi.Output<DataCollectionEndpointResponseLogsIngestion?>
+  logsIngestion;
+
   /// Metadata for the resource. This property is READ-ONLY.
   late final pulumi.Output<DataCollectionEndpointResponseMetadata> metadata;
+
   /// The endpoint used by clients to ingest metrics.
-  late final pulumi.Output<DataCollectionEndpointResponseMetricsIngestion?> metricsIngestion;
+  late final pulumi.Output<DataCollectionEndpointResponseMetricsIngestion?>
+  metricsIngestion;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// Network access control rules for the endpoints.
-  late final pulumi.Output<DataCollectionEndpointResponseNetworkAcls?> networkAcls;
+  late final pulumi.Output<DataCollectionEndpointResponseNetworkAcls?>
+  networkAcls;
+
   /// List of Azure Monitor Private Link Scope Resources to which this data collection endpoint resource is associated. This property is READ-ONLY.
-  late final pulumi.Output<List<PrivateLinkScopedResourceResponse>> privateLinkScopedResources;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateLinkScopedResources;
+
   /// The resource provisioning state. This property is READ-ONLY.
   late final pulumi.Output<String> provisioningState;
+
   /// Metadata pertaining to creation and last modification of the resource.
-  late final pulumi.Output<DataCollectionEndpointResourceResponseSystemData> systemData;
+  late final pulumi.Output<DataCollectionEndpointResourceResponseSystemData>
+  systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -208,29 +233,52 @@ class DataCollectionEndpoint extends pulumi.CustomResource {
     DataCollectionEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:monitor:DataCollectionEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.configurationAccess = registerOutput<DataCollectionEndpointResponseConfigurationAccess?>('configurationAccess');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String>('etag');
-    this.failoverConfiguration = registerOutput<DataCollectionEndpointResponseFailoverConfiguration>('failoverConfiguration');
-    this.identity = registerOutput<DataCollectionEndpointResourceResponseIdentity?>('identity');
-    this.immutableId = registerOutput<String?>('immutableId');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
-    this.logsIngestion = registerOutput<DataCollectionEndpointResponseLogsIngestion?>('logsIngestion');
-    this.metadata = registerOutput<DataCollectionEndpointResponseMetadata>('metadata');
-    this.metricsIngestion = registerOutput<DataCollectionEndpointResponseMetricsIngestion?>('metricsIngestion');
+         'azure-native:monitor:DataCollectionEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationAccess =
+        registerOutput<DataCollectionEndpointResponseConfigurationAccess?>(
+          'configurationAccess',
+        );
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    failoverConfiguration =
+        registerOutput<DataCollectionEndpointResponseFailoverConfiguration>(
+          'failoverConfiguration',
+        );
+    identity = registerOutput<DataCollectionEndpointResourceResponseIdentity?>(
+      'identity',
+    );
+    immutableId = registerOutput<String?>('immutableId');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    logsIngestion =
+        registerOutput<DataCollectionEndpointResponseLogsIngestion?>(
+          'logsIngestion',
+        );
+    metadata = registerOutput<DataCollectionEndpointResponseMetadata>(
+      'metadata',
+    );
+    metricsIngestion =
+        registerOutput<DataCollectionEndpointResponseMetricsIngestion?>(
+          'metricsIngestion',
+        );
     this.name = registerOutput<String>('name');
-    this.networkAcls = registerOutput<DataCollectionEndpointResponseNetworkAcls?>('networkAcls');
-    this.privateLinkScopedResources = registerOutput<List<PrivateLinkScopedResourceResponse>>('privateLinkScopedResources');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<DataCollectionEndpointResourceResponseSystemData>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkAcls = registerOutput<DataCollectionEndpointResponseNetworkAcls?>(
+      'networkAcls',
+    );
+    privateLinkScopedResources = registerOutput<List<Map<String, dynamic>>>(
+      'privateLinkScopedResources',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData =
+        registerOutput<DataCollectionEndpointResourceResponseSystemData>(
+          'systemData',
+        );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

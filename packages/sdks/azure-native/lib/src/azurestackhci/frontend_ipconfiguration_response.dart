@@ -7,6 +7,7 @@ import 'frontend_ipconfiguration_properties_response.dart';
 class FrontendIPConfigurationResponse {
   /// name for the frontend IP configuration.
   final pulumi.Input<String> name;
+
   /// properties for this frontendIPConfiguration
   final pulumi.Input<FrontendIPConfigurationPropertiesResponse> properties;
 
@@ -21,15 +22,22 @@ class FrontendIPConfigurationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'properties': pulumi.Input.mapInputValue<FrontendIPConfigurationPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            FrontendIPConfigurationPropertiesResponse,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
     };
   }
 
   factory FrontendIPConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return FrontendIPConfigurationResponse(
-      name: (map['name'] as String).input(),
-      properties: (FrontendIPConfigurationPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: pulumi.Input.fromValue(
+        FrontendIPConfigurationPropertiesResponse.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

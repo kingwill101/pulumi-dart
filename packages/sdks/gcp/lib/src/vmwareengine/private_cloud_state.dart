@@ -13,51 +13,68 @@ class PrivateCloudState {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? createTime;
+
   /// Time when the resource was scheduled for deletion.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? deleteTime;
+
   /// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
   final pulumi.Input<int>? deletionDelayHours;
+
   /// User-provided description for this private cloud.
   final pulumi.Input<String>? description;
+
   /// Time when the resource will be irreversibly deleted.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? expireTime;
+
   /// Details about a HCX Cloud Manager appliance.
   /// Structure is documented below.
   final pulumi.Input<List<PrivateCloudHcx>>? hcxes;
+
   /// The location where the PrivateCloud should reside.
   final pulumi.Input<String>? location;
+
   /// The management cluster for this private cloud. This used for creating and managing the default cluster.
   /// Structure is documented below.
   final pulumi.Input<PrivateCloudManagementCluster>? managementCluster;
+
   /// The ID of the PrivateCloud.
   final pulumi.Input<String>? name;
+
   /// Network configuration in the consumer project with which the peering has to be done.
   /// Structure is documented below.
   final pulumi.Input<PrivateCloudNetworkConfig>? networkConfig;
+
   /// Details about a NSX Manager appliance.
   /// Structure is documented below.
   final pulumi.Input<List<PrivateCloudNsx>>? nsxes;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
   final pulumi.Input<bool>? sendDeletionDelayHoursIfZero;
+
   /// State of the appliance.
   /// Possible values are: `ACTIVE`, `CREATING`.
   final pulumi.Input<String>? state;
+
   /// Initial type of the private cloud.
   /// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
   final pulumi.Input<String>? type;
+
   /// System-generated unique identifier for the resource.
   final pulumi.Input<String>? uid;
+
   /// Last update time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? updateTime;
+
   /// Details about a vCenter Server management appliance.
   /// Structure is documented below.
   final pulumi.Input<List<PrivateCloudVcenter>>? vcenters;
@@ -109,43 +126,182 @@ class PrivateCloudState {
       'deletionDelayHours': ?deletionDelayHours,
       'description': ?description,
       'expireTime': ?expireTime,
-      'hcxes': ?pulumi.Input.mapOptionalInputValue<List<PrivateCloudHcx>, List<Map<String, dynamic>>>(hcxes, (value) => pulumi.Input.encodeList<PrivateCloudHcx, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'hcxes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PrivateCloudHcx>,
+            List<Map<String, dynamic>>
+          >(
+            hcxes,
+            (value) =>
+                pulumi.Input.encodeList<PrivateCloudHcx, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'location': ?location,
-      'managementCluster': ?pulumi.Input.mapOptionalInputValue<PrivateCloudManagementCluster, Map<String, dynamic>>(managementCluster, (value) => value.toMap()),
+      'managementCluster':
+          ?pulumi.Input.mapOptionalInputValue<
+            PrivateCloudManagementCluster,
+            Map<String, dynamic>
+          >(managementCluster, (value) => value.toMap()),
       'name': ?name,
-      'networkConfig': ?pulumi.Input.mapOptionalInputValue<PrivateCloudNetworkConfig, Map<String, dynamic>>(networkConfig, (value) => value.toMap()),
-      'nsxes': ?pulumi.Input.mapOptionalInputValue<List<PrivateCloudNsx>, List<Map<String, dynamic>>>(nsxes, (value) => pulumi.Input.encodeList<PrivateCloudNsx, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networkConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            PrivateCloudNetworkConfig,
+            Map<String, dynamic>
+          >(networkConfig, (value) => value.toMap()),
+      'nsxes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PrivateCloudNsx>,
+            List<Map<String, dynamic>>
+          >(
+            nsxes,
+            (value) =>
+                pulumi.Input.encodeList<PrivateCloudNsx, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'project': ?project,
       'sendDeletionDelayHoursIfZero': ?sendDeletionDelayHoursIfZero,
       'state': ?state,
       'type': ?type,
       'uid': ?uid,
       'updateTime': ?updateTime,
-      'vcenters': ?pulumi.Input.mapOptionalInputValue<List<PrivateCloudVcenter>, List<Map<String, dynamic>>>(vcenters, (value) => pulumi.Input.encodeList<PrivateCloudVcenter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vcenters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PrivateCloudVcenter>,
+            List<Map<String, dynamic>>
+          >(
+            vcenters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PrivateCloudVcenter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory PrivateCloudState.fromMap(Map<String, dynamic> map) {
     return PrivateCloudState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime']! as String).input(),
-      deletionDelayHours: map['deletionDelayHours'] == null ? null : (map['deletionDelayHours']! as int).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
-      hcxes: map['hcxes'] == null ? null : (pulumi.Input.decodeList<PrivateCloudHcx>(map['hcxes']!, (value) => PrivateCloudHcx.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      managementCluster: map['managementCluster'] == null ? null : (PrivateCloudManagementCluster.fromMap((map['managementCluster']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkConfig: map['networkConfig'] == null ? null : (PrivateCloudNetworkConfig.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())).input(),
-      nsxes: map['nsxes'] == null ? null : (pulumi.Input.decodeList<PrivateCloudNsx>(map['nsxes']!, (value) => PrivateCloudNsx.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      sendDeletionDelayHoursIfZero: map['sendDeletionDelayHoursIfZero'] == null ? null : (map['sendDeletionDelayHoursIfZero']! as bool).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
-      vcenters: map['vcenters'] == null ? null : (pulumi.Input.decodeList<PrivateCloudVcenter>(map['vcenters']!, (value) => PrivateCloudVcenter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteTime: (() {
+        final guardedValue = map['deleteTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deletionDelayHours: (() {
+        final guardedValue = map['deletionDelayHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expireTime: (() {
+        final guardedValue = map['expireTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hcxes: (() {
+        final guardedValue = map['hcxes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PrivateCloudHcx>(
+            guardedValue,
+            (value) =>
+                PrivateCloudHcx.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managementCluster: (() {
+        final guardedValue = map['managementCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PrivateCloudManagementCluster.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkConfig: (() {
+        final guardedValue = map['networkConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PrivateCloudNetworkConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      nsxes: (() {
+        final guardedValue = map['nsxes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PrivateCloudNsx>(
+            guardedValue,
+            (value) =>
+                PrivateCloudNsx.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sendDeletionDelayHoursIfZero: (() {
+        final guardedValue = map['sendDeletionDelayHoursIfZero'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vcenters: (() {
+        final guardedValue = map['vcenters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PrivateCloudVcenter>(
+            guardedValue,
+            (value) => PrivateCloudVcenter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

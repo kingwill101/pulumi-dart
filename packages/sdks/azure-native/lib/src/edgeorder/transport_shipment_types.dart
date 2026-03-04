@@ -3,16 +3,15 @@ enum TransportShipmentTypes {
   customerManaged("CustomerManaged"),
   microsoftManaged("MicrosoftManaged");
 
-  const TransportShipmentTypes(this.value);
-  final String value;
+  const TransportShipmentTypes(this.wireValue);
+  final String wireValue;
 
   static TransportShipmentTypes fromValue(String value) {
     for (final item in TransportShipmentTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TransportShipmentTypes value: $value');
   }
 }
-

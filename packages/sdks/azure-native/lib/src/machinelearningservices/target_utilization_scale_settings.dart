@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetUtilizationScaleSettings {
   /// The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
   final pulumi.Input<int>? maxInstances;
+
   /// The minimum number of instances to always be present.
   final pulumi.Input<int>? minInstances;
+
   /// The polling interval in ISO 8691 format. Only supports duration with precision as low as Seconds.
   final pulumi.Input<String>? pollingInterval;
+
   /// Expected value is 'TargetUtilization'.
   final pulumi.Input<String> scaleType;
+
   /// Target CPU usage for the autoscaler.
   final pulumi.Input<int>? targetUtilizationPercentage;
 
@@ -40,12 +44,27 @@ class TargetUtilizationScaleSettings {
 
   factory TargetUtilizationScaleSettings.fromMap(Map<String, dynamic> map) {
     return TargetUtilizationScaleSettings(
-      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances']! as int).input(),
-      minInstances: map['minInstances'] == null ? null : (map['minInstances']! as int).input(),
-      pollingInterval: map['pollingInterval'] == null ? null : (map['pollingInterval']! as String).input(),
-      scaleType: (map['scaleType'] as String).input(),
-      targetUtilizationPercentage: map['targetUtilizationPercentage'] == null ? null : (map['targetUtilizationPercentage']! as int).input(),
+      maxInstances: (() {
+        final guardedValue = map['maxInstances'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minInstances: (() {
+        final guardedValue = map['minInstances'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pollingInterval: (() {
+        final guardedValue = map['pollingInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scaleType: pulumi.Input.fromValue(map['scaleType'] as String),
+      targetUtilizationPercentage: (() {
+        final guardedValue = map['targetUtilizationPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

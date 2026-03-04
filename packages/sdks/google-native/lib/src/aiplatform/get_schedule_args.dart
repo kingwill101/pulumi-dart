@@ -31,10 +31,13 @@ class GetScheduleArgs {
 
   factory GetScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetScheduleArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      scheduleId: (map['scheduleId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scheduleId: pulumi.Input.fromValue(map['scheduleId'] as String),
     );
   }
 }
-

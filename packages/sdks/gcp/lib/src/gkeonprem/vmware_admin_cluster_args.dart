@@ -21,6 +21,7 @@ class VmwareAdminClusterArgs {
   /// The VMware admin cluster addon node configuration.
   /// Structure is documented below.
   final pulumi.Input<VmwareAdminClusterAddonNode>? addonNode;
+
   /// Annotations on the VMware Admin Cluster.
   /// This field has the same restrictions as Kubernetes annotations.
   /// The total size of all keys and values combined is limited to 256k.
@@ -33,51 +34,70 @@ class VmwareAdminClusterArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
   /// least three physical hosts in the datacenter.
   /// Structure is documented below.
   final pulumi.Input<VmwareAdminClusterAntiAffinityGroups>? antiAffinityGroups;
+
   /// The VMware admin cluster authorization configuration.
   /// Structure is documented below.
   final pulumi.Input<VmwareAdminClusterAuthorization>? authorization;
+
   /// Configuration for auto repairing.
   /// Structure is documented below.
   final pulumi.Input<VmwareAdminClusterAutoRepairConfig>? autoRepairConfig;
+
   /// The bootstrap cluster this VMware admin cluster belongs to.
   final pulumi.Input<String>? bootstrapClusterMembership;
+
   /// The VMware admin cluster control plane node configuration.
   /// Structure is documented below.
   final pulumi.Input<VmwareAdminClusterControlPlaneNode>? controlPlaneNode;
+
   /// A human readable description of this VMware admin cluster.
   final pulumi.Input<String>? description;
+
   /// If set, the advanced cluster feature is enabled.
   final pulumi.Input<bool>? enableAdvancedCluster;
+
   /// The OS image type for the VMware admin cluster.
   final pulumi.Input<String>? imageType;
+
   /// Specifies the load balancer configuration for VMware admin cluster.
   /// Structure is documented below.
   final pulumi.Input<VmwareAdminClusterLoadBalancer>? loadBalancer;
+
   /// The location of the resource.
   final pulumi.Input<String> location;
+
   /// The VMware admin cluster resource name.
   final pulumi.Input<String>? name;
+
   /// The VMware admin cluster network configuration.
   /// Structure is documented below.
   final pulumi.Input<VmwareAdminClusterNetworkConfig> networkConfig;
+
   /// The Anthos clusters on the VMware version for the admin cluster.
   final pulumi.Input<String>? onPremVersion;
+
   /// The VMware platform configuration.
   /// Structure is documented below.
   final pulumi.Input<VmwareAdminClusterPlatformConfig>? platformConfig;
+
   /// Configuration for private registry.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterPrivateRegistryConfig>? privateRegistryConfig;
+  final pulumi.Input<VmwareAdminClusterPrivateRegistryConfig>?
+  privateRegistryConfig;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Configuration for proxy.
   /// Structure is documented below.
   final pulumi.Input<VmwareAdminClusterProxy>? proxy;
+
   /// Specifies vCenter config for the admin cluster.
   /// Structure is documented below.
   final pulumi.Input<VmwareAdminClusterVcenter>? vcenter;
@@ -128,52 +148,213 @@ class VmwareAdminClusterArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addonNode': ?pulumi.Input.mapOptionalInputValue<VmwareAdminClusterAddonNode, Map<String, dynamic>>(addonNode, (value) => value.toMap()),
+      'addonNode':
+          ?pulumi.Input.mapOptionalInputValue<
+            VmwareAdminClusterAddonNode,
+            Map<String, dynamic>
+          >(addonNode, (value) => value.toMap()),
       'annotations': ?annotations,
-      'antiAffinityGroups': ?pulumi.Input.mapOptionalInputValue<VmwareAdminClusterAntiAffinityGroups, Map<String, dynamic>>(antiAffinityGroups, (value) => value.toMap()),
-      'authorization': ?pulumi.Input.mapOptionalInputValue<VmwareAdminClusterAuthorization, Map<String, dynamic>>(authorization, (value) => value.toMap()),
-      'autoRepairConfig': ?pulumi.Input.mapOptionalInputValue<VmwareAdminClusterAutoRepairConfig, Map<String, dynamic>>(autoRepairConfig, (value) => value.toMap()),
+      'antiAffinityGroups':
+          ?pulumi.Input.mapOptionalInputValue<
+            VmwareAdminClusterAntiAffinityGroups,
+            Map<String, dynamic>
+          >(antiAffinityGroups, (value) => value.toMap()),
+      'authorization':
+          ?pulumi.Input.mapOptionalInputValue<
+            VmwareAdminClusterAuthorization,
+            Map<String, dynamic>
+          >(authorization, (value) => value.toMap()),
+      'autoRepairConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            VmwareAdminClusterAutoRepairConfig,
+            Map<String, dynamic>
+          >(autoRepairConfig, (value) => value.toMap()),
       'bootstrapClusterMembership': ?bootstrapClusterMembership,
-      'controlPlaneNode': ?pulumi.Input.mapOptionalInputValue<VmwareAdminClusterControlPlaneNode, Map<String, dynamic>>(controlPlaneNode, (value) => value.toMap()),
+      'controlPlaneNode':
+          ?pulumi.Input.mapOptionalInputValue<
+            VmwareAdminClusterControlPlaneNode,
+            Map<String, dynamic>
+          >(controlPlaneNode, (value) => value.toMap()),
       'description': ?description,
       'enableAdvancedCluster': ?enableAdvancedCluster,
       'imageType': ?imageType,
-      'loadBalancer': ?pulumi.Input.mapOptionalInputValue<VmwareAdminClusterLoadBalancer, Map<String, dynamic>>(loadBalancer, (value) => value.toMap()),
+      'loadBalancer':
+          ?pulumi.Input.mapOptionalInputValue<
+            VmwareAdminClusterLoadBalancer,
+            Map<String, dynamic>
+          >(loadBalancer, (value) => value.toMap()),
       'location': location,
       'name': ?name,
-      'networkConfig': pulumi.Input.mapInputValue<VmwareAdminClusterNetworkConfig, Map<String, dynamic>>(networkConfig, (value) => value.toMap()),
+      'networkConfig':
+          pulumi.Input.mapInputValue<
+            VmwareAdminClusterNetworkConfig,
+            Map<String, dynamic>
+          >(networkConfig, (value) => value.toMap()),
       'onPremVersion': ?onPremVersion,
-      'platformConfig': ?pulumi.Input.mapOptionalInputValue<VmwareAdminClusterPlatformConfig, Map<String, dynamic>>(platformConfig, (value) => value.toMap()),
-      'privateRegistryConfig': ?pulumi.Input.mapOptionalInputValue<VmwareAdminClusterPrivateRegistryConfig, Map<String, dynamic>>(privateRegistryConfig, (value) => value.toMap()),
+      'platformConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            VmwareAdminClusterPlatformConfig,
+            Map<String, dynamic>
+          >(platformConfig, (value) => value.toMap()),
+      'privateRegistryConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            VmwareAdminClusterPrivateRegistryConfig,
+            Map<String, dynamic>
+          >(privateRegistryConfig, (value) => value.toMap()),
       'project': ?project,
-      'proxy': ?pulumi.Input.mapOptionalInputValue<VmwareAdminClusterProxy, Map<String, dynamic>>(proxy, (value) => value.toMap()),
-      'vcenter': ?pulumi.Input.mapOptionalInputValue<VmwareAdminClusterVcenter, Map<String, dynamic>>(vcenter, (value) => value.toMap()),
+      'proxy':
+          ?pulumi.Input.mapOptionalInputValue<
+            VmwareAdminClusterProxy,
+            Map<String, dynamic>
+          >(proxy, (value) => value.toMap()),
+      'vcenter':
+          ?pulumi.Input.mapOptionalInputValue<
+            VmwareAdminClusterVcenter,
+            Map<String, dynamic>
+          >(vcenter, (value) => value.toMap()),
     };
   }
 
   factory VmwareAdminClusterArgs.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterArgs(
-      addonNode: map['addonNode'] == null ? null : (VmwareAdminClusterAddonNode.fromMap((map['addonNode']! as Map).cast<String, dynamic>())).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
-      antiAffinityGroups: map['antiAffinityGroups'] == null ? null : (VmwareAdminClusterAntiAffinityGroups.fromMap((map['antiAffinityGroups']! as Map).cast<String, dynamic>())).input(),
-      authorization: map['authorization'] == null ? null : (VmwareAdminClusterAuthorization.fromMap((map['authorization']! as Map).cast<String, dynamic>())).input(),
-      autoRepairConfig: map['autoRepairConfig'] == null ? null : (VmwareAdminClusterAutoRepairConfig.fromMap((map['autoRepairConfig']! as Map).cast<String, dynamic>())).input(),
-      bootstrapClusterMembership: map['bootstrapClusterMembership'] == null ? null : (map['bootstrapClusterMembership']! as String).input(),
-      controlPlaneNode: map['controlPlaneNode'] == null ? null : (VmwareAdminClusterControlPlaneNode.fromMap((map['controlPlaneNode']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      enableAdvancedCluster: map['enableAdvancedCluster'] == null ? null : (map['enableAdvancedCluster']! as bool).input(),
-      imageType: map['imageType'] == null ? null : (map['imageType']! as String).input(),
-      loadBalancer: map['loadBalancer'] == null ? null : (VmwareAdminClusterLoadBalancer.fromMap((map['loadBalancer']! as Map).cast<String, dynamic>())).input(),
-      location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkConfig: (VmwareAdminClusterNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
-      onPremVersion: map['onPremVersion'] == null ? null : (map['onPremVersion']! as String).input(),
-      platformConfig: map['platformConfig'] == null ? null : (VmwareAdminClusterPlatformConfig.fromMap((map['platformConfig']! as Map).cast<String, dynamic>())).input(),
-      privateRegistryConfig: map['privateRegistryConfig'] == null ? null : (VmwareAdminClusterPrivateRegistryConfig.fromMap((map['privateRegistryConfig']! as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      proxy: map['proxy'] == null ? null : (VmwareAdminClusterProxy.fromMap((map['proxy']! as Map).cast<String, dynamic>())).input(),
-      vcenter: map['vcenter'] == null ? null : (VmwareAdminClusterVcenter.fromMap((map['vcenter']! as Map).cast<String, dynamic>())).input(),
+      addonNode: (() {
+        final guardedValue = map['addonNode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VmwareAdminClusterAddonNode.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      antiAffinityGroups: (() {
+        final guardedValue = map['antiAffinityGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VmwareAdminClusterAntiAffinityGroups.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      authorization: (() {
+        final guardedValue = map['authorization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VmwareAdminClusterAuthorization.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      autoRepairConfig: (() {
+        final guardedValue = map['autoRepairConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VmwareAdminClusterAutoRepairConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      bootstrapClusterMembership: (() {
+        final guardedValue = map['bootstrapClusterMembership'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      controlPlaneNode: (() {
+        final guardedValue = map['controlPlaneNode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VmwareAdminClusterControlPlaneNode.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableAdvancedCluster: (() {
+        final guardedValue = map['enableAdvancedCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      imageType: (() {
+        final guardedValue = map['imageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loadBalancer: (() {
+        final guardedValue = map['loadBalancer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VmwareAdminClusterLoadBalancer.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkConfig: pulumi.Input.fromValue(
+        VmwareAdminClusterNetworkConfig.fromMap(
+          (map['networkConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      onPremVersion: (() {
+        final guardedValue = map['onPremVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      platformConfig: (() {
+        final guardedValue = map['platformConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VmwareAdminClusterPlatformConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      privateRegistryConfig: (() {
+        final guardedValue = map['privateRegistryConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VmwareAdminClusterPrivateRegistryConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      proxy: (() {
+        final guardedValue = map['proxy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VmwareAdminClusterProxy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vcenter: (() {
+        final guardedValue = map['vcenter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VmwareAdminClusterVcenter.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

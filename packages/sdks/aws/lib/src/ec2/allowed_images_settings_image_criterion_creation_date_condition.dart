@@ -18,10 +18,15 @@ class AllowedImagesSettingsImageCriterionCreationDateCondition {
     };
   }
 
-  factory AllowedImagesSettingsImageCriterionCreationDateCondition.fromMap(Map<String, dynamic> map) {
+  factory AllowedImagesSettingsImageCriterionCreationDateCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AllowedImagesSettingsImageCriterionCreationDateCondition(
-      maximumDaysSinceCreated: map['maximumDaysSinceCreated'] == null ? null : ((map['maximumDaysSinceCreated'] as int).input()).input(),
+      maximumDaysSinceCreated: (() {
+        final guardedValue = map['maximumDaysSinceCreated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

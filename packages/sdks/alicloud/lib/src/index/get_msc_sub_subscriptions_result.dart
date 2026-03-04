@@ -8,6 +8,7 @@ class GetMscSubSubscriptionsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? outputFile;
+
   /// A list of Msc Sub Subscriptions. Each element contains the following attributes:
   final List<GetMscSubSubscriptionsSubscription> subscriptions;
 
@@ -25,16 +26,29 @@ class GetMscSubSubscriptionsResult {
     return <String, dynamic>{
       'id': id,
       'outputFile': ?outputFile,
-      'subscriptions': pulumi.Input.encodeList<GetMscSubSubscriptionsSubscription, Map<String, dynamic>>(subscriptions, (value) => value.toMap()),
+      'subscriptions':
+          pulumi.Input.encodeList<
+            GetMscSubSubscriptionsSubscription,
+            Map<String, dynamic>
+          >(subscriptions, (value) => value.toMap()),
     };
   }
 
   factory GetMscSubSubscriptionsResult.fromMap(Map<String, dynamic> map) {
     return GetMscSubSubscriptionsResult(
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      subscriptions: pulumi.Input.decodeList<GetMscSubSubscriptionsSubscription>(map['subscriptions'], (value) => GetMscSubSubscriptionsSubscription.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      subscriptions:
+          pulumi.Input.decodeList<GetMscSubSubscriptionsSubscription>(
+            map['subscriptions']!,
+            (value) => GetMscSubSubscriptionsSubscription.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

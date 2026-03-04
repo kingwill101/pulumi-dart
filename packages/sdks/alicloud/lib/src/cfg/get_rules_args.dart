@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRulesArgs {
   /// Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
   final pulumi.Input<String>? configRuleState;
+
   /// Default to `false`. Set it to `true` can output more details about resource attributes.
   final pulumi.Input<bool>? enableDetails;
+
   /// A list of Config Rule IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results by rule name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
   final pulumi.Input<int>? riskLevel;
+
   /// The name of config rule.
   final pulumi.Input<String>? ruleName;
+
   /// The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
   final pulumi.Input<String>? status;
 
@@ -59,15 +66,46 @@ class GetRulesArgs {
 
   factory GetRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetRulesArgs(
-      configRuleState: map['configRuleState'] == null ? null : (map['configRuleState']! as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      riskLevel: map['riskLevel'] == null ? null : (map['riskLevel']! as int).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      configRuleState: (() {
+        final guardedValue = map['configRuleState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      riskLevel: (() {
+        final guardedValue = map['riskLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ruleName: (() {
+        final guardedValue = map['ruleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

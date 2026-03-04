@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'profile_http_args.dart';
-import 'profile_http_enforcement.dart';
-import 'profile_http_http_strict_transport_security.dart';
 import 'profile_http_state.dart';
 
 /// `f5bigip.ltm.ProfileHttp` Configures a custom profile_http for use by health checks.
@@ -151,60 +149,89 @@ import 'profile_http_state.dart';
 class ProfileHttp extends pulumi.CustomResource {
   /// Enables or disables trusting the client IP address, and statistics from the client IP address, based on the request's XFF (X-forwarded-for) headers, if they exist.
   late final pulumi.Output<String> acceptXff;
+
   /// The application service to which the object belongs.
   late final pulumi.Output<String?> appService;
+
   /// Specifies a quoted string for the basic authentication realm. The system sends this string to a client whenever authorization fails. The default value is `none`
   late final pulumi.Output<String> basicAuthRealm;
+
   /// Specifies the profile that you want to use as the parent profile. Your new profile inherits all settings and values from the parent profile specified.
   late final pulumi.Output<String> defaultsFrom;
+
   /// Specifies user-defined description.
   late final pulumi.Output<String> description;
+
   /// Type a passphrase for cookie encryption. Note: Since it's a sensitive entity idempotency will fail for it in the update call.
   late final pulumi.Output<String?> encryptCookieSecret;
+
   /// Type the cookie names for the system to encrypt.
   late final pulumi.Output<List<String>?> encryptCookies;
+
   /// See Enforcement below for more details.
-  late final pulumi.Output<List<ProfileHttpEnforcement>> enforcements;
+  late final pulumi.Output<List<Map<String, dynamic>>> enforcements;
+
   /// Specifies an HTTP fallback host. HTTP redirection allows you to redirect HTTP traffic to another protocol identifier, host name, port number
   late final pulumi.Output<String?> fallbackHost;
+
   /// Specifies one or more three-digit status codes that can be returned by an HTTP server,that should trigger a redirection to the fallback host.
   late final pulumi.Output<List<String>?> fallbackStatusCodes;
+
   /// Specifies the header string that you want to erase from an HTTP request. Default is `none`.
   late final pulumi.Output<String> headErase;
+
   /// Specifies a quoted header string that you want to insert into an HTTP request.Default is `none`.
   late final pulumi.Output<String> headInsert;
+
   /// See Http_Strict_Transport_Security below for more details.
-  late final pulumi.Output<List<ProfileHttpHttpStrictTransportSecurity>> httpStrictTransportSecurities;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  httpStrictTransportSecurities;
+
   /// Specifies, when enabled, that the system inserts an X-Forwarded-For header in an HTTP request with the client IP address, to use with connection pooling. The default is `Disabled`.
   late final pulumi.Output<String> insertXforwardedFor;
+
   /// Specifies the linear white space (LWS) separator that the system inserts when a header exceeds the maximum width you specify in the LWS Maximum Columns setting.
   late final pulumi.Output<String> lwsSeparator;
+
   /// Specifies the linear white space (LWS) separator that the system inserts when a header exceeds the maximum width you specify in the LWS Maximum Columns setting.
   late final pulumi.Output<int> lwsWidth;
+
   /// Specifies the name of the http profile,name of Profile should be full path. Full path is the combination of the `partition + profile name`,For example `/Common/test-http-profile`.
   late final pulumi.Output<String> name;
+
   /// Enables the system to perform HTTP header transformations for the purpose of  keeping server-side connections open. This feature requires configuration of a OneConnect profile
   late final pulumi.Output<String> oneconnectTransformations;
+
   /// Specifies the proxy mode for this profile: reverse, explicit, or transparent. The default is `reverse`.
   late final pulumi.Output<String> proxyType;
+
   /// Specifies whether the system rewrites the URIs that are part of HTTP redirect (3XX) responses. The default is `none`.
   late final pulumi.Output<String> redirectRewrite;
+
   /// Specifies how the system handles HTTP content that is chunked by a client. The default is `preserve`.
   late final pulumi.Output<String> requestChunking;
+
   /// Specifies how the system handles HTTP content that is chunked by a server. The default is `selective`.
   late final pulumi.Output<String> responseChunking;
+
   /// Specifies headers that the BIG-IP system allows in an HTTP response.If you are specifying more than one header, separate the headers with a blank space.
   late final pulumi.Output<List<String>> responseHeadersPermitteds;
+
   /// Specifies the value of the Server header in responses that the BIG-IP itself generates. The default is BigIP. In order to remove it, "none" string is to be passed. If server_agent_name is commented (or not passed) during the update call, then no changes would be applied and previous value will persist. In order to put default value, we need to pass "BigIP" explicitly.
   late final pulumi.Output<String> serverAgentName;
+
   /// Displays the administrative partition within which this profile resides.
   late final pulumi.Output<String?> tmPartition;
+
   /// Specifies the hostname to include into Via header
   late final pulumi.Output<String> viaHostName;
+
   /// Specifies whether to append, remove, or preserve a Via header in an HTTP request
   late final pulumi.Output<String> viaRequest;
+
   /// Specifies whether to append, remove, or preserve a Via header in an HTTP request
   late final pulumi.Output<String> viaResponse;
+
   /// Specifies alternative XFF headers instead of the default X-forwarded-for header.
   late final pulumi.Output<List<String>> xffAlternativeNames;
 
@@ -217,40 +244,46 @@ class ProfileHttp extends pulumi.CustomResource {
     ProfileHttpArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ltm/profileHttp:ProfileHttp',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceptXff = registerOutput<String>('acceptXff');
-    this.appService = registerOutput<String?>('appService');
-    this.basicAuthRealm = registerOutput<String>('basicAuthRealm');
-    this.defaultsFrom = registerOutput<String>('defaultsFrom');
-    this.description = registerOutput<String>('description');
-    this.encryptCookieSecret = registerOutput<String?>('encryptCookieSecret');
-    this.encryptCookies = registerOutput<List<String>?>('encryptCookies');
-    this.enforcements = registerOutput<List<ProfileHttpEnforcement>>('enforcements');
-    this.fallbackHost = registerOutput<String?>('fallbackHost');
-    this.fallbackStatusCodes = registerOutput<List<String>?>('fallbackStatusCodes');
-    this.headErase = registerOutput<String>('headErase');
-    this.headInsert = registerOutput<String>('headInsert');
-    this.httpStrictTransportSecurities = registerOutput<List<ProfileHttpHttpStrictTransportSecurity>>('httpStrictTransportSecurities');
-    this.insertXforwardedFor = registerOutput<String>('insertXforwardedFor');
-    this.lwsSeparator = registerOutput<String>('lwsSeparator');
-    this.lwsWidth = registerOutput<int>('lwsWidth');
+         'f5bigip:ltm/profileHttp:ProfileHttp',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceptXff = registerOutput<String>('acceptXff');
+    appService = registerOutput<String?>('appService');
+    basicAuthRealm = registerOutput<String>('basicAuthRealm');
+    defaultsFrom = registerOutput<String>('defaultsFrom');
+    description = registerOutput<String>('description');
+    encryptCookieSecret = registerOutput<String?>('encryptCookieSecret');
+    encryptCookies = registerOutput<List<String>?>('encryptCookies');
+    enforcements = registerOutput<List<Map<String, dynamic>>>('enforcements');
+    fallbackHost = registerOutput<String?>('fallbackHost');
+    fallbackStatusCodes = registerOutput<List<String>?>('fallbackStatusCodes');
+    headErase = registerOutput<String>('headErase');
+    headInsert = registerOutput<String>('headInsert');
+    httpStrictTransportSecurities = registerOutput<List<Map<String, dynamic>>>(
+      'httpStrictTransportSecurities',
+    );
+    insertXforwardedFor = registerOutput<String>('insertXforwardedFor');
+    lwsSeparator = registerOutput<String>('lwsSeparator');
+    lwsWidth = registerOutput<int>('lwsWidth');
     this.name = registerOutput<String>('name');
-    this.oneconnectTransformations = registerOutput<String>('oneconnectTransformations');
-    this.proxyType = registerOutput<String>('proxyType');
-    this.redirectRewrite = registerOutput<String>('redirectRewrite');
-    this.requestChunking = registerOutput<String>('requestChunking');
-    this.responseChunking = registerOutput<String>('responseChunking');
-    this.responseHeadersPermitteds = registerOutput<List<String>>('responseHeadersPermitteds');
-    this.serverAgentName = registerOutput<String>('serverAgentName');
-    this.tmPartition = registerOutput<String?>('tmPartition');
-    this.viaHostName = registerOutput<String>('viaHostName');
-    this.viaRequest = registerOutput<String>('viaRequest');
-    this.viaResponse = registerOutput<String>('viaResponse');
-    this.xffAlternativeNames = registerOutput<List<String>>('xffAlternativeNames');
+    oneconnectTransformations = registerOutput<String>(
+      'oneconnectTransformations',
+    );
+    proxyType = registerOutput<String>('proxyType');
+    redirectRewrite = registerOutput<String>('redirectRewrite');
+    requestChunking = registerOutput<String>('requestChunking');
+    responseChunking = registerOutput<String>('responseChunking');
+    responseHeadersPermitteds = registerOutput<List<String>>(
+      'responseHeadersPermitteds',
+    );
+    serverAgentName = registerOutput<String>('serverAgentName');
+    tmPartition = registerOutput<String?>('tmPartition');
+    viaHostName = registerOutput<String>('viaHostName');
+    viaRequest = registerOutput<String>('viaRequest');
+    viaResponse = registerOutput<String>('viaResponse');
+    xffAlternativeNames = registerOutput<List<String>>('xffAlternativeNames');
   }
 
   /// Gets an existing [ProfileHttp] resource's state with the given [name] and [id].
@@ -271,39 +304,45 @@ class ProfileHttp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ltm/profileHttp:ProfileHttp',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceptXff = registerOutput<String>('acceptXff');
-    this.appService = registerOutput<String?>('appService');
-    this.basicAuthRealm = registerOutput<String>('basicAuthRealm');
-    this.defaultsFrom = registerOutput<String>('defaultsFrom');
-    this.description = registerOutput<String>('description');
-    this.encryptCookieSecret = registerOutput<String?>('encryptCookieSecret');
-    this.encryptCookies = registerOutput<List<String>?>('encryptCookies');
-    this.enforcements = registerOutput<List<ProfileHttpEnforcement>>('enforcements');
-    this.fallbackHost = registerOutput<String?>('fallbackHost');
-    this.fallbackStatusCodes = registerOutput<List<String>?>('fallbackStatusCodes');
-    this.headErase = registerOutput<String>('headErase');
-    this.headInsert = registerOutput<String>('headInsert');
-    this.httpStrictTransportSecurities = registerOutput<List<ProfileHttpHttpStrictTransportSecurity>>('httpStrictTransportSecurities');
-    this.insertXforwardedFor = registerOutput<String>('insertXforwardedFor');
-    this.lwsSeparator = registerOutput<String>('lwsSeparator');
-    this.lwsWidth = registerOutput<int>('lwsWidth');
+         'f5bigip:ltm/profileHttp:ProfileHttp',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceptXff = registerOutput<String>('acceptXff');
+    appService = registerOutput<String?>('appService');
+    basicAuthRealm = registerOutput<String>('basicAuthRealm');
+    defaultsFrom = registerOutput<String>('defaultsFrom');
+    description = registerOutput<String>('description');
+    encryptCookieSecret = registerOutput<String?>('encryptCookieSecret');
+    encryptCookies = registerOutput<List<String>?>('encryptCookies');
+    enforcements = registerOutput<List<Map<String, dynamic>>>('enforcements');
+    fallbackHost = registerOutput<String?>('fallbackHost');
+    fallbackStatusCodes = registerOutput<List<String>?>('fallbackStatusCodes');
+    headErase = registerOutput<String>('headErase');
+    headInsert = registerOutput<String>('headInsert');
+    httpStrictTransportSecurities = registerOutput<List<Map<String, dynamic>>>(
+      'httpStrictTransportSecurities',
+    );
+    insertXforwardedFor = registerOutput<String>('insertXforwardedFor');
+    lwsSeparator = registerOutput<String>('lwsSeparator');
+    lwsWidth = registerOutput<int>('lwsWidth');
     this.name = registerOutput<String>('name');
-    this.oneconnectTransformations = registerOutput<String>('oneconnectTransformations');
-    this.proxyType = registerOutput<String>('proxyType');
-    this.redirectRewrite = registerOutput<String>('redirectRewrite');
-    this.requestChunking = registerOutput<String>('requestChunking');
-    this.responseChunking = registerOutput<String>('responseChunking');
-    this.responseHeadersPermitteds = registerOutput<List<String>>('responseHeadersPermitteds');
-    this.serverAgentName = registerOutput<String>('serverAgentName');
-    this.tmPartition = registerOutput<String?>('tmPartition');
-    this.viaHostName = registerOutput<String>('viaHostName');
-    this.viaRequest = registerOutput<String>('viaRequest');
-    this.viaResponse = registerOutput<String>('viaResponse');
-    this.xffAlternativeNames = registerOutput<List<String>>('xffAlternativeNames');
+    oneconnectTransformations = registerOutput<String>(
+      'oneconnectTransformations',
+    );
+    proxyType = registerOutput<String>('proxyType');
+    redirectRewrite = registerOutput<String>('redirectRewrite');
+    requestChunking = registerOutput<String>('requestChunking');
+    responseChunking = registerOutput<String>('responseChunking');
+    responseHeadersPermitteds = registerOutput<List<String>>(
+      'responseHeadersPermitteds',
+    );
+    serverAgentName = registerOutput<String>('serverAgentName');
+    tmPartition = registerOutput<String?>('tmPartition');
+    viaHostName = registerOutput<String>('viaHostName');
+    viaRequest = registerOutput<String>('viaRequest');
+    viaResponse = registerOutput<String>('viaResponse');
+    xffAlternativeNames = registerOutput<List<String>>('xffAlternativeNames');
   }
 }

@@ -1,14 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_args.dart';
-import 'instance_database.dart';
 import 'instance_datastore.dart';
-import 'instance_network.dart';
 import 'instance_state.dart';
-import 'instance_user.dart';
 
 /// Manages a V1 DB instance resource within OpenStack.
 ///
-/// > **Note:** All arguments including the instance user password will be stored
+/// &gt; **Note:** All arguments including the instance user password will be stored
 /// in the raw state as plain-text. Read more about sensitive data in
 /// state.
 ///
@@ -172,32 +169,42 @@ import 'instance_user.dart';
 class Instance extends pulumi.CustomResource {
   /// A list of IP addresses assigned to the instance.
   late final pulumi.Output<List<String>> addresses;
+
   /// Configuration ID to be attached to the instance. Database instance
   /// will be rebooted when configuration is detached.
   late final pulumi.Output<String?> configurationId;
+
   /// An array of database name, charset and collate. The database
   /// object structure is documented below.
-  late final pulumi.Output<List<InstanceDatabase>?> databases;
+  late final pulumi.Output<List<Map<String, dynamic>>?> databases;
+
   /// An array of database engine type and version. The datastore
   /// object structure is documented below. Changing this creates a new instance.
   late final pulumi.Output<InstanceDatastore> datastore;
+
   /// The flavor ID of the desired flavor for the instance.
   /// Changing this creates new instance.
   late final pulumi.Output<String> flavorId;
+
   /// A unique name for the resource.
   late final pulumi.Output<String> name;
+
   /// An array of one or more networks to attach to the
   /// instance. The network object structure is documented below. Changing this
   /// creates a new instance.
-  late final pulumi.Output<List<InstanceNetwork>?> networks;
+  late final pulumi.Output<List<Map<String, dynamic>>?> networks;
+
   /// The region in which to create the db instance. Changing this
   /// creates a new instance.
   late final pulumi.Output<String> region;
+
   /// Specifies the volume size in GB. Changing this creates new instance.
   late final pulumi.Output<int> size;
+
   /// An array of username, password, host and databases. The user
   /// object structure is documented below.
-  late final pulumi.Output<List<InstanceUser>?> users;
+  late final pulumi.Output<List<Map<String, dynamic>>?> users;
+
   /// Specifies the volume type to use. If you want to
   /// specify a volume type, you must also specify a volume size. Changing this
   /// creates new instance.
@@ -212,22 +219,22 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:database/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addresses = registerOutput<List<String>>('addresses');
-    this.configurationId = registerOutput<String?>('configurationId');
-    this.databases = registerOutput<List<InstanceDatabase>?>('databases');
-    this.datastore = registerOutput<InstanceDatastore>('datastore');
-    this.flavorId = registerOutput<String>('flavorId');
+         'openstack:database/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addresses = registerOutput<List<String>>('addresses');
+    configurationId = registerOutput<String?>('configurationId');
+    databases = registerOutput<List<Map<String, dynamic>>?>('databases');
+    datastore = registerOutput<InstanceDatastore>('datastore');
+    flavorId = registerOutput<String>('flavorId');
     this.name = registerOutput<String>('name');
-    this.networks = registerOutput<List<InstanceNetwork>?>('networks');
-    this.region = registerOutput<String>('region');
-    this.size = registerOutput<int>('size');
-    this.users = registerOutput<List<InstanceUser>?>('users');
-    this.volumeType = registerOutput<String?>('volumeType');
+    networks = registerOutput<List<Map<String, dynamic>>?>('networks');
+    region = registerOutput<String>('region');
+    size = registerOutput<int>('size');
+    users = registerOutput<List<Map<String, dynamic>>?>('users');
+    volumeType = registerOutput<String?>('volumeType');
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -248,21 +255,21 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:database/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addresses = registerOutput<List<String>>('addresses');
-    this.configurationId = registerOutput<String?>('configurationId');
-    this.databases = registerOutput<List<InstanceDatabase>?>('databases');
-    this.datastore = registerOutput<InstanceDatastore>('datastore');
-    this.flavorId = registerOutput<String>('flavorId');
+         'openstack:database/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addresses = registerOutput<List<String>>('addresses');
+    configurationId = registerOutput<String?>('configurationId');
+    databases = registerOutput<List<Map<String, dynamic>>?>('databases');
+    datastore = registerOutput<InstanceDatastore>('datastore');
+    flavorId = registerOutput<String>('flavorId');
     this.name = registerOutput<String>('name');
-    this.networks = registerOutput<List<InstanceNetwork>?>('networks');
-    this.region = registerOutput<String>('region');
-    this.size = registerOutput<int>('size');
-    this.users = registerOutput<List<InstanceUser>?>('users');
-    this.volumeType = registerOutput<String?>('volumeType');
+    networks = registerOutput<List<Map<String, dynamic>>?>('networks');
+    region = registerOutput<String>('region');
+    size = registerOutput<int>('size');
+    users = registerOutput<List<Map<String, dynamic>>?>('users');
+    volumeType = registerOutput<String?>('volumeType');
   }
 }

@@ -146,18 +146,25 @@ import 'system_data_response.dart';
 class HybridIdentityMetadatum extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The identity of the provisioned cluster.
   late final pulumi.Output<ProvisionedClusterIdentityResponse?> identity;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// provisioning state of the hybridIdentityMetadata resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Onboarding public key for provisioning the Managed identity for the HybridAKS cluster.
   late final pulumi.Output<String?> publicKey;
+
   /// Unique id of the parent provisioned cluster resource.
   late final pulumi.Output<String?> resourceUid;
+
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -170,18 +177,18 @@ class HybridIdentityMetadatum extends pulumi.CustomResource {
     HybridIdentityMetadatumArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:hybridcontainerservice:HybridIdentityMetadatum',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<ProvisionedClusterIdentityResponse?>('identity');
+         'azure-native:hybridcontainerservice:HybridIdentityMetadatum',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<ProvisionedClusterIdentityResponse?>('identity');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicKey = registerOutput<String?>('publicKey');
-    this.resourceUid = registerOutput<String?>('resourceUid');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicKey = registerOutput<String?>('publicKey');
+    resourceUid = registerOutput<String?>('resourceUid');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

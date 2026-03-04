@@ -9,11 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessEntryArgs {
   /// Name of the EKS Cluster.
   final pulumi.Input<String> clusterName;
+
   /// The IAM Principal ARN which requires Authentication access to the EKS cluster.
   final pulumi.Input<String> principalArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<Map<String, String>>? tags;
+
   /// (Optional) Key-value map of resource tags, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -43,12 +46,27 @@ class GetAccessEntryArgs {
 
   factory GetAccessEntryArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessEntryArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      principalArn: (map['principalArn'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      principalArn: pulumi.Input.fromValue(map['principalArn'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

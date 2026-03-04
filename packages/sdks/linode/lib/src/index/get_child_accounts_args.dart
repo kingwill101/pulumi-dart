@@ -12,20 +12,39 @@ class GetChildAccountsArgs {
 
   /// Creates a new [GetChildAccountsArgs].
   /// [filters] Optional.
-  GetChildAccountsArgs({
-    this.filters,
-  });
+  GetChildAccountsArgs({this.filters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetChildAccountsFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetChildAccountsFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetChildAccountsFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetChildAccountsFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetChildAccountsArgs.fromMap(Map<String, dynamic> map) {
     return GetChildAccountsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetChildAccountsFilter>(map['filters']!, (value) => GetChildAccountsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetChildAccountsFilter>(
+            guardedValue,
+            (value) => GetChildAccountsFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -8,16 +8,21 @@ class InstanceState {
   /// - **false**: No, the default value.
   /// - **true**: Yes.
   final pulumi.Input<bool>? autoPay;
+
   /// Whether to start the task automatically after the purchase is completed. Value:
   /// - **false**: No, the default value.
   /// - **true**: Yes.
   final pulumi.Input<bool>? autoStart;
+
   /// Specifications of ETL. The unit is compute unit (CU),1CU = 1vCPU +4GB of memory. The value range is an integer greater than or equal to 2. **NOTE:** Enter this parameter and enable ETL to clean and convert data.
   final pulumi.Input<int>? computeUnit;
+
   /// Instance creation time
   final pulumi.Input<String>? createTime;
+
   /// The number of private custom RDS instances in the PolarDB-X. The default value is **1**. **NOTE:** This parameter is required only when **source_endpoint_engine_name** is **DRDS**.
   final pulumi.Input<int>? databaseCount;
+
   /// The target database engine type.
   /// - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
   /// - **PolarDB**:PolarDB MySQL.
@@ -45,29 +50,40 @@ class InstanceState {
   /// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
   /// - This parameter or **job_id** must be passed in.
   final pulumi.Input<String>? destinationEndpointEngineName;
+
   /// The target instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
   final pulumi.Input<String>? destinationRegion;
+
   /// The ID of the subscription instance.
   final pulumi.Input<String>? dtsInstanceId;
+
   /// Assign a specified number of DU resources to DTS tasks in the DTS exclusive cluster. Valid values: **1** ~ **100**. **NOTE:** The value of this parameter must be within the range of the number of DUs available for the DTS dedicated cluster.
   final pulumi.Input<int>? du;
+
   /// Subscription billing type, Valid values: `ONLY_CONFIGURATION_FEE`: charges only configuration fees; `CONFIGURATION_FEE_AND_DATA_FEE`: charges configuration fees and data traffic fees.
   final pulumi.Input<String>? feeType;
+
   /// The type of the migration or synchronization instance.
   /// - The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.
   /// - The types of synchronization instances: **large**, **medium**, **small**, **micro**.
   /// - **NOTE:** For performance descriptions of different specifications, see [Data Migration Link Specifications](https://www.alibabacloud.com/help/en/data-transmission-service/latest/cd773b) and [Data Synchronization Link Specifications](https://www.alibabacloud.com/help/en/data-transmission-service/latest/6bce7c).
   final pulumi.Input<String>? instanceClass;
+
   /// The name of Dts instance.
   final pulumi.Input<String>? instanceName;
-  /// The ID of the task obtained by calling the **ConfigureDtsJob** operation (**DtsJobId**).> After you pass in this parameter, you do not need to pass the **source_region**, **destination_region**, **type**, **source_endpoint_engine_name**, or **destination_endpoint_engine_name** parameters. Even if the input is passed in, the configuration in **job_id** shall prevail.
+
+  /// The ID of the task obtained by calling the **ConfigureDtsJob** operation (**DtsJobId**).&gt; After you pass in this parameter, you do not need to pass the **source_region**, **destination_region**, **type**, **source_endpoint_engine_name**, or **destination_endpoint_engine_name** parameters. Even if the input is passed in, the configuration in **job_id** shall prevail.
   final pulumi.Input<String>? jobId;
+
   /// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
   final pulumi.Input<String>? paymentType;
+
   /// The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `payment_type` is `Subscription`.
   final pulumi.Input<String>? period;
+
   /// Resource Group ID.
   final pulumi.Input<String>? resourceGroupId;
+
   /// Source instance database engine type.
   /// - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
   /// - **PolarDB**:PolarDB MySQL.
@@ -95,27 +111,34 @@ class InstanceState {
   /// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
   /// - This parameter or **job_id** must be passed in.
   final pulumi.Input<String>? sourceEndpointEngineName;
+
   /// The source instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
   final pulumi.Input<String>? sourceRegion;
+
   /// Instance status.
   final pulumi.Input<String>? status;
+
   /// Synchronization topology, value:
   /// - **oneway**: one-way synchronization, the default value.
   /// - **bidirectional**: two-way synchronization.
   final pulumi.Input<String>? syncArchitecture;
+
   /// The synchronization direction. Default value: `Forward`. Valid values:
   /// - `Forward`: Data is synchronized from the source database to the destination database.
   /// - `Reverse`: Data is synchronized from the destination database to the source database.
   /// - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
   final pulumi.Input<String>? synchronizationDirection;
+
   /// The tag value corresponding to the tag key.See the following `Block Tags`.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The instance type. Valid values:
   /// - **migration**: MIGRATION.
   /// - **sync**: synchronization.
   /// - **subscribe**: SUBSCRIBE.
   /// - **NOTE:** This parameter or **job_id** must be passed in.
   final pulumi.Input<String>? type;
+
   /// Prepaid instance purchase duration.
   /// - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
   /// - When **Period** is **Year**, the values are 1, 2, 3, and 5.
@@ -137,7 +160,7 @@ class InstanceState {
   /// [feeType] Subscription billing type, Valid values: `ONLY_CONFIGURATION_FEE`: charges only configuration fees; `CONFIGURATION_FEE_AND_DATA_FEE`: charges configuration fees and data traffic fees.
   /// [instanceClass] The type of the migration or synchronization instance.
   /// [instanceName] The name of Dts instance.
-  /// [jobId] The ID of the task obtained by calling the **ConfigureDtsJob** operation (**DtsJobId**).> After you pass in this parameter, you do not need to pass the **source_region**, **destination_region**, **type**, **source_endpoint_engine_name**, or **destination_endpoint_engine_name** parameters. Even if the input is passed in, the configuration in **job_id** shall prevail.
+  /// [jobId] The ID of the task obtained by calling the **ConfigureDtsJob** operation (**DtsJobId**).&gt; After you pass in this parameter, you do not need to pass the **source_region**, **destination_region**, **type**, **source_endpoint_engine_name**, or **destination_endpoint_engine_name** parameters. Even if the input is passed in, the configuration in **job_id** shall prevail.
   /// [paymentType] The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
   /// [period] The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `payment_type` is `Subscription`.
   /// [resourceGroupId] Resource Group ID.
@@ -207,31 +230,128 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      autoPay: map['autoPay'] == null ? null : (map['autoPay']! as bool).input(),
-      autoStart: map['autoStart'] == null ? null : (map['autoStart']! as bool).input(),
-      computeUnit: map['computeUnit'] == null ? null : (map['computeUnit']! as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      databaseCount: map['databaseCount'] == null ? null : (map['databaseCount']! as int).input(),
-      destinationEndpointEngineName: map['destinationEndpointEngineName'] == null ? null : (map['destinationEndpointEngineName']! as String).input(),
-      destinationRegion: map['destinationRegion'] == null ? null : (map['destinationRegion']! as String).input(),
-      dtsInstanceId: map['dtsInstanceId'] == null ? null : (map['dtsInstanceId']! as String).input(),
-      du: map['du'] == null ? null : (map['du']! as int).input(),
-      feeType: map['feeType'] == null ? null : (map['feeType']! as String).input(),
-      instanceClass: map['instanceClass'] == null ? null : (map['instanceClass']! as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
-      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      period: map['period'] == null ? null : (map['period']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      sourceEndpointEngineName: map['sourceEndpointEngineName'] == null ? null : (map['sourceEndpointEngineName']! as String).input(),
-      sourceRegion: map['sourceRegion'] == null ? null : (map['sourceRegion']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      syncArchitecture: map['syncArchitecture'] == null ? null : (map['syncArchitecture']! as String).input(),
-      synchronizationDirection: map['synchronizationDirection'] == null ? null : (map['synchronizationDirection']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      usedTime: map['usedTime'] == null ? null : (map['usedTime']! as int).input(),
+      autoPay: (() {
+        final guardedValue = map['autoPay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      autoStart: (() {
+        final guardedValue = map['autoStart'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      computeUnit: (() {
+        final guardedValue = map['computeUnit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseCount: (() {
+        final guardedValue = map['databaseCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      destinationEndpointEngineName: (() {
+        final guardedValue = map['destinationEndpointEngineName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationRegion: (() {
+        final guardedValue = map['destinationRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dtsInstanceId: (() {
+        final guardedValue = map['dtsInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      du: (() {
+        final guardedValue = map['du'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      feeType: (() {
+        final guardedValue = map['feeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceClass: (() {
+        final guardedValue = map['instanceClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceName: (() {
+        final guardedValue = map['instanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobId: (() {
+        final guardedValue = map['jobId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceEndpointEngineName: (() {
+        final guardedValue = map['sourceEndpointEngineName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceRegion: (() {
+        final guardedValue = map['sourceRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      syncArchitecture: (() {
+        final guardedValue = map['syncArchitecture'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      synchronizationDirection: (() {
+        final guardedValue = map['synchronizationDirection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      usedTime: (() {
+        final guardedValue = map['usedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

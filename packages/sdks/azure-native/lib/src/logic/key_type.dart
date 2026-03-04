@@ -4,16 +4,15 @@ enum KeyType {
   valuePrimary("Primary"),
   valueSecondary("Secondary");
 
-  const KeyType(this.value);
-  final String value;
+  const KeyType(this.wireValue);
+  final String wireValue;
 
   static KeyType fromValue(String value) {
     for (final item in KeyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KeyType value: $value');
   }
 }
-

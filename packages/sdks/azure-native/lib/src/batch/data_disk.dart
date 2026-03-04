@@ -14,10 +14,13 @@ class DataDisk {
   ///
   /// The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
   final pulumi.Input<CachingType>? caching;
+
   /// The initial disk size in GB when creating new data disk.
   final pulumi.Input<int> diskSizeGB;
+
   /// The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun. The value must be between 0 and 63, inclusive.
   final pulumi.Input<int> lun;
+
   /// If omitted, the default is "Standard_LRS". Values are:
   ///
   /// Standard_LRS - The data disk should use standard locally redundant storage.
@@ -38,20 +41,38 @@ class DataDisk {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caching': ?pulumi.Input.mapOptionalInputValue<CachingType, String>(caching, (value) => value.value),
+      'caching': ?pulumi.Input.mapOptionalInputValue<CachingType, String>(
+        caching,
+        (value) => value.wireValue,
+      ),
       'diskSizeGB': diskSizeGB,
       'lun': lun,
-      'storageAccountType': ?pulumi.Input.mapOptionalInputValue<StorageAccountType, String>(storageAccountType, (value) => value.value),
+      'storageAccountType':
+          ?pulumi.Input.mapOptionalInputValue<StorageAccountType, String>(
+            storageAccountType,
+            (value) => value.wireValue,
+          ),
     };
   }
 
   factory DataDisk.fromMap(Map<String, dynamic> map) {
     return DataDisk(
-      caching: map['caching'] == null ? null : (CachingType.fromValue(map['caching']! as String)).input(),
-      diskSizeGB: (map['diskSizeGB'] as int).input(),
-      lun: (map['lun'] as int).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (StorageAccountType.fromValue(map['storageAccountType']! as String)).input(),
+      caching: (() {
+        final guardedValue = map['caching'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CachingType.fromValue(guardedValue as String),
+        );
+      })(),
+      diskSizeGB: pulumi.Input.fromValue(map['diskSizeGB'] as int),
+      lun: pulumi.Input.fromValue(map['lun'] as int),
+      storageAccountType: (() {
+        final guardedValue = map['storageAccountType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StorageAccountType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

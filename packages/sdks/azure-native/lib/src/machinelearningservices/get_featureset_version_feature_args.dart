@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFeaturesetVersionFeatureArgs {
   /// Specifies name of the feature.
   final pulumi.Input<String>? featureName;
+
   /// Feature set name. This is case-sensitive.
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Feature set version identifier. This is case-sensitive.
   final pulumi.Input<String> version;
+
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -44,12 +48,17 @@ class GetFeaturesetVersionFeatureArgs {
 
   factory GetFeaturesetVersionFeatureArgs.fromMap(Map<String, dynamic> map) {
     return GetFeaturesetVersionFeatureArgs(
-      featureName: map['featureName'] == null ? null : (map['featureName']! as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      version: (map['version'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      featureName: (() {
+        final guardedValue = map['featureName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      version: pulumi.Input.fromValue(map['version'] as String),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

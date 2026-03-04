@@ -4,16 +4,15 @@ enum TenantEndpointState {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const TenantEndpointState(this.value);
-  final String value;
+  const TenantEndpointState(this.wireValue);
+  final String wireValue;
 
   static TenantEndpointState fromValue(String value) {
     for (final item in TenantEndpointState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TenantEndpointState value: $value');
   }
 }
-

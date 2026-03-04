@@ -1,5 +1,3 @@
-library module_batch;
-
 export 'batch/compute_environment.dart';
 export 'batch/compute_environment_args.dart';
 export 'batch/compute_environment_compute_resources.dart';

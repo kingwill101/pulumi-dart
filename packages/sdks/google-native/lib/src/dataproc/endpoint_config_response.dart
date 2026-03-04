@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointConfigResponse {
   /// Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
   final pulumi.Input<bool> enableHttpPortAccess;
+
   /// The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
   final pulumi.Input<Map<String, String>> httpPorts;
 
@@ -26,9 +27,12 @@ class EndpointConfigResponse {
 
   factory EndpointConfigResponse.fromMap(Map<String, dynamic> map) {
     return EndpointConfigResponse(
-      enableHttpPortAccess: (map['enableHttpPortAccess'] as bool).input(),
-      httpPorts: ((map['httpPorts'] as Map).cast<String, String>()).input(),
+      enableHttpPortAccess: pulumi.Input.fromValue(
+        map['enableHttpPortAccess'] as bool,
+      ),
+      httpPorts: pulumi.Input.fromValue(
+        (map['httpPorts'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

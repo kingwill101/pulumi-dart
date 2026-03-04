@@ -10,20 +10,28 @@ import 'extended_location.dart';
 class RackArgs {
   /// The value that will be used for machines in this rack to represent the availability zones that can be referenced by Hybrid AKS Clusters for node arrangement.
   final pulumi.Input<String> availabilityZone;
+
   /// The extended location of the cluster associated with the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The free-form description of the rack location. (e.g. “DTN Datacenter, Floor 3, Isle 9, Rack 2B”)
   final pulumi.Input<String> rackLocation;
+
   /// The name of the rack.
   final pulumi.Input<String>? rackName;
+
   /// The unique identifier for the rack within Network Cloud cluster. An alternate unique alphanumeric value other than a serial number may be provided if desired.
   final pulumi.Input<String> rackSerialNumber;
+
   /// The SKU for the rack.
   final pulumi.Input<String> rackSkuId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -52,7 +60,11 @@ class RackArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availabilityZone': availabilityZone,
-      'extendedLocation': pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'extendedLocation':
+          pulumi.Input.mapInputValue<ExtendedLocation, Map<String, dynamic>>(
+            extendedLocation,
+            (value) => value.toMap(),
+          ),
       'location': ?location,
       'rackLocation': rackLocation,
       'rackName': ?rackName,
@@ -65,16 +77,39 @@ class RackArgs {
 
   factory RackArgs.fromMap(Map<String, dynamic> map) {
     return RackArgs(
-      availabilityZone: (map['availabilityZone'] as String).input(),
-      extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      rackLocation: (map['rackLocation'] as String).input(),
-      rackName: map['rackName'] == null ? null : (map['rackName']! as String).input(),
-      rackSerialNumber: (map['rackSerialNumber'] as String).input(),
-      rackSkuId: (map['rackSkuId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      availabilityZone: pulumi.Input.fromValue(
+        map['availabilityZone'] as String,
+      ),
+      extendedLocation: pulumi.Input.fromValue(
+        ExtendedLocation.fromMap(
+          (map['extendedLocation']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rackLocation: pulumi.Input.fromValue(map['rackLocation'] as String),
+      rackName: (() {
+        final guardedValue = map['rackName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rackSerialNumber: pulumi.Input.fromValue(
+        map['rackSerialNumber'] as String,
+      ),
+      rackSkuId: pulumi.Input.fromValue(map['rackSkuId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

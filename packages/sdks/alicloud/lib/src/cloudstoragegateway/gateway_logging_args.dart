@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayLoggingArgs {
   /// The ID of the Gateway.
   final pulumi.Input<String> gatewayId;
+
   /// The name of the Log Store.
   final pulumi.Input<String> slsLogstore;
+
   /// The name of the Project.
   final pulumi.Input<String> slsProject;
+
   /// The status of the resource. Valid values: `Enabled`, `Disable`.
   final pulumi.Input<String>? status;
 
@@ -39,11 +42,14 @@ class GatewayLoggingArgs {
 
   factory GatewayLoggingArgs.fromMap(Map<String, dynamic> map) {
     return GatewayLoggingArgs(
-      gatewayId: (map['gatewayId'] as String).input(),
-      slsLogstore: (map['slsLogstore'] as String).input(),
-      slsProject: (map['slsProject'] as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
+      slsLogstore: pulumi.Input.fromValue(map['slsLogstore'] as String),
+      slsProject: pulumi.Input.fromValue(map['slsProject'] as String),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

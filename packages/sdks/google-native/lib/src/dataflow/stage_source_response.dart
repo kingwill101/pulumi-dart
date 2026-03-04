@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StageSourceResponse {
   /// Dataflow service generated name for this source.
   final pulumi.Input<String> name;
+
   /// User name for the original user transform or collection with which this source is most closely associated.
   final pulumi.Input<String> originalTransformOrCollection;
+
   /// Size of the source, if measurable.
   final pulumi.Input<String> sizeBytes;
+
   /// Human-readable name for this source; may be user or system generated.
   final pulumi.Input<String> userName;
 
@@ -36,11 +39,12 @@ class StageSourceResponse {
 
   factory StageSourceResponse.fromMap(Map<String, dynamic> map) {
     return StageSourceResponse(
-      name: (map['name'] as String).input(),
-      originalTransformOrCollection: (map['originalTransformOrCollection'] as String).input(),
-      sizeBytes: (map['sizeBytes'] as String).input(),
-      userName: (map['userName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      originalTransformOrCollection: pulumi.Input.fromValue(
+        map['originalTransformOrCollection'] as String,
+      ),
+      sizeBytes: pulumi.Input.fromValue(map['sizeBytes'] as String),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
-

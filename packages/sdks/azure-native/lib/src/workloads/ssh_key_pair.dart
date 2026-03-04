@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SshKeyPair {
   /// SSH private key.
   final pulumi.Input<String>? privateKey;
+
   /// SSH public key
   final pulumi.Input<String>? publicKey;
 
   /// Creates a new [SshKeyPair].
   /// [privateKey] SSH private key.
   /// [publicKey] SSH public key
-  SshKeyPair({
-    this.privateKey,
-    this.publicKey,
-  });
+  SshKeyPair({this.privateKey, this.publicKey});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class SshKeyPair {
 
   factory SshKeyPair.fromMap(Map<String, dynamic> map) {
     return SshKeyPair(
-      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
+      privateKey: (() {
+        final guardedValue = map['privateKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicKey: (() {
+        final guardedValue = map['publicKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

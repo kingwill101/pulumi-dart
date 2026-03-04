@@ -10,16 +10,15 @@ enum Toolset {
   shell("Shell"),
   other("Other");
 
-  const Toolset(this.value);
-  final String value;
+  const Toolset(this.wireValue);
+  final String wireValue;
 
   static Toolset fromValue(String value) {
     for (final item in Toolset.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Toolset value: $value');
   }
 }
-

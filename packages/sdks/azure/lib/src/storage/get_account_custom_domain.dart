@@ -8,20 +8,15 @@ class GetAccountCustomDomain {
 
   /// Creates a new [GetAccountCustomDomain].
   /// [name] Specifies the name of the Storage Account
-  GetAccountCustomDomain({
-    required this.name,
-  });
+  GetAccountCustomDomain({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory GetAccountCustomDomain.fromMap(Map<String, dynamic> map) {
     return GetAccountCustomDomain(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

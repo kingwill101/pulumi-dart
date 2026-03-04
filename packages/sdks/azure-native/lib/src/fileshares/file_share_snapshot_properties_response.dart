@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FileShareSnapshotPropertiesResponse {
   /// The initiator of the FileShareSnapshot. This is a user-defined value.
   final pulumi.Input<String> initiatorId;
+
   /// The metadata
   final pulumi.Input<Map<String, String>>? metadata;
+
   /// The FileShareSnapshot time in UTC in string representation
   final pulumi.Input<String> snapshotTime;
 
@@ -29,12 +31,19 @@ class FileShareSnapshotPropertiesResponse {
     };
   }
 
-  factory FileShareSnapshotPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory FileShareSnapshotPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FileShareSnapshotPropertiesResponse(
-      initiatorId: (map['initiatorId'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
-      snapshotTime: (map['snapshotTime'] as String).input(),
+      initiatorId: pulumi.Input.fromValue(map['initiatorId'] as String),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      snapshotTime: pulumi.Input.fromValue(map['snapshotTime'] as String),
     );
   }
 }
-

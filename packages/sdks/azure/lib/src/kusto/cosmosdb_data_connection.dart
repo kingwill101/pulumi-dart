@@ -778,7 +778,7 @@ import 'cosmosdb_data_connection_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Kusto` - 2024-04-13
@@ -793,18 +793,25 @@ import 'cosmosdb_data_connection_state.dart';
 class CosmosdbDataConnection extends pulumi.CustomResource {
   /// The name of an existing container in the Cosmos DB database. Changing this forces a new Kusto Cosmos DB Connection to be created.
   late final pulumi.Output<String> cosmosdbContainerId;
+
   /// The name of the database in the Kusto cluster. Changing this forces a new Kusto Cosmos DB Connection to be created.
   late final pulumi.Output<String> kustoDatabaseId;
+
   /// The Azure Region where the Data Explorer should exist. Changing this forces a new Kusto Cosmos DB Connection to be created.
   late final pulumi.Output<String> location;
+
   /// The resource ID of a managed system or user-assigned identity. The identity is used to authenticate with Cosmos DB. Changing this forces a new Kusto Cosmos DB Connection to be created.
   late final pulumi.Output<String> managedIdentityId;
+
   /// The name of an existing mapping rule to use when ingesting the retrieved data. Changing this forces a new Kusto Cosmos DB Connection to be created.
   late final pulumi.Output<String?> mappingRuleName;
+
   /// The name of the data connection. Changing this forces a new Kusto Cosmos DB Connection to be created.
   late final pulumi.Output<String> name;
+
   /// If defined, the data connection retrieves Cosmos DB documents created or updated after the specified retrieval start date. Changing this forces a new Kusto Cosmos DB Connection to be created.
   late final pulumi.Output<String?> retrievalStartDate;
+
   /// The case-sensitive name of the existing target table in your cluster. Retrieved data is ingested into this table. Changing this forces a new Kusto Cosmos DB Connection to be created.
   late final pulumi.Output<String> tableName;
 
@@ -817,19 +824,19 @@ class CosmosdbDataConnection extends pulumi.CustomResource {
     CosmosdbDataConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:kusto/cosmosdbDataConnection:CosmosdbDataConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cosmosdbContainerId = registerOutput<String>('cosmosdbContainerId');
-    this.kustoDatabaseId = registerOutput<String>('kustoDatabaseId');
-    this.location = registerOutput<String>('location');
-    this.managedIdentityId = registerOutput<String>('managedIdentityId');
-    this.mappingRuleName = registerOutput<String?>('mappingRuleName');
+         'azure:kusto/cosmosdbDataConnection:CosmosdbDataConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cosmosdbContainerId = registerOutput<String>('cosmosdbContainerId');
+    kustoDatabaseId = registerOutput<String>('kustoDatabaseId');
+    location = registerOutput<String>('location');
+    managedIdentityId = registerOutput<String>('managedIdentityId');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
     this.name = registerOutput<String>('name');
-    this.retrievalStartDate = registerOutput<String?>('retrievalStartDate');
-    this.tableName = registerOutput<String>('tableName');
+    retrievalStartDate = registerOutput<String?>('retrievalStartDate');
+    tableName = registerOutput<String>('tableName');
   }
 
   /// Gets an existing [CosmosdbDataConnection] resource's state with the given [name] and [id].
@@ -850,18 +857,18 @@ class CosmosdbDataConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:kusto/cosmosdbDataConnection:CosmosdbDataConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cosmosdbContainerId = registerOutput<String>('cosmosdbContainerId');
-    this.kustoDatabaseId = registerOutput<String>('kustoDatabaseId');
-    this.location = registerOutput<String>('location');
-    this.managedIdentityId = registerOutput<String>('managedIdentityId');
-    this.mappingRuleName = registerOutput<String?>('mappingRuleName');
+         'azure:kusto/cosmosdbDataConnection:CosmosdbDataConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cosmosdbContainerId = registerOutput<String>('cosmosdbContainerId');
+    kustoDatabaseId = registerOutput<String>('kustoDatabaseId');
+    location = registerOutput<String>('location');
+    managedIdentityId = registerOutput<String>('managedIdentityId');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
     this.name = registerOutput<String>('name');
-    this.retrievalStartDate = registerOutput<String?>('retrievalStartDate');
-    this.tableName = registerOutput<String>('tableName');
+    retrievalStartDate = registerOutput<String?>('retrievalStartDate');
+    tableName = registerOutput<String>('tableName');
   }
 }

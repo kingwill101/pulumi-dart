@@ -4,16 +4,15 @@ enum RouterNatLogConfigFilter {
   errorsOnly("ERRORS_ONLY"),
   translationsOnly("TRANSLATIONS_ONLY");
 
-  const RouterNatLogConfigFilter(this.value);
-  final String value;
+  const RouterNatLogConfigFilter(this.wireValue);
+  final String wireValue;
 
   static RouterNatLogConfigFilter fromValue(String value) {
     for (final item in RouterNatLogConfigFilter.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RouterNatLogConfigFilter value: $value');
   }
 }
-

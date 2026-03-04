@@ -3,16 +3,17 @@ enum VirtualMachinePlacementHintPodAffinityScope {
   valueRack("Rack"),
   valueMachine("Machine");
 
-  const VirtualMachinePlacementHintPodAffinityScope(this.value);
-  final String value;
+  const VirtualMachinePlacementHintPodAffinityScope(this.wireValue);
+  final String wireValue;
 
   static VirtualMachinePlacementHintPodAffinityScope fromValue(String value) {
     for (final item in VirtualMachinePlacementHintPodAffinityScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VirtualMachinePlacementHintPodAffinityScope value: $value');
+    throw ArgumentError(
+      'Unknown VirtualMachinePlacementHintPodAffinityScope value: $value',
+    );
   }
 }
-

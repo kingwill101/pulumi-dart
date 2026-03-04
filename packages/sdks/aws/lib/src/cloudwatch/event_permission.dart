@@ -5,9 +5,9 @@ import 'event_permission_state.dart';
 
 /// Provides a resource to create an EventBridge permission to support cross-account events in the current account default event bus.
 ///
-/// > **Note:** EventBridge was formerly known as CloudWatch Events. The functionality is identical.
+/// &gt; **Note:** EventBridge was formerly known as CloudWatch Events. The functionality is identical.
 ///
-/// > **Note:** The EventBridge bus policy resource  (`aws.cloudwatch.EventBusPolicy`) is incompatible with the EventBridge permission resource (`aws.cloudwatch.EventPermission`) and will overwrite permissions.
+/// &gt; **Note:** The EventBridge bus policy resource  (`aws.cloudwatch.EventBusPolicy`) is incompatible with the EventBridge permission resource (`aws.cloudwatch.EventPermission`) and will overwrite permissions.
 ///
 /// ## Example Usage
 ///
@@ -246,15 +246,20 @@ import 'event_permission_state.dart';
 class EventPermission extends pulumi.CustomResource {
   /// The action that you are enabling the other account to perform. Defaults to `events:PutEvents`.
   late final pulumi.Output<String?> action;
+
   /// Configuration block to limit the event bus permissions you are granting to only accounts that fulfill the condition. Specified below.
   late final pulumi.Output<EventPermissionCondition?> condition;
+
   /// The name of the event bus to set the permissions on.
   /// If you omit this, the permissions are set on the `default` event bus.
   late final pulumi.Output<String?> eventBusName;
+
   /// The 12-digit AWS account ID that you are permitting to put events to your default event bus. Specify `*` to permit any account to put events to your default event bus, optionally limited by `condition`.
   late final pulumi.Output<String> principal;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// An identifier string for the external account that you are granting permissions to.
   late final pulumi.Output<String> statementId;
 
@@ -267,17 +272,17 @@ class EventPermission extends pulumi.CustomResource {
     EventPermissionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudwatch/eventPermission:EventPermission',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String?>('action');
-    this.condition = registerOutput<EventPermissionCondition?>('condition');
-    this.eventBusName = registerOutput<String?>('eventBusName');
-    this.principal = registerOutput<String>('principal');
-    this.region = registerOutput<String>('region');
-    this.statementId = registerOutput<String>('statementId');
+         'aws:cloudwatch/eventPermission:EventPermission',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String?>('action');
+    condition = registerOutput<EventPermissionCondition?>('condition');
+    eventBusName = registerOutput<String?>('eventBusName');
+    principal = registerOutput<String>('principal');
+    region = registerOutput<String>('region');
+    statementId = registerOutput<String>('statementId');
   }
 
   /// Gets an existing [EventPermission] resource's state with the given [name] and [id].
@@ -298,16 +303,16 @@ class EventPermission extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudwatch/eventPermission:EventPermission',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String?>('action');
-    this.condition = registerOutput<EventPermissionCondition?>('condition');
-    this.eventBusName = registerOutput<String?>('eventBusName');
-    this.principal = registerOutput<String>('principal');
-    this.region = registerOutput<String>('region');
-    this.statementId = registerOutput<String>('statementId');
+         'aws:cloudwatch/eventPermission:EventPermission',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String?>('action');
+    condition = registerOutput<EventPermissionCondition?>('condition');
+    eventBusName = registerOutput<String?>('eventBusName');
+    principal = registerOutput<String>('principal');
+    region = registerOutput<String>('region');
+    statementId = registerOutput<String>('statementId');
   }
 }

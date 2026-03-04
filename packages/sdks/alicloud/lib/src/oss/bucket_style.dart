@@ -8,7 +8,7 @@ import 'bucket_style_state.dart';
 ///
 /// For information about OSS Bucket Style and how to use it, see [What is Bucket Style](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutStyle).
 ///
-/// > **NOTE:** Available since v1.245.0.
+/// &gt; **NOTE:** Available since v1.245.0.
 ///
 /// ## Example Usage
 ///
@@ -225,12 +225,16 @@ import 'bucket_style_state.dart';
 class BucketStyle extends pulumi.CustomResource {
   /// Storage space to which the picture style belongs
   late final pulumi.Output<String> bucket;
+
   /// Style category, valid values: image, document, video.
   late final pulumi.Output<String> category;
+
   /// The Image style content can contain single or multiple image processing parameters.
   late final pulumi.Output<String> content;
+
   /// Image Style Creation Time
   late final pulumi.Output<String> createTime;
+
   /// Image Style Name
   late final pulumi.Output<String> styleName;
 
@@ -243,16 +247,16 @@ class BucketStyle extends pulumi.CustomResource {
     BucketStyleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketStyle:BucketStyle',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.category = registerOutput<String>('category');
-    this.content = registerOutput<String>('content');
-    this.createTime = registerOutput<String>('createTime');
-    this.styleName = registerOutput<String>('styleName');
+         'alicloud:oss/bucketStyle:BucketStyle',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    category = registerOutput<String>('category');
+    content = registerOutput<String>('content');
+    createTime = registerOutput<String>('createTime');
+    styleName = registerOutput<String>('styleName');
   }
 
   /// Gets an existing [BucketStyle] resource's state with the given [name] and [id].
@@ -273,15 +277,15 @@ class BucketStyle extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:oss/bucketStyle:BucketStyle',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bucket = registerOutput<String>('bucket');
-    this.category = registerOutput<String>('category');
-    this.content = registerOutput<String>('content');
-    this.createTime = registerOutput<String>('createTime');
-    this.styleName = registerOutput<String>('styleName');
+         'alicloud:oss/bucketStyle:BucketStyle',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bucket = registerOutput<String>('bucket');
+    category = registerOutput<String>('category');
+    content = registerOutput<String>('content');
+    createTime = registerOutput<String>('createTime');
+    styleName = registerOutput<String>('styleName');
   }
 }

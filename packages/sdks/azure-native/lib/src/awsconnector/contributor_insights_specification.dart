@@ -9,20 +9,19 @@ class ContributorInsightsSpecification {
 
   /// Creates a new [ContributorInsightsSpecification].
   /// [enabled] Indicates whether CloudWatch Contributor Insights are to be enabled (true) or disabled (false).
-  ContributorInsightsSpecification({
-    this.enabled,
-  });
+  ContributorInsightsSpecification({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory ContributorInsightsSpecification.fromMap(Map<String, dynamic> map) {
     return ContributorInsightsSpecification(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

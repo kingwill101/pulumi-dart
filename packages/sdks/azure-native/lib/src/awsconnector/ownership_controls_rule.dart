@@ -9,20 +9,19 @@ class OwnershipControlsRule {
 
   /// Creates a new [OwnershipControlsRule].
   /// [objectOwnership] Specifies an object ownership rule.
-  OwnershipControlsRule({
-    this.objectOwnership,
-  });
+  OwnershipControlsRule({this.objectOwnership});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'objectOwnership': ?objectOwnership,
-    };
+    return <String, dynamic>{'objectOwnership': ?objectOwnership};
   }
 
   factory OwnershipControlsRule.fromMap(Map<String, dynamic> map) {
     return OwnershipControlsRule(
-      objectOwnership: map['objectOwnership'] == null ? null : (map['objectOwnership']! as String).input(),
+      objectOwnership: (() {
+        final guardedValue = map['objectOwnership'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier {
   /// The schema name.
   final pulumi.Input<String> schema;
+
   /// The table name.
   final pulumi.Input<String> table;
 
@@ -17,17 +18,15 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'schema': schema,
-      'table': table,
-    };
+    return <String, dynamic>{'schema': schema, 'table': table};
   }
 
-  factory StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier.fromMap(Map<String, dynamic> map) {
+  factory StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier(
-      schema: (map['schema'] as String).input(),
-      table: (map['table'] as String).input(),
+      schema: pulumi.Input.fromValue(map['schema'] as String),
+      table: pulumi.Input.fromValue(map['table'] as String),
     );
   }
 }
-

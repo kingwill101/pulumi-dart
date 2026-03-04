@@ -7,29 +7,62 @@ import 'get_interface_vpc_ipv4_range.dart';
 class GetInterfaceVpcIpv4 {
   /// IPv4 addresses assigned to this VPC interface.
   final pulumi.Input<List<GetInterfaceVpcIpv4Address>> addresses;
+
   /// IPv4 ranges assigned to this VPC interface.
   final pulumi.Input<List<GetInterfaceVpcIpv4Range>> ranges;
 
   /// Creates a new [GetInterfaceVpcIpv4].
   /// [addresses] IPv4 addresses assigned to this VPC interface.
   /// [ranges] IPv4 ranges assigned to this VPC interface.
-  GetInterfaceVpcIpv4({
-    required this.addresses,
-    required this.ranges,
-  });
+  GetInterfaceVpcIpv4({required this.addresses, required this.ranges});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addresses': pulumi.Input.mapInputValue<List<GetInterfaceVpcIpv4Address>, List<Map<String, dynamic>>>(addresses, (value) => pulumi.Input.encodeList<GetInterfaceVpcIpv4Address, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'ranges': pulumi.Input.mapInputValue<List<GetInterfaceVpcIpv4Range>, List<Map<String, dynamic>>>(ranges, (value) => pulumi.Input.encodeList<GetInterfaceVpcIpv4Range, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'addresses':
+          pulumi.Input.mapInputValue<
+            List<GetInterfaceVpcIpv4Address>,
+            List<Map<String, dynamic>>
+          >(
+            addresses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetInterfaceVpcIpv4Address,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'ranges':
+          pulumi.Input.mapInputValue<
+            List<GetInterfaceVpcIpv4Range>,
+            List<Map<String, dynamic>>
+          >(
+            ranges,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetInterfaceVpcIpv4Range,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetInterfaceVpcIpv4.fromMap(Map<String, dynamic> map) {
     return GetInterfaceVpcIpv4(
-      addresses: (pulumi.Input.decodeList<GetInterfaceVpcIpv4Address>(map['addresses'], (value) => GetInterfaceVpcIpv4Address.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ranges: (pulumi.Input.decodeList<GetInterfaceVpcIpv4Range>(map['ranges'], (value) => GetInterfaceVpcIpv4Range.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      addresses: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetInterfaceVpcIpv4Address>(
+          map['addresses']!,
+          (value) => GetInterfaceVpcIpv4Address.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      ranges: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetInterfaceVpcIpv4Range>(
+          map['ranges']!,
+          (value) => GetInterfaceVpcIpv4Range.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

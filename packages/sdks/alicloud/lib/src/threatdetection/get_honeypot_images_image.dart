@@ -5,22 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHoneypotImagesImage {
   /// The name of the honeypot image display.
   final pulumi.Input<String> honeypotImageDisplayName;
+
   /// The image ID of the honeypot.
   final pulumi.Input<String> honeypotImageId;
+
   /// Honeypot mirror name.
   final pulumi.Input<String> honeypotImageName;
+
   /// Honeypot mirror type.
   final pulumi.Input<String> honeypotImageType;
+
   /// Honeypot Mirror version.
   final pulumi.Input<String> honeypotImageVersion;
+
   /// The image ID of the honeypot.The value is the same as `honeypot_image_id`.
   final pulumi.Input<String> id;
+
   /// Ports supported by honeypots. In JSON format. Contains the following fields:-**log_type**: log type-**proto**: Support Protocol-**description**: description-**ports**: supports Port collection-**port_str**: supports port strings-**type**: type
   final pulumi.Input<String> multiports;
+
   /// Honeypot-supported protocols.
   final pulumi.Input<String> proto;
+
   /// Honeypot service port.
   final pulumi.Input<String> servicePort;
+
   /// Honeypot configuration parameter template.
   final pulumi.Input<String> template;
 
@@ -65,17 +74,24 @@ class GetHoneypotImagesImage {
 
   factory GetHoneypotImagesImage.fromMap(Map<String, dynamic> map) {
     return GetHoneypotImagesImage(
-      honeypotImageDisplayName: (map['honeypotImageDisplayName'] as String).input(),
-      honeypotImageId: (map['honeypotImageId'] as String).input(),
-      honeypotImageName: (map['honeypotImageName'] as String).input(),
-      honeypotImageType: (map['honeypotImageType'] as String).input(),
-      honeypotImageVersion: (map['honeypotImageVersion'] as String).input(),
-      id: (map['id'] as String).input(),
-      multiports: (map['multiports'] as String).input(),
-      proto: (map['proto'] as String).input(),
-      servicePort: (map['servicePort'] as String).input(),
-      template: (map['template'] as String).input(),
+      honeypotImageDisplayName: pulumi.Input.fromValue(
+        map['honeypotImageDisplayName'] as String,
+      ),
+      honeypotImageId: pulumi.Input.fromValue(map['honeypotImageId'] as String),
+      honeypotImageName: pulumi.Input.fromValue(
+        map['honeypotImageName'] as String,
+      ),
+      honeypotImageType: pulumi.Input.fromValue(
+        map['honeypotImageType'] as String,
+      ),
+      honeypotImageVersion: pulumi.Input.fromValue(
+        map['honeypotImageVersion'] as String,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      multiports: pulumi.Input.fromValue(map['multiports'] as String),
+      proto: pulumi.Input.fromValue(map['proto'] as String),
+      servicePort: pulumi.Input.fromValue(map['servicePort'] as String),
+      template: pulumi.Input.fromValue(map['template'] as String),
     );
   }
 }
-

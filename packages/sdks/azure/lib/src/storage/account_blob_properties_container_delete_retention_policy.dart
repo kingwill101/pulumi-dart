@@ -8,20 +8,21 @@ class AccountBlobPropertiesContainerDeleteRetentionPolicy {
 
   /// Creates a new [AccountBlobPropertiesContainerDeleteRetentionPolicy].
   /// [days] Specifies the number of days that the container should be retained, between `1` and `365` days. Defaults to `7`.
-  AccountBlobPropertiesContainerDeleteRetentionPolicy({
-    this.days,
-  });
+  AccountBlobPropertiesContainerDeleteRetentionPolicy({this.days});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'days': ?days,
-    };
+    return <String, dynamic>{'days': ?days};
   }
 
-  factory AccountBlobPropertiesContainerDeleteRetentionPolicy.fromMap(Map<String, dynamic> map) {
+  factory AccountBlobPropertiesContainerDeleteRetentionPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccountBlobPropertiesContainerDeleteRetentionPolicy(
-      days: map['days'] == null ? null : (map['days']! as int).input(),
+      days: (() {
+        final guardedValue = map['days'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

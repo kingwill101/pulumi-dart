@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterPlacementGroupConfig {
   /// Role of the instance in the cluster. Valid Values: `MASTER`, `CORE`, `TASK`.
   final pulumi.Input<String> instanceRole;
+
   /// EC2 Placement Group strategy associated with instance role. Valid Values: `SPREAD`, `PARTITION`, `CLUSTER`, `NONE`.
   final pulumi.Input<String>? placementStrategy;
 
@@ -25,9 +26,12 @@ class ClusterPlacementGroupConfig {
 
   factory ClusterPlacementGroupConfig.fromMap(Map<String, dynamic> map) {
     return ClusterPlacementGroupConfig(
-      instanceRole: (map['instanceRole'] as String).input(),
-      placementStrategy: map['placementStrategy'] == null ? null : ((map['placementStrategy'] as String).input()).input(),
+      instanceRole: pulumi.Input.fromValue(map['instanceRole'] as String),
+      placementStrategy: (() {
+        final guardedValue = map['placementStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

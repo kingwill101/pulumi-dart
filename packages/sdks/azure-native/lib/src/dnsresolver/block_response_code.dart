@@ -2,16 +2,15 @@
 enum BlockResponseCode {
   valueSERVFAIL("SERVFAIL");
 
-  const BlockResponseCode(this.value);
-  final String value;
+  const BlockResponseCode(this.wireValue);
+  final String wireValue;
 
   static BlockResponseCode fromValue(String value) {
     for (final item in BlockResponseCode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BlockResponseCode value: $value');
   }
 }
-

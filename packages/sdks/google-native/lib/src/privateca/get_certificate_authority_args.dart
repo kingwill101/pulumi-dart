@@ -35,11 +35,16 @@ class GetCertificateAuthorityArgs {
 
   factory GetCertificateAuthorityArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateAuthorityArgs(
-      caPoolId: (map['caPoolId'] as String).input(),
-      certificateAuthorityId: (map['certificateAuthorityId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      caPoolId: pulumi.Input.fromValue(map['caPoolId'] as String),
+      certificateAuthorityId: pulumi.Input.fromValue(
+        map['certificateAuthorityId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

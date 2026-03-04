@@ -4,16 +4,15 @@ enum InstanceConfigNetworkConfig {
   singleVlan("SINGLE_VLAN"),
   multiVlan("MULTI_VLAN");
 
-  const InstanceConfigNetworkConfig(this.value);
-  final String value;
+  const InstanceConfigNetworkConfig(this.wireValue);
+  final String wireValue;
 
   static InstanceConfigNetworkConfig fromValue(String value) {
     for (final item in InstanceConfigNetworkConfig.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceConfigNetworkConfig value: $value');
   }
 }
-

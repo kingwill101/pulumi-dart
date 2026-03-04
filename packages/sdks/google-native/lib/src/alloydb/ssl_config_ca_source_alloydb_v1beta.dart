@@ -3,16 +3,15 @@ enum SslConfigCaSourceAlloydbV1beta {
   caSourceUnspecified("CA_SOURCE_UNSPECIFIED"),
   caSourceManaged("CA_SOURCE_MANAGED");
 
-  const SslConfigCaSourceAlloydbV1beta(this.value);
-  final String value;
+  const SslConfigCaSourceAlloydbV1beta(this.wireValue);
+  final String wireValue;
 
   static SslConfigCaSourceAlloydbV1beta fromValue(String value) {
     for (final item in SslConfigCaSourceAlloydbV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SslConfigCaSourceAlloydbV1beta value: $value');
   }
 }
-

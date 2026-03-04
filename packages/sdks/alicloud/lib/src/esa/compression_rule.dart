@@ -8,7 +8,7 @@ import 'compression_rule_state.dart';
 ///
 /// For information about ESA Compression Rule and how to use it, see [What is Compression Rule](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateCompressionRule).
 ///
-/// > **NOTE:** Available since v1.244.0.
+/// &gt; **NOTE:** Available since v1.244.0.
 ///
 /// ## Example Usage
 ///
@@ -229,24 +229,33 @@ import 'compression_rule_state.dart';
 class CompressionRule extends pulumi.CustomResource {
   /// Brotli compression. Value range:
   late final pulumi.Output<String?> brotli;
+
   /// Config Id
   late final pulumi.Output<int> configId;
+
   /// Gzip compression. Value range:
   late final pulumi.Output<String?> gzip;
+
   /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
   /// - Match all incoming requests: value set to true
   /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
   late final pulumi.Output<String?> rule;
+
   /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   late final pulumi.Output<String?> ruleEnable;
+
   /// Rule name. When adding global configuration, this parameter does not need to be set.
   late final pulumi.Output<String?> ruleName;
+
   /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
   late final pulumi.Output<int> sequence;
+
   /// The site ID, which can be obtained by calling the ListSites API.
   late final pulumi.Output<String> siteId;
+
   /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   late final pulumi.Output<int?> siteVersion;
+
   /// Zstd compression. Value range:
   late final pulumi.Output<String?> zstd;
 
@@ -259,21 +268,21 @@ class CompressionRule extends pulumi.CustomResource {
     CompressionRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/compressionRule:CompressionRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.brotli = registerOutput<String?>('brotli');
-    this.configId = registerOutput<int>('configId');
-    this.gzip = registerOutput<String?>('gzip');
-    this.rule = registerOutput<String?>('rule');
-    this.ruleEnable = registerOutput<String?>('ruleEnable');
-    this.ruleName = registerOutput<String?>('ruleName');
-    this.sequence = registerOutput<int>('sequence');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteVersion = registerOutput<int?>('siteVersion');
-    this.zstd = registerOutput<String?>('zstd');
+         'alicloud:esa/compressionRule:CompressionRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    brotli = registerOutput<String?>('brotli');
+    configId = registerOutput<int>('configId');
+    gzip = registerOutput<String?>('gzip');
+    rule = registerOutput<String?>('rule');
+    ruleEnable = registerOutput<String?>('ruleEnable');
+    ruleName = registerOutput<String?>('ruleName');
+    sequence = registerOutput<int>('sequence');
+    siteId = registerOutput<String>('siteId');
+    siteVersion = registerOutput<int?>('siteVersion');
+    zstd = registerOutput<String?>('zstd');
   }
 
   /// Gets an existing [CompressionRule] resource's state with the given [name] and [id].
@@ -294,20 +303,20 @@ class CompressionRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/compressionRule:CompressionRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.brotli = registerOutput<String?>('brotli');
-    this.configId = registerOutput<int>('configId');
-    this.gzip = registerOutput<String?>('gzip');
-    this.rule = registerOutput<String?>('rule');
-    this.ruleEnable = registerOutput<String?>('ruleEnable');
-    this.ruleName = registerOutput<String?>('ruleName');
-    this.sequence = registerOutput<int>('sequence');
-    this.siteId = registerOutput<String>('siteId');
-    this.siteVersion = registerOutput<int?>('siteVersion');
-    this.zstd = registerOutput<String?>('zstd');
+         'alicloud:esa/compressionRule:CompressionRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    brotli = registerOutput<String?>('brotli');
+    configId = registerOutput<int>('configId');
+    gzip = registerOutput<String?>('gzip');
+    rule = registerOutput<String?>('rule');
+    ruleEnable = registerOutput<String?>('ruleEnable');
+    ruleName = registerOutput<String?>('ruleName');
+    sequence = registerOutput<int>('sequence');
+    siteId = registerOutput<String>('siteId');
+    siteVersion = registerOutput<int?>('siteVersion');
+    zstd = registerOutput<String?>('zstd');
   }
 }

@@ -3,16 +3,15 @@ enum IntegrationRuntimeEdition {
   valueStandard("Standard"),
   valueEnterprise("Enterprise");
 
-  const IntegrationRuntimeEdition(this.value);
-  final String value;
+  const IntegrationRuntimeEdition(this.wireValue);
+  final String wireValue;
 
   static IntegrationRuntimeEdition fromValue(String value) {
     for (final item in IntegrationRuntimeEdition.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IntegrationRuntimeEdition value: $value');
   }
 }
-

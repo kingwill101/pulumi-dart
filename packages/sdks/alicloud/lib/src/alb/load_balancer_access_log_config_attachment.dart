@@ -8,7 +8,7 @@ import 'load_balancer_access_log_config_attachment_state.dart';
 ///
 /// For information about Application Load Balancer (ALB) Load Balancer Access Log Config Attachment and how to use it, see [What is Load Balancer Access Log Config Attachment](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-enableloadbalanceraccesslog).
 ///
-/// > **NOTE:** Available since v1.241.0.
+/// &gt; **NOTE:** Available since v1.241.0.
 ///
 /// ## Example Usage
 ///
@@ -626,10 +626,13 @@ import 'load_balancer_access_log_config_attachment_state.dart';
 class LoadBalancerAccessLogConfigAttachment extends pulumi.CustomResource {
   /// The creation time of the resource
   late final pulumi.Output<String> createTime;
+
   /// The ID of the load balancing instance.
   late final pulumi.Output<String> loadBalancerId;
+
   /// The log items shipped by the access log.
   late final pulumi.Output<String> logProject;
+
   /// Logstore for log delivery.
   late final pulumi.Output<String> logStore;
 
@@ -642,15 +645,15 @@ class LoadBalancerAccessLogConfigAttachment extends pulumi.CustomResource {
     LoadBalancerAccessLogConfigAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:alb/loadBalancerAccessLogConfigAttachment:LoadBalancerAccessLogConfigAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.logProject = registerOutput<String>('logProject');
-    this.logStore = registerOutput<String>('logStore');
+         'alicloud:alb/loadBalancerAccessLogConfigAttachment:LoadBalancerAccessLogConfigAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    logProject = registerOutput<String>('logProject');
+    logStore = registerOutput<String>('logStore');
   }
 
   /// Gets an existing [LoadBalancerAccessLogConfigAttachment] resource's state with the given [name] and [id].
@@ -671,14 +674,14 @@ class LoadBalancerAccessLogConfigAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:alb/loadBalancerAccessLogConfigAttachment:LoadBalancerAccessLogConfigAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.logProject = registerOutput<String>('logProject');
-    this.logStore = registerOutput<String>('logStore');
+         'alicloud:alb/loadBalancerAccessLogConfigAttachment:LoadBalancerAccessLogConfigAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    logProject = registerOutput<String>('logProject');
+    logStore = registerOutput<String>('logStore');
   }
 }

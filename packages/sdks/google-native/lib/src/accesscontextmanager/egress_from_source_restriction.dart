@@ -4,16 +4,15 @@ enum EgressFromSourceRestriction {
   sourceRestrictionEnabled("SOURCE_RESTRICTION_ENABLED"),
   sourceRestrictionDisabled("SOURCE_RESTRICTION_DISABLED");
 
-  const EgressFromSourceRestriction(this.value);
-  final String value;
+  const EgressFromSourceRestriction(this.wireValue);
+  final String wireValue;
 
   static EgressFromSourceRestriction fromValue(String value) {
     for (final item in EgressFromSourceRestriction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EgressFromSourceRestriction value: $value');
   }
 }
-

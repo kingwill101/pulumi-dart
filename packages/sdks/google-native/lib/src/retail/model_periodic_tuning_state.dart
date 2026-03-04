@@ -5,16 +5,15 @@ enum ModelPeriodicTuningState {
   allTuningDisabled("ALL_TUNING_DISABLED"),
   periodicTuningEnabled("PERIODIC_TUNING_ENABLED");
 
-  const ModelPeriodicTuningState(this.value);
-  final String value;
+  const ModelPeriodicTuningState(this.wireValue);
+  final String wireValue;
 
   static ModelPeriodicTuningState fromValue(String value) {
     for (final item in ModelPeriodicTuningState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ModelPeriodicTuningState value: $value');
   }
 }
-

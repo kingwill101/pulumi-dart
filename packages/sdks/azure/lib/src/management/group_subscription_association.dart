@@ -4,7 +4,7 @@ import 'group_subscription_association_state.dart';
 
 /// Manages a Management Group Subscription Association.
 ///
-/// !> **Note:** When using this resource, configuring `subscription_ids` on the `azure.management.Group` resource is not supported.
+/// !&gt; **Note:** When using this resource, configuring `subscription_ids` on the `azure.management.Group` resource is not supported.
 ///
 /// ## Example Usage
 ///
@@ -159,7 +159,7 @@ import 'group_subscription_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Management` - 2020-05-01
@@ -174,6 +174,7 @@ import 'group_subscription_association_state.dart';
 class GroupSubscriptionAssociation extends pulumi.CustomResource {
   /// The ID of the Management Group to associate the Subscription with. Changing this forces a new Management to be created.
   late final pulumi.Output<String> managementGroupId;
+
   /// The ID of the Subscription to be associated with the Management Group. Changing this forces a new Management to be created.
   late final pulumi.Output<String> subscriptionId;
 
@@ -186,13 +187,13 @@ class GroupSubscriptionAssociation extends pulumi.CustomResource {
     GroupSubscriptionAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:management/groupSubscriptionAssociation:GroupSubscriptionAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.managementGroupId = registerOutput<String>('managementGroupId');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
+         'azure:management/groupSubscriptionAssociation:GroupSubscriptionAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    managementGroupId = registerOutput<String>('managementGroupId');
+    subscriptionId = registerOutput<String>('subscriptionId');
   }
 
   /// Gets an existing [GroupSubscriptionAssociation] resource's state with the given [name] and [id].
@@ -213,12 +214,12 @@ class GroupSubscriptionAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:management/groupSubscriptionAssociation:GroupSubscriptionAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.managementGroupId = registerOutput<String>('managementGroupId');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
+         'azure:management/groupSubscriptionAssociation:GroupSubscriptionAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    managementGroupId = registerOutput<String>('managementGroupId');
+    subscriptionId = registerOutput<String>('subscriptionId');
   }
 }

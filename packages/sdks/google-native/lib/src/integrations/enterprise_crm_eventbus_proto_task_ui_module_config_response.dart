@@ -14,15 +14,14 @@ class EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'moduleId': moduleId,
-    };
+    return <String, dynamic>{'moduleId': moduleId};
   }
 
-  factory EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse(
-      moduleId: (map['moduleId'] as String).input(),
+      moduleId: pulumi.Input.fromValue(map['moduleId'] as String),
     );
   }
 }
-

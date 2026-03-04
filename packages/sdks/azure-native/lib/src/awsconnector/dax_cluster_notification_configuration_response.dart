@@ -4,14 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of NotificationConfiguration
 class DaxClusterNotificationConfigurationResponse {
-  /// <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
+  /// &lt;p&gt;The Amazon Resource Name (ARN) that identifies the topic. &lt;/p&gt;
   final pulumi.Input<String>? topicArn;
-  /// <p>The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.</p>
+
+  /// &lt;p&gt;The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.&lt;/p&gt;
   final pulumi.Input<String>? topicStatus;
 
   /// Creates a new [DaxClusterNotificationConfigurationResponse].
-  /// [topicArn] <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
-  /// [topicStatus] <p>The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.</p>
+  /// [topicArn] &lt;p&gt;The Amazon Resource Name (ARN) that identifies the topic. &lt;/p&gt;
+  /// [topicStatus] &lt;p&gt;The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.&lt;/p&gt;
   DaxClusterNotificationConfigurationResponse({
     this.topicArn,
     this.topicStatus,
@@ -24,11 +25,20 @@ class DaxClusterNotificationConfigurationResponse {
     };
   }
 
-  factory DaxClusterNotificationConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory DaxClusterNotificationConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DaxClusterNotificationConfigurationResponse(
-      topicArn: map['topicArn'] == null ? null : (map['topicArn']! as String).input(),
-      topicStatus: map['topicStatus'] == null ? null : (map['topicStatus']! as String).input(),
+      topicArn: (() {
+        final guardedValue = map['topicArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topicStatus: (() {
+        final guardedValue = map['topicStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

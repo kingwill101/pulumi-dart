@@ -8,6 +8,7 @@ class RestorePlanRestoreConfigVolumeDataRestorePolicyBinding {
   /// for more information on each policy option.
   /// Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
   final pulumi.Input<String> policy;
+
   /// The volume type, as determined by the PVC's
   /// bound PV, to apply the policy to.
   /// Possible values are: `GCE_PERSISTENT_DISK`.
@@ -22,17 +23,15 @@ class RestorePlanRestoreConfigVolumeDataRestorePolicyBinding {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'policy': policy,
-      'volumeType': volumeType,
-    };
+    return <String, dynamic>{'policy': policy, 'volumeType': volumeType};
   }
 
-  factory RestorePlanRestoreConfigVolumeDataRestorePolicyBinding.fromMap(Map<String, dynamic> map) {
+  factory RestorePlanRestoreConfigVolumeDataRestorePolicyBinding.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestorePlanRestoreConfigVolumeDataRestorePolicyBinding(
-      policy: (map['policy'] as String).input(),
-      volumeType: (map['volumeType'] as String).input(),
+      policy: pulumi.Input.fromValue(map['policy'] as String),
+      volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }
 }
-

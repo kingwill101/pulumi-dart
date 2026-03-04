@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageEventOperationState {
   /// The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
   final pulumi.Input<String>? conditions;
+
   /// The keyword of the alert item.
   final pulumi.Input<String>? eventKey;
+
   /// The name of the alert item.
   final pulumi.Input<String>? eventName;
+
   /// The alert type.
   final pulumi.Input<String>? eventType;
+
   /// The remarks.
   final pulumi.Input<String>? note;
+
   /// The operation code.
   final pulumi.Input<String>? operationCode;
+
   /// The application scope of the rule.
   final pulumi.Input<String>? scenarios;
+
   /// The source of the whitelist. Valid values:
   final pulumi.Input<String>? source;
 
@@ -56,15 +63,46 @@ class ImageEventOperationState {
 
   factory ImageEventOperationState.fromMap(Map<String, dynamic> map) {
     return ImageEventOperationState(
-      conditions: map['conditions'] == null ? null : (map['conditions']! as String).input(),
-      eventKey: map['eventKey'] == null ? null : (map['eventKey']! as String).input(),
-      eventName: map['eventName'] == null ? null : (map['eventName']! as String).input(),
-      eventType: map['eventType'] == null ? null : (map['eventType']! as String).input(),
-      note: map['note'] == null ? null : (map['note']! as String).input(),
-      operationCode: map['operationCode'] == null ? null : (map['operationCode']! as String).input(),
-      scenarios: map['scenarios'] == null ? null : (map['scenarios']! as String).input(),
-      source: map['source'] == null ? null : (map['source']! as String).input(),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventKey: (() {
+        final guardedValue = map['eventKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventName: (() {
+        final guardedValue = map['eventName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      eventType: (() {
+        final guardedValue = map['eventType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      note: (() {
+        final guardedValue = map['note'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operationCode: (() {
+        final guardedValue = map['operationCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scenarios: (() {
+        final guardedValue = map['scenarios'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

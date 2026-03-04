@@ -5,16 +5,15 @@ enum FontSize {
   valueMedium("Medium"),
   valueLarge("Large");
 
-  const FontSize(this.value);
-  final String value;
+  const FontSize(this.wireValue);
+  final String wireValue;
 
   static FontSize fromValue(String value) {
     for (final item in FontSize.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FontSize value: $value');
   }
 }
-

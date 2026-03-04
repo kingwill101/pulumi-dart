@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClientApplicationProductLinkArgs {
   /// Client Application identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> clientApplicationId;
+
   /// Client Application Product Link identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> clientApplicationProductLinkId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -37,13 +40,20 @@ class GetClientApplicationProductLinkArgs {
     };
   }
 
-  factory GetClientApplicationProductLinkArgs.fromMap(Map<String, dynamic> map) {
+  factory GetClientApplicationProductLinkArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClientApplicationProductLinkArgs(
-      clientApplicationId: (map['clientApplicationId'] as String).input(),
-      clientApplicationProductLinkId: (map['clientApplicationProductLinkId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      clientApplicationId: pulumi.Input.fromValue(
+        map['clientApplicationId'] as String,
+      ),
+      clientApplicationProductLinkId: pulumi.Input.fromValue(
+        map['clientApplicationProductLinkId'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

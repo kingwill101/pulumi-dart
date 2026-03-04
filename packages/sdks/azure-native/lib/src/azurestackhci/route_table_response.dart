@@ -7,10 +7,13 @@ import 'route_response.dart';
 class RouteTableResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
+
   /// Resource name.
   final pulumi.Input<String> name;
+
   /// Collection of routes contained within a route table.
   final pulumi.Input<List<RouteResponse>>? routes;
+
   /// Resource type.
   final pulumi.Input<String> type;
 
@@ -30,18 +33,38 @@ class RouteTableResponse {
     return <String, dynamic>{
       'etag': etag,
       'name': name,
-      'routes': ?pulumi.Input.mapOptionalInputValue<List<RouteResponse>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<RouteResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RouteResponse>,
+            List<Map<String, dynamic>>
+          >(
+            routes,
+            (value) =>
+                pulumi.Input.encodeList<RouteResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'type': type,
     };
   }
 
   factory RouteTableResponse.fromMap(Map<String, dynamic> map) {
     return RouteTableResponse(
-      etag: (map['etag'] as String).input(),
-      name: (map['name'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<RouteResponse>(map['routes']!, (value) => RouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: (map['type'] as String).input(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      routes: (() {
+        final guardedValue = map['routes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RouteResponse>(
+            guardedValue,
+            (value) =>
+                RouteResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

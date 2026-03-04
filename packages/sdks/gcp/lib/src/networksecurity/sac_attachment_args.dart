@@ -10,25 +10,33 @@ import 'sac_attachment_symantec_options.dart';
 class SacAttachmentArgs {
   /// Case-insensitive ISO-3166 alpha-2 country code used for localization. Only valid for Symantec attachments.
   final pulumi.Input<String>? country;
+
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The location of the SACAttachment resource. eg us-central1
   final pulumi.Input<String> location;
+
   /// Identifier. Resource name
   final pulumi.Input<String>? name;
+
   /// NCC Gateway associated with the attachment. This can be input as an ID or a full resource name.
   final pulumi.Input<String> nccGateway;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// SAC Realm which owns the attachment. This can be input as an ID or a full resource name.
   final pulumi.Input<String> sacRealm;
+
   /// Configuration required for Symantec attachments.
   /// Structure is documented below.
   final pulumi.Input<SacAttachmentSymantecOptions>? symantecOptions;
+
   /// Case-sensitive tzinfo identifier used for localization. Only valid for Symantec attachments.
   final pulumi.Input<String>? timeZone;
 
@@ -63,23 +71,56 @@ class SacAttachmentArgs {
       'nccGateway': nccGateway,
       'project': ?project,
       'sacRealm': sacRealm,
-      'symantecOptions': ?pulumi.Input.mapOptionalInputValue<SacAttachmentSymantecOptions, Map<String, dynamic>>(symantecOptions, (value) => value.toMap()),
+      'symantecOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            SacAttachmentSymantecOptions,
+            Map<String, dynamic>
+          >(symantecOptions, (value) => value.toMap()),
       'timeZone': ?timeZone,
     };
   }
 
   factory SacAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return SacAttachmentArgs(
-      country: map['country'] == null ? null : (map['country']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nccGateway: (map['nccGateway'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      sacRealm: (map['sacRealm'] as String).input(),
-      symantecOptions: map['symantecOptions'] == null ? null : (SacAttachmentSymantecOptions.fromMap((map['symantecOptions']! as Map).cast<String, dynamic>())).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      country: (() {
+        final guardedValue = map['country'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nccGateway: pulumi.Input.fromValue(map['nccGateway'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sacRealm: pulumi.Input.fromValue(map['sacRealm'] as String),
+      symantecOptions: (() {
+        final guardedValue = map['symantecOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SacAttachmentSymantecOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      timeZone: (() {
+        final guardedValue = map['timeZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

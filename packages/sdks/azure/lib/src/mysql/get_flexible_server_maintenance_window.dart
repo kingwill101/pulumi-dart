@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFlexibleServerMaintenanceWindow {
   /// The day of week of the maintenance window.
   final pulumi.Input<int> dayOfWeek;
+
   /// The start hour of the maintenance window.
   final pulumi.Input<int> startHour;
+
   /// The start minute of the maintenance window.
   final pulumi.Input<int> startMinute;
 
@@ -30,10 +32,9 @@ class GetFlexibleServerMaintenanceWindow {
 
   factory GetFlexibleServerMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GetFlexibleServerMaintenanceWindow(
-      dayOfWeek: (map['dayOfWeek'] as int).input(),
-      startHour: (map['startHour'] as int).input(),
-      startMinute: (map['startMinute'] as int).input(),
+      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as int),
+      startHour: pulumi.Input.fromValue(map['startHour'] as int),
+      startMinute: pulumi.Input.fromValue(map['startMinute'] as int),
     );
   }
 }
-

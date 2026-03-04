@@ -3,16 +3,15 @@ enum Enforcement {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const Enforcement(this.value);
-  final String value;
+  const Enforcement(this.wireValue);
+  final String wireValue;
 
   static Enforcement fromValue(String value) {
     for (final item in Enforcement.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Enforcement value: $value');
   }
 }
-

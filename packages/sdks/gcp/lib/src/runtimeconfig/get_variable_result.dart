@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getVariable.
 class GetVariableResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -47,11 +46,14 @@ class GetVariableResult {
       id: map['id'] as String,
       name: map['name'] as String,
       parent: map['parent'] as String,
-      project: map['project'] == null ? null : map['project']! as String,
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       text: map['text'] as String,
       updateTime: map['updateTime'] as String,
       value: map['value'] as String,
     );
   }
 }
-

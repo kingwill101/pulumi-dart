@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MetricsDestinationState {
   /// The name of the CloudWatch RUM app monitor that will send the metrics.
   final pulumi.Input<String>? appMonitorName;
+
   /// Defines the destination to send the metrics to. Valid values are `CloudWatch` and `Evidently`. If you specify `Evidently`, you must also specify the ARN of the CloudWatchEvidently experiment that is to be the destination and an IAM role that has permission to write to the experiment.
   final pulumi.Input<String>? destination;
+
   /// Use this parameter only if Destination is Evidently. This parameter specifies the ARN of the Evidently experiment that will receive the extended metrics.
   final pulumi.Input<String>? destinationArn;
+
   /// This parameter is required if Destination is Evidently. If Destination is CloudWatch, do not use this parameter.
   final pulumi.Input<String>? iamRoleArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -41,12 +45,31 @@ class MetricsDestinationState {
 
   factory MetricsDestinationState.fromMap(Map<String, dynamic> map) {
     return MetricsDestinationState(
-      appMonitorName: map['appMonitorName'] == null ? null : ((map['appMonitorName'] as String).input()).input(),
-      destination: map['destination'] == null ? null : ((map['destination'] as String).input()).input(),
-      destinationArn: map['destinationArn'] == null ? null : ((map['destinationArn'] as String).input()).input(),
-      iamRoleArn: map['iamRoleArn'] == null ? null : ((map['iamRoleArn'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      appMonitorName: (() {
+        final guardedValue = map['appMonitorName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationArn: (() {
+        final guardedValue = map['destinationArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iamRoleArn: (() {
+        final guardedValue = map['iamRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,10 +7,13 @@ import 'instance_group_ebs_config.dart';
 class InstanceGroupState {
   /// The autoscaling policy document. This is a JSON formatted string. See [EMR Auto Scaling](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-automatic-scaling.html)
   final pulumi.Input<String>? autoscalingPolicy;
+
   /// If set, the bid price for each EC2 instance in the instance group, expressed in USD. By setting this attribute, the instance group is being declared as a Spot Instance, and will implicitly create a Spot request. Leave this blank to use On-Demand Instances.
   final pulumi.Input<String>? bidPrice;
+
   /// ID of the EMR Cluster to attach to. Changing this forces a new resource to be created.
   final pulumi.Input<String>? clusterId;
+
   /// A JSON string for supplying list of configurations specific to the EMR instance group. Note that this can only be changed when using EMR release 5.21 or later.
   ///
   ///
@@ -182,20 +185,28 @@ class InstanceGroupState {
   ///         ]
   /// ```
   final pulumi.Input<String>? configurationsJson;
+
   /// One or more `ebs_config` blocks as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<InstanceGroupEbsConfig>>? ebsConfigs;
+
   /// Indicates whether an Amazon EBS volume is EBS-optimized. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? ebsOptimized;
+
   /// target number of instances for the instance group. defaults to 0.
   final pulumi.Input<int>? instanceCount;
+
   /// The EC2 instance type for all instances in the instance group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? instanceType;
+
   /// Human friendly name given to the instance group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The number of instances currently running in this instance group.
   final pulumi.Input<int>? runningInstanceCount;
+
   /// The current status of the instance group.
   final pulumi.Input<String>? status;
 
@@ -233,7 +244,18 @@ class InstanceGroupState {
       'bidPrice': ?bidPrice,
       'clusterId': ?clusterId,
       'configurationsJson': ?configurationsJson,
-      'ebsConfigs': ?pulumi.Input.mapOptionalInputValue<List<InstanceGroupEbsConfig>, List<Map<String, dynamic>>>(ebsConfigs, (value) => pulumi.Input.encodeList<InstanceGroupEbsConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ebsConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceGroupEbsConfig>,
+            List<Map<String, dynamic>>
+          >(
+            ebsConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceGroupEbsConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ebsOptimized': ?ebsOptimized,
       'instanceCount': ?instanceCount,
       'instanceType': ?instanceType,
@@ -246,19 +268,73 @@ class InstanceGroupState {
 
   factory InstanceGroupState.fromMap(Map<String, dynamic> map) {
     return InstanceGroupState(
-      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : ((map['autoscalingPolicy'] as String).input()).input(),
-      bidPrice: map['bidPrice'] == null ? null : ((map['bidPrice'] as String).input()).input(),
-      clusterId: map['clusterId'] == null ? null : ((map['clusterId'] as String).input()).input(),
-      configurationsJson: map['configurationsJson'] == null ? null : ((map['configurationsJson'] as String).input()).input(),
-      ebsConfigs: map['ebsConfigs'] == null ? null : ((pulumi.Input.decodeList<InstanceGroupEbsConfig>(map['ebsConfigs']!, (value) => InstanceGroupEbsConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      ebsOptimized: map['ebsOptimized'] == null ? null : ((map['ebsOptimized'] as bool).input()).input(),
-      instanceCount: map['instanceCount'] == null ? null : ((map['instanceCount'] as int).input()).input(),
-      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      runningInstanceCount: map['runningInstanceCount'] == null ? null : ((map['runningInstanceCount'] as int).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      autoscalingPolicy: (() {
+        final guardedValue = map['autoscalingPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bidPrice: (() {
+        final guardedValue = map['bidPrice'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configurationsJson: (() {
+        final guardedValue = map['configurationsJson'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ebsConfigs: (() {
+        final guardedValue = map['ebsConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceGroupEbsConfig>(
+            guardedValue,
+            (value) => InstanceGroupEbsConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ebsOptimized: (() {
+        final guardedValue = map['ebsOptimized'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      instanceCount: (() {
+        final guardedValue = map['instanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runningInstanceCount: (() {
+        final guardedValue = map['runningInstanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

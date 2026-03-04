@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerRegistryResponse {
   /// Login server of the container registry.
   final pulumi.Input<String> containerRegistryServer;
+
   /// Resource ID of the managed identity.
   final pulumi.Input<String> identityResourceId;
 
@@ -26,9 +27,12 @@ class ContainerRegistryResponse {
 
   factory ContainerRegistryResponse.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryResponse(
-      containerRegistryServer: (map['containerRegistryServer'] as String).input(),
-      identityResourceId: (map['identityResourceId'] as String).input(),
+      containerRegistryServer: pulumi.Input.fromValue(
+        map['containerRegistryServer'] as String,
+      ),
+      identityResourceId: pulumi.Input.fromValue(
+        map['identityResourceId'] as String,
+      ),
     );
   }
 }
-

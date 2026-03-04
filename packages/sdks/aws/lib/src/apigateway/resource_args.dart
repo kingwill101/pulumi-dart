@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceArgs {
   /// ID of the parent API resource
   final pulumi.Input<String> parentId;
+
   /// Last path segment of this API resource.
   final pulumi.Input<String> pathPart;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID of the associated REST API
   final pulumi.Input<String> restApi;
 
@@ -39,11 +42,14 @@ class ResourceArgs {
 
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
-      parentId: (map['parentId'] as String).input(),
-      pathPart: (map['pathPart'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      restApi: (map['restApi'] as String).input(),
+      parentId: pulumi.Input.fromValue(map['parentId'] as String),
+      pathPart: pulumi.Input.fromValue(map['pathPart'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      restApi: pulumi.Input.fromValue(map['restApi'] as String),
     );
   }
 }
-

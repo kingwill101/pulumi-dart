@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceReferencePatch {
   /// Name is the name of the service
   final pulumi.Input<String>? name;
+
   /// Namespace is the namespace of the service
   final pulumi.Input<String>? namespace;
+
   /// If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).
   final pulumi.Input<int>? port;
 
@@ -15,11 +17,7 @@ class ServiceReferencePatch {
   /// [name] Name is the name of the service
   /// [namespace] Namespace is the namespace of the service
   /// [port] If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).
-  ServiceReferencePatch({
-    this.name,
-    this.namespace,
-    this.port,
-  });
+  ServiceReferencePatch({this.name, this.namespace, this.port});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class ServiceReferencePatch {
 
   factory ServiceReferencePatch.fromMap(Map<String, dynamic> map) {
     return ServiceReferencePatch(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

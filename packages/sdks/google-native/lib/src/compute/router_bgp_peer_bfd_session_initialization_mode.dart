@@ -4,16 +4,17 @@ enum RouterBgpPeerBfdSessionInitializationMode {
   disabled("DISABLED"),
   passive("PASSIVE");
 
-  const RouterBgpPeerBfdSessionInitializationMode(this.value);
-  final String value;
+  const RouterBgpPeerBfdSessionInitializationMode(this.wireValue);
+  final String wireValue;
 
   static RouterBgpPeerBfdSessionInitializationMode fromValue(String value) {
     for (final item in RouterBgpPeerBfdSessionInitializationMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RouterBgpPeerBfdSessionInitializationMode value: $value');
+    throw ArgumentError(
+      'Unknown RouterBgpPeerBfdSessionInitializationMode value: $value',
+    );
   }
 }
-

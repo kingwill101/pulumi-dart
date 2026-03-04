@@ -8,10 +8,13 @@ import 'export_time_period.dart';
 class ExportDefinition {
   /// The definition for data in the export.
   final pulumi.Input<ExportDataset>? dataSet;
+
   /// Has time period for pulling data for the export.
   final pulumi.Input<ExportTimePeriod>? timePeriod;
+
   /// The time frame for pulling data for the export. If custom, then a specific time period must be provided.
   final pulumi.Input<String> timeframe;
+
   /// The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
   final pulumi.Input<String> type;
 
@@ -29,8 +32,16 @@ class ExportDefinition {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataSet': ?pulumi.Input.mapOptionalInputValue<ExportDataset, Map<String, dynamic>>(dataSet, (value) => value.toMap()),
-      'timePeriod': ?pulumi.Input.mapOptionalInputValue<ExportTimePeriod, Map<String, dynamic>>(timePeriod, (value) => value.toMap()),
+      'dataSet':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExportDataset,
+            Map<String, dynamic>
+          >(dataSet, (value) => value.toMap()),
+      'timePeriod':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExportTimePeriod,
+            Map<String, dynamic>
+          >(timePeriod, (value) => value.toMap()),
       'timeframe': timeframe,
       'type': type,
     };
@@ -38,11 +49,24 @@ class ExportDefinition {
 
   factory ExportDefinition.fromMap(Map<String, dynamic> map) {
     return ExportDefinition(
-      dataSet: map['dataSet'] == null ? null : (ExportDataset.fromMap((map['dataSet']! as Map).cast<String, dynamic>())).input(),
-      timePeriod: map['timePeriod'] == null ? null : (ExportTimePeriod.fromMap((map['timePeriod']! as Map).cast<String, dynamic>())).input(),
-      timeframe: (map['timeframe'] as String).input(),
-      type: (map['type'] as String).input(),
+      dataSet: (() {
+        final guardedValue = map['dataSet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExportDataset.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      timePeriod: (() {
+        final guardedValue = map['timePeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExportTimePeriod.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      timeframe: pulumi.Input.fromValue(map['timeframe'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

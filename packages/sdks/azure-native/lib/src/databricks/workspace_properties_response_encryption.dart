@@ -10,20 +10,27 @@ class WorkspacePropertiesResponseEncryption {
 
   /// Creates a new [WorkspacePropertiesResponseEncryption].
   /// [entities] Encryption entities definition for the workspace.
-  WorkspacePropertiesResponseEncryption({
-    required this.entities,
-  });
+  WorkspacePropertiesResponseEncryption({required this.entities});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entities': pulumi.Input.mapInputValue<EncryptionEntitiesDefinitionResponse, Map<String, dynamic>>(entities, (value) => value.toMap()),
+      'entities':
+          pulumi.Input.mapInputValue<
+            EncryptionEntitiesDefinitionResponse,
+            Map<String, dynamic>
+          >(entities, (value) => value.toMap()),
     };
   }
 
-  factory WorkspacePropertiesResponseEncryption.fromMap(Map<String, dynamic> map) {
+  factory WorkspacePropertiesResponseEncryption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkspacePropertiesResponseEncryption(
-      entities: (EncryptionEntitiesDefinitionResponse.fromMap((map['entities'] as Map).cast<String, dynamic>())).input(),
+      entities: pulumi.Input.fromValue(
+        EncryptionEntitiesDefinitionResponse.fromMap(
+          (map['entities']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

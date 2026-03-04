@@ -11,20 +11,39 @@ class AppHostingTrafficCurrent {
 
   /// Creates a new [AppHostingTrafficCurrent].
   /// [splits] (Output)
-  AppHostingTrafficCurrent({
-    this.splits,
-  });
+  AppHostingTrafficCurrent({this.splits});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'splits': ?pulumi.Input.mapOptionalInputValue<List<AppHostingTrafficCurrentSplit>, List<Map<String, dynamic>>>(splits, (value) => pulumi.Input.encodeList<AppHostingTrafficCurrentSplit, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'splits':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppHostingTrafficCurrentSplit>,
+            List<Map<String, dynamic>>
+          >(
+            splits,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppHostingTrafficCurrentSplit,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory AppHostingTrafficCurrent.fromMap(Map<String, dynamic> map) {
     return AppHostingTrafficCurrent(
-      splits: map['splits'] == null ? null : (pulumi.Input.decodeList<AppHostingTrafficCurrentSplit>(map['splits']!, (value) => AppHostingTrafficCurrentSplit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      splits: (() {
+        final guardedValue = map['splits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AppHostingTrafficCurrentSplit>(
+            guardedValue,
+            (value) => AppHostingTrafficCurrentSplit.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

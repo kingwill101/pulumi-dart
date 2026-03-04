@@ -8,10 +8,13 @@ import 'probe_protocol.dart';
 class HealthProbeParameters {
   /// The number of seconds between health probes.Default is 240sec.
   final pulumi.Input<int>? probeIntervalInSeconds;
+
   /// The path relative to the origin that is used to determine the health of the origin.
   final pulumi.Input<String>? probePath;
+
   /// Protocol to use for health probe.
   final pulumi.Input<ProbeProtocol>? probeProtocol;
+
   /// The type of health probe request that is made.
   final pulumi.Input<HealthProbeRequestType>? probeRequestType;
 
@@ -31,18 +34,45 @@ class HealthProbeParameters {
     return <String, dynamic>{
       'probeIntervalInSeconds': ?probeIntervalInSeconds,
       'probePath': ?probePath,
-      'probeProtocol': ?pulumi.Input.mapOptionalInputValue<ProbeProtocol, String>(probeProtocol, (value) => value.value),
-      'probeRequestType': ?pulumi.Input.mapOptionalInputValue<HealthProbeRequestType, String>(probeRequestType, (value) => value.value),
+      'probeProtocol':
+          ?pulumi.Input.mapOptionalInputValue<ProbeProtocol, String>(
+            probeProtocol,
+            (value) => value.wireValue,
+          ),
+      'probeRequestType':
+          ?pulumi.Input.mapOptionalInputValue<HealthProbeRequestType, String>(
+            probeRequestType,
+            (value) => value.wireValue,
+          ),
     };
   }
 
   factory HealthProbeParameters.fromMap(Map<String, dynamic> map) {
     return HealthProbeParameters(
-      probeIntervalInSeconds: map['probeIntervalInSeconds'] == null ? null : (map['probeIntervalInSeconds']! as int).input(),
-      probePath: map['probePath'] == null ? null : (map['probePath']! as String).input(),
-      probeProtocol: map['probeProtocol'] == null ? null : (ProbeProtocol.fromValue(map['probeProtocol']! as String)).input(),
-      probeRequestType: map['probeRequestType'] == null ? null : (HealthProbeRequestType.fromValue(map['probeRequestType']! as String)).input(),
+      probeIntervalInSeconds: (() {
+        final guardedValue = map['probeIntervalInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      probePath: (() {
+        final guardedValue = map['probePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      probeProtocol: (() {
+        final guardedValue = map['probeProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProbeProtocol.fromValue(guardedValue as String),
+        );
+      })(),
+      probeRequestType: (() {
+        final guardedValue = map['probeRequestType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HealthProbeRequestType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

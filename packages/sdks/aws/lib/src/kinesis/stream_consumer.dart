@@ -4,7 +4,7 @@ import 'stream_consumer_state.dart';
 
 /// Provides a resource to manage a Kinesis Stream Consumer.
 ///
-/// > **Note:** You can register up to 20 consumers per stream. A given consumer can only be registered with one stream at a time.
+/// &gt; **Note:** You can register up to 20 consumers per stream. A given consumer can only be registered with one stream at a time.
 ///
 /// For more details, see the [Amazon Kinesis Stream Consumer Documentation](https://docs.aws.amazon.com/streams/latest/dev/enhanced-consumers.html).
 ///
@@ -149,12 +149,16 @@ import 'stream_consumer_state.dart';
 class StreamConsumer extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the stream consumer.
   late final pulumi.Output<String> arn;
+
   /// Approximate timestamp in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of when the stream consumer was created.
   late final pulumi.Output<String> creationTimestamp;
+
   /// Name of the stream consumer.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Amazon Resource Name (ARN) of the data stream the consumer is registered with.
   late final pulumi.Output<String> streamArn;
   late final pulumi.Output<Map<String, String>?> tags;
@@ -169,18 +173,18 @@ class StreamConsumer extends pulumi.CustomResource {
     StreamConsumerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:kinesis/streamConsumer:StreamConsumer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+         'aws:kinesis/streamConsumer:StreamConsumer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.streamArn = registerOutput<String>('streamArn');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    streamArn = registerOutput<String>('streamArn');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [StreamConsumer] resource's state with the given [name] and [id].
@@ -201,17 +205,17 @@ class StreamConsumer extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:kinesis/streamConsumer:StreamConsumer',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
+         'aws:kinesis/streamConsumer:StreamConsumer',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.streamArn = registerOutput<String>('streamArn');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    streamArn = registerOutput<String>('streamArn');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

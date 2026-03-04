@@ -13,15 +13,14 @@ class GetEcsNetworkInterfacesInterfaceAssociatedPublicIp {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'publicIpAddress': publicIpAddress,
-    };
+    return <String, dynamic>{'publicIpAddress': publicIpAddress};
   }
 
-  factory GetEcsNetworkInterfacesInterfaceAssociatedPublicIp.fromMap(Map<String, dynamic> map) {
+  factory GetEcsNetworkInterfacesInterfaceAssociatedPublicIp.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEcsNetworkInterfacesInterfaceAssociatedPublicIp(
-      publicIpAddress: (map['publicIpAddress'] as String).input(),
+      publicIpAddress: pulumi.Input.fromValue(map['publicIpAddress'] as String),
     );
   }
 }
-

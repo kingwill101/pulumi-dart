@@ -155,14 +155,20 @@ import 'system_data_response.dart';
 class ConfigurationProfileAssignment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Azure resource id. Indicates if this resource is managed by another Azure resource.
   late final pulumi.Output<String> managedBy;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Properties of the configuration profile assignment.
-  late final pulumi.Output<ConfigurationProfileAssignmentPropertiesResponse> properties;
+  late final pulumi.Output<ConfigurationProfileAssignmentPropertiesResponse>
+  properties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -175,16 +181,19 @@ class ConfigurationProfileAssignment extends pulumi.CustomResource {
     ConfigurationProfileAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:automanage:ConfigurationProfileAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.managedBy = registerOutput<String>('managedBy');
+         'azure-native:automanage:ConfigurationProfileAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    managedBy = registerOutput<String>('managedBy');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ConfigurationProfileAssignmentPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties =
+        registerOutput<ConfigurationProfileAssignmentPropertiesResponse>(
+          'properties',
+        );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

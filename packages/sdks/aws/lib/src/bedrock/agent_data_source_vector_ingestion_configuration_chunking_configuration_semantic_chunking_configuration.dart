@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration {
   /// The dissimilarity threshold for splitting chunks.
   final pulumi.Input<int> breakpointPercentileThreshold;
+
   /// The buffer size.
   final pulumi.Input<int> bufferSize;
+
   /// The maximum number of tokens a chunk can contain.
   final pulumi.Input<int> maxToken;
 
@@ -28,12 +30,15 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticCh
     };
   }
 
-  factory AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration(
-      breakpointPercentileThreshold: (map['breakpointPercentileThreshold'] as int).input(),
-      bufferSize: (map['bufferSize'] as int).input(),
-      maxToken: (map['maxToken'] as int).input(),
+      breakpointPercentileThreshold: pulumi.Input.fromValue(
+        map['breakpointPercentileThreshold'] as int,
+      ),
+      bufferSize: pulumi.Input.fromValue(map['bufferSize'] as int),
+      maxToken: pulumi.Input.fromValue(map['maxToken'] as int),
     );
   }
 }
-

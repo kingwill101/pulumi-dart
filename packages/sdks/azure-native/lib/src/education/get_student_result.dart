@@ -7,34 +7,49 @@ import 'system_data_response.dart';
 class GetStudentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Student Budget
   final AmountResponse budget;
+
   /// Date student was added to the lab
   final String effectiveDate;
+
   /// Student Email
   final String email;
+
   /// Date this student is set to expire from the lab.
   final String expirationDate;
+
   /// First Name
   final String firstName;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// Last Name
   final String lastName;
+
   /// The name of the resource
   final String name;
+
   /// Student Role
   final String role;
+
   /// Student Lab Status
   final String status;
+
   /// Subscription alias
   final String? subscriptionAlias;
+
   /// Subscription Id
   final String subscriptionId;
+
   /// subscription invite last sent date
   final String? subscriptionInviteLastSentDate;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -98,7 +113,9 @@ class GetStudentResult {
   factory GetStudentResult.fromMap(Map<String, dynamic> map) {
     return GetStudentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      budget: AmountResponse.fromMap((map['budget'] as Map).cast<String, dynamic>()),
+      budget: AmountResponse.fromMap(
+        (map['budget']! as Map).cast<String, dynamic>(),
+      ),
       effectiveDate: map['effectiveDate'] as String,
       email: map['email'] as String,
       expirationDate: map['expirationDate'] as String,
@@ -108,12 +125,21 @@ class GetStudentResult {
       name: map['name'] as String,
       role: map['role'] as String,
       status: map['status'] as String,
-      subscriptionAlias: map['subscriptionAlias'] == null ? null : map['subscriptionAlias']! as String,
+      subscriptionAlias: (() {
+        final guardedValue = map['subscriptionAlias'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       subscriptionId: map['subscriptionId'] as String,
-      subscriptionInviteLastSentDate: map['subscriptionInviteLastSentDate'] == null ? null : map['subscriptionInviteLastSentDate']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      subscriptionInviteLastSentDate: (() {
+        final guardedValue = map['subscriptionInviteLastSentDate'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_containerinstance;
-
 export 'containerinstance/api_entity_reference.dart';
 export 'containerinstance/api_entity_reference_response.dart';
 export 'containerinstance/application_gateway.dart';

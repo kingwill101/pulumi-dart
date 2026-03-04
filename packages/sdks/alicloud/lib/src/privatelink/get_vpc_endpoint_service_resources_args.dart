@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVpcEndpointServiceResourcesArgs {
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The ID of Vpc Endpoint Service.
   final pulumi.Input<String> serviceId;
 
@@ -21,17 +22,17 @@ class GetVpcEndpointServiceResourcesArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'outputFile': ?outputFile,
-      'serviceId': serviceId,
-    };
+    return <String, dynamic>{'outputFile': ?outputFile, 'serviceId': serviceId};
   }
 
   factory GetVpcEndpointServiceResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServiceResourcesArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      serviceId: (map['serviceId'] as String).input(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
     );
   }
 }
-

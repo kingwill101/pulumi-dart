@@ -8,20 +8,19 @@ class RulesetMetadata {
 
   /// Creates a new [RulesetMetadata].
   /// [services] Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
-  RulesetMetadata({
-    this.services,
-  });
+  RulesetMetadata({this.services});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'services': ?services,
-    };
+    return <String, dynamic>{'services': ?services};
   }
 
   factory RulesetMetadata.fromMap(Map<String, dynamic> map) {
     return RulesetMetadata(
-      services: map['services'] == null ? null : ((map['services']! as List).cast<String>()).input(),
+      services: (() {
+        final guardedValue = map['services'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

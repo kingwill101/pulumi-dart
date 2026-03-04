@@ -9,20 +9,17 @@ class GoogleCloudMlV1SampledShapleyAttributionResponse {
 
   /// Creates a new [GoogleCloudMlV1SampledShapleyAttributionResponse].
   /// [numPaths] The number of feature permutations to consider when approximating the Shapley values.
-  GoogleCloudMlV1SampledShapleyAttributionResponse({
-    required this.numPaths,
-  });
+  GoogleCloudMlV1SampledShapleyAttributionResponse({required this.numPaths});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'numPaths': numPaths,
-    };
+    return <String, dynamic>{'numPaths': numPaths};
   }
 
-  factory GoogleCloudMlV1SampledShapleyAttributionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudMlV1SampledShapleyAttributionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudMlV1SampledShapleyAttributionResponse(
-      numPaths: (map['numPaths'] as int).input(),
+      numPaths: pulumi.Input.fromValue(map['numPaths'] as int),
     );
   }
 }
-

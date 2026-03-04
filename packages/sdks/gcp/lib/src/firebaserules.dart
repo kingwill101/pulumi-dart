@@ -1,5 +1,3 @@
-library module_firebaserules;
-
 export 'firebaserules/release.dart';
 export 'firebaserules/release_args.dart';
 export 'firebaserules/release_state.dart';

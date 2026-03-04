@@ -232,6 +232,7 @@ import 'sslpolicy_state.dart';
 class SSLPolicy extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// Profile specifies the set of SSL features that can be used by the
   /// load balancer when negotiating SSL with clients. This can be one of
   /// `COMPATIBLE`, `MODERN`, `RESTRICTED`, or `CUSTOM`. If using `CUSTOM`,
@@ -242,19 +243,24 @@ class SSLPolicy extends pulumi.CustomResource {
   /// *must* be present when using the `CUSTOM` profile. This argument
   /// *must not* be present when using any other profile.
   late final pulumi.Output<List<String>?> customFeatures;
+
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+
   /// The list of features enabled in the SSL policy.
   late final pulumi.Output<List<String>> enabledFeatures;
+
   /// Fingerprint of this resource. A hash of the contents stored in this
   /// object. This field is used in optimistic locking.
   late final pulumi.Output<String> fingerprint;
+
   /// The minimum version of SSL protocol that can be used by the clients
   /// to establish a connection with the load balancer. When set to`
   /// TLS_1_3`, the profile field must be set to `RESTRICTED`.
   /// Default value is `TLS_1_0`.
   /// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
   late final pulumi.Output<String?> minTlsVersion;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -263,6 +269,7 @@ class SSLPolicy extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// Profile specifies the set of SSL features that can be used by the
   /// load balancer when negotiating SSL with clients. If using `CUSTOM`,
   /// the set of SSL features to enable must be specified in the
@@ -275,9 +282,11 @@ class SSLPolicy extends pulumi.CustomResource {
   /// Default value is `COMPATIBLE`.
   /// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
   late final pulumi.Output<String?> profile;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
 
@@ -290,21 +299,21 @@ class SSLPolicy extends pulumi.CustomResource {
     SSLPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/sSLPolicy:SSLPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.customFeatures = registerOutput<List<String>?>('customFeatures');
-    this.description = registerOutput<String?>('description');
-    this.enabledFeatures = registerOutput<List<String>>('enabledFeatures');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.minTlsVersion = registerOutput<String?>('minTlsVersion');
+         'gcp:compute/sSLPolicy:SSLPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customFeatures = registerOutput<List<String>?>('customFeatures');
+    description = registerOutput<String?>('description');
+    enabledFeatures = registerOutput<List<String>>('enabledFeatures');
+    fingerprint = registerOutput<String>('fingerprint');
+    minTlsVersion = registerOutput<String?>('minTlsVersion');
     this.name = registerOutput<String>('name');
-    this.profile = registerOutput<String?>('profile');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
+    profile = registerOutput<String?>('profile');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
   }
 
   /// Gets an existing [SSLPolicy] resource's state with the given [name] and [id].
@@ -325,20 +334,20 @@ class SSLPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/sSLPolicy:SSLPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.customFeatures = registerOutput<List<String>?>('customFeatures');
-    this.description = registerOutput<String?>('description');
-    this.enabledFeatures = registerOutput<List<String>>('enabledFeatures');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.minTlsVersion = registerOutput<String?>('minTlsVersion');
+         'gcp:compute/sSLPolicy:SSLPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customFeatures = registerOutput<List<String>?>('customFeatures');
+    description = registerOutput<String?>('description');
+    enabledFeatures = registerOutput<List<String>>('enabledFeatures');
+    fingerprint = registerOutput<String>('fingerprint');
+    minTlsVersion = registerOutput<String?>('minTlsVersion');
     this.name = registerOutput<String>('name');
-    this.profile = registerOutput<String?>('profile');
-    this.project = registerOutput<String>('project');
-    this.selfLink = registerOutput<String>('selfLink');
+    profile = registerOutput<String?>('profile');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
   }
 }

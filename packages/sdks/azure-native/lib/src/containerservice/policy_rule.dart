@@ -4,16 +4,15 @@ enum PolicyRule {
   valueAllowAll("AllowAll"),
   valueAllowSameNamespace("AllowSameNamespace");
 
-  const PolicyRule(this.value);
-  final String value;
+  const PolicyRule(this.wireValue);
+  final String wireValue;
 
   static PolicyRule fromValue(String value) {
     for (final item in PolicyRule.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PolicyRule value: $value');
   }
 }
-

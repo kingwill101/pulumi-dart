@@ -9,20 +9,19 @@ class BlobInventoryCreationTime {
 
   /// Creates a new [BlobInventoryCreationTime].
   /// [lastNDays] When set the policy filters the objects that are created in the last N days. Where N is an integer value between 1 to 36500.
-  BlobInventoryCreationTime({
-    this.lastNDays,
-  });
+  BlobInventoryCreationTime({this.lastNDays});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'lastNDays': ?lastNDays,
-    };
+    return <String, dynamic>{'lastNDays': ?lastNDays};
   }
 
   factory BlobInventoryCreationTime.fromMap(Map<String, dynamic> map) {
     return BlobInventoryCreationTime(
-      lastNDays: map['lastNDays'] == null ? null : (map['lastNDays']! as int).input(),
+      lastNDays: (() {
+        final guardedValue = map['lastNDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeInstanceSshSettingsResponse {
   /// Specifies the SSH rsa public key file as a string. Use "ssh-keygen -t rsa -b 2048" to generate your SSH key pairs.
   final pulumi.Input<String>? adminPublicKey;
+
   /// Describes the admin user name.
   final pulumi.Input<String> adminUserName;
+
   /// Describes the port for connecting through SSH.
   final pulumi.Input<int> sshPort;
+
   /// State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
   final pulumi.Input<String>? sshPublicAccess;
 
@@ -36,11 +39,18 @@ class ComputeInstanceSshSettingsResponse {
 
   factory ComputeInstanceSshSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceSshSettingsResponse(
-      adminPublicKey: map['adminPublicKey'] == null ? null : (map['adminPublicKey']! as String).input(),
-      adminUserName: (map['adminUserName'] as String).input(),
-      sshPort: (map['sshPort'] as int).input(),
-      sshPublicAccess: map['sshPublicAccess'] == null ? null : (map['sshPublicAccess']! as String).input(),
+      adminPublicKey: (() {
+        final guardedValue = map['adminPublicKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      adminUserName: pulumi.Input.fromValue(map['adminUserName'] as String),
+      sshPort: pulumi.Input.fromValue(map['sshPort'] as int),
+      sshPublicAccess: (() {
+        final guardedValue = map['sshPublicAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_directmail;
-
 export 'directmail/domain.dart';
 export 'directmail/domain_args.dart';
 export 'directmail/domain_state.dart';

@@ -1,5 +1,3 @@
-library module_managedapplication;
-
 export 'managedapplication/application.dart';
 export 'managedapplication/application_args.dart';
 export 'managedapplication/application_plan.dart';

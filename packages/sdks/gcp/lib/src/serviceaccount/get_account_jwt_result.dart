@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAccountJwt.
 class GetAccountJwtResult {
   final List<String>? delegates;
   final int? expiresIn;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The signed JWT containing the JWT Claims Set from the `payload`.
   final String jwt;
   final String payload;
@@ -41,8 +42,16 @@ class GetAccountJwtResult {
 
   factory GetAccountJwtResult.fromMap(Map<String, dynamic> map) {
     return GetAccountJwtResult(
-      delegates: map['delegates'] == null ? null : (map['delegates']! as List).cast<String>(),
-      expiresIn: map['expiresIn'] == null ? null : map['expiresIn']! as int,
+      delegates: (() {
+        final guardedValue = map['delegates'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      expiresIn: (() {
+        final guardedValue = map['expiresIn'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       id: map['id'] as String,
       jwt: map['jwt'] as String,
       payload: map['payload'] as String,
@@ -50,4 +59,3 @@ class GetAccountJwtResult {
     );
   }
 }
-

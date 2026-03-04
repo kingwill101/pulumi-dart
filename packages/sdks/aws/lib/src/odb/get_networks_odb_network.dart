@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworksOdbNetwork {
   /// Amazon Resource Name (ARN) of the odb network resource.
   final pulumi.Input<String> arn;
+
   /// Display name for the network resource.
   final pulumi.Input<String> displayName;
+
   /// Unique identifier of the odb network resource.
   final pulumi.Input<String> id;
+
   /// The unique identifier of the OCI network anchor for the ODB network.
   final pulumi.Input<String> ociNetworkAnchorId;
+
   /// The unique identifier  Oracle Cloud ID (OCID) of the OCI VCN for the ODB network.
   final pulumi.Input<String> ociVcnId;
+
   /// The URL of the OCI VCN for the ODB network.
   final pulumi.Input<String> ociVcnUrl;
 
@@ -45,13 +50,14 @@ class GetNetworksOdbNetwork {
 
   factory GetNetworksOdbNetwork.fromMap(Map<String, dynamic> map) {
     return GetNetworksOdbNetwork(
-      arn: (map['arn'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      id: (map['id'] as String).input(),
-      ociNetworkAnchorId: (map['ociNetworkAnchorId'] as String).input(),
-      ociVcnId: (map['ociVcnId'] as String).input(),
-      ociVcnUrl: (map['ociVcnUrl'] as String).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      ociNetworkAnchorId: pulumi.Input.fromValue(
+        map['ociNetworkAnchorId'] as String,
+      ),
+      ociVcnId: pulumi.Input.fromValue(map['ociVcnId'] as String),
+      ociVcnUrl: pulumi.Input.fromValue(map['ociVcnUrl'] as String),
     );
   }
 }
-

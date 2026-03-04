@@ -9,19 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiFeatureGroupFeatureArgs {
   /// The description of the FeatureGroup.
   final pulumi.Input<String>? description;
+
   /// The name of the Feature Group.
   final pulumi.Input<String> featureGroup;
+
   /// The labels with user-defined metadata to organize your FeatureGroup.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The resource name of the Feature Group Feature.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region for the resource. It should be the same as the feature group's region.
   final pulumi.Input<String> region;
+
   /// The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use featureId.
   final pulumi.Input<String>? versionColumnName;
 
@@ -57,14 +63,35 @@ class AiFeatureGroupFeatureArgs {
 
   factory AiFeatureGroupFeatureArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureGroupFeatureArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      featureGroup: (map['featureGroup'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
-      versionColumnName: map['versionColumnName'] == null ? null : (map['versionColumnName']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      featureGroup: pulumi.Input.fromValue(map['featureGroup'] as String),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      versionColumnName: (() {
+        final guardedValue = map['versionColumnName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

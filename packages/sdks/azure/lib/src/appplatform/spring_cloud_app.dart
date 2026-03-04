@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spring_cloud_app_args.dart';
-import 'spring_cloud_app_custom_persistent_disk.dart';
 import 'spring_cloud_app_identity.dart';
 import 'spring_cloud_app_ingress_settings.dart';
 import 'spring_cloud_app_persistent_disk.dart';
@@ -8,7 +7,7 @@ import 'spring_cloud_app_state.dart';
 
 /// Manage an Azure Spring Cloud Application.
 ///
-/// !> **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudApp` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudApp` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -214,30 +213,43 @@ import 'spring_cloud_app_state.dart';
 class SpringCloudApp extends pulumi.CustomResource {
   /// A JSON object that contains the addon configurations of the Spring Cloud Service.
   late final pulumi.Output<String> addonJson;
+
   /// A `custom_persistent_disk` block as defined below.
-  late final pulumi.Output<List<SpringCloudAppCustomPersistentDisk>?> customPersistentDisks;
+  late final pulumi.Output<List<Map<String, dynamic>>?> customPersistentDisks;
+
   /// The Fully Qualified DNS Name of the Spring Application in the service.
   late final pulumi.Output<String> fqdn;
+
   /// Is only HTTPS allowed? Defaults to `false`.
   late final pulumi.Output<bool?> httpsOnly;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<SpringCloudAppIdentity?> identity;
+
   /// An `ingress_settings` block as defined below.
   late final pulumi.Output<SpringCloudAppIngressSettings> ingressSettings;
+
   /// Does the Spring Cloud Application have public endpoint? Defaults to `false`.
   late final pulumi.Output<bool?> isPublic;
+
   /// Specifies the name of the Spring Cloud Application. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// An `persistent_disk` block as defined below.
   late final pulumi.Output<SpringCloudAppPersistentDisk> persistentDisk;
+
   /// Should the App in vnet injection instance exposes endpoint which could be accessed from Internet?
   late final pulumi.Output<bool?> publicEndpointEnabled;
+
   /// Specifies the name of the resource group in which to create the Spring Cloud Application. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies the name of the Spring Cloud Service resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serviceName;
+
   /// Is End to End TLS Enabled? Defaults to `false`.
   late final pulumi.Output<bool?> tlsEnabled;
+
   /// The public endpoint of the Spring Cloud Application.
   late final pulumi.Output<String> url;
 
@@ -250,25 +262,31 @@ class SpringCloudApp extends pulumi.CustomResource {
     SpringCloudAppArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudApp:SpringCloudApp',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addonJson = registerOutput<String>('addonJson');
-    this.customPersistentDisks = registerOutput<List<SpringCloudAppCustomPersistentDisk>?>('customPersistentDisks');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.httpsOnly = registerOutput<bool?>('httpsOnly');
-    this.identity = registerOutput<SpringCloudAppIdentity?>('identity');
-    this.ingressSettings = registerOutput<SpringCloudAppIngressSettings>('ingressSettings');
-    this.isPublic = registerOutput<bool?>('isPublic');
+         'azure:appplatform/springCloudApp:SpringCloudApp',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addonJson = registerOutput<String>('addonJson');
+    customPersistentDisks = registerOutput<List<Map<String, dynamic>>?>(
+      'customPersistentDisks',
+    );
+    fqdn = registerOutput<String>('fqdn');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<SpringCloudAppIdentity?>('identity');
+    ingressSettings = registerOutput<SpringCloudAppIngressSettings>(
+      'ingressSettings',
+    );
+    isPublic = registerOutput<bool?>('isPublic');
     this.name = registerOutput<String>('name');
-    this.persistentDisk = registerOutput<SpringCloudAppPersistentDisk>('persistentDisk');
-    this.publicEndpointEnabled = registerOutput<bool?>('publicEndpointEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.tlsEnabled = registerOutput<bool?>('tlsEnabled');
-    this.url = registerOutput<String>('url');
+    persistentDisk = registerOutput<SpringCloudAppPersistentDisk>(
+      'persistentDisk',
+    );
+    publicEndpointEnabled = registerOutput<bool?>('publicEndpointEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceName = registerOutput<String>('serviceName');
+    tlsEnabled = registerOutput<bool?>('tlsEnabled');
+    url = registerOutput<String>('url');
   }
 
   /// Gets an existing [SpringCloudApp] resource's state with the given [name] and [id].
@@ -289,24 +307,30 @@ class SpringCloudApp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudApp:SpringCloudApp',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addonJson = registerOutput<String>('addonJson');
-    this.customPersistentDisks = registerOutput<List<SpringCloudAppCustomPersistentDisk>?>('customPersistentDisks');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.httpsOnly = registerOutput<bool?>('httpsOnly');
-    this.identity = registerOutput<SpringCloudAppIdentity?>('identity');
-    this.ingressSettings = registerOutput<SpringCloudAppIngressSettings>('ingressSettings');
-    this.isPublic = registerOutput<bool?>('isPublic');
+         'azure:appplatform/springCloudApp:SpringCloudApp',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addonJson = registerOutput<String>('addonJson');
+    customPersistentDisks = registerOutput<List<Map<String, dynamic>>?>(
+      'customPersistentDisks',
+    );
+    fqdn = registerOutput<String>('fqdn');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<SpringCloudAppIdentity?>('identity');
+    ingressSettings = registerOutput<SpringCloudAppIngressSettings>(
+      'ingressSettings',
+    );
+    isPublic = registerOutput<bool?>('isPublic');
     this.name = registerOutput<String>('name');
-    this.persistentDisk = registerOutput<SpringCloudAppPersistentDisk>('persistentDisk');
-    this.publicEndpointEnabled = registerOutput<bool?>('publicEndpointEnabled');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.tlsEnabled = registerOutput<bool?>('tlsEnabled');
-    this.url = registerOutput<String>('url');
+    persistentDisk = registerOutput<SpringCloudAppPersistentDisk>(
+      'persistentDisk',
+    );
+    publicEndpointEnabled = registerOutput<bool?>('publicEndpointEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceName = registerOutput<String>('serviceName');
+    tlsEnabled = registerOutput<bool?>('tlsEnabled');
+    url = registerOutput<String>('url');
   }
 }

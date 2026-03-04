@@ -6,8 +6,10 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
   /// A day of the week.
   /// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final pulumi.Input<String> dayOfWeek;
+
   /// Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
   final pulumi.Input<int>? dayOffset;
+
   /// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
   final pulumi.Input<int> weekOrdinal;
 
@@ -29,12 +31,17 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
     };
   }
 
-  factory PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth.fromMap(Map<String, dynamic> map) {
+  factory PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth(
-      dayOfWeek: (map['dayOfWeek'] as String).input(),
-      dayOffset: map['dayOffset'] == null ? null : (map['dayOffset']! as int).input(),
-      weekOrdinal: (map['weekOrdinal'] as int).input(),
+      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
+      dayOffset: (() {
+        final guardedValue = map['dayOffset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      weekOrdinal: pulumi.Input.fromValue(map['weekOrdinal'] as int),
     );
   }
 }
-

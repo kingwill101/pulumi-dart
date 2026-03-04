@@ -9,12 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DestGroupArgs {
   /// Unordered list. List of CIDRs that this group applies to.
   final pulumi.Input<List<String>>? cidrs;
+
   /// Unordered list. List of FQDNs that this group applies to.
   final pulumi.Input<List<String>>? fqdns;
   final pulumi.Input<String>? location;
+
   /// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `[a-z]-`.
   final pulumi.Input<String> tunnelDestGroupId;
 
@@ -47,13 +50,34 @@ class DestGroupArgs {
 
   factory DestGroupArgs.fromMap(Map<String, dynamic> map) {
     return DestGroupArgs(
-      cidrs: map['cidrs'] == null ? null : ((map['cidrs']! as List).cast<String>()).input(),
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      tunnelDestGroupId: (map['tunnelDestGroupId'] as String).input(),
+      cidrs: (() {
+        final guardedValue = map['cidrs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      fqdns: (() {
+        final guardedValue = map['fqdns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tunnelDestGroupId: pulumi.Input.fromValue(
+        map['tunnelDestGroupId'] as String,
+      ),
     );
   }
 }
-

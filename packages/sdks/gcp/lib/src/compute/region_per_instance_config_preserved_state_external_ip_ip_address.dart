@@ -8,20 +8,21 @@ class RegionPerInstanceConfigPreservedStateExternalIpIpAddress {
 
   /// Creates a new [RegionPerInstanceConfigPreservedStateExternalIpIpAddress].
   /// [address] The URL of the reservation for this IP address.
-  RegionPerInstanceConfigPreservedStateExternalIpIpAddress({
-    this.address,
-  });
+  RegionPerInstanceConfigPreservedStateExternalIpIpAddress({this.address});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'address': ?address,
-    };
+    return <String, dynamic>{'address': ?address};
   }
 
-  factory RegionPerInstanceConfigPreservedStateExternalIpIpAddress.fromMap(Map<String, dynamic> map) {
+  factory RegionPerInstanceConfigPreservedStateExternalIpIpAddress.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionPerInstanceConfigPreservedStateExternalIpIpAddress(
-      address: map['address'] == null ? null : (map['address']! as String).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

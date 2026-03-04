@@ -6,9 +6,16 @@ import 'vmware_admin_cluster_network_config_ha_control_plane_config_control_plan
 class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock {
   /// The network gateway used by the VMware Admin Cluster.
   final pulumi.Input<String> gateway;
+
   /// The node's network configurations used by the VMware Admin Cluster.
   /// Structure is documented below.
-  final pulumi.Input<List<VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp>> ips;
+  final pulumi.Input<
+    List<
+      VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp
+    >
+  >
+  ips;
+
   /// The netmask used by the VMware Admin Cluster.
   final pulumi.Input<String> netmask;
 
@@ -25,17 +32,41 @@ class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'gateway': gateway,
-      'ips': pulumi.Input.mapInputValue<List<VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp>, List<Map<String, dynamic>>>(ips, (value) => pulumi.Input.encodeList<VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ips':
+          pulumi.Input.mapInputValue<
+            List<
+              VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp
+            >,
+            List<Map<String, dynamic>>
+          >(
+            ips,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'netmask': netmask,
     };
   }
 
-  factory VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock.fromMap(Map<String, dynamic> map) {
+  factory VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock(
-      gateway: (map['gateway'] as String).input(),
-      ips: (pulumi.Input.decodeList<VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp>(map['ips'], (value) => VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      netmask: (map['netmask'] as String).input(),
+      gateway: pulumi.Input.fromValue(map['gateway'] as String),
+      ips: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp
+        >(
+          map['ips']!,
+          (value) =>
+              VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      netmask: pulumi.Input.fromValue(map['netmask'] as String),
     );
   }
 }
-

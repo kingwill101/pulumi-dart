@@ -35,11 +35,10 @@ class GetAliasArgs {
 
   factory GetAliasArgs.fromMap(Map<String, dynamic> map) {
     return GetAliasArgs(
-      aliasId: (map['aliasId'] as String).input(),
-      environmentId: (map['environmentId'] as String).input(),
-      keystoreId: (map['keystoreId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      aliasId: pulumi.Input.fromValue(map['aliasId'] as String),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      keystoreId: pulumi.Input.fromValue(map['keystoreId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

@@ -5,16 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DistributionTrustedSignerItem {
   /// AWS account ID or `self`
   final pulumi.Input<String>? awsAccountNumber;
+
   /// Set of active CloudFront key pairs associated with the signer account
   final pulumi.Input<List<String>>? keyPairIds;
 
   /// Creates a new [DistributionTrustedSignerItem].
   /// [awsAccountNumber] AWS account ID or `self`
   /// [keyPairIds] Set of active CloudFront key pairs associated with the signer account
-  DistributionTrustedSignerItem({
-    this.awsAccountNumber,
-    this.keyPairIds,
-  });
+  DistributionTrustedSignerItem({this.awsAccountNumber, this.keyPairIds});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,16 @@ class DistributionTrustedSignerItem {
 
   factory DistributionTrustedSignerItem.fromMap(Map<String, dynamic> map) {
     return DistributionTrustedSignerItem(
-      awsAccountNumber: map['awsAccountNumber'] == null ? null : ((map['awsAccountNumber'] as String).input()).input(),
-      keyPairIds: map['keyPairIds'] == null ? null : (((map['keyPairIds'] as List).cast<String>()).input()).input(),
+      awsAccountNumber: (() {
+        final guardedValue = map['awsAccountNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyPairIds: (() {
+        final guardedValue = map['keyPairIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

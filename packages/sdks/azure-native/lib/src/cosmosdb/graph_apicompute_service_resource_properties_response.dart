@@ -7,17 +7,24 @@ import 'graph_apicompute_regional_service_resource_response.dart';
 class GraphAPIComputeServiceResourcePropertiesResponse {
   /// Time of the last state change (ISO-8601 format).
   final pulumi.Input<String> creationTime;
+
   /// GraphAPICompute endpoint for the service.
   final pulumi.Input<String>? graphApiComputeEndpoint;
+
   /// Instance count for the service.
   final pulumi.Input<int>? instanceCount;
+
   /// Instance type for the service.
   final pulumi.Input<String>? instanceSize;
+
   /// An array that contains all of the locations for the service.
-  final pulumi.Input<List<GraphAPIComputeRegionalServiceResourceResponse>> locations;
+  final pulumi.Input<List<GraphAPIComputeRegionalServiceResourceResponse>>
+  locations;
+
   /// ServiceType for the service.
   /// Expected value is 'GraphAPICompute'.
   final pulumi.Input<String> serviceType;
+
   /// Describes the status of a service.
   final pulumi.Input<String> status;
 
@@ -45,22 +52,53 @@ class GraphAPIComputeServiceResourcePropertiesResponse {
       'graphApiComputeEndpoint': ?graphApiComputeEndpoint,
       'instanceCount': ?instanceCount,
       'instanceSize': ?instanceSize,
-      'locations': pulumi.Input.mapInputValue<List<GraphAPIComputeRegionalServiceResourceResponse>, List<Map<String, dynamic>>>(locations, (value) => pulumi.Input.encodeList<GraphAPIComputeRegionalServiceResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'locations':
+          pulumi.Input.mapInputValue<
+            List<GraphAPIComputeRegionalServiceResourceResponse>,
+            List<Map<String, dynamic>>
+          >(
+            locations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GraphAPIComputeRegionalServiceResourceResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'serviceType': serviceType,
       'status': status,
     };
   }
 
-  factory GraphAPIComputeServiceResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory GraphAPIComputeServiceResourcePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GraphAPIComputeServiceResourcePropertiesResponse(
-      creationTime: (map['creationTime'] as String).input(),
-      graphApiComputeEndpoint: map['graphApiComputeEndpoint'] == null ? null : (map['graphApiComputeEndpoint']! as String).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
-      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize']! as String).input(),
-      locations: (pulumi.Input.decodeList<GraphAPIComputeRegionalServiceResourceResponse>(map['locations'], (value) => GraphAPIComputeRegionalServiceResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceType: (map['serviceType'] as String).input(),
-      status: (map['status'] as String).input(),
+      creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
+      graphApiComputeEndpoint: (() {
+        final guardedValue = map['graphApiComputeEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceCount: (() {
+        final guardedValue = map['instanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceSize: (() {
+        final guardedValue = map['instanceSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      locations: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GraphAPIComputeRegionalServiceResourceResponse>(
+          map['locations']!,
+          (value) => GraphAPIComputeRegionalServiceResourceResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      serviceType: pulumi.Input.fromValue(map['serviceType'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

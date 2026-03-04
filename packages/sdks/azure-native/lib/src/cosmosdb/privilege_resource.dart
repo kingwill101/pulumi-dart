@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivilegeResource {
   /// The collection name the role is applied.
   final pulumi.Input<String>? collection;
+
   /// The database name the role is applied.
   final pulumi.Input<String>? db;
 
   /// Creates a new [PrivilegeResource].
   /// [collection] The collection name the role is applied.
   /// [db] The database name the role is applied.
-  PrivilegeResource({
-    this.collection,
-    this.db,
-  });
+  PrivilegeResource({this.collection, this.db});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'collection': ?collection,
-      'db': ?db,
-    };
+    return <String, dynamic>{'collection': ?collection, 'db': ?db};
   }
 
   factory PrivilegeResource.fromMap(Map<String, dynamic> map) {
     return PrivilegeResource(
-      collection: map['collection'] == null ? null : (map['collection']! as String).input(),
-      db: map['db'] == null ? null : (map['db']! as String).input(),
+      collection: (() {
+        final guardedValue = map['collection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      db: (() {
+        final guardedValue = map['db'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

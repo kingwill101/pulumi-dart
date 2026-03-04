@@ -13,15 +13,16 @@ class ExperienceConfigurationUserIdentityConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'identityAttributeName': identityAttributeName,
-    };
+    return <String, dynamic>{'identityAttributeName': identityAttributeName};
   }
 
-  factory ExperienceConfigurationUserIdentityConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ExperienceConfigurationUserIdentityConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExperienceConfigurationUserIdentityConfiguration(
-      identityAttributeName: (map['identityAttributeName'] as String).input(),
+      identityAttributeName: pulumi.Input.fromValue(
+        map['identityAttributeName'] as String,
+      ),
     );
   }
 }
-

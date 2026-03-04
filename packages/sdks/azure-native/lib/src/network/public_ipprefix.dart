@@ -1,10 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
-import 'ip_tag_response.dart';
 import 'nat_gateway_response.dart';
 import 'public_ipprefix_args.dart';
 import 'public_ipprefix_sku_response.dart';
-import 'referenced_public_ip_address_response.dart';
 import 'sub_resource_response.dart';
 
 /// Public IP prefix resource.
@@ -315,40 +313,59 @@ import 'sub_resource_response.dart';
 class PublicIPPrefix extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The customIpPrefix that this prefix is associated with.
   late final pulumi.Output<SubResourceResponse?> customIPPrefix;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The extended location of the public ip address.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// The allocated Prefix.
   late final pulumi.Output<String> ipPrefix;
+
   /// The list of tags associated with the public IP prefix.
-  late final pulumi.Output<List<IpTagResponse>?> ipTags;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipTags;
+
   /// The reference to load balancer frontend IP configuration associated with the public IP prefix.
-  late final pulumi.Output<SubResourceResponse> loadBalancerFrontendIpConfiguration;
+  late final pulumi.Output<SubResourceResponse>
+  loadBalancerFrontendIpConfiguration;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// NatGateway of Public IP Prefix.
   late final pulumi.Output<NatGatewayResponse?> natGateway;
+
   /// The Length of the Public IP Prefix.
   late final pulumi.Output<int?> prefixLength;
+
   /// The provisioning state of the public IP prefix resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The public IP address version.
   late final pulumi.Output<String?> publicIPAddressVersion;
+
   /// The list of all referenced PublicIPAddresses.
-  late final pulumi.Output<List<ReferencedPublicIpAddressResponse>> publicIPAddresses;
+  late final pulumi.Output<List<Map<String, dynamic>>> publicIPAddresses;
+
   /// The resource GUID property of the public IP prefix resource.
   late final pulumi.Output<String> resourceGuid;
+
   /// The public IP prefix SKU.
   late final pulumi.Output<PublicIPPrefixSkuResponse?> sku;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// A list of availability zones denoting the IP allocated for the resource needs to come from.
   late final pulumi.Output<List<String>?> zones;
 
@@ -361,29 +378,35 @@ class PublicIPPrefix extends pulumi.CustomResource {
     PublicIPPrefixArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:PublicIPPrefix',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customIPPrefix = registerOutput<SubResourceResponse?>('customIPPrefix');
-    this.etag = registerOutput<String>('etag');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.ipPrefix = registerOutput<String>('ipPrefix');
-    this.ipTags = registerOutput<List<IpTagResponse>?>('ipTags');
-    this.loadBalancerFrontendIpConfiguration = registerOutput<SubResourceResponse>('loadBalancerFrontendIpConfiguration');
-    this.location = registerOutput<String?>('location');
+         'azure-native:network:PublicIPPrefix',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customIPPrefix = registerOutput<SubResourceResponse?>('customIPPrefix');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    ipPrefix = registerOutput<String>('ipPrefix');
+    ipTags = registerOutput<List<Map<String, dynamic>>?>('ipTags');
+    loadBalancerFrontendIpConfiguration = registerOutput<SubResourceResponse>(
+      'loadBalancerFrontendIpConfiguration',
+    );
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.natGateway = registerOutput<NatGatewayResponse?>('natGateway');
-    this.prefixLength = registerOutput<int?>('prefixLength');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicIPAddressVersion = registerOutput<String?>('publicIPAddressVersion');
-    this.publicIPAddresses = registerOutput<List<ReferencedPublicIpAddressResponse>>('publicIPAddresses');
-    this.resourceGuid = registerOutput<String>('resourceGuid');
-    this.sku = registerOutput<PublicIPPrefixSkuResponse?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.zones = registerOutput<List<String>?>('zones');
+    natGateway = registerOutput<NatGatewayResponse?>('natGateway');
+    prefixLength = registerOutput<int?>('prefixLength');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicIPAddressVersion = registerOutput<String?>('publicIPAddressVersion');
+    publicIPAddresses = registerOutput<List<Map<String, dynamic>>>(
+      'publicIPAddresses',
+    );
+    resourceGuid = registerOutput<String>('resourceGuid');
+    sku = registerOutput<PublicIPPrefixSkuResponse?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

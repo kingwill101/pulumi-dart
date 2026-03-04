@@ -1,15 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'function_app_slot_args.dart';
 import 'function_app_slot_auth_settings.dart';
-import 'function_app_slot_connection_string.dart';
 import 'function_app_slot_identity.dart';
 import 'function_app_slot_site_config.dart';
-import 'function_app_slot_site_credential.dart';
 import 'function_app_slot_state.dart';
 
 /// Manages a Function App deployment Slot.
 ///
-/// !> **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.LinuxFunctionAppSlot` and `azure.appservice.WindowsFunctionAppSlot` resources instead.
+/// !&gt; **NOTE:** This resource has been deprecated in version 5.0 of the provider and will be removed in version 6.0. Please use `azure.appservice.LinuxFunctionAppSlot` and `azure.appservice.WindowsFunctionAppSlot` resources instead.
 ///
 /// ## Example Usage
 ///
@@ -356,58 +354,81 @@ import 'function_app_slot_state.dart';
 class FunctionAppSlot extends pulumi.CustomResource {
   /// The ID of the App Service Plan within which to create this Function App Slot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appServicePlanId;
+
   /// A key-value pair of App Settings.
   ///
-  /// > **Note:** When integrating a `CI/CD pipeline` and expecting to run from a deployed package in `Azure` you must seed your `app settings` as part of the application code for function app to be successfully deployed. `Important Default key pairs`: (`"WEBSITE_RUN_FROM_PACKAGE" = ""`, `"FUNCTIONS_WORKER_RUNTIME" = "node"` (or python, etc), `"WEBSITE_NODE_DEFAULT_VERSION" = "10.14.1"`, `"APPINSIGHTS_INSTRUMENTATIONKEY" = ""`).
+  /// &gt; **Note:** When integrating a `CI/CD pipeline` and expecting to run from a deployed package in `Azure` you must seed your `app settings` as part of the application code for function app to be successfully deployed. `Important Default key pairs`: (`"WEBSITE_RUN_FROM_PACKAGE" = ""`, `"FUNCTIONS_WORKER_RUNTIME" = "node"` (or python, etc), `"WEBSITE_NODE_DEFAULT_VERSION" = "10.14.1"`, `"APPINSIGHTS_INSTRUMENTATIONKEY" = ""`).
   ///
-  /// > **NOTE:** The values for `AzureWebJobsStorage` and `FUNCTIONS_EXTENSION_VERSION` will be filled by other input arguments and shouldn't be configured separately. `AzureWebJobsStorage` is filled based on `storage_account_name` and `storage_account_access_key`. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`.
+  /// &gt; **NOTE:** The values for `AzureWebJobsStorage` and `FUNCTIONS_EXTENSION_VERSION` will be filled by other input arguments and shouldn't be configured separately. `AzureWebJobsStorage` is filled based on `storage_account_name` and `storage_account_access_key`. `FUNCTIONS_EXTENSION_VERSION` is filled based on `version`.
   ///
-  /// > **Note:**  When using an App Service Plan in the `Free` or `Shared` Tiers `use_32_bit_worker_process` must be set to `true`.
+  /// &gt; **Note:**  When using an App Service Plan in the `Free` or `Shared` Tiers `use_32_bit_worker_process` must be set to `true`.
   late final pulumi.Output<Map<String, String>> appSettings;
+
   /// An `auth_settings` block as defined below.
   late final pulumi.Output<FunctionAppSlotAuthSettings> authSettings;
+
   /// A `connection_string` block as defined below.
-  late final pulumi.Output<List<FunctionAppSlotConnectionString>> connectionStrings;
+  late final pulumi.Output<List<Map<String, dynamic>>> connectionStrings;
+
   /// The amount of memory in gigabyte-seconds that your application is allowed to consume per day. Setting this value only affects function apps under the consumption plan.
   late final pulumi.Output<int?> dailyMemoryTimeQuota;
+
   /// The default hostname associated with the Function App - such as `mysite.azurewebsites.net`
   late final pulumi.Output<String> defaultHostname;
+
   /// Should the built-in logging of the Function App be enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enableBuiltinLogging;
+
   /// Is the Function App enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// The name of the Function App within which to create the Function App Slot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> functionAppName;
+
   /// Can the Function App only be accessed via HTTPS? Defaults to `false`.
   late final pulumi.Output<bool?> httpsOnly;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<FunctionAppSlotIdentity?> identity;
+
   /// The Function App kind - such as `functionapp,linux,container`
   late final pulumi.Output<String> kind;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Function App. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A string indicating the Operating System type for this function app. The only possible value is `linux`. Changing this forces a new resource to be created.
   ///
-  /// > **NOTE:** This value will be `linux` for Linux Derivatives or an empty string for Windows (default).
+  /// &gt; **NOTE:** This value will be `linux` for Linux Derivatives or an empty string for Windows (default).
   late final pulumi.Output<String?> osType;
+
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`
   late final pulumi.Output<String> outboundIpAddresses;
+
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outbound_ip_addresses`.
   late final pulumi.Output<String> possibleOutboundIpAddresses;
+
   /// The name of the resource group in which to create the Function App Slot. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A `site_config` object as defined below.
   late final pulumi.Output<FunctionAppSlotSiteConfig> siteConfig;
+
   /// A `site_credential` block as defined below, which contains the site-level credentials used to publish to this Function App Slot.
-  late final pulumi.Output<List<FunctionAppSlotSiteCredential>> siteCredentials;
+  late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
+
   /// The access key which will be used to access the backend storage account for the Function App.
   late final pulumi.Output<String> storageAccountAccessKey;
+
   /// The backend storage account name which will be used by the Function App (such as the dashboard, logs). Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageAccountName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The runtime version associated with the Function App. Defaults to `~1`.
   late final pulumi.Output<String?> version;
 
@@ -420,35 +441,41 @@ class FunctionAppSlot extends pulumi.CustomResource {
     FunctionAppSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/functionAppSlot:FunctionAppSlot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appServicePlanId = registerOutput<String>('appServicePlanId');
-    this.appSettings = registerOutput<Map<String, String>>('appSettings');
-    this.authSettings = registerOutput<FunctionAppSlotAuthSettings>('authSettings');
-    this.connectionStrings = registerOutput<List<FunctionAppSlotConnectionString>>('connectionStrings');
-    this.dailyMemoryTimeQuota = registerOutput<int?>('dailyMemoryTimeQuota');
-    this.defaultHostname = registerOutput<String>('defaultHostname');
-    this.enableBuiltinLogging = registerOutput<bool?>('enableBuiltinLogging');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.functionAppName = registerOutput<String>('functionAppName');
-    this.httpsOnly = registerOutput<bool?>('httpsOnly');
-    this.identity = registerOutput<FunctionAppSlotIdentity?>('identity');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
+         'azure:appservice/functionAppSlot:FunctionAppSlot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appServicePlanId = registerOutput<String>('appServicePlanId');
+    appSettings = registerOutput<Map<String, String>>('appSettings');
+    authSettings = registerOutput<FunctionAppSlotAuthSettings>('authSettings');
+    connectionStrings = registerOutput<List<Map<String, dynamic>>>(
+      'connectionStrings',
+    );
+    dailyMemoryTimeQuota = registerOutput<int?>('dailyMemoryTimeQuota');
+    defaultHostname = registerOutput<String>('defaultHostname');
+    enableBuiltinLogging = registerOutput<bool?>('enableBuiltinLogging');
+    enabled = registerOutput<bool?>('enabled');
+    functionAppName = registerOutput<String>('functionAppName');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<FunctionAppSlotIdentity?>('identity');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.osType = registerOutput<String?>('osType');
-    this.outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    this.possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.siteConfig = registerOutput<FunctionAppSlotSiteConfig>('siteConfig');
-    this.siteCredentials = registerOutput<List<FunctionAppSlotSiteCredential>>('siteCredentials');
-    this.storageAccountAccessKey = registerOutput<String>('storageAccountAccessKey');
-    this.storageAccountName = registerOutput<String>('storageAccountName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.version = registerOutput<String?>('version');
+    osType = registerOutput<String?>('osType');
+    outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
+    possibleOutboundIpAddresses = registerOutput<String>(
+      'possibleOutboundIpAddresses',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    siteConfig = registerOutput<FunctionAppSlotSiteConfig>('siteConfig');
+    siteCredentials = registerOutput<List<Map<String, dynamic>>>(
+      'siteCredentials',
+    );
+    storageAccountAccessKey = registerOutput<String>('storageAccountAccessKey');
+    storageAccountName = registerOutput<String>('storageAccountName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    version = registerOutput<String?>('version');
   }
 
   /// Gets an existing [FunctionAppSlot] resource's state with the given [name] and [id].
@@ -469,34 +496,40 @@ class FunctionAppSlot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/functionAppSlot:FunctionAppSlot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appServicePlanId = registerOutput<String>('appServicePlanId');
-    this.appSettings = registerOutput<Map<String, String>>('appSettings');
-    this.authSettings = registerOutput<FunctionAppSlotAuthSettings>('authSettings');
-    this.connectionStrings = registerOutput<List<FunctionAppSlotConnectionString>>('connectionStrings');
-    this.dailyMemoryTimeQuota = registerOutput<int?>('dailyMemoryTimeQuota');
-    this.defaultHostname = registerOutput<String>('defaultHostname');
-    this.enableBuiltinLogging = registerOutput<bool?>('enableBuiltinLogging');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.functionAppName = registerOutput<String>('functionAppName');
-    this.httpsOnly = registerOutput<bool?>('httpsOnly');
-    this.identity = registerOutput<FunctionAppSlotIdentity?>('identity');
-    this.kind = registerOutput<String>('kind');
-    this.location = registerOutput<String>('location');
+         'azure:appservice/functionAppSlot:FunctionAppSlot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appServicePlanId = registerOutput<String>('appServicePlanId');
+    appSettings = registerOutput<Map<String, String>>('appSettings');
+    authSettings = registerOutput<FunctionAppSlotAuthSettings>('authSettings');
+    connectionStrings = registerOutput<List<Map<String, dynamic>>>(
+      'connectionStrings',
+    );
+    dailyMemoryTimeQuota = registerOutput<int?>('dailyMemoryTimeQuota');
+    defaultHostname = registerOutput<String>('defaultHostname');
+    enableBuiltinLogging = registerOutput<bool?>('enableBuiltinLogging');
+    enabled = registerOutput<bool?>('enabled');
+    functionAppName = registerOutput<String>('functionAppName');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<FunctionAppSlotIdentity?>('identity');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.osType = registerOutput<String?>('osType');
-    this.outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    this.possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.siteConfig = registerOutput<FunctionAppSlotSiteConfig>('siteConfig');
-    this.siteCredentials = registerOutput<List<FunctionAppSlotSiteCredential>>('siteCredentials');
-    this.storageAccountAccessKey = registerOutput<String>('storageAccountAccessKey');
-    this.storageAccountName = registerOutput<String>('storageAccountName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.version = registerOutput<String?>('version');
+    osType = registerOutput<String?>('osType');
+    outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
+    possibleOutboundIpAddresses = registerOutput<String>(
+      'possibleOutboundIpAddresses',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    siteConfig = registerOutput<FunctionAppSlotSiteConfig>('siteConfig');
+    siteCredentials = registerOutput<List<Map<String, dynamic>>>(
+      'siteCredentials',
+    );
+    storageAccountAccessKey = registerOutput<String>('storageAccountAccessKey');
+    storageAccountName = registerOutput<String>('storageAccountName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    version = registerOutput<String?>('version');
   }
 }

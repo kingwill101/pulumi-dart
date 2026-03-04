@@ -2,16 +2,15 @@
 enum FormatType {
   valueCsv("Csv");
 
-  const FormatType(this.value);
-  final String value;
+  const FormatType(this.wireValue);
+  final String wireValue;
 
   static FormatType fromValue(String value) {
     for (final item in FormatType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FormatType value: $value');
   }
 }
-

@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_endpoint_args.dart';
-import 'event_endpoint_event_bus.dart';
 import 'event_endpoint_replication_config.dart';
 import 'event_endpoint_routing_config.dart';
 import 'event_endpoint_state.dart';
 
 /// Provides a resource to create an EventBridge Global Endpoint.
 ///
-/// > **Note:** EventBridge was formerly known as CloudWatch Events. The functionality is identical.
+/// &gt; **Note:** EventBridge was formerly known as CloudWatch Events. The functionality is identical.
 ///
 /// ## Example Usage
 ///
@@ -244,20 +243,28 @@ import 'event_endpoint_state.dart';
 class EventEndpoint extends pulumi.CustomResource {
   /// The ARN of the endpoint that was created.
   late final pulumi.Output<String> arn;
+
   /// A description of the global endpoint.
   late final pulumi.Output<String?> description;
+
   /// The URL of the endpoint that was created.
   late final pulumi.Output<String> endpointUrl;
+
   /// The event buses to use. The names of the event buses must be identical in each Region. Exactly two event buses are required. Documented below.
-  late final pulumi.Output<List<EventEndpointEventBus>> eventBuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> eventBuses;
+
   /// The name of the global endpoint.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Parameters used for replication. Documented below.
   late final pulumi.Output<EventEndpointReplicationConfig?> replicationConfig;
+
   /// The ARN of the IAM role used for replication between event buses.
   late final pulumi.Output<String?> roleArn;
+
   /// Parameters used for routing, including the health check and secondary Region. Documented below.
   late final pulumi.Output<EventEndpointRoutingConfig> routingConfig;
 
@@ -270,20 +277,22 @@ class EventEndpoint extends pulumi.CustomResource {
     EventEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudwatch/eventEndpoint:EventEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.endpointUrl = registerOutput<String>('endpointUrl');
-    this.eventBuses = registerOutput<List<EventEndpointEventBus>>('eventBuses');
+         'aws:cloudwatch/eventEndpoint:EventEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    endpointUrl = registerOutput<String>('endpointUrl');
+    eventBuses = registerOutput<List<Map<String, dynamic>>>('eventBuses');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.replicationConfig = registerOutput<EventEndpointReplicationConfig?>('replicationConfig');
-    this.roleArn = registerOutput<String?>('roleArn');
-    this.routingConfig = registerOutput<EventEndpointRoutingConfig>('routingConfig');
+    region = registerOutput<String>('region');
+    replicationConfig = registerOutput<EventEndpointReplicationConfig?>(
+      'replicationConfig',
+    );
+    roleArn = registerOutput<String?>('roleArn');
+    routingConfig = registerOutput<EventEndpointRoutingConfig>('routingConfig');
   }
 
   /// Gets an existing [EventEndpoint] resource's state with the given [name] and [id].
@@ -304,19 +313,21 @@ class EventEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudwatch/eventEndpoint:EventEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.endpointUrl = registerOutput<String>('endpointUrl');
-    this.eventBuses = registerOutput<List<EventEndpointEventBus>>('eventBuses');
+         'aws:cloudwatch/eventEndpoint:EventEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    endpointUrl = registerOutput<String>('endpointUrl');
+    eventBuses = registerOutput<List<Map<String, dynamic>>>('eventBuses');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.replicationConfig = registerOutput<EventEndpointReplicationConfig?>('replicationConfig');
-    this.roleArn = registerOutput<String?>('roleArn');
-    this.routingConfig = registerOutput<EventEndpointRoutingConfig>('routingConfig');
+    region = registerOutput<String>('region');
+    replicationConfig = registerOutput<EventEndpointReplicationConfig?>(
+      'replicationConfig',
+    );
+    roleArn = registerOutput<String?>('roleArn');
+    routingConfig = registerOutput<EventEndpointRoutingConfig>('routingConfig');
   }
 }

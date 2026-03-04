@@ -33,13 +33,24 @@ class GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Args {
     };
   }
 
-  factory GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
+  factory GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Args(
-      autoscalingPolicyId: (map['autoscalingPolicyId'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      regionId: (map['regionId'] as String).input(),
+      autoscalingPolicyId: pulumi.Input.fromValue(
+        map['autoscalingPolicyId'] as String,
+      ),
+      optionsRequestedPolicyVersion: (() {
+        final guardedValue = map['optionsRequestedPolicyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
     );
   }
 }
-

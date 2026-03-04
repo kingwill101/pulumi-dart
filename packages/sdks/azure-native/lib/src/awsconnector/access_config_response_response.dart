@@ -5,14 +5,15 @@ import 'authentication_mode_enum_value_response.dart';
 
 /// Definition of AccessConfigResponse
 class AccessConfigResponseResponse {
-  /// <p>The current authentication mode of the cluster.</p>
+  /// &lt;p&gt;The current authentication mode of the cluster.&lt;/p&gt;
   final pulumi.Input<AuthenticationModeEnumValueResponse>? authenticationMode;
-  /// <p>Specifies whether or not the cluster creator IAM principal was set as a cluster admin access entry during cluster creation time.</p>
+
+  /// &lt;p&gt;Specifies whether or not the cluster creator IAM principal was set as a cluster admin access entry during cluster creation time.&lt;/p&gt;
   final pulumi.Input<bool>? bootstrapClusterCreatorAdminPermissions;
 
   /// Creates a new [AccessConfigResponseResponse].
-  /// [authenticationMode] <p>The current authentication mode of the cluster.</p>
-  /// [bootstrapClusterCreatorAdminPermissions] <p>Specifies whether or not the cluster creator IAM principal was set as a cluster admin access entry during cluster creation time.</p>
+  /// [authenticationMode] &lt;p&gt;The current authentication mode of the cluster.&lt;/p&gt;
+  /// [bootstrapClusterCreatorAdminPermissions] &lt;p&gt;Specifies whether or not the cluster creator IAM principal was set as a cluster admin access entry during cluster creation time.&lt;/p&gt;
   AccessConfigResponseResponse({
     this.authenticationMode,
     this.bootstrapClusterCreatorAdminPermissions,
@@ -20,16 +21,32 @@ class AccessConfigResponseResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authenticationMode': ?pulumi.Input.mapOptionalInputValue<AuthenticationModeEnumValueResponse, Map<String, dynamic>>(authenticationMode, (value) => value.toMap()),
-      'bootstrapClusterCreatorAdminPermissions': ?bootstrapClusterCreatorAdminPermissions,
+      'authenticationMode':
+          ?pulumi.Input.mapOptionalInputValue<
+            AuthenticationModeEnumValueResponse,
+            Map<String, dynamic>
+          >(authenticationMode, (value) => value.toMap()),
+      'bootstrapClusterCreatorAdminPermissions':
+          ?bootstrapClusterCreatorAdminPermissions,
     };
   }
 
   factory AccessConfigResponseResponse.fromMap(Map<String, dynamic> map) {
     return AccessConfigResponseResponse(
-      authenticationMode: map['authenticationMode'] == null ? null : (AuthenticationModeEnumValueResponse.fromMap((map['authenticationMode']! as Map).cast<String, dynamic>())).input(),
-      bootstrapClusterCreatorAdminPermissions: map['bootstrapClusterCreatorAdminPermissions'] == null ? null : (map['bootstrapClusterCreatorAdminPermissions']! as bool).input(),
+      authenticationMode: (() {
+        final guardedValue = map['authenticationMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AuthenticationModeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      bootstrapClusterCreatorAdminPermissions: (() {
+        final guardedValue = map['bootstrapClusterCreatorAdminPermissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

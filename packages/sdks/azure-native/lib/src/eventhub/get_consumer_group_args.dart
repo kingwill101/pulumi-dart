@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConsumerGroupArgs {
   /// The consumer group name
   final pulumi.Input<String> consumerGroupName;
+
   /// The Event Hub name
   final pulumi.Input<String> eventHubName;
+
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
+
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,14 @@ class GetConsumerGroupArgs {
 
   factory GetConsumerGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetConsumerGroupArgs(
-      consumerGroupName: (map['consumerGroupName'] as String).input(),
-      eventHubName: (map['eventHubName'] as String).input(),
-      namespaceName: (map['namespaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      consumerGroupName: pulumi.Input.fromValue(
+        map['consumerGroupName'] as String,
+      ),
+      eventHubName: pulumi.Input.fromValue(map['eventHubName'] as String),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -14,15 +14,16 @@ class CharacterMaskConfigResponseHealthcareV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maskingCharacter': maskingCharacter,
-    };
+    return <String, dynamic>{'maskingCharacter': maskingCharacter};
   }
 
-  factory CharacterMaskConfigResponseHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CharacterMaskConfigResponseHealthcareV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CharacterMaskConfigResponseHealthcareV1beta1(
-      maskingCharacter: (map['maskingCharacter'] as String).input(),
+      maskingCharacter: pulumi.Input.fromValue(
+        map['maskingCharacter'] as String,
+      ),
     );
   }
 }
-

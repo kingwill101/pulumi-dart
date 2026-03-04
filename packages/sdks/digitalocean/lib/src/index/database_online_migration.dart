@@ -354,14 +354,19 @@ import 'database_online_migration_state.dart';
 class DatabaseOnlineMigration extends pulumi.CustomResource {
   /// The ID of the target MySQL cluster.
   late final pulumi.Output<String> clusterId;
+
   /// The date and time when the online migration was created
   late final pulumi.Output<String> createdAt;
+
   /// When set to true, enables SSL encryption when connecting to the source database.
   late final pulumi.Output<bool?> disableSsl;
+
   /// A list of databases that should be ignored during migration.
   late final pulumi.Output<List<String>?> ignoreDbs;
+
   /// Configuration for migration
   late final pulumi.Output<DatabaseOnlineMigrationSource> source;
+
   /// The status of the online migration
   late final pulumi.Output<String> status;
 
@@ -374,17 +379,17 @@ class DatabaseOnlineMigration extends pulumi.CustomResource {
     DatabaseOnlineMigrationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.disableSsl = registerOutput<bool?>('disableSsl');
-    this.ignoreDbs = registerOutput<List<String>?>('ignoreDbs');
-    this.source = registerOutput<DatabaseOnlineMigrationSource>('source');
-    this.status = registerOutput<String>('status');
+         'digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    createdAt = registerOutput<String>('createdAt');
+    disableSsl = registerOutput<bool?>('disableSsl');
+    ignoreDbs = registerOutput<List<String>?>('ignoreDbs');
+    source = registerOutput<DatabaseOnlineMigrationSource>('source');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [DatabaseOnlineMigration] resource's state with the given [name] and [id].
@@ -405,16 +410,16 @@ class DatabaseOnlineMigration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterId = registerOutput<String>('clusterId');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.disableSsl = registerOutput<bool?>('disableSsl');
-    this.ignoreDbs = registerOutput<List<String>?>('ignoreDbs');
-    this.source = registerOutput<DatabaseOnlineMigrationSource>('source');
-    this.status = registerOutput<String>('status');
+         'digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterId = registerOutput<String>('clusterId');
+    createdAt = registerOutput<String>('createdAt');
+    disableSsl = registerOutput<bool?>('disableSsl');
+    ignoreDbs = registerOutput<List<String>?>('ignoreDbs');
+    source = registerOutput<DatabaseOnlineMigrationSource>('source');
+    status = registerOutput<String>('status');
   }
 }

@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'xss_match_set_args.dart';
 import 'xss_match_set_state.dart';
-import 'xss_match_set_xss_match_tuple.dart';
 
 /// Provides a WAF Regional XSS Match Set Resource for use with Application Load Balancer.
 ///
@@ -189,10 +188,12 @@ import 'xss_match_set_xss_match_tuple.dart';
 class XssMatchSet extends pulumi.CustomResource {
   /// The name of the set
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The parts of web requests that you want to inspect for cross-site scripting attacks.
-  late final pulumi.Output<List<XssMatchSetXssMatchTuple>?> xssMatchTuples;
+  late final pulumi.Output<List<Map<String, dynamic>>?> xssMatchTuples;
 
   /// Creates a new [XssMatchSet].
   /// [name] The Pulumi resource name.
@@ -203,14 +204,16 @@ class XssMatchSet extends pulumi.CustomResource {
     XssMatchSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:wafregional/xssMatchSet:XssMatchSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:wafregional/xssMatchSet:XssMatchSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.xssMatchTuples = registerOutput<List<XssMatchSetXssMatchTuple>?>('xssMatchTuples');
+    region = registerOutput<String>('region');
+    xssMatchTuples = registerOutput<List<Map<String, dynamic>>?>(
+      'xssMatchTuples',
+    );
   }
 
   /// Gets an existing [XssMatchSet] resource's state with the given [name] and [id].
@@ -231,13 +234,15 @@ class XssMatchSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:wafregional/xssMatchSet:XssMatchSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:wafregional/xssMatchSet:XssMatchSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.xssMatchTuples = registerOutput<List<XssMatchSetXssMatchTuple>?>('xssMatchTuples');
+    region = registerOutput<String>('region');
+    xssMatchTuples = registerOutput<List<Map<String, dynamic>>?>(
+      'xssMatchTuples',
+    );
   }
 }

@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentStepResponse {
   /// Description of step.
   final pulumi.Input<String> description;
+
   /// End time of step.
   final pulumi.Input<String> endTimeUtc;
+
   /// List of exceptions in AzureStackHCI Cluster Deployment.
   final pulumi.Input<List<String>> exception;
+
   /// FullStepIndex of step.
   final pulumi.Input<String> fullStepIndex;
+
   /// Name of step.
   final pulumi.Input<String> name;
+
   /// Start time of step.
   final pulumi.Input<String> startTimeUtc;
+
   /// Status of step. Allowed values are 'Error', 'Success', 'InProgress'
   final pulumi.Input<String> status;
+
   /// List of nested steps of AzureStackHCI Cluster Deployment.
   final pulumi.Input<List<DeploymentStepResponse>> steps;
 
@@ -50,21 +57,40 @@ class DeploymentStepResponse {
       'name': name,
       'startTimeUtc': startTimeUtc,
       'status': status,
-      'steps': pulumi.Input.mapInputValue<List<DeploymentStepResponse>, List<Map<String, dynamic>>>(steps, (value) => pulumi.Input.encodeList<DeploymentStepResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'steps':
+          pulumi.Input.mapInputValue<
+            List<DeploymentStepResponse>,
+            List<Map<String, dynamic>>
+          >(
+            steps,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DeploymentStepResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DeploymentStepResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentStepResponse(
-      description: (map['description'] as String).input(),
-      endTimeUtc: (map['endTimeUtc'] as String).input(),
-      exception: ((map['exception'] as List).cast<String>()).input(),
-      fullStepIndex: (map['fullStepIndex'] as String).input(),
-      name: (map['name'] as String).input(),
-      startTimeUtc: (map['startTimeUtc'] as String).input(),
-      status: (map['status'] as String).input(),
-      steps: (pulumi.Input.decodeList<DeploymentStepResponse>(map['steps'], (value) => DeploymentStepResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      endTimeUtc: pulumi.Input.fromValue(map['endTimeUtc'] as String),
+      exception: pulumi.Input.fromValue(
+        (map['exception'] as List).cast<String>(),
+      ),
+      fullStepIndex: pulumi.Input.fromValue(map['fullStepIndex'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      startTimeUtc: pulumi.Input.fromValue(map['startTimeUtc'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      steps: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<DeploymentStepResponse>(
+          map['steps']!,
+          (value) => DeploymentStepResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

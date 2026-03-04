@@ -4,16 +4,15 @@ enum TaskScope {
   migrationEntity("MigrationEntity"),
   migrationEntityGroup("MigrationEntityGroup");
 
-  const TaskScope(this.value);
-  final String value;
+  const TaskScope(this.wireValue);
+  final String wireValue;
 
   static TaskScope fromValue(String value) {
     for (final item in TaskScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TaskScope value: $value');
   }
 }
-

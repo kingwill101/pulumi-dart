@@ -16,17 +16,19 @@ class EntityRecognizerInputDataConfigAnnotations {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      's3Uri': s3Uri,
-      'testS3Uri': ?testS3Uri,
-    };
+    return <String, dynamic>{'s3Uri': s3Uri, 'testS3Uri': ?testS3Uri};
   }
 
-  factory EntityRecognizerInputDataConfigAnnotations.fromMap(Map<String, dynamic> map) {
+  factory EntityRecognizerInputDataConfigAnnotations.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EntityRecognizerInputDataConfigAnnotations(
-      s3Uri: (map['s3Uri'] as String).input(),
-      testS3Uri: map['testS3Uri'] == null ? null : ((map['testS3Uri'] as String).input()).input(),
+      s3Uri: pulumi.Input.fromValue(map['s3Uri'] as String),
+      testS3Uri: (() {
+        final guardedValue = map['testS3Uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

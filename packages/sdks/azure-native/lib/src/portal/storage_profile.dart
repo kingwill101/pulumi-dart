@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StorageProfile {
   /// Size of file share
   final pulumi.Input<int>? diskSizeInGB;
+
   /// Name of the mounted file share. 63 characters or less, lowercase alphabet, numbers, and -
   final pulumi.Input<String>? fileShareName;
+
   /// Full resource ID of storage account.
   final pulumi.Input<String>? storageAccountResourceId;
 
@@ -31,10 +33,21 @@ class StorageProfile {
 
   factory StorageProfile.fromMap(Map<String, dynamic> map) {
     return StorageProfile(
-      diskSizeInGB: map['diskSizeInGB'] == null ? null : (map['diskSizeInGB']! as int).input(),
-      fileShareName: map['fileShareName'] == null ? null : (map['fileShareName']! as String).input(),
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId']! as String).input(),
+      diskSizeInGB: (() {
+        final guardedValue = map['diskSizeInGB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      fileShareName: (() {
+        final guardedValue = map['fileShareName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountResourceId: (() {
+        final guardedValue = map['storageAccountResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

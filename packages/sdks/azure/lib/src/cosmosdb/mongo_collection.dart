@@ -1,9 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mongo_collection_args.dart';
 import 'mongo_collection_autoscale_settings.dart';
-import 'mongo_collection_index.dart';
 import 'mongo_collection_state.dart';
-import 'mongo_collection_system_index.dart';
 
 /// Manages a Mongo Collection within a Cosmos DB Account.
 ///
@@ -252,26 +250,36 @@ import 'mongo_collection_system_index.dart';
 class MongoCollection extends pulumi.CustomResource {
   /// The name of the Cosmos DB Account in which the Cosmos DB Mongo Collection is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> accountName;
+
   /// The default time to live of Analytical Storage for this Mongo Collection. If present and the value is set to `-1`, it is equal to infinity, and items don’t expire by default. If present and the value is set to some number `n` – items will expire `n` seconds after their last modified time.
   late final pulumi.Output<int?> analyticalStorageTtl;
+
   /// An `autoscale_settings` block as defined below. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
   ///
-  /// > **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
+  /// &gt; **Note:** Switching between autoscale and manual throughput is not supported via this provider and must be completed via the Azure Portal and refreshed.
   late final pulumi.Output<MongoCollectionAutoscaleSettings?> autoscaleSettings;
+
   /// The name of the Cosmos DB Mongo Database in which the Cosmos DB Mongo Collection is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> databaseName;
+
   /// The default Time To Live in seconds. If the value is `-1`, items are not automatically expired.
   late final pulumi.Output<int?> defaultTtlSeconds;
+
   /// One or more `index` blocks as defined below.
-  late final pulumi.Output<List<MongoCollectionIndex>?> indices;
+  late final pulumi.Output<List<Map<String, dynamic>>?> indices;
+
   /// Specifies the name of the Cosmos DB Mongo Collection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which the Cosmos DB Mongo Collection is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The name of the key to partition on for sharding. There must not be any other unique index keys. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> shardKey;
+
   /// One or more `system_indexes` blocks as defined below.
-  late final pulumi.Output<List<MongoCollectionSystemIndex>> systemIndexes;
+  late final pulumi.Output<List<Map<String, dynamic>>> systemIndexes;
+
   /// The throughput of the MongoDB collection (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
   late final pulumi.Output<int> throughput;
 
@@ -284,22 +292,24 @@ class MongoCollection extends pulumi.CustomResource {
     MongoCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cosmosdb/mongoCollection:MongoCollection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
-    this.autoscaleSettings = registerOutput<MongoCollectionAutoscaleSettings?>('autoscaleSettings');
-    this.databaseName = registerOutput<String>('databaseName');
-    this.defaultTtlSeconds = registerOutput<int?>('defaultTtlSeconds');
-    this.indices = registerOutput<List<MongoCollectionIndex>?>('indices');
+         'azure:cosmosdb/mongoCollection:MongoCollection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
+    autoscaleSettings = registerOutput<MongoCollectionAutoscaleSettings?>(
+      'autoscaleSettings',
+    );
+    databaseName = registerOutput<String>('databaseName');
+    defaultTtlSeconds = registerOutput<int?>('defaultTtlSeconds');
+    indices = registerOutput<List<Map<String, dynamic>>?>('indices');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.shardKey = registerOutput<String?>('shardKey');
-    this.systemIndexes = registerOutput<List<MongoCollectionSystemIndex>>('systemIndexes');
-    this.throughput = registerOutput<int>('throughput');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    shardKey = registerOutput<String?>('shardKey');
+    systemIndexes = registerOutput<List<Map<String, dynamic>>>('systemIndexes');
+    throughput = registerOutput<int>('throughput');
   }
 
   /// Gets an existing [MongoCollection] resource's state with the given [name] and [id].
@@ -320,21 +330,23 @@ class MongoCollection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cosmosdb/mongoCollection:MongoCollection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountName = registerOutput<String>('accountName');
-    this.analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
-    this.autoscaleSettings = registerOutput<MongoCollectionAutoscaleSettings?>('autoscaleSettings');
-    this.databaseName = registerOutput<String>('databaseName');
-    this.defaultTtlSeconds = registerOutput<int?>('defaultTtlSeconds');
-    this.indices = registerOutput<List<MongoCollectionIndex>?>('indices');
+         'azure:cosmosdb/mongoCollection:MongoCollection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountName = registerOutput<String>('accountName');
+    analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
+    autoscaleSettings = registerOutput<MongoCollectionAutoscaleSettings?>(
+      'autoscaleSettings',
+    );
+    databaseName = registerOutput<String>('databaseName');
+    defaultTtlSeconds = registerOutput<int?>('defaultTtlSeconds');
+    indices = registerOutput<List<Map<String, dynamic>>?>('indices');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.shardKey = registerOutput<String?>('shardKey');
-    this.systemIndexes = registerOutput<List<MongoCollectionSystemIndex>>('systemIndexes');
-    this.throughput = registerOutput<int>('throughput');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    shardKey = registerOutput<String?>('shardKey');
+    systemIndexes = registerOutput<List<Map<String, dynamic>>>('systemIndexes');
+    throughput = registerOutput<int>('throughput');
   }
 }

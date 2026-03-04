@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceIdentityState {
   /// The email address of the Google managed service account.
   final pulumi.Input<String>? email;
+
   /// The folder in which the resource belongs.
   final pulumi.Input<String>? folder;
+
   /// The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
   final pulumi.Input<String>? member;
+
   /// The service to generate identity for.
   ///
   /// - - -
@@ -20,12 +23,7 @@ class ServiceIdentityState {
   /// [folder] The folder in which the resource belongs.
   /// [member] The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
   /// [service] The service to generate identity for.
-  ServiceIdentityState({
-    this.email,
-    this.folder,
-    this.member,
-    this.service,
-  });
+  ServiceIdentityState({this.email, this.folder, this.member, this.service});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,11 +36,26 @@ class ServiceIdentityState {
 
   factory ServiceIdentityState.fromMap(Map<String, dynamic> map) {
     return ServiceIdentityState(
-      email: map['email'] == null ? null : (map['email']! as String).input(),
-      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
-      member: map['member'] == null ? null : (map['member']! as String).input(),
-      service: map['service'] == null ? null : (map['service']! as String).input(),
+      email: (() {
+        final guardedValue = map['email'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      folder: (() {
+        final guardedValue = map['folder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      member: (() {
+        final guardedValue = map['member'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

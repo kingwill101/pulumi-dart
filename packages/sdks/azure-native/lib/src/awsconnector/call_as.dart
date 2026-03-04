@@ -3,16 +3,15 @@ enum CallAs {
   dELEGATEDADMIN("DELEGATED_ADMIN"),
   sELF("SELF");
 
-  const CallAs(this.value);
-  final String value;
+  const CallAs(this.wireValue);
+  final String wireValue;
 
   static CallAs fromValue(String value) {
     for (final item in CallAs.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CallAs value: $value');
   }
 }
-

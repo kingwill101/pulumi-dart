@@ -8,8 +8,10 @@ import 'scheduled_action_target_action_resume_cluster.dart';
 class ScheduledActionTargetAction {
   /// An action that runs a `PauseCluster` API operation. Documented below.
   final pulumi.Input<ScheduledActionTargetActionPauseCluster>? pauseCluster;
+
   /// An action that runs a `ResizeCluster` API operation. Documented below.
   final pulumi.Input<ScheduledActionTargetActionResizeCluster>? resizeCluster;
+
   /// An action that runs a `ResumeCluster` API operation. Documented below.
   final pulumi.Input<ScheduledActionTargetActionResumeCluster>? resumeCluster;
 
@@ -25,18 +27,53 @@ class ScheduledActionTargetAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pauseCluster': ?pulumi.Input.mapOptionalInputValue<ScheduledActionTargetActionPauseCluster, Map<String, dynamic>>(pauseCluster, (value) => value.toMap()),
-      'resizeCluster': ?pulumi.Input.mapOptionalInputValue<ScheduledActionTargetActionResizeCluster, Map<String, dynamic>>(resizeCluster, (value) => value.toMap()),
-      'resumeCluster': ?pulumi.Input.mapOptionalInputValue<ScheduledActionTargetActionResumeCluster, Map<String, dynamic>>(resumeCluster, (value) => value.toMap()),
+      'pauseCluster':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScheduledActionTargetActionPauseCluster,
+            Map<String, dynamic>
+          >(pauseCluster, (value) => value.toMap()),
+      'resizeCluster':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScheduledActionTargetActionResizeCluster,
+            Map<String, dynamic>
+          >(resizeCluster, (value) => value.toMap()),
+      'resumeCluster':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScheduledActionTargetActionResumeCluster,
+            Map<String, dynamic>
+          >(resumeCluster, (value) => value.toMap()),
     };
   }
 
   factory ScheduledActionTargetAction.fromMap(Map<String, dynamic> map) {
     return ScheduledActionTargetAction(
-      pauseCluster: map['pauseCluster'] == null ? null : ((ScheduledActionTargetActionPauseCluster.fromMap((map['pauseCluster']! as Map).cast<String, dynamic>())).input()).input(),
-      resizeCluster: map['resizeCluster'] == null ? null : ((ScheduledActionTargetActionResizeCluster.fromMap((map['resizeCluster']! as Map).cast<String, dynamic>())).input()).input(),
-      resumeCluster: map['resumeCluster'] == null ? null : ((ScheduledActionTargetActionResumeCluster.fromMap((map['resumeCluster']! as Map).cast<String, dynamic>())).input()).input(),
+      pauseCluster: (() {
+        final guardedValue = map['pauseCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScheduledActionTargetActionPauseCluster.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resizeCluster: (() {
+        final guardedValue = map['resizeCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScheduledActionTargetActionResizeCluster.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resumeCluster: (() {
+        final guardedValue = map['resumeCluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScheduledActionTargetActionResumeCluster.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

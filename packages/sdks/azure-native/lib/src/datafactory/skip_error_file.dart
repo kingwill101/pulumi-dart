@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SkipErrorFile {
   /// Skip if source/sink file changed by other concurrent write. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? dataInconsistency;
+
   /// Skip if file is deleted by other client during copy. Default is true. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? fileMissing;
 
   /// Creates a new [SkipErrorFile].
   /// [dataInconsistency] Skip if source/sink file changed by other concurrent write. Default is false. Type: boolean (or Expression with resultType boolean).
   /// [fileMissing] Skip if file is deleted by other client during copy. Default is true. Type: boolean (or Expression with resultType boolean).
-  SkipErrorFile({
-    this.dataInconsistency,
-    this.fileMissing,
-  });
+  SkipErrorFile({this.dataInconsistency, this.fileMissing});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class SkipErrorFile {
 
   factory SkipErrorFile.fromMap(Map<String, dynamic> map) {
     return SkipErrorFile(
-      dataInconsistency: map['dataInconsistency'] == null ? null : (map['dataInconsistency']!).input(),
-      fileMissing: map['fileMissing'] == null ? null : (map['fileMissing']!).input(),
+      dataInconsistency: (() {
+        final guardedValue = map['dataInconsistency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      fileMissing: (() {
+        final guardedValue = map['fileMissing'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

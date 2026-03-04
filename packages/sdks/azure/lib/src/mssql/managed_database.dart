@@ -6,7 +6,7 @@ import 'managed_database_state.dart';
 
 /// Manages an Azure SQL Azure Managed Database for a SQL Managed Instance.
 ///
-/// !> **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `prevent_destroy` lifecycle argument in your configuration file for this resource. For more information on the `prevent_destroy` lifecycle argument please see the terraform documentation.
+/// !&gt; **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `prevent_destroy` lifecycle argument in your configuration file for this resource. For more information on the `prevent_destroy` lifecycle argument please see the terraform documentation.
 ///
 /// ## Example Usage
 ///
@@ -324,7 +324,7 @@ import 'managed_database_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Sql` - 2023-08-01-preview
@@ -338,15 +338,22 @@ import 'managed_database_state.dart';
 /// ```
 class ManagedDatabase extends pulumi.CustomResource {
   /// A `long_term_retention_policy` block as defined below.
-  late final pulumi.Output<ManagedDatabaseLongTermRetentionPolicy> longTermRetentionPolicy;
+  late final pulumi.Output<ManagedDatabaseLongTermRetentionPolicy>
+  longTermRetentionPolicy;
+
   /// The ID of the Azure SQL Managed Instance on which to create this Managed Database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> managedInstanceId;
+
   /// The name of the Managed Database to create. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `point_in_time_restore` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<ManagedDatabasePointInTimeRestore?> pointInTimeRestore;
+  late final pulumi.Output<ManagedDatabasePointInTimeRestore?>
+  pointInTimeRestore;
+
   /// The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
   late final pulumi.Output<int?> shortTermRetentionDays;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -359,17 +366,22 @@ class ManagedDatabase extends pulumi.CustomResource {
     ManagedDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/managedDatabase:ManagedDatabase',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.longTermRetentionPolicy = registerOutput<ManagedDatabaseLongTermRetentionPolicy>('longTermRetentionPolicy');
-    this.managedInstanceId = registerOutput<String>('managedInstanceId');
+         'azure:mssql/managedDatabase:ManagedDatabase',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    longTermRetentionPolicy =
+        registerOutput<ManagedDatabaseLongTermRetentionPolicy>(
+          'longTermRetentionPolicy',
+        );
+    managedInstanceId = registerOutput<String>('managedInstanceId');
     this.name = registerOutput<String>('name');
-    this.pointInTimeRestore = registerOutput<ManagedDatabasePointInTimeRestore?>('pointInTimeRestore');
-    this.shortTermRetentionDays = registerOutput<int?>('shortTermRetentionDays');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    pointInTimeRestore = registerOutput<ManagedDatabasePointInTimeRestore?>(
+      'pointInTimeRestore',
+    );
+    shortTermRetentionDays = registerOutput<int?>('shortTermRetentionDays');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [ManagedDatabase] resource's state with the given [name] and [id].
@@ -390,16 +402,21 @@ class ManagedDatabase extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/managedDatabase:ManagedDatabase',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.longTermRetentionPolicy = registerOutput<ManagedDatabaseLongTermRetentionPolicy>('longTermRetentionPolicy');
-    this.managedInstanceId = registerOutput<String>('managedInstanceId');
+         'azure:mssql/managedDatabase:ManagedDatabase',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    longTermRetentionPolicy =
+        registerOutput<ManagedDatabaseLongTermRetentionPolicy>(
+          'longTermRetentionPolicy',
+        );
+    managedInstanceId = registerOutput<String>('managedInstanceId');
     this.name = registerOutput<String>('name');
-    this.pointInTimeRestore = registerOutput<ManagedDatabasePointInTimeRestore?>('pointInTimeRestore');
-    this.shortTermRetentionDays = registerOutput<int?>('shortTermRetentionDays');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    pointInTimeRestore = registerOutput<ManagedDatabasePointInTimeRestore?>(
+      'pointInTimeRestore',
+    );
+    shortTermRetentionDays = registerOutput<int?>('shortTermRetentionDays');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

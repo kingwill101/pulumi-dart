@@ -7,8 +7,10 @@ import 'dashboard_parts_response.dart';
 class DashboardLensResponse {
   /// The dashboard len's metadata.
   final pulumi.Input<dynamic>? metadata;
+
   /// The lens order.
   final pulumi.Input<int> order;
+
   /// The dashboard parts.
   final pulumi.Input<List<DashboardPartsResponse>> parts;
 
@@ -26,16 +28,37 @@ class DashboardLensResponse {
     return <String, dynamic>{
       'metadata': ?metadata,
       'order': order,
-      'parts': pulumi.Input.mapInputValue<List<DashboardPartsResponse>, List<Map<String, dynamic>>>(parts, (value) => pulumi.Input.encodeList<DashboardPartsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parts':
+          pulumi.Input.mapInputValue<
+            List<DashboardPartsResponse>,
+            List<Map<String, dynamic>>
+          >(
+            parts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DashboardPartsResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DashboardLensResponse.fromMap(Map<String, dynamic> map) {
     return DashboardLensResponse(
-      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
-      order: (map['order'] as int).input(),
-      parts: (pulumi.Input.decodeList<DashboardPartsResponse>(map['parts'], (value) => DashboardPartsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      order: pulumi.Input.fromValue(map['order'] as int),
+      parts: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<DashboardPartsResponse>(
+          map['parts']!,
+          (value) => DashboardPartsResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

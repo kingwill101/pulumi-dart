@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AS2ErrorSettingsResponse {
   /// The value indicating whether to resend message If MDN is not received.
   final pulumi.Input<bool> resendIfMDNNotReceived;
+
   /// The value indicating whether to suspend duplicate message.
   final pulumi.Input<bool> suspendDuplicateMessage;
 
@@ -26,9 +27,12 @@ class AS2ErrorSettingsResponse {
 
   factory AS2ErrorSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AS2ErrorSettingsResponse(
-      resendIfMDNNotReceived: (map['resendIfMDNNotReceived'] as bool).input(),
-      suspendDuplicateMessage: (map['suspendDuplicateMessage'] as bool).input(),
+      resendIfMDNNotReceived: pulumi.Input.fromValue(
+        map['resendIfMDNNotReceived'] as bool,
+      ),
+      suspendDuplicateMessage: pulumi.Input.fromValue(
+        map['suspendDuplicateMessage'] as bool,
+      ),
     );
   }
 }
-

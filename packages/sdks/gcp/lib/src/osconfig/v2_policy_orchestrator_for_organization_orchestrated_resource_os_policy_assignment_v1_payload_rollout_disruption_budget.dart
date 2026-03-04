@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget {
   /// Specifies a fixed value.
   final pulumi.Input<int>? fixed;
+
   /// Specifies the relative value defined as a percentage, which will be
   /// multiplied by a reference value.
   final pulumi.Input<int>? percent;
@@ -18,17 +19,23 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fixed': ?fixed,
-      'percent': ?percent,
-    };
+    return <String, dynamic>{'fixed': ?fixed, 'percent': ?percent};
   }
 
-  factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget.fromMap(Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget(
-      fixed: map['fixed'] == null ? null : (map['fixed']! as int).input(),
-      percent: map['percent'] == null ? null : (map['percent']! as int).input(),
+      fixed: (() {
+        final guardedValue = map['fixed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      percent: (() {
+        final guardedValue = map['percent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

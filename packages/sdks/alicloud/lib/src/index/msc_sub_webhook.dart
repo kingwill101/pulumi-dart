@@ -4,7 +4,7 @@ import 'msc_sub_webhook_state.dart';
 
 /// Provides a Msc Sub Webhook resource.
 ///
-/// > **NOTE:** Available since v1.141.0.
+/// &gt; **NOTE:** Available since v1.141.0.
 ///
 /// ## Example Usage
 ///
@@ -186,6 +186,7 @@ import 'msc_sub_webhook_state.dart';
 class MscSubWebhook extends pulumi.CustomResource {
   /// The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
   late final pulumi.Output<String> serverUrl;
+
   /// The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
   late final pulumi.Output<String> webhookName;
 
@@ -198,13 +199,13 @@ class MscSubWebhook extends pulumi.CustomResource {
     MscSubWebhookArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:index/mscSubWebhook:MscSubWebhook',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.serverUrl = registerOutput<String>('serverUrl');
-    this.webhookName = registerOutput<String>('webhookName');
+         'alicloud:index/mscSubWebhook:MscSubWebhook',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    serverUrl = registerOutput<String>('serverUrl');
+    webhookName = registerOutput<String>('webhookName');
   }
 
   /// Gets an existing [MscSubWebhook] resource's state with the given [name] and [id].
@@ -225,12 +226,12 @@ class MscSubWebhook extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:index/mscSubWebhook:MscSubWebhook',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.serverUrl = registerOutput<String>('serverUrl');
-    this.webhookName = registerOutput<String>('webhookName');
+         'alicloud:index/mscSubWebhook:MscSubWebhook',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    serverUrl = registerOutput<String>('serverUrl');
+    webhookName = registerOutput<String>('webhookName');
   }
 }

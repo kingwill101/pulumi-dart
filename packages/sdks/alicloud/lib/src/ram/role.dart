@@ -8,9 +8,9 @@ import 'role_state.dart';
 ///
 /// For information about RAM Role and how to use it, see [What is Role](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createrole).
 ///
-/// > **NOTE:** Available since v1.0.0.
+/// &gt; **NOTE:** Available since v1.0.0.
 ///
-/// > **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
+/// &gt; **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
 ///
 /// ## Example Usage
 ///
@@ -259,30 +259,43 @@ import 'role_state.dart';
 class Role extends pulumi.CustomResource {
   /// The Alibaba Cloud Resource Name (ARN) of the RAM role.
   late final pulumi.Output<String> arn;
+
   /// The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
   late final pulumi.Output<String> assumeRolePolicyDocument;
+
   /// (Available since v1.252.0) The time when the RAM role was created.
   late final pulumi.Output<String> createTime;
+
   /// The description of the RAM role.
   late final pulumi.Output<String?> description;
+
   /// Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
   late final pulumi.Output<String> document;
+
   /// Specifies whether to force delete the Role. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> force;
+
   /// The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
   late final pulumi.Output<int> maxSessionDuration;
+
   /// Field `name` has been deprecated from provider version 1.252.0. New field `role_name` instead.
   late final pulumi.Output<String> name;
+
   /// Field `ram_users` has been deprecated from provider version 1.49.0. New field `document` instead.
   late final pulumi.Output<List<String>> ramUsers;
+
   /// The ID of the RAM role.
   late final pulumi.Output<String> roleId;
+
   /// The name of the RAM role.
   late final pulumi.Output<String> roleName;
+
   /// Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
   late final pulumi.Output<List<String>> services;
+
   /// The list of tags for the role.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
   late final pulumi.Output<String?> version;
 
@@ -290,38 +303,33 @@ class Role extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Role]. {@macro pulumi_ram_role_role_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Role(
-    String name, {
-    RoleArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:ram/role:Role',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.assumeRolePolicyDocument = registerOutput<String>('assumeRolePolicyDocument');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.document = registerOutput<String>('document');
-    this.force = registerOutput<bool?>('force');
-    this.maxSessionDuration = registerOutput<int>('maxSessionDuration');
+  Role(String name, {RoleArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:ram/role:Role',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    assumeRolePolicyDocument = registerOutput<String>(
+      'assumeRolePolicyDocument',
+    );
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    document = registerOutput<String>('document');
+    force = registerOutput<bool?>('force');
+    maxSessionDuration = registerOutput<int>('maxSessionDuration');
     this.name = registerOutput<String>('name');
-    this.ramUsers = registerOutput<List<String>>('ramUsers');
-    this.roleId = registerOutput<String>('roleId');
-    this.roleName = registerOutput<String>('roleName');
-    this.services = registerOutput<List<String>>('services');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.version = registerOutput<String?>('version');
+    ramUsers = registerOutput<List<String>>('ramUsers');
+    roleId = registerOutput<String>('roleId');
+    roleName = registerOutput<String>('roleName');
+    services = registerOutput<List<String>>('services');
+    tags = registerOutput<Map<String, String>?>('tags');
+    version = registerOutput<String?>('version');
   }
 
   /// Gets an existing [Role] resource's state with the given [name] and [id].
-  static Role get(
-    String name,
-    pulumi.Input<String> id, {
-    RoleState? state,
-  }) {
+  static Role get(String name, pulumi.Input<String> id, {RoleState? state}) {
     return Role._get(
       name,
       state: state?.toMap(),
@@ -334,24 +342,26 @@ class Role extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/role:Role',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.assumeRolePolicyDocument = registerOutput<String>('assumeRolePolicyDocument');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.document = registerOutput<String>('document');
-    this.force = registerOutput<bool?>('force');
-    this.maxSessionDuration = registerOutput<int>('maxSessionDuration');
+         'alicloud:ram/role:Role',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    assumeRolePolicyDocument = registerOutput<String>(
+      'assumeRolePolicyDocument',
+    );
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    document = registerOutput<String>('document');
+    force = registerOutput<bool?>('force');
+    maxSessionDuration = registerOutput<int>('maxSessionDuration');
     this.name = registerOutput<String>('name');
-    this.ramUsers = registerOutput<List<String>>('ramUsers');
-    this.roleId = registerOutput<String>('roleId');
-    this.roleName = registerOutput<String>('roleName');
-    this.services = registerOutput<List<String>>('services');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.version = registerOutput<String?>('version');
+    ramUsers = registerOutput<List<String>>('ramUsers');
+    roleId = registerOutput<String>('roleId');
+    roleName = registerOutput<String>('roleName');
+    services = registerOutput<List<String>>('services');
+    tags = registerOutput<Map<String, String>?>('tags');
+    version = registerOutput<String?>('version');
   }
 }

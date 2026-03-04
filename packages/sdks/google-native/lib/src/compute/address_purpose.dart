@@ -9,16 +9,15 @@ enum AddressPurpose {
   sharedLoadbalancerVip("SHARED_LOADBALANCER_VIP"),
   vpcPeering("VPC_PEERING");
 
-  const AddressPurpose(this.value);
-  final String value;
+  const AddressPurpose(this.wireValue);
+  final String wireValue;
 
   static AddressPurpose fromValue(String value) {
     for (final item in AddressPurpose.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AddressPurpose value: $value');
   }
 }
-

@@ -3,16 +3,15 @@ enum NtlmV1 {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const NtlmV1(this.value);
-  final String value;
+  const NtlmV1(this.wireValue);
+  final String wireValue;
 
   static NtlmV1 fromValue(String value) {
     for (final item in NtlmV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NtlmV1 value: $value');
   }
 }
-

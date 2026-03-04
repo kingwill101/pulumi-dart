@@ -6,7 +6,9 @@ import 'google_cloud_policysimulator_v1_replay_config_log_source.dart';
 /// The configuration used for a Replay.
 class GoogleCloudPolicysimulatorV1ReplayConfig {
   /// The logs to use as input for the Replay.
-  final pulumi.Input<GoogleCloudPolicysimulatorV1ReplayConfigLogSource>? logSource;
+  final pulumi.Input<GoogleCloudPolicysimulatorV1ReplayConfigLogSource>?
+  logSource;
+
   /// A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay.
   final pulumi.Input<Map<String, String>>? policyOverlay;
 
@@ -20,16 +22,35 @@ class GoogleCloudPolicysimulatorV1ReplayConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logSource': ?pulumi.Input.mapOptionalInputValue<GoogleCloudPolicysimulatorV1ReplayConfigLogSource, String>(logSource, (value) => value.value),
+      'logSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudPolicysimulatorV1ReplayConfigLogSource,
+            String
+          >(logSource, (value) => value.wireValue),
       'policyOverlay': ?policyOverlay,
     };
   }
 
-  factory GoogleCloudPolicysimulatorV1ReplayConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudPolicysimulatorV1ReplayConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudPolicysimulatorV1ReplayConfig(
-      logSource: map['logSource'] == null ? null : (GoogleCloudPolicysimulatorV1ReplayConfigLogSource.fromValue(map['logSource']! as String)).input(),
-      policyOverlay: map['policyOverlay'] == null ? null : ((map['policyOverlay']! as Map).cast<String, String>()).input(),
+      logSource: (() {
+        final guardedValue = map['logSource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudPolicysimulatorV1ReplayConfigLogSource.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      policyOverlay: (() {
+        final guardedValue = map['policyOverlay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

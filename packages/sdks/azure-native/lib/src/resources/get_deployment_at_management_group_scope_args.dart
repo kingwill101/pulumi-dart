@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeploymentAtManagementGroupScopeArgs {
   /// The name of the deployment.
   final pulumi.Input<String> deploymentName;
+
   /// The management group ID.
   final pulumi.Input<String> groupId;
 
@@ -27,11 +28,12 @@ class GetDeploymentAtManagementGroupScopeArgs {
     };
   }
 
-  factory GetDeploymentAtManagementGroupScopeArgs.fromMap(Map<String, dynamic> map) {
+  factory GetDeploymentAtManagementGroupScopeArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDeploymentAtManagementGroupScopeArgs(
-      deploymentName: (map['deploymentName'] as String).input(),
-      groupId: (map['groupId'] as String).input(),
+      deploymentName: pulumi.Input.fromValue(map['deploymentName'] as String),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
     );
   }
 }
-

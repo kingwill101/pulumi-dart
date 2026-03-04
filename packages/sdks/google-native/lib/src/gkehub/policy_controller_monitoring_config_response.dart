@@ -9,20 +9,19 @@ class PolicyControllerMonitoringConfigResponse {
 
   /// Creates a new [PolicyControllerMonitoringConfigResponse].
   /// [backends] Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
-  PolicyControllerMonitoringConfigResponse({
-    required this.backends,
-  });
+  PolicyControllerMonitoringConfigResponse({required this.backends});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'backends': backends,
-    };
+    return <String, dynamic>{'backends': backends};
   }
 
-  factory PolicyControllerMonitoringConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory PolicyControllerMonitoringConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyControllerMonitoringConfigResponse(
-      backends: ((map['backends'] as List).cast<String>()).input(),
+      backends: pulumi.Input.fromValue(
+        (map['backends'] as List).cast<String>(),
+      ),
     );
   }
 }
-

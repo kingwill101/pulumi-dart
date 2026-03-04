@@ -10,10 +10,13 @@ import 'deployment_properties.dart';
 class DeploymentAtSubscriptionScopeArgs {
   /// The name of the deployment.
   final pulumi.Input<String>? deploymentName;
+
   /// The location to store the deployment data.
   final pulumi.Input<String>? location;
+
   /// The deployment properties.
   final pulumi.Input<DeploymentProperties> properties;
+
   /// Deployment tags
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -33,18 +36,39 @@ class DeploymentAtSubscriptionScopeArgs {
     return <String, dynamic>{
       'deploymentName': ?deploymentName,
       'location': ?location,
-      'properties': pulumi.Input.mapInputValue<DeploymentProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            DeploymentProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory DeploymentAtSubscriptionScopeArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentAtSubscriptionScopeArgs(
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: (DeploymentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      deploymentName: (() {
+        final guardedValue = map['deploymentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: pulumi.Input.fromValue(
+        DeploymentProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -3,16 +3,17 @@ enum SqlSitePropertiesDiscoveryScenario {
   migrate("Migrate"),
   dR("DR");
 
-  const SqlSitePropertiesDiscoveryScenario(this.value);
-  final String value;
+  const SqlSitePropertiesDiscoveryScenario(this.wireValue);
+  final String wireValue;
 
   static SqlSitePropertiesDiscoveryScenario fromValue(String value) {
     for (final item in SqlSitePropertiesDiscoveryScenario.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SqlSitePropertiesDiscoveryScenario value: $value');
+    throw ArgumentError(
+      'Unknown SqlSitePropertiesDiscoveryScenario value: $value',
+    );
   }
 }
-

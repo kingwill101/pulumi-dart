@@ -3,16 +3,17 @@ enum PrivateLinkServiceNetworkPolicies {
   valueEnabled("enabled"),
   valueDisabled("disabled");
 
-  const PrivateLinkServiceNetworkPolicies(this.value);
-  final String value;
+  const PrivateLinkServiceNetworkPolicies(this.wireValue);
+  final String wireValue;
 
   static PrivateLinkServiceNetworkPolicies fromValue(String value) {
     for (final item in PrivateLinkServiceNetworkPolicies.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PrivateLinkServiceNetworkPolicies value: $value');
+    throw ArgumentError(
+      'Unknown PrivateLinkServiceNetworkPolicies value: $value',
+    );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAddonPodIdentityAssociation {
   /// ARN of the IAM role associated with the EKS add-on.
   final pulumi.Input<String> roleArn;
+
   /// Service account associated with the EKS add-on.
   final pulumi.Input<String> serviceAccount;
 
@@ -25,9 +26,8 @@ class GetAddonPodIdentityAssociation {
 
   factory GetAddonPodIdentityAssociation.fromMap(Map<String, dynamic> map) {
     return GetAddonPodIdentityAssociation(
-      roleArn: (map['roleArn'] as String).input(),
-      serviceAccount: (map['serviceAccount'] as String).input(),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
+      serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
     );
   }
 }
-

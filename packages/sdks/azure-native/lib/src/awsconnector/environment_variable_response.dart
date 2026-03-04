@@ -5,37 +5,54 @@ import 'environment_variable_type_enum_value_response.dart';
 
 /// Definition of EnvironmentVariable
 class EnvironmentVariableResponse {
-  /// <p>The name or key of the environment variable.</p>
+  /// &lt;p&gt;The name or key of the environment variable.&lt;/p&gt;
   final pulumi.Input<String>? name;
-  /// <p>The type of environment variable. Valid values include:</p> <ul> <li> <p> <code>PARAMETER_STORE</code>: An environment variable stored in Systems Manager Parameter Store. For environment variables of this type, specify the name of the parameter as the <code>value</code> of the EnvironmentVariable. The parameter value will be substituted for the name at runtime. You can also define Parameter Store environment variables in the buildspec. To learn how to do so, see <a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec.env.parameter-store'>env/parameter-store</a> in the <i>CodeBuild User Guide</i>.</p> </li> <li> <p> <code>PLAINTEXT</code>: An environment variable in plain text format. This is the default value.</p> </li> <li> <p> <code>SECRETS_MANAGER</code>: An environment variable stored in Secrets Manager. For environment variables of this type, specify the name of the secret as the <code>value</code> of the EnvironmentVariable. The secret value will be substituted for the name at runtime. You can also define Secrets Manager environment variables in the buildspec. To learn how to do so, see <a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec.env.secrets-manager'>env/secrets-manager</a> in the <i>CodeBuild User Guide</i>.</p> </li> </ul>
+
+  /// &lt;p&gt;The type of environment variable. Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PARAMETER_STORE&lt;/code&gt;: An environment variable stored in Systems Manager Parameter Store. For environment variables of this type, specify the name of the parameter as the &lt;code&gt;value&lt;/code&gt; of the EnvironmentVariable. The parameter value will be substituted for the name at runtime. You can also define Parameter Store environment variables in the buildspec. To learn how to do so, see &lt;a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec.env.parameter-store'&gt;env/parameter-store&lt;/a&gt; in the &lt;i&gt;CodeBuild User Guide&lt;/i&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PLAINTEXT&lt;/code&gt;: An environment variable in plain text format. This is the default value.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SECRETS_MANAGER&lt;/code&gt;: An environment variable stored in Secrets Manager. For environment variables of this type, specify the name of the secret as the &lt;code&gt;value&lt;/code&gt; of the EnvironmentVariable. The secret value will be substituted for the name at runtime. You can also define Secrets Manager environment variables in the buildspec. To learn how to do so, see &lt;a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec.env.secrets-manager'&gt;env/secrets-manager&lt;/a&gt; in the &lt;i&gt;CodeBuild User Guide&lt;/i&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   final pulumi.Input<EnvironmentVariableTypeEnumValueResponse>? type;
-  /// <p>The value of the environment variable.</p> <important> <p>We strongly discourage the use of <code>PLAINTEXT</code> environment variables to store sensitive values, especially Amazon Web Services secret key IDs. <code>PLAINTEXT</code> environment variables can be displayed in plain text using the CodeBuild console and the CLI. For sensitive values, we recommend you use an environment variable of type <code>PARAMETER_STORE</code> or <code>SECRETS_MANAGER</code>. </p> </important>
+
+  /// &lt;p&gt;The value of the environment variable.&lt;/p&gt; &lt;important&gt; &lt;p&gt;We strongly discourage the use of &lt;code&gt;PLAINTEXT&lt;/code&gt; environment variables to store sensitive values, especially Amazon Web Services secret key IDs. &lt;code&gt;PLAINTEXT&lt;/code&gt; environment variables can be displayed in plain text using the CodeBuild console and the CLI. For sensitive values, we recommend you use an environment variable of type &lt;code&gt;PARAMETER_STORE&lt;/code&gt; or &lt;code&gt;SECRETS_MANAGER&lt;/code&gt;. &lt;/p&gt; &lt;/important&gt;
   final pulumi.Input<String>? value;
 
   /// Creates a new [EnvironmentVariableResponse].
-  /// [name] <p>The name or key of the environment variable.</p>
-  /// [type] <p>The type of environment variable. Valid values include:</p> <ul> <li> <p> <code>PARAMETER_STORE</code>: An environment variable stored in Systems Manager Parameter Store. For environment variables of this type, specify the name of the parameter as the <code>value</code> of the EnvironmentVariable. The parameter value will be substituted for the name at runtime. You can also define Parameter Store environment variables in the buildspec. To learn how to do so, see <a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec.env.parameter-store'>env/parameter-store</a> in the <i>CodeBuild User Guide</i>.</p> </li> <li> <p> <code>PLAINTEXT</code>: An environment variable in plain text format. This is the default value.</p> </li> <li> <p> <code>SECRETS_MANAGER</code>: An environment variable stored in Secrets Manager. For environment variables of this type, specify the name of the secret as the <code>value</code> of the EnvironmentVariable. The secret value will be substituted for the name at runtime. You can also define Secrets Manager environment variables in the buildspec. To learn how to do so, see <a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec.env.secrets-manager'>env/secrets-manager</a> in the <i>CodeBuild User Guide</i>.</p> </li> </ul>
-  /// [value] <p>The value of the environment variable.</p> <important> <p>We strongly discourage the use of <code>PLAINTEXT</code> environment variables to store sensitive values, especially Amazon Web Services secret key IDs. <code>PLAINTEXT</code> environment variables can be displayed in plain text using the CodeBuild console and the CLI. For sensitive values, we recommend you use an environment variable of type <code>PARAMETER_STORE</code> or <code>SECRETS_MANAGER</code>. </p> </important>
-  EnvironmentVariableResponse({
-    this.name,
-    this.type,
-    this.value,
-  });
+  /// [name] &lt;p&gt;The name or key of the environment variable.&lt;/p&gt;
+  /// [type] &lt;p&gt;The type of environment variable. Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PARAMETER_STORE&lt;/code&gt;: An environment variable stored in Systems Manager Parameter Store. For environment variables of this type, specify the name of the parameter as the &lt;code&gt;value&lt;/code&gt; of the EnvironmentVariable. The parameter value will be substituted for the name at runtime. You can also define Parameter Store environment variables in the buildspec. To learn how to do so, see &lt;a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec.env.parameter-store'&gt;env/parameter-store&lt;/a&gt; in the &lt;i&gt;CodeBuild User Guide&lt;/i&gt;.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PLAINTEXT&lt;/code&gt;: An environment variable in plain text format. This is the default value.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;SECRETS_MANAGER&lt;/code&gt;: An environment variable stored in Secrets Manager. For environment variables of this type, specify the name of the secret as the &lt;code&gt;value&lt;/code&gt; of the EnvironmentVariable. The secret value will be substituted for the name at runtime. You can also define Secrets Manager environment variables in the buildspec. To learn how to do so, see &lt;a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec.env.secrets-manager'&gt;env/secrets-manager&lt;/a&gt; in the &lt;i&gt;CodeBuild User Guide&lt;/i&gt;.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
+  /// [value] &lt;p&gt;The value of the environment variable.&lt;/p&gt; &lt;important&gt; &lt;p&gt;We strongly discourage the use of &lt;code&gt;PLAINTEXT&lt;/code&gt; environment variables to store sensitive values, especially Amazon Web Services secret key IDs. &lt;code&gt;PLAINTEXT&lt;/code&gt; environment variables can be displayed in plain text using the CodeBuild console and the CLI. For sensitive values, we recommend you use an environment variable of type &lt;code&gt;PARAMETER_STORE&lt;/code&gt; or &lt;code&gt;SECRETS_MANAGER&lt;/code&gt;. &lt;/p&gt; &lt;/important&gt;
+  EnvironmentVariableResponse({this.name, this.type, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'type': ?pulumi.Input.mapOptionalInputValue<EnvironmentVariableTypeEnumValueResponse, Map<String, dynamic>>(type, (value) => value.toMap()),
+      'type':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnvironmentVariableTypeEnumValueResponse,
+            Map<String, dynamic>
+          >(type, (value) => value.toMap()),
       'value': ?value,
     };
   }
 
   factory EnvironmentVariableResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentVariableResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: map['type'] == null ? null : (EnvironmentVariableTypeEnumValueResponse.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnvironmentVariableTypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

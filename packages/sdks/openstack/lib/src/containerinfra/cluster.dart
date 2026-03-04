@@ -4,7 +4,7 @@ import 'cluster_state.dart';
 
 /// Manages a V1 Magnum cluster resource within OpenStack.
 ///
-/// > **Note:** All arguments including the `kubeconfig` computed attribute will be
+/// &gt; **Note:** All arguments including the `kubeconfig` computed attribute will be
 /// stored in the raw state as plain-text. Read more about sensitive data in
 /// state.
 ///
@@ -170,65 +170,83 @@ import 'cluster_state.dart';
 /// ```
 class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> apiAddress;
+
   /// The UUID of the V1 Container Infra cluster
   /// template. Changing this creates a new cluster.
   late final pulumi.Output<String> clusterTemplateId;
   late final pulumi.Output<String> coeVersion;
   late final pulumi.Output<String> containerVersion;
+
   /// The timeout (in minutes) for creating the
   /// cluster. Changing this creates a new cluster.
   late final pulumi.Output<int> createTimeout;
   late final pulumi.Output<String> createdAt;
+
   /// The URL used for cluster node discovery.
   /// Changing this creates a new cluster.
   late final pulumi.Output<String> discoveryUrl;
+
   /// The size (in GB) of the Docker volume.
   /// Changing this creates a new cluster.
   late final pulumi.Output<int> dockerVolumeSize;
+
   /// The fixed network that will be attached to the
   /// cluster. Changing this creates a new cluster.
   late final pulumi.Output<String> fixedNetwork;
+
   /// The fixed subnet that will be attached to the
   /// cluster. Changing this creates a new cluster.
   late final pulumi.Output<String> fixedSubnet;
+
   /// The flavor for the nodes of the cluster. Can be set via
   /// the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
   /// cluster.
   late final pulumi.Output<String> flavor;
+
   /// Indicates whether floating IP should be
   /// created for every cluster node. Changing this creates a new cluster.
   late final pulumi.Output<bool> floatingIpEnabled;
+
   /// The name of the Compute service SSH keypair. Changing
   /// this creates a new cluster.
   late final pulumi.Output<String> keypair;
   late final pulumi.Output<Map<String, String>> kubeconfig;
+
   /// The list of key value pairs representing additional
   /// properties of the cluster. Changing this creates a new cluster.
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<List<String>> masterAddresses;
+
   /// The number of master nodes for the cluster.
   /// Changing this creates a new cluster.
   late final pulumi.Output<int> masterCount;
+
   /// The flavor for the master nodes. Can be set via
   /// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
   /// new cluster.
   late final pulumi.Output<String> masterFlavor;
+
   /// Indicates whether to create a load balancer
   /// for the master nodes. Changing this creates a new cluster.
   late final pulumi.Output<bool> masterLbEnabled;
+
   /// Indicates whether the provided labels should be
   /// merged with cluster template labels. Changing this creates a new cluster.
   late final pulumi.Output<bool?> mergeLabels;
+
   /// The name of the cluster. Changing this creates a new
   /// cluster.
   late final pulumi.Output<String> name;
   late final pulumi.Output<List<String>> nodeAddresses;
+
   /// The number of nodes for the cluster.
   late final pulumi.Output<int?> nodeCount;
+
   /// The project of the cluster. Required if admin wants
   /// to create a cluster in another project. Changing this creates a new
   /// cluster.
   late final pulumi.Output<String> projectId;
+
   /// The region in which to obtain the V1 Container Infra
   /// client. A Container Infra client is needed to create a cluster. If omitted,
   /// the `region` argument of the provider is used. Changing this creates a new
@@ -236,6 +254,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   late final pulumi.Output<String> stackId;
   late final pulumi.Output<String> updatedAt;
+
   /// The user of the cluster. Required if admin wants to
   /// create a cluster template for another user. Changing this creates a new
   /// cluster.
@@ -250,39 +269,39 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:containerinfra/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiAddress = registerOutput<String>('apiAddress');
-    this.clusterTemplateId = registerOutput<String>('clusterTemplateId');
-    this.coeVersion = registerOutput<String>('coeVersion');
-    this.containerVersion = registerOutput<String>('containerVersion');
-    this.createTimeout = registerOutput<int>('createTimeout');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.discoveryUrl = registerOutput<String>('discoveryUrl');
-    this.dockerVolumeSize = registerOutput<int>('dockerVolumeSize');
-    this.fixedNetwork = registerOutput<String>('fixedNetwork');
-    this.fixedSubnet = registerOutput<String>('fixedSubnet');
-    this.flavor = registerOutput<String>('flavor');
-    this.floatingIpEnabled = registerOutput<bool>('floatingIpEnabled');
-    this.keypair = registerOutput<String>('keypair');
-    this.kubeconfig = registerOutput<Map<String, String>>('kubeconfig');
-    this.labels = registerOutput<Map<String, String>>('labels');
-    this.masterAddresses = registerOutput<List<String>>('masterAddresses');
-    this.masterCount = registerOutput<int>('masterCount');
-    this.masterFlavor = registerOutput<String>('masterFlavor');
-    this.masterLbEnabled = registerOutput<bool>('masterLbEnabled');
-    this.mergeLabels = registerOutput<bool?>('mergeLabels');
+         'openstack:containerinfra/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiAddress = registerOutput<String>('apiAddress');
+    clusterTemplateId = registerOutput<String>('clusterTemplateId');
+    coeVersion = registerOutput<String>('coeVersion');
+    containerVersion = registerOutput<String>('containerVersion');
+    createTimeout = registerOutput<int>('createTimeout');
+    createdAt = registerOutput<String>('createdAt');
+    discoveryUrl = registerOutput<String>('discoveryUrl');
+    dockerVolumeSize = registerOutput<int>('dockerVolumeSize');
+    fixedNetwork = registerOutput<String>('fixedNetwork');
+    fixedSubnet = registerOutput<String>('fixedSubnet');
+    flavor = registerOutput<String>('flavor');
+    floatingIpEnabled = registerOutput<bool>('floatingIpEnabled');
+    keypair = registerOutput<String>('keypair');
+    kubeconfig = registerOutput<Map<String, String>>('kubeconfig');
+    labels = registerOutput<Map<String, String>>('labels');
+    masterAddresses = registerOutput<List<String>>('masterAddresses');
+    masterCount = registerOutput<int>('masterCount');
+    masterFlavor = registerOutput<String>('masterFlavor');
+    masterLbEnabled = registerOutput<bool>('masterLbEnabled');
+    mergeLabels = registerOutput<bool?>('mergeLabels');
     this.name = registerOutput<String>('name');
-    this.nodeAddresses = registerOutput<List<String>>('nodeAddresses');
-    this.nodeCount = registerOutput<int?>('nodeCount');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.stackId = registerOutput<String>('stackId');
-    this.updatedAt = registerOutput<String>('updatedAt');
-    this.userId = registerOutput<String>('userId');
+    nodeAddresses = registerOutput<List<String>>('nodeAddresses');
+    nodeCount = registerOutput<int?>('nodeCount');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    stackId = registerOutput<String>('stackId');
+    updatedAt = registerOutput<String>('updatedAt');
+    userId = registerOutput<String>('userId');
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -303,38 +322,38 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:containerinfra/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiAddress = registerOutput<String>('apiAddress');
-    this.clusterTemplateId = registerOutput<String>('clusterTemplateId');
-    this.coeVersion = registerOutput<String>('coeVersion');
-    this.containerVersion = registerOutput<String>('containerVersion');
-    this.createTimeout = registerOutput<int>('createTimeout');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.discoveryUrl = registerOutput<String>('discoveryUrl');
-    this.dockerVolumeSize = registerOutput<int>('dockerVolumeSize');
-    this.fixedNetwork = registerOutput<String>('fixedNetwork');
-    this.fixedSubnet = registerOutput<String>('fixedSubnet');
-    this.flavor = registerOutput<String>('flavor');
-    this.floatingIpEnabled = registerOutput<bool>('floatingIpEnabled');
-    this.keypair = registerOutput<String>('keypair');
-    this.kubeconfig = registerOutput<Map<String, String>>('kubeconfig');
-    this.labels = registerOutput<Map<String, String>>('labels');
-    this.masterAddresses = registerOutput<List<String>>('masterAddresses');
-    this.masterCount = registerOutput<int>('masterCount');
-    this.masterFlavor = registerOutput<String>('masterFlavor');
-    this.masterLbEnabled = registerOutput<bool>('masterLbEnabled');
-    this.mergeLabels = registerOutput<bool?>('mergeLabels');
+         'openstack:containerinfra/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiAddress = registerOutput<String>('apiAddress');
+    clusterTemplateId = registerOutput<String>('clusterTemplateId');
+    coeVersion = registerOutput<String>('coeVersion');
+    containerVersion = registerOutput<String>('containerVersion');
+    createTimeout = registerOutput<int>('createTimeout');
+    createdAt = registerOutput<String>('createdAt');
+    discoveryUrl = registerOutput<String>('discoveryUrl');
+    dockerVolumeSize = registerOutput<int>('dockerVolumeSize');
+    fixedNetwork = registerOutput<String>('fixedNetwork');
+    fixedSubnet = registerOutput<String>('fixedSubnet');
+    flavor = registerOutput<String>('flavor');
+    floatingIpEnabled = registerOutput<bool>('floatingIpEnabled');
+    keypair = registerOutput<String>('keypair');
+    kubeconfig = registerOutput<Map<String, String>>('kubeconfig');
+    labels = registerOutput<Map<String, String>>('labels');
+    masterAddresses = registerOutput<List<String>>('masterAddresses');
+    masterCount = registerOutput<int>('masterCount');
+    masterFlavor = registerOutput<String>('masterFlavor');
+    masterLbEnabled = registerOutput<bool>('masterLbEnabled');
+    mergeLabels = registerOutput<bool?>('mergeLabels');
     this.name = registerOutput<String>('name');
-    this.nodeAddresses = registerOutput<List<String>>('nodeAddresses');
-    this.nodeCount = registerOutput<int?>('nodeCount');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.stackId = registerOutput<String>('stackId');
-    this.updatedAt = registerOutput<String>('updatedAt');
-    this.userId = registerOutput<String>('userId');
+    nodeAddresses = registerOutput<List<String>>('nodeAddresses');
+    nodeCount = registerOutput<int?>('nodeCount');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    stackId = registerOutput<String>('stackId');
+    updatedAt = registerOutput<String>('updatedAt');
+    userId = registerOutput<String>('userId');
   }
 }

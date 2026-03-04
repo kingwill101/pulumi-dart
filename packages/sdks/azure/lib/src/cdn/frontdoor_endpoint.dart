@@ -199,12 +199,16 @@ import 'frontdoor_endpoint_state.dart';
 class FrontdoorEndpoint extends pulumi.CustomResource {
   /// The ID of the Front Door Profile within which this Front Door Endpoint should exist. Changing this forces a new Front Door Endpoint to be created.
   late final pulumi.Output<String> cdnFrontdoorProfileId;
+
   /// Specifies if this Front Door Endpoint is enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// The host name of the Front Door Endpoint, in the format `{endpointName}.{dnsZone}` (for example, `contoso.azureedge.net`).
   late final pulumi.Output<String> hostName;
+
   /// The name which should be used for this Front Door Endpoint. Changing this forces a new Front Door Endpoint to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies a mapping of tags which should be assigned to the Front Door Endpoint.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -217,16 +221,16 @@ class FrontdoorEndpoint extends pulumi.CustomResource {
     FrontdoorEndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorEndpoint:FrontdoorEndpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.hostName = registerOutput<String>('hostName');
+         'azure:cdn/frontdoorEndpoint:FrontdoorEndpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
+    enabled = registerOutput<bool?>('enabled');
+    hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [FrontdoorEndpoint] resource's state with the given [name] and [id].
@@ -247,15 +251,15 @@ class FrontdoorEndpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorEndpoint:FrontdoorEndpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.hostName = registerOutput<String>('hostName');
+         'azure:cdn/frontdoorEndpoint:FrontdoorEndpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
+    enabled = registerOutput<bool?>('enabled');
+    hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

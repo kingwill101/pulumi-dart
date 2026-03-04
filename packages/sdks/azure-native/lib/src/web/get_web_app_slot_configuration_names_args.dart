@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAppSlotConfigurationNamesArgs {
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -27,11 +28,14 @@ class GetWebAppSlotConfigurationNamesArgs {
     };
   }
 
-  factory GetWebAppSlotConfigurationNamesArgs.fromMap(Map<String, dynamic> map) {
+  factory GetWebAppSlotConfigurationNamesArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWebAppSlotConfigurationNamesArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

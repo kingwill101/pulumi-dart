@@ -1,5 +1,3 @@
-library module_apphub;
-
 export 'apphub/application.dart';
 export 'apphub/application_args.dart';
 export 'apphub/application_attributes.dart';

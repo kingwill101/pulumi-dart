@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayRouteSpecHttpRouteActionRewritePrefix {
   /// Default prefix used to replace the incoming route prefix when rewritten. Valid values: `ENABLED`, `DISABLED`.
   final pulumi.Input<String>? defaultPrefix;
+
   /// Value used to replace the incoming route prefix when rewritten.
   final pulumi.Input<String>? value;
 
@@ -17,17 +18,23 @@ class GatewayRouteSpecHttpRouteActionRewritePrefix {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'defaultPrefix': ?defaultPrefix,
-      'value': ?value,
-    };
+    return <String, dynamic>{'defaultPrefix': ?defaultPrefix, 'value': ?value};
   }
 
-  factory GatewayRouteSpecHttpRouteActionRewritePrefix.fromMap(Map<String, dynamic> map) {
+  factory GatewayRouteSpecHttpRouteActionRewritePrefix.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GatewayRouteSpecHttpRouteActionRewritePrefix(
-      defaultPrefix: map['defaultPrefix'] == null ? null : ((map['defaultPrefix'] as String).input()).input(),
-      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
+      defaultPrefix: (() {
+        final guardedValue = map['defaultPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

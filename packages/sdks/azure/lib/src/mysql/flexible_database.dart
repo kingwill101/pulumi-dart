@@ -211,7 +211,7 @@ import 'flexible_database_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DBforMySQL` - 2023-12-30
@@ -226,12 +226,16 @@ import 'flexible_database_state.dart';
 class FlexibleDatabase extends pulumi.CustomResource {
   /// Specifies the Charset for the MySQL Database, which needs [to be a valid MySQL Charset](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html). Changing this forces a new resource to be created.
   late final pulumi.Output<String> charset;
+
   /// Specifies the Collation for the MySQL Database, which needs [to be a valid MySQL Collation](https://dev.mysql.com/doc/refman/5.7/en/charset-mysql.html). Changing this forces a new resource to be created.
   late final pulumi.Output<String> collation;
+
   /// Specifies the name of the MySQL Database, which needs [to be a valid MySQL identifier](https://dev.mysql.com/doc/refman/5.7/en/identifiers.html). Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which the MySQL Server exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies the name of the MySQL Flexible Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverName;
 
@@ -244,16 +248,16 @@ class FlexibleDatabase extends pulumi.CustomResource {
     FlexibleDatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mysql/flexibleDatabase:FlexibleDatabase',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.charset = registerOutput<String>('charset');
-    this.collation = registerOutput<String>('collation');
+         'azure:mysql/flexibleDatabase:FlexibleDatabase',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    charset = registerOutput<String>('charset');
+    collation = registerOutput<String>('collation');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serverName = registerOutput<String>('serverName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
   }
 
   /// Gets an existing [FlexibleDatabase] resource's state with the given [name] and [id].
@@ -274,15 +278,15 @@ class FlexibleDatabase extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mysql/flexibleDatabase:FlexibleDatabase',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.charset = registerOutput<String>('charset');
-    this.collation = registerOutput<String>('collation');
+         'azure:mysql/flexibleDatabase:FlexibleDatabase',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    charset = registerOutput<String>('charset');
+    collation = registerOutput<String>('collation');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serverName = registerOutput<String>('serverName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
   }
 }

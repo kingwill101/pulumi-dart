@@ -2,16 +2,15 @@
 enum SecurityEncryptionType {
   nonPersistedTPM("NonPersistedTPM");
 
-  const SecurityEncryptionType(this.value);
-  final String value;
+  const SecurityEncryptionType(this.wireValue);
+  final String wireValue;
 
   static SecurityEncryptionType fromValue(String value) {
     for (final item in SecurityEncryptionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecurityEncryptionType value: $value');
   }
 }
-

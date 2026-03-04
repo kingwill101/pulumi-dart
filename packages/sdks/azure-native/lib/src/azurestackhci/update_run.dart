@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'step_response.dart';
 import 'system_data_response.dart';
 import 'update_run_args.dart';
 
@@ -250,38 +249,55 @@ import 'update_run_args.dart';
 class UpdateRun extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// More detailed description of the step.
   late final pulumi.Output<String?> description;
+
   /// Duration of the update run.
   late final pulumi.Output<String?> duration;
+
   /// When the step reached a terminal state.
   late final pulumi.Output<String?> endTimeUtc;
+
   /// Error message, specified if the step is in a failed state.
   late final pulumi.Output<String?> errorMessage;
+
   /// Expected execution time of a given step. This is optionally authored in the update action plan and can be empty.
   late final pulumi.Output<String?> expectedExecutionTime;
+
   /// Timestamp of the most recently completed step in the update run.
   late final pulumi.Output<String?> lastUpdatedTime;
+
   /// Completion time of this step or the last completed sub-step.
   late final pulumi.Output<String?> lastUpdatedTimeUtc;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the UpdateRuns proxy resource.
   late final pulumi.Output<String> provisioningState;
+
   /// When the step started, or empty if it has not started executing.
   late final pulumi.Output<String?> startTimeUtc;
+
   /// State of the update run.
   late final pulumi.Output<String?> state;
+
   /// Status of the step, bubbled up from the ECE action plan for installation attempts. Values are: 'Success', 'Error', 'InProgress', and 'Unknown status'.
   late final pulumi.Output<String?> status;
+
   /// Recursive model for child steps of this step.
-  late final pulumi.Output<List<StepResponse>?> steps;
+  late final pulumi.Output<List<Map<String, dynamic>>?> steps;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Timestamp of the update run was started.
   late final pulumi.Output<String?> timeStarted;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -294,28 +310,28 @@ class UpdateRun extends pulumi.CustomResource {
     UpdateRunArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azurestackhci:UpdateRun',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.duration = registerOutput<String?>('duration');
-    this.endTimeUtc = registerOutput<String?>('endTimeUtc');
-    this.errorMessage = registerOutput<String?>('errorMessage');
-    this.expectedExecutionTime = registerOutput<String?>('expectedExecutionTime');
-    this.lastUpdatedTime = registerOutput<String?>('lastUpdatedTime');
-    this.lastUpdatedTimeUtc = registerOutput<String?>('lastUpdatedTimeUtc');
-    this.location = registerOutput<String?>('location');
+         'azure-native:azurestackhci:UpdateRun',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    duration = registerOutput<String?>('duration');
+    endTimeUtc = registerOutput<String?>('endTimeUtc');
+    errorMessage = registerOutput<String?>('errorMessage');
+    expectedExecutionTime = registerOutput<String?>('expectedExecutionTime');
+    lastUpdatedTime = registerOutput<String?>('lastUpdatedTime');
+    lastUpdatedTimeUtc = registerOutput<String?>('lastUpdatedTimeUtc');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.startTimeUtc = registerOutput<String?>('startTimeUtc');
-    this.state = registerOutput<String?>('state');
-    this.status = registerOutput<String?>('status');
-    this.steps = registerOutput<List<StepResponse>?>('steps');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.timeStarted = registerOutput<String?>('timeStarted');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    startTimeUtc = registerOutput<String?>('startTimeUtc');
+    state = registerOutput<String?>('state');
+    status = registerOutput<String?>('status');
+    steps = registerOutput<List<Map<String, dynamic>>?>('steps');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    timeStarted = registerOutput<String?>('timeStarted');
+    type = registerOutput<String>('type');
   }
 }

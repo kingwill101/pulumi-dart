@@ -1,13 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_service_args.dart';
-import 'backend_service_backend.dart';
 import 'backend_service_cdn_policy.dart';
 import 'backend_service_circuit_breakers.dart';
 import 'backend_service_consistent_hash.dart';
-import 'backend_service_custom_metric.dart';
 import 'backend_service_dynamic_forwarding.dart';
 import 'backend_service_iap.dart';
-import 'backend_service_locality_lb_policy.dart';
 import 'backend_service_log_config.dart';
 import 'backend_service_max_stream_duration.dart';
 import 'backend_service_network_pass_through_lb_traffic_policy.dart';
@@ -25,7 +22,7 @@ import 'backend_service_tls_settings.dart';
 ///
 /// Currently self-managed internal load balancing is only available in beta.
 ///
-/// > **Note:** Recreating a `gcp.compute.BackendService` that references other dependent resources like `gcp.compute.URLMap` will give a `resourceInUseByAnotherResource` error, when modifying the number of other dependent resources.
+/// &gt; **Note:** Recreating a `gcp.compute.BackendService` that references other dependent resources like `gcp.compute.URLMap` will give a `resourceInUseByAnotherResource` error, when modifying the number of other dependent resources.
 /// Use `lifecycle.create_before_destroy` on the dependent resources to avoid this type of error as shown in the Dynamic Backends example.
 ///
 ///
@@ -35,7 +32,7 @@ import 'backend_service_tls_settings.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 ///
-/// > **Warning:** All arguments including the following potentially sensitive
+/// &gt; **Warning:** All arguments including the following potentially sensitive
 /// values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
 ///
 /// ## Example Usage
@@ -3754,22 +3751,28 @@ class BackendService extends pulumi.CustomResource {
   /// maximum allowed value for TTL is one day.
   /// When the load balancing scheme is INTERNAL, this field is not used.
   late final pulumi.Output<int?> affinityCookieTtlSec;
+
   /// The set of backends that serve this BackendService.
   /// Structure is documented below.
-  late final pulumi.Output<List<BackendServiceBackend>?> backends;
+  late final pulumi.Output<List<Map<String, dynamic>>?> backends;
+
   /// Cloud CDN configuration for this BackendService.
   /// Structure is documented below.
   late final pulumi.Output<BackendServiceCdnPolicy> cdnPolicy;
+
   /// Settings controlling the volume of connections to a backend service. This field
   /// is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
   late final pulumi.Output<BackendServiceCircuitBreakers?> circuitBreakers;
+
   /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
   /// Possible values are: `AUTOMATIC`, `DISABLED`.
   late final pulumi.Output<String?> compressionMode;
+
   /// Time for which instance will be drained (not accept new
   /// connections, but still work to finish started).
   late final pulumi.Output<int?> connectionDrainingTimeoutSec;
+
   /// Consistent Hash-based load balancing can be used to provide soft session
   /// affinity based on HTTP headers, cookies or other properties. This load balancing
   /// policy is applicable only for HTTP connections. The affinity to a particular
@@ -3780,27 +3783,36 @@ class BackendService extends pulumi.CustomResource {
   /// set to MAGLEV or RING_HASH.
   /// Structure is documented below.
   late final pulumi.Output<BackendServiceConsistentHash?> consistentHash;
+
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
   /// Structure is documented below.
-  late final pulumi.Output<List<BackendServiceCustomMetric>?> customMetrics;
+  late final pulumi.Output<List<Map<String, dynamic>>?> customMetrics;
+
   /// Headers that the HTTP/S load balancer should add to proxied
   /// requests.
   late final pulumi.Output<List<String>?> customRequestHeaders;
+
   /// Headers that the HTTP/S load balancer should add to proxied
   /// responses.
   late final pulumi.Output<List<String>?> customResponseHeaders;
+
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+
   /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
   /// feature which together with Service Extension allows customized and complex routing logic.
   /// Structure is documented below.
   late final pulumi.Output<BackendServiceDynamicForwarding?> dynamicForwarding;
+
   /// The resource URL for the edge security policy associated with this backend service.
   late final pulumi.Output<String?> edgeSecurityPolicy;
+
   /// If true, enable Cloud CDN for this BackendService.
   late final pulumi.Output<bool?> enableCdn;
+
   /// Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
   /// TEST_ALL_TRAFFIC.
   /// To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to
@@ -3813,6 +3825,7 @@ class BackendService extends pulumi.CustomResource {
   /// back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
   /// Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
   late final pulumi.Output<String?> externalManagedMigrationState;
+
   /// Determines the fraction of requests that should be processed by the Global external
   /// Application Load Balancer.
   /// The value of this field must be in the range [0, 100].
@@ -3821,11 +3834,14 @@ class BackendService extends pulumi.CustomResource {
   /// This value can only be set if the loadBalancingScheme in the backend service is set to
   /// EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
   late final pulumi.Output<double?> externalManagedMigrationTestingPercentage;
+
   /// Fingerprint of this resource. A hash of the contents stored in this
   /// object. This field is used in optimistic locking.
   late final pulumi.Output<String> fingerprint;
+
   /// The unique identifier for the resource. This identifier is defined by the server.
   late final pulumi.Output<int> generatedId;
+
   /// The set of URLs to the HttpHealthCheck or HttpsHealthCheck resource
   /// for health checking this BackendService. Currently at most one health
   /// check can be specified.
@@ -3833,13 +3849,16 @@ class BackendService extends pulumi.CustomResource {
   /// or serverless NEG as a backend.
   /// For internal load balancing, a URL to a HealthCheck resource must be specified instead.
   late final pulumi.Output<String?> healthChecks;
+
   /// Settings for enabling Cloud Identity Aware Proxy.
   /// If OAuth client is not set, the Google-managed OAuth client is used.
   /// Structure is documented below.
   late final pulumi.Output<BackendServiceIap> iap;
+
   /// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
   /// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
   late final pulumi.Output<String?> ipAddressSelectionPolicy;
+
   /// Indicates whether the backend service will be used with internal or
   /// external load balancing. A backend service created for one type of
   /// load balancing cannot be used with the other. For more information, refer to
@@ -3847,6 +3866,7 @@ class BackendService extends pulumi.CustomResource {
   /// Default value is `EXTERNAL`.
   /// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
   late final pulumi.Output<String?> loadBalancingScheme;
+
   /// A list of locality load balancing policies to be used in order of
   /// preference. Either the policy or the customPolicy field should be set.
   /// Overrides any value set in the localityLbPolicy field.
@@ -3854,7 +3874,8 @@ class BackendService extends pulumi.CustomResource {
   /// by a URL Map that is referenced by a target gRPC proxy that has the
   /// validateForProxyless field set to true.
   /// Structure is documented below.
-  late final pulumi.Output<List<BackendServiceLocalityLbPolicy>?> localityLbPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>?> localityLbPolicies;
+
   /// The load balancing algorithm used within the scope of the locality.
   /// The possible values are:
   /// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
@@ -3908,10 +3929,12 @@ class BackendService extends pulumi.CustomResource {
   /// field set to true.
   /// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
   late final pulumi.Output<String?> localityLbPolicy;
+
   /// This field denotes the logging options for the load balancer traffic served by this backend service.
   /// If logging is enabled, logs will be exported to Stackdriver.
   /// Structure is documented below.
   late final pulumi.Output<BackendServiceLogConfig> logConfig;
+
   /// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
   /// beginning of the stream until the response has been completely processed, including all retries. A stream that
   /// does not complete in this duration is closed.
@@ -3920,6 +3943,7 @@ class BackendService extends pulumi.CustomResource {
   /// This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
   late final pulumi.Output<BackendServiceMaxStreamDuration?> maxStreamDuration;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -3928,24 +3952,31 @@ class BackendService extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// Configures traffic steering properties of internal passthrough Network Load Balancers.
   /// Structure is documented below.
-  late final pulumi.Output<BackendServiceNetworkPassThroughLbTrafficPolicy?> networkPassThroughLbTrafficPolicy;
+  late final pulumi.Output<BackendServiceNetworkPassThroughLbTrafficPolicy?>
+  networkPassThroughLbTrafficPolicy;
+
   /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
   /// Applicable backend service types can be a global backend service with the
   /// loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.
   /// Structure is documented below.
   late final pulumi.Output<BackendServiceOutlierDetection?> outlierDetection;
+
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
   late final pulumi.Output<BackendServiceParams?> params;
+
   /// Name of backend port. The same name should appear in the instance
   /// groups referenced by this service. Required when the load balancing
   /// scheme is EXTERNAL.
   late final pulumi.Output<String> portName;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The protocol this BackendService uses to communicate with backends.
   /// The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
   /// or GRPC. Refer to the documentation for the load balancers or for Traffic Director
@@ -3953,31 +3984,40 @@ class BackendService extends pulumi.CustomResource {
   /// by a URL map that is bound to target gRPC proxy.
   /// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
   late final pulumi.Output<String> protocol;
+
   /// The security policy associated with this backend service.
   late final pulumi.Output<String?> securityPolicy;
+
   /// The security settings that apply to this backend service. This field is applicable to either
   /// a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
   /// load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
   /// load_balancing_scheme set to INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
   late final pulumi.Output<BackendServiceSecuritySettings?> securitySettings;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// URL to networkservices.ServiceLbPolicy resource.
   /// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
   late final pulumi.Output<String?> serviceLbPolicy;
+
   /// Type of session affinity to use. The default is NONE. Session affinity is
   /// not applicable if the protocol is UDP.
   /// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
   late final pulumi.Output<String> sessionAffinity;
+
   /// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
   /// Structure is documented below.
-  late final pulumi.Output<BackendServiceStrongSessionAffinityCookie?> strongSessionAffinityCookie;
+  late final pulumi.Output<BackendServiceStrongSessionAffinityCookie?>
+  strongSessionAffinityCookie;
+
   /// The backend service timeout has a different meaning depending on the type of load balancer.
   /// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
   /// The default is 30 seconds.
   /// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
   late final pulumi.Output<int> timeoutSec;
+
   /// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
   /// Structure is documented below.
   late final pulumi.Output<BackendServiceTlsSettings?> tlsSettings;
@@ -3991,53 +4031,87 @@ class BackendService extends pulumi.CustomResource {
     BackendServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/backendService:BackendService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
-    this.backends = registerOutput<List<BackendServiceBackend>?>('backends');
-    this.cdnPolicy = registerOutput<BackendServiceCdnPolicy>('cdnPolicy');
-    this.circuitBreakers = registerOutput<BackendServiceCircuitBreakers?>('circuitBreakers');
-    this.compressionMode = registerOutput<String?>('compressionMode');
-    this.connectionDrainingTimeoutSec = registerOutput<int?>('connectionDrainingTimeoutSec');
-    this.consistentHash = registerOutput<BackendServiceConsistentHash?>('consistentHash');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.customMetrics = registerOutput<List<BackendServiceCustomMetric>?>('customMetrics');
-    this.customRequestHeaders = registerOutput<List<String>?>('customRequestHeaders');
-    this.customResponseHeaders = registerOutput<List<String>?>('customResponseHeaders');
-    this.description = registerOutput<String?>('description');
-    this.dynamicForwarding = registerOutput<BackendServiceDynamicForwarding?>('dynamicForwarding');
-    this.edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');
-    this.enableCdn = registerOutput<bool?>('enableCdn');
-    this.externalManagedMigrationState = registerOutput<String?>('externalManagedMigrationState');
-    this.externalManagedMigrationTestingPercentage = registerOutput<double?>('externalManagedMigrationTestingPercentage');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.generatedId = registerOutput<int>('generatedId');
-    this.healthChecks = registerOutput<String?>('healthChecks');
-    this.iap = registerOutput<BackendServiceIap>('iap');
-    this.ipAddressSelectionPolicy = registerOutput<String?>('ipAddressSelectionPolicy');
-    this.loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
-    this.localityLbPolicies = registerOutput<List<BackendServiceLocalityLbPolicy>?>('localityLbPolicies');
-    this.localityLbPolicy = registerOutput<String?>('localityLbPolicy');
-    this.logConfig = registerOutput<BackendServiceLogConfig>('logConfig');
-    this.maxStreamDuration = registerOutput<BackendServiceMaxStreamDuration?>('maxStreamDuration');
+         'gcp:compute/backendService:BackendService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
+    backends = registerOutput<List<Map<String, dynamic>>?>('backends');
+    cdnPolicy = registerOutput<BackendServiceCdnPolicy>('cdnPolicy');
+    circuitBreakers = registerOutput<BackendServiceCircuitBreakers?>(
+      'circuitBreakers',
+    );
+    compressionMode = registerOutput<String?>('compressionMode');
+    connectionDrainingTimeoutSec = registerOutput<int?>(
+      'connectionDrainingTimeoutSec',
+    );
+    consistentHash = registerOutput<BackendServiceConsistentHash?>(
+      'consistentHash',
+    );
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customMetrics = registerOutput<List<Map<String, dynamic>>?>(
+      'customMetrics',
+    );
+    customRequestHeaders = registerOutput<List<String>?>(
+      'customRequestHeaders',
+    );
+    customResponseHeaders = registerOutput<List<String>?>(
+      'customResponseHeaders',
+    );
+    description = registerOutput<String?>('description');
+    dynamicForwarding = registerOutput<BackendServiceDynamicForwarding?>(
+      'dynamicForwarding',
+    );
+    edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');
+    enableCdn = registerOutput<bool?>('enableCdn');
+    externalManagedMigrationState = registerOutput<String?>(
+      'externalManagedMigrationState',
+    );
+    externalManagedMigrationTestingPercentage = registerOutput<double?>(
+      'externalManagedMigrationTestingPercentage',
+    );
+    fingerprint = registerOutput<String>('fingerprint');
+    generatedId = registerOutput<int>('generatedId');
+    healthChecks = registerOutput<String?>('healthChecks');
+    iap = registerOutput<BackendServiceIap>('iap');
+    ipAddressSelectionPolicy = registerOutput<String?>(
+      'ipAddressSelectionPolicy',
+    );
+    loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
+    localityLbPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'localityLbPolicies',
+    );
+    localityLbPolicy = registerOutput<String?>('localityLbPolicy');
+    logConfig = registerOutput<BackendServiceLogConfig>('logConfig');
+    maxStreamDuration = registerOutput<BackendServiceMaxStreamDuration?>(
+      'maxStreamDuration',
+    );
     this.name = registerOutput<String>('name');
-    this.networkPassThroughLbTrafficPolicy = registerOutput<BackendServiceNetworkPassThroughLbTrafficPolicy?>('networkPassThroughLbTrafficPolicy');
-    this.outlierDetection = registerOutput<BackendServiceOutlierDetection?>('outlierDetection');
-    this.params = registerOutput<BackendServiceParams?>('params');
-    this.portName = registerOutput<String>('portName');
-    this.project = registerOutput<String>('project');
-    this.protocol = registerOutput<String>('protocol');
-    this.securityPolicy = registerOutput<String?>('securityPolicy');
-    this.securitySettings = registerOutput<BackendServiceSecuritySettings?>('securitySettings');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.serviceLbPolicy = registerOutput<String?>('serviceLbPolicy');
-    this.sessionAffinity = registerOutput<String>('sessionAffinity');
-    this.strongSessionAffinityCookie = registerOutput<BackendServiceStrongSessionAffinityCookie?>('strongSessionAffinityCookie');
-    this.timeoutSec = registerOutput<int>('timeoutSec');
-    this.tlsSettings = registerOutput<BackendServiceTlsSettings?>('tlsSettings');
+    networkPassThroughLbTrafficPolicy =
+        registerOutput<BackendServiceNetworkPassThroughLbTrafficPolicy?>(
+          'networkPassThroughLbTrafficPolicy',
+        );
+    outlierDetection = registerOutput<BackendServiceOutlierDetection?>(
+      'outlierDetection',
+    );
+    params = registerOutput<BackendServiceParams?>('params');
+    portName = registerOutput<String>('portName');
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String>('protocol');
+    securityPolicy = registerOutput<String?>('securityPolicy');
+    securitySettings = registerOutput<BackendServiceSecuritySettings?>(
+      'securitySettings',
+    );
+    selfLink = registerOutput<String>('selfLink');
+    serviceLbPolicy = registerOutput<String?>('serviceLbPolicy');
+    sessionAffinity = registerOutput<String>('sessionAffinity');
+    strongSessionAffinityCookie =
+        registerOutput<BackendServiceStrongSessionAffinityCookie?>(
+          'strongSessionAffinityCookie',
+        );
+    timeoutSec = registerOutput<int>('timeoutSec');
+    tlsSettings = registerOutput<BackendServiceTlsSettings?>('tlsSettings');
   }
 
   /// Gets an existing [BackendService] resource's state with the given [name] and [id].
@@ -4058,52 +4132,86 @@ class BackendService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/backendService:BackendService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
-    this.backends = registerOutput<List<BackendServiceBackend>?>('backends');
-    this.cdnPolicy = registerOutput<BackendServiceCdnPolicy>('cdnPolicy');
-    this.circuitBreakers = registerOutput<BackendServiceCircuitBreakers?>('circuitBreakers');
-    this.compressionMode = registerOutput<String?>('compressionMode');
-    this.connectionDrainingTimeoutSec = registerOutput<int?>('connectionDrainingTimeoutSec');
-    this.consistentHash = registerOutput<BackendServiceConsistentHash?>('consistentHash');
-    this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.customMetrics = registerOutput<List<BackendServiceCustomMetric>?>('customMetrics');
-    this.customRequestHeaders = registerOutput<List<String>?>('customRequestHeaders');
-    this.customResponseHeaders = registerOutput<List<String>?>('customResponseHeaders');
-    this.description = registerOutput<String?>('description');
-    this.dynamicForwarding = registerOutput<BackendServiceDynamicForwarding?>('dynamicForwarding');
-    this.edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');
-    this.enableCdn = registerOutput<bool?>('enableCdn');
-    this.externalManagedMigrationState = registerOutput<String?>('externalManagedMigrationState');
-    this.externalManagedMigrationTestingPercentage = registerOutput<double?>('externalManagedMigrationTestingPercentage');
-    this.fingerprint = registerOutput<String>('fingerprint');
-    this.generatedId = registerOutput<int>('generatedId');
-    this.healthChecks = registerOutput<String?>('healthChecks');
-    this.iap = registerOutput<BackendServiceIap>('iap');
-    this.ipAddressSelectionPolicy = registerOutput<String?>('ipAddressSelectionPolicy');
-    this.loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
-    this.localityLbPolicies = registerOutput<List<BackendServiceLocalityLbPolicy>?>('localityLbPolicies');
-    this.localityLbPolicy = registerOutput<String?>('localityLbPolicy');
-    this.logConfig = registerOutput<BackendServiceLogConfig>('logConfig');
-    this.maxStreamDuration = registerOutput<BackendServiceMaxStreamDuration?>('maxStreamDuration');
+         'gcp:compute/backendService:BackendService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
+    backends = registerOutput<List<Map<String, dynamic>>?>('backends');
+    cdnPolicy = registerOutput<BackendServiceCdnPolicy>('cdnPolicy');
+    circuitBreakers = registerOutput<BackendServiceCircuitBreakers?>(
+      'circuitBreakers',
+    );
+    compressionMode = registerOutput<String?>('compressionMode');
+    connectionDrainingTimeoutSec = registerOutput<int?>(
+      'connectionDrainingTimeoutSec',
+    );
+    consistentHash = registerOutput<BackendServiceConsistentHash?>(
+      'consistentHash',
+    );
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customMetrics = registerOutput<List<Map<String, dynamic>>?>(
+      'customMetrics',
+    );
+    customRequestHeaders = registerOutput<List<String>?>(
+      'customRequestHeaders',
+    );
+    customResponseHeaders = registerOutput<List<String>?>(
+      'customResponseHeaders',
+    );
+    description = registerOutput<String?>('description');
+    dynamicForwarding = registerOutput<BackendServiceDynamicForwarding?>(
+      'dynamicForwarding',
+    );
+    edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');
+    enableCdn = registerOutput<bool?>('enableCdn');
+    externalManagedMigrationState = registerOutput<String?>(
+      'externalManagedMigrationState',
+    );
+    externalManagedMigrationTestingPercentage = registerOutput<double?>(
+      'externalManagedMigrationTestingPercentage',
+    );
+    fingerprint = registerOutput<String>('fingerprint');
+    generatedId = registerOutput<int>('generatedId');
+    healthChecks = registerOutput<String?>('healthChecks');
+    iap = registerOutput<BackendServiceIap>('iap');
+    ipAddressSelectionPolicy = registerOutput<String?>(
+      'ipAddressSelectionPolicy',
+    );
+    loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
+    localityLbPolicies = registerOutput<List<Map<String, dynamic>>?>(
+      'localityLbPolicies',
+    );
+    localityLbPolicy = registerOutput<String?>('localityLbPolicy');
+    logConfig = registerOutput<BackendServiceLogConfig>('logConfig');
+    maxStreamDuration = registerOutput<BackendServiceMaxStreamDuration?>(
+      'maxStreamDuration',
+    );
     this.name = registerOutput<String>('name');
-    this.networkPassThroughLbTrafficPolicy = registerOutput<BackendServiceNetworkPassThroughLbTrafficPolicy?>('networkPassThroughLbTrafficPolicy');
-    this.outlierDetection = registerOutput<BackendServiceOutlierDetection?>('outlierDetection');
-    this.params = registerOutput<BackendServiceParams?>('params');
-    this.portName = registerOutput<String>('portName');
-    this.project = registerOutput<String>('project');
-    this.protocol = registerOutput<String>('protocol');
-    this.securityPolicy = registerOutput<String?>('securityPolicy');
-    this.securitySettings = registerOutput<BackendServiceSecuritySettings?>('securitySettings');
-    this.selfLink = registerOutput<String>('selfLink');
-    this.serviceLbPolicy = registerOutput<String?>('serviceLbPolicy');
-    this.sessionAffinity = registerOutput<String>('sessionAffinity');
-    this.strongSessionAffinityCookie = registerOutput<BackendServiceStrongSessionAffinityCookie?>('strongSessionAffinityCookie');
-    this.timeoutSec = registerOutput<int>('timeoutSec');
-    this.tlsSettings = registerOutput<BackendServiceTlsSettings?>('tlsSettings');
+    networkPassThroughLbTrafficPolicy =
+        registerOutput<BackendServiceNetworkPassThroughLbTrafficPolicy?>(
+          'networkPassThroughLbTrafficPolicy',
+        );
+    outlierDetection = registerOutput<BackendServiceOutlierDetection?>(
+      'outlierDetection',
+    );
+    params = registerOutput<BackendServiceParams?>('params');
+    portName = registerOutput<String>('portName');
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String>('protocol');
+    securityPolicy = registerOutput<String?>('securityPolicy');
+    securitySettings = registerOutput<BackendServiceSecuritySettings?>(
+      'securitySettings',
+    );
+    selfLink = registerOutput<String>('selfLink');
+    serviceLbPolicy = registerOutput<String?>('serviceLbPolicy');
+    sessionAffinity = registerOutput<String>('sessionAffinity');
+    strongSessionAffinityCookie =
+        registerOutput<BackendServiceStrongSessionAffinityCookie?>(
+          'strongSessionAffinityCookie',
+        );
+    timeoutSec = registerOutput<int>('timeoutSec');
+    tlsSettings = registerOutput<BackendServiceTlsSettings?>('tlsSettings');
   }
 }

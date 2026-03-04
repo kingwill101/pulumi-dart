@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AkriConnectorsDigest {
   /// The digest of the image.
   final pulumi.Input<String> digest;
+
   /// AkriConnectorsTagDigestType values.
   /// Expected value is 'Digest'.
   final pulumi.Input<String> tagDigestType;
@@ -13,23 +14,16 @@ class AkriConnectorsDigest {
   /// Creates a new [AkriConnectorsDigest].
   /// [digest] The digest of the image.
   /// [tagDigestType] AkriConnectorsTagDigestType values.
-  AkriConnectorsDigest({
-    required this.digest,
-    required this.tagDigestType,
-  });
+  AkriConnectorsDigest({required this.digest, required this.tagDigestType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'digest': digest,
-      'tagDigestType': tagDigestType,
-    };
+    return <String, dynamic>{'digest': digest, 'tagDigestType': tagDigestType};
   }
 
   factory AkriConnectorsDigest.fromMap(Map<String, dynamic> map) {
     return AkriConnectorsDigest(
-      digest: (map['digest'] as String).input(),
-      tagDigestType: (map['tagDigestType'] as String).input(),
+      digest: pulumi.Input.fromValue(map['digest'] as String),
+      tagDigestType: pulumi.Input.fromValue(map['tagDigestType'] as String),
     );
   }
 }
-

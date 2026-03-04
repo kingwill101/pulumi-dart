@@ -13,15 +13,18 @@ class CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'metadata': ?metadata,
-    };
+    return <String, dynamic>{'metadata': ?metadata};
   }
 
-  factory CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess.fromMap(Map<String, dynamic> map) {
+  factory CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess(
-      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

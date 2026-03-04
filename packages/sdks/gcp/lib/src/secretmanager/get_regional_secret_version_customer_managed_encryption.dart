@@ -13,15 +13,16 @@ class GetRegionalSecretVersionCustomerManagedEncryption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKeyVersionName': kmsKeyVersionName,
-    };
+    return <String, dynamic>{'kmsKeyVersionName': kmsKeyVersionName};
   }
 
-  factory GetRegionalSecretVersionCustomerManagedEncryption.fromMap(Map<String, dynamic> map) {
+  factory GetRegionalSecretVersionCustomerManagedEncryption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionalSecretVersionCustomerManagedEncryption(
-      kmsKeyVersionName: (map['kmsKeyVersionName'] as String).input(),
+      kmsKeyVersionName: pulumi.Input.fromValue(
+        map['kmsKeyVersionName'] as String,
+      ),
     );
   }
 }
-

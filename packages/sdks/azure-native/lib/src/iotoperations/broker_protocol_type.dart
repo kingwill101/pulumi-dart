@@ -3,16 +3,15 @@ enum BrokerProtocolType {
   mqtt("Mqtt"),
   webSockets("WebSockets");
 
-  const BrokerProtocolType(this.value);
-  final String value;
+  const BrokerProtocolType(this.wireValue);
+  final String wireValue;
 
   static BrokerProtocolType fromValue(String value) {
     for (final item in BrokerProtocolType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BrokerProtocolType value: $value');
   }
 }
-

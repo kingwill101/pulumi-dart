@@ -4,16 +4,15 @@ enum ErrorActionMode {
   stopOnNFailures("stopOnNFailures"),
   silentlyContinue("silentlyContinue");
 
-  const ErrorActionMode(this.value);
-  final String value;
+  const ErrorActionMode(this.wireValue);
+  final String wireValue;
 
   static ErrorActionMode fromValue(String value) {
     for (final item in ErrorActionMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ErrorActionMode value: $value');
   }
 }
-

@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRepositoryCleanupPolicyCondition {
   /// Match versions newer than a duration.
   final pulumi.Input<String> newerThan;
+
   /// Match versions older than a duration.
   final pulumi.Input<String> olderThan;
+
   /// Match versions by package prefix. Applied on any prefix match.
   final pulumi.Input<List<String>> packageNamePrefixes;
+
   /// Match versions by tag prefix. Applied on any prefix match.
   final pulumi.Input<List<String>> tagPrefixes;
+
   /// Match versions by tag status. Default value: "ANY" Possible values: ["TAGGED", "UNTAGGED", "ANY"]
   final pulumi.Input<String> tagState;
+
   /// Match versions by version name prefix. Applied on any prefix match.
   final pulumi.Input<List<String>> versionNamePrefixes;
 
@@ -43,15 +48,22 @@ class GetRepositoryCleanupPolicyCondition {
     };
   }
 
-  factory GetRepositoryCleanupPolicyCondition.fromMap(Map<String, dynamic> map) {
+  factory GetRepositoryCleanupPolicyCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRepositoryCleanupPolicyCondition(
-      newerThan: (map['newerThan'] as String).input(),
-      olderThan: (map['olderThan'] as String).input(),
-      packageNamePrefixes: ((map['packageNamePrefixes'] as List).cast<String>()).input(),
-      tagPrefixes: ((map['tagPrefixes'] as List).cast<String>()).input(),
-      tagState: (map['tagState'] as String).input(),
-      versionNamePrefixes: ((map['versionNamePrefixes'] as List).cast<String>()).input(),
+      newerThan: pulumi.Input.fromValue(map['newerThan'] as String),
+      olderThan: pulumi.Input.fromValue(map['olderThan'] as String),
+      packageNamePrefixes: pulumi.Input.fromValue(
+        (map['packageNamePrefixes'] as List).cast<String>(),
+      ),
+      tagPrefixes: pulumi.Input.fromValue(
+        (map['tagPrefixes'] as List).cast<String>(),
+      ),
+      tagState: pulumi.Input.fromValue(map['tagState'] as String),
+      versionNamePrefixes: pulumi.Input.fromValue(
+        (map['versionNamePrefixes'] as List).cast<String>(),
+      ),
     );
   }
 }
-

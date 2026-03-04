@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrchestratedVirtualMachineScaleSetSkuProfile {
   /// Specifies the allocation strategy for the virtual machine scale set based on which the VMs will be allocated. Possible values are `CapacityOptimized`, `LowestPrice` and `Prioritized`.
   final pulumi.Input<String> allocationStrategy;
+
   /// Specifies the VM sizes for the virtual machine scale set.
   final pulumi.Input<List<String>> vmSizes;
 
@@ -23,11 +24,14 @@ class OrchestratedVirtualMachineScaleSetSkuProfile {
     };
   }
 
-  factory OrchestratedVirtualMachineScaleSetSkuProfile.fromMap(Map<String, dynamic> map) {
+  factory OrchestratedVirtualMachineScaleSetSkuProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OrchestratedVirtualMachineScaleSetSkuProfile(
-      allocationStrategy: (map['allocationStrategy'] as String).input(),
-      vmSizes: ((map['vmSizes'] as List).cast<String>()).input(),
+      allocationStrategy: pulumi.Input.fromValue(
+        map['allocationStrategy'] as String,
+      ),
+      vmSizes: pulumi.Input.fromValue((map['vmSizes'] as List).cast<String>()),
     );
   }
 }
-

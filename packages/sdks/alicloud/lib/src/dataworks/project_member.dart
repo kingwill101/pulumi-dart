@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'project_member_args.dart';
-import 'project_member_role.dart';
 import 'project_member_state.dart';
 
 /// Provides a Data Works Project Member resource.
@@ -9,7 +8,7 @@ import 'project_member_state.dart';
 ///
 /// For information about Data Works Project Member and how to use it, see [What is Project Member](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-createprojectmember).
 ///
-/// > **NOTE:** Available since v1.237.0.
+/// &gt; **NOTE:** Available since v1.237.0.
 ///
 /// ## Example Usage
 ///
@@ -338,10 +337,13 @@ import 'project_member_state.dart';
 class ProjectMember extends pulumi.CustomResource {
   /// Project ID
   late final pulumi.Output<int> projectId;
+
   /// List of roles owned by members. See `roles` below.
-  late final pulumi.Output<List<ProjectMemberRole>?> roles;
+  late final pulumi.Output<List<Map<String, dynamic>>?> roles;
+
   /// The status of the user in project
   late final pulumi.Output<String> status;
+
   /// The user ID of the member.
   late final pulumi.Output<String> userId;
 
@@ -354,15 +356,15 @@ class ProjectMember extends pulumi.CustomResource {
     ProjectMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dataworks/projectMember:ProjectMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.projectId = registerOutput<int>('projectId');
-    this.roles = registerOutput<List<ProjectMemberRole>?>('roles');
-    this.status = registerOutput<String>('status');
-    this.userId = registerOutput<String>('userId');
+         'alicloud:dataworks/projectMember:ProjectMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    projectId = registerOutput<int>('projectId');
+    roles = registerOutput<List<Map<String, dynamic>>?>('roles');
+    status = registerOutput<String>('status');
+    userId = registerOutput<String>('userId');
   }
 
   /// Gets an existing [ProjectMember] resource's state with the given [name] and [id].
@@ -383,14 +385,14 @@ class ProjectMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dataworks/projectMember:ProjectMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.projectId = registerOutput<int>('projectId');
-    this.roles = registerOutput<List<ProjectMemberRole>?>('roles');
-    this.status = registerOutput<String>('status');
-    this.userId = registerOutput<String>('userId');
+         'alicloud:dataworks/projectMember:ProjectMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    projectId = registerOutput<int>('projectId');
+    roles = registerOutput<List<Map<String, dynamic>>?>('roles');
+    status = registerOutput<String>('status');
+    userId = registerOutput<String>('userId');
   }
 }

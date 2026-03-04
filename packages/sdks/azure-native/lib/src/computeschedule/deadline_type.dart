@@ -4,16 +4,15 @@ enum DeadlineType {
   initiateAt("InitiateAt"),
   completeBy("CompleteBy");
 
-  const DeadlineType(this.value);
-  final String value;
+  const DeadlineType(this.wireValue);
+  final String wireValue;
 
   static DeadlineType fromValue(String value) {
     for (final item in DeadlineType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeadlineType value: $value');
   }
 }
-

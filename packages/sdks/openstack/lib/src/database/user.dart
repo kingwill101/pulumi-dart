@@ -4,7 +4,7 @@ import 'user_state.dart';
 
 /// Manages a V1 DB user resource within OpenStack.
 ///
-/// > **Note:** All arguments including the database password will be stored in the
+/// &gt; **Note:** All arguments including the database password will be stored in the
 /// raw state as plain-text. Read more about sensitive data in
 /// state.
 ///
@@ -126,12 +126,16 @@ class User extends pulumi.CustomResource {
   /// A list of database user should have access to.
   late final pulumi.Output<List<String>> databases;
   late final pulumi.Output<String?> host;
+
   /// The ID for the database instance.
   late final pulumi.Output<String> instanceId;
+
   /// A unique name for the resource.
   late final pulumi.Output<String> name;
+
   /// User's password.
   late final pulumi.Output<String> password;
+
   /// The region in which to create the db user. Changing
   /// this creates a new user.
   late final pulumi.Output<String> region;
@@ -140,30 +144,23 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_database_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(
-    String name, {
-    UserArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'openstack:database/user:User',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.databases = registerOutput<List<String>>('databases');
-    this.host = registerOutput<String?>('host');
-    this.instanceId = registerOutput<String>('instanceId');
+  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'openstack:database/user:User',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    databases = registerOutput<List<String>>('databases');
+    host = registerOutput<String?>('host');
+    instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.region = registerOutput<String>('region');
+    password = registerOutput<String>('password');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
-  static User get(
-    String name,
-    pulumi.Input<String> id, {
-    UserState? state,
-  }) {
+  static User get(String name, pulumi.Input<String> id, {UserState? state}) {
     return User._get(
       name,
       state: state?.toMap(),
@@ -176,16 +173,16 @@ class User extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:database/user:User',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.databases = registerOutput<List<String>>('databases');
-    this.host = registerOutput<String?>('host');
-    this.instanceId = registerOutput<String>('instanceId');
+         'openstack:database/user:User',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    databases = registerOutput<List<String>>('databases');
+    host = registerOutput<String?>('host');
+    instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.region = registerOutput<String>('region');
+    password = registerOutput<String>('password');
+    region = registerOutput<String>('region');
   }
 }

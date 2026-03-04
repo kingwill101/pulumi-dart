@@ -9,20 +9,17 @@ class WindowsNodeConfigResponseContainerV1beta1 {
 
   /// Creates a new [WindowsNodeConfigResponseContainerV1beta1].
   /// [osVersion] OSVersion specifies the Windows node config to be used on the node
-  WindowsNodeConfigResponseContainerV1beta1({
-    required this.osVersion,
-  });
+  WindowsNodeConfigResponseContainerV1beta1({required this.osVersion});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'osVersion': osVersion,
-    };
+    return <String, dynamic>{'osVersion': osVersion};
   }
 
-  factory WindowsNodeConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory WindowsNodeConfigResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WindowsNodeConfigResponseContainerV1beta1(
-      osVersion: (map['osVersion'] as String).input(),
+      osVersion: pulumi.Input.fromValue(map['osVersion'] as String),
     );
   }
 }
-

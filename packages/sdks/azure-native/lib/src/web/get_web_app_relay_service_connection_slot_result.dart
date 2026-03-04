@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getWebAppRelayServiceConnectionSlot.
 class GetWebAppRelayServiceConnectionSlotResult {
   /// The Azure API version of the resource.
@@ -9,15 +8,19 @@ class GetWebAppRelayServiceConnectionSlotResult {
   final String? entityConnectionString;
   final String? entityName;
   final String? hostname;
+
   /// Resource Id.
   final String id;
+
   /// Kind of resource.
   final String? kind;
+
   /// Resource Name.
   final String name;
   final int? port;
   final String? resourceConnectionString;
   final String? resourceType;
+
   /// Resource type.
   final String type;
 
@@ -66,21 +69,54 @@ class GetWebAppRelayServiceConnectionSlotResult {
     };
   }
 
-  factory GetWebAppRelayServiceConnectionSlotResult.fromMap(Map<String, dynamic> map) {
+  factory GetWebAppRelayServiceConnectionSlotResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWebAppRelayServiceConnectionSlotResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      biztalkUri: map['biztalkUri'] == null ? null : map['biztalkUri']! as String,
-      entityConnectionString: map['entityConnectionString'] == null ? null : map['entityConnectionString']! as String,
-      entityName: map['entityName'] == null ? null : map['entityName']! as String,
-      hostname: map['hostname'] == null ? null : map['hostname']! as String,
+      biztalkUri: (() {
+        final guardedValue = map['biztalkUri'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      entityConnectionString: (() {
+        final guardedValue = map['entityConnectionString'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      entityName: (() {
+        final guardedValue = map['entityName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      hostname: (() {
+        final guardedValue = map['hostname'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      port: map['port'] == null ? null : map['port']! as int,
-      resourceConnectionString: map['resourceConnectionString'] == null ? null : map['resourceConnectionString']! as String,
-      resourceType: map['resourceType'] == null ? null : map['resourceType']! as String,
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      resourceConnectionString: (() {
+        final guardedValue = map['resourceConnectionString'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

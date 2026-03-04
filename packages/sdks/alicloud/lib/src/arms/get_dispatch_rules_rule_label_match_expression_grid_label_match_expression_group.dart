@@ -5,7 +5,12 @@ import 'get_dispatch_rules_rule_label_match_expression_grid_label_match_expressi
 
 class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup {
   /// Sets the dispatch rule.
-  final pulumi.Input<List<GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression>> labelMatchExpressions;
+  final pulumi.Input<
+    List<
+      GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression
+    >
+  >
+  labelMatchExpressions;
 
   /// Creates a new [GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup].
   /// [labelMatchExpressions] Sets the dispatch rule.
@@ -15,14 +20,38 @@ class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'labelMatchExpressions': pulumi.Input.mapInputValue<List<GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression>, List<Map<String, dynamic>>>(labelMatchExpressions, (value) => pulumi.Input.encodeList<GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'labelMatchExpressions':
+          pulumi.Input.mapInputValue<
+            List<
+              GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression
+            >,
+            List<Map<String, dynamic>>
+          >(
+            labelMatchExpressions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup.fromMap(Map<String, dynamic> map) {
+  factory GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup(
-      labelMatchExpressions: (pulumi.Input.decodeList<GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression>(map['labelMatchExpressions'], (value) => GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labelMatchExpressions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression
+        >(
+          map['labelMatchExpressions']!,
+          (value) =>
+              GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

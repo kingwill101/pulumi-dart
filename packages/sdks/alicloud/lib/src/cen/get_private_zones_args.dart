@@ -9,21 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateZonesArgs {
   /// The ID of the CEN instance.
   final pulumi.Input<String> cenId;
+
   /// The service region. The service region is the target region of the PrivateZone service accessed through CEN.
   final pulumi.Input<String>? hostRegionId;
-  /// A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
+
+  /// A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
   /// **NOTE:** Before 1.162.0, each element same as `access_region_id`.
   /// * `host_region_id ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
   final pulumi.Input<String>? status;
 
   /// Creates a new [GetPrivateZonesArgs].
   /// [cenId] The ID of the CEN instance.
   /// [hostRegionId] The service region. The service region is the target region of the PrivateZone service accessed through CEN.
-  /// [ids] A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
+  /// [ids] A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
   GetPrivateZonesArgs({
@@ -46,12 +50,27 @@ class GetPrivateZonesArgs {
 
   factory GetPrivateZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateZonesArgs(
-      cenId: (map['cenId'] as String).input(),
-      hostRegionId: map['hostRegionId'] == null ? null : (map['hostRegionId']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      cenId: pulumi.Input.fromValue(map['cenId'] as String),
+      hostRegionId: (() {
+        final guardedValue = map['hostRegionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

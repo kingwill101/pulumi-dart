@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getHostPoolRegistrationToken.
 class GetHostPoolRegistrationTokenResult {
   /// Expiration time of registration token.
   final String? expirationTime;
+
   /// The type of resetting the token.
   final String? registrationTokenOperation;
+
   /// The registration token base64 encoded string.
   final String? token;
 
@@ -30,10 +31,21 @@ class GetHostPoolRegistrationTokenResult {
 
   factory GetHostPoolRegistrationTokenResult.fromMap(Map<String, dynamic> map) {
     return GetHostPoolRegistrationTokenResult(
-      expirationTime: map['expirationTime'] == null ? null : map['expirationTime']! as String,
-      registrationTokenOperation: map['registrationTokenOperation'] == null ? null : map['registrationTokenOperation']! as String,
-      token: map['token'] == null ? null : map['token']! as String,
+      expirationTime: (() {
+        final guardedValue = map['expirationTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      registrationTokenOperation: (() {
+        final guardedValue = map['registrationTokenOperation'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      token: (() {
+        final guardedValue = map['token'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

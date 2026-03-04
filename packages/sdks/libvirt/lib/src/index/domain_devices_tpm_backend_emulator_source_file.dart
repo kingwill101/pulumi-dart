@@ -8,20 +8,21 @@ class DomainDevicesTpmBackendEmulatorSourceFile {
 
   /// Creates a new [DomainDevicesTpmBackendEmulatorSourceFile].
   /// [path] Sets the path to the file source for the emulator TPM backend.
-  DomainDevicesTpmBackendEmulatorSourceFile({
-    this.path,
-  });
+  DomainDevicesTpmBackendEmulatorSourceFile({this.path});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': ?path,
-    };
+    return <String, dynamic>{'path': ?path};
   }
 
-  factory DomainDevicesTpmBackendEmulatorSourceFile.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesTpmBackendEmulatorSourceFile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesTpmBackendEmulatorSourceFile(
-      path: map['path'] == null ? null : (map['path']! as String).input(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

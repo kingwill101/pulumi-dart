@@ -11,17 +11,24 @@ class ClusterNodeConfigLinuxNodeConfig {
   /// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
   /// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
   final pulumi.Input<String>? cgroupMode;
+
   /// Amounts for 2M and 1G hugepages. Structure is documented below.
-  final pulumi.Input<ClusterNodeConfigLinuxNodeConfigHugepagesConfig>? hugepagesConfig;
+  final pulumi.Input<ClusterNodeConfigLinuxNodeConfigHugepagesConfig>?
+  hugepagesConfig;
+
   /// Settings for kernel module loading. Structure is documented below.
-  final pulumi.Input<ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading>? nodeKernelModuleLoading;
+  final pulumi.Input<ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading>?
+  nodeKernelModuleLoading;
+
   /// The Linux kernel parameters to be applied to the nodes
   /// and all pods running on the nodes. Specified as a map from the key, such as
   /// `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
   /// Note that validations happen all server side. All attributes are optional.
   final pulumi.Input<Map<String, String>>? sysctls;
+
   /// The Linux kernel transparent hugepage defrag setting.
   final pulumi.Input<String>? transparentHugepageDefrag;
+
   /// The Linux kernel transparent hugepage setting.
   final pulumi.Input<String>? transparentHugepageEnabled;
 
@@ -44,8 +51,16 @@ class ClusterNodeConfigLinuxNodeConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cgroupMode': ?cgroupMode,
-      'hugepagesConfig': ?pulumi.Input.mapOptionalInputValue<ClusterNodeConfigLinuxNodeConfigHugepagesConfig, Map<String, dynamic>>(hugepagesConfig, (value) => value.toMap()),
-      'nodeKernelModuleLoading': ?pulumi.Input.mapOptionalInputValue<ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading, Map<String, dynamic>>(nodeKernelModuleLoading, (value) => value.toMap()),
+      'hugepagesConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterNodeConfigLinuxNodeConfigHugepagesConfig,
+            Map<String, dynamic>
+          >(hugepagesConfig, (value) => value.toMap()),
+      'nodeKernelModuleLoading':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading,
+            Map<String, dynamic>
+          >(nodeKernelModuleLoading, (value) => value.toMap()),
       'sysctls': ?sysctls,
       'transparentHugepageDefrag': ?transparentHugepageDefrag,
       'transparentHugepageEnabled': ?transparentHugepageEnabled,
@@ -54,13 +69,46 @@ class ClusterNodeConfigLinuxNodeConfig {
 
   factory ClusterNodeConfigLinuxNodeConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigLinuxNodeConfig(
-      cgroupMode: map['cgroupMode'] == null ? null : (map['cgroupMode']! as String).input(),
-      hugepagesConfig: map['hugepagesConfig'] == null ? null : (ClusterNodeConfigLinuxNodeConfigHugepagesConfig.fromMap((map['hugepagesConfig']! as Map).cast<String, dynamic>())).input(),
-      nodeKernelModuleLoading: map['nodeKernelModuleLoading'] == null ? null : (ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap((map['nodeKernelModuleLoading']! as Map).cast<String, dynamic>())).input(),
-      sysctls: map['sysctls'] == null ? null : ((map['sysctls']! as Map).cast<String, String>()).input(),
-      transparentHugepageDefrag: map['transparentHugepageDefrag'] == null ? null : (map['transparentHugepageDefrag']! as String).input(),
-      transparentHugepageEnabled: map['transparentHugepageEnabled'] == null ? null : (map['transparentHugepageEnabled']! as String).input(),
+      cgroupMode: (() {
+        final guardedValue = map['cgroupMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hugepagesConfig: (() {
+        final guardedValue = map['hugepagesConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterNodeConfigLinuxNodeConfigHugepagesConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      nodeKernelModuleLoading: (() {
+        final guardedValue = map['nodeKernelModuleLoading'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sysctls: (() {
+        final guardedValue = map['sysctls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      transparentHugepageDefrag: (() {
+        final guardedValue = map['transparentHugepageDefrag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      transparentHugepageEnabled: (() {
+        final guardedValue = map['transparentHugepageEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

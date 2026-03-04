@@ -1,8 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'automation_action_event_hub_response.dart';
 import 'automation_args.dart';
-import 'automation_scope_response.dart';
-import 'automation_source_response.dart';
 
 /// The security automation resource.
 ///
@@ -802,27 +799,38 @@ import 'automation_source_response.dart';
 /// ```
 class Automation extends pulumi.CustomResource {
   /// A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
-  late final pulumi.Output<List<AutomationActionEventHubResponse>?> actions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> actions;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The security automation description.
   late final pulumi.Output<String?> description;
+
   /// Entity tag is used for comparing two or more entities from the same requested resource.
   late final pulumi.Output<String?> etag;
+
   /// Indicates whether the security automation is enabled.
   late final pulumi.Output<bool?> isEnabled;
+
   /// Kind of the resource
   late final pulumi.Output<String?> kind;
+
   /// Location where the resource is stored
   late final pulumi.Output<String?> location;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes.
-  late final pulumi.Output<List<AutomationScopeResponse>?> scopes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> scopes;
+
   /// A collection of the source event types which evaluate the security automation set of rules.
-  late final pulumi.Output<List<AutomationSourceResponse>?> sources;
+  late final pulumi.Output<List<Map<String, dynamic>>?> sources;
+
   /// A list of key value pairs that describe the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -835,22 +843,22 @@ class Automation extends pulumi.CustomResource {
     AutomationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:Automation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actions = registerOutput<List<AutomationActionEventHubResponse>?>('actions');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String?>('etag');
-    this.isEnabled = registerOutput<bool?>('isEnabled');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String?>('location');
+         'azure-native:security:Automation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actions = registerOutput<List<Map<String, dynamic>>?>('actions');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
+    isEnabled = registerOutput<bool?>('isEnabled');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.scopes = registerOutput<List<AutomationScopeResponse>?>('scopes');
-    this.sources = registerOutput<List<AutomationSourceResponse>?>('sources');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    scopes = registerOutput<List<Map<String, dynamic>>?>('scopes');
+    sources = registerOutput<List<Map<String, dynamic>>?>('sources');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

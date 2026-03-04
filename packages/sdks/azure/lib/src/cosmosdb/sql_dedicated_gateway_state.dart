@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlDedicatedGatewayState {
   /// The resource ID of the CosmosDB Account. Changing this forces a new resource to be created.
   final pulumi.Input<String>? cosmosdbAccountId;
+
   /// The instance count for the CosmosDB SQL Dedicated Gateway. Possible value is between `1` and `5`.
   final pulumi.Input<int>? instanceCount;
+
   /// The instance size for the CosmosDB SQL Dedicated Gateway. Changing this forces a new resource to be created. Possible values are `Cosmos.D4s`, `Cosmos.D8s` and `Cosmos.D16s`.
   final pulumi.Input<String>? instanceSize;
 
@@ -31,10 +33,21 @@ class SqlDedicatedGatewayState {
 
   factory SqlDedicatedGatewayState.fromMap(Map<String, dynamic> map) {
     return SqlDedicatedGatewayState(
-      cosmosdbAccountId: map['cosmosdbAccountId'] == null ? null : (map['cosmosdbAccountId']! as String).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
-      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize']! as String).input(),
+      cosmosdbAccountId: (() {
+        final guardedValue = map['cosmosdbAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceCount: (() {
+        final guardedValue = map['instanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceSize: (() {
+        final guardedValue = map['instanceSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

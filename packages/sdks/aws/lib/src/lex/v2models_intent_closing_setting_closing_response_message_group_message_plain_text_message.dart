@@ -13,15 +13,14 @@ class V2modelsIntentClosingSettingClosingResponseMessageGroupMessagePlainTextMes
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
-  factory V2modelsIntentClosingSettingClosingResponseMessageGroupMessagePlainTextMessage.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentClosingSettingClosingResponseMessageGroupMessagePlainTextMessage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentClosingSettingClosingResponseMessageGroupMessagePlainTextMessage(
-      value: (map['value'] as String).input(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

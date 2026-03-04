@@ -9,20 +9,19 @@ class SoleTenantNodeType {
 
   /// Creates a new [SoleTenantNodeType].
   /// [nodeName] Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
-  SoleTenantNodeType({
-    this.nodeName,
-  });
+  SoleTenantNodeType({this.nodeName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nodeName': ?nodeName,
-    };
+    return <String, dynamic>{'nodeName': ?nodeName};
   }
 
   factory SoleTenantNodeType.fromMap(Map<String, dynamic> map) {
     return SoleTenantNodeType(
-      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      nodeName: (() {
+        final guardedValue = map['nodeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

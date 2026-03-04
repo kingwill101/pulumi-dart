@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'customer_event_args.dart';
-import 'notification_event_receiver_response.dart';
 import 'system_data_response.dart';
 
 /// The Customer Notification Event resource.
@@ -274,14 +273,19 @@ import 'system_data_response.dart';
 class CustomerEvent extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the event subscribed to.
   late final pulumi.Output<String> eventName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The notification event receivers.
-  late final pulumi.Output<List<NotificationEventReceiverResponse>> receivers;
+  late final pulumi.Output<List<Map<String, dynamic>>> receivers;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -294,16 +298,16 @@ class CustomerEvent extends pulumi.CustomResource {
     CustomerEventArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:testbase:CustomerEvent',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eventName = registerOutput<String>('eventName');
+         'azure-native:testbase:CustomerEvent',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eventName = registerOutput<String>('eventName');
     this.name = registerOutput<String>('name');
-    this.receivers = registerOutput<List<NotificationEventReceiverResponse>>('receivers');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    receivers = registerOutput<List<Map<String, dynamic>>>('receivers');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

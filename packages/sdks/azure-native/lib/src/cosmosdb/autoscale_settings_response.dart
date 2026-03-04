@@ -8,20 +8,19 @@ class AutoscaleSettingsResponse {
 
   /// Creates a new [AutoscaleSettingsResponse].
   /// [maxThroughput] Represents maximum throughput, the resource can scale up to.
-  AutoscaleSettingsResponse({
-    this.maxThroughput,
-  });
+  AutoscaleSettingsResponse({this.maxThroughput});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxThroughput': ?maxThroughput,
-    };
+    return <String, dynamic>{'maxThroughput': ?maxThroughput};
   }
 
   factory AutoscaleSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingsResponse(
-      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput']! as int).input(),
+      maxThroughput: (() {
+        final guardedValue = map['maxThroughput'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

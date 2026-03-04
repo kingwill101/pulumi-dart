@@ -317,26 +317,37 @@ import 'storage_box_state.dart';
 class StorageBox extends pulumi.CustomResource {
   /// Access settings of the Storage Box.
   late final pulumi.Output<StorageBoxAccessSettings> accessSettings;
+
   /// Prevent the Storage Box from being accidentally deleted outside of Terraform.
   late final pulumi.Output<bool> deleteProtection;
+
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   late final pulumi.Output<Map<String, String>> labels;
+
   /// Name of the Location.
   late final pulumi.Output<String> location;
+
   /// Name of the Storage Box.
   late final pulumi.Output<String> name;
+
   /// Password of the Storage Box. For more details, see the [Storage Boxes password policy](https://docs.hetzner.cloud/reference/hetzner#storage-boxes-password-policy).
   late final pulumi.Output<String> password;
+
   /// FQDN of the Storage Box.
   late final pulumi.Output<String> server;
+
   /// Details of the active snapshot plan.
   late final pulumi.Output<StorageBoxSnapshotPlan?> snapshotPlan;
+
   /// SSH public keys in OpenSSH format to inject into the Storage Box. It is not possible to update the SSH Keys through the API, so changing this attribute forces a replace of the Storage Box.
   late final pulumi.Output<List<String>> sshKeys;
+
   /// Name of the Storage Box Type.
   late final pulumi.Output<String> storageBoxType;
+
   /// Host system of the Storage Box.
   late final pulumi.Output<String> system;
+
   /// Primary username of the Storage Box.
   late final pulumi.Output<String> username;
 
@@ -349,23 +360,23 @@ class StorageBox extends pulumi.CustomResource {
     StorageBoxArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/storageBox:StorageBox',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessSettings = registerOutput<StorageBoxAccessSettings>('accessSettings');
-    this.deleteProtection = registerOutput<bool>('deleteProtection');
-    this.labels = registerOutput<Map<String, String>>('labels');
-    this.location = registerOutput<String>('location');
+         'hcloud:index/storageBox:StorageBox',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessSettings = registerOutput<StorageBoxAccessSettings>('accessSettings');
+    deleteProtection = registerOutput<bool>('deleteProtection');
+    labels = registerOutput<Map<String, String>>('labels');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.server = registerOutput<String>('server');
-    this.snapshotPlan = registerOutput<StorageBoxSnapshotPlan?>('snapshotPlan');
-    this.sshKeys = registerOutput<List<String>>('sshKeys');
-    this.storageBoxType = registerOutput<String>('storageBoxType');
-    this.system = registerOutput<String>('system');
-    this.username = registerOutput<String>('username');
+    password = registerOutput<String>('password');
+    server = registerOutput<String>('server');
+    snapshotPlan = registerOutput<StorageBoxSnapshotPlan?>('snapshotPlan');
+    sshKeys = registerOutput<List<String>>('sshKeys');
+    storageBoxType = registerOutput<String>('storageBoxType');
+    system = registerOutput<String>('system');
+    username = registerOutput<String>('username');
   }
 
   /// Gets an existing [StorageBox] resource's state with the given [name] and [id].
@@ -386,22 +397,22 @@ class StorageBox extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/storageBox:StorageBox',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessSettings = registerOutput<StorageBoxAccessSettings>('accessSettings');
-    this.deleteProtection = registerOutput<bool>('deleteProtection');
-    this.labels = registerOutput<Map<String, String>>('labels');
-    this.location = registerOutput<String>('location');
+         'hcloud:index/storageBox:StorageBox',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessSettings = registerOutput<StorageBoxAccessSettings>('accessSettings');
+    deleteProtection = registerOutput<bool>('deleteProtection');
+    labels = registerOutput<Map<String, String>>('labels');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.server = registerOutput<String>('server');
-    this.snapshotPlan = registerOutput<StorageBoxSnapshotPlan?>('snapshotPlan');
-    this.sshKeys = registerOutput<List<String>>('sshKeys');
-    this.storageBoxType = registerOutput<String>('storageBoxType');
-    this.system = registerOutput<String>('system');
-    this.username = registerOutput<String>('username');
+    password = registerOutput<String>('password');
+    server = registerOutput<String>('server');
+    snapshotPlan = registerOutput<StorageBoxSnapshotPlan?>('snapshotPlan');
+    sshKeys = registerOutput<List<String>>('sshKeys');
+    storageBoxType = registerOutput<String>('storageBoxType');
+    system = registerOutput<String>('system');
+    username = registerOutput<String>('username');
   }
 }

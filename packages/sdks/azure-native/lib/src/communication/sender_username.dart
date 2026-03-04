@@ -153,18 +153,25 @@ import 'system_data_response.dart';
 class SenderUsername extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The location where the SenderUsername resource data is stored at rest.
   late final pulumi.Output<String> dataLocation;
+
   /// The display name for the senderUsername.
   late final pulumi.Output<String?> displayName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the resource. Unknown is the default state for Communication Services.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// A sender senderUsername to be used when sending emails.
   late final pulumi.Output<String> username;
 
@@ -177,18 +184,18 @@ class SenderUsername extends pulumi.CustomResource {
     SenderUsernameArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:communication:SenderUsername',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataLocation = registerOutput<String>('dataLocation');
-    this.displayName = registerOutput<String?>('displayName');
+         'azure-native:communication:SenderUsername',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataLocation = registerOutput<String>('dataLocation');
+    displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.username = registerOutput<String>('username');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    username = registerOutput<String>('username');
   }
 }

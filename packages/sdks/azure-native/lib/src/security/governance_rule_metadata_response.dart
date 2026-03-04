@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GovernanceRuleMetadataResponse {
   /// Governance rule Created by object id (GUID)
   final pulumi.Input<String> createdBy;
+
   /// Governance rule creation date
   final pulumi.Input<String> createdOn;
+
   /// Governance rule last updated by object id (GUID)
   final pulumi.Input<String> updatedBy;
+
   /// Governance rule last update date
   final pulumi.Input<String> updatedOn;
 
@@ -36,11 +39,10 @@ class GovernanceRuleMetadataResponse {
 
   factory GovernanceRuleMetadataResponse.fromMap(Map<String, dynamic> map) {
     return GovernanceRuleMetadataResponse(
-      createdBy: (map['createdBy'] as String).input(),
-      createdOn: (map['createdOn'] as String).input(),
-      updatedBy: (map['updatedBy'] as String).input(),
-      updatedOn: (map['updatedOn'] as String).input(),
+      createdBy: pulumi.Input.fromValue(map['createdBy'] as String),
+      createdOn: pulumi.Input.fromValue(map['createdOn'] as String),
+      updatedBy: pulumi.Input.fromValue(map['updatedBy'] as String),
+      updatedOn: pulumi.Input.fromValue(map['updatedOn'] as String),
     );
   }
 }
-

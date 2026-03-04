@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponse {
   /// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
   final pulumi.Input<bool> dropHandoffMessages;
+
   /// If set to true, all messages from ivr stage are dropped.
   final pulumi.Input<bool> dropIvrMessages;
+
   /// If set to true, all messages from virtual agent are dropped.
   final pulumi.Input<bool> dropVirtualAgentMessages;
 
@@ -29,12 +31,17 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigConte
     };
   }
 
-  factory GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponse(
-      dropHandoffMessages: (map['dropHandoffMessages'] as bool).input(),
-      dropIvrMessages: (map['dropIvrMessages'] as bool).input(),
-      dropVirtualAgentMessages: (map['dropVirtualAgentMessages'] as bool).input(),
+      dropHandoffMessages: pulumi.Input.fromValue(
+        map['dropHandoffMessages'] as bool,
+      ),
+      dropIvrMessages: pulumi.Input.fromValue(map['dropIvrMessages'] as bool),
+      dropVirtualAgentMessages: pulumi.Input.fromValue(
+        map['dropVirtualAgentMessages'] as bool,
+      ),
     );
   }
 }
-

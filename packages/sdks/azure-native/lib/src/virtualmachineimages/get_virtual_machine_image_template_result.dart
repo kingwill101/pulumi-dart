@@ -18,48 +18,70 @@ import 'system_data_response.dart';
 class GetVirtualMachineImageTemplateResult {
   /// Indicates whether or not to automatically run the image template build on template creation or update.
   final ImageTemplateAutoRunResponse? autoRun;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours).
   final int? buildTimeoutInMinutes;
+
   /// Specifies the properties used to describe the customization steps of the image, like Image source etc
   final List<ImageTemplateFileCustomizerResponse>? customize;
+
   /// The distribution targets where the image output needs to go to.
   final List<ImageTemplateManagedImageDistributorResponse> distribute;
+
   /// Error handling options upon a build failure
   final ImageTemplatePropertiesResponseErrorHandling? errorHandling;
+
   /// The staging resource group id in the same subscription as the image template that will be used to build the image. This read-only field differs from 'stagingResourceGroup' only if the value specified in the 'stagingResourceGroup' field is empty.
   final String exactStagingResourceGroup;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The identity of the image template, if configured.
   final ImageTemplateIdentityResponse identity;
+
   /// State of 'run' that is currently executing or was last executed.
   final ImageTemplateLastRunStatusResponse lastRunStatus;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// Tags that will be applied to the resource group and/or resources created by the service.
   final Map<String, String>? managedResourceTags;
+
   /// The name of the resource
   final String name;
+
   /// Specifies optimization to be performed on image.
   final ImageTemplatePropertiesResponseOptimize? optimize;
+
   /// Provisioning error, if any
   final ProvisioningErrorResponse provisioningError;
+
   /// Provisioning state of the resource
   final String provisioningState;
+
   /// Specifies the properties used to describe the source image.
   final ImageTemplateManagedImageSourceResponse source;
+
   /// The staging resource group id in the same subscription as the image template that will be used to build the image. If this field is empty, a resource group with a random name will be created. If the resource group specified in this field doesn't exist, it will be created with the same name. If the resource group specified exists, it must be empty and in the same region as the image template. The resource group created will be deleted during template deletion if this field is empty or the resource group specified doesn't exist, but if the resource group specified exists the resources created in the resource group will be deleted during template deletion and the resource group itself will remain.
   final String? stagingResourceGroup;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Configuration options and list of validations to be performed on the resulting image.
   final ImageTemplatePropertiesResponseValidate? validate;
+
   /// Describes how virtual machine is set up to build images
   final ImageTemplateVmProfileResponse? vmProfile;
 
@@ -115,12 +137,23 @@ class GetVirtualMachineImageTemplateResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoRun': ?autoRun == null ? null : autoRun!.toMap(),
+      'autoRun': ?autoRun?.toMap(),
       'azureApiVersion': azureApiVersion,
       'buildTimeoutInMinutes': ?buildTimeoutInMinutes,
-      'customize': ?customize == null ? null : pulumi.Input.encodeList<ImageTemplateFileCustomizerResponse, Map<String, dynamic>>(customize!, (value) => value.toMap()),
-      'distribute': pulumi.Input.encodeList<ImageTemplateManagedImageDistributorResponse, Map<String, dynamic>>(distribute, (value) => value.toMap()),
-      'errorHandling': ?errorHandling == null ? null : errorHandling!.toMap(),
+      'customize': ?(() {
+        final guardedValue = customize;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ImageTemplateFileCustomizerResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
+      'distribute':
+          pulumi.Input.encodeList<
+            ImageTemplateManagedImageDistributorResponse,
+            Map<String, dynamic>
+          >(distribute, (value) => value.toMap()),
+      'errorHandling': ?errorHandling?.toMap(),
       'exactStagingResourceGroup': exactStagingResourceGroup,
       'id': id,
       'identity': identity.toMap(),
@@ -128,7 +161,7 @@ class GetVirtualMachineImageTemplateResult {
       'location': location,
       'managedResourceTags': ?managedResourceTags,
       'name': name,
-      'optimize': ?optimize == null ? null : optimize!.toMap(),
+      'optimize': ?optimize?.toMap(),
       'provisioningError': provisioningError.toMap(),
       'provisioningState': provisioningState,
       'source': source.toMap(),
@@ -136,37 +169,109 @@ class GetVirtualMachineImageTemplateResult {
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
-      'validate': ?validate == null ? null : validate!.toMap(),
-      'vmProfile': ?vmProfile == null ? null : vmProfile!.toMap(),
+      'validate': ?validate?.toMap(),
+      'vmProfile': ?vmProfile?.toMap(),
     };
   }
 
-  factory GetVirtualMachineImageTemplateResult.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualMachineImageTemplateResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualMachineImageTemplateResult(
-      autoRun: map['autoRun'] == null ? null : ImageTemplateAutoRunResponse.fromMap((map['autoRun']! as Map).cast<String, dynamic>()),
+      autoRun: (() {
+        final guardedValue = map['autoRun'];
+        if (guardedValue == null) return null;
+        return ImageTemplateAutoRunResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      buildTimeoutInMinutes: map['buildTimeoutInMinutes'] == null ? null : map['buildTimeoutInMinutes']! as int,
-      customize: map['customize'] == null ? null : pulumi.Input.decodeList<ImageTemplateFileCustomizerResponse>(map['customize']!, (value) => ImageTemplateFileCustomizerResponse.fromMap((value as Map).cast<String, dynamic>())),
-      distribute: pulumi.Input.decodeList<ImageTemplateManagedImageDistributorResponse>(map['distribute'], (value) => ImageTemplateManagedImageDistributorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      errorHandling: map['errorHandling'] == null ? null : ImageTemplatePropertiesResponseErrorHandling.fromMap((map['errorHandling']! as Map).cast<String, dynamic>()),
+      buildTimeoutInMinutes: (() {
+        final guardedValue = map['buildTimeoutInMinutes'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      customize: (() {
+        final guardedValue = map['customize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ImageTemplateFileCustomizerResponse>(
+          guardedValue,
+          (value) => ImageTemplateFileCustomizerResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      distribute:
+          pulumi.Input.decodeList<ImageTemplateManagedImageDistributorResponse>(
+            map['distribute']!,
+            (value) => ImageTemplateManagedImageDistributorResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      errorHandling: (() {
+        final guardedValue = map['errorHandling'];
+        if (guardedValue == null) return null;
+        return ImageTemplatePropertiesResponseErrorHandling.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       exactStagingResourceGroup: map['exactStagingResourceGroup'] as String,
       id: map['id'] as String,
-      identity: ImageTemplateIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      lastRunStatus: ImageTemplateLastRunStatusResponse.fromMap((map['lastRunStatus'] as Map).cast<String, dynamic>()),
+      identity: ImageTemplateIdentityResponse.fromMap(
+        (map['identity']! as Map).cast<String, dynamic>(),
+      ),
+      lastRunStatus: ImageTemplateLastRunStatusResponse.fromMap(
+        (map['lastRunStatus']! as Map).cast<String, dynamic>(),
+      ),
       location: map['location'] as String,
-      managedResourceTags: map['managedResourceTags'] == null ? null : (map['managedResourceTags']! as Map).cast<String, String>(),
+      managedResourceTags: (() {
+        final guardedValue = map['managedResourceTags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       name: map['name'] as String,
-      optimize: map['optimize'] == null ? null : ImageTemplatePropertiesResponseOptimize.fromMap((map['optimize']! as Map).cast<String, dynamic>()),
-      provisioningError: ProvisioningErrorResponse.fromMap((map['provisioningError'] as Map).cast<String, dynamic>()),
+      optimize: (() {
+        final guardedValue = map['optimize'];
+        if (guardedValue == null) return null;
+        return ImageTemplatePropertiesResponseOptimize.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      provisioningError: ProvisioningErrorResponse.fromMap(
+        (map['provisioningError']! as Map).cast<String, dynamic>(),
+      ),
       provisioningState: map['provisioningState'] as String,
-      source: ImageTemplateManagedImageSourceResponse.fromMap((map['source'] as Map).cast<String, dynamic>()),
-      stagingResourceGroup: map['stagingResourceGroup'] == null ? null : map['stagingResourceGroup']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      source: ImageTemplateManagedImageSourceResponse.fromMap(
+        (map['source']! as Map).cast<String, dynamic>(),
+      ),
+      stagingResourceGroup: (() {
+        final guardedValue = map['stagingResourceGroup'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      validate: map['validate'] == null ? null : ImageTemplatePropertiesResponseValidate.fromMap((map['validate']! as Map).cast<String, dynamic>()),
-      vmProfile: map['vmProfile'] == null ? null : ImageTemplateVmProfileResponse.fromMap((map['vmProfile']! as Map).cast<String, dynamic>()),
+      validate: (() {
+        final guardedValue = map['validate'];
+        if (guardedValue == null) return null;
+        return ImageTemplatePropertiesResponseValidate.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      vmProfile: (() {
+        final guardedValue = map['vmProfile'];
+        if (guardedValue == null) return null;
+        return ImageTemplateVmProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

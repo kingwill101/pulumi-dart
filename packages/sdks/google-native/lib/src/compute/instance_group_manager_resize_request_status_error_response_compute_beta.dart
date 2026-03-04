@@ -6,7 +6,12 @@ import 'instance_group_manager_resize_request_status_error_errors_item_response_
 /// Errors encountered during the queueing or provisioning phases of the ResizeRequest.
 class InstanceGroupManagerResizeRequestStatusErrorResponseComputeBeta {
   /// The array of errors encountered while processing this operation.
-  final pulumi.Input<List<InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponseComputeBeta>> errors;
+  final pulumi.Input<
+    List<
+      InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponseComputeBeta
+    >
+  >
+  errors;
 
   /// Creates a new [InstanceGroupManagerResizeRequestStatusErrorResponseComputeBeta].
   /// [errors] The array of errors encountered while processing this operation.
@@ -16,14 +21,38 @@ class InstanceGroupManagerResizeRequestStatusErrorResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': pulumi.Input.mapInputValue<List<InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponseComputeBeta>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponseComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'errors':
+          pulumi.Input.mapInputValue<
+            List<
+              InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponseComputeBeta
+            >,
+            List<Map<String, dynamic>>
+          >(
+            errors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponseComputeBeta,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory InstanceGroupManagerResizeRequestStatusErrorResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory InstanceGroupManagerResizeRequestStatusErrorResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGroupManagerResizeRequestStatusErrorResponseComputeBeta(
-      errors: (pulumi.Input.decodeList<InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponseComputeBeta>(map['errors'], (value) => InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errors: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponseComputeBeta
+        >(
+          map['errors']!,
+          (value) =>
+              InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponseComputeBeta.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

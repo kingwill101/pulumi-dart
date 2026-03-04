@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketAccessControlProjectTeamResponse {
   /// The project number.
   final pulumi.Input<String> projectNumber;
+
   /// The team.
   final pulumi.Input<String> team;
 
@@ -18,17 +19,15 @@ class BucketAccessControlProjectTeamResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'projectNumber': projectNumber,
-      'team': team,
-    };
+    return <String, dynamic>{'projectNumber': projectNumber, 'team': team};
   }
 
-  factory BucketAccessControlProjectTeamResponse.fromMap(Map<String, dynamic> map) {
+  factory BucketAccessControlProjectTeamResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketAccessControlProjectTeamResponse(
-      projectNumber: (map['projectNumber'] as String).input(),
-      team: (map['team'] as String).input(),
+      projectNumber: pulumi.Input.fromValue(map['projectNumber'] as String),
+      team: pulumi.Input.fromValue(map['team'] as String),
     );
   }
 }
-

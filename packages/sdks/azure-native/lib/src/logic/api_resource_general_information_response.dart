@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiResourceGeneralInformationResponse {
   /// The description.
   final pulumi.Input<String>? description;
+
   /// The display name.
   final pulumi.Input<String>? displayName;
+
   /// The icon url.
   final pulumi.Input<String>? iconUrl;
+
   /// The release tag.
   final pulumi.Input<String>? releaseTag;
+
   /// The terms of use url.
   final pulumi.Input<String>? termsOfUseUrl;
+
   /// The tier.
   final pulumi.Input<String>? tier;
 
@@ -44,15 +49,40 @@ class ApiResourceGeneralInformationResponse {
     };
   }
 
-  factory ApiResourceGeneralInformationResponse.fromMap(Map<String, dynamic> map) {
+  factory ApiResourceGeneralInformationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApiResourceGeneralInformationResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl']! as String).input(),
-      releaseTag: map['releaseTag'] == null ? null : (map['releaseTag']! as String).input(),
-      termsOfUseUrl: map['termsOfUseUrl'] == null ? null : (map['termsOfUseUrl']! as String).input(),
-      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iconUrl: (() {
+        final guardedValue = map['iconUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      releaseTag: (() {
+        final guardedValue = map['releaseTag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      termsOfUseUrl: (() {
+        final guardedValue = map['termsOfUseUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tier: (() {
+        final guardedValue = map['tier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

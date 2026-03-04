@@ -8,6 +8,7 @@ class TwitterRegistration {
   /// This setting is required for enabling Twitter Sign-In.
   /// Twitter Sign-In documentation: https://dev.twitter.com/web/sign-in
   final pulumi.Input<String>? consumerKey;
+
   /// The app setting name that contains the OAuth 1.0a consumer secret of the Twitter
   /// application used for sign-in.
   final pulumi.Input<String>? consumerSecretSettingName;
@@ -15,10 +16,7 @@ class TwitterRegistration {
   /// Creates a new [TwitterRegistration].
   /// [consumerKey] The OAuth 1.0a consumer key of the Twitter application used for sign-in.
   /// [consumerSecretSettingName] The app setting name that contains the OAuth 1.0a consumer secret of the Twitter
-  TwitterRegistration({
-    this.consumerKey,
-    this.consumerSecretSettingName,
-  });
+  TwitterRegistration({this.consumerKey, this.consumerSecretSettingName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,16 @@ class TwitterRegistration {
 
   factory TwitterRegistration.fromMap(Map<String, dynamic> map) {
     return TwitterRegistration(
-      consumerKey: map['consumerKey'] == null ? null : (map['consumerKey']! as String).input(),
-      consumerSecretSettingName: map['consumerSecretSettingName'] == null ? null : (map['consumerSecretSettingName']! as String).input(),
+      consumerKey: (() {
+        final guardedValue = map['consumerKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      consumerSecretSettingName: (() {
+        final guardedValue = map['consumerSecretSettingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

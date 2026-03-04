@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EntryGroupArgs {
   /// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
   final pulumi.Input<String>? description;
+
   /// A short name to identify the entry group, for example, "analytics data - jan 2011".
   final pulumi.Input<String>? displayName;
+
   /// The id of the entry group to create. The id must begin with a letter or underscore,
   /// contain only English letters, numbers and underscores, and be at most 64 characters.
   final pulumi.Input<String> entryGroupId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// EntryGroup location region.
   final pulumi.Input<String>? region;
 
@@ -46,12 +50,27 @@ class EntryGroupArgs {
 
   factory EntryGroupArgs.fromMap(Map<String, dynamic> map) {
     return EntryGroupArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      entryGroupId: (map['entryGroupId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      entryGroupId: pulumi.Input.fromValue(map['entryGroupId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

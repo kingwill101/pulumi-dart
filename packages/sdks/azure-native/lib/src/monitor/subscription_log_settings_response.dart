@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubscriptionLogSettingsResponse {
   /// Name of a Subscription Diagnostic Log category for a resource type this setting is applied to.
   final pulumi.Input<String>? category;
+
   /// Name of a Subscription Diagnostic Log category group for a resource type this setting is applied to.
   final pulumi.Input<String>? categoryGroup;
+
   /// a value indicating whether this log is enabled.
   final pulumi.Input<bool> enabled;
 
@@ -31,10 +33,17 @@ class SubscriptionLogSettingsResponse {
 
   factory SubscriptionLogSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SubscriptionLogSettingsResponse(
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      categoryGroup: map['categoryGroup'] == null ? null : (map['categoryGroup']! as String).input(),
-      enabled: (map['enabled'] as bool).input(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      categoryGroup: (() {
+        final guardedValue = map['categoryGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

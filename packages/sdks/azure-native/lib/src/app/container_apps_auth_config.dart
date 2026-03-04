@@ -811,22 +811,31 @@ import 'system_data_response.dart';
 class ContainerAppsAuthConfig extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
   late final pulumi.Output<EncryptionSettingsResponse?> encryptionSettings;
+
   /// The configuration settings that determines the validation flow of users using  Service Authentication/Authorization.
   late final pulumi.Output<GlobalValidationResponse?> globalValidation;
+
   /// The configuration settings of the HTTP requests for authentication and authorization requests made against ContainerApp Service Authentication/Authorization.
   late final pulumi.Output<HttpSettingsResponse?> httpSettings;
+
   /// The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
   late final pulumi.Output<IdentityProvidersResponse?> identityProviders;
+
   /// The configuration settings of the login flow of users using ContainerApp Service Authentication/Authorization.
   late final pulumi.Output<LoginResponse?> login;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The configuration settings of the platform of ContainerApp Service Authentication/Authorization.
   late final pulumi.Output<AuthPlatformResponse?> platform;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -839,20 +848,26 @@ class ContainerAppsAuthConfig extends pulumi.CustomResource {
     ContainerAppsAuthConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:app:ContainerAppsAuthConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.encryptionSettings = registerOutput<EncryptionSettingsResponse?>('encryptionSettings');
-    this.globalValidation = registerOutput<GlobalValidationResponse?>('globalValidation');
-    this.httpSettings = registerOutput<HttpSettingsResponse?>('httpSettings');
-    this.identityProviders = registerOutput<IdentityProvidersResponse?>('identityProviders');
-    this.login = registerOutput<LoginResponse?>('login');
+         'azure-native:app:ContainerAppsAuthConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    encryptionSettings = registerOutput<EncryptionSettingsResponse?>(
+      'encryptionSettings',
+    );
+    globalValidation = registerOutput<GlobalValidationResponse?>(
+      'globalValidation',
+    );
+    httpSettings = registerOutput<HttpSettingsResponse?>('httpSettings');
+    identityProviders = registerOutput<IdentityProvidersResponse?>(
+      'identityProviders',
+    );
+    login = registerOutput<LoginResponse?>('login');
     this.name = registerOutput<String>('name');
-    this.platform = registerOutput<AuthPlatformResponse?>('platform');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    platform = registerOutput<AuthPlatformResponse?>('platform');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

@@ -1,5 +1,3 @@
-library module_cloudstoragegateway;
-
 export 'cloudstoragegateway/express_sync.dart';
 export 'cloudstoragegateway/express_sync_args.dart';
 export 'cloudstoragegateway/express_sync_share_attachment.dart';

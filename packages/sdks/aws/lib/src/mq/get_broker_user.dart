@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBrokerUser {
   /// Whether to enable access to the ActiveMQ Web Console for the user.
   final pulumi.Input<bool> consoleAccess;
+
   /// List of groups to which the ActiveMQ user belongs.
   final pulumi.Input<List<String>> groups;
+
   /// Whether to set replication user.
   final pulumi.Input<bool> replicationUser;
+
   /// Username of the user.
   final pulumi.Input<String> username;
 
@@ -35,11 +38,10 @@ class GetBrokerUser {
 
   factory GetBrokerUser.fromMap(Map<String, dynamic> map) {
     return GetBrokerUser(
-      consoleAccess: (map['consoleAccess'] as bool).input(),
-      groups: ((map['groups'] as List).cast<String>()).input(),
-      replicationUser: (map['replicationUser'] as bool).input(),
-      username: (map['username'] as String).input(),
+      consoleAccess: pulumi.Input.fromValue(map['consoleAccess'] as bool),
+      groups: pulumi.Input.fromValue((map['groups'] as List).cast<String>()),
+      replicationUser: pulumi.Input.fromValue(map['replicationUser'] as bool),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentStorageConfigurationEfs {
   /// Id of the EFS filesystem to mount.
   final pulumi.Input<String> fileSystemId;
+
   /// Path to mount the filesystem on, must start with `/m2/mount/`.
   final pulumi.Input<String> mountPoint;
 
@@ -25,9 +26,8 @@ class EnvironmentStorageConfigurationEfs {
 
   factory EnvironmentStorageConfigurationEfs.fromMap(Map<String, dynamic> map) {
     return EnvironmentStorageConfigurationEfs(
-      fileSystemId: (map['fileSystemId'] as String).input(),
-      mountPoint: (map['mountPoint'] as String).input(),
+      fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
+      mountPoint: pulumi.Input.fromValue(map['mountPoint'] as String),
     );
   }
 }
-

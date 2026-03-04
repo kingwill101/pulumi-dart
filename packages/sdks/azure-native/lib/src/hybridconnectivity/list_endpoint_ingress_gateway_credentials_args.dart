@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListEndpointIngressGatewayCredentialsArgs {
   /// The endpoint name.
   final pulumi.Input<String> endpointName;
+
   /// The is how long the endpoint access token is valid (in seconds).
   final pulumi.Input<int>? expiresin;
+
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
+
   /// The name of the service. If not provided, the request will by pass the generation of service configuration token.
   final pulumi.Input<String>? serviceName;
 
@@ -37,13 +40,22 @@ class ListEndpointIngressGatewayCredentialsArgs {
     };
   }
 
-  factory ListEndpointIngressGatewayCredentialsArgs.fromMap(Map<String, dynamic> map) {
+  factory ListEndpointIngressGatewayCredentialsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListEndpointIngressGatewayCredentialsArgs(
-      endpointName: (map['endpointName'] as String).input(),
-      expiresin: map['expiresin'] == null ? null : (map['expiresin']! as int).input(),
-      resourceUri: (map['resourceUri'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
+      expiresin: (() {
+        final guardedValue = map['expiresin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
+      serviceName: (() {
+        final guardedValue = map['serviceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

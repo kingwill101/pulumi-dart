@@ -6,6 +6,7 @@ class GetDatasetExternalCatalogDatasetOption {
   /// The storage location URI for all tables in the dataset. Equivalent to hive metastore's
   /// database locationUri. Maximum length of 1024 characters.
   final pulumi.Input<String> defaultStorageLocationUri;
+
   /// A map of key value pairs defining the parameters and properties of the open source schema.
   /// Maximum size of 2Mib.
   final pulumi.Input<Map<String, String>> parameters;
@@ -25,11 +26,16 @@ class GetDatasetExternalCatalogDatasetOption {
     };
   }
 
-  factory GetDatasetExternalCatalogDatasetOption.fromMap(Map<String, dynamic> map) {
+  factory GetDatasetExternalCatalogDatasetOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatasetExternalCatalogDatasetOption(
-      defaultStorageLocationUri: (map['defaultStorageLocationUri'] as String).input(),
-      parameters: ((map['parameters'] as Map).cast<String, String>()).input(),
+      defaultStorageLocationUri: pulumi.Input.fromValue(
+        map['defaultStorageLocationUri'] as String,
+      ),
+      parameters: pulumi.Input.fromValue(
+        (map['parameters'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

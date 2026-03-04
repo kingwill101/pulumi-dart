@@ -6,29 +6,36 @@ import 'cluster_encryption_config_provider.dart';
 class ClusterEncryptionConfig {
   /// Configuration block with provider for encryption. Detailed below.
   final pulumi.Input<ClusterEncryptionConfigProvider> provider;
+
   /// List of strings with resources to be encrypted. Valid values: `secrets`.
   final pulumi.Input<List<String>> resources;
 
   /// Creates a new [ClusterEncryptionConfig].
   /// [provider] Configuration block with provider for encryption. Detailed below.
   /// [resources] List of strings with resources to be encrypted. Valid values: `secrets`.
-  ClusterEncryptionConfig({
-    required this.provider,
-    required this.resources,
-  });
+  ClusterEncryptionConfig({required this.provider, required this.resources});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'provider': pulumi.Input.mapInputValue<ClusterEncryptionConfigProvider, Map<String, dynamic>>(provider, (value) => value.toMap()),
+      'provider':
+          pulumi.Input.mapInputValue<
+            ClusterEncryptionConfigProvider,
+            Map<String, dynamic>
+          >(provider, (value) => value.toMap()),
       'resources': resources,
     };
   }
 
   factory ClusterEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return ClusterEncryptionConfig(
-      provider: (ClusterEncryptionConfigProvider.fromMap((map['provider']! as Map).cast<String, dynamic>())).input(),
-      resources: ((map['resources'] as List).cast<String>()).input(),
+      provider: pulumi.Input.fromValue(
+        ClusterEncryptionConfigProvider.fromMap(
+          (map['provider']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resources: pulumi.Input.fromValue(
+        (map['resources'] as List).cast<String>(),
+      ),
     );
   }
 }
-

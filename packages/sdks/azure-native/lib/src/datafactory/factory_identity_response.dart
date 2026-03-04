@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FactoryIdentityResponse {
   /// The principal id of the identity.
   final pulumi.Input<String> principalId;
+
   /// The client tenant id of the identity.
   final pulumi.Input<String> tenantId;
+
   /// The identity type.
   final pulumi.Input<String> type;
+
   /// List of user assigned identities for the factory.
   final pulumi.Input<Map<String, dynamic>>? userAssignedIdentities;
 
@@ -36,11 +39,16 @@ class FactoryIdentityResponse {
 
   factory FactoryIdentityResponse.fromMap(Map<String, dynamic> map) {
     return FactoryIdentityResponse(
-      principalId: (map['principalId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
-      type: (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as Map).cast<String, dynamic>()).input(),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      userAssignedIdentities: (() {
+        final guardedValue = map['userAssignedIdentities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

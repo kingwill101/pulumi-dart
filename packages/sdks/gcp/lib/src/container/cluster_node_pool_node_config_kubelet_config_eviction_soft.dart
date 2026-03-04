@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNodePoolNodeConfigKubeletConfigEvictionSoft {
   /// Defines percentage of soft eviction threshold for imagefs.available. The value must be a percentage between `15%` and `50%`, such as `"20%"`.
   final pulumi.Input<String>? imagefsAvailable;
+
   /// Defines percentage of soft eviction threshold for imagefs.inodesFree. The value must be a percentage between `5%` and `50%`, such as `"20%"`.
   final pulumi.Input<String>? imagefsInodesFree;
+
   /// Defines quantity of soft eviction threshold for memory.available. The value must be a quantity, such as `"100Mi"`. The value must be greater than or equal to the GKE default hard eviction threshold of `"100Mi"` and less than 50% of machine memory.
   final pulumi.Input<String>? memoryAvailable;
+
   /// Defines percentage of soft eviction threshold for nodefs.available. The value must be a percentage between `10%` and `50%`, such as `"20%"`.
   final pulumi.Input<String>? nodefsAvailable;
+
   /// Defines percentage of soft eviction threshold for nodefs.inodesFree. The value must be a percentage between `5%` and `50%`, such as `"20%"`.
   final pulumi.Input<String>? nodefsInodesFree;
+
   /// Defines percentage of soft eviction threshold for pid.available. The value must be a percentage between `10%` and `50%`, such as `"20%"`.
   final pulumi.Input<String>? pidAvailable;
 
@@ -43,15 +48,40 @@ class ClusterNodePoolNodeConfigKubeletConfigEvictionSoft {
     };
   }
 
-  factory ClusterNodePoolNodeConfigKubeletConfigEvictionSoft.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodePoolNodeConfigKubeletConfigEvictionSoft.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodePoolNodeConfigKubeletConfigEvictionSoft(
-      imagefsAvailable: map['imagefsAvailable'] == null ? null : (map['imagefsAvailable']! as String).input(),
-      imagefsInodesFree: map['imagefsInodesFree'] == null ? null : (map['imagefsInodesFree']! as String).input(),
-      memoryAvailable: map['memoryAvailable'] == null ? null : (map['memoryAvailable']! as String).input(),
-      nodefsAvailable: map['nodefsAvailable'] == null ? null : (map['nodefsAvailable']! as String).input(),
-      nodefsInodesFree: map['nodefsInodesFree'] == null ? null : (map['nodefsInodesFree']! as String).input(),
-      pidAvailable: map['pidAvailable'] == null ? null : (map['pidAvailable']! as String).input(),
+      imagefsAvailable: (() {
+        final guardedValue = map['imagefsAvailable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imagefsInodesFree: (() {
+        final guardedValue = map['imagefsInodesFree'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memoryAvailable: (() {
+        final guardedValue = map['memoryAvailable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodefsAvailable: (() {
+        final guardedValue = map['nodefsAvailable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodefsInodesFree: (() {
+        final guardedValue = map['nodefsInodesFree'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pidAvailable: (() {
+        final guardedValue = map['pidAvailable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

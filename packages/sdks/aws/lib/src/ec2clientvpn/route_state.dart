@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteState {
   /// The ID of the Client VPN endpoint.
   final pulumi.Input<String>? clientVpnEndpointId;
+
   /// A brief description of the route.
   final pulumi.Input<String>? description;
+
   /// The IPv4 or IPv6 address range, in CIDR notation, of the route destination.
   final pulumi.Input<String>? destinationCidrBlock;
+
   /// Indicates how the Client VPN route was added. Will be `add-route` for routes created by this resource.
   final pulumi.Input<String>? origin;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN.
   final pulumi.Input<String>? targetVpcSubnetId;
+
   /// The type of the route.
   final pulumi.Input<String>? type;
 
@@ -51,14 +57,41 @@ class RouteState {
 
   factory RouteState.fromMap(Map<String, dynamic> map) {
     return RouteState(
-      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : ((map['clientVpnEndpointId'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : ((map['destinationCidrBlock'] as String).input()).input(),
-      origin: map['origin'] == null ? null : ((map['origin'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      targetVpcSubnetId: map['targetVpcSubnetId'] == null ? null : ((map['targetVpcSubnetId'] as String).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      clientVpnEndpointId: (() {
+        final guardedValue = map['clientVpnEndpointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationCidrBlock: (() {
+        final guardedValue = map['destinationCidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      origin: (() {
+        final guardedValue = map['origin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetVpcSubnetId: (() {
+        final guardedValue = map['targetVpcSubnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

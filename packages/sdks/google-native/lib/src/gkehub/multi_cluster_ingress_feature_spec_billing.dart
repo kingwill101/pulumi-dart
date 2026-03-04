@@ -4,16 +4,17 @@ enum MultiClusterIngressFeatureSpecBilling {
   payAsYouGo("PAY_AS_YOU_GO"),
   anthosLicense("ANTHOS_LICENSE");
 
-  const MultiClusterIngressFeatureSpecBilling(this.value);
-  final String value;
+  const MultiClusterIngressFeatureSpecBilling(this.wireValue);
+  final String wireValue;
 
   static MultiClusterIngressFeatureSpecBilling fromValue(String value) {
     for (final item in MultiClusterIngressFeatureSpecBilling.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MultiClusterIngressFeatureSpecBilling value: $value');
+    throw ArgumentError(
+      'Unknown MultiClusterIngressFeatureSpecBilling value: $value',
+    );
   }
 }
-

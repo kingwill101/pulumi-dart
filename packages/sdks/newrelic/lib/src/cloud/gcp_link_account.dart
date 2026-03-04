@@ -132,10 +132,12 @@ import 'gcp_link_account_state.dart';
 class GcpLinkAccount extends pulumi.CustomResource {
   /// Account ID of the New Relic account.
   late final pulumi.Output<String> accountId;
+
   /// The name of the GCP account in New Relic.
   ///
-  /// > **WARNING:** Starting with v3.27.2 of the New Relic Terraform Provider, updating any of the aforementioned attributes (except `name`) of a `newrelic.cloud.GcpLinkAccount` resource that has been applied would **force a replacement** of the resource (destruction of the resource, followed by the creation of a new resource). Please carefully review the output of `pulumi preview`, which would clearly indicate a replacement of this resource, before performing a `pulumi up`.
+  /// &gt; **WARNING:** Starting with v3.27.2 of the New Relic Terraform Provider, updating any of the aforementioned attributes (except `name`) of a `newrelic.cloud.GcpLinkAccount` resource that has been applied would **force a replacement** of the resource (destruction of the resource, followed by the creation of a new resource). Please carefully review the output of `pulumi preview`, which would clearly indicate a replacement of this resource, before performing a `pulumi up`.
   late final pulumi.Output<String> name;
+
   /// Project ID of the GCP account.
   late final pulumi.Output<String> projectId;
 
@@ -148,14 +150,14 @@ class GcpLinkAccount extends pulumi.CustomResource {
     GcpLinkAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:cloud/gcpLinkAccount:GcpLinkAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
+         'newrelic:cloud/gcpLinkAccount:GcpLinkAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
     this.name = registerOutput<String>('name');
-    this.projectId = registerOutput<String>('projectId');
+    projectId = registerOutput<String>('projectId');
   }
 
   /// Gets an existing [GcpLinkAccount] resource's state with the given [name] and [id].
@@ -176,13 +178,13 @@ class GcpLinkAccount extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'newrelic:cloud/gcpLinkAccount:GcpLinkAccount',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
+         'newrelic:cloud/gcpLinkAccount:GcpLinkAccount',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
     this.name = registerOutput<String>('name');
-    this.projectId = registerOutput<String>('projectId');
+    projectId = registerOutput<String>('projectId');
   }
 }

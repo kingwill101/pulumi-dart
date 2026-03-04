@@ -4,16 +4,15 @@ enum InstanceDiskEncryption {
   gmek("GMEK"),
   cmek("CMEK");
 
-  const InstanceDiskEncryption(this.value);
-  final String value;
+  const InstanceDiskEncryption(this.wireValue);
+  final String wireValue;
 
   static InstanceDiskEncryption fromValue(String value) {
     for (final item in InstanceDiskEncryption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceDiskEncryption value: $value');
   }
 }
-

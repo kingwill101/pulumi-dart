@@ -7,9 +7,14 @@ import 'fleet_observability_fleet_observability_monitoring_state_response.dart';
 /// **FleetObservability**: Hub-wide Feature for FleetObservability feature. state.
 class FleetObservabilityFeatureStateResponse {
   /// The feature state of default logging.
-  final pulumi.Input<FleetObservabilityFleetObservabilityLoggingStateResponse> logging;
+  final pulumi.Input<FleetObservabilityFleetObservabilityLoggingStateResponse>
+  logging;
+
   /// The feature state of fleet monitoring.
-  final pulumi.Input<FleetObservabilityFleetObservabilityMonitoringStateResponse> monitoring;
+  final pulumi.Input<
+    FleetObservabilityFleetObservabilityMonitoringStateResponse
+  >
+  monitoring;
 
   /// Creates a new [FleetObservabilityFeatureStateResponse].
   /// [logging] The feature state of default logging.
@@ -21,16 +26,33 @@ class FleetObservabilityFeatureStateResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'logging': pulumi.Input.mapInputValue<FleetObservabilityFleetObservabilityLoggingStateResponse, Map<String, dynamic>>(logging, (value) => value.toMap()),
-      'monitoring': pulumi.Input.mapInputValue<FleetObservabilityFleetObservabilityMonitoringStateResponse, Map<String, dynamic>>(monitoring, (value) => value.toMap()),
+      'logging':
+          pulumi.Input.mapInputValue<
+            FleetObservabilityFleetObservabilityLoggingStateResponse,
+            Map<String, dynamic>
+          >(logging, (value) => value.toMap()),
+      'monitoring':
+          pulumi.Input.mapInputValue<
+            FleetObservabilityFleetObservabilityMonitoringStateResponse,
+            Map<String, dynamic>
+          >(monitoring, (value) => value.toMap()),
     };
   }
 
-  factory FleetObservabilityFeatureStateResponse.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityFeatureStateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityFeatureStateResponse(
-      logging: (FleetObservabilityFleetObservabilityLoggingStateResponse.fromMap((map['logging'] as Map).cast<String, dynamic>())).input(),
-      monitoring: (FleetObservabilityFleetObservabilityMonitoringStateResponse.fromMap((map['monitoring'] as Map).cast<String, dynamic>())).input(),
+      logging: pulumi.Input.fromValue(
+        FleetObservabilityFleetObservabilityLoggingStateResponse.fromMap(
+          (map['logging']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      monitoring: pulumi.Input.fromValue(
+        FleetObservabilityFleetObservabilityMonitoringStateResponse.fromMap(
+          (map['monitoring']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

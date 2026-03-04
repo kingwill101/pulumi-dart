@@ -6,16 +6,15 @@ enum StorageAccountStatus {
   valueUpdating("Updating"),
   valueNeedsAttention("NeedsAttention");
 
-  const StorageAccountStatus(this.value);
-  final String value;
+  const StorageAccountStatus(this.wireValue);
+  final String wireValue;
 
   static StorageAccountStatus fromValue(String value) {
     for (final item in StorageAccountStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StorageAccountStatus value: $value');
   }
 }
-

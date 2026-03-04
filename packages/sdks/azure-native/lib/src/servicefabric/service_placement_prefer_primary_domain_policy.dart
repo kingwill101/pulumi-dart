@@ -13,6 +13,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicePlacementPreferPrimaryDomainPolicy {
   /// The name of the domain that should used for placement as per this policy.
   final pulumi.Input<String> domainName;
+
   /// The type of placement policy for a service fabric service. Following are the possible values.
   /// Expected value is 'PreferredPrimaryDomain'.
   final pulumi.Input<String> type;
@@ -26,17 +27,15 @@ class ServicePlacementPreferPrimaryDomainPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'domainName': domainName,
-      'type': type,
-    };
+    return <String, dynamic>{'domainName': domainName, 'type': type};
   }
 
-  factory ServicePlacementPreferPrimaryDomainPolicy.fromMap(Map<String, dynamic> map) {
+  factory ServicePlacementPreferPrimaryDomainPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServicePlacementPreferPrimaryDomainPolicy(
-      domainName: (map['domainName'] as String).input(),
-      type: (map['type'] as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

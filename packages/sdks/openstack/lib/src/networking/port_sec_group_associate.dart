@@ -461,16 +461,20 @@ class PortSecGroupAssociate extends pulumi.CustomResource {
   /// The collection of Security Group IDs on the port
   /// which have been explicitly and implicitly added.
   late final pulumi.Output<List<String>> allSecurityGroupIds;
+
   /// Whether to replace or append the list of security
   /// groups, specified in the `security_group_ids`. Defaults to `false`.
   late final pulumi.Output<bool?> enforce;
+
   /// An UUID of the port to apply security groups to.
   late final pulumi.Output<String> portId;
+
   /// The region in which to obtain the V2 networking client.
   /// A networking client is needed to manage a port. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// resource.
   late final pulumi.Output<String> region;
+
   /// A list of security group IDs to apply to
   /// the port. The security groups must be specified by ID and not name (as
   /// opposed to how they are configured with the Compute Instance).
@@ -485,16 +489,16 @@ class PortSecGroupAssociate extends pulumi.CustomResource {
     PortSecGroupAssociateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/portSecGroupAssociate:PortSecGroupAssociate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allSecurityGroupIds = registerOutput<List<String>>('allSecurityGroupIds');
-    this.enforce = registerOutput<bool?>('enforce');
-    this.portId = registerOutput<String>('portId');
-    this.region = registerOutput<String>('region');
-    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+         'openstack:networking/portSecGroupAssociate:PortSecGroupAssociate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allSecurityGroupIds = registerOutput<List<String>>('allSecurityGroupIds');
+    enforce = registerOutput<bool?>('enforce');
+    portId = registerOutput<String>('portId');
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
   }
 
   /// Gets an existing [PortSecGroupAssociate] resource's state with the given [name] and [id].
@@ -515,15 +519,15 @@ class PortSecGroupAssociate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/portSecGroupAssociate:PortSecGroupAssociate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allSecurityGroupIds = registerOutput<List<String>>('allSecurityGroupIds');
-    this.enforce = registerOutput<bool?>('enforce');
-    this.portId = registerOutput<String>('portId');
-    this.region = registerOutput<String>('region');
-    this.securityGroupIds = registerOutput<List<String>>('securityGroupIds');
+         'openstack:networking/portSecGroupAssociate:PortSecGroupAssociate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allSecurityGroupIds = registerOutput<List<String>>('allSecurityGroupIds');
+    enforce = registerOutput<bool?>('enforce');
+    portId = registerOutput<String>('portId');
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>>('securityGroupIds');
   }
 }

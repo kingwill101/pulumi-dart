@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureMonitorWorkspaceArgs {
   /// The name of the Azure Monitor Workspace. The name is case insensitive
   final pulumi.Input<String>? azureMonitorWorkspaceName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Gets or sets allow or disallow public network access to Azure Monitor Workspace
   final pulumi.Input<String>? publicNetworkAccess;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -44,12 +48,31 @@ class AzureMonitorWorkspaceArgs {
 
   factory AzureMonitorWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return AzureMonitorWorkspaceArgs(
-      azureMonitorWorkspaceName: map['azureMonitorWorkspaceName'] == null ? null : (map['azureMonitorWorkspaceName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      azureMonitorWorkspaceName: (() {
+        final guardedValue = map['azureMonitorWorkspaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicNetworkAccess: (() {
+        final guardedValue = map['publicNetworkAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

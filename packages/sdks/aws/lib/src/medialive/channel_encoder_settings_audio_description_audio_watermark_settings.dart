@@ -4,7 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_audio_description_audio_watermark_settings_nielsen_watermarks_settings.dart';
 
 class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings {
-  final pulumi.Input<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings>? nielsenWatermarksSettings;
+  final pulumi.Input<
+    ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings
+  >?
+  nielsenWatermarksSettings;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings].
   /// [nielsenWatermarksSettings] Optional.
@@ -14,14 +17,27 @@ class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nielsenWatermarksSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings, Map<String, dynamic>>(nielsenWatermarksSettings, (value) => value.toMap()),
+      'nielsenWatermarksSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings,
+            Map<String, dynamic>
+          >(nielsenWatermarksSettings, (value) => value.toMap()),
     };
   }
 
-  factory ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings(
-      nielsenWatermarksSettings: map['nielsenWatermarksSettings'] == null ? null : ((ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings.fromMap((map['nielsenWatermarksSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      nielsenWatermarksSettings: (() {
+        final guardedValue = map['nielsenWatermarksSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

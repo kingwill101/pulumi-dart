@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectionMonitorTestArgs {
   /// The name of the connection monitor test
   final pulumi.Input<String> connectionMonitorTestName;
+
   /// The name of the peering service.
   final pulumi.Input<String> peeringServiceName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,15 @@ class GetConnectionMonitorTestArgs {
 
   factory GetConnectionMonitorTestArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionMonitorTestArgs(
-      connectionMonitorTestName: (map['connectionMonitorTestName'] as String).input(),
-      peeringServiceName: (map['peeringServiceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      connectionMonitorTestName: pulumi.Input.fromValue(
+        map['connectionMonitorTestName'] as String,
+      ),
+      peeringServiceName: pulumi.Input.fromValue(
+        map['peeringServiceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

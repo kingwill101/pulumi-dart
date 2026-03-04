@@ -9,20 +9,17 @@ class DataCollectionEndpointResponseConfigurationAccess {
 
   /// Creates a new [DataCollectionEndpointResponseConfigurationAccess].
   /// [endpoint] The endpoint. This property is READ-ONLY.
-  DataCollectionEndpointResponseConfigurationAccess({
-    required this.endpoint,
-  });
+  DataCollectionEndpointResponseConfigurationAccess({required this.endpoint});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'endpoint': endpoint,
-    };
+    return <String, dynamic>{'endpoint': endpoint};
   }
 
-  factory DataCollectionEndpointResponseConfigurationAccess.fromMap(Map<String, dynamic> map) {
+  factory DataCollectionEndpointResponseConfigurationAccess.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataCollectionEndpointResponseConfigurationAccess(
-      endpoint: (map['endpoint'] as String).input(),
+      endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
     );
   }
 }
-

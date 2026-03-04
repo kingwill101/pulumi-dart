@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FabricState {
   /// In what region should the fabric be located. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name of the network mapping. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the vault that should be updated. Changing this forces a new resource to be created.
   final pulumi.Input<String>? recoveryVaultName;
+
   /// Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
 
@@ -36,11 +39,26 @@ class FabricState {
 
   factory FabricState.fromMap(Map<String, dynamic> map) {
     return FabricState(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recoveryVaultName: (() {
+        final guardedValue = map['recoveryVaultName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

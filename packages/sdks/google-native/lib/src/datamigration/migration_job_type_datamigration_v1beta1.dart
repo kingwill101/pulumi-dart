@@ -4,16 +4,17 @@ enum MigrationJobTypeDatamigrationV1beta1 {
   oneTime("ONE_TIME"),
   continuous("CONTINUOUS");
 
-  const MigrationJobTypeDatamigrationV1beta1(this.value);
-  final String value;
+  const MigrationJobTypeDatamigrationV1beta1(this.wireValue);
+  final String wireValue;
 
   static MigrationJobTypeDatamigrationV1beta1 fromValue(String value) {
     for (final item in MigrationJobTypeDatamigrationV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MigrationJobTypeDatamigrationV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown MigrationJobTypeDatamigrationV1beta1 value: $value',
+    );
   }
 }
-

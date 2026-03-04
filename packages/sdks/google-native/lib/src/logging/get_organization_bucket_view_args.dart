@@ -35,11 +35,10 @@ class GetOrganizationBucketViewArgs {
 
   factory GetOrganizationBucketViewArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationBucketViewArgs(
-      bucketId: (map['bucketId'] as String).input(),
-      location: (map['location'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      viewId: (map['viewId'] as String).input(),
+      bucketId: pulumi.Input.fromValue(map['bucketId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      viewId: pulumi.Input.fromValue(map['viewId'] as String),
     );
   }
 }
-

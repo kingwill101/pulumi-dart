@@ -1,10 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_args.dart';
-import 'network_ipam_config.dart';
-import 'network_label.dart';
 import 'network_state.dart';
 
-/// <!-- Bug: Type and Name are switched -->
+/// &lt;!-- Bug: Type and Name are switched --&gt;
 /// `docker.Network` provides a docker network resource.
 ///
 /// ## Example Usage
@@ -129,28 +127,40 @@ import 'network_state.dart';
 class Network extends pulumi.CustomResource {
   /// Enable manual container attachment to the network.
   late final pulumi.Output<bool?> attachable;
+
   /// Requests daemon to check for networks with same name.
   late final pulumi.Output<bool?> checkDuplicate;
+
   /// The driver of the Docker network. Possible values are `bridge`, `host`, `overlay`, `macvlan`. See [network docs](https://docs.docker.com/network/#network-drivers) for more details.
   late final pulumi.Output<String> driver;
+
   /// Create swarm routing-mesh network. Defaults to `false`.
   late final pulumi.Output<bool?> ingress;
+
   /// Whether the network is internal.
   late final pulumi.Output<bool> internal;
+
   /// The IPAM configuration options
-  late final pulumi.Output<List<NetworkIpamConfig>> ipamConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> ipamConfigs;
+
   /// Driver used by the custom IP scheme of the network. Defaults to `default`
   late final pulumi.Output<String?> ipamDriver;
+
   /// Provide explicit options to the IPAM driver. Valid options vary with `ipam_driver` and refer to that driver's documentation for more details.
   late final pulumi.Output<Map<String, String>?> ipamOptions;
+
   /// Enable IPv6 networking. Defaults to `false`.
   late final pulumi.Output<bool?> ipv6;
+
   /// User-defined key/value metadata
-  late final pulumi.Output<List<NetworkLabel>?> labels;
+  late final pulumi.Output<List<Map<String, dynamic>>?> labels;
+
   /// The name of the Docker network.
   late final pulumi.Output<String> name;
+
   /// Only available with bridge networks. See [bridge options docs](https://docs.docker.com/engine/reference/commandline/network_create/#bridge-driver-options) for more details.
   late final pulumi.Output<Map<String, String>> options;
+
   /// Scope of the network. One of `swarm`, `global`, or `local`.
   late final pulumi.Output<String> scope;
 
@@ -163,24 +173,24 @@ class Network extends pulumi.CustomResource {
     NetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'docker:index/network:Network',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attachable = registerOutput<bool?>('attachable');
-    this.checkDuplicate = registerOutput<bool?>('checkDuplicate');
-    this.driver = registerOutput<String>('driver');
-    this.ingress = registerOutput<bool?>('ingress');
-    this.internal = registerOutput<bool>('internal');
-    this.ipamConfigs = registerOutput<List<NetworkIpamConfig>>('ipamConfigs');
-    this.ipamDriver = registerOutput<String?>('ipamDriver');
-    this.ipamOptions = registerOutput<Map<String, String>?>('ipamOptions');
-    this.ipv6 = registerOutput<bool?>('ipv6');
-    this.labels = registerOutput<List<NetworkLabel>?>('labels');
+         'docker:index/network:Network',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attachable = registerOutput<bool?>('attachable');
+    checkDuplicate = registerOutput<bool?>('checkDuplicate');
+    driver = registerOutput<String>('driver');
+    ingress = registerOutput<bool?>('ingress');
+    internal = registerOutput<bool>('internal');
+    ipamConfigs = registerOutput<List<Map<String, dynamic>>>('ipamConfigs');
+    ipamDriver = registerOutput<String?>('ipamDriver');
+    ipamOptions = registerOutput<Map<String, String>?>('ipamOptions');
+    ipv6 = registerOutput<bool?>('ipv6');
+    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
     this.name = registerOutput<String>('name');
     this.options = registerOutput<Map<String, String>>('options');
-    this.scope = registerOutput<String>('scope');
+    scope = registerOutput<String>('scope');
   }
 
   /// Gets an existing [Network] resource's state with the given [name] and [id].
@@ -201,23 +211,23 @@ class Network extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'docker:index/network:Network',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attachable = registerOutput<bool?>('attachable');
-    this.checkDuplicate = registerOutput<bool?>('checkDuplicate');
-    this.driver = registerOutput<String>('driver');
-    this.ingress = registerOutput<bool?>('ingress');
-    this.internal = registerOutput<bool>('internal');
-    this.ipamConfigs = registerOutput<List<NetworkIpamConfig>>('ipamConfigs');
-    this.ipamDriver = registerOutput<String?>('ipamDriver');
-    this.ipamOptions = registerOutput<Map<String, String>?>('ipamOptions');
-    this.ipv6 = registerOutput<bool?>('ipv6');
-    this.labels = registerOutput<List<NetworkLabel>?>('labels');
+         'docker:index/network:Network',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attachable = registerOutput<bool?>('attachable');
+    checkDuplicate = registerOutput<bool?>('checkDuplicate');
+    driver = registerOutput<String>('driver');
+    ingress = registerOutput<bool?>('ingress');
+    internal = registerOutput<bool>('internal');
+    ipamConfigs = registerOutput<List<Map<String, dynamic>>>('ipamConfigs');
+    ipamDriver = registerOutput<String?>('ipamDriver');
+    ipamOptions = registerOutput<Map<String, String>?>('ipamOptions');
+    ipv6 = registerOutput<bool?>('ipv6');
+    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
     this.name = registerOutput<String>('name');
     this.options = registerOutput<Map<String, String>>('options');
-    this.scope = registerOutput<String>('scope');
+    scope = registerOutput<String>('scope');
   }
 }

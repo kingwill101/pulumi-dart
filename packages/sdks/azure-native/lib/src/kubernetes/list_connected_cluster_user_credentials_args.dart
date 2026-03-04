@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListConnectedClusterUserCredentialsArgs {
   /// The mode of client authentication.
   final pulumi.Input<String> authenticationMethod;
+
   /// Boolean value to indicate whether the request is for client side proxy or not
   final pulumi.Input<bool> clientProxy;
+
   /// The name of the Kubernetes cluster on which get is called.
   final pulumi.Input<String> clusterName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -37,13 +40,18 @@ class ListConnectedClusterUserCredentialsArgs {
     };
   }
 
-  factory ListConnectedClusterUserCredentialsArgs.fromMap(Map<String, dynamic> map) {
+  factory ListConnectedClusterUserCredentialsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListConnectedClusterUserCredentialsArgs(
-      authenticationMethod: (map['authenticationMethod'] as String).input(),
-      clientProxy: (map['clientProxy'] as bool).input(),
-      clusterName: (map['clusterName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      authenticationMethod: pulumi.Input.fromValue(
+        map['authenticationMethod'] as String,
+      ),
+      clientProxy: pulumi.Input.fromValue(map['clientProxy'] as bool),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

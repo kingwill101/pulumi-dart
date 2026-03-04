@@ -5,15 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProtectionContainerMappingAutomaticUpdate {
   /// The authentication type used for automation account. Possible values are `RunAsAccount` and `SystemAssignedIdentity`. Defaults to `SystemAssignedIdentity`.
   ///
-  /// > **Note:** `RunAsAccount` of `authentication_type` is deprecated and will retire on September 30, 2023. Details could be found [here](https://learn.microsoft.com/en-us/azure/automation/whats-new#support-for-run-as-accounts).
+  /// &gt; **Note:** `RunAsAccount` of `authentication_type` is deprecated and will retire on September 30, 2023. Details could be found [here](https://learn.microsoft.com/en-us/azure/automation/whats-new#support-for-run-as-accounts).
   final pulumi.Input<String>? authenticationType;
+
   /// The automation account ID which holds the automatic update runbook and authenticates to Azure resources.
   ///
-  /// > **Note:** `automation_account_id` is required when `enabled` is specified.
+  /// &gt; **Note:** `automation_account_id` is required when `enabled` is specified.
   final pulumi.Input<String>? automationAccountId;
+
   /// Should the Mobility service installed on Azure virtual machines be automatically updated. Defaults to `false`.
   ///
-  /// > **Note:** The setting applies to all Azure VMs protected in the same container. For more details see [this document](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-autoupdate#enable-automatic-updates)
+  /// &gt; **Note:** The setting applies to all Azure VMs protected in the same container. For more details see [this document](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-autoupdate#enable-automatic-updates)
   final pulumi.Input<bool>? enabled;
 
   /// Creates a new [ProtectionContainerMappingAutomaticUpdate].
@@ -34,12 +36,25 @@ class ProtectionContainerMappingAutomaticUpdate {
     };
   }
 
-  factory ProtectionContainerMappingAutomaticUpdate.fromMap(Map<String, dynamic> map) {
+  factory ProtectionContainerMappingAutomaticUpdate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProtectionContainerMappingAutomaticUpdate(
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
-      automationAccountId: map['automationAccountId'] == null ? null : (map['automationAccountId']! as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      authenticationType: (() {
+        final guardedValue = map['authenticationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      automationAccountId: (() {
+        final guardedValue = map['automationAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -136,12 +136,16 @@ import 'tag_rule_args.dart';
 class TagRule extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Name of the rule set.
   late final pulumi.Output<String> name;
+
   /// Properties of the monitoring tag rules.
   late final pulumi.Output<MonitoringTagRulesPropertiesResponse> properties;
+
   /// The system metadata relating to this resource
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the rule set.
   late final pulumi.Output<String> type;
 
@@ -154,15 +158,17 @@ class TagRule extends pulumi.CustomResource {
     TagRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:elastic:TagRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:elastic:TagRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<MonitoringTagRulesPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<MonitoringTagRulesPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

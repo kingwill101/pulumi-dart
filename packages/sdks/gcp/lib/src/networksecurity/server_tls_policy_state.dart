@@ -10,34 +10,45 @@ class ServerTlsPolicyState {
   /// Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
   /// Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
   final pulumi.Input<bool>? allowOpen;
+
   /// Time the ServerTlsPolicy was created in UTC.
   final pulumi.Input<String>? createTime;
+
   /// A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+
   /// Set of label tags associated with the ServerTlsPolicy resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The location of the server tls policy.
   /// The default value is `global`.
   final pulumi.Input<String>? location;
+
   /// This field is required if the policy is used with external HTTPS load balancers. This field can be empty for Traffic Director.
   /// Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections.
   /// Structure is documented below.
   final pulumi.Input<ServerTlsPolicyMtlsPolicy>? mtlsPolicy;
+
   /// Name of the ServerTlsPolicy resource.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+
   /// Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
   /// Structure is documented below.
   final pulumi.Input<ServerTlsPolicyServerCertificate>? serverCertificate;
+
   /// Time the ServerTlsPolicy was updated in UTC.
   final pulumi.Input<String>? updateTime;
 
@@ -77,30 +88,99 @@ class ServerTlsPolicyState {
       'effectiveLabels': ?effectiveLabels,
       'labels': ?labels,
       'location': ?location,
-      'mtlsPolicy': ?pulumi.Input.mapOptionalInputValue<ServerTlsPolicyMtlsPolicy, Map<String, dynamic>>(mtlsPolicy, (value) => value.toMap()),
+      'mtlsPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServerTlsPolicyMtlsPolicy,
+            Map<String, dynamic>
+          >(mtlsPolicy, (value) => value.toMap()),
       'name': ?name,
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
-      'serverCertificate': ?pulumi.Input.mapOptionalInputValue<ServerTlsPolicyServerCertificate, Map<String, dynamic>>(serverCertificate, (value) => value.toMap()),
+      'serverCertificate':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServerTlsPolicyServerCertificate,
+            Map<String, dynamic>
+          >(serverCertificate, (value) => value.toMap()),
       'updateTime': ?updateTime,
     };
   }
 
   factory ServerTlsPolicyState.fromMap(Map<String, dynamic> map) {
     return ServerTlsPolicyState(
-      allowOpen: map['allowOpen'] == null ? null : (map['allowOpen']! as bool).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      mtlsPolicy: map['mtlsPolicy'] == null ? null : (ServerTlsPolicyMtlsPolicy.fromMap((map['mtlsPolicy']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
-      serverCertificate: map['serverCertificate'] == null ? null : (ServerTlsPolicyServerCertificate.fromMap((map['serverCertificate']! as Map).cast<String, dynamic>())).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      allowOpen: (() {
+        final guardedValue = map['allowOpen'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveLabels: (() {
+        final guardedValue = map['effectiveLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mtlsPolicy: (() {
+        final guardedValue = map['mtlsPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServerTlsPolicyMtlsPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pulumiLabels: (() {
+        final guardedValue = map['pulumiLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      serverCertificate: (() {
+        final guardedValue = map['serverCertificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServerTlsPolicyServerCertificate.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

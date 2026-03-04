@@ -4,16 +4,15 @@ enum ServiceSize {
   valueCosmosD8s("Cosmos.D8s"),
   valueCosmosD16s("Cosmos.D16s");
 
-  const ServiceSize(this.value);
-  final String value;
+  const ServiceSize(this.wireValue);
+  final String wireValue;
 
   static ServiceSize fromValue(String value) {
     for (final item in ServiceSize.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceSize value: $value');
   }
 }
-

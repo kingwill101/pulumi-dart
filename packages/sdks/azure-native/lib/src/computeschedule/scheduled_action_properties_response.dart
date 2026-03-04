@@ -8,18 +8,25 @@ import 'scheduled_actions_schedule_response.dart';
 class ScheduledActionPropertiesResponse {
   /// The action the scheduled action should perform in the resources
   final pulumi.Input<String> actionType;
+
   /// Tell if the scheduled action is disabled or not
   final pulumi.Input<bool>? disabled;
+
   /// The time when the scheduled action is supposed to stop scheduling
   final pulumi.Input<String>? endTime;
+
   /// The notification settings for the scheduled action
   final pulumi.Input<List<NotificationPropertiesResponse>> notificationSettings;
+
   /// The status of the last provisioning operation performed on the resource.
   final pulumi.Input<String> provisioningState;
+
   /// The type of resource the scheduled action is targeting
   final pulumi.Input<String> resourceType;
+
   /// The schedule the scheduled action is supposed to follow
   final pulumi.Input<ScheduledActionsScheduleResponse> schedule;
+
   /// The time which the scheduled action is supposed to start running
   final pulumi.Input<String> startTime;
 
@@ -48,25 +55,60 @@ class ScheduledActionPropertiesResponse {
       'actionType': actionType,
       'disabled': ?disabled,
       'endTime': ?endTime,
-      'notificationSettings': pulumi.Input.mapInputValue<List<NotificationPropertiesResponse>, List<Map<String, dynamic>>>(notificationSettings, (value) => pulumi.Input.encodeList<NotificationPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'notificationSettings':
+          pulumi.Input.mapInputValue<
+            List<NotificationPropertiesResponse>,
+            List<Map<String, dynamic>>
+          >(
+            notificationSettings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NotificationPropertiesResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'provisioningState': provisioningState,
       'resourceType': resourceType,
-      'schedule': pulumi.Input.mapInputValue<ScheduledActionsScheduleResponse, Map<String, dynamic>>(schedule, (value) => value.toMap()),
+      'schedule':
+          pulumi.Input.mapInputValue<
+            ScheduledActionsScheduleResponse,
+            Map<String, dynamic>
+          >(schedule, (value) => value.toMap()),
       'startTime': startTime,
     };
   }
 
   factory ScheduledActionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledActionPropertiesResponse(
-      actionType: (map['actionType'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      notificationSettings: (pulumi.Input.decodeList<NotificationPropertiesResponse>(map['notificationSettings'], (value) => NotificationPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
-      schedule: (ScheduledActionsScheduleResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      startTime: (map['startTime'] as String).input(),
+      actionType: pulumi.Input.fromValue(map['actionType'] as String),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notificationSettings: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<NotificationPropertiesResponse>(
+          map['notificationSettings']!,
+          (value) => NotificationPropertiesResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      schedule: pulumi.Input.fromValue(
+        ScheduledActionsScheduleResponse.fromMap(
+          (map['schedule']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
-

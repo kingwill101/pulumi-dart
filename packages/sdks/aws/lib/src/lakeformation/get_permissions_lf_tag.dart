@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPermissionsLfTag {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final pulumi.Input<String> catalogId;
+
   /// Key-name for the tag.
   final pulumi.Input<String> key;
+
   /// List of possible values an attribute can take.
   ///
   /// The following argument is optional:
@@ -32,10 +34,9 @@ class GetPermissionsLfTag {
 
   factory GetPermissionsLfTag.fromMap(Map<String, dynamic> map) {
     return GetPermissionsLfTag(
-      catalogId: (map['catalogId'] as String).input(),
-      key: (map['key'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

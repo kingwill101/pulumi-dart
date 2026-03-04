@@ -5,16 +5,17 @@ enum OrganizationSecurityPolicyTypeComputeBeta {
   cloudArmorNetwork("CLOUD_ARMOR_NETWORK"),
   firewall("FIREWALL");
 
-  const OrganizationSecurityPolicyTypeComputeBeta(this.value);
-  final String value;
+  const OrganizationSecurityPolicyTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static OrganizationSecurityPolicyTypeComputeBeta fromValue(String value) {
     for (final item in OrganizationSecurityPolicyTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OrganizationSecurityPolicyTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown OrganizationSecurityPolicyTypeComputeBeta value: $value',
+    );
   }
 }
-

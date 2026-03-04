@@ -9,9 +9,7 @@ class GalleryScriptVersionSafetyProfile {
 
   /// Creates a new [GalleryScriptVersionSafetyProfile].
   /// [allowDeletionOfReplicatedLocations] Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.
-  GalleryScriptVersionSafetyProfile({
-    this.allowDeletionOfReplicatedLocations,
-  });
+  GalleryScriptVersionSafetyProfile({this.allowDeletionOfReplicatedLocations});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class GalleryScriptVersionSafetyProfile {
 
   factory GalleryScriptVersionSafetyProfile.fromMap(Map<String, dynamic> map) {
     return GalleryScriptVersionSafetyProfile(
-      allowDeletionOfReplicatedLocations: map['allowDeletionOfReplicatedLocations'] == null ? null : (map['allowDeletionOfReplicatedLocations']! as bool).input(),
+      allowDeletionOfReplicatedLocations: (() {
+        final guardedValue = map['allowDeletionOfReplicatedLocations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

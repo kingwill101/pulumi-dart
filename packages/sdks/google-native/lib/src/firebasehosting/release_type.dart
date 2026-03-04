@@ -5,16 +5,15 @@ enum ReleaseType {
   rollback("ROLLBACK"),
   siteDisable("SITE_DISABLE");
 
-  const ReleaseType(this.value);
-  final String value;
+  const ReleaseType(this.wireValue);
+  final String wireValue;
 
   static ReleaseType fromValue(String value) {
     for (final item in ReleaseType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReleaseType value: $value');
   }
 }
-

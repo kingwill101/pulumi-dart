@@ -8,16 +8,29 @@ import 'cluster_node_config_containerd_config_registry_host_host_header.dart';
 class ClusterNodeConfigContainerdConfigRegistryHostHost {
   /// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
   final pulumi.Input<List<String>>? capabilities;
+
   /// Configures the registry host certificate.
-  final pulumi.Input<List<ClusterNodeConfigContainerdConfigRegistryHostHostCa>>? cas;
+  final pulumi.Input<List<ClusterNodeConfigContainerdConfigRegistryHostHostCa>>?
+  cas;
+
   /// Configures the registry host client certificate and key.
-  final pulumi.Input<List<ClusterNodeConfigContainerdConfigRegistryHostHostClient>>? clients;
+  final pulumi.Input<
+    List<ClusterNodeConfigContainerdConfigRegistryHostHostClient>
+  >?
+  clients;
+
   /// Specifies the maximum duration allowed for a connection attempt to complete.
   final pulumi.Input<String>? dialTimeout;
+
   /// Configures the registry host headers.
-  final pulumi.Input<List<ClusterNodeConfigContainerdConfigRegistryHostHostHeader>>? headers;
+  final pulumi.Input<
+    List<ClusterNodeConfigContainerdConfigRegistryHostHostHeader>
+  >?
+  headers;
+
   /// Configures the registry host/mirror.
   final pulumi.Input<String> host;
+
   /// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
   final pulumi.Input<bool>? overridePath;
 
@@ -42,25 +55,113 @@ class ClusterNodeConfigContainerdConfigRegistryHostHost {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'capabilities': ?capabilities,
-      'cas': ?pulumi.Input.mapOptionalInputValue<List<ClusterNodeConfigContainerdConfigRegistryHostHostCa>, List<Map<String, dynamic>>>(cas, (value) => pulumi.Input.encodeList<ClusterNodeConfigContainerdConfigRegistryHostHostCa, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'clients': ?pulumi.Input.mapOptionalInputValue<List<ClusterNodeConfigContainerdConfigRegistryHostHostClient>, List<Map<String, dynamic>>>(clients, (value) => pulumi.Input.encodeList<ClusterNodeConfigContainerdConfigRegistryHostHostClient, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'cas':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ClusterNodeConfigContainerdConfigRegistryHostHostCa>,
+            List<Map<String, dynamic>>
+          >(
+            cas,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ClusterNodeConfigContainerdConfigRegistryHostHostCa,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'clients':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ClusterNodeConfigContainerdConfigRegistryHostHostClient>,
+            List<Map<String, dynamic>>
+          >(
+            clients,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ClusterNodeConfigContainerdConfigRegistryHostHostClient,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'dialTimeout': ?dialTimeout,
-      'headers': ?pulumi.Input.mapOptionalInputValue<List<ClusterNodeConfigContainerdConfigRegistryHostHostHeader>, List<Map<String, dynamic>>>(headers, (value) => pulumi.Input.encodeList<ClusterNodeConfigContainerdConfigRegistryHostHostHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'headers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ClusterNodeConfigContainerdConfigRegistryHostHostHeader>,
+            List<Map<String, dynamic>>
+          >(
+            headers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ClusterNodeConfigContainerdConfigRegistryHostHostHeader,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'host': host,
       'overridePath': ?overridePath,
     };
   }
 
-  factory ClusterNodeConfigContainerdConfigRegistryHostHost.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodeConfigContainerdConfigRegistryHostHost.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodeConfigContainerdConfigRegistryHostHost(
-      capabilities: map['capabilities'] == null ? null : ((map['capabilities']! as List).cast<String>()).input(),
-      cas: map['cas'] == null ? null : (pulumi.Input.decodeList<ClusterNodeConfigContainerdConfigRegistryHostHostCa>(map['cas']!, (value) => ClusterNodeConfigContainerdConfigRegistryHostHostCa.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clients: map['clients'] == null ? null : (pulumi.Input.decodeList<ClusterNodeConfigContainerdConfigRegistryHostHostClient>(map['clients']!, (value) => ClusterNodeConfigContainerdConfigRegistryHostHostClient.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dialTimeout: map['dialTimeout'] == null ? null : (map['dialTimeout']! as String).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<ClusterNodeConfigContainerdConfigRegistryHostHostHeader>(map['headers']!, (value) => ClusterNodeConfigContainerdConfigRegistryHostHostHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      host: (map['host'] as String).input(),
-      overridePath: map['overridePath'] == null ? null : (map['overridePath']! as bool).input(),
+      capabilities: (() {
+        final guardedValue = map['capabilities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      cas: (() {
+        final guardedValue = map['cas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            ClusterNodeConfigContainerdConfigRegistryHostHostCa
+          >(
+            guardedValue,
+            (value) =>
+                ClusterNodeConfigContainerdConfigRegistryHostHostCa.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      clients: (() {
+        final guardedValue = map['clients'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            ClusterNodeConfigContainerdConfigRegistryHostHostClient
+          >(
+            guardedValue,
+            (value) =>
+                ClusterNodeConfigContainerdConfigRegistryHostHostClient.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      dialTimeout: (() {
+        final guardedValue = map['dialTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      headers: (() {
+        final guardedValue = map['headers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            ClusterNodeConfigContainerdConfigRegistryHostHostHeader
+          >(
+            guardedValue,
+            (value) =>
+                ClusterNodeConfigContainerdConfigRegistryHostHostHeader.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      overridePath: (() {
+        final guardedValue = map['overridePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

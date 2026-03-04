@@ -13,15 +13,14 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nodeGroup': nodeGroup,
-    };
+    return <String, dynamic>{'nodeGroup': nodeGroup};
   }
 
-  factory WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity.fromMap(Map<String, dynamic> map) {
+  factory WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity(
-      nodeGroup: (map['nodeGroup'] as String).input(),
+      nodeGroup: pulumi.Input.fromValue(map['nodeGroup'] as String),
     );
   }
 }
-

@@ -2,16 +2,15 @@
 enum LifecyclePolicyActionType {
   expire("expire");
 
-  const LifecyclePolicyActionType(this.value);
-  final String value;
+  const LifecyclePolicyActionType(this.wireValue);
+  final String wireValue;
 
   static LifecyclePolicyActionType fromValue(String value) {
     for (final item in LifecyclePolicyActionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LifecyclePolicyActionType value: $value');
   }
 }
-

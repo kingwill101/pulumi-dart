@@ -9,17 +9,24 @@ import 'backup_instance_kubernetes_cluster_backup_datasource_parameters.dart';
 /// {@macro pulumi_dataprotection_backup_instance_kubernetes_cluster_backup_instance_kubernetes_cluster_args_doc}
 class BackupInstanceKubernetesClusterArgs {
   /// A `backup_datasource_parameters` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<BackupInstanceKubernetesClusterBackupDatasourceParameters>? backupDatasourceParameters;
+  final pulumi.Input<BackupInstanceKubernetesClusterBackupDatasourceParameters>?
+  backupDatasourceParameters;
+
   /// The ID of the Backup Policy. Changing this forces a new resource to be created.
   final pulumi.Input<String> backupPolicyId;
+
   /// The ID of the Kubernetes Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String> kubernetesClusterId;
+
   /// The location of the Backup Instance Kubernetes Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name which should be used for this Backup Instance Kubernetes Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where snapshots are stored. Changing this forces a new resource to be created.
   final pulumi.Input<String> snapshotResourceGroupName;
+
   /// The ID of the Backup Vault within which the Backup Instance Kubernetes Cluster should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> vaultId;
 
@@ -43,7 +50,11 @@ class BackupInstanceKubernetesClusterArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupDatasourceParameters': ?pulumi.Input.mapOptionalInputValue<BackupInstanceKubernetesClusterBackupDatasourceParameters, Map<String, dynamic>>(backupDatasourceParameters, (value) => value.toMap()),
+      'backupDatasourceParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            BackupInstanceKubernetesClusterBackupDatasourceParameters,
+            Map<String, dynamic>
+          >(backupDatasourceParameters, (value) => value.toMap()),
       'backupPolicyId': backupPolicyId,
       'kubernetesClusterId': kubernetesClusterId,
       'location': ?location,
@@ -53,16 +64,37 @@ class BackupInstanceKubernetesClusterArgs {
     };
   }
 
-  factory BackupInstanceKubernetesClusterArgs.fromMap(Map<String, dynamic> map) {
+  factory BackupInstanceKubernetesClusterArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackupInstanceKubernetesClusterArgs(
-      backupDatasourceParameters: map['backupDatasourceParameters'] == null ? null : (BackupInstanceKubernetesClusterBackupDatasourceParameters.fromMap((map['backupDatasourceParameters']! as Map).cast<String, dynamic>())).input(),
-      backupPolicyId: (map['backupPolicyId'] as String).input(),
-      kubernetesClusterId: (map['kubernetesClusterId'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      snapshotResourceGroupName: (map['snapshotResourceGroupName'] as String).input(),
-      vaultId: (map['vaultId'] as String).input(),
+      backupDatasourceParameters: (() {
+        final guardedValue = map['backupDatasourceParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          BackupInstanceKubernetesClusterBackupDatasourceParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      backupPolicyId: pulumi.Input.fromValue(map['backupPolicyId'] as String),
+      kubernetesClusterId: pulumi.Input.fromValue(
+        map['kubernetesClusterId'] as String,
+      ),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshotResourceGroupName: pulumi.Input.fromValue(
+        map['snapshotResourceGroupName'] as String,
+      ),
+      vaultId: pulumi.Input.fromValue(map['vaultId'] as String),
     );
   }
 }
-

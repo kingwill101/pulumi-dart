@@ -7,13 +7,17 @@ class GetTrailsDeprecatedActiontrail {
   final pulumi.Input<String> eventRw;
   final pulumi.Input<String> id;
   final pulumi.Input<bool> isOrganizationTrail;
+
   /// The name of the specified OSS bucket.
   final pulumi.Input<String> ossBucketName;
+
   /// The prefix of the specified OSS bucket name.
   final pulumi.Input<String> ossKeyPrefix;
   final pulumi.Input<String> ossWriteRoleArn;
+
   /// The unique ARN of the Log Service project.
   final pulumi.Input<String> slsProjectArn;
+
   /// The unique ARN of the Log Service role.
   final pulumi.Input<String> slsWriteRoleArn;
   final pulumi.Input<String> status;
@@ -64,18 +68,19 @@ class GetTrailsDeprecatedActiontrail {
 
   factory GetTrailsDeprecatedActiontrail.fromMap(Map<String, dynamic> map) {
     return GetTrailsDeprecatedActiontrail(
-      eventRw: (map['eventRw'] as String).input(),
-      id: (map['id'] as String).input(),
-      isOrganizationTrail: (map['isOrganizationTrail'] as bool).input(),
-      ossBucketName: (map['ossBucketName'] as String).input(),
-      ossKeyPrefix: (map['ossKeyPrefix'] as String).input(),
-      ossWriteRoleArn: (map['ossWriteRoleArn'] as String).input(),
-      slsProjectArn: (map['slsProjectArn'] as String).input(),
-      slsWriteRoleArn: (map['slsWriteRoleArn'] as String).input(),
-      status: (map['status'] as String).input(),
-      trailName: (map['trailName'] as String).input(),
-      trailRegion: (map['trailRegion'] as String).input(),
+      eventRw: pulumi.Input.fromValue(map['eventRw'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      isOrganizationTrail: pulumi.Input.fromValue(
+        map['isOrganizationTrail'] as bool,
+      ),
+      ossBucketName: pulumi.Input.fromValue(map['ossBucketName'] as String),
+      ossKeyPrefix: pulumi.Input.fromValue(map['ossKeyPrefix'] as String),
+      ossWriteRoleArn: pulumi.Input.fromValue(map['ossWriteRoleArn'] as String),
+      slsProjectArn: pulumi.Input.fromValue(map['slsProjectArn'] as String),
+      slsWriteRoleArn: pulumi.Input.fromValue(map['slsWriteRoleArn'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      trailName: pulumi.Input.fromValue(map['trailName'] as String),
+      trailRegion: pulumi.Input.fromValue(map['trailRegion'] as String),
     );
   }
 }
-

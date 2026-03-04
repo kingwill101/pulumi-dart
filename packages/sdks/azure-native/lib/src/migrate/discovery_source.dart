@@ -4,16 +4,15 @@ enum DiscoverySource {
   appliance("Appliance"),
   import("Import");
 
-  const DiscoverySource(this.value);
-  final String value;
+  const DiscoverySource(this.wireValue);
+  final String wireValue;
 
   static DiscoverySource fromValue(String value) {
     for (final item in DiscoverySource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiscoverySource value: $value');
   }
 }
-

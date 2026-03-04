@@ -9,16 +9,15 @@ enum ServiceLaunchStage {
   ga("GA"),
   deprecated("DEPRECATED");
 
-  const ServiceLaunchStage(this.value);
-  final String value;
+  const ServiceLaunchStage(this.wireValue);
+  final String wireValue;
 
   static ServiceLaunchStage fromValue(String value) {
     for (final item in ServiceLaunchStage.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceLaunchStage value: $value');
   }
 }
-

@@ -170,9 +170,11 @@ import 'placement_group_state.dart';
 class PlacementGroup extends pulumi.CustomResource {
   /// User-defined labels (key-value pairs) should be created with.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// Name of the Placement Group.
   late final pulumi.Output<String> name;
   late final pulumi.Output<List<int>> servers;
+
   /// Type of the Placement Group.
   late final pulumi.Output<String> type;
 
@@ -185,15 +187,15 @@ class PlacementGroup extends pulumi.CustomResource {
     PlacementGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/placementGroup:PlacementGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.labels = registerOutput<Map<String, String>?>('labels');
+         'hcloud:index/placementGroup:PlacementGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.servers = registerOutput<List<int>>('servers');
-    this.type = registerOutput<String>('type');
+    servers = registerOutput<List<int>>('servers');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [PlacementGroup] resource's state with the given [name] and [id].
@@ -214,14 +216,14 @@ class PlacementGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/placementGroup:PlacementGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.labels = registerOutput<Map<String, String>?>('labels');
+         'hcloud:index/placementGroup:PlacementGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.servers = registerOutput<List<int>>('servers');
-    this.type = registerOutput<String>('type');
+    servers = registerOutput<List<int>>('servers');
+    type = registerOutput<String>('type');
   }
 }

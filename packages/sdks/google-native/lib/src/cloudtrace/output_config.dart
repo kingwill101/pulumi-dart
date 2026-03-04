@@ -9,20 +9,19 @@ class OutputConfig {
 
   /// Creates a new [OutputConfig].
   /// [destination] The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-  OutputConfig({
-    this.destination,
-  });
+  OutputConfig({this.destination});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'destination': ?destination,
-    };
+    return <String, dynamic>{'destination': ?destination};
   }
 
   factory OutputConfig.fromMap(Map<String, dynamic> map) {
     return OutputConfig(
-      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

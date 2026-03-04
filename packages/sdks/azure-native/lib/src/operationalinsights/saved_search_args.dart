@@ -10,22 +10,31 @@ import 'tag.dart';
 class SavedSearchArgs {
   /// The category of the saved search. This helps the user to find a saved search faster.
   final pulumi.Input<String> category;
+
   /// Saved search display name.
   final pulumi.Input<String> displayName;
+
   /// The function alias if query serves as a function.
   final pulumi.Input<String>? functionAlias;
+
   /// The optional function parameters if query serves as a function. Value should be in the following format: 'param-name1:type1 = default_value1, param-name2:type2 = default_value2'. For more examples and proper syntax please refer to https://docs.microsoft.com/en-us/azure/kusto/query/functions/user-defined-functions.
   final pulumi.Input<String>? functionParameters;
+
   /// The query expression for the saved search.
   final pulumi.Input<String> query;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The id of the saved search.
   final pulumi.Input<String>? savedSearchId;
+
   /// The tags attached to the saved search.
   final pulumi.Input<List<Tag>>? tags;
+
   /// The version number of the query language. The current version is 2 and is the default.
   final pulumi.Input<double>? version;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -62,7 +71,17 @@ class SavedSearchArgs {
       'query': query,
       'resourceGroupName': resourceGroupName,
       'savedSearchId': ?savedSearchId,
-      'tags': ?pulumi.Input.mapOptionalInputValue<List<Tag>, List<Map<String, dynamic>>>(tags, (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tags':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Tag>,
+            List<Map<String, dynamic>>
+          >(
+            tags,
+            (value) => pulumi.Input.encodeList<Tag, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
       'version': ?version,
       'workspaceName': workspaceName,
     };
@@ -70,17 +89,43 @@ class SavedSearchArgs {
 
   factory SavedSearchArgs.fromMap(Map<String, dynamic> map) {
     return SavedSearchArgs(
-      category: (map['category'] as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias']! as String).input(),
-      functionParameters: map['functionParameters'] == null ? null : (map['functionParameters']! as String).input(),
-      query: (map['query'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      savedSearchId: map['savedSearchId'] == null ? null : (map['savedSearchId']! as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version']! as double).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      category: pulumi.Input.fromValue(map['category'] as String),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      functionAlias: (() {
+        final guardedValue = map['functionAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      functionParameters: (() {
+        final guardedValue = map['functionParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      query: pulumi.Input.fromValue(map['query'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      savedSearchId: (() {
+        final guardedValue = map['savedSearchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Tag>(
+            guardedValue,
+            (value) => Tag.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum MetadataOptionsGid {
   gidSkip("GID_SKIP"),
   gidNumber("GID_NUMBER");
 
-  const MetadataOptionsGid(this.value);
-  final String value;
+  const MetadataOptionsGid(this.wireValue);
+  final String wireValue;
 
   static MetadataOptionsGid fromValue(String value) {
     for (final item in MetadataOptionsGid.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetadataOptionsGid value: $value');
   }
 }
-

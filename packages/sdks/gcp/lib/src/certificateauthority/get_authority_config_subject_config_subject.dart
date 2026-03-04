@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAuthorityConfigSubjectConfigSubject {
   /// The common name of the distinguished name.
   final pulumi.Input<String> commonName;
+
   /// The country code of the subject.
   final pulumi.Input<String> countryCode;
+
   /// The locality or city of the subject.
   final pulumi.Input<String> locality;
+
   /// The organization of the subject.
   final pulumi.Input<String> organization;
+
   /// The organizational unit of the subject.
   final pulumi.Input<String> organizationalUnit;
+
   /// The postal code of the subject.
   final pulumi.Input<String> postalCode;
+
   /// The province, territory, or regional state of the subject.
   final pulumi.Input<String> province;
+
   /// The street address of the subject.
   final pulumi.Input<String> streetAddress;
 
@@ -53,17 +60,20 @@ class GetAuthorityConfigSubjectConfigSubject {
     };
   }
 
-  factory GetAuthorityConfigSubjectConfigSubject.fromMap(Map<String, dynamic> map) {
+  factory GetAuthorityConfigSubjectConfigSubject.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAuthorityConfigSubjectConfigSubject(
-      commonName: (map['commonName'] as String).input(),
-      countryCode: (map['countryCode'] as String).input(),
-      locality: (map['locality'] as String).input(),
-      organization: (map['organization'] as String).input(),
-      organizationalUnit: (map['organizationalUnit'] as String).input(),
-      postalCode: (map['postalCode'] as String).input(),
-      province: (map['province'] as String).input(),
-      streetAddress: (map['streetAddress'] as String).input(),
+      commonName: pulumi.Input.fromValue(map['commonName'] as String),
+      countryCode: pulumi.Input.fromValue(map['countryCode'] as String),
+      locality: pulumi.Input.fromValue(map['locality'] as String),
+      organization: pulumi.Input.fromValue(map['organization'] as String),
+      organizationalUnit: pulumi.Input.fromValue(
+        map['organizationalUnit'] as String,
+      ),
+      postalCode: pulumi.Input.fromValue(map['postalCode'] as String),
+      province: pulumi.Input.fromValue(map['province'] as String),
+      streetAddress: pulumi.Input.fromValue(map['streetAddress'] as String),
     );
   }
 }
-

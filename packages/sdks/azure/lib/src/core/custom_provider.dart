@@ -1,9 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'custom_provider_action.dart';
 import 'custom_provider_args.dart';
-import 'custom_provider_resource_type.dart';
 import 'custom_provider_state.dart';
-import 'custom_provider_validation.dart';
 
 /// Manages an Azure Custom Provider.
 ///
@@ -174,7 +171,7 @@ import 'custom_provider_validation.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.CustomProviders` - 2018-09-01-preview
@@ -188,19 +185,25 @@ import 'custom_provider_validation.dart';
 /// ```
 class CustomProvider extends pulumi.CustomResource {
   /// Any number of `action` block as defined below. One of `resource_type` or `action` must be specified.
-  late final pulumi.Output<List<CustomProviderAction>?> actions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> actions;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Custom Provider. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which to create the Custom Provider. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Any number of `resource_type` block as defined below. One of `resource_type` or `action` must be specified.
-  late final pulumi.Output<List<CustomProviderResourceType>?> resourceTypes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> resourceTypes;
+
   /// A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Any number of `validation` block as defined below.
-  late final pulumi.Output<List<CustomProviderValidation>?> validations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> validations;
 
   /// Creates a new [CustomProvider].
   /// [name] The Pulumi resource name.
@@ -211,18 +214,20 @@ class CustomProvider extends pulumi.CustomResource {
     CustomProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:core/customProvider:CustomProvider',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actions = registerOutput<List<CustomProviderAction>?>('actions');
-    this.location = registerOutput<String>('location');
+         'azure:core/customProvider:CustomProvider',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actions = registerOutput<List<Map<String, dynamic>>?>('actions');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.resourceTypes = registerOutput<List<CustomProviderResourceType>?>('resourceTypes');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.validations = registerOutput<List<CustomProviderValidation>?>('validations');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceTypes = registerOutput<List<Map<String, dynamic>>?>(
+      'resourceTypes',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    validations = registerOutput<List<Map<String, dynamic>>?>('validations');
   }
 
   /// Gets an existing [CustomProvider] resource's state with the given [name] and [id].
@@ -243,17 +248,19 @@ class CustomProvider extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:core/customProvider:CustomProvider',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actions = registerOutput<List<CustomProviderAction>?>('actions');
-    this.location = registerOutput<String>('location');
+         'azure:core/customProvider:CustomProvider',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actions = registerOutput<List<Map<String, dynamic>>?>('actions');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.resourceTypes = registerOutput<List<CustomProviderResourceType>?>('resourceTypes');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.validations = registerOutput<List<CustomProviderValidation>?>('validations');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceTypes = registerOutput<List<Map<String, dynamic>>?>(
+      'resourceTypes',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    validations = registerOutput<List<Map<String, dynamic>>?>('validations');
   }
 }

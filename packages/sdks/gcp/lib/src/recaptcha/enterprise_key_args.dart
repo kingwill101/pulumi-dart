@@ -14,25 +14,32 @@ import 'enterprise_key_web_settings.dart';
 class EnterpriseKeyArgs {
   /// Settings for keys that can be used by Android apps.
   final pulumi.Input<EnterpriseKeyAndroidSettings>? androidSettings;
+
   /// Human-readable display name of this key. Modifiable by user.
   ///
   ///
   ///
   /// - - -
   final pulumi.Input<String> displayName;
+
   /// Settings for keys that can be used by iOS apps.
   final pulumi.Input<EnterpriseKeyIosSettings>? iosSettings;
+
   /// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The project for the resource
   final pulumi.Input<String>? project;
+
   /// Options for user acceptance testing.
   final pulumi.Input<EnterpriseKeyTestingOptions>? testingOptions;
+
   /// Settings specific to keys that can be used for WAF (Web Application Firewall).
   final pulumi.Input<EnterpriseKeyWafSettings>? wafSettings;
+
   /// Settings for keys that can be used by websites.
   final pulumi.Input<EnterpriseKeyWebSettings>? webSettings;
 
@@ -58,28 +65,97 @@ class EnterpriseKeyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'androidSettings': ?pulumi.Input.mapOptionalInputValue<EnterpriseKeyAndroidSettings, Map<String, dynamic>>(androidSettings, (value) => value.toMap()),
+      'androidSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnterpriseKeyAndroidSettings,
+            Map<String, dynamic>
+          >(androidSettings, (value) => value.toMap()),
       'displayName': displayName,
-      'iosSettings': ?pulumi.Input.mapOptionalInputValue<EnterpriseKeyIosSettings, Map<String, dynamic>>(iosSettings, (value) => value.toMap()),
+      'iosSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnterpriseKeyIosSettings,
+            Map<String, dynamic>
+          >(iosSettings, (value) => value.toMap()),
       'labels': ?labels,
       'project': ?project,
-      'testingOptions': ?pulumi.Input.mapOptionalInputValue<EnterpriseKeyTestingOptions, Map<String, dynamic>>(testingOptions, (value) => value.toMap()),
-      'wafSettings': ?pulumi.Input.mapOptionalInputValue<EnterpriseKeyWafSettings, Map<String, dynamic>>(wafSettings, (value) => value.toMap()),
-      'webSettings': ?pulumi.Input.mapOptionalInputValue<EnterpriseKeyWebSettings, Map<String, dynamic>>(webSettings, (value) => value.toMap()),
+      'testingOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnterpriseKeyTestingOptions,
+            Map<String, dynamic>
+          >(testingOptions, (value) => value.toMap()),
+      'wafSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnterpriseKeyWafSettings,
+            Map<String, dynamic>
+          >(wafSettings, (value) => value.toMap()),
+      'webSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnterpriseKeyWebSettings,
+            Map<String, dynamic>
+          >(webSettings, (value) => value.toMap()),
     };
   }
 
   factory EnterpriseKeyArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseKeyArgs(
-      androidSettings: map['androidSettings'] == null ? null : (EnterpriseKeyAndroidSettings.fromMap((map['androidSettings']! as Map).cast<String, dynamic>())).input(),
-      displayName: (map['displayName'] as String).input(),
-      iosSettings: map['iosSettings'] == null ? null : (EnterpriseKeyIosSettings.fromMap((map['iosSettings']! as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      testingOptions: map['testingOptions'] == null ? null : (EnterpriseKeyTestingOptions.fromMap((map['testingOptions']! as Map).cast<String, dynamic>())).input(),
-      wafSettings: map['wafSettings'] == null ? null : (EnterpriseKeyWafSettings.fromMap((map['wafSettings']! as Map).cast<String, dynamic>())).input(),
-      webSettings: map['webSettings'] == null ? null : (EnterpriseKeyWebSettings.fromMap((map['webSettings']! as Map).cast<String, dynamic>())).input(),
+      androidSettings: (() {
+        final guardedValue = map['androidSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnterpriseKeyAndroidSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      iosSettings: (() {
+        final guardedValue = map['iosSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnterpriseKeyIosSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      testingOptions: (() {
+        final guardedValue = map['testingOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnterpriseKeyTestingOptions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      wafSettings: (() {
+        final guardedValue = map['wafSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnterpriseKeyWafSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      webSettings: (() {
+        final guardedValue = map['webSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EnterpriseKeyWebSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

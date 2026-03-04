@@ -3,16 +3,15 @@ enum SecretStoreType {
   valueInvalid("Invalid"),
   valueAzureKeyVault("AzureKeyVault");
 
-  const SecretStoreType(this.value);
-  final String value;
+  const SecretStoreType(this.wireValue);
+  final String wireValue;
 
   static SecretStoreType fromValue(String value) {
     for (final item in SecretStoreType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecretStoreType value: $value');
   }
 }
-

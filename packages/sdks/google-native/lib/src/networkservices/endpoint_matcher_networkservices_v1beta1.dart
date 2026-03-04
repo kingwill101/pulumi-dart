@@ -10,20 +10,31 @@ class EndpointMatcherNetworkservicesV1beta1 {
 
   /// Creates a new [EndpointMatcherNetworkservicesV1beta1].
   /// [metadataLabelMatcher] The matcher is based on node metadata presented by xDS clients.
-  EndpointMatcherNetworkservicesV1beta1({
-    this.metadataLabelMatcher,
-  });
+  EndpointMatcherNetworkservicesV1beta1({this.metadataLabelMatcher});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadataLabelMatcher': ?pulumi.Input.mapOptionalInputValue<MetadataLabelMatcher, Map<String, dynamic>>(metadataLabelMatcher, (value) => value.toMap()),
+      'metadataLabelMatcher':
+          ?pulumi.Input.mapOptionalInputValue<
+            MetadataLabelMatcher,
+            Map<String, dynamic>
+          >(metadataLabelMatcher, (value) => value.toMap()),
     };
   }
 
-  factory EndpointMatcherNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
+  factory EndpointMatcherNetworkservicesV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EndpointMatcherNetworkservicesV1beta1(
-      metadataLabelMatcher: map['metadataLabelMatcher'] == null ? null : (MetadataLabelMatcher.fromMap((map['metadataLabelMatcher']! as Map).cast<String, dynamic>())).input(),
+      metadataLabelMatcher: (() {
+        final guardedValue = map['metadataLabelMatcher'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MetadataLabelMatcher.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

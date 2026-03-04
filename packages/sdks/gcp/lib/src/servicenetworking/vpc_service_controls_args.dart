@@ -10,10 +10,13 @@ class VpcServiceControlsArgs {
   /// Desired VPC Service Controls state service producer VPC network, as
   /// described at the top of this page.
   final pulumi.Input<bool> enabled;
+
   /// The network that the consumer is using to connect with services.
   final pulumi.Input<String> network;
+
   /// The id of the Google Cloud project containing the consumer network.
   final pulumi.Input<String>? project;
+
   /// The service that is managing peering connectivity for a service
   /// producer's organization. For Google services that support this
   /// functionality, this value is `servicenetworking.googleapis.com`.
@@ -42,11 +45,14 @@ class VpcServiceControlsArgs {
 
   factory VpcServiceControlsArgs.fromMap(Map<String, dynamic> map) {
     return VpcServiceControlsArgs(
-      enabled: (map['enabled'] as bool).input(),
-      network: (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      service: (map['service'] as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      network: pulumi.Input.fromValue(map['network'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
-

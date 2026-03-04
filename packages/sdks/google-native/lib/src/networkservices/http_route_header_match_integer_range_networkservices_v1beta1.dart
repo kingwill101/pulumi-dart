@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpRouteHeaderMatchIntegerRangeNetworkservicesV1beta1 {
   /// End of the range (exclusive)
   final pulumi.Input<int>? end;
+
   /// Start of the range (inclusive)
   final pulumi.Input<int>? start;
 
@@ -18,17 +19,23 @@ class HttpRouteHeaderMatchIntegerRangeNetworkservicesV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'end': ?end,
-      'start': ?start,
-    };
+    return <String, dynamic>{'end': ?end, 'start': ?start};
   }
 
-  factory HttpRouteHeaderMatchIntegerRangeNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
+  factory HttpRouteHeaderMatchIntegerRangeNetworkservicesV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HttpRouteHeaderMatchIntegerRangeNetworkservicesV1beta1(
-      end: map['end'] == null ? null : (map['end']! as int).input(),
-      start: map['start'] == null ? null : (map['start']! as int).input(),
+      end: (() {
+        final guardedValue = map['end'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      start: (() {
+        final guardedValue = map['start'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

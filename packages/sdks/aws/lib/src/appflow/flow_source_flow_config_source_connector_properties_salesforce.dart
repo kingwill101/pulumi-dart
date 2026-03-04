@@ -4,22 +4,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlowSourceFlowConfigSourceConnectorPropertiesSalesforce {
   final pulumi.Input<String>? dataTransferApi;
+
   /// Flag that enables dynamic fetching of new (recently added) fields in the Salesforce objects while running a flow.
   final pulumi.Input<bool>? enableDynamicFieldUpdate;
+
   /// Whether Amazon AppFlow includes deleted files in the flow run.
   final pulumi.Input<bool>? includeDeletedRecords;
-  final pulumi.Input<String> object;
+  final pulumi.Input<String> object_;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesSalesforce].
   /// [dataTransferApi] Optional.
   /// [enableDynamicFieldUpdate] Flag that enables dynamic fetching of new (recently added) fields in the Salesforce objects while running a flow.
   /// [includeDeletedRecords] Whether Amazon AppFlow includes deleted files in the flow run.
-  /// [object] Required.
+  /// [object_] Required.
   FlowSourceFlowConfigSourceConnectorPropertiesSalesforce({
     this.dataTransferApi,
     this.enableDynamicFieldUpdate,
     this.includeDeletedRecords,
-    required this.object,
+    required this.object_,
   });
 
   Map<String, dynamic> toMap() {
@@ -27,17 +29,30 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSalesforce {
       'dataTransferApi': ?dataTransferApi,
       'enableDynamicFieldUpdate': ?enableDynamicFieldUpdate,
       'includeDeletedRecords': ?includeDeletedRecords,
-      'object': object,
+      'object': object_,
     };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesSalesforce.fromMap(Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesSalesforce.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowSourceFlowConfigSourceConnectorPropertiesSalesforce(
-      dataTransferApi: map['dataTransferApi'] == null ? null : ((map['dataTransferApi'] as String).input()).input(),
-      enableDynamicFieldUpdate: map['enableDynamicFieldUpdate'] == null ? null : ((map['enableDynamicFieldUpdate'] as bool).input()).input(),
-      includeDeletedRecords: map['includeDeletedRecords'] == null ? null : ((map['includeDeletedRecords'] as bool).input()).input(),
-      object: (map['object'] as String).input(),
+      dataTransferApi: (() {
+        final guardedValue = map['dataTransferApi'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableDynamicFieldUpdate: (() {
+        final guardedValue = map['enableDynamicFieldUpdate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      includeDeletedRecords: (() {
+        final guardedValue = map['includeDeletedRecords'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
-

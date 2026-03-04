@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionMonitorTestGroupResponse {
   /// List of destination endpoint names.
   final pulumi.Input<List<String>> destinations;
+
   /// Value indicating whether test group is disabled.
   final pulumi.Input<bool>? disable;
+
   /// The name of the connection monitor test group.
   final pulumi.Input<String> name;
+
   /// List of source endpoint names.
   final pulumi.Input<List<String>> sources;
+
   /// List of test configuration names.
   final pulumi.Input<List<String>> testConfigurations;
 
@@ -41,12 +45,19 @@ class ConnectionMonitorTestGroupResponse {
 
   factory ConnectionMonitorTestGroupResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorTestGroupResponse(
-      destinations: ((map['destinations'] as List).cast<String>()).input(),
-      disable: map['disable'] == null ? null : (map['disable']! as bool).input(),
-      name: (map['name'] as String).input(),
-      sources: ((map['sources'] as List).cast<String>()).input(),
-      testConfigurations: ((map['testConfigurations'] as List).cast<String>()).input(),
+      destinations: pulumi.Input.fromValue(
+        (map['destinations'] as List).cast<String>(),
+      ),
+      disable: (() {
+        final guardedValue = map['disable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      sources: pulumi.Input.fromValue((map['sources'] as List).cast<String>()),
+      testConfigurations: pulumi.Input.fromValue(
+        (map['testConfigurations'] as List).cast<String>(),
+      ),
     );
   }
 }
-

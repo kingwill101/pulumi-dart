@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceDiscoveredManagementActionResponse {
   /// Stringified JSON that contains connector-specific configuration for the action.
   final pulumi.Input<String>? actionConfiguration;
+
   /// The type of the action.
   final pulumi.Input<String>? actionType;
+
   /// Timestamp (in UTC) indicating when the management action was added or modified.
   final pulumi.Input<String>? lastUpdatedOn;
+
   /// Name of the action.
   final pulumi.Input<String> name;
+
   /// The target URI on which a client can invoke the specific action.
   final pulumi.Input<String> targetUri;
+
   /// Response timeout for the action.
   final pulumi.Input<int>? timeoutInSeconds;
+
   /// The MQTT topic path on which a client will receive the request for the action.
   final pulumi.Input<String>? topic;
+
   /// URI or type definition ID.
   final pulumi.Input<String>? typeRef;
 
@@ -54,17 +61,42 @@ class NamespaceDiscoveredManagementActionResponse {
     };
   }
 
-  factory NamespaceDiscoveredManagementActionResponse.fromMap(Map<String, dynamic> map) {
+  factory NamespaceDiscoveredManagementActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NamespaceDiscoveredManagementActionResponse(
-      actionConfiguration: map['actionConfiguration'] == null ? null : (map['actionConfiguration']! as String).input(),
-      actionType: map['actionType'] == null ? null : (map['actionType']! as String).input(),
-      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn']! as String).input(),
-      name: (map['name'] as String).input(),
-      targetUri: (map['targetUri'] as String).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as int).input(),
-      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
-      typeRef: map['typeRef'] == null ? null : (map['typeRef']! as String).input(),
+      actionConfiguration: (() {
+        final guardedValue = map['actionConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      actionType: (() {
+        final guardedValue = map['actionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastUpdatedOn: (() {
+        final guardedValue = map['lastUpdatedOn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      targetUri: pulumi.Input.fromValue(map['targetUri'] as String),
+      timeoutInSeconds: (() {
+        final guardedValue = map['timeoutInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      topic: (() {
+        final guardedValue = map['topic'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      typeRef: (() {
+        final guardedValue = map['typeRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

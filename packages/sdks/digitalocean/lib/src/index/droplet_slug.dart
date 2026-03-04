@@ -167,16 +167,15 @@ enum DropletSlug {
   dropletSO154VCPU32GB2("so1_5-4vcpu-32gb"),
   dropletSO158VCPU64GB2("so1_5-8vcpu-64gb");
 
-  const DropletSlug(this.value);
-  final String value;
+  const DropletSlug(this.wireValue);
+  final String wireValue;
 
   static DropletSlug fromValue(String value) {
     for (final item in DropletSlug.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DropletSlug value: $value');
   }
 }
-

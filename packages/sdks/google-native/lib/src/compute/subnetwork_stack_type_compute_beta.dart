@@ -3,16 +3,15 @@ enum SubnetworkStackTypeComputeBeta {
   ipv4Ipv6("IPV4_IPV6"),
   ipv4Only("IPV4_ONLY");
 
-  const SubnetworkStackTypeComputeBeta(this.value);
-  final String value;
+  const SubnetworkStackTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static SubnetworkStackTypeComputeBeta fromValue(String value) {
     for (final item in SubnetworkStackTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SubnetworkStackTypeComputeBeta value: $value');
   }
 }
-

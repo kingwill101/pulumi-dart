@@ -3,16 +3,15 @@ enum ReconciliationState {
   inactive("inactive"),
   active("active");
 
-  const ReconciliationState(this.value);
-  final String value;
+  const ReconciliationState(this.wireValue);
+  final String wireValue;
 
   static ReconciliationState fromValue(String value) {
     for (final item in ReconciliationState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReconciliationState value: $value');
   }
 }
-

@@ -1,5 +1,3 @@
-library module_mongocluster;
-
 export 'mongocluster/administrator_properties.dart';
 export 'mongocluster/administrator_properties_response.dart';
 export 'mongocluster/backup_properties_response.dart';

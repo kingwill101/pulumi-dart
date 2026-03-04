@@ -6,7 +6,7 @@ import 'ecs_session_manager_status_state.dart';
 ///
 /// For information about ECS Session Manager Status and how to use it, see [What is Session Manager Status](https://www.alibabacloud.com/help/zh/doc-detail/337915.html).
 ///
-/// > **NOTE:** Available since v1.148.0.
+/// &gt; **NOTE:** Available since v1.148.0.
 ///
 /// ## Example Usage
 ///
@@ -119,6 +119,7 @@ import 'ecs_session_manager_status_state.dart';
 class EcsSessionManagerStatus extends pulumi.CustomResource {
   /// The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
   late final pulumi.Output<String> sessionManagerStatusName;
+
   /// The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
   late final pulumi.Output<String> status;
 
@@ -131,13 +132,15 @@ class EcsSessionManagerStatus extends pulumi.CustomResource {
     EcsSessionManagerStatusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.sessionManagerStatusName = registerOutput<String>('sessionManagerStatusName');
-    this.status = registerOutput<String>('status');
+         'alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    sessionManagerStatusName = registerOutput<String>(
+      'sessionManagerStatusName',
+    );
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [EcsSessionManagerStatus] resource's state with the given [name] and [id].
@@ -158,12 +161,14 @@ class EcsSessionManagerStatus extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.sessionManagerStatusName = registerOutput<String>('sessionManagerStatusName');
-    this.status = registerOutput<String>('status');
+         'alicloud:ecs/ecsSessionManagerStatus:EcsSessionManagerStatus',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    sessionManagerStatusName = registerOutput<String>(
+      'sessionManagerStatusName',
+    );
+    status = registerOutput<String>('status');
   }
 }

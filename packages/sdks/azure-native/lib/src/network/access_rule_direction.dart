@@ -3,16 +3,15 @@ enum AccessRuleDirection {
   valueInbound("Inbound"),
   valueOutbound("Outbound");
 
-  const AccessRuleDirection(this.value);
-  final String value;
+  const AccessRuleDirection(this.wireValue);
+  final String wireValue;
 
   static AccessRuleDirection fromValue(String value) {
     for (final item in AccessRuleDirection.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AccessRuleDirection value: $value');
   }
 }
-

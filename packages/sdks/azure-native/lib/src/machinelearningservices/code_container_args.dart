@@ -9,11 +9,15 @@ import 'code_container_machinelearningservices.dart';
 /// {@macro pulumi_machinelearningservices_code_container_args_doc}
 class CodeContainerArgs {
   /// [Required] Additional attributes of the entity.
-  final pulumi.Input<CodeContainerMachinelearningservices> codeContainerProperties;
+  final pulumi.Input<CodeContainerMachinelearningservices>
+  codeContainerProperties;
+
   /// Container name. This is case-sensitive.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -40,11 +44,18 @@ class CodeContainerArgs {
 
   factory CodeContainerArgs.fromMap(Map<String, dynamic> map) {
     return CodeContainerArgs(
-      codeContainerProperties: (map['codeContainerProperties'] as CodeContainerMachinelearningservices).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      codeContainerProperties: pulumi.Input.fromValue(
+        map['codeContainerProperties'] as CodeContainerMachinelearningservices,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

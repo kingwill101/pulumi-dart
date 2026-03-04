@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutomationRulePromoteReleaseRule {
   /// Optional. The starting phase of the rollout created by this operation. Default to the first phase.
   final pulumi.Input<String>? destinationPhase;
+
   /// Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
   final pulumi.Input<String>? destinationTargetId;
+
   /// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
   final pulumi.Input<String> id;
+
   /// Optional. How long the release need to be paused until being promoted to the next target.
   final pulumi.Input<String>? wait;
 
@@ -35,11 +38,22 @@ class AutomationRulePromoteReleaseRule {
 
   factory AutomationRulePromoteReleaseRule.fromMap(Map<String, dynamic> map) {
     return AutomationRulePromoteReleaseRule(
-      destinationPhase: map['destinationPhase'] == null ? null : (map['destinationPhase']! as String).input(),
-      destinationTargetId: map['destinationTargetId'] == null ? null : (map['destinationTargetId']! as String).input(),
-      id: (map['id'] as String).input(),
-      wait: map['wait'] == null ? null : (map['wait']! as String).input(),
+      destinationPhase: (() {
+        final guardedValue = map['destinationPhase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationTargetId: (() {
+        final guardedValue = map['destinationTargetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      wait: (() {
+        final guardedValue = map['wait'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

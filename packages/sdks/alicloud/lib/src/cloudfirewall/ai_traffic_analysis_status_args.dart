@@ -12,20 +12,19 @@ class AiTrafficAnalysisStatusArgs {
 
   /// Creates a new [AiTrafficAnalysisStatusArgs].
   /// [status] Status
-  AiTrafficAnalysisStatusArgs({
-    this.status,
-  });
+  AiTrafficAnalysisStatusArgs({this.status});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'status': ?status,
-    };
+    return <String, dynamic>{'status': ?status};
   }
 
   factory AiTrafficAnalysisStatusArgs.fromMap(Map<String, dynamic> map) {
     return AiTrafficAnalysisStatusArgs(
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

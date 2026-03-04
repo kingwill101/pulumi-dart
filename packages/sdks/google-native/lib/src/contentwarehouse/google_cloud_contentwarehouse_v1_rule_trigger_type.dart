@@ -6,16 +6,17 @@ enum GoogleCloudContentwarehouseV1RuleTriggerType {
   onCreateLink("ON_CREATE_LINK"),
   onDeleteLink("ON_DELETE_LINK");
 
-  const GoogleCloudContentwarehouseV1RuleTriggerType(this.value);
-  final String value;
+  const GoogleCloudContentwarehouseV1RuleTriggerType(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudContentwarehouseV1RuleTriggerType fromValue(String value) {
     for (final item in GoogleCloudContentwarehouseV1RuleTriggerType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudContentwarehouseV1RuleTriggerType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudContentwarehouseV1RuleTriggerType value: $value',
+    );
   }
 }
-

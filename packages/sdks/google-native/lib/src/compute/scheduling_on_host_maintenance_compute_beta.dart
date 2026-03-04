@@ -3,16 +3,17 @@ enum SchedulingOnHostMaintenanceComputeBeta {
   migrate("MIGRATE"),
   terminate("TERMINATE");
 
-  const SchedulingOnHostMaintenanceComputeBeta(this.value);
-  final String value;
+  const SchedulingOnHostMaintenanceComputeBeta(this.wireValue);
+  final String wireValue;
 
   static SchedulingOnHostMaintenanceComputeBeta fromValue(String value) {
     for (final item in SchedulingOnHostMaintenanceComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SchedulingOnHostMaintenanceComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown SchedulingOnHostMaintenanceComputeBeta value: $value',
+    );
   }
 }
-

@@ -18,7 +18,7 @@ import 'get_templates_result.dart';
 
 /// This data source provides the Oos Application Groups of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.146.0+.
+/// &gt; **NOTE:** Available in v1.146.0+.
 ///
 /// ## Example Usage
 ///
@@ -196,7 +196,7 @@ Future<GetApplicationGroupsResult> getApplicationGroups(
 
 /// This data source provides the Oos Applications of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.145.0+.
+/// &gt; **NOTE:** Available in v1.145.0+.
 ///
 /// ## Example Usage
 ///
@@ -336,7 +336,7 @@ Future<GetApplicationsResult> getApplications(
 
 /// This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in v1.93.0+.
+/// &gt; **NOTE:** Available in v1.93.0+.
 ///
 /// ## Example Usage
 ///
@@ -477,7 +477,7 @@ Future<GetExecutionsResult> getExecutions(
 
 /// This data source provides the Oos Parameters of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.147.0.
+/// &gt; **NOTE:** Available since v1.147.0.
 ///
 /// ## Example Usage
 ///
@@ -745,7 +745,7 @@ Future<GetParametersResult> getParameters(
 
 /// This data source provides the Oos Patch Baselines of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.146.0+.
+/// &gt; **NOTE:** Available in v1.146.0+.
 /// [args] Arguments passed to this invoke. {@macro pulumi_oos_get_patch_baselines_get_patch_baselines_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPatchBaselinesResult> getPatchBaselines(
@@ -763,7 +763,7 @@ Future<GetPatchBaselinesResult> getPatchBaselines(
 
 /// This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.147.0.
+/// &gt; **NOTE:** Available since v1.147.0.
 ///
 /// ## Example Usage
 ///
@@ -1031,7 +1031,7 @@ Future<GetSecretParametersResult> getSecretParameters(
 
 /// This data source provides the Oos State Configurations of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.147.0+.
+/// &gt; **NOTE:** Available in v1.147.0+.
 ///
 /// ## Example Usage
 ///
@@ -1141,7 +1141,7 @@ Future<GetStateConfigurationsResult> getStateConfigurations(
 
 /// This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available in v1.92.0+.
+/// &gt; **NOTE:** Available in v1.92.0+.
 ///
 /// ## Example Usage
 ///

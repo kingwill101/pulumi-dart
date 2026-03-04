@@ -4,16 +4,15 @@ enum IndexConfigType {
   indexTypeString("INDEX_TYPE_STRING"),
   indexTypeInteger("INDEX_TYPE_INTEGER");
 
-  const IndexConfigType(this.value);
-  final String value;
+  const IndexConfigType(this.wireValue);
+  final String wireValue;
 
   static IndexConfigType fromValue(String value) {
     for (final item in IndexConfigType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IndexConfigType value: $value');
   }
 }
-

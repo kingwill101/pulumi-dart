@@ -170,20 +170,28 @@ import 'api_issue_args.dart';
 class ApiIssue extends pulumi.CustomResource {
   /// A resource identifier for the API the issue was created for.
   late final pulumi.Output<String?> apiId;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Date and time when the issue was created.
   late final pulumi.Output<String?> createdDate;
+
   /// Text describing the issue.
   late final pulumi.Output<String> description;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Status of the issue.
   late final pulumi.Output<String?> state;
+
   /// The issue title.
   late final pulumi.Output<String> title;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// A resource identifier for the user created the issue.
   late final pulumi.Output<String> userId;
 
@@ -196,19 +204,19 @@ class ApiIssue extends pulumi.CustomResource {
     ApiIssueArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:ApiIssue',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiId = registerOutput<String?>('apiId');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createdDate = registerOutput<String?>('createdDate');
-    this.description = registerOutput<String>('description');
+         'azure-native:apimanagement:ApiIssue',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiId = registerOutput<String?>('apiId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String?>('createdDate');
+    description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
-    this.state = registerOutput<String?>('state');
-    this.title = registerOutput<String>('title');
-    this.type = registerOutput<String>('type');
-    this.userId = registerOutput<String>('userId');
+    state = registerOutput<String?>('state');
+    title = registerOutput<String>('title');
+    type = registerOutput<String>('type');
+    userId = registerOutput<String>('userId');
   }
 }

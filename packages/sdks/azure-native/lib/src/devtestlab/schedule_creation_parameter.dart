@@ -10,22 +10,31 @@ import 'week_details.dart';
 class ScheduleCreationParameter {
   /// If the schedule will occur once each day of the week, specify the daily recurrence.
   final pulumi.Input<DayDetails>? dailyRecurrence;
+
   /// If the schedule will occur multiple times a day, specify the hourly recurrence.
   final pulumi.Input<HourDetails>? hourlyRecurrence;
+
   /// The name of the virtual machine or environment
   final pulumi.Input<String>? name;
+
   /// Notification settings.
   final pulumi.Input<NotificationSettings>? notificationSettings;
+
   /// The status of the schedule (i.e. Enabled, Disabled)
   final pulumi.Input<String>? status;
+
   /// The tags of the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The resource ID to which the schedule belongs
   final pulumi.Input<String>? targetResourceId;
+
   /// The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
   final pulumi.Input<String>? taskType;
-  /// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
+
+  /// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection&lt;string&gt; TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
   final pulumi.Input<String>? timeZoneId;
+
   /// If the schedule will occur only some days of the week, specify the weekly recurrence.
   final pulumi.Input<WeekDetails>? weeklyRecurrence;
 
@@ -38,7 +47,7 @@ class ScheduleCreationParameter {
   /// [tags] The tags of the resource.
   /// [targetResourceId] The resource ID to which the schedule belongs
   /// [taskType] The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
-  /// [timeZoneId] The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
+  /// [timeZoneId] The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection&lt;string&gt; TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
   /// [weeklyRecurrence] If the schedule will occur only some days of the week, specify the weekly recurrence.
   ScheduleCreationParameter({
     this.dailyRecurrence,
@@ -55,32 +64,99 @@ class ScheduleCreationParameter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dailyRecurrence': ?pulumi.Input.mapOptionalInputValue<DayDetails, Map<String, dynamic>>(dailyRecurrence, (value) => value.toMap()),
-      'hourlyRecurrence': ?pulumi.Input.mapOptionalInputValue<HourDetails, Map<String, dynamic>>(hourlyRecurrence, (value) => value.toMap()),
+      'dailyRecurrence':
+          ?pulumi.Input.mapOptionalInputValue<DayDetails, Map<String, dynamic>>(
+            dailyRecurrence,
+            (value) => value.toMap(),
+          ),
+      'hourlyRecurrence':
+          ?pulumi.Input.mapOptionalInputValue<
+            HourDetails,
+            Map<String, dynamic>
+          >(hourlyRecurrence, (value) => value.toMap()),
       'name': ?name,
-      'notificationSettings': ?pulumi.Input.mapOptionalInputValue<NotificationSettings, Map<String, dynamic>>(notificationSettings, (value) => value.toMap()),
+      'notificationSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            NotificationSettings,
+            Map<String, dynamic>
+          >(notificationSettings, (value) => value.toMap()),
       'status': ?status,
       'tags': ?tags,
       'targetResourceId': ?targetResourceId,
       'taskType': ?taskType,
       'timeZoneId': ?timeZoneId,
-      'weeklyRecurrence': ?pulumi.Input.mapOptionalInputValue<WeekDetails, Map<String, dynamic>>(weeklyRecurrence, (value) => value.toMap()),
+      'weeklyRecurrence':
+          ?pulumi.Input.mapOptionalInputValue<
+            WeekDetails,
+            Map<String, dynamic>
+          >(weeklyRecurrence, (value) => value.toMap()),
     };
   }
 
   factory ScheduleCreationParameter.fromMap(Map<String, dynamic> map) {
     return ScheduleCreationParameter(
-      dailyRecurrence: map['dailyRecurrence'] == null ? null : (DayDetails.fromMap((map['dailyRecurrence']! as Map).cast<String, dynamic>())).input(),
-      hourlyRecurrence: map['hourlyRecurrence'] == null ? null : (HourDetails.fromMap((map['hourlyRecurrence']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      notificationSettings: map['notificationSettings'] == null ? null : (NotificationSettings.fromMap((map['notificationSettings']! as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
-      taskType: map['taskType'] == null ? null : (map['taskType']! as String).input(),
-      timeZoneId: map['timeZoneId'] == null ? null : (map['timeZoneId']! as String).input(),
-      weeklyRecurrence: map['weeklyRecurrence'] == null ? null : (WeekDetails.fromMap((map['weeklyRecurrence']! as Map).cast<String, dynamic>())).input(),
+      dailyRecurrence: (() {
+        final guardedValue = map['dailyRecurrence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DayDetails.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      hourlyRecurrence: (() {
+        final guardedValue = map['hourlyRecurrence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HourDetails.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notificationSettings: (() {
+        final guardedValue = map['notificationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NotificationSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targetResourceId: (() {
+        final guardedValue = map['targetResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      taskType: (() {
+        final guardedValue = map['taskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeZoneId: (() {
+        final guardedValue = map['timeZoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      weeklyRecurrence: (() {
+        final guardedValue = map['weeklyRecurrence'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WeekDetails.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

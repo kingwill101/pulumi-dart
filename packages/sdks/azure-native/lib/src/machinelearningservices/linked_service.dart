@@ -184,14 +184,19 @@ import 'linked_service_props_response.dart';
 class LinkedService extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Identity for the resource.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// location of the linked service.
   late final pulumi.Output<String?> location;
+
   /// Friendly name of the linked service.
   late final pulumi.Output<String> name;
+
   /// LinkedService specific properties.
   late final pulumi.Output<LinkedServicePropsResponse> properties;
+
   /// Resource type of linked service.
   late final pulumi.Output<String> type;
 
@@ -204,16 +209,16 @@ class LinkedService extends pulumi.CustomResource {
     LinkedServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:machinelearningservices:LinkedService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+         'azure-native:machinelearningservices:LinkedService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<IdentityResponse?>('identity');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<LinkedServicePropsResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<LinkedServicePropsResponse>('properties');
+    type = registerOutput<String>('type');
   }
 }

@@ -8,20 +8,19 @@ class GcpIntegrationsFireBaseHosting {
 
   /// Creates a new [GcpIntegrationsFireBaseHosting].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsFireBaseHosting({
-    this.metricsPollingInterval,
-  });
+  GcpIntegrationsFireBaseHosting({this.metricsPollingInterval});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'metricsPollingInterval': ?metricsPollingInterval,
-    };
+    return <String, dynamic>{'metricsPollingInterval': ?metricsPollingInterval};
   }
 
   factory GcpIntegrationsFireBaseHosting.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsFireBaseHosting(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
+      metricsPollingInterval: (() {
+        final guardedValue = map['metricsPollingInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

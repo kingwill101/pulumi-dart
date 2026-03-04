@@ -1,5 +1,3 @@
-library module_waf;
-
 export 'waf/certificate.dart';
 export 'waf/certificate_args.dart';
 export 'waf/certificate_state.dart';

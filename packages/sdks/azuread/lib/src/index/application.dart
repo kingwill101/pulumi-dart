@@ -1,12 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_api.dart';
-import 'application_app_role.dart';
 import 'application_args.dart';
-import 'application_feature_tag.dart';
 import 'application_optional_claims.dart';
 import 'application_password.dart';
 import 'application_public_client.dart';
-import 'application_required_resource_access.dart';
 import 'application_single_page_application.dart';
 import 'application_state.dart';
 import 'application_web.dart';
@@ -21,7 +18,7 @@ import 'application_web.dart';
 ///
 /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
 ///
-/// > When using the `Application.ReadWrite.OwnedBy` application role, you should ensure that the principal being used to run Terraform is included in the `owners` property.
+/// &gt; When using the `Application.ReadWrite.OwnedBy` application role, you should ensure that the principal being used to run Terraform is included in the `owners` property.
 ///
 /// Additionally, you may need the `User.Read.All` application role when including user principals in the `owners` property.
 ///
@@ -1225,87 +1222,123 @@ import 'application_web.dart';
 class Application extends pulumi.CustomResource {
   /// An `api` block as documented below, which configures API related settings for this application.
   late final pulumi.Output<ApplicationApi?> api;
+
   /// A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
   late final pulumi.Output<Map<String, String>> appRoleIds;
+
   /// A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-  late final pulumi.Output<List<ApplicationAppRole>?> appRoles;
+  late final pulumi.Output<List<Map<String, dynamic>>?> appRoles;
+
   /// The Client ID for the application.
   late final pulumi.Output<String> clientId;
+
   /// A description of the application, as shown to end users.
   late final pulumi.Output<String?> description;
+
   /// Specifies whether this application supports device authentication without a user. Defaults to `false`.
   late final pulumi.Output<bool?> deviceOnlyAuthEnabled;
+
   /// Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
   late final pulumi.Output<String> disabledByMicrosoft;
+
   /// The display name for the application.
   late final pulumi.Output<String> displayName;
+
   /// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
   late final pulumi.Output<bool?> fallbackPublicClientEnabled;
+
   /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
   ///
-  /// > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
-  late final pulumi.Output<List<ApplicationFeatureTag>> featureTags;
+  /// &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
+  late final pulumi.Output<List<Map<String, dynamic>>> featureTags;
+
   /// A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
   late final pulumi.Output<List<String>?> groupMembershipClaims;
+
   /// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
   late final pulumi.Output<List<String>?> identifierUris;
+
   /// A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
   late final pulumi.Output<String?> logoImage;
+
   /// CDN URL to the application's logo, as uploaded with the `logo_image` property.
   late final pulumi.Output<String> logoUrl;
+
   /// URL of the application's marketing page.
   late final pulumi.Output<String?> marketingUrl;
+
   /// User-specified notes relevant for the management of the application.
   late final pulumi.Output<String?> notes;
+
   /// A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
   late final pulumi.Output<Map<String, String>> oauth2PermissionScopeIds;
+
   /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
   late final pulumi.Output<bool?> oauth2PostResponseRequired;
+
   /// The application's object ID.
   late final pulumi.Output<String> objectId;
+
   /// An `optional_claims` block as documented below.
   late final pulumi.Output<ApplicationOptionalClaims?> optionalClaims;
+
   /// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
   ///
-  /// > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
+  /// &gt; **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
   late final pulumi.Output<List<String>?> owners;
+
   /// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
   ///
-  /// > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
+  /// &gt; **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
   late final pulumi.Output<ApplicationPassword?> password;
+
   /// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
   late final pulumi.Output<bool?> preventDuplicateNames;
+
   /// URL of the application's privacy statement.
   late final pulumi.Output<String?> privacyStatementUrl;
+
   /// A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
   late final pulumi.Output<ApplicationPublicClient?> publicClient;
+
   /// The verified publisher domain for the application.
   late final pulumi.Output<String> publisherDomain;
+
   /// A collection of `required_resource_access` blocks as documented below.
-  late final pulumi.Output<List<ApplicationRequiredResourceAccess>?> requiredResourceAccesses;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  requiredResourceAccesses;
+
   /// References application context information from a Service or Asset Management database.
   late final pulumi.Output<String?> serviceManagementReference;
+
   /// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
   ///
-  /// > **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
+  /// &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
   late final pulumi.Output<String?> signInAudience;
+
   /// A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
-  late final pulumi.Output<ApplicationSinglePageApplication?> singlePageApplication;
+  late final pulumi.Output<ApplicationSinglePageApplication?>
+  singlePageApplication;
+
   /// URL of the application's support page.
   late final pulumi.Output<String?> supportUrl;
+
   /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
   ///
-  /// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+  /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
   late final pulumi.Output<List<String>> tags;
+
   /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
   ///
-  /// > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
+  /// &gt; **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
   late final pulumi.Output<String> templateId;
+
   /// URL of the application's terms of service statement.
   late final pulumi.Output<String?> termsOfServiceUrl;
+
   /// A `web` block as documented below, which configures web related settings for this application.
   ///
-  /// > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
+  /// &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
   late final pulumi.Output<ApplicationWeb?> web;
 
   /// Creates a new [Application].
@@ -1317,46 +1350,62 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/application:Application',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.api = registerOutput<ApplicationApi?>('api');
-    this.appRoleIds = registerOutput<Map<String, String>>('appRoleIds');
-    this.appRoles = registerOutput<List<ApplicationAppRole>?>('appRoles');
-    this.clientId = registerOutput<String>('clientId');
-    this.description = registerOutput<String?>('description');
-    this.deviceOnlyAuthEnabled = registerOutput<bool?>('deviceOnlyAuthEnabled');
-    this.disabledByMicrosoft = registerOutput<String>('disabledByMicrosoft');
-    this.displayName = registerOutput<String>('displayName');
-    this.fallbackPublicClientEnabled = registerOutput<bool?>('fallbackPublicClientEnabled');
-    this.featureTags = registerOutput<List<ApplicationFeatureTag>>('featureTags');
-    this.groupMembershipClaims = registerOutput<List<String>?>('groupMembershipClaims');
-    this.identifierUris = registerOutput<List<String>?>('identifierUris');
-    this.logoImage = registerOutput<String?>('logoImage');
-    this.logoUrl = registerOutput<String>('logoUrl');
-    this.marketingUrl = registerOutput<String?>('marketingUrl');
-    this.notes = registerOutput<String?>('notes');
-    this.oauth2PermissionScopeIds = registerOutput<Map<String, String>>('oauth2PermissionScopeIds');
-    this.oauth2PostResponseRequired = registerOutput<bool?>('oauth2PostResponseRequired');
-    this.objectId = registerOutput<String>('objectId');
-    this.optionalClaims = registerOutput<ApplicationOptionalClaims?>('optionalClaims');
-    this.owners = registerOutput<List<String>?>('owners');
-    this.password = registerOutput<ApplicationPassword?>('password');
-    this.preventDuplicateNames = registerOutput<bool?>('preventDuplicateNames');
-    this.privacyStatementUrl = registerOutput<String?>('privacyStatementUrl');
-    this.publicClient = registerOutput<ApplicationPublicClient?>('publicClient');
-    this.publisherDomain = registerOutput<String>('publisherDomain');
-    this.requiredResourceAccesses = registerOutput<List<ApplicationRequiredResourceAccess>?>('requiredResourceAccesses');
-    this.serviceManagementReference = registerOutput<String?>('serviceManagementReference');
-    this.signInAudience = registerOutput<String?>('signInAudience');
-    this.singlePageApplication = registerOutput<ApplicationSinglePageApplication?>('singlePageApplication');
-    this.supportUrl = registerOutput<String?>('supportUrl');
-    this.tags = registerOutput<List<String>>('tags');
-    this.templateId = registerOutput<String>('templateId');
-    this.termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
-    this.web = registerOutput<ApplicationWeb?>('web');
+         'azuread:index/application:Application',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    api = registerOutput<ApplicationApi?>('api');
+    appRoleIds = registerOutput<Map<String, String>>('appRoleIds');
+    appRoles = registerOutput<List<Map<String, dynamic>>?>('appRoles');
+    clientId = registerOutput<String>('clientId');
+    description = registerOutput<String?>('description');
+    deviceOnlyAuthEnabled = registerOutput<bool?>('deviceOnlyAuthEnabled');
+    disabledByMicrosoft = registerOutput<String>('disabledByMicrosoft');
+    displayName = registerOutput<String>('displayName');
+    fallbackPublicClientEnabled = registerOutput<bool?>(
+      'fallbackPublicClientEnabled',
+    );
+    featureTags = registerOutput<List<Map<String, dynamic>>>('featureTags');
+    groupMembershipClaims = registerOutput<List<String>?>(
+      'groupMembershipClaims',
+    );
+    identifierUris = registerOutput<List<String>?>('identifierUris');
+    logoImage = registerOutput<String?>('logoImage');
+    logoUrl = registerOutput<String>('logoUrl');
+    marketingUrl = registerOutput<String?>('marketingUrl');
+    notes = registerOutput<String?>('notes');
+    oauth2PermissionScopeIds = registerOutput<Map<String, String>>(
+      'oauth2PermissionScopeIds',
+    );
+    oauth2PostResponseRequired = registerOutput<bool?>(
+      'oauth2PostResponseRequired',
+    );
+    objectId = registerOutput<String>('objectId');
+    optionalClaims = registerOutput<ApplicationOptionalClaims?>(
+      'optionalClaims',
+    );
+    owners = registerOutput<List<String>?>('owners');
+    password = registerOutput<ApplicationPassword?>('password');
+    preventDuplicateNames = registerOutput<bool?>('preventDuplicateNames');
+    privacyStatementUrl = registerOutput<String?>('privacyStatementUrl');
+    publicClient = registerOutput<ApplicationPublicClient?>('publicClient');
+    publisherDomain = registerOutput<String>('publisherDomain');
+    requiredResourceAccesses = registerOutput<List<Map<String, dynamic>>?>(
+      'requiredResourceAccesses',
+    );
+    serviceManagementReference = registerOutput<String?>(
+      'serviceManagementReference',
+    );
+    signInAudience = registerOutput<String?>('signInAudience');
+    singlePageApplication = registerOutput<ApplicationSinglePageApplication?>(
+      'singlePageApplication',
+    );
+    supportUrl = registerOutput<String?>('supportUrl');
+    tags = registerOutput<List<String>>('tags');
+    templateId = registerOutput<String>('templateId');
+    termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
+    web = registerOutput<ApplicationWeb?>('web');
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -1377,45 +1426,61 @@ class Application extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/application:Application',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.api = registerOutput<ApplicationApi?>('api');
-    this.appRoleIds = registerOutput<Map<String, String>>('appRoleIds');
-    this.appRoles = registerOutput<List<ApplicationAppRole>?>('appRoles');
-    this.clientId = registerOutput<String>('clientId');
-    this.description = registerOutput<String?>('description');
-    this.deviceOnlyAuthEnabled = registerOutput<bool?>('deviceOnlyAuthEnabled');
-    this.disabledByMicrosoft = registerOutput<String>('disabledByMicrosoft');
-    this.displayName = registerOutput<String>('displayName');
-    this.fallbackPublicClientEnabled = registerOutput<bool?>('fallbackPublicClientEnabled');
-    this.featureTags = registerOutput<List<ApplicationFeatureTag>>('featureTags');
-    this.groupMembershipClaims = registerOutput<List<String>?>('groupMembershipClaims');
-    this.identifierUris = registerOutput<List<String>?>('identifierUris');
-    this.logoImage = registerOutput<String?>('logoImage');
-    this.logoUrl = registerOutput<String>('logoUrl');
-    this.marketingUrl = registerOutput<String?>('marketingUrl');
-    this.notes = registerOutput<String?>('notes');
-    this.oauth2PermissionScopeIds = registerOutput<Map<String, String>>('oauth2PermissionScopeIds');
-    this.oauth2PostResponseRequired = registerOutput<bool?>('oauth2PostResponseRequired');
-    this.objectId = registerOutput<String>('objectId');
-    this.optionalClaims = registerOutput<ApplicationOptionalClaims?>('optionalClaims');
-    this.owners = registerOutput<List<String>?>('owners');
-    this.password = registerOutput<ApplicationPassword?>('password');
-    this.preventDuplicateNames = registerOutput<bool?>('preventDuplicateNames');
-    this.privacyStatementUrl = registerOutput<String?>('privacyStatementUrl');
-    this.publicClient = registerOutput<ApplicationPublicClient?>('publicClient');
-    this.publisherDomain = registerOutput<String>('publisherDomain');
-    this.requiredResourceAccesses = registerOutput<List<ApplicationRequiredResourceAccess>?>('requiredResourceAccesses');
-    this.serviceManagementReference = registerOutput<String?>('serviceManagementReference');
-    this.signInAudience = registerOutput<String?>('signInAudience');
-    this.singlePageApplication = registerOutput<ApplicationSinglePageApplication?>('singlePageApplication');
-    this.supportUrl = registerOutput<String?>('supportUrl');
-    this.tags = registerOutput<List<String>>('tags');
-    this.templateId = registerOutput<String>('templateId');
-    this.termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
-    this.web = registerOutput<ApplicationWeb?>('web');
+         'azuread:index/application:Application',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    api = registerOutput<ApplicationApi?>('api');
+    appRoleIds = registerOutput<Map<String, String>>('appRoleIds');
+    appRoles = registerOutput<List<Map<String, dynamic>>?>('appRoles');
+    clientId = registerOutput<String>('clientId');
+    description = registerOutput<String?>('description');
+    deviceOnlyAuthEnabled = registerOutput<bool?>('deviceOnlyAuthEnabled');
+    disabledByMicrosoft = registerOutput<String>('disabledByMicrosoft');
+    displayName = registerOutput<String>('displayName');
+    fallbackPublicClientEnabled = registerOutput<bool?>(
+      'fallbackPublicClientEnabled',
+    );
+    featureTags = registerOutput<List<Map<String, dynamic>>>('featureTags');
+    groupMembershipClaims = registerOutput<List<String>?>(
+      'groupMembershipClaims',
+    );
+    identifierUris = registerOutput<List<String>?>('identifierUris');
+    logoImage = registerOutput<String?>('logoImage');
+    logoUrl = registerOutput<String>('logoUrl');
+    marketingUrl = registerOutput<String?>('marketingUrl');
+    notes = registerOutput<String?>('notes');
+    oauth2PermissionScopeIds = registerOutput<Map<String, String>>(
+      'oauth2PermissionScopeIds',
+    );
+    oauth2PostResponseRequired = registerOutput<bool?>(
+      'oauth2PostResponseRequired',
+    );
+    objectId = registerOutput<String>('objectId');
+    optionalClaims = registerOutput<ApplicationOptionalClaims?>(
+      'optionalClaims',
+    );
+    owners = registerOutput<List<String>?>('owners');
+    password = registerOutput<ApplicationPassword?>('password');
+    preventDuplicateNames = registerOutput<bool?>('preventDuplicateNames');
+    privacyStatementUrl = registerOutput<String?>('privacyStatementUrl');
+    publicClient = registerOutput<ApplicationPublicClient?>('publicClient');
+    publisherDomain = registerOutput<String>('publisherDomain');
+    requiredResourceAccesses = registerOutput<List<Map<String, dynamic>>?>(
+      'requiredResourceAccesses',
+    );
+    serviceManagementReference = registerOutput<String?>(
+      'serviceManagementReference',
+    );
+    signInAudience = registerOutput<String?>('signInAudience');
+    singlePageApplication = registerOutput<ApplicationSinglePageApplication?>(
+      'singlePageApplication',
+    );
+    supportUrl = registerOutput<String?>('supportUrl');
+    tags = registerOutput<List<String>>('tags');
+    templateId = registerOutput<String>('templateId');
+    termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
+    web = registerOutput<ApplicationWeb?>('web');
   }
 }

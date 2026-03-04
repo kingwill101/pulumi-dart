@@ -7,6 +7,7 @@ import 'get_accounts_account.dart';
 class GetAccountsResult {
   final List<GetAccountsAccount> accounts;
   final String dbInstanceId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -37,7 +38,11 @@ class GetAccountsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accounts': pulumi.Input.encodeList<GetAccountsAccount, Map<String, dynamic>>(accounts, (value) => value.toMap()),
+      'accounts':
+          pulumi.Input.encodeList<GetAccountsAccount, Map<String, dynamic>>(
+            accounts,
+            (value) => value.toMap(),
+          ),
       'dbInstanceId': dbInstanceId,
       'id': id,
       'ids': ids,
@@ -50,15 +55,30 @@ class GetAccountsResult {
 
   factory GetAccountsResult.fromMap(Map<String, dynamic> map) {
     return GetAccountsResult(
-      accounts: pulumi.Input.decodeList<GetAccountsAccount>(map['accounts'], (value) => GetAccountsAccount.fromMap((value as Map).cast<String, dynamic>())),
+      accounts: pulumi.Input.decodeList<GetAccountsAccount>(
+        map['accounts']!,
+        (value) =>
+            GetAccountsAccount.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       dbInstanceId: map['dbInstanceId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

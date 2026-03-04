@@ -3,16 +3,15 @@ enum SecuritySettingRedactionScope {
   redactionScopeUnspecified("REDACTION_SCOPE_UNSPECIFIED"),
   redactDiskStorage("REDACT_DISK_STORAGE");
 
-  const SecuritySettingRedactionScope(this.value);
-  final String value;
+  const SecuritySettingRedactionScope(this.wireValue);
+  final String wireValue;
 
   static SecuritySettingRedactionScope fromValue(String value) {
     for (final item in SecuritySettingRedactionScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SecuritySettingRedactionScope value: $value');
   }
 }
-

@@ -4,16 +4,15 @@ enum ManagedIdentityType {
   valueSystemAssigned("SystemAssigned"),
   valueUserAssigned("UserAssigned");
 
-  const ManagedIdentityType(this.value);
-  final String value;
+  const ManagedIdentityType(this.wireValue);
+  final String wireValue;
 
   static ManagedIdentityType fromValue(String value) {
     for (final item in ManagedIdentityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManagedIdentityType value: $value');
   }
 }
-

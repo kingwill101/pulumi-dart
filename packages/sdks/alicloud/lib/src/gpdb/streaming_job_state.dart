@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StreamingJobState {
   /// The name of the database account.
   final pulumi.Input<String>? account;
+
   /// The delivery guarantee setting.
   ///
   /// Valid values:
@@ -13,48 +14,68 @@ class StreamingJobState {
   /// - ATLEAST
   /// - EXACTLY
   final pulumi.Input<String>? consistency;
+
   /// The creation time of the resource
   final pulumi.Input<String>? createTime;
+
   /// The data source ID.
   final pulumi.Input<String>? dataSourceId;
+
   /// The instance ID.
   final pulumi.Input<String>? dbInstanceId;
+
   /// Target Field
   final pulumi.Input<List<String>>? destColumns;
+
   /// The name of the destination database.
   final pulumi.Input<String>? destDatabase;
+
   /// Target Schema
   final pulumi.Input<String>? destSchema;
+
   /// The name of the destination table.
   final pulumi.Input<String>? destTable;
+
   /// The number of allowed error rows. Write failures occur when Kafka data does not match the destination table in AnalyticDB for PostgreSQL. If the specified value is exceeded, the job fails.
   final pulumi.Input<int>? errorLimitCount;
+
   /// Automatic offset reset
   final pulumi.Input<String>? fallbackOffset;
+
   /// Group Name
   final pulumi.Input<String>? groupName;
+
   /// The YAML configuration file of the job. This parameter must be specified when Mode is set to professional.
   final pulumi.Input<String>? jobConfig;
+
   /// The description of the job.
   final pulumi.Input<String>? jobDescription;
+
   /// The job ID.
   final pulumi.Input<String>? jobId;
+
   /// The name of the job.
   final pulumi.Input<String>? jobName;
+
   /// Match Field
   final pulumi.Input<List<String>>? matchColumns;
+
   /// The configuration mode. Valid values:
   ///
   /// 1.  basic: In basic mode, you must configure the configuration parameters.
   ///
   /// 2.  professional: In professional mode, you can submit a YAML configuration file.
   final pulumi.Input<String>? mode;
+
   /// The password of the database account.
   final pulumi.Input<String>? password;
+
   /// Source Field
   final pulumi.Input<List<String>>? srcColumns;
+
   /// Service status, value:
   final pulumi.Input<String>? status;
+
   /// Specifies whether to test the real-time job. Valid values:
   ///
   /// - true
@@ -62,8 +83,10 @@ class StreamingJobState {
   ///
   /// Default value: false.
   final pulumi.Input<bool>? tryRun;
+
   /// Update Field
   final pulumi.Input<List<String>>? updateColumns;
+
   /// The write mode.
   ///
   /// Valid values:
@@ -156,31 +179,126 @@ class StreamingJobState {
 
   factory StreamingJobState.fromMap(Map<String, dynamic> map) {
     return StreamingJobState(
-      account: map['account'] == null ? null : (map['account']! as String).input(),
-      consistency: map['consistency'] == null ? null : (map['consistency']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId']! as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
-      destColumns: map['destColumns'] == null ? null : ((map['destColumns']! as List).cast<String>()).input(),
-      destDatabase: map['destDatabase'] == null ? null : (map['destDatabase']! as String).input(),
-      destSchema: map['destSchema'] == null ? null : (map['destSchema']! as String).input(),
-      destTable: map['destTable'] == null ? null : (map['destTable']! as String).input(),
-      errorLimitCount: map['errorLimitCount'] == null ? null : (map['errorLimitCount']! as int).input(),
-      fallbackOffset: map['fallbackOffset'] == null ? null : (map['fallbackOffset']! as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
-      jobConfig: map['jobConfig'] == null ? null : (map['jobConfig']! as String).input(),
-      jobDescription: map['jobDescription'] == null ? null : (map['jobDescription']! as String).input(),
-      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
-      jobName: map['jobName'] == null ? null : (map['jobName']! as String).input(),
-      matchColumns: map['matchColumns'] == null ? null : ((map['matchColumns']! as List).cast<String>()).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      srcColumns: map['srcColumns'] == null ? null : ((map['srcColumns']! as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tryRun: map['tryRun'] == null ? null : (map['tryRun']! as bool).input(),
-      updateColumns: map['updateColumns'] == null ? null : ((map['updateColumns']! as List).cast<String>()).input(),
-      writeMode: map['writeMode'] == null ? null : (map['writeMode']! as String).input(),
+      account: (() {
+        final guardedValue = map['account'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      consistency: (() {
+        final guardedValue = map['consistency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataSourceId: (() {
+        final guardedValue = map['dataSourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceId: (() {
+        final guardedValue = map['dbInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destColumns: (() {
+        final guardedValue = map['destColumns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      destDatabase: (() {
+        final guardedValue = map['destDatabase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destSchema: (() {
+        final guardedValue = map['destSchema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destTable: (() {
+        final guardedValue = map['destTable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      errorLimitCount: (() {
+        final guardedValue = map['errorLimitCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      fallbackOffset: (() {
+        final guardedValue = map['fallbackOffset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobConfig: (() {
+        final guardedValue = map['jobConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobDescription: (() {
+        final guardedValue = map['jobDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobId: (() {
+        final guardedValue = map['jobId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobName: (() {
+        final guardedValue = map['jobName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      matchColumns: (() {
+        final guardedValue = map['matchColumns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      srcColumns: (() {
+        final guardedValue = map['srcColumns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tryRun: (() {
+        final guardedValue = map['tryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      updateColumns: (() {
+        final guardedValue = map['updateColumns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      writeMode: (() {
+        final guardedValue = map['writeMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

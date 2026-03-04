@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScriptStackFrameResponse {
   /// One-based end column.
   final pulumi.Input<int> endColumn;
+
   /// One-based end line.
   final pulumi.Input<int> endLine;
+
   /// Name of the active procedure, empty if in a top-level script.
   final pulumi.Input<String> procedureId;
+
   /// One-based start column.
   final pulumi.Input<int> startColumn;
+
   /// One-based start line.
   final pulumi.Input<int> startLine;
+
   /// Text of the current statement/expression.
   final pulumi.Input<String> text;
 
@@ -45,13 +50,12 @@ class ScriptStackFrameResponse {
 
   factory ScriptStackFrameResponse.fromMap(Map<String, dynamic> map) {
     return ScriptStackFrameResponse(
-      endColumn: (map['endColumn'] as int).input(),
-      endLine: (map['endLine'] as int).input(),
-      procedureId: (map['procedureId'] as String).input(),
-      startColumn: (map['startColumn'] as int).input(),
-      startLine: (map['startLine'] as int).input(),
-      text: (map['text'] as String).input(),
+      endColumn: pulumi.Input.fromValue(map['endColumn'] as int),
+      endLine: pulumi.Input.fromValue(map['endLine'] as int),
+      procedureId: pulumi.Input.fromValue(map['procedureId'] as String),
+      startColumn: pulumi.Input.fromValue(map['startColumn'] as int),
+      startLine: pulumi.Input.fromValue(map['startLine'] as int),
+      text: pulumi.Input.fromValue(map['text'] as String),
     );
   }
 }
-

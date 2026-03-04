@@ -3,16 +3,15 @@ enum Distribution {
   byLogStream("ByLogStream"),
   random("Random");
 
-  const Distribution(this.value);
-  final String value;
+  const Distribution(this.wireValue);
+  final String wireValue;
 
   static Distribution fromValue(String value) {
     for (final item in Distribution.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Distribution value: $value');
   }
 }
-

@@ -7,8 +7,10 @@ import 'virtual_machine_scale_set_network_configuration_properties.dart';
 class VirtualMachineScaleSetNetworkConfiguration {
   /// The network configuration name.
   final pulumi.Input<String> name;
+
   /// Describes a virtual machine scale set network profile's IP configuration.
-  final pulumi.Input<VirtualMachineScaleSetNetworkConfigurationProperties>? properties;
+  final pulumi.Input<VirtualMachineScaleSetNetworkConfigurationProperties>?
+  properties;
 
   /// Creates a new [VirtualMachineScaleSetNetworkConfiguration].
   /// [name] The network configuration name.
@@ -21,15 +23,28 @@ class VirtualMachineScaleSetNetworkConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<VirtualMachineScaleSetNetworkConfigurationProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualMachineScaleSetNetworkConfigurationProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
     };
   }
 
-  factory VirtualMachineScaleSetNetworkConfiguration.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineScaleSetNetworkConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineScaleSetNetworkConfiguration(
-      name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (VirtualMachineScaleSetNetworkConfigurationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualMachineScaleSetNetworkConfigurationProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

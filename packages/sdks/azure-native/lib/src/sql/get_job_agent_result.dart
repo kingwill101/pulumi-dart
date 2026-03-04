@@ -7,22 +7,31 @@ import 'sku_response.dart';
 class GetJobAgentResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource ID of the database to store job metadata in.
   final String databaseId;
+
   /// Resource ID.
   final String id;
+
   /// The identity of the job agent.
   final JobAgentIdentityResponse? identity;
+
   /// Resource location.
   final String location;
+
   /// Resource name.
   final String name;
+
   /// The name and tier of the SKU.
   final SkuResponse? sku;
+
   /// The state of the job agent.
   final String state;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// Resource type.
   final String type;
 
@@ -55,10 +64,10 @@ class GetJobAgentResult {
       'azureApiVersion': azureApiVersion,
       'databaseId': databaseId,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'location': location,
       'name': name,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?sku?.toMap(),
       'state': state,
       'tags': ?tags,
       'type': type,
@@ -70,14 +79,29 @@ class GetJobAgentResult {
       azureApiVersion: map['azureApiVersion'] as String,
       databaseId: map['databaseId'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : JobAgentIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return JobAgentIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return SkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       state: map['state'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterMasterUserSecret {
   /// ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
   final pulumi.Input<String>? kmsKeyId;
+
   /// Amazon Resource Name (ARN) of the secret.
   final pulumi.Input<String>? secretArn;
+
   /// Status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
   final pulumi.Input<String>? secretStatus;
 
@@ -14,11 +16,7 @@ class ClusterMasterUserSecret {
   /// [kmsKeyId] ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
   /// [secretArn] Amazon Resource Name (ARN) of the secret.
   /// [secretStatus] Status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
-  ClusterMasterUserSecret({
-    this.kmsKeyId,
-    this.secretArn,
-    this.secretStatus,
-  });
+  ClusterMasterUserSecret({this.kmsKeyId, this.secretArn, this.secretStatus});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,10 +28,21 @@ class ClusterMasterUserSecret {
 
   factory ClusterMasterUserSecret.fromMap(Map<String, dynamic> map) {
     return ClusterMasterUserSecret(
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
-      secretArn: map['secretArn'] == null ? null : ((map['secretArn'] as String).input()).input(),
-      secretStatus: map['secretStatus'] == null ? null : ((map['secretStatus'] as String).input()).input(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretArn: (() {
+        final guardedValue = map['secretArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretStatus: (() {
+        final guardedValue = map['secretStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

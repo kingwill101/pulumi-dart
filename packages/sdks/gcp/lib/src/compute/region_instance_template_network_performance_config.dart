@@ -18,10 +18,13 @@ class RegionInstanceTemplateNetworkPerformanceConfig {
     };
   }
 
-  factory RegionInstanceTemplateNetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
+  factory RegionInstanceTemplateNetworkPerformanceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionInstanceTemplateNetworkPerformanceConfig(
-      totalEgressBandwidthTier: (map['totalEgressBandwidthTier'] as String).input(),
+      totalEgressBandwidthTier: pulumi.Input.fromValue(
+        map['totalEgressBandwidthTier'] as String,
+      ),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationScalingRuleScalingRuleMetricScaleUpRules {
   /// Whether shrinkage is prohibited.
   final pulumi.Input<bool>? disabled;
+
   /// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
   final pulumi.Input<int>? stabilizationWindowSeconds;
+
   /// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
   final pulumi.Input<int>? step;
 
@@ -28,12 +30,25 @@ class ApplicationScalingRuleScalingRuleMetricScaleUpRules {
     };
   }
 
-  factory ApplicationScalingRuleScalingRuleMetricScaleUpRules.fromMap(Map<String, dynamic> map) {
+  factory ApplicationScalingRuleScalingRuleMetricScaleUpRules.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationScalingRuleScalingRuleMetricScaleUpRules(
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      stabilizationWindowSeconds: map['stabilizationWindowSeconds'] == null ? null : (map['stabilizationWindowSeconds']! as int).input(),
-      step: map['step'] == null ? null : (map['step']! as int).input(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      stabilizationWindowSeconds: (() {
+        final guardedValue = map['stabilizationWindowSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      step: (() {
+        final guardedValue = map['step'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

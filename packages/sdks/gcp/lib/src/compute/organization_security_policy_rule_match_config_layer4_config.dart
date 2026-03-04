@@ -9,6 +9,7 @@ class OrganizationSecurityPolicyRuleMatchConfigLayer4Config {
   /// known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
   /// or the IP protocol number.
   final pulumi.Input<String> ipProtocol;
+
   /// An optional list of ports to which this rule applies. This field
   /// is only applicable for UDP or TCP protocol. Each entry must be
   /// either an integer or a range. If not specified, this rule
@@ -27,17 +28,19 @@ class OrganizationSecurityPolicyRuleMatchConfigLayer4Config {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ipProtocol': ipProtocol,
-      'ports': ?ports,
-    };
+    return <String, dynamic>{'ipProtocol': ipProtocol, 'ports': ?ports};
   }
 
-  factory OrganizationSecurityPolicyRuleMatchConfigLayer4Config.fromMap(Map<String, dynamic> map) {
+  factory OrganizationSecurityPolicyRuleMatchConfigLayer4Config.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OrganizationSecurityPolicyRuleMatchConfigLayer4Config(
-      ipProtocol: (map['ipProtocol'] as String).input(),
-      ports: map['ports'] == null ? null : ((map['ports']! as List).cast<String>()).input(),
+      ipProtocol: pulumi.Input.fromValue(map['ipProtocol'] as String),
+      ports: (() {
+        final guardedValue = map['ports'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

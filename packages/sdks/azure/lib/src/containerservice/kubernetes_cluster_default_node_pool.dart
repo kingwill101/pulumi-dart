@@ -9,92 +9,129 @@ import 'kubernetes_cluster_default_node_pool_upgrade_settings.dart';
 class KubernetesClusterDefaultNodePool {
   /// Should [the Kubernetes Auto Scaler](https://docs.microsoft.com/azure/aks/cluster-autoscaler) be enabled for this Node Pool?
   ///
-  /// > **Note:** This requires that the `type` is set to `VirtualMachineScaleSets`.
+  /// &gt; **Note:** This requires that the `type` is set to `VirtualMachineScaleSets`.
   ///
-  /// > **Note:** If you're using AutoScaling, you may wish to use [`ignoreChanges` functionality](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to ignore changes to the `node_count` field.
+  /// &gt; **Note:** If you're using AutoScaling, you may wish to use [`ignoreChanges` functionality](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to ignore changes to the `node_count` field.
   final pulumi.Input<bool>? autoScalingEnabled;
+
   /// Specifies the ID of the Capacity Reservation Group within which this AKS Cluster should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? capacityReservationGroupId;
+
   /// Should the nodes in this Node Pool have Federal Information Processing Standard enabled? `temporary_name_for_rotation` must be specified when changing this block.
   final pulumi.Input<bool>? fipsEnabled;
+
   /// Specifies the driver type for GPU nodes. Possible values are `Install` and `None`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? gpuDriver;
+
   /// Specifies the GPU MIG instance profile for supported GPU VM SKU. The allowed values are `MIG1g`, `MIG2g`, `MIG3g`, `MIG4g` and `MIG7g`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? gpuInstance;
+
   /// Should the nodes in the Default Node Pool have host encryption enabled? `temporary_name_for_rotation` must be specified when changing this property.
   ///
-  /// > **Note:** This requires that the Feature `Microsoft.Compute/EncryptionAtHost` is enabled and the Resource Provider is registered.
+  /// &gt; **Note:** This requires that the Feature `Microsoft.Compute/EncryptionAtHost` is enabled and the Resource Provider is registered.
   final pulumi.Input<bool>? hostEncryptionEnabled;
+
   /// Specifies the ID of the Host Group within which this AKS Cluster should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? hostGroupId;
+
   /// A `kubelet_config` block as defined below. `temporary_name_for_rotation` must be specified when changing this block.
-  final pulumi.Input<KubernetesClusterDefaultNodePoolKubeletConfig>? kubeletConfig;
+  final pulumi.Input<KubernetesClusterDefaultNodePoolKubeletConfig>?
+  kubeletConfig;
+
   /// The type of disk used by kubelet. Possible values are `OS` and `Temporary`. `temporary_name_for_rotation` must be specified when changing this block.
   final pulumi.Input<String>? kubeletDiskType;
+
   /// A `linux_os_config` block as defined below. `temporary_name_for_rotation` must be specified when changing this block.
-  final pulumi.Input<KubernetesClusterDefaultNodePoolLinuxOsConfig>? linuxOsConfig;
+  final pulumi.Input<KubernetesClusterDefaultNodePoolLinuxOsConfig>?
+  linuxOsConfig;
   final pulumi.Input<int>? maxCount;
+
   /// The maximum number of pods that can run on each agent. `temporary_name_for_rotation` must be specified when changing this property.
   final pulumi.Input<int>? maxPods;
   final pulumi.Input<int>? minCount;
+
   /// The name which should be used for the default Kubernetes Node Pool.
   final pulumi.Input<String> name;
   final pulumi.Input<int>? nodeCount;
+
   /// A map of Kubernetes labels which should be applied to nodes in the Default Node Pool.
   final pulumi.Input<Map<String, String>>? nodeLabels;
+
   /// A `node_network_profile` block as documented below.
-  final pulumi.Input<KubernetesClusterDefaultNodePoolNodeNetworkProfile>? nodeNetworkProfile;
+  final pulumi.Input<KubernetesClusterDefaultNodePoolNodeNetworkProfile>?
+  nodeNetworkProfile;
+
   /// Should nodes in this Node Pool have a Public IP Address? `temporary_name_for_rotation` must be specified when changing this property.
   final pulumi.Input<bool>? nodePublicIpEnabled;
+
   /// Resource ID for the Public IP Addresses Prefix for the nodes in this Node Pool. `node_public_ip_enabled` should be `true`. Changing this forces a new resource to be created.
   final pulumi.Input<String>? nodePublicIpPrefixId;
+
   /// Enabling this option will taint default node pool with `CriticalAddonsOnly=true:NoSchedule` taint. `temporary_name_for_rotation` must be specified when changing this property.
   final pulumi.Input<bool>? onlyCriticalAddonsEnabled;
+
   /// Version of Kubernetes used for the Agents. If not specified, the default node pool will be created with the version specified by `kubernetes_version`. If both are unspecified, the latest recommended version will be used at provisioning time (but won't auto-upgrade). AKS does not require an exact patch version to be specified, minor version aliases such as `1.22` are also supported. - The minor version's latest GA patch is automatically chosen in that case. More details can be found in [the documentation](https://docs.microsoft.com/en-us/azure/aks/supported-kubernetes-versions?tabs=azure-cli#alias-minor-version).
   ///
-  /// > **Note:** This version must be supported by the Kubernetes Cluster - as such the version of Kubernetes used on the Cluster/Control Plane may need to be upgraded first.
+  /// &gt; **Note:** This version must be supported by the Kubernetes Cluster - as such the version of Kubernetes used on the Cluster/Control Plane may need to be upgraded first.
   final pulumi.Input<String>? orchestratorVersion;
+
   /// The size of the OS Disk which should be used for each agent in the Node Pool. `temporary_name_for_rotation` must be specified when attempting a change.
   final pulumi.Input<int>? osDiskSizeGb;
+
   /// The type of disk which should be used for the Operating System. Possible values are `Ephemeral` and `Managed`. Defaults to `Managed`. `temporary_name_for_rotation` must be specified when attempting a change.
   final pulumi.Input<String>? osDiskType;
+
   /// Specifies the OS SKU used by the agent pool. Possible values are `AzureLinux`, `AzureLinux3`, `Ubuntu`, `Ubuntu2204`, `Windows2019` and `Windows2022`. If not specified, the default is `Ubuntu` when os_type=Linux or `Windows2019` if os_type=Windows (`Windows2022` Kubernetes ≥1.33). Changing between `AzureLinux` and `Ubuntu` does not replace the resource; otherwise `temporary_name_for_rotation` must be specified when attempting a change.
   ///
-  /// > **Note:** `Windows2019` is deprecated and not supported for Kubernetes version ≥1.33.
+  /// &gt; **Note:** `Windows2019` is deprecated and not supported for Kubernetes version ≥1.33.
   final pulumi.Input<String>? osSku;
+
   /// The ID of the Subnet where the pods in the default Node Pool should exist.
   final pulumi.Input<String>? podSubnetId;
+
   /// The ID of the Proximity Placement Group. Changing this forces a new resource to be created.
   final pulumi.Input<String>? proximityPlacementGroupId;
+
   /// Specifies the autoscaling behaviour of the Kubernetes Cluster. Allowed values are `Delete` and `Deallocate`. Defaults to `Delete`.
   final pulumi.Input<String>? scaleDownMode;
+
   /// The ID of the Snapshot which should be used to create this default Node Pool. `temporary_name_for_rotation` must be specified when changing this property.
   final pulumi.Input<String>? snapshotId;
+
   /// A mapping of tags to assign to the Node Pool.
   ///
-  /// > At this time there's a bug in the AKS API where Tags for a Node Pool are not stored in the correct case - you may wish to use `ignore_changes` functionality to ignore changes to the casing until this is fixed in the AKS API.
+  /// &gt; At this time there's a bug in the AKS API where Tags for a Node Pool are not stored in the correct case - you may wish to use `ignore_changes` functionality to ignore changes to the casing until this is fixed in the AKS API.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Specifies the name of the temporary node pool used to cycle the default node pool for VM resizing.
   final pulumi.Input<String>? temporaryNameForRotation;
+
   /// The type of Node Pool which should be created. Possible values are `VirtualMachineScaleSets`. Defaults to `VirtualMachineScaleSets`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** When creating a cluster that supports multiple node pools, the cluster must use `VirtualMachineScaleSets`. For more information on the limitations of clusters using multiple node pools see [the documentation](https://learn.microsoft.com/en-us/azure/aks/use-multiple-node-pools#limitations).
+  /// &gt; **Note:** When creating a cluster that supports multiple node pools, the cluster must use `VirtualMachineScaleSets`. For more information on the limitations of clusters using multiple node pools see [the documentation](https://learn.microsoft.com/en-us/azure/aks/use-multiple-node-pools#limitations).
   final pulumi.Input<String>? type;
+
   /// Used to specify whether the UltraSSD is enabled in the Default Node Pool. Defaults to `false`. See [the documentation](https://docs.microsoft.com/azure/aks/use-ultra-disks) for more information. `temporary_name_for_rotation` must be specified when attempting a change.
   final pulumi.Input<bool>? ultraSsdEnabled;
+
   /// A `upgrade_settings` block as documented below.
-  final pulumi.Input<KubernetesClusterDefaultNodePoolUpgradeSettings>? upgradeSettings;
+  final pulumi.Input<KubernetesClusterDefaultNodePoolUpgradeSettings>?
+  upgradeSettings;
+
   /// The size of the Virtual Machine, such as `Standard_DS2_v2`. `temporary_name_for_rotation` must be specified when attempting a resize.
   final pulumi.Input<String>? vmSize;
+
   /// The ID of a Subnet where the Kubernetes Node Pool should exist.
   ///
-  /// > **Note:** A Route Table must be configured on this Subnet.
+  /// &gt; **Note:** A Route Table must be configured on this Subnet.
   final pulumi.Input<String>? vnetSubnetId;
+
   /// Specifies the workload runtime used by the node pool. Possible value is `OCIContainer`.
   final pulumi.Input<String>? workloadRuntime;
+
   /// Specifies a list of Availability Zones in which this Kubernetes Cluster should be located. `temporary_name_for_rotation` must be specified when changing this property.
   ///
-  /// > **Note:** This requires that the `type` is set to `VirtualMachineScaleSets` and that `load_balancer_sku` is set to `standard`.
+  /// &gt; **Note:** This requires that the `type` is set to `VirtualMachineScaleSets` and that `load_balancer_sku` is set to `standard`.
   final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [KubernetesClusterDefaultNodePool].
@@ -184,16 +221,28 @@ class KubernetesClusterDefaultNodePool {
       'gpuInstance': ?gpuInstance,
       'hostEncryptionEnabled': ?hostEncryptionEnabled,
       'hostGroupId': ?hostGroupId,
-      'kubeletConfig': ?pulumi.Input.mapOptionalInputValue<KubernetesClusterDefaultNodePoolKubeletConfig, Map<String, dynamic>>(kubeletConfig, (value) => value.toMap()),
+      'kubeletConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            KubernetesClusterDefaultNodePoolKubeletConfig,
+            Map<String, dynamic>
+          >(kubeletConfig, (value) => value.toMap()),
       'kubeletDiskType': ?kubeletDiskType,
-      'linuxOsConfig': ?pulumi.Input.mapOptionalInputValue<KubernetesClusterDefaultNodePoolLinuxOsConfig, Map<String, dynamic>>(linuxOsConfig, (value) => value.toMap()),
+      'linuxOsConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            KubernetesClusterDefaultNodePoolLinuxOsConfig,
+            Map<String, dynamic>
+          >(linuxOsConfig, (value) => value.toMap()),
       'maxCount': ?maxCount,
       'maxPods': ?maxPods,
       'minCount': ?minCount,
       'name': name,
       'nodeCount': ?nodeCount,
       'nodeLabels': ?nodeLabels,
-      'nodeNetworkProfile': ?pulumi.Input.mapOptionalInputValue<KubernetesClusterDefaultNodePoolNodeNetworkProfile, Map<String, dynamic>>(nodeNetworkProfile, (value) => value.toMap()),
+      'nodeNetworkProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            KubernetesClusterDefaultNodePoolNodeNetworkProfile,
+            Map<String, dynamic>
+          >(nodeNetworkProfile, (value) => value.toMap()),
       'nodePublicIpEnabled': ?nodePublicIpEnabled,
       'nodePublicIpPrefixId': ?nodePublicIpPrefixId,
       'onlyCriticalAddonsEnabled': ?onlyCriticalAddonsEnabled,
@@ -209,7 +258,11 @@ class KubernetesClusterDefaultNodePool {
       'temporaryNameForRotation': ?temporaryNameForRotation,
       'type': ?type,
       'ultraSsdEnabled': ?ultraSsdEnabled,
-      'upgradeSettings': ?pulumi.Input.mapOptionalInputValue<KubernetesClusterDefaultNodePoolUpgradeSettings, Map<String, dynamic>>(upgradeSettings, (value) => value.toMap()),
+      'upgradeSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            KubernetesClusterDefaultNodePoolUpgradeSettings,
+            Map<String, dynamic>
+          >(upgradeSettings, (value) => value.toMap()),
       'vmSize': ?vmSize,
       'vnetSubnetId': ?vnetSubnetId,
       'workloadRuntime': ?workloadRuntime,
@@ -219,44 +272,207 @@ class KubernetesClusterDefaultNodePool {
 
   factory KubernetesClusterDefaultNodePool.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterDefaultNodePool(
-      autoScalingEnabled: map['autoScalingEnabled'] == null ? null : (map['autoScalingEnabled']! as bool).input(),
-      capacityReservationGroupId: map['capacityReservationGroupId'] == null ? null : (map['capacityReservationGroupId']! as String).input(),
-      fipsEnabled: map['fipsEnabled'] == null ? null : (map['fipsEnabled']! as bool).input(),
-      gpuDriver: map['gpuDriver'] == null ? null : (map['gpuDriver']! as String).input(),
-      gpuInstance: map['gpuInstance'] == null ? null : (map['gpuInstance']! as String).input(),
-      hostEncryptionEnabled: map['hostEncryptionEnabled'] == null ? null : (map['hostEncryptionEnabled']! as bool).input(),
-      hostGroupId: map['hostGroupId'] == null ? null : (map['hostGroupId']! as String).input(),
-      kubeletConfig: map['kubeletConfig'] == null ? null : (KubernetesClusterDefaultNodePoolKubeletConfig.fromMap((map['kubeletConfig']! as Map).cast<String, dynamic>())).input(),
-      kubeletDiskType: map['kubeletDiskType'] == null ? null : (map['kubeletDiskType']! as String).input(),
-      linuxOsConfig: map['linuxOsConfig'] == null ? null : (KubernetesClusterDefaultNodePoolLinuxOsConfig.fromMap((map['linuxOsConfig']! as Map).cast<String, dynamic>())).input(),
-      maxCount: map['maxCount'] == null ? null : (map['maxCount']! as int).input(),
-      maxPods: map['maxPods'] == null ? null : (map['maxPods']! as int).input(),
-      minCount: map['minCount'] == null ? null : (map['minCount']! as int).input(),
-      name: (map['name'] as String).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
-      nodeLabels: map['nodeLabels'] == null ? null : ((map['nodeLabels']! as Map).cast<String, String>()).input(),
-      nodeNetworkProfile: map['nodeNetworkProfile'] == null ? null : (KubernetesClusterDefaultNodePoolNodeNetworkProfile.fromMap((map['nodeNetworkProfile']! as Map).cast<String, dynamic>())).input(),
-      nodePublicIpEnabled: map['nodePublicIpEnabled'] == null ? null : (map['nodePublicIpEnabled']! as bool).input(),
-      nodePublicIpPrefixId: map['nodePublicIpPrefixId'] == null ? null : (map['nodePublicIpPrefixId']! as String).input(),
-      onlyCriticalAddonsEnabled: map['onlyCriticalAddonsEnabled'] == null ? null : (map['onlyCriticalAddonsEnabled']! as bool).input(),
-      orchestratorVersion: map['orchestratorVersion'] == null ? null : (map['orchestratorVersion']! as String).input(),
-      osDiskSizeGb: map['osDiskSizeGb'] == null ? null : (map['osDiskSizeGb']! as int).input(),
-      osDiskType: map['osDiskType'] == null ? null : (map['osDiskType']! as String).input(),
-      osSku: map['osSku'] == null ? null : (map['osSku']! as String).input(),
-      podSubnetId: map['podSubnetId'] == null ? null : (map['podSubnetId']! as String).input(),
-      proximityPlacementGroupId: map['proximityPlacementGroupId'] == null ? null : (map['proximityPlacementGroupId']! as String).input(),
-      scaleDownMode: map['scaleDownMode'] == null ? null : (map['scaleDownMode']! as String).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      temporaryNameForRotation: map['temporaryNameForRotation'] == null ? null : (map['temporaryNameForRotation']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      ultraSsdEnabled: map['ultraSsdEnabled'] == null ? null : (map['ultraSsdEnabled']! as bool).input(),
-      upgradeSettings: map['upgradeSettings'] == null ? null : (KubernetesClusterDefaultNodePoolUpgradeSettings.fromMap((map['upgradeSettings']! as Map).cast<String, dynamic>())).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
-      vnetSubnetId: map['vnetSubnetId'] == null ? null : (map['vnetSubnetId']! as String).input(),
-      workloadRuntime: map['workloadRuntime'] == null ? null : (map['workloadRuntime']! as String).input(),
-      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
+      autoScalingEnabled: (() {
+        final guardedValue = map['autoScalingEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      capacityReservationGroupId: (() {
+        final guardedValue = map['capacityReservationGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fipsEnabled: (() {
+        final guardedValue = map['fipsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      gpuDriver: (() {
+        final guardedValue = map['gpuDriver'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gpuInstance: (() {
+        final guardedValue = map['gpuInstance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostEncryptionEnabled: (() {
+        final guardedValue = map['hostEncryptionEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      hostGroupId: (() {
+        final guardedValue = map['hostGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kubeletConfig: (() {
+        final guardedValue = map['kubeletConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KubernetesClusterDefaultNodePoolKubeletConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kubeletDiskType: (() {
+        final guardedValue = map['kubeletDiskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linuxOsConfig: (() {
+        final guardedValue = map['linuxOsConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KubernetesClusterDefaultNodePoolLinuxOsConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      maxCount: (() {
+        final guardedValue = map['maxCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      maxPods: (() {
+        final guardedValue = map['maxPods'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minCount: (() {
+        final guardedValue = map['minCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      nodeCount: (() {
+        final guardedValue = map['nodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      nodeLabels: (() {
+        final guardedValue = map['nodeLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      nodeNetworkProfile: (() {
+        final guardedValue = map['nodeNetworkProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KubernetesClusterDefaultNodePoolNodeNetworkProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      nodePublicIpEnabled: (() {
+        final guardedValue = map['nodePublicIpEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      nodePublicIpPrefixId: (() {
+        final guardedValue = map['nodePublicIpPrefixId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      onlyCriticalAddonsEnabled: (() {
+        final guardedValue = map['onlyCriticalAddonsEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      orchestratorVersion: (() {
+        final guardedValue = map['orchestratorVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osDiskSizeGb: (() {
+        final guardedValue = map['osDiskSizeGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      osDiskType: (() {
+        final guardedValue = map['osDiskType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      osSku: (() {
+        final guardedValue = map['osSku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      podSubnetId: (() {
+        final guardedValue = map['podSubnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      proximityPlacementGroupId: (() {
+        final guardedValue = map['proximityPlacementGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scaleDownMode: (() {
+        final guardedValue = map['scaleDownMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snapshotId: (() {
+        final guardedValue = map['snapshotId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      temporaryNameForRotation: (() {
+        final guardedValue = map['temporaryNameForRotation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ultraSsdEnabled: (() {
+        final guardedValue = map['ultraSsdEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      upgradeSettings: (() {
+        final guardedValue = map['upgradeSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KubernetesClusterDefaultNodePoolUpgradeSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vmSize: (() {
+        final guardedValue = map['vmSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vnetSubnetId: (() {
+        final guardedValue = map['vnetSubnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workloadRuntime: (() {
+        final guardedValue = map['workloadRuntime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

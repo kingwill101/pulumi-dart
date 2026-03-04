@@ -8,22 +8,30 @@ import 'get_configuration_window.dart';
 class GetConfigurationResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The in guest user patch mode.
   final String inGuestUserPatchMode;
+
   /// An `install_patches` block as defined below.
   final List<GetConfigurationInstallPatch> installPatches;
+
   /// The Azure location where the resource exists.
   final String location;
   final String name;
+
   /// The properties assigned to the resource.
   final Map<String, String> properties;
   final String resourceGroupName;
+
   /// The scope of the Maintenance Configuration.
   final String scope;
+
   /// A mapping of tags assigned to the resource.
   final Map<String, String> tags;
+
   /// The visibility of the Maintenance Configuration.
   final String visibility;
+
   /// A `window` block as defined below.
   final List<GetConfigurationWindow> windows;
 
@@ -57,7 +65,11 @@ class GetConfigurationResult {
     return <String, dynamic>{
       'id': id,
       'inGuestUserPatchMode': inGuestUserPatchMode,
-      'installPatches': pulumi.Input.encodeList<GetConfigurationInstallPatch, Map<String, dynamic>>(installPatches, (value) => value.toMap()),
+      'installPatches':
+          pulumi.Input.encodeList<
+            GetConfigurationInstallPatch,
+            Map<String, dynamic>
+          >(installPatches, (value) => value.toMap()),
       'location': location,
       'name': name,
       'properties': properties,
@@ -65,7 +77,11 @@ class GetConfigurationResult {
       'scope': scope,
       'tags': tags,
       'visibility': visibility,
-      'windows': pulumi.Input.encodeList<GetConfigurationWindow, Map<String, dynamic>>(windows, (value) => value.toMap()),
+      'windows':
+          pulumi.Input.encodeList<GetConfigurationWindow, Map<String, dynamic>>(
+            windows,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -73,7 +89,12 @@ class GetConfigurationResult {
     return GetConfigurationResult(
       id: map['id'] as String,
       inGuestUserPatchMode: map['inGuestUserPatchMode'] as String,
-      installPatches: pulumi.Input.decodeList<GetConfigurationInstallPatch>(map['installPatches'], (value) => GetConfigurationInstallPatch.fromMap((value as Map).cast<String, dynamic>())),
+      installPatches: pulumi.Input.decodeList<GetConfigurationInstallPatch>(
+        map['installPatches']!,
+        (value) => GetConfigurationInstallPatch.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       location: map['location'] as String,
       name: map['name'] as String,
       properties: (map['properties'] as Map).cast<String, String>(),
@@ -81,8 +102,12 @@ class GetConfigurationResult {
       scope: map['scope'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       visibility: map['visibility'] as String,
-      windows: pulumi.Input.decodeList<GetConfigurationWindow>(map['windows'], (value) => GetConfigurationWindow.fromMap((value as Map).cast<String, dynamic>())),
+      windows: pulumi.Input.decodeList<GetConfigurationWindow>(
+        map['windows']!,
+        (value) => GetConfigurationWindow.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

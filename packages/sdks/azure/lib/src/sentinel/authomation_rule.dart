@@ -1,7 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'authomation_rule_action_incident.dart';
-import 'authomation_rule_action_incident_task.dart';
-import 'authomation_rule_action_playbook.dart';
 import 'authomation_rule_args.dart';
 import 'authomation_rule_state.dart';
 
@@ -251,7 +248,7 @@ import 'authomation_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.OperationalInsights` - 2024-09-01
@@ -265,29 +262,40 @@ import 'authomation_rule_state.dart';
 /// ```
 class AuthomationRule extends pulumi.CustomResource {
   /// One or more `action_incident_task` blocks as defined below.
-  late final pulumi.Output<List<AuthomationRuleActionIncidentTask>?> actionIncidentTasks;
+  late final pulumi.Output<List<Map<String, dynamic>>?> actionIncidentTasks;
+
   /// One or more `action_incident` blocks as defined below.
-  late final pulumi.Output<List<AuthomationRuleActionIncident>?> actionIncidents;
+  late final pulumi.Output<List<Map<String, dynamic>>?> actionIncidents;
+
   /// One or more `action_playbook` blocks as defined below.
   ///
-  /// > **Note:** Either one `action_incident` block or `action_playbook` block has to be specified.
-  late final pulumi.Output<List<AuthomationRuleActionPlaybook>?> actionPlaybooks;
+  /// &gt; **Note:** Either one `action_incident` block or `action_playbook` block has to be specified.
+  late final pulumi.Output<List<Map<String, dynamic>>?> actionPlaybooks;
+
   /// A JSON array of one or more condition JSON objects as is defined [here](https://learn.microsoft.com/en-us/rest/api/securityinsights/preview/automation-rules/create-or-update?tabs=HTTP#automationruletriggeringlogic).
   late final pulumi.Output<String?> conditionJson;
+
   /// The display name which should be used for this Sentinel Automation Rule.
   late final pulumi.Output<String> displayName;
+
   /// Whether this Sentinel Automation Rule is enabled? Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// The time in RFC3339 format of kind `UTC` that determines when this Automation Rule should expire and be disabled.
   late final pulumi.Output<String?> expiration;
+
   /// The ID of the Log Analytics Workspace where this Sentinel applies to. Changing this forces a new Sentinel Automation Rule to be created.
   late final pulumi.Output<String> logAnalyticsWorkspaceId;
+
   /// The UUID which should be used for this Sentinel Automation Rule. Changing this forces a new Sentinel Automation Rule to be created.
   late final pulumi.Output<String> name;
+
   /// The order of this Sentinel Automation Rule. Possible values varies between `1` and `1000`.
   late final pulumi.Output<int> order;
+
   /// Specifies what triggers this automation rule. Possible values are `Alerts` and `Incidents`. Defaults to `Incidents`.
   late final pulumi.Output<String?> triggersOn;
+
   /// Specifies when will this automation rule be triggered. Possible values are `Created` and `Updated`. Defaults to `Created`.
   late final pulumi.Output<String?> triggersWhen;
 
@@ -300,23 +308,29 @@ class AuthomationRule extends pulumi.CustomResource {
     AuthomationRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/authomationRule:AuthomationRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actionIncidentTasks = registerOutput<List<AuthomationRuleActionIncidentTask>?>('actionIncidentTasks');
-    this.actionIncidents = registerOutput<List<AuthomationRuleActionIncident>?>('actionIncidents');
-    this.actionPlaybooks = registerOutput<List<AuthomationRuleActionPlaybook>?>('actionPlaybooks');
-    this.conditionJson = registerOutput<String?>('conditionJson');
-    this.displayName = registerOutput<String>('displayName');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.expiration = registerOutput<String?>('expiration');
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+         'azure:sentinel/authomationRule:AuthomationRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actionIncidentTasks = registerOutput<List<Map<String, dynamic>>?>(
+      'actionIncidentTasks',
+    );
+    actionIncidents = registerOutput<List<Map<String, dynamic>>?>(
+      'actionIncidents',
+    );
+    actionPlaybooks = registerOutput<List<Map<String, dynamic>>?>(
+      'actionPlaybooks',
+    );
+    conditionJson = registerOutput<String?>('conditionJson');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    expiration = registerOutput<String?>('expiration');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.order = registerOutput<int>('order');
-    this.triggersOn = registerOutput<String?>('triggersOn');
-    this.triggersWhen = registerOutput<String?>('triggersWhen');
+    order = registerOutput<int>('order');
+    triggersOn = registerOutput<String?>('triggersOn');
+    triggersWhen = registerOutput<String?>('triggersWhen');
   }
 
   /// Gets an existing [AuthomationRule] resource's state with the given [name] and [id].
@@ -337,22 +351,28 @@ class AuthomationRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:sentinel/authomationRule:AuthomationRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.actionIncidentTasks = registerOutput<List<AuthomationRuleActionIncidentTask>?>('actionIncidentTasks');
-    this.actionIncidents = registerOutput<List<AuthomationRuleActionIncident>?>('actionIncidents');
-    this.actionPlaybooks = registerOutput<List<AuthomationRuleActionPlaybook>?>('actionPlaybooks');
-    this.conditionJson = registerOutput<String?>('conditionJson');
-    this.displayName = registerOutput<String>('displayName');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.expiration = registerOutput<String?>('expiration');
-    this.logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+         'azure:sentinel/authomationRule:AuthomationRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    actionIncidentTasks = registerOutput<List<Map<String, dynamic>>?>(
+      'actionIncidentTasks',
+    );
+    actionIncidents = registerOutput<List<Map<String, dynamic>>?>(
+      'actionIncidents',
+    );
+    actionPlaybooks = registerOutput<List<Map<String, dynamic>>?>(
+      'actionPlaybooks',
+    );
+    conditionJson = registerOutput<String?>('conditionJson');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    expiration = registerOutput<String?>('expiration');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');
-    this.order = registerOutput<int>('order');
-    this.triggersOn = registerOutput<String?>('triggersOn');
-    this.triggersWhen = registerOutput<String?>('triggersWhen');
+    order = registerOutput<int>('order');
+    triggersOn = registerOutput<String?>('triggersOn');
+    triggersWhen = registerOutput<String?>('triggersWhen');
   }
 }

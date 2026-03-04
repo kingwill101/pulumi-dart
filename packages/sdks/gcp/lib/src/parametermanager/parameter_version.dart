@@ -786,21 +786,28 @@ import 'parameter_version_state.dart';
 class ParameterVersion extends pulumi.CustomResource {
   /// The time at which the Parameter Version was created.
   late final pulumi.Output<String> createTime;
+
   /// The current state of Parameter Version. This field is only applicable for updating Parameter Version.
   late final pulumi.Output<bool?> disabled;
+
   /// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
   /// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
   late final pulumi.Output<String> kmsKeyVersion;
+
   /// The resource name of the Parameter Version. Format:
   /// `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
   late final pulumi.Output<String> name;
+
   /// Parameter Manager Parameter resource.
   late final pulumi.Output<String> parameter;
+
   /// The Parameter data.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> parameterData;
+
   /// Version ID of the Parameter Version Resource. This must be unique within the Parameter.
   late final pulumi.Output<String> parameterVersionId;
+
   /// The time at which the Parameter Version was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -813,19 +820,19 @@ class ParameterVersion extends pulumi.CustomResource {
     ParameterVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:parametermanager/parameterVersion:ParameterVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.disabled = registerOutput<bool?>('disabled');
-    this.kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
+         'gcp:parametermanager/parameterVersion:ParameterVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    disabled = registerOutput<bool?>('disabled');
+    kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
     this.name = registerOutput<String>('name');
-    this.parameter = registerOutput<String>('parameter');
-    this.parameterData = registerOutput<String>('parameterData');
-    this.parameterVersionId = registerOutput<String>('parameterVersionId');
-    this.updateTime = registerOutput<String>('updateTime');
+    parameter = registerOutput<String>('parameter');
+    parameterData = registerOutput<String>('parameterData');
+    parameterVersionId = registerOutput<String>('parameterVersionId');
+    updateTime = registerOutput<String>('updateTime');
   }
 
   /// Gets an existing [ParameterVersion] resource's state with the given [name] and [id].
@@ -846,18 +853,18 @@ class ParameterVersion extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:parametermanager/parameterVersion:ParameterVersion',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.disabled = registerOutput<bool?>('disabled');
-    this.kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
+         'gcp:parametermanager/parameterVersion:ParameterVersion',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    disabled = registerOutput<bool?>('disabled');
+    kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
     this.name = registerOutput<String>('name');
-    this.parameter = registerOutput<String>('parameter');
-    this.parameterData = registerOutput<String>('parameterData');
-    this.parameterVersionId = registerOutput<String>('parameterVersionId');
-    this.updateTime = registerOutput<String>('updateTime');
+    parameter = registerOutput<String>('parameter');
+    parameterData = registerOutput<String>('parameterData');
+    parameterVersionId = registerOutput<String>('parameterVersionId');
+    updateTime = registerOutput<String>('updateTime');
   }
 }

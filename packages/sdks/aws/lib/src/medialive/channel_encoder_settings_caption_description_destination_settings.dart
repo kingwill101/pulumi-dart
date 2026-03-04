@@ -10,30 +10,59 @@ import 'channel_encoder_settings_caption_description_destination_settings_webvtt
 class ChannelEncoderSettingsCaptionDescriptionDestinationSettings {
   /// ARIB Destination Settings.
   final pulumi.Input<Map<String, dynamic>>? aribDestinationSettings;
+
   /// Burn In Destination Settings. See Burn In Destination Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsBurnInDestinationSettings>? burnInDestinationSettings;
+  final pulumi.Input<
+    ChannelEncoderSettingsCaptionDescriptionDestinationSettingsBurnInDestinationSettings
+  >?
+  burnInDestinationSettings;
+
   /// DVB Sub Destination Settings. See DVB Sub Destination Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettings>? dvbSubDestinationSettings;
+  final pulumi.Input<
+    ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettings
+  >?
+  dvbSubDestinationSettings;
+
   /// EBU TT D Destination Settings. See EBU TT D Destination Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsEbuTtDDestinationSettings>? ebuTtDDestinationSettings;
+  final pulumi.Input<
+    ChannelEncoderSettingsCaptionDescriptionDestinationSettingsEbuTtDDestinationSettings
+  >?
+  ebuTtDDestinationSettings;
+
   /// Embedded Destination Settings.
   final pulumi.Input<Map<String, dynamic>>? embeddedDestinationSettings;
+
   /// Embedded Plus SCTE20 Destination Settings.
-  final pulumi.Input<Map<String, dynamic>>? embeddedPlusScte20DestinationSettings;
+  final pulumi.Input<Map<String, dynamic>>?
+  embeddedPlusScte20DestinationSettings;
+
   /// RTMP Caption Info Destination Settings.
   final pulumi.Input<Map<String, dynamic>>? rtmpCaptionInfoDestinationSettings;
+
   /// SCTE20 Plus Embedded Destination Settings.
-  final pulumi.Input<Map<String, dynamic>>? scte20PlusEmbeddedDestinationSettings;
+  final pulumi.Input<Map<String, dynamic>>?
+  scte20PlusEmbeddedDestinationSettings;
+
   /// SCTE27 Destination Settings.
   final pulumi.Input<Map<String, dynamic>>? scte27DestinationSettings;
+
   /// SMPTE TT Destination Settings.
   final pulumi.Input<Map<String, dynamic>>? smpteTtDestinationSettings;
+
   /// Teletext Destination Settings.
   final pulumi.Input<Map<String, dynamic>>? teletextDestinationSettings;
+
   /// TTML Destination Settings. See TTML Destination Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings>? ttmlDestinationSettings;
+  final pulumi.Input<
+    ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings
+  >?
+  ttmlDestinationSettings;
+
   /// WebVTT Destination Settings. See WebVTT Destination Settings for more details.
-  final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsWebvttDestinationSettings>? webvttDestinationSettings;
+  final pulumi.Input<
+    ChannelEncoderSettingsCaptionDescriptionDestinationSettingsWebvttDestinationSettings
+  >?
+  webvttDestinationSettings;
 
   /// Creates a new [ChannelEncoderSettingsCaptionDescriptionDestinationSettings].
   /// [aribDestinationSettings] ARIB Destination Settings.
@@ -68,37 +97,148 @@ class ChannelEncoderSettingsCaptionDescriptionDestinationSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'aribDestinationSettings': ?aribDestinationSettings,
-      'burnInDestinationSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsBurnInDestinationSettings, Map<String, dynamic>>(burnInDestinationSettings, (value) => value.toMap()),
-      'dvbSubDestinationSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettings, Map<String, dynamic>>(dvbSubDestinationSettings, (value) => value.toMap()),
-      'ebuTtDDestinationSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsEbuTtDDestinationSettings, Map<String, dynamic>>(ebuTtDDestinationSettings, (value) => value.toMap()),
+      'burnInDestinationSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelEncoderSettingsCaptionDescriptionDestinationSettingsBurnInDestinationSettings,
+            Map<String, dynamic>
+          >(burnInDestinationSettings, (value) => value.toMap()),
+      'dvbSubDestinationSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettings,
+            Map<String, dynamic>
+          >(dvbSubDestinationSettings, (value) => value.toMap()),
+      'ebuTtDDestinationSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelEncoderSettingsCaptionDescriptionDestinationSettingsEbuTtDDestinationSettings,
+            Map<String, dynamic>
+          >(ebuTtDDestinationSettings, (value) => value.toMap()),
       'embeddedDestinationSettings': ?embeddedDestinationSettings,
-      'embeddedPlusScte20DestinationSettings': ?embeddedPlusScte20DestinationSettings,
+      'embeddedPlusScte20DestinationSettings':
+          ?embeddedPlusScte20DestinationSettings,
       'rtmpCaptionInfoDestinationSettings': ?rtmpCaptionInfoDestinationSettings,
-      'scte20PlusEmbeddedDestinationSettings': ?scte20PlusEmbeddedDestinationSettings,
+      'scte20PlusEmbeddedDestinationSettings':
+          ?scte20PlusEmbeddedDestinationSettings,
       'scte27DestinationSettings': ?scte27DestinationSettings,
       'smpteTtDestinationSettings': ?smpteTtDestinationSettings,
       'teletextDestinationSettings': ?teletextDestinationSettings,
-      'ttmlDestinationSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings, Map<String, dynamic>>(ttmlDestinationSettings, (value) => value.toMap()),
-      'webvttDestinationSettings': ?pulumi.Input.mapOptionalInputValue<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsWebvttDestinationSettings, Map<String, dynamic>>(webvttDestinationSettings, (value) => value.toMap()),
+      'ttmlDestinationSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings,
+            Map<String, dynamic>
+          >(ttmlDestinationSettings, (value) => value.toMap()),
+      'webvttDestinationSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            ChannelEncoderSettingsCaptionDescriptionDestinationSettingsWebvttDestinationSettings,
+            Map<String, dynamic>
+          >(webvttDestinationSettings, (value) => value.toMap()),
     };
   }
 
-  factory ChannelEncoderSettingsCaptionDescriptionDestinationSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsCaptionDescriptionDestinationSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsCaptionDescriptionDestinationSettings(
-      aribDestinationSettings: map['aribDestinationSettings'] == null ? null : (((map['aribDestinationSettings'] as Map).cast<String, dynamic>()).input()).input(),
-      burnInDestinationSettings: map['burnInDestinationSettings'] == null ? null : ((ChannelEncoderSettingsCaptionDescriptionDestinationSettingsBurnInDestinationSettings.fromMap((map['burnInDestinationSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      dvbSubDestinationSettings: map['dvbSubDestinationSettings'] == null ? null : ((ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettings.fromMap((map['dvbSubDestinationSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      ebuTtDDestinationSettings: map['ebuTtDDestinationSettings'] == null ? null : ((ChannelEncoderSettingsCaptionDescriptionDestinationSettingsEbuTtDDestinationSettings.fromMap((map['ebuTtDDestinationSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      embeddedDestinationSettings: map['embeddedDestinationSettings'] == null ? null : (((map['embeddedDestinationSettings'] as Map).cast<String, dynamic>()).input()).input(),
-      embeddedPlusScte20DestinationSettings: map['embeddedPlusScte20DestinationSettings'] == null ? null : (((map['embeddedPlusScte20DestinationSettings'] as Map).cast<String, dynamic>()).input()).input(),
-      rtmpCaptionInfoDestinationSettings: map['rtmpCaptionInfoDestinationSettings'] == null ? null : (((map['rtmpCaptionInfoDestinationSettings'] as Map).cast<String, dynamic>()).input()).input(),
-      scte20PlusEmbeddedDestinationSettings: map['scte20PlusEmbeddedDestinationSettings'] == null ? null : (((map['scte20PlusEmbeddedDestinationSettings'] as Map).cast<String, dynamic>()).input()).input(),
-      scte27DestinationSettings: map['scte27DestinationSettings'] == null ? null : (((map['scte27DestinationSettings'] as Map).cast<String, dynamic>()).input()).input(),
-      smpteTtDestinationSettings: map['smpteTtDestinationSettings'] == null ? null : (((map['smpteTtDestinationSettings'] as Map).cast<String, dynamic>()).input()).input(),
-      teletextDestinationSettings: map['teletextDestinationSettings'] == null ? null : (((map['teletextDestinationSettings'] as Map).cast<String, dynamic>()).input()).input(),
-      ttmlDestinationSettings: map['ttmlDestinationSettings'] == null ? null : ((ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings.fromMap((map['ttmlDestinationSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      webvttDestinationSettings: map['webvttDestinationSettings'] == null ? null : ((ChannelEncoderSettingsCaptionDescriptionDestinationSettingsWebvttDestinationSettings.fromMap((map['webvttDestinationSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      aribDestinationSettings: (() {
+        final guardedValue = map['aribDestinationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      burnInDestinationSettings: (() {
+        final guardedValue = map['burnInDestinationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelEncoderSettingsCaptionDescriptionDestinationSettingsBurnInDestinationSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dvbSubDestinationSettings: (() {
+        final guardedValue = map['dvbSubDestinationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ebuTtDDestinationSettings: (() {
+        final guardedValue = map['ebuTtDDestinationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelEncoderSettingsCaptionDescriptionDestinationSettingsEbuTtDDestinationSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      embeddedDestinationSettings: (() {
+        final guardedValue = map['embeddedDestinationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      embeddedPlusScte20DestinationSettings: (() {
+        final guardedValue = map['embeddedPlusScte20DestinationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      rtmpCaptionInfoDestinationSettings: (() {
+        final guardedValue = map['rtmpCaptionInfoDestinationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      scte20PlusEmbeddedDestinationSettings: (() {
+        final guardedValue = map['scte20PlusEmbeddedDestinationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      scte27DestinationSettings: (() {
+        final guardedValue = map['scte27DestinationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      smpteTtDestinationSettings: (() {
+        final guardedValue = map['smpteTtDestinationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      teletextDestinationSettings: (() {
+        final guardedValue = map['teletextDestinationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      ttmlDestinationSettings: (() {
+        final guardedValue = map['ttmlDestinationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      webvttDestinationSettings: (() {
+        final guardedValue = map['webvttDestinationSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ChannelEncoderSettingsCaptionDescriptionDestinationSettingsWebvttDestinationSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

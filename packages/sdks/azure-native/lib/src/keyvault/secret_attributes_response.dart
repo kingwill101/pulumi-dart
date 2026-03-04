@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecretAttributesResponse {
   /// Creation time in seconds since 1970-01-01T00:00:00Z.
   final pulumi.Input<int> created;
+
   /// Determines whether the object is enabled.
   final pulumi.Input<bool>? enabled;
+
   /// Expiry date in seconds since 1970-01-01T00:00:00Z.
   final pulumi.Input<int>? expires;
+
   /// Not before date in seconds since 1970-01-01T00:00:00Z.
   final pulumi.Input<int>? notBefore;
+
   /// Last updated time in seconds since 1970-01-01T00:00:00Z.
   final pulumi.Input<int> updated;
 
@@ -41,12 +45,23 @@ class SecretAttributesResponse {
 
   factory SecretAttributesResponse.fromMap(Map<String, dynamic> map) {
     return SecretAttributesResponse(
-      created: (map['created'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      expires: map['expires'] == null ? null : (map['expires']! as int).input(),
-      notBefore: map['notBefore'] == null ? null : (map['notBefore']! as int).input(),
-      updated: (map['updated'] as int).input(),
+      created: pulumi.Input.fromValue(map['created'] as int),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      expires: (() {
+        final guardedValue = map['expires'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      notBefore: (() {
+        final guardedValue = map['notBefore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      updated: pulumi.Input.fromValue(map['updated'] as int),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum Category {
   valueAuditLogs("AuditLogs"),
   valueSignInLogs("SignInLogs");
 
-  const Category(this.value);
-  final String value;
+  const Category(this.wireValue);
+  final String wireValue;
 
   static Category fromValue(String value) {
     for (final item in Category.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Category value: $value');
   }
 }
-

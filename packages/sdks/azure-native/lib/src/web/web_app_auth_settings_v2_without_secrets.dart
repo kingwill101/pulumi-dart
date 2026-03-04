@@ -515,20 +515,28 @@ import 'web_app_auth_settings_v2_without_secrets_args.dart';
 class WebAppAuthSettingsV2WithoutSecrets extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.
   late final pulumi.Output<GlobalValidationResponse?> globalValidation;
+
   /// The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
   late final pulumi.Output<HttpSettingsResponse?> httpSettings;
+
   /// The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
   late final pulumi.Output<IdentityProvidersResponse?> identityProviders;
+
   /// Kind of resource.
   late final pulumi.Output<String?> kind;
+
   /// The configuration settings of the login flow of users using App Service Authentication/Authorization.
   late final pulumi.Output<LoginResponse?> login;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// The configuration settings of the platform of App Service Authentication/Authorization.
   late final pulumi.Output<AuthPlatformResponse?> platform;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -541,19 +549,23 @@ class WebAppAuthSettingsV2WithoutSecrets extends pulumi.CustomResource {
     WebAppAuthSettingsV2WithoutSecretsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:WebAppAuthSettingsV2WithoutSecrets',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.globalValidation = registerOutput<GlobalValidationResponse?>('globalValidation');
-    this.httpSettings = registerOutput<HttpSettingsResponse?>('httpSettings');
-    this.identityProviders = registerOutput<IdentityProvidersResponse?>('identityProviders');
-    this.kind = registerOutput<String?>('kind');
-    this.login = registerOutput<LoginResponse?>('login');
+         'azure-native:web:WebAppAuthSettingsV2WithoutSecrets',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    globalValidation = registerOutput<GlobalValidationResponse?>(
+      'globalValidation',
+    );
+    httpSettings = registerOutput<HttpSettingsResponse?>('httpSettings');
+    identityProviders = registerOutput<IdentityProvidersResponse?>(
+      'identityProviders',
+    );
+    kind = registerOutput<String?>('kind');
+    login = registerOutput<LoginResponse?>('login');
     this.name = registerOutput<String>('name');
-    this.platform = registerOutput<AuthPlatformResponse?>('platform');
-    this.type = registerOutput<String>('type');
+    platform = registerOutput<AuthPlatformResponse?>('platform');
+    type = registerOutput<String>('type');
   }
 }

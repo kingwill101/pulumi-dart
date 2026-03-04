@@ -6,15 +6,19 @@ import 'cx_flow_event_handler_trigger_fulfillment.dart';
 class CxFlowEventHandler {
   /// The name of the event to handle.
   final pulumi.Input<String>? event;
+
   /// (Output)
   /// The unique identifier of this event handler.
   final pulumi.Input<String>? name;
+
   /// The target flow to transition to.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
   final pulumi.Input<String>? targetFlow;
+
   /// The target page to transition to.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
   final pulumi.Input<String>? targetPage;
+
   /// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
   /// Structure is documented below.
   final pulumi.Input<CxFlowEventHandlerTriggerFulfillment>? triggerFulfillment;
@@ -39,18 +43,45 @@ class CxFlowEventHandler {
       'name': ?name,
       'targetFlow': ?targetFlow,
       'targetPage': ?targetPage,
-      'triggerFulfillment': ?pulumi.Input.mapOptionalInputValue<CxFlowEventHandlerTriggerFulfillment, Map<String, dynamic>>(triggerFulfillment, (value) => value.toMap()),
+      'triggerFulfillment':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxFlowEventHandlerTriggerFulfillment,
+            Map<String, dynamic>
+          >(triggerFulfillment, (value) => value.toMap()),
     };
   }
 
   factory CxFlowEventHandler.fromMap(Map<String, dynamic> map) {
     return CxFlowEventHandler(
-      event: map['event'] == null ? null : (map['event']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      targetFlow: map['targetFlow'] == null ? null : (map['targetFlow']! as String).input(),
-      targetPage: map['targetPage'] == null ? null : (map['targetPage']! as String).input(),
-      triggerFulfillment: map['triggerFulfillment'] == null ? null : (CxFlowEventHandlerTriggerFulfillment.fromMap((map['triggerFulfillment']! as Map).cast<String, dynamic>())).input(),
+      event: (() {
+        final guardedValue = map['event'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetFlow: (() {
+        final guardedValue = map['targetFlow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetPage: (() {
+        final guardedValue = map['targetPage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      triggerFulfillment: (() {
+        final guardedValue = map['triggerFulfillment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxFlowEventHandlerTriggerFulfillment.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

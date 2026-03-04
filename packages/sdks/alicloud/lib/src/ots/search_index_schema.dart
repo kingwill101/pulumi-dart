@@ -8,8 +8,10 @@ import 'search_index_schema_index_sort.dart';
 class SearchIndexSchema {
   /// A list of field schemas. See `field_schema` below.
   final pulumi.Input<List<SearchIndexSchemaFieldSchema>> fieldSchemas;
+
   /// The settings of the search index, including routingFields. See `index_setting` below.
   final pulumi.Input<List<SearchIndexSchemaIndexSetting>>? indexSettings;
+
   /// The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `index_sort` below.
   final pulumi.Input<List<SearchIndexSchemaIndexSort>>? indexSorts;
 
@@ -25,18 +27,79 @@ class SearchIndexSchema {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fieldSchemas': pulumi.Input.mapInputValue<List<SearchIndexSchemaFieldSchema>, List<Map<String, dynamic>>>(fieldSchemas, (value) => pulumi.Input.encodeList<SearchIndexSchemaFieldSchema, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'indexSettings': ?pulumi.Input.mapOptionalInputValue<List<SearchIndexSchemaIndexSetting>, List<Map<String, dynamic>>>(indexSettings, (value) => pulumi.Input.encodeList<SearchIndexSchemaIndexSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'indexSorts': ?pulumi.Input.mapOptionalInputValue<List<SearchIndexSchemaIndexSort>, List<Map<String, dynamic>>>(indexSorts, (value) => pulumi.Input.encodeList<SearchIndexSchemaIndexSort, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'fieldSchemas':
+          pulumi.Input.mapInputValue<
+            List<SearchIndexSchemaFieldSchema>,
+            List<Map<String, dynamic>>
+          >(
+            fieldSchemas,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SearchIndexSchemaFieldSchema,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'indexSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SearchIndexSchemaIndexSetting>,
+            List<Map<String, dynamic>>
+          >(
+            indexSettings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SearchIndexSchemaIndexSetting,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'indexSorts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SearchIndexSchemaIndexSort>,
+            List<Map<String, dynamic>>
+          >(
+            indexSorts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SearchIndexSchemaIndexSort,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory SearchIndexSchema.fromMap(Map<String, dynamic> map) {
     return SearchIndexSchema(
-      fieldSchemas: (pulumi.Input.decodeList<SearchIndexSchemaFieldSchema>(map['fieldSchemas'], (value) => SearchIndexSchemaFieldSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      indexSettings: map['indexSettings'] == null ? null : (pulumi.Input.decodeList<SearchIndexSchemaIndexSetting>(map['indexSettings']!, (value) => SearchIndexSchemaIndexSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      indexSorts: map['indexSorts'] == null ? null : (pulumi.Input.decodeList<SearchIndexSchemaIndexSort>(map['indexSorts']!, (value) => SearchIndexSchemaIndexSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fieldSchemas: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<SearchIndexSchemaFieldSchema>(
+          map['fieldSchemas']!,
+          (value) => SearchIndexSchemaFieldSchema.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      indexSettings: (() {
+        final guardedValue = map['indexSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SearchIndexSchemaIndexSetting>(
+            guardedValue,
+            (value) => SearchIndexSchemaIndexSetting.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      indexSorts: (() {
+        final guardedValue = map['indexSorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SearchIndexSchemaIndexSort>(
+            guardedValue,
+            (value) => SearchIndexSchemaIndexSort.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

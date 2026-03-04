@@ -9,16 +9,15 @@ enum InstanceState {
   failed("FAILED"),
   onlineMaintenance("ONLINE_MAINTENANCE");
 
-  const InstanceState(this.value);
-  final String value;
+  const InstanceState(this.wireValue);
+  final String wireValue;
 
   static InstanceState fromValue(String value) {
     for (final item in InstanceState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceState value: $value');
   }
 }
-

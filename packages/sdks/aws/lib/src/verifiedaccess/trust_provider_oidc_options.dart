@@ -43,14 +43,37 @@ class TrustProviderOidcOptions {
 
   factory TrustProviderOidcOptions.fromMap(Map<String, dynamic> map) {
     return TrustProviderOidcOptions(
-      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : ((map['authorizationEndpoint'] as String).input()).input(),
-      clientId: map['clientId'] == null ? null : ((map['clientId'] as String).input()).input(),
-      clientSecret: (map['clientSecret'] as String).input(),
-      issuer: map['issuer'] == null ? null : ((map['issuer'] as String).input()).input(),
-      scope: map['scope'] == null ? null : ((map['scope'] as String).input()).input(),
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : ((map['tokenEndpoint'] as String).input()).input(),
-      userInfoEndpoint: map['userInfoEndpoint'] == null ? null : ((map['userInfoEndpoint'] as String).input()).input(),
+      authorizationEndpoint: (() {
+        final guardedValue = map['authorizationEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: pulumi.Input.fromValue(map['clientSecret'] as String),
+      issuer: (() {
+        final guardedValue = map['issuer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tokenEndpoint: (() {
+        final guardedValue = map['tokenEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userInfoEndpoint: (() {
+        final guardedValue = map['userInfoEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

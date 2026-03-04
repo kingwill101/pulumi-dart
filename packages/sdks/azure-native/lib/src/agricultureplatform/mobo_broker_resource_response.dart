@@ -10,20 +10,15 @@ class MoboBrokerResourceResponse {
 
   /// Creates a new [MoboBrokerResourceResponse].
   /// [id] The fully qualified resource ID of the MoboBroker resource.
-  MoboBrokerResourceResponse({
-    required this.id,
-  });
+  MoboBrokerResourceResponse({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory MoboBrokerResourceResponse.fromMap(Map<String, dynamic> map) {
     return MoboBrokerResourceResponse(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

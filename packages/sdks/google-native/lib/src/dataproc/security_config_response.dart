@@ -8,6 +8,7 @@ import 'kerberos_config_response.dart';
 class SecurityConfigResponse {
   /// Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
   final pulumi.Input<IdentityConfigResponse> identityConfig;
+
   /// Optional. Kerberos related configuration.
   final pulumi.Input<KerberosConfigResponse> kerberosConfig;
 
@@ -21,16 +22,31 @@ class SecurityConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identityConfig': pulumi.Input.mapInputValue<IdentityConfigResponse, Map<String, dynamic>>(identityConfig, (value) => value.toMap()),
-      'kerberosConfig': pulumi.Input.mapInputValue<KerberosConfigResponse, Map<String, dynamic>>(kerberosConfig, (value) => value.toMap()),
+      'identityConfig':
+          pulumi.Input.mapInputValue<
+            IdentityConfigResponse,
+            Map<String, dynamic>
+          >(identityConfig, (value) => value.toMap()),
+      'kerberosConfig':
+          pulumi.Input.mapInputValue<
+            KerberosConfigResponse,
+            Map<String, dynamic>
+          >(kerberosConfig, (value) => value.toMap()),
     };
   }
 
   factory SecurityConfigResponse.fromMap(Map<String, dynamic> map) {
     return SecurityConfigResponse(
-      identityConfig: (IdentityConfigResponse.fromMap((map['identityConfig'] as Map).cast<String, dynamic>())).input(),
-      kerberosConfig: (KerberosConfigResponse.fromMap((map['kerberosConfig'] as Map).cast<String, dynamic>())).input(),
+      identityConfig: pulumi.Input.fromValue(
+        IdentityConfigResponse.fromMap(
+          (map['identityConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      kerberosConfig: pulumi.Input.fromValue(
+        KerberosConfigResponse.fromMap(
+          (map['kerberosConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

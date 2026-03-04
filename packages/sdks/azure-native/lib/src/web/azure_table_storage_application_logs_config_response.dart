@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureTableStorageApplicationLogsConfigResponse {
   /// Log level.
   final pulumi.Input<String>? level;
+
   /// SAS URL to an Azure table with add/query/delete permissions.
   final pulumi.Input<String> sasUrl;
 
@@ -18,17 +19,19 @@ class AzureTableStorageApplicationLogsConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'level': ?level,
-      'sasUrl': sasUrl,
-    };
+    return <String, dynamic>{'level': ?level, 'sasUrl': sasUrl};
   }
 
-  factory AzureTableStorageApplicationLogsConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory AzureTableStorageApplicationLogsConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureTableStorageApplicationLogsConfigResponse(
-      level: map['level'] == null ? null : (map['level']! as String).input(),
-      sasUrl: (map['sasUrl'] as String).input(),
+      level: (() {
+        final guardedValue = map['level'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sasUrl: pulumi.Input.fromValue(map['sasUrl'] as String),
     );
   }
 }
-

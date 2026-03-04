@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventSourceMappingDocumentDbEventSourceConfig {
   /// Name of the collection to consume within the database. If you do not specify a collection, Lambda consumes all collections.
   final pulumi.Input<String>? collectionName;
+
   /// Name of the database to consume within the DocumentDB cluster.
   final pulumi.Input<String> databaseName;
+
   /// Determines what DocumentDB sends to your event stream during document update operations. If set to `UpdateLookup`, DocumentDB sends a delta describing the changes, along with a copy of the entire document. Otherwise, DocumentDB sends only a partial document that contains the changes. Valid values: `UpdateLookup`, `Default`.
   final pulumi.Input<String>? fullDocument;
 
@@ -28,12 +30,21 @@ class EventSourceMappingDocumentDbEventSourceConfig {
     };
   }
 
-  factory EventSourceMappingDocumentDbEventSourceConfig.fromMap(Map<String, dynamic> map) {
+  factory EventSourceMappingDocumentDbEventSourceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EventSourceMappingDocumentDbEventSourceConfig(
-      collectionName: map['collectionName'] == null ? null : ((map['collectionName'] as String).input()).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      fullDocument: map['fullDocument'] == null ? null : ((map['fullDocument'] as String).input()).input(),
+      collectionName: (() {
+        final guardedValue = map['collectionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      fullDocument: (() {
+        final guardedValue = map['fullDocument'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,20 +8,21 @@ class UserAssignedIdentityPropertiesResponse {
 
   /// Creates a new [UserAssignedIdentityPropertiesResponse].
   /// [userAssignedIdentity] ARM ID of user Identity selected for encryption
-  UserAssignedIdentityPropertiesResponse({
-    this.userAssignedIdentity,
-  });
+  UserAssignedIdentityPropertiesResponse({this.userAssignedIdentity});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'userAssignedIdentity': ?userAssignedIdentity,
-    };
+    return <String, dynamic>{'userAssignedIdentity': ?userAssignedIdentity};
   }
 
-  factory UserAssignedIdentityPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory UserAssignedIdentityPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UserAssignedIdentityPropertiesResponse(
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
+      userAssignedIdentity: (() {
+        final guardedValue = map['userAssignedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

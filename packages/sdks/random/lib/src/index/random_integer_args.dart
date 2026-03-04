@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RandomIntegerArgs {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   final pulumi.Input<Map<String, String>>? keepers;
+
   /// The maximum inclusive value of the range.
   final pulumi.Input<int> max;
+
   /// The minimum inclusive value of the range.
   final pulumi.Input<int> min;
+
   /// A custom seed to always produce the same value.
   final pulumi.Input<String>? seed;
 
@@ -39,11 +42,20 @@ class RandomIntegerArgs {
 
   factory RandomIntegerArgs.fromMap(Map<String, dynamic> map) {
     return RandomIntegerArgs(
-      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
-      max: (map['max'] as int).input(),
-      min: (map['min'] as int).input(),
-      seed: map['seed'] == null ? null : (map['seed']! as String).input(),
+      keepers: (() {
+        final guardedValue = map['keepers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      max: pulumi.Input.fromValue(map['max'] as int),
+      min: pulumi.Input.fromValue(map['min'] as int),
+      seed: (() {
+        final guardedValue = map['seed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

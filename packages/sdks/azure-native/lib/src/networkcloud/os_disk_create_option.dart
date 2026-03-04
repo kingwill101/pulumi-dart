@@ -3,16 +3,15 @@ enum OsDiskCreateOption {
   ephemeral("Ephemeral"),
   persistent("Persistent");
 
-  const OsDiskCreateOption(this.value);
-  final String value;
+  const OsDiskCreateOption(this.wireValue);
+  final String wireValue;
 
   static OsDiskCreateOption fromValue(String value) {
     for (final item in OsDiskCreateOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OsDiskCreateOption value: $value');
   }
 }
-

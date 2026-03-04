@@ -1,8 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_acl_args.dart';
-import 'network_acl_egress_acl_entry.dart';
-import 'network_acl_ingress_acl_entry.dart';
-import 'network_acl_resource.dart';
 import 'network_acl_state.dart';
 
 /// Provides a VPC Network Acl resource.
@@ -11,9 +8,9 @@ import 'network_acl_state.dart';
 ///
 /// For information about VPC Network Acl and how to use it, see [What is Network Acl](https://www.alibabacloud.com/help/en/ens/latest/createnetworkacl).
 ///
-/// > **NOTE:** Available since v1.43.0.
+/// &gt; **NOTE:** Available since v1.43.0.
 ///
-/// > **WARNING:** Do not mix the use of the `resources` field in this resource with the separate `alicloud.vpc.VpcNetworkAclAttachment` resource to bind VSW (Virtual Switch) to the same ACL. Using both methods simultaneously can cause conflicts and result in repeated apply operations that toggle between binding and unbinding VSWs. Choose one method and stick with it to avoid these issues.
+/// &gt; **WARNING:** Do not mix the use of the `resources` field in this resource with the separate `alicloud.vpc.VpcNetworkAclAttachment` resource to bind VSW (Virtual Switch) to the same ACL. Using both methods simultaneously can cause conflicts and result in repeated apply operations that toggle between binding and unbinding VSWs. Choose one method and stick with it to avoid these issues.
 ///
 /// ## Example Usage
 ///
@@ -398,25 +395,35 @@ import 'network_acl_state.dart';
 class NetworkAcl extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// The description of the network ACL. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> description;
+
   /// Out direction rule information. See `egress_acl_entries` below.
-  late final pulumi.Output<List<NetworkAclEgressAclEntry>> egressAclEntries;
+  late final pulumi.Output<List<Map<String, dynamic>>> egressAclEntries;
+
   /// Inward direction rule information. See `ingress_acl_entries` below.
-  late final pulumi.Output<List<NetworkAclIngressAclEntry>> ingressAclEntries;
+  late final pulumi.Output<List<Map<String, dynamic>>> ingressAclEntries;
+
   /// . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
   late final pulumi.Output<String> name;
+
   /// The name of the network ACL.
   /// The name must be 1 to 128 characters in length and cannot start with http:// or https.
   late final pulumi.Output<String> networkAclName;
+
   /// The associated resource. See `resources` below.
-  late final pulumi.Output<List<NetworkAclResource>> resources;
+  late final pulumi.Output<List<Map<String, dynamic>>> resources;
+
   /// SOURCE NetworkAcl specified by CopyNetworkAclEntries
   late final pulumi.Output<String?> sourceNetworkAclId;
+
   /// The state of the network ACL.
   late final pulumi.Output<String> status;
+
   /// The tags of this resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the associated VPC.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -431,22 +438,26 @@ class NetworkAcl extends pulumi.CustomResource {
     NetworkAclArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/networkAcl:NetworkAcl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.egressAclEntries = registerOutput<List<NetworkAclEgressAclEntry>>('egressAclEntries');
-    this.ingressAclEntries = registerOutput<List<NetworkAclIngressAclEntry>>('ingressAclEntries');
+         'alicloud:vpc/networkAcl:NetworkAcl',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    egressAclEntries = registerOutput<List<Map<String, dynamic>>>(
+      'egressAclEntries',
+    );
+    ingressAclEntries = registerOutput<List<Map<String, dynamic>>>(
+      'ingressAclEntries',
+    );
     this.name = registerOutput<String>('name');
-    this.networkAclName = registerOutput<String>('networkAclName');
-    this.resources = registerOutput<List<NetworkAclResource>>('resources');
-    this.sourceNetworkAclId = registerOutput<String?>('sourceNetworkAclId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
+    networkAclName = registerOutput<String>('networkAclName');
+    resources = registerOutput<List<Map<String, dynamic>>>('resources');
+    sourceNetworkAclId = registerOutput<String?>('sourceNetworkAclId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [NetworkAcl] resource's state with the given [name] and [id].
@@ -467,21 +478,25 @@ class NetworkAcl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/networkAcl:NetworkAcl',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.egressAclEntries = registerOutput<List<NetworkAclEgressAclEntry>>('egressAclEntries');
-    this.ingressAclEntries = registerOutput<List<NetworkAclIngressAclEntry>>('ingressAclEntries');
+         'alicloud:vpc/networkAcl:NetworkAcl',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    egressAclEntries = registerOutput<List<Map<String, dynamic>>>(
+      'egressAclEntries',
+    );
+    ingressAclEntries = registerOutput<List<Map<String, dynamic>>>(
+      'ingressAclEntries',
+    );
     this.name = registerOutput<String>('name');
-    this.networkAclName = registerOutput<String>('networkAclName');
-    this.resources = registerOutput<List<NetworkAclResource>>('resources');
-    this.sourceNetworkAclId = registerOutput<String?>('sourceNetworkAclId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
+    networkAclName = registerOutput<String>('networkAclName');
+    resources = registerOutput<List<Map<String, dynamic>>>('resources');
+    sourceNetworkAclId = registerOutput<String?>('sourceNetworkAclId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceEvent {
   /// Time when task set was created (RFC3339 format)
   final pulumi.Input<String> createdAt;
+
   /// Task set ID
   final pulumi.Input<String> id;
+
   /// Event message
   final pulumi.Input<String> message;
 
@@ -30,10 +32,9 @@ class GetServiceEvent {
 
   factory GetServiceEvent.fromMap(Map<String, dynamic> map) {
     return GetServiceEvent(
-      createdAt: (map['createdAt'] as String).input(),
-      id: (map['id'] as String).input(),
-      message: (map['message'] as String).input(),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
     );
   }
 }
-

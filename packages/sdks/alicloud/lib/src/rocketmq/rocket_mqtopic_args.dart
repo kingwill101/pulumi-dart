@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RocketMQTopicArgs {
   /// Instance ID.
   final pulumi.Input<String> instanceId;
+
   /// The maximum TPS for message sending.
   final pulumi.Input<int>? maxSendTps;
+
   /// Message type.
   final pulumi.Input<String>? messageType;
+
   /// Custom remarks.
   final pulumi.Input<String>? remark;
+
   /// Topic name and identification.
   final pulumi.Input<String> topicName;
 
@@ -44,12 +48,23 @@ class RocketMQTopicArgs {
 
   factory RocketMQTopicArgs.fromMap(Map<String, dynamic> map) {
     return RocketMQTopicArgs(
-      instanceId: (map['instanceId'] as String).input(),
-      maxSendTps: map['maxSendTps'] == null ? null : (map['maxSendTps']! as int).input(),
-      messageType: map['messageType'] == null ? null : (map['messageType']! as String).input(),
-      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
-      topicName: (map['topicName'] as String).input(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      maxSendTps: (() {
+        final guardedValue = map['maxSendTps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      messageType: (() {
+        final guardedValue = map['messageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remark: (() {
+        final guardedValue = map['remark'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topicName: pulumi.Input.fromValue(map['topicName'] as String),
     );
   }
 }
-

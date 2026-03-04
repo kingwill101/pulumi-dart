@@ -1,5 +1,3 @@
-library module_advisor;
-
 export 'advisor/functions.dart';
 export 'advisor/get_recommendations_args.dart';
 export 'advisor/get_recommendations_recommendation.dart';

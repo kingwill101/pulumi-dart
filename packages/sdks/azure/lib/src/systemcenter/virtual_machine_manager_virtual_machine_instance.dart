@@ -2,10 +2,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_machine_manager_virtual_machine_instance_args.dart';
 import 'virtual_machine_manager_virtual_machine_instance_hardware.dart';
 import 'virtual_machine_manager_virtual_machine_instance_infrastructure.dart';
-import 'virtual_machine_manager_virtual_machine_instance_network_interface.dart';
 import 'virtual_machine_manager_virtual_machine_instance_operating_system.dart';
 import 'virtual_machine_manager_virtual_machine_instance_state.dart';
-import 'virtual_machine_manager_virtual_machine_instance_storage_disk.dart';
 
 /// Manages a System Center Virtual Machine Manager Virtual Machine Instance.
 ///
@@ -489,7 +487,7 @@ import 'virtual_machine_manager_virtual_machine_instance_storage_disk.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ScVmm` - 2023-10-07
@@ -501,29 +499,45 @@ import 'virtual_machine_manager_virtual_machine_instance_storage_disk.dart';
 /// ```sh
 /// $ pulumi import azure:systemcenter/virtualMachineManagerVirtualMachineInstance:VirtualMachineManagerVirtualMachineInstance example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resGroup1/providers/Microsoft.HybridCompute/machines/machine1/providers/Microsoft.ScVmm/virtualMachineInstances/default
 /// ```
-class VirtualMachineManagerVirtualMachineInstance extends pulumi.CustomResource {
+class VirtualMachineManagerVirtualMachineInstance
+    extends pulumi.CustomResource {
   /// The ID of the Custom Location for the System Center Virtual Machine Manager Virtual Machine Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> customLocationId;
+
   /// A `hardware` block as defined below. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** This resource will be restarted while updating `hardware`.
-  late final pulumi.Output<VirtualMachineManagerVirtualMachineInstanceHardware?> hardware;
+  /// &gt; **Note:** This resource will be restarted while updating `hardware`.
+  late final pulumi.Output<VirtualMachineManagerVirtualMachineInstanceHardware?>
+  hardware;
+
   /// An `infrastructure` block as defined below.
-  late final pulumi.Output<VirtualMachineManagerVirtualMachineInstanceInfrastructure> infrastructure;
+  late final pulumi.Output<
+    VirtualMachineManagerVirtualMachineInstanceInfrastructure
+  >
+  infrastructure;
+
   /// A `network_interface` block as defined below.
   ///
-  /// > **Note:** This resource will be restarted while updating `network_interface`.
-  late final pulumi.Output<List<VirtualMachineManagerVirtualMachineInstanceNetworkInterface>?> networkInterfaces;
+  /// &gt; **Note:** This resource will be restarted while updating `network_interface`.
+  late final pulumi.Output<List<Map<String, dynamic>>?> networkInterfaces;
+
   /// An `operating_system` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<VirtualMachineManagerVirtualMachineInstanceOperatingSystem?> operatingSystem;
+  late final pulumi.Output<
+    VirtualMachineManagerVirtualMachineInstanceOperatingSystem?
+  >
+  operatingSystem;
+
   /// The ID of the Hybrid Compute Machine where this System Center Virtual Machine Manager Virtual Machine Instance is stored. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scopedResourceId;
+
   /// A `storage_disk` block as defined below.
   ///
-  /// > **Note:** This resource will be restarted while updating `storage_disk`.
-  late final pulumi.Output<List<VirtualMachineManagerVirtualMachineInstanceStorageDisk>?> storageDisks;
+  /// &gt; **Note:** This resource will be restarted while updating `storage_disk`.
+  late final pulumi.Output<List<Map<String, dynamic>>?> storageDisks;
+
   /// A list of IDs of System Center Virtual Machine Manager Availability Set.
-  late final pulumi.Output<List<String>?> systemCenterVirtualMachineManagerAvailabilitySetIds;
+  late final pulumi.Output<List<String>?>
+  systemCenterVirtualMachineManagerAvailabilitySetIds;
 
   /// Creates a new [VirtualMachineManagerVirtualMachineInstance].
   /// [name] The Pulumi resource name.
@@ -534,19 +548,33 @@ class VirtualMachineManagerVirtualMachineInstance extends pulumi.CustomResource 
     VirtualMachineManagerVirtualMachineInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:systemcenter/virtualMachineManagerVirtualMachineInstance:VirtualMachineManagerVirtualMachineInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customLocationId = registerOutput<String>('customLocationId');
-    this.hardware = registerOutput<VirtualMachineManagerVirtualMachineInstanceHardware?>('hardware');
-    this.infrastructure = registerOutput<VirtualMachineManagerVirtualMachineInstanceInfrastructure>('infrastructure');
-    this.networkInterfaces = registerOutput<List<VirtualMachineManagerVirtualMachineInstanceNetworkInterface>?>('networkInterfaces');
-    this.operatingSystem = registerOutput<VirtualMachineManagerVirtualMachineInstanceOperatingSystem?>('operatingSystem');
-    this.scopedResourceId = registerOutput<String>('scopedResourceId');
-    this.storageDisks = registerOutput<List<VirtualMachineManagerVirtualMachineInstanceStorageDisk>?>('storageDisks');
-    this.systemCenterVirtualMachineManagerAvailabilitySetIds = registerOutput<List<String>?>('systemCenterVirtualMachineManagerAvailabilitySetIds');
+         'azure:systemcenter/virtualMachineManagerVirtualMachineInstance:VirtualMachineManagerVirtualMachineInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customLocationId = registerOutput<String>('customLocationId');
+    hardware =
+        registerOutput<VirtualMachineManagerVirtualMachineInstanceHardware?>(
+          'hardware',
+        );
+    infrastructure =
+        registerOutput<
+          VirtualMachineManagerVirtualMachineInstanceInfrastructure
+        >('infrastructure');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>(
+      'networkInterfaces',
+    );
+    operatingSystem =
+        registerOutput<
+          VirtualMachineManagerVirtualMachineInstanceOperatingSystem?
+        >('operatingSystem');
+    scopedResourceId = registerOutput<String>('scopedResourceId');
+    storageDisks = registerOutput<List<Map<String, dynamic>>?>('storageDisks');
+    systemCenterVirtualMachineManagerAvailabilitySetIds =
+        registerOutput<List<String>?>(
+          'systemCenterVirtualMachineManagerAvailabilitySetIds',
+        );
   }
 
   /// Gets an existing [VirtualMachineManagerVirtualMachineInstance] resource's state with the given [name] and [id].
@@ -567,18 +595,32 @@ class VirtualMachineManagerVirtualMachineInstance extends pulumi.CustomResource 
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:systemcenter/virtualMachineManagerVirtualMachineInstance:VirtualMachineManagerVirtualMachineInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customLocationId = registerOutput<String>('customLocationId');
-    this.hardware = registerOutput<VirtualMachineManagerVirtualMachineInstanceHardware?>('hardware');
-    this.infrastructure = registerOutput<VirtualMachineManagerVirtualMachineInstanceInfrastructure>('infrastructure');
-    this.networkInterfaces = registerOutput<List<VirtualMachineManagerVirtualMachineInstanceNetworkInterface>?>('networkInterfaces');
-    this.operatingSystem = registerOutput<VirtualMachineManagerVirtualMachineInstanceOperatingSystem?>('operatingSystem');
-    this.scopedResourceId = registerOutput<String>('scopedResourceId');
-    this.storageDisks = registerOutput<List<VirtualMachineManagerVirtualMachineInstanceStorageDisk>?>('storageDisks');
-    this.systemCenterVirtualMachineManagerAvailabilitySetIds = registerOutput<List<String>?>('systemCenterVirtualMachineManagerAvailabilitySetIds');
+         'azure:systemcenter/virtualMachineManagerVirtualMachineInstance:VirtualMachineManagerVirtualMachineInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customLocationId = registerOutput<String>('customLocationId');
+    hardware =
+        registerOutput<VirtualMachineManagerVirtualMachineInstanceHardware?>(
+          'hardware',
+        );
+    infrastructure =
+        registerOutput<
+          VirtualMachineManagerVirtualMachineInstanceInfrastructure
+        >('infrastructure');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>?>(
+      'networkInterfaces',
+    );
+    operatingSystem =
+        registerOutput<
+          VirtualMachineManagerVirtualMachineInstanceOperatingSystem?
+        >('operatingSystem');
+    scopedResourceId = registerOutput<String>('scopedResourceId');
+    storageDisks = registerOutput<List<Map<String, dynamic>>?>('storageDisks');
+    systemCenterVirtualMachineManagerAvailabilitySetIds =
+        registerOutput<List<String>?>(
+          'systemCenterVirtualMachineManagerAvailabilitySetIds',
+        );
   }
 }

@@ -4,7 +4,7 @@ import 'group_policy_state.dart';
 
 /// Provides an IAM policy attached to a group.
 ///
-/// > **NOTE:** We suggest using explicit JSON encoding or `aws.iam.getPolicyDocument` when assigning a value to `policy`. They seamlessly translate configuration to JSON, enabling you to maintain consistency within your configuration without the need for context switches. Also, you can sidestep potential complications arising from formatting discrepancies, whitespace inconsistencies, and other nuances inherent to JSON.
+/// &gt; **NOTE:** We suggest using explicit JSON encoding or `aws.iam.getPolicyDocument` when assigning a value to `policy`. They seamlessly translate configuration to JSON, enabling you to maintain consistency within your configuration without the need for context switches. Also, you can sidestep potential complications arising from formatting discrepancies, whitespace inconsistencies, and other nuances inherent to JSON.
 ///
 /// ## Example Usage
 ///
@@ -217,12 +217,15 @@ import 'group_policy_state.dart';
 class GroupPolicy extends pulumi.CustomResource {
   /// The IAM group to attach to the policy.
   late final pulumi.Output<String> group;
+
   /// The name of the policy. If omitted, the provider will
   /// assign a random, unique name.
   late final pulumi.Output<String> name;
+
   /// Creates a unique name beginning with the specified
   /// prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
+
   /// The policy document. This is a JSON formatted string.
   late final pulumi.Output<String> policy;
 
@@ -235,15 +238,15 @@ class GroupPolicy extends pulumi.CustomResource {
     GroupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/groupPolicy:GroupPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.group = registerOutput<String>('group');
+         'aws:iam/groupPolicy:GroupPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String>('namePrefix');
-    this.policy = registerOutput<String>('policy');
+    namePrefix = registerOutput<String>('namePrefix');
+    policy = registerOutput<String>('policy');
   }
 
   /// Gets an existing [GroupPolicy] resource's state with the given [name] and [id].
@@ -264,14 +267,14 @@ class GroupPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/groupPolicy:GroupPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.group = registerOutput<String>('group');
+         'aws:iam/groupPolicy:GroupPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String>('namePrefix');
-    this.policy = registerOutput<String>('policy');
+    namePrefix = registerOutput<String>('namePrefix');
+    policy = registerOutput<String>('policy');
   }
 }

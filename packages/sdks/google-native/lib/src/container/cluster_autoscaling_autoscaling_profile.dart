@@ -4,16 +4,17 @@ enum ClusterAutoscalingAutoscalingProfile {
   optimizeUtilization("OPTIMIZE_UTILIZATION"),
   balanced("BALANCED");
 
-  const ClusterAutoscalingAutoscalingProfile(this.value);
-  final String value;
+  const ClusterAutoscalingAutoscalingProfile(this.wireValue);
+  final String wireValue;
 
   static ClusterAutoscalingAutoscalingProfile fromValue(String value) {
     for (final item in ClusterAutoscalingAutoscalingProfile.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ClusterAutoscalingAutoscalingProfile value: $value');
+    throw ArgumentError(
+      'Unknown ClusterAutoscalingAutoscalingProfile value: $value',
+    );
   }
 }
-

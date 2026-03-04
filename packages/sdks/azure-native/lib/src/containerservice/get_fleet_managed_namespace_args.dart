@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFleetManagedNamespaceArgs {
   /// The name of the Fleet resource.
   final pulumi.Input<String> fleetName;
+
   /// The name of the fleet managed namespace resource.
   final pulumi.Input<String> managedNamespaceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetFleetManagedNamespaceArgs {
 
   factory GetFleetManagedNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return GetFleetManagedNamespaceArgs(
-      fleetName: (map['fleetName'] as String).input(),
-      managedNamespaceName: (map['managedNamespaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      fleetName: pulumi.Input.fromValue(map['fleetName'] as String),
+      managedNamespaceName: pulumi.Input.fromValue(
+        map['managedNamespaceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

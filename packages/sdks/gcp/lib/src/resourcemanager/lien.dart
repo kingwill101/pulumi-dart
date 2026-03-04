@@ -185,20 +185,25 @@ import 'lien_state.dart';
 class Lien extends pulumi.CustomResource {
   /// Time of creation
   late final pulumi.Output<String> createTime;
+
   /// A system-generated unique identifier for this Lien.
   late final pulumi.Output<String> name;
+
   /// A stable, user-visible/meaningful string identifying the origin
   /// of the Lien, intended to be inspected programmatically. Maximum length of
   /// 200 characters.
   late final pulumi.Output<String> origin;
+
   /// A reference to the resource this Lien is attached to.
   /// The server will validate the parent against those for which Liens are supported.
   /// Since a variety of objects can have Liens against them, you must provide the type
   /// prefix (e.g. "projects/my-project-name").
   late final pulumi.Output<String> parent;
+
   /// Concise user-visible strings indicating why an action cannot be performed
   /// on a resource. Maximum length of 200 characters.
   late final pulumi.Output<String> reason;
+
   /// The types of operations which should be blocked as a result of this Lien.
   /// Each value should correspond to an IAM permission. The server will validate
   /// the permissions against those for which Liens are supported.  An empty
@@ -210,30 +215,23 @@ class Lien extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Lien]. {@macro pulumi_resourcemanager_lien_lien_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Lien(
-    String name, {
-    LienArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:resourcemanager/lien:Lien',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
+  Lien(String name, {LienArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:resourcemanager/lien:Lien',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    createTime = registerOutput<String>('createTime');
     this.name = registerOutput<String>('name');
-    this.origin = registerOutput<String>('origin');
-    this.parent = registerOutput<String>('parent');
-    this.reason = registerOutput<String>('reason');
-    this.restrictions = registerOutput<List<String>>('restrictions');
+    origin = registerOutput<String>('origin');
+    parent = registerOutput<String>('parent');
+    reason = registerOutput<String>('reason');
+    restrictions = registerOutput<List<String>>('restrictions');
   }
 
   /// Gets an existing [Lien] resource's state with the given [name] and [id].
-  static Lien get(
-    String name,
-    pulumi.Input<String> id, {
-    LienState? state,
-  }) {
+  static Lien get(String name, pulumi.Input<String> id, {LienState? state}) {
     return Lien._get(
       name,
       state: state?.toMap(),
@@ -246,16 +244,16 @@ class Lien extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:resourcemanager/lien:Lien',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
+         'gcp:resourcemanager/lien:Lien',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
     this.name = registerOutput<String>('name');
-    this.origin = registerOutput<String>('origin');
-    this.parent = registerOutput<String>('parent');
-    this.reason = registerOutput<String>('reason');
-    this.restrictions = registerOutput<List<String>>('restrictions');
+    origin = registerOutput<String>('origin');
+    parent = registerOutput<String>('parent');
+    reason = registerOutput<String>('reason');
+    restrictions = registerOutput<List<String>>('restrictions');
   }
 }

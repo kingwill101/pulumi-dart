@@ -10,18 +10,25 @@ import 'linked_service_integration_runtime.dart';
 class LinkedServiceArgs {
   /// A map of additional properties to associate with the Synapse Linked Service.
   final pulumi.Input<Map<String, String>>? additionalProperties;
+
   /// List of tags that can be used for describing the Synapse Linked Service.
   final pulumi.Input<List<String>>? annotations;
+
   /// The description for the Synapse Linked Service.
   final pulumi.Input<String>? description;
+
   /// A `integration_runtime` block as defined below.
   final pulumi.Input<LinkedServiceIntegrationRuntime>? integrationRuntime;
+
   /// The name which should be used for this Synapse Linked Service. Changing this forces a new Synapse Linked Service to be created.
   final pulumi.Input<String>? name;
+
   /// A map of parameters to associate with the Synapse Linked Service.
   final pulumi.Input<Map<String, String>>? parameters;
+
   /// The Synapse Workspace ID in which to associate the Linked Service with. Changing this forces a new Synapse Linked Service to be created.
   final pulumi.Input<String> synapseWorkspaceId;
+
   /// The type of data stores that will be connected to Synapse. Valid Values include `AmazonMWS`, `AmazonRdsForOracle`, `AmazonRdsForSqlServer`, `AmazonRedshift`, `AmazonS3`, `AzureBatch`. Changing this forces a new resource to be created.
   /// `AzureBlobFS`, `AzureBlobStorage`, `AzureDataExplorer`, `AzureDataLakeAnalytics`, `AzureDataLakeStore`, `AzureDatabricks`, `AzureDatabricksDeltaLake`, `AzureFileStorage`, `AzureFunction`,
   /// `AzureKeyVault`, `AzureML`, `AzureMLService`, `AzureMariaDB`, `AzureMySql`, `AzurePostgreSql`, `AzureSqlDW`, `AzureSqlDatabase`, `AzureSqlMI`, `AzureSearch`, `AzureStorage`,
@@ -32,6 +39,7 @@ class LinkedServiceArgs {
   /// `Responsys`, `RestService`, `SqlServer`, `Salesforce`, `SalesforceMarketingCloud`, `SalesforceServiceCloud`, `SapBW`, `SapCloudForCustomer`, `SapEcc`, `SapHana`, `SapOpenHub`,
   /// `SapTable`, `ServiceNow`, `Sftp`, `SharePointOnlineList`, `Shopify`, `Snowflake`, `Spark`, `Square`, `Sybase`, `Teradata`, `Vertica`, `Web`, `Xero`, `Zoho`.
   final pulumi.Input<String> type;
+
   /// A JSON object that contains the properties of the Synapse Linked Service.
   final pulumi.Input<String> typePropertiesJson;
 
@@ -62,7 +70,11 @@ class LinkedServiceArgs {
       'additionalProperties': ?additionalProperties,
       'annotations': ?annotations,
       'description': ?description,
-      'integrationRuntime': ?pulumi.Input.mapOptionalInputValue<LinkedServiceIntegrationRuntime, Map<String, dynamic>>(integrationRuntime, (value) => value.toMap()),
+      'integrationRuntime':
+          ?pulumi.Input.mapOptionalInputValue<
+            LinkedServiceIntegrationRuntime,
+            Map<String, dynamic>
+          >(integrationRuntime, (value) => value.toMap()),
       'name': ?name,
       'parameters': ?parameters,
       'synapseWorkspaceId': synapseWorkspaceId,
@@ -73,16 +85,51 @@ class LinkedServiceArgs {
 
   factory LinkedServiceArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      integrationRuntime: map['integrationRuntime'] == null ? null : (LinkedServiceIntegrationRuntime.fromMap((map['integrationRuntime']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
-      synapseWorkspaceId: (map['synapseWorkspaceId'] as String).input(),
-      type: (map['type'] as String).input(),
-      typePropertiesJson: (map['typePropertiesJson'] as String).input(),
+      additionalProperties: (() {
+        final guardedValue = map['additionalProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      integrationRuntime: (() {
+        final guardedValue = map['integrationRuntime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LinkedServiceIntegrationRuntime.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      synapseWorkspaceId: pulumi.Input.fromValue(
+        map['synapseWorkspaceId'] as String,
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      typePropertiesJson: pulumi.Input.fromValue(
+        map['typePropertiesJson'] as String,
+      ),
     );
   }
 }
-

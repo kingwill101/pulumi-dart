@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetModelsModel {
   /// The creation time of the model.
   final pulumi.Input<String> createTime;
+
   /// The description of the model.
   final pulumi.Input<String> description;
+
   /// The ID of the api group.
   final pulumi.Input<String> groupId;
+
   /// The ID of the Api Gateway Model.
   final pulumi.Input<String> id;
+
   /// The id of the model.
   final pulumi.Input<String> modelId;
+
   /// The name of the Model.
   final pulumi.Input<String> modelName;
+
   /// The reference of the model.
   final pulumi.Input<String> modelRef;
+
   /// The modified time of the model.
   final pulumi.Input<String> modifiedTime;
+
   /// The schema of the model.
   final pulumi.Input<String> schema;
 
@@ -60,16 +68,15 @@ class GetModelsModel {
 
   factory GetModelsModel.fromMap(Map<String, dynamic> map) {
     return GetModelsModel(
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      groupId: (map['groupId'] as String).input(),
-      id: (map['id'] as String).input(),
-      modelId: (map['modelId'] as String).input(),
-      modelName: (map['modelName'] as String).input(),
-      modelRef: (map['modelRef'] as String).input(),
-      modifiedTime: (map['modifiedTime'] as String).input(),
-      schema: (map['schema'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      groupId: pulumi.Input.fromValue(map['groupId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      modelId: pulumi.Input.fromValue(map['modelId'] as String),
+      modelName: pulumi.Input.fromValue(map['modelName'] as String),
+      modelRef: pulumi.Input.fromValue(map['modelRef'] as String),
+      modifiedTime: pulumi.Input.fromValue(map['modifiedTime'] as String),
+      schema: pulumi.Input.fromValue(map['schema'] as String),
     );
   }
 }
-

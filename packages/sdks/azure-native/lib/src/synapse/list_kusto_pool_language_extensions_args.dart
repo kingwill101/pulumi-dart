@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListKustoPoolLanguageExtensionsArgs {
   /// The name of the Kusto pool.
   final pulumi.Input<String> kustoPoolName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -32,12 +34,15 @@ class ListKustoPoolLanguageExtensionsArgs {
     };
   }
 
-  factory ListKustoPoolLanguageExtensionsArgs.fromMap(Map<String, dynamic> map) {
+  factory ListKustoPoolLanguageExtensionsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListKustoPoolLanguageExtensionsArgs(
-      kustoPoolName: (map['kustoPoolName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      kustoPoolName: pulumi.Input.fromValue(map['kustoPoolName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

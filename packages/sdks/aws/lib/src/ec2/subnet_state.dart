@@ -6,57 +6,82 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubnetState {
   /// The ARN of the subnet.
   final pulumi.Input<String>? arn;
+
   /// Specify true to indicate
   /// that network interfaces created in the specified subnet should be
   /// assigned an IPv6 address. Default is `false`
   final pulumi.Input<bool>? assignIpv6AddressOnCreation;
+
   /// AZ for the subnet.
   final pulumi.Input<String>? availabilityZone;
+
   /// AZ ID of the subnet. This argument is not supported in all regions or partitions. If necessary, use `availability_zone` instead.
   final pulumi.Input<String>? availabilityZoneId;
+
   /// The IPv4 CIDR block for the subnet.
   final pulumi.Input<String>? cidrBlock;
+
   /// The customer owned IPv4 address pool. Typically used with the `map_customer_owned_ip_on_launch` argument. The `outpost_arn` argument must be specified when configured.
   final pulumi.Input<String>? customerOwnedIpv4Pool;
+
   /// Indicates whether DNS queries made to the Amazon-provided DNS Resolver in this subnet should return synthetic IPv6 addresses for IPv4-only destinations. Default: `false`.
   final pulumi.Input<bool>? enableDns64;
+
   /// Indicates the device position for local network interfaces in this subnet. For example, 1 indicates local network interfaces in this subnet are the secondary network interface (eth1). A local network interface cannot be the primary network interface (eth0).
   final pulumi.Input<int>? enableLniAtDeviceIndex;
+
   /// Indicates whether to respond to DNS queries for instance hostnames with DNS A records. Default: `false`.
   final pulumi.Input<bool>? enableResourceNameDnsARecordOnLaunch;
+
   /// Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records. Default: `false`.
   final pulumi.Input<bool>? enableResourceNameDnsAaaaRecordOnLaunch;
+
   /// ID of an IPv4 VPC Resource Planning IPAM Pool. The CIDR of this pool is used to allocate the CIDR for the subnet.
   final pulumi.Input<String>? ipv4IpamPoolId;
+
   /// Netmask. Requires specifying a `ipv4_ipam_pool_id`.
   final pulumi.Input<int>? ipv4NetmaskLength;
+
   /// The IPv6 network range for the subnet,
   /// in CIDR notation. The subnet size must use a /64 prefix length. If the existing IPv6 subnet was created with `assign_ipv6_address_on_creation = true`, changing this value will force resource recreation.
   final pulumi.Input<String>? ipv6CidrBlock;
+
   /// The association ID for the IPv6 CIDR block.
   final pulumi.Input<String>? ipv6CidrBlockAssociationId;
+
   /// ID of an IPv6 VPC Resource Planning IPAM Pool. The CIDR of this pool is used to allocate the CIDR for the subnet.
   final pulumi.Input<String>? ipv6IpamPoolId;
+
   /// Indicates whether to create an IPv6-only subnet. Default: `false`.
   final pulumi.Input<bool>? ipv6Native;
+
   /// Netmask. Requires specifying a `ipv6_ipam_pool_id`. Valid values are from 44 to 64 in increments of 4.
   final pulumi.Input<int>? ipv6NetmaskLength;
+
   /// Specify `true` to indicate that network interfaces created in the subnet should be assigned a customer owned IP address. The `customer_owned_ipv4_pool` and `outpost_arn` arguments must be specified when set to `true`. Default is `false`.
   final pulumi.Input<bool>? mapCustomerOwnedIpOnLaunch;
+
   /// Specify true to indicate that instances launched into the subnet should be assigned a public IP address. Default is `false`.
   final pulumi.Input<bool>? mapPublicIpOnLaunch;
+
   /// The Amazon Resource Name (ARN) of the Outpost.
   final pulumi.Input<String>? outpostArn;
+
   /// The ID of the AWS account that owns the subnet.
   final pulumi.Input<String>? ownerId;
+
   /// The type of hostnames to assign to instances in the subnet at launch. For IPv6-only subnets, an instance DNS name must be based on the instance ID. For dual-stack and IPv4-only subnets, you can specify whether DNS names use the instance IPv4 address or the instance ID. Valid values: `ip-name`, `resource-name`.
   final pulumi.Input<String>? privateDnsHostnameTypeOnLaunch;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// The VPC ID.
   final pulumi.Input<String>? vpcId;
 
@@ -126,8 +151,10 @@ class SubnetState {
       'customerOwnedIpv4Pool': ?customerOwnedIpv4Pool,
       'enableDns64': ?enableDns64,
       'enableLniAtDeviceIndex': ?enableLniAtDeviceIndex,
-      'enableResourceNameDnsARecordOnLaunch': ?enableResourceNameDnsARecordOnLaunch,
-      'enableResourceNameDnsAaaaRecordOnLaunch': ?enableResourceNameDnsAaaaRecordOnLaunch,
+      'enableResourceNameDnsARecordOnLaunch':
+          ?enableResourceNameDnsARecordOnLaunch,
+      'enableResourceNameDnsAaaaRecordOnLaunch':
+          ?enableResourceNameDnsAaaaRecordOnLaunch,
       'ipv4IpamPoolId': ?ipv4IpamPoolId,
       'ipv4NetmaskLength': ?ipv4NetmaskLength,
       'ipv6CidrBlock': ?ipv6CidrBlock,
@@ -149,33 +176,140 @@ class SubnetState {
 
   factory SubnetState.fromMap(Map<String, dynamic> map) {
     return SubnetState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      assignIpv6AddressOnCreation: map['assignIpv6AddressOnCreation'] == null ? null : ((map['assignIpv6AddressOnCreation'] as bool).input()).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : ((map['availabilityZoneId'] as String).input()).input(),
-      cidrBlock: map['cidrBlock'] == null ? null : ((map['cidrBlock'] as String).input()).input(),
-      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : ((map['customerOwnedIpv4Pool'] as String).input()).input(),
-      enableDns64: map['enableDns64'] == null ? null : ((map['enableDns64'] as bool).input()).input(),
-      enableLniAtDeviceIndex: map['enableLniAtDeviceIndex'] == null ? null : ((map['enableLniAtDeviceIndex'] as int).input()).input(),
-      enableResourceNameDnsARecordOnLaunch: map['enableResourceNameDnsARecordOnLaunch'] == null ? null : ((map['enableResourceNameDnsARecordOnLaunch'] as bool).input()).input(),
-      enableResourceNameDnsAaaaRecordOnLaunch: map['enableResourceNameDnsAaaaRecordOnLaunch'] == null ? null : ((map['enableResourceNameDnsAaaaRecordOnLaunch'] as bool).input()).input(),
-      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : ((map['ipv4IpamPoolId'] as String).input()).input(),
-      ipv4NetmaskLength: map['ipv4NetmaskLength'] == null ? null : ((map['ipv4NetmaskLength'] as int).input()).input(),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : ((map['ipv6CidrBlock'] as String).input()).input(),
-      ipv6CidrBlockAssociationId: map['ipv6CidrBlockAssociationId'] == null ? null : ((map['ipv6CidrBlockAssociationId'] as String).input()).input(),
-      ipv6IpamPoolId: map['ipv6IpamPoolId'] == null ? null : ((map['ipv6IpamPoolId'] as String).input()).input(),
-      ipv6Native: map['ipv6Native'] == null ? null : ((map['ipv6Native'] as bool).input()).input(),
-      ipv6NetmaskLength: map['ipv6NetmaskLength'] == null ? null : ((map['ipv6NetmaskLength'] as int).input()).input(),
-      mapCustomerOwnedIpOnLaunch: map['mapCustomerOwnedIpOnLaunch'] == null ? null : ((map['mapCustomerOwnedIpOnLaunch'] as bool).input()).input(),
-      mapPublicIpOnLaunch: map['mapPublicIpOnLaunch'] == null ? null : ((map['mapPublicIpOnLaunch'] as bool).input()).input(),
-      outpostArn: map['outpostArn'] == null ? null : ((map['outpostArn'] as String).input()).input(),
-      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
-      privateDnsHostnameTypeOnLaunch: map['privateDnsHostnameTypeOnLaunch'] == null ? null : ((map['privateDnsHostnameTypeOnLaunch'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      assignIpv6AddressOnCreation: (() {
+        final guardedValue = map['assignIpv6AddressOnCreation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      availabilityZoneId: (() {
+        final guardedValue = map['availabilityZoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cidrBlock: (() {
+        final guardedValue = map['cidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customerOwnedIpv4Pool: (() {
+        final guardedValue = map['customerOwnedIpv4Pool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableDns64: (() {
+        final guardedValue = map['enableDns64'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableLniAtDeviceIndex: (() {
+        final guardedValue = map['enableLniAtDeviceIndex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      enableResourceNameDnsARecordOnLaunch: (() {
+        final guardedValue = map['enableResourceNameDnsARecordOnLaunch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableResourceNameDnsAaaaRecordOnLaunch: (() {
+        final guardedValue = map['enableResourceNameDnsAaaaRecordOnLaunch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ipv4IpamPoolId: (() {
+        final guardedValue = map['ipv4IpamPoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv4NetmaskLength: (() {
+        final guardedValue = map['ipv4NetmaskLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ipv6CidrBlock: (() {
+        final guardedValue = map['ipv6CidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6CidrBlockAssociationId: (() {
+        final guardedValue = map['ipv6CidrBlockAssociationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6IpamPoolId: (() {
+        final guardedValue = map['ipv6IpamPoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6Native: (() {
+        final guardedValue = map['ipv6Native'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ipv6NetmaskLength: (() {
+        final guardedValue = map['ipv6NetmaskLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      mapCustomerOwnedIpOnLaunch: (() {
+        final guardedValue = map['mapCustomerOwnedIpOnLaunch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      mapPublicIpOnLaunch: (() {
+        final guardedValue = map['mapPublicIpOnLaunch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      outpostArn: (() {
+        final guardedValue = map['outpostArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerId: (() {
+        final guardedValue = map['ownerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateDnsHostnameTypeOnLaunch: (() {
+        final guardedValue = map['privateDnsHostnameTypeOnLaunch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

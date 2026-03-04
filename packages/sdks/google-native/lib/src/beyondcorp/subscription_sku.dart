@@ -3,16 +3,15 @@ enum SubscriptionSku {
   skuUnspecified("SKU_UNSPECIFIED"),
   bceStandardSku("BCE_STANDARD_SKU");
 
-  const SubscriptionSku(this.value);
-  final String value;
+  const SubscriptionSku(this.wireValue);
+  final String wireValue;
 
   static SubscriptionSku fromValue(String value) {
     for (final item in SubscriptionSku.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SubscriptionSku value: $value');
   }
 }
-

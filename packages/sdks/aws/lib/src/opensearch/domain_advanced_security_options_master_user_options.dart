@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainAdvancedSecurityOptionsMasterUserOptions {
   /// ARN for the main user. Only specify if `internal_user_database_enabled` is not set or set to `false`.
   final pulumi.Input<String>? masterUserArn;
+
   /// Main user's username, which is stored in the Amazon OpenSearch Service domain's internal database. Only specify if `internal_user_database_enabled` is set to `true`.
   final pulumi.Input<String>? masterUserName;
+
   /// Main user's password, which is stored in the Amazon OpenSearch Service domain's internal database. Only specify if `internal_user_database_enabled` is set to `true`.
   final pulumi.Input<String>? masterUserPassword;
 
@@ -28,12 +30,25 @@ class DomainAdvancedSecurityOptionsMasterUserOptions {
     };
   }
 
-  factory DomainAdvancedSecurityOptionsMasterUserOptions.fromMap(Map<String, dynamic> map) {
+  factory DomainAdvancedSecurityOptionsMasterUserOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainAdvancedSecurityOptionsMasterUserOptions(
-      masterUserArn: map['masterUserArn'] == null ? null : ((map['masterUserArn'] as String).input()).input(),
-      masterUserName: map['masterUserName'] == null ? null : ((map['masterUserName'] as String).input()).input(),
-      masterUserPassword: map['masterUserPassword'] == null ? null : ((map['masterUserPassword'] as String).input()).input(),
+      masterUserArn: (() {
+        final guardedValue = map['masterUserArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      masterUserName: (() {
+        final guardedValue = map['masterUserName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      masterUserPassword: (() {
+        final guardedValue = map['masterUserPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

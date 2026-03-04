@@ -9,20 +9,17 @@ class EncryptionConfigResponseAlloydbV1beta {
 
   /// Creates a new [EncryptionConfigResponseAlloydbV1beta].
   /// [kmsKeyName] The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
-  EncryptionConfigResponseAlloydbV1beta({
-    required this.kmsKeyName,
-  });
+  EncryptionConfigResponseAlloydbV1beta({required this.kmsKeyName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKeyName': kmsKeyName,
-    };
+    return <String, dynamic>{'kmsKeyName': kmsKeyName};
   }
 
-  factory EncryptionConfigResponseAlloydbV1beta.fromMap(Map<String, dynamic> map) {
+  factory EncryptionConfigResponseAlloydbV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EncryptionConfigResponseAlloydbV1beta(
-      kmsKeyName: (map['kmsKeyName'] as String).input(),
+      kmsKeyName: pulumi.Input.fromValue(map['kmsKeyName'] as String),
     );
   }
 }
-

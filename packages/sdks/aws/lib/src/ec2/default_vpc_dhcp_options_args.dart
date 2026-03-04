@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DefaultVpcDhcpOptionsArgs {
   /// The ID of the AWS account that owns the DHCP options set.
   final pulumi.Input<String>? ownerId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -18,11 +20,7 @@ class DefaultVpcDhcpOptionsArgs {
   /// [ownerId] The ID of the AWS account that owns the DHCP options set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
   /// [tags] A map of tags to assign to the resource.
-  DefaultVpcDhcpOptionsArgs({
-    this.ownerId,
-    this.region,
-    this.tags,
-  });
+  DefaultVpcDhcpOptionsArgs({this.ownerId, this.region, this.tags});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,23 @@ class DefaultVpcDhcpOptionsArgs {
 
   factory DefaultVpcDhcpOptionsArgs.fromMap(Map<String, dynamic> map) {
     return DefaultVpcDhcpOptionsArgs(
-      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      ownerId: (() {
+        final guardedValue = map['ownerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

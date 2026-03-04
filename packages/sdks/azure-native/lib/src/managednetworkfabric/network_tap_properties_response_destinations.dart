@@ -7,12 +7,17 @@ import 'isolation_domain_properties_response.dart';
 class NetworkTapPropertiesResponseDestinations {
   /// The destination Id. ARM Resource ID of either NNI or Internal Networks.
   final pulumi.Input<String> destinationId;
+
   /// ARM Resource ID of destination Tap Rule that contains match configurations.
   final pulumi.Input<String>? destinationTapRuleId;
+
   /// Type of destination. Input can be IsolationDomain or Direct.
   final pulumi.Input<String> destinationType;
+
   /// Isolation Domain Properties.
-  final pulumi.Input<IsolationDomainPropertiesResponse>? isolationDomainProperties;
+  final pulumi.Input<IsolationDomainPropertiesResponse>?
+  isolationDomainProperties;
+
   /// Destination name.
   final pulumi.Input<String> name;
 
@@ -35,19 +40,36 @@ class NetworkTapPropertiesResponseDestinations {
       'destinationId': destinationId,
       'destinationTapRuleId': ?destinationTapRuleId,
       'destinationType': destinationType,
-      'isolationDomainProperties': ?pulumi.Input.mapOptionalInputValue<IsolationDomainPropertiesResponse, Map<String, dynamic>>(isolationDomainProperties, (value) => value.toMap()),
+      'isolationDomainProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            IsolationDomainPropertiesResponse,
+            Map<String, dynamic>
+          >(isolationDomainProperties, (value) => value.toMap()),
       'name': name,
     };
   }
 
-  factory NetworkTapPropertiesResponseDestinations.fromMap(Map<String, dynamic> map) {
+  factory NetworkTapPropertiesResponseDestinations.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkTapPropertiesResponseDestinations(
-      destinationId: (map['destinationId'] as String).input(),
-      destinationTapRuleId: map['destinationTapRuleId'] == null ? null : (map['destinationTapRuleId']! as String).input(),
-      destinationType: (map['destinationType'] as String).input(),
-      isolationDomainProperties: map['isolationDomainProperties'] == null ? null : (IsolationDomainPropertiesResponse.fromMap((map['isolationDomainProperties']! as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
+      destinationId: pulumi.Input.fromValue(map['destinationId'] as String),
+      destinationTapRuleId: (() {
+        final guardedValue = map['destinationTapRuleId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationType: pulumi.Input.fromValue(map['destinationType'] as String),
+      isolationDomainProperties: (() {
+        final guardedValue = map['isolationDomainProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IsolationDomainPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

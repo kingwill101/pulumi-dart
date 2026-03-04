@@ -8,12 +8,16 @@ import 'performance_threshold_response.dart';
 class WindowsBasedSliResponse {
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window.
   final pulumi.Input<String> goodBadMetricFilter;
+
   /// A window is good if its performance is high enough.
   final pulumi.Input<PerformanceThresholdResponse> goodTotalRatioThreshold;
+
   /// A window is good if the metric's value is in a good range, averaged across returned streams.
   final pulumi.Input<MetricRangeResponse> metricMeanInRange;
+
   /// A window is good if the metric's value is in a good range, summed across returned streams.
   final pulumi.Input<MetricRangeResponse> metricSumInRange;
+
   /// Duration over which window quality is evaluated. Must be an integer fraction of a day and at least 60s.
   final pulumi.Input<String> windowPeriod;
 
@@ -34,21 +38,46 @@ class WindowsBasedSliResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'goodBadMetricFilter': goodBadMetricFilter,
-      'goodTotalRatioThreshold': pulumi.Input.mapInputValue<PerformanceThresholdResponse, Map<String, dynamic>>(goodTotalRatioThreshold, (value) => value.toMap()),
-      'metricMeanInRange': pulumi.Input.mapInputValue<MetricRangeResponse, Map<String, dynamic>>(metricMeanInRange, (value) => value.toMap()),
-      'metricSumInRange': pulumi.Input.mapInputValue<MetricRangeResponse, Map<String, dynamic>>(metricSumInRange, (value) => value.toMap()),
+      'goodTotalRatioThreshold':
+          pulumi.Input.mapInputValue<
+            PerformanceThresholdResponse,
+            Map<String, dynamic>
+          >(goodTotalRatioThreshold, (value) => value.toMap()),
+      'metricMeanInRange':
+          pulumi.Input.mapInputValue<MetricRangeResponse, Map<String, dynamic>>(
+            metricMeanInRange,
+            (value) => value.toMap(),
+          ),
+      'metricSumInRange':
+          pulumi.Input.mapInputValue<MetricRangeResponse, Map<String, dynamic>>(
+            metricSumInRange,
+            (value) => value.toMap(),
+          ),
       'windowPeriod': windowPeriod,
     };
   }
 
   factory WindowsBasedSliResponse.fromMap(Map<String, dynamic> map) {
     return WindowsBasedSliResponse(
-      goodBadMetricFilter: (map['goodBadMetricFilter'] as String).input(),
-      goodTotalRatioThreshold: (PerformanceThresholdResponse.fromMap((map['goodTotalRatioThreshold'] as Map).cast<String, dynamic>())).input(),
-      metricMeanInRange: (MetricRangeResponse.fromMap((map['metricMeanInRange'] as Map).cast<String, dynamic>())).input(),
-      metricSumInRange: (MetricRangeResponse.fromMap((map['metricSumInRange'] as Map).cast<String, dynamic>())).input(),
-      windowPeriod: (map['windowPeriod'] as String).input(),
+      goodBadMetricFilter: pulumi.Input.fromValue(
+        map['goodBadMetricFilter'] as String,
+      ),
+      goodTotalRatioThreshold: pulumi.Input.fromValue(
+        PerformanceThresholdResponse.fromMap(
+          (map['goodTotalRatioThreshold']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      metricMeanInRange: pulumi.Input.fromValue(
+        MetricRangeResponse.fromMap(
+          (map['metricMeanInRange']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      metricSumInRange: pulumi.Input.fromValue(
+        MetricRangeResponse.fromMap(
+          (map['metricSumInRange']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      windowPeriod: pulumi.Input.fromValue(map['windowPeriod'] as String),
     );
   }
 }
-

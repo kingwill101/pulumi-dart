@@ -223,18 +223,25 @@ import 'sku_response.dart';
 class MachineLearningDataset extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The identity of the resource.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// Specifies the location of the resource.
   late final pulumi.Output<String?> location;
+
   /// Specifies the name of the resource.
   late final pulumi.Output<String> name;
+
   /// Dataset properties
   late final pulumi.Output<DatasetResponse> properties;
+
   /// The sku of the workspace.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// Contains resource tags defined as key/value pairs.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the type of the resource.
   late final pulumi.Output<String> type;
 
@@ -247,18 +254,18 @@ class MachineLearningDataset extends pulumi.CustomResource {
     MachineLearningDatasetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:machinelearningservices:MachineLearningDataset',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+         'azure-native:machinelearningservices:MachineLearningDataset',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<IdentityResponse?>('identity');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<DatasetResponse>('properties');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<DatasetResponse>('properties');
+    sku = registerOutput<SkuResponse?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

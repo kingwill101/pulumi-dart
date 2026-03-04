@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BillingRoleAssignmentProperties {
   /// The object id of the user to whom the role was assigned.
   final pulumi.Input<String>? principalId;
+
   /// The principal PUID of the user to whom the role was assigned.
   final pulumi.Input<String>? principalPuid;
+
   /// The principal tenant id of the user to whom the role was assigned.
   final pulumi.Input<String>? principalTenantId;
+
   /// The ID of the role definition.
   final pulumi.Input<String> roleDefinitionId;
+
   /// The scope at which the role was assigned.
   final pulumi.Input<String>? scope;
+
   /// The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
   final pulumi.Input<String>? userAuthenticationType;
+
   /// The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
   final pulumi.Input<String>? userEmailAddress;
 
@@ -51,14 +57,39 @@ class BillingRoleAssignmentProperties {
 
   factory BillingRoleAssignmentProperties.fromMap(Map<String, dynamic> map) {
     return BillingRoleAssignmentProperties(
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
-      principalPuid: map['principalPuid'] == null ? null : (map['principalPuid']! as String).input(),
-      principalTenantId: map['principalTenantId'] == null ? null : (map['principalTenantId']! as String).input(),
-      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      userAuthenticationType: map['userAuthenticationType'] == null ? null : (map['userAuthenticationType']! as String).input(),
-      userEmailAddress: map['userEmailAddress'] == null ? null : (map['userEmailAddress']! as String).input(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalPuid: (() {
+        final guardedValue = map['principalPuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalTenantId: (() {
+        final guardedValue = map['principalTenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleDefinitionId: pulumi.Input.fromValue(
+        map['roleDefinitionId'] as String,
+      ),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userAuthenticationType: (() {
+        final guardedValue = map['userAuthenticationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userEmailAddress: (() {
+        final guardedValue = map['userEmailAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

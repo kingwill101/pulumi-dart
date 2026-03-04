@@ -3,16 +3,17 @@ enum DiscoveryRuleRecommendedSignalsBehavior {
   enabled("Enabled"),
   disabled("Disabled");
 
-  const DiscoveryRuleRecommendedSignalsBehavior(this.value);
-  final String value;
+  const DiscoveryRuleRecommendedSignalsBehavior(this.wireValue);
+  final String wireValue;
 
   static DiscoveryRuleRecommendedSignalsBehavior fromValue(String value) {
     for (final item in DiscoveryRuleRecommendedSignalsBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DiscoveryRuleRecommendedSignalsBehavior value: $value');
+    throw ArgumentError(
+      'Unknown DiscoveryRuleRecommendedSignalsBehavior value: $value',
+    );
   }
 }
-

@@ -5,7 +5,6 @@ import 'container_service_network_profile_response.dart';
 import 'extended_location_response.dart';
 import 'managed_cluster_aadprofile_response.dart';
 import 'managed_cluster_addon_profile_response.dart';
-import 'managed_cluster_agent_pool_profile_response.dart';
 import 'managed_cluster_aitoolchain_operator_profile_response.dart';
 import 'managed_cluster_apiserver_access_profile_response.dart';
 import 'managed_cluster_args.dart';
@@ -29,7 +28,6 @@ import 'managed_cluster_storage_profile_response.dart';
 import 'managed_cluster_windows_profile_response.dart';
 import 'managed_cluster_workload_auto_scaler_profile_response.dart';
 import 'power_state_response.dart';
-import 'private_link_resource_response.dart';
 import 'service_mesh_profile_response.dart';
 import 'system_data_response.dart';
 import 'user_assigned_identity_response.dart';
@@ -11199,116 +11197,192 @@ import 'user_assigned_identity_response.dart';
 class ManagedCluster extends pulumi.CustomResource {
   /// The Azure Active Directory configuration.
   late final pulumi.Output<ManagedClusterAADProfileResponse?> aadProfile;
+
   /// The profile of managed cluster add-on.
-  late final pulumi.Output<Map<String, ManagedClusterAddonProfileResponse>?> addonProfiles;
+  late final pulumi.Output<Map<String, ManagedClusterAddonProfileResponse>?>
+  addonProfiles;
+
   /// The agent pool properties.
-  late final pulumi.Output<List<ManagedClusterAgentPoolProfileResponse>?> agentPoolProfiles;
+  late final pulumi.Output<List<Map<String, dynamic>>?> agentPoolProfiles;
+
   /// AI toolchain operator settings that apply to the whole cluster.
-  late final pulumi.Output<ManagedClusterAIToolchainOperatorProfileResponse?> aiToolchainOperatorProfile;
+  late final pulumi.Output<ManagedClusterAIToolchainOperatorProfileResponse?>
+  aiToolchainOperatorProfile;
+
   /// The access profile for managed cluster API server.
-  late final pulumi.Output<ManagedClusterAPIServerAccessProfileResponse?> apiServerAccessProfile;
+  late final pulumi.Output<ManagedClusterAPIServerAccessProfileResponse?>
+  apiServerAccessProfile;
+
   /// Parameters to be applied to the cluster-autoscaler when enabled
-  late final pulumi.Output<ManagedClusterPropertiesResponseAutoScalerProfile?> autoScalerProfile;
+  late final pulumi.Output<ManagedClusterPropertiesResponseAutoScalerProfile?>
+  autoScalerProfile;
+
   /// The auto upgrade configuration.
-  late final pulumi.Output<ManagedClusterAutoUpgradeProfileResponse?> autoUpgradeProfile;
+  late final pulumi.Output<ManagedClusterAutoUpgradeProfileResponse?>
+  autoUpgradeProfile;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Azure Monitor addon profiles for monitoring the managed cluster.
-  late final pulumi.Output<ManagedClusterAzureMonitorProfileResponse?> azureMonitorProfile;
+  late final pulumi.Output<ManagedClusterAzureMonitorProfileResponse?>
+  azureMonitorProfile;
+
   /// The special FQDN used by the Azure Portal to access the Managed Cluster. This FQDN is for use only by the Azure Portal and should not be used by other clients. The Azure Portal requires certain Cross-Origin Resource Sharing (CORS) headers to be sent in some responses, which Kubernetes APIServer doesn't handle by default. This special FQDN supports CORS, allowing the Azure Portal to function properly.
   late final pulumi.Output<String> azurePortalFQDN;
+
   /// Profile of the cluster bootstrap configuration.
-  late final pulumi.Output<ManagedClusterBootstrapProfileResponse?> bootstrapProfile;
-  /// The version of Kubernetes the Managed Cluster is running. If kubernetesVersion was a fully specified version <major.minor.patch>, this field will be exactly equal to it. If kubernetesVersion was <major.minor>, this field will contain the full <major.minor.patch> version being used.
+  late final pulumi.Output<ManagedClusterBootstrapProfileResponse?>
+  bootstrapProfile;
+
+  /// The version of Kubernetes the Managed Cluster is running. If kubernetesVersion was a fully specified version &lt;major.minor.patch&gt;, this field will be exactly equal to it. If kubernetesVersion was &lt;major.minor&gt;, this field will contain the full &lt;major.minor.patch&gt; version being used.
   late final pulumi.Output<String> currentKubernetesVersion;
+
   /// If local accounts should be disabled on the Managed Cluster. If set to true, getting static credentials will be disabled for this cluster. This must only be used on Managed Clusters that are AAD enabled. For more details see [disable local accounts](https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview).
   late final pulumi.Output<bool?> disableLocalAccounts;
+
   /// The Resource ID of the disk encryption set to use for enabling encryption at rest. This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{encryptionSetName}'
   late final pulumi.Output<String?> diskEncryptionSetID;
+
   /// The DNS prefix of the Managed Cluster. This cannot be updated once the Managed Cluster has been created.
   late final pulumi.Output<String?> dnsPrefix;
+
   /// Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal eTag convention.
   late final pulumi.Output<String> eTag;
+
   /// Whether to enable Kubernetes Role-Based Access Control.
   late final pulumi.Output<bool?> enableRBAC;
+
   /// The extended location of the Virtual Machine.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// The FQDN of the master pool.
   late final pulumi.Output<String> fqdn;
+
   /// The FQDN subdomain of the private cluster with custom private dns zone. This cannot be updated once the Managed Cluster has been created.
   late final pulumi.Output<String?> fqdnSubdomain;
+
   /// Configurations for provisioning the cluster with HTTP proxy servers.
-  late final pulumi.Output<ManagedClusterHTTPProxyConfigResponse?> httpProxyConfig;
+  late final pulumi.Output<ManagedClusterHTTPProxyConfigResponse?>
+  httpProxyConfig;
+
   /// The identity of the managed cluster, if configured.
   late final pulumi.Output<ManagedClusterIdentityResponse?> identity;
+
   /// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
-  late final pulumi.Output<Map<String, UserAssignedIdentityResponse>?> identityProfile;
+  late final pulumi.Output<Map<String, UserAssignedIdentityResponse>?>
+  identityProfile;
+
   /// Ingress profile for the managed cluster.
-  late final pulumi.Output<ManagedClusterIngressProfileResponse?> ingressProfile;
+  late final pulumi.Output<ManagedClusterIngressProfileResponse?>
+  ingressProfile;
+
   /// This is primarily used to expose different UI experiences in the portal for different kinds
   late final pulumi.Output<String?> kind;
-  /// The version of Kubernetes specified by the user. Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.
+
+  /// The version of Kubernetes specified by the user. Both patch version &lt;major.minor.patch&gt; (e.g. 1.20.13) and &lt;major.minor&gt; (e.g. 1.20) are supported. When &lt;major.minor&gt; is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same &lt;major.minor&gt; once it has been created (e.g. 1.14.x -&gt; 1.14) will not trigger an upgrade, even if a newer patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -&gt; 1.15.x or 1.15.x -&gt; 1.16.x are allowed, however 1.14.x -&gt; 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.
   late final pulumi.Output<String?> kubernetesVersion;
+
   /// The profile for Linux VMs in the Managed Cluster.
   late final pulumi.Output<ContainerServiceLinuxProfileResponse?> linuxProfile;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The max number of agent pools for the managed cluster.
   late final pulumi.Output<int> maxAgentPools;
+
   /// Optional cluster metrics configuration.
-  late final pulumi.Output<ManagedClusterMetricsProfileResponse?> metricsProfile;
+  late final pulumi.Output<ManagedClusterMetricsProfileResponse?>
+  metricsProfile;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The network configuration profile.
-  late final pulumi.Output<ContainerServiceNetworkProfileResponse?> networkProfile;
+  late final pulumi.Output<ContainerServiceNetworkProfileResponse?>
+  networkProfile;
+
   /// Node provisioning settings that apply to the whole cluster.
-  late final pulumi.Output<ManagedClusterNodeProvisioningProfileResponse?> nodeProvisioningProfile;
+  late final pulumi.Output<ManagedClusterNodeProvisioningProfileResponse?>
+  nodeProvisioningProfile;
+
   /// The name of the resource group containing agent pool nodes.
   late final pulumi.Output<String?> nodeResourceGroup;
+
   /// Profile of the node resource group configuration.
-  late final pulumi.Output<ManagedClusterNodeResourceGroupProfileResponse?> nodeResourceGroupProfile;
+  late final pulumi.Output<ManagedClusterNodeResourceGroupProfileResponse?>
+  nodeResourceGroupProfile;
+
   /// The OIDC issuer profile of the Managed Cluster.
-  late final pulumi.Output<ManagedClusterOIDCIssuerProfileResponse?> oidcIssuerProfile;
+  late final pulumi.Output<ManagedClusterOIDCIssuerProfileResponse?>
+  oidcIssuerProfile;
+
   /// The pod identity profile of the Managed Cluster. See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on AAD pod identity integration.
-  late final pulumi.Output<ManagedClusterPodIdentityProfileResponse?> podIdentityProfile;
+  late final pulumi.Output<ManagedClusterPodIdentityProfileResponse?>
+  podIdentityProfile;
+
   /// The Power State of the cluster.
   late final pulumi.Output<PowerStateResponse> powerState;
+
   /// The FQDN of private cluster.
   late final pulumi.Output<String> privateFQDN;
+
   /// Private link resources associated with the cluster.
-  late final pulumi.Output<List<PrivateLinkResourceResponse>?> privateLinkResources;
+  late final pulumi.Output<List<Map<String, dynamic>>?> privateLinkResources;
+
   /// The current provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// PublicNetworkAccess of the managedCluster. Allow or deny public network access for AKS
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// The resourceUID uniquely identifies ManagedClusters that reuse ARM ResourceIds (i.e: create, delete, create sequence)
   late final pulumi.Output<String> resourceUID;
+
   /// Security profile for the managed cluster.
-  late final pulumi.Output<ManagedClusterSecurityProfileResponse?> securityProfile;
+  late final pulumi.Output<ManagedClusterSecurityProfileResponse?>
+  securityProfile;
+
   /// Service mesh profile for a managed cluster.
   late final pulumi.Output<ServiceMeshProfileResponse?> serviceMeshProfile;
+
   /// Information about a service principal identity for the cluster to use for manipulating Azure APIs.
-  late final pulumi.Output<ManagedClusterServicePrincipalProfileResponse?> servicePrincipalProfile;
+  late final pulumi.Output<ManagedClusterServicePrincipalProfileResponse?>
+  servicePrincipalProfile;
+
   /// The managed cluster SKU.
   late final pulumi.Output<ManagedClusterSKUResponse?> sku;
+
   /// Contains read-only information about the Managed Cluster.
   late final pulumi.Output<ManagedClusterStatusResponse?> status;
+
   /// Storage profile for the managed cluster.
-  late final pulumi.Output<ManagedClusterStorageProfileResponse?> storageProfile;
+  late final pulumi.Output<ManagedClusterStorageProfileResponse?>
+  storageProfile;
+
   /// The support plan for the Managed Cluster. If unspecified, the default is 'KubernetesOfficial'.
   late final pulumi.Output<String?> supportPlan;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Settings for upgrading a cluster.
   late final pulumi.Output<ClusterUpgradeSettingsResponse?> upgradeSettings;
+
   /// The profile for Windows VMs in the Managed Cluster.
-  late final pulumi.Output<ManagedClusterWindowsProfileResponse?> windowsProfile;
+  late final pulumi.Output<ManagedClusterWindowsProfileResponse?>
+  windowsProfile;
+
   /// Workload Auto-scaler profile for the managed cluster.
-  late final pulumi.Output<ManagedClusterWorkloadAutoScalerProfileResponse?> workloadAutoScalerProfile;
+  late final pulumi.Output<ManagedClusterWorkloadAutoScalerProfileResponse?>
+  workloadAutoScalerProfile;
 
   /// Creates a new [ManagedCluster].
   /// [name] The Pulumi resource name.
@@ -11319,66 +11393,137 @@ class ManagedCluster extends pulumi.CustomResource {
     ManagedClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:containerservice:ManagedCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aadProfile = registerOutput<ManagedClusterAADProfileResponse?>('aadProfile');
-    this.addonProfiles = registerOutput<Map<String, ManagedClusterAddonProfileResponse>?>('addonProfiles');
-    this.agentPoolProfiles = registerOutput<List<ManagedClusterAgentPoolProfileResponse>?>('agentPoolProfiles');
-    this.aiToolchainOperatorProfile = registerOutput<ManagedClusterAIToolchainOperatorProfileResponse?>('aiToolchainOperatorProfile');
-    this.apiServerAccessProfile = registerOutput<ManagedClusterAPIServerAccessProfileResponse?>('apiServerAccessProfile');
-    this.autoScalerProfile = registerOutput<ManagedClusterPropertiesResponseAutoScalerProfile?>('autoScalerProfile');
-    this.autoUpgradeProfile = registerOutput<ManagedClusterAutoUpgradeProfileResponse?>('autoUpgradeProfile');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.azureMonitorProfile = registerOutput<ManagedClusterAzureMonitorProfileResponse?>('azureMonitorProfile');
-    this.azurePortalFQDN = registerOutput<String>('azurePortalFQDN');
-    this.bootstrapProfile = registerOutput<ManagedClusterBootstrapProfileResponse?>('bootstrapProfile');
-    this.currentKubernetesVersion = registerOutput<String>('currentKubernetesVersion');
-    this.disableLocalAccounts = registerOutput<bool?>('disableLocalAccounts');
-    this.diskEncryptionSetID = registerOutput<String?>('diskEncryptionSetID');
-    this.dnsPrefix = registerOutput<String?>('dnsPrefix');
-    this.eTag = registerOutput<String>('eTag');
-    this.enableRBAC = registerOutput<bool?>('enableRBAC');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.fqdn = registerOutput<String>('fqdn');
-    this.fqdnSubdomain = registerOutput<String?>('fqdnSubdomain');
-    this.httpProxyConfig = registerOutput<ManagedClusterHTTPProxyConfigResponse?>('httpProxyConfig');
-    this.identity = registerOutput<ManagedClusterIdentityResponse?>('identity');
-    this.identityProfile = registerOutput<Map<String, UserAssignedIdentityResponse>?>('identityProfile');
-    this.ingressProfile = registerOutput<ManagedClusterIngressProfileResponse?>('ingressProfile');
-    this.kind = registerOutput<String?>('kind');
-    this.kubernetesVersion = registerOutput<String?>('kubernetesVersion');
-    this.linuxProfile = registerOutput<ContainerServiceLinuxProfileResponse?>('linuxProfile');
-    this.location = registerOutput<String>('location');
-    this.maxAgentPools = registerOutput<int>('maxAgentPools');
-    this.metricsProfile = registerOutput<ManagedClusterMetricsProfileResponse?>('metricsProfile');
+         'azure-native:containerservice:ManagedCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aadProfile = registerOutput<ManagedClusterAADProfileResponse?>(
+      'aadProfile',
+    );
+    addonProfiles =
+        registerOutput<Map<String, ManagedClusterAddonProfileResponse>?>(
+          'addonProfiles',
+        );
+    agentPoolProfiles = registerOutput<List<Map<String, dynamic>>?>(
+      'agentPoolProfiles',
+    );
+    aiToolchainOperatorProfile =
+        registerOutput<ManagedClusterAIToolchainOperatorProfileResponse?>(
+          'aiToolchainOperatorProfile',
+        );
+    apiServerAccessProfile =
+        registerOutput<ManagedClusterAPIServerAccessProfileResponse?>(
+          'apiServerAccessProfile',
+        );
+    autoScalerProfile =
+        registerOutput<ManagedClusterPropertiesResponseAutoScalerProfile?>(
+          'autoScalerProfile',
+        );
+    autoUpgradeProfile =
+        registerOutput<ManagedClusterAutoUpgradeProfileResponse?>(
+          'autoUpgradeProfile',
+        );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureMonitorProfile =
+        registerOutput<ManagedClusterAzureMonitorProfileResponse?>(
+          'azureMonitorProfile',
+        );
+    azurePortalFQDN = registerOutput<String>('azurePortalFQDN');
+    bootstrapProfile = registerOutput<ManagedClusterBootstrapProfileResponse?>(
+      'bootstrapProfile',
+    );
+    currentKubernetesVersion = registerOutput<String>(
+      'currentKubernetesVersion',
+    );
+    disableLocalAccounts = registerOutput<bool?>('disableLocalAccounts');
+    diskEncryptionSetID = registerOutput<String?>('diskEncryptionSetID');
+    dnsPrefix = registerOutput<String?>('dnsPrefix');
+    eTag = registerOutput<String>('eTag');
+    enableRBAC = registerOutput<bool?>('enableRBAC');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    fqdn = registerOutput<String>('fqdn');
+    fqdnSubdomain = registerOutput<String?>('fqdnSubdomain');
+    httpProxyConfig = registerOutput<ManagedClusterHTTPProxyConfigResponse?>(
+      'httpProxyConfig',
+    );
+    identity = registerOutput<ManagedClusterIdentityResponse?>('identity');
+    identityProfile =
+        registerOutput<Map<String, UserAssignedIdentityResponse>?>(
+          'identityProfile',
+        );
+    ingressProfile = registerOutput<ManagedClusterIngressProfileResponse?>(
+      'ingressProfile',
+    );
+    kind = registerOutput<String?>('kind');
+    kubernetesVersion = registerOutput<String?>('kubernetesVersion');
+    linuxProfile = registerOutput<ContainerServiceLinuxProfileResponse?>(
+      'linuxProfile',
+    );
+    location = registerOutput<String>('location');
+    maxAgentPools = registerOutput<int>('maxAgentPools');
+    metricsProfile = registerOutput<ManagedClusterMetricsProfileResponse?>(
+      'metricsProfile',
+    );
     this.name = registerOutput<String>('name');
-    this.networkProfile = registerOutput<ContainerServiceNetworkProfileResponse?>('networkProfile');
-    this.nodeProvisioningProfile = registerOutput<ManagedClusterNodeProvisioningProfileResponse?>('nodeProvisioningProfile');
-    this.nodeResourceGroup = registerOutput<String?>('nodeResourceGroup');
-    this.nodeResourceGroupProfile = registerOutput<ManagedClusterNodeResourceGroupProfileResponse?>('nodeResourceGroupProfile');
-    this.oidcIssuerProfile = registerOutput<ManagedClusterOIDCIssuerProfileResponse?>('oidcIssuerProfile');
-    this.podIdentityProfile = registerOutput<ManagedClusterPodIdentityProfileResponse?>('podIdentityProfile');
-    this.powerState = registerOutput<PowerStateResponse>('powerState');
-    this.privateFQDN = registerOutput<String>('privateFQDN');
-    this.privateLinkResources = registerOutput<List<PrivateLinkResourceResponse>?>('privateLinkResources');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.resourceUID = registerOutput<String>('resourceUID');
-    this.securityProfile = registerOutput<ManagedClusterSecurityProfileResponse?>('securityProfile');
-    this.serviceMeshProfile = registerOutput<ServiceMeshProfileResponse?>('serviceMeshProfile');
-    this.servicePrincipalProfile = registerOutput<ManagedClusterServicePrincipalProfileResponse?>('servicePrincipalProfile');
-    this.sku = registerOutput<ManagedClusterSKUResponse?>('sku');
-    this.status = registerOutput<ManagedClusterStatusResponse?>('status');
-    this.storageProfile = registerOutput<ManagedClusterStorageProfileResponse?>('storageProfile');
-    this.supportPlan = registerOutput<String?>('supportPlan');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.upgradeSettings = registerOutput<ClusterUpgradeSettingsResponse?>('upgradeSettings');
-    this.windowsProfile = registerOutput<ManagedClusterWindowsProfileResponse?>('windowsProfile');
-    this.workloadAutoScalerProfile = registerOutput<ManagedClusterWorkloadAutoScalerProfileResponse?>('workloadAutoScalerProfile');
+    networkProfile = registerOutput<ContainerServiceNetworkProfileResponse?>(
+      'networkProfile',
+    );
+    nodeProvisioningProfile =
+        registerOutput<ManagedClusterNodeProvisioningProfileResponse?>(
+          'nodeProvisioningProfile',
+        );
+    nodeResourceGroup = registerOutput<String?>('nodeResourceGroup');
+    nodeResourceGroupProfile =
+        registerOutput<ManagedClusterNodeResourceGroupProfileResponse?>(
+          'nodeResourceGroupProfile',
+        );
+    oidcIssuerProfile =
+        registerOutput<ManagedClusterOIDCIssuerProfileResponse?>(
+          'oidcIssuerProfile',
+        );
+    podIdentityProfile =
+        registerOutput<ManagedClusterPodIdentityProfileResponse?>(
+          'podIdentityProfile',
+        );
+    powerState = registerOutput<PowerStateResponse>('powerState');
+    privateFQDN = registerOutput<String>('privateFQDN');
+    privateLinkResources = registerOutput<List<Map<String, dynamic>>?>(
+      'privateLinkResources',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceUID = registerOutput<String>('resourceUID');
+    securityProfile = registerOutput<ManagedClusterSecurityProfileResponse?>(
+      'securityProfile',
+    );
+    serviceMeshProfile = registerOutput<ServiceMeshProfileResponse?>(
+      'serviceMeshProfile',
+    );
+    servicePrincipalProfile =
+        registerOutput<ManagedClusterServicePrincipalProfileResponse?>(
+          'servicePrincipalProfile',
+        );
+    sku = registerOutput<ManagedClusterSKUResponse?>('sku');
+    status = registerOutput<ManagedClusterStatusResponse?>('status');
+    storageProfile = registerOutput<ManagedClusterStorageProfileResponse?>(
+      'storageProfile',
+    );
+    supportPlan = registerOutput<String?>('supportPlan');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    upgradeSettings = registerOutput<ClusterUpgradeSettingsResponse?>(
+      'upgradeSettings',
+    );
+    windowsProfile = registerOutput<ManagedClusterWindowsProfileResponse?>(
+      'windowsProfile',
+    );
+    workloadAutoScalerProfile =
+        registerOutput<ManagedClusterWorkloadAutoScalerProfileResponse?>(
+          'workloadAutoScalerProfile',
+        );
   }
 }

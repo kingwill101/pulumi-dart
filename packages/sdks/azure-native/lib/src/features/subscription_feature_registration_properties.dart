@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubscriptionFeatureRegistrationProperties {
   /// The feature description.
   final pulumi.Input<String>? description;
+
   /// Key-value pairs for meta data.
   final pulumi.Input<Map<String, String>>? metadata;
+
   /// Indicates whether feature should be displayed in Portal.
   final pulumi.Input<bool>? shouldFeatureDisplayInPortal;
+
   /// The state.
   final pulumi.Input<String>? state;
 
@@ -33,13 +36,32 @@ class SubscriptionFeatureRegistrationProperties {
     };
   }
 
-  factory SubscriptionFeatureRegistrationProperties.fromMap(Map<String, dynamic> map) {
+  factory SubscriptionFeatureRegistrationProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SubscriptionFeatureRegistrationProperties(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
-      shouldFeatureDisplayInPortal: map['shouldFeatureDisplayInPortal'] == null ? null : (map['shouldFeatureDisplayInPortal']! as bool).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      shouldFeatureDisplayInPortal: (() {
+        final guardedValue = map['shouldFeatureDisplayInPortal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

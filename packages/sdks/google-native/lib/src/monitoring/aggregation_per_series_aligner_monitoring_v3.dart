@@ -20,16 +20,17 @@ enum AggregationPerSeriesAlignerMonitoringV3 {
   alignPercentile05("ALIGN_PERCENTILE_05"),
   alignPercentChange("ALIGN_PERCENT_CHANGE");
 
-  const AggregationPerSeriesAlignerMonitoringV3(this.value);
-  final String value;
+  const AggregationPerSeriesAlignerMonitoringV3(this.wireValue);
+  final String wireValue;
 
   static AggregationPerSeriesAlignerMonitoringV3 fromValue(String value) {
     for (final item in AggregationPerSeriesAlignerMonitoringV3.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AggregationPerSeriesAlignerMonitoringV3 value: $value');
+    throw ArgumentError(
+      'Unknown AggregationPerSeriesAlignerMonitoringV3 value: $value',
+    );
   }
 }
-

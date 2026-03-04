@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn {
   /// A reference to the data element in the streaming input or the reference data source.
   final pulumi.Input<String>? mapping;
+
   /// The name of the column that is created in the in-application input stream or reference table.
   final pulumi.Input<String> name;
+
   /// The type of column created in the in-application input stream or reference table.
   final pulumi.Input<String> sqlType;
 
@@ -28,12 +30,17 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
     };
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn(
-      mapping: map['mapping'] == null ? null : ((map['mapping'] as String).input()).input(),
-      name: (map['name'] as String).input(),
-      sqlType: (map['sqlType'] as String).input(),
+      mapping: (() {
+        final guardedValue = map['mapping'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      sqlType: pulumi.Input.fromValue(map['sqlType'] as String),
     );
   }
 }
-

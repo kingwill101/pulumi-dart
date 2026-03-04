@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpcroute_entry_args.dart';
-import 'vpcroute_entry_next_hop.dart';
-import 'vpcroute_entry_route_publish_target.dart';
 import 'vpcroute_entry_state.dart';
 
 /// Provides a VPC Route Entry resource.
@@ -10,7 +8,7 @@ import 'vpcroute_entry_state.dart';
 ///
 /// For information about VPC Route Entry and how to use it, see [What is Route Entry](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-createrouteentry).
 ///
-/// > **NOTE:** Available since v1.245.0.
+/// &gt; **NOTE:** Available since v1.245.0.
 ///
 /// ## Example Usage
 ///
@@ -384,12 +382,16 @@ import 'vpcroute_entry_state.dart';
 class VPCRouteEntry extends pulumi.CustomResource {
   /// Description of the route entry.
   late final pulumi.Output<String?> description;
+
   /// The destination network segment of the routing entry.
   late final pulumi.Output<String> destinationCidrBlock;
+
   /// Next jump See `next_hops` below.
-  late final pulumi.Output<List<VPCRouteEntryNextHop>> nextHops;
+  late final pulumi.Output<List<Map<String, dynamic>>> nextHops;
+
   /// The ID of the next hop instance of the custom route entry.
   late final pulumi.Output<String> nexthopId;
+
   /// The type of the next hop of the custom route entry. Valid values:
   /// - `Instance` (default): The ECS Instance.
   /// - `HaVip`: a highly available virtual IP address.
@@ -405,12 +407,16 @@ class VPCRouteEntry extends pulumi.CustomResource {
   /// - `Ecr`: Leased line gateway.
   /// - `GatewayLoadBalancerEndpoint`: The Gateway-based load balancing endpoint.
   late final pulumi.Output<String> nexthopType;
+
   /// The name of the route entry.
   late final pulumi.Output<String> routeEntryName;
+
   /// Route publish status and publish target type See `route_publish_targets` below.
-  late final pulumi.Output<List<VPCRouteEntryRoutePublishTarget>?> routePublishTargets;
+  late final pulumi.Output<List<Map<String, dynamic>>?> routePublishTargets;
+
   /// Routing table ID
   late final pulumi.Output<String> routeTableId;
+
   /// The status of the route entry.
   late final pulumi.Output<String> status;
 
@@ -423,20 +429,22 @@ class VPCRouteEntry extends pulumi.CustomResource {
     VPCRouteEntryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/vPCRouteEntry:VPCRouteEntry',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
-    this.nextHops = registerOutput<List<VPCRouteEntryNextHop>>('nextHops');
-    this.nexthopId = registerOutput<String>('nexthopId');
-    this.nexthopType = registerOutput<String>('nexthopType');
-    this.routeEntryName = registerOutput<String>('routeEntryName');
-    this.routePublishTargets = registerOutput<List<VPCRouteEntryRoutePublishTarget>?>('routePublishTargets');
-    this.routeTableId = registerOutput<String>('routeTableId');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/vPCRouteEntry:VPCRouteEntry',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
+    nextHops = registerOutput<List<Map<String, dynamic>>>('nextHops');
+    nexthopId = registerOutput<String>('nexthopId');
+    nexthopType = registerOutput<String>('nexthopType');
+    routeEntryName = registerOutput<String>('routeEntryName');
+    routePublishTargets = registerOutput<List<Map<String, dynamic>>?>(
+      'routePublishTargets',
+    );
+    routeTableId = registerOutput<String>('routeTableId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [VPCRouteEntry] resource's state with the given [name] and [id].
@@ -457,19 +465,21 @@ class VPCRouteEntry extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/vPCRouteEntry:VPCRouteEntry',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
-    this.nextHops = registerOutput<List<VPCRouteEntryNextHop>>('nextHops');
-    this.nexthopId = registerOutput<String>('nexthopId');
-    this.nexthopType = registerOutput<String>('nexthopType');
-    this.routeEntryName = registerOutput<String>('routeEntryName');
-    this.routePublishTargets = registerOutput<List<VPCRouteEntryRoutePublishTarget>?>('routePublishTargets');
-    this.routeTableId = registerOutput<String>('routeTableId');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/vPCRouteEntry:VPCRouteEntry',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
+    nextHops = registerOutput<List<Map<String, dynamic>>>('nextHops');
+    nexthopId = registerOutput<String>('nexthopId');
+    nexthopType = registerOutput<String>('nexthopType');
+    routeEntryName = registerOutput<String>('routeEntryName');
+    routePublishTargets = registerOutput<List<Map<String, dynamic>>?>(
+      'routePublishTargets',
+    );
+    routeTableId = registerOutput<String>('routeTableId');
+    status = registerOutput<String>('status');
   }
 }

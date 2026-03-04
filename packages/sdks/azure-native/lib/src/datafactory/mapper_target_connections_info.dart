@@ -9,10 +9,13 @@ import 'mapper_table.dart';
 class MapperTargetConnectionsInfo {
   /// Source connection details.
   final pulumi.Input<MapperConnection>? connection;
+
   /// List of table mappings.
   final pulumi.Input<List<DataMapperMapping>>? dataMapperMappings;
+
   /// List of relationship info among the tables.
   final pulumi.Input<List<dynamic>>? relationships;
+
   /// List of source tables for a target connection.
   final pulumi.Input<List<MapperTable>>? targetEntities;
 
@@ -30,20 +33,78 @@ class MapperTargetConnectionsInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connection': ?pulumi.Input.mapOptionalInputValue<MapperConnection, Map<String, dynamic>>(connection, (value) => value.toMap()),
-      'dataMapperMappings': ?pulumi.Input.mapOptionalInputValue<List<DataMapperMapping>, List<Map<String, dynamic>>>(dataMapperMappings, (value) => pulumi.Input.encodeList<DataMapperMapping, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'connection':
+          ?pulumi.Input.mapOptionalInputValue<
+            MapperConnection,
+            Map<String, dynamic>
+          >(connection, (value) => value.toMap()),
+      'dataMapperMappings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DataMapperMapping>,
+            List<Map<String, dynamic>>
+          >(
+            dataMapperMappings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DataMapperMapping,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'relationships': ?relationships,
-      'targetEntities': ?pulumi.Input.mapOptionalInputValue<List<MapperTable>, List<Map<String, dynamic>>>(targetEntities, (value) => pulumi.Input.encodeList<MapperTable, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targetEntities':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MapperTable>,
+            List<Map<String, dynamic>>
+          >(
+            targetEntities,
+            (value) =>
+                pulumi.Input.encodeList<MapperTable, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory MapperTargetConnectionsInfo.fromMap(Map<String, dynamic> map) {
     return MapperTargetConnectionsInfo(
-      connection: map['connection'] == null ? null : (MapperConnection.fromMap((map['connection']! as Map).cast<String, dynamic>())).input(),
-      dataMapperMappings: map['dataMapperMappings'] == null ? null : (pulumi.Input.decodeList<DataMapperMapping>(map['dataMapperMappings']!, (value) => DataMapperMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      relationships: map['relationships'] == null ? null : ((map['relationships']! as List).cast<dynamic>()).input(),
-      targetEntities: map['targetEntities'] == null ? null : (pulumi.Input.decodeList<MapperTable>(map['targetEntities']!, (value) => MapperTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connection: (() {
+        final guardedValue = map['connection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MapperConnection.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataMapperMappings: (() {
+        final guardedValue = map['dataMapperMappings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DataMapperMapping>(
+            guardedValue,
+            (value) => DataMapperMapping.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      relationships: (() {
+        final guardedValue = map['relationships'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>());
+      })(),
+      targetEntities: (() {
+        final guardedValue = map['targetEntities'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MapperTable>(
+            guardedValue,
+            (value) =>
+                MapperTable.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

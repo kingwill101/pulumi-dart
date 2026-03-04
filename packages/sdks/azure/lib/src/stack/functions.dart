@@ -126,7 +126,7 @@ import 'get_hci_storage_path_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.AzureStackHCI` - 2024-01-01, 2022-05-04
@@ -255,7 +255,7 @@ Future<GetHciClusterResult> getHciCluster(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.AzureStackHCI` - 2024-01-01

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey {
   /// (Optional)
   final pulumi.Input<String>? kmsKeyName;
+
   /// (Optional)
   final pulumi.Input<String>? kmsKeyServiceAccount;
+
   /// (Optional)
   final pulumi.Input<String>? rawKey;
+
   /// (Optional)
   final pulumi.Input<String>? rsaEncryptedKey;
 
@@ -33,13 +36,30 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey {
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
-      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount']! as String).input(),
-      rawKey: map['rawKey'] == null ? null : (map['rawKey']! as String).input(),
-      rsaEncryptedKey: map['rsaEncryptedKey'] == null ? null : (map['rsaEncryptedKey']! as String).input(),
+      kmsKeyName: (() {
+        final guardedValue = map['kmsKeyName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyServiceAccount: (() {
+        final guardedValue = map['kmsKeyServiceAccount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rawKey: (() {
+        final guardedValue = map['rawKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rsaEncryptedKey: (() {
+        final guardedValue = map['rsaEncryptedKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

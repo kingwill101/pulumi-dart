@@ -166,7 +166,7 @@ import 'configuration_window.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Maintenance` - 2023-04-01
@@ -181,24 +181,33 @@ import 'configuration_window.dart';
 class Configuration extends pulumi.CustomResource {
   /// The in guest user patch mode. Possible values are `Platform` or `User`. Must be specified when `scope` is `InGuestPatch`.
   late final pulumi.Output<String?> inGuestUserPatchMode;
+
   /// An `install_patches` block as defined below.
   ///
-  /// > **Note:** `install_patches` must be specified when `scope` is `InGuestPatch`.
+  /// &gt; **Note:** `install_patches` must be specified when `scope` is `InGuestPatch`.
   late final pulumi.Output<ConfigurationInstallPatches?> installPatches;
+
   /// Specified the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of the Maintenance Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A mapping of properties to assign to the resource.
   late final pulumi.Output<Map<String, String>?> properties;
+
   /// The name of the Resource Group where the Maintenance Configuration should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The scope of the Maintenance Configuration. Possible values are `Extension`, `Host`, `InGuestPatch`, `OSImage`, `SQLDB` or `SQLManagedInstance`.
   late final pulumi.Output<String> scope;
+
   /// A mapping of tags to assign to the resource. The key could not contain upper case letter.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The visibility of the Maintenance Configuration. The only allowable value is `Custom`. Defaults to `Custom`.
   late final pulumi.Output<String?> visibility;
+
   /// A `window` block as defined below.
   late final pulumi.Output<ConfigurationWindow?> window;
 
@@ -211,21 +220,23 @@ class Configuration extends pulumi.CustomResource {
     ConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:maintenance/configuration:Configuration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.inGuestUserPatchMode = registerOutput<String?>('inGuestUserPatchMode');
-    this.installPatches = registerOutput<ConfigurationInstallPatches?>('installPatches');
-    this.location = registerOutput<String>('location');
+         'azure:maintenance/configuration:Configuration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    inGuestUserPatchMode = registerOutput<String?>('inGuestUserPatchMode');
+    installPatches = registerOutput<ConfigurationInstallPatches?>(
+      'installPatches',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<Map<String, String>?>('properties');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scope = registerOutput<String>('scope');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.visibility = registerOutput<String?>('visibility');
-    this.window = registerOutput<ConfigurationWindow?>('window');
+    properties = registerOutput<Map<String, String>?>('properties');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scope = registerOutput<String>('scope');
+    tags = registerOutput<Map<String, String>?>('tags');
+    visibility = registerOutput<String?>('visibility');
+    window = registerOutput<ConfigurationWindow?>('window');
   }
 
   /// Gets an existing [Configuration] resource's state with the given [name] and [id].
@@ -246,20 +257,22 @@ class Configuration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:maintenance/configuration:Configuration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.inGuestUserPatchMode = registerOutput<String?>('inGuestUserPatchMode');
-    this.installPatches = registerOutput<ConfigurationInstallPatches?>('installPatches');
-    this.location = registerOutput<String>('location');
+         'azure:maintenance/configuration:Configuration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    inGuestUserPatchMode = registerOutput<String?>('inGuestUserPatchMode');
+    installPatches = registerOutput<ConfigurationInstallPatches?>(
+      'installPatches',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<Map<String, String>?>('properties');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.scope = registerOutput<String>('scope');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.visibility = registerOutput<String?>('visibility');
-    this.window = registerOutput<ConfigurationWindow?>('window');
+    properties = registerOutput<Map<String, String>?>('properties');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scope = registerOutput<String>('scope');
+    tags = registerOutput<Map<String, String>?>('tags');
+    visibility = registerOutput<String?>('visibility');
+    window = registerOutput<ConfigurationWindow?>('window');
   }
 }

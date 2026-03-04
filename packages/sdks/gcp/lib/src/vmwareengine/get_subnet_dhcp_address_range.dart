@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSubnetDhcpAddressRange {
   /// The first IP address of the range.
   final pulumi.Input<String> firstAddress;
+
   /// The last IP address of the range.
   final pulumi.Input<String> lastAddress;
 
@@ -25,9 +26,8 @@ class GetSubnetDhcpAddressRange {
 
   factory GetSubnetDhcpAddressRange.fromMap(Map<String, dynamic> map) {
     return GetSubnetDhcpAddressRange(
-      firstAddress: (map['firstAddress'] as String).input(),
-      lastAddress: (map['lastAddress'] as String).input(),
+      firstAddress: pulumi.Input.fromValue(map['firstAddress'] as String),
+      lastAddress: pulumi.Input.fromValue(map['lastAddress'] as String),
     );
   }
 }
-

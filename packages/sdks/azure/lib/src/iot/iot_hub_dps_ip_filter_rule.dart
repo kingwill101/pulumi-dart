@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IotHubDpsIpFilterRule {
   /// The desired action for requests captured by this rule. Possible values are `Accept`, `Reject`
   final pulumi.Input<String> action;
+
   /// The IP address range in CIDR notation for the rule.
   final pulumi.Input<String> ipMask;
+
   /// The name of the filter.
   final pulumi.Input<String> name;
+
   /// Target for requests captured by this rule. Possible values are `all`, `deviceApi` and `serviceApi`.
   final pulumi.Input<String>? target;
 
@@ -35,11 +38,14 @@ class IotHubDpsIpFilterRule {
 
   factory IotHubDpsIpFilterRule.fromMap(Map<String, dynamic> map) {
     return IotHubDpsIpFilterRule(
-      action: (map['action'] as String).input(),
-      ipMask: (map['ipMask'] as String).input(),
-      name: (map['name'] as String).input(),
-      target: map['target'] == null ? null : (map['target']! as String).input(),
+      action: pulumi.Input.fromValue(map['action'] as String),
+      ipMask: pulumi.Input.fromValue(map['ipMask'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

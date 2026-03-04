@@ -8,20 +8,21 @@ class ConnectivityTestSourceAppEngineVersion {
 
   /// Creates a new [ConnectivityTestSourceAppEngineVersion].
   /// [uri] An App Engine service version name.
-  ConnectivityTestSourceAppEngineVersion({
-    this.uri,
-  });
+  ConnectivityTestSourceAppEngineVersion({this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': ?uri,
-    };
+    return <String, dynamic>{'uri': ?uri};
   }
 
-  factory ConnectivityTestSourceAppEngineVersion.fromMap(Map<String, dynamic> map) {
+  factory ConnectivityTestSourceAppEngineVersion.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectivityTestSourceAppEngineVersion(
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

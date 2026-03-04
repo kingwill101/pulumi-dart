@@ -7,8 +7,12 @@ import 'dapr_component_resiliency_policy_http_retry_back_off_configuration.dart'
 class DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration {
   /// The optional maximum number of retries
   final pulumi.Input<int>? maxRetries;
+
   /// The optional retry backoff configuration
-  final pulumi.Input<DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration>? retryBackOff;
+  final pulumi.Input<
+    DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration
+  >?
+  retryBackOff;
 
   /// Creates a new [DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration].
   /// [maxRetries] The optional maximum number of retries
@@ -21,15 +25,32 @@ class DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'maxRetries': ?maxRetries,
-      'retryBackOff': ?pulumi.Input.mapOptionalInputValue<DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration, Map<String, dynamic>>(retryBackOff, (value) => value.toMap()),
+      'retryBackOff':
+          ?pulumi.Input.mapOptionalInputValue<
+            DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration,
+            Map<String, dynamic>
+          >(retryBackOff, (value) => value.toMap()),
     };
   }
 
-  factory DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration.fromMap(Map<String, dynamic> map) {
+  factory DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration(
-      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries']! as int).input(),
-      retryBackOff: map['retryBackOff'] == null ? null : (DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration.fromMap((map['retryBackOff']! as Map).cast<String, dynamic>())).input(),
+      maxRetries: (() {
+        final guardedValue = map['maxRetries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      retryBackOff: (() {
+        final guardedValue = map['retryBackOff'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

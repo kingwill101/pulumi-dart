@@ -10,29 +10,52 @@ import 'geo_match_set_geo_match_constraint.dart';
 class GeoMatchSetArgs {
   /// The GeoMatchConstraint objects which contain the country that you want AWS WAF to search for.
   final pulumi.Input<List<GeoMatchSetGeoMatchConstraint>>? geoMatchConstraints;
+
   /// The name or description of the GeoMatchSet.
   final pulumi.Input<String>? name;
 
   /// Creates a new [GeoMatchSetArgs].
   /// [geoMatchConstraints] The GeoMatchConstraint objects which contain the country that you want AWS WAF to search for.
   /// [name] The name or description of the GeoMatchSet.
-  GeoMatchSetArgs({
-    this.geoMatchConstraints,
-    this.name,
-  });
+  GeoMatchSetArgs({this.geoMatchConstraints, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'geoMatchConstraints': ?pulumi.Input.mapOptionalInputValue<List<GeoMatchSetGeoMatchConstraint>, List<Map<String, dynamic>>>(geoMatchConstraints, (value) => pulumi.Input.encodeList<GeoMatchSetGeoMatchConstraint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'geoMatchConstraints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GeoMatchSetGeoMatchConstraint>,
+            List<Map<String, dynamic>>
+          >(
+            geoMatchConstraints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GeoMatchSetGeoMatchConstraint,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
     };
   }
 
   factory GeoMatchSetArgs.fromMap(Map<String, dynamic> map) {
     return GeoMatchSetArgs(
-      geoMatchConstraints: map['geoMatchConstraints'] == null ? null : ((pulumi.Input.decodeList<GeoMatchSetGeoMatchConstraint>(map['geoMatchConstraints']!, (value) => GeoMatchSetGeoMatchConstraint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      geoMatchConstraints: (() {
+        final guardedValue = map['geoMatchConstraints'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GeoMatchSetGeoMatchConstraint>(
+            guardedValue,
+            (value) => GeoMatchSetGeoMatchConstraint.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

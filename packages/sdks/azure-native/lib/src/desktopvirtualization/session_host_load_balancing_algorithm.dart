@@ -3,16 +3,17 @@ enum SessionHostLoadBalancingAlgorithm {
   valueBreadthFirst("BreadthFirst"),
   valueDepthFirst("DepthFirst");
 
-  const SessionHostLoadBalancingAlgorithm(this.value);
-  final String value;
+  const SessionHostLoadBalancingAlgorithm(this.wireValue);
+  final String wireValue;
 
   static SessionHostLoadBalancingAlgorithm fromValue(String value) {
     for (final item in SessionHostLoadBalancingAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SessionHostLoadBalancingAlgorithm value: $value');
+    throw ArgumentError(
+      'Unknown SessionHostLoadBalancingAlgorithm value: $value',
+    );
   }
 }
-

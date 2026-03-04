@@ -9,20 +9,19 @@ class PurviewConfigurationResponse {
 
   /// Creates a new [PurviewConfigurationResponse].
   /// [purviewResourceId] Purview Resource ID
-  PurviewConfigurationResponse({
-    this.purviewResourceId,
-  });
+  PurviewConfigurationResponse({this.purviewResourceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'purviewResourceId': ?purviewResourceId,
-    };
+    return <String, dynamic>{'purviewResourceId': ?purviewResourceId};
   }
 
   factory PurviewConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return PurviewConfigurationResponse(
-      purviewResourceId: map['purviewResourceId'] == null ? null : (map['purviewResourceId']! as String).input(),
+      purviewResourceId: (() {
+        final guardedValue = map['purviewResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

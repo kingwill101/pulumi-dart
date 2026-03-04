@@ -3,16 +3,15 @@ enum JobTargetGroupMembershipType {
   valueInclude("Include"),
   valueExclude("Exclude");
 
-  const JobTargetGroupMembershipType(this.value);
-  final String value;
+  const JobTargetGroupMembershipType(this.wireValue);
+  final String wireValue;
 
   static JobTargetGroupMembershipType fromValue(String value) {
     for (final item in JobTargetGroupMembershipType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobTargetGroupMembershipType value: $value');
   }
 }
-

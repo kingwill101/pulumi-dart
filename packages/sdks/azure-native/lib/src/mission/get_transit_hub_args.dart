@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTransitHubArgs {
   /// The name of the communityResource Resource
   final pulumi.Input<String> communityName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the TransitHub Resource
   final pulumi.Input<String> transitHubName;
 
@@ -34,10 +36,11 @@ class GetTransitHubArgs {
 
   factory GetTransitHubArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitHubArgs(
-      communityName: (map['communityName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      transitHubName: (map['transitHubName'] as String).input(),
+      communityName: pulumi.Input.fromValue(map['communityName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      transitHubName: pulumi.Input.fromValue(map['transitHubName'] as String),
     );
   }
 }
-

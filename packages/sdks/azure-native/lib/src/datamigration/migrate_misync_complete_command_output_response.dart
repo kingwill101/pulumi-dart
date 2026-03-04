@@ -10,20 +10,41 @@ class MigrateMISyncCompleteCommandOutputResponse {
 
   /// Creates a new [MigrateMISyncCompleteCommandOutputResponse].
   /// [errors] List of errors that happened during the command execution
-  MigrateMISyncCompleteCommandOutputResponse({
-    this.errors,
-  });
+  MigrateMISyncCompleteCommandOutputResponse({this.errors});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': ?pulumi.Input.mapOptionalInputValue<List<ReportableExceptionResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<ReportableExceptionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'errors':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ReportableExceptionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            errors,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ReportableExceptionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory MigrateMISyncCompleteCommandOutputResponse.fromMap(Map<String, dynamic> map) {
+  factory MigrateMISyncCompleteCommandOutputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MigrateMISyncCompleteCommandOutputResponse(
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<ReportableExceptionResponse>(map['errors']!, (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errors: (() {
+        final guardedValue = map['errors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ReportableExceptionResponse>(
+            guardedValue,
+            (value) => ReportableExceptionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

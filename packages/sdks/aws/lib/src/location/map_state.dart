@@ -7,22 +7,30 @@ import 'map_configuration.dart';
 class MapState {
   /// Configuration block with the map style selected from an available data provider. Detailed below.
   final pulumi.Input<MapConfiguration>? configuration;
+
   /// The timestamp for when the map resource was created in ISO 8601 format.
   final pulumi.Input<String>? createTime;
+
   /// An optional description for the map resource.
   final pulumi.Input<String>? description;
+
   /// The Amazon Resource Name (ARN) for the map resource. Used to specify a resource across all AWS.
   final pulumi.Input<String>? mapArn;
+
   /// The name for the map resource.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? mapName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value tags for the map. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// The timestamp for when the map resource was last updated in ISO 8601 format.
   final pulumi.Input<String>? updateTime;
 
@@ -50,7 +58,11 @@ class MapState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': ?pulumi.Input.mapOptionalInputValue<MapConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'configuration':
+          ?pulumi.Input.mapOptionalInputValue<
+            MapConfiguration,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
       'createTime': ?createTime,
       'description': ?description,
       'mapArn': ?mapArn,
@@ -64,16 +76,59 @@ class MapState {
 
   factory MapState.fromMap(Map<String, dynamic> map) {
     return MapState(
-      configuration: map['configuration'] == null ? null : ((MapConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
-      createTime: map['createTime'] == null ? null : ((map['createTime'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      mapArn: map['mapArn'] == null ? null : ((map['mapArn'] as String).input()).input(),
-      mapName: map['mapName'] == null ? null : ((map['mapName'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      updateTime: map['updateTime'] == null ? null : ((map['updateTime'] as String).input()).input(),
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MapConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mapArn: (() {
+        final guardedValue = map['mapArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mapName: (() {
+        final guardedValue = map['mapName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

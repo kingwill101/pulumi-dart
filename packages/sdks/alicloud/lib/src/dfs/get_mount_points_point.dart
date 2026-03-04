@@ -5,24 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMountPointsPoint {
   /// The ID of the Access Group.
   final pulumi.Input<String> accessGroupId;
+
   /// The created time of the Mount Point.
   final pulumi.Input<String> createTime;
+
   /// The description of the Mount Point.
   final pulumi.Input<String> description;
+
   /// The ID of the File System.
   final pulumi.Input<String> fileSystemId;
+
   /// The ID of the Mount Point.
   final pulumi.Input<String> id;
+
   /// The domain name of the Mount Point.
   final pulumi.Input<String> mountPointDomain;
+
   /// The ID of the Mount Point.
   final pulumi.Input<String> mountPointId;
+
   /// The network type of the Mount Point. Valid values: `VPC`.
   final pulumi.Input<String> networkType;
+
   /// The status of the Mount Point. Valid values: `Active`, `Inactive`.
   final pulumi.Input<String> status;
+
   /// The ID of the VPC network.
   final pulumi.Input<String> vpcId;
+
   /// The vswitch id.
   final pulumi.Input<String> vswitchId;
 
@@ -70,18 +80,19 @@ class GetMountPointsPoint {
 
   factory GetMountPointsPoint.fromMap(Map<String, dynamic> map) {
     return GetMountPointsPoint(
-      accessGroupId: (map['accessGroupId'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      description: (map['description'] as String).input(),
-      fileSystemId: (map['fileSystemId'] as String).input(),
-      id: (map['id'] as String).input(),
-      mountPointDomain: (map['mountPointDomain'] as String).input(),
-      mountPointId: (map['mountPointId'] as String).input(),
-      networkType: (map['networkType'] as String).input(),
-      status: (map['status'] as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
+      accessGroupId: pulumi.Input.fromValue(map['accessGroupId'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      mountPointDomain: pulumi.Input.fromValue(
+        map['mountPointDomain'] as String,
+      ),
+      mountPointId: pulumi.Input.fromValue(map['mountPointId'] as String),
+      networkType: pulumi.Input.fromValue(map['networkType'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
-

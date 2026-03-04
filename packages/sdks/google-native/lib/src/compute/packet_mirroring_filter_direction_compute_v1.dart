@@ -4,16 +4,17 @@ enum PacketMirroringFilterDirectionComputeV1 {
   egress("EGRESS"),
   ingress("INGRESS");
 
-  const PacketMirroringFilterDirectionComputeV1(this.value);
-  final String value;
+  const PacketMirroringFilterDirectionComputeV1(this.wireValue);
+  final String wireValue;
 
   static PacketMirroringFilterDirectionComputeV1 fromValue(String value) {
     for (final item in PacketMirroringFilterDirectionComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PacketMirroringFilterDirectionComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown PacketMirroringFilterDirectionComputeV1 value: $value',
+    );
   }
 }
-

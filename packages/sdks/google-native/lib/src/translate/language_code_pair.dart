@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LanguageCodePair {
   /// The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
   final pulumi.Input<String> sourceLanguageCode;
+
   /// The ISO-639 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
   final pulumi.Input<String> targetLanguageCode;
 
@@ -26,9 +27,12 @@ class LanguageCodePair {
 
   factory LanguageCodePair.fromMap(Map<String, dynamic> map) {
     return LanguageCodePair(
-      sourceLanguageCode: (map['sourceLanguageCode'] as String).input(),
-      targetLanguageCode: (map['targetLanguageCode'] as String).input(),
+      sourceLanguageCode: pulumi.Input.fromValue(
+        map['sourceLanguageCode'] as String,
+      ),
+      targetLanguageCode: pulumi.Input.fromValue(
+        map['targetLanguageCode'] as String,
+      ),
     );
   }
 }
-

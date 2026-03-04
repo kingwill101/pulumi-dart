@@ -173,35 +173,51 @@ import 'system_data_response.dart';
 class AFDOrigin extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource reference to the Azure origin resource.
   late final pulumi.Output<ResourceReferenceResponse?> azureOrigin;
   late final pulumi.Output<String> deploymentStatus;
+
   /// Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
   late final pulumi.Output<String?> enabledState;
+
   /// Whether to enable certificate name check at origin level
   late final pulumi.Output<bool?> enforceCertificateNameCheck;
+
   /// The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
   late final pulumi.Output<String?> hostName;
+
   /// The value of the HTTP port. Must be between 1 and 65535.
   late final pulumi.Output<int?> httpPort;
+
   /// The value of the HTTPS port. Must be between 1 and 65535.
   late final pulumi.Output<int?> httpsPort;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The name of the origin group which contains this origin.
   late final pulumi.Output<String> originGroupName;
+
   /// The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint
   late final pulumi.Output<String?> originHostHeader;
+
   /// Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5
   late final pulumi.Output<int?> priority;
+
   /// Provisioning status
   late final pulumi.Output<String> provisioningState;
+
   /// The properties of the private link resource for private origin.
-  late final pulumi.Output<SharedPrivateLinkResourcePropertiesResponse?> sharedPrivateLinkResource;
+  late final pulumi.Output<SharedPrivateLinkResourcePropertiesResponse?>
+  sharedPrivateLinkResource;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
   late final pulumi.Output<int?> weight;
 
@@ -214,27 +230,32 @@ class AFDOrigin extends pulumi.CustomResource {
     AFDOriginArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cdn:AFDOrigin',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.azureOrigin = registerOutput<ResourceReferenceResponse?>('azureOrigin');
-    this.deploymentStatus = registerOutput<String>('deploymentStatus');
-    this.enabledState = registerOutput<String?>('enabledState');
-    this.enforceCertificateNameCheck = registerOutput<bool?>('enforceCertificateNameCheck');
-    this.hostName = registerOutput<String?>('hostName');
-    this.httpPort = registerOutput<int?>('httpPort');
-    this.httpsPort = registerOutput<int?>('httpsPort');
+         'azure-native:cdn:AFDOrigin',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureOrigin = registerOutput<ResourceReferenceResponse?>('azureOrigin');
+    deploymentStatus = registerOutput<String>('deploymentStatus');
+    enabledState = registerOutput<String?>('enabledState');
+    enforceCertificateNameCheck = registerOutput<bool?>(
+      'enforceCertificateNameCheck',
+    );
+    hostName = registerOutput<String?>('hostName');
+    httpPort = registerOutput<int?>('httpPort');
+    httpsPort = registerOutput<int?>('httpsPort');
     this.name = registerOutput<String>('name');
-    this.originGroupName = registerOutput<String>('originGroupName');
-    this.originHostHeader = registerOutput<String?>('originHostHeader');
-    this.priority = registerOutput<int?>('priority');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sharedPrivateLinkResource = registerOutput<SharedPrivateLinkResourcePropertiesResponse?>('sharedPrivateLinkResource');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.weight = registerOutput<int?>('weight');
+    originGroupName = registerOutput<String>('originGroupName');
+    originHostHeader = registerOutput<String?>('originHostHeader');
+    priority = registerOutput<int?>('priority');
+    provisioningState = registerOutput<String>('provisioningState');
+    sharedPrivateLinkResource =
+        registerOutput<SharedPrivateLinkResourcePropertiesResponse?>(
+          'sharedPrivateLinkResource',
+        );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    weight = registerOutput<int?>('weight');
   }
 }

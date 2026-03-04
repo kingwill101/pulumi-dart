@@ -7,9 +7,11 @@ import 'key_ring_args.dart';
 class KeyRing extends pulumi.CustomResource {
   /// The time at which this KeyRing was created.
   late final pulumi.Output<String> createTime;
+
   /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
   late final pulumi.Output<String> keyRingId;
   late final pulumi.Output<String> location;
+
   /// The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
@@ -23,15 +25,15 @@ class KeyRing extends pulumi.CustomResource {
     KeyRingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:cloudkms/v1:KeyRing',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.keyRingId = registerOutput<String>('keyRingId');
-    this.location = registerOutput<String>('location');
+         'google-native:cloudkms/v1:KeyRing',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    keyRingId = registerOutput<String>('keyRingId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
+    project = registerOutput<String>('project');
   }
 }

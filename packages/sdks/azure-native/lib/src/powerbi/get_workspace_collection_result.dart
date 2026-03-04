@@ -6,16 +6,21 @@ import 'azure_sku_response.dart';
 class GetWorkspaceCollectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource id
   final String? id;
+
   /// Azure location
   final String? location;
+
   /// Workspace collection name
   final String? name;
+
   /// Properties
   final dynamic properties;
   final AzureSkuResponse? sku;
   final Map<String, String>? tags;
+
   /// Resource type
   final String? type;
 
@@ -46,7 +51,7 @@ class GetWorkspaceCollectionResult {
       'location': ?location,
       'name': ?name,
       'properties': properties,
-      'sku': ?sku == null ? null : sku!.toMap(),
+      'sku': ?sku?.toMap(),
       'tags': ?tags,
       'type': ?type,
     };
@@ -55,14 +60,39 @@ class GetWorkspaceCollectionResult {
   factory GetWorkspaceCollectionResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceCollectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] == null ? null : map['id']! as String,
-      location: map['location'] == null ? null : map['location']! as String,
-      name: map['name'] == null ? null : map['name']! as String,
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       properties: map['properties'],
-      sku: map['sku'] == null ? null : AzureSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
-      type: map['type'] == null ? null : map['type']! as String,
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return AzureSkuResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

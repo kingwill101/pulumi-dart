@@ -292,20 +292,28 @@ import 'sku_response.dart';
 class JobAgent extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource ID of the database to store job metadata in.
   late final pulumi.Output<String> databaseId;
+
   /// The identity of the job agent.
   late final pulumi.Output<JobAgentIdentityResponse?> identity;
+
   /// Resource location.
   late final pulumi.Output<String> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The name and tier of the SKU.
   late final pulumi.Output<SkuResponse?> sku;
+
   /// The state of the job agent.
   late final pulumi.Output<String> state;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -318,19 +326,19 @@ class JobAgent extends pulumi.CustomResource {
     JobAgentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:JobAgent',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.databaseId = registerOutput<String>('databaseId');
-    this.identity = registerOutput<JobAgentIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure-native:sql:JobAgent',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    databaseId = registerOutput<String>('databaseId');
+    identity = registerOutput<JobAgentIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.sku = registerOutput<SkuResponse?>('sku');
-    this.state = registerOutput<String>('state');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    sku = registerOutput<SkuResponse?>('sku');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

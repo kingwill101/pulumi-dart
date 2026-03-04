@@ -4,16 +4,17 @@ enum ConnectionEventingEnablementType {
   eventingAndConnection("EVENTING_AND_CONNECTION"),
   onlyEventing("ONLY_EVENTING");
 
-  const ConnectionEventingEnablementType(this.value);
-  final String value;
+  const ConnectionEventingEnablementType(this.wireValue);
+  final String wireValue;
 
   static ConnectionEventingEnablementType fromValue(String value) {
     for (final item in ConnectionEventingEnablementType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ConnectionEventingEnablementType value: $value');
+    throw ArgumentError(
+      'Unknown ConnectionEventingEnablementType value: $value',
+    );
   }
 }
-

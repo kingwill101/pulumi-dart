@@ -193,22 +193,31 @@ import 'system_data_response.dart';
 class AutoScaleVCore extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The maximum capacity of an auto scale v-core resource.
   late final pulumi.Output<int?> capacityLimit;
+
   /// The object ID of the capacity resource associated with the auto scale v-core resource.
   late final pulumi.Output<String?> capacityObjectId;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The current deployment state of an auto scale v-core resource. The provisioningState is to indicate states for resource provisioning.
   late final pulumi.Output<String> provisioningState;
+
   /// The SKU of the auto scale v-core resource.
   late final pulumi.Output<AutoScaleVCoreSkuResponse> sku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -221,20 +230,20 @@ class AutoScaleVCore extends pulumi.CustomResource {
     AutoScaleVCoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:powerbidedicated:AutoScaleVCore',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.capacityLimit = registerOutput<int?>('capacityLimit');
-    this.capacityObjectId = registerOutput<String?>('capacityObjectId');
-    this.location = registerOutput<String>('location');
+         'azure-native:powerbidedicated:AutoScaleVCore',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    capacityLimit = registerOutput<int?>('capacityLimit');
+    capacityObjectId = registerOutput<String?>('capacityObjectId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<AutoScaleVCoreSkuResponse>('sku');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<AutoScaleVCoreSkuResponse>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

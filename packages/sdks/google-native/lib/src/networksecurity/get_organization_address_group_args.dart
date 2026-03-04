@@ -31,10 +31,9 @@ class GetOrganizationAddressGroupArgs {
 
   factory GetOrganizationAddressGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationAddressGroupArgs(
-      addressGroupId: (map['addressGroupId'] as String).input(),
-      location: (map['location'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      addressGroupId: pulumi.Input.fromValue(map['addressGroupId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

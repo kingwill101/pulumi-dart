@@ -809,14 +809,21 @@ import 'system_data_response.dart';
 class DaprComponentResiliencyPolicy extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The optional inbound component resiliency policy configuration
-  late final pulumi.Output<DaprComponentResiliencyPolicyConfigurationResponse?> inboundPolicy;
+  late final pulumi.Output<DaprComponentResiliencyPolicyConfigurationResponse?>
+  inboundPolicy;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The optional outbound component resiliency policy configuration
-  late final pulumi.Output<DaprComponentResiliencyPolicyConfigurationResponse?> outboundPolicy;
+  late final pulumi.Output<DaprComponentResiliencyPolicyConfigurationResponse?>
+  outboundPolicy;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -829,16 +836,22 @@ class DaprComponentResiliencyPolicy extends pulumi.CustomResource {
     DaprComponentResiliencyPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:app:DaprComponentResiliencyPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.inboundPolicy = registerOutput<DaprComponentResiliencyPolicyConfigurationResponse?>('inboundPolicy');
+         'azure-native:app:DaprComponentResiliencyPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    inboundPolicy =
+        registerOutput<DaprComponentResiliencyPolicyConfigurationResponse?>(
+          'inboundPolicy',
+        );
     this.name = registerOutput<String>('name');
-    this.outboundPolicy = registerOutput<DaprComponentResiliencyPolicyConfigurationResponse?>('outboundPolicy');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    outboundPolicy =
+        registerOutput<DaprComponentResiliencyPolicyConfigurationResponse?>(
+          'outboundPolicy',
+        );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

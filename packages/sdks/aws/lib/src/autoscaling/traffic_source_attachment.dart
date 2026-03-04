@@ -5,7 +5,7 @@ import 'traffic_source_attachment_traffic_source.dart';
 
 /// Attaches a traffic source to an Auto Scaling group.
 ///
-/// > **NOTE on Auto Scaling Groups, Attachments and Traffic Source Attachments:** Pulumi provides standalone Attachment (for attaching Classic Load Balancers and Application Load Balancer, Gateway Load Balancer, or Network Load Balancer target groups) and Traffic Source Attachment (for attaching Load Balancers and VPC Lattice target groups) resources and an Auto Scaling Group resource with `load_balancers`, `target_group_arns` and `traffic_source` attributes. Do not use the same traffic source in more than one of these resources. Doing so will cause a conflict of attachments. A `lifecycle` configuration block can be used to suppress differences if necessary.
+/// &gt; **NOTE on Auto Scaling Groups, Attachments and Traffic Source Attachments:** Pulumi provides standalone Attachment (for attaching Classic Load Balancers and Application Load Balancer, Gateway Load Balancer, or Network Load Balancer target groups) and Traffic Source Attachment (for attaching Load Balancers and VPC Lattice target groups) resources and an Auto Scaling Group resource with `load_balancers`, `target_group_arns` and `traffic_source` attributes. Do not use the same traffic source in more than one of these resources. Doing so will cause a conflict of attachments. A `lifecycle` configuration block can be used to suppress differences if necessary.
 ///
 /// ## Example Usage
 ///
@@ -125,8 +125,10 @@ import 'traffic_source_attachment_traffic_source.dart';
 class TrafficSourceAttachment extends pulumi.CustomResource {
   /// The name of the Auto Scaling group.
   late final pulumi.Output<String> autoscalingGroupName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The unique identifiers of a traffic sources.
   late final pulumi.Output<TrafficSourceAttachmentTrafficSource?> trafficSource;
 
@@ -139,14 +141,16 @@ class TrafficSourceAttachment extends pulumi.CustomResource {
     TrafficSourceAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:autoscaling/trafficSourceAttachment:TrafficSourceAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
-    this.region = registerOutput<String>('region');
-    this.trafficSource = registerOutput<TrafficSourceAttachmentTrafficSource?>('trafficSource');
+         'aws:autoscaling/trafficSourceAttachment:TrafficSourceAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
+    region = registerOutput<String>('region');
+    trafficSource = registerOutput<TrafficSourceAttachmentTrafficSource?>(
+      'trafficSource',
+    );
   }
 
   /// Gets an existing [TrafficSourceAttachment] resource's state with the given [name] and [id].
@@ -167,13 +171,15 @@ class TrafficSourceAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:autoscaling/trafficSourceAttachment:TrafficSourceAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
-    this.region = registerOutput<String>('region');
-    this.trafficSource = registerOutput<TrafficSourceAttachmentTrafficSource?>('trafficSource');
+         'aws:autoscaling/trafficSourceAttachment:TrafficSourceAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
+    region = registerOutput<String>('region');
+    trafficSource = registerOutput<TrafficSourceAttachmentTrafficSource?>(
+      'trafficSource',
+    );
   }
 }

@@ -6,6 +6,7 @@ import 'get_instances_instance.dart';
 /// Result data returned by getInstances.
 class GetInstancesResult {
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -64,7 +65,11 @@ class GetInstancesResult {
       'imageId': ?imageId,
       'instanceName': ?instanceName,
       'instanceType': ?instanceType,
-      'instances': pulumi.Input.encodeList<GetInstancesInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances':
+          pulumi.Input.encodeList<GetInstancesInstance, Map<String, dynamic>>(
+            instances,
+            (value) => value.toMap(),
+          ),
       'keyPairName': ?keyPairName,
       'nameRegex': ?nameRegex,
       'names': names,
@@ -78,22 +83,70 @@ class GetInstancesResult {
 
   factory GetInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetInstancesResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      imageId: map['imageId'] == null ? null : map['imageId']! as String,
-      instanceName: map['instanceName'] == null ? null : map['instanceName']! as String,
-      instanceType: map['instanceType'] == null ? null : map['instanceType']! as String,
-      instances: pulumi.Input.decodeList<GetInstancesInstance>(map['instances'], (value) => GetInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      keyPairName: map['keyPairName'] == null ? null : map['keyPairName']! as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      imageId: (() {
+        final guardedValue = map['imageId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      instanceName: (() {
+        final guardedValue = map['instanceName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      instances: pulumi.Input.decodeList<GetInstancesInstance>(
+        map['instances']!,
+        (value) => GetInstancesInstance.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      keyPairName: (() {
+        final guardedValue = map['keyPairName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      paymentType: map['paymentType'] == null ? null : map['paymentType']! as String,
-      resolution: map['resolution'] == null ? null : map['resolution']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      resolution: (() {
+        final guardedValue = map['resolution'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

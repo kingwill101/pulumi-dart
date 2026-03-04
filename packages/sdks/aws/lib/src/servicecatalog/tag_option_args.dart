@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagOptionArgs {
   /// Whether tag option is active. Default is `true`.
   final pulumi.Input<bool>? active;
+
   /// Tag option key.
   final pulumi.Input<String> key;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Tag option value.
   ///
   /// The following arguments are optional:
@@ -41,11 +44,18 @@ class TagOptionArgs {
 
   factory TagOptionArgs.fromMap(Map<String, dynamic> map) {
     return TagOptionArgs(
-      active: map['active'] == null ? null : ((map['active'] as bool).input()).input(),
-      key: (map['key'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      value: (map['value'] as String).input(),
+      active: (() {
+        final guardedValue = map['active'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

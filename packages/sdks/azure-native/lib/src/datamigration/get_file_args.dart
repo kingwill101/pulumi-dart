@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFileArgs {
   /// Name of the File
   final pulumi.Input<String> fileName;
+
   /// Name of the resource group
   final pulumi.Input<String> groupName;
+
   /// Name of the project
   final pulumi.Input<String> projectName;
+
   /// Name of the service
   final pulumi.Input<String> serviceName;
 
@@ -39,11 +42,10 @@ class GetFileArgs {
 
   factory GetFileArgs.fromMap(Map<String, dynamic> map) {
     return GetFileArgs(
-      fileName: (map['fileName'] as String).input(),
-      groupName: (map['groupName'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      fileName: pulumi.Input.fromValue(map['fileName'] as String),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

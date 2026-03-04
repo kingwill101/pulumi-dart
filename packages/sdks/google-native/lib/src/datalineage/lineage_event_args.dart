@@ -10,16 +10,20 @@ import 'google_cloud_datacatalog_lineage_v1_event_link.dart';
 class LineageEventArgs {
   /// Optional. The end of the transformation which resulted in this lineage event. For streaming scenarios, it should be the end of the period from which the lineage is being reported.
   final pulumi.Input<String>? endTime;
+
   /// Optional. List of source-target pairs. Can't contain more than 100 tuples.
   final pulumi.Input<List<GoogleCloudDatacatalogLineageV1EventLink>>? links;
   final pulumi.Input<String>? location;
+
   /// Immutable. The resource name of the lineage event. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}/lineageEvents/{lineage_event}`. Can be specified or auto-assigned. {lineage_event} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`
   final pulumi.Input<String>? name;
   final pulumi.Input<String> processId;
   final pulumi.Input<String>? project;
+
   /// A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
   final pulumi.Input<String>? requestId;
   final pulumi.Input<String> runId;
+
   /// The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
   final pulumi.Input<String> startTime;
 
@@ -48,7 +52,18 @@ class LineageEventArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endTime': ?endTime,
-      'links': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDatacatalogLineageV1EventLink>, List<Map<String, dynamic>>>(links, (value) => pulumi.Input.encodeList<GoogleCloudDatacatalogLineageV1EventLink, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'links':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GoogleCloudDatacatalogLineageV1EventLink>,
+            List<Map<String, dynamic>>
+          >(
+            links,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudDatacatalogLineageV1EventLink,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'location': ?location,
       'name': ?name,
       'processId': processId,
@@ -61,16 +76,46 @@ class LineageEventArgs {
 
   factory LineageEventArgs.fromMap(Map<String, dynamic> map) {
     return LineageEventArgs(
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      links: map['links'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogLineageV1EventLink>(map['links']!, (value) => GoogleCloudDatacatalogLineageV1EventLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      processId: (map['processId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
-      runId: (map['runId'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      links: (() {
+        final guardedValue = map['links'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GoogleCloudDatacatalogLineageV1EventLink>(
+            guardedValue,
+            (value) => GoogleCloudDatacatalogLineageV1EventLink.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      processId: pulumi.Input.fromValue(map['processId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requestId: (() {
+        final guardedValue = map['requestId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runId: pulumi.Input.fromValue(map['runId'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
-

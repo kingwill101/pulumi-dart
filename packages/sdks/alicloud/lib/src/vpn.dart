@@ -1,5 +1,3 @@
-library module_vpn;
-
 export 'vpn/connection.dart';
 export 'vpn/connection_args.dart';
 export 'vpn/connection_bgp_config.dart';

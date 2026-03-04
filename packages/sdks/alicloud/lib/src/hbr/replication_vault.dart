@@ -8,7 +8,7 @@ import 'replication_vault_state.dart';
 ///
 /// For information about Hybrid Backup Recovery (HBR) Replication Vault and how to use it, see [What is Replication Vault](https://www.alibabacloud.com/help/en/doc-detail/345603.html).
 ///
-/// > **NOTE:** Available since v1.252.0.
+/// &gt; **NOTE:** Available since v1.252.0.
 ///
 /// ## Example Usage
 ///
@@ -241,20 +241,28 @@ import 'replication_vault_state.dart';
 class ReplicationVault extends pulumi.CustomResource {
   /// The description of the backup vault.
   late final pulumi.Output<String?> description;
+
   /// The encryption type of the backup vault.
   late final pulumi.Output<String> encryptType;
+
   /// Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
   late final pulumi.Output<String?> kmsKeyId;
+
   /// RegionId
   late final pulumi.Output<String> regionId;
+
   /// The region ID of the source backup vault.
   late final pulumi.Output<String> replicationSourceRegionId;
+
   /// The vault ID of the source backup vault.
   late final pulumi.Output<String> replicationSourceVaultId;
+
   /// The status of the mirror backup vault.
   late final pulumi.Output<String> status;
+
   /// The name of the backup vault.
   late final pulumi.Output<String> vaultName;
+
   /// Backup Vault Storage Class
   late final pulumi.Output<String> vaultStorageClass;
 
@@ -267,20 +275,24 @@ class ReplicationVault extends pulumi.CustomResource {
     ReplicationVaultArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:hbr/replicationVault:ReplicationVault',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.encryptType = registerOutput<String>('encryptType');
-    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
-    this.regionId = registerOutput<String>('regionId');
-    this.replicationSourceRegionId = registerOutput<String>('replicationSourceRegionId');
-    this.replicationSourceVaultId = registerOutput<String>('replicationSourceVaultId');
-    this.status = registerOutput<String>('status');
-    this.vaultName = registerOutput<String>('vaultName');
-    this.vaultStorageClass = registerOutput<String>('vaultStorageClass');
+         'alicloud:hbr/replicationVault:ReplicationVault',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    encryptType = registerOutput<String>('encryptType');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    regionId = registerOutput<String>('regionId');
+    replicationSourceRegionId = registerOutput<String>(
+      'replicationSourceRegionId',
+    );
+    replicationSourceVaultId = registerOutput<String>(
+      'replicationSourceVaultId',
+    );
+    status = registerOutput<String>('status');
+    vaultName = registerOutput<String>('vaultName');
+    vaultStorageClass = registerOutput<String>('vaultStorageClass');
   }
 
   /// Gets an existing [ReplicationVault] resource's state with the given [name] and [id].
@@ -301,19 +313,23 @@ class ReplicationVault extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:hbr/replicationVault:ReplicationVault',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.encryptType = registerOutput<String>('encryptType');
-    this.kmsKeyId = registerOutput<String?>('kmsKeyId');
-    this.regionId = registerOutput<String>('regionId');
-    this.replicationSourceRegionId = registerOutput<String>('replicationSourceRegionId');
-    this.replicationSourceVaultId = registerOutput<String>('replicationSourceVaultId');
-    this.status = registerOutput<String>('status');
-    this.vaultName = registerOutput<String>('vaultName');
-    this.vaultStorageClass = registerOutput<String>('vaultStorageClass');
+         'alicloud:hbr/replicationVault:ReplicationVault',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    encryptType = registerOutput<String>('encryptType');
+    kmsKeyId = registerOutput<String?>('kmsKeyId');
+    regionId = registerOutput<String>('regionId');
+    replicationSourceRegionId = registerOutput<String>(
+      'replicationSourceRegionId',
+    );
+    replicationSourceVaultId = registerOutput<String>(
+      'replicationSourceVaultId',
+    );
+    status = registerOutput<String>('status');
+    vaultName = registerOutput<String>('vaultName');
+    vaultStorageClass = registerOutput<String>('vaultStorageClass');
   }
 }

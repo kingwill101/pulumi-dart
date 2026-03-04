@@ -7,16 +7,17 @@ enum ScalingConfigInstanceSizeMetastoreV1alpha {
   large("LARGE"),
   extraLarge("EXTRA_LARGE");
 
-  const ScalingConfigInstanceSizeMetastoreV1alpha(this.value);
-  final String value;
+  const ScalingConfigInstanceSizeMetastoreV1alpha(this.wireValue);
+  final String wireValue;
 
   static ScalingConfigInstanceSizeMetastoreV1alpha fromValue(String value) {
     for (final item in ScalingConfigInstanceSizeMetastoreV1alpha.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ScalingConfigInstanceSizeMetastoreV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown ScalingConfigInstanceSizeMetastoreV1alpha value: $value',
+    );
   }
 }
-

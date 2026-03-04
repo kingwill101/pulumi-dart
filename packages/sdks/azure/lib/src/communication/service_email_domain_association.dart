@@ -253,7 +253,7 @@ import 'service_email_domain_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Communication` - 2023-03-31
@@ -268,6 +268,7 @@ import 'service_email_domain_association_state.dart';
 class ServiceEmailDomainAssociation extends pulumi.CustomResource {
   /// The ID of the Communication Service. Changing this forces a new communication service email domain association to be created.
   late final pulumi.Output<String> communicationServiceId;
+
   /// The ID of the EMail Service Domain. Changing this forces a new communication service email domain association to be created.
   late final pulumi.Output<String> emailServiceDomainId;
 
@@ -280,13 +281,13 @@ class ServiceEmailDomainAssociation extends pulumi.CustomResource {
     ServiceEmailDomainAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:communication/serviceEmailDomainAssociation:ServiceEmailDomainAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.communicationServiceId = registerOutput<String>('communicationServiceId');
-    this.emailServiceDomainId = registerOutput<String>('emailServiceDomainId');
+         'azure:communication/serviceEmailDomainAssociation:ServiceEmailDomainAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    communicationServiceId = registerOutput<String>('communicationServiceId');
+    emailServiceDomainId = registerOutput<String>('emailServiceDomainId');
   }
 
   /// Gets an existing [ServiceEmailDomainAssociation] resource's state with the given [name] and [id].
@@ -307,12 +308,12 @@ class ServiceEmailDomainAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:communication/serviceEmailDomainAssociation:ServiceEmailDomainAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.communicationServiceId = registerOutput<String>('communicationServiceId');
-    this.emailServiceDomainId = registerOutput<String>('emailServiceDomainId');
+         'azure:communication/serviceEmailDomainAssociation:ServiceEmailDomainAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    communicationServiceId = registerOutput<String>('communicationServiceId');
+    emailServiceDomainId = registerOutput<String>('emailServiceDomainId');
   }
 }

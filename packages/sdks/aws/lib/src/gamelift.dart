@@ -1,5 +1,3 @@
-library module_gamelift;
-
 export 'gamelift/alias.dart';
 export 'gamelift/alias_args.dart';
 export 'gamelift/alias_routing_strategy.dart';

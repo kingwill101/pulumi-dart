@@ -6,7 +6,7 @@ import 'domain_state.dart';
 ///
 /// For information about Ga Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createdomain).
 ///
-/// > **NOTE:** Available since v1.197.0.
+/// &gt; **NOTE:** Available since v1.197.0.
 ///
 /// ## Example Usage
 ///
@@ -158,8 +158,10 @@ import 'domain_state.dart';
 class Domain extends pulumi.CustomResource {
   /// The ID of the global acceleration instance.
   late final pulumi.Output<String> acceleratorId;
+
   /// The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
   late final pulumi.Output<String> domain;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -167,19 +169,16 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_ga_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(
-    String name, {
-    DomainArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:ga/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.domain = registerOutput<String>('domain');
-    this.status = registerOutput<String>('status');
+  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:ga/domain:Domain',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    domain = registerOutput<String>('domain');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Domain] resource's state with the given [name] and [id].
@@ -200,13 +199,13 @@ class Domain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.acceleratorId = registerOutput<String>('acceleratorId');
-    this.domain = registerOutput<String>('domain');
-    this.status = registerOutput<String>('status');
+         'alicloud:ga/domain:Domain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    acceleratorId = registerOutput<String>('acceleratorId');
+    domain = registerOutput<String>('domain');
+    status = registerOutput<String>('status');
   }
 }

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainLogPublishingOption {
   /// ARN of the Cloudwatch log group to which log needs to be published.
   final pulumi.Input<String> cloudwatchLogGroupArn;
+
   /// Whether given log publishing option is enabled or not.
   final pulumi.Input<bool>? enabled;
+
   /// Type of Elasticsearch log. Valid values: `INDEX_SLOW_LOGS`, `SEARCH_SLOW_LOGS`, `ES_APPLICATION_LOGS`, `AUDIT_LOGS`.
   final pulumi.Input<String> logType;
 
@@ -30,10 +32,15 @@ class DomainLogPublishingOption {
 
   factory DomainLogPublishingOption.fromMap(Map<String, dynamic> map) {
     return DomainLogPublishingOption(
-      cloudwatchLogGroupArn: (map['cloudwatchLogGroupArn'] as String).input(),
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
-      logType: (map['logType'] as String).input(),
+      cloudwatchLogGroupArn: pulumi.Input.fromValue(
+        map['cloudwatchLogGroupArn'] as String,
+      ),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logType: pulumi.Input.fromValue(map['logType'] as String),
     );
   }
 }
-

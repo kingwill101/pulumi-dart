@@ -13,9 +13,9 @@ import 'v2_organization_source_iam_member_state.dart';
 ///
 /// * `gcp.securitycenter.V2OrganizationSourceIamPolicy`: Retrieves the IAM policy for the organizationsource
 ///
-/// > **Note:** `gcp.securitycenter.V2OrganizationSourceIamPolicy` **cannot** be used in conjunction with `gcp.securitycenter.V2OrganizationSourceIamBinding` and `gcp.securitycenter.V2OrganizationSourceIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.securitycenter.V2OrganizationSourceIamPolicy` **cannot** be used in conjunction with `gcp.securitycenter.V2OrganizationSourceIamBinding` and `gcp.securitycenter.V2OrganizationSourceIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.securitycenter.V2OrganizationSourceIamBinding` resources **can be** used in conjunction with `gcp.securitycenter.V2OrganizationSourceIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.securitycenter.V2OrganizationSourceIamBinding` resources **can be** used in conjunction with `gcp.securitycenter.V2OrganizationSourceIamMember` resources **only if** they do not grant privilege to the same role.
 ///
 ///
 ///
@@ -383,7 +383,7 @@ import 'v2_organization_source_iam_member_state.dart';
 ///
 ///
 ///
-/// ## > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// ## &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 /// -
@@ -400,9 +400,9 @@ import 'v2_organization_source_iam_member_state.dart';
 ///
 /// * `gcp.securitycenter.V2OrganizationSourceIamPolicy`: Retrieves the IAM policy for the organizationsource
 ///
-/// > **Note:** `gcp.securitycenter.V2OrganizationSourceIamPolicy` **cannot** be used in conjunction with `gcp.securitycenter.V2OrganizationSourceIamBinding` and `gcp.securitycenter.V2OrganizationSourceIamMember` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.securitycenter.V2OrganizationSourceIamPolicy` **cannot** be used in conjunction with `gcp.securitycenter.V2OrganizationSourceIamBinding` and `gcp.securitycenter.V2OrganizationSourceIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.securitycenter.V2OrganizationSourceIamBinding` resources **can be** used in conjunction with `gcp.securitycenter.V2OrganizationSourceIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.securitycenter.V2OrganizationSourceIamBinding` resources **can be** used in conjunction with `gcp.securitycenter.V2OrganizationSourceIamMember` resources **only if** they do not grant privilege to the same role.
 ///
 ///
 ///
@@ -801,13 +801,15 @@ import 'v2_organization_source_iam_member_state.dart';
 /// $ pulumi import gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember editor organizations/{{organization}}/sources/{{source}}
 /// ```
 ///
-/// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class V2OrganizationSourceIamMember extends pulumi.CustomResource {
   late final pulumi.Output<V2OrganizationSourceIamMemberCondition?> condition;
+
   /// (Computed) The etag of the IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -822,10 +824,12 @@ class V2OrganizationSourceIamMember extends pulumi.CustomResource {
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   late final pulumi.Output<String> member;
   late final pulumi.Output<String> organization;
+
   /// The role that should be applied. Only one
   /// `gcp.securitycenter.V2OrganizationSourceIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   late final pulumi.Output<String> role;
+
   /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> source;
 
@@ -838,17 +842,19 @@ class V2OrganizationSourceIamMember extends pulumi.CustomResource {
     V2OrganizationSourceIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<V2OrganizationSourceIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.organization = registerOutput<String>('organization');
-    this.role = registerOutput<String>('role');
-    this.source = registerOutput<String>('source');
+         'gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<V2OrganizationSourceIamMemberCondition?>(
+      'condition',
+    );
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    organization = registerOutput<String>('organization');
+    role = registerOutput<String>('role');
+    source = registerOutput<String>('source');
   }
 
   /// Gets an existing [V2OrganizationSourceIamMember] resource's state with the given [name] and [id].
@@ -869,16 +875,18 @@ class V2OrganizationSourceIamMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<V2OrganizationSourceIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.organization = registerOutput<String>('organization');
-    this.role = registerOutput<String>('role');
-    this.source = registerOutput<String>('source');
+         'gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<V2OrganizationSourceIamMemberCondition?>(
+      'condition',
+    );
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    organization = registerOutput<String>('organization');
+    role = registerOutput<String>('role');
+    source = registerOutput<String>('source');
   }
 }

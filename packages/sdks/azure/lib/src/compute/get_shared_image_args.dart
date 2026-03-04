@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSharedImageArgs {
   /// The name of the Shared Image Gallery in which the Shared Image exists.
   final pulumi.Input<String> galleryName;
+
   /// The name of the Shared Image.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group in which the Shared Image Gallery exists.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetSharedImageArgs {
 
   factory GetSharedImageArgs.fromMap(Map<String, dynamic> map) {
     return GetSharedImageArgs(
-      galleryName: (map['galleryName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      galleryName: pulumi.Input.fromValue(map['galleryName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

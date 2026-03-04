@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BgpPolicyContentLayer4RuleListConditionList {
   /// Matching target character.
   final pulumi.Input<String> arg;
+
   /// Depth of Matching.
   final pulumi.Input<int> depth;
+
   /// Position to start matching, starting from 0.
   final pulumi.Input<int> position;
 
@@ -21,19 +23,16 @@ class BgpPolicyContentLayer4RuleListConditionList {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'arg': arg,
-      'depth': depth,
-      'position': position,
-    };
+    return <String, dynamic>{'arg': arg, 'depth': depth, 'position': position};
   }
 
-  factory BgpPolicyContentLayer4RuleListConditionList.fromMap(Map<String, dynamic> map) {
+  factory BgpPolicyContentLayer4RuleListConditionList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BgpPolicyContentLayer4RuleListConditionList(
-      arg: (map['arg'] as String).input(),
-      depth: (map['depth'] as int).input(),
-      position: (map['position'] as int).input(),
+      arg: pulumi.Input.fromValue(map['arg'] as String),
+      depth: pulumi.Input.fromValue(map['depth'] as int),
+      position: pulumi.Input.fromValue(map['position'] as int),
     );
   }
 }
-

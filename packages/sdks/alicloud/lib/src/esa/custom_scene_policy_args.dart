@@ -10,15 +10,20 @@ class CustomScenePolicyArgs {
   /// The time when the policy takes effect.
   /// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   final pulumi.Input<String> createTime;
+
   /// The policy name.
   final pulumi.Input<String> customScenePolicyName;
+
   /// The time when the policy expires.
   /// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   final pulumi.Input<String> endTime;
+
   /// The IDs of websites associated.
   final pulumi.Input<String> siteIds;
+
   /// Policy effective status. Valid values: `Disabled`, `Running`.
   final pulumi.Input<String>? status;
+
   /// The name of the policy template. Valid value:
   final pulumi.Input<String> template;
 
@@ -51,13 +56,18 @@ class CustomScenePolicyArgs {
 
   factory CustomScenePolicyArgs.fromMap(Map<String, dynamic> map) {
     return CustomScenePolicyArgs(
-      createTime: (map['createTime'] as String).input(),
-      customScenePolicyName: (map['customScenePolicyName'] as String).input(),
-      endTime: (map['endTime'] as String).input(),
-      siteIds: (map['siteIds'] as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      template: (map['template'] as String).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      customScenePolicyName: pulumi.Input.fromValue(
+        map['customScenePolicyName'] as String,
+      ),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      siteIds: pulumi.Input.fromValue(map['siteIds'] as String),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      template: pulumi.Input.fromValue(map['template'] as String),
     );
   }
 }
-

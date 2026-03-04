@@ -10,14 +10,19 @@ import 'sql_server_availability_group_resource_properties.dart';
 class SqlServerAvailabilityGroupArgs {
   /// Name of SQL Availability Group
   final pulumi.Input<String>? availabilityGroupName;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Properties of Arc Sql Server availability group
   final pulumi.Input<SqlServerAvailabilityGroupResourceProperties> properties;
+
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of SQL Server Instance
   final pulumi.Input<String> sqlServerInstanceName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -41,7 +46,11 @@ class SqlServerAvailabilityGroupArgs {
     return <String, dynamic>{
       'availabilityGroupName': ?availabilityGroupName,
       'location': ?location,
-      'properties': pulumi.Input.mapInputValue<SqlServerAvailabilityGroupResourceProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            SqlServerAvailabilityGroupResourceProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'sqlServerInstanceName': sqlServerInstanceName,
       'tags': ?tags,
@@ -50,13 +59,34 @@ class SqlServerAvailabilityGroupArgs {
 
   factory SqlServerAvailabilityGroupArgs.fromMap(Map<String, dynamic> map) {
     return SqlServerAvailabilityGroupArgs(
-      availabilityGroupName: map['availabilityGroupName'] == null ? null : (map['availabilityGroupName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      properties: (SqlServerAvailabilityGroupResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sqlServerInstanceName: (map['sqlServerInstanceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      availabilityGroupName: (() {
+        final guardedValue = map['availabilityGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: pulumi.Input.fromValue(
+        SqlServerAvailabilityGroupResourceProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sqlServerInstanceName: pulumi.Input.fromValue(
+        map['sqlServerInstanceName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

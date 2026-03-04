@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_defined_function_args.dart';
-import 'user_defined_function_resource_uri.dart';
 import 'user_defined_function_state.dart';
 
 /// Provides a Glue User Defined Function Resource.
@@ -189,24 +188,33 @@ import 'user_defined_function_state.dart';
 class UserDefinedFunction extends pulumi.CustomResource {
   /// The ARN of the Glue User Defined Function.
   late final pulumi.Output<String> arn;
+
   /// ID of the Glue Catalog to create the function in. If omitted, this defaults to the AWS Account ID.
   late final pulumi.Output<String?> catalogId;
+
   /// The Java class that contains the function code.
   late final pulumi.Output<String> className;
+
   /// The time at which the function was created.
   late final pulumi.Output<String> createTime;
+
   /// The name of the Database to create the Function.
   late final pulumi.Output<String> databaseName;
+
   /// The name of the function.
   late final pulumi.Output<String> name;
+
   /// The owner of the function.
   late final pulumi.Output<String> ownerName;
+
   /// The owner type. can be one of `USER`, `ROLE`, and `GROUP`.
   late final pulumi.Output<String> ownerType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The configuration block for Resource URIs. See resource uris below for more details.
-  late final pulumi.Output<List<UserDefinedFunctionResourceUri>?> resourceUris;
+  late final pulumi.Output<List<Map<String, dynamic>>?> resourceUris;
 
   /// Creates a new [UserDefinedFunction].
   /// [name] The Pulumi resource name.
@@ -217,21 +225,21 @@ class UserDefinedFunction extends pulumi.CustomResource {
     UserDefinedFunctionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:glue/userDefinedFunction:UserDefinedFunction',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.catalogId = registerOutput<String?>('catalogId');
-    this.className = registerOutput<String>('className');
-    this.createTime = registerOutput<String>('createTime');
-    this.databaseName = registerOutput<String>('databaseName');
+         'aws:glue/userDefinedFunction:UserDefinedFunction',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    catalogId = registerOutput<String?>('catalogId');
+    className = registerOutput<String>('className');
+    createTime = registerOutput<String>('createTime');
+    databaseName = registerOutput<String>('databaseName');
     this.name = registerOutput<String>('name');
-    this.ownerName = registerOutput<String>('ownerName');
-    this.ownerType = registerOutput<String>('ownerType');
-    this.region = registerOutput<String>('region');
-    this.resourceUris = registerOutput<List<UserDefinedFunctionResourceUri>?>('resourceUris');
+    ownerName = registerOutput<String>('ownerName');
+    ownerType = registerOutput<String>('ownerType');
+    region = registerOutput<String>('region');
+    resourceUris = registerOutput<List<Map<String, dynamic>>?>('resourceUris');
   }
 
   /// Gets an existing [UserDefinedFunction] resource's state with the given [name] and [id].
@@ -252,20 +260,20 @@ class UserDefinedFunction extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:glue/userDefinedFunction:UserDefinedFunction',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.catalogId = registerOutput<String?>('catalogId');
-    this.className = registerOutput<String>('className');
-    this.createTime = registerOutput<String>('createTime');
-    this.databaseName = registerOutput<String>('databaseName');
+         'aws:glue/userDefinedFunction:UserDefinedFunction',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    catalogId = registerOutput<String?>('catalogId');
+    className = registerOutput<String>('className');
+    createTime = registerOutput<String>('createTime');
+    databaseName = registerOutput<String>('databaseName');
     this.name = registerOutput<String>('name');
-    this.ownerName = registerOutput<String>('ownerName');
-    this.ownerType = registerOutput<String>('ownerType');
-    this.region = registerOutput<String>('region');
-    this.resourceUris = registerOutput<List<UserDefinedFunctionResourceUri>?>('resourceUris');
+    ownerName = registerOutput<String>('ownerName');
+    ownerType = registerOutput<String>('ownerType');
+    region = registerOutput<String>('region');
+    resourceUris = registerOutput<List<Map<String, dynamic>>?>('resourceUris');
   }
 }

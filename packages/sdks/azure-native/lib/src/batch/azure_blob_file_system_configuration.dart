@@ -7,16 +7,22 @@ import 'compute_node_identity_reference.dart';
 class AzureBlobFileSystemConfiguration {
   /// This property is mutually exclusive with both sasKey and identity; exactly one must be specified.
   final pulumi.Input<String>? accountKey;
+
   /// The Azure Storage Account name.
   final pulumi.Input<String> accountName;
+
   /// These are 'net use' options in Windows and 'mount' options in Linux.
   final pulumi.Input<String>? blobfuseOptions;
+
   /// The Azure Blob Storage Container name.
   final pulumi.Input<String> containerName;
+
   /// This property is mutually exclusive with both accountKey and sasKey; exactly one must be specified.
   final pulumi.Input<ComputeNodeIdentityReference>? identityReference;
+
   /// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
   final pulumi.Input<String> relativeMountPath;
+
   /// This property is mutually exclusive with both accountKey and identity; exactly one must be specified.
   final pulumi.Input<String>? sasKey;
 
@@ -44,7 +50,11 @@ class AzureBlobFileSystemConfiguration {
       'accountName': accountName,
       'blobfuseOptions': ?blobfuseOptions,
       'containerName': containerName,
-      'identityReference': ?pulumi.Input.mapOptionalInputValue<ComputeNodeIdentityReference, Map<String, dynamic>>(identityReference, (value) => value.toMap()),
+      'identityReference':
+          ?pulumi.Input.mapOptionalInputValue<
+            ComputeNodeIdentityReference,
+            Map<String, dynamic>
+          >(identityReference, (value) => value.toMap()),
       'relativeMountPath': relativeMountPath,
       'sasKey': ?sasKey,
     };
@@ -52,14 +62,35 @@ class AzureBlobFileSystemConfiguration {
 
   factory AzureBlobFileSystemConfiguration.fromMap(Map<String, dynamic> map) {
     return AzureBlobFileSystemConfiguration(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
-      accountName: (map['accountName'] as String).input(),
-      blobfuseOptions: map['blobfuseOptions'] == null ? null : (map['blobfuseOptions']! as String).input(),
-      containerName: (map['containerName'] as String).input(),
-      identityReference: map['identityReference'] == null ? null : (ComputeNodeIdentityReference.fromMap((map['identityReference']! as Map).cast<String, dynamic>())).input(),
-      relativeMountPath: (map['relativeMountPath'] as String).input(),
-      sasKey: map['sasKey'] == null ? null : (map['sasKey']! as String).input(),
+      accountKey: (() {
+        final guardedValue = map['accountKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      blobfuseOptions: (() {
+        final guardedValue = map['blobfuseOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerName: pulumi.Input.fromValue(map['containerName'] as String),
+      identityReference: (() {
+        final guardedValue = map['identityReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ComputeNodeIdentityReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      relativeMountPath: pulumi.Input.fromValue(
+        map['relativeMountPath'] as String,
+      ),
+      sasKey: (() {
+        final guardedValue = map['sasKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

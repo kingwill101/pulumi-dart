@@ -1,9 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_args.dart';
-import 'endpoint_custom_dns_config.dart';
-import 'endpoint_ip_configuration.dart';
-import 'endpoint_network_interface.dart';
-import 'endpoint_private_dns_zone_config.dart';
 import 'endpoint_private_dns_zone_group.dart';
 import 'endpoint_private_service_connection.dart';
 import 'endpoint_state.dart';
@@ -1271,7 +1267,7 @@ import 'endpoint_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -1285,27 +1281,39 @@ import 'endpoint_state.dart';
 /// ```
 class Endpoint extends pulumi.CustomResource {
   /// A `custom_dns_configs` block as defined below.
-  late final pulumi.Output<List<EndpointCustomDnsConfig>> customDnsConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> customDnsConfigs;
+
   /// The custom name of the network interface attached to the private endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> customNetworkInterfaceName;
+
   /// One or more `ip_configuration` blocks as defined below. This allows a static IP address to be set for this Private Endpoint, otherwise an address is dynamically allocated from the Subnet.
-  late final pulumi.Output<List<EndpointIpConfiguration>?> ipConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
+
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A `network_interface` block as defined below.
-  late final pulumi.Output<List<EndpointNetworkInterface>> networkInterfaces;
+  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+
   /// A `private_dns_zone_configs` block as defined below.
-  late final pulumi.Output<List<EndpointPrivateDnsZoneConfig>> privateDnsZoneConfigs;
+  late final pulumi.Output<List<Map<String, dynamic>>> privateDnsZoneConfigs;
+
   /// A `private_dns_zone_group` block as defined below.
   late final pulumi.Output<EndpointPrivateDnsZoneGroup?> privateDnsZoneGroup;
+
   /// A `private_service_connection` block as defined below.
-  late final pulumi.Output<EndpointPrivateServiceConnection> privateServiceConnection;
+  late final pulumi.Output<EndpointPrivateServiceConnection>
+  privateServiceConnection;
+
   /// Specifies the Name of the Resource Group within which the Private Endpoint should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The ID of the Subnet from which Private IP Addresses will be allocated for this Private Endpoint. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subnetId;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -1318,23 +1326,37 @@ class Endpoint extends pulumi.CustomResource {
     EndpointArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:privatelink/endpoint:Endpoint',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customDnsConfigs = registerOutput<List<EndpointCustomDnsConfig>>('customDnsConfigs');
-    this.customNetworkInterfaceName = registerOutput<String?>('customNetworkInterfaceName');
-    this.ipConfigurations = registerOutput<List<EndpointIpConfiguration>?>('ipConfigurations');
-    this.location = registerOutput<String>('location');
+         'azure:privatelink/endpoint:Endpoint',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customDnsConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'customDnsConfigs',
+    );
+    customNetworkInterfaceName = registerOutput<String?>(
+      'customNetworkInterfaceName',
+    );
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'ipConfigurations',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkInterfaces = registerOutput<List<EndpointNetworkInterface>>('networkInterfaces');
-    this.privateDnsZoneConfigs = registerOutput<List<EndpointPrivateDnsZoneConfig>>('privateDnsZoneConfigs');
-    this.privateDnsZoneGroup = registerOutput<EndpointPrivateDnsZoneGroup?>('privateDnsZoneGroup');
-    this.privateServiceConnection = registerOutput<EndpointPrivateServiceConnection>('privateServiceConnection');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
+      'networkInterfaces',
+    );
+    privateDnsZoneConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'privateDnsZoneConfigs',
+    );
+    privateDnsZoneGroup = registerOutput<EndpointPrivateDnsZoneGroup?>(
+      'privateDnsZoneGroup',
+    );
+    privateServiceConnection = registerOutput<EndpointPrivateServiceConnection>(
+      'privateServiceConnection',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Endpoint] resource's state with the given [name] and [id].
@@ -1355,22 +1377,36 @@ class Endpoint extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:privatelink/endpoint:Endpoint',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customDnsConfigs = registerOutput<List<EndpointCustomDnsConfig>>('customDnsConfigs');
-    this.customNetworkInterfaceName = registerOutput<String?>('customNetworkInterfaceName');
-    this.ipConfigurations = registerOutput<List<EndpointIpConfiguration>?>('ipConfigurations');
-    this.location = registerOutput<String>('location');
+         'azure:privatelink/endpoint:Endpoint',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customDnsConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'customDnsConfigs',
+    );
+    customNetworkInterfaceName = registerOutput<String?>(
+      'customNetworkInterfaceName',
+    );
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'ipConfigurations',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkInterfaces = registerOutput<List<EndpointNetworkInterface>>('networkInterfaces');
-    this.privateDnsZoneConfigs = registerOutput<List<EndpointPrivateDnsZoneConfig>>('privateDnsZoneConfigs');
-    this.privateDnsZoneGroup = registerOutput<EndpointPrivateDnsZoneGroup?>('privateDnsZoneGroup');
-    this.privateServiceConnection = registerOutput<EndpointPrivateServiceConnection>('privateServiceConnection');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.subnetId = registerOutput<String>('subnetId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
+      'networkInterfaces',
+    );
+    privateDnsZoneConfigs = registerOutput<List<Map<String, dynamic>>>(
+      'privateDnsZoneConfigs',
+    );
+    privateDnsZoneGroup = registerOutput<EndpointPrivateDnsZoneGroup?>(
+      'privateDnsZoneGroup',
+    );
+    privateServiceConnection = registerOutput<EndpointPrivateServiceConnection>(
+      'privateServiceConnection',
+    );
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

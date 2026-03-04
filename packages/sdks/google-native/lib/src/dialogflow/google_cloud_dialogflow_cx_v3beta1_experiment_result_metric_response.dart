@@ -6,13 +6,20 @@ import 'google_cloud_dialogflow_cx_v3beta1_experiment_result_confidence_interval
 /// Metric and corresponding confidence intervals.
 class GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse {
   /// The probability that the treatment is better than all other treatments in the experiment
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse> confidenceInterval;
+  final pulumi.Input<
+    GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse
+  >
+  confidenceInterval;
+
   /// Count value of a metric.
   final pulumi.Input<double> count;
+
   /// Count-based metric type. Only one of type or count_type is specified in each Metric.
   final pulumi.Input<String> countType;
+
   /// Ratio value of a metric.
   final pulumi.Input<double> ratio;
+
   /// Ratio-based metric type. Only one of type or count_type is specified in each Metric.
   final pulumi.Input<String> type;
 
@@ -32,7 +39,11 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'confidenceInterval': pulumi.Input.mapInputValue<GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse, Map<String, dynamic>>(confidenceInterval, (value) => value.toMap()),
+      'confidenceInterval':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse,
+            Map<String, dynamic>
+          >(confidenceInterval, (value) => value.toMap()),
       'count': count,
       'countType': countType,
       'ratio': ratio,
@@ -40,14 +51,19 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse(
-      confidenceInterval: (GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse.fromMap((map['confidenceInterval'] as Map).cast<String, dynamic>())).input(),
-      count: (map['count'] as double).input(),
-      countType: (map['countType'] as String).input(),
-      ratio: (map['ratio'] as double).input(),
-      type: (map['type'] as String).input(),
+      confidenceInterval: pulumi.Input.fromValue(
+        GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse.fromMap(
+          (map['confidenceInterval']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      count: pulumi.Input.fromValue(map['count'] as double),
+      countType: pulumi.Input.fromValue(map['countType'] as String),
+      ratio: pulumi.Input.fromValue(map['ratio'] as double),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

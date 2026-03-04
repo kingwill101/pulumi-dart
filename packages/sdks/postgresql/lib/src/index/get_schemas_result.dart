@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSchemas.
 class GetSchemasResult {
   final String database;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? includeSystemSchemas;
@@ -11,6 +11,7 @@ class GetSchemasResult {
   final List<String>? likeAnyPatterns;
   final List<String>? notLikeAllPatterns;
   final String? regexPattern;
+
   /// A list of full names of found schemas.
   final List<String> schemas;
 
@@ -51,13 +52,32 @@ class GetSchemasResult {
     return GetSchemasResult(
       database: map['database'] as String,
       id: map['id'] as String,
-      includeSystemSchemas: map['includeSystemSchemas'] == null ? null : map['includeSystemSchemas']! as bool,
-      likeAllPatterns: map['likeAllPatterns'] == null ? null : (map['likeAllPatterns']! as List).cast<String>(),
-      likeAnyPatterns: map['likeAnyPatterns'] == null ? null : (map['likeAnyPatterns']! as List).cast<String>(),
-      notLikeAllPatterns: map['notLikeAllPatterns'] == null ? null : (map['notLikeAllPatterns']! as List).cast<String>(),
-      regexPattern: map['regexPattern'] == null ? null : map['regexPattern']! as String,
+      includeSystemSchemas: (() {
+        final guardedValue = map['includeSystemSchemas'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      likeAllPatterns: (() {
+        final guardedValue = map['likeAllPatterns'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      likeAnyPatterns: (() {
+        final guardedValue = map['likeAnyPatterns'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      notLikeAllPatterns: (() {
+        final guardedValue = map['notLikeAllPatterns'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      regexPattern: (() {
+        final guardedValue = map['regexPattern'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       schemas: (map['schemas'] as List).cast<String>(),
     );
   }
 }
-

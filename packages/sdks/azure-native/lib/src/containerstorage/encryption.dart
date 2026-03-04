@@ -7,8 +7,10 @@ import 'managed_service_identity.dart';
 class Encryption {
   /// The managed service identities assigned to this resource.
   final pulumi.Input<ManagedServiceIdentity>? identity;
+
   /// The name of the key vault key.
   final pulumi.Input<String> keyName;
+
   /// The URI of the key vault.
   final pulumi.Input<String> keyVaultUri;
 
@@ -16,15 +18,15 @@ class Encryption {
   /// [identity] The managed service identities assigned to this resource.
   /// [keyName] The name of the key vault key.
   /// [keyVaultUri] The URI of the key vault.
-  Encryption({
-    this.identity,
-    required this.keyName,
-    required this.keyVaultUri,
-  });
+  Encryption({this.identity, required this.keyName, required this.keyVaultUri});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedServiceIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'keyName': keyName,
       'keyVaultUri': keyVaultUri,
     };
@@ -32,10 +34,17 @@ class Encryption {
 
   factory Encryption.fromMap(Map<String, dynamic> map) {
     return Encryption(
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      keyName: (map['keyName'] as String).input(),
-      keyVaultUri: (map['keyVaultUri'] as String).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedServiceIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      keyName: pulumi.Input.fromValue(map['keyName'] as String),
+      keyVaultUri: pulumi.Input.fromValue(map['keyVaultUri'] as String),
     );
   }
 }
-

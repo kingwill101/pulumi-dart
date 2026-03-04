@@ -4,9 +4,9 @@ import 'disk_state.dart';
 
 /// Provides a ECS disk resource.
 ///
-/// > **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.122.0.
+/// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.122.0.
 ///
-/// > **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `alicloud.ecs.Disk` doesn't resize disk.
+/// &gt; **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `alicloud.ecs.Disk` doesn't resize disk.
 ///
 /// ## Example Usage
 ///
@@ -168,32 +168,42 @@ import 'disk_state.dart';
 /// ```
 class Disk extends pulumi.CustomResource {
   late final pulumi.Output<String?> advancedFeatures;
+
   /// The Zone to create the disk in.
   late final pulumi.Output<String> availabilityZone;
   late final pulumi.Output<bool?> burstingEnabled;
+
   /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
   late final pulumi.Output<String?> category;
   late final pulumi.Output<String> createTime;
+
   /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
   late final pulumi.Output<bool?> deleteAutoSnapshot;
+
   /// Indicates whether the disk is released together with the instance: Default value: false.
   late final pulumi.Output<bool> deleteWithInstance;
+
   /// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
   late final pulumi.Output<String?> description;
   late final pulumi.Output<String> diskName;
   late final pulumi.Output<bool?> dryRun;
+
   /// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
   late final pulumi.Output<bool> enableAutoSnapshot;
   late final pulumi.Output<String?> encryptAlgorithm;
+
   /// If true, the disk will be encrypted, conflict with `snapshot_id`.
   late final pulumi.Output<bool> encrypted;
   late final pulumi.Output<String> instanceId;
+
   /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
   late final pulumi.Output<String> kmsKeyId;
   late final pulumi.Output<String> multiAttach;
+
   /// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> paymentType;
+
   /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
   /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
   /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
@@ -201,17 +211,22 @@ class Disk extends pulumi.CustomResource {
   late final pulumi.Output<String> performanceLevel;
   late final pulumi.Output<int?> provisionedIops;
   late final pulumi.Output<String> regionId;
+
   /// The Id of resource group which the disk belongs.
-  /// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+  /// &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
   late final pulumi.Output<int> size;
+
   /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
   late final pulumi.Output<String> snapshotId;
+
   /// The disk status.
   late final pulumi.Output<String> status;
   late final pulumi.Output<String?> storageSetId;
   late final pulumi.Output<int?> storageSetPartitionNumber;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<String?> type;
@@ -221,54 +236,49 @@ class Disk extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Disk]. {@macro pulumi_ecs_disk_disk_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Disk(
-    String name, {
-    DiskArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:ecs/disk:Disk',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.advancedFeatures = registerOutput<String?>('advancedFeatures');
-    this.availabilityZone = registerOutput<String>('availabilityZone');
-    this.burstingEnabled = registerOutput<bool?>('burstingEnabled');
-    this.category = registerOutput<String?>('category');
-    this.createTime = registerOutput<String>('createTime');
-    this.deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
-    this.deleteWithInstance = registerOutput<bool>('deleteWithInstance');
-    this.description = registerOutput<String?>('description');
-    this.diskName = registerOutput<String>('diskName');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.enableAutoSnapshot = registerOutput<bool>('enableAutoSnapshot');
-    this.encryptAlgorithm = registerOutput<String?>('encryptAlgorithm');
-    this.encrypted = registerOutput<bool>('encrypted');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.kmsKeyId = registerOutput<String>('kmsKeyId');
-    this.multiAttach = registerOutput<String>('multiAttach');
+  Disk(String name, {DiskArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:ecs/disk:Disk',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    advancedFeatures = registerOutput<String?>('advancedFeatures');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    burstingEnabled = registerOutput<bool?>('burstingEnabled');
+    category = registerOutput<String?>('category');
+    createTime = registerOutput<String>('createTime');
+    deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
+    deleteWithInstance = registerOutput<bool>('deleteWithInstance');
+    description = registerOutput<String?>('description');
+    diskName = registerOutput<String>('diskName');
+    dryRun = registerOutput<bool?>('dryRun');
+    enableAutoSnapshot = registerOutput<bool>('enableAutoSnapshot');
+    encryptAlgorithm = registerOutput<String?>('encryptAlgorithm');
+    encrypted = registerOutput<bool>('encrypted');
+    instanceId = registerOutput<String>('instanceId');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    multiAttach = registerOutput<String>('multiAttach');
     this.name = registerOutput<String>('name');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.performanceLevel = registerOutput<String>('performanceLevel');
-    this.provisionedIops = registerOutput<int?>('provisionedIops');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.size = registerOutput<int>('size');
-    this.snapshotId = registerOutput<String>('snapshotId');
-    this.status = registerOutput<String>('status');
-    this.storageSetId = registerOutput<String?>('storageSetId');
-    this.storageSetPartitionNumber = registerOutput<int?>('storageSetPartitionNumber');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String?>('type');
-    this.zoneId = registerOutput<String>('zoneId');
+    paymentType = registerOutput<String>('paymentType');
+    performanceLevel = registerOutput<String>('performanceLevel');
+    provisionedIops = registerOutput<int?>('provisionedIops');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    size = registerOutput<int>('size');
+    snapshotId = registerOutput<String>('snapshotId');
+    status = registerOutput<String>('status');
+    storageSetId = registerOutput<String?>('storageSetId');
+    storageSetPartitionNumber = registerOutput<int?>(
+      'storageSetPartitionNumber',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String?>('type');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [Disk] resource's state with the given [name] and [id].
-  static Disk get(
-    String name,
-    pulumi.Input<String> id, {
-    DiskState? state,
-  }) {
+  static Disk get(String name, pulumi.Input<String> id, {DiskState? state}) {
     return Disk._get(
       name,
       state: state?.toMap(),
@@ -281,40 +291,42 @@ class Disk extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/disk:Disk',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.advancedFeatures = registerOutput<String?>('advancedFeatures');
-    this.availabilityZone = registerOutput<String>('availabilityZone');
-    this.burstingEnabled = registerOutput<bool?>('burstingEnabled');
-    this.category = registerOutput<String?>('category');
-    this.createTime = registerOutput<String>('createTime');
-    this.deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
-    this.deleteWithInstance = registerOutput<bool>('deleteWithInstance');
-    this.description = registerOutput<String?>('description');
-    this.diskName = registerOutput<String>('diskName');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.enableAutoSnapshot = registerOutput<bool>('enableAutoSnapshot');
-    this.encryptAlgorithm = registerOutput<String?>('encryptAlgorithm');
-    this.encrypted = registerOutput<bool>('encrypted');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.kmsKeyId = registerOutput<String>('kmsKeyId');
-    this.multiAttach = registerOutput<String>('multiAttach');
+         'alicloud:ecs/disk:Disk',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    advancedFeatures = registerOutput<String?>('advancedFeatures');
+    availabilityZone = registerOutput<String>('availabilityZone');
+    burstingEnabled = registerOutput<bool?>('burstingEnabled');
+    category = registerOutput<String?>('category');
+    createTime = registerOutput<String>('createTime');
+    deleteAutoSnapshot = registerOutput<bool?>('deleteAutoSnapshot');
+    deleteWithInstance = registerOutput<bool>('deleteWithInstance');
+    description = registerOutput<String?>('description');
+    diskName = registerOutput<String>('diskName');
+    dryRun = registerOutput<bool?>('dryRun');
+    enableAutoSnapshot = registerOutput<bool>('enableAutoSnapshot');
+    encryptAlgorithm = registerOutput<String?>('encryptAlgorithm');
+    encrypted = registerOutput<bool>('encrypted');
+    instanceId = registerOutput<String>('instanceId');
+    kmsKeyId = registerOutput<String>('kmsKeyId');
+    multiAttach = registerOutput<String>('multiAttach');
     this.name = registerOutput<String>('name');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.performanceLevel = registerOutput<String>('performanceLevel');
-    this.provisionedIops = registerOutput<int?>('provisionedIops');
-    this.regionId = registerOutput<String>('regionId');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.size = registerOutput<int>('size');
-    this.snapshotId = registerOutput<String>('snapshotId');
-    this.status = registerOutput<String>('status');
-    this.storageSetId = registerOutput<String?>('storageSetId');
-    this.storageSetPartitionNumber = registerOutput<int?>('storageSetPartitionNumber');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String?>('type');
-    this.zoneId = registerOutput<String>('zoneId');
+    paymentType = registerOutput<String>('paymentType');
+    performanceLevel = registerOutput<String>('performanceLevel');
+    provisionedIops = registerOutput<int?>('provisionedIops');
+    regionId = registerOutput<String>('regionId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    size = registerOutput<int>('size');
+    snapshotId = registerOutput<String>('snapshotId');
+    status = registerOutput<String>('status');
+    storageSetId = registerOutput<String?>('storageSetId');
+    storageSetPartitionNumber = registerOutput<int?>(
+      'storageSetPartitionNumber',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String?>('type');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

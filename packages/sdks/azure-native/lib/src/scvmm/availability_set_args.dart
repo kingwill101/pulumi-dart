@@ -10,14 +10,19 @@ import 'extended_location.dart';
 class AvailabilitySetArgs {
   /// Name of the availability set.
   final pulumi.Input<String>? availabilitySetName;
+
   /// The extended location.
   final pulumi.Input<ExtendedLocation>? extendedLocation;
+
   /// Gets or sets the location.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags
   final pulumi.Input<Map<String, String>>? tags;
+
   /// ARM Id of the vmmServer resource in which this resource resides.
   final pulumi.Input<String>? vmmServerId;
 
@@ -40,7 +45,11 @@ class AvailabilitySetArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availabilitySetName': ?availabilitySetName,
-      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'extendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocation,
+            Map<String, dynamic>
+          >(extendedLocation, (value) => value.toMap()),
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
@@ -50,13 +59,40 @@ class AvailabilitySetArgs {
 
   factory AvailabilitySetArgs.fromMap(Map<String, dynamic> map) {
     return AvailabilitySetArgs(
-      availabilitySetName: map['availabilitySetName'] == null ? null : (map['availabilitySetName']! as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vmmServerId: map['vmmServerId'] == null ? null : (map['vmmServerId']! as String).input(),
+      availabilitySetName: (() {
+        final guardedValue = map['availabilitySetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vmmServerId: (() {
+        final guardedValue = map['vmmServerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

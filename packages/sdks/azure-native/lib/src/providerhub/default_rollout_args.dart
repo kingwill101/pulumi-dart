@@ -10,8 +10,10 @@ import 'default_rollout_properties.dart';
 class DefaultRolloutArgs {
   /// Properties of the rollout.
   final pulumi.Input<DefaultRolloutProperties>? properties;
+
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String> providerNamespace;
+
   /// The rollout name.
   final pulumi.Input<String>? rolloutName;
 
@@ -27,7 +29,11 @@ class DefaultRolloutArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?pulumi.Input.mapOptionalInputValue<DefaultRolloutProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefaultRolloutProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'providerNamespace': providerNamespace,
       'rolloutName': ?rolloutName,
     };
@@ -35,10 +41,23 @@ class DefaultRolloutArgs {
 
   factory DefaultRolloutArgs.fromMap(Map<String, dynamic> map) {
     return DefaultRolloutArgs(
-      properties: map['properties'] == null ? null : (DefaultRolloutProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      providerNamespace: (map['providerNamespace'] as String).input(),
-      rolloutName: map['rolloutName'] == null ? null : (map['rolloutName']! as String).input(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefaultRolloutProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      providerNamespace: pulumi.Input.fromValue(
+        map['providerNamespace'] as String,
+      ),
+      rolloutName: (() {
+        final guardedValue = map['rolloutName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TlsaRecordResponse {
   /// This specifies the certificate association data to be matched.
   final pulumi.Input<String>? certAssociationData;
+
   /// The matching type specifies how the certificate association is presented.
   final pulumi.Input<int>? matchingType;
+
   /// The selector specifies which part of the TLS certificate presented by the server will be matched against the association data.
   final pulumi.Input<int>? selector;
+
   /// The usage specifies the provided association that will be used to match the certificate presented in the TLS handshake.
   final pulumi.Input<int>? usage;
 
@@ -36,11 +39,26 @@ class TlsaRecordResponse {
 
   factory TlsaRecordResponse.fromMap(Map<String, dynamic> map) {
     return TlsaRecordResponse(
-      certAssociationData: map['certAssociationData'] == null ? null : (map['certAssociationData']! as String).input(),
-      matchingType: map['matchingType'] == null ? null : (map['matchingType']! as int).input(),
-      selector: map['selector'] == null ? null : (map['selector']! as int).input(),
-      usage: map['usage'] == null ? null : (map['usage']! as int).input(),
+      certAssociationData: (() {
+        final guardedValue = map['certAssociationData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      matchingType: (() {
+        final guardedValue = map['matchingType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      selector: (() {
+        final guardedValue = map['selector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      usage: (() {
+        final guardedValue = map['usage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -10,20 +10,31 @@ class RelationshipNoteContaineranalysisV1beta1 {
 
   /// Creates a new [RelationshipNoteContaineranalysisV1beta1].
   /// [type] The type of relationship between the source and target SPDX elements
-  RelationshipNoteContaineranalysisV1beta1({
-    this.type,
-  });
+  RelationshipNoteContaineranalysisV1beta1({this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': ?pulumi.Input.mapOptionalInputValue<RelationshipNoteTypeContaineranalysisV1beta1, String>(type, (value) => value.value),
+      'type':
+          ?pulumi.Input.mapOptionalInputValue<
+            RelationshipNoteTypeContaineranalysisV1beta1,
+            String
+          >(type, (value) => value.wireValue),
     };
   }
 
-  factory RelationshipNoteContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory RelationshipNoteContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RelationshipNoteContaineranalysisV1beta1(
-      type: map['type'] == null ? null : (RelationshipNoteTypeContaineranalysisV1beta1.fromValue(map['type']! as String)).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RelationshipNoteTypeContaineranalysisV1beta1.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

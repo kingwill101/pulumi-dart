@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IssueProperties {
   /// The issue impact time (in UTC)
   final pulumi.Input<String> impactTime;
+
   /// The issue severity
   final pulumi.Input<String> severity;
+
   /// The issue status
   final pulumi.Input<String> status;
+
   /// The issue title
   final pulumi.Input<String> title;
 
@@ -36,11 +39,10 @@ class IssueProperties {
 
   factory IssueProperties.fromMap(Map<String, dynamic> map) {
     return IssueProperties(
-      impactTime: (map['impactTime'] as String).input(),
-      severity: (map['severity'] as String).input(),
-      status: (map['status'] as String).input(),
-      title: (map['title'] as String).input(),
+      impactTime: pulumi.Input.fromValue(map['impactTime'] as String),
+      severity: pulumi.Input.fromValue(map['severity'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
-

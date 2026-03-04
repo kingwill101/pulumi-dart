@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTestBaseAccountFileUploadUrlArgs {
   /// The custom file name of the uploaded blob.
   final pulumi.Input<String>? blobName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource type for file uploading.
   final pulumi.Input<String>? resourceType;
+
   /// The resource name of the Test Base Account.
   final pulumi.Input<String> testBaseAccountName;
 
@@ -37,13 +40,26 @@ class GetTestBaseAccountFileUploadUrlArgs {
     };
   }
 
-  factory GetTestBaseAccountFileUploadUrlArgs.fromMap(Map<String, dynamic> map) {
+  factory GetTestBaseAccountFileUploadUrlArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTestBaseAccountFileUploadUrlArgs(
-      blobName: map['blobName'] == null ? null : (map['blobName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
-      testBaseAccountName: (map['testBaseAccountName'] as String).input(),
+      blobName: (() {
+        final guardedValue = map['blobName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      testBaseAccountName: pulumi.Input.fromValue(
+        map['testBaseAccountName'] as String,
+      ),
     );
   }
 }
-

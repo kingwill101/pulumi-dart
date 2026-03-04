@@ -7,26 +7,38 @@ import 'provisioning_template_pre_provisioning_hook.dart';
 class ProvisioningTemplateState {
   /// The ARN that identifies the provisioning template.
   final pulumi.Input<String>? arn;
+
   /// The default version of the fleet provisioning template.
   final pulumi.Input<int>? defaultVersionId;
+
   /// The description of the fleet provisioning template.
   final pulumi.Input<String>? description;
+
   /// True to enable the fleet provisioning template, otherwise false.
   final pulumi.Input<bool>? enabled;
+
   /// The name of the fleet provisioning template.
   final pulumi.Input<String>? name;
+
   /// Creates a pre-provisioning hook template. Details below.
-  final pulumi.Input<ProvisioningTemplatePreProvisioningHook>? preProvisioningHook;
+  final pulumi.Input<ProvisioningTemplatePreProvisioningHook>?
+  preProvisioningHook;
+
   /// The role ARN for the role associated with the fleet provisioning template. This IoT role grants permission to provision a device.
   final pulumi.Input<String>? provisioningRoleArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// The JSON formatted contents of the fleet provisioning template.
   final pulumi.Input<String>? templateBody;
+
   /// The type you define in a provisioning template.
   final pulumi.Input<String>? type;
 
@@ -65,7 +77,11 @@ class ProvisioningTemplateState {
       'description': ?description,
       'enabled': ?enabled,
       'name': ?name,
-      'preProvisioningHook': ?pulumi.Input.mapOptionalInputValue<ProvisioningTemplatePreProvisioningHook, Map<String, dynamic>>(preProvisioningHook, (value) => value.toMap()),
+      'preProvisioningHook':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProvisioningTemplatePreProvisioningHook,
+            Map<String, dynamic>
+          >(preProvisioningHook, (value) => value.toMap()),
       'provisioningRoleArn': ?provisioningRoleArn,
       'region': ?region,
       'tags': ?tags,
@@ -77,19 +93,74 @@ class ProvisioningTemplateState {
 
   factory ProvisioningTemplateState.fromMap(Map<String, dynamic> map) {
     return ProvisioningTemplateState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      defaultVersionId: map['defaultVersionId'] == null ? null : ((map['defaultVersionId'] as int).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      preProvisioningHook: map['preProvisioningHook'] == null ? null : ((ProvisioningTemplatePreProvisioningHook.fromMap((map['preProvisioningHook']! as Map).cast<String, dynamic>())).input()).input(),
-      provisioningRoleArn: map['provisioningRoleArn'] == null ? null : ((map['provisioningRoleArn'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      templateBody: map['templateBody'] == null ? null : ((map['templateBody'] as String).input()).input(),
-      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultVersionId: (() {
+        final guardedValue = map['defaultVersionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      preProvisioningHook: (() {
+        final guardedValue = map['preProvisioningHook'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProvisioningTemplatePreProvisioningHook.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningRoleArn: (() {
+        final guardedValue = map['provisioningRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      templateBody: (() {
+        final guardedValue = map['templateBody'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,15 @@ class PatchDeploymentOneTimeSchedule {
 
   /// Creates a new [PatchDeploymentOneTimeSchedule].
   /// [executeTime] The desired patch job execution time. A timestamp in RFC3339 UTC "Zulu" format,
-  PatchDeploymentOneTimeSchedule({
-    required this.executeTime,
-  });
+  PatchDeploymentOneTimeSchedule({required this.executeTime});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'executeTime': executeTime,
-    };
+    return <String, dynamic>{'executeTime': executeTime};
   }
 
   factory PatchDeploymentOneTimeSchedule.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentOneTimeSchedule(
-      executeTime: (map['executeTime'] as String).input(),
+      executeTime: pulumi.Input.fromValue(map['executeTime'] as String),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LongRunningResponse {
   /// Initial delay after which the first poll request will be made. Default value: 5 seconds.
   final pulumi.Input<String> initialPollDelay;
+
   /// Maximum time between two subsequent poll requests. Default value: 45 seconds.
   final pulumi.Input<String> maxPollDelay;
+
   /// Multiplier to gradually increase delay between subsequent polls until it reaches max_poll_delay. Default value: 1.5.
   final pulumi.Input<double> pollDelayMultiplier;
+
   /// Total polling timeout. Default value: 5 minutes.
   final pulumi.Input<String> totalPollTimeout;
 
@@ -36,11 +39,16 @@ class LongRunningResponse {
 
   factory LongRunningResponse.fromMap(Map<String, dynamic> map) {
     return LongRunningResponse(
-      initialPollDelay: (map['initialPollDelay'] as String).input(),
-      maxPollDelay: (map['maxPollDelay'] as String).input(),
-      pollDelayMultiplier: (map['pollDelayMultiplier'] as double).input(),
-      totalPollTimeout: (map['totalPollTimeout'] as String).input(),
+      initialPollDelay: pulumi.Input.fromValue(
+        map['initialPollDelay'] as String,
+      ),
+      maxPollDelay: pulumi.Input.fromValue(map['maxPollDelay'] as String),
+      pollDelayMultiplier: pulumi.Input.fromValue(
+        map['pollDelayMultiplier'] as double,
+      ),
+      totalPollTimeout: pulumi.Input.fromValue(
+        map['totalPollTimeout'] as String,
+      ),
     );
   }
 }
-

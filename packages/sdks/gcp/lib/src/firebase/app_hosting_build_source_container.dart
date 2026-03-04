@@ -8,20 +8,15 @@ class AppHostingBuildSourceContainer {
 
   /// Creates a new [AppHostingBuildSourceContainer].
   /// [image] A URI representing a container for the backend to use.
-  AppHostingBuildSourceContainer({
-    required this.image,
-  });
+  AppHostingBuildSourceContainer({required this.image});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'image': image,
-    };
+    return <String, dynamic>{'image': image};
   }
 
   factory AppHostingBuildSourceContainer.fromMap(Map<String, dynamic> map) {
     return AppHostingBuildSourceContainer(
-      image: (map['image'] as String).input(),
+      image: pulumi.Input.fromValue(map['image'] as String),
     );
   }
 }
-

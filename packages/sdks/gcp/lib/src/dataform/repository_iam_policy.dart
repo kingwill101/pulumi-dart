@@ -18,16 +18,16 @@ class RepositoryIamPolicy extends pulumi.CustomResource {
     RepositoryIamPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dataform/repositoryIamPolicy:RepositoryIamPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.etag = registerOutput<String>('etag');
-    this.policyData = registerOutput<String>('policyData');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.repository = registerOutput<String>('repository');
+         'gcp:dataform/repositoryIamPolicy:RepositoryIamPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    etag = registerOutput<String>('etag');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    repository = registerOutput<String>('repository');
   }
 
   /// Gets an existing [RepositoryIamPolicy] resource's state with the given [name] and [id].
@@ -48,15 +48,15 @@ class RepositoryIamPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dataform/repositoryIamPolicy:RepositoryIamPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.etag = registerOutput<String>('etag');
-    this.policyData = registerOutput<String>('policyData');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.repository = registerOutput<String>('repository');
+         'gcp:dataform/repositoryIamPolicy:RepositoryIamPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    etag = registerOutput<String>('etag');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    repository = registerOutput<String>('repository');
   }
 }

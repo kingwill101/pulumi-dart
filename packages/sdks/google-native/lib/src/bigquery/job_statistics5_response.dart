@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobStatistics5Response {
   /// Number of logical bytes copied to the destination table.
   final pulumi.Input<String> copiedLogicalBytes;
+
   /// Number of rows copied to the destination table.
   final pulumi.Input<String> copiedRows;
 
@@ -25,9 +26,10 @@ class JobStatistics5Response {
 
   factory JobStatistics5Response.fromMap(Map<String, dynamic> map) {
     return JobStatistics5Response(
-      copiedLogicalBytes: (map['copiedLogicalBytes'] as String).input(),
-      copiedRows: (map['copiedRows'] as String).input(),
+      copiedLogicalBytes: pulumi.Input.fromValue(
+        map['copiedLogicalBytes'] as String,
+      ),
+      copiedRows: pulumi.Input.fromValue(map['copiedRows'] as String),
     );
   }
 }
-

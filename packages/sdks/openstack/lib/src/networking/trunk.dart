@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trunk_args.dart';
 import 'trunk_state.dart';
-import 'trunk_sub_port.dart';
 
 /// Manages a networking V2 trunk resource within OpenStack.
 ///
@@ -410,29 +409,37 @@ class Trunk extends pulumi.CustomResource {
   /// (must be "true" or "false" if provided). Changing this updates the
   /// `admin_state_up` of an existing trunk.
   late final pulumi.Output<bool?> adminStateUp;
+
   /// The collection of tags assigned on the trunk, which have been
   /// explicitly and implicitly added.
   late final pulumi.Output<List<String>> allTags;
+
   /// Human-readable description of the trunk. Changing this
   /// updates the name of the existing trunk.
   late final pulumi.Output<String?> description;
+
   /// A unique name for the trunk. Changing this
   /// updates the `name` of an existing trunk.
   late final pulumi.Output<String> name;
+
   /// The ID of the port to be used as the parent port of the
   /// trunk. This is the port that should be used as the compute instance network
   /// port. Changing this creates a new trunk.
   late final pulumi.Output<String> portId;
+
   /// The region in which to obtain the V2 networking client.
   /// A networking client is needed to create a trunk. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// trunk.
   late final pulumi.Output<String> region;
+
   /// The set of ports that will be made subports of the trunk.
   /// The structure of each subport is described below.
-  late final pulumi.Output<List<TrunkSubPort>?> subPorts;
+  late final pulumi.Output<List<Map<String, dynamic>>?> subPorts;
+
   /// A set of string tags for the port.
   late final pulumi.Output<List<String>?> tags;
+
   /// The owner of the Trunk. Required if admin wants
   /// to create a trunk on behalf of another tenant. Changing this creates a new trunk.
   late final pulumi.Output<String> tenantId;
@@ -441,33 +448,26 @@ class Trunk extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Trunk]. {@macro pulumi_networking_trunk_trunk_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Trunk(
-    String name, {
-    TrunkArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'openstack:networking/trunk:Trunk',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminStateUp = registerOutput<bool?>('adminStateUp');
-    this.allTags = registerOutput<List<String>>('allTags');
-    this.description = registerOutput<String?>('description');
+  Trunk(String name, {TrunkArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'openstack:networking/trunk:Trunk',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    adminStateUp = registerOutput<bool?>('adminStateUp');
+    allTags = registerOutput<List<String>>('allTags');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.portId = registerOutput<String>('portId');
-    this.region = registerOutput<String>('region');
-    this.subPorts = registerOutput<List<TrunkSubPort>?>('subPorts');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.tenantId = registerOutput<String>('tenantId');
+    portId = registerOutput<String>('portId');
+    region = registerOutput<String>('region');
+    subPorts = registerOutput<List<Map<String, dynamic>>?>('subPorts');
+    tags = registerOutput<List<String>?>('tags');
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [Trunk] resource's state with the given [name] and [id].
-  static Trunk get(
-    String name,
-    pulumi.Input<String> id, {
-    TrunkState? state,
-  }) {
+  static Trunk get(String name, pulumi.Input<String> id, {TrunkState? state}) {
     return Trunk._get(
       name,
       state: state?.toMap(),
@@ -480,19 +480,19 @@ class Trunk extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/trunk:Trunk',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminStateUp = registerOutput<bool?>('adminStateUp');
-    this.allTags = registerOutput<List<String>>('allTags');
-    this.description = registerOutput<String?>('description');
+         'openstack:networking/trunk:Trunk',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminStateUp = registerOutput<bool?>('adminStateUp');
+    allTags = registerOutput<List<String>>('allTags');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.portId = registerOutput<String>('portId');
-    this.region = registerOutput<String>('region');
-    this.subPorts = registerOutput<List<TrunkSubPort>?>('subPorts');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.tenantId = registerOutput<String>('tenantId');
+    portId = registerOutput<String>('portId');
+    region = registerOutput<String>('region');
+    subPorts = registerOutput<List<Map<String, dynamic>>?>('subPorts');
+    tags = registerOutput<List<String>?>('tags');
+    tenantId = registerOutput<String>('tenantId');
   }
 }

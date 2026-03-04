@@ -6,26 +6,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DriveStatusResponse {
   /// The BitLocker key used to encrypt the drive.
   final pulumi.Input<String>? bitLockerKey;
+
   /// Bytes successfully transferred for the drive.
   final pulumi.Input<double>? bytesSucceeded;
+
   /// Detailed status about the data transfer process. This field is not returned in the response until the drive is in the Transferring state.
   final pulumi.Input<String>? copyStatus;
+
   /// The drive header hash value.
   final pulumi.Input<String>? driveHeaderHash;
+
   /// The drive's hardware serial number, without spaces.
   final pulumi.Input<String>? driveId;
+
   /// A URI that points to the blob containing the error log for the data transfer operation.
   final pulumi.Input<String>? errorLogUri;
+
   /// The relative path of the manifest file on the drive.
   final pulumi.Input<String>? manifestFile;
+
   /// The Base16-encoded MD5 hash of the manifest file on the drive.
   final pulumi.Input<String>? manifestHash;
+
   /// A URI that points to the blob containing the drive manifest file.
   final pulumi.Input<String>? manifestUri;
+
   /// Percentage completed for the drive.
   final pulumi.Input<double>? percentComplete;
+
   /// The drive's current state.
   final pulumi.Input<String>? state;
+
   /// A URI that points to the blob containing the verbose log for the data transfer operation.
   final pulumi.Input<String>? verboseLogUri;
 
@@ -76,19 +87,66 @@ class DriveStatusResponse {
 
   factory DriveStatusResponse.fromMap(Map<String, dynamic> map) {
     return DriveStatusResponse(
-      bitLockerKey: map['bitLockerKey'] == null ? null : (map['bitLockerKey']! as String).input(),
-      bytesSucceeded: map['bytesSucceeded'] == null ? null : (map['bytesSucceeded']! as double).input(),
-      copyStatus: map['copyStatus'] == null ? null : (map['copyStatus']! as String).input(),
-      driveHeaderHash: map['driveHeaderHash'] == null ? null : (map['driveHeaderHash']! as String).input(),
-      driveId: map['driveId'] == null ? null : (map['driveId']! as String).input(),
-      errorLogUri: map['errorLogUri'] == null ? null : (map['errorLogUri']! as String).input(),
-      manifestFile: map['manifestFile'] == null ? null : (map['manifestFile']! as String).input(),
-      manifestHash: map['manifestHash'] == null ? null : (map['manifestHash']! as String).input(),
-      manifestUri: map['manifestUri'] == null ? null : (map['manifestUri']! as String).input(),
-      percentComplete: map['percentComplete'] == null ? null : (map['percentComplete']! as double).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      verboseLogUri: map['verboseLogUri'] == null ? null : (map['verboseLogUri']! as String).input(),
+      bitLockerKey: (() {
+        final guardedValue = map['bitLockerKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bytesSucceeded: (() {
+        final guardedValue = map['bytesSucceeded'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      copyStatus: (() {
+        final guardedValue = map['copyStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      driveHeaderHash: (() {
+        final guardedValue = map['driveHeaderHash'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      driveId: (() {
+        final guardedValue = map['driveId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      errorLogUri: (() {
+        final guardedValue = map['errorLogUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      manifestFile: (() {
+        final guardedValue = map['manifestFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      manifestHash: (() {
+        final guardedValue = map['manifestHash'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      manifestUri: (() {
+        final guardedValue = map['manifestUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      percentComplete: (() {
+        final guardedValue = map['percentComplete'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      verboseLogUri: (() {
+        final guardedValue = map['verboseLogUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

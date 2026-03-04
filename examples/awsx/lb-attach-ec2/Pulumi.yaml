@@ -1,0 +1,6 @@
+name: awsx-dart-ts-lb-attach-ec2
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX load balancer target attachment to EC2 in Dart.

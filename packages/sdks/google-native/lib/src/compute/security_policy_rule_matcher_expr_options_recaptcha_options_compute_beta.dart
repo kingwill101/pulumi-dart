@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta {
   /// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
   final pulumi.Input<List<String>>? actionTokenSiteKeys;
+
   /// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
   final pulumi.Input<List<String>>? sessionTokenSiteKeys;
 
@@ -23,11 +24,20 @@ class SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta {
     };
   }
 
-  factory SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta(
-      actionTokenSiteKeys: map['actionTokenSiteKeys'] == null ? null : ((map['actionTokenSiteKeys']! as List).cast<String>()).input(),
-      sessionTokenSiteKeys: map['sessionTokenSiteKeys'] == null ? null : ((map['sessionTokenSiteKeys']! as List).cast<String>()).input(),
+      actionTokenSiteKeys: (() {
+        final guardedValue = map['actionTokenSiteKeys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sessionTokenSiteKeys: (() {
+        final guardedValue = map['sessionTokenSiteKeys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

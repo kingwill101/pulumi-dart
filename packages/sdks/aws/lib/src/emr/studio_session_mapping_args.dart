@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StudioSessionMappingArgs {
   /// The globally unique identifier (GUID) of the user or group from the Amazon Web Services SSO Identity Store.
   final pulumi.Input<String>? identityId;
+
   /// The name of the user or group from the Amazon Web Services SSO Identity Store.
   final pulumi.Input<String>? identityName;
+
   /// Specifies whether the identity to map to the Amazon EMR Studio is a `USER` or a `GROUP`.
   final pulumi.Input<String> identityType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The Amazon Resource Name (ARN) for the session policy that will be applied to the user or group. You should specify the ARN for the session policy that you want to apply, not the ARN of your user role.
   final pulumi.Input<String> sessionPolicyArn;
+
   /// The ID of the Amazon EMR Studio to which the user or group will be mapped.
   final pulumi.Input<String> studioId;
 
@@ -49,13 +54,26 @@ class StudioSessionMappingArgs {
 
   factory StudioSessionMappingArgs.fromMap(Map<String, dynamic> map) {
     return StudioSessionMappingArgs(
-      identityId: map['identityId'] == null ? null : ((map['identityId'] as String).input()).input(),
-      identityName: map['identityName'] == null ? null : ((map['identityName'] as String).input()).input(),
-      identityType: (map['identityType'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sessionPolicyArn: (map['sessionPolicyArn'] as String).input(),
-      studioId: (map['studioId'] as String).input(),
+      identityId: (() {
+        final guardedValue = map['identityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identityName: (() {
+        final guardedValue = map['identityName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identityType: pulumi.Input.fromValue(map['identityType'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sessionPolicyArn: pulumi.Input.fromValue(
+        map['sessionPolicyArn'] as String,
+      ),
+      studioId: pulumi.Input.fromValue(map['studioId'] as String),
     );
   }
 }
-

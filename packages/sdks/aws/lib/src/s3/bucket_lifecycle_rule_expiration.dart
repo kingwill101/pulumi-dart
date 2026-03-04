@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketLifecycleRuleExpiration {
   /// Specifies the date after which you want the corresponding action to take effect.
   final pulumi.Input<String>? date;
+
   /// Specifies the number of days after object creation when the specific rule action takes effect.
   final pulumi.Input<int>? days;
+
   /// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Amazon S3 to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
   final pulumi.Input<bool>? expiredObjectDeleteMarker;
 
@@ -30,10 +32,21 @@ class BucketLifecycleRuleExpiration {
 
   factory BucketLifecycleRuleExpiration.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleExpiration(
-      date: map['date'] == null ? null : ((map['date'] as String).input()).input(),
-      days: map['days'] == null ? null : ((map['days'] as int).input()).input(),
-      expiredObjectDeleteMarker: map['expiredObjectDeleteMarker'] == null ? null : ((map['expiredObjectDeleteMarker'] as bool).input()).input(),
+      date: (() {
+        final guardedValue = map['date'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      days: (() {
+        final guardedValue = map['days'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      expiredObjectDeleteMarker: (() {
+        final guardedValue = map['expiredObjectDeleteMarker'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

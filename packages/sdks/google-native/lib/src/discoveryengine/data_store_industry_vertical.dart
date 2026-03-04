@@ -4,16 +4,15 @@ enum DataStoreIndustryVertical {
   generic("GENERIC"),
   media("MEDIA");
 
-  const DataStoreIndustryVertical(this.value);
-  final String value;
+  const DataStoreIndustryVertical(this.wireValue);
+  final String wireValue;
 
   static DataStoreIndustryVertical fromValue(String value) {
     for (final item in DataStoreIndustryVertical.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataStoreIndustryVertical value: $value');
   }
 }
-

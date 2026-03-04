@@ -5,16 +5,15 @@ enum DNSConfigClusterDns {
   cloudDns("CLOUD_DNS"),
   kubeDns("KUBE_DNS");
 
-  const DNSConfigClusterDns(this.value);
-  final String value;
+  const DNSConfigClusterDns(this.wireValue);
+  final String wireValue;
 
   static DNSConfigClusterDns fromValue(String value) {
     for (final item in DNSConfigClusterDns.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DNSConfigClusterDns value: $value');
   }
 }
-

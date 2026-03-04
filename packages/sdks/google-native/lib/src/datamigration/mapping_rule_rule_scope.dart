@@ -17,16 +17,15 @@ enum MappingRuleRuleScope {
   databaseEntityTypeMaterializedView("DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"),
   databaseEntityTypeDatabase("DATABASE_ENTITY_TYPE_DATABASE");
 
-  const MappingRuleRuleScope(this.value);
-  final String value;
+  const MappingRuleRuleScope(this.wireValue);
+  final String wireValue;
 
   static MappingRuleRuleScope fromValue(String value) {
     for (final item in MappingRuleRuleScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MappingRuleRuleScope value: $value');
   }
 }
-

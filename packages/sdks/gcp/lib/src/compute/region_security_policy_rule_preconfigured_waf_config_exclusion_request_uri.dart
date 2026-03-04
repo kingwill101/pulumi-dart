@@ -12,6 +12,7 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri {
   /// EQUALS_ANY: The operator matches if the field value is any value.
   /// Possible values are: `CONTAINS`, `ENDS_WITH`, `EQUALS`, `EQUALS_ANY`, `STARTS_WITH`.
   final pulumi.Input<String> operator;
+
   /// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
   /// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
   final pulumi.Input<String>? value;
@@ -25,17 +26,19 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'operator': operator,
-      'value': ?value,
-    };
+    return <String, dynamic>{'operator': operator, 'value': ?value};
   }
 
-  factory RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri.fromMap(Map<String, dynamic> map) {
+  factory RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri(
-      operator: (map['operator'] as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,7 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'billing_hub_execution_usage_detail_response.dart';
 
 class BillingHubUsageGroupResponse {
-  final pulumi.Input<List<BillingHubExecutionUsageDetailResponse>>? executionUsageDetails;
+  final pulumi.Input<List<BillingHubExecutionUsageDetailResponse>>?
+  executionUsageDetails;
   final pulumi.Input<String>? osBuild;
   final pulumi.Input<String>? productFamily;
   final pulumi.Input<String>? release;
@@ -44,7 +45,18 @@ class BillingHubUsageGroupResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'executionUsageDetails': ?pulumi.Input.mapOptionalInputValue<List<BillingHubExecutionUsageDetailResponse>, List<Map<String, dynamic>>>(executionUsageDetails, (value) => pulumi.Input.encodeList<BillingHubExecutionUsageDetailResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'executionUsageDetails':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BillingHubExecutionUsageDetailResponse>,
+            List<Map<String, dynamic>>
+          >(
+            executionUsageDetails,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BillingHubExecutionUsageDetailResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'osBuild': ?osBuild,
       'productFamily': ?productFamily,
       'release': ?release,
@@ -60,18 +72,68 @@ class BillingHubUsageGroupResponse {
 
   factory BillingHubUsageGroupResponse.fromMap(Map<String, dynamic> map) {
     return BillingHubUsageGroupResponse(
-      executionUsageDetails: map['executionUsageDetails'] == null ? null : (pulumi.Input.decodeList<BillingHubExecutionUsageDetailResponse>(map['executionUsageDetails']!, (value) => BillingHubExecutionUsageDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      osBuild: map['osBuild'] == null ? null : (map['osBuild']! as String).input(),
-      productFamily: map['productFamily'] == null ? null : (map['productFamily']! as String).input(),
-      release: map['release'] == null ? null : (map['release']! as String).input(),
-      releaseBuildDate: map['releaseBuildDate'] == null ? null : (map['releaseBuildDate']! as String).input(),
-      releaseBuildNumber: map['releaseBuildNumber'] == null ? null : (map['releaseBuildNumber']! as double).input(),
-      releaseBuildRevision: map['releaseBuildRevision'] == null ? null : (map['releaseBuildRevision']! as double).input(),
-      testType: map['testType'] == null ? null : (map['testType']! as String).input(),
-      totalCharges: map['totalCharges'] == null ? null : (map['totalCharges']! as double).input(),
-      totalUsedBillableHours: map['totalUsedBillableHours'] == null ? null : (map['totalUsedBillableHours']! as double).input(),
-      totalUsedFreeHours: map['totalUsedFreeHours'] == null ? null : (map['totalUsedFreeHours']! as double).input(),
+      executionUsageDetails: (() {
+        final guardedValue = map['executionUsageDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BillingHubExecutionUsageDetailResponse>(
+            guardedValue,
+            (value) => BillingHubExecutionUsageDetailResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      osBuild: (() {
+        final guardedValue = map['osBuild'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      productFamily: (() {
+        final guardedValue = map['productFamily'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      release: (() {
+        final guardedValue = map['release'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      releaseBuildDate: (() {
+        final guardedValue = map['releaseBuildDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      releaseBuildNumber: (() {
+        final guardedValue = map['releaseBuildNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      releaseBuildRevision: (() {
+        final guardedValue = map['releaseBuildRevision'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      testType: (() {
+        final guardedValue = map['testType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      totalCharges: (() {
+        final guardedValue = map['totalCharges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      totalUsedBillableHours: (() {
+        final guardedValue = map['totalUsedBillableHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      totalUsedFreeHours: (() {
+        final guardedValue = map['totalUsedFreeHours'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

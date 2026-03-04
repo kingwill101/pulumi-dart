@@ -7,6 +7,7 @@ import 'get_change_sets_set.dart';
 class GetChangeSetsResult {
   final String? changeSetName;
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -50,7 +51,10 @@ class GetChangeSetsResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'sets': pulumi.Input.encodeList<GetChangeSetsSet, Map<String, dynamic>>(sets, (value) => value.toMap()),
+      'sets': pulumi.Input.encodeList<GetChangeSetsSet, Map<String, dynamic>>(
+        sets,
+        (value) => value.toMap(),
+      ),
       'stackId': stackId,
       'status': ?status,
     };
@@ -58,17 +62,40 @@ class GetChangeSetsResult {
 
   factory GetChangeSetsResult.fromMap(Map<String, dynamic> map) {
     return GetChangeSetsResult(
-      changeSetName: map['changeSetName'] == null ? null : map['changeSetName']! as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      changeSetName: (() {
+        final guardedValue = map['changeSetName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      sets: pulumi.Input.decodeList<GetChangeSetsSet>(map['sets'], (value) => GetChangeSetsSet.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sets: pulumi.Input.decodeList<GetChangeSetsSet>(
+        map['sets']!,
+        (value) =>
+            GetChangeSetsSet.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       stackId: map['stackId'] as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

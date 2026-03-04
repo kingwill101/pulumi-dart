@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
-import 'logical_network_arm_reference_response.dart';
-import 'network_interface_arm_reference_response.dart';
 import 'network_security_group_args.dart';
 import 'network_security_group_status_response.dart';
 import 'system_data_response.dart';
@@ -139,26 +137,37 @@ import 'system_data_response.dart';
 class NetworkSecurityGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
   late final pulumi.Output<String> eTag;
+
   /// The extendedLocation of the resource.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// A collection of references to network interfaces that are currently using this NSG.
-  late final pulumi.Output<List<NetworkInterfaceArmReferenceResponse>> networkInterfaces;
+  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+
   /// The provisioning state of the network security group resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The observed state of Network Security Group
   late final pulumi.Output<NetworkSecurityGroupStatusResponse> status;
+
   /// A collection of references to logical networks that are currently using this NSG
-  late final pulumi.Output<List<LogicalNetworkArmReferenceResponse>> subnets;
+  late final pulumi.Output<List<Map<String, dynamic>>> subnets;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -171,22 +180,26 @@ class NetworkSecurityGroup extends pulumi.CustomResource {
     NetworkSecurityGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azurestackhci:NetworkSecurityGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eTag = registerOutput<String>('eTag');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.location = registerOutput<String>('location');
+         'azure-native:azurestackhci:NetworkSecurityGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String>('eTag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkInterfaces = registerOutput<List<NetworkInterfaceArmReferenceResponse>>('networkInterfaces');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<NetworkSecurityGroupStatusResponse>('status');
-    this.subnets = registerOutput<List<LogicalNetworkArmReferenceResponse>>('subnets');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkInterfaces = registerOutput<List<Map<String, dynamic>>>(
+      'networkInterfaces',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<NetworkSecurityGroupStatusResponse>('status');
+    subnets = registerOutput<List<Map<String, dynamic>>>('subnets');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

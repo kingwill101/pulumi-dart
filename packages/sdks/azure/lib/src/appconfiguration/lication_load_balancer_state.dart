@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LicationLoadBalancerState {
   /// The Azure Region where the Application Gateway for Containers (ALB) should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name which should be used for this Application Gateway for Containers (ALB). Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The primary configuration endpoints of the Application Gateway for Containers (ALB).
   final pulumi.Input<String>? primaryConfigurationEndpoint;
+
   /// The name of Resource Group where the Application Gateway for Containers (ALB) should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Application Gateway for Containers (ALB).
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -41,12 +45,33 @@ class LicationLoadBalancerState {
 
   factory LicationLoadBalancerState.fromMap(Map<String, dynamic> map) {
     return LicationLoadBalancerState(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      primaryConfigurationEndpoint: map['primaryConfigurationEndpoint'] == null ? null : (map['primaryConfigurationEndpoint']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryConfigurationEndpoint: (() {
+        final guardedValue = map['primaryConfigurationEndpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

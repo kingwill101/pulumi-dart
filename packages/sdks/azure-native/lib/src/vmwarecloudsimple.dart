@@ -1,5 +1,3 @@
-library module_vmwarecloudsimple;
-
 export 'vmwarecloudsimple/dedicated_cloud_node.dart';
 export 'vmwarecloudsimple/dedicated_cloud_node_args.dart';
 export 'vmwarecloudsimple/dedicated_cloud_node_properties_response.dart';

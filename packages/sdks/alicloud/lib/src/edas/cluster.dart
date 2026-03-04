@@ -4,7 +4,7 @@ import 'cluster_state.dart';
 
 /// Provides an EDAS cluster resource, see [What is EDAS Cluster](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertcluster).
 ///
-/// > **NOTE:** Available since v1.82.0.
+/// &gt; **NOTE:** Available since v1.82.0.
 ///
 /// ## Example Usage
 ///
@@ -218,12 +218,16 @@ import 'cluster_state.dart';
 class Cluster extends pulumi.CustomResource {
   /// The name of the cluster that you want to create.
   late final pulumi.Output<String> clusterName;
+
   /// The type of the cluster that you want to create. Valid values only: 2: ECS cluster.
   late final pulumi.Output<int> clusterType;
+
   /// The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
   late final pulumi.Output<String?> logicalRegionId;
+
   /// The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
   late final pulumi.Output<int> networkMode;
+
   /// The ID of the Virtual Private Cloud (VPC) for the cluster.
   late final pulumi.Output<String?> vpcId;
 
@@ -236,16 +240,16 @@ class Cluster extends pulumi.CustomResource {
     ClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:edas/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterName = registerOutput<String>('clusterName');
-    this.clusterType = registerOutput<int>('clusterType');
-    this.logicalRegionId = registerOutput<String?>('logicalRegionId');
-    this.networkMode = registerOutput<int>('networkMode');
-    this.vpcId = registerOutput<String?>('vpcId');
+         'alicloud:edas/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterName = registerOutput<String>('clusterName');
+    clusterType = registerOutput<int>('clusterType');
+    logicalRegionId = registerOutput<String?>('logicalRegionId');
+    networkMode = registerOutput<int>('networkMode');
+    vpcId = registerOutput<String?>('vpcId');
   }
 
   /// Gets an existing [Cluster] resource's state with the given [name] and [id].
@@ -266,15 +270,15 @@ class Cluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:edas/cluster:Cluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterName = registerOutput<String>('clusterName');
-    this.clusterType = registerOutput<int>('clusterType');
-    this.logicalRegionId = registerOutput<String?>('logicalRegionId');
-    this.networkMode = registerOutput<int>('networkMode');
-    this.vpcId = registerOutput<String?>('vpcId');
+         'alicloud:edas/cluster:Cluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterName = registerOutput<String>('clusterName');
+    clusterType = registerOutput<int>('clusterType');
+    logicalRegionId = registerOutput<String?>('logicalRegionId');
+    networkMode = registerOutput<int>('networkMode');
+    vpcId = registerOutput<String?>('vpcId');
   }
 }

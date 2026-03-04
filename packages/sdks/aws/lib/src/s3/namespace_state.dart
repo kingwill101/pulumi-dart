@@ -6,16 +6,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceState {
   /// Date and time when the namespace was created.
   final pulumi.Input<String>? createdAt;
+
   /// Account ID of the account that created the namespace.
   final pulumi.Input<String>? createdBy;
+
   /// Name of the namespace.
   /// Must be between 1 and 255 characters in length.
   /// Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
   final pulumi.Input<String>? namespace;
+
   /// Account ID of the account that owns the namespace.
   final pulumi.Input<String>? ownerAccountId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ARN referencing the Table Bucket that contains this Namespace.
   final pulumi.Input<String>? tableBucketArn;
 
@@ -48,13 +53,36 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
-      createdBy: map['createdBy'] == null ? null : ((map['createdBy'] as String).input()).input(),
-      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
-      ownerAccountId: map['ownerAccountId'] == null ? null : ((map['ownerAccountId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tableBucketArn: map['tableBucketArn'] == null ? null : ((map['tableBucketArn'] as String).input()).input(),
+      createdAt: (() {
+        final guardedValue = map['createdAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdBy: (() {
+        final guardedValue = map['createdBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespace: (() {
+        final guardedValue = map['namespace'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerAccountId: (() {
+        final guardedValue = map['ownerAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tableBucketArn: (() {
+        final guardedValue = map['tableBucketArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

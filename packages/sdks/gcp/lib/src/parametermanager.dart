@@ -1,5 +1,3 @@
-library module_parametermanager;
-
 export 'parametermanager/functions.dart';
 export 'parametermanager/get_parameter_args.dart';
 export 'parametermanager/get_parameter_policy_member.dart';

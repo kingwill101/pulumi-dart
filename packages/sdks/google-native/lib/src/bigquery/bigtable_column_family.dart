@@ -6,12 +6,16 @@ import 'bigtable_column.dart';
 class BigtableColumnFamily {
   /// [Optional] Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as .. Other columns can be accessed as a list through .Column field.
   final pulumi.Input<List<BigtableColumn>>? columns;
+
   /// [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
   final pulumi.Input<String>? encoding;
+
   /// Identifier of the column family.
   final pulumi.Input<String>? familyId;
+
   /// [Optional] If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
   final pulumi.Input<bool>? onlyReadLatest;
+
   /// [Optional] The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
   final pulumi.Input<String>? type;
 
@@ -31,7 +35,18 @@ class BigtableColumnFamily {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columns': ?pulumi.Input.mapOptionalInputValue<List<BigtableColumn>, List<Map<String, dynamic>>>(columns, (value) => pulumi.Input.encodeList<BigtableColumn, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'columns':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BigtableColumn>,
+            List<Map<String, dynamic>>
+          >(
+            columns,
+            (value) =>
+                pulumi.Input.encodeList<BigtableColumn, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'encoding': ?encoding,
       'familyId': ?familyId,
       'onlyReadLatest': ?onlyReadLatest,
@@ -41,12 +56,37 @@ class BigtableColumnFamily {
 
   factory BigtableColumnFamily.fromMap(Map<String, dynamic> map) {
     return BigtableColumnFamily(
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<BigtableColumn>(map['columns']!, (value) => BigtableColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
-      familyId: map['familyId'] == null ? null : (map['familyId']! as String).input(),
-      onlyReadLatest: map['onlyReadLatest'] == null ? null : (map['onlyReadLatest']! as bool).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      columns: (() {
+        final guardedValue = map['columns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BigtableColumn>(
+            guardedValue,
+            (value) =>
+                BigtableColumn.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      encoding: (() {
+        final guardedValue = map['encoding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      familyId: (() {
+        final guardedValue = map['familyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      onlyReadLatest: (() {
+        final guardedValue = map['onlyReadLatest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

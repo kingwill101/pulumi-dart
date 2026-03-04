@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoadBalancerCommonBandwidthPackageAttachmentArgs {
   /// The ID of the bound shared bandwidth package.
   final pulumi.Input<String> bandwidthPackageId;
+
   /// Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind the shared bandwidth package to the load balancing instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
   final pulumi.Input<bool>? dryRun;
+
   /// The ID of the applied server load balancer instance.
   final pulumi.Input<String> loadBalancerId;
 
@@ -32,12 +34,19 @@ class LoadBalancerCommonBandwidthPackageAttachmentArgs {
     };
   }
 
-  factory LoadBalancerCommonBandwidthPackageAttachmentArgs.fromMap(Map<String, dynamic> map) {
+  factory LoadBalancerCommonBandwidthPackageAttachmentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoadBalancerCommonBandwidthPackageAttachmentArgs(
-      bandwidthPackageId: (map['bandwidthPackageId'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      loadBalancerId: (map['loadBalancerId'] as String).input(),
+      bandwidthPackageId: pulumi.Input.fromValue(
+        map['bandwidthPackageId'] as String,
+      ),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      loadBalancerId: pulumi.Input.fromValue(map['loadBalancerId'] as String),
     );
   }
 }
-

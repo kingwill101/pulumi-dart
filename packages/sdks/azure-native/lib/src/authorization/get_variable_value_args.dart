@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVariableValueArgs {
   /// The name of the variable to operate on.
   final pulumi.Input<String> variableName;
+
   /// The name of the variable value to operate on.
   final pulumi.Input<String> variableValueName;
 
@@ -29,9 +30,10 @@ class GetVariableValueArgs {
 
   factory GetVariableValueArgs.fromMap(Map<String, dynamic> map) {
     return GetVariableValueArgs(
-      variableName: (map['variableName'] as String).input(),
-      variableValueName: (map['variableValueName'] as String).input(),
+      variableName: pulumi.Input.fromValue(map['variableName'] as String),
+      variableValueName: pulumi.Input.fromValue(
+        map['variableValueName'] as String,
+      ),
     );
   }
 }
-

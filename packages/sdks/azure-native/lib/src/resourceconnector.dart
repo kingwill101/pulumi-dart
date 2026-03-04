@@ -1,5 +1,3 @@
-library module_resourceconnector;
-
 export 'resourceconnector/appliance.dart';
 export 'resourceconnector/appliance_args.dart';
 export 'resourceconnector/appliance_credential_kubeconfig_response.dart';

@@ -5,16 +5,15 @@ enum ServiceManagedIdentityType {
   valueUserAssigned("UserAssigned"),
   valueSystemAssignedUserAssigned("SystemAssigned,UserAssigned");
 
-  const ServiceManagedIdentityType(this.value);
-  final String value;
+  const ServiceManagedIdentityType(this.wireValue);
+  final String wireValue;
 
   static ServiceManagedIdentityType fromValue(String value) {
     for (final item in ServiceManagedIdentityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceManagedIdentityType value: $value');
   }
 }
-

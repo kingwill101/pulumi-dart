@@ -6,16 +6,15 @@ enum ApmType {
   valueNewRelic("NewRelic"),
   valueElasticAPM("ElasticAPM");
 
-  const ApmType(this.value);
-  final String value;
+  const ApmType(this.wireValue);
+  final String wireValue;
 
   static ApmType fromValue(String value) {
     for (final item in ApmType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApmType value: $value');
   }
 }
-

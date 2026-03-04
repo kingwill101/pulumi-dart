@@ -266,15 +266,20 @@ import 'system_data_response.dart';
 /// ```sh
 /// $ pulumi import azure-native:machinelearningservices:EnvironmentSpecificationVersion 1 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}
 /// ```
-class EnvironmentSpecificationVersionMachinelearningservices extends pulumi.CustomResource {
+class EnvironmentSpecificationVersionMachinelearningservices
+    extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// [Required] Additional attributes of the entity.
   late final pulumi.Output<EnvironmentSpecificationVersionResponse> properties;
+
   /// System data associated with resource provider
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -287,15 +292,17 @@ class EnvironmentSpecificationVersionMachinelearningservices extends pulumi.Cust
     EnvironmentSpecificationVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:machinelearningservices:EnvironmentSpecificationVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:machinelearningservices:EnvironmentSpecificationVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<EnvironmentSpecificationVersionResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<EnvironmentSpecificationVersionResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

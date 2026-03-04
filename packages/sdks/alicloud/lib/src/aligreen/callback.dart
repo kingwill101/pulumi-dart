@@ -8,7 +8,7 @@ import 'callback_state.dart';
 ///
 /// For information about Aligreen Callback and how to use it, see [What is Callback](https://next.api.alibabacloud.com/document/Green/2017-08-23/CreateCallback).
 ///
-/// > **NOTE:** Available since v1.228.0.
+/// &gt; **NOTE:** Available since v1.228.0.
 ///
 /// ## Example Usage
 ///
@@ -205,14 +205,19 @@ import 'callback_state.dart';
 class Callback extends pulumi.CustomResource {
   /// The Callback name defined by the customer. It can contain no more than 20 characters in Chinese, English, underscore (_), and digits.
   late final pulumi.Output<String> callbackName;
+
   /// List of audit results supported by message notification. Value: block: confirmed violation, review: Suspected violation, review: normal.
   late final pulumi.Output<List<String>> callbackSuggestions;
+
   /// A list of Callback types. Value: machineScan: Machine audit result notification, selfAudit: self-service audit notification.
   late final pulumi.Output<List<String>> callbackTypes;
+
   /// The detection result will be called back to the url.
   late final pulumi.Output<String> callbackUrl;
+
   /// The creation time of the Callback.
   late final pulumi.Output<String> createTime;
+
   /// The encryption algorithm is used to verify that the callback request is sent by the Aliyun Green Service to your business service. Value: 0:SHA256,1: SM3.
   late final pulumi.Output<int?> cryptType;
 
@@ -225,17 +230,17 @@ class Callback extends pulumi.CustomResource {
     CallbackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:aligreen/callback:Callback',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.callbackName = registerOutput<String>('callbackName');
-    this.callbackSuggestions = registerOutput<List<String>>('callbackSuggestions');
-    this.callbackTypes = registerOutput<List<String>>('callbackTypes');
-    this.callbackUrl = registerOutput<String>('callbackUrl');
-    this.createTime = registerOutput<String>('createTime');
-    this.cryptType = registerOutput<int?>('cryptType');
+         'alicloud:aligreen/callback:Callback',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    callbackName = registerOutput<String>('callbackName');
+    callbackSuggestions = registerOutput<List<String>>('callbackSuggestions');
+    callbackTypes = registerOutput<List<String>>('callbackTypes');
+    callbackUrl = registerOutput<String>('callbackUrl');
+    createTime = registerOutput<String>('createTime');
+    cryptType = registerOutput<int?>('cryptType');
   }
 
   /// Gets an existing [Callback] resource's state with the given [name] and [id].
@@ -256,16 +261,16 @@ class Callback extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:aligreen/callback:Callback',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.callbackName = registerOutput<String>('callbackName');
-    this.callbackSuggestions = registerOutput<List<String>>('callbackSuggestions');
-    this.callbackTypes = registerOutput<List<String>>('callbackTypes');
-    this.callbackUrl = registerOutput<String>('callbackUrl');
-    this.createTime = registerOutput<String>('createTime');
-    this.cryptType = registerOutput<int?>('cryptType');
+         'alicloud:aligreen/callback:Callback',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    callbackName = registerOutput<String>('callbackName');
+    callbackSuggestions = registerOutput<List<String>>('callbackSuggestions');
+    callbackTypes = registerOutput<List<String>>('callbackTypes');
+    callbackUrl = registerOutput<String>('callbackUrl');
+    createTime = registerOutput<String>('createTime');
+    cryptType = registerOutput<int?>('cryptType');
   }
 }

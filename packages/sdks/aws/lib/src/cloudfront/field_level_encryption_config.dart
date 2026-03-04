@@ -228,16 +228,23 @@ import 'field_level_encryption_config_state.dart';
 class FieldLevelEncryptionConfig extends pulumi.CustomResource {
   /// The Field Level Encryption Config ARN.
   late final pulumi.Output<String> arn;
+
   /// Internal value used by CloudFront to allow future updates to the Field Level Encryption Config.
   late final pulumi.Output<String> callerReference;
+
   /// An optional comment about the Field Level Encryption Config.
   late final pulumi.Output<String?> comment;
+
   /// Content Type Profile Config specifies when to forward content if a content type isn't recognized and profiles to use as by default in a request if a query argument doesn't specify a profile to use.
-  late final pulumi.Output<FieldLevelEncryptionConfigContentTypeProfileConfig> contentTypeProfileConfig;
+  late final pulumi.Output<FieldLevelEncryptionConfigContentTypeProfileConfig>
+  contentTypeProfileConfig;
+
   /// The current version of the Field Level Encryption Config. For example: `E2QWRUHAPOMQZL`.
   late final pulumi.Output<String> etag;
+
   /// Query Arg Profile Config that specifies when to forward content if a profile isn't found and the profile that can be provided as a query argument in a request.
-  late final pulumi.Output<FieldLevelEncryptionConfigQueryArgProfileConfig> queryArgProfileConfig;
+  late final pulumi.Output<FieldLevelEncryptionConfigQueryArgProfileConfig>
+  queryArgProfileConfig;
 
   /// Creates a new [FieldLevelEncryptionConfig].
   /// [name] The Pulumi resource name.
@@ -248,17 +255,23 @@ class FieldLevelEncryptionConfig extends pulumi.CustomResource {
     FieldLevelEncryptionConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/fieldLevelEncryptionConfig:FieldLevelEncryptionConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.callerReference = registerOutput<String>('callerReference');
-    this.comment = registerOutput<String?>('comment');
-    this.contentTypeProfileConfig = registerOutput<FieldLevelEncryptionConfigContentTypeProfileConfig>('contentTypeProfileConfig');
-    this.etag = registerOutput<String>('etag');
-    this.queryArgProfileConfig = registerOutput<FieldLevelEncryptionConfigQueryArgProfileConfig>('queryArgProfileConfig');
+         'aws:cloudfront/fieldLevelEncryptionConfig:FieldLevelEncryptionConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    callerReference = registerOutput<String>('callerReference');
+    comment = registerOutput<String?>('comment');
+    contentTypeProfileConfig =
+        registerOutput<FieldLevelEncryptionConfigContentTypeProfileConfig>(
+          'contentTypeProfileConfig',
+        );
+    etag = registerOutput<String>('etag');
+    queryArgProfileConfig =
+        registerOutput<FieldLevelEncryptionConfigQueryArgProfileConfig>(
+          'queryArgProfileConfig',
+        );
   }
 
   /// Gets an existing [FieldLevelEncryptionConfig] resource's state with the given [name] and [id].
@@ -279,16 +292,22 @@ class FieldLevelEncryptionConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudfront/fieldLevelEncryptionConfig:FieldLevelEncryptionConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.callerReference = registerOutput<String>('callerReference');
-    this.comment = registerOutput<String?>('comment');
-    this.contentTypeProfileConfig = registerOutput<FieldLevelEncryptionConfigContentTypeProfileConfig>('contentTypeProfileConfig');
-    this.etag = registerOutput<String>('etag');
-    this.queryArgProfileConfig = registerOutput<FieldLevelEncryptionConfigQueryArgProfileConfig>('queryArgProfileConfig');
+         'aws:cloudfront/fieldLevelEncryptionConfig:FieldLevelEncryptionConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    callerReference = registerOutput<String>('callerReference');
+    comment = registerOutput<String?>('comment');
+    contentTypeProfileConfig =
+        registerOutput<FieldLevelEncryptionConfigContentTypeProfileConfig>(
+          'contentTypeProfileConfig',
+        );
+    etag = registerOutput<String>('etag');
+    queryArgProfileConfig =
+        registerOutput<FieldLevelEncryptionConfigQueryArgProfileConfig>(
+          'queryArgProfileConfig',
+        );
   }
 }

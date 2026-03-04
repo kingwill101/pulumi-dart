@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTemplateSpecArgs {
   /// Allows for expansion of additional Template Spec details in the response. Optional.
   final pulumi.Input<String>? expand;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the Template Spec.
   final pulumi.Input<String> templateSpecName;
 
@@ -34,10 +36,17 @@ class GetTemplateSpecArgs {
 
   factory GetTemplateSpecArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplateSpecArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      templateSpecName: (map['templateSpecName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      templateSpecName: pulumi.Input.fromValue(
+        map['templateSpecName'] as String,
+      ),
     );
   }
 }
-

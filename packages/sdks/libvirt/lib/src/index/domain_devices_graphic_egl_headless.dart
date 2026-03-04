@@ -9,20 +9,29 @@ class DomainDevicesGraphicEglHeadless {
 
   /// Creates a new [DomainDevicesGraphicEglHeadless].
   /// [gl] Sets OpenGL configuration options for the headless EGL graphics display.
-  DomainDevicesGraphicEglHeadless({
-    this.gl,
-  });
+  DomainDevicesGraphicEglHeadless({this.gl});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gl': ?pulumi.Input.mapOptionalInputValue<DomainDevicesGraphicEglHeadlessGl, Map<String, dynamic>>(gl, (value) => value.toMap()),
+      'gl':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesGraphicEglHeadlessGl,
+            Map<String, dynamic>
+          >(gl, (value) => value.toMap()),
     };
   }
 
   factory DomainDevicesGraphicEglHeadless.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicEglHeadless(
-      gl: map['gl'] == null ? null : (DomainDevicesGraphicEglHeadlessGl.fromMap((map['gl']! as Map).cast<String, dynamic>())).input(),
+      gl: (() {
+        final guardedValue = map['gl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesGraphicEglHeadlessGl.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -5,16 +5,17 @@ enum CVSSAuthenticationContaineranalysisV1beta1 {
   authenticationSingle("AUTHENTICATION_SINGLE"),
   authenticationNone("AUTHENTICATION_NONE");
 
-  const CVSSAuthenticationContaineranalysisV1beta1(this.value);
-  final String value;
+  const CVSSAuthenticationContaineranalysisV1beta1(this.wireValue);
+  final String wireValue;
 
   static CVSSAuthenticationContaineranalysisV1beta1 fromValue(String value) {
     for (final item in CVSSAuthenticationContaineranalysisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CVSSAuthenticationContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown CVSSAuthenticationContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

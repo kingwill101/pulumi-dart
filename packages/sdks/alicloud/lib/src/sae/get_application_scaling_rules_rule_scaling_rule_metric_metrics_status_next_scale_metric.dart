@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric {
   /// The name of the trigger condition.
   final pulumi.Input<String> name;
+
   /// The percentage value of the monitoring indicator elasticity that triggers the shrinkage condition next time.
   final pulumi.Input<int> nextScaleInAverageUtilization;
+
   /// The percentage value of the monitoring indicator elasticity that triggers the expansion condition next time.
   final pulumi.Input<int> nextScaleOutAverageUtilization;
 
@@ -28,12 +30,17 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetri
     };
   }
 
-  factory GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric.fromMap(Map<String, dynamic> map) {
+  factory GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric(
-      name: (map['name'] as String).input(),
-      nextScaleInAverageUtilization: (map['nextScaleInAverageUtilization'] as int).input(),
-      nextScaleOutAverageUtilization: (map['nextScaleOutAverageUtilization'] as int).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      nextScaleInAverageUtilization: pulumi.Input.fromValue(
+        map['nextScaleInAverageUtilization'] as int,
+      ),
+      nextScaleOutAverageUtilization: pulumi.Input.fromValue(
+        map['nextScaleOutAverageUtilization'] as int,
+      ),
     );
   }
 }
-

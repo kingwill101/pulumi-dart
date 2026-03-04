@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiJobSourceDataSourceSettingDataSourceProperties {
   /// Data Source Encoding
   final pulumi.Input<String>? encoding;
+
   /// Data Source Time Zone
   final pulumi.Input<String>? timezone;
 
@@ -17,17 +18,23 @@ class DiJobSourceDataSourceSettingDataSourceProperties {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'encoding': ?encoding,
-      'timezone': ?timezone,
-    };
+    return <String, dynamic>{'encoding': ?encoding, 'timezone': ?timezone};
   }
 
-  factory DiJobSourceDataSourceSettingDataSourceProperties.fromMap(Map<String, dynamic> map) {
+  factory DiJobSourceDataSourceSettingDataSourceProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DiJobSourceDataSourceSettingDataSourceProperties(
-      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
+      encoding: (() {
+        final guardedValue = map['encoding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timezone: (() {
+        final guardedValue = map['timezone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

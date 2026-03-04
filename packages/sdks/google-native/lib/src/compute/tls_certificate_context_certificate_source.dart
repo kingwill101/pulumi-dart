@@ -4,16 +4,17 @@ enum TlsCertificateContextCertificateSource {
   usePath("USE_PATH"),
   useSds("USE_SDS");
 
-  const TlsCertificateContextCertificateSource(this.value);
-  final String value;
+  const TlsCertificateContextCertificateSource(this.wireValue);
+  final String wireValue;
 
   static TlsCertificateContextCertificateSource fromValue(String value) {
     for (final item in TlsCertificateContextCertificateSource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TlsCertificateContextCertificateSource value: $value');
+    throw ArgumentError(
+      'Unknown TlsCertificateContextCertificateSource value: $value',
+    );
   }
 }
-

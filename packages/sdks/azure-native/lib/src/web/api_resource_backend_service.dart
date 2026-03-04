@@ -9,20 +9,19 @@ class ApiResourceBackendService {
 
   /// Creates a new [ApiResourceBackendService].
   /// [serviceUrl] The service URL
-  ApiResourceBackendService({
-    this.serviceUrl,
-  });
+  ApiResourceBackendService({this.serviceUrl});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceUrl': ?serviceUrl,
-    };
+    return <String, dynamic>{'serviceUrl': ?serviceUrl};
   }
 
   factory ApiResourceBackendService.fromMap(Map<String, dynamic> map) {
     return ApiResourceBackendService(
-      serviceUrl: map['serviceUrl'] == null ? null : (map['serviceUrl']! as String).input(),
+      serviceUrl: (() {
+        final guardedValue = map['serviceUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

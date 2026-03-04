@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateLinkServicesForO365ManagementActivityAPIArgs {
   /// The name of the resource group that contains the service instance.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the service instance.
   final pulumi.Input<String> resourceName;
 
@@ -27,11 +28,14 @@ class GetPrivateLinkServicesForO365ManagementActivityAPIArgs {
     };
   }
 
-  factory GetPrivateLinkServicesForO365ManagementActivityAPIArgs.fromMap(Map<String, dynamic> map) {
+  factory GetPrivateLinkServicesForO365ManagementActivityAPIArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPrivateLinkServicesForO365ManagementActivityAPIArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

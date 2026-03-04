@@ -1,5 +1,3 @@
-library module_cloudformation;
-
 export 'cloudformation/cloud_formation_type.dart';
 export 'cloudformation/cloud_formation_type_args.dart';
 export 'cloudformation/cloud_formation_type_logging_config.dart';

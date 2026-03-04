@@ -1,5 +1,3 @@
-library module_firebase;
-
 export 'firebase/android_app.dart';
 export 'firebase/android_app_args.dart';
 export 'firebase/functions.dart';

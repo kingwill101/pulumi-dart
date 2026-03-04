@@ -14,15 +14,14 @@ class ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler.fromMap(Map<String, dynamic> map) {
+  factory ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

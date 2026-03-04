@@ -11,17 +11,21 @@ class ServerGroupArgs {
   /// A unique name for the server group. Changing this creates
   /// a new server group.
   final pulumi.Input<String>? name;
+
   /// A list of exactly one policy name to associate with
   /// the server group. See the Policies section for more information. Changing this
   /// creates a new server group.
   final pulumi.Input<String>? policies;
+
   /// The region in which to obtain the V2 Compute client.
   /// If omitted, the `region` argument of the provider is used. Changing
   /// this creates a new server group.
   final pulumi.Input<String>? region;
+
   /// The rules which are applied to specified `policy`. Currently,
   /// only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
   final pulumi.Input<ServerGroupRules>? rules;
+
   /// Map of additional options.
   final pulumi.Input<Map<String, String>>? valueSpecs;
 
@@ -44,19 +48,48 @@ class ServerGroupArgs {
       'name': ?name,
       'policies': ?policies,
       'region': ?region,
-      'rules': ?pulumi.Input.mapOptionalInputValue<ServerGroupRules, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServerGroupRules,
+            Map<String, dynamic>
+          >(rules, (value) => value.toMap()),
       'valueSpecs': ?valueSpecs,
     };
   }
 
   factory ServerGroupArgs.fromMap(Map<String, dynamic> map) {
     return ServerGroupArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      policies: map['policies'] == null ? null : (map['policies']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      rules: map['rules'] == null ? null : (ServerGroupRules.fromMap((map['rules']! as Map).cast<String, dynamic>())).input(),
-      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs']! as Map).cast<String, String>()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policies: (() {
+        final guardedValue = map['policies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ServerGroupRules.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      valueSpecs: (() {
+        final guardedValue = map['valueSpecs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

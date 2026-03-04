@@ -23,9 +23,9 @@ import 'domain_name_state.dart';
 /// given domain name which is an alias (either Route53 alias or traditional CNAME) to the regional domain name exported in
 /// the `regional_domain_name` attribute.
 ///
-/// > **Note:** API Gateway requires the use of AWS Certificate Manager (ACM) certificates instead of Identity and Access Management (IAM) certificates in regions that support ACM. Regions that support ACM can be found in the [Regions and Endpoints Documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#acm_region). To import an existing private key and certificate into ACM or request an ACM certificate, see the `aws.acm.Certificate` resource.
+/// &gt; **Note:** API Gateway requires the use of AWS Certificate Manager (ACM) certificates instead of Identity and Access Management (IAM) certificates in regions that support ACM. Regions that support ACM can be found in the [Regions and Endpoints Documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#acm_region). To import an existing private key and certificate into ACM or request an ACM certificate, see the `aws.acm.Certificate` resource.
 ///
-/// > **Note:** The `aws.apigateway.DomainName` resource expects dependency on the `aws.acm.CertificateValidation` as
+/// &gt; **Note:** The `aws.apigateway.DomainName` resource expects dependency on the `aws.acm.CertificateValidation` as
 /// only verified certificates can be used. This can be made either explicitly by adding the
 /// `depends_on = [aws_acm_certificate_validation.cert]` attribute. Or implicitly by referring certificate ARN
 /// from the validation resource where it will be available after the resource creation:
@@ -566,56 +566,82 @@ import 'domain_name_state.dart';
 class DomainName extends pulumi.CustomResource {
   /// ARN of domain name.
   late final pulumi.Output<String> arn;
+
   /// ARN for an AWS-managed certificate. AWS Certificate Manager is the only supported source. Used when an edge-optimized domain name is desired. Conflicts with `certificate_name`, `certificate_body`, `certificate_chain`, `certificate_private_key`, `regional_certificate_arn`, and `regional_certificate_name`.
   late final pulumi.Output<String?> certificateArn;
+
   /// Certificate issued for the domain name being registered, in PEM format. Only valid for `EDGE` endpoint configuration type. Conflicts with `certificate_arn`, `regional_certificate_arn`, and `regional_certificate_name`.
   late final pulumi.Output<String?> certificateBody;
+
   /// Certificate for the CA that issued the certificate, along with any intermediate CA certificates required to create an unbroken chain to a certificate trusted by the intended API clients. Only valid for `EDGE` endpoint configuration type. Conflicts with `certificate_arn`, `regional_certificate_arn`, and `regional_certificate_name`.
   late final pulumi.Output<String?> certificateChain;
+
   /// Unique name to use when registering this certificate as an IAM server certificate. Conflicts with `certificate_arn`, `regional_certificate_arn`, and `regional_certificate_name`. Required if `certificate_arn` is not set.
   late final pulumi.Output<String?> certificateName;
+
   /// Private key associated with the domain certificate given in `certificate_body`. Only valid for `EDGE` endpoint configuration type. Conflicts with `certificate_arn`, `regional_certificate_arn`, and `regional_certificate_name`.
   late final pulumi.Output<String?> certificatePrivateKey;
+
   /// Upload date associated with the domain certificate.
   late final pulumi.Output<String> certificateUploadDate;
+
   /// Hostname created by Cloudfront to represent the distribution that implements this domain name mapping.
   late final pulumi.Output<String> cloudfrontDomainName;
+
   /// For convenience, the hosted zone ID (`Z2FDTNDATAQYW2`) that can be used to create a Route53 alias record for the distribution.
   late final pulumi.Output<String> cloudfrontZoneId;
+
   /// Fully-qualified domain name to register.
   late final pulumi.Output<String> domainName;
+
   /// The identifier for the domain name resource. Supported only for private custom domain names.
   late final pulumi.Output<String> domainNameId;
+
   /// Endpoint access mode of the DomainName. Only available for domain names that use security policies that start with `SecurityPolicy_`. Valid values: `BASIC`, `STRICT`.
   late final pulumi.Output<String?> endpointAccessMode;
+
   /// Configuration block defining API endpoint information including type. See below.
-  late final pulumi.Output<DomainNameEndpointConfiguration> endpointConfiguration;
+  late final pulumi.Output<DomainNameEndpointConfiguration>
+  endpointConfiguration;
+
   /// Mutual TLS authentication configuration for the domain name. See below.
-  late final pulumi.Output<DomainNameMutualTlsAuthentication?> mutualTlsAuthentication;
+  late final pulumi.Output<DomainNameMutualTlsAuthentication?>
+  mutualTlsAuthentication;
+
   /// ARN of the AWS-issued certificate used to validate custom domain ownership (when `certificate_arn` is issued via an ACM Private CA or `mutual_tls_authentication` is configured with an ACM-imported certificate.)
   late final pulumi.Output<String> ownershipVerificationCertificateArn;
+
   /// A stringified JSON policy document that applies to the execute-api service for this DomainName regardless of the caller and Method configuration. Supported only for private custom domain names.
   late final pulumi.Output<String?> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ARN for an AWS-managed certificate. AWS Certificate Manager is the only supported source. Used when a regional domain name is desired. Conflicts with `certificate_arn`, `certificate_name`, `certificate_body`, `certificate_chain`, and `certificate_private_key`.
   ///
   /// When uploading a certificate, the following arguments are supported:
   late final pulumi.Output<String?> regionalCertificateArn;
+
   /// User-friendly name of the certificate that will be used by regional endpoint for this domain name. Conflicts with `certificate_arn`, `certificate_name`, `certificate_body`, `certificate_chain`, and `certificate_private_key`.
   late final pulumi.Output<String?> regionalCertificateName;
+
   /// Hostname for the custom domain's regional endpoint.
   late final pulumi.Output<String> regionalDomainName;
+
   /// Hosted zone ID that can be used to create a Route53 alias record for the regional endpoint.
   late final pulumi.Output<String> regionalZoneId;
+
   /// Mode to route traffic for the domain name. Valid values: `BASE_PATH_MAPPING_ONLY`, `ROUTING_RULE_ONLY`, `ROUTING_RULE_THEN_BASE_PATH_MAPPING`.
   late final pulumi.Output<String> routingMode;
+
   /// Transport Layer Security (TLS) version + cipher suite for this DomainName. Must be configured to perform drift detection. For a list of valid security policies, see [DomainName](https://docs.aws.amazon.com/apigateway/latest/api/API_DomainName.html) in the Amazon API Gateway API Reference.
   late final pulumi.Output<String> securityPolicy;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// When referencing an AWS-managed certificate, the following arguments are supported:
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -628,36 +654,45 @@ class DomainName extends pulumi.CustomResource {
     DomainNameArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/domainName:DomainName',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.certificateArn = registerOutput<String?>('certificateArn');
-    this.certificateBody = registerOutput<String?>('certificateBody');
-    this.certificateChain = registerOutput<String?>('certificateChain');
-    this.certificateName = registerOutput<String?>('certificateName');
-    this.certificatePrivateKey = registerOutput<String?>('certificatePrivateKey');
-    this.certificateUploadDate = registerOutput<String>('certificateUploadDate');
-    this.cloudfrontDomainName = registerOutput<String>('cloudfrontDomainName');
-    this.cloudfrontZoneId = registerOutput<String>('cloudfrontZoneId');
-    this.domainName = registerOutput<String>('domainName');
-    this.domainNameId = registerOutput<String>('domainNameId');
-    this.endpointAccessMode = registerOutput<String?>('endpointAccessMode');
-    this.endpointConfiguration = registerOutput<DomainNameEndpointConfiguration>('endpointConfiguration');
-    this.mutualTlsAuthentication = registerOutput<DomainNameMutualTlsAuthentication?>('mutualTlsAuthentication');
-    this.ownershipVerificationCertificateArn = registerOutput<String>('ownershipVerificationCertificateArn');
-    this.policy = registerOutput<String?>('policy');
-    this.region = registerOutput<String>('region');
-    this.regionalCertificateArn = registerOutput<String?>('regionalCertificateArn');
-    this.regionalCertificateName = registerOutput<String?>('regionalCertificateName');
-    this.regionalDomainName = registerOutput<String>('regionalDomainName');
-    this.regionalZoneId = registerOutput<String>('regionalZoneId');
-    this.routingMode = registerOutput<String>('routingMode');
-    this.securityPolicy = registerOutput<String>('securityPolicy');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:apigateway/domainName:DomainName',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    certificateArn = registerOutput<String?>('certificateArn');
+    certificateBody = registerOutput<String?>('certificateBody');
+    certificateChain = registerOutput<String?>('certificateChain');
+    certificateName = registerOutput<String?>('certificateName');
+    certificatePrivateKey = registerOutput<String?>('certificatePrivateKey');
+    certificateUploadDate = registerOutput<String>('certificateUploadDate');
+    cloudfrontDomainName = registerOutput<String>('cloudfrontDomainName');
+    cloudfrontZoneId = registerOutput<String>('cloudfrontZoneId');
+    domainName = registerOutput<String>('domainName');
+    domainNameId = registerOutput<String>('domainNameId');
+    endpointAccessMode = registerOutput<String?>('endpointAccessMode');
+    endpointConfiguration = registerOutput<DomainNameEndpointConfiguration>(
+      'endpointConfiguration',
+    );
+    mutualTlsAuthentication =
+        registerOutput<DomainNameMutualTlsAuthentication?>(
+          'mutualTlsAuthentication',
+        );
+    ownershipVerificationCertificateArn = registerOutput<String>(
+      'ownershipVerificationCertificateArn',
+    );
+    policy = registerOutput<String?>('policy');
+    region = registerOutput<String>('region');
+    regionalCertificateArn = registerOutput<String?>('regionalCertificateArn');
+    regionalCertificateName = registerOutput<String?>(
+      'regionalCertificateName',
+    );
+    regionalDomainName = registerOutput<String>('regionalDomainName');
+    regionalZoneId = registerOutput<String>('regionalZoneId');
+    routingMode = registerOutput<String>('routingMode');
+    securityPolicy = registerOutput<String>('securityPolicy');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [DomainName] resource's state with the given [name] and [id].
@@ -678,35 +713,44 @@ class DomainName extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigateway/domainName:DomainName',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.certificateArn = registerOutput<String?>('certificateArn');
-    this.certificateBody = registerOutput<String?>('certificateBody');
-    this.certificateChain = registerOutput<String?>('certificateChain');
-    this.certificateName = registerOutput<String?>('certificateName');
-    this.certificatePrivateKey = registerOutput<String?>('certificatePrivateKey');
-    this.certificateUploadDate = registerOutput<String>('certificateUploadDate');
-    this.cloudfrontDomainName = registerOutput<String>('cloudfrontDomainName');
-    this.cloudfrontZoneId = registerOutput<String>('cloudfrontZoneId');
-    this.domainName = registerOutput<String>('domainName');
-    this.domainNameId = registerOutput<String>('domainNameId');
-    this.endpointAccessMode = registerOutput<String?>('endpointAccessMode');
-    this.endpointConfiguration = registerOutput<DomainNameEndpointConfiguration>('endpointConfiguration');
-    this.mutualTlsAuthentication = registerOutput<DomainNameMutualTlsAuthentication?>('mutualTlsAuthentication');
-    this.ownershipVerificationCertificateArn = registerOutput<String>('ownershipVerificationCertificateArn');
-    this.policy = registerOutput<String?>('policy');
-    this.region = registerOutput<String>('region');
-    this.regionalCertificateArn = registerOutput<String?>('regionalCertificateArn');
-    this.regionalCertificateName = registerOutput<String?>('regionalCertificateName');
-    this.regionalDomainName = registerOutput<String>('regionalDomainName');
-    this.regionalZoneId = registerOutput<String>('regionalZoneId');
-    this.routingMode = registerOutput<String>('routingMode');
-    this.securityPolicy = registerOutput<String>('securityPolicy');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:apigateway/domainName:DomainName',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    certificateArn = registerOutput<String?>('certificateArn');
+    certificateBody = registerOutput<String?>('certificateBody');
+    certificateChain = registerOutput<String?>('certificateChain');
+    certificateName = registerOutput<String?>('certificateName');
+    certificatePrivateKey = registerOutput<String?>('certificatePrivateKey');
+    certificateUploadDate = registerOutput<String>('certificateUploadDate');
+    cloudfrontDomainName = registerOutput<String>('cloudfrontDomainName');
+    cloudfrontZoneId = registerOutput<String>('cloudfrontZoneId');
+    domainName = registerOutput<String>('domainName');
+    domainNameId = registerOutput<String>('domainNameId');
+    endpointAccessMode = registerOutput<String?>('endpointAccessMode');
+    endpointConfiguration = registerOutput<DomainNameEndpointConfiguration>(
+      'endpointConfiguration',
+    );
+    mutualTlsAuthentication =
+        registerOutput<DomainNameMutualTlsAuthentication?>(
+          'mutualTlsAuthentication',
+        );
+    ownershipVerificationCertificateArn = registerOutput<String>(
+      'ownershipVerificationCertificateArn',
+    );
+    policy = registerOutput<String?>('policy');
+    region = registerOutput<String>('region');
+    regionalCertificateArn = registerOutput<String?>('regionalCertificateArn');
+    regionalCertificateName = registerOutput<String?>(
+      'regionalCertificateName',
+    );
+    regionalDomainName = registerOutput<String>('regionalDomainName');
+    regionalZoneId = registerOutput<String>('regionalZoneId');
+    routingMode = registerOutput<String>('routingMode');
+    securityPolicy = registerOutput<String>('securityPolicy');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -27,9 +27,8 @@ class GetOrganizationSourceIamPolicyArgs {
 
   factory GetOrganizationSourceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationSourceIamPolicyArgs(
-      organizationId: (map['organizationId'] as String).input(),
-      sourceId: (map['sourceId'] as String).input(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      sourceId: pulumi.Input.fromValue(map['sourceId'] as String),
     );
   }
 }
-

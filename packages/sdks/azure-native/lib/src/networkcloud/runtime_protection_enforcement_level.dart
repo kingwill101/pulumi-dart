@@ -6,16 +6,17 @@ enum RuntimeProtectionEnforcementLevel {
   valuePassive("Passive"),
   valueRealTime("RealTime");
 
-  const RuntimeProtectionEnforcementLevel(this.value);
-  final String value;
+  const RuntimeProtectionEnforcementLevel(this.wireValue);
+  final String wireValue;
 
   static RuntimeProtectionEnforcementLevel fromValue(String value) {
     for (final item in RuntimeProtectionEnforcementLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RuntimeProtectionEnforcementLevel value: $value');
+    throw ArgumentError(
+      'Unknown RuntimeProtectionEnforcementLevel value: $value',
+    );
   }
 }
-

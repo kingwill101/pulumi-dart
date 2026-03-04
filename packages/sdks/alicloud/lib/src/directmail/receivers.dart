@@ -6,7 +6,7 @@ import 'receivers_state.dart';
 ///
 /// For information about Direct Mail Receivers and how to use it, see [What is Direct Mail Receivers](https://www.alibabacloud.com/help/en/doc-detail/29414.htm).
 ///
-/// > **NOTE:** Available since v1.125.0.
+/// &gt; **NOTE:** Available since v1.125.0.
 ///
 /// ## Example Usage
 ///
@@ -181,10 +181,13 @@ import 'receivers_state.dart';
 class Receivers extends pulumi.CustomResource {
   /// The description of receivers and 1-50 characters in length.
   late final pulumi.Output<String?> description;
+
   /// The alias of receivers. Must email address and less than 30 characters in length.
   late final pulumi.Output<String> receiversAlias;
+
   /// The name of the resource. The length that cannot be repeated is 1-30 characters.
   late final pulumi.Output<String> receiversName;
+
   /// The status of the resource. `0` means uploading, `1` means upload completed.
   late final pulumi.Output<int> status;
 
@@ -197,15 +200,15 @@ class Receivers extends pulumi.CustomResource {
     ReceiversArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:directmail/receivers:Receivers',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.receiversAlias = registerOutput<String>('receiversAlias');
-    this.receiversName = registerOutput<String>('receiversName');
-    this.status = registerOutput<int>('status');
+         'alicloud:directmail/receivers:Receivers',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    receiversAlias = registerOutput<String>('receiversAlias');
+    receiversName = registerOutput<String>('receiversName');
+    status = registerOutput<int>('status');
   }
 
   /// Gets an existing [Receivers] resource's state with the given [name] and [id].
@@ -226,14 +229,14 @@ class Receivers extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:directmail/receivers:Receivers',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.receiversAlias = registerOutput<String>('receiversAlias');
-    this.receiversName = registerOutput<String>('receiversName');
-    this.status = registerOutput<int>('status');
+         'alicloud:directmail/receivers:Receivers',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    receiversAlias = registerOutput<String>('receiversAlias');
+    receiversName = registerOutput<String>('receiversName');
+    status = registerOutput<int>('status');
   }
 }

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerRegistryArgs {
   /// The name of the container registry.
   final pulumi.Input<String> containerRegistryName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -34,10 +36,13 @@ class GetContainerRegistryArgs {
 
   factory GetContainerRegistryArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerRegistryArgs(
-      containerRegistryName: (map['containerRegistryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      containerRegistryName: pulumi.Input.fromValue(
+        map['containerRegistryName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

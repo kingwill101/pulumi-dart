@@ -14,15 +14,18 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'objectIdPaths': ?objectIdPaths,
-    };
+    return <String, dynamic>{'objectIdPaths': ?objectIdPaths};
   }
 
-  factory CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId.fromMap(Map<String, dynamic> map) {
+  factory CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId(
-      objectIdPaths: map['objectIdPaths'] == null ? null : ((map['objectIdPaths']! as List).cast<int>()).input(),
+      objectIdPaths: (() {
+        final guardedValue = map['objectIdPaths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
     );
   }
 }
-

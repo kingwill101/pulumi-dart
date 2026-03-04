@@ -1,5 +1,3 @@
-library module_bedrockfoundation;
-
 export 'bedrockfoundation/functions.dart';
 export 'bedrockfoundation/get_model_args.dart';
 export 'bedrockfoundation/get_model_result.dart';

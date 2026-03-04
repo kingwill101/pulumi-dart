@@ -6,18 +6,25 @@ import 'system_data_response.dart';
 class GetFederatedIdentityCredentialResult {
   /// The list of audiences that can appear in the issued token.
   final List<String> audiences;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The URL of the issuer to be trusted.
   final String issuer;
+
   /// The name of the resource
   final String name;
+
   /// The identifier of the external identity.
   final String subject;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -54,7 +61,9 @@ class GetFederatedIdentityCredentialResult {
     };
   }
 
-  factory GetFederatedIdentityCredentialResult.fromMap(Map<String, dynamic> map) {
+  factory GetFederatedIdentityCredentialResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFederatedIdentityCredentialResult(
       audiences: (map['audiences'] as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
@@ -62,9 +71,10 @@ class GetFederatedIdentityCredentialResult {
       issuer: map['issuer'] as String,
       name: map['name'] as String,
       subject: map['subject'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

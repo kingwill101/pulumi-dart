@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnalyticsApplicationReferenceDataSourcesSchemaRecordColumn {
   /// The Mapping reference to the data element.
   final pulumi.Input<String>? mapping;
+
   /// Name of the column.
   final pulumi.Input<String> name;
+
   /// The SQL Type of the column.
   final pulumi.Input<String> sqlType;
 
@@ -28,12 +30,17 @@ class AnalyticsApplicationReferenceDataSourcesSchemaRecordColumn {
     };
   }
 
-  factory AnalyticsApplicationReferenceDataSourcesSchemaRecordColumn.fromMap(Map<String, dynamic> map) {
+  factory AnalyticsApplicationReferenceDataSourcesSchemaRecordColumn.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AnalyticsApplicationReferenceDataSourcesSchemaRecordColumn(
-      mapping: map['mapping'] == null ? null : ((map['mapping'] as String).input()).input(),
-      name: (map['name'] as String).input(),
-      sqlType: (map['sqlType'] as String).input(),
+      mapping: (() {
+        final guardedValue = map['mapping'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      sqlType: pulumi.Input.fromValue(map['sqlType'] as String),
     );
   }
 }
-

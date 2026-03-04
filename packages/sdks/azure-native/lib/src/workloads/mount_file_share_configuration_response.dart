@@ -7,8 +7,10 @@ class MountFileShareConfigurationResponse {
   /// The type of file share config.
   /// Expected value is 'Mount'.
   final pulumi.Input<String> configurationType;
+
   /// The fileshare resource ID
   final pulumi.Input<String> id;
+
   /// The private endpoint resource ID
   final pulumi.Input<String> privateEndpointId;
 
@@ -30,12 +32,17 @@ class MountFileShareConfigurationResponse {
     };
   }
 
-  factory MountFileShareConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory MountFileShareConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MountFileShareConfigurationResponse(
-      configurationType: (map['configurationType'] as String).input(),
-      id: (map['id'] as String).input(),
-      privateEndpointId: (map['privateEndpointId'] as String).input(),
+      configurationType: pulumi.Input.fromValue(
+        map['configurationType'] as String,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      privateEndpointId: pulumi.Input.fromValue(
+        map['privateEndpointId'] as String,
+      ),
     );
   }
 }
-

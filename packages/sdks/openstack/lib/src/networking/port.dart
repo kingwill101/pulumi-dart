@@ -1,14 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'port_allowed_address_pair.dart';
 import 'port_args.dart';
 import 'port_binding.dart';
-import 'port_extra_dhcp_option.dart';
-import 'port_fixed_ip.dart';
 import 'port_state.dart';
 
 /// Manages a V2 port resource within OpenStack.
 ///
-/// > **Note:** Ports do not get an IP if the network they are attached
+/// &gt; **Note:** Ports do not get an IP if the network they are attached
 /// to does not have a subnet. If you create the subnet resource in the
 /// same run as the port, make sure to use `fixed_ip.subnet_id` or
 /// `depends_on` to enforce the subnet resource creation before the port
@@ -641,62 +638,80 @@ class Port extends pulumi.CustomResource {
   /// (must be `true` or `false` if provided). Changing this updates the
   /// `admin_state_up` of an existing port.
   late final pulumi.Output<bool> adminStateUp;
+
   /// The collection of Fixed IP addresses on the port in the
   /// order returned by the Network v2 API.
   late final pulumi.Output<List<String>> allFixedIps;
+
   /// The collection of Security Group IDs on the port
   /// which have been explicitly and implicitly added.
   late final pulumi.Output<List<String>> allSecurityGroupIds;
+
   /// The collection of tags assigned on the port, which have been
   /// explicitly and implicitly added.
   late final pulumi.Output<List<String>> allTags;
+
   /// An IP/MAC Address pair of additional IP
   /// addresses that can be active on this port. The structure is described
   /// below.
-  late final pulumi.Output<List<PortAllowedAddressPair>?> allowedAddressPairs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> allowedAddressPairs;
+
   /// The port binding allows to specify binding information
   /// for the port. The structure is described below.
   late final pulumi.Output<PortBinding> binding;
+
   /// Human-readable description of the port. Changing
   /// this updates the `description` of an existing port.
   late final pulumi.Output<String?> description;
+
   /// The ID of the device attached to the port. Changing this
   /// creates a new port.
   late final pulumi.Output<String> deviceId;
+
   /// The device owner of the port. Changing this creates
   /// a new port.
   late final pulumi.Output<String> deviceOwner;
+
   /// The list of maps representing port DNS assignments.
-  late final pulumi.Output<List<Map<String, String>>> dnsAssignments;
+  late final pulumi.Output<List<Map<String, dynamic>>> dnsAssignments;
+
   /// The port DNS name. Available, when Neutron DNS extension
   /// is enabled.
   late final pulumi.Output<String> dnsName;
+
   /// An extra DHCP option that needs to be configured
   /// on the port. The structure is described below. Can be specified multiple
   /// times.
-  late final pulumi.Output<List<PortExtraDhcpOption>?> extraDhcpOptions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> extraDhcpOptions;
+
   /// An array of desired IPs for
   /// this port. The structure is described below.
-  late final pulumi.Output<List<PortFixedIp>?> fixedIps;
+  late final pulumi.Output<List<Map<String, dynamic>>?> fixedIps;
+
   /// Specify a specific MAC address for the port. Changing
   /// this creates a new port.
   late final pulumi.Output<String> macAddress;
+
   /// A unique name for the port. Changing this
   /// updates the `name` of an existing port.
   late final pulumi.Output<String> name;
+
   /// The ID of the network to attach the port to. Changing
   /// this creates a new port.
   late final pulumi.Output<String> networkId;
+
   /// Create a port with no fixed
   /// IP address. This will also remove any fixed IPs previously set on a port. `true`
   /// is the only valid value for this argument.
   late final pulumi.Output<bool?> noFixedIp;
+
   /// If set to
   /// `true`, then no security groups are applied to the port. If set to `false` and
   /// no `security_group_ids` are specified, then the port will yield to the default
   /// behavior of the Networking service, which is to usually apply the "default"
   /// security group.
   late final pulumi.Output<bool?> noSecurityGroups;
+
   /// Whether to explicitly enable or disable
   /// port security on the port. Port Security is usually enabled by default, so
   /// omitting argument will usually result in a value of `true`. Setting this
@@ -704,23 +719,29 @@ class Port extends pulumi.CustomResource {
   /// security, the port must not have any security groups. Valid values are `true`
   /// and `false`.
   late final pulumi.Output<bool> portSecurityEnabled;
+
   /// Reference to the associated QoS policy.
   late final pulumi.Output<String> qosPolicyId;
+
   /// The region in which to obtain the V2 Networking client.
   /// A Networking client is needed to create a port. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// port.
   late final pulumi.Output<String> region;
+
   /// A list
   /// of security group IDs to apply to the port. The security groups must be
   /// specified by ID and not name (as opposed to how they are configured with
   /// the Compute Instance).
   late final pulumi.Output<List<String>?> securityGroupIds;
+
   /// A set of string tags for the port.
   late final pulumi.Output<List<String>?> tags;
+
   /// The owner of the port. Required if admin wants
   /// to create a port for another tenant. Changing this creates a new port.
   late final pulumi.Output<String> tenantId;
+
   /// Map of additional options.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
 
@@ -728,49 +749,48 @@ class Port extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Port]. {@macro pulumi_networking_port_port_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Port(
-    String name, {
-    PortArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'openstack:networking/port:Port',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminStateUp = registerOutput<bool>('adminStateUp');
-    this.allFixedIps = registerOutput<List<String>>('allFixedIps');
-    this.allSecurityGroupIds = registerOutput<List<String>>('allSecurityGroupIds');
-    this.allTags = registerOutput<List<String>>('allTags');
-    this.allowedAddressPairs = registerOutput<List<PortAllowedAddressPair>?>('allowedAddressPairs');
-    this.binding = registerOutput<PortBinding>('binding');
-    this.description = registerOutput<String?>('description');
-    this.deviceId = registerOutput<String>('deviceId');
-    this.deviceOwner = registerOutput<String>('deviceOwner');
-    this.dnsAssignments = registerOutput<List<Map<String, String>>>('dnsAssignments');
-    this.dnsName = registerOutput<String>('dnsName');
-    this.extraDhcpOptions = registerOutput<List<PortExtraDhcpOption>?>('extraDhcpOptions');
-    this.fixedIps = registerOutput<List<PortFixedIp>?>('fixedIps');
-    this.macAddress = registerOutput<String>('macAddress');
+  Port(String name, {PortArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'openstack:networking/port:Port',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    adminStateUp = registerOutput<bool>('adminStateUp');
+    allFixedIps = registerOutput<List<String>>('allFixedIps');
+    allSecurityGroupIds = registerOutput<List<String>>('allSecurityGroupIds');
+    allTags = registerOutput<List<String>>('allTags');
+    allowedAddressPairs = registerOutput<List<Map<String, dynamic>>?>(
+      'allowedAddressPairs',
+    );
+    binding = registerOutput<PortBinding>('binding');
+    description = registerOutput<String?>('description');
+    deviceId = registerOutput<String>('deviceId');
+    deviceOwner = registerOutput<String>('deviceOwner');
+    dnsAssignments = registerOutput<List<Map<String, dynamic>>>(
+      'dnsAssignments',
+    );
+    dnsName = registerOutput<String>('dnsName');
+    extraDhcpOptions = registerOutput<List<Map<String, dynamic>>?>(
+      'extraDhcpOptions',
+    );
+    fixedIps = registerOutput<List<Map<String, dynamic>>?>('fixedIps');
+    macAddress = registerOutput<String>('macAddress');
     this.name = registerOutput<String>('name');
-    this.networkId = registerOutput<String>('networkId');
-    this.noFixedIp = registerOutput<bool?>('noFixedIp');
-    this.noSecurityGroups = registerOutput<bool?>('noSecurityGroups');
-    this.portSecurityEnabled = registerOutput<bool>('portSecurityEnabled');
-    this.qosPolicyId = registerOutput<String>('qosPolicyId');
-    this.region = registerOutput<String>('region');
-    this.securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
+    networkId = registerOutput<String>('networkId');
+    noFixedIp = registerOutput<bool?>('noFixedIp');
+    noSecurityGroups = registerOutput<bool?>('noSecurityGroups');
+    portSecurityEnabled = registerOutput<bool>('portSecurityEnabled');
+    qosPolicyId = registerOutput<String>('qosPolicyId');
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    tags = registerOutput<List<String>?>('tags');
+    tenantId = registerOutput<String>('tenantId');
+    valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
   }
 
   /// Gets an existing [Port] resource's state with the given [name] and [id].
-  static Port get(
-    String name,
-    pulumi.Input<String> id, {
-    PortState? state,
-  }) {
+  static Port get(String name, pulumi.Input<String> id, {PortState? state}) {
     return Port._get(
       name,
       state: state?.toMap(),
@@ -783,35 +803,41 @@ class Port extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/port:Port',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminStateUp = registerOutput<bool>('adminStateUp');
-    this.allFixedIps = registerOutput<List<String>>('allFixedIps');
-    this.allSecurityGroupIds = registerOutput<List<String>>('allSecurityGroupIds');
-    this.allTags = registerOutput<List<String>>('allTags');
-    this.allowedAddressPairs = registerOutput<List<PortAllowedAddressPair>?>('allowedAddressPairs');
-    this.binding = registerOutput<PortBinding>('binding');
-    this.description = registerOutput<String?>('description');
-    this.deviceId = registerOutput<String>('deviceId');
-    this.deviceOwner = registerOutput<String>('deviceOwner');
-    this.dnsAssignments = registerOutput<List<Map<String, String>>>('dnsAssignments');
-    this.dnsName = registerOutput<String>('dnsName');
-    this.extraDhcpOptions = registerOutput<List<PortExtraDhcpOption>?>('extraDhcpOptions');
-    this.fixedIps = registerOutput<List<PortFixedIp>?>('fixedIps');
-    this.macAddress = registerOutput<String>('macAddress');
+         'openstack:networking/port:Port',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminStateUp = registerOutput<bool>('adminStateUp');
+    allFixedIps = registerOutput<List<String>>('allFixedIps');
+    allSecurityGroupIds = registerOutput<List<String>>('allSecurityGroupIds');
+    allTags = registerOutput<List<String>>('allTags');
+    allowedAddressPairs = registerOutput<List<Map<String, dynamic>>?>(
+      'allowedAddressPairs',
+    );
+    binding = registerOutput<PortBinding>('binding');
+    description = registerOutput<String?>('description');
+    deviceId = registerOutput<String>('deviceId');
+    deviceOwner = registerOutput<String>('deviceOwner');
+    dnsAssignments = registerOutput<List<Map<String, dynamic>>>(
+      'dnsAssignments',
+    );
+    dnsName = registerOutput<String>('dnsName');
+    extraDhcpOptions = registerOutput<List<Map<String, dynamic>>?>(
+      'extraDhcpOptions',
+    );
+    fixedIps = registerOutput<List<Map<String, dynamic>>?>('fixedIps');
+    macAddress = registerOutput<String>('macAddress');
     this.name = registerOutput<String>('name');
-    this.networkId = registerOutput<String>('networkId');
-    this.noFixedIp = registerOutput<bool?>('noFixedIp');
-    this.noSecurityGroups = registerOutput<bool?>('noSecurityGroups');
-    this.portSecurityEnabled = registerOutput<bool>('portSecurityEnabled');
-    this.qosPolicyId = registerOutput<String>('qosPolicyId');
-    this.region = registerOutput<String>('region');
-    this.securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
+    networkId = registerOutput<String>('networkId');
+    noFixedIp = registerOutput<bool?>('noFixedIp');
+    noSecurityGroups = registerOutput<bool?>('noSecurityGroups');
+    portSecurityEnabled = registerOutput<bool>('portSecurityEnabled');
+    qosPolicyId = registerOutput<String>('qosPolicyId');
+    region = registerOutput<String>('region');
+    securityGroupIds = registerOutput<List<String>?>('securityGroupIds');
+    tags = registerOutput<List<String>?>('tags');
+    tenantId = registerOutput<String>('tenantId');
+    valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
   }
 }

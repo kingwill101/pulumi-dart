@@ -23,16 +23,15 @@ enum WorkflowProvisioningState {
   valueWaiting("Waiting"),
   valueInProgress("InProgress");
 
-  const WorkflowProvisioningState(this.value);
-  final String value;
+  const WorkflowProvisioningState(this.wireValue);
+  final String wireValue;
 
   static WorkflowProvisioningState fromValue(String value) {
     for (final item in WorkflowProvisioningState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WorkflowProvisioningState value: $value');
   }
 }
-

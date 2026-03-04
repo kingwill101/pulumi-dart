@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationsApplication {
   /// The ID of the application that you want to deploy.
   final pulumi.Input<String> appId;
+
   /// The name of your EDAS application. Only letters '-' '_' and numbers are allowed. The length cannot exceed 36 characters.
   final pulumi.Input<String> appName;
+
   /// The type of the package for the deployment of the application that you want to create. The valid values are: WAR and JAR. We strongly recommend you to set this parameter when creating the application.
   final pulumi.Input<String> applicationType;
+
   /// The package ID of Enterprise Distributed Application Service (EDAS) Container.
   final pulumi.Input<int> buildPackageId;
+
   /// The ID of the cluster that you want to create the application.
   final pulumi.Input<String> clusterId;
+
   /// The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
   final pulumi.Input<int> clusterType;
+
   /// The ID of the namespace the application belongs to.
   final pulumi.Input<String> regionId;
 
@@ -50,14 +56,13 @@ class GetApplicationsApplication {
 
   factory GetApplicationsApplication.fromMap(Map<String, dynamic> map) {
     return GetApplicationsApplication(
-      appId: (map['appId'] as String).input(),
-      appName: (map['appName'] as String).input(),
-      applicationType: (map['applicationType'] as String).input(),
-      buildPackageId: (map['buildPackageId'] as int).input(),
-      clusterId: (map['clusterId'] as String).input(),
-      clusterType: (map['clusterType'] as int).input(),
-      regionId: (map['regionId'] as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      appName: pulumi.Input.fromValue(map['appName'] as String),
+      applicationType: pulumi.Input.fromValue(map['applicationType'] as String),
+      buildPackageId: pulumi.Input.fromValue(map['buildPackageId'] as int),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      clusterType: pulumi.Input.fromValue(map['clusterType'] as int),
+      regionId: pulumi.Input.fromValue(map['regionId'] as String),
     );
   }
 }
-

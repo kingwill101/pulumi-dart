@@ -9,13 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkEdgeSecurityServiceArgs {
   /// Free-text description of the resource.
   final pulumi.Input<String>? description;
+
   /// Name of the resource. Provided by the client when the resource is created.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region of the gateway security policy.
   final pulumi.Input<String>? region;
+
   /// The resource URL for the network edge security service associated with this network edge security service.
   final pulumi.Input<String>? securityPolicy;
 
@@ -45,12 +49,31 @@ class NetworkEdgeSecurityServiceArgs {
 
   factory NetworkEdgeSecurityServiceArgs.fromMap(Map<String, dynamic> map) {
     return NetworkEdgeSecurityServiceArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityPolicy: (() {
+        final guardedValue = map['securityPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

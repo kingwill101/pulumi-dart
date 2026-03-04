@@ -9,7 +9,7 @@ import 'database_threat_detection_policy.dart';
 
 /// Manages a MS SQL Database.
 ///
-/// !> **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `prevent_destroy` lifecycle argument in your configuration file for this resource. For more information on the `prevent_destroy` lifecycle argument please see the terraform documentation.
+/// !&gt; **Note:** To mitigate the possibility of accidental data loss it is highly recommended that you use the `prevent_destroy` lifecycle argument in your configuration file for this resource. For more information on the `prevent_destroy` lifecycle argument please see the terraform documentation.
 ///
 /// ## Example Usage
 ///
@@ -928,7 +928,7 @@ import 'database_threat_detection_policy.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Sql` - 2023-08-01-preview
@@ -943,98 +943,135 @@ import 'database_threat_detection_policy.dart';
 class Database extends pulumi.CustomResource {
   /// Time in minutes after which database is automatically paused. A value of `-1` means that automatic pause is disabled. This property is only settable for Serverless databases.
   late final pulumi.Output<int> autoPauseDelayInMinutes;
+
   /// Specifies the collation of the database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> collation;
+
   /// The create mode of the database. Possible values are `Copy`, `Default`, `OnlineSecondary`, `PointInTimeRestore`, `Recovery`, `Restore`, `RestoreExternalBackup`, `RestoreExternalBackupSecondary`, `RestoreLongTermRetentionBackup` and `Secondary`. Mutually exclusive with `import`. Changing this forces a new resource to be created. Defaults to `Default`.
   late final pulumi.Output<String?> createMode;
+
   /// The ID of the source database from which to create the new database. This should only be used for databases with `create_mode` values that use another database as reference. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** When configuring a secondary database, please be aware of the constraints for the `sku_name` property, as noted below, for both the primary and secondary databases. The `sku_name` of the secondary database may be inadvertently changed to match that of the primary when an incompatible combination of SKUs is detected by the provider.
+  /// &gt; **Note:** When configuring a secondary database, please be aware of the constraints for the `sku_name` property, as noted below, for both the primary and secondary databases. The `sku_name` of the secondary database may be inadvertently changed to match that of the primary when an incompatible combination of SKUs is detected by the provider.
   late final pulumi.Output<String> creationSourceDatabaseId;
+
   /// Specifies the ID of the elastic pool containing this database.
   late final pulumi.Output<String?> elasticPoolId;
+
   /// Specifies the type of enclave to be used by the elastic pool. When `enclave_type` is not specified (e.g., the default) enclaves are not enabled on the database. Once enabled (e.g., by specifying `Default` or `VBS`) removing the `enclave_type` field from the configuration file will force the creation of a new resource. Possible values are `Default` or `VBS`.
   ///
-  /// > **Note:** `enclave_type` is currently not supported for DW (e.g, DataWarehouse) and DC-series SKUs.
+  /// &gt; **Note:** `enclave_type` is currently not supported for DW (e.g, DataWarehouse) and DC-series SKUs.
   ///
-  /// > **Note:** Geo Replicated and Failover databases must have the same `enclave_type`.
+  /// &gt; **Note:** Geo Replicated and Failover databases must have the same `enclave_type`.
   ///
-  /// > **Note:** The default value for the `enclave_type` field is unset not `Default`.
+  /// &gt; **Note:** The default value for the `enclave_type` field is unset not `Default`.
   late final pulumi.Output<String> enclaveType;
+
   /// A boolean that specifies if the Geo Backup Policy is enabled. Defaults to `true`.
   ///
-  /// > **Note:** `geo_backup_enabled` is only applicable for DataWarehouse SKUs (DW*). This setting is ignored for all other SKUs.
+  /// &gt; **Note:** `geo_backup_enabled` is only applicable for DataWarehouse SKUs (DW*). This setting is ignored for all other SKUs.
   late final pulumi.Output<bool?> geoBackupEnabled;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<DatabaseIdentity?> identity;
+
   /// A `import` block as documented below. Mutually exclusive with `create_mode`.
   late final pulumi.Output<DatabaseImport?> import;
+
   /// A boolean that specifies if this is a ledger database. Defaults to `false`. Changing this forces a new resource to be created.
   late final pulumi.Output<bool> ledgerEnabled;
+
   /// Specifies the license type applied to this database. Possible values are `LicenseIncluded` and `BasePrice`.
   late final pulumi.Output<String> licenseType;
+
   /// A `long_term_retention_policy` block as defined below.
-  late final pulumi.Output<DatabaseLongTermRetentionPolicy> longTermRetentionPolicy;
+  late final pulumi.Output<DatabaseLongTermRetentionPolicy>
+  longTermRetentionPolicy;
+
   /// The name of the Public Maintenance Configuration window to apply to the database. Valid values include `SQL_Default`, `SQL_EastUS_DB_1`, `SQL_EastUS2_DB_1`, `SQL_SoutheastAsia_DB_1`, `SQL_AustraliaEast_DB_1`, `SQL_NorthEurope_DB_1`, `SQL_SouthCentralUS_DB_1`, `SQL_WestUS2_DB_1`, `SQL_UKSouth_DB_1`, `SQL_WestEurope_DB_1`, `SQL_EastUS_DB_2`, `SQL_EastUS2_DB_2`, `SQL_WestUS2_DB_2`, `SQL_SoutheastAsia_DB_2`, `SQL_AustraliaEast_DB_2`, `SQL_NorthEurope_DB_2`, `SQL_SouthCentralUS_DB_2`, `SQL_UKSouth_DB_2`, `SQL_WestEurope_DB_2`, `SQL_AustraliaSoutheast_DB_1`, `SQL_BrazilSouth_DB_1`, `SQL_CanadaCentral_DB_1`, `SQL_CanadaEast_DB_1`, `SQL_CentralUS_DB_1`, `SQL_EastAsia_DB_1`, `SQL_FranceCentral_DB_1`, `SQL_GermanyWestCentral_DB_1`, `SQL_CentralIndia_DB_1`, `SQL_SouthIndia_DB_1`, `SQL_JapanEast_DB_1`, `SQL_JapanWest_DB_1`, `SQL_NorthCentralUS_DB_1`, `SQL_UKWest_DB_1`, `SQL_WestUS_DB_1`, `SQL_AustraliaSoutheast_DB_2`, `SQL_BrazilSouth_DB_2`, `SQL_CanadaCentral_DB_2`, `SQL_CanadaEast_DB_2`, `SQL_CentralUS_DB_2`, `SQL_EastAsia_DB_2`, `SQL_FranceCentral_DB_2`, `SQL_GermanyWestCentral_DB_2`, `SQL_CentralIndia_DB_2`, `SQL_SouthIndia_DB_2`, `SQL_JapanEast_DB_2`, `SQL_JapanWest_DB_2`, `SQL_NorthCentralUS_DB_2`, `SQL_UKWest_DB_2`, `SQL_WestUS_DB_2`, `SQL_WestCentralUS_DB_1`, `SQL_FranceSouth_DB_1`, `SQL_WestCentralUS_DB_2`, `SQL_FranceSouth_DB_2`, `SQL_SwitzerlandNorth_DB_1`, `SQL_SwitzerlandNorth_DB_2`, `SQL_BrazilSoutheast_DB_1`, `SQL_UAENorth_DB_1`, `SQL_BrazilSoutheast_DB_2`, `SQL_UAENorth_DB_2`, `SQL_SouthAfricaNorth_DB_1`, `SQL_SouthAfricaNorth_DB_2`, `SQL_WestUS3_DB_1`, `SQL_WestUS3_DB_2`, `SQL_SwedenCentral_DB_1`, `SQL_SwedenCentral_DB_2`. Defaults to `SQL_Default`.
   ///
-  /// > **Note:** `maintenance_configuration_name` is only applicable if `elastic_pool_id` is not set.
+  /// &gt; **Note:** `maintenance_configuration_name` is only applicable if `elastic_pool_id` is not set.
   late final pulumi.Output<String> maintenanceConfigurationName;
+
   /// The max size of the database in gigabytes.
   ///
-  /// > **Note:** This value should not be configured when the `create_mode` is `Secondary` or `OnlineSecondary`, as the sizing of the primary is then used as per [Azure documentation](https://docs.microsoft.com/azure/azure-sql/database/single-database-scale#geo-replicated-database). The value of `max_size_gb` accepts `0.1`, `0.5` and positive integers greater than or equal to 1. `0.1` means `100MB`, and `0.5` means `500MB`.
+  /// &gt; **Note:** This value should not be configured when the `create_mode` is `Secondary` or `OnlineSecondary`, as the sizing of the primary is then used as per [Azure documentation](https://docs.microsoft.com/azure/azure-sql/database/single-database-scale#geo-replicated-database). The value of `max_size_gb` accepts `0.1`, `0.5` and positive integers greater than or equal to 1. `0.1` means `100MB`, and `0.5` means `500MB`.
   late final pulumi.Output<double> maxSizeGb;
+
   /// Minimal capacity that database will always have allocated, if not paused. This property is only settable for Serverless databases.
   late final pulumi.Output<double> minCapacity;
+
   /// The name of the MS SQL Database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The number of readonly secondary replicas associated with the database to which readonly application intent connections may be routed. This property is only settable for Hyperscale edition databases.
   late final pulumi.Output<int> readReplicaCount;
+
   /// If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica. This property is only settable for Premium and Business Critical databases.
   late final pulumi.Output<bool> readScale;
+
   /// The ID of the database to be recovered. This property is only applicable when the `create_mode` is `Recovery`.
   late final pulumi.Output<String?> recoverDatabaseId;
+
   /// The ID of the Recovery Services Recovery Point Id to be restored. This property is only applicable when the `create_mode` is `Recovery`.
   late final pulumi.Output<String?> recoveryPointId;
+
   /// The ID of the database to be restored. This property is only applicable when the `create_mode` is `Restore`.
   late final pulumi.Output<String?> restoreDroppedDatabaseId;
+
   /// The ID of the long term retention backup to be restored. This property is only applicable when the `create_mode` is `RestoreLongTermRetentionBackup`.
   late final pulumi.Output<String?> restoreLongTermRetentionBackupId;
+
   /// Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database. This property is only settable for `create_mode`= `PointInTimeRestore` databases.
   late final pulumi.Output<String> restorePointInTime;
+
   /// Specifies the name of the sample schema to apply when creating this database. Possible value is `AdventureWorksLT`.
   late final pulumi.Output<String> sampleName;
+
   /// How do you want your replica to be made? Valid values include `Geo`, `Named` and `Standby`. Defaults to `Geo`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> secondaryType;
+
   /// The id of the MS SQL Server on which to create the database. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** This setting is still required for "Serverless" SKUs
+  /// &gt; **Note:** This setting is still required for "Serverless" SKUs
   late final pulumi.Output<String> serverId;
+
   /// A `short_term_retention_policy` block as defined below.
-  late final pulumi.Output<DatabaseShortTermRetentionPolicy> shortTermRetentionPolicy;
+  late final pulumi.Output<DatabaseShortTermRetentionPolicy>
+  shortTermRetentionPolicy;
+
   /// Specifies the name of the SKU used by the database. For example, `GP_S_Gen5_2`,`HS_Gen4_1`,`BC_Gen5_2`, `ElasticPool`, `Basic`,`S0`, `P2` ,`DW100c`, `DS100`. Changing this from the HyperScale service tier to another service tier will create a new resource.
   ///
-  /// > **Note:** A full list of supported SKU names by region can be retrieved using the Azure CLI: `az sql db list-editions -l <region> -o table`
+  /// &gt; **Note:** A full list of supported SKU names by region can be retrieved using the Azure CLI: `az sql db list-editions -l &lt;region&gt; -o table`
   ///
-  /// > **Note:** The default `sku_name` value may differ between Azure locations depending on local availability of Gen4/Gen5 capacity. When databases are replicated using the `creation_source_database_id` property, the source (primary) database cannot have a higher SKU service tier than any secondary databases. When changing the `sku_name` of a database having one or more secondary databases, this resource will first update any secondary databases as necessary. In such cases it's recommended to use the same `sku_name` in your configuration for all related databases, as not doing so may cause an unresolvable diff during subsequent plans.
+  /// &gt; **Note:** The default `sku_name` value may differ between Azure locations depending on local availability of Gen4/Gen5 capacity. When databases are replicated using the `creation_source_database_id` property, the source (primary) database cannot have a higher SKU service tier than any secondary databases. When changing the `sku_name` of a database having one or more secondary databases, this resource will first update any secondary databases as necessary. In such cases it's recommended to use the same `sku_name` in your configuration for all related databases, as not doing so may cause an unresolvable diff during subsequent plans.
   late final pulumi.Output<String> skuName;
+
   /// Specifies the storage account type used to store backups for this database. Possible values are `Geo`, `GeoZone`, `Local` and `Zone`. Defaults to `Geo`.
   late final pulumi.Output<String?> storageAccountType;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Threat detection policy configuration. The `threat_detection_policy` block supports fields documented below.
   late final pulumi.Output<DatabaseThreatDetectionPolicy> threatDetectionPolicy;
+
   /// If set to true, Transparent Data Encryption will be enabled on the database. Defaults to `true`.
   ///
-  /// > **Note:** `transparent_data_encryption_enabled` can only be set to `false` on DW (e.g, DataWarehouse) server SKUs.
+  /// &gt; **Note:** `transparent_data_encryption_enabled` can only be set to `false` on DW (e.g, DataWarehouse) server SKUs.
   late final pulumi.Output<bool?> transparentDataEncryptionEnabled;
+
   /// Boolean flag to specify whether TDE automatically rotates the encryption Key to latest version or not. Possible values are `true` or `false`. Defaults to `false`.
   ///
-  /// > **Note:** When the `sku_name` is `DW100c`, the `transparent_data_encryption_key_automatic_rotation_enabled` and the `transparent_data_encryption_key_vault_key_id` properties should not be specified, as database-level CMK is not supported for Data Warehouse SKUs.
-  late final pulumi.Output<bool?> transparentDataEncryptionKeyAutomaticRotationEnabled;
-  /// The fully versioned `Key Vault` `Key` URL (e.g. `'https://<YourVaultName>.vault.azure.net/keys/<YourKeyName>/<YourKeyVersion>`) to be used as the `Customer Managed Key`(CMK/BYOK) for the `Transparent Data Encryption`(TDE) layer.
+  /// &gt; **Note:** When the `sku_name` is `DW100c`, the `transparent_data_encryption_key_automatic_rotation_enabled` and the `transparent_data_encryption_key_vault_key_id` properties should not be specified, as database-level CMK is not supported for Data Warehouse SKUs.
+  late final pulumi.Output<bool?>
+  transparentDataEncryptionKeyAutomaticRotationEnabled;
+
+  /// The fully versioned `Key Vault` `Key` URL (e.g. `'https://&lt;YourVaultName&gt;.vault.azure.net/keys/&lt;YourKeyName&gt;/&lt;YourKeyVersion&gt;`) to be used as the `Customer Managed Key`(CMK/BYOK) for the `Transparent Data Encryption`(TDE) layer.
   ///
-  /// > **Note:** To successfully deploy a `Microsoft SQL Database` in CMK/BYOK TDE the `Key Vault` must have `Soft-delete` and `purge protection` enabled to protect from data loss due to accidental key and/or key vault deletion. The `Key Vault` and the `Microsoft SQL Server` `User Managed Identity Instance` must belong to the same `Azure Active Directory` `tenant`.
+  /// &gt; **Note:** To successfully deploy a `Microsoft SQL Database` in CMK/BYOK TDE the `Key Vault` must have `Soft-delete` and `purge protection` enabled to protect from data loss due to accidental key and/or key vault deletion. The `Key Vault` and the `Microsoft SQL Server` `User Managed Identity Instance` must belong to the same `Azure Active Directory` `tenant`.
   late final pulumi.Output<String?> transparentDataEncryptionKeyVaultKeyId;
+
   /// Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones. This property is only settable for Premium and Business Critical databases.
   late final pulumi.Output<bool> zoneRedundant;
 
@@ -1047,46 +1084,67 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/database:Database',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoPauseDelayInMinutes = registerOutput<int>('autoPauseDelayInMinutes');
-    this.collation = registerOutput<String>('collation');
-    this.createMode = registerOutput<String?>('createMode');
-    this.creationSourceDatabaseId = registerOutput<String>('creationSourceDatabaseId');
-    this.elasticPoolId = registerOutput<String?>('elasticPoolId');
-    this.enclaveType = registerOutput<String>('enclaveType');
-    this.geoBackupEnabled = registerOutput<bool?>('geoBackupEnabled');
-    this.identity = registerOutput<DatabaseIdentity?>('identity');
-    this.import = registerOutput<DatabaseImport?>('import');
-    this.ledgerEnabled = registerOutput<bool>('ledgerEnabled');
-    this.licenseType = registerOutput<String>('licenseType');
-    this.longTermRetentionPolicy = registerOutput<DatabaseLongTermRetentionPolicy>('longTermRetentionPolicy');
-    this.maintenanceConfigurationName = registerOutput<String>('maintenanceConfigurationName');
-    this.maxSizeGb = registerOutput<double>('maxSizeGb');
-    this.minCapacity = registerOutput<double>('minCapacity');
+         'azure:mssql/database:Database',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoPauseDelayInMinutes = registerOutput<int>('autoPauseDelayInMinutes');
+    collation = registerOutput<String>('collation');
+    createMode = registerOutput<String?>('createMode');
+    creationSourceDatabaseId = registerOutput<String>(
+      'creationSourceDatabaseId',
+    );
+    elasticPoolId = registerOutput<String?>('elasticPoolId');
+    enclaveType = registerOutput<String>('enclaveType');
+    geoBackupEnabled = registerOutput<bool?>('geoBackupEnabled');
+    identity = registerOutput<DatabaseIdentity?>('identity');
+    import = registerOutput<DatabaseImport?>('import');
+    ledgerEnabled = registerOutput<bool>('ledgerEnabled');
+    licenseType = registerOutput<String>('licenseType');
+    longTermRetentionPolicy = registerOutput<DatabaseLongTermRetentionPolicy>(
+      'longTermRetentionPolicy',
+    );
+    maintenanceConfigurationName = registerOutput<String>(
+      'maintenanceConfigurationName',
+    );
+    maxSizeGb = registerOutput<double>('maxSizeGb');
+    minCapacity = registerOutput<double>('minCapacity');
     this.name = registerOutput<String>('name');
-    this.readReplicaCount = registerOutput<int>('readReplicaCount');
-    this.readScale = registerOutput<bool>('readScale');
-    this.recoverDatabaseId = registerOutput<String?>('recoverDatabaseId');
-    this.recoveryPointId = registerOutput<String?>('recoveryPointId');
-    this.restoreDroppedDatabaseId = registerOutput<String?>('restoreDroppedDatabaseId');
-    this.restoreLongTermRetentionBackupId = registerOutput<String?>('restoreLongTermRetentionBackupId');
-    this.restorePointInTime = registerOutput<String>('restorePointInTime');
-    this.sampleName = registerOutput<String>('sampleName');
-    this.secondaryType = registerOutput<String>('secondaryType');
-    this.serverId = registerOutput<String>('serverId');
-    this.shortTermRetentionPolicy = registerOutput<DatabaseShortTermRetentionPolicy>('shortTermRetentionPolicy');
-    this.skuName = registerOutput<String>('skuName');
-    this.storageAccountType = registerOutput<String?>('storageAccountType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.threatDetectionPolicy = registerOutput<DatabaseThreatDetectionPolicy>('threatDetectionPolicy');
-    this.transparentDataEncryptionEnabled = registerOutput<bool?>('transparentDataEncryptionEnabled');
-    this.transparentDataEncryptionKeyAutomaticRotationEnabled = registerOutput<bool?>('transparentDataEncryptionKeyAutomaticRotationEnabled');
-    this.transparentDataEncryptionKeyVaultKeyId = registerOutput<String?>('transparentDataEncryptionKeyVaultKeyId');
-    this.zoneRedundant = registerOutput<bool>('zoneRedundant');
+    readReplicaCount = registerOutput<int>('readReplicaCount');
+    readScale = registerOutput<bool>('readScale');
+    recoverDatabaseId = registerOutput<String?>('recoverDatabaseId');
+    recoveryPointId = registerOutput<String?>('recoveryPointId');
+    restoreDroppedDatabaseId = registerOutput<String?>(
+      'restoreDroppedDatabaseId',
+    );
+    restoreLongTermRetentionBackupId = registerOutput<String?>(
+      'restoreLongTermRetentionBackupId',
+    );
+    restorePointInTime = registerOutput<String>('restorePointInTime');
+    sampleName = registerOutput<String>('sampleName');
+    secondaryType = registerOutput<String>('secondaryType');
+    serverId = registerOutput<String>('serverId');
+    shortTermRetentionPolicy = registerOutput<DatabaseShortTermRetentionPolicy>(
+      'shortTermRetentionPolicy',
+    );
+    skuName = registerOutput<String>('skuName');
+    storageAccountType = registerOutput<String?>('storageAccountType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    threatDetectionPolicy = registerOutput<DatabaseThreatDetectionPolicy>(
+      'threatDetectionPolicy',
+    );
+    transparentDataEncryptionEnabled = registerOutput<bool?>(
+      'transparentDataEncryptionEnabled',
+    );
+    transparentDataEncryptionKeyAutomaticRotationEnabled =
+        registerOutput<bool?>(
+          'transparentDataEncryptionKeyAutomaticRotationEnabled',
+        );
+    transparentDataEncryptionKeyVaultKeyId = registerOutput<String?>(
+      'transparentDataEncryptionKeyVaultKeyId',
+    );
+    zoneRedundant = registerOutput<bool>('zoneRedundant');
   }
 
   /// Gets an existing [Database] resource's state with the given [name] and [id].
@@ -1107,45 +1165,66 @@ class Database extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mssql/database:Database',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoPauseDelayInMinutes = registerOutput<int>('autoPauseDelayInMinutes');
-    this.collation = registerOutput<String>('collation');
-    this.createMode = registerOutput<String?>('createMode');
-    this.creationSourceDatabaseId = registerOutput<String>('creationSourceDatabaseId');
-    this.elasticPoolId = registerOutput<String?>('elasticPoolId');
-    this.enclaveType = registerOutput<String>('enclaveType');
-    this.geoBackupEnabled = registerOutput<bool?>('geoBackupEnabled');
-    this.identity = registerOutput<DatabaseIdentity?>('identity');
-    this.import = registerOutput<DatabaseImport?>('import');
-    this.ledgerEnabled = registerOutput<bool>('ledgerEnabled');
-    this.licenseType = registerOutput<String>('licenseType');
-    this.longTermRetentionPolicy = registerOutput<DatabaseLongTermRetentionPolicy>('longTermRetentionPolicy');
-    this.maintenanceConfigurationName = registerOutput<String>('maintenanceConfigurationName');
-    this.maxSizeGb = registerOutput<double>('maxSizeGb');
-    this.minCapacity = registerOutput<double>('minCapacity');
+         'azure:mssql/database:Database',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoPauseDelayInMinutes = registerOutput<int>('autoPauseDelayInMinutes');
+    collation = registerOutput<String>('collation');
+    createMode = registerOutput<String?>('createMode');
+    creationSourceDatabaseId = registerOutput<String>(
+      'creationSourceDatabaseId',
+    );
+    elasticPoolId = registerOutput<String?>('elasticPoolId');
+    enclaveType = registerOutput<String>('enclaveType');
+    geoBackupEnabled = registerOutput<bool?>('geoBackupEnabled');
+    identity = registerOutput<DatabaseIdentity?>('identity');
+    import = registerOutput<DatabaseImport?>('import');
+    ledgerEnabled = registerOutput<bool>('ledgerEnabled');
+    licenseType = registerOutput<String>('licenseType');
+    longTermRetentionPolicy = registerOutput<DatabaseLongTermRetentionPolicy>(
+      'longTermRetentionPolicy',
+    );
+    maintenanceConfigurationName = registerOutput<String>(
+      'maintenanceConfigurationName',
+    );
+    maxSizeGb = registerOutput<double>('maxSizeGb');
+    minCapacity = registerOutput<double>('minCapacity');
     this.name = registerOutput<String>('name');
-    this.readReplicaCount = registerOutput<int>('readReplicaCount');
-    this.readScale = registerOutput<bool>('readScale');
-    this.recoverDatabaseId = registerOutput<String?>('recoverDatabaseId');
-    this.recoveryPointId = registerOutput<String?>('recoveryPointId');
-    this.restoreDroppedDatabaseId = registerOutput<String?>('restoreDroppedDatabaseId');
-    this.restoreLongTermRetentionBackupId = registerOutput<String?>('restoreLongTermRetentionBackupId');
-    this.restorePointInTime = registerOutput<String>('restorePointInTime');
-    this.sampleName = registerOutput<String>('sampleName');
-    this.secondaryType = registerOutput<String>('secondaryType');
-    this.serverId = registerOutput<String>('serverId');
-    this.shortTermRetentionPolicy = registerOutput<DatabaseShortTermRetentionPolicy>('shortTermRetentionPolicy');
-    this.skuName = registerOutput<String>('skuName');
-    this.storageAccountType = registerOutput<String?>('storageAccountType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.threatDetectionPolicy = registerOutput<DatabaseThreatDetectionPolicy>('threatDetectionPolicy');
-    this.transparentDataEncryptionEnabled = registerOutput<bool?>('transparentDataEncryptionEnabled');
-    this.transparentDataEncryptionKeyAutomaticRotationEnabled = registerOutput<bool?>('transparentDataEncryptionKeyAutomaticRotationEnabled');
-    this.transparentDataEncryptionKeyVaultKeyId = registerOutput<String?>('transparentDataEncryptionKeyVaultKeyId');
-    this.zoneRedundant = registerOutput<bool>('zoneRedundant');
+    readReplicaCount = registerOutput<int>('readReplicaCount');
+    readScale = registerOutput<bool>('readScale');
+    recoverDatabaseId = registerOutput<String?>('recoverDatabaseId');
+    recoveryPointId = registerOutput<String?>('recoveryPointId');
+    restoreDroppedDatabaseId = registerOutput<String?>(
+      'restoreDroppedDatabaseId',
+    );
+    restoreLongTermRetentionBackupId = registerOutput<String?>(
+      'restoreLongTermRetentionBackupId',
+    );
+    restorePointInTime = registerOutput<String>('restorePointInTime');
+    sampleName = registerOutput<String>('sampleName');
+    secondaryType = registerOutput<String>('secondaryType');
+    serverId = registerOutput<String>('serverId');
+    shortTermRetentionPolicy = registerOutput<DatabaseShortTermRetentionPolicy>(
+      'shortTermRetentionPolicy',
+    );
+    skuName = registerOutput<String>('skuName');
+    storageAccountType = registerOutput<String?>('storageAccountType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    threatDetectionPolicy = registerOutput<DatabaseThreatDetectionPolicy>(
+      'threatDetectionPolicy',
+    );
+    transparentDataEncryptionEnabled = registerOutput<bool?>(
+      'transparentDataEncryptionEnabled',
+    );
+    transparentDataEncryptionKeyAutomaticRotationEnabled =
+        registerOutput<bool?>(
+          'transparentDataEncryptionKeyAutomaticRotationEnabled',
+        );
+    transparentDataEncryptionKeyVaultKeyId = registerOutput<String?>(
+      'transparentDataEncryptionKeyVaultKeyId',
+    );
+    zoneRedundant = registerOutput<bool>('zoneRedundant');
   }
 }

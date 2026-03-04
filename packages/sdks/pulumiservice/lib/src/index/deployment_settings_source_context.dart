@@ -10,20 +10,29 @@ class DeploymentSettingsSourceContext {
 
   /// Creates a new [DeploymentSettingsSourceContext].
   /// [git] Git source settings for a deployment.
-  DeploymentSettingsSourceContext({
-    this.git,
-  });
+  DeploymentSettingsSourceContext({this.git});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'git': ?pulumi.Input.mapOptionalInputValue<DeploymentSettingsGitSource, Map<String, dynamic>>(git, (value) => value.toMap()),
+      'git':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentSettingsGitSource,
+            Map<String, dynamic>
+          >(git, (value) => value.toMap()),
     };
   }
 
   factory DeploymentSettingsSourceContext.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsSourceContext(
-      git: map['git'] == null ? null : (DeploymentSettingsGitSource.fromMap((map['git']! as Map).cast<String, dynamic>())).input(),
+      git: (() {
+        final guardedValue = map['git'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentSettingsGitSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

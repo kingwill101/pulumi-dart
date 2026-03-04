@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRulesArgs {
   /// The name of event bus.
   final pulumi.Input<String> eventBusName;
+
   /// A list of Rule IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// A regex string to filter results by Rule name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The rule name prefix.
   final pulumi.Input<String>? ruleNamePrefix;
+
   /// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
   final pulumi.Input<String>? status;
 
@@ -49,13 +54,32 @@ class GetRulesArgs {
 
   factory GetRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetRulesArgs(
-      eventBusName: (map['eventBusName'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      ruleNamePrefix: map['ruleNamePrefix'] == null ? null : (map['ruleNamePrefix']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      eventBusName: pulumi.Input.fromValue(map['eventBusName'] as String),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ruleNamePrefix: (() {
+        final guardedValue = map['ruleNamePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

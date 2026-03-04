@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListEffectiveConnectivityConfigurationArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
   final pulumi.Input<String>? skipToken;
+
   /// The name of the virtual network.
   final pulumi.Input<String> virtualNetworkName;
 
@@ -32,12 +34,21 @@ class ListEffectiveConnectivityConfigurationArgs {
     };
   }
 
-  factory ListEffectiveConnectivityConfigurationArgs.fromMap(Map<String, dynamic> map) {
+  factory ListEffectiveConnectivityConfigurationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListEffectiveConnectivityConfigurationArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
-      virtualNetworkName: (map['virtualNetworkName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      skipToken: (() {
+        final guardedValue = map['skipToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualNetworkName: pulumi.Input.fromValue(
+        map['virtualNetworkName'] as String,
+      ),
     );
   }
 }
-

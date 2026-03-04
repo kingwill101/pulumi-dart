@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountPropertiesResponseEndpoints {
   /// Gets the catalog endpoint.
   final pulumi.Input<String> catalog;
+
   /// Gets the scan endpoint.
   final pulumi.Input<String> scan;
 
@@ -18,17 +19,13 @@ class AccountPropertiesResponseEndpoints {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'catalog': catalog,
-      'scan': scan,
-    };
+    return <String, dynamic>{'catalog': catalog, 'scan': scan};
   }
 
   factory AccountPropertiesResponseEndpoints.fromMap(Map<String, dynamic> map) {
     return AccountPropertiesResponseEndpoints(
-      catalog: (map['catalog'] as String).input(),
-      scan: (map['scan'] as String).input(),
+      catalog: pulumi.Input.fromValue(map['catalog'] as String),
+      scan: pulumi.Input.fromValue(map['scan'] as String),
     );
   }
 }
-

@@ -7,23 +7,31 @@ import 'get_gateways_gateway.dart';
 class GetGatewaysResult {
   /// The business status of the VPN gateway.
   final String? businessStatus;
+
   /// Whether the ipsec function is enabled.
   final bool? enableIpsec;
+
   /// A list of VPN gateways. Each element contains the following attributes:
   final List<GetGatewaysGateway> gateways;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// IDs of the VPN.
   final List<String> ids;
   final bool? includeReservationData;
   final String? nameRegex;
+
   /// names of the VPN.
   final List<String> names;
   final String? outputFile;
+
   /// Whether the ssl function is enabled.
   final String? sslVpn;
+
   /// The status of the VPN
   final String? status;
+
   /// ID of the VPC that the VPN belongs.
   final String? vpcId;
 
@@ -59,7 +67,11 @@ class GetGatewaysResult {
     return <String, dynamic>{
       'businessStatus': ?businessStatus,
       'enableIpsec': ?enableIpsec,
-      'gateways': pulumi.Input.encodeList<GetGatewaysGateway, Map<String, dynamic>>(gateways, (value) => value.toMap()),
+      'gateways':
+          pulumi.Input.encodeList<GetGatewaysGateway, Map<String, dynamic>>(
+            gateways,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'includeReservationData': ?includeReservationData,
@@ -74,19 +86,54 @@ class GetGatewaysResult {
 
   factory GetGatewaysResult.fromMap(Map<String, dynamic> map) {
     return GetGatewaysResult(
-      businessStatus: map['businessStatus'] == null ? null : map['businessStatus']! as String,
-      enableIpsec: map['enableIpsec'] == null ? null : map['enableIpsec']! as bool,
-      gateways: pulumi.Input.decodeList<GetGatewaysGateway>(map['gateways'], (value) => GetGatewaysGateway.fromMap((value as Map).cast<String, dynamic>())),
+      businessStatus: (() {
+        final guardedValue = map['businessStatus'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      enableIpsec: (() {
+        final guardedValue = map['enableIpsec'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      gateways: pulumi.Input.decodeList<GetGatewaysGateway>(
+        map['gateways']!,
+        (value) =>
+            GetGatewaysGateway.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeReservationData: map['includeReservationData'] == null ? null : map['includeReservationData']! as bool,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      includeReservationData: (() {
+        final guardedValue = map['includeReservationData'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      sslVpn: map['sslVpn'] == null ? null : map['sslVpn']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sslVpn: (() {
+        final guardedValue = map['sslVpn'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

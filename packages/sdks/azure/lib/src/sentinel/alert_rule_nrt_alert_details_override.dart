@@ -6,12 +6,17 @@ import 'alert_rule_nrt_alert_details_override_dynamic_property.dart';
 class AlertRuleNrtAlertDetailsOverride {
   /// The format containing columns name(s) to override the description of this Sentinel Alert Rule.
   final pulumi.Input<String>? descriptionFormat;
+
   /// The format containing columns name(s) to override the name of this Sentinel Alert Rule.
   final pulumi.Input<String>? displayNameFormat;
+
   /// A list of `dynamic_property` blocks as defined below.
-  final pulumi.Input<List<AlertRuleNrtAlertDetailsOverrideDynamicProperty>>? dynamicProperties;
+  final pulumi.Input<List<AlertRuleNrtAlertDetailsOverrideDynamicProperty>>?
+  dynamicProperties;
+
   /// The column name to take the alert severity from.
   final pulumi.Input<String>? severityColumnName;
+
   /// The column name to take the alert tactics from.
   final pulumi.Input<String>? tacticsColumnName;
 
@@ -33,7 +38,18 @@ class AlertRuleNrtAlertDetailsOverride {
     return <String, dynamic>{
       'descriptionFormat': ?descriptionFormat,
       'displayNameFormat': ?displayNameFormat,
-      'dynamicProperties': ?pulumi.Input.mapOptionalInputValue<List<AlertRuleNrtAlertDetailsOverrideDynamicProperty>, List<Map<String, dynamic>>>(dynamicProperties, (value) => pulumi.Input.encodeList<AlertRuleNrtAlertDetailsOverrideDynamicProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dynamicProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AlertRuleNrtAlertDetailsOverrideDynamicProperty>,
+            List<Map<String, dynamic>>
+          >(
+            dynamicProperties,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AlertRuleNrtAlertDetailsOverrideDynamicProperty,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'severityColumnName': ?severityColumnName,
       'tacticsColumnName': ?tacticsColumnName,
     };
@@ -41,12 +57,40 @@ class AlertRuleNrtAlertDetailsOverride {
 
   factory AlertRuleNrtAlertDetailsOverride.fromMap(Map<String, dynamic> map) {
     return AlertRuleNrtAlertDetailsOverride(
-      descriptionFormat: map['descriptionFormat'] == null ? null : (map['descriptionFormat']! as String).input(),
-      displayNameFormat: map['displayNameFormat'] == null ? null : (map['displayNameFormat']! as String).input(),
-      dynamicProperties: map['dynamicProperties'] == null ? null : (pulumi.Input.decodeList<AlertRuleNrtAlertDetailsOverrideDynamicProperty>(map['dynamicProperties']!, (value) => AlertRuleNrtAlertDetailsOverrideDynamicProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      severityColumnName: map['severityColumnName'] == null ? null : (map['severityColumnName']! as String).input(),
-      tacticsColumnName: map['tacticsColumnName'] == null ? null : (map['tacticsColumnName']! as String).input(),
+      descriptionFormat: (() {
+        final guardedValue = map['descriptionFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayNameFormat: (() {
+        final guardedValue = map['displayNameFormat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dynamicProperties: (() {
+        final guardedValue = map['dynamicProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            AlertRuleNrtAlertDetailsOverrideDynamicProperty
+          >(
+            guardedValue,
+            (value) => AlertRuleNrtAlertDetailsOverrideDynamicProperty.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      severityColumnName: (() {
+        final guardedValue = map['severityColumnName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tacticsColumnName: (() {
+        final guardedValue = map['tacticsColumnName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

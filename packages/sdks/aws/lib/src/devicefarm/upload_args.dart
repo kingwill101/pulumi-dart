@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UploadArgs {
   /// The upload's content type (for example, application/octet-stream).
   final pulumi.Input<String>? contentType;
+
   /// The upload's file name. The name should not contain any forward slashes (/). If you are uploading an iOS app, the file name must end with the .ipa extension. If you are uploading an Android app, the file name must end with the .apk extension. For all others, the file name must end with the .zip file extension.
   final pulumi.Input<String>? name;
+
   /// The ARN of the project for the upload.
   final pulumi.Input<String> projectArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The upload's upload type. See [AWS Docs](https://docs.aws.amazon.com/devicefarm/latest/APIReference/API_CreateUpload.html#API_CreateUpload_RequestSyntax) for valid list of values.
   final pulumi.Input<String> type;
 
@@ -44,12 +48,23 @@ class UploadArgs {
 
   factory UploadArgs.fromMap(Map<String, dynamic> map) {
     return UploadArgs(
-      contentType: map['contentType'] == null ? null : ((map['contentType'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      projectArn: (map['projectArn'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      type: (map['type'] as String).input(),
+      contentType: (() {
+        final guardedValue = map['contentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectArn: pulumi.Input.fromValue(map['projectArn'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

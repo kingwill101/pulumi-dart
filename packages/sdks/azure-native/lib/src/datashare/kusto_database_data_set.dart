@@ -865,21 +865,29 @@ import 'system_data_response.dart';
 class KustoDatabaseDataSet extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Unique id for identifying a data set resource
   late final pulumi.Output<String> dataSetId;
+
   /// Kind of data set.
   /// Expected value is 'KustoDatabase'.
   late final pulumi.Output<String> kind;
+
   /// Resource id of the kusto database.
   late final pulumi.Output<String> kustoDatabaseResourceId;
+
   /// Location of the kusto cluster.
   late final pulumi.Output<String> location;
+
   /// Name of the azure resource
   late final pulumi.Output<String> name;
+
   /// Provisioning state of the kusto database data set.
   late final pulumi.Output<String> provisioningState;
+
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Type of the azure resource
   late final pulumi.Output<String> type;
 
@@ -892,19 +900,19 @@ class KustoDatabaseDataSet extends pulumi.CustomResource {
     KustoDatabaseDataSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datashare:KustoDatabaseDataSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataSetId = registerOutput<String>('dataSetId');
-    this.kind = registerOutput<String>('kind');
-    this.kustoDatabaseResourceId = registerOutput<String>('kustoDatabaseResourceId');
-    this.location = registerOutput<String>('location');
+         'azure-native:datashare:KustoDatabaseDataSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataSetId = registerOutput<String>('dataSetId');
+    kind = registerOutput<String>('kind');
+    kustoDatabaseResourceId = registerOutput<String>('kustoDatabaseResourceId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

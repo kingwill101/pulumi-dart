@@ -9,20 +9,17 @@ class ConsumptionMeteringConfigResponseContainerV1beta1 {
 
   /// Creates a new [ConsumptionMeteringConfigResponseContainerV1beta1].
   /// [enabled] Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will be created to hold resource consumption records.
-  ConsumptionMeteringConfigResponseContainerV1beta1({
-    required this.enabled,
-  });
+  ConsumptionMeteringConfigResponseContainerV1beta1({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory ConsumptionMeteringConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ConsumptionMeteringConfigResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConsumptionMeteringConfigResponseContainerV1beta1(
-      enabled: (map['enabled'] as bool).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

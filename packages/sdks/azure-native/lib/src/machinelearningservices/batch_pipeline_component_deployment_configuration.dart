@@ -7,13 +7,17 @@ import 'id_asset_reference.dart';
 class BatchPipelineComponentDeploymentConfiguration {
   /// The ARM id of the component to be run.
   final pulumi.Input<IdAssetReference>? componentId;
+
   /// The enumerated property types for batch deployments.
   /// Expected value is 'PipelineComponent'.
   final pulumi.Input<String> deploymentConfigurationType;
+
   /// The description which will be applied to the job.
   final pulumi.Input<String>? description;
+
   /// Run-time settings for the pipeline job.
   final pulumi.Input<Map<String, String>>? settings;
+
   /// The tags which will be applied to the job.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -33,7 +37,11 @@ class BatchPipelineComponentDeploymentConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'componentId': ?pulumi.Input.mapOptionalInputValue<IdAssetReference, Map<String, dynamic>>(componentId, (value) => value.toMap()),
+      'componentId':
+          ?pulumi.Input.mapOptionalInputValue<
+            IdAssetReference,
+            Map<String, dynamic>
+          >(componentId, (value) => value.toMap()),
       'deploymentConfigurationType': deploymentConfigurationType,
       'description': ?description,
       'settings': ?settings,
@@ -41,14 +49,41 @@ class BatchPipelineComponentDeploymentConfiguration {
     };
   }
 
-  factory BatchPipelineComponentDeploymentConfiguration.fromMap(Map<String, dynamic> map) {
+  factory BatchPipelineComponentDeploymentConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BatchPipelineComponentDeploymentConfiguration(
-      componentId: map['componentId'] == null ? null : (IdAssetReference.fromMap((map['componentId']! as Map).cast<String, dynamic>())).input(),
-      deploymentConfigurationType: (map['deploymentConfigurationType'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      settings: map['settings'] == null ? null : ((map['settings']! as Map).cast<String, String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      componentId: (() {
+        final guardedValue = map['componentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IdAssetReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      deploymentConfigurationType: pulumi.Input.fromValue(
+        map['deploymentConfigurationType'] as String,
+      ),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      settings: (() {
+        final guardedValue = map['settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

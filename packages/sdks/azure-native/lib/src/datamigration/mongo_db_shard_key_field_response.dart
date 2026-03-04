@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MongoDbShardKeyFieldResponse {
   /// The name of the field
   final pulumi.Input<String> name;
+
   /// The field ordering
   final pulumi.Input<String> order;
 
   /// Creates a new [MongoDbShardKeyFieldResponse].
   /// [name] The name of the field
   /// [order] The field ordering
-  MongoDbShardKeyFieldResponse({
-    required this.name,
-    required this.order,
-  });
+  MongoDbShardKeyFieldResponse({required this.name, required this.order});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'order': order,
-    };
+    return <String, dynamic>{'name': name, 'order': order};
   }
 
   factory MongoDbShardKeyFieldResponse.fromMap(Map<String, dynamic> map) {
     return MongoDbShardKeyFieldResponse(
-      name: (map['name'] as String).input(),
-      order: (map['order'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      order: pulumi.Input.fromValue(map['order'] as String),
     );
   }
 }
-

@@ -4,10 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFoldersFolder {
   final pulumi.Input<String> folderId;
+
   /// Folder Path.
   final pulumi.Input<String> folderPath;
+
   /// The Folder ID.
   final pulumi.Input<String> id;
+
   /// The ID of the project.
   final pulumi.Input<String> projectId;
 
@@ -34,11 +37,10 @@ class GetFoldersFolder {
 
   factory GetFoldersFolder.fromMap(Map<String, dynamic> map) {
     return GetFoldersFolder(
-      folderId: (map['folderId'] as String).input(),
-      folderPath: (map['folderPath'] as String).input(),
-      id: (map['id'] as String).input(),
-      projectId: (map['projectId'] as String).input(),
+      folderId: pulumi.Input.fromValue(map['folderId'] as String),
+      folderPath: pulumi.Input.fromValue(map['folderPath'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
     );
   }
 }
-

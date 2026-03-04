@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagementServerNetwork {
   /// Network with format 'projects/{{project_id}}/global/networks/{{network_id}}'
   final pulumi.Input<String> network;
+
   /// Type of Network peeringMode Default value: "PRIVATE_SERVICE_ACCESS" Possible values: ["PRIVATE_SERVICE_ACCESS"]
   final pulumi.Input<String> peeringMode;
 
@@ -17,17 +18,13 @@ class GetManagementServerNetwork {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'network': network,
-      'peeringMode': peeringMode,
-    };
+    return <String, dynamic>{'network': network, 'peeringMode': peeringMode};
   }
 
   factory GetManagementServerNetwork.fromMap(Map<String, dynamic> map) {
     return GetManagementServerNetwork(
-      network: (map['network'] as String).input(),
-      peeringMode: (map['peeringMode'] as String).input(),
+      network: pulumi.Input.fromValue(map['network'] as String),
+      peeringMode: pulumi.Input.fromValue(map['peeringMode'] as String),
     );
   }
 }
-

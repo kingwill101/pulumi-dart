@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRegistryRepository.
 class GetRegistryRepositoryResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String project;
   final String? region;
+
   /// The URL at which the repository can be accessed.
   final String repositoryUrl;
 
@@ -35,9 +35,12 @@ class GetRegistryRepositoryResult {
     return GetRegistryRepositoryResult(
       id: map['id'] as String,
       project: map['project'] as String,
-      region: map['region'] == null ? null : map['region']! as String,
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       repositoryUrl: map['repositoryUrl'] as String,
     );
   }
 }
-

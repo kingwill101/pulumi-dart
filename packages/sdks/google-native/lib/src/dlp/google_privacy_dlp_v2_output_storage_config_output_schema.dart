@@ -7,16 +7,20 @@ enum GooglePrivacyDlpV2OutputStorageConfigOutputSchema {
   bigQueryColumns("BIG_QUERY_COLUMNS"),
   allColumns("ALL_COLUMNS");
 
-  const GooglePrivacyDlpV2OutputStorageConfigOutputSchema(this.value);
-  final String value;
+  const GooglePrivacyDlpV2OutputStorageConfigOutputSchema(this.wireValue);
+  final String wireValue;
 
-  static GooglePrivacyDlpV2OutputStorageConfigOutputSchema fromValue(String value) {
-    for (final item in GooglePrivacyDlpV2OutputStorageConfigOutputSchema.values) {
-      if (item.value == value) {
+  static GooglePrivacyDlpV2OutputStorageConfigOutputSchema fromValue(
+    String value,
+  ) {
+    for (final item
+        in GooglePrivacyDlpV2OutputStorageConfigOutputSchema.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2OutputStorageConfigOutputSchema value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2OutputStorageConfigOutputSchema value: $value',
+    );
   }
 }
-

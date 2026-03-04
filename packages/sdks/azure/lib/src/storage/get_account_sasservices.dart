@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountSASServices {
   /// Should permission be granted to `blob` services within this storage account?
   final pulumi.Input<bool> blob;
+
   /// Should permission be granted to `file` services within this storage account?
   final pulumi.Input<bool> file;
+
   /// Should permission be granted to `queue` services within this storage account?
   final pulumi.Input<bool> queue;
+
   /// Should permission be granted to `table` services within this storage account?
   final pulumi.Input<bool> table;
 
@@ -35,11 +38,10 @@ class GetAccountSASServices {
 
   factory GetAccountSASServices.fromMap(Map<String, dynamic> map) {
     return GetAccountSASServices(
-      blob: (map['blob'] as bool).input(),
-      file: (map['file'] as bool).input(),
-      queue: (map['queue'] as bool).input(),
-      table: (map['table'] as bool).input(),
+      blob: pulumi.Input.fromValue(map['blob'] as bool),
+      file: pulumi.Input.fromValue(map['file'] as bool),
+      queue: pulumi.Input.fromValue(map['queue'] as bool),
+      table: pulumi.Input.fromValue(map['table'] as bool),
     );
   }
 }
-

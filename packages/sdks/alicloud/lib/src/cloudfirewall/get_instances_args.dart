@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancesArgs {
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
   final pulumi.Input<String>? paymentType;
 
   /// Creates a new [GetInstancesArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [paymentType] The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
-  GetInstancesArgs({
-    this.outputFile,
-    this.paymentType,
-  });
+  GetInstancesArgs({this.outputFile, this.paymentType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,16 @@ class GetInstancesArgs {
 
   factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancesArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,7 +5,13 @@ import 'get_cluster_node_pool_default_node_config_default_containerd_config_priv
 
 class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig {
   /// Parameters for configuring CA certificate and domains.
-  final pulumi.Input<List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>> certificateAuthorityDomainConfigs;
+  final pulumi.Input<
+    List<
+      GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig
+    >
+  >
+  certificateAuthorityDomainConfigs;
+
   /// Whether or not private registries are configured.
   final pulumi.Input<bool> enabled;
 
@@ -19,16 +25,40 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryA
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateAuthorityDomainConfigs': pulumi.Input.mapInputValue<List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>, List<Map<String, dynamic>>>(certificateAuthorityDomainConfigs, (value) => pulumi.Input.encodeList<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'certificateAuthorityDomainConfigs':
+          pulumi.Input.mapInputValue<
+            List<
+              GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig
+            >,
+            List<Map<String, dynamic>>
+          >(
+            certificateAuthorityDomainConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'enabled': enabled,
     };
   }
 
-  factory GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig(
-      certificateAuthorityDomainConfigs: (pulumi.Input.decodeList<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>(map['certificateAuthorityDomainConfigs'], (value) => GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: (map['enabled'] as bool).input(),
+      certificateAuthorityDomainConfigs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig
+        >(
+          map['certificateAuthorityDomainConfigs']!,
+          (value) =>
+              GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }
 }
-

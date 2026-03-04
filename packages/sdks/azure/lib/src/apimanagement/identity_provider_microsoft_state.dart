@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityProviderMicrosoftState {
   /// The Name of the API Management Service where this Microsoft Identity Provider should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiManagementName;
+
   /// Client Id of the Azure AD Application.
   final pulumi.Input<String>? clientId;
+
   /// Client secret of the Azure AD Application.
   final pulumi.Input<String>? clientSecret;
+
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
 
@@ -36,11 +39,26 @@ class IdentityProviderMicrosoftState {
 
   factory IdentityProviderMicrosoftState.fromMap(Map<String, dynamic> map) {
     return IdentityProviderMicrosoftState(
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      apiManagementName: (() {
+        final guardedValue = map['apiManagementName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

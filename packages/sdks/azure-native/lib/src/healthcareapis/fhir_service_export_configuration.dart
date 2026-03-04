@@ -9,20 +9,19 @@ class FhirServiceExportConfiguration {
 
   /// Creates a new [FhirServiceExportConfiguration].
   /// [storageAccountName] The name of the default export storage account.
-  FhirServiceExportConfiguration({
-    this.storageAccountName,
-  });
+  FhirServiceExportConfiguration({this.storageAccountName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'storageAccountName': ?storageAccountName,
-    };
+    return <String, dynamic>{'storageAccountName': ?storageAccountName};
   }
 
   factory FhirServiceExportConfiguration.fromMap(Map<String, dynamic> map) {
     return FhirServiceExportConfiguration(
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
+      storageAccountName: (() {
+        final guardedValue = map['storageAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

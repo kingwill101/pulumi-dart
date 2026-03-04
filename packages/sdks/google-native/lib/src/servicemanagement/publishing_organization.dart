@@ -1,6 +1,8 @@
 /// For whom the client library is being published.
 enum PublishingOrganization {
-  clientLibraryOrganizationUnspecified("CLIENT_LIBRARY_ORGANIZATION_UNSPECIFIED"),
+  clientLibraryOrganizationUnspecified(
+    "CLIENT_LIBRARY_ORGANIZATION_UNSPECIFIED",
+  ),
   cloud("CLOUD"),
   ads("ADS"),
   photos("PHOTOS"),
@@ -9,16 +11,15 @@ enum PublishingOrganization {
   geo("GEO"),
   generativeAi("GENERATIVE_AI");
 
-  const PublishingOrganization(this.value);
-  final String value;
+  const PublishingOrganization(this.wireValue);
+  final String wireValue;
 
   static PublishingOrganization fromValue(String value) {
     for (final item in PublishingOrganization.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PublishingOrganization value: $value');
   }
 }
-

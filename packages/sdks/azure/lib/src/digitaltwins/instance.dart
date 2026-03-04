@@ -159,7 +159,7 @@ import 'instance_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DigitalTwins` - 2023-01-31
@@ -174,14 +174,19 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// The API endpoint to work with this Digital Twins instance.
   late final pulumi.Output<String> hostName;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<InstanceIdentity?> identity;
+
   /// The Azure Region where the Digital Twins instance should exist. Changing this forces a new Digital Twins instance to be created.
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Digital Twins instance. Changing this forces a new Digital Twins instance to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the Digital Twins instance should exist. Changing this forces a new Digital Twins instance to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags which should be assigned to the Digital Twins instance.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -194,17 +199,17 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:digitaltwins/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.hostName = registerOutput<String>('hostName');
-    this.identity = registerOutput<InstanceIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:digitaltwins/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    hostName = registerOutput<String>('hostName');
+    identity = registerOutput<InstanceIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -225,16 +230,16 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:digitaltwins/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.hostName = registerOutput<String>('hostName');
-    this.identity = registerOutput<InstanceIdentity?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure:digitaltwins/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    hostName = registerOutput<String>('hostName');
+    identity = registerOutput<InstanceIdentity?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

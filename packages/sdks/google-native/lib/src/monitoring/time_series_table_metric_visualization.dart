@@ -4,16 +4,17 @@ enum TimeSeriesTableMetricVisualization {
   number("NUMBER"),
   bar("BAR");
 
-  const TimeSeriesTableMetricVisualization(this.value);
-  final String value;
+  const TimeSeriesTableMetricVisualization(this.wireValue);
+  final String wireValue;
 
   static TimeSeriesTableMetricVisualization fromValue(String value) {
     for (final item in TimeSeriesTableMetricVisualization.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TimeSeriesTableMetricVisualization value: $value');
+    throw ArgumentError(
+      'Unknown TimeSeriesTableMetricVisualization value: $value',
+    );
   }
 }
-

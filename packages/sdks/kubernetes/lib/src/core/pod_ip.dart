@@ -9,20 +9,13 @@ class PodIP {
 
   /// Creates a new [PodIP].
   /// [ip] IP is the IP address assigned to the pod
-  PodIP({
-    required this.ip,
-  });
+  PodIP({required this.ip});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ip': ip,
-    };
+    return <String, dynamic>{'ip': ip};
   }
 
   factory PodIP.fromMap(Map<String, dynamic> map) {
-    return PodIP(
-      ip: (map['ip'] as String).input(),
-    );
+    return PodIP(ip: pulumi.Input.fromValue(map['ip'] as String));
   }
 }
-

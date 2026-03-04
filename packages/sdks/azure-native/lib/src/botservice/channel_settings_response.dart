@@ -7,22 +7,31 @@ import 'site_response.dart';
 class ChannelSettingsResponse {
   /// The bot icon url
   final pulumi.Input<String>? botIconUrl;
+
   /// The bot id
   final pulumi.Input<String>? botId;
+
   /// The channel display name
   final pulumi.Input<String>? channelDisplayName;
+
   /// The channel id
   final pulumi.Input<String>? channelId;
+
   /// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
   final pulumi.Input<bool>? disableLocalAuth;
+
   /// The extensionKey1
   final pulumi.Input<String>? extensionKey1;
+
   /// The extensionKey2
   final pulumi.Input<String>? extensionKey2;
+
   /// Whether this channel is enabled for the bot
   final pulumi.Input<bool>? isEnabled;
+
   /// Whether customer needs to agree to new terms.
   final pulumi.Input<bool>? requireTermsAgreement;
+
   /// The list of sites
   final pulumi.Input<List<SiteResponse>>? sites;
 
@@ -61,23 +70,79 @@ class ChannelSettingsResponse {
       'extensionKey2': ?extensionKey2,
       'isEnabled': ?isEnabled,
       'requireTermsAgreement': ?requireTermsAgreement,
-      'sites': ?pulumi.Input.mapOptionalInputValue<List<SiteResponse>, List<Map<String, dynamic>>>(sites, (value) => pulumi.Input.encodeList<SiteResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sites':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SiteResponse>,
+            List<Map<String, dynamic>>
+          >(
+            sites,
+            (value) =>
+                pulumi.Input.encodeList<SiteResponse, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory ChannelSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ChannelSettingsResponse(
-      botIconUrl: map['botIconUrl'] == null ? null : (map['botIconUrl']! as String).input(),
-      botId: map['botId'] == null ? null : (map['botId']! as String).input(),
-      channelDisplayName: map['channelDisplayName'] == null ? null : (map['channelDisplayName']! as String).input(),
-      channelId: map['channelId'] == null ? null : (map['channelId']! as String).input(),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth']! as bool).input(),
-      extensionKey1: map['extensionKey1'] == null ? null : (map['extensionKey1']! as String).input(),
-      extensionKey2: map['extensionKey2'] == null ? null : (map['extensionKey2']! as String).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
-      requireTermsAgreement: map['requireTermsAgreement'] == null ? null : (map['requireTermsAgreement']! as bool).input(),
-      sites: map['sites'] == null ? null : (pulumi.Input.decodeList<SiteResponse>(map['sites']!, (value) => SiteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      botIconUrl: (() {
+        final guardedValue = map['botIconUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      botId: (() {
+        final guardedValue = map['botId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      channelDisplayName: (() {
+        final guardedValue = map['channelDisplayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      channelId: (() {
+        final guardedValue = map['channelId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disableLocalAuth: (() {
+        final guardedValue = map['disableLocalAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      extensionKey1: (() {
+        final guardedValue = map['extensionKey1'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extensionKey2: (() {
+        final guardedValue = map['extensionKey2'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isEnabled: (() {
+        final guardedValue = map['isEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      requireTermsAgreement: (() {
+        final guardedValue = map['requireTermsAgreement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      sites: (() {
+        final guardedValue = map['sites'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SiteResponse>(
+            guardedValue,
+            (value) =>
+                SiteResponse.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

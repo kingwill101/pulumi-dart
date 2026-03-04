@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceGuardOperationResponse {
   /// Type of resource request.
   final pulumi.Input<String> requestResourceType;
+
   /// Name of the critical operation.
   final pulumi.Input<String> vaultCriticalOperation;
 
@@ -26,9 +27,12 @@ class ResourceGuardOperationResponse {
 
   factory ResourceGuardOperationResponse.fromMap(Map<String, dynamic> map) {
     return ResourceGuardOperationResponse(
-      requestResourceType: (map['requestResourceType'] as String).input(),
-      vaultCriticalOperation: (map['vaultCriticalOperation'] as String).input(),
+      requestResourceType: pulumi.Input.fromValue(
+        map['requestResourceType'] as String,
+      ),
+      vaultCriticalOperation: pulumi.Input.fromValue(
+        map['vaultCriticalOperation'] as String,
+      ),
     );
   }
 }
-

@@ -4,9 +4,9 @@ import 'auto_provisioning_state.dart';
 
 /// Enables or disables the Security Center Auto Provisioning feature for the subscription
 ///
-/// > **Note:** The `azure.securitycenter.AutoProvisioning` resource has been deprecated because [the auto provisioning capability will be deprecated by end of Novemember of 2024](https://learn.microsoft.com/en-us/azure/defender-for-cloud/prepare-deprecation-log-analytics-mma-agent#log-analytics-agent-autoprovisioning-experience---deprecation-plan) and will be removed in v5.0 of the AzureRM Provider.
+/// &gt; **Note:** The `azure.securitycenter.AutoProvisioning` resource has been deprecated because [the auto provisioning capability will be deprecated by end of Novemember of 2024](https://learn.microsoft.com/en-us/azure/defender-for-cloud/prepare-deprecation-log-analytics-mma-agent#log-analytics-agent-autoprovisioning-experience---deprecation-plan) and will be removed in v5.0 of the AzureRM Provider.
 ///
-/// > **Note:** There is no resource name required, it will always be "default"
+/// &gt; **Note:** There is no resource name required, it will always be "default"
 ///
 /// ## Example Usage
 ///
@@ -115,12 +115,12 @@ class AutoProvisioning extends pulumi.CustomResource {
     AutoProvisioningArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/autoProvisioning:AutoProvisioning',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoProvision = registerOutput<String>('autoProvision');
+         'azure:securitycenter/autoProvisioning:AutoProvisioning',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoProvision = registerOutput<String>('autoProvision');
   }
 
   /// Gets an existing [AutoProvisioning] resource's state with the given [name] and [id].
@@ -141,11 +141,11 @@ class AutoProvisioning extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/autoProvisioning:AutoProvisioning',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoProvision = registerOutput<String>('autoProvision');
+         'azure:securitycenter/autoProvisioning:AutoProvisioning',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoProvision = registerOutput<String>('autoProvision');
   }
 }

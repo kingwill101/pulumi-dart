@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLaunchConfigurationEphemeralBlockDevice {
   /// Name of the device.
   final pulumi.Input<String> deviceName;
+
   /// Virtual Name of the device.
   final pulumi.Input<String> virtualName;
 
@@ -23,11 +24,12 @@ class GetLaunchConfigurationEphemeralBlockDevice {
     };
   }
 
-  factory GetLaunchConfigurationEphemeralBlockDevice.fromMap(Map<String, dynamic> map) {
+  factory GetLaunchConfigurationEphemeralBlockDevice.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLaunchConfigurationEphemeralBlockDevice(
-      deviceName: (map['deviceName'] as String).input(),
-      virtualName: (map['virtualName'] as String).input(),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      virtualName: pulumi.Input.fromValue(map['virtualName'] as String),
     );
   }
 }
-

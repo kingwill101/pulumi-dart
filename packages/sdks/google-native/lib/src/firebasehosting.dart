@@ -1,5 +1,3 @@
-library module_firebasehosting;
-
 export 'firebasehosting/acting_user_response.dart';
 export 'firebasehosting/cert_dns_challenge_response.dart';
 export 'firebasehosting/cert_http_challenge_response.dart';

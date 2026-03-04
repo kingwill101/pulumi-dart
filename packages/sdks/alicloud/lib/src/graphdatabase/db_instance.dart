@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'db_instance_args.dart';
-import 'db_instance_db_instance_ip_array.dart';
 import 'db_instance_state.dart';
 
 /// Provides a Graph Database Db Instance resource.
 ///
 /// For information about Graph Database Db Instance and how to use it, see [What is Db Instance](https://www.alibabacloud.com/help/en/graph-compute/latest/placeholder).
 ///
-/// > **NOTE:** Available since v1.136.0.
+/// &gt; **NOTE:** Available since v1.136.0.
 ///
 /// ## Example Usage
 ///
@@ -176,32 +175,46 @@ import 'db_instance_state.dart';
 class DbInstance extends pulumi.CustomResource {
   /// (Available in 1.196.0+)  The connection string of the instance.
   late final pulumi.Output<String> connectionString;
+
   /// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
   late final pulumi.Output<String> dbInstanceCategory;
+
   /// According to the practical example or notes.
   late final pulumi.Output<String?> dbInstanceDescription;
+
   /// IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
-  late final pulumi.Output<List<DbInstanceDbInstanceIpArray>> dbInstanceIpArrays;
+  late final pulumi.Output<List<Map<String, dynamic>>> dbInstanceIpArrays;
+
   /// The network type of the db instance. Valid values: `vpc`.
   late final pulumi.Output<String> dbInstanceNetworkType;
+
   /// Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
   late final pulumi.Output<String> dbInstanceStorageType;
+
   /// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
   late final pulumi.Output<String> dbNodeClass;
+
   /// Instance storage space, which is measured in GB.
   late final pulumi.Output<int> dbNodeStorage;
+
   /// Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
   late final pulumi.Output<String> dbVersion;
+
   /// The paymen type of the resource. Valid values: `PayAsYouGo`.
   late final pulumi.Output<String> paymentType;
+
   /// (Available in 1.196.0+) The connection port of the instance.
   late final pulumi.Output<String> port;
+
   /// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
   late final pulumi.Output<String> status;
+
   /// ID of the VPC.
   late final pulumi.Output<String> vpcId;
+
   /// The ID of attaching vswitch to instance.
   late final pulumi.Output<String> vswitchId;
+
   /// The zone ID of the resource.
   late final pulumi.Output<String> zoneId;
 
@@ -214,26 +227,28 @@ class DbInstance extends pulumi.CustomResource {
     DbInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:graphdatabase/dbInstance:DbInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionString = registerOutput<String>('connectionString');
-    this.dbInstanceCategory = registerOutput<String>('dbInstanceCategory');
-    this.dbInstanceDescription = registerOutput<String?>('dbInstanceDescription');
-    this.dbInstanceIpArrays = registerOutput<List<DbInstanceDbInstanceIpArray>>('dbInstanceIpArrays');
-    this.dbInstanceNetworkType = registerOutput<String>('dbInstanceNetworkType');
-    this.dbInstanceStorageType = registerOutput<String>('dbInstanceStorageType');
-    this.dbNodeClass = registerOutput<String>('dbNodeClass');
-    this.dbNodeStorage = registerOutput<int>('dbNodeStorage');
-    this.dbVersion = registerOutput<String>('dbVersion');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.port = registerOutput<String>('port');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:graphdatabase/dbInstance:DbInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionString = registerOutput<String>('connectionString');
+    dbInstanceCategory = registerOutput<String>('dbInstanceCategory');
+    dbInstanceDescription = registerOutput<String?>('dbInstanceDescription');
+    dbInstanceIpArrays = registerOutput<List<Map<String, dynamic>>>(
+      'dbInstanceIpArrays',
+    );
+    dbInstanceNetworkType = registerOutput<String>('dbInstanceNetworkType');
+    dbInstanceStorageType = registerOutput<String>('dbInstanceStorageType');
+    dbNodeClass = registerOutput<String>('dbNodeClass');
+    dbNodeStorage = registerOutput<int>('dbNodeStorage');
+    dbVersion = registerOutput<String>('dbVersion');
+    paymentType = registerOutput<String>('paymentType');
+    port = registerOutput<String>('port');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [DbInstance] resource's state with the given [name] and [id].
@@ -254,25 +269,27 @@ class DbInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:graphdatabase/dbInstance:DbInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionString = registerOutput<String>('connectionString');
-    this.dbInstanceCategory = registerOutput<String>('dbInstanceCategory');
-    this.dbInstanceDescription = registerOutput<String?>('dbInstanceDescription');
-    this.dbInstanceIpArrays = registerOutput<List<DbInstanceDbInstanceIpArray>>('dbInstanceIpArrays');
-    this.dbInstanceNetworkType = registerOutput<String>('dbInstanceNetworkType');
-    this.dbInstanceStorageType = registerOutput<String>('dbInstanceStorageType');
-    this.dbNodeClass = registerOutput<String>('dbNodeClass');
-    this.dbNodeStorage = registerOutput<int>('dbNodeStorage');
-    this.dbVersion = registerOutput<String>('dbVersion');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.port = registerOutput<String>('port');
-    this.status = registerOutput<String>('status');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:graphdatabase/dbInstance:DbInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionString = registerOutput<String>('connectionString');
+    dbInstanceCategory = registerOutput<String>('dbInstanceCategory');
+    dbInstanceDescription = registerOutput<String?>('dbInstanceDescription');
+    dbInstanceIpArrays = registerOutput<List<Map<String, dynamic>>>(
+      'dbInstanceIpArrays',
+    );
+    dbInstanceNetworkType = registerOutput<String>('dbInstanceNetworkType');
+    dbInstanceStorageType = registerOutput<String>('dbInstanceStorageType');
+    dbNodeClass = registerOutput<String>('dbNodeClass');
+    dbNodeStorage = registerOutput<int>('dbNodeStorage');
+    dbVersion = registerOutput<String>('dbVersion');
+    paymentType = registerOutput<String>('paymentType');
+    port = registerOutput<String>('port');
+    status = registerOutput<String>('status');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

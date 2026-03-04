@@ -4,16 +4,17 @@ enum FirewallPolicyIntrusionDetectionStateType {
   valueAlert("Alert"),
   valueDeny("Deny");
 
-  const FirewallPolicyIntrusionDetectionStateType(this.value);
-  final String value;
+  const FirewallPolicyIntrusionDetectionStateType(this.wireValue);
+  final String wireValue;
 
   static FirewallPolicyIntrusionDetectionStateType fromValue(String value) {
     for (final item in FirewallPolicyIntrusionDetectionStateType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FirewallPolicyIntrusionDetectionStateType value: $value');
+    throw ArgumentError(
+      'Unknown FirewallPolicyIntrusionDetectionStateType value: $value',
+    );
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertRuleAnomalyBuiltInMultiSelectObservation {
   /// The description of the threshold observation.
   final pulumi.Input<String>? description;
+
   /// The Name of the built-in Anomaly Alert Rule.
   final pulumi.Input<String>? name;
+
   /// A list of supported values of the single select observation.
   final pulumi.Input<List<String>>? supportedValues;
+
   /// A list of values of the single select observation.
   final pulumi.Input<List<String>>? values;
 
@@ -33,13 +36,30 @@ class AlertRuleAnomalyBuiltInMultiSelectObservation {
     };
   }
 
-  factory AlertRuleAnomalyBuiltInMultiSelectObservation.fromMap(Map<String, dynamic> map) {
+  factory AlertRuleAnomalyBuiltInMultiSelectObservation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertRuleAnomalyBuiltInMultiSelectObservation(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      supportedValues: map['supportedValues'] == null ? null : ((map['supportedValues']! as List).cast<String>()).input(),
-      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      supportedValues: (() {
+        final guardedValue = map['supportedValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

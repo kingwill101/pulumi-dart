@@ -7,16 +7,17 @@ enum EnterpriseCrmEventbusProtoAttributesDataType {
   timestamp("TIMESTAMP"),
   domainName("DOMAIN_NAME");
 
-  const EnterpriseCrmEventbusProtoAttributesDataType(this.value);
-  final String value;
+  const EnterpriseCrmEventbusProtoAttributesDataType(this.wireValue);
+  final String wireValue;
 
   static EnterpriseCrmEventbusProtoAttributesDataType fromValue(String value) {
     for (final item in EnterpriseCrmEventbusProtoAttributesDataType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoAttributesDataType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoAttributesDataType value: $value',
+    );
   }
 }
-

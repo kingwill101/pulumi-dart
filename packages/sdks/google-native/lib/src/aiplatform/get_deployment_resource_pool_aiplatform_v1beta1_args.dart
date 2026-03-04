@@ -29,12 +29,19 @@ class GetDeploymentResourcePoolAiplatformV1beta1Args {
     };
   }
 
-  factory GetDeploymentResourcePoolAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetDeploymentResourcePoolAiplatformV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDeploymentResourcePoolAiplatformV1beta1Args(
-      deploymentResourcePoolId: (map['deploymentResourcePoolId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      deploymentResourcePoolId: pulumi.Input.fromValue(
+        map['deploymentResourcePoolId'] as String,
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

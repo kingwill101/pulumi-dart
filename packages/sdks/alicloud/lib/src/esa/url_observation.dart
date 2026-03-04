@@ -8,7 +8,7 @@ import 'url_observation_state.dart';
 ///
 /// For information about ESA Url Observation and how to use it, see [What is Url Observation](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateUrlObservation).
 ///
-/// > **NOTE:** Available since v1.259.0.
+/// &gt; **NOTE:** Available since v1.259.0.
 ///
 /// ## Example Usage
 ///
@@ -220,10 +220,13 @@ import 'url_observation_state.dart';
 class UrlObservation extends pulumi.CustomResource {
   /// Config Id
   late final pulumi.Output<int> configId;
+
   /// SDK integration mode. Value:
   late final pulumi.Output<String> sdkType;
+
   /// The site ID.
   late final pulumi.Output<String> siteId;
+
   /// The URL of the page to monitor.
   late final pulumi.Output<String> url;
 
@@ -236,15 +239,15 @@ class UrlObservation extends pulumi.CustomResource {
     UrlObservationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/urlObservation:UrlObservation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configId = registerOutput<int>('configId');
-    this.sdkType = registerOutput<String>('sdkType');
-    this.siteId = registerOutput<String>('siteId');
-    this.url = registerOutput<String>('url');
+         'alicloud:esa/urlObservation:UrlObservation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configId = registerOutput<int>('configId');
+    sdkType = registerOutput<String>('sdkType');
+    siteId = registerOutput<String>('siteId');
+    url = registerOutput<String>('url');
   }
 
   /// Gets an existing [UrlObservation] resource's state with the given [name] and [id].
@@ -265,14 +268,14 @@ class UrlObservation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:esa/urlObservation:UrlObservation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configId = registerOutput<int>('configId');
-    this.sdkType = registerOutput<String>('sdkType');
-    this.siteId = registerOutput<String>('siteId');
-    this.url = registerOutput<String>('url');
+         'alicloud:esa/urlObservation:UrlObservation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configId = registerOutput<int>('configId');
+    sdkType = registerOutput<String>('sdkType');
+    siteId = registerOutput<String>('siteId');
+    url = registerOutput<String>('url');
   }
 }

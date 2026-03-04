@@ -21,18 +21,18 @@ class RepositoryIamBinding extends pulumi.CustomResource {
     RepositoryIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dataform/repositoryIamBinding:RepositoryIamBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<RepositoryIamBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.members = registerOutput<List<String>>('members');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.repository = registerOutput<String>('repository');
-    this.role = registerOutput<String>('role');
+         'gcp:dataform/repositoryIamBinding:RepositoryIamBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<RepositoryIamBindingCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    repository = registerOutput<String>('repository');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [RepositoryIamBinding] resource's state with the given [name] and [id].
@@ -53,17 +53,17 @@ class RepositoryIamBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dataform/repositoryIamBinding:RepositoryIamBinding',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<RepositoryIamBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.members = registerOutput<List<String>>('members');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.repository = registerOutput<String>('repository');
-    this.role = registerOutput<String>('role');
+         'gcp:dataform/repositoryIamBinding:RepositoryIamBinding',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<RepositoryIamBindingCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    repository = registerOutput<String>('repository');
+    role = registerOutput<String>('role');
   }
 }

@@ -8,20 +8,15 @@ class DomainDevicesGraphicSpiceStreaming {
 
   /// Creates a new [DomainDevicesGraphicSpiceStreaming].
   /// [mode] Sets the operational mode for streaming data in the Spice graphical session.
-  DomainDevicesGraphicSpiceStreaming({
-    required this.mode,
-  });
+  DomainDevicesGraphicSpiceStreaming({required this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': mode,
-    };
+    return <String, dynamic>{'mode': mode};
   }
 
   factory DomainDevicesGraphicSpiceStreaming.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicSpiceStreaming(
-      mode: (map['mode'] as String).input(),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

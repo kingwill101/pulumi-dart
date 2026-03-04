@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QueryLogState {
   /// The Amazon Resource Name (ARN) of the Query Logging Config.
   final pulumi.Input<String>? arn;
+
   /// CloudWatch log group ARN to send query logs.
   final pulumi.Input<String>? cloudwatchLogGroupArn;
+
   /// Route53 hosted zone ID to enable query logs.
   final pulumi.Input<String>? zoneId;
 
@@ -15,11 +17,7 @@ class QueryLogState {
   /// [arn] The Amazon Resource Name (ARN) of the Query Logging Config.
   /// [cloudwatchLogGroupArn] CloudWatch log group ARN to send query logs.
   /// [zoneId] Route53 hosted zone ID to enable query logs.
-  QueryLogState({
-    this.arn,
-    this.cloudwatchLogGroupArn,
-    this.zoneId,
-  });
+  QueryLogState({this.arn, this.cloudwatchLogGroupArn, this.zoneId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class QueryLogState {
 
   factory QueryLogState.fromMap(Map<String, dynamic> map) {
     return QueryLogState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      cloudwatchLogGroupArn: map['cloudwatchLogGroupArn'] == null ? null : ((map['cloudwatchLogGroupArn'] as String).input()).input(),
-      zoneId: map['zoneId'] == null ? null : ((map['zoneId'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloudwatchLogGroupArn: (() {
+        final guardedValue = map['cloudwatchLogGroupArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

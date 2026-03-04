@@ -3,16 +3,15 @@ enum DimensionOperator {
   valueInclude("Include"),
   valueExclude("Exclude");
 
-  const DimensionOperator(this.value);
-  final String value;
+  const DimensionOperator(this.wireValue);
+  final String wireValue;
 
   static DimensionOperator fromValue(String value) {
     for (final item in DimensionOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DimensionOperator value: $value');
   }
 }
-

@@ -9,16 +9,19 @@ enum AppEngineHttpRequestHttpMethodCloudtasksV2beta2 {
   patch("PATCH"),
   options("OPTIONS");
 
-  const AppEngineHttpRequestHttpMethodCloudtasksV2beta2(this.value);
-  final String value;
+  const AppEngineHttpRequestHttpMethodCloudtasksV2beta2(this.wireValue);
+  final String wireValue;
 
-  static AppEngineHttpRequestHttpMethodCloudtasksV2beta2 fromValue(String value) {
+  static AppEngineHttpRequestHttpMethodCloudtasksV2beta2 fromValue(
+    String value,
+  ) {
     for (final item in AppEngineHttpRequestHttpMethodCloudtasksV2beta2.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AppEngineHttpRequestHttpMethodCloudtasksV2beta2 value: $value');
+    throw ArgumentError(
+      'Unknown AppEngineHttpRequestHttpMethodCloudtasksV2beta2 value: $value',
+    );
   }
 }
-

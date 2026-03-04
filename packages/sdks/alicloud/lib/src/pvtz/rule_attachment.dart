@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_attachment_args.dart';
 import 'rule_attachment_state.dart';
-import 'rule_attachment_vpc.dart';
 
 /// Provides a Private Zone Rule Attachment resource.
 ///
 /// For information about Private Zone Rule Attachment and how to use it, see [What is Rule Attachment](https://www.alibabacloud.com/help/en/doc-detail/177601.htm).
 ///
-/// > **NOTE:** Available since v1.143.0.
+/// &gt; **NOTE:** Available since v1.143.0.
 ///
 /// ## Example Usage
 ///
@@ -572,8 +571,9 @@ import 'rule_attachment_vpc.dart';
 class RuleAttachment extends pulumi.CustomResource {
   /// The ID of the rule.
   late final pulumi.Output<String> ruleId;
+
   /// The List of the VPC. See `vpcs` below.
-  late final pulumi.Output<List<RuleAttachmentVpc>> vpcs;
+  late final pulumi.Output<List<Map<String, dynamic>>> vpcs;
 
   /// Creates a new [RuleAttachment].
   /// [name] The Pulumi resource name.
@@ -584,13 +584,13 @@ class RuleAttachment extends pulumi.CustomResource {
     RuleAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pvtz/ruleAttachment:RuleAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ruleId = registerOutput<String>('ruleId');
-    this.vpcs = registerOutput<List<RuleAttachmentVpc>>('vpcs');
+         'alicloud:pvtz/ruleAttachment:RuleAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ruleId = registerOutput<String>('ruleId');
+    vpcs = registerOutput<List<Map<String, dynamic>>>('vpcs');
   }
 
   /// Gets an existing [RuleAttachment] resource's state with the given [name] and [id].
@@ -611,12 +611,12 @@ class RuleAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pvtz/ruleAttachment:RuleAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ruleId = registerOutput<String>('ruleId');
-    this.vpcs = registerOutput<List<RuleAttachmentVpc>>('vpcs');
+         'alicloud:pvtz/ruleAttachment:RuleAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ruleId = registerOutput<String>('ruleId');
+    vpcs = registerOutput<List<Map<String, dynamic>>>('vpcs');
   }
 }

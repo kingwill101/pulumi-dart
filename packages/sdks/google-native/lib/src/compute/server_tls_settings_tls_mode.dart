@@ -4,16 +4,15 @@ enum ServerTlsSettingsTlsMode {
   mutual("MUTUAL"),
   simple("SIMPLE");
 
-  const ServerTlsSettingsTlsMode(this.value);
-  final String value;
+  const ServerTlsSettingsTlsMode(this.wireValue);
+  final String wireValue;
 
   static ServerTlsSettingsTlsMode fromValue(String value) {
     for (final item in ServerTlsSettingsTlsMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServerTlsSettingsTlsMode value: $value');
   }
 }
-

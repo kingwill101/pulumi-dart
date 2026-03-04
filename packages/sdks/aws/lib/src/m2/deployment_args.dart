@@ -10,13 +10,17 @@ import 'deployment_timeouts.dart';
 class DeploymentArgs {
   /// Application to deploy.
   final pulumi.Input<String> applicationId;
+
   /// Version to application to deploy
   final pulumi.Input<int> applicationVersion;
+
   /// Environment to deploy application to.
   final pulumi.Input<String> environmentId;
   final pulumi.Input<bool>? forceStop;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Start the application once deployed.
   final pulumi.Input<bool> start;
   final pulumi.Input<DeploymentTimeouts>? timeouts;
@@ -47,20 +51,41 @@ class DeploymentArgs {
       'forceStop': ?forceStop,
       'region': ?region,
       'start': start,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<DeploymentTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      applicationId: (map['applicationId'] as String).input(),
-      applicationVersion: (map['applicationVersion'] as int).input(),
-      environmentId: (map['environmentId'] as String).input(),
-      forceStop: map['forceStop'] == null ? null : ((map['forceStop'] as bool).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      start: (map['start'] as bool).input(),
-      timeouts: map['timeouts'] == null ? null : ((DeploymentTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
+      applicationVersion: pulumi.Input.fromValue(
+        map['applicationVersion'] as int,
+      ),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      forceStop: (() {
+        final guardedValue = map['forceStop'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      start: pulumi.Input.fromValue(map['start'] as bool),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_mhub;
-
 export 'mhub/app.dart';
 export 'mhub/app_args.dart';
 export 'mhub/app_state.dart';

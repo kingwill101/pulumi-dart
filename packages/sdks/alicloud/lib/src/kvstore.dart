@@ -1,5 +1,3 @@
-library module_kvstore;
-
 export 'kvstore/account.dart';
 export 'kvstore/account_args.dart';
 export 'kvstore/account_state.dart';

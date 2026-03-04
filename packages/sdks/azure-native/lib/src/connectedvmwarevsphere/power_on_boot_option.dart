@@ -3,16 +3,15 @@ enum PowerOnBootOption {
   valueEnabled("enabled"),
   valueDisabled("disabled");
 
-  const PowerOnBootOption(this.value);
-  final String value;
+  const PowerOnBootOption(this.wireValue);
+  final String wireValue;
 
   static PowerOnBootOption fromValue(String value) {
     for (final item in PowerOnBootOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PowerOnBootOption value: $value');
   }
 }
-

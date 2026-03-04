@@ -16,14 +16,23 @@ class EndpointMatcherResponseNetworkservicesV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadataLabelMatcher': pulumi.Input.mapInputValue<MetadataLabelMatcherResponse, Map<String, dynamic>>(metadataLabelMatcher, (value) => value.toMap()),
+      'metadataLabelMatcher':
+          pulumi.Input.mapInputValue<
+            MetadataLabelMatcherResponse,
+            Map<String, dynamic>
+          >(metadataLabelMatcher, (value) => value.toMap()),
     };
   }
 
-  factory EndpointMatcherResponseNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
+  factory EndpointMatcherResponseNetworkservicesV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EndpointMatcherResponseNetworkservicesV1beta1(
-      metadataLabelMatcher: (MetadataLabelMatcherResponse.fromMap((map['metadataLabelMatcher'] as Map).cast<String, dynamic>())).input(),
+      metadataLabelMatcher: pulumi.Input.fromValue(
+        MetadataLabelMatcherResponse.fromMap(
+          (map['metadataLabelMatcher']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

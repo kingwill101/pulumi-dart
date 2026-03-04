@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'machine_run_command_args.dart';
 import 'machine_run_command_instance_view_response.dart';
 import 'machine_run_command_script_source_response.dart';
-import 'run_command_input_parameter_response.dart';
 import 'run_command_managed_identity_response.dart';
 import 'system_data_response.dart';
 
@@ -258,40 +257,60 @@ import 'system_data_response.dart';
 class MachineRunCommand extends pulumi.CustomResource {
   /// Optional. If set to true, provisioning will complete as soon as script starts and will not wait for script to complete.
   late final pulumi.Output<bool?> asyncExecution;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
-  late final pulumi.Output<RunCommandManagedIdentityResponse?> errorBlobManagedIdentity;
+  late final pulumi.Output<RunCommandManagedIdentityResponse?>
+  errorBlobManagedIdentity;
+
   /// Specifies the Azure storage blob where script error stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer errorBlobManagedIdentity parameter.
   late final pulumi.Output<String?> errorBlobUri;
+
   /// The machine run command instance view.
   late final pulumi.Output<MachineRunCommandInstanceViewResponse> instanceView;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
-  late final pulumi.Output<RunCommandManagedIdentityResponse?> outputBlobManagedIdentity;
+  late final pulumi.Output<RunCommandManagedIdentityResponse?>
+  outputBlobManagedIdentity;
+
   /// Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter.
   late final pulumi.Output<String?> outputBlobUri;
+
   /// The parameters used by the script.
-  late final pulumi.Output<List<RunCommandInputParameterResponse>?> parameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+
   /// The parameters used by the script.
-  late final pulumi.Output<List<RunCommandInputParameterResponse>?> protectedParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> protectedParameters;
+
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// Specifies the user account password on the machine when executing the run command.
   late final pulumi.Output<String?> runAsPassword;
+
   /// Specifies the user account on the machine when executing the run command.
   late final pulumi.Output<String?> runAsUser;
+
   /// The source of the run command script.
   late final pulumi.Output<MachineRunCommandScriptSourceResponse?> source;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The timeout in seconds to execute the run command.
   late final pulumi.Output<int?> timeoutInSeconds;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -304,29 +323,39 @@ class MachineRunCommand extends pulumi.CustomResource {
     MachineRunCommandArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:hybridcompute:MachineRunCommand',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.asyncExecution = registerOutput<bool?>('asyncExecution');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.errorBlobManagedIdentity = registerOutput<RunCommandManagedIdentityResponse?>('errorBlobManagedIdentity');
-    this.errorBlobUri = registerOutput<String?>('errorBlobUri');
-    this.instanceView = registerOutput<MachineRunCommandInstanceViewResponse>('instanceView');
-    this.location = registerOutput<String>('location');
+         'azure-native:hybridcompute:MachineRunCommand',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    asyncExecution = registerOutput<bool?>('asyncExecution');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    errorBlobManagedIdentity =
+        registerOutput<RunCommandManagedIdentityResponse?>(
+          'errorBlobManagedIdentity',
+        );
+    errorBlobUri = registerOutput<String?>('errorBlobUri');
+    instanceView = registerOutput<MachineRunCommandInstanceViewResponse>(
+      'instanceView',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.outputBlobManagedIdentity = registerOutput<RunCommandManagedIdentityResponse?>('outputBlobManagedIdentity');
-    this.outputBlobUri = registerOutput<String?>('outputBlobUri');
-    this.parameters = registerOutput<List<RunCommandInputParameterResponse>?>('parameters');
-    this.protectedParameters = registerOutput<List<RunCommandInputParameterResponse>?>('protectedParameters');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.runAsPassword = registerOutput<String?>('runAsPassword');
-    this.runAsUser = registerOutput<String?>('runAsUser');
-    this.source = registerOutput<MachineRunCommandScriptSourceResponse?>('source');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
-    this.type = registerOutput<String>('type');
+    outputBlobManagedIdentity =
+        registerOutput<RunCommandManagedIdentityResponse?>(
+          'outputBlobManagedIdentity',
+        );
+    outputBlobUri = registerOutput<String?>('outputBlobUri');
+    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    protectedParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'protectedParameters',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    runAsPassword = registerOutput<String?>('runAsPassword');
+    runAsUser = registerOutput<String?>('runAsUser');
+    source = registerOutput<MachineRunCommandScriptSourceResponse?>('source');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
+    type = registerOutput<String>('type');
   }
 }

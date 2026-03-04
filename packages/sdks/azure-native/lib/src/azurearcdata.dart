@@ -1,5 +1,3 @@
-library module_azurearcdata;
-
 export 'azurearcdata/account_provisioning_mode.dart';
 export 'azurearcdata/activation_state.dart';
 export 'azurearcdata/active_directory_connector.dart';

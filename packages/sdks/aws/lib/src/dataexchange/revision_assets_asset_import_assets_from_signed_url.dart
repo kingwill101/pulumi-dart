@@ -8,20 +8,17 @@ class RevisionAssetsAssetImportAssetsFromSignedUrl {
 
   /// Creates a new [RevisionAssetsAssetImportAssetsFromSignedUrl].
   /// [filename] The name of the file to import.
-  RevisionAssetsAssetImportAssetsFromSignedUrl({
-    required this.filename,
-  });
+  RevisionAssetsAssetImportAssetsFromSignedUrl({required this.filename});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filename': filename,
-    };
+    return <String, dynamic>{'filename': filename};
   }
 
-  factory RevisionAssetsAssetImportAssetsFromSignedUrl.fromMap(Map<String, dynamic> map) {
+  factory RevisionAssetsAssetImportAssetsFromSignedUrl.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RevisionAssetsAssetImportAssetsFromSignedUrl(
-      filename: (map['filename'] as String).input(),
+      filename: pulumi.Input.fromValue(map['filename'] as String),
     );
   }
 }
-

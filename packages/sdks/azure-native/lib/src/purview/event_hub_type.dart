@@ -3,16 +3,15 @@ enum EventHubType {
   valueNotification("Notification"),
   valueHook("Hook");
 
-  const EventHubType(this.value);
-  final String value;
+  const EventHubType(this.wireValue);
+  final String wireValue;
 
   static EventHubType fromValue(String value) {
     for (final item in EventHubType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EventHubType value: $value');
   }
 }
-

@@ -22,7 +22,7 @@ import 'get_users_result.dart';
 
 /// This data source provides an alias for the Alibaba Cloud account.
 ///
-/// > **NOTE:** Available since v1.0.0+.
+/// &gt; **NOTE:** Available since v1.0.0+.
 ///
 /// ## Example Usage
 ///
@@ -154,7 +154,7 @@ Future<GetAccountAliasesResult> getAccountAliases(
 
 /// This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available since v1.0.0+.
+/// &gt; **NOTE:** Available since v1.0.0+.
 ///
 /// ## Example Usage
 ///
@@ -283,7 +283,7 @@ Future<GetGroupsResult> getGroups(
 
 /// This data source provides the RAM Policies of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.0.0.
+/// &gt; **NOTE:** Available since v1.0.0.
 ///
 /// ## Example Usage
 ///
@@ -596,7 +596,7 @@ Future<GetPoliciesResult> getPolicies(
 
 /// This data source Generates a RAM policy document of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.184.0.
+/// &gt; **NOTE:** Available since v1.184.0.
 ///
 /// ## Example Usage
 ///
@@ -1948,7 +1948,7 @@ Future<GetPolicyDocumentResult> getPolicyDocument(
 
 /// This data source provides Ram Role Policy Attachment available to the user.[What is Role Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToRole)
 ///
-/// > **NOTE:** Available since v1.248.0.
+/// &gt; **NOTE:** Available since v1.248.0.
 ///
 /// ## Example Usage
 ///
@@ -2423,7 +2423,7 @@ Future<GetRolePolicyAttachmentsResult> getRolePolicyAttachments(
 
 /// This data source provides the RAM Roles of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.0.0.
+/// &gt; **NOTE:** Available since v1.0.0.
 ///
 /// ## Example Usage
 ///
@@ -2760,7 +2760,7 @@ Future<GetRolesResult> getRoles(
 
 /// This data source provides the Ram Saml Providers of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.114.0+.
+/// &gt; **NOTE:** Available since v1.114.0+.
 ///
 /// ## Example Usage
 ///
@@ -2891,7 +2891,7 @@ Future<GetSamlProvidersResult> getSamlProviders(
 
 /// This data source provides Ram System Policy available to the user.[What is System Policy](https://next.api.alibabacloud.com/document/Ram/2015-05-01/GetPolicy)
 ///
-/// > **NOTE:** Available since v1.245.0.
+/// &gt; **NOTE:** Available since v1.245.0.
 ///
 /// ## Example Usage
 ///
@@ -3028,7 +3028,7 @@ Future<GetSystemPolicysResult> getSystemPolicys(
 
 /// This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.
 ///
-/// > **NOTE:** Available since v1.0.0+.
+/// &gt; **NOTE:** Available since v1.0.0+.
 ///
 /// ## Example Usage
 ///

@@ -4,8 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentLoggingConfigurationWebserverLogs {
   final pulumi.Input<String>? cloudWatchLogGroupArn;
+
   /// Enabling or disabling the collection of logs
   final pulumi.Input<bool>? enabled;
+
   /// Logging level. Valid values: `CRITICAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG`. Will be `INFO` by default.
   final pulumi.Input<String>? logLevel;
 
@@ -27,12 +29,25 @@ class EnvironmentLoggingConfigurationWebserverLogs {
     };
   }
 
-  factory EnvironmentLoggingConfigurationWebserverLogs.fromMap(Map<String, dynamic> map) {
+  factory EnvironmentLoggingConfigurationWebserverLogs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnvironmentLoggingConfigurationWebserverLogs(
-      cloudWatchLogGroupArn: map['cloudWatchLogGroupArn'] == null ? null : ((map['cloudWatchLogGroupArn'] as String).input()).input(),
-      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
-      logLevel: map['logLevel'] == null ? null : ((map['logLevel'] as String).input()).input(),
+      cloudWatchLogGroupArn: (() {
+        final guardedValue = map['cloudWatchLogGroupArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      logLevel: (() {
+        final guardedValue = map['logLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

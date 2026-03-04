@@ -7,35 +7,47 @@ import 'elastic_san_sku.dart';
 class ElasticSanState {
   /// Specifies the base size of the Elastic SAN resource in TiB. Possible values are between `1` and `100`.
   ///
-  /// > **Note:** When updating `base_size_in_tib`, the new value should be greater than the existing one.
+  /// &gt; **Note:** When updating `base_size_in_tib`, the new value should be greater than the existing one.
   final pulumi.Input<int>? baseSizeInTib;
+
   /// Specifies the extended size of the Elastic SAN resource in TiB. Possible values are between `1` and `100`.
   ///
-  /// > **Note:** `extended_size_in_tib` cannot be removed and when updating, the new value should be greater than the existing one.
+  /// &gt; **Note:** `extended_size_in_tib` cannot be removed and when updating, the new value should be greater than the existing one.
   final pulumi.Input<int>? extendedSizeInTib;
+
   /// The Azure Region where the Elastic SAN resource should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of this Elastic SAN resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the name of the Resource Group within which this Elastic SAN resource should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A `sku` block as defined below.
   final pulumi.Input<ElasticSanSku>? sku;
+
   /// A mapping of tags which should be assigned to the Elastic SAN resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Total Provisioned IOps of the Elastic SAN resource.
   final pulumi.Input<int>? totalIops;
+
   /// Total Provisioned MBps Elastic SAN resource.
   final pulumi.Input<int>? totalMbps;
+
   /// Total size of the Elastic SAN resource in TB.
   final pulumi.Input<int>? totalSizeInTib;
+
   /// Total size of the provisioned Volumes in GiB.
   final pulumi.Input<int>? totalVolumeSizeInGib;
+
   /// Total number of volume groups in this Elastic SAN resource.
   final pulumi.Input<int>? volumeGroupCount;
+
   /// Logical zone for the Elastic SAN resource. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** `zones` cannot be specified if `sku.name` is set to `Premium_ZRS`.
+  /// &gt; **Note:** `zones` cannot be specified if `sku.name` is set to `Premium_ZRS`.
   final pulumi.Input<List<String>>? zones;
 
   /// Creates a new [ElasticSanState].
@@ -75,7 +87,11 @@ class ElasticSanState {
       'location': ?location,
       'name': ?name,
       'resourceGroupName': ?resourceGroupName,
-      'sku': ?pulumi.Input.mapOptionalInputValue<ElasticSanSku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku':
+          ?pulumi.Input.mapOptionalInputValue<
+            ElasticSanSku,
+            Map<String, dynamic>
+          >(sku, (value) => value.toMap()),
       'tags': ?tags,
       'totalIops': ?totalIops,
       'totalMbps': ?totalMbps,
@@ -88,20 +104,75 @@ class ElasticSanState {
 
   factory ElasticSanState.fromMap(Map<String, dynamic> map) {
     return ElasticSanState(
-      baseSizeInTib: map['baseSizeInTib'] == null ? null : (map['baseSizeInTib']! as int).input(),
-      extendedSizeInTib: map['extendedSizeInTib'] == null ? null : (map['extendedSizeInTib']! as int).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      sku: map['sku'] == null ? null : (ElasticSanSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      totalIops: map['totalIops'] == null ? null : (map['totalIops']! as int).input(),
-      totalMbps: map['totalMbps'] == null ? null : (map['totalMbps']! as int).input(),
-      totalSizeInTib: map['totalSizeInTib'] == null ? null : (map['totalSizeInTib']! as int).input(),
-      totalVolumeSizeInGib: map['totalVolumeSizeInGib'] == null ? null : (map['totalVolumeSizeInGib']! as int).input(),
-      volumeGroupCount: map['volumeGroupCount'] == null ? null : (map['volumeGroupCount']! as int).input(),
-      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
+      baseSizeInTib: (() {
+        final guardedValue = map['baseSizeInTib'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      extendedSizeInTib: (() {
+        final guardedValue = map['extendedSizeInTib'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ElasticSanSku.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      totalIops: (() {
+        final guardedValue = map['totalIops'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      totalMbps: (() {
+        final guardedValue = map['totalMbps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      totalSizeInTib: (() {
+        final guardedValue = map['totalSizeInTib'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      totalVolumeSizeInGib: (() {
+        final guardedValue = map['totalVolumeSizeInGib'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      volumeGroupCount: (() {
+        final guardedValue = map['volumeGroupCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

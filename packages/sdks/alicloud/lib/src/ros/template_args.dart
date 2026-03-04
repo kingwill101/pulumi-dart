@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TemplateArgs {
   /// The description of the template. The description can be up to 256 characters in length.
   final pulumi.Input<String>? description;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You must specify one of the TemplateBody and TemplateURL parameters, but you cannot specify both of them.
   final pulumi.Input<String>? templateBody;
+
   /// The name of the template. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
   final pulumi.Input<String> templateName;
+
   /// The template url.
   final pulumi.Input<String>? templateUrl;
 
@@ -44,12 +48,29 @@ class TemplateArgs {
 
   factory TemplateArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      templateBody: map['templateBody'] == null ? null : (map['templateBody']! as String).input(),
-      templateName: (map['templateName'] as String).input(),
-      templateUrl: map['templateUrl'] == null ? null : (map['templateUrl']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      templateBody: (() {
+        final guardedValue = map['templateBody'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      templateName: pulumi.Input.fromValue(map['templateName'] as String),
+      templateUrl: (() {
+        final guardedValue = map['templateUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

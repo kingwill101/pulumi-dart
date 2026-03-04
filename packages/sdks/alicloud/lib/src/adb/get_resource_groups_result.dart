@@ -7,10 +7,13 @@ import 'get_resource_groups_group.dart';
 class GetResourceGroupsResult {
   /// DB cluster id.
   final String dbClusterId;
+
   /// The name of the resource pool.
   final String? groupName;
+
   /// A list of Resource Group Entries. Each element contains the following attributes:
   final List<GetResourceGroupsGroup> groups;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -36,7 +39,11 @@ class GetResourceGroupsResult {
     return <String, dynamic>{
       'dbClusterId': dbClusterId,
       'groupName': ?groupName,
-      'groups': pulumi.Input.encodeList<GetResourceGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'groups':
+          pulumi.Input.encodeList<GetResourceGroupsGroup, Map<String, dynamic>>(
+            groups,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
@@ -46,12 +53,24 @@ class GetResourceGroupsResult {
   factory GetResourceGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetResourceGroupsResult(
       dbClusterId: map['dbClusterId'] as String,
-      groupName: map['groupName'] == null ? null : map['groupName']! as String,
-      groups: pulumi.Input.decodeList<GetResourceGroupsGroup>(map['groups'], (value) => GetResourceGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      groups: pulumi.Input.decodeList<GetResourceGroupsGroup>(
+        map['groups']!,
+        (value) => GetResourceGroupsGroup.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

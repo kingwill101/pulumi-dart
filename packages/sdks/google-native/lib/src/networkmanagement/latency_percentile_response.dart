@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LatencyPercentileResponse {
   /// percent-th percentile of latency observed, in microseconds. Fraction of percent/100 of samples have latency lower or equal to the value of this field.
   final pulumi.Input<String> latencyMicros;
+
   /// Percentage of samples this data point applies to.
   final pulumi.Input<int> percent;
 
@@ -26,9 +27,8 @@ class LatencyPercentileResponse {
 
   factory LatencyPercentileResponse.fromMap(Map<String, dynamic> map) {
     return LatencyPercentileResponse(
-      latencyMicros: (map['latencyMicros'] as String).input(),
-      percent: (map['percent'] as int).input(),
+      latencyMicros: pulumi.Input.fromValue(map['latencyMicros'] as String),
+      percent: pulumi.Input.fromValue(map['percent'] as int),
     );
   }
 }
-

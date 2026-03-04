@@ -8,20 +8,17 @@ class DataAccessOptionsResponseGameservicesV1beta {
 
   /// Creates a new [DataAccessOptionsResponseGameservicesV1beta].
   /// [logMode] Required.
-  DataAccessOptionsResponseGameservicesV1beta({
-    required this.logMode,
-  });
+  DataAccessOptionsResponseGameservicesV1beta({required this.logMode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'logMode': logMode,
-    };
+    return <String, dynamic>{'logMode': logMode};
   }
 
-  factory DataAccessOptionsResponseGameservicesV1beta.fromMap(Map<String, dynamic> map) {
+  factory DataAccessOptionsResponseGameservicesV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataAccessOptionsResponseGameservicesV1beta(
-      logMode: (map['logMode'] as String).input(),
+      logMode: pulumi.Input.fromValue(map['logMode'] as String),
     );
   }
 }
-

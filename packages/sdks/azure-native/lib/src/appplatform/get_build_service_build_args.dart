@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBuildServiceBuildArgs {
   /// The name of the build resource.
   final pulumi.Input<String> buildName;
+
   /// The name of the build service resource.
   final pulumi.Input<String> buildServiceName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -39,11 +42,14 @@ class GetBuildServiceBuildArgs {
 
   factory GetBuildServiceBuildArgs.fromMap(Map<String, dynamic> map) {
     return GetBuildServiceBuildArgs(
-      buildName: (map['buildName'] as String).input(),
-      buildServiceName: (map['buildServiceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      buildName: pulumi.Input.fromValue(map['buildName'] as String),
+      buildServiceName: pulumi.Input.fromValue(
+        map['buildServiceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

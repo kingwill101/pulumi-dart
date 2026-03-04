@@ -8,20 +8,15 @@ class ScheduleTargetKinesisParameters {
 
   /// Creates a new [ScheduleTargetKinesisParameters].
   /// [partitionKey] Specifies the shard to which EventBridge Scheduler sends the event. Up to 256 characters.
-  ScheduleTargetKinesisParameters({
-    required this.partitionKey,
-  });
+  ScheduleTargetKinesisParameters({required this.partitionKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'partitionKey': partitionKey,
-    };
+    return <String, dynamic>{'partitionKey': partitionKey};
   }
 
   factory ScheduleTargetKinesisParameters.fromMap(Map<String, dynamic> map) {
     return ScheduleTargetKinesisParameters(
-      partitionKey: (map['partitionKey'] as String).input(),
+      partitionKey: pulumi.Input.fromValue(map['partitionKey'] as String),
     );
   }
 }
-

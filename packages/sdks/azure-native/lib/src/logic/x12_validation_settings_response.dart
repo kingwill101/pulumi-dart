@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class X12ValidationSettingsResponse {
   /// The value indicating whether to allow leading and trailing spaces and zeroes.
   final pulumi.Input<bool> allowLeadingAndTrailingSpacesAndZeroes;
+
   /// The value indicating whether to check for duplicate group control number.
   final pulumi.Input<bool> checkDuplicateGroupControlNumber;
+
   /// The value indicating whether to check for duplicate interchange control number.
   final pulumi.Input<bool> checkDuplicateInterchangeControlNumber;
+
   /// The value indicating whether to check for duplicate transaction set control number.
   final pulumi.Input<bool> checkDuplicateTransactionSetControlNumber;
+
   /// The validity period of interchange control number.
   final pulumi.Input<int> interchangeControlNumberValidityDays;
+
   /// The trailing separator policy.
   final pulumi.Input<String> trailingSeparatorPolicy;
+
   /// The value indicating whether to trim leading and trailing spaces and zeroes.
   final pulumi.Input<bool> trimLeadingAndTrailingSpacesAndZeroes;
+
   /// The value indicating whether to validate character set in the message.
   final pulumi.Input<bool> validateCharacterSet;
+
   /// The value indicating whether to Whether to validate EDI types.
   final pulumi.Input<bool> validateEDITypes;
+
   /// The value indicating whether to Whether to validate XSD types.
   final pulumi.Input<bool> validateXSDTypes;
 
@@ -51,13 +60,18 @@ class X12ValidationSettingsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowLeadingAndTrailingSpacesAndZeroes': allowLeadingAndTrailingSpacesAndZeroes,
+      'allowLeadingAndTrailingSpacesAndZeroes':
+          allowLeadingAndTrailingSpacesAndZeroes,
       'checkDuplicateGroupControlNumber': checkDuplicateGroupControlNumber,
-      'checkDuplicateInterchangeControlNumber': checkDuplicateInterchangeControlNumber,
-      'checkDuplicateTransactionSetControlNumber': checkDuplicateTransactionSetControlNumber,
-      'interchangeControlNumberValidityDays': interchangeControlNumberValidityDays,
+      'checkDuplicateInterchangeControlNumber':
+          checkDuplicateInterchangeControlNumber,
+      'checkDuplicateTransactionSetControlNumber':
+          checkDuplicateTransactionSetControlNumber,
+      'interchangeControlNumberValidityDays':
+          interchangeControlNumberValidityDays,
       'trailingSeparatorPolicy': trailingSeparatorPolicy,
-      'trimLeadingAndTrailingSpacesAndZeroes': trimLeadingAndTrailingSpacesAndZeroes,
+      'trimLeadingAndTrailingSpacesAndZeroes':
+          trimLeadingAndTrailingSpacesAndZeroes,
       'validateCharacterSet': validateCharacterSet,
       'validateEDITypes': validateEDITypes,
       'validateXSDTypes': validateXSDTypes,
@@ -66,17 +80,32 @@ class X12ValidationSettingsResponse {
 
   factory X12ValidationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return X12ValidationSettingsResponse(
-      allowLeadingAndTrailingSpacesAndZeroes: (map['allowLeadingAndTrailingSpacesAndZeroes'] as bool).input(),
-      checkDuplicateGroupControlNumber: (map['checkDuplicateGroupControlNumber'] as bool).input(),
-      checkDuplicateInterchangeControlNumber: (map['checkDuplicateInterchangeControlNumber'] as bool).input(),
-      checkDuplicateTransactionSetControlNumber: (map['checkDuplicateTransactionSetControlNumber'] as bool).input(),
-      interchangeControlNumberValidityDays: (map['interchangeControlNumberValidityDays'] as int).input(),
-      trailingSeparatorPolicy: (map['trailingSeparatorPolicy'] as String).input(),
-      trimLeadingAndTrailingSpacesAndZeroes: (map['trimLeadingAndTrailingSpacesAndZeroes'] as bool).input(),
-      validateCharacterSet: (map['validateCharacterSet'] as bool).input(),
-      validateEDITypes: (map['validateEDITypes'] as bool).input(),
-      validateXSDTypes: (map['validateXSDTypes'] as bool).input(),
+      allowLeadingAndTrailingSpacesAndZeroes: pulumi.Input.fromValue(
+        map['allowLeadingAndTrailingSpacesAndZeroes'] as bool,
+      ),
+      checkDuplicateGroupControlNumber: pulumi.Input.fromValue(
+        map['checkDuplicateGroupControlNumber'] as bool,
+      ),
+      checkDuplicateInterchangeControlNumber: pulumi.Input.fromValue(
+        map['checkDuplicateInterchangeControlNumber'] as bool,
+      ),
+      checkDuplicateTransactionSetControlNumber: pulumi.Input.fromValue(
+        map['checkDuplicateTransactionSetControlNumber'] as bool,
+      ),
+      interchangeControlNumberValidityDays: pulumi.Input.fromValue(
+        map['interchangeControlNumberValidityDays'] as int,
+      ),
+      trailingSeparatorPolicy: pulumi.Input.fromValue(
+        map['trailingSeparatorPolicy'] as String,
+      ),
+      trimLeadingAndTrailingSpacesAndZeroes: pulumi.Input.fromValue(
+        map['trimLeadingAndTrailingSpacesAndZeroes'] as bool,
+      ),
+      validateCharacterSet: pulumi.Input.fromValue(
+        map['validateCharacterSet'] as bool,
+      ),
+      validateEDITypes: pulumi.Input.fromValue(map['validateEDITypes'] as bool),
+      validateXSDTypes: pulumi.Input.fromValue(map['validateXSDTypes'] as bool),
     );
   }
 }
-

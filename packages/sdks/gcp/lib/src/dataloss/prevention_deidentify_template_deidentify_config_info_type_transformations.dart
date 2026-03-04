@@ -6,24 +6,53 @@ import 'prevention_deidentify_template_deidentify_config_info_type_transformatio
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
   /// Transformation for each infoType. Cannot specify more than one for a given infoType.
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation>> transformations;
+  final pulumi.Input<
+    List<
+      PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation
+    >
+  >
+  transformations_;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations].
-  /// [transformations] Transformation for each infoType. Cannot specify more than one for a given infoType.
+  /// [transformations_] Transformation for each infoType. Cannot specify more than one for a given infoType.
   PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations({
-    required this.transformations,
+    required this.transformations_,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'transformations': pulumi.Input.mapInputValue<List<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation>, List<Map<String, dynamic>>>(transformations, (value) => pulumi.Input.encodeList<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'transformations':
+          pulumi.Input.mapInputValue<
+            List<
+              PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation
+            >,
+            List<Map<String, dynamic>>
+          >(
+            transformations_,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations.fromMap(Map<String, dynamic> map) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations(
-      transformations: (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation>(map['transformations'], (value) => PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transformations_: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation
+        >(
+          map['transformations']!,
+          (value) =>
+              PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
     );
   }
 }
-

@@ -265,16 +265,22 @@ import 'frontdoor_origin_group_state.dart';
 class FrontdoorOriginGroup extends pulumi.CustomResource {
   /// The ID of the Front Door Profile within which this Front Door Origin Group should exist. Changing this forces a new Front Door Origin Group to be created.
   late final pulumi.Output<String> cdnFrontdoorProfileId;
+
   /// A `health_probe` block as defined below.
   late final pulumi.Output<FrontdoorOriginGroupHealthProbe?> healthProbe;
+
   /// A `load_balancing` block as defined below.
   late final pulumi.Output<FrontdoorOriginGroupLoadBalancing> loadBalancing;
+
   /// The name which should be used for this Front Door Origin Group. Changing this forces a new Front Door Origin Group to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the amount of time which should elapse before shifting traffic to another endpoint when a healthy endpoint becomes unhealthy or a new endpoint is added. Possible values are between `0` and `50` minutes (inclusive). Default is `10` minutes.
   ///
-  /// > **Note:** This property is currently not used, but will be in the near future.
-  late final pulumi.Output<int?> restoreTrafficTimeToHealedOrNewEndpointInMinutes;
+  /// &gt; **Note:** This property is currently not used, but will be in the near future.
+  late final pulumi.Output<int?>
+  restoreTrafficTimeToHealedOrNewEndpointInMinutes;
+
   /// Specifies whether session affinity should be enabled on this host. Defaults to `true`.
   late final pulumi.Output<bool?> sessionAffinityEnabled;
 
@@ -287,17 +293,23 @@ class FrontdoorOriginGroup extends pulumi.CustomResource {
     FrontdoorOriginGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorOriginGroup:FrontdoorOriginGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
-    this.healthProbe = registerOutput<FrontdoorOriginGroupHealthProbe?>('healthProbe');
-    this.loadBalancing = registerOutput<FrontdoorOriginGroupLoadBalancing>('loadBalancing');
+         'azure:cdn/frontdoorOriginGroup:FrontdoorOriginGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
+    healthProbe = registerOutput<FrontdoorOriginGroupHealthProbe?>(
+      'healthProbe',
+    );
+    loadBalancing = registerOutput<FrontdoorOriginGroupLoadBalancing>(
+      'loadBalancing',
+    );
     this.name = registerOutput<String>('name');
-    this.restoreTrafficTimeToHealedOrNewEndpointInMinutes = registerOutput<int?>('restoreTrafficTimeToHealedOrNewEndpointInMinutes');
-    this.sessionAffinityEnabled = registerOutput<bool?>('sessionAffinityEnabled');
+    restoreTrafficTimeToHealedOrNewEndpointInMinutes = registerOutput<int?>(
+      'restoreTrafficTimeToHealedOrNewEndpointInMinutes',
+    );
+    sessionAffinityEnabled = registerOutput<bool?>('sessionAffinityEnabled');
   }
 
   /// Gets an existing [FrontdoorOriginGroup] resource's state with the given [name] and [id].
@@ -318,16 +330,22 @@ class FrontdoorOriginGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorOriginGroup:FrontdoorOriginGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
-    this.healthProbe = registerOutput<FrontdoorOriginGroupHealthProbe?>('healthProbe');
-    this.loadBalancing = registerOutput<FrontdoorOriginGroupLoadBalancing>('loadBalancing');
+         'azure:cdn/frontdoorOriginGroup:FrontdoorOriginGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
+    healthProbe = registerOutput<FrontdoorOriginGroupHealthProbe?>(
+      'healthProbe',
+    );
+    loadBalancing = registerOutput<FrontdoorOriginGroupLoadBalancing>(
+      'loadBalancing',
+    );
     this.name = registerOutput<String>('name');
-    this.restoreTrafficTimeToHealedOrNewEndpointInMinutes = registerOutput<int?>('restoreTrafficTimeToHealedOrNewEndpointInMinutes');
-    this.sessionAffinityEnabled = registerOutput<bool?>('sessionAffinityEnabled');
+    restoreTrafficTimeToHealedOrNewEndpointInMinutes = registerOutput<int?>(
+      'restoreTrafficTimeToHealedOrNewEndpointInMinutes',
+    );
+    sessionAffinityEnabled = registerOutput<bool?>('sessionAffinityEnabled');
   }
 }

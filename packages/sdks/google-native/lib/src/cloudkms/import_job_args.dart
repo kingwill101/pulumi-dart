@@ -11,11 +11,13 @@ import 'import_job_protection_level.dart';
 class ImportJobArgs {
   /// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
   final pulumi.Input<String>? importJobId;
+
   /// Immutable. The wrapping method to be used for incoming key material.
   final pulumi.Input<ImportJobImportMethod> importMethod;
   final pulumi.Input<String> keyRingId;
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
+
   /// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
   final pulumi.Input<ImportJobProtectionLevel> protectionLevel;
 
@@ -38,23 +40,45 @@ class ImportJobArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'importJobId': ?importJobId,
-      'importMethod': pulumi.Input.mapInputValue<ImportJobImportMethod, String>(importMethod, (value) => value.value),
+      'importMethod': pulumi.Input.mapInputValue<ImportJobImportMethod, String>(
+        importMethod,
+        (value) => value.wireValue,
+      ),
       'keyRingId': keyRingId,
       'location': ?location,
       'project': ?project,
-      'protectionLevel': pulumi.Input.mapInputValue<ImportJobProtectionLevel, String>(protectionLevel, (value) => value.value),
+      'protectionLevel':
+          pulumi.Input.mapInputValue<ImportJobProtectionLevel, String>(
+            protectionLevel,
+            (value) => value.wireValue,
+          ),
     };
   }
 
   factory ImportJobArgs.fromMap(Map<String, dynamic> map) {
     return ImportJobArgs(
-      importJobId: map['importJobId'] == null ? null : (map['importJobId']! as String).input(),
-      importMethod: (ImportJobImportMethod.fromValue(map['importMethod'] as String)).input(),
-      keyRingId: (map['keyRingId'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      protectionLevel: (ImportJobProtectionLevel.fromValue(map['protectionLevel'] as String)).input(),
+      importJobId: (() {
+        final guardedValue = map['importJobId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      importMethod: pulumi.Input.fromValue(
+        ImportJobImportMethod.fromValue(map['importMethod']! as String),
+      ),
+      keyRingId: pulumi.Input.fromValue(map['keyRingId'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protectionLevel: pulumi.Input.fromValue(
+        ImportJobProtectionLevel.fromValue(map['protectionLevel']! as String),
+      ),
     );
   }
 }
-

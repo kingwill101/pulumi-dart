@@ -1,5 +1,3 @@
-library module_arcmachine;
-
 export 'arcmachine/arc_machine.dart';
 export 'arcmachine/arc_machine_args.dart';
 export 'arcmachine/arc_machine_identity.dart';

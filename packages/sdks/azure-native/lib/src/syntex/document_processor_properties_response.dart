@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DocumentProcessorPropertiesResponse {
   /// The managed resource provisioning state.
   final pulumi.Input<String> provisioningState;
+
   /// The ID (GUID) of an SharePoint Online (SPO) tenant associated with this document processor resource
   final pulumi.Input<String> spoTenantId;
+
   /// The URL of an SharePoint Online (SPO) tenant associated with this document processor resource
   final pulumi.Input<String> spoTenantUrl;
 
@@ -29,12 +31,15 @@ class DocumentProcessorPropertiesResponse {
     };
   }
 
-  factory DocumentProcessorPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory DocumentProcessorPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DocumentProcessorPropertiesResponse(
-      provisioningState: (map['provisioningState'] as String).input(),
-      spoTenantId: (map['spoTenantId'] as String).input(),
-      spoTenantUrl: (map['spoTenantUrl'] as String).input(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      spoTenantId: pulumi.Input.fromValue(map['spoTenantId'] as String),
+      spoTenantUrl: pulumi.Input.fromValue(map['spoTenantUrl'] as String),
     );
   }
 }
-

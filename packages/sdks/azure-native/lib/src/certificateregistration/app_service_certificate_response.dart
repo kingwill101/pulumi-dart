@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppServiceCertificateResponse {
   /// Key Vault resource Id.
   final pulumi.Input<String>? keyVaultId;
+
   /// Key Vault secret name.
   final pulumi.Input<String>? keyVaultSecretName;
+
   /// Status of the Key Vault secret.
   final pulumi.Input<String> provisioningState;
 
@@ -31,10 +33,19 @@ class AppServiceCertificateResponse {
 
   factory AppServiceCertificateResponse.fromMap(Map<String, dynamic> map) {
     return AppServiceCertificateResponse(
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
-      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : (map['keyVaultSecretName']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
+      keyVaultId: (() {
+        final guardedValue = map['keyVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultSecretName: (() {
+        final guardedValue = map['keyVaultSecretName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
     );
   }
 }
-

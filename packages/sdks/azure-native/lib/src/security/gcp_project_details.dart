@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GcpProjectDetails {
   /// The GCP Project id
   final pulumi.Input<String>? projectId;
+
   /// The unique GCP Project number
   final pulumi.Input<String>? projectNumber;
 
   /// Creates a new [GcpProjectDetails].
   /// [projectId] The GCP Project id
   /// [projectNumber] The unique GCP Project number
-  GcpProjectDetails({
-    this.projectId,
-    this.projectNumber,
-  });
+  GcpProjectDetails({this.projectId, this.projectNumber});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class GcpProjectDetails {
 
   factory GcpProjectDetails.fromMap(Map<String, dynamic> map) {
     return GcpProjectDetails(
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
-      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber']! as String).input(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectNumber: (() {
+        final guardedValue = map['projectNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

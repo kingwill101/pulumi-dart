@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketLifecycleConfigurationRuleExpirationS3Control {
   /// Date the object is to be deleted. Should be in `YYYY-MM-DD` date format, e.g., `2020-09-30`.
   final pulumi.Input<String>? date;
+
   /// Number of days before the object is to be deleted.
   final pulumi.Input<int>? days;
+
   /// Enable to remove a delete marker with no noncurrent versions. Cannot be specified with `date` or `days`.
   final pulumi.Input<bool>? expiredObjectDeleteMarker;
 
@@ -28,12 +30,25 @@ class BucketLifecycleConfigurationRuleExpirationS3Control {
     };
   }
 
-  factory BucketLifecycleConfigurationRuleExpirationS3Control.fromMap(Map<String, dynamic> map) {
+  factory BucketLifecycleConfigurationRuleExpirationS3Control.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketLifecycleConfigurationRuleExpirationS3Control(
-      date: map['date'] == null ? null : ((map['date'] as String).input()).input(),
-      days: map['days'] == null ? null : ((map['days'] as int).input()).input(),
-      expiredObjectDeleteMarker: map['expiredObjectDeleteMarker'] == null ? null : ((map['expiredObjectDeleteMarker'] as bool).input()).input(),
+      date: (() {
+        final guardedValue = map['date'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      days: (() {
+        final guardedValue = map['days'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      expiredObjectDeleteMarker: (() {
+        final guardedValue = map['expiredObjectDeleteMarker'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

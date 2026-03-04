@@ -9,13 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessGrantsLocationArgs {
   /// The AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? accountId;
+
   /// The ARN of the IAM role that S3 Access Grants should use when fulfilling runtime access
   /// requests to the location.
   final pulumi.Input<String> iamRoleArn;
+
   /// The default S3 URI `s3://` or the URI to a custom location, a specific bucket or prefix.
   final pulumi.Input<String> locationScope;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,12 +49,25 @@ class AccessGrantsLocationArgs {
 
   factory AccessGrantsLocationArgs.fromMap(Map<String, dynamic> map) {
     return AccessGrantsLocationArgs(
-      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
-      iamRoleArn: (map['iamRoleArn'] as String).input(),
-      locationScope: (map['locationScope'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iamRoleArn: pulumi.Input.fromValue(map['iamRoleArn'] as String),
+      locationScope: pulumi.Input.fromValue(map['locationScope'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

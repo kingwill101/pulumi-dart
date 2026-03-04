@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateLocationArgs {
   /// The account in which the private location will be created.
   final pulumi.Input<String>? accountId;
+
   /// The private location description.
   final pulumi.Input<String> description;
+
   /// The name of the private location.
   final pulumi.Input<String>? name;
+
   /// The private location requires a password to edit if value is true. Defaults to `false`
   final pulumi.Input<bool>? verifiedScriptExecution;
 
@@ -39,11 +42,22 @@ class PrivateLocationArgs {
 
   factory PrivateLocationArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLocationArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      description: (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      verifiedScriptExecution: map['verifiedScriptExecution'] == null ? null : (map['verifiedScriptExecution']! as bool).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      verifiedScriptExecution: (() {
+        final guardedValue = map['verifiedScriptExecution'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -4,7 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_virtual_node_spec_logging_access_log_file_format.dart';
 
 class GetVirtualNodeSpecLoggingAccessLogFile {
-  final pulumi.Input<List<GetVirtualNodeSpecLoggingAccessLogFileFormat>> formats;
+  final pulumi.Input<List<GetVirtualNodeSpecLoggingAccessLogFileFormat>>
+  formats;
   final pulumi.Input<String> path;
 
   /// Creates a new [GetVirtualNodeSpecLoggingAccessLogFile].
@@ -17,16 +18,35 @@ class GetVirtualNodeSpecLoggingAccessLogFile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'formats': pulumi.Input.mapInputValue<List<GetVirtualNodeSpecLoggingAccessLogFileFormat>, List<Map<String, dynamic>>>(formats, (value) => pulumi.Input.encodeList<GetVirtualNodeSpecLoggingAccessLogFileFormat, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'formats':
+          pulumi.Input.mapInputValue<
+            List<GetVirtualNodeSpecLoggingAccessLogFileFormat>,
+            List<Map<String, dynamic>>
+          >(
+            formats,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetVirtualNodeSpecLoggingAccessLogFileFormat,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'path': path,
     };
   }
 
-  factory GetVirtualNodeSpecLoggingAccessLogFile.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecLoggingAccessLogFile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNodeSpecLoggingAccessLogFile(
-      formats: (pulumi.Input.decodeList<GetVirtualNodeSpecLoggingAccessLogFileFormat>(map['formats']!, (value) => GetVirtualNodeSpecLoggingAccessLogFileFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      path: (map['path'] as String).input(),
+      formats: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetVirtualNodeSpecLoggingAccessLogFileFormat>(
+          map['formats']!,
+          (value) => GetVirtualNodeSpecLoggingAccessLogFileFormat.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      path: pulumi.Input.fromValue(map['path'] as String),
     );
   }
 }
-

@@ -11,12 +11,14 @@ class DefaultVpcArgs {
   final pulumi.Input<bool>? enableDnsHostnames;
   final pulumi.Input<bool>? enableDnsSupport;
   final pulumi.Input<bool>? enableNetworkAddressUsageMetrics;
+
   /// Whether destroying the resource deletes the default VPC. Default: `false`
   final pulumi.Input<bool>? forceDestroy;
   final pulumi.Input<String>? ipv6CidrBlock;
   final pulumi.Input<String>? ipv6CidrBlockNetworkBorderGroup;
   final pulumi.Input<String>? ipv6IpamPoolId;
   final pulumi.Input<int>? ipv6NetmaskLength;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
   final pulumi.Input<String>? region;
   final pulumi.Input<Map<String, String>>? tags;
@@ -65,18 +67,63 @@ class DefaultVpcArgs {
 
   factory DefaultVpcArgs.fromMap(Map<String, dynamic> map) {
     return DefaultVpcArgs(
-      assignGeneratedIpv6CidrBlock: map['assignGeneratedIpv6CidrBlock'] == null ? null : ((map['assignGeneratedIpv6CidrBlock'] as bool).input()).input(),
-      enableDnsHostnames: map['enableDnsHostnames'] == null ? null : ((map['enableDnsHostnames'] as bool).input()).input(),
-      enableDnsSupport: map['enableDnsSupport'] == null ? null : ((map['enableDnsSupport'] as bool).input()).input(),
-      enableNetworkAddressUsageMetrics: map['enableNetworkAddressUsageMetrics'] == null ? null : ((map['enableNetworkAddressUsageMetrics'] as bool).input()).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : ((map['ipv6CidrBlock'] as String).input()).input(),
-      ipv6CidrBlockNetworkBorderGroup: map['ipv6CidrBlockNetworkBorderGroup'] == null ? null : ((map['ipv6CidrBlockNetworkBorderGroup'] as String).input()).input(),
-      ipv6IpamPoolId: map['ipv6IpamPoolId'] == null ? null : ((map['ipv6IpamPoolId'] as String).input()).input(),
-      ipv6NetmaskLength: map['ipv6NetmaskLength'] == null ? null : ((map['ipv6NetmaskLength'] as int).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      assignGeneratedIpv6CidrBlock: (() {
+        final guardedValue = map['assignGeneratedIpv6CidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableDnsHostnames: (() {
+        final guardedValue = map['enableDnsHostnames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableDnsSupport: (() {
+        final guardedValue = map['enableDnsSupport'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableNetworkAddressUsageMetrics: (() {
+        final guardedValue = map['enableNetworkAddressUsageMetrics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      forceDestroy: (() {
+        final guardedValue = map['forceDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      ipv6CidrBlock: (() {
+        final guardedValue = map['ipv6CidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6CidrBlockNetworkBorderGroup: (() {
+        final guardedValue = map['ipv6CidrBlockNetworkBorderGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6IpamPoolId: (() {
+        final guardedValue = map['ipv6IpamPoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipv6NetmaskLength: (() {
+        final guardedValue = map['ipv6NetmaskLength'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

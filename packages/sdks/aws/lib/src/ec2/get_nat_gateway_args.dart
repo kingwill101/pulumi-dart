@@ -14,17 +14,23 @@ class GetNatGatewayArgs {
   /// NAT Gateways in the current Region. The given filters must match exactly one
   /// NAT Gateway whose data will be exported as attributes.
   final pulumi.Input<List<GetNatGatewayFilter>>? filters;
+
   /// ID of the specific NAT Gateway to retrieve.
   final pulumi.Input<String>? id;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// State of the NAT Gateway (pending | failed | available | deleting | deleted ).
   final pulumi.Input<String>? state;
+
   /// ID of subnet that the NAT Gateway resides in.
   final pulumi.Input<String>? subnetId;
+
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired NAT Gateway.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// ID of the VPC that the NAT Gateway resides in.
   final pulumi.Input<String>? vpcId;
 
@@ -48,7 +54,18 @@ class GetNatGatewayArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetNatGatewayFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetNatGatewayFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetNatGatewayFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetNatGatewayFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'id': ?id,
       'region': ?region,
       'state': ?state,
@@ -60,14 +77,50 @@ class GetNatGatewayArgs {
 
   factory GetNatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetNatGatewayArgs(
-      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetNatGatewayFilter>(map['filters']!, (value) => GetNatGatewayFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
-      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetNatGatewayFilter>(
+            guardedValue,
+            (value) => GetNatGatewayFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnetId: (() {
+        final guardedValue = map['subnetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,22 +7,31 @@ import 'subnet_response.dart';
 class GetVirtualHubIpConfigurationResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final String etag;
+
   /// Resource ID.
   final String? id;
+
   /// Name of the Ip Configuration.
   final String? name;
+
   /// The private IP address of the IP configuration.
   final String? privateIPAddress;
+
   /// The private IP address allocation method.
   final String? privateIPAllocationMethod;
+
   /// The provisioning state of the IP configuration resource.
   final String provisioningState;
+
   /// The reference to the public IP resource.
   final PublicIPAddressResponse? publicIPAddress;
+
   /// The reference to the subnet resource.
   final SubnetResponse? subnet;
+
   /// Ipconfiguration type.
   final String type;
 
@@ -59,8 +68,8 @@ class GetVirtualHubIpConfigurationResult {
       'privateIPAddress': ?privateIPAddress,
       'privateIPAllocationMethod': ?privateIPAllocationMethod,
       'provisioningState': provisioningState,
-      'publicIPAddress': ?publicIPAddress == null ? null : publicIPAddress!.toMap(),
-      'subnet': ?subnet == null ? null : subnet!.toMap(),
+      'publicIPAddress': ?publicIPAddress?.toMap(),
+      'subnet': ?subnet?.toMap(),
       'type': type,
     };
   }
@@ -69,15 +78,42 @@ class GetVirtualHubIpConfigurationResult {
     return GetVirtualHubIpConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id']! as String,
-      name: map['name'] == null ? null : map['name']! as String,
-      privateIPAddress: map['privateIPAddress'] == null ? null : map['privateIPAddress']! as String,
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : map['privateIPAllocationMethod']! as String,
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      privateIPAddress: (() {
+        final guardedValue = map['privateIPAddress'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      privateIPAllocationMethod: (() {
+        final guardedValue = map['privateIPAllocationMethod'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      publicIPAddress: map['publicIPAddress'] == null ? null : PublicIPAddressResponse.fromMap((map['publicIPAddress']! as Map).cast<String, dynamic>()),
-      subnet: map['subnet'] == null ? null : SubnetResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>()),
+      publicIPAddress: (() {
+        final guardedValue = map['publicIPAddress'];
+        if (guardedValue == null) return null;
+        return PublicIPAddressResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      subnet: (() {
+        final guardedValue = map['subnet'];
+        if (guardedValue == null) return null;
+        return SubnetResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum InstanceMemcacheVersion {
   memcache15("MEMCACHE_1_5"),
   memcache1615("MEMCACHE_1_6_15");
 
-  const InstanceMemcacheVersion(this.value);
-  final String value;
+  const InstanceMemcacheVersion(this.wireValue);
+  final String wireValue;
 
   static InstanceMemcacheVersion fromValue(String value) {
     for (final item in InstanceMemcacheVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceMemcacheVersion value: $value');
   }
 }
-

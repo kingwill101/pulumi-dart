@@ -8,20 +8,19 @@ class BucketResponseHeaderRuleFilters {
 
   /// Creates a new [BucketResponseHeaderRuleFilters].
   /// [operations] The operation to which the rule applies.
-  BucketResponseHeaderRuleFilters({
-    this.operations,
-  });
+  BucketResponseHeaderRuleFilters({this.operations});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'operations': ?operations,
-    };
+    return <String, dynamic>{'operations': ?operations};
   }
 
   factory BucketResponseHeaderRuleFilters.fromMap(Map<String, dynamic> map) {
     return BucketResponseHeaderRuleFilters(
-      operations: map['operations'] == null ? null : ((map['operations']! as List).cast<String>()).input(),
+      operations: (() {
+        final guardedValue = map['operations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

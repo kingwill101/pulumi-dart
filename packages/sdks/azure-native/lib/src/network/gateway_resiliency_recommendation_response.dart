@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayResiliencyRecommendationResponse {
   /// Link to the public documentation for the associated recommendation
   final pulumi.Input<String>? callToActionLink;
+
   /// Acton items to apply the recommendation
   final pulumi.Input<String>? callToActionText;
+
   /// Recommendation Id
   final pulumi.Input<String>? recommendationId;
+
   /// Recommendation details
   final pulumi.Input<String>? recommendationText;
+
   /// Recommendation Title
   final pulumi.Input<String>? recommendationTitle;
+
   /// Impact associated with the recommendation
   final pulumi.Input<String>? severity;
 
@@ -44,15 +49,40 @@ class GatewayResiliencyRecommendationResponse {
     };
   }
 
-  factory GatewayResiliencyRecommendationResponse.fromMap(Map<String, dynamic> map) {
+  factory GatewayResiliencyRecommendationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GatewayResiliencyRecommendationResponse(
-      callToActionLink: map['callToActionLink'] == null ? null : (map['callToActionLink']! as String).input(),
-      callToActionText: map['callToActionText'] == null ? null : (map['callToActionText']! as String).input(),
-      recommendationId: map['recommendationId'] == null ? null : (map['recommendationId']! as String).input(),
-      recommendationText: map['recommendationText'] == null ? null : (map['recommendationText']! as String).input(),
-      recommendationTitle: map['recommendationTitle'] == null ? null : (map['recommendationTitle']! as String).input(),
-      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      callToActionLink: (() {
+        final guardedValue = map['callToActionLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      callToActionText: (() {
+        final guardedValue = map['callToActionText'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recommendationId: (() {
+        final guardedValue = map['recommendationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recommendationText: (() {
+        final guardedValue = map['recommendationText'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      recommendationTitle: (() {
+        final guardedValue = map['recommendationTitle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      severity: (() {
+        final guardedValue = map['severity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

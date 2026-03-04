@@ -112,8 +112,10 @@ import 'log_delivery_destination_policy_state.dart';
 class LogDeliveryDestinationPolicy extends pulumi.CustomResource {
   /// The name of the delivery destination to assign this policy to.
   late final pulumi.Output<String> deliveryDestinationName;
+
   /// The contents of the policy.
   late final pulumi.Output<String> deliveryDestinationPolicy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -126,14 +128,16 @@ class LogDeliveryDestinationPolicy extends pulumi.CustomResource {
     LogDeliveryDestinationPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudwatch/logDeliveryDestinationPolicy:LogDeliveryDestinationPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deliveryDestinationName = registerOutput<String>('deliveryDestinationName');
-    this.deliveryDestinationPolicy = registerOutput<String>('deliveryDestinationPolicy');
-    this.region = registerOutput<String>('region');
+         'aws:cloudwatch/logDeliveryDestinationPolicy:LogDeliveryDestinationPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deliveryDestinationName = registerOutput<String>('deliveryDestinationName');
+    deliveryDestinationPolicy = registerOutput<String>(
+      'deliveryDestinationPolicy',
+    );
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [LogDeliveryDestinationPolicy] resource's state with the given [name] and [id].
@@ -154,13 +158,15 @@ class LogDeliveryDestinationPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudwatch/logDeliveryDestinationPolicy:LogDeliveryDestinationPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deliveryDestinationName = registerOutput<String>('deliveryDestinationName');
-    this.deliveryDestinationPolicy = registerOutput<String>('deliveryDestinationPolicy');
-    this.region = registerOutput<String>('region');
+         'aws:cloudwatch/logDeliveryDestinationPolicy:LogDeliveryDestinationPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    deliveryDestinationName = registerOutput<String>('deliveryDestinationName');
+    deliveryDestinationPolicy = registerOutput<String>(
+      'deliveryDestinationPolicy',
+    );
+    region = registerOutput<String>('region');
   }
 }

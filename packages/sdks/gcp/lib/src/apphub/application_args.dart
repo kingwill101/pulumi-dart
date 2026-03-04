@@ -11,18 +11,24 @@ import 'application_scope.dart';
 class ApplicationArgs {
   /// Required. The Application identifier.
   final pulumi.Input<String> applicationId;
+
   /// Consumer provided attributes.
   /// Structure is documented below.
   final pulumi.Input<ApplicationAttributes>? attributes;
+
   /// Optional. User-defined description of an Application.
   final pulumi.Input<String>? description;
+
   /// Optional. User-defined name for the Application.
   final pulumi.Input<String>? displayName;
+
   /// Part of `parent`. See documentation of `projectsId`.
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Scope of an application.
   /// Structure is documented below.
   final pulumi.Input<ApplicationScope> scope;
@@ -48,25 +54,56 @@ class ApplicationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationId': applicationId,
-      'attributes': ?pulumi.Input.mapOptionalInputValue<ApplicationAttributes, Map<String, dynamic>>(attributes, (value) => value.toMap()),
+      'attributes':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationAttributes,
+            Map<String, dynamic>
+          >(attributes, (value) => value.toMap()),
       'description': ?description,
       'displayName': ?displayName,
       'location': location,
       'project': ?project,
-      'scope': pulumi.Input.mapInputValue<ApplicationScope, Map<String, dynamic>>(scope, (value) => value.toMap()),
+      'scope':
+          pulumi.Input.mapInputValue<ApplicationScope, Map<String, dynamic>>(
+            scope,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationId: (map['applicationId'] as String).input(),
-      attributes: map['attributes'] == null ? null : (ApplicationAttributes.fromMap((map['attributes']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      scope: (ApplicationScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
+      attributes: (() {
+        final guardedValue = map['attributes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationAttributes.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: pulumi.Input.fromValue(
+        ApplicationScope.fromMap(
+          (map['scope']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum EvidenceType {
   autoCollectedEvidence("AutoCollectedEvidence"),
   data("Data");
 
-  const EvidenceType(this.value);
-  final String value;
+  const EvidenceType(this.wireValue);
+  final String wireValue;
 
   static EvidenceType fromValue(String value) {
     for (final item in EvidenceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EvidenceType value: $value');
   }
 }
-

@@ -6,9 +6,11 @@ class FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule {
   final pulumi.Input<String>? description;
   final pulumi.Input<List<String>>? destinationAddresses;
   final pulumi.Input<List<String>>? destinationFqdns;
+
   /// Specifies a list of destination IP groups.
   final pulumi.Input<List<String>>? destinationIpGroups;
   final pulumi.Input<List<String>> destinationPorts;
+
   /// The name which should be used for this Firewall Policy Rule Collection Group. Changing this forces a new Firewall Policy Rule Collection Group to be created.
   final pulumi.Input<String> name;
   final pulumi.Input<List<String>> protocols;
@@ -51,18 +53,47 @@ class FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule {
     };
   }
 
-  factory FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule.fromMap(Map<String, dynamic> map) {
+  factory FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses']! as List).cast<String>()).input(),
-      destinationFqdns: map['destinationFqdns'] == null ? null : ((map['destinationFqdns']! as List).cast<String>()).input(),
-      destinationIpGroups: map['destinationIpGroups'] == null ? null : ((map['destinationIpGroups']! as List).cast<String>()).input(),
-      destinationPorts: ((map['destinationPorts'] as List).cast<String>()).input(),
-      name: (map['name'] as String).input(),
-      protocols: ((map['protocols'] as List).cast<String>()).input(),
-      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses']! as List).cast<String>()).input(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups']! as List).cast<String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      destinationAddresses: (() {
+        final guardedValue = map['destinationAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      destinationFqdns: (() {
+        final guardedValue = map['destinationFqdns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      destinationIpGroups: (() {
+        final guardedValue = map['destinationIpGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      destinationPorts: pulumi.Input.fromValue(
+        (map['destinationPorts'] as List).cast<String>(),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      protocols: pulumi.Input.fromValue(
+        (map['protocols'] as List).cast<String>(),
+      ),
+      sourceAddresses: (() {
+        final guardedValue = map['sourceAddresses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      sourceIpGroups: (() {
+        final guardedValue = map['sourceIpGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

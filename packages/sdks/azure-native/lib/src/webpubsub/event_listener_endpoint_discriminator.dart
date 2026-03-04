@@ -1,16 +1,17 @@
 enum EventListenerEndpointDiscriminator {
   valueEventHub("EventHub");
 
-  const EventListenerEndpointDiscriminator(this.value);
-  final String value;
+  const EventListenerEndpointDiscriminator(this.wireValue);
+  final String wireValue;
 
   static EventListenerEndpointDiscriminator fromValue(String value) {
     for (final item in EventListenerEndpointDiscriminator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EventListenerEndpointDiscriminator value: $value');
+    throw ArgumentError(
+      'Unknown EventListenerEndpointDiscriminator value: $value',
+    );
   }
 }
-

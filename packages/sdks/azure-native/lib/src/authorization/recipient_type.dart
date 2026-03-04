@@ -4,16 +4,15 @@ enum RecipientType {
   valueApprover("Approver"),
   valueAdmin("Admin");
 
-  const RecipientType(this.value);
-  final String value;
+  const RecipientType(this.wireValue);
+  final String wireValue;
 
   static RecipientType fromValue(String value) {
     for (final item in RecipientType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RecipientType value: $value');
   }
 }
-

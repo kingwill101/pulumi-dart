@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_service_environment_args.dart';
 import 'ase_v3_networking_configuration_response.dart';
 import 'custom_dns_suffix_configuration_response.dart';
-import 'name_value_pair_response.dart';
 import 'virtual_network_profile_response.dart';
 
 /// App Service Environment ARM resource.
@@ -163,55 +162,82 @@ import 'virtual_network_profile_response.dart';
 class AppServiceEnvironment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Custom settings for changing the behavior of the App Service Environment.
-  late final pulumi.Output<List<NameValuePairResponse>?> clusterSettings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> clusterSettings;
+
   /// Full view of the custom domain suffix configuration for ASEv3.
-  late final pulumi.Output<CustomDnsSuffixConfigurationResponse?> customDnsSuffixConfiguration;
+  late final pulumi.Output<CustomDnsSuffixConfigurationResponse?>
+  customDnsSuffixConfiguration;
+
   /// Dedicated Host Count
   late final pulumi.Output<int?> dedicatedHostCount;
+
   /// DNS suffix of the App Service Environment.
   late final pulumi.Output<String?> dnsSuffix;
+
   /// Scale factor for front-ends.
   late final pulumi.Output<int?> frontEndScaleFactor;
+
   /// Flag that displays whether an ASE has linux workers or not
   late final pulumi.Output<bool> hasLinuxWorkers;
+
   /// Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
   late final pulumi.Output<String?> internalLoadBalancingMode;
+
   /// Number of IP SSL addresses reserved for the App Service Environment.
   late final pulumi.Output<int?> ipsslAddressCount;
+
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   late final pulumi.Output<String?> kind;
+
   /// Resource Location.
   late final pulumi.Output<String> location;
+
   /// Maximum number of VMs in the App Service Environment.
   late final pulumi.Output<int> maximumNumberOfMachines;
+
   /// Number of front-end instances.
   late final pulumi.Output<int> multiRoleCount;
+
   /// Front-end VM size, e.g. "Medium", "Large".
   late final pulumi.Output<String?> multiSize;
+
   /// Resource Name.
   late final pulumi.Output<String> name;
+
   /// Full view of networking configuration for an ASE.
-  late final pulumi.Output<AseV3NetworkingConfigurationResponse?> networkingConfiguration;
+  late final pulumi.Output<AseV3NetworkingConfigurationResponse?>
+  networkingConfiguration;
+
   /// Provisioning state of the App Service Environment.
   late final pulumi.Output<String> provisioningState;
+
   /// Current status of the App Service Environment.
   late final pulumi.Output<String> status;
-  /// <code>true</code> if the App Service Environment is suspended; otherwise, <code>false</code>. The environment can be suspended, e.g. when the management endpoint is no longer available
+
+  /// &lt;code&gt;true&lt;/code&gt; if the App Service Environment is suspended; otherwise, &lt;code&gt;false&lt;/code&gt;. The environment can be suspended, e.g. when the management endpoint is no longer available
   /// (most likely because NSG blocked the incoming traffic).
   late final pulumi.Output<bool> suspended;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// Whether an upgrade is available for this App Service Environment.
   late final pulumi.Output<String> upgradeAvailability;
+
   /// Upgrade Preference
   late final pulumi.Output<String?> upgradePreference;
+
   /// User added ip ranges to whitelist on ASE db
   late final pulumi.Output<List<String>?> userWhitelistedIpRanges;
+
   /// Description of the Virtual Network.
   late final pulumi.Output<VirtualNetworkProfileResponse> virtualNetwork;
+
   /// Whether or not this App Service Environment is zone-redundant.
   late final pulumi.Output<bool?> zoneRedundant;
 
@@ -224,36 +250,50 @@ class AppServiceEnvironment extends pulumi.CustomResource {
     AppServiceEnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:web:AppServiceEnvironment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clusterSettings = registerOutput<List<NameValuePairResponse>?>('clusterSettings');
-    this.customDnsSuffixConfiguration = registerOutput<CustomDnsSuffixConfigurationResponse?>('customDnsSuffixConfiguration');
-    this.dedicatedHostCount = registerOutput<int?>('dedicatedHostCount');
-    this.dnsSuffix = registerOutput<String?>('dnsSuffix');
-    this.frontEndScaleFactor = registerOutput<int?>('frontEndScaleFactor');
-    this.hasLinuxWorkers = registerOutput<bool>('hasLinuxWorkers');
-    this.internalLoadBalancingMode = registerOutput<String?>('internalLoadBalancingMode');
-    this.ipsslAddressCount = registerOutput<int?>('ipsslAddressCount');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
-    this.maximumNumberOfMachines = registerOutput<int>('maximumNumberOfMachines');
-    this.multiRoleCount = registerOutput<int>('multiRoleCount');
-    this.multiSize = registerOutput<String?>('multiSize');
+         'azure-native:web:AppServiceEnvironment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterSettings = registerOutput<List<Map<String, dynamic>>?>(
+      'clusterSettings',
+    );
+    customDnsSuffixConfiguration =
+        registerOutput<CustomDnsSuffixConfigurationResponse?>(
+          'customDnsSuffixConfiguration',
+        );
+    dedicatedHostCount = registerOutput<int?>('dedicatedHostCount');
+    dnsSuffix = registerOutput<String?>('dnsSuffix');
+    frontEndScaleFactor = registerOutput<int?>('frontEndScaleFactor');
+    hasLinuxWorkers = registerOutput<bool>('hasLinuxWorkers');
+    internalLoadBalancingMode = registerOutput<String?>(
+      'internalLoadBalancingMode',
+    );
+    ipsslAddressCount = registerOutput<int?>('ipsslAddressCount');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    maximumNumberOfMachines = registerOutput<int>('maximumNumberOfMachines');
+    multiRoleCount = registerOutput<int>('multiRoleCount');
+    multiSize = registerOutput<String?>('multiSize');
     this.name = registerOutput<String>('name');
-    this.networkingConfiguration = registerOutput<AseV3NetworkingConfigurationResponse?>('networkingConfiguration');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.status = registerOutput<String>('status');
-    this.suspended = registerOutput<bool>('suspended');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.upgradeAvailability = registerOutput<String>('upgradeAvailability');
-    this.upgradePreference = registerOutput<String?>('upgradePreference');
-    this.userWhitelistedIpRanges = registerOutput<List<String>?>('userWhitelistedIpRanges');
-    this.virtualNetwork = registerOutput<VirtualNetworkProfileResponse>('virtualNetwork');
-    this.zoneRedundant = registerOutput<bool?>('zoneRedundant');
+    networkingConfiguration =
+        registerOutput<AseV3NetworkingConfigurationResponse?>(
+          'networkingConfiguration',
+        );
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String>('status');
+    suspended = registerOutput<bool>('suspended');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    upgradeAvailability = registerOutput<String>('upgradeAvailability');
+    upgradePreference = registerOutput<String?>('upgradePreference');
+    userWhitelistedIpRanges = registerOutput<List<String>?>(
+      'userWhitelistedIpRanges',
+    );
+    virtualNetwork = registerOutput<VirtualNetworkProfileResponse>(
+      'virtualNetwork',
+    );
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 }

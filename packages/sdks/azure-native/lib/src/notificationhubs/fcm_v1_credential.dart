@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FcmV1Credential {
   /// Gets or sets client email.
   final pulumi.Input<String> clientEmail;
+
   /// Gets or sets private key.
   final pulumi.Input<String> privateKey;
+
   /// Gets or sets project id.
   final pulumi.Input<String> projectId;
 
@@ -31,10 +33,9 @@ class FcmV1Credential {
 
   factory FcmV1Credential.fromMap(Map<String, dynamic> map) {
     return FcmV1Credential(
-      clientEmail: (map['clientEmail'] as String).input(),
-      privateKey: (map['privateKey'] as String).input(),
-      projectId: (map['projectId'] as String).input(),
+      clientEmail: pulumi.Input.fromValue(map['clientEmail'] as String),
+      privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
     );
   }
 }
-

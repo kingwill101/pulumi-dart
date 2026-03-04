@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BlobNfsTargetResponse {
   /// Resource ID of the storage container.
   final pulumi.Input<String>? target;
+
   /// Identifies the StorageCache usage model to be used for this storage target.
   final pulumi.Input<String>? usageModel;
+
   /// Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
   final pulumi.Input<int>? verificationTimer;
+
   /// Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
   final pulumi.Input<int>? writeBackTimer;
 
@@ -36,11 +39,26 @@ class BlobNfsTargetResponse {
 
   factory BlobNfsTargetResponse.fromMap(Map<String, dynamic> map) {
     return BlobNfsTargetResponse(
-      target: map['target'] == null ? null : (map['target']! as String).input(),
-      usageModel: map['usageModel'] == null ? null : (map['usageModel']! as String).input(),
-      verificationTimer: map['verificationTimer'] == null ? null : (map['verificationTimer']! as int).input(),
-      writeBackTimer: map['writeBackTimer'] == null ? null : (map['writeBackTimer']! as int).input(),
+      target: (() {
+        final guardedValue = map['target'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      usageModel: (() {
+        final guardedValue = map['usageModel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      verificationTimer: (() {
+        final guardedValue = map['verificationTimer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      writeBackTimer: (() {
+        final guardedValue = map['writeBackTimer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

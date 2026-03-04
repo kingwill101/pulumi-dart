@@ -5,32 +5,42 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Disk resources.
 class DiskState {
   final pulumi.Input<String>? advancedFeatures;
+
   /// The Zone to create the disk in.
   final pulumi.Input<String>? availabilityZone;
   final pulumi.Input<bool>? burstingEnabled;
+
   /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_entry`. Default is `cloud_efficiency`.
   final pulumi.Input<String>? category;
   final pulumi.Input<String>? createTime;
+
   /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: false.
   final pulumi.Input<bool>? deleteAutoSnapshot;
+
   /// Indicates whether the disk is released together with the instance: Default value: false.
   final pulumi.Input<bool>? deleteWithInstance;
+
   /// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
   final pulumi.Input<String>? description;
   final pulumi.Input<String>? diskName;
   final pulumi.Input<bool>? dryRun;
+
   /// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
   final pulumi.Input<bool>? enableAutoSnapshot;
   final pulumi.Input<String>? encryptAlgorithm;
+
   /// If true, the disk will be encrypted, conflict with `snapshot_id`.
   final pulumi.Input<bool>? encrypted;
   final pulumi.Input<String>? instanceId;
+
   /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
   final pulumi.Input<String>? kmsKeyId;
   final pulumi.Input<String>? multiAttach;
+
   /// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? paymentType;
+
   /// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
   /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
   /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
@@ -38,17 +48,22 @@ class DiskState {
   final pulumi.Input<String>? performanceLevel;
   final pulumi.Input<int>? provisionedIops;
   final pulumi.Input<String>? regionId;
+
   /// The Id of resource group which the disk belongs.
-  /// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+  /// &gt; **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
   final pulumi.Input<int>? size;
+
   /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
   final pulumi.Input<String>? snapshotId;
+
   /// The disk status.
   final pulumi.Input<String>? status;
   final pulumi.Input<String>? storageSetId;
   final pulumi.Input<int>? storageSetPartitionNumber;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<String>? type;
@@ -155,37 +170,158 @@ class DiskState {
 
   factory DiskState.fromMap(Map<String, dynamic> map) {
     return DiskState(
-      advancedFeatures: map['advancedFeatures'] == null ? null : (map['advancedFeatures']! as String).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
-      burstingEnabled: map['burstingEnabled'] == null ? null : (map['burstingEnabled']! as bool).input(),
-      category: map['category'] == null ? null : (map['category']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      deleteAutoSnapshot: map['deleteAutoSnapshot'] == null ? null : (map['deleteAutoSnapshot']! as bool).input(),
-      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      enableAutoSnapshot: map['enableAutoSnapshot'] == null ? null : (map['enableAutoSnapshot']! as bool).input(),
-      encryptAlgorithm: map['encryptAlgorithm'] == null ? null : (map['encryptAlgorithm']! as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
-      multiAttach: map['multiAttach'] == null ? null : (map['multiAttach']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
-      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops']! as int).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      size: map['size'] == null ? null : (map['size']! as int).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      storageSetId: map['storageSetId'] == null ? null : (map['storageSetId']! as String).input(),
-      storageSetPartitionNumber: map['storageSetPartitionNumber'] == null ? null : (map['storageSetPartitionNumber']! as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      advancedFeatures: (() {
+        final guardedValue = map['advancedFeatures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      burstingEnabled: (() {
+        final guardedValue = map['burstingEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteAutoSnapshot: (() {
+        final guardedValue = map['deleteAutoSnapshot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      deleteWithInstance: (() {
+        final guardedValue = map['deleteWithInstance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskName: (() {
+        final guardedValue = map['diskName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableAutoSnapshot: (() {
+        final guardedValue = map['enableAutoSnapshot'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encryptAlgorithm: (() {
+        final guardedValue = map['encryptAlgorithm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multiAttach: (() {
+        final guardedValue = map['multiAttach'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      performanceLevel: (() {
+        final guardedValue = map['performanceLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisionedIops: (() {
+        final guardedValue = map['provisionedIops'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      snapshotId: (() {
+        final guardedValue = map['snapshotId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageSetId: (() {
+        final guardedValue = map['storageSetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageSetPartitionNumber: (() {
+        final guardedValue = map['storageSetPartitionNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

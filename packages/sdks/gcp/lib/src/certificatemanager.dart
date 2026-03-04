@@ -1,5 +1,3 @@
-library module_certificatemanager;
-
 export 'certificatemanager/certificate.dart';
 export 'certificatemanager/certificate_args.dart';
 export 'certificatemanager/certificate_issuance_config.dart';

@@ -10,20 +10,39 @@ class PodSchedulingStatus {
 
   /// Creates a new [PodSchedulingStatus].
   /// [resourceClaims] ResourceClaims describes resource availability for each pod.spec.resourceClaim entry where the corresponding ResourceClaim uses "WaitForFirstConsumer" allocation mode.
-  PodSchedulingStatus({
-    this.resourceClaims,
-  });
+  PodSchedulingStatus({this.resourceClaims});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'resourceClaims': ?pulumi.Input.mapOptionalInputValue<List<ResourceClaimSchedulingStatus>, List<Map<String, dynamic>>>(resourceClaims, (value) => pulumi.Input.encodeList<ResourceClaimSchedulingStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resourceClaims':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceClaimSchedulingStatus>,
+            List<Map<String, dynamic>>
+          >(
+            resourceClaims,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceClaimSchedulingStatus,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory PodSchedulingStatus.fromMap(Map<String, dynamic> map) {
     return PodSchedulingStatus(
-      resourceClaims: map['resourceClaims'] == null ? null : (pulumi.Input.decodeList<ResourceClaimSchedulingStatus>(map['resourceClaims']!, (value) => ResourceClaimSchedulingStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceClaims: (() {
+        final guardedValue = map['resourceClaims'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceClaimSchedulingStatus>(
+            guardedValue,
+            (value) => ResourceClaimSchedulingStatus.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

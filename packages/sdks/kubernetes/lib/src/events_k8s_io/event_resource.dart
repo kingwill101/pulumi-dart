@@ -9,35 +9,50 @@ import 'event_series_events_k8s_io_v1beta1.dart';
 class EventResource extends pulumi.CustomResource {
   /// What action was taken/failed regarding to the regarding object.
   late final pulumi.Output<String> action;
+
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String> apiVersion;
+
   /// Deprecated field assuring backward compatibility with core.v1 Event type
   late final pulumi.Output<int> deprecatedCount;
+
   /// Deprecated field assuring backward compatibility with core.v1 Event type
   late final pulumi.Output<String> deprecatedFirstTimestamp;
+
   /// Deprecated field assuring backward compatibility with core.v1 Event type
   late final pulumi.Output<String> deprecatedLastTimestamp;
+
   /// Deprecated field assuring backward compatibility with core.v1 Event type
   late final pulumi.Output<EventSource> deprecatedSource;
+
   /// Required. Time when this Event was first observed.
   late final pulumi.Output<String> eventTime;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String> kind;
   late final pulumi.Output<ObjectMeta> metadata;
+
   /// Optional. A human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB.
   late final pulumi.Output<String> note;
+
   /// Why the action was taken.
   late final pulumi.Output<String> reason;
+
   /// The object this Event is about. In most cases it's an Object reporting controller implements. E.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.
   late final pulumi.Output<ObjectReference> regarding;
+
   /// Optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.
   late final pulumi.Output<ObjectReference> related;
+
   /// Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.
   late final pulumi.Output<String> reportingController;
+
   /// ID of the controller instance, e.g. `kubelet-xyzf`.
   late final pulumi.Output<String> reportingInstance;
+
   /// Data about the Event series this event represents or nil if it's a singleton Event.
   late final pulumi.Output<EventSeriesEventsK8sIoV1beta1> series;
+
   /// Type of this event (Normal, Warning), new types could be added in the future.
   late final pulumi.Output<String> type;
 
@@ -50,27 +65,29 @@ class EventResource extends pulumi.CustomResource {
     EventEventsK8sIoV1beta1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'kubernetes:events.k8s.io/v1beta1:Event',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<String>('action');
-    this.apiVersion = registerOutput<String>('apiVersion');
-    this.deprecatedCount = registerOutput<int>('deprecatedCount');
-    this.deprecatedFirstTimestamp = registerOutput<String>('deprecatedFirstTimestamp');
-    this.deprecatedLastTimestamp = registerOutput<String>('deprecatedLastTimestamp');
-    this.deprecatedSource = registerOutput<EventSource>('deprecatedSource');
-    this.eventTime = registerOutput<String>('eventTime');
-    this.kind = registerOutput<String>('kind');
-    this.metadata = registerOutput<ObjectMeta>('metadata');
-    this.note = registerOutput<String>('note');
-    this.reason = registerOutput<String>('reason');
-    this.regarding = registerOutput<ObjectReference>('regarding');
-    this.related = registerOutput<ObjectReference>('related');
-    this.reportingController = registerOutput<String>('reportingController');
-    this.reportingInstance = registerOutput<String>('reportingInstance');
-    this.series = registerOutput<EventSeriesEventsK8sIoV1beta1>('series');
-    this.type = registerOutput<String>('type');
+         'kubernetes:events.k8s.io/v1beta1:Event',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<String>('action');
+    apiVersion = registerOutput<String>('apiVersion');
+    deprecatedCount = registerOutput<int>('deprecatedCount');
+    deprecatedFirstTimestamp = registerOutput<String>(
+      'deprecatedFirstTimestamp',
+    );
+    deprecatedLastTimestamp = registerOutput<String>('deprecatedLastTimestamp');
+    deprecatedSource = registerOutput<EventSource>('deprecatedSource');
+    eventTime = registerOutput<String>('eventTime');
+    kind = registerOutput<String>('kind');
+    metadata = registerOutput<ObjectMeta>('metadata');
+    note = registerOutput<String>('note');
+    reason = registerOutput<String>('reason');
+    regarding = registerOutput<ObjectReference>('regarding');
+    related = registerOutput<ObjectReference>('related');
+    reportingController = registerOutput<String>('reportingController');
+    reportingInstance = registerOutput<String>('reportingInstance');
+    series = registerOutput<EventSeriesEventsK8sIoV1beta1>('series');
+    type = registerOutput<String>('type');
   }
 }

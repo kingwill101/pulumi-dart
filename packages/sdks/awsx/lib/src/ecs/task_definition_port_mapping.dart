@@ -33,7 +33,11 @@ class TaskDefinitionPortMapping {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appProtocol': ?pulumi.Input.mapOptionalInputValue<TaskDefinitionPortMappingAppProtocol, String>(appProtocol, (value) => value.value),
+      'appProtocol':
+          ?pulumi.Input.mapOptionalInputValue<
+            TaskDefinitionPortMappingAppProtocol,
+            String
+          >(appProtocol, (value) => value.wireValue),
       'containerPort': ?containerPort,
       'containerPortRange': ?containerPortRange,
       'hostPort': ?hostPort,
@@ -45,14 +49,47 @@ class TaskDefinitionPortMapping {
 
   factory TaskDefinitionPortMapping.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionPortMapping(
-      appProtocol: map['appProtocol'] == null ? null : (TaskDefinitionPortMappingAppProtocol.fromValue(map['appProtocol']! as String)).input(),
-      containerPort: map['containerPort'] == null ? null : (map['containerPort']! as int).input(),
-      containerPortRange: map['containerPortRange'] == null ? null : (map['containerPortRange']! as String).input(),
-      hostPort: map['hostPort'] == null ? null : (map['hostPort']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      targetGroup: map['targetGroup'] == null ? null : (map['targetGroup']! as pulumi_aws_lb.TargetGroup).input(),
+      appProtocol: (() {
+        final guardedValue = map['appProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TaskDefinitionPortMappingAppProtocol.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
+      containerPort: (() {
+        final guardedValue = map['containerPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      containerPortRange: (() {
+        final guardedValue = map['containerPortRange'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostPort: (() {
+        final guardedValue = map['hostPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetGroup: (() {
+        final guardedValue = map['targetGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          guardedValue as pulumi_aws_lb.TargetGroup,
+        );
+      })(),
     );
   }
 }
-

@@ -53,16 +53,15 @@ enum AzureVmFamily {
   ebsv5Series("Ebsv5_series"),
   ebdsv5Series("Ebdsv5_series");
 
-  const AzureVmFamily(this.value);
-  final String value;
+  const AzureVmFamily(this.wireValue);
+  final String wireValue;
 
   static AzureVmFamily fromValue(String value) {
     for (final item in AzureVmFamily.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureVmFamily value: $value');
   }
 }
-

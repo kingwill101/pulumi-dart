@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPosixProfile {
   /// The POSIX group ID used for all EFS operations by this user.
   final pulumi.Input<int> gid;
+
   /// The secondary POSIX group IDs used for all EFS operations by this user.
   final pulumi.Input<List<int>>? secondaryGids;
+
   /// The POSIX user ID used for all EFS operations by this user.
   final pulumi.Input<int> uid;
 
@@ -30,10 +32,13 @@ class AccessPosixProfile {
 
   factory AccessPosixProfile.fromMap(Map<String, dynamic> map) {
     return AccessPosixProfile(
-      gid: (map['gid'] as int).input(),
-      secondaryGids: map['secondaryGids'] == null ? null : (((map['secondaryGids'] as List).cast<int>()).input()).input(),
-      uid: (map['uid'] as int).input(),
+      gid: pulumi.Input.fromValue(map['gid'] as int),
+      secondaryGids: (() {
+        final guardedValue = map['secondaryGids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      uid: pulumi.Input.fromValue(map['uid'] as int),
     );
   }
 }
-

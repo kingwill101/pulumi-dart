@@ -8,9 +8,11 @@ class GetDatabasesResult {
   /// A list of PolarDB cluster databases. Each element contains the following attributes:
   final List<GetDatabasesDatabase> databases;
   final String dbClusterId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? nameRegex;
+
   /// database name of the cluster.
   final List<String> names;
 
@@ -30,7 +32,11 @@ class GetDatabasesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'databases': pulumi.Input.encodeList<GetDatabasesDatabase, Map<String, dynamic>>(databases, (value) => value.toMap()),
+      'databases':
+          pulumi.Input.encodeList<GetDatabasesDatabase, Map<String, dynamic>>(
+            databases,
+            (value) => value.toMap(),
+          ),
       'dbClusterId': dbClusterId,
       'id': id,
       'nameRegex': ?nameRegex,
@@ -40,12 +46,20 @@ class GetDatabasesResult {
 
   factory GetDatabasesResult.fromMap(Map<String, dynamic> map) {
     return GetDatabasesResult(
-      databases: pulumi.Input.decodeList<GetDatabasesDatabase>(map['databases'], (value) => GetDatabasesDatabase.fromMap((value as Map).cast<String, dynamic>())),
+      databases: pulumi.Input.decodeList<GetDatabasesDatabase>(
+        map['databases']!,
+        (value) => GetDatabasesDatabase.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       dbClusterId: map['dbClusterId'] as String,
       id: map['id'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
     );
   }
 }
-

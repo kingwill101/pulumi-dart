@@ -3,16 +3,17 @@ enum RouterNatNatIpAllocateOptionComputeBeta {
   autoOnly("AUTO_ONLY"),
   manualOnly("MANUAL_ONLY");
 
-  const RouterNatNatIpAllocateOptionComputeBeta(this.value);
-  final String value;
+  const RouterNatNatIpAllocateOptionComputeBeta(this.wireValue);
+  final String wireValue;
 
   static RouterNatNatIpAllocateOptionComputeBeta fromValue(String value) {
     for (final item in RouterNatNatIpAllocateOptionComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RouterNatNatIpAllocateOptionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RouterNatNatIpAllocateOptionComputeBeta value: $value',
+    );
   }
 }
-

@@ -8,20 +8,15 @@ class WorkloadIdentityPoolProviderAws {
 
   /// Creates a new [WorkloadIdentityPoolProviderAws].
   /// [accountId] The AWS account ID.
-  WorkloadIdentityPoolProviderAws({
-    required this.accountId,
-  });
+  WorkloadIdentityPoolProviderAws({required this.accountId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accountId': accountId,
-    };
+    return <String, dynamic>{'accountId': accountId};
   }
 
   factory WorkloadIdentityPoolProviderAws.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolProviderAws(
-      accountId: (map['accountId'] as String).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
     );
   }
 }
-

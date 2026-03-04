@@ -3,16 +3,15 @@ enum ReportGranularityType {
   valueDaily("Daily"),
   valueMonthly("Monthly");
 
-  const ReportGranularityType(this.value);
-  final String value;
+  const ReportGranularityType(this.wireValue);
+  final String wireValue;
 
   static ReportGranularityType fromValue(String value) {
     for (final item in ReportGranularityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ReportGranularityType value: $value');
   }
 }
-

@@ -1,5 +1,3 @@
-library module_datamigration;
-
 export 'datamigration/auth_type.dart';
 export 'datamigration/authentication_type.dart';
 export 'datamigration/azure_active_directory_app.dart';

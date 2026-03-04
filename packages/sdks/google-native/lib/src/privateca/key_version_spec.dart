@@ -7,29 +7,40 @@ import 'key_version_spec_algorithm.dart';
 class KeyVersionSpec {
   /// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
   final pulumi.Input<KeyVersionSpecAlgorithm>? algorithm;
+
   /// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
   final pulumi.Input<String>? cloudKmsKeyVersion;
 
   /// Creates a new [KeyVersionSpec].
   /// [algorithm] The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
   /// [cloudKmsKeyVersion] The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
-  KeyVersionSpec({
-    this.algorithm,
-    this.cloudKmsKeyVersion,
-  });
+  KeyVersionSpec({this.algorithm, this.cloudKmsKeyVersion});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'algorithm': ?pulumi.Input.mapOptionalInputValue<KeyVersionSpecAlgorithm, String>(algorithm, (value) => value.value),
+      'algorithm':
+          ?pulumi.Input.mapOptionalInputValue<KeyVersionSpecAlgorithm, String>(
+            algorithm,
+            (value) => value.wireValue,
+          ),
       'cloudKmsKeyVersion': ?cloudKmsKeyVersion,
     };
   }
 
   factory KeyVersionSpec.fromMap(Map<String, dynamic> map) {
     return KeyVersionSpec(
-      algorithm: map['algorithm'] == null ? null : (KeyVersionSpecAlgorithm.fromValue(map['algorithm']! as String)).input(),
-      cloudKmsKeyVersion: map['cloudKmsKeyVersion'] == null ? null : (map['cloudKmsKeyVersion']! as String).input(),
+      algorithm: (() {
+        final guardedValue = map['algorithm'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          KeyVersionSpecAlgorithm.fromValue(guardedValue as String),
+        );
+      })(),
+      cloudKmsKeyVersion: (() {
+        final guardedValue = map['cloudKmsKeyVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

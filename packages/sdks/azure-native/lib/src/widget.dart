@@ -1,5 +1,3 @@
-library module_widget;
-
 export 'widget/employee.dart';
 export 'widget/employee_args.dart';
 export 'widget/employee_properties.dart';

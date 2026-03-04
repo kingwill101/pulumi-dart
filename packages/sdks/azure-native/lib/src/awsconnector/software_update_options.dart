@@ -4,14 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of SoftwareUpdateOptions
 class SoftwareUpdateOptions {
-  /// <p>Whether automatic service software updates are enabled for the domain.</p>
+  /// &lt;p&gt;Whether automatic service software updates are enabled for the domain.&lt;/p&gt;
   final pulumi.Input<bool>? autoSoftwareUpdateEnabled;
 
   /// Creates a new [SoftwareUpdateOptions].
-  /// [autoSoftwareUpdateEnabled] <p>Whether automatic service software updates are enabled for the domain.</p>
-  SoftwareUpdateOptions({
-    this.autoSoftwareUpdateEnabled,
-  });
+  /// [autoSoftwareUpdateEnabled] &lt;p&gt;Whether automatic service software updates are enabled for the domain.&lt;/p&gt;
+  SoftwareUpdateOptions({this.autoSoftwareUpdateEnabled});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class SoftwareUpdateOptions {
 
   factory SoftwareUpdateOptions.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateOptions(
-      autoSoftwareUpdateEnabled: map['autoSoftwareUpdateEnabled'] == null ? null : (map['autoSoftwareUpdateEnabled']! as bool).input(),
+      autoSoftwareUpdateEnabled: (() {
+        final guardedValue = map['autoSoftwareUpdateEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

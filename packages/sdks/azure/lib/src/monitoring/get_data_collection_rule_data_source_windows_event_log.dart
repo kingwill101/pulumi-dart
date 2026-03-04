@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCollectionRuleDataSourceWindowsEventLog {
   /// Specifies the name of the Data Collection Rule.
   final pulumi.Input<String> name;
+
   /// Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
   final pulumi.Input<List<String>> streams;
+
   /// Specifies a list of Windows Event Log queries in XPath expression.
   final pulumi.Input<List<String>> xPathQueries;
 
@@ -28,12 +30,15 @@ class GetDataCollectionRuleDataSourceWindowsEventLog {
     };
   }
 
-  factory GetDataCollectionRuleDataSourceWindowsEventLog.fromMap(Map<String, dynamic> map) {
+  factory GetDataCollectionRuleDataSourceWindowsEventLog.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataCollectionRuleDataSourceWindowsEventLog(
-      name: (map['name'] as String).input(),
-      streams: ((map['streams'] as List).cast<String>()).input(),
-      xPathQueries: ((map['xPathQueries'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      streams: pulumi.Input.fromValue((map['streams'] as List).cast<String>()),
+      xPathQueries: pulumi.Input.fromValue(
+        (map['xPathQueries'] as List).cast<String>(),
+      ),
     );
   }
 }
-

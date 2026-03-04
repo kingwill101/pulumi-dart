@@ -2,16 +2,15 @@
 enum RebalanceBehavior {
   createBeforeDelete("CreateBeforeDelete");
 
-  const RebalanceBehavior(this.value);
-  final String value;
+  const RebalanceBehavior(this.wireValue);
+  final String wireValue;
 
   static RebalanceBehavior fromValue(String value) {
     for (final item in RebalanceBehavior.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RebalanceBehavior value: $value');
   }
 }
-

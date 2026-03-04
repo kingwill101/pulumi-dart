@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataCollectionRuleDataSourcePrometheusForwarderLabelIncludeFilter {
   /// The label of the filter. This label should be unique across all `label_include_fileter` block. Possible value is `microsoft_metrics_include_label`.
   final pulumi.Input<String> label;
+
   /// The value of the filter.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class GetDataCollectionRuleDataSourcePrometheusForwarderLabelIncludeFilter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'label': label,
-      'value': value,
-    };
+    return <String, dynamic>{'label': label, 'value': value};
   }
 
-  factory GetDataCollectionRuleDataSourcePrometheusForwarderLabelIncludeFilter.fromMap(Map<String, dynamic> map) {
+  factory GetDataCollectionRuleDataSourcePrometheusForwarderLabelIncludeFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataCollectionRuleDataSourcePrometheusForwarderLabelIncludeFilter(
-      label: (map['label'] as String).input(),
-      value: (map['value'] as String).input(),
+      label: pulumi.Input.fromValue(map['label'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

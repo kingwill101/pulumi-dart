@@ -6,18 +6,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
   /// Optional. The maximum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
   final pulumi.Input<String>? maxValue;
+
   /// Optional. The minimum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
   final pulumi.Input<String>? minValue;
-  /// Optional. Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+
+  /// Optional. Whether each value needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
   final pulumi.Input<bool>? strictMaxEnabled;
-  /// Optional. Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+
+  /// Optional. Whether each value needs to be strictly greater than ('&gt;') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
   final pulumi.Input<bool>? strictMinEnabled;
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityRuleRangeExpectation].
   /// [maxValue] Optional. The maximum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
   /// [minValue] Optional. The minimum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
-  /// [strictMaxEnabled] Optional. Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
-  /// [strictMinEnabled] Optional. Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+  /// [strictMaxEnabled] Optional. Whether each value needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+  /// [strictMinEnabled] Optional. Whether each value needs to be strictly greater than ('&gt;') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
   GoogleCloudDataplexV1DataQualityRuleRangeExpectation({
     this.maxValue,
     this.minValue,
@@ -34,13 +37,30 @@ class GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
     };
   }
 
-  factory GoogleCloudDataplexV1DataQualityRuleRangeExpectation.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1DataQualityRuleRangeExpectation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1DataQualityRuleRangeExpectation(
-      maxValue: map['maxValue'] == null ? null : (map['maxValue']! as String).input(),
-      minValue: map['minValue'] == null ? null : (map['minValue']! as String).input(),
-      strictMaxEnabled: map['strictMaxEnabled'] == null ? null : (map['strictMaxEnabled']! as bool).input(),
-      strictMinEnabled: map['strictMinEnabled'] == null ? null : (map['strictMinEnabled']! as bool).input(),
+      maxValue: (() {
+        final guardedValue = map['maxValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      minValue: (() {
+        final guardedValue = map['minValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      strictMaxEnabled: (() {
+        final guardedValue = map['strictMaxEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      strictMinEnabled: (() {
+        final guardedValue = map['strictMinEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

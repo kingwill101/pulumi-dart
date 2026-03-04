@@ -10,20 +10,35 @@ class ExtensionProfileResponseV1 {
 
   /// Creates a new [ExtensionProfileResponseV1].
   /// [extensions] List of Arc extensions installed on edge device.
-  ExtensionProfileResponseV1({
-    required this.extensions,
-  });
+  ExtensionProfileResponseV1({required this.extensions});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extensions': pulumi.Input.mapInputValue<List<HciEdgeDeviceArcExtensionResponse>, List<Map<String, dynamic>>>(extensions, (value) => pulumi.Input.encodeList<HciEdgeDeviceArcExtensionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'extensions':
+          pulumi.Input.mapInputValue<
+            List<HciEdgeDeviceArcExtensionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            extensions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  HciEdgeDeviceArcExtensionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ExtensionProfileResponseV1.fromMap(Map<String, dynamic> map) {
     return ExtensionProfileResponseV1(
-      extensions: (pulumi.Input.decodeList<HciEdgeDeviceArcExtensionResponse>(map['extensions'], (value) => HciEdgeDeviceArcExtensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extensions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<HciEdgeDeviceArcExtensionResponse>(
+          map['extensions']!,
+          (value) => HciEdgeDeviceArcExtensionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrefixArgs {
   /// The name of the peering service.
   final pulumi.Input<String> peeringServiceName;
+
   /// The peering service prefix key
   final pulumi.Input<String>? peeringServicePrefixKey;
+
   /// The prefix from which your traffic originates.
   final pulumi.Input<String>? prefix;
+
   /// The name of the prefix.
   final pulumi.Input<String>? prefixName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -44,12 +48,27 @@ class PrefixArgs {
 
   factory PrefixArgs.fromMap(Map<String, dynamic> map) {
     return PrefixArgs(
-      peeringServiceName: (map['peeringServiceName'] as String).input(),
-      peeringServicePrefixKey: map['peeringServicePrefixKey'] == null ? null : (map['peeringServicePrefixKey']! as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
-      prefixName: map['prefixName'] == null ? null : (map['prefixName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      peeringServiceName: pulumi.Input.fromValue(
+        map['peeringServiceName'] as String,
+      ),
+      peeringServicePrefixKey: (() {
+        final guardedValue = map['peeringServicePrefixKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prefix: (() {
+        final guardedValue = map['prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prefixName: (() {
+        final guardedValue = map['prefixName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

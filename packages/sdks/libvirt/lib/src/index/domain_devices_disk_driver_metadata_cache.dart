@@ -9,20 +9,31 @@ class DomainDevicesDiskDriverMetadataCache {
 
   /// Creates a new [DomainDevicesDiskDriverMetadataCache].
   /// [maxSize] Sets the maximum size for the metadata cache in the data store format configuration.
-  DomainDevicesDiskDriverMetadataCache({
-    this.maxSize,
-  });
+  DomainDevicesDiskDriverMetadataCache({this.maxSize});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxSize': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskDriverMetadataCacheMaxSize, Map<String, dynamic>>(maxSize, (value) => value.toMap()),
+      'maxSize':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskDriverMetadataCacheMaxSize,
+            Map<String, dynamic>
+          >(maxSize, (value) => value.toMap()),
     };
   }
 
-  factory DomainDevicesDiskDriverMetadataCache.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesDiskDriverMetadataCache.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesDiskDriverMetadataCache(
-      maxSize: map['maxSize'] == null ? null : (DomainDevicesDiskDriverMetadataCacheMaxSize.fromMap((map['maxSize']! as Map).cast<String, dynamic>())).input(),
+      maxSize: (() {
+        final guardedValue = map['maxSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskDriverMetadataCacheMaxSize.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

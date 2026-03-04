@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceNetworkOutboundRuleFqdnArgs {
   /// Specifies the fully qualified domain name to allow for outbound traffic.
   final pulumi.Input<String> destinationFqdn;
+
   /// Specifies the name of the Machine Learning Workspace FQDN Network Outbound Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the ID of the Machine Learning Workspace. Changing this forces a new resource to be created.
   final pulumi.Input<String> workspaceId;
 
@@ -32,12 +34,17 @@ class WorkspaceNetworkOutboundRuleFqdnArgs {
     };
   }
 
-  factory WorkspaceNetworkOutboundRuleFqdnArgs.fromMap(Map<String, dynamic> map) {
+  factory WorkspaceNetworkOutboundRuleFqdnArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkspaceNetworkOutboundRuleFqdnArgs(
-      destinationFqdn: (map['destinationFqdn'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      destinationFqdn: pulumi.Input.fromValue(map['destinationFqdn'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

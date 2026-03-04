@@ -15,17 +15,23 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27So
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ocrLanguage': ?ocrLanguage,
-      'pid': ?pid,
-    };
+    return <String, dynamic>{'ocrLanguage': ?ocrLanguage, 'pid': ?pid};
   }
 
-  factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings(
-      ocrLanguage: map['ocrLanguage'] == null ? null : ((map['ocrLanguage'] as String).input()).input(),
-      pid: map['pid'] == null ? null : ((map['pid'] as int).input()).input(),
+      ocrLanguage: (() {
+        final guardedValue = map['ocrLanguage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pid: (() {
+        final guardedValue = map['pid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

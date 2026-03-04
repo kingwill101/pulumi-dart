@@ -10,16 +10,15 @@ enum WafMatchVariable {
   cookies("Cookies"),
   postArgs("PostArgs");
 
-  const WafMatchVariable(this.value);
-  final String value;
+  const WafMatchVariable(this.wireValue);
+  final String wireValue;
 
   static WafMatchVariable fromValue(String value) {
     for (final item in WafMatchVariable.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WafMatchVariable value: $value');
   }
 }
-

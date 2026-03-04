@@ -1,10 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'run_command_args.dart';
 import 'run_command_error_blob_managed_identity.dart';
-import 'run_command_instance_view.dart';
 import 'run_command_output_blob_managed_identity.dart';
-import 'run_command_parameter.dart';
-import 'run_command_protected_parameter.dart';
 import 'run_command_source.dart';
 import 'run_command_state.dart';
 
@@ -1447,7 +1444,7 @@ import 'run_command_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2023-03-01
@@ -1461,30 +1458,44 @@ import 'run_command_state.dart';
 /// ```
 class RunCommand extends pulumi.CustomResource {
   /// An `error_blob_managed_identity` block as defined below. User-assigned managed Identity that has access to errorBlobUri storage blob.
-  late final pulumi.Output<RunCommandErrorBlobManagedIdentity?> errorBlobManagedIdentity;
+  late final pulumi.Output<RunCommandErrorBlobManagedIdentity?>
+  errorBlobManagedIdentity;
+
   /// Specifies the Azure storage blob where script error stream will be uploaded.
   late final pulumi.Output<String?> errorBlobUri;
-  late final pulumi.Output<List<RunCommandInstanceView>> instanceViews;
+  late final pulumi.Output<List<Map<String, dynamic>>> instanceViews;
+
   /// The Azure Region where the Virtual Machine Run Command should exist. Changing this forces a new Virtual Machine Run Command to be created.
   late final pulumi.Output<String> location;
+
   /// Specifies the name of this Virtual Machine Run Command. Changing this forces a new Virtual Machine Run Command to be created.
   late final pulumi.Output<String> name;
+
   /// An `output_blob_managed_identity` block as defined below. User-assigned managed Identity that has access to outputBlobUri storage blob.
-  late final pulumi.Output<RunCommandOutputBlobManagedIdentity?> outputBlobManagedIdentity;
+  late final pulumi.Output<RunCommandOutputBlobManagedIdentity?>
+  outputBlobManagedIdentity;
+
   /// Specifies the Azure storage blob where script output stream will be uploaded. It can be basic blob URI with SAS token.
   late final pulumi.Output<String?> outputBlobUri;
+
   /// A list of `parameter` blocks as defined below. The parameters used by the script.
-  late final pulumi.Output<List<RunCommandParameter>?> parameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+
   /// A list of `protected_parameter` blocks as defined below. The protected parameters used by the script.
-  late final pulumi.Output<List<RunCommandProtectedParameter>?> protectedParameters;
+  late final pulumi.Output<List<Map<String, dynamic>>?> protectedParameters;
+
   /// Specifies the user account password on the VM when executing the Virtual Machine Run Command.
   late final pulumi.Output<String?> runAsPassword;
+
   /// Specifies the user account on the VM when executing the Virtual Machine Run Command.
   late final pulumi.Output<String?> runAsUser;
+
   /// A `source` block as defined below. The source of the run command script.
   late final pulumi.Output<RunCommandSource> source;
+
   /// A mapping of tags which should be assigned to the Virtual Machine Run Command.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Specifies the Virtual Machine ID within which this Virtual Machine Run Command should exist. Changing this forces a new Virtual Machine Run Command to be created.
   late final pulumi.Output<String> virtualMachineId;
 
@@ -1497,25 +1508,33 @@ class RunCommand extends pulumi.CustomResource {
     RunCommandArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/runCommand:RunCommand',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.errorBlobManagedIdentity = registerOutput<RunCommandErrorBlobManagedIdentity?>('errorBlobManagedIdentity');
-    this.errorBlobUri = registerOutput<String?>('errorBlobUri');
-    this.instanceViews = registerOutput<List<RunCommandInstanceView>>('instanceViews');
-    this.location = registerOutput<String>('location');
+         'azure:compute/runCommand:RunCommand',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    errorBlobManagedIdentity =
+        registerOutput<RunCommandErrorBlobManagedIdentity?>(
+          'errorBlobManagedIdentity',
+        );
+    errorBlobUri = registerOutput<String?>('errorBlobUri');
+    instanceViews = registerOutput<List<Map<String, dynamic>>>('instanceViews');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.outputBlobManagedIdentity = registerOutput<RunCommandOutputBlobManagedIdentity?>('outputBlobManagedIdentity');
-    this.outputBlobUri = registerOutput<String?>('outputBlobUri');
-    this.parameters = registerOutput<List<RunCommandParameter>?>('parameters');
-    this.protectedParameters = registerOutput<List<RunCommandProtectedParameter>?>('protectedParameters');
-    this.runAsPassword = registerOutput<String?>('runAsPassword');
-    this.runAsUser = registerOutput<String?>('runAsUser');
-    this.source = registerOutput<RunCommandSource>('source');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
+    outputBlobManagedIdentity =
+        registerOutput<RunCommandOutputBlobManagedIdentity?>(
+          'outputBlobManagedIdentity',
+        );
+    outputBlobUri = registerOutput<String?>('outputBlobUri');
+    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    protectedParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'protectedParameters',
+    );
+    runAsPassword = registerOutput<String?>('runAsPassword');
+    runAsUser = registerOutput<String?>('runAsUser');
+    source = registerOutput<RunCommandSource>('source');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 
   /// Gets an existing [RunCommand] resource's state with the given [name] and [id].
@@ -1536,24 +1555,32 @@ class RunCommand extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/runCommand:RunCommand',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.errorBlobManagedIdentity = registerOutput<RunCommandErrorBlobManagedIdentity?>('errorBlobManagedIdentity');
-    this.errorBlobUri = registerOutput<String?>('errorBlobUri');
-    this.instanceViews = registerOutput<List<RunCommandInstanceView>>('instanceViews');
-    this.location = registerOutput<String>('location');
+         'azure:compute/runCommand:RunCommand',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    errorBlobManagedIdentity =
+        registerOutput<RunCommandErrorBlobManagedIdentity?>(
+          'errorBlobManagedIdentity',
+        );
+    errorBlobUri = registerOutput<String?>('errorBlobUri');
+    instanceViews = registerOutput<List<Map<String, dynamic>>>('instanceViews');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.outputBlobManagedIdentity = registerOutput<RunCommandOutputBlobManagedIdentity?>('outputBlobManagedIdentity');
-    this.outputBlobUri = registerOutput<String?>('outputBlobUri');
-    this.parameters = registerOutput<List<RunCommandParameter>?>('parameters');
-    this.protectedParameters = registerOutput<List<RunCommandProtectedParameter>?>('protectedParameters');
-    this.runAsPassword = registerOutput<String?>('runAsPassword');
-    this.runAsUser = registerOutput<String?>('runAsUser');
-    this.source = registerOutput<RunCommandSource>('source');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.virtualMachineId = registerOutput<String>('virtualMachineId');
+    outputBlobManagedIdentity =
+        registerOutput<RunCommandOutputBlobManagedIdentity?>(
+          'outputBlobManagedIdentity',
+        );
+    outputBlobUri = registerOutput<String?>('outputBlobUri');
+    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    protectedParameters = registerOutput<List<Map<String, dynamic>>?>(
+      'protectedParameters',
+    );
+    runAsPassword = registerOutput<String?>('runAsPassword');
+    runAsUser = registerOutput<String?>('runAsUser');
+    source = registerOutput<RunCommandSource>('source');
+    tags = registerOutput<Map<String, String>?>('tags');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 }

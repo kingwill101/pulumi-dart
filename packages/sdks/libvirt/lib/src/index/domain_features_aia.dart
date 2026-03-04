@@ -8,20 +8,15 @@ class DomainFeaturesAia {
 
   /// Creates a new [DomainFeaturesAia].
   /// [value] Sets the value for AIA support, which may define its operational state or level of functionality.
-  DomainFeaturesAia({
-    required this.value,
-  });
+  DomainFeaturesAia({required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
   factory DomainFeaturesAia.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesAia(
-      value: (map['value'] as String).input(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

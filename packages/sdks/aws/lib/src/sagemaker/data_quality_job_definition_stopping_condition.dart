@@ -8,20 +8,21 @@ class DataQualityJobDefinitionStoppingCondition {
 
   /// Creates a new [DataQualityJobDefinitionStoppingCondition].
   /// [maxRuntimeInSeconds] The maximum runtime allowed in seconds.
-  DataQualityJobDefinitionStoppingCondition({
-    this.maxRuntimeInSeconds,
-  });
+  DataQualityJobDefinitionStoppingCondition({this.maxRuntimeInSeconds});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxRuntimeInSeconds': ?maxRuntimeInSeconds,
-    };
+    return <String, dynamic>{'maxRuntimeInSeconds': ?maxRuntimeInSeconds};
   }
 
-  factory DataQualityJobDefinitionStoppingCondition.fromMap(Map<String, dynamic> map) {
+  factory DataQualityJobDefinitionStoppingCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataQualityJobDefinitionStoppingCondition(
-      maxRuntimeInSeconds: map['maxRuntimeInSeconds'] == null ? null : ((map['maxRuntimeInSeconds'] as int).input()).input(),
+      maxRuntimeInSeconds: (() {
+        final guardedValue = map['maxRuntimeInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

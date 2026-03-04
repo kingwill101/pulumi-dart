@@ -1,5 +1,3 @@
-library module_policysimulator;
-
 export 'policysimulator/folder_replay.dart';
 export 'policysimulator/folder_replay_args.dart';
 export 'policysimulator/folder_replay_policysimulator_v1alpha.dart';

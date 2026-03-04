@@ -8,20 +8,15 @@ class DomainPmSuspendToMem {
 
   /// Creates a new [DomainPmSuspendToMem].
   /// [enabled] Specifies if the suspend to disk feature is enabled.
-  DomainPmSuspendToMem({
-    required this.enabled,
-  });
+  DomainPmSuspendToMem({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory DomainPmSuspendToMem.fromMap(Map<String, dynamic> map) {
     return DomainPmSuspendToMem(
-      enabled: (map['enabled'] as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as String),
     );
   }
 }
-

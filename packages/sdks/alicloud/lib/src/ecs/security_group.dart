@@ -8,11 +8,11 @@ import 'security_group_state.dart';
 ///
 /// For information about ECS Security Group and how to use it, see [What is Security Group](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-createsecuritygroup).
 ///
-/// > **NOTE:** Available since v1.0.0.
+/// &gt; **NOTE:** Available since v1.0.0.
 ///
-/// > **NOTE:** `alicloud.ecs.SecurityGroup` is used to build and manage a security group, and `alicloud.ecs.SecurityGroupRule` can define ingress or egress rules for it.
+/// &gt; **NOTE:** `alicloud.ecs.SecurityGroup` is used to build and manage a security group, and `alicloud.ecs.SecurityGroupRule` can define ingress or egress rules for it.
 ///
-/// > **NOTE:** From version 1.7.2, `alicloud.ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
+/// &gt; **NOTE:** From version 1.7.2, `alicloud.ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
 ///
 /// ## Example Usage
 ///
@@ -252,24 +252,33 @@ import 'security_group_state.dart';
 class SecurityGroup extends pulumi.CustomResource {
   /// (Available since v1.239.0) The time when the security group was created.
   late final pulumi.Output<String> createTime;
+
   /// The description of the security group. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
   late final pulumi.Output<String?> description;
+
   /// Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
   late final pulumi.Output<bool> innerAccess;
+
   /// The internal access control policy of the security group. Valid values:
   /// - `Accept`: The internal interconnectivity policy.
   /// - `Drop`: The internal isolation policy.
   late final pulumi.Output<String> innerAccessPolicy;
+
   /// Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
   late final pulumi.Output<String> name;
+
   /// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
   late final pulumi.Output<String> securityGroupName;
+
   /// The type of the security group. Default value: `normal`. Valid values:
   late final pulumi.Output<String> securityGroupType;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the VPC in which you want to create the security group.
   late final pulumi.Output<String> vpcId;
 
@@ -282,21 +291,21 @@ class SecurityGroup extends pulumi.CustomResource {
     SecurityGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/securityGroup:SecurityGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.innerAccess = registerOutput<bool>('innerAccess');
-    this.innerAccessPolicy = registerOutput<String>('innerAccessPolicy');
+         'alicloud:ecs/securityGroup:SecurityGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    innerAccess = registerOutput<bool>('innerAccess');
+    innerAccessPolicy = registerOutput<String>('innerAccessPolicy');
     this.name = registerOutput<String>('name');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.securityGroupName = registerOutput<String>('securityGroupName');
-    this.securityGroupType = registerOutput<String>('securityGroupType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    securityGroupName = registerOutput<String>('securityGroupName');
+    securityGroupType = registerOutput<String>('securityGroupType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
   }
 
   /// Gets an existing [SecurityGroup] resource's state with the given [name] and [id].
@@ -317,20 +326,20 @@ class SecurityGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/securityGroup:SecurityGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.innerAccess = registerOutput<bool>('innerAccess');
-    this.innerAccessPolicy = registerOutput<String>('innerAccessPolicy');
+         'alicloud:ecs/securityGroup:SecurityGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    innerAccess = registerOutput<bool>('innerAccess');
+    innerAccessPolicy = registerOutput<String>('innerAccessPolicy');
     this.name = registerOutput<String>('name');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.securityGroupName = registerOutput<String>('securityGroupName');
-    this.securityGroupType = registerOutput<String>('securityGroupType');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.vpcId = registerOutput<String>('vpcId');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    securityGroupName = registerOutput<String>('securityGroupName');
+    securityGroupType = registerOutput<String>('securityGroupType');
+    tags = registerOutput<Map<String, String>?>('tags');
+    vpcId = registerOutput<String>('vpcId');
   }
 }

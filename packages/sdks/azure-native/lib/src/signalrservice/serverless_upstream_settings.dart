@@ -10,20 +10,39 @@ class ServerlessUpstreamSettings {
 
   /// Creates a new [ServerlessUpstreamSettings].
   /// [templates] Gets or sets the list of Upstream URL templates. Order matters, and the first matching template takes effects.
-  ServerlessUpstreamSettings({
-    this.templates,
-  });
+  ServerlessUpstreamSettings({this.templates});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'templates': ?pulumi.Input.mapOptionalInputValue<List<UpstreamTemplate>, List<Map<String, dynamic>>>(templates, (value) => pulumi.Input.encodeList<UpstreamTemplate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'templates':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UpstreamTemplate>,
+            List<Map<String, dynamic>>
+          >(
+            templates,
+            (value) =>
+                pulumi.Input.encodeList<UpstreamTemplate, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory ServerlessUpstreamSettings.fromMap(Map<String, dynamic> map) {
     return ServerlessUpstreamSettings(
-      templates: map['templates'] == null ? null : (pulumi.Input.decodeList<UpstreamTemplate>(map['templates']!, (value) => UpstreamTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      templates: (() {
+        final guardedValue = map['templates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UpstreamTemplate>(
+            guardedValue,
+            (value) => UpstreamTemplate.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

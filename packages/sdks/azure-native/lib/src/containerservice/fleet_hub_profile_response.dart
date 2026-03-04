@@ -8,14 +8,19 @@ import 'apiserver_access_profile_response.dart';
 class FleetHubProfileResponse {
   /// The agent profile for the Fleet hub.
   final pulumi.Input<AgentProfileResponse>? agentProfile;
+
   /// The access profile for the Fleet hub API server.
   final pulumi.Input<APIServerAccessProfileResponse>? apiServerAccessProfile;
+
   /// DNS prefix used to create the FQDN for the Fleet hub.
   final pulumi.Input<String>? dnsPrefix;
+
   /// The FQDN of the Fleet hub.
   final pulumi.Input<String> fqdn;
+
   /// The Kubernetes version of the Fleet hub.
   final pulumi.Input<String> kubernetesVersion;
+
   /// The Azure Portal FQDN of the Fleet hub.
   final pulumi.Input<String> portalFqdn;
 
@@ -37,8 +42,16 @@ class FleetHubProfileResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentProfile': ?pulumi.Input.mapOptionalInputValue<AgentProfileResponse, Map<String, dynamic>>(agentProfile, (value) => value.toMap()),
-      'apiServerAccessProfile': ?pulumi.Input.mapOptionalInputValue<APIServerAccessProfileResponse, Map<String, dynamic>>(apiServerAccessProfile, (value) => value.toMap()),
+      'agentProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentProfileResponse,
+            Map<String, dynamic>
+          >(agentProfile, (value) => value.toMap()),
+      'apiServerAccessProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            APIServerAccessProfileResponse,
+            Map<String, dynamic>
+          >(apiServerAccessProfile, (value) => value.toMap()),
       'dnsPrefix': ?dnsPrefix,
       'fqdn': fqdn,
       'kubernetesVersion': kubernetesVersion,
@@ -48,13 +61,34 @@ class FleetHubProfileResponse {
 
   factory FleetHubProfileResponse.fromMap(Map<String, dynamic> map) {
     return FleetHubProfileResponse(
-      agentProfile: map['agentProfile'] == null ? null : (AgentProfileResponse.fromMap((map['agentProfile']! as Map).cast<String, dynamic>())).input(),
-      apiServerAccessProfile: map['apiServerAccessProfile'] == null ? null : (APIServerAccessProfileResponse.fromMap((map['apiServerAccessProfile']! as Map).cast<String, dynamic>())).input(),
-      dnsPrefix: map['dnsPrefix'] == null ? null : (map['dnsPrefix']! as String).input(),
-      fqdn: (map['fqdn'] as String).input(),
-      kubernetesVersion: (map['kubernetesVersion'] as String).input(),
-      portalFqdn: (map['portalFqdn'] as String).input(),
+      agentProfile: (() {
+        final guardedValue = map['agentProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentProfileResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      apiServerAccessProfile: (() {
+        final guardedValue = map['apiServerAccessProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          APIServerAccessProfileResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dnsPrefix: (() {
+        final guardedValue = map['dnsPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fqdn: pulumi.Input.fromValue(map['fqdn'] as String),
+      kubernetesVersion: pulumi.Input.fromValue(
+        map['kubernetesVersion'] as String,
+      ),
+      portalFqdn: pulumi.Input.fromValue(map['portalFqdn'] as String),
     );
   }
 }
-

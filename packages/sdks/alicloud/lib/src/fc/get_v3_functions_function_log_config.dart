@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetV3FunctionsFunctionLogConfig {
   /// After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
   final pulumi.Input<bool> enableInstanceMetrics;
+
   /// After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
   final pulumi.Input<bool> enableRequestMetrics;
+
   /// Log Line First Matching Rules.
   final pulumi.Input<String> logBeginRule;
+
   /// The Logstore name of log service.
   final pulumi.Input<String> logstore;
+
   /// The name of the log service Project.
   final pulumi.Input<String> project;
 
@@ -40,12 +44,15 @@ class GetV3FunctionsFunctionLogConfig {
 
   factory GetV3FunctionsFunctionLogConfig.fromMap(Map<String, dynamic> map) {
     return GetV3FunctionsFunctionLogConfig(
-      enableInstanceMetrics: (map['enableInstanceMetrics'] as bool).input(),
-      enableRequestMetrics: (map['enableRequestMetrics'] as bool).input(),
-      logBeginRule: (map['logBeginRule'] as String).input(),
-      logstore: (map['logstore'] as String).input(),
-      project: (map['project'] as String).input(),
+      enableInstanceMetrics: pulumi.Input.fromValue(
+        map['enableInstanceMetrics'] as bool,
+      ),
+      enableRequestMetrics: pulumi.Input.fromValue(
+        map['enableRequestMetrics'] as bool,
+      ),
+      logBeginRule: pulumi.Input.fromValue(map['logBeginRule'] as String),
+      logstore: pulumi.Input.fromValue(map['logstore'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
     );
   }
 }
-

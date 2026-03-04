@@ -9,20 +9,15 @@ class ClusterTelemetryResponse {
 
   /// Creates a new [ClusterTelemetryResponse].
   /// [type] Type of the integration.
-  ClusterTelemetryResponse({
-    required this.type,
-  });
+  ClusterTelemetryResponse({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory ClusterTelemetryResponse.fromMap(Map<String, dynamic> map) {
     return ClusterTelemetryResponse(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

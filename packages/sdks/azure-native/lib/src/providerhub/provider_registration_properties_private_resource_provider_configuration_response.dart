@@ -14,15 +14,18 @@ class ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allowedSubscriptions': ?allowedSubscriptions,
-    };
+    return <String, dynamic>{'allowedSubscriptions': ?allowedSubscriptions};
   }
 
-  factory ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse(
-      allowedSubscriptions: map['allowedSubscriptions'] == null ? null : ((map['allowedSubscriptions']! as List).cast<String>()).input(),
+      allowedSubscriptions: (() {
+        final guardedValue = map['allowedSubscriptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

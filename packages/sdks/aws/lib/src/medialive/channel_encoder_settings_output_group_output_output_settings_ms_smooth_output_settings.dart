@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings {
   final pulumi.Input<String>? h265PackagingType;
+
   /// String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
   final pulumi.Input<String>? nameModifier;
 
@@ -22,11 +23,20 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSetting
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings(
-      h265PackagingType: map['h265PackagingType'] == null ? null : ((map['h265PackagingType'] as String).input()).input(),
-      nameModifier: map['nameModifier'] == null ? null : ((map['nameModifier'] as String).input()).input(),
+      h265PackagingType: (() {
+        final guardedValue = map['h265PackagingType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameModifier: (() {
+        final guardedValue = map['nameModifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

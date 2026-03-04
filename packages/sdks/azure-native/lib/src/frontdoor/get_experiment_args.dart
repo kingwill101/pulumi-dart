@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExperimentArgs {
   /// The Experiment identifier associated with the Experiment
   final pulumi.Input<String> experimentName;
+
   /// The Profile identifier associated with the Tenant and Partner
   final pulumi.Input<String> profileName;
+
   /// Name of the Resource group within the Azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetExperimentArgs {
 
   factory GetExperimentArgs.fromMap(Map<String, dynamic> map) {
     return GetExperimentArgs(
-      experimentName: (map['experimentName'] as String).input(),
-      profileName: (map['profileName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      experimentName: pulumi.Input.fromValue(map['experimentName'] as String),
+      profileName: pulumi.Input.fromValue(map['profileName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

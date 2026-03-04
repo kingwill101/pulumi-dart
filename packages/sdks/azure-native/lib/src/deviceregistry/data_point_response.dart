@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataPointResponse {
   /// Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
   final pulumi.Input<String>? dataPointConfiguration;
+
   /// The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
   final pulumi.Input<String> dataSource;
+
   /// The name of the data point.
   final pulumi.Input<String> name;
+
   /// An indication of how the data point should be mapped to OpenTelemetry.
   final pulumi.Input<String>? observabilityMode;
 
@@ -36,11 +39,18 @@ class DataPointResponse {
 
   factory DataPointResponse.fromMap(Map<String, dynamic> map) {
     return DataPointResponse(
-      dataPointConfiguration: map['dataPointConfiguration'] == null ? null : (map['dataPointConfiguration']! as String).input(),
-      dataSource: (map['dataSource'] as String).input(),
-      name: (map['name'] as String).input(),
-      observabilityMode: map['observabilityMode'] == null ? null : (map['observabilityMode']! as String).input(),
+      dataPointConfiguration: (() {
+        final guardedValue = map['dataPointConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataSource: pulumi.Input.fromValue(map['dataSource'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      observabilityMode: (() {
+        final guardedValue = map['observabilityMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

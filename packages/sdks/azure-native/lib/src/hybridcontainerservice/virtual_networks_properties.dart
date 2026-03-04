@@ -9,13 +9,18 @@ import 'virtual_networks_properties_vmip_pool.dart';
 class VirtualNetworksProperties {
   /// Address of the DNS servers associated with the network
   final pulumi.Input<List<String>>? dnsServers;
+
   /// Address of the Gateway associated with the network
   final pulumi.Input<String>? gateway;
-  final pulumi.Input<VirtualNetworksPropertiesInfraVnetProfile>? infraVnetProfile;
+  final pulumi.Input<VirtualNetworksPropertiesInfraVnetProfile>?
+  infraVnetProfile;
+
   /// IP Address Prefix of the network
   final pulumi.Input<String>? ipAddressPrefix;
+
   /// Virtual IP Pool for Kubernetes
   final pulumi.Input<List<VirtualNetworksPropertiesVipPool>>? vipPool;
+
   /// IP Pool for Virtual Machines
   final pulumi.Input<List<VirtualNetworksPropertiesVmipPool>>? vmipPool;
 
@@ -39,22 +44,89 @@ class VirtualNetworksProperties {
     return <String, dynamic>{
       'dnsServers': ?dnsServers,
       'gateway': ?gateway,
-      'infraVnetProfile': ?pulumi.Input.mapOptionalInputValue<VirtualNetworksPropertiesInfraVnetProfile, Map<String, dynamic>>(infraVnetProfile, (value) => value.toMap()),
+      'infraVnetProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualNetworksPropertiesInfraVnetProfile,
+            Map<String, dynamic>
+          >(infraVnetProfile, (value) => value.toMap()),
       'ipAddressPrefix': ?ipAddressPrefix,
-      'vipPool': ?pulumi.Input.mapOptionalInputValue<List<VirtualNetworksPropertiesVipPool>, List<Map<String, dynamic>>>(vipPool, (value) => pulumi.Input.encodeList<VirtualNetworksPropertiesVipPool, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'vmipPool': ?pulumi.Input.mapOptionalInputValue<List<VirtualNetworksPropertiesVmipPool>, List<Map<String, dynamic>>>(vmipPool, (value) => pulumi.Input.encodeList<VirtualNetworksPropertiesVmipPool, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vipPool':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VirtualNetworksPropertiesVipPool>,
+            List<Map<String, dynamic>>
+          >(
+            vipPool,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualNetworksPropertiesVipPool,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'vmipPool':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VirtualNetworksPropertiesVmipPool>,
+            List<Map<String, dynamic>>
+          >(
+            vmipPool,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VirtualNetworksPropertiesVmipPool,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory VirtualNetworksProperties.fromMap(Map<String, dynamic> map) {
     return VirtualNetworksProperties(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
-      gateway: map['gateway'] == null ? null : (map['gateway']! as String).input(),
-      infraVnetProfile: map['infraVnetProfile'] == null ? null : (VirtualNetworksPropertiesInfraVnetProfile.fromMap((map['infraVnetProfile']! as Map).cast<String, dynamic>())).input(),
-      ipAddressPrefix: map['ipAddressPrefix'] == null ? null : (map['ipAddressPrefix']! as String).input(),
-      vipPool: map['vipPool'] == null ? null : (pulumi.Input.decodeList<VirtualNetworksPropertiesVipPool>(map['vipPool']!, (value) => VirtualNetworksPropertiesVipPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vmipPool: map['vmipPool'] == null ? null : (pulumi.Input.decodeList<VirtualNetworksPropertiesVmipPool>(map['vmipPool']!, (value) => VirtualNetworksPropertiesVmipPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsServers: (() {
+        final guardedValue = map['dnsServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      gateway: (() {
+        final guardedValue = map['gateway'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      infraVnetProfile: (() {
+        final guardedValue = map['infraVnetProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VirtualNetworksPropertiesInfraVnetProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ipAddressPrefix: (() {
+        final guardedValue = map['ipAddressPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vipPool: (() {
+        final guardedValue = map['vipPool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VirtualNetworksPropertiesVipPool>(
+            guardedValue,
+            (value) => VirtualNetworksPropertiesVipPool.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      vmipPool: (() {
+        final guardedValue = map['vmipPool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VirtualNetworksPropertiesVmipPool>(
+            guardedValue,
+            (value) => VirtualNetworksPropertiesVmipPool.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

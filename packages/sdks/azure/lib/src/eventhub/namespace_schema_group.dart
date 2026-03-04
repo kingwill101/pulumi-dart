@@ -190,7 +190,7 @@ import 'namespace_schema_group_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.EventHub` - 2024-01-01
@@ -205,13 +205,16 @@ import 'namespace_schema_group_state.dart';
 class NamespaceSchemaGroup extends pulumi.CustomResource {
   /// Specifies the name of this schema group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the ID of the EventHub Namespace. Changing this forces a new resource to be created.
   late final pulumi.Output<String> namespaceId;
+
   /// Specifies the compatibility of this schema group. Possible values are `None`, `Backward`, `Forward`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> schemaCompatibility;
+
   /// Specifies the Type of this schema group. Possible values are `Avro`, `Unknown` and `Json`. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** When `schema_type` is specified as `Json`, `schema_compatibility` must be set to `None`.
+  /// &gt; **Note:** When `schema_type` is specified as `Json`, `schema_compatibility` must be set to `None`.
   late final pulumi.Output<String> schemaType;
 
   /// Creates a new [NamespaceSchemaGroup].
@@ -223,15 +226,15 @@ class NamespaceSchemaGroup extends pulumi.CustomResource {
     NamespaceSchemaGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventhub/namespaceSchemaGroup:NamespaceSchemaGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:eventhub/namespaceSchemaGroup:NamespaceSchemaGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.namespaceId = registerOutput<String>('namespaceId');
-    this.schemaCompatibility = registerOutput<String>('schemaCompatibility');
-    this.schemaType = registerOutput<String>('schemaType');
+    namespaceId = registerOutput<String>('namespaceId');
+    schemaCompatibility = registerOutput<String>('schemaCompatibility');
+    schemaType = registerOutput<String>('schemaType');
   }
 
   /// Gets an existing [NamespaceSchemaGroup] resource's state with the given [name] and [id].
@@ -252,14 +255,14 @@ class NamespaceSchemaGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:eventhub/namespaceSchemaGroup:NamespaceSchemaGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:eventhub/namespaceSchemaGroup:NamespaceSchemaGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.namespaceId = registerOutput<String>('namespaceId');
-    this.schemaCompatibility = registerOutput<String>('schemaCompatibility');
-    this.schemaType = registerOutput<String>('schemaType');
+    namespaceId = registerOutput<String>('namespaceId');
+    schemaCompatibility = registerOutput<String>('schemaCompatibility');
+    schemaType = registerOutput<String>('schemaType');
   }
 }

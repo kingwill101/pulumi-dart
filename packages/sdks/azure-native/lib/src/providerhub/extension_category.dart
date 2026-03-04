@@ -16,18 +16,19 @@ enum ExtensionCategory {
   resourceMoveBegin("ResourceMoveBegin"),
   resourceMoveCompleted("ResourceMoveCompleted"),
   bestMatchOperationBegin("BestMatchOperationBegin"),
-  subscriptionLifecycleNotificationDeletion("SubscriptionLifecycleNotificationDeletion");
+  subscriptionLifecycleNotificationDeletion(
+    "SubscriptionLifecycleNotificationDeletion",
+  );
 
-  const ExtensionCategory(this.value);
-  final String value;
+  const ExtensionCategory(this.wireValue);
+  final String wireValue;
 
   static ExtensionCategory fromValue(String value) {
     for (final item in ExtensionCategory.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExtensionCategory value: $value');
   }
 }
-

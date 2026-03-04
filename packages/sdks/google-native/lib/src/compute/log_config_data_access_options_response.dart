@@ -9,20 +9,15 @@ class LogConfigDataAccessOptionsResponse {
 
   /// Creates a new [LogConfigDataAccessOptionsResponse].
   /// [logMode] This is deprecated and has no effect. Do not use.
-  LogConfigDataAccessOptionsResponse({
-    required this.logMode,
-  });
+  LogConfigDataAccessOptionsResponse({required this.logMode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'logMode': logMode,
-    };
+    return <String, dynamic>{'logMode': logMode};
   }
 
   factory LogConfigDataAccessOptionsResponse.fromMap(Map<String, dynamic> map) {
     return LogConfigDataAccessOptionsResponse(
-      logMode: (map['logMode'] as String).input(),
+      logMode: pulumi.Input.fromValue(map['logMode'] as String),
     );
   }
 }
-

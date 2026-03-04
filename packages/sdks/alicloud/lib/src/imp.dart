@@ -1,5 +1,3 @@
-library module_imp;
-
 export 'imp/app_template.dart';
 export 'imp/app_template_args.dart';
 export 'imp/app_template_config_list.dart';

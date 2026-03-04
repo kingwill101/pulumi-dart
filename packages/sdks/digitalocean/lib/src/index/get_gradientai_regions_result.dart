@@ -8,6 +8,7 @@ import 'get_gradientai_regions_sort.dart';
 /// Result data returned by getGradientaiRegions.
 class GetGradientaiRegionsResult {
   final List<GetGradientaiRegionsFilter>? filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetGradientaiRegionsRegion> regions;
@@ -27,20 +28,60 @@ class GetGradientaiRegionsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetGradientaiRegionsFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GetGradientaiRegionsFilter,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
-      'regions': pulumi.Input.encodeList<GetGradientaiRegionsRegion, Map<String, dynamic>>(regions, (value) => value.toMap()),
-      'sorts': ?sorts == null ? null : pulumi.Input.encodeList<GetGradientaiRegionsSort, Map<String, dynamic>>(sorts!, (value) => value.toMap()),
+      'regions':
+          pulumi.Input.encodeList<
+            GetGradientaiRegionsRegion,
+            Map<String, dynamic>
+          >(regions, (value) => value.toMap()),
+      'sorts': ?(() {
+        final guardedValue = sorts;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GetGradientaiRegionsSort,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
   factory GetGradientaiRegionsResult.fromMap(Map<String, dynamic> map) {
     return GetGradientaiRegionsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetGradientaiRegionsFilter>(map['filters']!, (value) => GetGradientaiRegionsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetGradientaiRegionsFilter>(
+          guardedValue,
+          (value) => GetGradientaiRegionsFilter.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
-      regions: pulumi.Input.decodeList<GetGradientaiRegionsRegion>(map['regions'], (value) => GetGradientaiRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),
-      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetGradientaiRegionsSort>(map['sorts']!, (value) => GetGradientaiRegionsSort.fromMap((value as Map).cast<String, dynamic>())),
+      regions: pulumi.Input.decodeList<GetGradientaiRegionsRegion>(
+        map['regions']!,
+        (value) => GetGradientaiRegionsRegion.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      sorts: (() {
+        final guardedValue = map['sorts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetGradientaiRegionsSort>(
+          guardedValue,
+          (value) => GetGradientaiRegionsSort.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

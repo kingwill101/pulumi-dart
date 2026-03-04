@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs {
   /// The name of the P2SVpnGateway.
   final pulumi.Input<String> gatewayName;
+
   /// The sas-url to download the P2S Vpn connection health detail.
   final pulumi.Input<String>? outputBlobSasUrl;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The list of p2s vpn user names whose p2s vpn connection detailed health to retrieve for.
   final pulumi.Input<List<String>>? vpnUserNamesFilter;
 
@@ -37,13 +40,24 @@ class GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs {
     };
   }
 
-  factory GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs.fromMap(Map<String, dynamic> map) {
+  factory GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs(
-      gatewayName: (map['gatewayName'] as String).input(),
-      outputBlobSasUrl: map['outputBlobSasUrl'] == null ? null : (map['outputBlobSasUrl']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vpnUserNamesFilter: map['vpnUserNamesFilter'] == null ? null : ((map['vpnUserNamesFilter']! as List).cast<String>()).input(),
+      gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
+      outputBlobSasUrl: (() {
+        final guardedValue = map['outputBlobSasUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vpnUserNamesFilter: (() {
+        final guardedValue = map['vpnUserNamesFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

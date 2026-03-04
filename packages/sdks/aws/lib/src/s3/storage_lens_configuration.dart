@@ -350,16 +350,23 @@ import 'storage_lens_configuration_storage_lens_configuration.dart';
 class StorageLensConfiguration extends pulumi.CustomResource {
   /// The AWS account ID for the S3 Storage Lens configuration. Defaults to automatically determined account ID of the AWS provider.
   late final pulumi.Output<String> accountId;
+
   /// Amazon Resource Name (ARN) of the S3 Storage Lens configuration.
   late final pulumi.Output<String> arn;
+
   /// The ID of the S3 Storage Lens configuration.
   late final pulumi.Output<String> configId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The S3 Storage Lens configuration. See Storage Lens Configuration below for more details.
-  late final pulumi.Output<StorageLensConfigurationStorageLensConfiguration> storageLensConfiguration;
+  late final pulumi.Output<StorageLensConfigurationStorageLensConfiguration>
+  storageLensConfiguration;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -372,18 +379,21 @@ class StorageLensConfiguration extends pulumi.CustomResource {
     StorageLensConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3control/storageLensConfiguration:StorageLensConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.arn = registerOutput<String>('arn');
-    this.configId = registerOutput<String>('configId');
-    this.region = registerOutput<String>('region');
-    this.storageLensConfiguration = registerOutput<StorageLensConfigurationStorageLensConfiguration>('storageLensConfiguration');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:s3control/storageLensConfiguration:StorageLensConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    arn = registerOutput<String>('arn');
+    configId = registerOutput<String>('configId');
+    region = registerOutput<String>('region');
+    storageLensConfiguration =
+        registerOutput<StorageLensConfigurationStorageLensConfiguration>(
+          'storageLensConfiguration',
+        );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [StorageLensConfiguration] resource's state with the given [name] and [id].
@@ -404,17 +414,20 @@ class StorageLensConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3control/storageLensConfiguration:StorageLensConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accountId = registerOutput<String>('accountId');
-    this.arn = registerOutput<String>('arn');
-    this.configId = registerOutput<String>('configId');
-    this.region = registerOutput<String>('region');
-    this.storageLensConfiguration = registerOutput<StorageLensConfigurationStorageLensConfiguration>('storageLensConfiguration');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+         'aws:s3control/storageLensConfiguration:StorageLensConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accountId = registerOutput<String>('accountId');
+    arn = registerOutput<String>('arn');
+    configId = registerOutput<String>('configId');
+    region = registerOutput<String>('region');
+    storageLensConfiguration =
+        registerOutput<StorageLensConfigurationStorageLensConfiguration>(
+          'storageLensConfiguration',
+        );
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

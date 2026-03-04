@@ -8,16 +8,15 @@ enum PrivateKeyAlgorithm {
   rsa4096("Rsa4096"),
   rsa8192("Rsa8192");
 
-  const PrivateKeyAlgorithm(this.value);
-  final String value;
+  const PrivateKeyAlgorithm(this.wireValue);
+  final String wireValue;
 
   static PrivateKeyAlgorithm fromValue(String value) {
     for (final item in PrivateKeyAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PrivateKeyAlgorithm value: $value');
   }
 }
-

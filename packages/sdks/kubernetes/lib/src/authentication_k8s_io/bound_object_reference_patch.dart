@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BoundObjectReferencePatch {
   /// API version of the referent.
   final pulumi.Input<String>? apiVersion;
+
   /// Kind of the referent. Valid kinds are 'Pod' and 'Secret'.
   final pulumi.Input<String>? kind;
+
   /// Name of the referent.
   final pulumi.Input<String>? name;
+
   /// UID of the referent.
   final pulumi.Input<String>? uid;
 
@@ -18,12 +21,7 @@ class BoundObjectReferencePatch {
   /// [kind] Kind of the referent. Valid kinds are 'Pod' and 'Secret'.
   /// [name] Name of the referent.
   /// [uid] UID of the referent.
-  BoundObjectReferencePatch({
-    this.apiVersion,
-    this.kind,
-    this.name,
-    this.uid,
-  });
+  BoundObjectReferencePatch({this.apiVersion, this.kind, this.name, this.uid});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,11 +34,26 @@ class BoundObjectReferencePatch {
 
   factory BoundObjectReferencePatch.fromMap(Map<String, dynamic> map) {
     return BoundObjectReferencePatch(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uid: (() {
+        final guardedValue = map['uid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

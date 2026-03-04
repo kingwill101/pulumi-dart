@@ -7,9 +7,11 @@ import 'route_server_vpc_association_timeouts.dart';
 class RouteServerVpcAssociationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The unique identifier for the route server to be associated.
   final pulumi.Input<String>? routeServerId;
   final pulumi.Input<RouteServerVpcAssociationTimeouts>? timeouts;
+
   /// The ID of the VPC to associate with the route server.
   ///
   /// The following arguments are optional:
@@ -31,18 +33,41 @@ class RouteServerVpcAssociationState {
     return <String, dynamic>{
       'region': ?region,
       'routeServerId': ?routeServerId,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<RouteServerVpcAssociationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            RouteServerVpcAssociationTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'vpcId': ?vpcId,
     };
   }
 
   factory RouteServerVpcAssociationState.fromMap(Map<String, dynamic> map) {
     return RouteServerVpcAssociationState(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      routeServerId: map['routeServerId'] == null ? null : ((map['routeServerId'] as String).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((RouteServerVpcAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeServerId: (() {
+        final guardedValue = map['routeServerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RouteServerVpcAssociationTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

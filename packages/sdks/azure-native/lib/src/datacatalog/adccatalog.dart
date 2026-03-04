@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'adccatalog_args.dart';
-import 'principals_response.dart';
 
 /// Azure Data Catalog.
 ///
@@ -233,29 +232,40 @@ import 'principals_response.dart';
 /// ```
 class ADCCatalog extends pulumi.CustomResource {
   /// Azure data catalog admin list.
-  late final pulumi.Output<List<PrincipalsResponse>?> admins;
+  late final pulumi.Output<List<Map<String, dynamic>>?> admins;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Automatic unit adjustment enabled or not.
   late final pulumi.Output<bool?> enableAutomaticUnitAdjustment;
+
   /// Resource etag
   late final pulumi.Output<String?> etag;
+
   /// Resource location
   late final pulumi.Output<String?> location;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// Azure data catalog SKU.
   late final pulumi.Output<String?> sku;
+
   /// Azure data catalog provision status.
   late final pulumi.Output<bool?> successfullyProvisioned;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type
   late final pulumi.Output<String> type;
+
   /// Azure data catalog units.
   late final pulumi.Output<int?> units;
+
   /// Azure data catalog user list.
-  late final pulumi.Output<List<PrincipalsResponse>?> users;
+  late final pulumi.Output<List<Map<String, dynamic>>?> users;
 
   /// Creates a new [ADCCatalog].
   /// [name] The Pulumi resource name.
@@ -266,22 +276,24 @@ class ADCCatalog extends pulumi.CustomResource {
     ADCCatalogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datacatalog:ADCCatalog',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.admins = registerOutput<List<PrincipalsResponse>?>('admins');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.enableAutomaticUnitAdjustment = registerOutput<bool?>('enableAutomaticUnitAdjustment');
-    this.etag = registerOutput<String?>('etag');
-    this.location = registerOutput<String?>('location');
+         'azure-native:datacatalog:ADCCatalog',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    admins = registerOutput<List<Map<String, dynamic>>?>('admins');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    enableAutomaticUnitAdjustment = registerOutput<bool?>(
+      'enableAutomaticUnitAdjustment',
+    );
+    etag = registerOutput<String?>('etag');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.sku = registerOutput<String?>('sku');
-    this.successfullyProvisioned = registerOutput<bool?>('successfullyProvisioned');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.units = registerOutput<int?>('units');
-    this.users = registerOutput<List<PrincipalsResponse>?>('users');
+    sku = registerOutput<String?>('sku');
+    successfullyProvisioned = registerOutput<bool?>('successfullyProvisioned');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    units = registerOutput<int?>('units');
+    users = registerOutput<List<Map<String, dynamic>>?>('users');
   }
 }

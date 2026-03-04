@@ -7,10 +7,13 @@ import 'linked_service_reference.dart';
 class LogStorageSettings {
   /// Specifies whether to enable reliable logging. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? enableReliableLogging;
+
   /// Log storage linked service reference.
   final pulumi.Input<LinkedServiceReference> linkedServiceName;
+
   /// Gets or sets the log level, support: Info, Warning. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? logLevel;
+
   /// The path to storage for storing detailed logs of activity execution. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? path;
 
@@ -29,7 +32,11 @@ class LogStorageSettings {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enableReliableLogging': ?enableReliableLogging,
-      'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
+      'linkedServiceName':
+          pulumi.Input.mapInputValue<
+            LinkedServiceReference,
+            Map<String, dynamic>
+          >(linkedServiceName, (value) => value.toMap()),
       'logLevel': ?logLevel,
       'path': ?path,
     };
@@ -37,11 +44,26 @@ class LogStorageSettings {
 
   factory LogStorageSettings.fromMap(Map<String, dynamic> map) {
     return LogStorageSettings(
-      enableReliableLogging: map['enableReliableLogging'] == null ? null : (map['enableReliableLogging']!).input(),
-      linkedServiceName: (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel']!).input(),
-      path: map['path'] == null ? null : (map['path']!).input(),
+      enableReliableLogging: (() {
+        final guardedValue = map['enableReliableLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      linkedServiceName: pulumi.Input.fromValue(
+        LinkedServiceReference.fromMap(
+          (map['linkedServiceName']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      logLevel: (() {
+        final guardedValue = map['logLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

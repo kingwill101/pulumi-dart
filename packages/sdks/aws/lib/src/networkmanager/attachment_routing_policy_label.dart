@@ -116,8 +116,10 @@ import 'attachment_routing_policy_label_state.dart';
 class AttachmentRoutingPolicyLabel extends pulumi.CustomResource {
   /// The ID of the attachment to apply the routing policy label to.
   late final pulumi.Output<String> attachmentId;
+
   /// The ID of the core network containing the attachment.
   late final pulumi.Output<String> coreNetworkId;
+
   /// The routing policy label to apply to the attachment.
   late final pulumi.Output<String> routingPolicyLabel;
 
@@ -130,14 +132,14 @@ class AttachmentRoutingPolicyLabel extends pulumi.CustomResource {
     AttachmentRoutingPolicyLabelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkmanager/attachmentRoutingPolicyLabel:AttachmentRoutingPolicyLabel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attachmentId = registerOutput<String>('attachmentId');
-    this.coreNetworkId = registerOutput<String>('coreNetworkId');
-    this.routingPolicyLabel = registerOutput<String>('routingPolicyLabel');
+         'aws:networkmanager/attachmentRoutingPolicyLabel:AttachmentRoutingPolicyLabel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attachmentId = registerOutput<String>('attachmentId');
+    coreNetworkId = registerOutput<String>('coreNetworkId');
+    routingPolicyLabel = registerOutput<String>('routingPolicyLabel');
   }
 
   /// Gets an existing [AttachmentRoutingPolicyLabel] resource's state with the given [name] and [id].
@@ -158,13 +160,13 @@ class AttachmentRoutingPolicyLabel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkmanager/attachmentRoutingPolicyLabel:AttachmentRoutingPolicyLabel',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attachmentId = registerOutput<String>('attachmentId');
-    this.coreNetworkId = registerOutput<String>('coreNetworkId');
-    this.routingPolicyLabel = registerOutput<String>('routingPolicyLabel');
+         'aws:networkmanager/attachmentRoutingPolicyLabel:AttachmentRoutingPolicyLabel',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    attachmentId = registerOutput<String>('attachmentId');
+    coreNetworkId = registerOutput<String>('coreNetworkId');
+    routingPolicyLabel = registerOutput<String>('routingPolicyLabel');
   }
 }

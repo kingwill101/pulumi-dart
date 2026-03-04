@@ -9,20 +9,19 @@ class SecretPasswordIdentity {
 
   /// Creates a new [SecretPasswordIdentity].
   /// [userAssignedIdentity] The Azure resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
-  SecretPasswordIdentity({
-    this.userAssignedIdentity,
-  });
+  SecretPasswordIdentity({this.userAssignedIdentity});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'userAssignedIdentity': ?userAssignedIdentity,
-    };
+    return <String, dynamic>{'userAssignedIdentity': ?userAssignedIdentity};
   }
 
   factory SecretPasswordIdentity.fromMap(Map<String, dynamic> map) {
     return SecretPasswordIdentity(
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
+      userAssignedIdentity: (() {
+        final guardedValue = map['userAssignedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -15,11 +15,7 @@ class GetSchemaArgs {
   /// [project] Optional.
   /// [schemaId] Required.
   /// [view] Optional.
-  GetSchemaArgs({
-    this.project,
-    required this.schemaId,
-    this.view,
-  });
+  GetSchemaArgs({this.project, required this.schemaId, this.view});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +27,17 @@ class GetSchemaArgs {
 
   factory GetSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemaArgs(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      schemaId: (map['schemaId'] as String).input(),
-      view: map['view'] == null ? null : (map['view']! as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schemaId: pulumi.Input.fromValue(map['schemaId'] as String),
+      view: (() {
+        final guardedValue = map['view'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

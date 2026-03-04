@@ -6,62 +6,91 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BillingRoleAssignmentPropertiesResponse {
   /// The name of the billing account.
   final pulumi.Input<String> billingAccountDisplayName;
+
   /// The fully qualified ID that uniquely identifies a billing account.
   final pulumi.Input<String> billingAccountId;
+
   /// The name of the billing profile.
   final pulumi.Input<String> billingProfileDisplayName;
+
   /// The fully qualified ID that uniquely identifies a billing profile.
   final pulumi.Input<String> billingProfileId;
+
   /// The ID of the billing request that was created for the role assignment. This is only applicable to cross tenant role assignments or role assignments created through the billing request.
   final pulumi.Input<String> billingRequestId;
+
   /// The object ID of the user who created the role assignment.
   final pulumi.Input<String> createdByPrincipalId;
+
   /// The principal PUID of the user who created the role assignment.
   final pulumi.Input<String> createdByPrincipalPuid;
+
   /// The tenant Id of the user who created the role assignment.
   final pulumi.Input<String> createdByPrincipalTenantId;
+
   /// The email address of the user who created the role assignment. This is supported only for billing accounts with agreement type Enterprise Agreement.
   final pulumi.Input<String> createdByUserEmailAddress;
+
   /// The date the role assignment was created.
   final pulumi.Input<String> createdOn;
+
   /// The name of the customer.
   final pulumi.Input<String> customerDisplayName;
+
   /// The fully qualified ID that uniquely identifies a customer.
   final pulumi.Input<String> customerId;
+
   /// The name of the invoice section.
   final pulumi.Input<String> invoiceSectionDisplayName;
+
   /// The fully qualified ID that uniquely identifies an invoice section.
   final pulumi.Input<String> invoiceSectionId;
+
   /// The principal PUID of the user who modified the role assignment.
   final pulumi.Input<String> modifiedByPrincipalId;
+
   /// The principal PUID of the user who modified the role assignment.
   final pulumi.Input<String> modifiedByPrincipalPuid;
+
   /// The tenant Id of the user who modified the role assignment.
   final pulumi.Input<String> modifiedByPrincipalTenantId;
+
   /// The email address of the user who modified the role assignment. This is supported only for billing accounts with agreement type Enterprise Agreement.
   final pulumi.Input<String> modifiedByUserEmailAddress;
+
   /// The date the role assignment was modified.
   final pulumi.Input<String> modifiedOn;
+
   /// The display name of the principal to whom the role was assigned.
   final pulumi.Input<String> principalDisplayName;
+
   /// The object id of the user to whom the role was assigned.
   final pulumi.Input<String>? principalId;
+
   /// The principal PUID of the user to whom the role was assigned.
   final pulumi.Input<String>? principalPuid;
+
   /// The principal tenant id of the user to whom the role was assigned.
   final pulumi.Input<String>? principalTenantId;
+
   /// The friendly name of the tenant of the user to whom the role was assigned. This will be 'Primary Tenant' for the primary tenant of the billing account.
   final pulumi.Input<String> principalTenantName;
+
   /// The type of a role Assignment.
   final pulumi.Input<String> principalType;
+
   /// The provisioning state of the resource during a long-running operation.
   final pulumi.Input<String> provisioningState;
+
   /// The ID of the role definition.
   final pulumi.Input<String> roleDefinitionId;
+
   /// The scope at which the role was assigned.
   final pulumi.Input<String>? scope;
+
   /// The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
   final pulumi.Input<String>? userAuthenticationType;
+
   /// The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
   final pulumi.Input<String>? userEmailAddress;
 
@@ -164,39 +193,104 @@ class BillingRoleAssignmentPropertiesResponse {
     };
   }
 
-  factory BillingRoleAssignmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory BillingRoleAssignmentPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BillingRoleAssignmentPropertiesResponse(
-      billingAccountDisplayName: (map['billingAccountDisplayName'] as String).input(),
-      billingAccountId: (map['billingAccountId'] as String).input(),
-      billingProfileDisplayName: (map['billingProfileDisplayName'] as String).input(),
-      billingProfileId: (map['billingProfileId'] as String).input(),
-      billingRequestId: (map['billingRequestId'] as String).input(),
-      createdByPrincipalId: (map['createdByPrincipalId'] as String).input(),
-      createdByPrincipalPuid: (map['createdByPrincipalPuid'] as String).input(),
-      createdByPrincipalTenantId: (map['createdByPrincipalTenantId'] as String).input(),
-      createdByUserEmailAddress: (map['createdByUserEmailAddress'] as String).input(),
-      createdOn: (map['createdOn'] as String).input(),
-      customerDisplayName: (map['customerDisplayName'] as String).input(),
-      customerId: (map['customerId'] as String).input(),
-      invoiceSectionDisplayName: (map['invoiceSectionDisplayName'] as String).input(),
-      invoiceSectionId: (map['invoiceSectionId'] as String).input(),
-      modifiedByPrincipalId: (map['modifiedByPrincipalId'] as String).input(),
-      modifiedByPrincipalPuid: (map['modifiedByPrincipalPuid'] as String).input(),
-      modifiedByPrincipalTenantId: (map['modifiedByPrincipalTenantId'] as String).input(),
-      modifiedByUserEmailAddress: (map['modifiedByUserEmailAddress'] as String).input(),
-      modifiedOn: (map['modifiedOn'] as String).input(),
-      principalDisplayName: (map['principalDisplayName'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
-      principalPuid: map['principalPuid'] == null ? null : (map['principalPuid']! as String).input(),
-      principalTenantId: map['principalTenantId'] == null ? null : (map['principalTenantId']! as String).input(),
-      principalTenantName: (map['principalTenantName'] as String).input(),
-      principalType: (map['principalType'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      userAuthenticationType: map['userAuthenticationType'] == null ? null : (map['userAuthenticationType']! as String).input(),
-      userEmailAddress: map['userEmailAddress'] == null ? null : (map['userEmailAddress']! as String).input(),
+      billingAccountDisplayName: pulumi.Input.fromValue(
+        map['billingAccountDisplayName'] as String,
+      ),
+      billingAccountId: pulumi.Input.fromValue(
+        map['billingAccountId'] as String,
+      ),
+      billingProfileDisplayName: pulumi.Input.fromValue(
+        map['billingProfileDisplayName'] as String,
+      ),
+      billingProfileId: pulumi.Input.fromValue(
+        map['billingProfileId'] as String,
+      ),
+      billingRequestId: pulumi.Input.fromValue(
+        map['billingRequestId'] as String,
+      ),
+      createdByPrincipalId: pulumi.Input.fromValue(
+        map['createdByPrincipalId'] as String,
+      ),
+      createdByPrincipalPuid: pulumi.Input.fromValue(
+        map['createdByPrincipalPuid'] as String,
+      ),
+      createdByPrincipalTenantId: pulumi.Input.fromValue(
+        map['createdByPrincipalTenantId'] as String,
+      ),
+      createdByUserEmailAddress: pulumi.Input.fromValue(
+        map['createdByUserEmailAddress'] as String,
+      ),
+      createdOn: pulumi.Input.fromValue(map['createdOn'] as String),
+      customerDisplayName: pulumi.Input.fromValue(
+        map['customerDisplayName'] as String,
+      ),
+      customerId: pulumi.Input.fromValue(map['customerId'] as String),
+      invoiceSectionDisplayName: pulumi.Input.fromValue(
+        map['invoiceSectionDisplayName'] as String,
+      ),
+      invoiceSectionId: pulumi.Input.fromValue(
+        map['invoiceSectionId'] as String,
+      ),
+      modifiedByPrincipalId: pulumi.Input.fromValue(
+        map['modifiedByPrincipalId'] as String,
+      ),
+      modifiedByPrincipalPuid: pulumi.Input.fromValue(
+        map['modifiedByPrincipalPuid'] as String,
+      ),
+      modifiedByPrincipalTenantId: pulumi.Input.fromValue(
+        map['modifiedByPrincipalTenantId'] as String,
+      ),
+      modifiedByUserEmailAddress: pulumi.Input.fromValue(
+        map['modifiedByUserEmailAddress'] as String,
+      ),
+      modifiedOn: pulumi.Input.fromValue(map['modifiedOn'] as String),
+      principalDisplayName: pulumi.Input.fromValue(
+        map['principalDisplayName'] as String,
+      ),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalPuid: (() {
+        final guardedValue = map['principalPuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalTenantId: (() {
+        final guardedValue = map['principalTenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      principalTenantName: pulumi.Input.fromValue(
+        map['principalTenantName'] as String,
+      ),
+      principalType: pulumi.Input.fromValue(map['principalType'] as String),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      roleDefinitionId: pulumi.Input.fromValue(
+        map['roleDefinitionId'] as String,
+      ),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userAuthenticationType: (() {
+        final guardedValue = map['userAuthenticationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userEmailAddress: (() {
+        final guardedValue = map['userEmailAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

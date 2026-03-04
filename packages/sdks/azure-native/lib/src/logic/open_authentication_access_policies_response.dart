@@ -6,24 +6,46 @@ import 'open_authentication_access_policy_response.dart';
 /// AuthenticationPolicy of type Open.
 class OpenAuthenticationAccessPoliciesResponse {
   /// Open authentication policies.
-  final pulumi.Input<Map<String, OpenAuthenticationAccessPolicyResponse>>? policies;
+  final pulumi.Input<Map<String, OpenAuthenticationAccessPolicyResponse>>?
+  policies;
 
   /// Creates a new [OpenAuthenticationAccessPoliciesResponse].
   /// [policies] Open authentication policies.
-  OpenAuthenticationAccessPoliciesResponse({
-    this.policies,
-  });
+  OpenAuthenticationAccessPoliciesResponse({this.policies});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policies': ?pulumi.Input.mapOptionalInputValue<Map<String, OpenAuthenticationAccessPolicyResponse>, Map<String, Map<String, dynamic>>>(policies, (value) => pulumi.Input.encodeMapValues<OpenAuthenticationAccessPolicyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'policies':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, OpenAuthenticationAccessPolicyResponse>,
+            Map<String, Map<String, dynamic>>
+          >(
+            policies,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  OpenAuthenticationAccessPolicyResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory OpenAuthenticationAccessPoliciesResponse.fromMap(Map<String, dynamic> map) {
+  factory OpenAuthenticationAccessPoliciesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OpenAuthenticationAccessPoliciesResponse(
-      policies: map['policies'] == null ? null : (pulumi.Input.decodeMapValues<OpenAuthenticationAccessPolicyResponse>(map['policies']!, (value) => OpenAuthenticationAccessPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policies: (() {
+        final guardedValue = map['policies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<OpenAuthenticationAccessPolicyResponse>(
+            guardedValue,
+            (value) => OpenAuthenticationAccessPolicyResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

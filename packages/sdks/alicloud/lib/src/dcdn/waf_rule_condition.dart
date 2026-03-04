@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WafRuleCondition {
   /// The match field.
   final pulumi.Input<String> key;
+
   /// The logical symbol.
   final pulumi.Input<String> opValue;
+
   /// The match subfield.
   final pulumi.Input<String>? subKey;
+
   /// The match content. Separate multiple values with commas (,).
   final pulumi.Input<String>? values;
 
@@ -35,11 +38,18 @@ class WafRuleCondition {
 
   factory WafRuleCondition.fromMap(Map<String, dynamic> map) {
     return WafRuleCondition(
-      key: (map['key'] as String).input(),
-      opValue: (map['opValue'] as String).input(),
-      subKey: map['subKey'] == null ? null : (map['subKey']! as String).input(),
-      values: map['values'] == null ? null : (map['values']! as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      opValue: pulumi.Input.fromValue(map['opValue'] as String),
+      subKey: (() {
+        final guardedValue = map['subKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

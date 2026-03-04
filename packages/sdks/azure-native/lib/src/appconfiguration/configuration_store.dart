@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_store_args.dart';
 import 'data_plane_proxy_properties_response.dart';
 import 'encryption_properties_response.dart';
-import 'private_endpoint_connection_reference_response.dart';
 import 'resource_identity_response.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
@@ -470,38 +469,56 @@ import 'system_data_response.dart';
 class ConfigurationStore extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The creation date of configuration store.
   late final pulumi.Output<String> creationDate;
+
   /// Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM).
   late final pulumi.Output<DataPlaneProxyPropertiesResponse?> dataPlaneProxy;
+
   /// Disables all authentication methods other than AAD authentication.
   late final pulumi.Output<bool?> disableLocalAuth;
+
   /// Property specifying whether protection against purge is enabled for this configuration store.
   late final pulumi.Output<bool?> enablePurgeProtection;
+
   /// The encryption settings of the configuration store.
   late final pulumi.Output<EncryptionPropertiesResponse?> encryption;
+
   /// The DNS endpoint where the configuration store API will be available.
   late final pulumi.Output<String> endpoint;
+
   /// The managed identity information, if configured.
   late final pulumi.Output<ResourceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The list of private endpoint connections that are set up for this resource.
-  late final pulumi.Output<List<PrivateEndpointConnectionReferenceResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// The provisioning state of the configuration store.
   late final pulumi.Output<String> provisioningState;
+
   /// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// The sku of the configuration store.
   late final pulumi.Output<SkuResponse> sku;
+
   /// The amount of time in days that the configuration store will be retained when it is soft deleted.
   late final pulumi.Output<int?> softDeleteRetentionInDays;
+
   /// Resource system metadata.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -514,28 +531,34 @@ class ConfigurationStore extends pulumi.CustomResource {
     ConfigurationStoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:appconfiguration:ConfigurationStore',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.creationDate = registerOutput<String>('creationDate');
-    this.dataPlaneProxy = registerOutput<DataPlaneProxyPropertiesResponse?>('dataPlaneProxy');
-    this.disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
-    this.enablePurgeProtection = registerOutput<bool?>('enablePurgeProtection');
-    this.encryption = registerOutput<EncryptionPropertiesResponse?>('encryption');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.identity = registerOutput<ResourceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure-native:appconfiguration:ConfigurationStore',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationDate = registerOutput<String>('creationDate');
+    dataPlaneProxy = registerOutput<DataPlaneProxyPropertiesResponse?>(
+      'dataPlaneProxy',
+    );
+    disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
+    enablePurgeProtection = registerOutput<bool?>('enablePurgeProtection');
+    encryption = registerOutput<EncryptionPropertiesResponse?>('encryption');
+    endpoint = registerOutput<String>('endpoint');
+    identity = registerOutput<ResourceIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionReferenceResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.sku = registerOutput<SkuResponse>('sku');
-    this.softDeleteRetentionInDays = registerOutput<int?>('softDeleteRetentionInDays');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    sku = registerOutput<SkuResponse>('sku');
+    softDeleteRetentionInDays = registerOutput<int?>(
+      'softDeleteRetentionInDays',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

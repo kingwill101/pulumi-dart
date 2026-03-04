@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NodeConfigResponse {
   /// Maximum number of nodes in the runtime nodes.
   final pulumi.Input<int> maxNodeCount;
+
   /// Minimum number of nodes in the runtime nodes.
   final pulumi.Input<int> minNodeCount;
 
   /// Creates a new [NodeConfigResponse].
   /// [maxNodeCount] Maximum number of nodes in the runtime nodes.
   /// [minNodeCount] Minimum number of nodes in the runtime nodes.
-  NodeConfigResponse({
-    required this.maxNodeCount,
-    required this.minNodeCount,
-  });
+  NodeConfigResponse({required this.maxNodeCount, required this.minNodeCount});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,8 @@ class NodeConfigResponse {
 
   factory NodeConfigResponse.fromMap(Map<String, dynamic> map) {
     return NodeConfigResponse(
-      maxNodeCount: (map['maxNodeCount'] as int).input(),
-      minNodeCount: (map['minNodeCount'] as int).input(),
+      maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as int),
+      minNodeCount: pulumi.Input.fromValue(map['minNodeCount'] as int),
     );
   }
 }
-

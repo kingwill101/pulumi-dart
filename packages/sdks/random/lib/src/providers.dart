@@ -1,5 +1,3 @@
-library module_providers;
-
 export 'providers/functions.dart';
 export 'providers/provider_provider.dart';
 export 'providers/provider_terraform_config_result.dart';

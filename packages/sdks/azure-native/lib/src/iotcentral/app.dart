@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_args.dart';
 import 'app_sku_info_response.dart';
 import 'network_rule_sets_response.dart';
-import 'private_endpoint_connection_response.dart';
 import 'system_assigned_service_identity_response.dart';
 import 'system_data_response.dart';
 
@@ -195,36 +194,53 @@ import 'system_data_response.dart';
 class App extends pulumi.CustomResource {
   /// The ID of the application.
   late final pulumi.Output<String> applicationId;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The display name of the application.
   late final pulumi.Output<String?> displayName;
+
   /// The managed identities for the IoT Central application.
   late final pulumi.Output<SystemAssignedServiceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Network Rule Set Properties of this IoT Central application.
   late final pulumi.Output<NetworkRuleSetsResponse?> networkRuleSets;
+
   /// Private endpoint connections created on this IoT Central application.
-  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  privateEndpointConnections;
+
   /// The provisioning state of the application.
   late final pulumi.Output<String> provisioningState;
+
   /// Whether requests from the public network are allowed.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// A valid instance SKU.
   late final pulumi.Output<AppSkuInfoResponse> sku;
+
   /// The current state of the application.
   late final pulumi.Output<String> state;
+
   /// The subdomain of the application.
   late final pulumi.Output<String?> subdomain;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The ID of the application template, which is a blueprint that defines the characteristics and behaviors of an application. Optional; if not specified, defaults to a blank blueprint and allows the application to be defined from scratch.
   late final pulumi.Output<String?> template;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -232,32 +248,35 @@ class App extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [App]. {@macro pulumi_iotcentral_app_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  App(
-    String name, {
-    AppArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:iotcentral:App',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.displayName = registerOutput<String?>('displayName');
-    this.identity = registerOutput<SystemAssignedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
+  App(String name, {AppArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:iotcentral:App',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    displayName = registerOutput<String?>('displayName');
+    identity = registerOutput<SystemAssignedServiceIdentityResponse?>(
+      'identity',
+    );
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.networkRuleSets = registerOutput<NetworkRuleSetsResponse?>('networkRuleSets');
-    this.privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.sku = registerOutput<AppSkuInfoResponse>('sku');
-    this.state = registerOutput<String>('state');
-    this.subdomain = registerOutput<String?>('subdomain');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.template = registerOutput<String?>('template');
-    this.type = registerOutput<String>('type');
+    networkRuleSets = registerOutput<NetworkRuleSetsResponse?>(
+      'networkRuleSets',
+    );
+    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>(
+      'privateEndpointConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    sku = registerOutput<AppSkuInfoResponse>('sku');
+    state = registerOutput<String>('state');
+    subdomain = registerOutput<String?>('subdomain');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    template = registerOutput<String?>('template');
+    type = registerOutput<String>('type');
   }
 }

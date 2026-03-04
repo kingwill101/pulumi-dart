@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnatEntryArgs {
   /// The destination CIDR block.
   final pulumi.Input<String> cidrBlock;
+
   /// The ID of the SAG instance.
   final pulumi.Input<String> sagId;
+
   /// The public IP address.
   final pulumi.Input<String> snatIp;
 
@@ -34,10 +36,9 @@ class SnatEntryArgs {
 
   factory SnatEntryArgs.fromMap(Map<String, dynamic> map) {
     return SnatEntryArgs(
-      cidrBlock: (map['cidrBlock'] as String).input(),
-      sagId: (map['sagId'] as String).input(),
-      snatIp: (map['snatIp'] as String).input(),
+      cidrBlock: pulumi.Input.fromValue(map['cidrBlock'] as String),
+      sagId: pulumi.Input.fromValue(map['sagId'] as String),
+      snatIp: pulumi.Input.fromValue(map['snatIp'] as String),
     );
   }
 }
-

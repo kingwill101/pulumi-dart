@@ -7,24 +7,35 @@ import 'router_appliance_instance_response_networkconnectivity_v1alpha1.dart';
 class GetSpokeNetworkconnectivityV1alpha1Result {
   /// The time when the Spoke was created.
   final String createTime;
+
   /// Short description of the spoke resource
   final String description;
+
   /// The resource URL of the hub resource that the spoke is attached to
   final String hub;
+
   /// User-defined labels.
   final Map<String, String> labels;
+
   /// The URIs of linked interconnect attachment resources
   final List<String> linkedInterconnectAttachments;
+
   /// The URIs of linked Router appliance resources
-  final List<RouterApplianceInstanceResponseNetworkconnectivityV1alpha1> linkedRouterApplianceInstances;
+  final List<RouterApplianceInstanceResponseNetworkconnectivityV1alpha1>
+  linkedRouterApplianceInstances;
+
   /// The URIs of linked VPN tunnel resources
   final List<String> linkedVpnTunnels;
+
   /// Immutable. The name of a Spoke resource.
   final String name;
+
   /// The current lifecycle state of this Hub.
   final String state;
+
   /// Google-generated UUID for this resource. This is unique across all Spoke resources. If a Spoke resource is deleted and another with the same name is created, it gets a different unique_id.
   final String uniqueId;
+
   /// The time when the Spoke was updated.
   final String updateTime;
 
@@ -61,7 +72,11 @@ class GetSpokeNetworkconnectivityV1alpha1Result {
       'hub': hub,
       'labels': labels,
       'linkedInterconnectAttachments': linkedInterconnectAttachments,
-      'linkedRouterApplianceInstances': pulumi.Input.encodeList<RouterApplianceInstanceResponseNetworkconnectivityV1alpha1, Map<String, dynamic>>(linkedRouterApplianceInstances, (value) => value.toMap()),
+      'linkedRouterApplianceInstances':
+          pulumi.Input.encodeList<
+            RouterApplianceInstanceResponseNetworkconnectivityV1alpha1,
+            Map<String, dynamic>
+          >(linkedRouterApplianceInstances, (value) => value.toMap()),
       'linkedVpnTunnels': linkedVpnTunnels,
       'name': name,
       'state': state,
@@ -70,14 +85,26 @@ class GetSpokeNetworkconnectivityV1alpha1Result {
     };
   }
 
-  factory GetSpokeNetworkconnectivityV1alpha1Result.fromMap(Map<String, dynamic> map) {
+  factory GetSpokeNetworkconnectivityV1alpha1Result.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSpokeNetworkconnectivityV1alpha1Result(
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       hub: map['hub'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
-      linkedInterconnectAttachments: (map['linkedInterconnectAttachments'] as List).cast<String>(),
-      linkedRouterApplianceInstances: pulumi.Input.decodeList<RouterApplianceInstanceResponseNetworkconnectivityV1alpha1>(map['linkedRouterApplianceInstances'], (value) => RouterApplianceInstanceResponseNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      linkedInterconnectAttachments:
+          (map['linkedInterconnectAttachments'] as List).cast<String>(),
+      linkedRouterApplianceInstances:
+          pulumi.Input.decodeList<
+            RouterApplianceInstanceResponseNetworkconnectivityV1alpha1
+          >(
+            map['linkedRouterApplianceInstances']!,
+            (value) =>
+                RouterApplianceInstanceResponseNetworkconnectivityV1alpha1.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       linkedVpnTunnels: (map['linkedVpnTunnels'] as List).cast<String>(),
       name: map['name'] as String,
       state: map['state'] as String,
@@ -86,4 +113,3 @@ class GetSpokeNetworkconnectivityV1alpha1Result {
     );
   }
 }
-

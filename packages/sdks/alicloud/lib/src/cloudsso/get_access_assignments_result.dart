@@ -8,6 +8,7 @@ class GetAccessAssignmentsResult {
   final String? accessConfigurationId;
   final List<GetAccessAssignmentsAssignment> assignments;
   final String directoryId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -41,7 +42,11 @@ class GetAccessAssignmentsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessConfigurationId': ?accessConfigurationId,
-      'assignments': pulumi.Input.encodeList<GetAccessAssignmentsAssignment, Map<String, dynamic>>(assignments, (value) => value.toMap()),
+      'assignments':
+          pulumi.Input.encodeList<
+            GetAccessAssignmentsAssignment,
+            Map<String, dynamic>
+          >(assignments, (value) => value.toMap()),
       'directoryId': directoryId,
       'id': id,
       'ids': ids,
@@ -54,16 +59,40 @@ class GetAccessAssignmentsResult {
 
   factory GetAccessAssignmentsResult.fromMap(Map<String, dynamic> map) {
     return GetAccessAssignmentsResult(
-      accessConfigurationId: map['accessConfigurationId'] == null ? null : map['accessConfigurationId']! as String,
-      assignments: pulumi.Input.decodeList<GetAccessAssignmentsAssignment>(map['assignments'], (value) => GetAccessAssignmentsAssignment.fromMap((value as Map).cast<String, dynamic>())),
+      accessConfigurationId: (() {
+        final guardedValue = map['accessConfigurationId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      assignments: pulumi.Input.decodeList<GetAccessAssignmentsAssignment>(
+        map['assignments']!,
+        (value) => GetAccessAssignmentsAssignment.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       directoryId: map['directoryId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      principalType: map['principalType'] == null ? null : map['principalType']! as String,
-      targetId: map['targetId'] == null ? null : map['targetId']! as String,
-      targetType: map['targetType'] == null ? null : map['targetType']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      principalType: (() {
+        final guardedValue = map['principalType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      targetId: (() {
+        final guardedValue = map['targetId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      targetType: (() {
+        final guardedValue = map['targetType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

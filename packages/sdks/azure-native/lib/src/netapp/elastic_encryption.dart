@@ -8,8 +8,10 @@ import 'elastic_key_vault_properties.dart';
 class ElasticEncryption {
   /// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
   final pulumi.Input<ElasticEncryptionIdentity>? identity;
+
   /// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault
   final pulumi.Input<String>? keySource;
+
   /// Properties provided by KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
   final pulumi.Input<ElasticKeyVaultProperties>? keyVaultProperties;
 
@@ -17,26 +19,49 @@ class ElasticEncryption {
   /// [identity] Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
   /// [keySource] The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault
   /// [keyVaultProperties] Properties provided by KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
-  ElasticEncryption({
-    this.identity,
-    this.keySource,
-    this.keyVaultProperties,
-  });
+  ElasticEncryption({this.identity, this.keySource, this.keyVaultProperties});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identity': ?pulumi.Input.mapOptionalInputValue<ElasticEncryptionIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ElasticEncryptionIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'keySource': ?keySource,
-      'keyVaultProperties': ?pulumi.Input.mapOptionalInputValue<ElasticKeyVaultProperties, Map<String, dynamic>>(keyVaultProperties, (value) => value.toMap()),
+      'keyVaultProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ElasticKeyVaultProperties,
+            Map<String, dynamic>
+          >(keyVaultProperties, (value) => value.toMap()),
     };
   }
 
   factory ElasticEncryption.fromMap(Map<String, dynamic> map) {
     return ElasticEncryption(
-      identity: map['identity'] == null ? null : (ElasticEncryptionIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      keySource: map['keySource'] == null ? null : (map['keySource']! as String).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (ElasticKeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ElasticEncryptionIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      keySource: (() {
+        final guardedValue = map['keySource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultProperties: (() {
+        final guardedValue = map['keyVaultProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ElasticKeyVaultProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

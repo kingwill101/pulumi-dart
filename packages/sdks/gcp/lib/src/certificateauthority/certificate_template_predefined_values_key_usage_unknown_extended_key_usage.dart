@@ -13,15 +13,16 @@ class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'objectIdPaths': objectIdPaths,
-    };
+    return <String, dynamic>{'objectIdPaths': objectIdPaths};
   }
 
-  factory CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage.fromMap(Map<String, dynamic> map) {
+  factory CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage(
-      objectIdPaths: ((map['objectIdPaths'] as List).cast<int>()).input(),
+      objectIdPaths: pulumi.Input.fromValue(
+        (map['objectIdPaths'] as List).cast<int>(),
+      ),
     );
   }
 }
-

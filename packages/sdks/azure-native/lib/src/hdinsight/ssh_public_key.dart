@@ -9,20 +9,19 @@ class SshPublicKey {
 
   /// Creates a new [SshPublicKey].
   /// [certificateData] The certificate for SSH.
-  SshPublicKey({
-    this.certificateData,
-  });
+  SshPublicKey({this.certificateData});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'certificateData': ?certificateData,
-    };
+    return <String, dynamic>{'certificateData': ?certificateData};
   }
 
   factory SshPublicKey.fromMap(Map<String, dynamic> map) {
     return SshPublicKey(
-      certificateData: map['certificateData'] == null ? null : (map['certificateData']! as String).input(),
+      certificateData: (() {
+        final guardedValue = map['certificateData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

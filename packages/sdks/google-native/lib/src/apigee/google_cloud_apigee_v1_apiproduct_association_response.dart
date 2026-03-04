@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1APIProductAssociationResponse {
   /// API product to be associated with the credential.
   final pulumi.Input<String> apiproduct;
+
   /// The API product credential associated status. Valid values are `approved` or `revoked`.
   final pulumi.Input<String> status;
 
@@ -18,17 +19,15 @@ class GoogleCloudApigeeV1APIProductAssociationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'apiproduct': apiproduct,
-      'status': status,
-    };
+    return <String, dynamic>{'apiproduct': apiproduct, 'status': status};
   }
 
-  factory GoogleCloudApigeeV1APIProductAssociationResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1APIProductAssociationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1APIProductAssociationResponse(
-      apiproduct: (map['apiproduct'] as String).input(),
-      status: (map['status'] as String).input(),
+      apiproduct: pulumi.Input.fromValue(map['apiproduct'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

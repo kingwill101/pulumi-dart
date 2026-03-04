@@ -4,16 +4,19 @@ enum ServiceAttachmentConnectionPreferenceComputeV1 {
   acceptManual("ACCEPT_MANUAL"),
   connectionPreferenceUnspecified("CONNECTION_PREFERENCE_UNSPECIFIED");
 
-  const ServiceAttachmentConnectionPreferenceComputeV1(this.value);
-  final String value;
+  const ServiceAttachmentConnectionPreferenceComputeV1(this.wireValue);
+  final String wireValue;
 
-  static ServiceAttachmentConnectionPreferenceComputeV1 fromValue(String value) {
+  static ServiceAttachmentConnectionPreferenceComputeV1 fromValue(
+    String value,
+  ) {
     for (final item in ServiceAttachmentConnectionPreferenceComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceAttachmentConnectionPreferenceComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown ServiceAttachmentConnectionPreferenceComputeV1 value: $value',
+    );
   }
 }
-

@@ -5,29 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAgentExtensionsBlockList {
   /// Publisher of the extension.
   final pulumi.Input<String> publisher;
+
   /// The identity type.
   final pulumi.Input<String> type;
 
   /// Creates a new [GetAgentExtensionsBlockList].
   /// [publisher] Publisher of the extension.
   /// [type] The identity type.
-  GetAgentExtensionsBlockList({
-    required this.publisher,
-    required this.type,
-  });
+  GetAgentExtensionsBlockList({required this.publisher, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'publisher': publisher,
-      'type': type,
-    };
+    return <String, dynamic>{'publisher': publisher, 'type': type};
   }
 
   factory GetAgentExtensionsBlockList.fromMap(Map<String, dynamic> map) {
     return GetAgentExtensionsBlockList(
-      publisher: (map['publisher'] as String).input(),
-      type: (map['type'] as String).input(),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

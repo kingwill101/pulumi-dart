@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'router_args.dart';
-import 'router_external_fixed_ip.dart';
 import 'router_state.dart';
 import 'router_vendor_options.dart';
 
@@ -121,61 +120,76 @@ class Router extends pulumi.CustomResource {
   /// (must be "true" or "false" if provided). Changing this updates the
   /// `admin_state_up` of an existing router.
   late final pulumi.Output<bool> adminStateUp;
+
   /// The collection of tags assigned on the router, which have been
   /// explicitly and implicitly added.
   late final pulumi.Output<List<String>> allTags;
+
   /// An availability zone is used to make
   /// network resources highly available. Used for resources with high availability
   /// so that they are scheduled on different availability zones. Changing this
   /// creates a new router.
   late final pulumi.Output<List<String>> availabilityZoneHints;
+
   /// Human-readable description for the router.
   late final pulumi.Output<String?> description;
+
   /// Indicates whether or not to create a
   /// distributed router. The default policy setting in Neutron restricts
   /// usage of this property to administrative users only.
   late final pulumi.Output<bool> distributed;
+
   /// Enable Source NAT for the router. Valid values are
   /// "true" or "false". An `external_network_id` has to be set in order to
   /// set this property. Changing this updates the `enable_snat` of the router.
   /// Setting this value **requires** an **ext-gw-mode** extension to be enabled
   /// in OpenStack Neutron.
   late final pulumi.Output<bool> enableSnat;
+
   /// An external fixed IP for the router. This
   /// can be repeated. The structure is described below. An `external_network_id`
   /// has to be set in order to set this property. Changing this updates the
   /// external fixed IPs of the router.
-  late final pulumi.Output<List<RouterExternalFixedIp>> externalFixedIps;
+  late final pulumi.Output<List<Map<String, dynamic>>> externalFixedIps;
+
   /// The network UUID of an external gateway
   /// for the router. A router with an external gateway is required if any
   /// compute instances or load balancers will be using floating IPs. Changing
   /// this updates the external gateway of the router.
   late final pulumi.Output<String> externalNetworkId;
+
   /// The QoS policy UUID that will be applied
   /// on the external gateway for the router. Changing this updates the external
   /// gateway of the router.
   late final pulumi.Output<String> externalQosPolicyId;
+
   /// A list of external subnet IDs to try over
   /// each to obtain a fixed IP for the router. If a subnet ID in a list has
   /// exhausted floating IP pool, the next subnet ID will be tried. This argument is
   /// used only during the router creation and allows to set only one external fixed
   /// IP. Conflicts with an `external_fixed_ip` argument.
   late final pulumi.Output<List<String>?> externalSubnetIds;
+
   /// A unique name for the router. Changing this
   /// updates the `name` of an existing router.
   late final pulumi.Output<String> name;
+
   /// The region in which to obtain the V2 networking client.
   /// A networking client is needed to create a router. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// router.
   late final pulumi.Output<String> region;
+
   /// A set of string tags for the router.
   late final pulumi.Output<List<String>?> tags;
+
   /// The owner of the floating IP. Required if admin wants
   /// to create a router for another tenant. Changing this creates a new router.
   late final pulumi.Output<String> tenantId;
+
   /// Map of additional driver-specific options.
   late final pulumi.Output<Map<String, String>?> valueSpecs;
+
   /// Map of additional vendor-specific options.
   /// Supported options are described below.
   late final pulumi.Output<RouterVendorOptions?> vendorOptions;
@@ -184,32 +198,33 @@ class Router extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Router]. {@macro pulumi_networking_router_router_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Router(
-    String name, {
-    RouterArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'openstack:networking/router:Router',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminStateUp = registerOutput<bool>('adminStateUp');
-    this.allTags = registerOutput<List<String>>('allTags');
-    this.availabilityZoneHints = registerOutput<List<String>>('availabilityZoneHints');
-    this.description = registerOutput<String?>('description');
-    this.distributed = registerOutput<bool>('distributed');
-    this.enableSnat = registerOutput<bool>('enableSnat');
-    this.externalFixedIps = registerOutput<List<RouterExternalFixedIp>>('externalFixedIps');
-    this.externalNetworkId = registerOutput<String>('externalNetworkId');
-    this.externalQosPolicyId = registerOutput<String>('externalQosPolicyId');
-    this.externalSubnetIds = registerOutput<List<String>?>('externalSubnetIds');
+  Router(String name, {RouterArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'openstack:networking/router:Router',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    adminStateUp = registerOutput<bool>('adminStateUp');
+    allTags = registerOutput<List<String>>('allTags');
+    availabilityZoneHints = registerOutput<List<String>>(
+      'availabilityZoneHints',
+    );
+    description = registerOutput<String?>('description');
+    distributed = registerOutput<bool>('distributed');
+    enableSnat = registerOutput<bool>('enableSnat');
+    externalFixedIps = registerOutput<List<Map<String, dynamic>>>(
+      'externalFixedIps',
+    );
+    externalNetworkId = registerOutput<String>('externalNetworkId');
+    externalQosPolicyId = registerOutput<String>('externalQosPolicyId');
+    externalSubnetIds = registerOutput<List<String>?>('externalSubnetIds');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
-    this.vendorOptions = registerOutput<RouterVendorOptions?>('vendorOptions');
+    region = registerOutput<String>('region');
+    tags = registerOutput<List<String>?>('tags');
+    tenantId = registerOutput<String>('tenantId');
+    valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
+    vendorOptions = registerOutput<RouterVendorOptions?>('vendorOptions');
   }
 
   /// Gets an existing [Router] resource's state with the given [name] and [id].
@@ -230,26 +245,30 @@ class Router extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:networking/router:Router',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminStateUp = registerOutput<bool>('adminStateUp');
-    this.allTags = registerOutput<List<String>>('allTags');
-    this.availabilityZoneHints = registerOutput<List<String>>('availabilityZoneHints');
-    this.description = registerOutput<String?>('description');
-    this.distributed = registerOutput<bool>('distributed');
-    this.enableSnat = registerOutput<bool>('enableSnat');
-    this.externalFixedIps = registerOutput<List<RouterExternalFixedIp>>('externalFixedIps');
-    this.externalNetworkId = registerOutput<String>('externalNetworkId');
-    this.externalQosPolicyId = registerOutput<String>('externalQosPolicyId');
-    this.externalSubnetIds = registerOutput<List<String>?>('externalSubnetIds');
+         'openstack:networking/router:Router',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminStateUp = registerOutput<bool>('adminStateUp');
+    allTags = registerOutput<List<String>>('allTags');
+    availabilityZoneHints = registerOutput<List<String>>(
+      'availabilityZoneHints',
+    );
+    description = registerOutput<String?>('description');
+    distributed = registerOutput<bool>('distributed');
+    enableSnat = registerOutput<bool>('enableSnat');
+    externalFixedIps = registerOutput<List<Map<String, dynamic>>>(
+      'externalFixedIps',
+    );
+    externalNetworkId = registerOutput<String>('externalNetworkId');
+    externalQosPolicyId = registerOutput<String>('externalQosPolicyId');
+    externalSubnetIds = registerOutput<List<String>?>('externalSubnetIds');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<List<String>?>('tags');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
-    this.vendorOptions = registerOutput<RouterVendorOptions?>('vendorOptions');
+    region = registerOutput<String>('region');
+    tags = registerOutput<List<String>?>('tags');
+    tenantId = registerOutput<String>('tenantId');
+    valueSpecs = registerOutput<Map<String, String>?>('valueSpecs');
+    vendorOptions = registerOutput<RouterVendorOptions?>('vendorOptions');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticSiteDatabaseConnectionConfigurationFileOverviewResponse {
   /// The Base64 encoding of the file contents.
   final pulumi.Input<String> contents;
+
   /// The name of the configuration file.
   final pulumi.Input<String> fileName;
+
   /// The type of configuration file.
   final pulumi.Input<String> type;
 
@@ -29,12 +31,13 @@ class StaticSiteDatabaseConnectionConfigurationFileOverviewResponse {
     };
   }
 
-  factory StaticSiteDatabaseConnectionConfigurationFileOverviewResponse.fromMap(Map<String, dynamic> map) {
+  factory StaticSiteDatabaseConnectionConfigurationFileOverviewResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StaticSiteDatabaseConnectionConfigurationFileOverviewResponse(
-      contents: (map['contents'] as String).input(),
-      fileName: (map['fileName'] as String).input(),
-      type: (map['type'] as String).input(),
+      contents: pulumi.Input.fromValue(map['contents'] as String),
+      fileName: pulumi.Input.fromValue(map['fileName'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

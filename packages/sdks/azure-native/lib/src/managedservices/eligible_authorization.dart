@@ -7,10 +7,13 @@ import 'just_in_time_access_policy.dart';
 class EligibleAuthorization {
   /// The just-in-time access policy setting.
   final pulumi.Input<JustInTimeAccessPolicy>? justInTimeAccessPolicy;
+
   /// The identifier of the Azure Active Directory principal.
   final pulumi.Input<String> principalId;
+
   /// The display name of the Azure Active Directory principal.
   final pulumi.Input<String>? principalIdDisplayName;
+
   /// The identifier of the Azure built-in role that defines the permissions that the Azure Active Directory principal will have on the projected scope.
   final pulumi.Input<String> roleDefinitionId;
 
@@ -28,7 +31,11 @@ class EligibleAuthorization {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'justInTimeAccessPolicy': ?pulumi.Input.mapOptionalInputValue<JustInTimeAccessPolicy, Map<String, dynamic>>(justInTimeAccessPolicy, (value) => value.toMap()),
+      'justInTimeAccessPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            JustInTimeAccessPolicy,
+            Map<String, dynamic>
+          >(justInTimeAccessPolicy, (value) => value.toMap()),
       'principalId': principalId,
       'principalIdDisplayName': ?principalIdDisplayName,
       'roleDefinitionId': roleDefinitionId,
@@ -37,11 +44,24 @@ class EligibleAuthorization {
 
   factory EligibleAuthorization.fromMap(Map<String, dynamic> map) {
     return EligibleAuthorization(
-      justInTimeAccessPolicy: map['justInTimeAccessPolicy'] == null ? null : (JustInTimeAccessPolicy.fromMap((map['justInTimeAccessPolicy']! as Map).cast<String, dynamic>())).input(),
-      principalId: (map['principalId'] as String).input(),
-      principalIdDisplayName: map['principalIdDisplayName'] == null ? null : (map['principalIdDisplayName']! as String).input(),
-      roleDefinitionId: (map['roleDefinitionId'] as String).input(),
+      justInTimeAccessPolicy: (() {
+        final guardedValue = map['justInTimeAccessPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JustInTimeAccessPolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      principalIdDisplayName: (() {
+        final guardedValue = map['principalIdDisplayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleDefinitionId: pulumi.Input.fromValue(
+        map['roleDefinitionId'] as String,
+      ),
     );
   }
 }
-

@@ -10,60 +10,86 @@ import 'star_rocks_instance_vswitch.dart';
 class StarRocksInstanceState {
   /// Password of admin user.
   final pulumi.Input<String>? adminPassword;
+
   /// Whether to enable automatic renewal. This is only meaningful when payType is set to PrePaid. Disabled by default.
   final pulumi.Input<bool>? autoRenew;
+
   /// BackendNodeGroups See `backend_node_groups` below.
-  final pulumi.Input<List<StarRocksInstanceBackendNodeGroup>>? backendNodeGroups;
+  final pulumi.Input<List<StarRocksInstanceBackendNodeGroup>>?
+  backendNodeGroups;
+
   /// ZoneId of instance.
   final pulumi.Input<String>? clusterZoneId;
+
   /// The creation time of the instance.
   final pulumi.Input<String>? createTime;
+
   /// Duration of purchase. It is only meaningful when payType is set to PrePaid.
   final pulumi.Input<int>? duration;
+
   /// Whether encrypted
   final pulumi.Input<bool>? encrypted;
+
   /// FrontendNodeGroups See `frontend_node_groups` below.
-  final pulumi.Input<List<StarRocksInstanceFrontendNodeGroup>>? frontendNodeGroups;
+  final pulumi.Input<List<StarRocksInstanceFrontendNodeGroup>>?
+  frontendNodeGroups;
+
   /// The name of the instance.
   final pulumi.Input<String>? instanceName;
+
   /// KmsKeyId
   final pulumi.Input<String>? kmsKeyId;
+
   /// ObserverNodeGroups See `observer_node_groups` below.
-  final pulumi.Input<List<StarRocksInstanceObserverNodeGroup>>? observerNodeGroups;
+  final pulumi.Input<List<StarRocksInstanceObserverNodeGroup>>?
+  observerNodeGroups;
+
   /// Role name used for password-free access to OSS.
   final pulumi.Input<String>? ossAccessingRoleName;
+
   /// The package type of the instance:
   /// - trial
   /// - official
   final pulumi.Input<String>? packageType;
+
   /// The pay type of the instance:
   /// - prePaid
   /// - postPaid
   final pulumi.Input<String>? payType;
+
   /// The duration unit for purchasing:
   /// - Month
   /// - Year
   /// This is only meaningful when PayType is set to PrePaid.
   final pulumi.Input<String>? pricingCycle;
+
   /// Promotion
   final pulumi.Input<String>? promotionOptionNo;
+
   /// The region ID of the instance.
   final pulumi.Input<String>? regionId;
+
   /// ResourceGroupId
   final pulumi.Input<String>? resourceGroupId;
+
   /// The run mode of the instance:
   /// - shared_nothing
   /// - shared_data
   /// - lakehouse
   final pulumi.Input<String>? runMode;
+
   /// The status of the instance.
   final pulumi.Input<String>? status;
+
   /// Tag list of the instance.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The version of the instance.
   final pulumi.Input<String>? version;
+
   /// The VPC ID of the instance.
   final pulumi.Input<String>? vpcId;
+
   /// The VSwitches info of the instance. See `vswitches` below.
   final pulumi.Input<List<StarRocksInstanceVswitch>>? vswitches;
 
@@ -123,15 +149,48 @@ class StarRocksInstanceState {
     return <String, dynamic>{
       'adminPassword': ?adminPassword,
       'autoRenew': ?autoRenew,
-      'backendNodeGroups': ?pulumi.Input.mapOptionalInputValue<List<StarRocksInstanceBackendNodeGroup>, List<Map<String, dynamic>>>(backendNodeGroups, (value) => pulumi.Input.encodeList<StarRocksInstanceBackendNodeGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'backendNodeGroups':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StarRocksInstanceBackendNodeGroup>,
+            List<Map<String, dynamic>>
+          >(
+            backendNodeGroups,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StarRocksInstanceBackendNodeGroup,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'clusterZoneId': ?clusterZoneId,
       'createTime': ?createTime,
       'duration': ?duration,
       'encrypted': ?encrypted,
-      'frontendNodeGroups': ?pulumi.Input.mapOptionalInputValue<List<StarRocksInstanceFrontendNodeGroup>, List<Map<String, dynamic>>>(frontendNodeGroups, (value) => pulumi.Input.encodeList<StarRocksInstanceFrontendNodeGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'frontendNodeGroups':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StarRocksInstanceFrontendNodeGroup>,
+            List<Map<String, dynamic>>
+          >(
+            frontendNodeGroups,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StarRocksInstanceFrontendNodeGroup,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'instanceName': ?instanceName,
       'kmsKeyId': ?kmsKeyId,
-      'observerNodeGroups': ?pulumi.Input.mapOptionalInputValue<List<StarRocksInstanceObserverNodeGroup>, List<Map<String, dynamic>>>(observerNodeGroups, (value) => pulumi.Input.encodeList<StarRocksInstanceObserverNodeGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'observerNodeGroups':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StarRocksInstanceObserverNodeGroup>,
+            List<Map<String, dynamic>>
+          >(
+            observerNodeGroups,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StarRocksInstanceObserverNodeGroup,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ossAccessingRoleName': ?ossAccessingRoleName,
       'packageType': ?packageType,
       'payType': ?payType,
@@ -144,37 +203,173 @@ class StarRocksInstanceState {
       'tags': ?tags,
       'version': ?version,
       'vpcId': ?vpcId,
-      'vswitches': ?pulumi.Input.mapOptionalInputValue<List<StarRocksInstanceVswitch>, List<Map<String, dynamic>>>(vswitches, (value) => pulumi.Input.encodeList<StarRocksInstanceVswitch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vswitches':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StarRocksInstanceVswitch>,
+            List<Map<String, dynamic>>
+          >(
+            vswitches,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StarRocksInstanceVswitch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory StarRocksInstanceState.fromMap(Map<String, dynamic> map) {
     return StarRocksInstanceState(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
-      backendNodeGroups: map['backendNodeGroups'] == null ? null : (pulumi.Input.decodeList<StarRocksInstanceBackendNodeGroup>(map['backendNodeGroups']!, (value) => StarRocksInstanceBackendNodeGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clusterZoneId: map['clusterZoneId'] == null ? null : (map['clusterZoneId']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
-      frontendNodeGroups: map['frontendNodeGroups'] == null ? null : (pulumi.Input.decodeList<StarRocksInstanceFrontendNodeGroup>(map['frontendNodeGroups']!, (value) => StarRocksInstanceFrontendNodeGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
-      observerNodeGroups: map['observerNodeGroups'] == null ? null : (pulumi.Input.decodeList<StarRocksInstanceObserverNodeGroup>(map['observerNodeGroups']!, (value) => StarRocksInstanceObserverNodeGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ossAccessingRoleName: map['ossAccessingRoleName'] == null ? null : (map['ossAccessingRoleName']! as String).input(),
-      packageType: map['packageType'] == null ? null : (map['packageType']! as String).input(),
-      payType: map['payType'] == null ? null : (map['payType']! as String).input(),
-      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle']! as String).input(),
-      promotionOptionNo: map['promotionOptionNo'] == null ? null : (map['promotionOptionNo']! as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      runMode: map['runMode'] == null ? null : (map['runMode']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitches: map['vswitches'] == null ? null : (pulumi.Input.decodeList<StarRocksInstanceVswitch>(map['vswitches']!, (value) => StarRocksInstanceVswitch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      adminPassword: (() {
+        final guardedValue = map['adminPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      autoRenew: (() {
+        final guardedValue = map['autoRenew'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      backendNodeGroups: (() {
+        final guardedValue = map['backendNodeGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StarRocksInstanceBackendNodeGroup>(
+            guardedValue,
+            (value) => StarRocksInstanceBackendNodeGroup.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      clusterZoneId: (() {
+        final guardedValue = map['clusterZoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      duration: (() {
+        final guardedValue = map['duration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      frontendNodeGroups: (() {
+        final guardedValue = map['frontendNodeGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StarRocksInstanceFrontendNodeGroup>(
+            guardedValue,
+            (value) => StarRocksInstanceFrontendNodeGroup.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      instanceName: (() {
+        final guardedValue = map['instanceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      observerNodeGroups: (() {
+        final guardedValue = map['observerNodeGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StarRocksInstanceObserverNodeGroup>(
+            guardedValue,
+            (value) => StarRocksInstanceObserverNodeGroup.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ossAccessingRoleName: (() {
+        final guardedValue = map['ossAccessingRoleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      packageType: (() {
+        final guardedValue = map['packageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      payType: (() {
+        final guardedValue = map['payType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pricingCycle: (() {
+        final guardedValue = map['pricingCycle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      promotionOptionNo: (() {
+        final guardedValue = map['promotionOptionNo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runMode: (() {
+        final guardedValue = map['runMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitches: (() {
+        final guardedValue = map['vswitches'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StarRocksInstanceVswitch>(
+            guardedValue,
+            (value) => StarRocksInstanceVswitch.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

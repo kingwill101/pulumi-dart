@@ -6,7 +6,7 @@ import 'gateway_smb_user_state.dart';
 ///
 /// For information about Cloud Storage Gateway Gateway SMB User and how to use it, see [What is Gateway SMB User](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaysmbuser).
 ///
-/// > **NOTE:** Available since v1.142.0.
+/// &gt; **NOTE:** Available since v1.142.0.
 ///
 /// ## Example Usage
 ///
@@ -444,8 +444,10 @@ import 'gateway_smb_user_state.dart';
 class GatewaySmbUser extends pulumi.CustomResource {
   /// The Gateway ID of the Gateway SMB User.
   late final pulumi.Output<String> gatewayId;
+
   /// The password of the Gateway SMB User.
   late final pulumi.Output<String> password;
+
   /// The username of the Gateway SMB User.
   late final pulumi.Output<String> username;
 
@@ -458,14 +460,14 @@ class GatewaySmbUser extends pulumi.CustomResource {
     GatewaySmbUserArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.gatewayId = registerOutput<String>('gatewayId');
-    this.password = registerOutput<String>('password');
-    this.username = registerOutput<String>('username');
+         'alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    gatewayId = registerOutput<String>('gatewayId');
+    password = registerOutput<String>('password');
+    username = registerOutput<String>('username');
   }
 
   /// Gets an existing [GatewaySmbUser] resource's state with the given [name] and [id].
@@ -486,13 +488,13 @@ class GatewaySmbUser extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.gatewayId = registerOutput<String>('gatewayId');
-    this.password = registerOutput<String>('password');
-    this.username = registerOutput<String>('username');
+         'alicloud:cloudstoragegateway/gatewaySmbUser:GatewaySmbUser',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    gatewayId = registerOutput<String>('gatewayId');
+    password = registerOutput<String>('password');
+    username = registerOutput<String>('username');
   }
 }

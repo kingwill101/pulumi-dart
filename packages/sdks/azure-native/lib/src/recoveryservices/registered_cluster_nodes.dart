@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegisteredClusterNodes {
   /// The BIOS ID.
   final pulumi.Input<String>? biosId;
+
   /// The cluster node name.
   final pulumi.Input<String>? clusterNodeFqdn;
+
   /// A value indicating whether this represents virtual entity hosting all the shared disks.
   final pulumi.Input<bool>? isSharedDiskVirtualNode;
+
   /// The machine ID.
   final pulumi.Input<String>? machineId;
 
@@ -36,11 +39,26 @@ class RegisteredClusterNodes {
 
   factory RegisteredClusterNodes.fromMap(Map<String, dynamic> map) {
     return RegisteredClusterNodes(
-      biosId: map['biosId'] == null ? null : (map['biosId']! as String).input(),
-      clusterNodeFqdn: map['clusterNodeFqdn'] == null ? null : (map['clusterNodeFqdn']! as String).input(),
-      isSharedDiskVirtualNode: map['isSharedDiskVirtualNode'] == null ? null : (map['isSharedDiskVirtualNode']! as bool).input(),
-      machineId: map['machineId'] == null ? null : (map['machineId']! as String).input(),
+      biosId: (() {
+        final guardedValue = map['biosId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clusterNodeFqdn: (() {
+        final guardedValue = map['clusterNodeFqdn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isSharedDiskVirtualNode: (() {
+        final guardedValue = map['isSharedDiskVirtualNode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      machineId: (() {
+        final guardedValue = map['machineId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

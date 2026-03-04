@@ -2,16 +2,15 @@
 enum DeadLetterEndPointType {
   valueStorageBlob("StorageBlob");
 
-  const DeadLetterEndPointType(this.value);
-  final String value;
+  const DeadLetterEndPointType(this.wireValue);
+  final String wireValue;
 
   static DeadLetterEndPointType fromValue(String value) {
     for (final item in DeadLetterEndPointType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeadLetterEndPointType value: $value');
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedVpcNetworkResponse {
   /// Optional. IP ranges encompassing the subnets to be excluded from peering.
   final pulumi.Input<List<String>> excludeExportRanges;
+
   /// The URI of the VPC network resource.
   final pulumi.Input<String> uri;
 
@@ -26,9 +27,10 @@ class LinkedVpcNetworkResponse {
 
   factory LinkedVpcNetworkResponse.fromMap(Map<String, dynamic> map) {
     return LinkedVpcNetworkResponse(
-      excludeExportRanges: ((map['excludeExportRanges'] as List).cast<String>()).input(),
-      uri: (map['uri'] as String).input(),
+      excludeExportRanges: pulumi.Input.fromValue(
+        (map['excludeExportRanges'] as List).cast<String>(),
+      ),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

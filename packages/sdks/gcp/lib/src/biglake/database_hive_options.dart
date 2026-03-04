@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseHiveOptions {
   /// Cloud Storage folder URI where the database data is stored, starting with "gs://".
   final pulumi.Input<String>? locationUri;
+
   /// Stores user supplied Hive database parameters. An object containing a
   /// list of"key": value pairs.
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -13,10 +14,7 @@ class DatabaseHiveOptions {
   /// Creates a new [DatabaseHiveOptions].
   /// [locationUri] Cloud Storage folder URI where the database data is stored, starting with "gs://".
   /// [parameters] Stores user supplied Hive database parameters. An object containing a
-  DatabaseHiveOptions({
-    this.locationUri,
-    this.parameters,
-  });
+  DatabaseHiveOptions({this.locationUri, this.parameters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,18 @@ class DatabaseHiveOptions {
 
   factory DatabaseHiveOptions.fromMap(Map<String, dynamic> map) {
     return DatabaseHiveOptions(
-      locationUri: map['locationUri'] == null ? null : (map['locationUri']! as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      locationUri: (() {
+        final guardedValue = map['locationUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

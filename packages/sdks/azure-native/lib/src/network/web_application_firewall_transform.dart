@@ -8,16 +8,17 @@ enum WebApplicationFirewallTransform {
   valueRemoveNulls("RemoveNulls"),
   valueHtmlEntityDecode("HtmlEntityDecode");
 
-  const WebApplicationFirewallTransform(this.value);
-  final String value;
+  const WebApplicationFirewallTransform(this.wireValue);
+  final String wireValue;
 
   static WebApplicationFirewallTransform fromValue(String value) {
     for (final item in WebApplicationFirewallTransform.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown WebApplicationFirewallTransform value: $value');
+    throw ArgumentError(
+      'Unknown WebApplicationFirewallTransform value: $value',
+    );
   }
 }
-

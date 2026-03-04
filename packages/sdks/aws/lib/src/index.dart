@@ -1,5 +1,3 @@
-library module_index;
-
 export 'index/functions.dart';
 export 'index/get_arn_args.dart';
 export 'index/get_arn_result.dart';

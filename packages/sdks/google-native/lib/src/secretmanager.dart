@@ -1,5 +1,3 @@
-library module_secretmanager;
-
 export 'secretmanager/audit_config.dart';
 export 'secretmanager/audit_config_response.dart';
 export 'secretmanager/audit_config_response_secretmanager_v1beta1.dart';

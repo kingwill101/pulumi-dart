@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_services_network_args.dart';
-import 'egress_endpoint_response.dart';
 import 'extended_location_response.dart';
 import 'system_data_response.dart';
 
@@ -247,41 +246,60 @@ import 'system_data_response.dart';
 /// ```
 class CloudServicesNetwork extends pulumi.CustomResource {
   /// The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint.
-  late final pulumi.Output<List<EgressEndpointResponse>?> additionalEgressEndpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  additionalEgressEndpoints;
+
   /// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
   late final pulumi.Output<List<String>> associatedResourceIds;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The resource ID of the Network Cloud cluster this cloud services network is associated with.
   late final pulumi.Output<String> clusterId;
+
   /// The more detailed status of the cloud services network.
   late final pulumi.Output<String> detailedStatus;
+
   /// The descriptive message about the current detailed status.
   late final pulumi.Output<String> detailedStatusMessage;
+
   /// The indicator of whether the platform default endpoints are allowed for the egress traffic.
   late final pulumi.Output<String?> enableDefaultEgressEndpoints;
+
   /// The full list of additional and default egress endpoints that are currently enabled.
-  late final pulumi.Output<List<EgressEndpointResponse>> enabledEgressEndpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>> enabledEgressEndpoints;
+
   /// Resource ETag.
   late final pulumi.Output<String> etag;
+
   /// The extended location of the cluster associated with the resource.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this cloud services network.
   late final pulumi.Output<List<String>> hybridAksClustersAssociatedIds;
+
   /// The name of the interface that will be present in the virtual machine to represent this network.
   late final pulumi.Output<String> interfaceName;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the cloud services network.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this cloud services network.
   late final pulumi.Output<List<String>> virtualMachinesAssociatedIds;
 
@@ -294,29 +312,43 @@ class CloudServicesNetwork extends pulumi.CustomResource {
     CloudServicesNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:networkcloud:CloudServicesNetwork',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalEgressEndpoints = registerOutput<List<EgressEndpointResponse>?>('additionalEgressEndpoints');
-    this.associatedResourceIds = registerOutput<List<String>>('associatedResourceIds');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.detailedStatus = registerOutput<String>('detailedStatus');
-    this.detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
-    this.enableDefaultEgressEndpoints = registerOutput<String?>('enableDefaultEgressEndpoints');
-    this.enabledEgressEndpoints = registerOutput<List<EgressEndpointResponse>>('enabledEgressEndpoints');
-    this.etag = registerOutput<String>('etag');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.hybridAksClustersAssociatedIds = registerOutput<List<String>>('hybridAksClustersAssociatedIds');
-    this.interfaceName = registerOutput<String>('interfaceName');
-    this.location = registerOutput<String>('location');
+         'azure-native:networkcloud:CloudServicesNetwork',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalEgressEndpoints = registerOutput<List<Map<String, dynamic>>?>(
+      'additionalEgressEndpoints',
+    );
+    associatedResourceIds = registerOutput<List<String>>(
+      'associatedResourceIds',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterId = registerOutput<String>('clusterId');
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    enableDefaultEgressEndpoints = registerOutput<String?>(
+      'enableDefaultEgressEndpoints',
+    );
+    enabledEgressEndpoints = registerOutput<List<Map<String, dynamic>>>(
+      'enabledEgressEndpoints',
+    );
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    hybridAksClustersAssociatedIds = registerOutput<List<String>>(
+      'hybridAksClustersAssociatedIds',
+    );
+    interfaceName = registerOutput<String>('interfaceName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.virtualMachinesAssociatedIds = registerOutput<List<String>>('virtualMachinesAssociatedIds');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    virtualMachinesAssociatedIds = registerOutput<List<String>>(
+      'virtualMachinesAssociatedIds',
+    );
   }
 }

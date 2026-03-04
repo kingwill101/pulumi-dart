@@ -1,5 +1,3 @@
-library module_rolesanywhere;
-
 export 'rolesanywhere/profile.dart';
 export 'rolesanywhere/profile_args.dart';
 export 'rolesanywhere/profile_state.dart';

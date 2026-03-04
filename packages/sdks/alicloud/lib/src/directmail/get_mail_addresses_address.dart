@@ -5,28 +5,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMailAddressesAddress {
   /// The sender address.
   final pulumi.Input<String> accountName;
+
   /// The creation of the record time.
   final pulumi.Input<String> createTime;
+
   /// On the quota limit.
   final pulumi.Input<String> dailyCount;
+
   /// On the quota.
   final pulumi.Input<String> dailyReqCount;
+
   /// Domain name status. Valid values: `0`, `1`.
   final pulumi.Input<String> domainStatus;
+
   /// The ID of the Mail Address.
   final pulumi.Input<String> id;
+
   /// The sender address ID.
   final pulumi.Input<String> mailAddressId;
+
   /// Monthly quota limit.
   final pulumi.Input<String> monthCount;
+
   /// Months amount.
   final pulumi.Input<String> monthReqCount;
+
   /// Return address.
   final pulumi.Input<String> replyAddress;
+
   /// If using STMP address status.
   final pulumi.Input<String> replyStatus;
+
   /// Account type.
   final pulumi.Input<String> sendtype;
+
   /// Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
   final pulumi.Input<String> status;
 
@@ -80,20 +92,19 @@ class GetMailAddressesAddress {
 
   factory GetMailAddressesAddress.fromMap(Map<String, dynamic> map) {
     return GetMailAddressesAddress(
-      accountName: (map['accountName'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      dailyCount: (map['dailyCount'] as String).input(),
-      dailyReqCount: (map['dailyReqCount'] as String).input(),
-      domainStatus: (map['domainStatus'] as String).input(),
-      id: (map['id'] as String).input(),
-      mailAddressId: (map['mailAddressId'] as String).input(),
-      monthCount: (map['monthCount'] as String).input(),
-      monthReqCount: (map['monthReqCount'] as String).input(),
-      replyAddress: (map['replyAddress'] as String).input(),
-      replyStatus: (map['replyStatus'] as String).input(),
-      sendtype: (map['sendtype'] as String).input(),
-      status: (map['status'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      dailyCount: pulumi.Input.fromValue(map['dailyCount'] as String),
+      dailyReqCount: pulumi.Input.fromValue(map['dailyReqCount'] as String),
+      domainStatus: pulumi.Input.fromValue(map['domainStatus'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      mailAddressId: pulumi.Input.fromValue(map['mailAddressId'] as String),
+      monthCount: pulumi.Input.fromValue(map['monthCount'] as String),
+      monthReqCount: pulumi.Input.fromValue(map['monthReqCount'] as String),
+      replyAddress: pulumi.Input.fromValue(map['replyAddress'] as String),
+      replyStatus: pulumi.Input.fromValue(map['replyStatus'] as String),
+      sendtype: pulumi.Input.fromValue(map['sendtype'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

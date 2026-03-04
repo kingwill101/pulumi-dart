@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeMountStatusPatch {
   /// MountPath corresponds to the original VolumeMount.
   final pulumi.Input<String>? mountPath;
+
   /// Name corresponds to the name of the original VolumeMount.
   final pulumi.Input<String>? name;
+
   /// ReadOnly corresponds to the original VolumeMount.
   final pulumi.Input<bool>? readOnly;
+
   /// RecursiveReadOnly must be set to Disabled, Enabled, or unspecified (for non-readonly mounts). An IfPossible value in the original VolumeMount must be translated to Disabled or Enabled, depending on the mount result.
   final pulumi.Input<String>? recursiveReadOnly;
 
@@ -36,11 +39,26 @@ class VolumeMountStatusPatch {
 
   factory VolumeMountStatusPatch.fromMap(Map<String, dynamic> map) {
     return VolumeMountStatusPatch(
-      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
-      recursiveReadOnly: map['recursiveReadOnly'] == null ? null : (map['recursiveReadOnly']! as String).input(),
+      mountPath: (() {
+        final guardedValue = map['mountPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      readOnly: (() {
+        final guardedValue = map['readOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      recursiveReadOnly: (() {
+        final guardedValue = map['recursiveReadOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

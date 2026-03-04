@@ -13,15 +13,18 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'header': ?header,
-    };
+    return <String, dynamic>{'header': ?header};
   }
 
-  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormatCsv.fromMap(Map<String, dynamic> map) {
+  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormatCsv.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormatCsv(
-      header: map['header'] == null ? null : ((map['header'] as bool).input()).input(),
+      header: (() {
+        final guardedValue = map['header'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

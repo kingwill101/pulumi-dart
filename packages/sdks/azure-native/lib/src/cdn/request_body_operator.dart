@@ -11,16 +11,15 @@ enum RequestBodyOperator {
   greaterThanOrEqual("GreaterThanOrEqual"),
   regEx("RegEx");
 
-  const RequestBodyOperator(this.value);
-  final String value;
+  const RequestBodyOperator(this.wireValue);
+  final String wireValue;
 
   static RequestBodyOperator fromValue(String value) {
     for (final item in RequestBodyOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RequestBodyOperator value: $value');
   }
 }
-

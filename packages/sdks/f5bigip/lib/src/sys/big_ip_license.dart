@@ -5,6 +5,7 @@ import 'big_ip_license_state.dart';
 class BigIpLicense extends pulumi.CustomResource {
   /// Tmsh command to execute tmsh commands like install
   late final pulumi.Output<String> command;
+
   /// A unique Key F5 provides for Licensing BIG-IP
   late final pulumi.Output<String> registrationKey;
 
@@ -17,13 +18,13 @@ class BigIpLicense extends pulumi.CustomResource {
     BigIpLicenseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:sys/bigIpLicense:BigIpLicense',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.command = registerOutput<String>('command');
-    this.registrationKey = registerOutput<String>('registrationKey');
+         'f5bigip:sys/bigIpLicense:BigIpLicense',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    command = registerOutput<String>('command');
+    registrationKey = registerOutput<String>('registrationKey');
   }
 
   /// Gets an existing [BigIpLicense] resource's state with the given [name] and [id].
@@ -44,12 +45,12 @@ class BigIpLicense extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:sys/bigIpLicense:BigIpLicense',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.command = registerOutput<String>('command');
-    this.registrationKey = registerOutput<String>('registrationKey');
+         'f5bigip:sys/bigIpLicense:BigIpLicense',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    command = registerOutput<String>('command');
+    registrationKey = registerOutput<String>('registrationKey');
   }
 }

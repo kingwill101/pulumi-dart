@@ -4,7 +4,7 @@ import 'instance_attachment_state.dart';
 
 /// Provides a CEN child instance attachment resource that associate the network(VPC, CCN, VBR) with the CEN instance.
 ///
-/// > **NOTE:** Available since v1.42.0.
+/// &gt; **NOTE:** Available since v1.42.0.
 ///
 /// ## Example Usage
 ///
@@ -224,18 +224,24 @@ import 'instance_attachment_state.dart';
 class InstanceAttachment extends pulumi.CustomResource {
   /// The account ID to which the CEN instance belongs.
   ///
-  /// ->**NOTE:** Ensure that the child instance is not used in Express Connect.
+  /// -&gt;**NOTE:** Ensure that the child instance is not used in Express Connect.
   late final pulumi.Output<int?> cenOwnerId;
+
   /// The ID of the child instance to attach.
   late final pulumi.Output<String> childInstanceId;
+
   /// The uid of the child instance. Only used when attach a child instance of other account.
   late final pulumi.Output<int> childInstanceOwnerId;
+
   /// The region ID of the child instance to attach.
   late final pulumi.Output<String> childInstanceRegionId;
+
   /// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
   late final pulumi.Output<String> childInstanceType;
+
   /// The ID of the CEN.
   late final pulumi.Output<String> instanceId;
+
   /// The associating status of the network.
   late final pulumi.Output<String> status;
 
@@ -248,18 +254,18 @@ class InstanceAttachment extends pulumi.CustomResource {
     InstanceAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/instanceAttachment:InstanceAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenOwnerId = registerOutput<int?>('cenOwnerId');
-    this.childInstanceId = registerOutput<String>('childInstanceId');
-    this.childInstanceOwnerId = registerOutput<int>('childInstanceOwnerId');
-    this.childInstanceRegionId = registerOutput<String>('childInstanceRegionId');
-    this.childInstanceType = registerOutput<String>('childInstanceType');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.status = registerOutput<String>('status');
+         'alicloud:cen/instanceAttachment:InstanceAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenOwnerId = registerOutput<int?>('cenOwnerId');
+    childInstanceId = registerOutput<String>('childInstanceId');
+    childInstanceOwnerId = registerOutput<int>('childInstanceOwnerId');
+    childInstanceRegionId = registerOutput<String>('childInstanceRegionId');
+    childInstanceType = registerOutput<String>('childInstanceType');
+    instanceId = registerOutput<String>('instanceId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [InstanceAttachment] resource's state with the given [name] and [id].
@@ -280,17 +286,17 @@ class InstanceAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cen/instanceAttachment:InstanceAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cenOwnerId = registerOutput<int?>('cenOwnerId');
-    this.childInstanceId = registerOutput<String>('childInstanceId');
-    this.childInstanceOwnerId = registerOutput<int>('childInstanceOwnerId');
-    this.childInstanceRegionId = registerOutput<String>('childInstanceRegionId');
-    this.childInstanceType = registerOutput<String>('childInstanceType');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.status = registerOutput<String>('status');
+         'alicloud:cen/instanceAttachment:InstanceAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cenOwnerId = registerOutput<int?>('cenOwnerId');
+    childInstanceId = registerOutput<String>('childInstanceId');
+    childInstanceOwnerId = registerOutput<int>('childInstanceOwnerId');
+    childInstanceRegionId = registerOutput<String>('childInstanceRegionId');
+    childInstanceType = registerOutput<String>('childInstanceType');
+    instanceId = registerOutput<String>('instanceId');
+    status = registerOutput<String>('status');
   }
 }

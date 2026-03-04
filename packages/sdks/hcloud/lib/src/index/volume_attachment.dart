@@ -192,8 +192,10 @@ import 'volume_attachment_state.dart';
 class VolumeAttachment extends pulumi.CustomResource {
   /// Automount the volume upon attaching it.
   late final pulumi.Output<bool> automount;
+
   /// Server to attach the Volume to.
   late final pulumi.Output<int> serverId;
+
   /// ID of the Volume.
   late final pulumi.Output<int> volumeId;
 
@@ -206,14 +208,14 @@ class VolumeAttachment extends pulumi.CustomResource {
     VolumeAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/volumeAttachment:VolumeAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automount = registerOutput<bool>('automount');
-    this.serverId = registerOutput<int>('serverId');
-    this.volumeId = registerOutput<int>('volumeId');
+         'hcloud:index/volumeAttachment:VolumeAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automount = registerOutput<bool>('automount');
+    serverId = registerOutput<int>('serverId');
+    volumeId = registerOutput<int>('volumeId');
   }
 
   /// Gets an existing [VolumeAttachment] resource's state with the given [name] and [id].
@@ -234,13 +236,13 @@ class VolumeAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'hcloud:index/volumeAttachment:VolumeAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automount = registerOutput<bool>('automount');
-    this.serverId = registerOutput<int>('serverId');
-    this.volumeId = registerOutput<int>('volumeId');
+         'hcloud:index/volumeAttachment:VolumeAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automount = registerOutput<bool>('automount');
+    serverId = registerOutput<int>('serverId');
+    volumeId = registerOutput<int>('volumeId');
   }
 }

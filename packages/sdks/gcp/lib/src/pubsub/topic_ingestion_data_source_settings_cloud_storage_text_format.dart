@@ -10,20 +10,21 @@ class TopicIngestionDataSourceSettingsCloudStorageTextFormat {
 
   /// Creates a new [TopicIngestionDataSourceSettingsCloudStorageTextFormat].
   /// [delimiter] The delimiter to use when using the 'text' format. Each line of text as
-  TopicIngestionDataSourceSettingsCloudStorageTextFormat({
-    this.delimiter,
-  });
+  TopicIngestionDataSourceSettingsCloudStorageTextFormat({this.delimiter});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'delimiter': ?delimiter,
-    };
+    return <String, dynamic>{'delimiter': ?delimiter};
   }
 
-  factory TopicIngestionDataSourceSettingsCloudStorageTextFormat.fromMap(Map<String, dynamic> map) {
+  factory TopicIngestionDataSourceSettingsCloudStorageTextFormat.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TopicIngestionDataSourceSettingsCloudStorageTextFormat(
-      delimiter: map['delimiter'] == null ? null : (map['delimiter']! as String).input(),
+      delimiter: (() {
+        final guardedValue = map['delimiter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

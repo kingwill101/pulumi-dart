@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageReferenceResponse {
   /// Specified the community gallery image unique id for vm deployment. This can be fetched from community gallery image GET call.
   final pulumi.Input<String>? communityGalleryImageId;
+
   /// Specifies in decimal numbers, the version of platform image or marketplace image used to create the virtual machine. This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.
   final pulumi.Input<String> exactVersion;
+
   /// Resource Id
   final pulumi.Input<String>? id;
+
   /// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
   final pulumi.Input<String>? offer;
+
   /// The image publisher.
   final pulumi.Input<String>? publisher;
+
   /// Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
   final pulumi.Input<String>? sharedGalleryImageId;
+
   /// The image SKU.
   final pulumi.Input<String>? sku;
+
   /// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available. Please do not use field 'version' for gallery image deployment, gallery image should always use 'id' field for deployment, to use 'latest' version of gallery image, just set '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}' in the 'id' field without version input.
   final pulumi.Input<String>? version;
 
@@ -56,15 +63,42 @@ class ImageReferenceResponse {
 
   factory ImageReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ImageReferenceResponse(
-      communityGalleryImageId: map['communityGalleryImageId'] == null ? null : (map['communityGalleryImageId']! as String).input(),
-      exactVersion: (map['exactVersion'] as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      offer: map['offer'] == null ? null : (map['offer']! as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
-      sharedGalleryImageId: map['sharedGalleryImageId'] == null ? null : (map['sharedGalleryImageId']! as String).input(),
-      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      communityGalleryImageId: (() {
+        final guardedValue = map['communityGalleryImageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      exactVersion: pulumi.Input.fromValue(map['exactVersion'] as String),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      offer: (() {
+        final guardedValue = map['offer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publisher: (() {
+        final guardedValue = map['publisher'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharedGalleryImageId: (() {
+        final guardedValue = map['sharedGalleryImageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

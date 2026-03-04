@@ -3,16 +3,15 @@ enum CertificateStoreLocation {
   currentUser("CurrentUser"),
   localMachine("LocalMachine");
 
-  const CertificateStoreLocation(this.value);
-  final String value;
+  const CertificateStoreLocation(this.wireValue);
+  final String wireValue;
 
   static CertificateStoreLocation fromValue(String value) {
     for (final item in CertificateStoreLocation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CertificateStoreLocation value: $value');
   }
 }
-

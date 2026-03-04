@@ -7,18 +7,22 @@ class ClusterClusterConfigLifecycleConfig {
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
   /// Example: "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? autoDeleteTime;
+
   /// The time when cluster will be auto-stopped.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
   /// Example: "2014-10-02T15:01:23.045123456Z".
   ///
   /// - - -
   final pulumi.Input<String>? autoStopTime;
+
   /// The duration to keep the cluster alive while idling
   /// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
   final pulumi.Input<String>? idleDeleteTtl;
+
   /// Time when the cluster became idle
   /// (most recent job finished) and became eligible for deletion due to idleness.
   final pulumi.Input<String>? idleStartTime;
+
   /// The duration to keep the cluster alive while idling
   /// (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
   final pulumi.Input<String>? idleStopTtl;
@@ -47,14 +51,35 @@ class ClusterClusterConfigLifecycleConfig {
     };
   }
 
-  factory ClusterClusterConfigLifecycleConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterClusterConfigLifecycleConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterClusterConfigLifecycleConfig(
-      autoDeleteTime: map['autoDeleteTime'] == null ? null : (map['autoDeleteTime']! as String).input(),
-      autoStopTime: map['autoStopTime'] == null ? null : (map['autoStopTime']! as String).input(),
-      idleDeleteTtl: map['idleDeleteTtl'] == null ? null : (map['idleDeleteTtl']! as String).input(),
-      idleStartTime: map['idleStartTime'] == null ? null : (map['idleStartTime']! as String).input(),
-      idleStopTtl: map['idleStopTtl'] == null ? null : (map['idleStopTtl']! as String).input(),
+      autoDeleteTime: (() {
+        final guardedValue = map['autoDeleteTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      autoStopTime: (() {
+        final guardedValue = map['autoStopTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      idleDeleteTtl: (() {
+        final guardedValue = map['idleDeleteTtl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      idleStartTime: (() {
+        final guardedValue = map['idleStartTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      idleStopTtl: (() {
+        final guardedValue = map['idleStopTtl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

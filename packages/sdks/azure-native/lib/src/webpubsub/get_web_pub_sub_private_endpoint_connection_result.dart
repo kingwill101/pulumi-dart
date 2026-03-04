@@ -8,20 +8,29 @@ import 'system_data_response.dart';
 class GetWebPubSubPrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Group IDs
   final List<String> groupIds;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Private endpoint
   final PrivateEndpointResponse? privateEndpoint;
+
   /// Connection state of the private endpoint connection
-  final PrivateLinkServiceConnectionStateResponse? privateLinkServiceConnectionState;
+  final PrivateLinkServiceConnectionStateResponse?
+  privateLinkServiceConnectionState;
+
   /// Provisioning state of the resource.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -53,26 +62,42 @@ class GetWebPubSubPrivateEndpointConnectionResult {
       'groupIds': groupIds,
       'id': id,
       'name': name,
-      'privateEndpoint': ?privateEndpoint == null ? null : privateEndpoint!.toMap(),
-      'privateLinkServiceConnectionState': ?privateLinkServiceConnectionState == null ? null : privateLinkServiceConnectionState!.toMap(),
+      'privateEndpoint': ?privateEndpoint?.toMap(),
+      'privateLinkServiceConnectionState': ?privateLinkServiceConnectionState
+          ?.toMap(),
       'provisioningState': provisioningState,
       'systemData': systemData.toMap(),
       'type': type,
     };
   }
 
-  factory GetWebPubSubPrivateEndpointConnectionResult.fromMap(Map<String, dynamic> map) {
+  factory GetWebPubSubPrivateEndpointConnectionResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWebPubSubPrivateEndpointConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       groupIds: (map['groupIds'] as List).cast<String>(),
       id: map['id'] as String,
       name: map['name'] as String,
-      privateEndpoint: map['privateEndpoint'] == null ? null : PrivateEndpointResponse.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>()),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>()),
+      privateEndpoint: (() {
+        final guardedValue = map['privateEndpoint'];
+        if (guardedValue == null) return null;
+        return PrivateEndpointResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      privateLinkServiceConnectionState: (() {
+        final guardedValue = map['privateLinkServiceConnectionState'];
+        if (guardedValue == null) return null;
+        return PrivateLinkServiceConnectionStateResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

@@ -6,16 +6,17 @@ enum CVSSv3AttackVectorContaineranalysisV1beta1 {
   attackVectorLocal("ATTACK_VECTOR_LOCAL"),
   attackVectorPhysical("ATTACK_VECTOR_PHYSICAL");
 
-  const CVSSv3AttackVectorContaineranalysisV1beta1(this.value);
-  final String value;
+  const CVSSv3AttackVectorContaineranalysisV1beta1(this.wireValue);
+  final String wireValue;
 
   static CVSSv3AttackVectorContaineranalysisV1beta1 fromValue(String value) {
     for (final item in CVSSv3AttackVectorContaineranalysisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CVSSv3AttackVectorContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown CVSSv3AttackVectorContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

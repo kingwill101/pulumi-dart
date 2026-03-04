@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMetaTagsTag {
   /// The type of the resource tags.
   final pulumi.Input<String> category;
+
   /// The name of the key.
   final pulumi.Input<String> keyName;
+
   /// The name of the value.
   final pulumi.Input<String> valueName;
 
@@ -30,10 +32,9 @@ class GetMetaTagsTag {
 
   factory GetMetaTagsTag.fromMap(Map<String, dynamic> map) {
     return GetMetaTagsTag(
-      category: (map['category'] as String).input(),
-      keyName: (map['keyName'] as String).input(),
-      valueName: (map['valueName'] as String).input(),
+      category: pulumi.Input.fromValue(map['category'] as String),
+      keyName: pulumi.Input.fromValue(map['keyName'] as String),
+      valueName: pulumi.Input.fromValue(map['valueName'] as String),
     );
   }
 }
-

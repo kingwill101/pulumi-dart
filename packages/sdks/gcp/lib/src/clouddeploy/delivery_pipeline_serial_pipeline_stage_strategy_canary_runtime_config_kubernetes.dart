@@ -6,9 +6,16 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_runtime_config_k
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes {
   /// Kubernetes Gateway API service mesh configuration.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh>? gatewayServiceMesh;
+  final pulumi.Input<
+    DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh
+  >?
+  gatewayServiceMesh;
+
   /// Kubernetes Service networking configuration.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking>? serviceNetworking;
+  final pulumi.Input<
+    DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking
+  >?
+  serviceNetworking;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes].
   /// [gatewayServiceMesh] Kubernetes Gateway API service mesh configuration.
@@ -20,16 +27,41 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gatewayServiceMesh': ?pulumi.Input.mapOptionalInputValue<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh, Map<String, dynamic>>(gatewayServiceMesh, (value) => value.toMap()),
-      'serviceNetworking': ?pulumi.Input.mapOptionalInputValue<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking, Map<String, dynamic>>(serviceNetworking, (value) => value.toMap()),
+      'gatewayServiceMesh':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh,
+            Map<String, dynamic>
+          >(gatewayServiceMesh, (value) => value.toMap()),
+      'serviceNetworking':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking,
+            Map<String, dynamic>
+          >(serviceNetworking, (value) => value.toMap()),
     };
   }
 
-  factory DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes.fromMap(Map<String, dynamic> map) {
+  factory DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes(
-      gatewayServiceMesh: map['gatewayServiceMesh'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh.fromMap((map['gatewayServiceMesh']! as Map).cast<String, dynamic>())).input(),
-      serviceNetworking: map['serviceNetworking'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking.fromMap((map['serviceNetworking']! as Map).cast<String, dynamic>())).input(),
+      gatewayServiceMesh: (() {
+        final guardedValue = map['gatewayServiceMesh'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      serviceNetworking: (() {
+        final guardedValue = map['serviceNetworking'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

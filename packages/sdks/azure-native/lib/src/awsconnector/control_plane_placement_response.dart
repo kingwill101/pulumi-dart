@@ -4,25 +4,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Definition of ControlPlanePlacementResponse
 class ControlPlanePlacementResponse {
-  /// <p>The name of the placement group for the Kubernetes control plane instances.</p>
+  /// &lt;p&gt;The name of the placement group for the Kubernetes control plane instances.&lt;/p&gt;
   final pulumi.Input<String>? groupName;
 
   /// Creates a new [ControlPlanePlacementResponse].
-  /// [groupName] <p>The name of the placement group for the Kubernetes control plane instances.</p>
-  ControlPlanePlacementResponse({
-    this.groupName,
-  });
+  /// [groupName] &lt;p&gt;The name of the placement group for the Kubernetes control plane instances.&lt;/p&gt;
+  ControlPlanePlacementResponse({this.groupName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'groupName': ?groupName,
-    };
+    return <String, dynamic>{'groupName': ?groupName};
   }
 
   factory ControlPlanePlacementResponse.fromMap(Map<String, dynamic> map) {
     return ControlPlanePlacementResponse(
-      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      groupName: (() {
+        final guardedValue = map['groupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

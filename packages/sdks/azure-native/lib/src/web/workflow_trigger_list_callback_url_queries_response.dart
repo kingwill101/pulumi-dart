@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowTriggerListCallbackUrlQueriesResponse {
   /// The api version.
   final pulumi.Input<String>? apiVersion;
+
   /// The SAS timestamp.
   final pulumi.Input<String>? se;
+
   /// The SAS signature.
   final pulumi.Input<String>? sig;
+
   /// The SAS permissions.
   final pulumi.Input<String>? sp;
+
   /// The SAS version.
   final pulumi.Input<String>? sv;
 
@@ -39,14 +43,35 @@ class WorkflowTriggerListCallbackUrlQueriesResponse {
     };
   }
 
-  factory WorkflowTriggerListCallbackUrlQueriesResponse.fromMap(Map<String, dynamic> map) {
+  factory WorkflowTriggerListCallbackUrlQueriesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkflowTriggerListCallbackUrlQueriesResponse(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      se: map['se'] == null ? null : (map['se']! as String).input(),
-      sig: map['sig'] == null ? null : (map['sig']! as String).input(),
-      sp: map['sp'] == null ? null : (map['sp']! as String).input(),
-      sv: map['sv'] == null ? null : (map['sv']! as String).input(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      se: (() {
+        final guardedValue = map['se'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sig: (() {
+        final guardedValue = map['sig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sp: (() {
+        final guardedValue = map['sp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sv: (() {
+        final guardedValue = map['sv'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

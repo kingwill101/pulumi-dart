@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountArgs {
   /// Account Name
   final pulumi.Input<String> accountName;
+
   /// Resource Group Name
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetAccountArgs].
   /// [accountName] Account Name
   /// [resourceGroupName] Resource Group Name
-  GetAccountArgs({
-    required this.accountName,
-    required this.resourceGroupName,
-  });
+  GetAccountArgs({required this.accountName, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetAccountArgs {
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
-      accountName: (map['accountName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

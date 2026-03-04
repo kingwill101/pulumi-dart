@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering PersistenceProfileSsl resources.
 class PersistenceProfileSslState {
   final pulumi.Input<String>? appService;
+
   /// Inherit defaults from parent profile
   final pulumi.Input<String>? defaultsFrom;
+
   /// To enable _ disable match across pools with given persistence record
   final pulumi.Input<String>? matchAcrossPools;
+
   /// To enable _ disable match across services with given persistence record
   final pulumi.Input<String>? matchAcrossServices;
+
   /// To enable _ disable match across services with given persistence record
   final pulumi.Input<String>? matchAcrossVirtuals;
+
   /// To enable _ disable
   final pulumi.Input<String>? mirror;
+
   /// Name of the persistence profile
   final pulumi.Input<String>? name;
+
   /// To enable _ disable that pool member connection limits are overridden for persisted clients. Per-virtual connection limits remain hard limits and are not overridden.
   final pulumi.Input<String>? overrideConnLimit;
+
   /// Timeout for persistence of the session
   final pulumi.Input<int>? timeout;
 
@@ -60,16 +68,51 @@ class PersistenceProfileSslState {
 
   factory PersistenceProfileSslState.fromMap(Map<String, dynamic> map) {
     return PersistenceProfileSslState(
-      appService: map['appService'] == null ? null : (map['appService']! as String).input(),
-      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom']! as String).input(),
-      matchAcrossPools: map['matchAcrossPools'] == null ? null : (map['matchAcrossPools']! as String).input(),
-      matchAcrossServices: map['matchAcrossServices'] == null ? null : (map['matchAcrossServices']! as String).input(),
-      matchAcrossVirtuals: map['matchAcrossVirtuals'] == null ? null : (map['matchAcrossVirtuals']! as String).input(),
-      mirror: map['mirror'] == null ? null : (map['mirror']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      overrideConnLimit: map['overrideConnLimit'] == null ? null : (map['overrideConnLimit']! as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      appService: (() {
+        final guardedValue = map['appService'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultsFrom: (() {
+        final guardedValue = map['defaultsFrom'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      matchAcrossPools: (() {
+        final guardedValue = map['matchAcrossPools'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      matchAcrossServices: (() {
+        final guardedValue = map['matchAcrossServices'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      matchAcrossVirtuals: (() {
+        final guardedValue = map['matchAcrossVirtuals'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mirror: (() {
+        final guardedValue = map['mirror'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      overrideConnLimit: (() {
+        final guardedValue = map['overrideConnLimit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

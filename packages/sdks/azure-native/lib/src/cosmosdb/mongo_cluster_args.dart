@@ -11,22 +11,31 @@ import 'node_group_spec.dart';
 class MongoClusterArgs {
   /// The administrator's login for the mongo cluster.
   final pulumi.Input<String>? administratorLogin;
+
   /// The password of the administrator login.
   final pulumi.Input<String>? administratorLoginPassword;
+
   /// The mode to create a mongo cluster.
   final pulumi.Input<String>? createMode;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the mongo cluster.
   final pulumi.Input<String>? mongoClusterName;
+
   /// The list of node group specs in the cluster.
   final pulumi.Input<List<NodeGroupSpec>>? nodeGroupSpecs;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Parameters used for restore operations
   final pulumi.Input<MongoClusterRestoreParameters>? restoreParameters;
+
   /// The Mongo DB server version. Defaults to the latest available version if not specified.
   final pulumi.Input<String>? serverVersion;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -61,9 +70,24 @@ class MongoClusterArgs {
       'createMode': ?createMode,
       'location': ?location,
       'mongoClusterName': ?mongoClusterName,
-      'nodeGroupSpecs': ?pulumi.Input.mapOptionalInputValue<List<NodeGroupSpec>, List<Map<String, dynamic>>>(nodeGroupSpecs, (value) => pulumi.Input.encodeList<NodeGroupSpec, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodeGroupSpecs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NodeGroupSpec>,
+            List<Map<String, dynamic>>
+          >(
+            nodeGroupSpecs,
+            (value) =>
+                pulumi.Input.encodeList<NodeGroupSpec, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'resourceGroupName': resourceGroupName,
-      'restoreParameters': ?pulumi.Input.mapOptionalInputValue<MongoClusterRestoreParameters, Map<String, dynamic>>(restoreParameters, (value) => value.toMap()),
+      'restoreParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            MongoClusterRestoreParameters,
+            Map<String, dynamic>
+          >(restoreParameters, (value) => value.toMap()),
       'serverVersion': ?serverVersion,
       'tags': ?tags,
     };
@@ -71,17 +95,66 @@ class MongoClusterArgs {
 
   factory MongoClusterArgs.fromMap(Map<String, dynamic> map) {
     return MongoClusterArgs(
-      administratorLogin: map['administratorLogin'] == null ? null : (map['administratorLogin']! as String).input(),
-      administratorLoginPassword: map['administratorLoginPassword'] == null ? null : (map['administratorLoginPassword']! as String).input(),
-      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      mongoClusterName: map['mongoClusterName'] == null ? null : (map['mongoClusterName']! as String).input(),
-      nodeGroupSpecs: map['nodeGroupSpecs'] == null ? null : (pulumi.Input.decodeList<NodeGroupSpec>(map['nodeGroupSpecs']!, (value) => NodeGroupSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      restoreParameters: map['restoreParameters'] == null ? null : (MongoClusterRestoreParameters.fromMap((map['restoreParameters']! as Map).cast<String, dynamic>())).input(),
-      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      administratorLogin: (() {
+        final guardedValue = map['administratorLogin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      administratorLoginPassword: (() {
+        final guardedValue = map['administratorLoginPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createMode: (() {
+        final guardedValue = map['createMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mongoClusterName: (() {
+        final guardedValue = map['mongoClusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeGroupSpecs: (() {
+        final guardedValue = map['nodeGroupSpecs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NodeGroupSpec>(
+            guardedValue,
+            (value) =>
+                NodeGroupSpec.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      restoreParameters: (() {
+        final guardedValue = map['restoreParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MongoClusterRestoreParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      serverVersion: (() {
+        final guardedValue = map['serverVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

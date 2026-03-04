@@ -13,15 +13,14 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVa
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'values': values,
-    };
+    return <String, dynamic>{'values': values};
   }
 
-  factory CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue.fromMap(Map<String, dynamic> map) {
+  factory CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue(
-      values: ((map['values'] as List).cast<String>()).input(),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

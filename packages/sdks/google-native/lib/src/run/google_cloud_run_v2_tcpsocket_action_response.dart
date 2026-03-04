@@ -9,20 +9,17 @@ class GoogleCloudRunV2TCPSocketActionResponse {
 
   /// Creates a new [GoogleCloudRunV2TCPSocketActionResponse].
   /// [port] Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
-  GoogleCloudRunV2TCPSocketActionResponse({
-    required this.port,
-  });
+  GoogleCloudRunV2TCPSocketActionResponse({required this.port});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'port': port,
-    };
+    return <String, dynamic>{'port': port};
   }
 
-  factory GoogleCloudRunV2TCPSocketActionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRunV2TCPSocketActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRunV2TCPSocketActionResponse(
-      port: (map['port'] as int).input(),
+      port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
-

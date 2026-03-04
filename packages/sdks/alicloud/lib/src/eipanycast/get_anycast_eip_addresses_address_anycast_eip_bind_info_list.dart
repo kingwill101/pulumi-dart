@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAnycastEipAddressesAddressAnycastEipBindInfoList {
   /// The bound cloud resource instance ID.
   final pulumi.Input<String> bindInstanceId;
+
   /// The region ID of the bound cloud resource instance.
   final pulumi.Input<String> bindInstanceRegionId;
+
   /// Bind the cloud resource instance type.
   final pulumi.Input<String> bindInstanceType;
+
   /// Binding time.
   final pulumi.Input<String> bindTime;
 
@@ -33,13 +36,18 @@ class GetAnycastEipAddressesAddressAnycastEipBindInfoList {
     };
   }
 
-  factory GetAnycastEipAddressesAddressAnycastEipBindInfoList.fromMap(Map<String, dynamic> map) {
+  factory GetAnycastEipAddressesAddressAnycastEipBindInfoList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAnycastEipAddressesAddressAnycastEipBindInfoList(
-      bindInstanceId: (map['bindInstanceId'] as String).input(),
-      bindInstanceRegionId: (map['bindInstanceRegionId'] as String).input(),
-      bindInstanceType: (map['bindInstanceType'] as String).input(),
-      bindTime: (map['bindTime'] as String).input(),
+      bindInstanceId: pulumi.Input.fromValue(map['bindInstanceId'] as String),
+      bindInstanceRegionId: pulumi.Input.fromValue(
+        map['bindInstanceRegionId'] as String,
+      ),
+      bindInstanceType: pulumi.Input.fromValue(
+        map['bindInstanceType'] as String,
+      ),
+      bindTime: pulumi.Input.fromValue(map['bindTime'] as String),
     );
   }
 }
-

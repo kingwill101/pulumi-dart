@@ -4375,30 +4375,47 @@ import 'validations_profile_response.dart';
 class GalleryImageVersion extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// The publishing profile of a gallery image Version.
-  late final pulumi.Output<GalleryImageVersionPublishingProfileResponse?> publishingProfile;
+  late final pulumi.Output<GalleryImageVersionPublishingProfileResponse?>
+  publishingProfile;
+
   /// This is the replication status of the gallery image version.
   late final pulumi.Output<ReplicationStatusResponse> replicationStatus;
+
   /// Indicates if this is a soft-delete resource restoration request.
   late final pulumi.Output<bool?> restore;
+
   /// This is the safety profile of the Gallery Image Version.
-  late final pulumi.Output<GalleryImageVersionSafetyProfileResponse?> safetyProfile;
+  late final pulumi.Output<GalleryImageVersionSafetyProfileResponse?>
+  safetyProfile;
+
   /// The security profile of a gallery image version
-  late final pulumi.Output<ImageVersionSecurityProfileResponse?> securityProfile;
+  late final pulumi.Output<ImageVersionSecurityProfileResponse?>
+  securityProfile;
+
   /// This is the storage profile of a Gallery Image Version.
-  late final pulumi.Output<GalleryImageVersionStorageProfileResponse> storageProfile;
+  late final pulumi.Output<GalleryImageVersionStorageProfileResponse>
+  storageProfile;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// This is the validations profile of a Gallery Image Version.
   late final pulumi.Output<ValidationsProfileResponse> validationsProfile;
 
@@ -4411,24 +4428,37 @@ class GalleryImageVersion extends pulumi.CustomResource {
     GalleryImageVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:compute:GalleryImageVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.location = registerOutput<String>('location');
+         'azure-native:compute:GalleryImageVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publishingProfile = registerOutput<GalleryImageVersionPublishingProfileResponse?>('publishingProfile');
-    this.replicationStatus = registerOutput<ReplicationStatusResponse>('replicationStatus');
-    this.restore = registerOutput<bool?>('restore');
-    this.safetyProfile = registerOutput<GalleryImageVersionSafetyProfileResponse?>('safetyProfile');
-    this.securityProfile = registerOutput<ImageVersionSecurityProfileResponse?>('securityProfile');
-    this.storageProfile = registerOutput<GalleryImageVersionStorageProfileResponse>('storageProfile');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.validationsProfile = registerOutput<ValidationsProfileResponse>('validationsProfile');
+    provisioningState = registerOutput<String>('provisioningState');
+    publishingProfile =
+        registerOutput<GalleryImageVersionPublishingProfileResponse?>(
+          'publishingProfile',
+        );
+    replicationStatus = registerOutput<ReplicationStatusResponse>(
+      'replicationStatus',
+    );
+    restore = registerOutput<bool?>('restore');
+    safetyProfile = registerOutput<GalleryImageVersionSafetyProfileResponse?>(
+      'safetyProfile',
+    );
+    securityProfile = registerOutput<ImageVersionSecurityProfileResponse?>(
+      'securityProfile',
+    );
+    storageProfile = registerOutput<GalleryImageVersionStorageProfileResponse>(
+      'storageProfile',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    validationsProfile = registerOutput<ValidationsProfileResponse>(
+      'validationsProfile',
+    );
   }
 }

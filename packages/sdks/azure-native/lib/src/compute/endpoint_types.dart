@@ -3,16 +3,15 @@ enum EndpointTypes {
   valueWireServer("WireServer"),
   valueIMDS("IMDS");
 
-  const EndpointTypes(this.value);
-  final String value;
+  const EndpointTypes(this.wireValue);
+  final String wireValue;
 
   static EndpointTypes fromValue(String value) {
     for (final item in EndpointTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EndpointTypes value: $value');
   }
 }
-

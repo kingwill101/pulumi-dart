@@ -12,20 +12,17 @@ class GetWorkloadImpactArgs {
 
   /// Creates a new [GetWorkloadImpactArgs].
   /// [workloadImpactName] workloadImpact resource
-  GetWorkloadImpactArgs({
-    required this.workloadImpactName,
-  });
+  GetWorkloadImpactArgs({required this.workloadImpactName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'workloadImpactName': workloadImpactName,
-    };
+    return <String, dynamic>{'workloadImpactName': workloadImpactName};
   }
 
   factory GetWorkloadImpactArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadImpactArgs(
-      workloadImpactName: (map['workloadImpactName'] as String).input(),
+      workloadImpactName: pulumi.Input.fromValue(
+        map['workloadImpactName'] as String,
+      ),
     );
   }
 }
-

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthenticatorGroupsConfigContainerV1beta1 {
   /// Whether this cluster should return group membership lookups during authentication using a group of security groups.
   final pulumi.Input<bool>? enabled;
+
   /// The name of the security group-of-groups to be used. Only relevant if enabled = true.
   final pulumi.Input<String>? securityGroup;
 
   /// Creates a new [AuthenticatorGroupsConfigContainerV1beta1].
   /// [enabled] Whether this cluster should return group membership lookups during authentication using a group of security groups.
   /// [securityGroup] The name of the security group-of-groups to be used. Only relevant if enabled = true.
-  AuthenticatorGroupsConfigContainerV1beta1({
-    this.enabled,
-    this.securityGroup,
-  });
+  AuthenticatorGroupsConfigContainerV1beta1({this.enabled, this.securityGroup});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,11 +22,20 @@ class AuthenticatorGroupsConfigContainerV1beta1 {
     };
   }
 
-  factory AuthenticatorGroupsConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory AuthenticatorGroupsConfigContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuthenticatorGroupsConfigContainerV1beta1(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      securityGroup: map['securityGroup'] == null ? null : (map['securityGroup']! as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      securityGroup: (() {
+        final guardedValue = map['securityGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFabricArgs {
   /// The fabric name.
   final pulumi.Input<String> fabricName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetFabricArgs].
   /// [fabricName] The fabric name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFabricArgs({
-    required this.fabricName,
-    required this.resourceGroupName,
-  });
+  GetFabricArgs({required this.fabricName, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetFabricArgs {
 
   factory GetFabricArgs.fromMap(Map<String, dynamic> map) {
     return GetFabricArgs(
-      fabricName: (map['fabricName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

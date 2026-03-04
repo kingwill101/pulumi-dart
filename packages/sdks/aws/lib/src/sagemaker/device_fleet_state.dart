@@ -7,21 +7,29 @@ import 'device_fleet_output_config.dart';
 class DeviceFleetState {
   /// The Amazon Resource Name (ARN) assigned by AWS to this Device Fleet.
   final pulumi.Input<String>? arn;
+
   /// A description of the fleet.
   final pulumi.Input<String>? description;
+
   /// The name of the Device Fleet (must be unique).
   final pulumi.Input<String>? deviceFleetName;
+
   /// Whether to create an AWS IoT Role Alias during device fleet creation. The name of the role alias generated will match this pattern: "SageMakerEdge-{DeviceFleetName}".
   final pulumi.Input<bool>? enableIotRoleAlias;
   final pulumi.Input<String>? iotRoleAlias;
+
   /// Specifies details about the repository. see Output Config details below.
   final pulumi.Input<DeviceFleetOutputConfig>? outputConfig;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The Amazon Resource Name (ARN) that has access to AWS Internet of Things (IoT).
   final pulumi.Input<String>? roleArn;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -56,7 +64,11 @@ class DeviceFleetState {
       'deviceFleetName': ?deviceFleetName,
       'enableIotRoleAlias': ?enableIotRoleAlias,
       'iotRoleAlias': ?iotRoleAlias,
-      'outputConfig': ?pulumi.Input.mapOptionalInputValue<DeviceFleetOutputConfig, Map<String, dynamic>>(outputConfig, (value) => value.toMap()),
+      'outputConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeviceFleetOutputConfig,
+            Map<String, dynamic>
+          >(outputConfig, (value) => value.toMap()),
       'region': ?region,
       'roleArn': ?roleArn,
       'tags': ?tags,
@@ -66,17 +78,64 @@ class DeviceFleetState {
 
   factory DeviceFleetState.fromMap(Map<String, dynamic> map) {
     return DeviceFleetState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      deviceFleetName: map['deviceFleetName'] == null ? null : ((map['deviceFleetName'] as String).input()).input(),
-      enableIotRoleAlias: map['enableIotRoleAlias'] == null ? null : ((map['enableIotRoleAlias'] as bool).input()).input(),
-      iotRoleAlias: map['iotRoleAlias'] == null ? null : ((map['iotRoleAlias'] as String).input()).input(),
-      outputConfig: map['outputConfig'] == null ? null : ((DeviceFleetOutputConfig.fromMap((map['outputConfig']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deviceFleetName: (() {
+        final guardedValue = map['deviceFleetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableIotRoleAlias: (() {
+        final guardedValue = map['enableIotRoleAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      iotRoleAlias: (() {
+        final guardedValue = map['iotRoleAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputConfig: (() {
+        final guardedValue = map['outputConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeviceFleetOutputConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -6,15 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmVmPlacementPolicyPropertiesResponse {
   /// placement policy affinity type
   final pulumi.Input<String> affinityType;
+
   /// Display name of the placement policy
   final pulumi.Input<String>? displayName;
+
   /// The provisioning state
   final pulumi.Input<String> provisioningState;
+
   /// Whether the placement policy is enabled or disabled
   final pulumi.Input<String>? state;
+
   /// Placement Policy type
   /// Expected value is 'VmVm'.
   final pulumi.Input<String> type;
+
   /// Virtual machine members list
   final pulumi.Input<List<String>> vmMembers;
 
@@ -45,15 +50,28 @@ class VmVmPlacementPolicyPropertiesResponse {
     };
   }
 
-  factory VmVmPlacementPolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory VmVmPlacementPolicyPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VmVmPlacementPolicyPropertiesResponse(
-      affinityType: (map['affinityType'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      type: (map['type'] as String).input(),
-      vmMembers: ((map['vmMembers'] as List).cast<String>()).input(),
+      affinityType: pulumi.Input.fromValue(map['affinityType'] as String),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      vmMembers: pulumi.Input.fromValue(
+        (map['vmMembers'] as List).cast<String>(),
+      ),
     );
   }
 }
-

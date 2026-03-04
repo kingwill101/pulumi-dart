@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PartnerArgs {
   /// The Amazon Web Services account ID that owns the cluster.
   final pulumi.Input<String> accountId;
+
   /// The cluster identifier of the cluster that receives data from the partner.
   final pulumi.Input<String> clusterIdentifier;
+
   /// The name of the database that receives data from the partner.
   final pulumi.Input<String> databaseName;
+
   /// The name of the partner that is authorized to send data.
   final pulumi.Input<String> partnerName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -44,12 +48,17 @@ class PartnerArgs {
 
   factory PartnerArgs.fromMap(Map<String, dynamic> map) {
     return PartnerArgs(
-      accountId: (map['accountId'] as String).input(),
-      clusterIdentifier: (map['clusterIdentifier'] as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      partnerName: (map['partnerName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      clusterIdentifier: pulumi.Input.fromValue(
+        map['clusterIdentifier'] as String,
+      ),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      partnerName: pulumi.Input.fromValue(map['partnerName'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -25,12 +25,25 @@ class TableExportIncrementalExportSpecification {
     };
   }
 
-  factory TableExportIncrementalExportSpecification.fromMap(Map<String, dynamic> map) {
+  factory TableExportIncrementalExportSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableExportIncrementalExportSpecification(
-      exportFromTime: map['exportFromTime'] == null ? null : ((map['exportFromTime'] as String).input()).input(),
-      exportToTime: map['exportToTime'] == null ? null : ((map['exportToTime'] as String).input()).input(),
-      exportViewType: map['exportViewType'] == null ? null : ((map['exportViewType'] as String).input()).input(),
+      exportFromTime: (() {
+        final guardedValue = map['exportFromTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      exportToTime: (() {
+        final guardedValue = map['exportToTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      exportViewType: (() {
+        final guardedValue = map['exportViewType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

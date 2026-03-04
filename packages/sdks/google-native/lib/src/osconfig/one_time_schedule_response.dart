@@ -9,20 +9,15 @@ class OneTimeScheduleResponse {
 
   /// Creates a new [OneTimeScheduleResponse].
   /// [executeTime] The desired patch job execution time.
-  OneTimeScheduleResponse({
-    required this.executeTime,
-  });
+  OneTimeScheduleResponse({required this.executeTime});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'executeTime': executeTime,
-    };
+    return <String, dynamic>{'executeTime': executeTime};
   }
 
   factory OneTimeScheduleResponse.fromMap(Map<String, dynamic> map) {
     return OneTimeScheduleResponse(
-      executeTime: (map['executeTime'] as String).input(),
+      executeTime: pulumi.Input.fromValue(map['executeTime'] as String),
     );
   }
 }
-

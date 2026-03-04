@@ -1,0 +1,6 @@
+name: awsx-dart-ecs-nodejs
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX ECS Fargate service with ALB in Dart.

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mx_record_args.dart';
-import 'mx_record_record.dart';
 import 'mx_record_state.dart';
 
 /// Enables you to manage DNS MX Records within Azure Private DNS.
@@ -256,7 +255,7 @@ import 'mx_record_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2024-06-01
@@ -271,16 +270,22 @@ import 'mx_record_state.dart';
 class MxRecord extends pulumi.CustomResource {
   /// The FQDN of the DNS MX Record.
   late final pulumi.Output<String> fqdn;
+
   /// The name of the DNS MX Record. Changing this forces a new resource to be created. Default to '@' for root zone entry.
   late final pulumi.Output<String> name;
+
   /// One or more `record` blocks as defined below.
-  late final pulumi.Output<List<MxRecordRecord>> records;
+  late final pulumi.Output<List<Map<String, dynamic>>> records;
+
   /// Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The Time To Live (TTL) of the DNS record in seconds.
   late final pulumi.Output<int> ttl;
+
   /// Specifies the Private DNS Zone where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> zoneName;
 
@@ -293,18 +298,18 @@ class MxRecord extends pulumi.CustomResource {
     MxRecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:privatedns/mxRecord:MxRecord',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fqdn = registerOutput<String>('fqdn');
+         'azure:privatedns/mxRecord:MxRecord',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    this.records = registerOutput<List<MxRecordRecord>>('records');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.ttl = registerOutput<int>('ttl');
-    this.zoneName = registerOutput<String>('zoneName');
+    records = registerOutput<List<Map<String, dynamic>>>('records');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    ttl = registerOutput<int>('ttl');
+    zoneName = registerOutput<String>('zoneName');
   }
 
   /// Gets an existing [MxRecord] resource's state with the given [name] and [id].
@@ -325,17 +330,17 @@ class MxRecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:privatedns/mxRecord:MxRecord',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fqdn = registerOutput<String>('fqdn');
+         'azure:privatedns/mxRecord:MxRecord',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    this.records = registerOutput<List<MxRecordRecord>>('records');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.ttl = registerOutput<int>('ttl');
-    this.zoneName = registerOutput<String>('zoneName');
+    records = registerOutput<List<Map<String, dynamic>>>('records');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    ttl = registerOutput<int>('ttl');
+    zoneName = registerOutput<String>('zoneName');
   }
 }

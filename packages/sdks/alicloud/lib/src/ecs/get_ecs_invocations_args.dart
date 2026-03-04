@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEcsInvocationsArgs {
   /// The execution ID of the command.
   final pulumi.Input<String>? commandId;
+
   /// The encoding mode of the CommandContent and Output response parameters. Valid values: `PlainText`, `Base64`.
   final pulumi.Input<String>? contentEncoding;
+
   /// A list of Invocation IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
   final pulumi.Input<String>? invokeStatus;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
   final pulumi.Input<int>? pageNumber;
@@ -52,14 +56,41 @@ class GetEcsInvocationsArgs {
 
   factory GetEcsInvocationsArgs.fromMap(Map<String, dynamic> map) {
     return GetEcsInvocationsArgs(
-      commandId: map['commandId'] == null ? null : (map['commandId']! as String).input(),
-      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      invokeStatus: map['invokeStatus'] == null ? null : (map['invokeStatus']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
+      commandId: (() {
+        final guardedValue = map['commandId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentEncoding: (() {
+        final guardedValue = map['contentEncoding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      invokeStatus: (() {
+        final guardedValue = map['invokeStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

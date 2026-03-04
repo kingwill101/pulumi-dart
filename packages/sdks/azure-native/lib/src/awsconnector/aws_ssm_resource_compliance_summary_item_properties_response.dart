@@ -9,32 +9,39 @@ import 'non_compliant_summary_response.dart';
 
 /// Definition of awsSsmResourceComplianceSummaryItem
 class AwsSsmResourceComplianceSummaryItemPropertiesResponse {
-  /// <p>The compliance type.</p>
+  /// &lt;p&gt;The compliance type.&lt;/p&gt;
   final pulumi.Input<String>? complianceType;
-  /// <p>A list of items that are compliant for the resource.</p>
+
+  /// &lt;p&gt;A list of items that are compliant for the resource.&lt;/p&gt;
   final pulumi.Input<CompliantSummaryResponse>? compliantSummary;
-  /// <p>Information about the execution.</p>
+
+  /// &lt;p&gt;Information about the execution.&lt;/p&gt;
   final pulumi.Input<ComplianceExecutionSummaryResponse>? executionSummary;
-  /// <p>A list of items that aren't compliant for the resource.</p>
+
+  /// &lt;p&gt;A list of items that aren't compliant for the resource.&lt;/p&gt;
   final pulumi.Input<NonCompliantSummaryResponse>? nonCompliantSummary;
-  /// <p>The highest severity item found for the resource. The resource is compliant for this item.</p>
+
+  /// &lt;p&gt;The highest severity item found for the resource. The resource is compliant for this item.&lt;/p&gt;
   final pulumi.Input<ComplianceSeverityEnumValueResponse>? overallSeverity;
-  /// <p>The resource ID.</p>
+
+  /// &lt;p&gt;The resource ID.&lt;/p&gt;
   final pulumi.Input<String>? resourceId;
-  /// <p>The resource type.</p>
+
+  /// &lt;p&gt;The resource type.&lt;/p&gt;
   final pulumi.Input<String>? resourceType;
-  /// <p>The compliance status for the resource.</p>
+
+  /// &lt;p&gt;The compliance status for the resource.&lt;/p&gt;
   final pulumi.Input<ComplianceStatusEnumValueResponse>? status;
 
   /// Creates a new [AwsSsmResourceComplianceSummaryItemPropertiesResponse].
-  /// [complianceType] <p>The compliance type.</p>
-  /// [compliantSummary] <p>A list of items that are compliant for the resource.</p>
-  /// [executionSummary] <p>Information about the execution.</p>
-  /// [nonCompliantSummary] <p>A list of items that aren't compliant for the resource.</p>
-  /// [overallSeverity] <p>The highest severity item found for the resource. The resource is compliant for this item.</p>
-  /// [resourceId] <p>The resource ID.</p>
-  /// [resourceType] <p>The resource type.</p>
-  /// [status] <p>The compliance status for the resource.</p>
+  /// [complianceType] &lt;p&gt;The compliance type.&lt;/p&gt;
+  /// [compliantSummary] &lt;p&gt;A list of items that are compliant for the resource.&lt;/p&gt;
+  /// [executionSummary] &lt;p&gt;Information about the execution.&lt;/p&gt;
+  /// [nonCompliantSummary] &lt;p&gt;A list of items that aren't compliant for the resource.&lt;/p&gt;
+  /// [overallSeverity] &lt;p&gt;The highest severity item found for the resource. The resource is compliant for this item.&lt;/p&gt;
+  /// [resourceId] &lt;p&gt;The resource ID.&lt;/p&gt;
+  /// [resourceType] &lt;p&gt;The resource type.&lt;/p&gt;
+  /// [status] &lt;p&gt;The compliance status for the resource.&lt;/p&gt;
   AwsSsmResourceComplianceSummaryItemPropertiesResponse({
     this.complianceType,
     this.compliantSummary,
@@ -49,27 +56,100 @@ class AwsSsmResourceComplianceSummaryItemPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'complianceType': ?complianceType,
-      'compliantSummary': ?pulumi.Input.mapOptionalInputValue<CompliantSummaryResponse, Map<String, dynamic>>(compliantSummary, (value) => value.toMap()),
-      'executionSummary': ?pulumi.Input.mapOptionalInputValue<ComplianceExecutionSummaryResponse, Map<String, dynamic>>(executionSummary, (value) => value.toMap()),
-      'nonCompliantSummary': ?pulumi.Input.mapOptionalInputValue<NonCompliantSummaryResponse, Map<String, dynamic>>(nonCompliantSummary, (value) => value.toMap()),
-      'overallSeverity': ?pulumi.Input.mapOptionalInputValue<ComplianceSeverityEnumValueResponse, Map<String, dynamic>>(overallSeverity, (value) => value.toMap()),
+      'compliantSummary':
+          ?pulumi.Input.mapOptionalInputValue<
+            CompliantSummaryResponse,
+            Map<String, dynamic>
+          >(compliantSummary, (value) => value.toMap()),
+      'executionSummary':
+          ?pulumi.Input.mapOptionalInputValue<
+            ComplianceExecutionSummaryResponse,
+            Map<String, dynamic>
+          >(executionSummary, (value) => value.toMap()),
+      'nonCompliantSummary':
+          ?pulumi.Input.mapOptionalInputValue<
+            NonCompliantSummaryResponse,
+            Map<String, dynamic>
+          >(nonCompliantSummary, (value) => value.toMap()),
+      'overallSeverity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ComplianceSeverityEnumValueResponse,
+            Map<String, dynamic>
+          >(overallSeverity, (value) => value.toMap()),
       'resourceId': ?resourceId,
       'resourceType': ?resourceType,
-      'status': ?pulumi.Input.mapOptionalInputValue<ComplianceStatusEnumValueResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            ComplianceStatusEnumValueResponse,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
     };
   }
 
-  factory AwsSsmResourceComplianceSummaryItemPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory AwsSsmResourceComplianceSummaryItemPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AwsSsmResourceComplianceSummaryItemPropertiesResponse(
-      complianceType: map['complianceType'] == null ? null : (map['complianceType']! as String).input(),
-      compliantSummary: map['compliantSummary'] == null ? null : (CompliantSummaryResponse.fromMap((map['compliantSummary']! as Map).cast<String, dynamic>())).input(),
-      executionSummary: map['executionSummary'] == null ? null : (ComplianceExecutionSummaryResponse.fromMap((map['executionSummary']! as Map).cast<String, dynamic>())).input(),
-      nonCompliantSummary: map['nonCompliantSummary'] == null ? null : (NonCompliantSummaryResponse.fromMap((map['nonCompliantSummary']! as Map).cast<String, dynamic>())).input(),
-      overallSeverity: map['overallSeverity'] == null ? null : (ComplianceSeverityEnumValueResponse.fromMap((map['overallSeverity']! as Map).cast<String, dynamic>())).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
-      status: map['status'] == null ? null : (ComplianceStatusEnumValueResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      complianceType: (() {
+        final guardedValue = map['complianceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      compliantSummary: (() {
+        final guardedValue = map['compliantSummary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CompliantSummaryResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      executionSummary: (() {
+        final guardedValue = map['executionSummary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ComplianceExecutionSummaryResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      nonCompliantSummary: (() {
+        final guardedValue = map['nonCompliantSummary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          NonCompliantSummaryResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      overallSeverity: (() {
+        final guardedValue = map['overallSeverity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ComplianceSeverityEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ComplianceStatusEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

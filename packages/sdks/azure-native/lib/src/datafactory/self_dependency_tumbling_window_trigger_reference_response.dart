@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SelfDependencyTumblingWindowTriggerReferenceResponse {
   /// Timespan applied to the start time of a tumbling window when evaluating dependency.
   final pulumi.Input<String> offset;
+
   /// The size of the window when evaluating the dependency. If undefined the frequency of the tumbling window will be used.
   final pulumi.Input<String>? size;
+
   /// The type of dependency reference.
   /// Expected value is 'SelfDependencyTumblingWindowTriggerReference'.
   final pulumi.Input<String> type;
@@ -23,19 +25,20 @@ class SelfDependencyTumblingWindowTriggerReferenceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'offset': offset,
-      'size': ?size,
-      'type': type,
-    };
+    return <String, dynamic>{'offset': offset, 'size': ?size, 'type': type};
   }
 
-  factory SelfDependencyTumblingWindowTriggerReferenceResponse.fromMap(Map<String, dynamic> map) {
+  factory SelfDependencyTumblingWindowTriggerReferenceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SelfDependencyTumblingWindowTriggerReferenceResponse(
-      offset: (map['offset'] as String).input(),
-      size: map['size'] == null ? null : (map['size']! as String).input(),
-      type: (map['type'] as String).input(),
+      offset: pulumi.Input.fromValue(map['offset'] as String),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

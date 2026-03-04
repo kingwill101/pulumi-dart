@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HttpRouteCorsPolicyResponse {
   /// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default value is false.
   final pulumi.Input<bool> allowCredentials;
+
   /// Specifies the content for Access-Control-Allow-Headers header.
   final pulumi.Input<List<String>> allowHeaders;
+
   /// Specifies the content for Access-Control-Allow-Methods header.
   final pulumi.Input<List<String>> allowMethods;
+
   /// Specifies the regular expression patterns that match allowed origins. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax.
   final pulumi.Input<List<String>> allowOriginRegexes;
+
   /// Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allow_origins or an item in allow_origin_regexes.
   final pulumi.Input<List<String>> allowOrigins;
+
   /// If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
   final pulumi.Input<bool> disabled;
+
   /// Specifies the content for Access-Control-Expose-Headers header.
   final pulumi.Input<List<String>> exposeHeaders;
+
   /// Specifies how long result of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
   final pulumi.Input<String> maxAge;
 
@@ -56,15 +63,24 @@ class HttpRouteCorsPolicyResponse {
 
   factory HttpRouteCorsPolicyResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteCorsPolicyResponse(
-      allowCredentials: (map['allowCredentials'] as bool).input(),
-      allowHeaders: ((map['allowHeaders'] as List).cast<String>()).input(),
-      allowMethods: ((map['allowMethods'] as List).cast<String>()).input(),
-      allowOriginRegexes: ((map['allowOriginRegexes'] as List).cast<String>()).input(),
-      allowOrigins: ((map['allowOrigins'] as List).cast<String>()).input(),
-      disabled: (map['disabled'] as bool).input(),
-      exposeHeaders: ((map['exposeHeaders'] as List).cast<String>()).input(),
-      maxAge: (map['maxAge'] as String).input(),
+      allowCredentials: pulumi.Input.fromValue(map['allowCredentials'] as bool),
+      allowHeaders: pulumi.Input.fromValue(
+        (map['allowHeaders'] as List).cast<String>(),
+      ),
+      allowMethods: pulumi.Input.fromValue(
+        (map['allowMethods'] as List).cast<String>(),
+      ),
+      allowOriginRegexes: pulumi.Input.fromValue(
+        (map['allowOriginRegexes'] as List).cast<String>(),
+      ),
+      allowOrigins: pulumi.Input.fromValue(
+        (map['allowOrigins'] as List).cast<String>(),
+      ),
+      disabled: pulumi.Input.fromValue(map['disabled'] as bool),
+      exposeHeaders: pulumi.Input.fromValue(
+        (map['exposeHeaders'] as List).cast<String>(),
+      ),
+      maxAge: pulumi.Input.fromValue(map['maxAge'] as String),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AddonStatusResponse {
   /// ErrorMessage will be set in the event that there is a terminal problem reconciling the AddOn and will contain a more verbose string suitable for logging and human consumption.
   final pulumi.Input<String>? errorMessage;
+
   /// Phase represents the current phase of cluster actuation. E.g. Pending, Running, Terminating, Failed etc.
   final pulumi.Input<String>? phase;
   final pulumi.Input<bool>? ready;
@@ -14,11 +15,7 @@ class AddonStatusResponse {
   /// [errorMessage] ErrorMessage will be set in the event that there is a terminal problem reconciling the AddOn and will contain a more verbose string suitable for logging and human consumption.
   /// [phase] Phase represents the current phase of cluster actuation. E.g. Pending, Running, Terminating, Failed etc.
   /// [ready] Optional.
-  AddonStatusResponse({
-    this.errorMessage,
-    this.phase,
-    this.ready,
-  });
+  AddonStatusResponse({this.errorMessage, this.phase, this.ready});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,10 +27,21 @@ class AddonStatusResponse {
 
   factory AddonStatusResponse.fromMap(Map<String, dynamic> map) {
     return AddonStatusResponse(
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
-      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
-      ready: map['ready'] == null ? null : (map['ready']! as bool).input(),
+      errorMessage: (() {
+        final guardedValue = map['errorMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      phase: (() {
+        final guardedValue = map['phase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ready: (() {
+        final guardedValue = map['ready'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

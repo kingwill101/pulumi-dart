@@ -17,16 +17,17 @@ enum MigrationJobStateDatamigrationV1beta1 {
   restarting("RESTARTING"),
   resuming("RESUMING");
 
-  const MigrationJobStateDatamigrationV1beta1(this.value);
-  final String value;
+  const MigrationJobStateDatamigrationV1beta1(this.wireValue);
+  final String wireValue;
 
   static MigrationJobStateDatamigrationV1beta1 fromValue(String value) {
     for (final item in MigrationJobStateDatamigrationV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MigrationJobStateDatamigrationV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown MigrationJobStateDatamigrationV1beta1 value: $value',
+    );
   }
 }
-

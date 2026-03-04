@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ca_certificate_args.dart';
 import 'ca_certificate_state.dart';
 
-/// > **NOTE:** Available since v1.21.0.
+/// &gt; **NOTE:** Available since v1.21.0.
 ///
 /// A Load Balancer CA Certificate is used by the listener of the protocol https.
 ///
@@ -239,12 +239,16 @@ import 'ca_certificate_state.dart';
 class CaCertificate extends pulumi.CustomResource {
   /// the content of the CA certificate.
   late final pulumi.Output<String> caCertificate;
+
   /// Name of the CA Certificate.
   late final pulumi.Output<String> caCertificateName;
+
   /// Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
   late final pulumi.Output<String> name;
+
   /// The Id of resource group which the slb_ca certificate belongs.
   late final pulumi.Output<String> resourceGroupId;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -257,16 +261,16 @@ class CaCertificate extends pulumi.CustomResource {
     CaCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/caCertificate:CaCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.caCertificate = registerOutput<String>('caCertificate');
-    this.caCertificateName = registerOutput<String>('caCertificateName');
+         'alicloud:slb/caCertificate:CaCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    caCertificate = registerOutput<String>('caCertificate');
+    caCertificateName = registerOutput<String>('caCertificateName');
     this.name = registerOutput<String>('name');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [CaCertificate] resource's state with the given [name] and [id].
@@ -287,15 +291,15 @@ class CaCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:slb/caCertificate:CaCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.caCertificate = registerOutput<String>('caCertificate');
-    this.caCertificateName = registerOutput<String>('caCertificateName');
+         'alicloud:slb/caCertificate:CaCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    caCertificate = registerOutput<String>('caCertificate');
+    caCertificateName = registerOutput<String>('caCertificateName');
     this.name = registerOutput<String>('name');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

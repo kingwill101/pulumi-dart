@@ -10,20 +10,28 @@ import 'extended_location.dart';
 class DatastoreArgs {
   /// Name of the datastore.
   final pulumi.Input<String>? datastoreName;
+
   /// Gets or sets the extended location.
   final pulumi.Input<ExtendedLocation>? extendedLocation;
+
   /// Gets or sets the inventory Item ID for the datastore.
   final pulumi.Input<String>? inventoryItemId;
+
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   final pulumi.Input<String>? kind;
+
   /// Gets or sets the location.
   final pulumi.Input<String>? location;
+
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the datastore.
   final pulumi.Input<String>? moRefId;
+
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
+
   /// Gets or sets the Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Gets or sets the ARM Id of the vCenter resource in which this datastore resides.
   final pulumi.Input<String>? vCenterId;
 
@@ -52,7 +60,11 @@ class DatastoreArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'datastoreName': ?datastoreName,
-      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'extendedLocation':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExtendedLocation,
+            Map<String, dynamic>
+          >(extendedLocation, (value) => value.toMap()),
       'inventoryItemId': ?inventoryItemId,
       'kind': ?kind,
       'location': ?location,
@@ -65,16 +77,55 @@ class DatastoreArgs {
 
   factory DatastoreArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreArgs(
-      datastoreName: map['datastoreName'] == null ? null : (map['datastoreName']! as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
-      inventoryItemId: map['inventoryItemId'] == null ? null : (map['inventoryItemId']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      moRefId: map['moRefId'] == null ? null : (map['moRefId']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vCenterId: map['vCenterId'] == null ? null : (map['vCenterId']! as String).input(),
+      datastoreName: (() {
+        final guardedValue = map['datastoreName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extendedLocation: (() {
+        final guardedValue = map['extendedLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExtendedLocation.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      inventoryItemId: (() {
+        final guardedValue = map['inventoryItemId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      moRefId: (() {
+        final guardedValue = map['moRefId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vCenterId: (() {
+        final guardedValue = map['vCenterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

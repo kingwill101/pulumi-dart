@@ -3,16 +3,15 @@ enum SessionNetworkStatus {
   valueEgressEnabled("EgressEnabled"),
   valueEgressDisabled("EgressDisabled");
 
-  const SessionNetworkStatus(this.value);
-  final String value;
+  const SessionNetworkStatus(this.wireValue);
+  final String wireValue;
 
   static SessionNetworkStatus fromValue(String value) {
     for (final item in SessionNetworkStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SessionNetworkStatus value: $value');
   }
 }
-

@@ -9,10 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SourceControlTokenArgs {
   /// The Access Token.
   final pulumi.Input<String> token;
+
   /// The Access Token Secret.
   ///
-  /// > **Note:** The token used for deploying App Service needs the following permissions: `repo` and `workflow`.
+  /// &gt; **Note:** The token used for deploying App Service needs the following permissions: `repo` and `workflow`.
   final pulumi.Input<String>? tokenSecret;
+
   /// The Token type. Possible values include `Bitbucket`, `Dropbox`, `Github`, and `OneDrive`.
   final pulumi.Input<String> type;
 
@@ -36,10 +38,13 @@ class SourceControlTokenArgs {
 
   factory SourceControlTokenArgs.fromMap(Map<String, dynamic> map) {
     return SourceControlTokenArgs(
-      token: (map['token'] as String).input(),
-      tokenSecret: map['tokenSecret'] == null ? null : (map['tokenSecret']! as String).input(),
-      type: (map['type'] as String).input(),
+      token: pulumi.Input.fromValue(map['token'] as String),
+      tokenSecret: (() {
+        final guardedValue = map['tokenSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

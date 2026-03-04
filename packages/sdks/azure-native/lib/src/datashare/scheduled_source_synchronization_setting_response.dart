@@ -7,8 +7,10 @@ class ScheduledSourceSynchronizationSettingResponse {
   /// Kind of synchronization setting on share.
   /// Expected value is 'ScheduleBased'.
   final pulumi.Input<String> kind;
+
   /// Recurrence Interval
   final pulumi.Input<String>? recurrenceInterval;
+
   /// Synchronization time
   final pulumi.Input<String>? synchronizationTime;
 
@@ -30,12 +32,21 @@ class ScheduledSourceSynchronizationSettingResponse {
     };
   }
 
-  factory ScheduledSourceSynchronizationSettingResponse.fromMap(Map<String, dynamic> map) {
+  factory ScheduledSourceSynchronizationSettingResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScheduledSourceSynchronizationSettingResponse(
-      kind: (map['kind'] as String).input(),
-      recurrenceInterval: map['recurrenceInterval'] == null ? null : (map['recurrenceInterval']! as String).input(),
-      synchronizationTime: map['synchronizationTime'] == null ? null : (map['synchronizationTime']! as String).input(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      recurrenceInterval: (() {
+        final guardedValue = map['recurrenceInterval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      synchronizationTime: (() {
+        final guardedValue = map['synchronizationTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -10,20 +10,15 @@ class IcebergWriteSettings {
 
   /// Creates a new [IcebergWriteSettings].
   /// [type] The write setting type.
-  IcebergWriteSettings({
-    required this.type,
-  });
+  IcebergWriteSettings({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory IcebergWriteSettings.fromMap(Map<String, dynamic> map) {
     return IcebergWriteSettings(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

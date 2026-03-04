@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualNetworkRuleArgs {
   /// The name of the Data Lake Store account.
   final pulumi.Input<String> accountName;
+
   /// The name of the Azure resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the virtual network rule to retrieve.
   final pulumi.Input<String> virtualNetworkRuleName;
 
@@ -34,10 +36,13 @@ class GetVirtualNetworkRuleArgs {
 
   factory GetVirtualNetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkRuleArgs(
-      accountName: (map['accountName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      virtualNetworkRuleName: (map['virtualNetworkRuleName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      virtualNetworkRuleName: pulumi.Input.fromValue(
+        map['virtualNetworkRuleName'] as String,
+      ),
     );
   }
 }
-

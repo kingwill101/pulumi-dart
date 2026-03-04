@@ -12,20 +12,17 @@ class ClusterIpAllocationPolicyNetworkTierConfig {
 
   /// Creates a new [ClusterIpAllocationPolicyNetworkTierConfig].
   /// [networkTier] Network tier configuration.
-  ClusterIpAllocationPolicyNetworkTierConfig({
-    required this.networkTier,
-  });
+  ClusterIpAllocationPolicyNetworkTierConfig({required this.networkTier});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'networkTier': networkTier,
-    };
+    return <String, dynamic>{'networkTier': networkTier};
   }
 
-  factory ClusterIpAllocationPolicyNetworkTierConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterIpAllocationPolicyNetworkTierConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterIpAllocationPolicyNetworkTierConfig(
-      networkTier: (map['networkTier'] as String).input(),
+      networkTier: pulumi.Input.fromValue(map['networkTier'] as String),
     );
   }
 }
-

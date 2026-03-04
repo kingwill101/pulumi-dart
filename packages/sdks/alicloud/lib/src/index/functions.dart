@@ -106,10 +106,7 @@ import 'get_zones_result.dart';
 ///   currentAccountId: ${current.id}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetAccountResult> getAccount(
-  {
-  pulumi.InvokeOptions? options,
-}) async {
+Future<GetAccountResult> getAccount({pulumi.InvokeOptions? options}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'alicloud:index/getAccount:getAccount',
@@ -121,7 +118,7 @@ Future<GetAccountResult> getAccount(
 
 /// This data source provides the identity of the current user.
 ///
-/// > **NOTE:** Available in 1.65.0+.
+/// &gt; **NOTE:** Available in 1.65.0+.
 ///
 /// ## Example Usage
 ///
@@ -211,8 +208,7 @@ Future<GetAccountResult> getAccount(
 ///   currentUserArn: ${current.id}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetCallerIdentityResult> getCallerIdentity(
-  {
+Future<GetCallerIdentityResult> getCallerIdentity({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -226,7 +222,7 @@ Future<GetCallerIdentityResult> getCallerIdentity(
 
 /// This data source compute file crc64 checksum.
 ///
-/// > **NOTE:** Available in 1.59.0+.
+/// &gt; **NOTE:** Available in 1.59.0+.
 ///
 /// ## Example Usage
 ///
@@ -341,7 +337,7 @@ Future<GetFileCrc64ChecksumResult> getFileCrc64Checksum(
   return GetFileCrc64ChecksumResult.fromMap(result);
 }
 
-/// > **NOTE:** Available since v1.156.0.
+/// &gt; **NOTE:** Available since v1.156.0.
 ///
 /// ## Example Usage
 ///
@@ -486,7 +482,8 @@ Future<GetFileCrc64ChecksumResult> getFileCrc64Checksum(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_msc_sub_contact_verification_message_get_msc_sub_contact_verification_message_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMscSubContactVerificationMessageResult> getMscSubContactVerificationMessage(
+Future<GetMscSubContactVerificationMessageResult>
+getMscSubContactVerificationMessage(
   GetMscSubContactVerificationMessageArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -501,7 +498,7 @@ Future<GetMscSubContactVerificationMessageResult> getMscSubContactVerificationMe
 
 /// This data source provides the Message Center Contacts of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.132.0.
+/// &gt; **NOTE:** Available since v1.132.0.
 ///
 /// ## Example Usage
 ///
@@ -641,7 +638,7 @@ Future<GetMscSubContactsResult> getMscSubContacts(
 
 /// This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.135.0.
+/// &gt; **NOTE:** Available since v1.135.0.
 ///
 /// ## Example Usage
 ///
@@ -751,7 +748,7 @@ Future<GetMscSubSubscriptionsResult> getMscSubSubscriptions(
 
 /// This data source provides the Msc Sub Webhooks of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.141.0.
+/// &gt; **NOTE:** Available since v1.141.0.
 ///
 /// ## Example Usage
 ///
@@ -1022,7 +1019,7 @@ Future<GetRegionsResult> getRegions(
 /// This data source provides availability zones that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 ///
 ///
-/// > **NOTE:** If one zone is sold out, it will not be exported.
+/// &gt; **NOTE:** If one zone is sold out, it will not be exported.
 ///
 /// ## Example Usage
 ///

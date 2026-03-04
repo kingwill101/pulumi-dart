@@ -157,14 +157,19 @@ import 'trust_store_revocation_state.dart';
 class TrustStoreRevocation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// AWS assigned RevocationId, (number).
   late final pulumi.Output<int> revocationId;
+
   /// S3 Bucket name holding the client certificate CA bundle.
   late final pulumi.Output<String> revocationsS3Bucket;
+
   /// S3 object key holding the client certificate CA bundle.
   late final pulumi.Output<String> revocationsS3Key;
+
   /// Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
   late final pulumi.Output<String?> revocationsS3ObjectVersion;
+
   /// Trust Store ARN.
   late final pulumi.Output<String> trustStoreArn;
 
@@ -177,17 +182,19 @@ class TrustStoreRevocation extends pulumi.CustomResource {
     TrustStoreRevocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lb/trustStoreRevocation:TrustStoreRevocation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.revocationId = registerOutput<int>('revocationId');
-    this.revocationsS3Bucket = registerOutput<String>('revocationsS3Bucket');
-    this.revocationsS3Key = registerOutput<String>('revocationsS3Key');
-    this.revocationsS3ObjectVersion = registerOutput<String?>('revocationsS3ObjectVersion');
-    this.trustStoreArn = registerOutput<String>('trustStoreArn');
+         'aws:lb/trustStoreRevocation:TrustStoreRevocation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    revocationId = registerOutput<int>('revocationId');
+    revocationsS3Bucket = registerOutput<String>('revocationsS3Bucket');
+    revocationsS3Key = registerOutput<String>('revocationsS3Key');
+    revocationsS3ObjectVersion = registerOutput<String?>(
+      'revocationsS3ObjectVersion',
+    );
+    trustStoreArn = registerOutput<String>('trustStoreArn');
   }
 
   /// Gets an existing [TrustStoreRevocation] resource's state with the given [name] and [id].
@@ -208,16 +215,18 @@ class TrustStoreRevocation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lb/trustStoreRevocation:TrustStoreRevocation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.revocationId = registerOutput<int>('revocationId');
-    this.revocationsS3Bucket = registerOutput<String>('revocationsS3Bucket');
-    this.revocationsS3Key = registerOutput<String>('revocationsS3Key');
-    this.revocationsS3ObjectVersion = registerOutput<String?>('revocationsS3ObjectVersion');
-    this.trustStoreArn = registerOutput<String>('trustStoreArn');
+         'aws:lb/trustStoreRevocation:TrustStoreRevocation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    revocationId = registerOutput<int>('revocationId');
+    revocationsS3Bucket = registerOutput<String>('revocationsS3Bucket');
+    revocationsS3Key = registerOutput<String>('revocationsS3Key');
+    revocationsS3ObjectVersion = registerOutput<String?>(
+      'revocationsS3ObjectVersion',
+    );
+    trustStoreArn = registerOutput<String>('trustStoreArn');
   }
 }

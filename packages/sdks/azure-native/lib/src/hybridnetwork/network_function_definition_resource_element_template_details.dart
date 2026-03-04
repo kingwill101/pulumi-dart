@@ -7,11 +7,15 @@ import 'depends_on_profile.dart';
 /// The network function definition resource element template details.
 class NetworkFunctionDefinitionResourceElementTemplateDetails {
   /// The resource element template type.
-  final pulumi.Input<ArmResourceDefinitionResourceElementTemplate>? configuration;
+  final pulumi.Input<ArmResourceDefinitionResourceElementTemplate>?
+  configuration;
+
   /// The depends on profile.
   final pulumi.Input<DependsOnProfile>? dependsOnProfile;
+
   /// Name of the resource element template.
   final pulumi.Input<String>? name;
+
   /// The resource element template type.
   /// Expected value is 'NetworkFunctionDefinition'.
   final pulumi.Input<String> resourceElementType;
@@ -30,20 +34,51 @@ class NetworkFunctionDefinitionResourceElementTemplateDetails {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': ?pulumi.Input.mapOptionalInputValue<ArmResourceDefinitionResourceElementTemplate, Map<String, dynamic>>(configuration, (value) => value.toMap()),
-      'dependsOnProfile': ?pulumi.Input.mapOptionalInputValue<DependsOnProfile, Map<String, dynamic>>(dependsOnProfile, (value) => value.toMap()),
+      'configuration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ArmResourceDefinitionResourceElementTemplate,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
+      'dependsOnProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            DependsOnProfile,
+            Map<String, dynamic>
+          >(dependsOnProfile, (value) => value.toMap()),
       'name': ?name,
       'resourceElementType': resourceElementType,
     };
   }
 
-  factory NetworkFunctionDefinitionResourceElementTemplateDetails.fromMap(Map<String, dynamic> map) {
+  factory NetworkFunctionDefinitionResourceElementTemplateDetails.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkFunctionDefinitionResourceElementTemplateDetails(
-      configuration: map['configuration'] == null ? null : (ArmResourceDefinitionResourceElementTemplate.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
-      dependsOnProfile: map['dependsOnProfile'] == null ? null : (DependsOnProfile.fromMap((map['dependsOnProfile']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceElementType: (map['resourceElementType'] as String).input(),
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ArmResourceDefinitionResourceElementTemplate.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dependsOnProfile: (() {
+        final guardedValue = map['dependsOnProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DependsOnProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceElementType: pulumi.Input.fromValue(
+        map['resourceElementType'] as String,
+      ),
     );
   }
 }
-

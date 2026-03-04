@@ -6,24 +6,36 @@ import 'http_route_rule_action_request_mirror_policy_destination.dart';
 class HttpRouteRuleActionRequestMirrorPolicy {
   /// The destination the requests will be mirrored to.
   /// Structure is documented below.
-  final pulumi.Input<HttpRouteRuleActionRequestMirrorPolicyDestination>? destination;
+  final pulumi.Input<HttpRouteRuleActionRequestMirrorPolicyDestination>?
+  destination;
 
   /// Creates a new [HttpRouteRuleActionRequestMirrorPolicy].
   /// [destination] The destination the requests will be mirrored to.
-  HttpRouteRuleActionRequestMirrorPolicy({
-    this.destination,
-  });
+  HttpRouteRuleActionRequestMirrorPolicy({this.destination});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destination': ?pulumi.Input.mapOptionalInputValue<HttpRouteRuleActionRequestMirrorPolicyDestination, Map<String, dynamic>>(destination, (value) => value.toMap()),
+      'destination':
+          ?pulumi.Input.mapOptionalInputValue<
+            HttpRouteRuleActionRequestMirrorPolicyDestination,
+            Map<String, dynamic>
+          >(destination, (value) => value.toMap()),
     };
   }
 
-  factory HttpRouteRuleActionRequestMirrorPolicy.fromMap(Map<String, dynamic> map) {
+  factory HttpRouteRuleActionRequestMirrorPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HttpRouteRuleActionRequestMirrorPolicy(
-      destination: map['destination'] == null ? null : (HttpRouteRuleActionRequestMirrorPolicyDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HttpRouteRuleActionRequestMirrorPolicyDestination.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -126,19 +126,24 @@ class SQuotaAdjusterSettings extends pulumi.CustomResource {
   /// The resource container that determines if the quota adjuster is set for this project.
   /// Expect this field to be empty currently.
   late final pulumi.Output<String> effectiveContainer;
+
   /// (Deprecated)
   /// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
   /// Expect this field to be empty currently.
   late final pulumi.Output<String> effectiveEnablement;
+
   /// Required. The configured value of the enablement at the given resource.
   /// Possible values are: `ENABLED`, `DISABLED`.
   late final pulumi.Output<String> enablement;
+
   /// Indicates whether the setting is inherited or explicitly specified.
   late final pulumi.Output<bool> inherited;
+
   /// The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
   /// The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
   /// The value will be empty when `enablement` is specified on this resource container.
   late final pulumi.Output<String> inheritedFrom;
+
   /// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
   late final pulumi.Output<String> parent;
 
@@ -151,17 +156,17 @@ class SQuotaAdjusterSettings extends pulumi.CustomResource {
     SQuotaAdjusterSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.effectiveContainer = registerOutput<String>('effectiveContainer');
-    this.effectiveEnablement = registerOutput<String>('effectiveEnablement');
-    this.enablement = registerOutput<String>('enablement');
-    this.inherited = registerOutput<bool>('inherited');
-    this.inheritedFrom = registerOutput<String>('inheritedFrom');
-    this.parent = registerOutput<String>('parent');
+         'gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    effectiveContainer = registerOutput<String>('effectiveContainer');
+    effectiveEnablement = registerOutput<String>('effectiveEnablement');
+    enablement = registerOutput<String>('enablement');
+    inherited = registerOutput<bool>('inherited');
+    inheritedFrom = registerOutput<String>('inheritedFrom');
+    parent = registerOutput<String>('parent');
   }
 
   /// Gets an existing [SQuotaAdjusterSettings] resource's state with the given [name] and [id].
@@ -182,16 +187,16 @@ class SQuotaAdjusterSettings extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.effectiveContainer = registerOutput<String>('effectiveContainer');
-    this.effectiveEnablement = registerOutput<String>('effectiveEnablement');
-    this.enablement = registerOutput<String>('enablement');
-    this.inherited = registerOutput<bool>('inherited');
-    this.inheritedFrom = registerOutput<String>('inheritedFrom');
-    this.parent = registerOutput<String>('parent');
+         'gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    effectiveContainer = registerOutput<String>('effectiveContainer');
+    effectiveEnablement = registerOutput<String>('effectiveEnablement');
+    enablement = registerOutput<String>('enablement');
+    inherited = registerOutput<bool>('inherited');
+    inheritedFrom = registerOutput<String>('inheritedFrom');
+    parent = registerOutput<String>('parent');
   }
 }

@@ -1,5 +1,3 @@
-library module_logging;
-
 export 'logging/big_query_dataset_response.dart';
 export 'logging/big_query_options.dart';
 export 'logging/big_query_options_response.dart';

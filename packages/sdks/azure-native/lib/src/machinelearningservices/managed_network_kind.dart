@@ -3,16 +3,15 @@ enum ManagedNetworkKind {
   valueV1("V1"),
   valueV2("V2");
 
-  const ManagedNetworkKind(this.value);
-  final String value;
+  const ManagedNetworkKind(this.wireValue);
+  final String wireValue;
 
   static ManagedNetworkKind fromValue(String value) {
     for (final item in ManagedNetworkKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManagedNetworkKind value: $value');
   }
 }
-

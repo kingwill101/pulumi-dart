@@ -10,29 +10,27 @@ class SQuotaAdjusterSettingsArgs {
   /// Required. The configured value of the enablement at the given resource.
   /// Possible values are: `ENABLED`, `DISABLED`.
   final pulumi.Input<String> enablement;
+
   /// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
   final pulumi.Input<String>? parent;
 
   /// Creates a new [SQuotaAdjusterSettingsArgs].
   /// [enablement] Required. The configured value of the enablement at the given resource.
   /// [parent] The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-  SQuotaAdjusterSettingsArgs({
-    required this.enablement,
-    this.parent,
-  });
+  SQuotaAdjusterSettingsArgs({required this.enablement, this.parent});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enablement': enablement,
-      'parent': ?parent,
-    };
+    return <String, dynamic>{'enablement': enablement, 'parent': ?parent};
   }
 
   factory SQuotaAdjusterSettingsArgs.fromMap(Map<String, dynamic> map) {
     return SQuotaAdjusterSettingsArgs(
-      enablement: (map['enablement'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      enablement: pulumi.Input.fromValue(map['enablement'] as String),
+      parent: (() {
+        final guardedValue = map['parent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

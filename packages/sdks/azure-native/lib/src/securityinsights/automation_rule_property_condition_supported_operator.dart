@@ -8,16 +8,20 @@ enum AutomationRulePropertyConditionSupportedOperator {
   valueEndsWith("EndsWith"),
   valueNotEndsWith("NotEndsWith");
 
-  const AutomationRulePropertyConditionSupportedOperator(this.value);
-  final String value;
+  const AutomationRulePropertyConditionSupportedOperator(this.wireValue);
+  final String wireValue;
 
-  static AutomationRulePropertyConditionSupportedOperator fromValue(String value) {
-    for (final item in AutomationRulePropertyConditionSupportedOperator.values) {
-      if (item.value == value) {
+  static AutomationRulePropertyConditionSupportedOperator fromValue(
+    String value,
+  ) {
+    for (final item
+        in AutomationRulePropertyConditionSupportedOperator.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AutomationRulePropertyConditionSupportedOperator value: $value');
+    throw ArgumentError(
+      'Unknown AutomationRulePropertyConditionSupportedOperator value: $value',
+    );
   }
 }
-

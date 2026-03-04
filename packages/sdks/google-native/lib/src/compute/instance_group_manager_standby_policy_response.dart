@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGroupManagerStandbyPolicyResponse {
   final pulumi.Input<int> initialDelaySec;
+
   /// Defines behaviour of using instances from standby pool to resize MIG.
   final pulumi.Input<String> mode;
 
@@ -16,17 +17,15 @@ class InstanceGroupManagerStandbyPolicyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'initialDelaySec': initialDelaySec,
-      'mode': mode,
-    };
+    return <String, dynamic>{'initialDelaySec': initialDelaySec, 'mode': mode};
   }
 
-  factory InstanceGroupManagerStandbyPolicyResponse.fromMap(Map<String, dynamic> map) {
+  factory InstanceGroupManagerStandbyPolicyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGroupManagerStandbyPolicyResponse(
-      initialDelaySec: (map['initialDelaySec'] as int).input(),
-      mode: (map['mode'] as String).input(),
+      initialDelaySec: pulumi.Input.fromValue(map['initialDelaySec'] as int),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

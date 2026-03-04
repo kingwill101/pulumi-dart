@@ -9,20 +9,19 @@ class AccelerateConfigurationResponse {
 
   /// Creates a new [AccelerateConfigurationResponse].
   /// [accelerationStatus] Specifies the transfer acceleration status of the bucket.
-  AccelerateConfigurationResponse({
-    this.accelerationStatus,
-  });
+  AccelerateConfigurationResponse({this.accelerationStatus});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accelerationStatus': ?accelerationStatus,
-    };
+    return <String, dynamic>{'accelerationStatus': ?accelerationStatus};
   }
 
   factory AccelerateConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AccelerateConfigurationResponse(
-      accelerationStatus: map['accelerationStatus'] == null ? null : (map['accelerationStatus']! as String).input(),
+      accelerationStatus: (() {
+        final guardedValue = map['accelerationStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

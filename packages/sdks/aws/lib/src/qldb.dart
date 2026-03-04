@@ -1,5 +1,3 @@
-library module_qldb;
-
 export 'qldb/functions.dart';
 export 'qldb/get_ledger_args.dart';
 export 'qldb/get_ledger_result.dart';

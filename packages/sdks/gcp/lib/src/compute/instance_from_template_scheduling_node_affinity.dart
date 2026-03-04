@@ -25,12 +25,13 @@ class InstanceFromTemplateSchedulingNodeAffinity {
     };
   }
 
-  factory InstanceFromTemplateSchedulingNodeAffinity.fromMap(Map<String, dynamic> map) {
+  factory InstanceFromTemplateSchedulingNodeAffinity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceFromTemplateSchedulingNodeAffinity(
-      key: (map['key'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

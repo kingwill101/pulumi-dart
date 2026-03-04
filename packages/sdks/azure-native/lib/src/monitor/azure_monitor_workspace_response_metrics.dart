@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureMonitorWorkspaceResponseMetrics {
   /// An internal identifier for the metrics container. Only to be used by the system
   final pulumi.Input<String> internalId;
+
   /// The Prometheus query endpoint for the Azure Monitor Workspace
   final pulumi.Input<String> prometheusQueryEndpoint;
 
@@ -24,11 +25,14 @@ class AzureMonitorWorkspaceResponseMetrics {
     };
   }
 
-  factory AzureMonitorWorkspaceResponseMetrics.fromMap(Map<String, dynamic> map) {
+  factory AzureMonitorWorkspaceResponseMetrics.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureMonitorWorkspaceResponseMetrics(
-      internalId: (map['internalId'] as String).input(),
-      prometheusQueryEndpoint: (map['prometheusQueryEndpoint'] as String).input(),
+      internalId: pulumi.Input.fromValue(map['internalId'] as String),
+      prometheusQueryEndpoint: pulumi.Input.fromValue(
+        map['prometheusQueryEndpoint'] as String,
+      ),
     );
   }
 }
-

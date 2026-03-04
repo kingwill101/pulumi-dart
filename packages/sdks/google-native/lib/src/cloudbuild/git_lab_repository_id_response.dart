@@ -9,20 +9,15 @@ class GitLabRepositoryIdResponse {
 
   /// Creates a new [GitLabRepositoryIdResponse].
   /// [webhookId] The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo.
-  GitLabRepositoryIdResponse({
-    required this.webhookId,
-  });
+  GitLabRepositoryIdResponse({required this.webhookId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'webhookId': webhookId,
-    };
+    return <String, dynamic>{'webhookId': webhookId};
   }
 
   factory GitLabRepositoryIdResponse.fromMap(Map<String, dynamic> map) {
     return GitLabRepositoryIdResponse(
-      webhookId: (map['webhookId'] as int).input(),
+      webhookId: pulumi.Input.fromValue(map['webhookId'] as int),
     );
   }
 }
-

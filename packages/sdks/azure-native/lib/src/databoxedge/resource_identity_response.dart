@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceIdentityResponse {
   /// Service Principal Id backing the Msi
   final pulumi.Input<String> principalId;
+
   /// Home Tenant Id
   final pulumi.Input<String> tenantId;
+
   /// Identity type
   final pulumi.Input<String>? type;
 
@@ -31,10 +33,13 @@ class ResourceIdentityResponse {
 
   factory ResourceIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ResourceIdentityResponse(
-      principalId: (map['principalId'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      principalId: pulumi.Input.fromValue(map['principalId'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

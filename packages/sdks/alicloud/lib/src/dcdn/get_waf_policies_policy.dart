@@ -5,20 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWafPoliciesPolicy {
   /// The first ID of the resource.
   final pulumi.Input<String> dcdnWafPolicyId;
+
   /// The type of protection policy.
   final pulumi.Input<String> defenseScene;
+
   /// The number of domain names that use this protection policy.
   final pulumi.Input<int> domainCount;
+
   /// The time when the protection policy was modified.
   final pulumi.Input<String> gmtModified;
+
   /// The ID of the Waf Policy.
   final pulumi.Input<String> id;
+
   /// The name of the protection policy.
   final pulumi.Input<String> policyName;
+
   /// The type of the protection policy.
   final pulumi.Input<String> policyType;
+
   /// The number of protection rules in this protection policy.
   final pulumi.Input<String> ruleCount;
+
   /// The status of the resource. Valid values: `on`, `off`.
   final pulumi.Input<String> status;
 
@@ -60,16 +68,15 @@ class GetWafPoliciesPolicy {
 
   factory GetWafPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetWafPoliciesPolicy(
-      dcdnWafPolicyId: (map['dcdnWafPolicyId'] as String).input(),
-      defenseScene: (map['defenseScene'] as String).input(),
-      domainCount: (map['domainCount'] as int).input(),
-      gmtModified: (map['gmtModified'] as String).input(),
-      id: (map['id'] as String).input(),
-      policyName: (map['policyName'] as String).input(),
-      policyType: (map['policyType'] as String).input(),
-      ruleCount: (map['ruleCount'] as String).input(),
-      status: (map['status'] as String).input(),
+      dcdnWafPolicyId: pulumi.Input.fromValue(map['dcdnWafPolicyId'] as String),
+      defenseScene: pulumi.Input.fromValue(map['defenseScene'] as String),
+      domainCount: pulumi.Input.fromValue(map['domainCount'] as int),
+      gmtModified: pulumi.Input.fromValue(map['gmtModified'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      policyName: pulumi.Input.fromValue(map['policyName'] as String),
+      policyType: pulumi.Input.fromValue(map['policyType'] as String),
+      ruleCount: pulumi.Input.fromValue(map['ruleCount'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

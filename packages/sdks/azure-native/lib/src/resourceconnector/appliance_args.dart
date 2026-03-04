@@ -11,20 +11,29 @@ import 'identity.dart';
 class ApplianceArgs {
   /// Represents a supported Fabric/Infra. (AKSEdge etc...).
   final pulumi.Input<String>? distro;
+
   /// Identity for the resource.
   final pulumi.Input<Identity>? identity;
+
   /// Contains infrastructure information about the Appliance
-  final pulumi.Input<AppliancePropertiesInfrastructureConfig>? infrastructureConfig;
+  final pulumi.Input<AppliancePropertiesInfrastructureConfig>?
+  infrastructureConfig;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Certificates pair used to download MSI certificate from HIS. Can only be set once.
   final pulumi.Input<String>? publicKey;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Appliances name.
   final pulumi.Input<String>? resourceName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Version of the Appliance
   final pulumi.Input<String>? version;
 
@@ -53,8 +62,16 @@ class ApplianceArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'distro': ?distro,
-      'identity': ?pulumi.Input.mapOptionalInputValue<Identity, Map<String, dynamic>>(identity, (value) => value.toMap()),
-      'infrastructureConfig': ?pulumi.Input.mapOptionalInputValue<AppliancePropertiesInfrastructureConfig, Map<String, dynamic>>(infrastructureConfig, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<Identity, Map<String, dynamic>>(
+            identity,
+            (value) => value.toMap(),
+          ),
+      'infrastructureConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppliancePropertiesInfrastructureConfig,
+            Map<String, dynamic>
+          >(infrastructureConfig, (value) => value.toMap()),
       'location': ?location,
       'publicKey': ?publicKey,
       'resourceGroupName': resourceGroupName,
@@ -66,16 +83,57 @@ class ApplianceArgs {
 
   factory ApplianceArgs.fromMap(Map<String, dynamic> map) {
     return ApplianceArgs(
-      distro: map['distro'] == null ? null : (map['distro']! as String).input(),
-      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      infrastructureConfig: map['infrastructureConfig'] == null ? null : (AppliancePropertiesInfrastructureConfig.fromMap((map['infrastructureConfig']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      distro: (() {
+        final guardedValue = map['distro'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Identity.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      infrastructureConfig: (() {
+        final guardedValue = map['infrastructureConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AppliancePropertiesInfrastructureConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicKey: (() {
+        final guardedValue = map['publicKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: (() {
+        final guardedValue = map['resourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

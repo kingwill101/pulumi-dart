@@ -7,6 +7,7 @@ import 'container_resource_settings.dart';
 class ContainerResourceRequirements {
   /// Container resource limit info:
   final pulumi.Input<ContainerResourceSettings>? containerResourceLimits;
+
   /// Container resource request info:
   final pulumi.Input<ContainerResourceSettings>? containerResourceRequests;
 
@@ -20,16 +21,39 @@ class ContainerResourceRequirements {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerResourceLimits': ?pulumi.Input.mapOptionalInputValue<ContainerResourceSettings, Map<String, dynamic>>(containerResourceLimits, (value) => value.toMap()),
-      'containerResourceRequests': ?pulumi.Input.mapOptionalInputValue<ContainerResourceSettings, Map<String, dynamic>>(containerResourceRequests, (value) => value.toMap()),
+      'containerResourceLimits':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerResourceSettings,
+            Map<String, dynamic>
+          >(containerResourceLimits, (value) => value.toMap()),
+      'containerResourceRequests':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerResourceSettings,
+            Map<String, dynamic>
+          >(containerResourceRequests, (value) => value.toMap()),
     };
   }
 
   factory ContainerResourceRequirements.fromMap(Map<String, dynamic> map) {
     return ContainerResourceRequirements(
-      containerResourceLimits: map['containerResourceLimits'] == null ? null : (ContainerResourceSettings.fromMap((map['containerResourceLimits']! as Map).cast<String, dynamic>())).input(),
-      containerResourceRequests: map['containerResourceRequests'] == null ? null : (ContainerResourceSettings.fromMap((map['containerResourceRequests']! as Map).cast<String, dynamic>())).input(),
+      containerResourceLimits: (() {
+        final guardedValue = map['containerResourceLimits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerResourceSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      containerResourceRequests: (() {
+        final guardedValue = map['containerResourceRequests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerResourceSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

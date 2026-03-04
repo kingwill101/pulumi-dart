@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRoleManagementPolicyActivationRuleApprovalStagePrimaryApprover {
   /// (String) The ID of the object which will act as an approver.
   final pulumi.Input<String> objectId;
+
   /// (String) The type of object acting as an approver. Either `User` or `Group`.
   final pulumi.Input<String> type;
 
@@ -17,17 +18,15 @@ class GetRoleManagementPolicyActivationRuleApprovalStagePrimaryApprover {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'objectId': objectId,
-      'type': type,
-    };
+    return <String, dynamic>{'objectId': objectId, 'type': type};
   }
 
-  factory GetRoleManagementPolicyActivationRuleApprovalStagePrimaryApprover.fromMap(Map<String, dynamic> map) {
+  factory GetRoleManagementPolicyActivationRuleApprovalStagePrimaryApprover.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRoleManagementPolicyActivationRuleApprovalStagePrimaryApprover(
-      objectId: (map['objectId'] as String).input(),
-      type: (map['type'] as String).input(),
+      objectId: pulumi.Input.fromValue(map['objectId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

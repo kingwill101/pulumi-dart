@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceCosmosDbConfigurationInfo {
   /// The URI of the customer-managed key for the backing database.
   final pulumi.Input<String>? keyVaultKeyUri;
+
   /// The provisioned throughput for the backing database.
   final pulumi.Input<double>? offerThroughput;
 
   /// Creates a new [ServiceCosmosDbConfigurationInfo].
   /// [keyVaultKeyUri] The URI of the customer-managed key for the backing database.
   /// [offerThroughput] The provisioned throughput for the backing database.
-  ServiceCosmosDbConfigurationInfo({
-    this.keyVaultKeyUri,
-    this.offerThroughput,
-  });
+  ServiceCosmosDbConfigurationInfo({this.keyVaultKeyUri, this.offerThroughput});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class ServiceCosmosDbConfigurationInfo {
 
   factory ServiceCosmosDbConfigurationInfo.fromMap(Map<String, dynamic> map) {
     return ServiceCosmosDbConfigurationInfo(
-      keyVaultKeyUri: map['keyVaultKeyUri'] == null ? null : (map['keyVaultKeyUri']! as String).input(),
-      offerThroughput: map['offerThroughput'] == null ? null : (map['offerThroughput']! as double).input(),
+      keyVaultKeyUri: (() {
+        final guardedValue = map['keyVaultKeyUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      offerThroughput: (() {
+        final guardedValue = map['offerThroughput'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

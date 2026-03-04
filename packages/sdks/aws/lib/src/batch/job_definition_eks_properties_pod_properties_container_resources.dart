@@ -15,17 +15,27 @@ class JobDefinitionEksPropertiesPodPropertiesContainerResources {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'limits': ?limits,
-      'requests': ?requests,
-    };
+    return <String, dynamic>{'limits': ?limits, 'requests': ?requests};
   }
 
-  factory JobDefinitionEksPropertiesPodPropertiesContainerResources.fromMap(Map<String, dynamic> map) {
+  factory JobDefinitionEksPropertiesPodPropertiesContainerResources.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JobDefinitionEksPropertiesPodPropertiesContainerResources(
-      limits: map['limits'] == null ? null : (((map['limits'] as Map).cast<String, String>()).input()).input(),
-      requests: map['requests'] == null ? null : (((map['requests'] as Map).cast<String, String>()).input()).input(),
+      limits: (() {
+        final guardedValue = map['limits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      requests: (() {
+        final guardedValue = map['requests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'appregistry_application_state.dart';
 
 /// Resource for managing an AWS Service Catalog AppRegistry Application.
 ///
-/// > An AWS Service Catalog AppRegistry Application is displayed in the AWS Console under "MyApplications".
+/// &gt; An AWS Service Catalog AppRegistry Application is displayed in the AWS Console under "MyApplications".
 ///
 /// ## Example Usage
 ///
@@ -225,18 +225,24 @@ import 'appregistry_application_state.dart';
 class AppregistryApplication extends pulumi.CustomResource {
   /// A map with a single tag key-value pair used to associate resources with the application. This attribute can be passed directly into the `tags` argument of another resource, or merged into a map of existing tags.
   late final pulumi.Output<Map<String, String>> applicationTag;
+
   /// ARN (Amazon Resource Name) of the application.
   late final pulumi.Output<String> arn;
+
   /// Description of the application.
   late final pulumi.Output<String?> description;
+
   /// Name of the application. The name must be unique within an AWS region.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags assigned to the Application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -249,18 +255,18 @@ class AppregistryApplication extends pulumi.CustomResource {
     AppregistryApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:servicecatalog/appregistryApplication:AppregistryApplication',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationTag = registerOutput<Map<String, String>>('applicationTag');
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
+         'aws:servicecatalog/appregistryApplication:AppregistryApplication',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationTag = registerOutput<Map<String, String>>('applicationTag');
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [AppregistryApplication] resource's state with the given [name] and [id].
@@ -281,17 +287,17 @@ class AppregistryApplication extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:servicecatalog/appregistryApplication:AppregistryApplication',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationTag = registerOutput<Map<String, String>>('applicationTag');
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
+         'aws:servicecatalog/appregistryApplication:AppregistryApplication',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationTag = registerOutput<Map<String, String>>('applicationTag');
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

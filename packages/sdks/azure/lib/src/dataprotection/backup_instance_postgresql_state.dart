@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupInstancePostgresqlState {
   /// The ID of the Backup Policy.
   final pulumi.Input<String>? backupPolicyId;
+
   /// The ID or versionless ID of the key vault secret which stores the connection string of the database.
   final pulumi.Input<String>? databaseCredentialKeyVaultSecretId;
+
   /// The ID of the source database. Changing this forces a new Backup Instance PostgreSQL to be created.
   final pulumi.Input<String>? databaseId;
+
   /// The location of the source database. Changing this forces a new Backup Instance PostgreSQL to be created.
   final pulumi.Input<String>? location;
+
   /// The name which should be used for this Backup Instance PostgreSQL. Changing this forces a new Backup Instance PostgreSQL to be created.
   final pulumi.Input<String>? name;
+
   /// The protection state of the Backup Instance PostgreSQL.
   final pulumi.Input<String>? protectionState;
+
   /// The ID of the Backup Vault within which the PostgreSQL Backup Instance should exist. Changing this forces a new Backup Instance PostgreSQL to be created.
   final pulumi.Input<String>? vaultId;
 
@@ -51,14 +57,41 @@ class BackupInstancePostgresqlState {
 
   factory BackupInstancePostgresqlState.fromMap(Map<String, dynamic> map) {
     return BackupInstancePostgresqlState(
-      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId']! as String).input(),
-      databaseCredentialKeyVaultSecretId: map['databaseCredentialKeyVaultSecretId'] == null ? null : (map['databaseCredentialKeyVaultSecretId']! as String).input(),
-      databaseId: map['databaseId'] == null ? null : (map['databaseId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      protectionState: map['protectionState'] == null ? null : (map['protectionState']! as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
+      backupPolicyId: (() {
+        final guardedValue = map['backupPolicyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseCredentialKeyVaultSecretId: (() {
+        final guardedValue = map['databaseCredentialKeyVaultSecretId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseId: (() {
+        final guardedValue = map['databaseId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      protectionState: (() {
+        final guardedValue = map['protectionState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vaultId: (() {
+        final guardedValue = map['vaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

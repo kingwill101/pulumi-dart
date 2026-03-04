@@ -9,23 +9,16 @@ class PatchBaselineGlobalFilter {
   /// Creates a new [PatchBaselineGlobalFilter].
   /// [key] Required.
   /// [values] Required.
-  PatchBaselineGlobalFilter({
-    required this.key,
-    required this.values,
-  });
+  PatchBaselineGlobalFilter({required this.key, required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'values': values,
-    };
+    return <String, dynamic>{'key': key, 'values': values};
   }
 
   factory PatchBaselineGlobalFilter.fromMap(Map<String, dynamic> map) {
     return PatchBaselineGlobalFilter(
-      key: (map['key'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

@@ -9,20 +9,21 @@ class DiskParamsComputeV1 {
 
   /// Creates a new [DiskParamsComputeV1].
   /// [resourceManagerTags] Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
-  DiskParamsComputeV1({
-    this.resourceManagerTags,
-  });
+  DiskParamsComputeV1({this.resourceManagerTags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceManagerTags': ?resourceManagerTags,
-    };
+    return <String, dynamic>{'resourceManagerTags': ?resourceManagerTags};
   }
 
   factory DiskParamsComputeV1.fromMap(Map<String, dynamic> map) {
     return DiskParamsComputeV1(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
+      resourceManagerTags: (() {
+        final guardedValue = map['resourceManagerTags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

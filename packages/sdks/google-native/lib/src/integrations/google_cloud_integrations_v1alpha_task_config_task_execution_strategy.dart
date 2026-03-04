@@ -5,16 +5,22 @@ enum GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy {
   whenAnySucceed("WHEN_ANY_SUCCEED"),
   whenAllTasksAndConditionsSucceed("WHEN_ALL_TASKS_AND_CONDITIONS_SUCCEED");
 
-  const GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy(this.value);
-  final String value;
+  const GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy fromValue(String value) {
-    for (final item in GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy.values) {
-      if (item.value == value) {
+  static GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy value: $value',
+    );
   }
 }
-

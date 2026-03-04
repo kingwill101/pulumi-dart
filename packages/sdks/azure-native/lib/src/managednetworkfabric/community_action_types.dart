@@ -3,16 +3,15 @@ enum CommunityActionTypes {
   valuePermit("Permit"),
   valueDeny("Deny");
 
-  const CommunityActionTypes(this.value);
-  final String value;
+  const CommunityActionTypes(this.wireValue);
+  final String wireValue;
 
   static CommunityActionTypes fromValue(String value) {
     for (final item in CommunityActionTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CommunityActionTypes value: $value');
   }
 }
-

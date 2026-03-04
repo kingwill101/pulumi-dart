@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'machine_group_args.dart';
-import 'machine_reference_with_hints_response.dart';
 
 /// A user-defined logical grouping of machines.
 ///
@@ -181,21 +180,29 @@ import 'machine_reference_with_hints_response.dart';
 class MachineGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Count of machines in this group. The value of count may be bigger than the number of machines in case of the group has been truncated due to exceeding the max number of machines a group can handle.
   late final pulumi.Output<int?> count;
+
   /// User defined name for the group
   late final pulumi.Output<String> displayName;
+
   /// Resource ETAG.
   late final pulumi.Output<String?> etag;
+
   /// Type of the machine group
   late final pulumi.Output<String?> groupType;
+
   /// Additional resource type qualifier.
   /// Expected value is 'machineGroup'.
   late final pulumi.Output<String> kind;
+
   /// References of the machines in this group. The hints within each reference do not represent the current value of the corresponding fields. They are a snapshot created during the last time the machine group was updated.
-  late final pulumi.Output<List<MachineReferenceWithHintsResponse>?> machines;
+  late final pulumi.Output<List<Map<String, dynamic>>?> machines;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -208,19 +215,19 @@ class MachineGroup extends pulumi.CustomResource {
     MachineGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:operationalinsights:MachineGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.count = registerOutput<int?>('count');
-    this.displayName = registerOutput<String>('displayName');
-    this.etag = registerOutput<String?>('etag');
-    this.groupType = registerOutput<String?>('groupType');
-    this.kind = registerOutput<String>('kind');
-    this.machines = registerOutput<List<MachineReferenceWithHintsResponse>?>('machines');
+         'azure-native:operationalinsights:MachineGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    count = registerOutput<int?>('count');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String?>('etag');
+    groupType = registerOutput<String?>('groupType');
+    kind = registerOutput<String>('kind');
+    machines = registerOutput<List<Map<String, dynamic>>?>('machines');
     this.name = registerOutput<String>('name');
-    this.type = registerOutput<String>('type');
+    type = registerOutput<String>('type');
   }
 }

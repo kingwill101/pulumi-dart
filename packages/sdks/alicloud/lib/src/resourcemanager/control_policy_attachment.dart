@@ -8,7 +8,7 @@ import 'control_policy_attachment_state.dart';
 ///
 /// For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/resource-directory/developer-reference/api-resourcemanager-2020-03-31-attachcontrolpolicy).
 ///
-/// > **NOTE:** Available since v1.120.0.
+/// &gt; **NOTE:** Available since v1.120.0.
 ///
 /// ## Example Usage
 ///
@@ -340,6 +340,7 @@ import 'control_policy_attachment_state.dart';
 class ControlPolicyAttachment extends pulumi.CustomResource {
   /// The ID of the access control policy.
   late final pulumi.Output<String> policyId;
+
   /// The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
   ///
   /// - Root folder
@@ -356,13 +357,13 @@ class ControlPolicyAttachment extends pulumi.CustomResource {
     ControlPolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policyId = registerOutput<String>('policyId');
-    this.targetId = registerOutput<String>('targetId');
+         'alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policyId = registerOutput<String>('policyId');
+    targetId = registerOutput<String>('targetId');
   }
 
   /// Gets an existing [ControlPolicyAttachment] resource's state with the given [name] and [id].
@@ -383,12 +384,12 @@ class ControlPolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policyId = registerOutput<String>('policyId');
-    this.targetId = registerOutput<String>('targetId');
+         'alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policyId = registerOutput<String>('policyId');
+    targetId = registerOutput<String>('targetId');
   }
 }

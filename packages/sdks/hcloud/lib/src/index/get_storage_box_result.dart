@@ -7,26 +7,37 @@ import 'get_storage_box_snapshot_plan.dart';
 class GetStorageBoxResult {
   /// Access settings of the Storage Box.
   final GetStorageBoxAccessSettings accessSettings;
+
   /// Whether delete protection is enabled.
   final bool deleteProtection;
+
   /// ID of the Storage Box.
   final int? id;
+
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   final Map<String, String> labels;
+
   /// Name of the Location.
   final String location;
+
   /// Name of the Storage Box.
   final String? name;
+
   /// FQDN of the Storage Box.
   final String server;
+
   /// Details of the active snapshot plan.
   final GetStorageBoxSnapshotPlan snapshotPlan;
+
   /// Name of the Storage Box Type.
   final String storageBoxType;
+
   /// Host system of the Storage Box.
   final String system;
+
   /// Primary username of the Storage Box.
   final String username;
+
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
   final String? withSelector;
 
@@ -77,19 +88,34 @@ class GetStorageBoxResult {
 
   factory GetStorageBoxResult.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxResult(
-      accessSettings: GetStorageBoxAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>()),
+      accessSettings: GetStorageBoxAccessSettings.fromMap(
+        (map['accessSettings']! as Map).cast<String, dynamic>(),
+      ),
       deleteProtection: map['deleteProtection'] as bool,
-      id: map['id'] == null ? null : map['id']! as int,
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
-      name: map['name'] == null ? null : map['name']! as String,
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       server: map['server'] as String,
-      snapshotPlan: GetStorageBoxSnapshotPlan.fromMap((map['snapshotPlan'] as Map).cast<String, dynamic>()),
+      snapshotPlan: GetStorageBoxSnapshotPlan.fromMap(
+        (map['snapshotPlan']! as Map).cast<String, dynamic>(),
+      ),
       storageBoxType: map['storageBoxType'] as String,
       system: map['system'] as String,
       username: map['username'] as String,
-      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

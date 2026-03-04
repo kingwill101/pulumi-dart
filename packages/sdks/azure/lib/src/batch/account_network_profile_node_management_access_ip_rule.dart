@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountNetworkProfileNodeManagementAccessIpRule {
   /// Specifies the action of the ip rule. The only possible value is `Allow`. Defaults to `Allow`.
   final pulumi.Input<String>? action;
+
   /// The CIDR block from which requests will match the rule.
   final pulumi.Input<String> ipRange;
 
@@ -17,17 +18,19 @@ class AccountNetworkProfileNodeManagementAccessIpRule {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'action': ?action,
-      'ipRange': ipRange,
-    };
+    return <String, dynamic>{'action': ?action, 'ipRange': ipRange};
   }
 
-  factory AccountNetworkProfileNodeManagementAccessIpRule.fromMap(Map<String, dynamic> map) {
+  factory AccountNetworkProfileNodeManagementAccessIpRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccountNetworkProfileNodeManagementAccessIpRule(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      ipRange: (map['ipRange'] as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipRange: pulumi.Input.fromValue(map['ipRange'] as String),
     );
   }
 }
-

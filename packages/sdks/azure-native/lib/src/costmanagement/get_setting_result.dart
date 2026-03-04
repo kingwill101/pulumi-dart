@@ -7,18 +7,25 @@ import 'settings_properties_response_cache.dart';
 class GetSettingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Array of scopes with additional details used by Cost Management in the Azure portal.
   final List<SettingsPropertiesResponseCache>? cache;
+
   /// Resource Id.
   final String id;
+
   /// Resource kind.
   final String kind;
+
   /// Resource name.
   final String name;
+
   /// Sets the default scope the current user will see when they sign into Azure Cost Management in the Azure portal.
   final String scope;
+
   /// Indicates what scope Cost Management in the Azure portal should default to. Allowed values: LastUsed.
   final String? startOn;
+
   /// Resource type.
   final String type;
 
@@ -45,7 +52,14 @@ class GetSettingResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'cache': ?cache == null ? null : pulumi.Input.encodeList<SettingsPropertiesResponseCache, Map<String, dynamic>>(cache!, (value) => value.toMap()),
+      'cache': ?(() {
+        final guardedValue = cache;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          SettingsPropertiesResponseCache,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
       'kind': kind,
       'name': name,
@@ -58,14 +72,26 @@ class GetSettingResult {
   factory GetSettingResult.fromMap(Map<String, dynamic> map) {
     return GetSettingResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      cache: map['cache'] == null ? null : pulumi.Input.decodeList<SettingsPropertiesResponseCache>(map['cache']!, (value) => SettingsPropertiesResponseCache.fromMap((value as Map).cast<String, dynamic>())),
+      cache: (() {
+        final guardedValue = map['cache'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<SettingsPropertiesResponseCache>(
+          guardedValue,
+          (value) => SettingsPropertiesResponseCache.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
       scope: map['scope'] as String,
-      startOn: map['startOn'] == null ? null : map['startOn']! as String,
+      startOn: (() {
+        final guardedValue = map['startOn'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

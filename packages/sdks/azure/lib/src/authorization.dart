@@ -1,5 +1,3 @@
-library module_authorization;
-
 export 'authorization/assignment.dart';
 export 'authorization/assignment_args.dart';
 export 'authorization/assignment_state.dart';

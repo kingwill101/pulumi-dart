@@ -201,38 +201,55 @@ import 'system_data_response.dart';
 class L2Network extends pulumi.CustomResource {
   /// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
   late final pulumi.Output<List<String>> associatedResourceIds;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The resource ID of the Network Cloud cluster this L2 network is associated with.
   late final pulumi.Output<String> clusterId;
+
   /// The more detailed status of the L2 network.
   late final pulumi.Output<String> detailedStatus;
+
   /// The descriptive message about the current detailed status.
   late final pulumi.Output<String> detailedStatusMessage;
+
   /// Resource ETag.
   late final pulumi.Output<String> etag;
+
   /// The extended location of the cluster associated with the resource.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource ID(s) that are associated with this L2 network.
   late final pulumi.Output<List<String>> hybridAksClustersAssociatedIds;
+
   /// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
   late final pulumi.Output<String?> hybridAksPluginType;
+
   /// The default interface name for this L2 network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
   late final pulumi.Output<String?> interfaceName;
+
   /// The resource ID of the Network Fabric l2IsolationDomain.
   late final pulumi.Output<String> l2IsolationDomainId;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the L2 network.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource ID(s), excluding any Hybrid AKS virtual machines, that are currently using this L2 network.
   late final pulumi.Output<List<String>> virtualMachinesAssociatedIds;
 
@@ -245,28 +262,36 @@ class L2Network extends pulumi.CustomResource {
     L2NetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:networkcloud:L2Network',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associatedResourceIds = registerOutput<List<String>>('associatedResourceIds');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.detailedStatus = registerOutput<String>('detailedStatus');
-    this.detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
-    this.etag = registerOutput<String>('etag');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.hybridAksClustersAssociatedIds = registerOutput<List<String>>('hybridAksClustersAssociatedIds');
-    this.hybridAksPluginType = registerOutput<String?>('hybridAksPluginType');
-    this.interfaceName = registerOutput<String?>('interfaceName');
-    this.l2IsolationDomainId = registerOutput<String>('l2IsolationDomainId');
-    this.location = registerOutput<String>('location');
+         'azure-native:networkcloud:L2Network',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associatedResourceIds = registerOutput<List<String>>(
+      'associatedResourceIds',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterId = registerOutput<String>('clusterId');
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    hybridAksClustersAssociatedIds = registerOutput<List<String>>(
+      'hybridAksClustersAssociatedIds',
+    );
+    hybridAksPluginType = registerOutput<String?>('hybridAksPluginType');
+    interfaceName = registerOutput<String?>('interfaceName');
+    l2IsolationDomainId = registerOutput<String>('l2IsolationDomainId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.virtualMachinesAssociatedIds = registerOutput<List<String>>('virtualMachinesAssociatedIds');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    virtualMachinesAssociatedIds = registerOutput<List<String>>(
+      'virtualMachinesAssociatedIds',
+    );
   }
 }

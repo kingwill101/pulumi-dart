@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'regex_match_set_args.dart';
-import 'regex_match_set_regex_match_tuple.dart';
 import 'regex_match_set_state.dart';
 
 /// Provides a WAF Regex Match Set Resource
@@ -210,10 +209,12 @@ import 'regex_match_set_state.dart';
 class RegexMatchSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN)
   late final pulumi.Output<String> arn;
+
   /// The name or description of the Regex Match Set.
   late final pulumi.Output<String> name;
+
   /// The regular expression pattern that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings. See below.
-  late final pulumi.Output<List<RegexMatchSetRegexMatchTuple>?> regexMatchTuples;
+  late final pulumi.Output<List<Map<String, dynamic>>?> regexMatchTuples;
 
   /// Creates a new [RegexMatchSet].
   /// [name] The Pulumi resource name.
@@ -224,14 +225,16 @@ class RegexMatchSet extends pulumi.CustomResource {
     RegexMatchSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:waf/regexMatchSet:RegexMatchSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:waf/regexMatchSet:RegexMatchSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.regexMatchTuples = registerOutput<List<RegexMatchSetRegexMatchTuple>?>('regexMatchTuples');
+    regexMatchTuples = registerOutput<List<Map<String, dynamic>>?>(
+      'regexMatchTuples',
+    );
   }
 
   /// Gets an existing [RegexMatchSet] resource's state with the given [name] and [id].
@@ -252,13 +255,15 @@ class RegexMatchSet extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:waf/regexMatchSet:RegexMatchSet',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
+         'aws:waf/regexMatchSet:RegexMatchSet',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
-    this.regexMatchTuples = registerOutput<List<RegexMatchSetRegexMatchTuple>?>('regexMatchTuples');
+    regexMatchTuples = registerOutput<List<Map<String, dynamic>>?>(
+      'regexMatchTuples',
+    );
   }
 }

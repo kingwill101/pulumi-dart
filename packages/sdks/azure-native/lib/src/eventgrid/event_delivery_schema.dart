@@ -4,16 +4,15 @@ enum EventDeliverySchema {
   valueCustomInputSchema("CustomInputSchema"),
   valueCloudEventSchemaV10("CloudEventSchemaV1_0");
 
-  const EventDeliverySchema(this.value);
-  final String value;
+  const EventDeliverySchema(this.wireValue);
+  final String wireValue;
 
   static EventDeliverySchema fromValue(String value) {
     for (final item in EventDeliverySchema.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EventDeliverySchema value: $value');
   }
 }
-

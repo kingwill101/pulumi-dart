@@ -1,5 +1,3 @@
-library module_oss;
-
 export 'oss/access_point.dart';
 export 'oss/access_point_args.dart';
 export 'oss/access_point_public_access_block_configuration.dart';

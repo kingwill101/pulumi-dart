@@ -20,16 +20,19 @@ enum WorkloadComplianceRegimeAssuredworkloadsV1beta1 {
   il2("IL2"),
   jpRegionsAndSupport("JP_REGIONS_AND_SUPPORT");
 
-  const WorkloadComplianceRegimeAssuredworkloadsV1beta1(this.value);
-  final String value;
+  const WorkloadComplianceRegimeAssuredworkloadsV1beta1(this.wireValue);
+  final String wireValue;
 
-  static WorkloadComplianceRegimeAssuredworkloadsV1beta1 fromValue(String value) {
+  static WorkloadComplianceRegimeAssuredworkloadsV1beta1 fromValue(
+    String value,
+  ) {
     for (final item in WorkloadComplianceRegimeAssuredworkloadsV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown WorkloadComplianceRegimeAssuredworkloadsV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown WorkloadComplianceRegimeAssuredworkloadsV1beta1 value: $value',
+    );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_softwareplan;
-
 export 'softwareplan/functions.dart';
 export 'softwareplan/get_hybrid_use_benefit_args.dart';
 export 'softwareplan/get_hybrid_use_benefit_result.dart';

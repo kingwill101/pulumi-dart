@@ -27,10 +27,9 @@ class BuildMetadataResponse {
 
   factory BuildMetadataResponse.fromMap(Map<String, dynamic> map) {
     return BuildMetadataResponse(
-      finishedOn: (map['finishedOn'] as String).input(),
-      invocationId: (map['invocationId'] as String).input(),
-      startedOn: (map['startedOn'] as String).input(),
+      finishedOn: pulumi.Input.fromValue(map['finishedOn'] as String),
+      invocationId: pulumi.Input.fromValue(map['invocationId'] as String),
+      startedOn: pulumi.Input.fromValue(map['startedOn'] as String),
     );
   }
 }
-

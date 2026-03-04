@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppServiceLogsHttpLogsFileSystem {
   /// The number of days to retain logs for.
   final pulumi.Input<int> retentionInDays;
+
   /// The maximum size in megabytes that HTTP log files can use before being removed.
   final pulumi.Input<int> retentionInMb;
 
@@ -25,9 +26,8 @@ class AppServiceLogsHttpLogsFileSystem {
 
   factory AppServiceLogsHttpLogsFileSystem.fromMap(Map<String, dynamic> map) {
     return AppServiceLogsHttpLogsFileSystem(
-      retentionInDays: (map['retentionInDays'] as int).input(),
-      retentionInMb: (map['retentionInMb'] as int).input(),
+      retentionInDays: pulumi.Input.fromValue(map['retentionInDays'] as int),
+      retentionInMb: pulumi.Input.fromValue(map['retentionInMb'] as int),
     );
   }
 }
-

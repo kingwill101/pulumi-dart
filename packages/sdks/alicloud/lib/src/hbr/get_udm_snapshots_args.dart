@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUdmSnapshotsArgs {
   /// Cloud disk ID. This field is valid only when SourceType = UDM_ECS_DISK.
   final pulumi.Input<String>? diskId;
+
   /// End Time
   final pulumi.Input<int> endTime;
+
   /// A list of Udm Snapshot IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// ECS instance ID
   final pulumi.Input<String> instanceId;
+
   /// The ID of the backup job that creates the snapshot.
   final pulumi.Input<String>? jobId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// Data source type. Only UDM_ECS and UDM_ECS_DISK are supported.
   final pulumi.Input<String> sourceType;
+
   /// Start Time
   final pulumi.Input<int> startTime;
 
@@ -59,15 +66,30 @@ class GetUdmSnapshotsArgs {
 
   factory GetUdmSnapshotsArgs.fromMap(Map<String, dynamic> map) {
     return GetUdmSnapshotsArgs(
-      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
-      endTime: (map['endTime'] as int).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      sourceType: (map['sourceType'] as String).input(),
-      startTime: (map['startTime'] as int).input(),
+      diskId: (() {
+        final guardedValue = map['diskId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endTime: pulumi.Input.fromValue(map['endTime'] as int),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      jobId: (() {
+        final guardedValue = map['jobId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceType: pulumi.Input.fromValue(map['sourceType'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as int),
     );
   }
 }
-

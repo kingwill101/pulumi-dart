@@ -6,9 +6,13 @@ import 'stream_backfill_all_mysql_excluded_objects_mysql_database_mysql_table.da
 class StreamBackfillAllMysqlExcludedObjectsMysqlDatabase {
   /// Database name.
   final pulumi.Input<String> database;
+
   /// Tables in the database.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable>>? mysqlTables;
+  final pulumi.Input<
+    List<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable>
+  >?
+  mysqlTables;
 
   /// Creates a new [StreamBackfillAllMysqlExcludedObjectsMysqlDatabase].
   /// [database] Database name.
@@ -21,15 +25,41 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabase {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'database': database,
-      'mysqlTables': ?pulumi.Input.mapOptionalInputValue<List<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable>, List<Map<String, dynamic>>>(mysqlTables, (value) => pulumi.Input.encodeList<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'mysqlTables':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable>,
+            List<Map<String, dynamic>>
+          >(
+            mysqlTables,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory StreamBackfillAllMysqlExcludedObjectsMysqlDatabase.fromMap(Map<String, dynamic> map) {
+  factory StreamBackfillAllMysqlExcludedObjectsMysqlDatabase.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamBackfillAllMysqlExcludedObjectsMysqlDatabase(
-      database: (map['database'] as String).input(),
-      mysqlTables: map['mysqlTables'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable>(map['mysqlTables']!, (value) => StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      database: pulumi.Input.fromValue(map['database'] as String),
+      mysqlTables: (() {
+        final guardedValue = map['mysqlTables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable
+          >(
+            guardedValue,
+            (value) =>
+                StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
     );
   }
 }
-

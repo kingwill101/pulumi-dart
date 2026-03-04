@@ -583,10 +583,13 @@ import 'workspace_sql_aad_admin_state.dart';
 class WorkspaceSqlAadAdmin extends pulumi.CustomResource {
   /// The login name of the Azure AD SQL Administrator of this Synapse Workspace.
   late final pulumi.Output<String> login;
+
   /// The object id of the Azure AD SQL Administrator of this Synapse Workspace.
   late final pulumi.Output<String> objectId;
+
   /// The ID of the Synapse Workspace where the Azure AD SQL Administrator should be configured.
   late final pulumi.Output<String> synapseWorkspaceId;
+
   /// The tenant id of the Azure AD SQL Administrator of this Synapse Workspace.
   late final pulumi.Output<String> tenantId;
 
@@ -599,15 +602,15 @@ class WorkspaceSqlAadAdmin extends pulumi.CustomResource {
     WorkspaceSqlAadAdminArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:synapse/workspaceSqlAadAdmin:WorkspaceSqlAadAdmin',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.login = registerOutput<String>('login');
-    this.objectId = registerOutput<String>('objectId');
-    this.synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
-    this.tenantId = registerOutput<String>('tenantId');
+         'azure:synapse/workspaceSqlAadAdmin:WorkspaceSqlAadAdmin',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    login = registerOutput<String>('login');
+    objectId = registerOutput<String>('objectId');
+    synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [WorkspaceSqlAadAdmin] resource's state with the given [name] and [id].
@@ -628,14 +631,14 @@ class WorkspaceSqlAadAdmin extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:synapse/workspaceSqlAadAdmin:WorkspaceSqlAadAdmin',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.login = registerOutput<String>('login');
-    this.objectId = registerOutput<String>('objectId');
-    this.synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
-    this.tenantId = registerOutput<String>('tenantId');
+         'azure:synapse/workspaceSqlAadAdmin:WorkspaceSqlAadAdmin',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    login = registerOutput<String>('login');
+    objectId = registerOutput<String>('objectId');
+    synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
+    tenantId = registerOutput<String>('tenantId');
   }
 }

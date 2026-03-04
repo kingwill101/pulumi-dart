@@ -3,16 +3,17 @@ enum AttachedDiskSavedStateComputeV1 {
   diskSavedStateUnspecified("DISK_SAVED_STATE_UNSPECIFIED"),
   preserved("PRESERVED");
 
-  const AttachedDiskSavedStateComputeV1(this.value);
-  final String value;
+  const AttachedDiskSavedStateComputeV1(this.wireValue);
+  final String wireValue;
 
   static AttachedDiskSavedStateComputeV1 fromValue(String value) {
     for (final item in AttachedDiskSavedStateComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AttachedDiskSavedStateComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown AttachedDiskSavedStateComputeV1 value: $value',
+    );
   }
 }
-

@@ -3,16 +3,15 @@ enum ExpressRouteCircuitSkuFamily {
   valueUnlimitedData("UnlimitedData"),
   valueMeteredData("MeteredData");
 
-  const ExpressRouteCircuitSkuFamily(this.value);
-  final String value;
+  const ExpressRouteCircuitSkuFamily(this.wireValue);
+  final String wireValue;
 
   static ExpressRouteCircuitSkuFamily fromValue(String value) {
     for (final item in ExpressRouteCircuitSkuFamily.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ExpressRouteCircuitSkuFamily value: $value');
   }
 }
-

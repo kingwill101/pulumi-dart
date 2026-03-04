@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity {
   /// Possible values are: `TYPE_UNSPECIFIED`, `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
   final pulumi.Input<String>? consumeAllocationType;
+
   /// (Optional)
   final pulumi.Input<String>? key;
+
   /// (Optional)
   final pulumi.Input<List<String>>? values;
 
@@ -28,12 +30,25 @@ class RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity {
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity(
-      consumeAllocationType: map['consumeAllocationType'] == null ? null : (map['consumeAllocationType']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
+      consumeAllocationType: (() {
+        final guardedValue = map['consumeAllocationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

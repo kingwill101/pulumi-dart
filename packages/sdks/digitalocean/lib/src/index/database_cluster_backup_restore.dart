@@ -7,6 +7,7 @@ class DatabaseClusterBackupRestore {
   ///
   /// This resource supports customized create timeouts. The default timeout is 30 minutes.
   final pulumi.Input<String>? backupCreatedAt;
+
   /// The name of an existing database cluster from which the backup will be restored.
   final pulumi.Input<String> databaseName;
 
@@ -27,9 +28,12 @@ class DatabaseClusterBackupRestore {
 
   factory DatabaseClusterBackupRestore.fromMap(Map<String, dynamic> map) {
     return DatabaseClusterBackupRestore(
-      backupCreatedAt: map['backupCreatedAt'] == null ? null : (map['backupCreatedAt']! as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
+      backupCreatedAt: (() {
+        final guardedValue = map['backupCreatedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
     );
   }
 }
-

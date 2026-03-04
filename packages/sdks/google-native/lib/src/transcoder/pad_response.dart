@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PadResponse {
   /// The number of pixels to add to the bottom. The default is 0.
   final pulumi.Input<int> bottomPixels;
+
   /// The number of pixels to add to the left. The default is 0.
   final pulumi.Input<int> leftPixels;
+
   /// The number of pixels to add to the right. The default is 0.
   final pulumi.Input<int> rightPixels;
+
   /// The number of pixels to add to the top. The default is 0.
   final pulumi.Input<int> topPixels;
 
@@ -36,11 +39,10 @@ class PadResponse {
 
   factory PadResponse.fromMap(Map<String, dynamic> map) {
     return PadResponse(
-      bottomPixels: (map['bottomPixels'] as int).input(),
-      leftPixels: (map['leftPixels'] as int).input(),
-      rightPixels: (map['rightPixels'] as int).input(),
-      topPixels: (map['topPixels'] as int).input(),
+      bottomPixels: pulumi.Input.fromValue(map['bottomPixels'] as int),
+      leftPixels: pulumi.Input.fromValue(map['leftPixels'] as int),
+      rightPixels: pulumi.Input.fromValue(map['rightPixels'] as int),
+      topPixels: pulumi.Input.fromValue(map['topPixels'] as int),
     );
   }
 }
-

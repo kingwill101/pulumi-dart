@@ -9,20 +9,15 @@ class AutoSeasonalityResponse {
 
   /// Creates a new [AutoSeasonalityResponse].
   /// [mode] Forecasting seasonality mode.
-  AutoSeasonalityResponse({
-    required this.mode,
-  });
+  AutoSeasonalityResponse({required this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': mode,
-    };
+    return <String, dynamic>{'mode': mode};
   }
 
   factory AutoSeasonalityResponse.fromMap(Map<String, dynamic> map) {
     return AutoSeasonalityResponse(
-      mode: (map['mode'] as String).input(),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

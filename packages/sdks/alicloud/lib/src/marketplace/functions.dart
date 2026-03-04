@@ -6,7 +6,7 @@ import 'get_products_result.dart';
 
 /// This data source provides the Market product item details of Alibaba Cloud.
 ///
-/// > **NOTE:** Available in 1.69.0+
+/// &gt; **NOTE:** Available in 1.69.0+
 ///
 /// ## Example Usage
 ///
@@ -135,7 +135,7 @@ Future<GetProductResult> getProduct(
 
 /// This data source provides the Market product items of Alibaba Cloud.
 ///
-/// > **NOTE:** Available in 1.64.0+
+/// &gt; **NOTE:** Available in 1.64.0+
 ///
 /// ## Example Usage
 ///

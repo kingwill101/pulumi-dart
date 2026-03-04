@@ -5,16 +5,17 @@ enum AzureFirewallNetworkRuleProtocol {
   valueAny("Any"),
   valueICMP("ICMP");
 
-  const AzureFirewallNetworkRuleProtocol(this.value);
-  final String value;
+  const AzureFirewallNetworkRuleProtocol(this.wireValue);
+  final String wireValue;
 
   static AzureFirewallNetworkRuleProtocol fromValue(String value) {
     for (final item in AzureFirewallNetworkRuleProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AzureFirewallNetworkRuleProtocol value: $value');
+    throw ArgumentError(
+      'Unknown AzureFirewallNetworkRuleProtocol value: $value',
+    );
   }
 }
-

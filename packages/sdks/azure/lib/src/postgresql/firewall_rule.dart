@@ -4,7 +4,7 @@ import 'firewall_rule_state.dart';
 
 /// Manages a Firewall Rule for a PostgreSQL Server
 ///
-/// > **Note:** The `azure.postgresql.FirewallRule` resource is deprecated and will be removed in v5.0 of the AzureRM Provider. Azure Database for PostgreSQL Single Server and its sub resources have been retired as of 2025-03-28, please use the `azure.postgresql.FlexibleServerFirewallRule` resource instead. For more information, see https://techcommunity.microsoft.com/blog/adforpostgresql/retiring-azure-database-for-postgresql-single-server-in-2025/3783783.
+/// &gt; **Note:** The `azure.postgresql.FirewallRule` resource is deprecated and will be removed in v5.0 of the AzureRM Provider. Azure Database for PostgreSQL Single Server and its sub resources have been retired as of 2025-03-28, please use the `azure.postgresql.FlexibleServerFirewallRule` resource instead. For more information, see https://techcommunity.microsoft.com/blog/adforpostgresql/retiring-azure-database-for-postgresql-single-server-in-2025/3783783.
 ///
 /// ## Example Usage
 ///
@@ -378,7 +378,7 @@ import 'firewall_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DBforPostgreSQL` - 2017-12-01
@@ -393,14 +393,18 @@ import 'firewall_rule_state.dart';
 class FirewallRule extends pulumi.CustomResource {
   /// Specifies the End IP Address associated with this Firewall Rule. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
+  /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
   late final pulumi.Output<String> endIpAddress;
+
   /// Specifies the name of the PostgreSQL Firewall Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the resource group in which the PostgreSQL Server exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Specifies the name of the PostgreSQL Server. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverName;
+
   /// Specifies the Start IP Address associated with this Firewall Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> startIpAddress;
 
@@ -413,16 +417,16 @@ class FirewallRule extends pulumi.CustomResource {
     FirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:postgresql/firewallRule:FirewallRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endIpAddress = registerOutput<String>('endIpAddress');
+         'azure:postgresql/firewallRule:FirewallRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serverName = registerOutput<String>('serverName');
-    this.startIpAddress = registerOutput<String>('startIpAddress');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+    startIpAddress = registerOutput<String>('startIpAddress');
   }
 
   /// Gets an existing [FirewallRule] resource's state with the given [name] and [id].
@@ -443,15 +447,15 @@ class FirewallRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:postgresql/firewallRule:FirewallRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endIpAddress = registerOutput<String>('endIpAddress');
+         'azure:postgresql/firewallRule:FirewallRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serverName = registerOutput<String>('serverName');
-    this.startIpAddress = registerOutput<String>('startIpAddress');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+    startIpAddress = registerOutput<String>('startIpAddress');
   }
 }

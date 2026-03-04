@@ -5,16 +5,17 @@ enum ShareSettingsShareTypeComputeBeta {
   shareTypeUnspecified("SHARE_TYPE_UNSPECIFIED"),
   specificProjects("SPECIFIC_PROJECTS");
 
-  const ShareSettingsShareTypeComputeBeta(this.value);
-  final String value;
+  const ShareSettingsShareTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static ShareSettingsShareTypeComputeBeta fromValue(String value) {
     for (final item in ShareSettingsShareTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ShareSettingsShareTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown ShareSettingsShareTypeComputeBeta value: $value',
+    );
   }
 }
-

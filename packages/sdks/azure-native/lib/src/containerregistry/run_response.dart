@@ -13,54 +13,79 @@ import 'timer_trigger_descriptor_response.dart';
 class RunResponse {
   /// The machine configuration of the run agent.
   final pulumi.Input<AgentPropertiesResponse>? agentConfiguration;
+
   /// The dedicated agent pool for the run.
   final pulumi.Input<String>? agentPoolName;
+
   /// The time the run was scheduled.
   final pulumi.Input<String>? createTime;
+
   /// The list of custom registries that were logged in during this run.
   final pulumi.Input<List<String>>? customRegistries;
+
   /// The time the run finished.
   final pulumi.Input<String>? finishTime;
+
   /// The resource ID.
   final pulumi.Input<String> id;
+
   /// The image update trigger that caused the run. This is applicable if the task has base image trigger configured.
   final pulumi.Input<ImageUpdateTriggerResponse>? imageUpdateTrigger;
+
   /// The value that indicates whether archiving is enabled or not.
   final pulumi.Input<bool>? isArchiveEnabled;
+
   /// The last updated time for the run.
   final pulumi.Input<String>? lastUpdatedTime;
+
   /// The image description for the log artifact.
   final pulumi.Input<ImageDescriptorResponse> logArtifact;
+
   /// The name of the resource.
   final pulumi.Input<String> name;
+
   /// The list of all images that were generated from the run. This is applicable if the run generates base image dependencies.
   final pulumi.Input<List<ImageDescriptorResponse>>? outputImages;
+
   /// The platform properties against which the run will happen.
   final pulumi.Input<PlatformPropertiesResponse>? platform;
+
   /// The provisioning state of a run.
   final pulumi.Input<String>? provisioningState;
+
   /// The error message received from backend systems after the run is scheduled.
   final pulumi.Input<String> runErrorMessage;
+
   /// The unique identifier for the run.
   final pulumi.Input<String>? runId;
+
   /// The type of run.
   final pulumi.Input<String>? runType;
+
   /// The scope of the credentials that were used to login to the source registry during this run.
   final pulumi.Input<String>? sourceRegistryAuth;
+
   /// The source trigger that caused the run.
   final pulumi.Input<SourceTriggerDescriptorResponse>? sourceTrigger;
+
   /// The time the run started.
   final pulumi.Input<String>? startTime;
+
   /// The current status of the run.
   final pulumi.Input<String>? status;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final pulumi.Input<SystemDataResponse> systemData;
+
   /// The task against which run was scheduled.
   final pulumi.Input<String>? task;
+
   /// The timer trigger that caused the run.
   final pulumi.Input<TimerTriggerDescriptorResponse>? timerTrigger;
+
   /// The type of the resource.
   final pulumi.Input<String> type;
+
   /// The update trigger token passed for the Run.
   final pulumi.Input<String>? updateTriggerToken;
 
@@ -122,30 +147,69 @@ class RunResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'agentConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentPropertiesResponse, Map<String, dynamic>>(agentConfiguration, (value) => value.toMap()),
+      'agentConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentPropertiesResponse,
+            Map<String, dynamic>
+          >(agentConfiguration, (value) => value.toMap()),
       'agentPoolName': ?agentPoolName,
       'createTime': ?createTime,
       'customRegistries': ?customRegistries,
       'finishTime': ?finishTime,
       'id': id,
-      'imageUpdateTrigger': ?pulumi.Input.mapOptionalInputValue<ImageUpdateTriggerResponse, Map<String, dynamic>>(imageUpdateTrigger, (value) => value.toMap()),
+      'imageUpdateTrigger':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImageUpdateTriggerResponse,
+            Map<String, dynamic>
+          >(imageUpdateTrigger, (value) => value.toMap()),
       'isArchiveEnabled': ?isArchiveEnabled,
       'lastUpdatedTime': ?lastUpdatedTime,
-      'logArtifact': pulumi.Input.mapInputValue<ImageDescriptorResponse, Map<String, dynamic>>(logArtifact, (value) => value.toMap()),
+      'logArtifact':
+          pulumi.Input.mapInputValue<
+            ImageDescriptorResponse,
+            Map<String, dynamic>
+          >(logArtifact, (value) => value.toMap()),
       'name': name,
-      'outputImages': ?pulumi.Input.mapOptionalInputValue<List<ImageDescriptorResponse>, List<Map<String, dynamic>>>(outputImages, (value) => pulumi.Input.encodeList<ImageDescriptorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'platform': ?pulumi.Input.mapOptionalInputValue<PlatformPropertiesResponse, Map<String, dynamic>>(platform, (value) => value.toMap()),
+      'outputImages':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ImageDescriptorResponse>,
+            List<Map<String, dynamic>>
+          >(
+            outputImages,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ImageDescriptorResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'platform':
+          ?pulumi.Input.mapOptionalInputValue<
+            PlatformPropertiesResponse,
+            Map<String, dynamic>
+          >(platform, (value) => value.toMap()),
       'provisioningState': ?provisioningState,
       'runErrorMessage': runErrorMessage,
       'runId': ?runId,
       'runType': ?runType,
       'sourceRegistryAuth': ?sourceRegistryAuth,
-      'sourceTrigger': ?pulumi.Input.mapOptionalInputValue<SourceTriggerDescriptorResponse, Map<String, dynamic>>(sourceTrigger, (value) => value.toMap()),
+      'sourceTrigger':
+          ?pulumi.Input.mapOptionalInputValue<
+            SourceTriggerDescriptorResponse,
+            Map<String, dynamic>
+          >(sourceTrigger, (value) => value.toMap()),
       'startTime': ?startTime,
       'status': ?status,
-      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
+      'systemData':
+          pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(
+            systemData,
+            (value) => value.toMap(),
+          ),
       'task': ?task,
-      'timerTrigger': ?pulumi.Input.mapOptionalInputValue<TimerTriggerDescriptorResponse, Map<String, dynamic>>(timerTrigger, (value) => value.toMap()),
+      'timerTrigger':
+          ?pulumi.Input.mapOptionalInputValue<
+            TimerTriggerDescriptorResponse,
+            Map<String, dynamic>
+          >(timerTrigger, (value) => value.toMap()),
       'type': type,
       'updateTriggerToken': ?updateTriggerToken,
     };
@@ -153,33 +217,147 @@ class RunResponse {
 
   factory RunResponse.fromMap(Map<String, dynamic> map) {
     return RunResponse(
-      agentConfiguration: map['agentConfiguration'] == null ? null : (AgentPropertiesResponse.fromMap((map['agentConfiguration']! as Map).cast<String, dynamic>())).input(),
-      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      customRegistries: map['customRegistries'] == null ? null : ((map['customRegistries']! as List).cast<String>()).input(),
-      finishTime: map['finishTime'] == null ? null : (map['finishTime']! as String).input(),
-      id: (map['id'] as String).input(),
-      imageUpdateTrigger: map['imageUpdateTrigger'] == null ? null : (ImageUpdateTriggerResponse.fromMap((map['imageUpdateTrigger']! as Map).cast<String, dynamic>())).input(),
-      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : (map['isArchiveEnabled']! as bool).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime']! as String).input(),
-      logArtifact: (ImageDescriptorResponse.fromMap((map['logArtifact'] as Map).cast<String, dynamic>())).input(),
-      name: (map['name'] as String).input(),
-      outputImages: map['outputImages'] == null ? null : (pulumi.Input.decodeList<ImageDescriptorResponse>(map['outputImages']!, (value) => ImageDescriptorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      platform: map['platform'] == null ? null : (PlatformPropertiesResponse.fromMap((map['platform']! as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
-      runErrorMessage: (map['runErrorMessage'] as String).input(),
-      runId: map['runId'] == null ? null : (map['runId']! as String).input(),
-      runType: map['runType'] == null ? null : (map['runType']! as String).input(),
-      sourceRegistryAuth: map['sourceRegistryAuth'] == null ? null : (map['sourceRegistryAuth']! as String).input(),
-      sourceTrigger: map['sourceTrigger'] == null ? null : (SourceTriggerDescriptorResponse.fromMap((map['sourceTrigger']! as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
-      task: map['task'] == null ? null : (map['task']! as String).input(),
-      timerTrigger: map['timerTrigger'] == null ? null : (TimerTriggerDescriptorResponse.fromMap((map['timerTrigger']! as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
-      updateTriggerToken: map['updateTriggerToken'] == null ? null : (map['updateTriggerToken']! as String).input(),
+      agentConfiguration: (() {
+        final guardedValue = map['agentConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      agentPoolName: (() {
+        final guardedValue = map['agentPoolName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customRegistries: (() {
+        final guardedValue = map['customRegistries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      finishTime: (() {
+        final guardedValue = map['finishTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      imageUpdateTrigger: (() {
+        final guardedValue = map['imageUpdateTrigger'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ImageUpdateTriggerResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      isArchiveEnabled: (() {
+        final guardedValue = map['isArchiveEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      lastUpdatedTime: (() {
+        final guardedValue = map['lastUpdatedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      logArtifact: pulumi.Input.fromValue(
+        ImageDescriptorResponse.fromMap(
+          (map['logArtifact']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      outputImages: (() {
+        final guardedValue = map['outputImages'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ImageDescriptorResponse>(
+            guardedValue,
+            (value) => ImageDescriptorResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      platform: (() {
+        final guardedValue = map['platform'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PlatformPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runErrorMessage: pulumi.Input.fromValue(map['runErrorMessage'] as String),
+      runId: (() {
+        final guardedValue = map['runId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runType: (() {
+        final guardedValue = map['runType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceRegistryAuth: (() {
+        final guardedValue = map['sourceRegistryAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceTrigger: (() {
+        final guardedValue = map['sourceTrigger'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SourceTriggerDescriptorResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      systemData: pulumi.Input.fromValue(
+        SystemDataResponse.fromMap(
+          (map['systemData']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      task: (() {
+        final guardedValue = map['task'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timerTrigger: (() {
+        final guardedValue = map['timerTrigger'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TimerTriggerDescriptorResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      updateTriggerToken: (() {
+        final guardedValue = map['updateTriggerToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

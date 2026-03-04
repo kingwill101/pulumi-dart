@@ -13,10 +13,7 @@ class GetSourceArgs {
   /// Creates a new [GetSourceArgs].
   /// [organizationId] Required.
   /// [sourceId] Required.
-  GetSourceArgs({
-    required this.organizationId,
-    required this.sourceId,
-  });
+  GetSourceArgs({required this.organizationId, required this.sourceId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +24,8 @@ class GetSourceArgs {
 
   factory GetSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetSourceArgs(
-      organizationId: (map['organizationId'] as String).input(),
-      sourceId: (map['sourceId'] as String).input(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      sourceId: pulumi.Input.fromValue(map['sourceId'] as String),
     );
   }
 }
-

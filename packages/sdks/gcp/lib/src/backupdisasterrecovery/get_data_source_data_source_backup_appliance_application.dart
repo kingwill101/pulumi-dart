@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataSourceDataSourceBackupApplianceApplication {
   /// Appliance Id of the Backup Appliance.
   final pulumi.Input<String> applianceId;
+
   /// The appid field of the application within the Backup Appliance.
   final pulumi.Input<String> applicationId;
+
   /// The name of the Application as known to the Backup Appliance.
   final pulumi.Input<String> applicationName;
+
   /// Appliance name.
   final pulumi.Input<String> backupAppliance;
+
   /// Hostid of the application host.
   final pulumi.Input<String> hostId;
+
   /// Hostname of the host where the application is running.
   final pulumi.Input<String> hostname;
+
   /// The type of the application. e.g. VMBackup
   final pulumi.Input<String> type;
 
@@ -48,16 +54,17 @@ class GetDataSourceDataSourceBackupApplianceApplication {
     };
   }
 
-  factory GetDataSourceDataSourceBackupApplianceApplication.fromMap(Map<String, dynamic> map) {
+  factory GetDataSourceDataSourceBackupApplianceApplication.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSourceDataSourceBackupApplianceApplication(
-      applianceId: (map['applianceId'] as String).input(),
-      applicationId: (map['applicationId'] as String).input(),
-      applicationName: (map['applicationName'] as String).input(),
-      backupAppliance: (map['backupAppliance'] as String).input(),
-      hostId: (map['hostId'] as String).input(),
-      hostname: (map['hostname'] as String).input(),
-      type: (map['type'] as String).input(),
+      applianceId: pulumi.Input.fromValue(map['applianceId'] as String),
+      applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
+      applicationName: pulumi.Input.fromValue(map['applicationName'] as String),
+      backupAppliance: pulumi.Input.fromValue(map['backupAppliance'] as String),
+      hostId: pulumi.Input.fromValue(map['hostId'] as String),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

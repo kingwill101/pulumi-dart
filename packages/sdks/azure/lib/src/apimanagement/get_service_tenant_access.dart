@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceTenantAccess {
   /// Is access to the Management API enabled (presumably "for this Tenant")?
   final pulumi.Input<bool> enabled;
+
   /// Primary access key for the tenant access information contract.
   final pulumi.Input<String> primaryKey;
+
   /// Secondary access key for the tenant access information contract.
   final pulumi.Input<String> secondaryKey;
+
   /// The ID of the Tenant which has access to this API Management instance.
   final pulumi.Input<String> tenantId;
 
@@ -35,11 +38,10 @@ class GetServiceTenantAccess {
 
   factory GetServiceTenantAccess.fromMap(Map<String, dynamic> map) {
     return GetServiceTenantAccess(
-      enabled: (map['enabled'] as bool).input(),
-      primaryKey: (map['primaryKey'] as String).input(),
-      secondaryKey: (map['secondaryKey'] as String).input(),
-      tenantId: (map['tenantId'] as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      primaryKey: pulumi.Input.fromValue(map['primaryKey'] as String),
+      secondaryKey: pulumi.Input.fromValue(map['secondaryKey'] as String),
+      tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }
 }
-

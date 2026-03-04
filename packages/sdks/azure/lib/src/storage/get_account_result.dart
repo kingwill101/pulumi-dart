@@ -9,188 +9,279 @@ import 'get_account_identity.dart';
 class GetAccountResult {
   /// The access tier for `BlobStorage` accounts.
   final String accessTier;
+
   /// The Kind of account.
   final String accountKind;
+
   /// The type of replication used for this storage account.
   final String accountReplicationType;
+
   /// The Tier of this storage account.
   final String accountTier;
+
   /// Can nested items in the storage account opt into allowing public access?
   final bool allowNestedItemsToBePublic;
+
   /// A `azure_files_authentication` block as documented below.
   final List<GetAccountAzureFilesAuthentication> azureFilesAuthentications;
+
   /// supports the following:
   final List<GetAccountCustomDomain> customDomains;
+
   /// Which DNS endpoint type is used - either `Standard` or `AzureDnsZone`.
   final String dnsEndpointType;
+
   /// Is traffic only allowed via HTTPS? See [here](https://docs.microsoft.com/azure/storage/storage-require-secure-transfer/) for more information.
   final bool httpsTrafficOnlyEnabled;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// An `identity` block as documented below.
   final List<GetAccountIdentity> identities;
+
   /// Is infrastructure encryption enabled? See [here](https://docs.microsoft.com/azure/storage/common/infrastructure-encryption-enable/)
   /// for more information.
   final bool infrastructureEncryptionEnabled;
+
   /// Is Hierarchical Namespace enabled?
   final bool isHnsEnabled;
+
   /// The Azure location where the Storage Account exists
   final String location;
+
   /// The minimum supported TLS version for this storage account.
   final String? minTlsVersion;
+
   /// The Custom Domain Name used for the Storage Account.
   final String name;
+
   /// Is NFSv3 protocol enabled?
   final bool nfsv3Enabled;
+
   /// The primary access key for the Storage Account.
   final String primaryAccessKey;
+
   /// The connection string associated with the primary blob location
   final String primaryBlobConnectionString;
+
   /// The endpoint URL for blob storage in the primary location.
   final String primaryBlobEndpoint;
+
   /// The hostname with port if applicable for blob storage in the primary location.
   final String primaryBlobHost;
+
   /// The internet routing endpoint URL for blob storage in the primary location.
   final String primaryBlobInternetEndpoint;
+
   /// The internet routing hostname with port if applicable for blob storage in the primary location.
   final String primaryBlobInternetHost;
+
   /// The microsoft routing endpoint URL for blob storage in the primary location.
   final String primaryBlobMicrosoftEndpoint;
+
   /// The microsoft routing hostname with port if applicable for blob storage in the primary location.
   final String primaryBlobMicrosoftHost;
+
   /// The connection string associated with the primary location
   final String primaryConnectionString;
+
   /// The endpoint URL for DFS storage in the primary location.
   final String primaryDfsEndpoint;
+
   /// The hostname with port if applicable for DFS storage in the primary location.
   final String primaryDfsHost;
+
   /// The internet routing endpoint URL for DFS storage in the primary location.
   final String primaryDfsInternetEndpoint;
+
   /// The internet routing hostname with port if applicable for DFS storage in the primary location.
   final String primaryDfsInternetHost;
+
   /// The microsoft routing endpoint URL for DFS storage in the primary location.
   final String primaryDfsMicrosoftEndpoint;
+
   /// The microsoft routing hostname with port if applicable for DFS storage in the primary location.
   final String primaryDfsMicrosoftHost;
+
   /// The endpoint URL for file storage in the primary location.
   final String primaryFileEndpoint;
+
   /// The hostname with port if applicable for file storage in the primary location.
   final String primaryFileHost;
+
   /// The internet routing endpoint URL for file storage in the primary location.
   final String primaryFileInternetEndpoint;
+
   /// The internet routing hostname with port if applicable for file storage in the primary location.
   final String primaryFileInternetHost;
+
   /// The microsoft routing endpoint URL for file storage in the primary location.
   final String primaryFileMicrosoftEndpoint;
+
   /// The microsoft routing hostname with port if applicable for file storage in the primary location.
   final String primaryFileMicrosoftHost;
+
   /// The primary location of the Storage Account.
   final String primaryLocation;
+
   /// The endpoint URL for queue storage in the primary location.
   final String primaryQueueEndpoint;
+
   /// The hostname with port if applicable for queue storage in the primary location.
   final String primaryQueueHost;
+
   /// The microsoft routing endpoint URL for queue storage in the primary location.
   final String primaryQueueMicrosoftEndpoint;
+
   /// The microsoft routing hostname with port if applicable for queue storage in the primary location.
   final String primaryQueueMicrosoftHost;
+
   /// The endpoint URL for table storage in the primary location.
   final String primaryTableEndpoint;
+
   /// The hostname with port if applicable for table storage in the primary location.
   final String primaryTableHost;
+
   /// The microsoft routing endpoint URL for table storage in the primary location.
   final String primaryTableMicrosoftEndpoint;
+
   /// The microsoft routing hostname with port if applicable for table storage in the primary location.
   final String primaryTableMicrosoftHost;
+
   /// The endpoint URL for web storage in the primary location.
   final String primaryWebEndpoint;
+
   /// The hostname with port if applicable for web storage in the primary location.
   final String primaryWebHost;
+
   /// The internet routing endpoint URL for web storage in the primary location.
   final String primaryWebInternetEndpoint;
+
   /// The internet routing hostname with port if applicable for web storage in the primary location.
   final String primaryWebInternetHost;
+
   /// The microsoft routing endpoint URL for web storage in the primary location.
   final String primaryWebMicrosoftEndpoint;
+
   /// The microsoft routing hostname with port if applicable for web storage in the primary location.
   final String primaryWebMicrosoftHost;
+
   /// The encryption key type of the queue.
   final String queueEncryptionKeyType;
   final String? resourceGroupName;
+
   /// The secondary access key for the Storage Account.
   final String secondaryAccessKey;
+
   /// The connection string associated with the secondary blob location
   final String secondaryBlobConnectionString;
+
   /// The endpoint URL for blob storage in the secondary location.
   final String secondaryBlobEndpoint;
+
   /// The hostname with port if applicable for blob storage in the secondary location.
   final String secondaryBlobHost;
+
   /// The internet routing endpoint URL for blob storage in the secondary location.
   final String secondaryBlobInternetEndpoint;
+
   /// The internet routing hostname with port if applicable for blob storage in the secondary location.
   final String secondaryBlobInternetHost;
+
   /// The microsoft routing endpoint URL for blob storage in the secondary location.
   final String secondaryBlobMicrosoftEndpoint;
+
   /// The microsoft routing hostname with port if applicable for blob storage in the secondary location.
   final String secondaryBlobMicrosoftHost;
+
   /// The connection string associated with the secondary location
   final String secondaryConnectionString;
+
   /// The endpoint URL for DFS storage in the secondary location.
   final String secondaryDfsEndpoint;
+
   /// The hostname with port if applicable for DFS storage in the secondary location.
   final String secondaryDfsHost;
+
   /// The internet routing endpoint URL for DFS storage in the secondary location.
   final String secondaryDfsInternetEndpoint;
+
   /// The internet routing hostname with port if applicable for DFS storage in the secondary location.
   final String secondaryDfsInternetHost;
+
   /// The microsoft routing endpoint URL for DFS storage in the secondary location.
   final String secondaryDfsMicrosoftEndpoint;
+
   /// The microsoft routing hostname with port if applicable for DFS storage in the secondary location.
   final String secondaryDfsMicrosoftHost;
+
   /// The endpoint URL for file storage in the secondary location.
   final String secondaryFileEndpoint;
+
   /// The hostname with port if applicable for file storage in the secondary location.
   final String secondaryFileHost;
+
   /// The internet routing endpoint URL for file storage in the secondary location.
   final String secondaryFileInternetEndpoint;
+
   /// The internet routing hostname with port if applicable for file storage in the secondary location.
   final String secondaryFileInternetHost;
+
   /// The microsoft routing endpoint URL for file storage in the secondary location.
   final String secondaryFileMicrosoftEndpoint;
+
   /// The microsoft routing hostname with port if applicable for file storage in the secondary location.
   final String secondaryFileMicrosoftHost;
+
   /// The secondary location of the Storage Account.
   final String secondaryLocation;
+
   /// The endpoint URL for queue storage in the secondary location.
   final String secondaryQueueEndpoint;
+
   /// The hostname with port if applicable for queue storage in the secondary location.
   final String secondaryQueueHost;
+
   /// The microsoft routing endpoint URL for queue storage in the secondary location.
   final String secondaryQueueMicrosoftEndpoint;
+
   /// The microsoft routing hostname with port if applicable for queue storage in the secondary location.
   final String secondaryQueueMicrosoftHost;
+
   /// The endpoint URL for table storage in the secondary location.
   final String secondaryTableEndpoint;
+
   /// The hostname with port if applicable for table storage in the secondary location.
   final String secondaryTableHost;
+
   /// The microsoft routing endpoint URL for table storage in the secondary location.
   final String secondaryTableMicrosoftEndpoint;
+
   /// The microsoft routing hostname with port if applicable for table storage in the secondary location.
   final String secondaryTableMicrosoftHost;
+
   /// The endpoint URL for web storage in the secondary location.
   final String secondaryWebEndpoint;
+
   /// The hostname with port if applicable for web storage in the secondary location.
   final String secondaryWebHost;
+
   /// The internet routing endpoint URL for web storage in the secondary location.
   final String secondaryWebInternetEndpoint;
+
   /// The internet routing hostname with port if applicable for web storage in the secondary location.
   final String secondaryWebInternetHost;
+
   /// The microsoft routing endpoint URL for web storage in the secondary location.
   final String secondaryWebMicrosoftEndpoint;
+
   /// The microsoft routing hostname with port if applicable for web storage in the secondary location.
   final String secondaryWebMicrosoftHost;
+
   /// The encryption key type of the table.
   final String tableEncryptionKeyType;
+
   /// A mapping of tags to assigned to the resource.
   final Map<String, String> tags;
 
@@ -391,12 +482,24 @@ class GetAccountResult {
       'accountReplicationType': accountReplicationType,
       'accountTier': accountTier,
       'allowNestedItemsToBePublic': allowNestedItemsToBePublic,
-      'azureFilesAuthentications': pulumi.Input.encodeList<GetAccountAzureFilesAuthentication, Map<String, dynamic>>(azureFilesAuthentications, (value) => value.toMap()),
-      'customDomains': pulumi.Input.encodeList<GetAccountCustomDomain, Map<String, dynamic>>(customDomains, (value) => value.toMap()),
+      'azureFilesAuthentications':
+          pulumi.Input.encodeList<
+            GetAccountAzureFilesAuthentication,
+            Map<String, dynamic>
+          >(azureFilesAuthentications, (value) => value.toMap()),
+      'customDomains':
+          pulumi.Input.encodeList<GetAccountCustomDomain, Map<String, dynamic>>(
+            customDomains,
+            (value) => value.toMap(),
+          ),
       'dnsEndpointType': dnsEndpointType,
       'httpsTrafficOnlyEnabled': httpsTrafficOnlyEnabled,
       'id': id,
-      'identities': pulumi.Input.encodeList<GetAccountIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
+      'identities':
+          pulumi.Input.encodeList<GetAccountIdentity, Map<String, dynamic>>(
+            identities,
+            (value) => value.toMap(),
+          ),
       'infrastructureEncryptionEnabled': infrastructureEncryptionEnabled,
       'isHnsEnabled': isHnsEnabled,
       'location': location,
@@ -489,16 +592,36 @@ class GetAccountResult {
       accountReplicationType: map['accountReplicationType'] as String,
       accountTier: map['accountTier'] as String,
       allowNestedItemsToBePublic: map['allowNestedItemsToBePublic'] as bool,
-      azureFilesAuthentications: pulumi.Input.decodeList<GetAccountAzureFilesAuthentication>(map['azureFilesAuthentications'], (value) => GetAccountAzureFilesAuthentication.fromMap((value as Map).cast<String, dynamic>())),
-      customDomains: pulumi.Input.decodeList<GetAccountCustomDomain>(map['customDomains'], (value) => GetAccountCustomDomain.fromMap((value as Map).cast<String, dynamic>())),
+      azureFilesAuthentications:
+          pulumi.Input.decodeList<GetAccountAzureFilesAuthentication>(
+            map['azureFilesAuthentications']!,
+            (value) => GetAccountAzureFilesAuthentication.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      customDomains: pulumi.Input.decodeList<GetAccountCustomDomain>(
+        map['customDomains']!,
+        (value) => GetAccountCustomDomain.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       dnsEndpointType: map['dnsEndpointType'] as String,
       httpsTrafficOnlyEnabled: map['httpsTrafficOnlyEnabled'] as bool,
       id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetAccountIdentity>(map['identities'], (value) => GetAccountIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      infrastructureEncryptionEnabled: map['infrastructureEncryptionEnabled'] as bool,
+      identities: pulumi.Input.decodeList<GetAccountIdentity>(
+        map['identities']!,
+        (value) =>
+            GetAccountIdentity.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      infrastructureEncryptionEnabled:
+          map['infrastructureEncryptionEnabled'] as bool,
       isHnsEnabled: map['isHnsEnabled'] as bool,
       location: map['location'] as String,
-      minTlsVersion: map['minTlsVersion'] == null ? null : map['minTlsVersion']! as String,
+      minTlsVersion: (() {
+        final guardedValue = map['minTlsVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
       nfsv3Enabled: map['nfsv3Enabled'] as bool,
       primaryAccessKey: map['primaryAccessKey'] as String,
@@ -507,7 +630,8 @@ class GetAccountResult {
       primaryBlobHost: map['primaryBlobHost'] as String,
       primaryBlobInternetEndpoint: map['primaryBlobInternetEndpoint'] as String,
       primaryBlobInternetHost: map['primaryBlobInternetHost'] as String,
-      primaryBlobMicrosoftEndpoint: map['primaryBlobMicrosoftEndpoint'] as String,
+      primaryBlobMicrosoftEndpoint:
+          map['primaryBlobMicrosoftEndpoint'] as String,
       primaryBlobMicrosoftHost: map['primaryBlobMicrosoftHost'] as String,
       primaryConnectionString: map['primaryConnectionString'] as String,
       primaryDfsEndpoint: map['primaryDfsEndpoint'] as String,
@@ -520,16 +644,19 @@ class GetAccountResult {
       primaryFileHost: map['primaryFileHost'] as String,
       primaryFileInternetEndpoint: map['primaryFileInternetEndpoint'] as String,
       primaryFileInternetHost: map['primaryFileInternetHost'] as String,
-      primaryFileMicrosoftEndpoint: map['primaryFileMicrosoftEndpoint'] as String,
+      primaryFileMicrosoftEndpoint:
+          map['primaryFileMicrosoftEndpoint'] as String,
       primaryFileMicrosoftHost: map['primaryFileMicrosoftHost'] as String,
       primaryLocation: map['primaryLocation'] as String,
       primaryQueueEndpoint: map['primaryQueueEndpoint'] as String,
       primaryQueueHost: map['primaryQueueHost'] as String,
-      primaryQueueMicrosoftEndpoint: map['primaryQueueMicrosoftEndpoint'] as String,
+      primaryQueueMicrosoftEndpoint:
+          map['primaryQueueMicrosoftEndpoint'] as String,
       primaryQueueMicrosoftHost: map['primaryQueueMicrosoftHost'] as String,
       primaryTableEndpoint: map['primaryTableEndpoint'] as String,
       primaryTableHost: map['primaryTableHost'] as String,
-      primaryTableMicrosoftEndpoint: map['primaryTableMicrosoftEndpoint'] as String,
+      primaryTableMicrosoftEndpoint:
+          map['primaryTableMicrosoftEndpoint'] as String,
       primaryTableMicrosoftHost: map['primaryTableMicrosoftHost'] as String,
       primaryWebEndpoint: map['primaryWebEndpoint'] as String,
       primaryWebHost: map['primaryWebHost'] as String,
@@ -538,46 +665,60 @@ class GetAccountResult {
       primaryWebMicrosoftEndpoint: map['primaryWebMicrosoftEndpoint'] as String,
       primaryWebMicrosoftHost: map['primaryWebMicrosoftHost'] as String,
       queueEncryptionKeyType: map['queueEncryptionKeyType'] as String,
-      resourceGroupName: map['resourceGroupName'] == null ? null : map['resourceGroupName']! as String,
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       secondaryAccessKey: map['secondaryAccessKey'] as String,
-      secondaryBlobConnectionString: map['secondaryBlobConnectionString'] as String,
+      secondaryBlobConnectionString:
+          map['secondaryBlobConnectionString'] as String,
       secondaryBlobEndpoint: map['secondaryBlobEndpoint'] as String,
       secondaryBlobHost: map['secondaryBlobHost'] as String,
-      secondaryBlobInternetEndpoint: map['secondaryBlobInternetEndpoint'] as String,
+      secondaryBlobInternetEndpoint:
+          map['secondaryBlobInternetEndpoint'] as String,
       secondaryBlobInternetHost: map['secondaryBlobInternetHost'] as String,
-      secondaryBlobMicrosoftEndpoint: map['secondaryBlobMicrosoftEndpoint'] as String,
+      secondaryBlobMicrosoftEndpoint:
+          map['secondaryBlobMicrosoftEndpoint'] as String,
       secondaryBlobMicrosoftHost: map['secondaryBlobMicrosoftHost'] as String,
       secondaryConnectionString: map['secondaryConnectionString'] as String,
       secondaryDfsEndpoint: map['secondaryDfsEndpoint'] as String,
       secondaryDfsHost: map['secondaryDfsHost'] as String,
-      secondaryDfsInternetEndpoint: map['secondaryDfsInternetEndpoint'] as String,
+      secondaryDfsInternetEndpoint:
+          map['secondaryDfsInternetEndpoint'] as String,
       secondaryDfsInternetHost: map['secondaryDfsInternetHost'] as String,
-      secondaryDfsMicrosoftEndpoint: map['secondaryDfsMicrosoftEndpoint'] as String,
+      secondaryDfsMicrosoftEndpoint:
+          map['secondaryDfsMicrosoftEndpoint'] as String,
       secondaryDfsMicrosoftHost: map['secondaryDfsMicrosoftHost'] as String,
       secondaryFileEndpoint: map['secondaryFileEndpoint'] as String,
       secondaryFileHost: map['secondaryFileHost'] as String,
-      secondaryFileInternetEndpoint: map['secondaryFileInternetEndpoint'] as String,
+      secondaryFileInternetEndpoint:
+          map['secondaryFileInternetEndpoint'] as String,
       secondaryFileInternetHost: map['secondaryFileInternetHost'] as String,
-      secondaryFileMicrosoftEndpoint: map['secondaryFileMicrosoftEndpoint'] as String,
+      secondaryFileMicrosoftEndpoint:
+          map['secondaryFileMicrosoftEndpoint'] as String,
       secondaryFileMicrosoftHost: map['secondaryFileMicrosoftHost'] as String,
       secondaryLocation: map['secondaryLocation'] as String,
       secondaryQueueEndpoint: map['secondaryQueueEndpoint'] as String,
       secondaryQueueHost: map['secondaryQueueHost'] as String,
-      secondaryQueueMicrosoftEndpoint: map['secondaryQueueMicrosoftEndpoint'] as String,
+      secondaryQueueMicrosoftEndpoint:
+          map['secondaryQueueMicrosoftEndpoint'] as String,
       secondaryQueueMicrosoftHost: map['secondaryQueueMicrosoftHost'] as String,
       secondaryTableEndpoint: map['secondaryTableEndpoint'] as String,
       secondaryTableHost: map['secondaryTableHost'] as String,
-      secondaryTableMicrosoftEndpoint: map['secondaryTableMicrosoftEndpoint'] as String,
+      secondaryTableMicrosoftEndpoint:
+          map['secondaryTableMicrosoftEndpoint'] as String,
       secondaryTableMicrosoftHost: map['secondaryTableMicrosoftHost'] as String,
       secondaryWebEndpoint: map['secondaryWebEndpoint'] as String,
       secondaryWebHost: map['secondaryWebHost'] as String,
-      secondaryWebInternetEndpoint: map['secondaryWebInternetEndpoint'] as String,
+      secondaryWebInternetEndpoint:
+          map['secondaryWebInternetEndpoint'] as String,
       secondaryWebInternetHost: map['secondaryWebInternetHost'] as String,
-      secondaryWebMicrosoftEndpoint: map['secondaryWebMicrosoftEndpoint'] as String,
+      secondaryWebMicrosoftEndpoint:
+          map['secondaryWebMicrosoftEndpoint'] as String,
       secondaryWebMicrosoftHost: map['secondaryWebMicrosoftHost'] as String,
       tableEncryptionKeyType: map['tableEncryptionKeyType'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

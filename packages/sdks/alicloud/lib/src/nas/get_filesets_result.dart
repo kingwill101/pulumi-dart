@@ -7,6 +7,7 @@ import 'get_filesets_fileset.dart';
 class GetFilesetsResult {
   final String fileSystemId;
   final List<GetFilesetsFileset> filesets;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -32,7 +33,11 @@ class GetFilesetsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fileSystemId': fileSystemId,
-      'filesets': pulumi.Input.encodeList<GetFilesetsFileset, Map<String, dynamic>>(filesets, (value) => value.toMap()),
+      'filesets':
+          pulumi.Input.encodeList<GetFilesetsFileset, Map<String, dynamic>>(
+            filesets,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
@@ -43,12 +48,23 @@ class GetFilesetsResult {
   factory GetFilesetsResult.fromMap(Map<String, dynamic> map) {
     return GetFilesetsResult(
       fileSystemId: map['fileSystemId'] as String,
-      filesets: pulumi.Input.decodeList<GetFilesetsFileset>(map['filesets'], (value) => GetFilesetsFileset.fromMap((value as Map).cast<String, dynamic>())),
+      filesets: pulumi.Input.decodeList<GetFilesetsFileset>(
+        map['filesets']!,
+        (value) =>
+            GetFilesetsFileset.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

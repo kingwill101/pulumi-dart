@@ -10,10 +10,13 @@ import 'worker_resource_response_composer_v1beta1.dart';
 class WorkloadsConfigResponseComposerV1beta1 {
   /// Optional. Resources used by Airflow schedulers.
   final pulumi.Input<SchedulerResourceResponseComposerV1beta1> scheduler;
+
   /// Optional. Resources used by Airflow triggerers.
   final pulumi.Input<TriggererResourceResponseComposerV1beta1> triggerer;
+
   /// Optional. Resources used by Airflow web server.
   final pulumi.Input<WebServerResourceResponseComposerV1beta1> webServer;
+
   /// Optional. Resources used by Airflow workers.
   final pulumi.Input<WorkerResourceResponseComposerV1beta1> worker;
 
@@ -31,20 +34,53 @@ class WorkloadsConfigResponseComposerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'scheduler': pulumi.Input.mapInputValue<SchedulerResourceResponseComposerV1beta1, Map<String, dynamic>>(scheduler, (value) => value.toMap()),
-      'triggerer': pulumi.Input.mapInputValue<TriggererResourceResponseComposerV1beta1, Map<String, dynamic>>(triggerer, (value) => value.toMap()),
-      'webServer': pulumi.Input.mapInputValue<WebServerResourceResponseComposerV1beta1, Map<String, dynamic>>(webServer, (value) => value.toMap()),
-      'worker': pulumi.Input.mapInputValue<WorkerResourceResponseComposerV1beta1, Map<String, dynamic>>(worker, (value) => value.toMap()),
+      'scheduler':
+          pulumi.Input.mapInputValue<
+            SchedulerResourceResponseComposerV1beta1,
+            Map<String, dynamic>
+          >(scheduler, (value) => value.toMap()),
+      'triggerer':
+          pulumi.Input.mapInputValue<
+            TriggererResourceResponseComposerV1beta1,
+            Map<String, dynamic>
+          >(triggerer, (value) => value.toMap()),
+      'webServer':
+          pulumi.Input.mapInputValue<
+            WebServerResourceResponseComposerV1beta1,
+            Map<String, dynamic>
+          >(webServer, (value) => value.toMap()),
+      'worker':
+          pulumi.Input.mapInputValue<
+            WorkerResourceResponseComposerV1beta1,
+            Map<String, dynamic>
+          >(worker, (value) => value.toMap()),
     };
   }
 
-  factory WorkloadsConfigResponseComposerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory WorkloadsConfigResponseComposerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkloadsConfigResponseComposerV1beta1(
-      scheduler: (SchedulerResourceResponseComposerV1beta1.fromMap((map['scheduler'] as Map).cast<String, dynamic>())).input(),
-      triggerer: (TriggererResourceResponseComposerV1beta1.fromMap((map['triggerer'] as Map).cast<String, dynamic>())).input(),
-      webServer: (WebServerResourceResponseComposerV1beta1.fromMap((map['webServer'] as Map).cast<String, dynamic>())).input(),
-      worker: (WorkerResourceResponseComposerV1beta1.fromMap((map['worker'] as Map).cast<String, dynamic>())).input(),
+      scheduler: pulumi.Input.fromValue(
+        SchedulerResourceResponseComposerV1beta1.fromMap(
+          (map['scheduler']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      triggerer: pulumi.Input.fromValue(
+        TriggererResourceResponseComposerV1beta1.fromMap(
+          (map['triggerer']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      webServer: pulumi.Input.fromValue(
+        WebServerResourceResponseComposerV1beta1.fromMap(
+          (map['webServer']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      worker: pulumi.Input.fromValue(
+        WorkerResourceResponseComposerV1beta1.fromMap(
+          (map['worker']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

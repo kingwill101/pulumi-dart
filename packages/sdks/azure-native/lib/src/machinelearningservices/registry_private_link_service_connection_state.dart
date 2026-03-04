@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryPrivateLinkServiceConnectionState {
   /// Some RP chose "None". Other RPs use this for region expansion.
   final pulumi.Input<String>? actionsRequired;
+
   /// User-defined message that, per NRP doc, may be used for approval-related message.
   final pulumi.Input<String>? description;
+
   /// Connection status of the service consumer with the service provider
   final pulumi.Input<String>? status;
 
@@ -29,12 +31,25 @@ class RegistryPrivateLinkServiceConnectionState {
     };
   }
 
-  factory RegistryPrivateLinkServiceConnectionState.fromMap(Map<String, dynamic> map) {
+  factory RegistryPrivateLinkServiceConnectionState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegistryPrivateLinkServiceConnectionState(
-      actionsRequired: map['actionsRequired'] == null ? null : (map['actionsRequired']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      actionsRequired: (() {
+        final guardedValue = map['actionsRequired'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

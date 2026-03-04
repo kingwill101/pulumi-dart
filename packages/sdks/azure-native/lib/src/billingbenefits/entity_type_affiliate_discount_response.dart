@@ -6,31 +6,44 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EntityTypeAffiliateDiscountResponse {
   /// List of applied scopes supported for discounts.
   final pulumi.Input<String>? appliedScopeType;
+
   /// Fully-qualified identifier of the benefit under applicable benefit list.
   final pulumi.Input<String> benefitResourceId;
+
   /// Billing account resource id where the discount metadata is present.
   final pulumi.Input<String> billingAccountResourceId;
+
   /// Billing profile resource id where the discount is scoped to.
   final pulumi.Input<String> billingProfileResourceId;
+
   /// Customer resource id where the discount is scoped to.
   final pulumi.Input<String> customerResourceId;
+
   /// This defines a user friendly display name for the discount.
   final pulumi.Input<String>? displayName;
+
   /// End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate.
   final pulumi.Input<String> endAt;
+
   /// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
   /// Expected value is 'Affiliate'.
   final pulumi.Input<String> entityType;
+
   /// This will be present in the response if the primary has a resource ID
   final pulumi.Input<String> primaryResourceId;
+
   /// This is the catalog UPN for the product.
   final pulumi.Input<String> productCode;
+
   /// The state of the resource. Supported values are Pending, Failed, Succeeded, Canceled.
   final pulumi.Input<String> provisioningState;
+
   /// Start date of the discount. Value is the date the discount started or will start in the future.
   final pulumi.Input<String> startAt;
+
   /// Represents the current status of the discount.
   final pulumi.Input<String> status;
+
   /// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
   final pulumi.Input<String>? systemId;
 
@@ -85,23 +98,48 @@ class EntityTypeAffiliateDiscountResponse {
     };
   }
 
-  factory EntityTypeAffiliateDiscountResponse.fromMap(Map<String, dynamic> map) {
+  factory EntityTypeAffiliateDiscountResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EntityTypeAffiliateDiscountResponse(
-      appliedScopeType: map['appliedScopeType'] == null ? null : (map['appliedScopeType']! as String).input(),
-      benefitResourceId: (map['benefitResourceId'] as String).input(),
-      billingAccountResourceId: (map['billingAccountResourceId'] as String).input(),
-      billingProfileResourceId: (map['billingProfileResourceId'] as String).input(),
-      customerResourceId: (map['customerResourceId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      endAt: (map['endAt'] as String).input(),
-      entityType: (map['entityType'] as String).input(),
-      primaryResourceId: (map['primaryResourceId'] as String).input(),
-      productCode: (map['productCode'] as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      startAt: (map['startAt'] as String).input(),
-      status: (map['status'] as String).input(),
-      systemId: map['systemId'] == null ? null : (map['systemId']! as String).input(),
+      appliedScopeType: (() {
+        final guardedValue = map['appliedScopeType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      benefitResourceId: pulumi.Input.fromValue(
+        map['benefitResourceId'] as String,
+      ),
+      billingAccountResourceId: pulumi.Input.fromValue(
+        map['billingAccountResourceId'] as String,
+      ),
+      billingProfileResourceId: pulumi.Input.fromValue(
+        map['billingProfileResourceId'] as String,
+      ),
+      customerResourceId: pulumi.Input.fromValue(
+        map['customerResourceId'] as String,
+      ),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endAt: pulumi.Input.fromValue(map['endAt'] as String),
+      entityType: pulumi.Input.fromValue(map['entityType'] as String),
+      primaryResourceId: pulumi.Input.fromValue(
+        map['primaryResourceId'] as String,
+      ),
+      productCode: pulumi.Input.fromValue(map['productCode'] as String),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      startAt: pulumi.Input.fromValue(map['startAt'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      systemId: (() {
+        final guardedValue = map['systemId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

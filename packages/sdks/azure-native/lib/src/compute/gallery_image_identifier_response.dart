@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GalleryImageIdentifierResponse {
   /// The name of the gallery image definition offer.
   final pulumi.Input<String> offer;
+
   /// The name of the gallery image definition publisher.
   final pulumi.Input<String> publisher;
+
   /// The name of the gallery image definition SKU.
   final pulumi.Input<String> sku;
 
@@ -31,10 +33,9 @@ class GalleryImageIdentifierResponse {
 
   factory GalleryImageIdentifierResponse.fromMap(Map<String, dynamic> map) {
     return GalleryImageIdentifierResponse(
-      offer: (map['offer'] as String).input(),
-      publisher: (map['publisher'] as String).input(),
-      sku: (map['sku'] as String).input(),
+      offer: pulumi.Input.fromValue(map['offer'] as String),
+      publisher: pulumi.Input.fromValue(map['publisher'] as String),
+      sku: pulumi.Input.fromValue(map['sku'] as String),
     );
   }
 }
-

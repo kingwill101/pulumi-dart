@@ -7,22 +7,31 @@ import 'log_settings_response.dart';
 class GetDiagnosticSettingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The resource Id for the event hub authorization rule.
   final String? eventHubAuthorizationRuleId;
+
   /// The name of the event hub. If none is specified, the default event hub will be selected.
   final String? eventHubName;
+
   /// Azure resource Id
   final String id;
+
   /// The list of logs settings.
   final List<LogSettingsResponse>? logs;
+
   /// Azure resource name
   final String name;
+
   /// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
   final String? serviceBusRuleId;
+
   /// The resource ID of the storage account to which you would like to send Diagnostic Logs.
   final String? storageAccountId;
+
   /// Azure resource type
   final String type;
+
   /// The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
   final String? workspaceId;
 
@@ -56,7 +65,14 @@ class GetDiagnosticSettingResult {
       'eventHubAuthorizationRuleId': ?eventHubAuthorizationRuleId,
       'eventHubName': ?eventHubName,
       'id': id,
-      'logs': ?logs == null ? null : pulumi.Input.encodeList<LogSettingsResponse, Map<String, dynamic>>(logs!, (value) => value.toMap()),
+      'logs': ?(() {
+        final guardedValue = logs;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          LogSettingsResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'name': name,
       'serviceBusRuleId': ?serviceBusRuleId,
       'storageAccountId': ?storageAccountId,
@@ -68,16 +84,44 @@ class GetDiagnosticSettingResult {
   factory GetDiagnosticSettingResult.fromMap(Map<String, dynamic> map) {
     return GetDiagnosticSettingResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eventHubAuthorizationRuleId: map['eventHubAuthorizationRuleId'] == null ? null : map['eventHubAuthorizationRuleId']! as String,
-      eventHubName: map['eventHubName'] == null ? null : map['eventHubName']! as String,
+      eventHubAuthorizationRuleId: (() {
+        final guardedValue = map['eventHubAuthorizationRuleId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      eventHubName: (() {
+        final guardedValue = map['eventHubName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      logs: map['logs'] == null ? null : pulumi.Input.decodeList<LogSettingsResponse>(map['logs']!, (value) => LogSettingsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      logs: (() {
+        final guardedValue = map['logs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<LogSettingsResponse>(
+          guardedValue,
+          (value) => LogSettingsResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       name: map['name'] as String,
-      serviceBusRuleId: map['serviceBusRuleId'] == null ? null : map['serviceBusRuleId']! as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId']! as String,
+      serviceBusRuleId: (() {
+        final guardedValue = map['serviceBusRuleId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      storageAccountId: (() {
+        final guardedValue = map['storageAccountId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
-      workspaceId: map['workspaceId'] == null ? null : map['workspaceId']! as String,
+      workspaceId: (() {
+        final guardedValue = map['workspaceId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

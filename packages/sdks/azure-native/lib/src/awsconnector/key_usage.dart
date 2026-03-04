@@ -4,16 +4,15 @@ enum KeyUsage {
   gENERATEVERIFYMAC("GENERATE_VERIFY_MAC"),
   sIGNVERIFY("SIGN_VERIFY");
 
-  const KeyUsage(this.value);
-  final String value;
+  const KeyUsage(this.wireValue);
+  final String wireValue;
 
   static KeyUsage fromValue(String value) {
     for (final item in KeyUsage.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KeyUsage value: $value');
   }
 }
-

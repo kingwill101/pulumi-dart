@@ -12,16 +12,15 @@ enum ContentFormat {
   valueOpenapiJsonLink("openapi+json-link"),
   valueGraphqlLink("graphql-link");
 
-  const ContentFormat(this.value);
-  final String value;
+  const ContentFormat(this.wireValue);
+  final String wireValue;
 
   static ContentFormat fromValue(String value) {
     for (final item in ContentFormat.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ContentFormat value: $value');
   }
 }
-

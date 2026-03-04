@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RelationshipProperties {
   /// Resource name of the child entity
   final pulumi.Input<String> childEntityName;
+
   /// Display name
   final pulumi.Input<String>? displayName;
+
   /// Optional set of labels (key-value pairs)
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Resource name of the parent entity
   final pulumi.Input<String> parentEntityName;
 
@@ -36,11 +39,22 @@ class RelationshipProperties {
 
   factory RelationshipProperties.fromMap(Map<String, dynamic> map) {
     return RelationshipProperties(
-      childEntityName: (map['childEntityName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      parentEntityName: (map['parentEntityName'] as String).input(),
+      childEntityName: pulumi.Input.fromValue(map['childEntityName'] as String),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      parentEntityName: pulumi.Input.fromValue(
+        map['parentEntityName'] as String,
+      ),
     );
   }
 }
-

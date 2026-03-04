@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAiplatformV1TimestampSplitResponse {
   /// The key is a name of one of the Dataset's data columns. The values of the key (the values in the column) must be in RFC 3339 `date-time` format, where `time-offset` = `"Z"` (e.g. 1985-04-12T23:20:50.52Z). If for a piece of data the key is not present or has an invalid value, that piece is ignored by the pipeline.
   final pulumi.Input<String> key;
+
   /// The fraction of the input data that is to be used to evaluate the Model.
   final pulumi.Input<double> testFraction;
+
   /// The fraction of the input data that is to be used to train the Model.
   final pulumi.Input<double> trainingFraction;
+
   /// The fraction of the input data that is to be used to validate the Model.
   final pulumi.Input<double> validationFraction;
 
@@ -34,13 +37,18 @@ class GoogleCloudAiplatformV1TimestampSplitResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1TimestampSplitResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1TimestampSplitResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1TimestampSplitResponse(
-      key: (map['key'] as String).input(),
-      testFraction: (map['testFraction'] as double).input(),
-      trainingFraction: (map['trainingFraction'] as double).input(),
-      validationFraction: (map['validationFraction'] as double).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      testFraction: pulumi.Input.fromValue(map['testFraction'] as double),
+      trainingFraction: pulumi.Input.fromValue(
+        map['trainingFraction'] as double,
+      ),
+      validationFraction: pulumi.Input.fromValue(
+        map['validationFraction'] as double,
+      ),
     );
   }
 }
-

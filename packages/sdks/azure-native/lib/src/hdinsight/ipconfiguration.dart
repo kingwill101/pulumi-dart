@@ -7,12 +7,16 @@ import 'resource_id.dart';
 class IPConfiguration {
   /// The name of private link IP configuration.
   final pulumi.Input<String> name;
+
   /// Indicates whether this IP configuration is primary for the corresponding NIC.
   final pulumi.Input<bool>? primary;
+
   /// The IP address.
   final pulumi.Input<String>? privateIPAddress;
+
   /// The method that private IP address is allocated.
   final pulumi.Input<String>? privateIPAllocationMethod;
+
   /// The subnet resource id.
   final pulumi.Input<ResourceId>? subnet;
 
@@ -36,18 +40,39 @@ class IPConfiguration {
       'primary': ?primary,
       'privateIPAddress': ?privateIPAddress,
       'privateIPAllocationMethod': ?privateIPAllocationMethod,
-      'subnet': ?pulumi.Input.mapOptionalInputValue<ResourceId, Map<String, dynamic>>(subnet, (value) => value.toMap()),
+      'subnet':
+          ?pulumi.Input.mapOptionalInputValue<ResourceId, Map<String, dynamic>>(
+            subnet,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory IPConfiguration.fromMap(Map<String, dynamic> map) {
     return IPConfiguration(
-      name: (map['name'] as String).input(),
-      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod']! as String).input(),
-      subnet: map['subnet'] == null ? null : (ResourceId.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      primary: (() {
+        final guardedValue = map['primary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      privateIPAddress: (() {
+        final guardedValue = map['privateIPAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateIPAllocationMethod: (() {
+        final guardedValue = map['privateIPAllocationMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subnet: (() {
+        final guardedValue = map['subnet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceId.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

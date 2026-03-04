@@ -6,10 +6,13 @@ import 'template_source_destination.dart';
 class TemplateSource extends pulumi.CustomResource {
   /// The default destination for projects using templates from this source.
   late final pulumi.Output<TemplateSourceDestination?> destination;
+
   /// Organization name.
   late final pulumi.Output<String> organizationName;
+
   /// Source name.
   late final pulumi.Output<String> sourceName;
+
   /// Github URL of the repository from which to grab templates.
   late final pulumi.Output<String> sourceURL;
 
@@ -22,14 +25,14 @@ class TemplateSource extends pulumi.CustomResource {
     TemplateSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'pulumiservice:index:TemplateSource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.destination = registerOutput<TemplateSourceDestination?>('destination');
-    this.organizationName = registerOutput<String>('organizationName');
-    this.sourceName = registerOutput<String>('sourceName');
-    this.sourceURL = registerOutput<String>('sourceURL');
+         'pulumiservice:index:TemplateSource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    destination = registerOutput<TemplateSourceDestination?>('destination');
+    organizationName = registerOutput<String>('organizationName');
+    sourceName = registerOutput<String>('sourceName');
+    sourceURL = registerOutput<String>('sourceURL');
   }
 }

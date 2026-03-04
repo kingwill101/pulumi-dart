@@ -3,16 +3,15 @@ enum RoutingRuleEnabledState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const RoutingRuleEnabledState(this.value);
-  final String value;
+  const RoutingRuleEnabledState(this.wireValue);
+  final String wireValue;
 
   static RoutingRuleEnabledState fromValue(String value) {
     for (final item in RoutingRuleEnabledState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RoutingRuleEnabledState value: $value');
   }
 }
-

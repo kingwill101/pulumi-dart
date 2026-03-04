@@ -6,12 +6,16 @@ class GetKubernetesClusterNodePoolNode {
   /// The date and time when the node was created.
   final pulumi.Input<String> createdAt;
   final pulumi.Input<String> dropletId;
+
   /// A unique ID that can be used to identify and reference the node.
   final pulumi.Input<String> id;
+
   /// The name of Kubernetes cluster.
   final pulumi.Input<String> name;
+
   /// A string indicating the current status of the individual node.
   final pulumi.Input<String> status;
+
   /// The date and time when the node was last updated.
   final pulumi.Input<String> updatedAt;
 
@@ -44,13 +48,12 @@ class GetKubernetesClusterNodePoolNode {
 
   factory GetKubernetesClusterNodePoolNode.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterNodePoolNode(
-      createdAt: (map['createdAt'] as String).input(),
-      dropletId: (map['dropletId'] as String).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      status: (map['status'] as String).input(),
-      updatedAt: (map['updatedAt'] as String).input(),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      dropletId: pulumi.Input.fromValue(map['dropletId'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
     );
   }
 }
-

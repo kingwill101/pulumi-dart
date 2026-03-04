@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventNotificationConfigResponse {
   /// A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
   final pulumi.Input<String> pubsubTopicName;
+
   /// If the subfolder name matches this string exactly, this configuration will be used. The string must not include the leading '/' character. If empty, all strings are matched. This field is used only for telemetry events; subfolders are not supported for state changes.
   final pulumi.Input<String> subfolderMatches;
 
@@ -26,9 +27,10 @@ class EventNotificationConfigResponse {
 
   factory EventNotificationConfigResponse.fromMap(Map<String, dynamic> map) {
     return EventNotificationConfigResponse(
-      pubsubTopicName: (map['pubsubTopicName'] as String).input(),
-      subfolderMatches: (map['subfolderMatches'] as String).input(),
+      pubsubTopicName: pulumi.Input.fromValue(map['pubsubTopicName'] as String),
+      subfolderMatches: pulumi.Input.fromValue(
+        map['subfolderMatches'] as String,
+      ),
     );
   }
 }
-

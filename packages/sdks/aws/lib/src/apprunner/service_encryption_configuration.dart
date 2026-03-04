@@ -8,20 +8,15 @@ class ServiceEncryptionConfiguration {
 
   /// Creates a new [ServiceEncryptionConfiguration].
   /// [kmsKey] ARN of the KMS key used for encryption.
-  ServiceEncryptionConfiguration({
-    required this.kmsKey,
-  });
+  ServiceEncryptionConfiguration({required this.kmsKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKey': kmsKey,
-    };
+    return <String, dynamic>{'kmsKey': kmsKey};
   }
 
   factory ServiceEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceEncryptionConfiguration(
-      kmsKey: (map['kmsKey'] as String).input(),
+      kmsKey: pulumi.Input.fromValue(map['kmsKey'] as String),
     );
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExtensionArgs {
   /// The name of the kubernetes cluster.
   final pulumi.Input<String> clusterName;
+
   /// The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
   final pulumi.Input<String> clusterResourceName;
+
   /// The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
   final pulumi.Input<String> clusterRp;
+
   /// Name of the Extension.
   final pulumi.Input<String> extensionName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -44,12 +48,15 @@ class GetExtensionArgs {
 
   factory GetExtensionArgs.fromMap(Map<String, dynamic> map) {
     return GetExtensionArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      clusterResourceName: (map['clusterResourceName'] as String).input(),
-      clusterRp: (map['clusterRp'] as String).input(),
-      extensionName: (map['extensionName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      clusterResourceName: pulumi.Input.fromValue(
+        map['clusterResourceName'] as String,
+      ),
+      clusterRp: pulumi.Input.fromValue(map['clusterRp'] as String),
+      extensionName: pulumi.Input.fromValue(map['extensionName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

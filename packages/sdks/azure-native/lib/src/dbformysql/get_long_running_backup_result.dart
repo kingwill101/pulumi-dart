@@ -6,21 +6,29 @@ import 'system_data_response.dart';
 class GetLongRunningBackupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Backup name
   final String? backupNameV2;
   final String? backupType;
+
   /// Backup completed time (ISO8601 format).
   final String? completedTime;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// The provisioning state of backup resource.
   final String provisioningState;
+
   /// Backup source
   final String? source;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -66,16 +74,33 @@ class GetLongRunningBackupResult {
   factory GetLongRunningBackupResult.fromMap(Map<String, dynamic> map) {
     return GetLongRunningBackupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      backupNameV2: map['backupNameV2'] == null ? null : map['backupNameV2']! as String,
-      backupType: map['backupType'] == null ? null : map['backupType']! as String,
-      completedTime: map['completedTime'] == null ? null : map['completedTime']! as String,
+      backupNameV2: (() {
+        final guardedValue = map['backupNameV2'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      backupType: (() {
+        final guardedValue = map['backupType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      completedTime: (() {
+        final guardedValue = map['completedTime'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      source: map['source'] == null ? null : map['source']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

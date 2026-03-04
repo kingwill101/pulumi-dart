@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UsageSnapshotResponse {
   /// Optional. Accelerator type being used, if any
   final pulumi.Input<String> acceleratorType;
+
   /// Optional. Milli (one-thousandth) accelerator. (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
   final pulumi.Input<String> milliAccelerator;
+
   /// Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
   final pulumi.Input<String> milliDcu;
+
   /// Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) charged at premium tier (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
   final pulumi.Input<String> milliDcuPremium;
+
   /// Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
   final pulumi.Input<String> shuffleStorageGb;
+
   /// Optional. Shuffle Storage in gigabytes (GB) charged at premium tier. (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
   final pulumi.Input<String> shuffleStorageGbPremium;
+
   /// Optional. The timestamp of the usage snapshot.
   final pulumi.Input<String> snapshotTime;
 
@@ -51,14 +57,19 @@ class UsageSnapshotResponse {
 
   factory UsageSnapshotResponse.fromMap(Map<String, dynamic> map) {
     return UsageSnapshotResponse(
-      acceleratorType: (map['acceleratorType'] as String).input(),
-      milliAccelerator: (map['milliAccelerator'] as String).input(),
-      milliDcu: (map['milliDcu'] as String).input(),
-      milliDcuPremium: (map['milliDcuPremium'] as String).input(),
-      shuffleStorageGb: (map['shuffleStorageGb'] as String).input(),
-      shuffleStorageGbPremium: (map['shuffleStorageGbPremium'] as String).input(),
-      snapshotTime: (map['snapshotTime'] as String).input(),
+      acceleratorType: pulumi.Input.fromValue(map['acceleratorType'] as String),
+      milliAccelerator: pulumi.Input.fromValue(
+        map['milliAccelerator'] as String,
+      ),
+      milliDcu: pulumi.Input.fromValue(map['milliDcu'] as String),
+      milliDcuPremium: pulumi.Input.fromValue(map['milliDcuPremium'] as String),
+      shuffleStorageGb: pulumi.Input.fromValue(
+        map['shuffleStorageGb'] as String,
+      ),
+      shuffleStorageGbPremium: pulumi.Input.fromValue(
+        map['shuffleStorageGbPremium'] as String,
+      ),
+      snapshotTime: pulumi.Input.fromValue(map['snapshotTime'] as String),
     );
   }
 }
-

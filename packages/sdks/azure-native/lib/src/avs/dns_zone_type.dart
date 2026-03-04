@@ -3,16 +3,15 @@ enum DnsZoneType {
   public("Public"),
   private("Private");
 
-  const DnsZoneType(this.value);
-  final String value;
+  const DnsZoneType(this.wireValue);
+  final String wireValue;
 
   static DnsZoneType fromValue(String value) {
     for (final item in DnsZoneType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DnsZoneType value: $value');
   }
 }
-

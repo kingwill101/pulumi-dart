@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduleItemResponse {
   /// Start day.
   final pulumi.Input<String> startDay;
+
   /// Start time.
   final pulumi.Input<String> startTime;
+
   /// Stop day.
   final pulumi.Input<String> stopDay;
+
   /// Stop time.
   final pulumi.Input<String> stopTime;
 
@@ -36,11 +39,10 @@ class ScheduleItemResponse {
 
   factory ScheduleItemResponse.fromMap(Map<String, dynamic> map) {
     return ScheduleItemResponse(
-      startDay: (map['startDay'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      stopDay: (map['stopDay'] as String).input(),
-      stopTime: (map['stopTime'] as String).input(),
+      startDay: pulumi.Input.fromValue(map['startDay'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      stopDay: pulumi.Input.fromValue(map['stopDay'] as String),
+      stopTime: pulumi.Input.fromValue(map['stopTime'] as String),
     );
   }
 }
-

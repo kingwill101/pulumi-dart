@@ -11,11 +11,7 @@ class ApplicationUrlDispatchRule {
   /// [domain] Optional.
   /// [path] Optional.
   /// [service] Optional.
-  ApplicationUrlDispatchRule({
-    this.domain,
-    this.path,
-    this.service,
-  });
+  ApplicationUrlDispatchRule({this.domain, this.path, this.service});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,10 +23,21 @@ class ApplicationUrlDispatchRule {
 
   factory ApplicationUrlDispatchRule.fromMap(Map<String, dynamic> map) {
     return ApplicationUrlDispatchRule(
-      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      service: map['service'] == null ? null : (map['service']! as String).input(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -11,16 +11,22 @@ import 'resource_reference.dart';
 class IntegrationAccountArgs {
   /// The integration account name.
   final pulumi.Input<String>? integrationAccountName;
+
   /// The integration service environment.
   final pulumi.Input<ResourceReference>? integrationServiceEnvironment;
+
   /// The resource location.
   final pulumi.Input<String>? location;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The sku.
   final pulumi.Input<IntegrationAccountSku>? sku;
+
   /// The workflow state.
   final pulumi.Input<String>? state;
+
   /// The resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,10 +51,18 @@ class IntegrationAccountArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'integrationAccountName': ?integrationAccountName,
-      'integrationServiceEnvironment': ?pulumi.Input.mapOptionalInputValue<ResourceReference, Map<String, dynamic>>(integrationServiceEnvironment, (value) => value.toMap()),
+      'integrationServiceEnvironment':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceReference,
+            Map<String, dynamic>
+          >(integrationServiceEnvironment, (value) => value.toMap()),
       'location': ?location,
       'resourceGroupName': resourceGroupName,
-      'sku': ?pulumi.Input.mapOptionalInputValue<IntegrationAccountSku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku':
+          ?pulumi.Input.mapOptionalInputValue<
+            IntegrationAccountSku,
+            Map<String, dynamic>
+          >(sku, (value) => value.toMap()),
       'state': ?state,
       'tags': ?tags,
     };
@@ -56,14 +70,49 @@ class IntegrationAccountArgs {
 
   factory IntegrationAccountArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountArgs(
-      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName']! as String).input(),
-      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : (ResourceReference.fromMap((map['integrationServiceEnvironment']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (IntegrationAccountSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      integrationAccountName: (() {
+        final guardedValue = map['integrationAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      integrationServiceEnvironment: (() {
+        final guardedValue = map['integrationServiceEnvironment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceReference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IntegrationAccountSku.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

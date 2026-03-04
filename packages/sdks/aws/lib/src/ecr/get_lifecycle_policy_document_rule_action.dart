@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLifecyclePolicyDocumentRuleAction {
   /// The storage class you want the lifecycle policy to transition the image to. `archive` is the only supported value.
   final pulumi.Input<String>? targetStorageClass;
+
   /// Specify an action type. The supported values are `expire` (to delete images) and `transition` (to move images to archive storage).
   final pulumi.Input<String> type;
 
@@ -23,11 +24,16 @@ class GetLifecyclePolicyDocumentRuleAction {
     };
   }
 
-  factory GetLifecyclePolicyDocumentRuleAction.fromMap(Map<String, dynamic> map) {
+  factory GetLifecyclePolicyDocumentRuleAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLifecyclePolicyDocumentRuleAction(
-      targetStorageClass: map['targetStorageClass'] == null ? null : ((map['targetStorageClass'] as String).input()).input(),
-      type: (map['type'] as String).input(),
+      targetStorageClass: (() {
+        final guardedValue = map['targetStorageClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

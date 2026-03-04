@@ -8,7 +8,7 @@ import 'eip_instance_attachment_state.dart';
 ///
 /// For information about Ens Eip Instance Attachment and how to use it, see [What is Eip Instance Attachment](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-associateenseipaddress).
 ///
-/// > **NOTE:** Available since v1.227.0.
+/// &gt; **NOTE:** Available since v1.227.0.
 ///
 /// ## Example Usage
 ///
@@ -345,18 +345,22 @@ import 'eip_instance_attachment_state.dart';
 class EipInstanceAttachment extends pulumi.CustomResource {
   /// The first ID of the resource
   late final pulumi.Output<String> allocationId;
+
   /// Instance ID
   late final pulumi.Output<String> instanceId;
+
   /// The type of the EIP instance. Value:
   /// - `Nat`:NAT gateway.
   /// - `SlbInstance`: Server Load Balancer (ELB).
   /// - `NetworkInterface`: Secondary ENI.
   /// - `EnsInstance` (default): The ENS instance.
   late final pulumi.Output<String> instanceType;
+
   /// Indicates whether the EIP is a backup EIP. Value:
   /// - true: Spare.
   /// - false: not standby.
   late final pulumi.Output<bool?> standby;
+
   /// The status of the EIP.
   late final pulumi.Output<String> status;
 
@@ -369,16 +373,16 @@ class EipInstanceAttachment extends pulumi.CustomResource {
     EipInstanceAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/eipInstanceAttachment:EipInstanceAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocationId = registerOutput<String>('allocationId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.standby = registerOutput<bool?>('standby');
-    this.status = registerOutput<String>('status');
+         'alicloud:ens/eipInstanceAttachment:EipInstanceAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocationId = registerOutput<String>('allocationId');
+    instanceId = registerOutput<String>('instanceId');
+    instanceType = registerOutput<String>('instanceType');
+    standby = registerOutput<bool?>('standby');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [EipInstanceAttachment] resource's state with the given [name] and [id].
@@ -399,15 +403,15 @@ class EipInstanceAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/eipInstanceAttachment:EipInstanceAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allocationId = registerOutput<String>('allocationId');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.standby = registerOutput<bool?>('standby');
-    this.status = registerOutput<String>('status');
+         'alicloud:ens/eipInstanceAttachment:EipInstanceAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allocationId = registerOutput<String>('allocationId');
+    instanceId = registerOutput<String>('instanceId');
+    instanceType = registerOutput<String>('instanceType');
+    standby = registerOutput<bool?>('standby');
+    status = registerOutput<String>('status');
   }
 }

@@ -6,7 +6,7 @@ import 'router_tr_association_state.dart';
 ///
 /// For information about Express Connect Router Express Connect Router Tr Association and how to use it, see [What is Express Connect Router Tr Association](https://next.api.alibabacloud.com/api/ExpressConnectRouter/2023-09-01/CreateExpressConnectRouterAssociation).
 ///
-/// > **NOTE:** Available since v1.224.0.
+/// &gt; **NOTE:** Available since v1.224.0.
 ///
 /// ## Example Usage
 ///
@@ -338,20 +338,28 @@ import 'router_tr_association_state.dart';
 class RouterTrAssociation extends pulumi.CustomResource {
   /// List of allowed route prefixes.
   late final pulumi.Output<List<String>?> allowedPrefixes;
+
   /// The first ID of the resource.
   late final pulumi.Output<String> associationId;
+
   /// The region to which the VPC or TR belongs.
   late final pulumi.Output<String> associationRegionId;
+
   /// The ID of the CEN instance.
   late final pulumi.Output<String?> cenId;
+
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// The ID of the leased line gateway instance.
   late final pulumi.Output<String> ecrId;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
+
   /// The ID of the forwarding router instance.
   late final pulumi.Output<String> transitRouterId;
+
   /// The ID of the Alibaba Cloud account to which the forwarding router belongs.
   late final pulumi.Output<int?> transitRouterOwnerId;
 
@@ -364,20 +372,20 @@ class RouterTrAssociation extends pulumi.CustomResource {
     RouterTrAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/routerTrAssociation:RouterTrAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedPrefixes = registerOutput<List<String>?>('allowedPrefixes');
-    this.associationId = registerOutput<String>('associationId');
-    this.associationRegionId = registerOutput<String>('associationRegionId');
-    this.cenId = registerOutput<String?>('cenId');
-    this.createTime = registerOutput<String>('createTime');
-    this.ecrId = registerOutput<String>('ecrId');
-    this.status = registerOutput<String>('status');
-    this.transitRouterId = registerOutput<String>('transitRouterId');
-    this.transitRouterOwnerId = registerOutput<int?>('transitRouterOwnerId');
+         'alicloud:expressconnect/routerTrAssociation:RouterTrAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedPrefixes = registerOutput<List<String>?>('allowedPrefixes');
+    associationId = registerOutput<String>('associationId');
+    associationRegionId = registerOutput<String>('associationRegionId');
+    cenId = registerOutput<String?>('cenId');
+    createTime = registerOutput<String>('createTime');
+    ecrId = registerOutput<String>('ecrId');
+    status = registerOutput<String>('status');
+    transitRouterId = registerOutput<String>('transitRouterId');
+    transitRouterOwnerId = registerOutput<int?>('transitRouterOwnerId');
   }
 
   /// Gets an existing [RouterTrAssociation] resource's state with the given [name] and [id].
@@ -398,19 +406,19 @@ class RouterTrAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:expressconnect/routerTrAssociation:RouterTrAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedPrefixes = registerOutput<List<String>?>('allowedPrefixes');
-    this.associationId = registerOutput<String>('associationId');
-    this.associationRegionId = registerOutput<String>('associationRegionId');
-    this.cenId = registerOutput<String?>('cenId');
-    this.createTime = registerOutput<String>('createTime');
-    this.ecrId = registerOutput<String>('ecrId');
-    this.status = registerOutput<String>('status');
-    this.transitRouterId = registerOutput<String>('transitRouterId');
-    this.transitRouterOwnerId = registerOutput<int?>('transitRouterOwnerId');
+         'alicloud:expressconnect/routerTrAssociation:RouterTrAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedPrefixes = registerOutput<List<String>?>('allowedPrefixes');
+    associationId = registerOutput<String>('associationId');
+    associationRegionId = registerOutput<String>('associationRegionId');
+    cenId = registerOutput<String?>('cenId');
+    createTime = registerOutput<String>('createTime');
+    ecrId = registerOutput<String>('ecrId');
+    status = registerOutput<String>('status');
+    transitRouterId = registerOutput<String>('transitRouterId');
+    transitRouterOwnerId = registerOutput<int?>('transitRouterOwnerId');
   }
 }

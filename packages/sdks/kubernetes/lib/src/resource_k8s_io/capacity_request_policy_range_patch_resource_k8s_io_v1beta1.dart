@@ -15,10 +15,12 @@ class CapacityRequestPolicyRangePatchResourceK8sIoV1beta1 {
   ///
   /// Max must be less than or equal to the capacity value. Min and requestPolicy.default must be less than or equal to the maximum.
   final pulumi.Input<String>? max;
+
   /// Min specifies the minimum capacity allowed for a consumption request.
   ///
   /// Min must be greater than or equal to zero, and less than or equal to the capacity value. requestPolicy.default must be more than or equal to the minimum.
   final pulumi.Input<String>? min;
+
   /// Step defines the step size between valid capacity amounts within the range.
   ///
   /// Max (if set) and requestPolicy.default must be a multiple of Step. Min + Step must be less than or equal to the capacity value.
@@ -35,19 +37,28 @@ class CapacityRequestPolicyRangePatchResourceK8sIoV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'max': ?max,
-      'min': ?min,
-      'step': ?step,
-    };
+    return <String, dynamic>{'max': ?max, 'min': ?min, 'step': ?step};
   }
 
-  factory CapacityRequestPolicyRangePatchResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CapacityRequestPolicyRangePatchResourceK8sIoV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CapacityRequestPolicyRangePatchResourceK8sIoV1beta1(
-      max: map['max'] == null ? null : (map['max']! as String).input(),
-      min: map['min'] == null ? null : (map['min']! as String).input(),
-      step: map['step'] == null ? null : (map['step']! as String).input(),
+      max: (() {
+        final guardedValue = map['max'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      min: (() {
+        final guardedValue = map['min'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      step: (() {
+        final guardedValue = map['step'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

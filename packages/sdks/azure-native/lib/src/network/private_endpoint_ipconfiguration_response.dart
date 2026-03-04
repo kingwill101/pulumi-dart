@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateEndpointIPConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
+
   /// The ID of a group obtained from the remote resource that this private endpoint should connect to.
   final pulumi.Input<String>? groupId;
+
   /// The member name of a group obtained from the remote resource that this private endpoint should connect to.
   final pulumi.Input<String>? memberName;
+
   /// The name of the resource that is unique within a resource group.
   final pulumi.Input<String>? name;
+
   /// A private ip address obtained from the private endpoint's subnet.
   final pulumi.Input<String>? privateIPAddress;
+
   /// The resource type.
   final pulumi.Input<String> type;
 
@@ -44,15 +49,32 @@ class PrivateEndpointIPConfigurationResponse {
     };
   }
 
-  factory PrivateEndpointIPConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory PrivateEndpointIPConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrivateEndpointIPConfigurationResponse(
-      etag: (map['etag'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
-      memberName: map['memberName'] == null ? null : (map['memberName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
-      type: (map['type'] as String).input(),
+      etag: pulumi.Input.fromValue(map['etag'] as String),
+      groupId: (() {
+        final guardedValue = map['groupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memberName: (() {
+        final guardedValue = map['memberName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateIPAddress: (() {
+        final guardedValue = map['privateIPAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

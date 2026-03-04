@@ -29,13 +29,14 @@ class GetReplicationGroupLogDeliveryConfiguration {
     };
   }
 
-  factory GetReplicationGroupLogDeliveryConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetReplicationGroupLogDeliveryConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetReplicationGroupLogDeliveryConfiguration(
-      destination: (map['destination'] as String).input(),
-      destinationType: (map['destinationType'] as String).input(),
-      logFormat: (map['logFormat'] as String).input(),
-      logType: (map['logType'] as String).input(),
+      destination: pulumi.Input.fromValue(map['destination'] as String),
+      destinationType: pulumi.Input.fromValue(map['destinationType'] as String),
+      logFormat: pulumi.Input.fromValue(map['logFormat'] as String),
+      logType: pulumi.Input.fromValue(map['logType'] as String),
     );
   }
 }
-

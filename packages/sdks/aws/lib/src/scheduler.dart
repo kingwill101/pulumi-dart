@@ -1,5 +1,3 @@
-library module_scheduler;
-
 export 'scheduler/schedule.dart';
 export 'scheduler/schedule_args.dart';
 export 'scheduler/schedule_flexible_time_window.dart';

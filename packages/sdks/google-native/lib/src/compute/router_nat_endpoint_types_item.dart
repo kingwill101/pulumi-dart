@@ -3,16 +3,15 @@ enum RouterNatEndpointTypesItem {
   endpointTypeSwg("ENDPOINT_TYPE_SWG"),
   endpointTypeVm("ENDPOINT_TYPE_VM");
 
-  const RouterNatEndpointTypesItem(this.value);
-  final String value;
+  const RouterNatEndpointTypesItem(this.wireValue);
+  final String wireValue;
 
   static RouterNatEndpointTypesItem fromValue(String value) {
     for (final item in RouterNatEndpointTypesItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RouterNatEndpointTypesItem value: $value');
   }
 }
-

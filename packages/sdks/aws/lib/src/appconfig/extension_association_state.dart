@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExtensionAssociationState {
   /// ARN of the AppConfig Extension Association.
   final pulumi.Input<String>? arn;
+
   /// The ARN of the extension defined in the association.
   final pulumi.Input<String>? extensionArn;
+
   /// The version number for the extension defined in the association.
   final pulumi.Input<int>? extensionVersion;
+
   /// The parameter names and values defined for the association.
   final pulumi.Input<Map<String, String>>? parameters;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ARN of the application, configuration profile, or environment to associate with the extension.
   final pulumi.Input<String>? resourceArn;
 
@@ -46,13 +51,38 @@ class ExtensionAssociationState {
 
   factory ExtensionAssociationState.fromMap(Map<String, dynamic> map) {
     return ExtensionAssociationState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      extensionArn: map['extensionArn'] == null ? null : ((map['extensionArn'] as String).input()).input(),
-      extensionVersion: map['extensionVersion'] == null ? null : ((map['extensionVersion'] as int).input()).input(),
-      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extensionArn: (() {
+        final guardedValue = map['extensionArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      extensionVersion: (() {
+        final guardedValue = map['extensionVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceArn: (() {
+        final guardedValue = map['resourceArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

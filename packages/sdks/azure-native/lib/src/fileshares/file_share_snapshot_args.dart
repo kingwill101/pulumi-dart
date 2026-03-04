@@ -10,10 +10,13 @@ import 'file_share_snapshot_properties.dart';
 class FileShareSnapshotArgs {
   /// The name of the FileShareSnapshot
   final pulumi.Input<String>? name;
+
   /// The resource-specific properties for this resource.
   final pulumi.Input<FileShareSnapshotProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The resource name of the file share, as seen by the administrator through Azure Resource Manager.
   final pulumi.Input<String> resourceName;
 
@@ -32,7 +35,11 @@ class FileShareSnapshotArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<FileShareSnapshotProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            FileShareSnapshotProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'resourceName': resourceName,
     };
@@ -40,11 +47,24 @@ class FileShareSnapshotArgs {
 
   factory FileShareSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return FileShareSnapshotArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      properties: map['properties'] == null ? null : (FileShareSnapshotProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FileShareSnapshotProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
     );
   }
 }
-

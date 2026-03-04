@@ -166,10 +166,13 @@ import 'linked_workspace_props_response.dart';
 class LinkedWorkspace extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Friendly name of the linked workspace.
   late final pulumi.Output<String> name;
+
   /// LinkedWorkspace specific properties.
   late final pulumi.Output<LinkedWorkspacePropsResponse> properties;
+
   /// Resource type of linked workspace.
   late final pulumi.Output<String> type;
 
@@ -182,14 +185,14 @@ class LinkedWorkspace extends pulumi.CustomResource {
     LinkedWorkspaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:machinelearningservices:LinkedWorkspace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:machinelearningservices:LinkedWorkspace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<LinkedWorkspacePropsResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<LinkedWorkspacePropsResponse>('properties');
+    type = registerOutput<String>('type');
   }
 }

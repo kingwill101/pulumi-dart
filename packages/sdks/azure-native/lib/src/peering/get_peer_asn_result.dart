@@ -7,20 +7,28 @@ import 'contact_detail_response.dart';
 class GetPeerAsnResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The error message for the validation state
   final String errorMessage;
+
   /// The ID of the resource.
   final String id;
+
   /// The name of the resource.
   final String name;
+
   /// The Autonomous System Number (ASN) of the peer.
   final int? peerAsn;
+
   /// The contact details of the peer.
   final List<ContactDetailResponse>? peerContactDetail;
+
   /// The name of the peer.
   final String? peerName;
+
   /// The type of the resource.
   final String type;
+
   /// The validation state of the ASN associated with the peer.
   final String validationState;
 
@@ -53,7 +61,14 @@ class GetPeerAsnResult {
       'id': id,
       'name': name,
       'peerAsn': ?peerAsn,
-      'peerContactDetail': ?peerContactDetail == null ? null : pulumi.Input.encodeList<ContactDetailResponse, Map<String, dynamic>>(peerContactDetail!, (value) => value.toMap()),
+      'peerContactDetail': ?(() {
+        final guardedValue = peerContactDetail;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ContactDetailResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'peerName': ?peerName,
       'type': type,
       'validationState': validationState,
@@ -66,12 +81,28 @@ class GetPeerAsnResult {
       errorMessage: map['errorMessage'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      peerAsn: map['peerAsn'] == null ? null : map['peerAsn']! as int,
-      peerContactDetail: map['peerContactDetail'] == null ? null : pulumi.Input.decodeList<ContactDetailResponse>(map['peerContactDetail']!, (value) => ContactDetailResponse.fromMap((value as Map).cast<String, dynamic>())),
-      peerName: map['peerName'] == null ? null : map['peerName']! as String,
+      peerAsn: (() {
+        final guardedValue = map['peerAsn'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      peerContactDetail: (() {
+        final guardedValue = map['peerContactDetail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ContactDetailResponse>(
+          guardedValue,
+          (value) => ContactDetailResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      peerName: (() {
+        final guardedValue = map['peerName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
       validationState: map['validationState'] as String,
     );
   }
 }
-

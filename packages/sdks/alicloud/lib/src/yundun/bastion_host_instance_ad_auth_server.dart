@@ -63,19 +63,42 @@ class BastionHostInstanceAdAuthServer {
 
   factory BastionHostInstanceAdAuthServer.fromMap(Map<String, dynamic> map) {
     return BastionHostInstanceAdAuthServer(
-      account: (map['account'] as String).input(),
-      baseDn: (map['baseDn'] as String).input(),
-      domain: (map['domain'] as String).input(),
-      emailMapping: map['emailMapping'] == null ? null : (map['emailMapping']! as String).input(),
-      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
-      isSsl: (map['isSsl'] as bool).input(),
-      mobileMapping: map['mobileMapping'] == null ? null : (map['mobileMapping']! as String).input(),
-      nameMapping: map['nameMapping'] == null ? null : (map['nameMapping']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      port: (map['port'] as int).input(),
-      server: (map['server'] as String).input(),
-      standbyServer: map['standbyServer'] == null ? null : (map['standbyServer']! as String).input(),
+      account: pulumi.Input.fromValue(map['account'] as String),
+      baseDn: pulumi.Input.fromValue(map['baseDn'] as String),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      emailMapping: (() {
+        final guardedValue = map['emailMapping'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filter: (() {
+        final guardedValue = map['filter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isSsl: pulumi.Input.fromValue(map['isSsl'] as bool),
+      mobileMapping: (() {
+        final guardedValue = map['mobileMapping'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameMapping: (() {
+        final guardedValue = map['nameMapping'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      server: pulumi.Input.fromValue(map['server'] as String),
+      standbyServer: (() {
+        final guardedValue = map['standbyServer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,7 +6,7 @@ class ConnectionAuthConfigSshPublicKeySshClientCertPass {
   /// The resource name of the secret version in the format,
   /// format as: projects/*/secrets/*/versions/*.
   ///
-  /// <a name="nested_auth_config_oauth2_auth_code_flow"></a>The `oauth2_auth_code_flow` block supports:
+  /// &lt;a name="nested_auth_config_oauth2_auth_code_flow"&gt;&lt;/a&gt;The `oauth2_auth_code_flow` block supports:
   final pulumi.Input<String> secretVersion;
 
   /// Creates a new [ConnectionAuthConfigSshPublicKeySshClientCertPass].
@@ -16,15 +16,14 @@ class ConnectionAuthConfigSshPublicKeySshClientCertPass {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretVersion': secretVersion,
-    };
+    return <String, dynamic>{'secretVersion': secretVersion};
   }
 
-  factory ConnectionAuthConfigSshPublicKeySshClientCertPass.fromMap(Map<String, dynamic> map) {
+  factory ConnectionAuthConfigSshPublicKeySshClientCertPass.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionAuthConfigSshPublicKeySshClientCertPass(
-      secretVersion: (map['secretVersion'] as String).input(),
+      secretVersion: pulumi.Input.fromValue(map['secretVersion'] as String),
     );
   }
 }
-

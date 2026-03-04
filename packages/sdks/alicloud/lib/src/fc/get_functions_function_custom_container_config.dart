@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFunctionsFunctionCustomContainerConfig {
   /// The args field specifies the arguments passed to the command.
   final pulumi.Input<String> args;
+
   /// The entry point of the container, which specifies the actual command run by the container.
   final pulumi.Input<String> command;
+
   /// The container image address.
   final pulumi.Input<String> image;
 
@@ -21,19 +23,16 @@ class GetFunctionsFunctionCustomContainerConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'args': args,
-      'command': command,
-      'image': image,
-    };
+    return <String, dynamic>{'args': args, 'command': command, 'image': image};
   }
 
-  factory GetFunctionsFunctionCustomContainerConfig.fromMap(Map<String, dynamic> map) {
+  factory GetFunctionsFunctionCustomContainerConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFunctionsFunctionCustomContainerConfig(
-      args: (map['args'] as String).input(),
-      command: (map['command'] as String).input(),
-      image: (map['image'] as String).input(),
+      args: pulumi.Input.fromValue(map['args'] as String),
+      command: pulumi.Input.fromValue(map['command'] as String),
+      image: pulumi.Input.fromValue(map['image'] as String),
     );
   }
 }
-

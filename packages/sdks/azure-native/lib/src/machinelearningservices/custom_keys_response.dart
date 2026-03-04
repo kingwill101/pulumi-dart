@@ -8,20 +8,21 @@ class CustomKeysResponse {
 
   /// Creates a new [CustomKeysResponse].
   /// [keys] Optional.
-  CustomKeysResponse({
-    this.keys,
-  });
+  CustomKeysResponse({this.keys});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keys': ?keys,
-    };
+    return <String, dynamic>{'keys': ?keys};
   }
 
   factory CustomKeysResponse.fromMap(Map<String, dynamic> map) {
     return CustomKeysResponse(
-      keys: map['keys'] == null ? null : ((map['keys']! as Map).cast<String, String>()).input(),
+      keys: (() {
+        final guardedValue = map['keys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

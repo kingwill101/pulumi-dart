@@ -6,46 +6,66 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotState {
   /// Specifies the allocated storage size in gigabytes (GB).
   final pulumi.Input<int>? allocatedStorage;
+
   /// Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.
   final pulumi.Input<String>? availabilityZone;
+
   /// The DB Instance Identifier from which to take the snapshot.
   final pulumi.Input<String>? dbInstanceIdentifier;
+
   /// The Amazon Resource Name (ARN) for the DB snapshot.
   final pulumi.Input<String>? dbSnapshotArn;
+
   /// The Identifier for the snapshot.
   final pulumi.Input<String>? dbSnapshotIdentifier;
+
   /// Specifies whether the DB snapshot is encrypted.
   final pulumi.Input<bool>? encrypted;
+
   /// Specifies the name of the database engine.
   final pulumi.Input<String>? engine;
+
   /// Specifies the version of the database engine.
   final pulumi.Input<String>? engineVersion;
+
   /// Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.
   final pulumi.Input<int>? iops;
+
   /// The ARN for the KMS encryption key.
   final pulumi.Input<String>? kmsKeyId;
+
   /// License model information for the restored DB instance.
   final pulumi.Input<String>? licenseModel;
+
   /// Provides the option group name for the DB snapshot.
   final pulumi.Input<String>? optionGroupName;
   final pulumi.Input<int>? port;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
   final pulumi.Input<List<String>>? sharedAccounts;
   final pulumi.Input<String>? snapshotType;
+
   /// The DB snapshot Arn that the DB snapshot was copied from. It only has value in case of cross customer or cross region copy.
   final pulumi.Input<String>? sourceDbSnapshotIdentifier;
+
   /// The region that the DB snapshot was created in or copied from.
   final pulumi.Input<String>? sourceRegion;
+
   /// Specifies the status of this DB snapshot.
   final pulumi.Input<String>? status;
+
   /// Specifies the storage type associated with DB snapshot.
   final pulumi.Input<String>? storageType;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// Provides the VPC ID associated with the DB snapshot.
   final pulumi.Input<String>? vpcId;
 
@@ -129,30 +149,125 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      allocatedStorage: map['allocatedStorage'] == null ? null : ((map['allocatedStorage'] as int).input()).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
-      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : ((map['dbInstanceIdentifier'] as String).input()).input(),
-      dbSnapshotArn: map['dbSnapshotArn'] == null ? null : ((map['dbSnapshotArn'] as String).input()).input(),
-      dbSnapshotIdentifier: map['dbSnapshotIdentifier'] == null ? null : ((map['dbSnapshotIdentifier'] as String).input()).input(),
-      encrypted: map['encrypted'] == null ? null : ((map['encrypted'] as bool).input()).input(),
-      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
-      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
-      iops: map['iops'] == null ? null : ((map['iops'] as int).input()).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
-      licenseModel: map['licenseModel'] == null ? null : ((map['licenseModel'] as String).input()).input(),
-      optionGroupName: map['optionGroupName'] == null ? null : ((map['optionGroupName'] as String).input()).input(),
-      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sharedAccounts: map['sharedAccounts'] == null ? null : (((map['sharedAccounts'] as List).cast<String>()).input()).input(),
-      snapshotType: map['snapshotType'] == null ? null : ((map['snapshotType'] as String).input()).input(),
-      sourceDbSnapshotIdentifier: map['sourceDbSnapshotIdentifier'] == null ? null : ((map['sourceDbSnapshotIdentifier'] as String).input()).input(),
-      sourceRegion: map['sourceRegion'] == null ? null : ((map['sourceRegion'] as String).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      storageType: map['storageType'] == null ? null : ((map['storageType'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      allocatedStorage: (() {
+        final guardedValue = map['allocatedStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceIdentifier: (() {
+        final guardedValue = map['dbInstanceIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbSnapshotArn: (() {
+        final guardedValue = map['dbSnapshotArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbSnapshotIdentifier: (() {
+        final guardedValue = map['dbSnapshotIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encrypted: (() {
+        final guardedValue = map['encrypted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      engine: (() {
+        final guardedValue = map['engine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      engineVersion: (() {
+        final guardedValue = map['engineVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iops: (() {
+        final guardedValue = map['iops'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      licenseModel: (() {
+        final guardedValue = map['licenseModel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      optionGroupName: (() {
+        final guardedValue = map['optionGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sharedAccounts: (() {
+        final guardedValue = map['sharedAccounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      snapshotType: (() {
+        final guardedValue = map['snapshotType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceDbSnapshotIdentifier: (() {
+        final guardedValue = map['sourceDbSnapshotIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceRegion: (() {
+        final guardedValue = map['sourceRegion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageType: (() {
+        final guardedValue = map['storageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

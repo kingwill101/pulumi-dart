@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagementClusterResponse {
   /// The identity
   final pulumi.Input<int> clusterId;
+
   /// The cluster size
   final pulumi.Input<int>? clusterSize;
+
   /// The hosts
   final pulumi.Input<List<String>>? hosts;
+
   /// The state of the cluster provisioning
   final pulumi.Input<String> provisioningState;
+
   /// Name of the vsan datastore associated with the cluster
   final pulumi.Input<String>? vsanDatastoreName;
 
@@ -41,12 +45,25 @@ class ManagementClusterResponse {
 
   factory ManagementClusterResponse.fromMap(Map<String, dynamic> map) {
     return ManagementClusterResponse(
-      clusterId: (map['clusterId'] as int).input(),
-      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize']! as int).input(),
-      hosts: map['hosts'] == null ? null : ((map['hosts']! as List).cast<String>()).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : (map['vsanDatastoreName']! as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as int),
+      clusterSize: (() {
+        final guardedValue = map['clusterSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      hosts: (() {
+        final guardedValue = map['hosts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      vsanDatastoreName: (() {
+        final guardedValue = map['vsanDatastoreName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

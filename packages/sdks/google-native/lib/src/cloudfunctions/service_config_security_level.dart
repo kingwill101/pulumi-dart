@@ -4,16 +4,15 @@ enum ServiceConfigSecurityLevel {
   secureAlways("SECURE_ALWAYS"),
   secureOptional("SECURE_OPTIONAL");
 
-  const ServiceConfigSecurityLevel(this.value);
-  final String value;
+  const ServiceConfigSecurityLevel(this.wireValue);
+  final String wireValue;
 
   static ServiceConfigSecurityLevel fromValue(String value) {
     for (final item in ServiceConfigSecurityLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceConfigSecurityLevel value: $value');
   }
 }
-

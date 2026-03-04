@@ -11,14 +11,19 @@ import 'stream_governance_config.dart';
 class OrganizationEnvironmentByIdArgs {
   /// Confluent environment id
   final pulumi.Input<String>? environmentId;
+
   /// Type of environment
   final pulumi.Input<String>? kind;
+
   /// Metadata of the record
   final pulumi.Input<SCMetadataEntity>? metadata;
+
   /// Organization resource name
   final pulumi.Input<String> organizationName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Stream governance configuration
   final pulumi.Input<StreamGovernanceConfig>? streamGovernanceConfig;
 
@@ -42,22 +47,57 @@ class OrganizationEnvironmentByIdArgs {
     return <String, dynamic>{
       'environmentId': ?environmentId,
       'kind': ?kind,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<SCMetadataEntity, Map<String, dynamic>>(metadata, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<
+            SCMetadataEntity,
+            Map<String, dynamic>
+          >(metadata, (value) => value.toMap()),
       'organizationName': organizationName,
       'resourceGroupName': resourceGroupName,
-      'streamGovernanceConfig': ?pulumi.Input.mapOptionalInputValue<StreamGovernanceConfig, Map<String, dynamic>>(streamGovernanceConfig, (value) => value.toMap()),
+      'streamGovernanceConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamGovernanceConfig,
+            Map<String, dynamic>
+          >(streamGovernanceConfig, (value) => value.toMap()),
     };
   }
 
   factory OrganizationEnvironmentByIdArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationEnvironmentByIdArgs(
-      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      metadata: map['metadata'] == null ? null : (SCMetadataEntity.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      organizationName: (map['organizationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      streamGovernanceConfig: map['streamGovernanceConfig'] == null ? null : (StreamGovernanceConfig.fromMap((map['streamGovernanceConfig']! as Map).cast<String, dynamic>())).input(),
+      environmentId: (() {
+        final guardedValue = map['environmentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SCMetadataEntity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      organizationName: pulumi.Input.fromValue(
+        map['organizationName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      streamGovernanceConfig: (() {
+        final guardedValue = map['streamGovernanceConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamGovernanceConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

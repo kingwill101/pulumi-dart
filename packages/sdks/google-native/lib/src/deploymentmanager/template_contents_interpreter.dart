@@ -4,16 +4,15 @@ enum TemplateContentsInterpreter {
   python("PYTHON"),
   jinja("JINJA");
 
-  const TemplateContentsInterpreter(this.value);
-  final String value;
+  const TemplateContentsInterpreter(this.wireValue);
+  final String wireValue;
 
   static TemplateContentsInterpreter fromValue(String value) {
     for (final item in TemplateContentsInterpreter.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TemplateContentsInterpreter value: $value');
   }
 }
-

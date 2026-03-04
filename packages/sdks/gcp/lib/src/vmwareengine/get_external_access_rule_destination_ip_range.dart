@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExternalAccessRuleDestinationIpRange {
   /// The name of an 'ExternalAddress' resource.
   final pulumi.Input<String> externalAddress;
+
   /// An IP address range in the CIDR format.
   final pulumi.Input<String> ipAddressRange;
 
@@ -23,11 +24,12 @@ class GetExternalAccessRuleDestinationIpRange {
     };
   }
 
-  factory GetExternalAccessRuleDestinationIpRange.fromMap(Map<String, dynamic> map) {
+  factory GetExternalAccessRuleDestinationIpRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetExternalAccessRuleDestinationIpRange(
-      externalAddress: (map['externalAddress'] as String).input(),
-      ipAddressRange: (map['ipAddressRange'] as String).input(),
+      externalAddress: pulumi.Input.fromValue(map['externalAddress'] as String),
+      ipAddressRange: pulumi.Input.fromValue(map['ipAddressRange'] as String),
     );
   }
 }
-

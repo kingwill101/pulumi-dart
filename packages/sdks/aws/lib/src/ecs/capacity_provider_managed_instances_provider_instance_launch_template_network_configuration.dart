@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfiguration {
   /// The list of security group IDs to apply to Amazon ECS Managed Instances. These security groups control the network traffic allowed to and from the instances.
   final pulumi.Input<List<String>>? securityGroups;
+
   /// The list of subnet IDs where Amazon ECS can launch Amazon ECS Managed Instances. Instances are distributed across the specified subnets for high availability. All subnets must be in the same VPC.
   final pulumi.Input<List<String>> subnets;
 
@@ -23,11 +24,16 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfi
     };
   }
 
-  factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfiguration.fromMap(Map<String, dynamic> map) {
+  factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfiguration(
-      securityGroups: map['securityGroups'] == null ? null : (((map['securityGroups'] as List).cast<String>()).input()).input(),
-      subnets: ((map['subnets'] as List).cast<String>()).input(),
+      securityGroups: (() {
+        final guardedValue = map['securityGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subnets: pulumi.Input.fromValue((map['subnets'] as List).cast<String>()),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum SubnetworkPrivateIpv6GoogleAccessComputeV1 {
   enableBidirectionalAccessToGoogle("ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"),
   enableOutboundVmAccessToGoogle("ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE");
 
-  const SubnetworkPrivateIpv6GoogleAccessComputeV1(this.value);
-  final String value;
+  const SubnetworkPrivateIpv6GoogleAccessComputeV1(this.wireValue);
+  final String wireValue;
 
   static SubnetworkPrivateIpv6GoogleAccessComputeV1 fromValue(String value) {
     for (final item in SubnetworkPrivateIpv6GoogleAccessComputeV1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SubnetworkPrivateIpv6GoogleAccessComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown SubnetworkPrivateIpv6GoogleAccessComputeV1 value: $value',
+    );
   }
 }
-

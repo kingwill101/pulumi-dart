@@ -1438,21 +1438,27 @@ class Slo extends pulumi.CustomResource {
   /// `basic_sli`, `request_based_sli`, `windows_based_sli`
   /// Structure is documented below.
   late final pulumi.Output<SloBasicSli?> basicSli;
+
   /// A calendar period, semantically "since the start of the current
-  /// <calendarPeriod>".
+  /// &lt;calendarPeriod&gt;".
   /// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
   late final pulumi.Output<String?> calendarPeriod;
+
   /// Name used for UI elements listing this SLO.
   late final pulumi.Output<String?> displayName;
+
   /// The fraction of service that must be good in order for this objective
-  /// to be met. 0 < goal <= 0.999
+  /// to be met. 0 &lt; goal &lt;= 0.999
   late final pulumi.Output<double> goal;
+
   /// The full resource name for this service. The syntax is:
   /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// A request-based SLI defines a SLI for which atomic units of
   /// service are counted directly.
   /// A SLI describes a good service.
@@ -1462,19 +1468,24 @@ class Slo extends pulumi.CustomResource {
   /// `basic_sli`, `request_based_sli`, `windows_based_sli`
   /// Structure is documented below.
   late final pulumi.Output<SloRequestBasedSli?> requestBasedSli;
+
   /// A rolling time period, semantically "in the past X days".
   /// Must be between 1 to 30 days, inclusive.
   late final pulumi.Output<int?> rollingPeriodDays;
+
   /// ID of the service to which this SLO belongs.
   late final pulumi.Output<String> service;
+
   /// The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
   late final pulumi.Output<String> sloId;
+
   /// This field is intended to be used for organizing and identifying the AlertPolicy
   /// objects.The field can contain up to 64 entries. Each key and value is limited
   /// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
   /// can contain only lowercase letters, numerals, underscores, and dashes. Keys
   /// must begin with a letter.
   late final pulumi.Output<Map<String, String>?> userLabels;
+
   /// A windows-based SLI defines the criteria for time windows.
   /// good_service is defined based off the count of these time windows
   /// for which the provided service was of good quality.
@@ -1490,36 +1501,29 @@ class Slo extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Slo]. {@macro pulumi_monitoring_slo_slo_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Slo(
-    String name, {
-    SloArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:monitoring/slo:Slo',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.basicSli = registerOutput<SloBasicSli?>('basicSli');
-    this.calendarPeriod = registerOutput<String?>('calendarPeriod');
-    this.displayName = registerOutput<String?>('displayName');
-    this.goal = registerOutput<double>('goal');
+  Slo(String name, {SloArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:monitoring/slo:Slo',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    basicSli = registerOutput<SloBasicSli?>('basicSli');
+    calendarPeriod = registerOutput<String?>('calendarPeriod');
+    displayName = registerOutput<String?>('displayName');
+    goal = registerOutput<double>('goal');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.requestBasedSli = registerOutput<SloRequestBasedSli?>('requestBasedSli');
-    this.rollingPeriodDays = registerOutput<int?>('rollingPeriodDays');
-    this.service = registerOutput<String>('service');
-    this.sloId = registerOutput<String>('sloId');
-    this.userLabels = registerOutput<Map<String, String>?>('userLabels');
-    this.windowsBasedSli = registerOutput<SloWindowsBasedSli?>('windowsBasedSli');
+    project = registerOutput<String>('project');
+    requestBasedSli = registerOutput<SloRequestBasedSli?>('requestBasedSli');
+    rollingPeriodDays = registerOutput<int?>('rollingPeriodDays');
+    service = registerOutput<String>('service');
+    sloId = registerOutput<String>('sloId');
+    userLabels = registerOutput<Map<String, String>?>('userLabels');
+    windowsBasedSli = registerOutput<SloWindowsBasedSli?>('windowsBasedSli');
   }
 
   /// Gets an existing [Slo] resource's state with the given [name] and [id].
-  static Slo get(
-    String name,
-    pulumi.Input<String> id, {
-    SloState? state,
-  }) {
+  static Slo get(String name, pulumi.Input<String> id, {SloState? state}) {
     return Slo._get(
       name,
       state: state?.toMap(),
@@ -1532,22 +1536,22 @@ class Slo extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:monitoring/slo:Slo',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.basicSli = registerOutput<SloBasicSli?>('basicSli');
-    this.calendarPeriod = registerOutput<String?>('calendarPeriod');
-    this.displayName = registerOutput<String?>('displayName');
-    this.goal = registerOutput<double>('goal');
+         'gcp:monitoring/slo:Slo',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    basicSli = registerOutput<SloBasicSli?>('basicSli');
+    calendarPeriod = registerOutput<String?>('calendarPeriod');
+    displayName = registerOutput<String?>('displayName');
+    goal = registerOutput<double>('goal');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.requestBasedSli = registerOutput<SloRequestBasedSli?>('requestBasedSli');
-    this.rollingPeriodDays = registerOutput<int?>('rollingPeriodDays');
-    this.service = registerOutput<String>('service');
-    this.sloId = registerOutput<String>('sloId');
-    this.userLabels = registerOutput<Map<String, String>?>('userLabels');
-    this.windowsBasedSli = registerOutput<SloWindowsBasedSli?>('windowsBasedSli');
+    project = registerOutput<String>('project');
+    requestBasedSli = registerOutput<SloRequestBasedSli?>('requestBasedSli');
+    rollingPeriodDays = registerOutput<int?>('rollingPeriodDays');
+    service = registerOutput<String>('service');
+    sloId = registerOutput<String>('sloId');
+    userLabels = registerOutput<Map<String, String>?>('userLabels');
+    windowsBasedSli = registerOutput<SloWindowsBasedSli?>('windowsBasedSli');
   }
 }

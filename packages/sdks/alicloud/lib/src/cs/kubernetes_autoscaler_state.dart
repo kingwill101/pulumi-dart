@@ -7,14 +7,19 @@ import 'kubernetes_autoscaler_nodepool.dart';
 class KubernetesAutoscalerState {
   /// The id of kubernetes cluster.
   final pulumi.Input<String>? clusterId;
+
   /// The cool_down_duration option of cluster-autoscaler.
   final pulumi.Input<String>? coolDownDuration;
+
   /// The defer_scale_in_duration option of cluster-autoscaler.
   final pulumi.Input<String>? deferScaleInDuration;
+
   /// The list of the node pools. See `nodepools` below.
   final pulumi.Input<List<KubernetesAutoscalerNodepool>>? nodepools;
+
   /// Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
   final pulumi.Input<bool>? useEcsRamRoleToken;
+
   /// The utilization option of cluster-autoscaler.
   final pulumi.Input<String>? utilization;
 
@@ -39,7 +44,18 @@ class KubernetesAutoscalerState {
       'clusterId': ?clusterId,
       'coolDownDuration': ?coolDownDuration,
       'deferScaleInDuration': ?deferScaleInDuration,
-      'nodepools': ?pulumi.Input.mapOptionalInputValue<List<KubernetesAutoscalerNodepool>, List<Map<String, dynamic>>>(nodepools, (value) => pulumi.Input.encodeList<KubernetesAutoscalerNodepool, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nodepools':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<KubernetesAutoscalerNodepool>,
+            List<Map<String, dynamic>>
+          >(
+            nodepools,
+            (value) =>
+                pulumi.Input.encodeList<
+                  KubernetesAutoscalerNodepool,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'useEcsRamRoleToken': ?useEcsRamRoleToken,
       'utilization': ?utilization,
     };
@@ -47,13 +63,43 @@ class KubernetesAutoscalerState {
 
   factory KubernetesAutoscalerState.fromMap(Map<String, dynamic> map) {
     return KubernetesAutoscalerState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      coolDownDuration: map['coolDownDuration'] == null ? null : (map['coolDownDuration']! as String).input(),
-      deferScaleInDuration: map['deferScaleInDuration'] == null ? null : (map['deferScaleInDuration']! as String).input(),
-      nodepools: map['nodepools'] == null ? null : (pulumi.Input.decodeList<KubernetesAutoscalerNodepool>(map['nodepools']!, (value) => KubernetesAutoscalerNodepool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      useEcsRamRoleToken: map['useEcsRamRoleToken'] == null ? null : (map['useEcsRamRoleToken']! as bool).input(),
-      utilization: map['utilization'] == null ? null : (map['utilization']! as String).input(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      coolDownDuration: (() {
+        final guardedValue = map['coolDownDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deferScaleInDuration: (() {
+        final guardedValue = map['deferScaleInDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodepools: (() {
+        final guardedValue = map['nodepools'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<KubernetesAutoscalerNodepool>(
+            guardedValue,
+            (value) => KubernetesAutoscalerNodepool.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      useEcsRamRoleToken: (() {
+        final guardedValue = map['useEcsRamRoleToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      utilization: (() {
+        final guardedValue = map['utilization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

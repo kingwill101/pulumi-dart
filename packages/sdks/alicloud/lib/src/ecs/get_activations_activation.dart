@@ -5,24 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetActivationsActivation {
   /// The ID of the activation code.
   final pulumi.Input<String> activationId;
+
   /// The time when the activation code was created.
   final pulumi.Input<String> createTime;
+
   /// The number of instances that have been logged out.
   final pulumi.Input<int> deregisteredCount;
+
   /// Description of the corresponding activation code.
   final pulumi.Input<String> description;
+
   /// Indicates whether the activation code is disabled.
   final pulumi.Input<bool> disabled;
+
   /// The ID of the Activation.
   final pulumi.Input<String> id;
+
   /// The maximum number of times the activation code is used to register a managed instance.
   final pulumi.Input<int> instanceCount;
+
   /// The default prefix of the instance name.
   final pulumi.Input<String> instanceName;
+
   /// The IP address of the host that allows the activation code to be used.
   final pulumi.Input<String> ipAddressRange;
+
   /// The number of instances that were registered.
   final pulumi.Input<int> registeredCount;
+
   /// The validity period of the activation code. Unit: hours.
   final pulumi.Input<int> timeToLiveInHours;
 
@@ -70,18 +80,21 @@ class GetActivationsActivation {
 
   factory GetActivationsActivation.fromMap(Map<String, dynamic> map) {
     return GetActivationsActivation(
-      activationId: (map['activationId'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      deregisteredCount: (map['deregisteredCount'] as int).input(),
-      description: (map['description'] as String).input(),
-      disabled: (map['disabled'] as bool).input(),
-      id: (map['id'] as String).input(),
-      instanceCount: (map['instanceCount'] as int).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      ipAddressRange: (map['ipAddressRange'] as String).input(),
-      registeredCount: (map['registeredCount'] as int).input(),
-      timeToLiveInHours: (map['timeToLiveInHours'] as int).input(),
+      activationId: pulumi.Input.fromValue(map['activationId'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      deregisteredCount: pulumi.Input.fromValue(
+        map['deregisteredCount'] as int,
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      disabled: pulumi.Input.fromValue(map['disabled'] as bool),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceCount: pulumi.Input.fromValue(map['instanceCount'] as int),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      ipAddressRange: pulumi.Input.fromValue(map['ipAddressRange'] as String),
+      registeredCount: pulumi.Input.fromValue(map['registeredCount'] as int),
+      timeToLiveInHours: pulumi.Input.fromValue(
+        map['timeToLiveInHours'] as int,
+      ),
     );
   }
 }
-

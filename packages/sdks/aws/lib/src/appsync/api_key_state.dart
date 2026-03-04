@@ -7,12 +7,16 @@ class ApiKeyState {
   /// ID of the associated AppSync API
   final pulumi.Input<String>? apiId;
   final pulumi.Input<String>? apiKeyId;
+
   /// API key description. Defaults to "Managed by Pulumi".
   final pulumi.Input<String>? description;
+
   /// RFC3339 string representation of the expiry date. Rounded down to nearest hour. By default, it is 7 days from the date of creation.
   final pulumi.Input<String>? expires;
+
   /// API key
   final pulumi.Input<String>? key;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -45,13 +49,36 @@ class ApiKeyState {
 
   factory ApiKeyState.fromMap(Map<String, dynamic> map) {
     return ApiKeyState(
-      apiId: map['apiId'] == null ? null : ((map['apiId'] as String).input()).input(),
-      apiKeyId: map['apiKeyId'] == null ? null : ((map['apiKeyId'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      expires: map['expires'] == null ? null : ((map['expires'] as String).input()).input(),
-      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      apiId: (() {
+        final guardedValue = map['apiId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      apiKeyId: (() {
+        final guardedValue = map['apiKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expires: (() {
+        final guardedValue = map['expires'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

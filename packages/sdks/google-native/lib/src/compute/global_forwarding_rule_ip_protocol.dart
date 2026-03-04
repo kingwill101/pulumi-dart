@@ -9,16 +9,15 @@ enum GlobalForwardingRuleIpProtocol {
   tcp("TCP"),
   udp("UDP");
 
-  const GlobalForwardingRuleIpProtocol(this.value);
-  final String value;
+  const GlobalForwardingRuleIpProtocol(this.wireValue);
+  final String wireValue;
 
   static GlobalForwardingRuleIpProtocol fromValue(String value) {
     for (final item in GlobalForwardingRuleIpProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GlobalForwardingRuleIpProtocol value: $value');
   }
 }
-

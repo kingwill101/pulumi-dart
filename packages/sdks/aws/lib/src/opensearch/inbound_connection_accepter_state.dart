@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InboundConnectionAccepterState {
   /// Specifies the ID of the connection to accept.
   final pulumi.Input<String>? connectionId;
+
   /// Status of the connection request.
   final pulumi.Input<String>? connectionStatus;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -31,10 +33,21 @@ class InboundConnectionAccepterState {
 
   factory InboundConnectionAccepterState.fromMap(Map<String, dynamic> map) {
     return InboundConnectionAccepterState(
-      connectionId: map['connectionId'] == null ? null : ((map['connectionId'] as String).input()).input(),
-      connectionStatus: map['connectionStatus'] == null ? null : ((map['connectionStatus'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      connectionId: (() {
+        final guardedValue = map['connectionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionStatus: (() {
+        final guardedValue = map['connectionStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

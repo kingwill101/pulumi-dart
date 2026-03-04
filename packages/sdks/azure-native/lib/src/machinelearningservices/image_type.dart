@@ -3,16 +3,15 @@ enum ImageType {
   valueDocker("docker"),
   valueAzureml("azureml");
 
-  const ImageType(this.value);
-  final String value;
+  const ImageType(this.wireValue);
+  final String wireValue;
 
   static ImageType fromValue(String value) {
     for (final item in ImageType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ImageType value: $value');
   }
 }
-

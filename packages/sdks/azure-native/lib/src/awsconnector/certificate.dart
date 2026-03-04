@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Certificate {
   /// The Amazon Resource Name (ARN) of the certificate.
   final pulumi.Input<String>? certificateArn;
-  /// <p>The Base64-encoded certificate data required to communicate with your cluster. Add this to the <code>certificate-authority-data</code> section of the <code>kubeconfig</code> file for your cluster.</p>
+
+  /// &lt;p&gt;The Base64-encoded certificate data required to communicate with your cluster. Add this to the &lt;code&gt;certificate-authority-data&lt;/code&gt; section of the &lt;code&gt;kubeconfig&lt;/code&gt; file for your cluster.&lt;/p&gt;
   final pulumi.Input<String>? data;
 
   /// Creates a new [Certificate].
   /// [certificateArn] The Amazon Resource Name (ARN) of the certificate.
-  /// [data] <p>The Base64-encoded certificate data required to communicate with your cluster. Add this to the <code>certificate-authority-data</code> section of the <code>kubeconfig</code> file for your cluster.</p>
-  Certificate({
-    this.certificateArn,
-    this.data,
-  });
+  /// [data] &lt;p&gt;The Base64-encoded certificate data required to communicate with your cluster. Add this to the &lt;code&gt;certificate-authority-data&lt;/code&gt; section of the &lt;code&gt;kubeconfig&lt;/code&gt; file for your cluster.&lt;/p&gt;
+  Certificate({this.certificateArn, this.data});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'certificateArn': ?certificateArn,
-      'data': ?data,
-    };
+    return <String, dynamic>{'certificateArn': ?certificateArn, 'data': ?data};
   }
 
   factory Certificate.fromMap(Map<String, dynamic> map) {
     return Certificate(
-      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn']! as String).input(),
-      data: map['data'] == null ? null : (map['data']! as String).input(),
+      certificateArn: (() {
+        final guardedValue = map['certificateArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      data: (() {
+        final guardedValue = map['data'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

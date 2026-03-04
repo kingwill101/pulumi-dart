@@ -12,12 +12,15 @@ class IndexArgs {
   ///
   /// Defaults to `true`.
   final pulumi.Input<bool>? push;
+
   /// Authentication for the registry where the tagged index will be pushed.
   ///
   /// Credentials can also be included with the provider's configuration.
   final pulumi.Input<Registry>? registry;
+
   /// Existing images to include in the index.
   final pulumi.Input<List<String>> sources;
+
   /// The tag to apply to the index.
   final pulumi.Input<String> tag;
 
@@ -36,7 +39,11 @@ class IndexArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'push': ?push,
-      'registry': ?pulumi.Input.mapOptionalInputValue<Registry, Map<String, dynamic>>(registry, (value) => value.toMap()),
+      'registry':
+          ?pulumi.Input.mapOptionalInputValue<Registry, Map<String, dynamic>>(
+            registry,
+            (value) => value.toMap(),
+          ),
       'sources': sources,
       'tag': tag,
     };
@@ -44,11 +51,20 @@ class IndexArgs {
 
   factory IndexArgs.fromMap(Map<String, dynamic> map) {
     return IndexArgs(
-      push: map['push'] == null ? null : (map['push']! as bool).input(),
-      registry: map['registry'] == null ? null : (Registry.fromMap((map['registry']! as Map).cast<String, dynamic>())).input(),
-      sources: ((map['sources'] as List).cast<String>()).input(),
-      tag: (map['tag'] as String).input(),
+      push: (() {
+        final guardedValue = map['push'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      registry: (() {
+        final guardedValue = map['registry'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Registry.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      sources: pulumi.Input.fromValue((map['sources'] as List).cast<String>()),
+      tag: pulumi.Input.fromValue(map['tag'] as String),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQueueOutboundCallerConfig {
   /// Specifies the caller ID name.
   final pulumi.Input<String> outboundCallerIdName;
+
   /// Specifies the caller ID number.
   final pulumi.Input<String> outboundCallerIdNumberId;
+
   /// Outbound whisper flow to be used during an outbound call.
   final pulumi.Input<String> outboundFlowId;
 
@@ -30,10 +32,13 @@ class GetQueueOutboundCallerConfig {
 
   factory GetQueueOutboundCallerConfig.fromMap(Map<String, dynamic> map) {
     return GetQueueOutboundCallerConfig(
-      outboundCallerIdName: (map['outboundCallerIdName'] as String).input(),
-      outboundCallerIdNumberId: (map['outboundCallerIdNumberId'] as String).input(),
-      outboundFlowId: (map['outboundFlowId'] as String).input(),
+      outboundCallerIdName: pulumi.Input.fromValue(
+        map['outboundCallerIdName'] as String,
+      ),
+      outboundCallerIdNumberId: pulumi.Input.fromValue(
+        map['outboundCallerIdNumberId'] as String,
+      ),
+      outboundFlowId: pulumi.Input.fromValue(map['outboundFlowId'] as String),
     );
   }
 }
-

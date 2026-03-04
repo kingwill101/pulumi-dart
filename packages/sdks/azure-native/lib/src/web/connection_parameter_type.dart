@@ -10,16 +10,15 @@ enum ConnectionParameterType {
   valueOauthSetting("oauthSetting"),
   valueConnection("connection");
 
-  const ConnectionParameterType(this.value);
-  final String value;
+  const ConnectionParameterType(this.wireValue);
+  final String wireValue;
 
   static ConnectionParameterType fromValue(String value) {
     for (final item in ConnectionParameterType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConnectionParameterType value: $value');
   }
 }
-

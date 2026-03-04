@@ -10,30 +10,43 @@ import 'system_data_response.dart';
 class GetEnterprisePolicyResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The encryption settings for a configuration store.
   final PropertiesResponseEncryption? encryption;
+
   /// The health status of the resource.
   final String? healthStatus;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The identity of the EnterprisePolicy.
   final EnterprisePolicyIdentityResponse? identity;
+
   /// The kind (type) of Enterprise Policy.
   final String kind;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// Settings concerning lockbox.
   final PropertiesResponseLockbox? lockbox;
+
   /// The name of the resource
   final String name;
+
   /// Settings concerning network injection.
   final PropertiesResponseNetworkInjection? networkInjection;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// The internally assigned unique identifier of the resource.
   final String systemId;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -72,15 +85,15 @@ class GetEnterprisePolicyResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'encryption': ?encryption == null ? null : encryption!.toMap(),
+      'encryption': ?encryption?.toMap(),
       'healthStatus': ?healthStatus,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'kind': kind,
       'location': location,
-      'lockbox': ?lockbox == null ? null : lockbox!.toMap(),
+      'lockbox': ?lockbox?.toMap(),
       'name': name,
-      'networkInjection': ?networkInjection == null ? null : networkInjection!.toMap(),
+      'networkInjection': ?networkInjection?.toMap(),
       'systemData': systemData.toMap(),
       'systemId': systemId,
       'tags': ?tags,
@@ -91,20 +104,53 @@ class GetEnterprisePolicyResult {
   factory GetEnterprisePolicyResult.fromMap(Map<String, dynamic> map) {
     return GetEnterprisePolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      encryption: map['encryption'] == null ? null : PropertiesResponseEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>()),
-      healthStatus: map['healthStatus'] == null ? null : map['healthStatus']! as String,
+      encryption: (() {
+        final guardedValue = map['encryption'];
+        if (guardedValue == null) return null;
+        return PropertiesResponseEncryption.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      healthStatus: (() {
+        final guardedValue = map['healthStatus'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : EnterprisePolicyIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return EnterprisePolicyIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       kind: map['kind'] as String,
       location: map['location'] as String,
-      lockbox: map['lockbox'] == null ? null : PropertiesResponseLockbox.fromMap((map['lockbox']! as Map).cast<String, dynamic>()),
+      lockbox: (() {
+        final guardedValue = map['lockbox'];
+        if (guardedValue == null) return null;
+        return PropertiesResponseLockbox.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       name: map['name'] as String,
-      networkInjection: map['networkInjection'] == null ? null : PropertiesResponseNetworkInjection.fromMap((map['networkInjection']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      networkInjection: (() {
+        final guardedValue = map['networkInjection'];
+        if (guardedValue == null) return null;
+        return PropertiesResponseNetworkInjection.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       systemId: map['systemId'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

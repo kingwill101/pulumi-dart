@@ -1,5 +1,3 @@
-library module_managedidentities;
-
 export 'managedidentities/backup.dart';
 export 'managedidentities/backup_args.dart';
 export 'managedidentities/backup_managedidentities_v1alpha1.dart';

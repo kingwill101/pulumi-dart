@@ -6,46 +6,68 @@ import 'get_common_bandwidth_packages_package_public_ip_address.dart';
 class GetCommonBandwidthPackagesPackage {
   /// The peak bandwidth of the Internet Shared Bandwidth instance.
   final pulumi.Input<String> bandwidth;
+
   /// The resource ID of bandwidth package.
   final pulumi.Input<String> bandwidthPackageId;
+
   /// The name of bandwidth package.
   final pulumi.Input<String> bandwidthPackageName;
+
   /// The business status of the Common Bandwidth Package instance.
   final pulumi.Input<String> businessStatus;
+
   /// The deletion protection of bandwidth package.
   final pulumi.Input<bool> deletionProtection;
+
   /// The description of the Common Bandwidth Package instance.
   final pulumi.Input<String> description;
+
   /// The expired time of bandwidth package.
   final pulumi.Input<String> expiredTime;
+
   /// Is has reservation data.
   final pulumi.Input<bool> hasReservationData;
+
   /// ID of the Common Bandwidth Package.
   final pulumi.Input<String> id;
+
   /// The internet charge type of bandwidth package.
   final pulumi.Input<String> internetChargeType;
+
   /// ISP of the Common Bandwidth Package.
   final pulumi.Input<String> isp;
+
   /// Name of the Common Bandwidth Package.
   final pulumi.Input<String> name;
+
   /// The payment type of bandwidth package.
   final pulumi.Input<String> paymentType;
+
   /// Public ip addresses that in the Common Bandwidth Pakcage.
-  final pulumi.Input<List<GetCommonBandwidthPackagesPackagePublicIpAddress>> publicIpAddresses;
+  final pulumi.Input<List<GetCommonBandwidthPackagesPackagePublicIpAddress>>
+  publicIpAddresses;
+
   /// The ratio of bandwidth package.
   final pulumi.Input<int> ratio;
+
   /// The active time of reservation.
   final pulumi.Input<String> reservationActiveTime;
+
   /// The bandwidth of reservation.
   final pulumi.Input<String> reservationBandwidth;
+
   /// The charge type of reservation internet.
   final pulumi.Input<String> reservationInternetChargeType;
+
   /// The type of reservation order.
   final pulumi.Input<String> reservationOrderType;
+
   /// The Id of resource group which the common bandwidth package belongs.
   final pulumi.Input<String> resourceGroupId;
+
   /// The service managed.
   final pulumi.Input<int> serviceManaged;
+
   /// The status of bandwidth package. Valid values: `Available` and `Pending`.
   final pulumi.Input<String> status;
 
@@ -112,7 +134,18 @@ class GetCommonBandwidthPackagesPackage {
       'isp': isp,
       'name': name,
       'paymentType': paymentType,
-      'publicIpAddresses': pulumi.Input.mapInputValue<List<GetCommonBandwidthPackagesPackagePublicIpAddress>, List<Map<String, dynamic>>>(publicIpAddresses, (value) => pulumi.Input.encodeList<GetCommonBandwidthPackagesPackagePublicIpAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'publicIpAddresses':
+          pulumi.Input.mapInputValue<
+            List<GetCommonBandwidthPackagesPackagePublicIpAddress>,
+            List<Map<String, dynamic>>
+          >(
+            publicIpAddresses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetCommonBandwidthPackagesPackagePublicIpAddress,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ratio': ratio,
       'reservationActiveTime': reservationActiveTime,
       'reservationBandwidth': reservationBandwidth,
@@ -126,29 +159,54 @@ class GetCommonBandwidthPackagesPackage {
 
   factory GetCommonBandwidthPackagesPackage.fromMap(Map<String, dynamic> map) {
     return GetCommonBandwidthPackagesPackage(
-      bandwidth: (map['bandwidth'] as String).input(),
-      bandwidthPackageId: (map['bandwidthPackageId'] as String).input(),
-      bandwidthPackageName: (map['bandwidthPackageName'] as String).input(),
-      businessStatus: (map['businessStatus'] as String).input(),
-      deletionProtection: (map['deletionProtection'] as bool).input(),
-      description: (map['description'] as String).input(),
-      expiredTime: (map['expiredTime'] as String).input(),
-      hasReservationData: (map['hasReservationData'] as bool).input(),
-      id: (map['id'] as String).input(),
-      internetChargeType: (map['internetChargeType'] as String).input(),
-      isp: (map['isp'] as String).input(),
-      name: (map['name'] as String).input(),
-      paymentType: (map['paymentType'] as String).input(),
-      publicIpAddresses: (pulumi.Input.decodeList<GetCommonBandwidthPackagesPackagePublicIpAddress>(map['publicIpAddresses'], (value) => GetCommonBandwidthPackagesPackagePublicIpAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ratio: (map['ratio'] as int).input(),
-      reservationActiveTime: (map['reservationActiveTime'] as String).input(),
-      reservationBandwidth: (map['reservationBandwidth'] as String).input(),
-      reservationInternetChargeType: (map['reservationInternetChargeType'] as String).input(),
-      reservationOrderType: (map['reservationOrderType'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      serviceManaged: (map['serviceManaged'] as int).input(),
-      status: (map['status'] as String).input(),
+      bandwidth: pulumi.Input.fromValue(map['bandwidth'] as String),
+      bandwidthPackageId: pulumi.Input.fromValue(
+        map['bandwidthPackageId'] as String,
+      ),
+      bandwidthPackageName: pulumi.Input.fromValue(
+        map['bandwidthPackageName'] as String,
+      ),
+      businessStatus: pulumi.Input.fromValue(map['businessStatus'] as String),
+      deletionProtection: pulumi.Input.fromValue(
+        map['deletionProtection'] as bool,
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      expiredTime: pulumi.Input.fromValue(map['expiredTime'] as String),
+      hasReservationData: pulumi.Input.fromValue(
+        map['hasReservationData'] as bool,
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      internetChargeType: pulumi.Input.fromValue(
+        map['internetChargeType'] as String,
+      ),
+      isp: pulumi.Input.fromValue(map['isp'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
+      publicIpAddresses: pulumi.Input.fromValue(
+        pulumi
+            .Input.decodeList<GetCommonBandwidthPackagesPackagePublicIpAddress>(
+          map['publicIpAddresses']!,
+          (value) => GetCommonBandwidthPackagesPackagePublicIpAddress.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      ratio: pulumi.Input.fromValue(map['ratio'] as int),
+      reservationActiveTime: pulumi.Input.fromValue(
+        map['reservationActiveTime'] as String,
+      ),
+      reservationBandwidth: pulumi.Input.fromValue(
+        map['reservationBandwidth'] as String,
+      ),
+      reservationInternetChargeType: pulumi.Input.fromValue(
+        map['reservationInternetChargeType'] as String,
+      ),
+      reservationOrderType: pulumi.Input.fromValue(
+        map['reservationOrderType'] as String,
+      ),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      serviceManaged: pulumi.Input.fromValue(map['serviceManaged'] as int),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

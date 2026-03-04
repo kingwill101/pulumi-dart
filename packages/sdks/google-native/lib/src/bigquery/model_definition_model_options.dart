@@ -12,11 +12,7 @@ class ModelDefinitionModelOptions {
   /// [labels] Optional.
   /// [lossType] Optional.
   /// [modelType] Optional.
-  ModelDefinitionModelOptions({
-    this.labels,
-    this.lossType,
-    this.modelType,
-  });
+  ModelDefinitionModelOptions({this.labels, this.lossType, this.modelType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,10 +24,21 @@ class ModelDefinitionModelOptions {
 
   factory ModelDefinitionModelOptions.fromMap(Map<String, dynamic> map) {
     return ModelDefinitionModelOptions(
-      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
-      lossType: map['lossType'] == null ? null : (map['lossType']! as String).input(),
-      modelType: map['modelType'] == null ? null : (map['modelType']! as String).input(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      lossType: (() {
+        final guardedValue = map['lossType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      modelType: (() {
+        final guardedValue = map['modelType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

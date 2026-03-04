@@ -6,7 +6,7 @@ import 'group_state.dart';
 ///
 /// For information about Cloud SSO Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-creategroup).
 ///
-/// > **NOTE:** Available since v1.138.0.
+/// &gt; **NOTE:** Available since v1.138.0.
 ///
 /// ## Example Usage
 ///
@@ -252,10 +252,13 @@ import 'group_state.dart';
 class Group extends pulumi.CustomResource {
   /// The Description of the group. The description can be up to `1024` characters long.
   late final pulumi.Output<String?> description;
+
   /// The ID of the Directory.
   late final pulumi.Output<String> directoryId;
+
   /// The GroupId of the group.
   late final pulumi.Output<String> groupId;
+
   /// The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
   late final pulumi.Output<String> groupName;
 
@@ -263,28 +266,21 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_cloudsso_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(
-    String name, {
-    GroupArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:cloudsso/group:Group',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.directoryId = registerOutput<String>('directoryId');
-    this.groupId = registerOutput<String>('groupId');
-    this.groupName = registerOutput<String>('groupName');
+  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:cloudsso/group:Group',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    description = registerOutput<String?>('description');
+    directoryId = registerOutput<String>('directoryId');
+    groupId = registerOutput<String>('groupId');
+    groupName = registerOutput<String>('groupName');
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
-  static Group get(
-    String name,
-    pulumi.Input<String> id, {
-    GroupState? state,
-  }) {
+  static Group get(String name, pulumi.Input<String> id, {GroupState? state}) {
     return Group._get(
       name,
       state: state?.toMap(),
@@ -297,14 +293,14 @@ class Group extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudsso/group:Group',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.directoryId = registerOutput<String>('directoryId');
-    this.groupId = registerOutput<String>('groupId');
-    this.groupName = registerOutput<String>('groupName');
+         'alicloud:cloudsso/group:Group',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    directoryId = registerOutput<String>('directoryId');
+    groupId = registerOutput<String>('groupId');
+    groupName = registerOutput<String>('groupName');
   }
 }

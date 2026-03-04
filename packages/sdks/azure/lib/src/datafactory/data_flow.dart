@@ -1,9 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_flow_args.dart';
-import 'data_flow_sink.dart';
-import 'data_flow_source.dart';
 import 'data_flow_state.dart';
-import 'data_flow_transformation.dart';
 
 /// Manages a Data Flow inside an Azure Data Factory.
 ///
@@ -1016,7 +1013,7 @@ import 'data_flow_transformation.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataFactory` - 2018-06-01
@@ -1031,24 +1028,33 @@ import 'data_flow_transformation.dart';
 class DataFlow extends pulumi.CustomResource {
   /// List of tags that can be used for describing the Data Factory Data Flow.
   late final pulumi.Output<List<String>?> annotations;
+
   /// The ID of Data Factory in which to associate the Data Flow with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Data Flow.
   late final pulumi.Output<String?> description;
+
   /// The folder that this Data Flow is in. If not specified, the Data Flow will appear at the root level.
   late final pulumi.Output<String?> folder;
+
   /// Specifies the name of the Data Factory Data Flow. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The script for the Data Factory Data Flow.
   late final pulumi.Output<String?> script;
+
   /// The script lines for the Data Factory Data Flow.
   late final pulumi.Output<List<String>?> scriptLines;
+
   /// One or more `sink` blocks as defined below.
-  late final pulumi.Output<List<DataFlowSink>> sinks;
+  late final pulumi.Output<List<Map<String, dynamic>>> sinks;
+
   /// One or more `source` blocks as defined below.
-  late final pulumi.Output<List<DataFlowSource>> sources;
+  late final pulumi.Output<List<Map<String, dynamic>>> sources;
+
   /// One or more `transformation` blocks as defined below.
-  late final pulumi.Output<List<DataFlowTransformation>?> transformations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> transformations_;
 
   /// Creates a new [DataFlow].
   /// [name] The Pulumi resource name.
@@ -1059,21 +1065,23 @@ class DataFlow extends pulumi.CustomResource {
     DataFlowArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/dataFlow:DataFlow',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.folder = registerOutput<String?>('folder');
+         'azure:datafactory/dataFlow:DataFlow',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
     this.name = registerOutput<String>('name');
-    this.script = registerOutput<String?>('script');
-    this.scriptLines = registerOutput<List<String>?>('scriptLines');
-    this.sinks = registerOutput<List<DataFlowSink>>('sinks');
-    this.sources = registerOutput<List<DataFlowSource>>('sources');
-    this.transformations = registerOutput<List<DataFlowTransformation>?>('transformations');
+    script = registerOutput<String?>('script');
+    scriptLines = registerOutput<List<String>?>('scriptLines');
+    sinks = registerOutput<List<Map<String, dynamic>>>('sinks');
+    sources = registerOutput<List<Map<String, dynamic>>>('sources');
+    transformations_ = registerOutput<List<Map<String, dynamic>>?>(
+      'transformations',
+    );
   }
 
   /// Gets an existing [DataFlow] resource's state with the given [name] and [id].
@@ -1094,20 +1102,22 @@ class DataFlow extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/dataFlow:DataFlow',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.folder = registerOutput<String?>('folder');
+         'azure:datafactory/dataFlow:DataFlow',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
     this.name = registerOutput<String>('name');
-    this.script = registerOutput<String?>('script');
-    this.scriptLines = registerOutput<List<String>?>('scriptLines');
-    this.sinks = registerOutput<List<DataFlowSink>>('sinks');
-    this.sources = registerOutput<List<DataFlowSource>>('sources');
-    this.transformations = registerOutput<List<DataFlowTransformation>?>('transformations');
+    script = registerOutput<String?>('script');
+    scriptLines = registerOutput<List<String>?>('scriptLines');
+    sinks = registerOutput<List<Map<String, dynamic>>>('sinks');
+    sources = registerOutput<List<Map<String, dynamic>>>('sources');
+    transformations_ = registerOutput<List<Map<String, dynamic>>?>(
+      'transformations',
+    );
   }
 }

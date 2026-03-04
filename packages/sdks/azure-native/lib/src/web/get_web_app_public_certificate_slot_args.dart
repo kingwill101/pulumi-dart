@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAppPublicCertificateSlotArgs {
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Public certificate name.
   final pulumi.Input<String> publicCertificateName;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
   final pulumi.Input<String> slot;
 
@@ -39,11 +42,14 @@ class GetWebAppPublicCertificateSlotArgs {
 
   factory GetWebAppPublicCertificateSlotArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppPublicCertificateSlotArgs(
-      name: (map['name'] as String).input(),
-      publicCertificateName: (map['publicCertificateName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      slot: (map['slot'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      publicCertificateName: pulumi.Input.fromValue(
+        map['publicCertificateName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      slot: pulumi.Input.fromValue(map['slot'] as String),
     );
   }
 }
-

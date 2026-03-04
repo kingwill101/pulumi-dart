@@ -9,14 +9,17 @@ class GetZonesResult {
   final String? dbInstanceStorageType;
   final String? engine;
   final String? engineVersion;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of zone IDs.
   final List<String> ids;
   final String? instanceChargeType;
   final bool? multi;
   final bool? multiZone;
   final String? outputFile;
+
   /// A list of availability zones. Each element contains the following attributes:
   final List<GetZonesZone> zones;
 
@@ -58,24 +61,61 @@ class GetZonesResult {
       'multi': ?multi,
       'multiZone': ?multiZone,
       'outputFile': ?outputFile,
-      'zones': pulumi.Input.encodeList<GetZonesZone, Map<String, dynamic>>(zones, (value) => value.toMap()),
+      'zones': pulumi.Input.encodeList<GetZonesZone, Map<String, dynamic>>(
+        zones,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory GetZonesResult.fromMap(Map<String, dynamic> map) {
     return GetZonesResult(
-      category: map['category'] == null ? null : map['category']! as String,
-      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : map['dbInstanceStorageType']! as String,
-      engine: map['engine'] == null ? null : map['engine']! as String,
-      engineVersion: map['engineVersion'] == null ? null : map['engineVersion']! as String,
+      category: (() {
+        final guardedValue = map['category'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      dbInstanceStorageType: (() {
+        final guardedValue = map['dbInstanceStorageType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      engine: (() {
+        final guardedValue = map['engine'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      engineVersion: (() {
+        final guardedValue = map['engineVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType']! as String,
-      multi: map['multi'] == null ? null : map['multi']! as bool,
-      multiZone: map['multiZone'] == null ? null : map['multiZone']! as bool,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      zones: pulumi.Input.decodeList<GetZonesZone>(map['zones'], (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>())),
+      instanceChargeType: (() {
+        final guardedValue = map['instanceChargeType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      multi: (() {
+        final guardedValue = map['multi'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      multiZone: (() {
+        final guardedValue = map['multiZone'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      zones: pulumi.Input.decodeList<GetZonesZone>(
+        map['zones']!,
+        (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

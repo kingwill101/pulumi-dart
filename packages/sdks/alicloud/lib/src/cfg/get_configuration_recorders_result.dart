@@ -8,6 +8,7 @@ class GetConfigurationRecordersResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? outputFile;
+
   /// A list of Config Configuration Recorders. Each element contains the following attributes:
   final List<GetConfigurationRecordersRecorder> recorders;
 
@@ -25,16 +26,28 @@ class GetConfigurationRecordersResult {
     return <String, dynamic>{
       'id': id,
       'outputFile': ?outputFile,
-      'recorders': pulumi.Input.encodeList<GetConfigurationRecordersRecorder, Map<String, dynamic>>(recorders, (value) => value.toMap()),
+      'recorders':
+          pulumi.Input.encodeList<
+            GetConfigurationRecordersRecorder,
+            Map<String, dynamic>
+          >(recorders, (value) => value.toMap()),
     };
   }
 
   factory GetConfigurationRecordersResult.fromMap(Map<String, dynamic> map) {
     return GetConfigurationRecordersResult(
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      recorders: pulumi.Input.decodeList<GetConfigurationRecordersRecorder>(map['recorders'], (value) => GetConfigurationRecordersRecorder.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      recorders: pulumi.Input.decodeList<GetConfigurationRecordersRecorder>(
+        map['recorders']!,
+        (value) => GetConfigurationRecordersRecorder.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

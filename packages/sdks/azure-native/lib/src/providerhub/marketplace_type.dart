@@ -5,16 +5,15 @@ enum MarketplaceType {
   valueBypass("Bypass"),
   valueStore("Store");
 
-  const MarketplaceType(this.value);
-  final String value;
+  const MarketplaceType(this.wireValue);
+  final String wireValue;
 
   static MarketplaceType fromValue(String value) {
     for (final item in MarketplaceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MarketplaceType value: $value');
   }
 }
-

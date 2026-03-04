@@ -13,7 +13,7 @@ class GetBucketObjectArgs {
   final pulumi.Input<String>? ifGenerationNotMatch;
   final pulumi.Input<String>? ifMetagenerationMatch;
   final pulumi.Input<String>? ifMetagenerationNotMatch;
-  final pulumi.Input<String> object;
+  final pulumi.Input<String> object_;
   final pulumi.Input<String>? projection;
   final pulumi.Input<bool>? softDeleted;
   final pulumi.Input<String>? userProject;
@@ -25,7 +25,7 @@ class GetBucketObjectArgs {
   /// [ifGenerationNotMatch] Optional.
   /// [ifMetagenerationMatch] Optional.
   /// [ifMetagenerationNotMatch] Optional.
-  /// [object] Required.
+  /// [object_] Required.
   /// [projection] Optional.
   /// [softDeleted] Optional.
   /// [userProject] Optional.
@@ -36,7 +36,7 @@ class GetBucketObjectArgs {
     this.ifGenerationNotMatch,
     this.ifMetagenerationMatch,
     this.ifMetagenerationNotMatch,
-    required this.object,
+    required this.object_,
     this.projection,
     this.softDeleted,
     this.userProject,
@@ -50,7 +50,7 @@ class GetBucketObjectArgs {
       'ifGenerationNotMatch': ?ifGenerationNotMatch,
       'ifMetagenerationMatch': ?ifMetagenerationMatch,
       'ifMetagenerationNotMatch': ?ifMetagenerationNotMatch,
-      'object': object,
+      'object': object_,
       'projection': ?projection,
       'softDeleted': ?softDeleted,
       'userProject': ?userProject,
@@ -59,17 +59,48 @@ class GetBucketObjectArgs {
 
   factory GetBucketObjectArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectArgs(
-      bucket: (map['bucket'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
-      ifGenerationMatch: map['ifGenerationMatch'] == null ? null : (map['ifGenerationMatch']! as String).input(),
-      ifGenerationNotMatch: map['ifGenerationNotMatch'] == null ? null : (map['ifGenerationNotMatch']! as String).input(),
-      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null ? null : (map['ifMetagenerationMatch']! as String).input(),
-      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null ? null : (map['ifMetagenerationNotMatch']! as String).input(),
-      object: (map['object'] as String).input(),
-      projection: map['projection'] == null ? null : (map['projection']! as String).input(),
-      softDeleted: map['softDeleted'] == null ? null : (map['softDeleted']! as bool).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      generation: (() {
+        final guardedValue = map['generation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ifGenerationMatch: (() {
+        final guardedValue = map['ifGenerationMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ifGenerationNotMatch: (() {
+        final guardedValue = map['ifGenerationNotMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ifMetagenerationMatch: (() {
+        final guardedValue = map['ifMetagenerationMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ifMetagenerationNotMatch: (() {
+        final guardedValue = map['ifMetagenerationNotMatch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      object_: pulumi.Input.fromValue(map['object'] as String),
+      projection: (() {
+        final guardedValue = map['projection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      softDeleted: (() {
+        final guardedValue = map['softDeleted'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      userProject: (() {
+        final guardedValue = map['userProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

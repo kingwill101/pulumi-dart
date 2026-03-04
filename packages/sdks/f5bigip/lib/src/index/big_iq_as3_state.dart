@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BigIqAs3State {
   /// Path/Filename of Declarative AS3 JSON which is a json file used with builtin ```file``` function
   final pulumi.Input<String>? as3Json;
+
   /// Address of the BIG-IQ to which your targer BIG-IP is attached
   final pulumi.Input<String>? bigiqAddress;
+
   /// BIGIQ Login reference for token authentication
   final pulumi.Input<String>? bigiqLoginRef;
+
   /// Password of the BIG-IQ to which your targer BIG-IP is attached
   final pulumi.Input<String>? bigiqPassword;
+
   /// type `int`, BIGIQ License Manager Port number, specify if port is other than `443`
   final pulumi.Input<String>? bigiqPort;
+
   /// type `bool`, if set to `true` enables Token based Authentication,default is `false`
   final pulumi.Input<bool>? bigiqTokenAuth;
+
   /// User name  of the BIG-IQ to which your targer BIG-IP is attached
   final pulumi.Input<String>? bigiqUser;
+
   /// Set True if you want to ignore metadata changes during update. By default it is set to `true`
   ///
   /// * `bigiq_example.json` - Example  AS3 Declarative JSON file
@@ -74,8 +81,9 @@ class BigIqAs3State {
   ///
   /// * `AS3 documentation` - https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/big-iq.html
   ///
-  /// >  **Note:** This resource does not support `teanat_filter` parameter as BIG-IP As3 resource
+  /// &gt;  **Note:** This resource does not support `teanat_filter` parameter as BIG-IP As3 resource
   final pulumi.Input<bool>? ignoreMetadata;
+
   /// Name of Tenant
   final pulumi.Input<String>? tenantList;
 
@@ -117,16 +125,51 @@ class BigIqAs3State {
 
   factory BigIqAs3State.fromMap(Map<String, dynamic> map) {
     return BigIqAs3State(
-      as3Json: map['as3Json'] == null ? null : (map['as3Json']! as String).input(),
-      bigiqAddress: map['bigiqAddress'] == null ? null : (map['bigiqAddress']! as String).input(),
-      bigiqLoginRef: map['bigiqLoginRef'] == null ? null : (map['bigiqLoginRef']! as String).input(),
-      bigiqPassword: map['bigiqPassword'] == null ? null : (map['bigiqPassword']! as String).input(),
-      bigiqPort: map['bigiqPort'] == null ? null : (map['bigiqPort']! as String).input(),
-      bigiqTokenAuth: map['bigiqTokenAuth'] == null ? null : (map['bigiqTokenAuth']! as bool).input(),
-      bigiqUser: map['bigiqUser'] == null ? null : (map['bigiqUser']! as String).input(),
-      ignoreMetadata: map['ignoreMetadata'] == null ? null : (map['ignoreMetadata']! as bool).input(),
-      tenantList: map['tenantList'] == null ? null : (map['tenantList']! as String).input(),
+      as3Json: (() {
+        final guardedValue = map['as3Json'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigiqAddress: (() {
+        final guardedValue = map['bigiqAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigiqLoginRef: (() {
+        final guardedValue = map['bigiqLoginRef'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigiqPassword: (() {
+        final guardedValue = map['bigiqPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigiqPort: (() {
+        final guardedValue = map['bigiqPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bigiqTokenAuth: (() {
+        final guardedValue = map['bigiqTokenAuth'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      bigiqUser: (() {
+        final guardedValue = map['bigiqUser'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ignoreMetadata: (() {
+        final guardedValue = map['ignoreMetadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tenantList: (() {
+        final guardedValue = map['tenantList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

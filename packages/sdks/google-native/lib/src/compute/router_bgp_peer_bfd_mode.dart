@@ -4,16 +4,15 @@ enum RouterBgpPeerBfdMode {
   disabled("DISABLED"),
   passive("PASSIVE");
 
-  const RouterBgpPeerBfdMode(this.value);
-  final String value;
+  const RouterBgpPeerBfdMode(this.wireValue);
+  final String wireValue;
 
   static RouterBgpPeerBfdMode fromValue(String value) {
     for (final item in RouterBgpPeerBfdMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RouterBgpPeerBfdMode value: $value');
   }
 }
-

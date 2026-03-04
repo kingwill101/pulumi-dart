@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSubscriptionJobsJobSubscriptionHost {
   /// Classic network address.
   final pulumi.Input<String> privateHost;
+
   /// Public network address.
   final pulumi.Input<String> publicHost;
+
   /// VPC network address.
   final pulumi.Input<String> vpcHost;
 
@@ -28,12 +30,13 @@ class GetSubscriptionJobsJobSubscriptionHost {
     };
   }
 
-  factory GetSubscriptionJobsJobSubscriptionHost.fromMap(Map<String, dynamic> map) {
+  factory GetSubscriptionJobsJobSubscriptionHost.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSubscriptionJobsJobSubscriptionHost(
-      privateHost: (map['privateHost'] as String).input(),
-      publicHost: (map['publicHost'] as String).input(),
-      vpcHost: (map['vpcHost'] as String).input(),
+      privateHost: pulumi.Input.fromValue(map['privateHost'] as String),
+      publicHost: pulumi.Input.fromValue(map['publicHost'] as String),
+      vpcHost: pulumi.Input.fromValue(map['vpcHost'] as String),
     );
   }
 }
-

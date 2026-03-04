@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterTrialMetadata {
   /// End time of the trial cluster.
   final pulumi.Input<String>? endTime;
+
   /// Grace end time of the trial cluster.
   final pulumi.Input<String>? graceEndTime;
+
   /// Start time of the trial cluster.
   final pulumi.Input<String>? startTime;
+
   /// Upgrade time of the trial cluster to standard cluster.
   final pulumi.Input<String>? upgradeTime;
 
@@ -35,11 +38,26 @@ class ClusterTrialMetadata {
 
   factory ClusterTrialMetadata.fromMap(Map<String, dynamic> map) {
     return ClusterTrialMetadata(
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      graceEndTime: map['graceEndTime'] == null ? null : (map['graceEndTime']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
-      upgradeTime: map['upgradeTime'] == null ? null : (map['upgradeTime']! as String).input(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      graceEndTime: (() {
+        final guardedValue = map['graceEndTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      upgradeTime: (() {
+        final guardedValue = map['upgradeTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

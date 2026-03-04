@@ -4,16 +4,17 @@ enum StateStoreResourceDefinitionMethods {
   write("Write"),
   readWrite("ReadWrite");
 
-  const StateStoreResourceDefinitionMethods(this.value);
-  final String value;
+  const StateStoreResourceDefinitionMethods(this.wireValue);
+  final String wireValue;
 
   static StateStoreResourceDefinitionMethods fromValue(String value) {
     for (final item in StateStoreResourceDefinitionMethods.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown StateStoreResourceDefinitionMethods value: $value');
+    throw ArgumentError(
+      'Unknown StateStoreResourceDefinitionMethods value: $value',
+    );
   }
 }
-

@@ -9,20 +9,19 @@ class ActiveModelResponse {
 
   /// Creates a new [ActiveModelResponse].
   /// [active] When true, StackSets performs non-conflicting operations concurrently and queues conflicting operations. After conflicting operations finish, StackSets starts queued operations in request order.
-  ActiveModelResponse({
-    this.active,
-  });
+  ActiveModelResponse({this.active});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'active': ?active,
-    };
+    return <String, dynamic>{'active': ?active};
   }
 
   factory ActiveModelResponse.fromMap(Map<String, dynamic> map) {
     return ActiveModelResponse(
-      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      active: (() {
+        final guardedValue = map['active'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

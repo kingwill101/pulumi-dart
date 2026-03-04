@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBindingArgs {
   /// The name of the App resource.
   final pulumi.Input<String> appName;
+
   /// The name of the Binding resource.
   final pulumi.Input<String> bindingName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
 
@@ -39,11 +42,12 @@ class GetBindingArgs {
 
   factory GetBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetBindingArgs(
-      appName: (map['appName'] as String).input(),
-      bindingName: (map['bindingName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      appName: pulumi.Input.fromValue(map['appName'] as String),
+      bindingName: pulumi.Input.fromValue(map['bindingName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

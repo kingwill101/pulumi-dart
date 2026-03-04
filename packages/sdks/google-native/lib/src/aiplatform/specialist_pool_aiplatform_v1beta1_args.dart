@@ -10,11 +10,14 @@ class SpecialistPoolAiplatformV1beta1Args {
   /// The user-defined name of the SpecialistPool. The name can be up to 128 characters long and can consist of any UTF-8 characters. This field should be unique on project-level.
   final pulumi.Input<String> displayName;
   final pulumi.Input<String>? location;
+
   /// The resource name of the SpecialistPool.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// The email addresses of the managers in the SpecialistPool.
   final pulumi.Input<List<String>>? specialistManagerEmails;
+
   /// The email addresses of workers in the SpecialistPool.
   final pulumi.Input<List<String>>? specialistWorkerEmails;
 
@@ -45,15 +48,36 @@ class SpecialistPoolAiplatformV1beta1Args {
     };
   }
 
-  factory SpecialistPoolAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory SpecialistPoolAiplatformV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpecialistPoolAiplatformV1beta1Args(
-      displayName: (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      specialistManagerEmails: map['specialistManagerEmails'] == null ? null : ((map['specialistManagerEmails']! as List).cast<String>()).input(),
-      specialistWorkerEmails: map['specialistWorkerEmails'] == null ? null : ((map['specialistWorkerEmails']! as List).cast<String>()).input(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      specialistManagerEmails: (() {
+        final guardedValue = map['specialistManagerEmails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      specialistWorkerEmails: (() {
+        final guardedValue = map['specialistWorkerEmails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

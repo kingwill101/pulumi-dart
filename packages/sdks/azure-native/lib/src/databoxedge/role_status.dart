@@ -3,16 +3,15 @@ enum RoleStatus {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const RoleStatus(this.value);
-  final String value;
+  const RoleStatus(this.wireValue);
+  final String wireValue;
 
   static RoleStatus fromValue(String value) {
     for (final item in RoleStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RoleStatus value: $value');
   }
 }
-

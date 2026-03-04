@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserGroupMembershipState {
   /// A list of IAM Groups to add the user to
   final pulumi.Input<List<String>>? groups;
+
   /// The name of the IAM User to add to groups
   final pulumi.Input<String>? user;
 
   /// Creates a new [UserGroupMembershipState].
   /// [groups] A list of IAM Groups to add the user to
   /// [user] The name of the IAM User to add to groups
-  UserGroupMembershipState({
-    this.groups,
-    this.user,
-  });
+  UserGroupMembershipState({this.groups, this.user});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'groups': ?groups,
-      'user': ?user,
-    };
+    return <String, dynamic>{'groups': ?groups, 'user': ?user};
   }
 
   factory UserGroupMembershipState.fromMap(Map<String, dynamic> map) {
     return UserGroupMembershipState(
-      groups: map['groups'] == null ? null : (((map['groups'] as List).cast<String>()).input()).input(),
-      user: map['user'] == null ? null : ((map['user'] as String).input()).input(),
+      groups: (() {
+        final guardedValue = map['groups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      user: (() {
+        final guardedValue = map['user'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

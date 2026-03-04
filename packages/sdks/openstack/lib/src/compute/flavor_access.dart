@@ -4,7 +4,7 @@ import 'flavor_access_state.dart';
 
 /// Manages a project access for flavor V2 resource within OpenStack.
 ///
-/// > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+/// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
 /// this resource.
 ///
 /// ---
@@ -193,10 +193,12 @@ import 'flavor_access_state.dart';
 class FlavorAccess extends pulumi.CustomResource {
   /// The UUID of flavor to use. Changing this creates a new flavor access.
   late final pulumi.Output<String> flavorId;
+
   /// The region in which to obtain the V2 Compute client.
   /// If omitted, the `region` argument of the provider is used.
   /// Changing this creates a new flavor access.
   late final pulumi.Output<String> region;
+
   /// The UUID of tenant which is allowed to use the flavor.
   /// Changing this creates a new flavor access.
   late final pulumi.Output<String> tenantId;
@@ -210,14 +212,14 @@ class FlavorAccess extends pulumi.CustomResource {
     FlavorAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:compute/flavorAccess:FlavorAccess',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.flavorId = registerOutput<String>('flavorId');
-    this.region = registerOutput<String>('region');
-    this.tenantId = registerOutput<String>('tenantId');
+         'openstack:compute/flavorAccess:FlavorAccess',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    flavorId = registerOutput<String>('flavorId');
+    region = registerOutput<String>('region');
+    tenantId = registerOutput<String>('tenantId');
   }
 
   /// Gets an existing [FlavorAccess] resource's state with the given [name] and [id].
@@ -238,13 +240,13 @@ class FlavorAccess extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:compute/flavorAccess:FlavorAccess',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.flavorId = registerOutput<String>('flavorId');
-    this.region = registerOutput<String>('region');
-    this.tenantId = registerOutput<String>('tenantId');
+         'openstack:compute/flavorAccess:FlavorAccess',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    flavorId = registerOutput<String>('flavorId');
+    region = registerOutput<String>('region');
+    tenantId = registerOutput<String>('tenantId');
   }
 }

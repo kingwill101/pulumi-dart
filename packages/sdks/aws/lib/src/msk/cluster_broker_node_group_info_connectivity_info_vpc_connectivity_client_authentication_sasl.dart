@@ -15,17 +15,23 @@ class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticat
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'iam': ?iam,
-      'scram': ?scram,
-    };
+    return <String, dynamic>{'iam': ?iam, 'scram': ?scram};
   }
 
-  factory ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl.fromMap(Map<String, dynamic> map) {
+  factory ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl(
-      iam: map['iam'] == null ? null : ((map['iam'] as bool).input()).input(),
-      scram: map['scram'] == null ? null : ((map['scram'] as bool).input()).input(),
+      iam: (() {
+        final guardedValue = map['iam'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      scram: (() {
+        final guardedValue = map['scram'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

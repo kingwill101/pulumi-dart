@@ -10,20 +10,39 @@ class LoadBalancer {
 
   /// Creates a new [LoadBalancer].
   /// [backendAddressPools] List of Load Balancer Backend Address Pools.
-  LoadBalancer({
-    this.backendAddressPools,
-  });
+  LoadBalancer({this.backendAddressPools});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendAddressPools': ?pulumi.Input.mapOptionalInputValue<List<LoadBalancerBackendAddressPool>, List<Map<String, dynamic>>>(backendAddressPools, (value) => pulumi.Input.encodeList<LoadBalancerBackendAddressPool, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'backendAddressPools':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<LoadBalancerBackendAddressPool>,
+            List<Map<String, dynamic>>
+          >(
+            backendAddressPools,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LoadBalancerBackendAddressPool,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory LoadBalancer.fromMap(Map<String, dynamic> map) {
     return LoadBalancer(
-      backendAddressPools: map['backendAddressPools'] == null ? null : (pulumi.Input.decodeList<LoadBalancerBackendAddressPool>(map['backendAddressPools']!, (value) => LoadBalancerBackendAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backendAddressPools: (() {
+        final guardedValue = map['backendAddressPools'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<LoadBalancerBackendAddressPool>(
+            guardedValue,
+            (value) => LoadBalancerBackendAddressPool.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

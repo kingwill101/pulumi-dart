@@ -4,7 +4,7 @@ import 'security_service_state.dart';
 
 /// Use this resource to configure a security service.
 ///
-/// > **Note:** All arguments including the security service password will be
+/// &gt; **Note:** All arguments including the security service password will be
 /// stored in the raw state as plain-text. [Read more about sensitive data in
 /// state](https://www.terraform.io/docs/state/sensitive-data.html).
 ///
@@ -165,31 +165,41 @@ class SecurityService extends pulumi.CustomResource {
   /// The human-readable description for the security service.
   /// Changing this updates the description of the existing security service.
   late final pulumi.Output<String?> description;
+
   /// The security service DNS IP address that is used inside the
   /// tenant network.
   late final pulumi.Output<String?> dnsIp;
+
   /// The security service domain.
   late final pulumi.Output<String?> domain;
+
   /// The name of the security service. Changing this updates the name
   /// of the existing security service.
   late final pulumi.Output<String> name;
+
   /// The security service ou. An organizational unit can be added to
   /// specify where the share ends up. New in Manila microversion 2.44.
   late final pulumi.Output<String?> ou;
+
   /// The user password, if you specify a user.
   late final pulumi.Output<String?> password;
+
   /// The owner of the Security Service.
   late final pulumi.Output<String> projectId;
+
   /// The region in which to obtain the V2 Shared File System client.
   /// A Shared File System client is needed to create a security service. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// security service.
   late final pulumi.Output<String> region;
+
   /// The security service host name or IP address.
   late final pulumi.Output<String?> server;
+
   /// The security service type - can either be active\_directory,
   /// kerberos or ldap.  Changing this updates the existing security service.
   late final pulumi.Output<String> type;
+
   /// The security service user or group name that is used by the
   /// tenant.
   late final pulumi.Output<String?> user;
@@ -203,22 +213,22 @@ class SecurityService extends pulumi.CustomResource {
     SecurityServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:sharedfilesystem/securityService:SecurityService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.dnsIp = registerOutput<String?>('dnsIp');
-    this.domain = registerOutput<String?>('domain');
+         'openstack:sharedfilesystem/securityService:SecurityService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    dnsIp = registerOutput<String?>('dnsIp');
+    domain = registerOutput<String?>('domain');
     this.name = registerOutput<String>('name');
-    this.ou = registerOutput<String?>('ou');
-    this.password = registerOutput<String?>('password');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.server = registerOutput<String?>('server');
-    this.type = registerOutput<String>('type');
-    this.user = registerOutput<String?>('user');
+    ou = registerOutput<String?>('ou');
+    password = registerOutput<String?>('password');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    server = registerOutput<String?>('server');
+    type = registerOutput<String>('type');
+    user = registerOutput<String?>('user');
   }
 
   /// Gets an existing [SecurityService] resource's state with the given [name] and [id].
@@ -239,21 +249,21 @@ class SecurityService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'openstack:sharedfilesystem/securityService:SecurityService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
-    this.dnsIp = registerOutput<String?>('dnsIp');
-    this.domain = registerOutput<String?>('domain');
+         'openstack:sharedfilesystem/securityService:SecurityService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
+    dnsIp = registerOutput<String?>('dnsIp');
+    domain = registerOutput<String?>('domain');
     this.name = registerOutput<String>('name');
-    this.ou = registerOutput<String?>('ou');
-    this.password = registerOutput<String?>('password');
-    this.projectId = registerOutput<String>('projectId');
-    this.region = registerOutput<String>('region');
-    this.server = registerOutput<String?>('server');
-    this.type = registerOutput<String>('type');
-    this.user = registerOutput<String?>('user');
+    ou = registerOutput<String?>('ou');
+    password = registerOutput<String?>('password');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    server = registerOutput<String?>('server');
+    type = registerOutput<String>('type');
+    user = registerOutput<String?>('user');
   }
 }

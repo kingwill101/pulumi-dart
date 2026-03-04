@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse {
   /// Name of the key.
   final pulumi.Input<String> keyName;
+
   /// Primary SAS key value.
   final pulumi.Input<String>? primaryKey;
+
   /// Rights that this key has.
   final pulumi.Input<String> rights;
+
   /// Secondary SAS key value.
   final pulumi.Input<String>? secondaryKey;
 
@@ -34,13 +37,22 @@ class SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse {
     };
   }
 
-  factory SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse.fromMap(Map<String, dynamic> map) {
+  factory SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse(
-      keyName: (map['keyName'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
-      rights: (map['rights'] as String).input(),
-      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey']! as String).input(),
+      keyName: pulumi.Input.fromValue(map['keyName'] as String),
+      primaryKey: (() {
+        final guardedValue = map['primaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rights: pulumi.Input.fromValue(map['rights'] as String),
+      secondaryKey: (() {
+        final guardedValue = map['secondaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

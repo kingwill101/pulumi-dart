@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FolderState {
   /// (Available since v1.259.0) The time when the folder was created.
   final pulumi.Input<String>? createTime;
+
   /// The name of the folder.
   final pulumi.Input<String>? folderName;
+
   /// The ID of the parent folder.
   final pulumi.Input<String>? parentFolderId;
+
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -36,11 +39,28 @@ class FolderState {
 
   factory FolderState.fromMap(Map<String, dynamic> map) {
     return FolderState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      folderName: map['folderName'] == null ? null : (map['folderName']! as String).input(),
-      parentFolderId: map['parentFolderId'] == null ? null : (map['parentFolderId']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      folderName: (() {
+        final guardedValue = map['folderName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentFolderId: (() {
+        final guardedValue = map['parentFolderId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

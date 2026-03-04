@@ -7,20 +7,28 @@ import 'sub_resource.dart';
 class ApplicationGatewayPathRule {
   /// Backend address pool resource of URL path map path rule.
   final pulumi.Input<SubResource>? backendAddressPool;
+
   /// Backend http settings resource of URL path map path rule.
   final pulumi.Input<SubResource>? backendHttpSettings;
+
   /// Reference to the FirewallPolicy resource.
   final pulumi.Input<SubResource>? firewallPolicy;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Load Distribution Policy resource of URL path map path rule.
   final pulumi.Input<SubResource>? loadDistributionPolicy;
+
   /// Name of the path rule that is unique within an Application Gateway.
   final pulumi.Input<String>? name;
+
   /// Path rules of URL path map.
   final pulumi.Input<List<String>>? paths;
+
   /// Redirect configuration resource of URL path map path rule.
   final pulumi.Input<SubResource>? redirectConfiguration;
+
   /// Rewrite rule set resource of URL path map path rule.
   final pulumi.Input<SubResource>? rewriteRuleSet;
 
@@ -48,30 +56,101 @@ class ApplicationGatewayPathRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendAddressPool': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(backendAddressPool, (value) => value.toMap()),
-      'backendHttpSettings': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(backendHttpSettings, (value) => value.toMap()),
-      'firewallPolicy': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(firewallPolicy, (value) => value.toMap()),
+      'backendAddressPool':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResource,
+            Map<String, dynamic>
+          >(backendAddressPool, (value) => value.toMap()),
+      'backendHttpSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResource,
+            Map<String, dynamic>
+          >(backendHttpSettings, (value) => value.toMap()),
+      'firewallPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResource,
+            Map<String, dynamic>
+          >(firewallPolicy, (value) => value.toMap()),
       'id': ?id,
-      'loadDistributionPolicy': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(loadDistributionPolicy, (value) => value.toMap()),
+      'loadDistributionPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResource,
+            Map<String, dynamic>
+          >(loadDistributionPolicy, (value) => value.toMap()),
       'name': ?name,
       'paths': ?paths,
-      'redirectConfiguration': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(redirectConfiguration, (value) => value.toMap()),
-      'rewriteRuleSet': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(rewriteRuleSet, (value) => value.toMap()),
+      'redirectConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResource,
+            Map<String, dynamic>
+          >(redirectConfiguration, (value) => value.toMap()),
+      'rewriteRuleSet':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResource,
+            Map<String, dynamic>
+          >(rewriteRuleSet, (value) => value.toMap()),
     };
   }
 
   factory ApplicationGatewayPathRule.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayPathRule(
-      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool']! as Map).cast<String, dynamic>())).input(),
-      backendHttpSettings: map['backendHttpSettings'] == null ? null : (SubResource.fromMap((map['backendHttpSettings']! as Map).cast<String, dynamic>())).input(),
-      firewallPolicy: map['firewallPolicy'] == null ? null : (SubResource.fromMap((map['firewallPolicy']! as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      loadDistributionPolicy: map['loadDistributionPolicy'] == null ? null : (SubResource.fromMap((map['loadDistributionPolicy']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
-      redirectConfiguration: map['redirectConfiguration'] == null ? null : (SubResource.fromMap((map['redirectConfiguration']! as Map).cast<String, dynamic>())).input(),
-      rewriteRuleSet: map['rewriteRuleSet'] == null ? null : (SubResource.fromMap((map['rewriteRuleSet']! as Map).cast<String, dynamic>())).input(),
+      backendAddressPool: (() {
+        final guardedValue = map['backendAddressPool'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      backendHttpSettings: (() {
+        final guardedValue = map['backendHttpSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      firewallPolicy: (() {
+        final guardedValue = map['firewallPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loadDistributionPolicy: (() {
+        final guardedValue = map['loadDistributionPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paths: (() {
+        final guardedValue = map['paths'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      redirectConfiguration: (() {
+        final guardedValue = map['redirectConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      rewriteRuleSet: (() {
+        final guardedValue = map['rewriteRuleSet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

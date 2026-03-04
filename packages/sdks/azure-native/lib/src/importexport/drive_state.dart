@@ -8,16 +8,15 @@ enum DriveState {
   valueCompletedMoreInfo("CompletedMoreInfo"),
   valueShippedBack("ShippedBack");
 
-  const DriveState(this.value);
-  final String value;
+  const DriveState(this.wireValue);
+  final String wireValue;
 
   static DriveState fromValue(String value) {
     for (final item in DriveState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DriveState value: $value');
   }
 }
-

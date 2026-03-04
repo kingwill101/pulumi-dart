@@ -9,12 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionTargetHttpProxyArgs {
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
+
   /// Specifies how long to keep a connection open, after completing a response,
   /// while there is no matching traffic (in seconds). If an HTTP keepalive is
   /// not specified, a default value (600 seconds) will be used. For Regional
   /// HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
   /// maximum allowed value is 600 seconds.
   final pulumi.Input<int>? httpKeepAliveTimeoutSec;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -23,12 +25,15 @@ class RegionTargetHttpProxyArgs {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The Region in which the created target https proxy should reside.
   /// If it is not provided, the provider region is used.
   final pulumi.Input<String>? region;
+
   /// A reference to the RegionUrlMap resource that defines the mapping from URL
   /// to the BackendService.
   final pulumi.Input<String> urlMap;
@@ -62,13 +67,32 @@ class RegionTargetHttpProxyArgs {
 
   factory RegionTargetHttpProxyArgs.fromMap(Map<String, dynamic> map) {
     return RegionTargetHttpProxyArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      urlMap: (map['urlMap'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      httpKeepAliveTimeoutSec: (() {
+        final guardedValue = map['httpKeepAliveTimeoutSec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      urlMap: pulumi.Input.fromValue(map['urlMap'] as String),
     );
   }
 }
-

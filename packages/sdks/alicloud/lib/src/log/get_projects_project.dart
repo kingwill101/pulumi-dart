@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProjectsProject {
   /// The description of the project.
   final pulumi.Input<String> description;
+
   /// The ID of the project.
   final pulumi.Input<String> id;
+
   /// The last modify time of project.
   final pulumi.Input<String> lastModifyTime;
+
   /// The owner of project.
   final pulumi.Input<String> owner;
+
   /// The policy of project.
   final pulumi.Input<String> policy;
+
   /// The name of the project.
   final pulumi.Input<String> projectName;
+
   /// The region of project.
   final pulumi.Input<String> region;
+
   /// The status of project.
   final pulumi.Input<String> status;
 
@@ -55,15 +62,14 @@ class GetProjectsProject {
 
   factory GetProjectsProject.fromMap(Map<String, dynamic> map) {
     return GetProjectsProject(
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      lastModifyTime: (map['lastModifyTime'] as String).input(),
-      owner: (map['owner'] as String).input(),
-      policy: (map['policy'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      region: (map['region'] as String).input(),
-      status: (map['status'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      lastModifyTime: pulumi.Input.fromValue(map['lastModifyTime'] as String),
+      owner: pulumi.Input.fromValue(map['owner'] as String),
+      policy: pulumi.Input.fromValue(map['policy'] as String),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

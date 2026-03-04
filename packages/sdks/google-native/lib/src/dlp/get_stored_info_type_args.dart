@@ -31,10 +31,15 @@ class GetStoredInfoTypeArgs {
 
   factory GetStoredInfoTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetStoredInfoTypeArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      storedInfoTypeId: (map['storedInfoTypeId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storedInfoTypeId: pulumi.Input.fromValue(
+        map['storedInfoTypeId'] as String,
+      ),
     );
   }
 }
-

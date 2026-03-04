@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReplicationPropertiesResponse {
   /// The replication link state of the replica cluster.
   final pulumi.Input<String> replicationState;
+
   /// The replication role of the cluster
   final pulumi.Input<String> role;
+
   /// The resource id the source cluster for the replica cluster.
   final pulumi.Input<String> sourceResourceId;
 
@@ -31,10 +33,13 @@ class ReplicationPropertiesResponse {
 
   factory ReplicationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationPropertiesResponse(
-      replicationState: (map['replicationState'] as String).input(),
-      role: (map['role'] as String).input(),
-      sourceResourceId: (map['sourceResourceId'] as String).input(),
+      replicationState: pulumi.Input.fromValue(
+        map['replicationState'] as String,
+      ),
+      role: pulumi.Input.fromValue(map['role'] as String),
+      sourceResourceId: pulumi.Input.fromValue(
+        map['sourceResourceId'] as String,
+      ),
     );
   }
 }
-

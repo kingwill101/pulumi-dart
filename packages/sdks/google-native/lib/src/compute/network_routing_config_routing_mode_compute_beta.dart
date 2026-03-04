@@ -3,16 +3,17 @@ enum NetworkRoutingConfigRoutingModeComputeBeta {
   global("GLOBAL"),
   regional("REGIONAL");
 
-  const NetworkRoutingConfigRoutingModeComputeBeta(this.value);
-  final String value;
+  const NetworkRoutingConfigRoutingModeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static NetworkRoutingConfigRoutingModeComputeBeta fromValue(String value) {
     for (final item in NetworkRoutingConfigRoutingModeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkRoutingConfigRoutingModeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown NetworkRoutingConfigRoutingModeComputeBeta value: $value',
+    );
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebAppSwiftVirtualNetworkConnectionArgs {
   /// Kind of resource.
   final pulumi.Input<String>? kind;
+
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// The Virtual Network subnet's resource ID. This is the subnet that this Web App will join. This subnet must have a delegation to Microsoft.Web/serverFarms defined first.
   final pulumi.Input<String>? subnetResourceId;
+
   /// A flag that specifies if the scale unit this Web App is on supports Swift integration.
   final pulumi.Input<bool>? swiftSupported;
 
@@ -42,14 +46,29 @@ class WebAppSwiftVirtualNetworkConnectionArgs {
     };
   }
 
-  factory WebAppSwiftVirtualNetworkConnectionArgs.fromMap(Map<String, dynamic> map) {
+  factory WebAppSwiftVirtualNetworkConnectionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAppSwiftVirtualNetworkConnectionArgs(
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId']! as String).input(),
-      swiftSupported: map['swiftSupported'] == null ? null : (map['swiftSupported']! as bool).input(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      subnetResourceId: (() {
+        final guardedValue = map['subnetResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      swiftSupported: (() {
+        final guardedValue = map['swiftSupported'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

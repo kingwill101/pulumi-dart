@@ -7,12 +7,10 @@ repository: https://github.com/pulumi/pulumi-aws
 topics:
     - pulumi
     - aws
-publish_to: none
 environment:
     sdk: ^3.11.0
 resolution: workspace
 dependencies:
-    pulumi:
-        path: /home/kingwill101/code/dart_packages/pulumi-dart/packages/pulumi-dart
+    pulumi: 0.1.0
 dev_dependencies:
     lints: ^6.1.0

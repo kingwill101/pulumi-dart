@@ -10,23 +10,31 @@ import 'google_cloud_discoveryengine_v1alpha_document_content.dart';
 class DocumentArgs {
   final pulumi.Input<String> branchId;
   final pulumi.Input<String> collectionId;
+
   /// The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
   final pulumi.Input<GoogleCloudDiscoveryengineV1alphaDocumentContent>? content;
   final pulumi.Input<String> dataStoreId;
+
   /// Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
   final pulumi.Input<String> documentId;
+
   /// Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
   final pulumi.Input<String>? id;
+
   /// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
   final pulumi.Input<String>? jsonData;
   final pulumi.Input<String>? location;
+
   /// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
   final pulumi.Input<String>? name;
+
   /// The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
   final pulumi.Input<String>? parentDocumentId;
   final pulumi.Input<String>? project;
+
   /// The identifier of the schema located in the same data store.
   final pulumi.Input<String>? schemaId;
+
   /// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
   final pulumi.Input<Map<String, String>>? structData;
 
@@ -64,7 +72,11 @@ class DocumentArgs {
     return <String, dynamic>{
       'branchId': branchId,
       'collectionId': collectionId,
-      'content': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDiscoveryengineV1alphaDocumentContent, Map<String, dynamic>>(content, (value) => value.toMap()),
+      'content':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDiscoveryengineV1alphaDocumentContent,
+            Map<String, dynamic>
+          >(content, (value) => value.toMap()),
       'dataStoreId': dataStoreId,
       'documentId': documentId,
       'id': ?id,
@@ -80,20 +92,61 @@ class DocumentArgs {
 
   factory DocumentArgs.fromMap(Map<String, dynamic> map) {
     return DocumentArgs(
-      branchId: (map['branchId'] as String).input(),
-      collectionId: (map['collectionId'] as String).input(),
-      content: map['content'] == null ? null : (GoogleCloudDiscoveryengineV1alphaDocumentContent.fromMap((map['content']! as Map).cast<String, dynamic>())).input(),
-      dataStoreId: (map['dataStoreId'] as String).input(),
-      documentId: (map['documentId'] as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      jsonData: map['jsonData'] == null ? null : (map['jsonData']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parentDocumentId: map['parentDocumentId'] == null ? null : (map['parentDocumentId']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      schemaId: map['schemaId'] == null ? null : (map['schemaId']! as String).input(),
-      structData: map['structData'] == null ? null : ((map['structData']! as Map).cast<String, String>()).input(),
+      branchId: pulumi.Input.fromValue(map['branchId'] as String),
+      collectionId: pulumi.Input.fromValue(map['collectionId'] as String),
+      content: (() {
+        final guardedValue = map['content'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDiscoveryengineV1alphaDocumentContent.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      dataStoreId: pulumi.Input.fromValue(map['dataStoreId'] as String),
+      documentId: pulumi.Input.fromValue(map['documentId'] as String),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jsonData: (() {
+        final guardedValue = map['jsonData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentDocumentId: (() {
+        final guardedValue = map['parentDocumentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schemaId: (() {
+        final guardedValue = map['schemaId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      structData: (() {
+        final guardedValue = map['structData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

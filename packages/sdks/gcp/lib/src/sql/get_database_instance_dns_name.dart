@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseInstanceDnsName {
   final pulumi.Input<String> connectionType;
   final pulumi.Input<String> dnsScope;
+
   /// The name of the instance.
   final pulumi.Input<String> name;
 
@@ -28,10 +29,9 @@ class GetDatabaseInstanceDnsName {
 
   factory GetDatabaseInstanceDnsName.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceDnsName(
-      connectionType: (map['connectionType'] as String).input(),
-      dnsScope: (map['dnsScope'] as String).input(),
-      name: (map['name'] as String).input(),
+      connectionType: pulumi.Input.fromValue(map['connectionType'] as String),
+      dnsScope: pulumi.Input.fromValue(map['dnsScope'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

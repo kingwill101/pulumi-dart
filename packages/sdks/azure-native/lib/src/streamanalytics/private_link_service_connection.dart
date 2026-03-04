@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateLinkServiceConnection {
   /// The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests.
   final pulumi.Input<List<String>>? groupIds;
+
   /// The resource id of the private link service. Required on PUT (CreateOrUpdate) requests.
   final pulumi.Input<String>? privateLinkServiceId;
 
   /// Creates a new [PrivateLinkServiceConnection].
   /// [groupIds] The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests.
   /// [privateLinkServiceId] The resource id of the private link service. Required on PUT (CreateOrUpdate) requests.
-  PrivateLinkServiceConnection({
-    this.groupIds,
-    this.privateLinkServiceId,
-  });
+  PrivateLinkServiceConnection({this.groupIds, this.privateLinkServiceId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class PrivateLinkServiceConnection {
 
   factory PrivateLinkServiceConnection.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceConnection(
-      groupIds: map['groupIds'] == null ? null : ((map['groupIds']! as List).cast<String>()).input(),
-      privateLinkServiceId: map['privateLinkServiceId'] == null ? null : (map['privateLinkServiceId']! as String).input(),
+      groupIds: (() {
+        final guardedValue = map['groupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      privateLinkServiceId: (() {
+        final guardedValue = map['privateLinkServiceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

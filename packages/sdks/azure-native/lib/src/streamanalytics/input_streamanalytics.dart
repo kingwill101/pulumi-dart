@@ -1202,10 +1202,13 @@ import 'reference_input_properties_response.dart';
 class InputStreamanalytics extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Resource name
   late final pulumi.Output<String?> name;
+
   /// The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
   late final pulumi.Output<ReferenceInputPropertiesResponse> properties;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -1218,14 +1221,14 @@ class InputStreamanalytics extends pulumi.CustomResource {
     InputArgsType? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:streamanalytics:Input',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:streamanalytics:Input',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String?>('name');
-    this.properties = registerOutput<ReferenceInputPropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ReferenceInputPropertiesResponse>('properties');
+    type = registerOutput<String>('type');
   }
 }

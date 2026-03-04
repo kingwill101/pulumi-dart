@@ -75,21 +75,60 @@ class SwarmArgs {
 
   factory SwarmArgs.fromMap(Map<String, dynamic> map) {
     return SwarmArgs(
-      cidrBlock: (map['cidrBlock'] as String).input(),
-      diskCategory: map['diskCategory'] == null ? null : (map['diskCategory']! as String).input(),
-      diskSize: map['diskSize'] == null ? null : (map['diskSize']! as int).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      isOutdated: map['isOutdated'] == null ? null : (map['isOutdated']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
-      needSlb: map['needSlb'] == null ? null : (map['needSlb']! as bool).input(),
-      nodeNumber: map['nodeNumber'] == null ? null : (map['nodeNumber']! as int).input(),
-      password: (map['password'] as String).input(),
-      releaseEip: map['releaseEip'] == null ? null : (map['releaseEip']! as bool).input(),
-      size: map['size'] == null ? null : (map['size']! as int).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
+      cidrBlock: pulumi.Input.fromValue(map['cidrBlock'] as String),
+      diskCategory: (() {
+        final guardedValue = map['diskCategory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      diskSize: (() {
+        final guardedValue = map['diskSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      imageId: (() {
+        final guardedValue = map['imageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      isOutdated: (() {
+        final guardedValue = map['isOutdated'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namePrefix: (() {
+        final guardedValue = map['namePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      needSlb: (() {
+        final guardedValue = map['needSlb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      nodeNumber: (() {
+        final guardedValue = map['nodeNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      password: pulumi.Input.fromValue(map['password'] as String),
+      releaseEip: (() {
+        final guardedValue = map['releaseEip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum ApiConfigHandlerAuthFailAction {
   authFailActionRedirect("AUTH_FAIL_ACTION_REDIRECT"),
   authFailActionUnauthorized("AUTH_FAIL_ACTION_UNAUTHORIZED");
 
-  const ApiConfigHandlerAuthFailAction(this.value);
-  final String value;
+  const ApiConfigHandlerAuthFailAction(this.wireValue);
+  final String wireValue;
 
   static ApiConfigHandlerAuthFailAction fromValue(String value) {
     for (final item in ApiConfigHandlerAuthFailAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ApiConfigHandlerAuthFailAction value: $value');
   }
 }
-

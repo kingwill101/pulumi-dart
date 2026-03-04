@@ -10,13 +10,13 @@ import 'iampolicy_state.dart';
 /// * `gcp.organizations.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
 ///
 ///
-/// > **Note:** `gcp.organizations.IAMPolicy` **cannot** be used in conjunction with `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig` or they will fight over what your policy should be.
+/// &gt; **Note:** `gcp.organizations.IAMPolicy` **cannot** be used in conjunction with `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig` or they will fight over what your policy should be.
 ///
-/// > **Note:** `gcp.organizations.IAMBinding` resources **can be** used in conjunction with `gcp.organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.organizations.IAMBinding` resources **can be** used in conjunction with `gcp.organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
 ///
 /// ## gcp.organizations.IAMPolicy
 ///
-/// !> **Warning:** New organizations have several default policies which will,
+/// !&gt; **Warning:** New organizations have several default policies which will,
 /// without extreme caution, be **overwritten** by use of this resource.
 /// The safest alternative is to use multiple `gcp.organizations.IAMBinding`
 /// resources. This resource makes it easy to remove your own access to
@@ -363,7 +363,7 @@ import 'iampolicy_state.dart';
 ///
 /// ## gcp.organizations.IAMBinding
 ///
-/// > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+/// &gt; **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
 ///
 ///
 /// ```typescript
@@ -1001,7 +1001,7 @@ import 'iampolicy_state.dart';
 ///
 /// ## gcp.organizations.IAMBinding
 ///
-/// > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+/// &gt; **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
 ///
 ///
 /// ```typescript
@@ -1665,8 +1665,10 @@ import 'iampolicy_state.dart';
 class IAMPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the organization's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// The organization id of the target organization.
   late final pulumi.Output<String> orgId;
+
   /// The `gcp.organizations.getIAMPolicy` data source that represents
   /// the IAM policy that will be applied to the organization. The policy will be
   /// merged with any existing policy applied to the organization.
@@ -1686,14 +1688,14 @@ class IAMPolicy extends pulumi.CustomResource {
     IAMPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:organizations/iAMPolicy:IAMPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.etag = registerOutput<String>('etag');
-    this.orgId = registerOutput<String>('orgId');
-    this.policyData = registerOutput<String>('policyData');
+         'gcp:organizations/iAMPolicy:IAMPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    etag = registerOutput<String>('etag');
+    orgId = registerOutput<String>('orgId');
+    policyData = registerOutput<String>('policyData');
   }
 
   /// Gets an existing [IAMPolicy] resource's state with the given [name] and [id].
@@ -1714,13 +1716,13 @@ class IAMPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:organizations/iAMPolicy:IAMPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.etag = registerOutput<String>('etag');
-    this.orgId = registerOutput<String>('orgId');
-    this.policyData = registerOutput<String>('policyData');
+         'gcp:organizations/iAMPolicy:IAMPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    etag = registerOutput<String>('etag');
+    orgId = registerOutput<String>('orgId');
+    policyData = registerOutput<String>('policyData');
   }
 }

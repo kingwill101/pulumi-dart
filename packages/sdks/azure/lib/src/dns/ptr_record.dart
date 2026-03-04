@@ -4,7 +4,7 @@ import 'ptr_record_state.dart';
 
 /// Enables you to manage DNS PTR Records within Azure DNS.
 ///
-/// > **Note:** [The Azure DNS API has a throttle limit of 500 read (GET) operations per 5 minutes](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling#network-throttling) - whilst the default read timeouts will work for most cases - in larger configurations you may need to set a larger read timeout then the default 5min. Although, we'd generally recommend that you split the resources out into smaller Terraform configurations to avoid the problem entirely.
+/// &gt; **Note:** [The Azure DNS API has a throttle limit of 500 read (GET) operations per 5 minutes](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling#network-throttling) - whilst the default read timeouts will work for most cases - in larger configurations you may need to set a larger read timeout then the default 5min. Although, we'd generally recommend that you split the resources out into smaller Terraform configurations to avoid the problem entirely.
 ///
 /// ## Example Usage
 ///
@@ -195,7 +195,7 @@ import 'ptr_record_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2018-05-01
@@ -210,16 +210,22 @@ import 'ptr_record_state.dart';
 class PtrRecord extends pulumi.CustomResource {
   /// The FQDN of the DNS PTR Record.
   late final pulumi.Output<String> fqdn;
+
   /// The name of the DNS PTR Record. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// List of Fully Qualified Domain Names.
   late final pulumi.Output<List<String>> records;
+
   /// Specifies the resource group where the DNS Zone (parent resource) exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The Time To Live (TTL) of the DNS record in seconds.
   late final pulumi.Output<int> ttl;
+
   /// Specifies the DNS Zone where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> zoneName;
 
@@ -232,18 +238,18 @@ class PtrRecord extends pulumi.CustomResource {
     PtrRecordArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:dns/ptrRecord:PtrRecord',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fqdn = registerOutput<String>('fqdn');
+         'azure:dns/ptrRecord:PtrRecord',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    this.records = registerOutput<List<String>>('records');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.ttl = registerOutput<int>('ttl');
-    this.zoneName = registerOutput<String>('zoneName');
+    records = registerOutput<List<String>>('records');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    ttl = registerOutput<int>('ttl');
+    zoneName = registerOutput<String>('zoneName');
   }
 
   /// Gets an existing [PtrRecord] resource's state with the given [name] and [id].
@@ -264,17 +270,17 @@ class PtrRecord extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:dns/ptrRecord:PtrRecord',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.fqdn = registerOutput<String>('fqdn');
+         'azure:dns/ptrRecord:PtrRecord',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    this.records = registerOutput<List<String>>('records');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.ttl = registerOutput<int>('ttl');
-    this.zoneName = registerOutput<String>('zoneName');
+    records = registerOutput<List<String>>('records');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags');
+    ttl = registerOutput<int>('ttl');
+    zoneName = registerOutput<String>('zoneName');
   }
 }

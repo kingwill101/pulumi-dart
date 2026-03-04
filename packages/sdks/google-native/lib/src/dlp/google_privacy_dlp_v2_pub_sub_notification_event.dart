@@ -6,16 +6,17 @@ enum GooglePrivacyDlpV2PubSubNotificationEvent {
   scoreIncreased("SCORE_INCREASED"),
   errorChanged("ERROR_CHANGED");
 
-  const GooglePrivacyDlpV2PubSubNotificationEvent(this.value);
-  final String value;
+  const GooglePrivacyDlpV2PubSubNotificationEvent(this.wireValue);
+  final String wireValue;
 
   static GooglePrivacyDlpV2PubSubNotificationEvent fromValue(String value) {
     for (final item in GooglePrivacyDlpV2PubSubNotificationEvent.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2PubSubNotificationEvent value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2PubSubNotificationEvent value: $value',
+    );
   }
 }
-

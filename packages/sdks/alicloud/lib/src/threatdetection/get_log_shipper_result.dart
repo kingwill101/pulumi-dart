@@ -1,21 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getLogShipper.
 class GetLogShipperResult {
   /// Log Analysis Service authorization status.
   final String authStatus;
+
   /// Cloud Security Center purchase status.
   final String buyStatus;
   final String? enable;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Log analysis shipping activation status.
   final String openStatus;
+
   /// Log analysis project status.
   final String slsProjectStatus;
+
   /// Log Analysis Service is activated.
   final String slsServiceStatus;
+
   /// The current service enable status.
   final String status;
 
@@ -56,7 +61,11 @@ class GetLogShipperResult {
     return GetLogShipperResult(
       authStatus: map['authStatus'] as String,
       buyStatus: map['buyStatus'] as String,
-      enable: map['enable'] == null ? null : map['enable']! as String,
+      enable: (() {
+        final guardedValue = map['enable'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       openStatus: map['openStatus'] as String,
       slsProjectStatus: map['slsProjectStatus'] as String,
@@ -65,4 +74,3 @@ class GetLogShipperResult {
     );
   }
 }
-

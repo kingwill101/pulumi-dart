@@ -6,12 +6,16 @@ import 'runbook_parameter_response.dart';
 class RunbookDraftResponse {
   /// Gets or sets the creation time of the runbook draft.
   final pulumi.Input<String>? creationTime;
+
   /// Gets or sets whether runbook is in edit mode.
   final pulumi.Input<bool>? inEdit;
+
   /// Gets or sets the last modified time of the runbook draft.
   final pulumi.Input<String>? lastModifiedTime;
+
   /// Gets or sets the runbook output types.
   final pulumi.Input<List<String>>? outputTypes;
+
   /// Gets or sets the runbook draft parameters.
   final pulumi.Input<Map<String, RunbookParameterResponse>>? parameters;
 
@@ -35,18 +39,55 @@ class RunbookDraftResponse {
       'inEdit': ?inEdit,
       'lastModifiedTime': ?lastModifiedTime,
       'outputTypes': ?outputTypes,
-      'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, RunbookParameterResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<RunbookParameterResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, RunbookParameterResponse>,
+            Map<String, Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  RunbookParameterResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory RunbookDraftResponse.fromMap(Map<String, dynamic> map) {
     return RunbookDraftResponse(
-      creationTime: map['creationTime'] == null ? null : (map['creationTime']! as String).input(),
-      inEdit: map['inEdit'] == null ? null : (map['inEdit']! as bool).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
-      outputTypes: map['outputTypes'] == null ? null : ((map['outputTypes']! as List).cast<String>()).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<RunbookParameterResponse>(map['parameters']!, (value) => RunbookParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      creationTime: (() {
+        final guardedValue = map['creationTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inEdit: (() {
+        final guardedValue = map['inEdit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      lastModifiedTime: (() {
+        final guardedValue = map['lastModifiedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputTypes: (() {
+        final guardedValue = map['outputTypes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<RunbookParameterResponse>(
+            guardedValue,
+            (value) => RunbookParameterResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

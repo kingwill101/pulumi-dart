@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMasterSlaveServerGroupsGroupServer {
   /// ID of the attached ECS instance.
   final pulumi.Input<String> instanceId;
+
   /// (Removed from v1.63.0) Determine if the server is executing.
   final pulumi.Input<int> isBackup;
+
   /// The port used by the master slave server group.
   final pulumi.Input<int> port;
+
   /// The server type of the attached ECS instance.
   final pulumi.Input<String> serverType;
+
   /// Weight associated to the ECS instance.
   final pulumi.Input<int> weight;
 
@@ -38,14 +42,15 @@ class GetMasterSlaveServerGroupsGroupServer {
     };
   }
 
-  factory GetMasterSlaveServerGroupsGroupServer.fromMap(Map<String, dynamic> map) {
+  factory GetMasterSlaveServerGroupsGroupServer.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMasterSlaveServerGroupsGroupServer(
-      instanceId: (map['instanceId'] as String).input(),
-      isBackup: (map['isBackup'] as int).input(),
-      port: (map['port'] as int).input(),
-      serverType: (map['serverType'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      isBackup: pulumi.Input.fromValue(map['isBackup'] as int),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      serverType: pulumi.Input.fromValue(map['serverType'] as String),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

@@ -5,12 +5,16 @@ import 'org_access_token_args.dart';
 class OrgAccessToken extends pulumi.CustomResource {
   /// Optional. True if this is an admin token.
   late final pulumi.Output<bool?> admin;
+
   /// Optional. Description for the token.
   late final pulumi.Output<String?> description;
+
   /// The name for the token.
   late final pulumi.Output<String> name;
+
   /// The organization's name.
   late final pulumi.Output<String> organizationName;
+
   /// The token's value.
   late final pulumi.Output<String> value;
 
@@ -23,15 +27,15 @@ class OrgAccessToken extends pulumi.CustomResource {
     OrgAccessTokenArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'pulumiservice:index:OrgAccessToken',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.admin = registerOutput<bool?>('admin');
-    this.description = registerOutput<String?>('description');
+         'pulumiservice:index:OrgAccessToken',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    admin = registerOutput<bool?>('admin');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.organizationName = registerOutput<String>('organizationName');
-    this.value = registerOutput<String>('value');
+    organizationName = registerOutput<String>('organizationName');
+    value = registerOutput<String>('value');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlacementV1PropertySelectorRequirement {
   /// Name is the name of the property; it should be a Kubernetes label name.
   final pulumi.Input<String> name;
+
   /// Operator specifies the relationship between a cluster's observed value of the specified property and the values given in the requirement.
   final pulumi.Input<String> operator;
+
   /// Values are a list of values of the specified property which Fleet will compare against the observed values of individual member clusters in accordance with the given operator. At this moment, each value should be a Kubernetes quantity. For more information, see https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity. If the operator is Gt (greater than), Ge (greater than or equal to), Lt (less than), or `Le` (less than or equal to), Eq (equal to), or Ne (ne), exactly one value must be specified in the list.
   final pulumi.Input<List<String>> values;
 
@@ -29,12 +31,13 @@ class PlacementV1PropertySelectorRequirement {
     };
   }
 
-  factory PlacementV1PropertySelectorRequirement.fromMap(Map<String, dynamic> map) {
+  factory PlacementV1PropertySelectorRequirement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlacementV1PropertySelectorRequirement(
-      name: (map['name'] as String).input(),
-      operator: (map['operator'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      operator: pulumi.Input.fromValue(map['operator'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

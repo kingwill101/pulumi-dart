@@ -9,6 +9,7 @@ class PodCertificateRequestStatusPatch {
   ///
   /// This field is only a hint.  Kubelet may start refreshing before or after this time if necessary.
   final pulumi.Input<String>? beginRefreshAt;
+
   /// certificateChain is populated with an issued certificate by the signer. This field is set via the /status subresource. Once populated, this field is immutable.
   ///
   /// If the certificate signing request is denied, a condition of type "Denied" is added and this field remains empty. If the signer cannot issue the certificate, a condition of type "Failed" is added and this field remains empty.
@@ -20,14 +21,17 @@ class PodCertificateRequestStatusPatch {
   ///
   /// If more than one block is present, and the definition of the requested spec.signerName does not indicate otherwise, the first block is the issued certificate, and subsequent blocks should be treated as intermediate certificates and presented in TLS handshakes.  When projecting the chain into a pod volume, kubelet will drop any data in-between the PEM blocks, as well as any PEM block headers.
   final pulumi.Input<String>? certificateChain;
+
   /// conditions applied to the request.
   ///
   /// The types "Issued", "Denied", and "Failed" have special handling.  At most one of these conditions may be present, and they must have status "True".
   ///
   /// If the request is denied with `Reason=UnsupportedKeyType`, the signer may suggest a key type that will work in the message field.
   final pulumi.Input<List<ConditionPatch>>? conditions;
+
   /// notAfter is the time at which the certificate expires.  The value must be the same as the notAfter value in the leaf certificate in certificateChain.  This field is set via the /status subresource.  Once populated, it is immutable.  The signer must set this field at the same time it sets certificateChain.
   final pulumi.Input<String>? notAfter;
+
   /// notBefore is the time at which the certificate becomes valid.  The value must be the same as the notBefore value in the leaf certificate in certificateChain.  This field is set via the /status subresource.  Once populated, it is immutable. The signer must set this field at the same time it sets certificateChain.
   final pulumi.Input<String>? notBefore;
 
@@ -49,7 +53,18 @@ class PodCertificateRequestStatusPatch {
     return <String, dynamic>{
       'beginRefreshAt': ?beginRefreshAt,
       'certificateChain': ?certificateChain,
-      'conditions': ?pulumi.Input.mapOptionalInputValue<List<ConditionPatch>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<ConditionPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ConditionPatch>,
+            List<Map<String, dynamic>>
+          >(
+            conditions,
+            (value) =>
+                pulumi.Input.encodeList<ConditionPatch, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'notAfter': ?notAfter,
       'notBefore': ?notBefore,
     };
@@ -57,12 +72,37 @@ class PodCertificateRequestStatusPatch {
 
   factory PodCertificateRequestStatusPatch.fromMap(Map<String, dynamic> map) {
     return PodCertificateRequestStatusPatch(
-      beginRefreshAt: map['beginRefreshAt'] == null ? null : (map['beginRefreshAt']! as String).input(),
-      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain']! as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions']!, (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notAfter: map['notAfter'] == null ? null : (map['notAfter']! as String).input(),
-      notBefore: map['notBefore'] == null ? null : (map['notBefore']! as String).input(),
+      beginRefreshAt: (() {
+        final guardedValue = map['beginRefreshAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateChain: (() {
+        final guardedValue = map['certificateChain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ConditionPatch>(
+            guardedValue,
+            (value) =>
+                ConditionPatch.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      notAfter: (() {
+        final guardedValue = map['notAfter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notBefore: (() {
+        final guardedValue = map['notBefore'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

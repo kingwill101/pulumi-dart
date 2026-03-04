@@ -3,16 +3,15 @@ enum AgentAutoUpdateStatus {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const AgentAutoUpdateStatus(this.value);
-  final String value;
+  const AgentAutoUpdateStatus(this.wireValue);
+  final String wireValue;
 
   static AgentAutoUpdateStatus fromValue(String value) {
     for (final item in AgentAutoUpdateStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AgentAutoUpdateStatus value: $value');
   }
 }
-

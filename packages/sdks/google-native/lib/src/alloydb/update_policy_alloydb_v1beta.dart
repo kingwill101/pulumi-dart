@@ -10,20 +10,27 @@ class UpdatePolicyAlloydbV1beta {
 
   /// Creates a new [UpdatePolicyAlloydbV1beta].
   /// [mode] Mode for updating the instance.
-  UpdatePolicyAlloydbV1beta({
-    this.mode,
-  });
+  UpdatePolicyAlloydbV1beta({this.mode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mode': ?pulumi.Input.mapOptionalInputValue<UpdatePolicyModeAlloydbV1beta, String>(mode, (value) => value.value),
+      'mode':
+          ?pulumi.Input.mapOptionalInputValue<
+            UpdatePolicyModeAlloydbV1beta,
+            String
+          >(mode, (value) => value.wireValue),
     };
   }
 
   factory UpdatePolicyAlloydbV1beta.fromMap(Map<String, dynamic> map) {
     return UpdatePolicyAlloydbV1beta(
-      mode: map['mode'] == null ? null : (UpdatePolicyModeAlloydbV1beta.fromValue(map['mode']! as String)).input(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UpdatePolicyModeAlloydbV1beta.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

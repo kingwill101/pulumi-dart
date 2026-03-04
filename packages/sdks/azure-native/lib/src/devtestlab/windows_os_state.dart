@@ -4,16 +4,15 @@ enum WindowsOsState {
   sysprepRequested("SysprepRequested"),
   sysprepApplied("SysprepApplied");
 
-  const WindowsOsState(this.value);
-  final String value;
+  const WindowsOsState(this.wireValue);
+  final String wireValue;
 
   static WindowsOsState fromValue(String value) {
     for (final item in WindowsOsState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WindowsOsState value: $value');
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RocketMQInstanceNetworkInfoEndpoint {
   /// Access point type.
   final pulumi.Input<String>? endpointType;
+
   /// Access point address.
   final pulumi.Input<String>? endpointUrl;
+
   /// White list of access addresses.
   final pulumi.Input<List<String>>? ipWhiteLists;
 
@@ -28,12 +30,25 @@ class RocketMQInstanceNetworkInfoEndpoint {
     };
   }
 
-  factory RocketMQInstanceNetworkInfoEndpoint.fromMap(Map<String, dynamic> map) {
+  factory RocketMQInstanceNetworkInfoEndpoint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RocketMQInstanceNetworkInfoEndpoint(
-      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
-      endpointUrl: map['endpointUrl'] == null ? null : (map['endpointUrl']! as String).input(),
-      ipWhiteLists: map['ipWhiteLists'] == null ? null : ((map['ipWhiteLists']! as List).cast<String>()).input(),
+      endpointType: (() {
+        final guardedValue = map['endpointType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointUrl: (() {
+        final guardedValue = map['endpointUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipWhiteLists: (() {
+        final guardedValue = map['ipWhiteLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum LoggingDirections {
   request("Request"),
   response("Response");
 
-  const LoggingDirections(this.value);
-  final String value;
+  const LoggingDirections(this.wireValue);
+  final String wireValue;
 
   static LoggingDirections fromValue(String value) {
     for (final item in LoggingDirections.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LoggingDirections value: $value');
   }
 }
-

@@ -171,15 +171,21 @@ import 'log_metric_filter_state.dart';
 class LogMetricFilter extends pulumi.CustomResource {
   /// Whether the metric filter will be applied on the transformed version of the log events instead of the original ingested log events. Defaults to `false`. Valid only for log groups that have an active log transformer.
   late final pulumi.Output<bool> applyOnTransformedLogs;
+
   /// The name of the log group to associate the metric filter with.
   late final pulumi.Output<String> logGroupName;
+
   /// A block defining collection of information needed to define how metric data gets emitted. See below.
-  late final pulumi.Output<LogMetricFilterMetricTransformation> metricTransformation;
+  late final pulumi.Output<LogMetricFilterMetricTransformation>
+  metricTransformation;
+
   /// A name for the metric filter.
   late final pulumi.Output<String> name;
+
   /// A valid [CloudWatch Logs filter pattern](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/FilterAndPatternSyntax.html)
   /// for extracting metric data out of ingested log events.
   late final pulumi.Output<String> pattern;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -192,17 +198,19 @@ class LogMetricFilter extends pulumi.CustomResource {
     LogMetricFilterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudwatch/logMetricFilter:LogMetricFilter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applyOnTransformedLogs = registerOutput<bool>('applyOnTransformedLogs');
-    this.logGroupName = registerOutput<String>('logGroupName');
-    this.metricTransformation = registerOutput<LogMetricFilterMetricTransformation>('metricTransformation');
+         'aws:cloudwatch/logMetricFilter:LogMetricFilter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applyOnTransformedLogs = registerOutput<bool>('applyOnTransformedLogs');
+    logGroupName = registerOutput<String>('logGroupName');
+    metricTransformation = registerOutput<LogMetricFilterMetricTransformation>(
+      'metricTransformation',
+    );
     this.name = registerOutput<String>('name');
-    this.pattern = registerOutput<String>('pattern');
-    this.region = registerOutput<String>('region');
+    pattern = registerOutput<String>('pattern');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [LogMetricFilter] resource's state with the given [name] and [id].
@@ -223,16 +231,18 @@ class LogMetricFilter extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudwatch/logMetricFilter:LogMetricFilter',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applyOnTransformedLogs = registerOutput<bool>('applyOnTransformedLogs');
-    this.logGroupName = registerOutput<String>('logGroupName');
-    this.metricTransformation = registerOutput<LogMetricFilterMetricTransformation>('metricTransformation');
+         'aws:cloudwatch/logMetricFilter:LogMetricFilter',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applyOnTransformedLogs = registerOutput<bool>('applyOnTransformedLogs');
+    logGroupName = registerOutput<String>('logGroupName');
+    metricTransformation = registerOutput<LogMetricFilterMetricTransformation>(
+      'metricTransformation',
+    );
     this.name = registerOutput<String>('name');
-    this.pattern = registerOutput<String>('pattern');
-    this.region = registerOutput<String>('region');
+    pattern = registerOutput<String>('pattern');
+    region = registerOutput<String>('region');
   }
 }

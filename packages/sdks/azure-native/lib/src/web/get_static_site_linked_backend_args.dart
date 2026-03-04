@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetStaticSiteLinkedBackendArgs {
   /// Name of the linked backend that should be retrieved
   final pulumi.Input<String> linkedBackendName;
+
   /// Name of the static site
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetStaticSiteLinkedBackendArgs {
 
   factory GetStaticSiteLinkedBackendArgs.fromMap(Map<String, dynamic> map) {
     return GetStaticSiteLinkedBackendArgs(
-      linkedBackendName: (map['linkedBackendName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      linkedBackendName: pulumi.Input.fromValue(
+        map['linkedBackendName'] as String,
+      ),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'vmware_cbt_enable_migration_input.dart';
 class EnableMigrationInputProperties {
   /// The policy Id.
   final pulumi.Input<String> policyId;
+
   /// The provider specific details.
   final pulumi.Input<VMwareCbtEnableMigrationInput> providerSpecificDetails;
 
@@ -21,15 +22,22 @@ class EnableMigrationInputProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'policyId': policyId,
-      'providerSpecificDetails': pulumi.Input.mapInputValue<VMwareCbtEnableMigrationInput, Map<String, dynamic>>(providerSpecificDetails, (value) => value.toMap()),
+      'providerSpecificDetails':
+          pulumi.Input.mapInputValue<
+            VMwareCbtEnableMigrationInput,
+            Map<String, dynamic>
+          >(providerSpecificDetails, (value) => value.toMap()),
     };
   }
 
   factory EnableMigrationInputProperties.fromMap(Map<String, dynamic> map) {
     return EnableMigrationInputProperties(
-      policyId: (map['policyId'] as String).input(),
-      providerSpecificDetails: (VMwareCbtEnableMigrationInput.fromMap((map['providerSpecificDetails'] as Map).cast<String, dynamic>())).input(),
+      policyId: pulumi.Input.fromValue(map['policyId'] as String),
+      providerSpecificDetails: pulumi.Input.fromValue(
+        VMwareCbtEnableMigrationInput.fromMap(
+          (map['providerSpecificDetails']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

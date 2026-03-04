@@ -540,8 +540,7 @@ Future<GetDatacenterResult> getDatacenter(
 /// }
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetDatacentersResult> getDatacenters(
-  {
+Future<GetDatacentersResult> getDatacenters({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -1842,8 +1841,7 @@ Future<GetLoadBalancerTypeResult> getLoadBalancerType(
 ///       arguments: {}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetLoadBalancerTypesResult> getLoadBalancerTypes(
-  {
+Future<GetLoadBalancerTypesResult> getLoadBalancerTypes({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -2204,10 +2202,7 @@ Future<GetLocationResult> getLocation(
 /// }
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetLocationsResult> getLocations(
-  {
-  pulumi.InvokeOptions? options,
-}) async {
+Future<GetLocationsResult> getLocations({pulumi.InvokeOptions? options}) async {
   final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'hcloud:index/getLocations:getLocations',
@@ -2755,7 +2750,7 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
 ///
 /// See our the [API changelog](https://docs.hetzner.cloud/changelog#2025-12-16-phasing-out-datacenters) for more details.
 ///
-/// > Please upgrade to `v1.58.0+` of the provider to avoid issues once the Hetzner Cloud API no longer returns the `datacenter` attribute.
+/// &gt; Please upgrade to `v1.58.0+` of the provider to avoid issues once the Hetzner Cloud API no longer returns the `datacenter` attribute.
 ///
 /// ## Example Usage
 ///
@@ -3124,7 +3119,7 @@ Future<GetPrimaryIpsResult> getPrimaryIps(
 ///
 /// See our the [API changelog](https://docs.hetzner.cloud/changelog#2025-12-16-phasing-out-datacenters) for more details.
 ///
-/// > Please upgrade to `v1.58.0+` of the provider to avoid issues once the Hetzner Cloud API no longer returns the `datacenter` attribute.
+/// &gt; Please upgrade to `v1.58.0+` of the provider to avoid issues once the Hetzner Cloud API no longer returns the `datacenter` attribute.
 ///
 /// ## Example Usage
 ///
@@ -3533,8 +3528,7 @@ Future<GetServerTypeResult> getServerType(
 ///       arguments: {}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetServerTypesResult> getServerTypes(
-  {
+Future<GetServerTypesResult> getServerTypes({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
@@ -4944,8 +4938,7 @@ Future<GetStorageBoxTypeResult> getStorageBoxType(
 ///       arguments: {}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetStorageBoxTypesResult> getStorageBoxTypes(
-  {
+Future<GetStorageBoxTypesResult> getStorageBoxTypes({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;

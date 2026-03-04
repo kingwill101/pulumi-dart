@@ -4,7 +4,7 @@ import 'spring_cloud_storage_state.dart';
 
 /// Manages a Spring Cloud Storage.
 ///
-/// !> **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudStorage` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudStorage` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -249,10 +249,13 @@ import 'spring_cloud_storage_state.dart';
 class SpringCloudStorage extends pulumi.CustomResource {
   /// The name which should be used for this Spring Cloud Storage. Changing this forces a new Spring Cloud Storage to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Spring Cloud Service where the Spring Cloud Storage should exist. Changing this forces a new Spring Cloud Storage to be created.
   late final pulumi.Output<String> springCloudServiceId;
+
   /// The access key of the Azure Storage Account.
   late final pulumi.Output<String> storageAccountKey;
+
   /// The account name of the Azure Storage Account.
   late final pulumi.Output<String> storageAccountName;
 
@@ -265,15 +268,15 @@ class SpringCloudStorage extends pulumi.CustomResource {
     SpringCloudStorageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudStorage:SpringCloudStorage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:appplatform/springCloudStorage:SpringCloudStorage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    this.storageAccountKey = registerOutput<String>('storageAccountKey');
-    this.storageAccountName = registerOutput<String>('storageAccountName');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    storageAccountKey = registerOutput<String>('storageAccountKey');
+    storageAccountName = registerOutput<String>('storageAccountName');
   }
 
   /// Gets an existing [SpringCloudStorage] resource's state with the given [name] and [id].
@@ -294,14 +297,14 @@ class SpringCloudStorage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudStorage:SpringCloudStorage',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:appplatform/springCloudStorage:SpringCloudStorage',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    this.storageAccountKey = registerOutput<String>('storageAccountKey');
-    this.storageAccountName = registerOutput<String>('storageAccountName');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    storageAccountKey = registerOutput<String>('storageAccountKey');
+    storageAccountName = registerOutput<String>('storageAccountName');
   }
 }

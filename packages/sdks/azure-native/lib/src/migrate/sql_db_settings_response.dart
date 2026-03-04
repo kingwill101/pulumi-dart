@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlDbSettingsResponse {
   /// Gets or sets the azure SQL compute tier.
   final pulumi.Input<String>? azureSqlComputeTier;
+
   /// Gets or sets the azure PAAS SQL instance type.
   final pulumi.Input<String>? azureSqlDataBaseType;
+
   /// Gets or sets the azure SQL purchase model.
   final pulumi.Input<String>? azureSqlPurchaseModel;
+
   /// Gets or sets the azure SQL service tier.
   final pulumi.Input<String>? azureSqlServiceTier;
 
@@ -36,11 +39,26 @@ class SqlDbSettingsResponse {
 
   factory SqlDbSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SqlDbSettingsResponse(
-      azureSqlComputeTier: map['azureSqlComputeTier'] == null ? null : (map['azureSqlComputeTier']! as String).input(),
-      azureSqlDataBaseType: map['azureSqlDataBaseType'] == null ? null : (map['azureSqlDataBaseType']! as String).input(),
-      azureSqlPurchaseModel: map['azureSqlPurchaseModel'] == null ? null : (map['azureSqlPurchaseModel']! as String).input(),
-      azureSqlServiceTier: map['azureSqlServiceTier'] == null ? null : (map['azureSqlServiceTier']! as String).input(),
+      azureSqlComputeTier: (() {
+        final guardedValue = map['azureSqlComputeTier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      azureSqlDataBaseType: (() {
+        final guardedValue = map['azureSqlDataBaseType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      azureSqlPurchaseModel: (() {
+        final guardedValue = map['azureSqlPurchaseModel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      azureSqlServiceTier: (() {
+        final guardedValue = map['azureSqlServiceTier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

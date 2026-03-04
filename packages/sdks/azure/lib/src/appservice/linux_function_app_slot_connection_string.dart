@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinuxFunctionAppSlotConnectionString {
   /// The name which should be used for this Connection.
   final pulumi.Input<String> name;
+
   /// Type of database. Possible values include: `APIHub`, `Custom`, `DocDb`, `EventHub`, `MySQL`, `NotificationHub`, `PostgreSQL`, `RedisCache`, `ServiceBus`, `SQLAzure`, and `SQLServer`.
   final pulumi.Input<String> type;
+
   /// The connection string value.
   final pulumi.Input<String> value;
 
@@ -21,19 +23,16 @@ class LinuxFunctionAppSlotConnectionString {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'type': type,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'type': type, 'value': value};
   }
 
-  factory LinuxFunctionAppSlotConnectionString.fromMap(Map<String, dynamic> map) {
+  factory LinuxFunctionAppSlotConnectionString.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LinuxFunctionAppSlotConnectionString(
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

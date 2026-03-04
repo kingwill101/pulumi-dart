@@ -9,23 +9,26 @@ class Material {
   /// Creates a new [Material].
   /// [digest] Optional.
   /// [uri] Optional.
-  Material({
-    this.digest,
-    this.uri,
-  });
+  Material({this.digest, this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'digest': ?digest,
-      'uri': ?uri,
-    };
+    return <String, dynamic>{'digest': ?digest, 'uri': ?uri};
   }
 
   factory Material.fromMap(Map<String, dynamic> map) {
     return Material(
-      digest: map['digest'] == null ? null : ((map['digest']! as Map).cast<String, String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      digest: (() {
+        final guardedValue = map['digest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

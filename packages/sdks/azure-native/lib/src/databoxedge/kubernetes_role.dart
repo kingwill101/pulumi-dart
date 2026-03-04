@@ -142,25 +142,36 @@ import 'system_data_response.dart';
 class KubernetesRole extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Host OS supported by the Kubernetes role.
   late final pulumi.Output<String> hostPlatform;
+
   /// Platform where the runtime is hosted.
   late final pulumi.Output<String> hostPlatformType;
+
   /// Role type.
   /// Expected value is 'Kubernetes'.
   late final pulumi.Output<String> kind;
+
   /// Kubernetes cluster configuration
   late final pulumi.Output<KubernetesClusterInfoResponse> kubernetesClusterInfo;
+
   /// Kubernetes role resources
-  late final pulumi.Output<KubernetesRoleResourcesResponse> kubernetesRoleResources;
+  late final pulumi.Output<KubernetesRoleResourcesResponse>
+  kubernetesRoleResources;
+
   /// The object name.
   late final pulumi.Output<String> name;
+
   /// State of Kubernetes deployment
   late final pulumi.Output<String> provisioningState;
+
   /// Role status.
   late final pulumi.Output<String> roleStatus;
+
   /// Metadata pertaining to creation and last modification of Role
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
 
@@ -173,21 +184,25 @@ class KubernetesRole extends pulumi.CustomResource {
     KubernetesRoleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:databoxedge:KubernetesRole',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.hostPlatform = registerOutput<String>('hostPlatform');
-    this.hostPlatformType = registerOutput<String>('hostPlatformType');
-    this.kind = registerOutput<String>('kind');
-    this.kubernetesClusterInfo = registerOutput<KubernetesClusterInfoResponse>('kubernetesClusterInfo');
-    this.kubernetesRoleResources = registerOutput<KubernetesRoleResourcesResponse>('kubernetesRoleResources');
+         'azure-native:databoxedge:KubernetesRole',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hostPlatform = registerOutput<String>('hostPlatform');
+    hostPlatformType = registerOutput<String>('hostPlatformType');
+    kind = registerOutput<String>('kind');
+    kubernetesClusterInfo = registerOutput<KubernetesClusterInfoResponse>(
+      'kubernetesClusterInfo',
+    );
+    kubernetesRoleResources = registerOutput<KubernetesRoleResourcesResponse>(
+      'kubernetesRoleResources',
+    );
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.roleStatus = registerOutput<String>('roleStatus');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    roleStatus = registerOutput<String>('roleStatus');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

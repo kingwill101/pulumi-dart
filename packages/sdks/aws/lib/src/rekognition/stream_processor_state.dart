@@ -13,33 +13,48 @@ import 'stream_processor_timeouts.dart';
 class StreamProcessorState {
   /// ARN of the Stream Processor.
   final pulumi.Input<String>? arn;
+
   /// See `data_sharing_preference`.
-  final pulumi.Input<StreamProcessorDataSharingPreference>? dataSharingPreference;
+  final pulumi.Input<StreamProcessorDataSharingPreference>?
+  dataSharingPreference;
+
   /// Input video stream. See `input`.
   final pulumi.Input<StreamProcessorInput>? input;
+
   /// Optional parameter for label detection stream processors.
   final pulumi.Input<String>? kmsKeyId;
+
   /// The name of the Stream Processor.
   final pulumi.Input<String>? name;
+
   /// The Amazon Simple Notification Service topic to which Amazon Rekognition publishes the completion status. See `notification_channel`.
   final pulumi.Input<StreamProcessorNotificationChannel>? notificationChannel;
+
   /// Kinesis data stream stream or Amazon S3 bucket location to which Amazon Rekognition Video puts the analysis results. See `output`.
   final pulumi.Input<StreamProcessorOutput>? output;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Specifies locations in the frames where Amazon Rekognition checks for objects or people. See `regions_of_interest`.
-  final pulumi.Input<List<StreamProcessorRegionsOfInterest>>? regionsOfInterests;
+  final pulumi.Input<List<StreamProcessorRegionsOfInterest>>?
+  regionsOfInterests;
+
   /// The Amazon Resource Number (ARN) of the IAM role that allows access to the stream processor. The IAM role provides Rekognition read permissions for a Kinesis stream. It also provides write permissions to an Amazon S3 bucket and Amazon Simple Notification Service topic for a label detection stream processor. This is required for both face search and label detection stream processors.
   final pulumi.Input<String>? roleArn;
+
   /// Input parameters used in a streaming video analyzed by a stream processor. See `settings`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<StreamProcessorSettings>? settings;
+
   /// (**Deprecated**) ARN of the Stream Processor.
   /// Use `arn` instead.
   final pulumi.Input<String>? streamProcessorArn;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
   final pulumi.Input<StreamProcessorTimeouts>? timeouts;
@@ -81,41 +96,170 @@ class StreamProcessorState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': ?arn,
-      'dataSharingPreference': ?pulumi.Input.mapOptionalInputValue<StreamProcessorDataSharingPreference, Map<String, dynamic>>(dataSharingPreference, (value) => value.toMap()),
-      'input': ?pulumi.Input.mapOptionalInputValue<StreamProcessorInput, Map<String, dynamic>>(input, (value) => value.toMap()),
+      'dataSharingPreference':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamProcessorDataSharingPreference,
+            Map<String, dynamic>
+          >(dataSharingPreference, (value) => value.toMap()),
+      'input':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamProcessorInput,
+            Map<String, dynamic>
+          >(input, (value) => value.toMap()),
       'kmsKeyId': ?kmsKeyId,
       'name': ?name,
-      'notificationChannel': ?pulumi.Input.mapOptionalInputValue<StreamProcessorNotificationChannel, Map<String, dynamic>>(notificationChannel, (value) => value.toMap()),
-      'output': ?pulumi.Input.mapOptionalInputValue<StreamProcessorOutput, Map<String, dynamic>>(output, (value) => value.toMap()),
+      'notificationChannel':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamProcessorNotificationChannel,
+            Map<String, dynamic>
+          >(notificationChannel, (value) => value.toMap()),
+      'output':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamProcessorOutput,
+            Map<String, dynamic>
+          >(output, (value) => value.toMap()),
       'region': ?region,
-      'regionsOfInterests': ?pulumi.Input.mapOptionalInputValue<List<StreamProcessorRegionsOfInterest>, List<Map<String, dynamic>>>(regionsOfInterests, (value) => pulumi.Input.encodeList<StreamProcessorRegionsOfInterest, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'regionsOfInterests':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StreamProcessorRegionsOfInterest>,
+            List<Map<String, dynamic>>
+          >(
+            regionsOfInterests,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StreamProcessorRegionsOfInterest,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'roleArn': ?roleArn,
-      'settings': ?pulumi.Input.mapOptionalInputValue<StreamProcessorSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
+      'settings':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamProcessorSettings,
+            Map<String, dynamic>
+          >(settings, (value) => value.toMap()),
       'streamProcessorArn': ?streamProcessorArn,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<StreamProcessorTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            StreamProcessorTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory StreamProcessorState.fromMap(Map<String, dynamic> map) {
     return StreamProcessorState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      dataSharingPreference: map['dataSharingPreference'] == null ? null : ((StreamProcessorDataSharingPreference.fromMap((map['dataSharingPreference']! as Map).cast<String, dynamic>())).input()).input(),
-      input: map['input'] == null ? null : ((StreamProcessorInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input()).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      notificationChannel: map['notificationChannel'] == null ? null : ((StreamProcessorNotificationChannel.fromMap((map['notificationChannel']! as Map).cast<String, dynamic>())).input()).input(),
-      output: map['output'] == null ? null : ((StreamProcessorOutput.fromMap((map['output']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      regionsOfInterests: map['regionsOfInterests'] == null ? null : ((pulumi.Input.decodeList<StreamProcessorRegionsOfInterest>(map['regionsOfInterests']!, (value) => StreamProcessorRegionsOfInterest.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
-      settings: map['settings'] == null ? null : ((StreamProcessorSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input()).input(),
-      streamProcessorArn: map['streamProcessorArn'] == null ? null : ((map['streamProcessorArn'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((StreamProcessorTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataSharingPreference: (() {
+        final guardedValue = map['dataSharingPreference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamProcessorDataSharingPreference.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      input: (() {
+        final guardedValue = map['input'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamProcessorInput.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notificationChannel: (() {
+        final guardedValue = map['notificationChannel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamProcessorNotificationChannel.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      output: (() {
+        final guardedValue = map['output'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamProcessorOutput.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionsOfInterests: (() {
+        final guardedValue = map['regionsOfInterests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StreamProcessorRegionsOfInterest>(
+            guardedValue,
+            (value) => StreamProcessorRegionsOfInterest.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      roleArn: (() {
+        final guardedValue = map['roleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      settings: (() {
+        final guardedValue = map['settings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamProcessorSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      streamProcessorArn: (() {
+        final guardedValue = map['streamProcessorArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StreamProcessorTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

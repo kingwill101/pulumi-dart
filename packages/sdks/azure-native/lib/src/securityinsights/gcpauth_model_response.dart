@@ -6,11 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GCPAuthModelResponse {
   /// GCP Project Number
   final pulumi.Input<String> projectNumber;
+
   /// GCP Service Account Email
   final pulumi.Input<String> serviceAccountEmail;
+
   /// Type of paging
   /// Expected value is 'GCP'.
   final pulumi.Input<String> type;
+
   /// GCP Workload Identity Provider ID
   final pulumi.Input<String> workloadIdentityProviderId;
 
@@ -37,11 +40,14 @@ class GCPAuthModelResponse {
 
   factory GCPAuthModelResponse.fromMap(Map<String, dynamic> map) {
     return GCPAuthModelResponse(
-      projectNumber: (map['projectNumber'] as String).input(),
-      serviceAccountEmail: (map['serviceAccountEmail'] as String).input(),
-      type: (map['type'] as String).input(),
-      workloadIdentityProviderId: (map['workloadIdentityProviderId'] as String).input(),
+      projectNumber: pulumi.Input.fromValue(map['projectNumber'] as String),
+      serviceAccountEmail: pulumi.Input.fromValue(
+        map['serviceAccountEmail'] as String,
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      workloadIdentityProviderId: pulumi.Input.fromValue(
+        map['workloadIdentityProviderId'] as String,
+      ),
     );
   }
 }
-

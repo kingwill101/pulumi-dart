@@ -6,7 +6,7 @@ import 'env_custom_job_state.dart';
 ///
 /// For information about ARMS Env Custom Job and how to use it, see [What is Env Custom Job](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-createenvcustomjob).
 ///
-/// > **NOTE:** Available since v1.212.0.
+/// &gt; **NOTE:** Available since v1.212.0.
 ///
 /// ## Example Usage
 ///
@@ -340,12 +340,16 @@ import 'env_custom_job_state.dart';
 class EnvCustomJob extends pulumi.CustomResource {
   /// The locale. The default is Chinese zh | en.
   late final pulumi.Output<String?> aliyunLang;
+
   /// Yaml configuration string.
   late final pulumi.Output<String> configYaml;
+
   /// Custom job name.
   late final pulumi.Output<String> envCustomJobName;
+
   /// Environment id.
   late final pulumi.Output<String> environmentId;
+
   /// Status: run, stop.
   late final pulumi.Output<String> status;
 
@@ -358,16 +362,16 @@ class EnvCustomJob extends pulumi.CustomResource {
     EnvCustomJobArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/envCustomJob:EnvCustomJob',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aliyunLang = registerOutput<String?>('aliyunLang');
-    this.configYaml = registerOutput<String>('configYaml');
-    this.envCustomJobName = registerOutput<String>('envCustomJobName');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.status = registerOutput<String>('status');
+         'alicloud:arms/envCustomJob:EnvCustomJob',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aliyunLang = registerOutput<String?>('aliyunLang');
+    configYaml = registerOutput<String>('configYaml');
+    envCustomJobName = registerOutput<String>('envCustomJobName');
+    environmentId = registerOutput<String>('environmentId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [EnvCustomJob] resource's state with the given [name] and [id].
@@ -388,15 +392,15 @@ class EnvCustomJob extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/envCustomJob:EnvCustomJob',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aliyunLang = registerOutput<String?>('aliyunLang');
-    this.configYaml = registerOutput<String>('configYaml');
-    this.envCustomJobName = registerOutput<String>('envCustomJobName');
-    this.environmentId = registerOutput<String>('environmentId');
-    this.status = registerOutput<String>('status');
+         'alicloud:arms/envCustomJob:EnvCustomJob',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aliyunLang = registerOutput<String?>('aliyunLang');
+    configYaml = registerOutput<String>('configYaml');
+    envCustomJobName = registerOutput<String>('envCustomJobName');
+    environmentId = registerOutput<String>('environmentId');
+    status = registerOutput<String>('status');
   }
 }

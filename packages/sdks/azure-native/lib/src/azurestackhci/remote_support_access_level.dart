@@ -4,16 +4,15 @@ enum RemoteSupportAccessLevel {
   diagnostics("Diagnostics"),
   diagnosticsAndRepair("DiagnosticsAndRepair");
 
-  const RemoteSupportAccessLevel(this.value);
-  final String value;
+  const RemoteSupportAccessLevel(this.wireValue);
+  final String wireValue;
 
   static RemoteSupportAccessLevel fromValue(String value) {
     for (final item in RemoteSupportAccessLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RemoteSupportAccessLevel value: $value');
   }
 }
-

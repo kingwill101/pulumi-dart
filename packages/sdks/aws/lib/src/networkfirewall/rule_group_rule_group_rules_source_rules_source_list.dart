@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RuleGroupRuleGroupRulesSourceRulesSourceList {
   /// String value to specify whether domains in the target list are allowed or denied access. Valid values: `ALLOWLIST`, `DENYLIST`.
   final pulumi.Input<String> generatedRulesType;
+
   /// Set of types of domain specifications that are provided in the `targets` argument. Valid values: `HTTP_HOST`, `TLS_SNI`.
   final pulumi.Input<List<String>> targetTypes;
+
   /// Set of domains that you want to inspect for in your traffic flows.
   final pulumi.Input<List<String>> targets;
 
@@ -28,12 +30,17 @@ class RuleGroupRuleGroupRulesSourceRulesSourceList {
     };
   }
 
-  factory RuleGroupRuleGroupRulesSourceRulesSourceList.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleGroupRulesSourceRulesSourceList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleGroupRulesSourceRulesSourceList(
-      generatedRulesType: (map['generatedRulesType'] as String).input(),
-      targetTypes: ((map['targetTypes'] as List).cast<String>()).input(),
-      targets: ((map['targets'] as List).cast<String>()).input(),
+      generatedRulesType: pulumi.Input.fromValue(
+        map['generatedRulesType'] as String,
+      ),
+      targetTypes: pulumi.Input.fromValue(
+        (map['targetTypes'] as List).cast<String>(),
+      ),
+      targets: pulumi.Input.fromValue((map['targets'] as List).cast<String>()),
     );
   }
 }
-

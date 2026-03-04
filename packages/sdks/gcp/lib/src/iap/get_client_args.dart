@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClientArgs {
   /// The name of the brand.
   final pulumi.Input<String> brand;
+
   /// The client_id of the brand.
   final pulumi.Input<String> clientId;
 
   /// Creates a new [GetClientArgs].
   /// [brand] The name of the brand.
   /// [clientId] The client_id of the brand.
-  GetClientArgs({
-    required this.brand,
-    required this.clientId,
-  });
+  GetClientArgs({required this.brand, required this.clientId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'brand': brand,
-      'clientId': clientId,
-    };
+    return <String, dynamic>{'brand': brand, 'clientId': clientId};
   }
 
   factory GetClientArgs.fromMap(Map<String, dynamic> map) {
     return GetClientArgs(
-      brand: (map['brand'] as String).input(),
-      clientId: (map['clientId'] as String).input(),
+      brand: pulumi.Input.fromValue(map['brand'] as String),
+      clientId: pulumi.Input.fromValue(map['clientId'] as String),
     );
   }
 }
-

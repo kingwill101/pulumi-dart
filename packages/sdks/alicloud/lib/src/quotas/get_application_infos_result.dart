@@ -9,6 +9,7 @@ class GetApplicationInfosResult {
   final List<GetApplicationInfosApplication> applications;
   final List<GetApplicationInfosDimension>? dimensions;
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -47,8 +48,19 @@ class GetApplicationInfosResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applications': pulumi.Input.encodeList<GetApplicationInfosApplication, Map<String, dynamic>>(applications, (value) => value.toMap()),
-      'dimensions': ?dimensions == null ? null : pulumi.Input.encodeList<GetApplicationInfosDimension, Map<String, dynamic>>(dimensions!, (value) => value.toMap()),
+      'applications':
+          pulumi.Input.encodeList<
+            GetApplicationInfosApplication,
+            Map<String, dynamic>
+          >(applications, (value) => value.toMap()),
+      'dimensions': ?(() {
+        final guardedValue = dimensions;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GetApplicationInfosDimension,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
@@ -63,18 +75,55 @@ class GetApplicationInfosResult {
 
   factory GetApplicationInfosResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationInfosResult(
-      applications: pulumi.Input.decodeList<GetApplicationInfosApplication>(map['applications'], (value) => GetApplicationInfosApplication.fromMap((value as Map).cast<String, dynamic>())),
-      dimensions: map['dimensions'] == null ? null : pulumi.Input.decodeList<GetApplicationInfosDimension>(map['dimensions']!, (value) => GetApplicationInfosDimension.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      applications: pulumi.Input.decodeList<GetApplicationInfosApplication>(
+        map['applications']!,
+        (value) => GetApplicationInfosApplication.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      dimensions: (() {
+        final guardedValue = map['dimensions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetApplicationInfosDimension>(
+          guardedValue,
+          (value) => GetApplicationInfosDimension.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyWord: map['keyWord'] == null ? null : map['keyWord']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      keyWord: (() {
+        final guardedValue = map['keyWord'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       productCode: map['productCode'] as String,
-      quotaActionCode: map['quotaActionCode'] == null ? null : map['quotaActionCode']! as String,
-      quotaCategory: map['quotaCategory'] == null ? null : map['quotaCategory']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      quotaActionCode: (() {
+        final guardedValue = map['quotaActionCode'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      quotaCategory: (() {
+        final guardedValue = map['quotaCategory'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

@@ -122,6 +122,7 @@ import 'snat_pool_state.dart';
 class SnatPool extends pulumi.CustomResource {
   /// Specifies a translation address to add to or delete from a SNAT pool (at least one address is required)
   late final pulumi.Output<List<String>> members;
+
   /// Name of the snatpool
   late final pulumi.Output<String> name;
 
@@ -134,12 +135,12 @@ class SnatPool extends pulumi.CustomResource {
     SnatPoolArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ltm/snatPool:SnatPool',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.members = registerOutput<List<String>>('members');
+         'f5bigip:ltm/snatPool:SnatPool',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    members = registerOutput<List<String>>('members');
     this.name = registerOutput<String>('name');
   }
 
@@ -161,12 +162,12 @@ class SnatPool extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ltm/snatPool:SnatPool',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.members = registerOutput<List<String>>('members');
+         'f5bigip:ltm/snatPool:SnatPool',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    members = registerOutput<List<String>>('members');
     this.name = registerOutput<String>('name');
   }
 }

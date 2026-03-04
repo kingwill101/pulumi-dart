@@ -161,20 +161,27 @@ class QuerySuggestionsBlockList extends pulumi.CustomResource {
   /// ARN of the block list.
   late final pulumi.Output<String> arn;
   late final pulumi.Output<String?> description;
+
   /// Identifier of the index for a block list.
   late final pulumi.Output<String> indexId;
+
   /// Name for the block list.
   late final pulumi.Output<String> name;
+
   /// Unique identifier of the block list.
   late final pulumi.Output<String> querySuggestionsBlockListId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
   late final pulumi.Output<String> region;
+
   /// IAM (Identity and Access Management) role used to access the block list text file in S3.
   late final pulumi.Output<String> roleArn;
+
   /// S3 path where your block list text file is located. See details below.
   late final pulumi.Output<QuerySuggestionsBlockListSourceS3Path> sourceS3Path;
   late final pulumi.Output<String> status;
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider's default_tags configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -187,22 +194,26 @@ class QuerySuggestionsBlockList extends pulumi.CustomResource {
     QuerySuggestionsBlockListArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:kendra/querySuggestionsBlockList:QuerySuggestionsBlockList',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.indexId = registerOutput<String>('indexId');
+         'aws:kendra/querySuggestionsBlockList:QuerySuggestionsBlockList',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    indexId = registerOutput<String>('indexId');
     this.name = registerOutput<String>('name');
-    this.querySuggestionsBlockListId = registerOutput<String>('querySuggestionsBlockListId');
-    this.region = registerOutput<String>('region');
-    this.roleArn = registerOutput<String>('roleArn');
-    this.sourceS3Path = registerOutput<QuerySuggestionsBlockListSourceS3Path>('sourceS3Path');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    querySuggestionsBlockListId = registerOutput<String>(
+      'querySuggestionsBlockListId',
+    );
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    sourceS3Path = registerOutput<QuerySuggestionsBlockListSourceS3Path>(
+      'sourceS3Path',
+    );
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [QuerySuggestionsBlockList] resource's state with the given [name] and [id].
@@ -223,21 +234,25 @@ class QuerySuggestionsBlockList extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:kendra/querySuggestionsBlockList:QuerySuggestionsBlockList',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.description = registerOutput<String?>('description');
-    this.indexId = registerOutput<String>('indexId');
+         'aws:kendra/querySuggestionsBlockList:QuerySuggestionsBlockList',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    description = registerOutput<String?>('description');
+    indexId = registerOutput<String>('indexId');
     this.name = registerOutput<String>('name');
-    this.querySuggestionsBlockListId = registerOutput<String>('querySuggestionsBlockListId');
-    this.region = registerOutput<String>('region');
-    this.roleArn = registerOutput<String>('roleArn');
-    this.sourceS3Path = registerOutput<QuerySuggestionsBlockListSourceS3Path>('sourceS3Path');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    querySuggestionsBlockListId = registerOutput<String>(
+      'querySuggestionsBlockListId',
+    );
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String>('roleArn');
+    sourceS3Path = registerOutput<QuerySuggestionsBlockListSourceS3Path>(
+      'sourceS3Path',
+    );
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

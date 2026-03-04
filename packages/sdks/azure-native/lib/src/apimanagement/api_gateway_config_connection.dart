@@ -140,18 +140,25 @@ import 'api_gateway_config_connection_args.dart';
 class ApiGatewayConfigConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The default hostname of the data-plane gateway.
   late final pulumi.Output<String> defaultHostname;
+
   /// ETag of the resource.
   late final pulumi.Output<String> etag;
+
   /// The hostnames of the data-plane gateway to which requests can be sent.
   late final pulumi.Output<List<String>?> hostnames;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The current provisioning state of the API Management gateway config connection
   late final pulumi.Output<String> provisioningState;
+
   /// The link to the API Management service workspace.
   late final pulumi.Output<String?> sourceId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -164,18 +171,18 @@ class ApiGatewayConfigConnection extends pulumi.CustomResource {
     ApiGatewayConfigConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:apimanagement:ApiGatewayConfigConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.defaultHostname = registerOutput<String>('defaultHostname');
-    this.etag = registerOutput<String>('etag');
-    this.hostnames = registerOutput<List<String>?>('hostnames');
+         'azure-native:apimanagement:ApiGatewayConfigConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultHostname = registerOutput<String>('defaultHostname');
+    etag = registerOutput<String>('etag');
+    hostnames = registerOutput<List<String>?>('hostnames');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sourceId = registerOutput<String?>('sourceId');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceId = registerOutput<String?>('sourceId');
+    type = registerOutput<String>('type');
   }
 }

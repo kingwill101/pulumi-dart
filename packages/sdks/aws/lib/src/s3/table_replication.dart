@@ -149,10 +149,13 @@ import 'table_replication_state.dart';
 class TableReplication extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ARN referencing the IAM role assumed by S3 when replicating tables.
   late final pulumi.Output<String> role;
+
   /// Replication rules. See Rule below for more details.
   late final pulumi.Output<TableReplicationRule?> rule;
+
   /// ARN referencing the Table that owns this replication configuration.
   late final pulumi.Output<String> tableArn;
   late final pulumi.Output<String> versionToken;
@@ -166,16 +169,16 @@ class TableReplication extends pulumi.CustomResource {
     TableReplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3tables/tableReplication:TableReplication',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.role = registerOutput<String>('role');
-    this.rule = registerOutput<TableReplicationRule?>('rule');
-    this.tableArn = registerOutput<String>('tableArn');
-    this.versionToken = registerOutput<String>('versionToken');
+         'aws:s3tables/tableReplication:TableReplication',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+    rule = registerOutput<TableReplicationRule?>('rule');
+    tableArn = registerOutput<String>('tableArn');
+    versionToken = registerOutput<String>('versionToken');
   }
 
   /// Gets an existing [TableReplication] resource's state with the given [name] and [id].
@@ -196,15 +199,15 @@ class TableReplication extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3tables/tableReplication:TableReplication',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.region = registerOutput<String>('region');
-    this.role = registerOutput<String>('role');
-    this.rule = registerOutput<TableReplicationRule?>('rule');
-    this.tableArn = registerOutput<String>('tableArn');
-    this.versionToken = registerOutput<String>('versionToken');
+         'aws:s3tables/tableReplication:TableReplication',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+    rule = registerOutput<TableReplicationRule?>('rule');
+    tableArn = registerOutput<String>('tableArn');
+    versionToken = registerOutput<String>('versionToken');
   }
 }

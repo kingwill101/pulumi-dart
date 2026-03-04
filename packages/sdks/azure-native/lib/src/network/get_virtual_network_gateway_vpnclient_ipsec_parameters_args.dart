@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualNetworkGatewayVpnclientIpsecParametersArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The virtual network gateway name.
   final pulumi.Input<String> virtualNetworkGatewayName;
 
@@ -27,11 +28,16 @@ class GetVirtualNetworkGatewayVpnclientIpsecParametersArgs {
     };
   }
 
-  factory GetVirtualNetworkGatewayVpnclientIpsecParametersArgs.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNetworkGatewayVpnclientIpsecParametersArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNetworkGatewayVpnclientIpsecParametersArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      virtualNetworkGatewayName: (map['virtualNetworkGatewayName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      virtualNetworkGatewayName: pulumi.Input.fromValue(
+        map['virtualNetworkGatewayName'] as String,
+      ),
     );
   }
 }
-

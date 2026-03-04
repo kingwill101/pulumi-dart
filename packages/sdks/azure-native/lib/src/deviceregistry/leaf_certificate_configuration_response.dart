@@ -9,20 +9,19 @@ class LeafCertificateConfigurationResponse {
 
   /// Creates a new [LeafCertificateConfigurationResponse].
   /// [validityPeriodInDays] The validity period in days.
-  LeafCertificateConfigurationResponse({
-    required this.validityPeriodInDays,
-  });
+  LeafCertificateConfigurationResponse({required this.validityPeriodInDays});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'validityPeriodInDays': validityPeriodInDays,
-    };
+    return <String, dynamic>{'validityPeriodInDays': validityPeriodInDays};
   }
 
-  factory LeafCertificateConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory LeafCertificateConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LeafCertificateConfigurationResponse(
-      validityPeriodInDays: (map['validityPeriodInDays'] as int).input(),
+      validityPeriodInDays: pulumi.Input.fromValue(
+        map['validityPeriodInDays'] as int,
+      ),
     );
   }
 }
-

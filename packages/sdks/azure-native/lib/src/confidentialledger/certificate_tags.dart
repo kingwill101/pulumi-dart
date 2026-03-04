@@ -9,20 +9,21 @@ class CertificateTags {
 
   /// Creates a new [CertificateTags].
   /// [tags] Additional tags for Managed CCF Certificates
-  CertificateTags({
-    this.tags,
-  });
+  CertificateTags({this.tags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'tags': ?tags};
   }
 
   factory CertificateTags.fromMap(Map<String, dynamic> map) {
     return CertificateTags(
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

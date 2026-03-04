@@ -25,11 +25,16 @@ class GetNetworkFirewallPolicyComputeV1Args {
     };
   }
 
-  factory GetNetworkFirewallPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
+  factory GetNetworkFirewallPolicyComputeV1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNetworkFirewallPolicyComputeV1Args(
-      firewallPolicy: (map['firewallPolicy'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      firewallPolicy: pulumi.Input.fromValue(map['firewallPolicy'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

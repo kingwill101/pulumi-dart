@@ -4,16 +4,15 @@ enum Logging {
   valueStdoutAndStderr("stdoutAndStderr"),
   valueNone("none");
 
-  const Logging(this.value);
-  final String value;
+  const Logging(this.wireValue);
+  final String wireValue;
 
   static Logging fromValue(String value) {
     for (final item in Logging.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Logging value: $value');
   }
 }
-

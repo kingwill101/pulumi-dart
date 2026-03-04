@@ -4,16 +4,17 @@ enum SecurityPostureConfigModeContainerV1beta1 {
   disabled("DISABLED"),
   basic("BASIC");
 
-  const SecurityPostureConfigModeContainerV1beta1(this.value);
-  final String value;
+  const SecurityPostureConfigModeContainerV1beta1(this.wireValue);
+  final String wireValue;
 
   static SecurityPostureConfigModeContainerV1beta1 fromValue(String value) {
     for (final item in SecurityPostureConfigModeContainerV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityPostureConfigModeContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown SecurityPostureConfigModeContainerV1beta1 value: $value',
+    );
   }
 }
-

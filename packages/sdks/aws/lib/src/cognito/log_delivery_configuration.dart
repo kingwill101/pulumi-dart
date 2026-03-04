@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_delivery_configuration_args.dart';
-import 'log_delivery_configuration_log_configuration.dart';
 import 'log_delivery_configuration_state.dart';
 
 /// Manages an AWS Cognito IDP (Identity Provider) Log Delivery Configuration.
@@ -1008,9 +1007,11 @@ import 'log_delivery_configuration_state.dart';
 /// ```
 class LogDeliveryConfiguration extends pulumi.CustomResource {
   /// Configuration block for log delivery. At least one configuration block is required. See Log Configurations below.
-  late final pulumi.Output<List<LogDeliveryConfigurationLogConfiguration>> logConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>> logConfigurations;
+
   /// The AWS region.
   late final pulumi.Output<String> region;
+
   /// The ID of the user pool for which to configure log delivery.
   ///
   /// The following arguments are optional:
@@ -1025,14 +1026,16 @@ class LogDeliveryConfiguration extends pulumi.CustomResource {
     LogDeliveryConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cognito/logDeliveryConfiguration:LogDeliveryConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logConfigurations = registerOutput<List<LogDeliveryConfigurationLogConfiguration>>('logConfigurations');
-    this.region = registerOutput<String>('region');
-    this.userPoolId = registerOutput<String>('userPoolId');
+         'aws:cognito/logDeliveryConfiguration:LogDeliveryConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'logConfigurations',
+    );
+    region = registerOutput<String>('region');
+    userPoolId = registerOutput<String>('userPoolId');
   }
 
   /// Gets an existing [LogDeliveryConfiguration] resource's state with the given [name] and [id].
@@ -1053,13 +1056,15 @@ class LogDeliveryConfiguration extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cognito/logDeliveryConfiguration:LogDeliveryConfiguration',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.logConfigurations = registerOutput<List<LogDeliveryConfigurationLogConfiguration>>('logConfigurations');
-    this.region = registerOutput<String>('region');
-    this.userPoolId = registerOutput<String>('userPoolId');
+         'aws:cognito/logDeliveryConfiguration:LogDeliveryConfiguration',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    logConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'logConfigurations',
+    );
+    region = registerOutput<String>('region');
+    userPoolId = registerOutput<String>('userPoolId');
   }
 }

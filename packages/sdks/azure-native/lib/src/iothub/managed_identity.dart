@@ -9,20 +9,19 @@ class ManagedIdentity {
 
   /// Creates a new [ManagedIdentity].
   /// [userAssignedIdentity] The user assigned identity.
-  ManagedIdentity({
-    this.userAssignedIdentity,
-  });
+  ManagedIdentity({this.userAssignedIdentity});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'userAssignedIdentity': ?userAssignedIdentity,
-    };
+    return <String, dynamic>{'userAssignedIdentity': ?userAssignedIdentity};
   }
 
   factory ManagedIdentity.fromMap(Map<String, dynamic> map) {
     return ManagedIdentity(
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
+      userAssignedIdentity: (() {
+        final guardedValue = map['userAssignedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

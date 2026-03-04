@@ -10,20 +10,29 @@ class AuthorizationLoggingOptions {
 
   /// Creates a new [AuthorizationLoggingOptions].
   /// [permissionType] This is deprecated and has no effect. Do not use.
-  AuthorizationLoggingOptions({
-    this.permissionType,
-  });
+  AuthorizationLoggingOptions({this.permissionType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'permissionType': ?pulumi.Input.mapOptionalInputValue<AuthorizationLoggingOptionsPermissionType, String>(permissionType, (value) => value.value),
+      'permissionType':
+          ?pulumi.Input.mapOptionalInputValue<
+            AuthorizationLoggingOptionsPermissionType,
+            String
+          >(permissionType, (value) => value.wireValue),
     };
   }
 
   factory AuthorizationLoggingOptions.fromMap(Map<String, dynamic> map) {
     return AuthorizationLoggingOptions(
-      permissionType: map['permissionType'] == null ? null : (AuthorizationLoggingOptionsPermissionType.fromValue(map['permissionType']! as String)).input(),
+      permissionType: (() {
+        final guardedValue = map['permissionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AuthorizationLoggingOptionsPermissionType.fromValue(
+            guardedValue as String,
+          ),
+        );
+      })(),
     );
   }
 }
-

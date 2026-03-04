@@ -28,20 +28,73 @@ class GetConsumerImageShareGroupTokensArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetConsumerImageShareGroupTokensFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetConsumerImageShareGroupTokensFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetConsumerImageShareGroupTokensFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetConsumerImageShareGroupTokensFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'order': ?order,
       'orderBy': ?orderBy,
-      'tokens': ?pulumi.Input.mapOptionalInputValue<List<GetConsumerImageShareGroupTokensToken>, List<Map<String, dynamic>>>(tokens, (value) => pulumi.Input.encodeList<GetConsumerImageShareGroupTokensToken, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tokens':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetConsumerImageShareGroupTokensToken>,
+            List<Map<String, dynamic>>
+          >(
+            tokens,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetConsumerImageShareGroupTokensToken,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory GetConsumerImageShareGroupTokensArgs.fromMap(Map<String, dynamic> map) {
+  factory GetConsumerImageShareGroupTokensArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConsumerImageShareGroupTokensArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetConsumerImageShareGroupTokensFilter>(map['filters']!, (value) => GetConsumerImageShareGroupTokensFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      order: map['order'] == null ? null : (map['order']! as String).input(),
-      orderBy: map['orderBy'] == null ? null : (map['orderBy']! as String).input(),
-      tokens: map['tokens'] == null ? null : (pulumi.Input.decodeList<GetConsumerImageShareGroupTokensToken>(map['tokens']!, (value) => GetConsumerImageShareGroupTokensToken.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetConsumerImageShareGroupTokensFilter>(
+            guardedValue,
+            (value) => GetConsumerImageShareGroupTokensFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      order: (() {
+        final guardedValue = map['order'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orderBy: (() {
+        final guardedValue = map['orderBy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tokens: (() {
+        final guardedValue = map['tokens'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetConsumerImageShareGroupTokensToken>(
+            guardedValue,
+            (value) => GetConsumerImageShareGroupTokensToken.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

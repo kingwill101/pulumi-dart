@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workbook_template_args.dart';
-import 'workbook_template_gallery_response.dart';
 import 'workbook_template_localized_gallery_response.dart';
 
 /// An Application Insights workbook template definition.
@@ -394,22 +393,34 @@ import 'workbook_template_localized_gallery_response.dart';
 class WorkbookTemplate extends pulumi.CustomResource {
   /// Information about the author of the workbook template.
   late final pulumi.Output<String?> author;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Workbook galleries supported by the template.
-  late final pulumi.Output<List<WorkbookTemplateGalleryResponse>> galleries;
+  late final pulumi.Output<List<Map<String, dynamic>>> galleries;
+
   /// Key value pair of localized gallery. Each key is the locale code of languages supported by the Azure portal.
-  late final pulumi.Output<Map<String, List<WorkbookTemplateLocalizedGalleryResponse>>?> localized;
+  late final pulumi.Output<
+    Map<String, List<WorkbookTemplateLocalizedGalleryResponse>>?
+  >
+  localized;
+
   /// Resource location
   late final pulumi.Output<String> location;
+
   /// Azure resource name.
   late final pulumi.Output<String> name;
+
   /// Priority of the template. Determines which template to open when a workbook gallery is opened in viewer mode.
   late final pulumi.Output<int?> priority;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Valid JSON object containing workbook template payload.
   late final pulumi.Output<dynamic> templateData;
+
   /// Azure resource type
   late final pulumi.Output<String> type;
 
@@ -422,20 +433,23 @@ class WorkbookTemplate extends pulumi.CustomResource {
     WorkbookTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:applicationinsights:WorkbookTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.author = registerOutput<String?>('author');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.galleries = registerOutput<List<WorkbookTemplateGalleryResponse>>('galleries');
-    this.localized = registerOutput<Map<String, List<WorkbookTemplateLocalizedGalleryResponse>>?>('localized');
-    this.location = registerOutput<String>('location');
+         'azure-native:applicationinsights:WorkbookTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    author = registerOutput<String?>('author');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    galleries = registerOutput<List<Map<String, dynamic>>>('galleries');
+    localized =
+        registerOutput<
+          Map<String, List<WorkbookTemplateLocalizedGalleryResponse>>?
+        >('localized');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.priority = registerOutput<int?>('priority');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateData = registerOutput<dynamic>('templateData');
-    this.type = registerOutput<String>('type');
+    priority = registerOutput<int?>('priority');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateData = registerOutput<dynamic>('templateData');
+    type = registerOutput<String>('type');
   }
 }

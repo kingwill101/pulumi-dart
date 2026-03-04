@@ -4,16 +4,17 @@ enum LoadBalancerRuleSessionPersistenceType {
   sourceIP("SourceIP"),
   sourceIPProtocol("SourceIPProtocol");
 
-  const LoadBalancerRuleSessionPersistenceType(this.value);
-  final String value;
+  const LoadBalancerRuleSessionPersistenceType(this.wireValue);
+  final String wireValue;
 
   static LoadBalancerRuleSessionPersistenceType fromValue(String value) {
     for (final item in LoadBalancerRuleSessionPersistenceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown LoadBalancerRuleSessionPersistenceType value: $value');
+    throw ArgumentError(
+      'Unknown LoadBalancerRuleSessionPersistenceType value: $value',
+    );
   }
 }
-

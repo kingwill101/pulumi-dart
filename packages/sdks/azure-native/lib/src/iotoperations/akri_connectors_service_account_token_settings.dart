@@ -9,20 +9,17 @@ class AkriConnectorsServiceAccountTokenSettings {
 
   /// Creates a new [AkriConnectorsServiceAccountTokenSettings].
   /// [audience] The audience for the service account token.
-  AkriConnectorsServiceAccountTokenSettings({
-    required this.audience,
-  });
+  AkriConnectorsServiceAccountTokenSettings({required this.audience});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'audience': audience,
-    };
+    return <String, dynamic>{'audience': audience};
   }
 
-  factory AkriConnectorsServiceAccountTokenSettings.fromMap(Map<String, dynamic> map) {
+  factory AkriConnectorsServiceAccountTokenSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AkriConnectorsServiceAccountTokenSettings(
-      audience: (map['audience'] as String).input(),
+      audience: pulumi.Input.fromValue(map['audience'] as String),
     );
   }
 }
-

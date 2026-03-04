@@ -8,44 +8,56 @@ class NodeGroupState {
   /// Changing this creates a new node group.
   final pulumi.Input<String>? clusterId;
   final pulumi.Input<String>? createdAt;
+
   /// The size (in GB) of the Docker volume.
   /// Changing this creates a new node group.
   final pulumi.Input<int>? dockerVolumeSize;
+
   /// The flavor for the nodes of the node group. Can be set
   /// via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
   /// node group.
   final pulumi.Input<String>? flavorId;
+
   /// The reference to an image that is used for nodes of the
   /// node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
   /// Changing this updates the image attribute of the existing node group.
   final pulumi.Input<String>? imageId;
+
   /// The list of key value pairs representing additional
   /// properties of the node group. Changing this creates a new node group.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The maximum number of nodes for the node group.
   /// Changing this update the maximum number of nodes of the node group.
   final pulumi.Input<int>? maxNodeCount;
+
   /// Indicates whether the provided labels should be
   /// merged with cluster labels. Changing this creates a new nodegroup.
   final pulumi.Input<bool>? mergeLabels;
+
   /// The minimum number of nodes for the node group.
   /// Changing this update the minimum number of nodes of the node group.
   final pulumi.Input<int>? minNodeCount;
+
   /// The name of the node group. Changing this creates a new
   /// node group.
   final pulumi.Input<String>? name;
+
   /// The number of nodes for the node group. Changing
   /// this update the number of nodes of the node group.
   final pulumi.Input<int>? nodeCount;
+
   /// The project of the node group. Required if admin
   /// wants to create a cluster in another project. Changing this creates a new
   /// node group.
   final pulumi.Input<String>? projectId;
+
   /// The region in which to obtain the V1 Container Infra
   /// client. A Container Infra client is needed to create a cluster. If omitted,
   /// the `region` argument of the provider is used. Changing this creates a new
   /// node group.
   final pulumi.Input<String>? region;
+
   /// The role of nodes in the node group. Changing this
   /// creates a new node group.
   final pulumi.Input<String>? role;
@@ -107,22 +119,83 @@ class NodeGroupState {
 
   factory NodeGroupState.fromMap(Map<String, dynamic> map) {
     return NodeGroupState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
-      dockerVolumeSize: map['dockerVolumeSize'] == null ? null : (map['dockerVolumeSize']! as int).input(),
-      flavorId: map['flavorId'] == null ? null : (map['flavorId']! as String).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount']! as int).input(),
-      mergeLabels: map['mergeLabels'] == null ? null : (map['mergeLabels']! as bool).input(),
-      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      role: map['role'] == null ? null : (map['role']! as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createdAt: (() {
+        final guardedValue = map['createdAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dockerVolumeSize: (() {
+        final guardedValue = map['dockerVolumeSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      flavorId: (() {
+        final guardedValue = map['flavorId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageId: (() {
+        final guardedValue = map['imageId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      maxNodeCount: (() {
+        final guardedValue = map['maxNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      mergeLabels: (() {
+        final guardedValue = map['mergeLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      minNodeCount: (() {
+        final guardedValue = map['minNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodeCount: (() {
+        final guardedValue = map['nodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updatedAt: (() {
+        final guardedValue = map['updatedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

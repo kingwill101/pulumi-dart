@@ -9,20 +9,15 @@ class FunctionAppProfileResponse {
 
   /// Creates a new [FunctionAppProfileResponse].
   /// [id] Resource Id of Azure Function App Resource
-  FunctionAppProfileResponse({
-    required this.id,
-  });
+  FunctionAppProfileResponse({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory FunctionAppProfileResponse.fromMap(Map<String, dynamic> map) {
     return FunctionAppProfileResponse(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

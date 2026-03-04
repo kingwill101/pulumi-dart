@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDataplexV1ResourceAccessSpec {
   /// Optional. The set of principals to be granted owner role on the resource.
   final pulumi.Input<List<String>>? owners;
+
   /// Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on the resource.
   final pulumi.Input<List<String>>? readers;
+
   /// Optional. The set of principals to be granted writer role on the resource.
   final pulumi.Input<List<String>>? writers;
 
@@ -29,12 +31,25 @@ class GoogleCloudDataplexV1ResourceAccessSpec {
     };
   }
 
-  factory GoogleCloudDataplexV1ResourceAccessSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1ResourceAccessSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1ResourceAccessSpec(
-      owners: map['owners'] == null ? null : ((map['owners']! as List).cast<String>()).input(),
-      readers: map['readers'] == null ? null : ((map['readers']! as List).cast<String>()).input(),
-      writers: map['writers'] == null ? null : ((map['writers']! as List).cast<String>()).input(),
+      owners: (() {
+        final guardedValue = map['owners'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      readers: (() {
+        final guardedValue = map['readers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      writers: (() {
+        final guardedValue = map['writers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

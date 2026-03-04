@@ -9,20 +9,19 @@ class Namespaces {
 
   /// Creates a new [Namespaces].
   /// [namespaces] Optional. A list of Kubernetes Namespaces
-  Namespaces({
-    this.namespaces,
-  });
+  Namespaces({this.namespaces});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namespaces': ?namespaces,
-    };
+    return <String, dynamic>{'namespaces': ?namespaces};
   }
 
   factory Namespaces.fromMap(Map<String, dynamic> map) {
     return Namespaces(
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces']! as List).cast<String>()).input(),
+      namespaces: (() {
+        final guardedValue = map['namespaces'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

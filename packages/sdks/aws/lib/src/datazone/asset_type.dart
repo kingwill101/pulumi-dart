@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'asset_type_args.dart';
-import 'asset_type_forms_input.dart';
 import 'asset_type_state.dart';
 import 'asset_type_timeouts.dart';
 
@@ -126,22 +125,30 @@ import 'asset_type_timeouts.dart';
 class AssetType extends pulumi.CustomResource {
   /// The timestamp when the custom asset type was created.
   late final pulumi.Output<String> createdAt;
+
   /// The user who created the custom asset type.
   late final pulumi.Output<String> createdBy;
+
   /// The description of the custom asset type.
   late final pulumi.Output<String?> description;
+
   /// The unique identifier of the Amazon DataZone domain where the custom asset type is being created.
   late final pulumi.Output<String> domainIdentifier;
+
   /// The metadata forms that are to be attached to the custom asset type.
-  late final pulumi.Output<List<AssetTypeFormsInput>?> formsInputs;
+  late final pulumi.Output<List<Map<String, dynamic>>?> formsInputs;
+
   /// The name of the custom asset type.
   late final pulumi.Output<String> name;
+
   /// The unique identifier of the Amazon DataZone project that owns the custom asset type.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> owningProjectIdentifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The revision of the asset type.
   late final pulumi.Output<String> revision;
   late final pulumi.Output<AssetTypeTimeouts?> timeouts;
@@ -155,21 +162,21 @@ class AssetType extends pulumi.CustomResource {
     AssetTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:datazone/assetType:AssetType',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
-    this.createdBy = registerOutput<String>('createdBy');
-    this.description = registerOutput<String?>('description');
-    this.domainIdentifier = registerOutput<String>('domainIdentifier');
-    this.formsInputs = registerOutput<List<AssetTypeFormsInput>?>('formsInputs');
+         'aws:datazone/assetType:AssetType',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
+    createdBy = registerOutput<String>('createdBy');
+    description = registerOutput<String?>('description');
+    domainIdentifier = registerOutput<String>('domainIdentifier');
+    formsInputs = registerOutput<List<Map<String, dynamic>>?>('formsInputs');
     this.name = registerOutput<String>('name');
-    this.owningProjectIdentifier = registerOutput<String>('owningProjectIdentifier');
-    this.region = registerOutput<String>('region');
-    this.revision = registerOutput<String>('revision');
-    this.timeouts = registerOutput<AssetTypeTimeouts?>('timeouts');
+    owningProjectIdentifier = registerOutput<String>('owningProjectIdentifier');
+    region = registerOutput<String>('region');
+    revision = registerOutput<String>('revision');
+    timeouts = registerOutput<AssetTypeTimeouts?>('timeouts');
   }
 
   /// Gets an existing [AssetType] resource's state with the given [name] and [id].
@@ -190,20 +197,20 @@ class AssetType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:datazone/assetType:AssetType',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createdAt = registerOutput<String>('createdAt');
-    this.createdBy = registerOutput<String>('createdBy');
-    this.description = registerOutput<String?>('description');
-    this.domainIdentifier = registerOutput<String>('domainIdentifier');
-    this.formsInputs = registerOutput<List<AssetTypeFormsInput>?>('formsInputs');
+         'aws:datazone/assetType:AssetType',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createdAt = registerOutput<String>('createdAt');
+    createdBy = registerOutput<String>('createdBy');
+    description = registerOutput<String?>('description');
+    domainIdentifier = registerOutput<String>('domainIdentifier');
+    formsInputs = registerOutput<List<Map<String, dynamic>>?>('formsInputs');
     this.name = registerOutput<String>('name');
-    this.owningProjectIdentifier = registerOutput<String>('owningProjectIdentifier');
-    this.region = registerOutput<String>('region');
-    this.revision = registerOutput<String>('revision');
-    this.timeouts = registerOutput<AssetTypeTimeouts?>('timeouts');
+    owningProjectIdentifier = registerOutput<String>('owningProjectIdentifier');
+    region = registerOutput<String>('region');
+    revision = registerOutput<String>('revision');
+    timeouts = registerOutput<AssetTypeTimeouts?>('timeouts');
   }
 }

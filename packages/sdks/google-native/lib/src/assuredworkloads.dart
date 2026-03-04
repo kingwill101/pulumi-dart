@@ -1,5 +1,3 @@
-library module_assuredworkloads;
-
 export 'assuredworkloads/functions.dart';
 export 'assuredworkloads/get_workload_args.dart';
 export 'assuredworkloads/get_workload_assuredworkloads_v1beta1_args.dart';

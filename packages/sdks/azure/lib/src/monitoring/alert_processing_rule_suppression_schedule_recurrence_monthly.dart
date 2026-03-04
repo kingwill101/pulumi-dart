@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertProcessingRuleSuppressionScheduleRecurrenceMonthly {
   /// Specifies a list of dayOfMonth to recurrence. Possible values are integers between `1` - `31`.
   final pulumi.Input<List<int>> daysOfMonths;
+
   /// Specifies the recurrence end time (H:M:S).
   final pulumi.Input<String>? endTime;
+
   /// Specifies the recurrence start time (H:M:S).
   final pulumi.Input<String>? startTime;
 
@@ -28,12 +30,23 @@ class AlertProcessingRuleSuppressionScheduleRecurrenceMonthly {
     };
   }
 
-  factory AlertProcessingRuleSuppressionScheduleRecurrenceMonthly.fromMap(Map<String, dynamic> map) {
+  factory AlertProcessingRuleSuppressionScheduleRecurrenceMonthly.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertProcessingRuleSuppressionScheduleRecurrenceMonthly(
-      daysOfMonths: ((map['daysOfMonths'] as List).cast<int>()).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      daysOfMonths: pulumi.Input.fromValue(
+        (map['daysOfMonths'] as List).cast<int>(),
+      ),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

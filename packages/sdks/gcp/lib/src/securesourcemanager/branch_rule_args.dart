@@ -9,27 +9,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BranchRuleArgs {
   /// Determines if allow stale reviews or approvals before merging to the branch.
   final pulumi.Input<bool>? allowStaleReviews;
+
   /// The ID for the BranchRule.
   final pulumi.Input<String> branchRuleId;
+
   /// Determines if the branch rule is disabled or not.
   final pulumi.Input<bool>? disabled;
+
   /// The BranchRule matches branches based on the specified regular expression. Use .* to match all branches.
   final pulumi.Input<String> includePattern;
+
   /// The location for the Repository.
   final pulumi.Input<String> location;
+
   /// The minimum number of approvals required for the branch rule to be matched.
   final pulumi.Input<int>? minimumApprovalsCount;
+
   /// The minimum number of reviews required for the branch rule to be matched.
   final pulumi.Input<int>? minimumReviewsCount;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The ID for the Repository.
   final pulumi.Input<String> repositoryId;
+
   /// Determines if require comments resolved before merging to the branch.
   final pulumi.Input<bool>? requireCommentsResolved;
+
   /// Determines if require linear history before merging to the branch.
   final pulumi.Input<bool>? requireLinearHistory;
+
   /// Determines if the branch rule requires a pull request or not.
   final pulumi.Input<bool>? requirePullRequest;
 
@@ -80,19 +91,50 @@ class BranchRuleArgs {
 
   factory BranchRuleArgs.fromMap(Map<String, dynamic> map) {
     return BranchRuleArgs(
-      allowStaleReviews: map['allowStaleReviews'] == null ? null : (map['allowStaleReviews']! as bool).input(),
-      branchRuleId: (map['branchRuleId'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      includePattern: (map['includePattern'] as String).input(),
-      location: (map['location'] as String).input(),
-      minimumApprovalsCount: map['minimumApprovalsCount'] == null ? null : (map['minimumApprovalsCount']! as int).input(),
-      minimumReviewsCount: map['minimumReviewsCount'] == null ? null : (map['minimumReviewsCount']! as int).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      repositoryId: (map['repositoryId'] as String).input(),
-      requireCommentsResolved: map['requireCommentsResolved'] == null ? null : (map['requireCommentsResolved']! as bool).input(),
-      requireLinearHistory: map['requireLinearHistory'] == null ? null : (map['requireLinearHistory']! as bool).input(),
-      requirePullRequest: map['requirePullRequest'] == null ? null : (map['requirePullRequest']! as bool).input(),
+      allowStaleReviews: (() {
+        final guardedValue = map['allowStaleReviews'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      branchRuleId: pulumi.Input.fromValue(map['branchRuleId'] as String),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      includePattern: pulumi.Input.fromValue(map['includePattern'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      minimumApprovalsCount: (() {
+        final guardedValue = map['minimumApprovalsCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minimumReviewsCount: (() {
+        final guardedValue = map['minimumReviewsCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
+      requireCommentsResolved: (() {
+        final guardedValue = map['requireCommentsResolved'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      requireLinearHistory: (() {
+        final guardedValue = map['requireLinearHistory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      requirePullRequest: (() {
+        final guardedValue = map['requirePullRequest'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

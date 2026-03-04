@@ -7,36 +7,50 @@ import 'get_flowlogs_flowlog.dart';
 class GetFlowlogsResult {
   /// The ID of Cen instance.
   final String? cenId;
+
   /// The description of the flowlog.
   final String? description;
+
   /// The ID of FlowLog.
   final String? flowLogId;
+
   /// The name of the flowlog.
   final String? flowLogName;
+
   /// (Available since v1.236.0) Flowlog Version.
   final String? flowLogVersion;
+
   /// A list of Flow Log Entries. Each element contains the following attributes:
   final List<GetFlowlogsFlowlog> flowlogs;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Flow Log IDs.
   final List<String> ids;
+
   /// (Available since v1.236.0) The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
   final int? interval;
+
   /// The LogStore that stores the flowlog.
   final String? logStoreName;
   final String? nameRegex;
+
   /// A list of name of Flow Logs.
   final List<String> names;
   final String? outputFile;
   final int? pageNumber;
   final int? pageSize;
+
   /// The Project that stores the flowlog.
   final String? projectName;
+
   /// (Available since v1.236.0) Region Id.
   final String? regionId;
+
   /// The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
   final String? status;
+
   /// (Available since v1.236.0) Transit Router ID.
   final String? transitRouterId;
 
@@ -89,7 +103,11 @@ class GetFlowlogsResult {
       'flowLogId': ?flowLogId,
       'flowLogName': ?flowLogName,
       'flowLogVersion': ?flowLogVersion,
-      'flowlogs': pulumi.Input.encodeList<GetFlowlogsFlowlog, Map<String, dynamic>>(flowlogs, (value) => value.toMap()),
+      'flowlogs':
+          pulumi.Input.encodeList<GetFlowlogsFlowlog, Map<String, dynamic>>(
+            flowlogs,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'interval': ?interval,
@@ -108,26 +126,89 @@ class GetFlowlogsResult {
 
   factory GetFlowlogsResult.fromMap(Map<String, dynamic> map) {
     return GetFlowlogsResult(
-      cenId: map['cenId'] == null ? null : map['cenId']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      flowLogId: map['flowLogId'] == null ? null : map['flowLogId']! as String,
-      flowLogName: map['flowLogName'] == null ? null : map['flowLogName']! as String,
-      flowLogVersion: map['flowLogVersion'] == null ? null : map['flowLogVersion']! as String,
-      flowlogs: pulumi.Input.decodeList<GetFlowlogsFlowlog>(map['flowlogs'], (value) => GetFlowlogsFlowlog.fromMap((value as Map).cast<String, dynamic>())),
+      cenId: (() {
+        final guardedValue = map['cenId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      flowLogId: (() {
+        final guardedValue = map['flowLogId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      flowLogName: (() {
+        final guardedValue = map['flowLogName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      flowLogVersion: (() {
+        final guardedValue = map['flowLogVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      flowlogs: pulumi.Input.decodeList<GetFlowlogsFlowlog>(
+        map['flowlogs']!,
+        (value) =>
+            GetFlowlogsFlowlog.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      interval: map['interval'] == null ? null : map['interval']! as int,
-      logStoreName: map['logStoreName'] == null ? null : map['logStoreName']! as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      interval: (() {
+        final guardedValue = map['interval'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      logStoreName: (() {
+        final guardedValue = map['logStoreName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
-      projectName: map['projectName'] == null ? null : map['projectName']! as String,
-      regionId: map['regionId'] == null ? null : map['regionId']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      transitRouterId: map['transitRouterId'] == null ? null : map['transitRouterId']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      projectName: (() {
+        final guardedValue = map['projectName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      regionId: (() {
+        final guardedValue = map['regionId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      transitRouterId: (() {
+        final guardedValue = map['transitRouterId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

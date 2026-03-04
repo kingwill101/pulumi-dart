@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Ipv6CircuitConnectionConfigResponse {
   /// /125 IP address space to carve out customer addresses for global reach.
   final pulumi.Input<String>? addressPrefix;
+
   /// Express Route Circuit connection state.
   final pulumi.Input<String> circuitConnectionStatus;
 
@@ -24,11 +25,18 @@ class Ipv6CircuitConnectionConfigResponse {
     };
   }
 
-  factory Ipv6CircuitConnectionConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory Ipv6CircuitConnectionConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return Ipv6CircuitConnectionConfigResponse(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
-      circuitConnectionStatus: (map['circuitConnectionStatus'] as String).input(),
+      addressPrefix: (() {
+        final guardedValue = map['addressPrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      circuitConnectionStatus: pulumi.Input.fromValue(
+        map['circuitConnectionStatus'] as String,
+      ),
     );
   }
 }
-

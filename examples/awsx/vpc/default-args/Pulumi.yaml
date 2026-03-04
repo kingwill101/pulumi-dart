@@ -1,0 +1,6 @@
+name: awsx-dart-vpc-nodejs-default-args
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWSX VPC with default arguments in Dart.

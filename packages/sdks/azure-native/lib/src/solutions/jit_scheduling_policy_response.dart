@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The JIT scheduling policies.
 class JitSchedulingPolicyResponse {
   final pulumi.Input<String> duration;
+
   /// The start time of the request.
   final pulumi.Input<String> startTime;
+
   /// The type of JIT schedule.
   final pulumi.Input<String> type;
 
@@ -30,10 +32,9 @@ class JitSchedulingPolicyResponse {
 
   factory JitSchedulingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return JitSchedulingPolicyResponse(
-      duration: (map['duration'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      type: (map['type'] as String).input(),
+      duration: pulumi.Input.fromValue(map['duration'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

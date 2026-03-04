@@ -12,9 +12,11 @@ class SubscriptionIAMPolicyArgs {
   ///
   /// - - -
   final pulumi.Input<String> policyData;
+
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The subscription name or id to bind to attach IAM policy to.
   final pulumi.Input<String> subscription;
 
@@ -38,10 +40,13 @@ class SubscriptionIAMPolicyArgs {
 
   factory SubscriptionIAMPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionIAMPolicyArgs(
-      policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      subscription: (map['subscription'] as String).input(),
+      policyData: pulumi.Input.fromValue(map['policyData'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscription: pulumi.Input.fromValue(map['subscription'] as String),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'secure_string_response.dart';
 class SSISExecutionCredentialResponse {
   /// Domain for windows authentication. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> domain;
+
   /// Password for windows authentication.
   final pulumi.Input<SecureStringResponse> password;
+
   /// UseName for windows authentication. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> userName;
 
@@ -25,17 +27,24 @@ class SSISExecutionCredentialResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'domain': domain,
-      'password': pulumi.Input.mapInputValue<SecureStringResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'password':
+          pulumi.Input.mapInputValue<
+            SecureStringResponse,
+            Map<String, dynamic>
+          >(password, (value) => value.toMap()),
       'userName': userName,
     };
   }
 
   factory SSISExecutionCredentialResponse.fromMap(Map<String, dynamic> map) {
     return SSISExecutionCredentialResponse(
-      domain: (map['domain']).input(),
-      password: (SecureStringResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
-      userName: (map['userName']).input(),
+      domain: pulumi.Input.fromValue(map['domain']),
+      password: pulumi.Input.fromValue(
+        SecureStringResponse.fromMap(
+          (map['password']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      userName: pulumi.Input.fromValue(map['userName']),
     );
   }
 }
-

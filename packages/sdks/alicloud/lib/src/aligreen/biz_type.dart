@@ -8,7 +8,7 @@ import 'biz_type_state.dart';
 ///
 /// For information about Aligreen Biz Type and how to use it, see [What is Biz Type](https://next.api.alibabacloud.com/document/Green/2017-08-23/CreateBizType).
 ///
-/// > **NOTE:** Available since v1.228.0.
+/// &gt; **NOTE:** Available since v1.228.0.
 ///
 /// ## Example Usage
 ///
@@ -159,12 +159,16 @@ import 'biz_type_state.dart';
 class BizType extends pulumi.CustomResource {
   /// The name of the existing business scenario that was imported from when the business scenario was created.
   late final pulumi.Output<String?> bizTypeImport;
+
   /// The name of the business scenario defined by the customer. It can contain no more than 32 characters in English, numbers, and underscores.
   late final pulumi.Output<String> bizTypeName;
+
   /// Specifies whether to import the configuration of an industry template. Default value: false. Valid values: true: imports the configuration of an industry template. false: does not import the configuration of an industry template. If the value is true, you must specify the industryInfo parameter.
   late final pulumi.Output<bool?> citeTemplate;
+
   /// The description of the business scenario defined by the customer, which is a combination of Chinese and English, numbers, and underscores, and cannot exceed 32 characters.
   late final pulumi.Output<String?> description;
+
   /// The industry classification. Valid values: Social-Registration information-Profile picture Social-Registration information-Nickname Social-Registration information-Bio Social-Instant messaging-Chat Social-Instant messaging-Group chat Social-Instant messaging-Chat room Social-Forums&Communities-Post Social-Forums&Communities-Comment Social-Forums&Communities-Tag Social-Forums&Communities-Recommendation Multimedia-Registration information-Profile picture Multimedia-Registration information-Nickname Multimedia-Registration information-Bio Multimedia-Instant messaging-Chat Multimedia-Live streaming-Heading Multimedia-Live streaming-Cover Multimedia-Live streaming-Content Multimedia-Live streaming-Comment Multimedia-Online storage-Storage content Multimedia-Online storage-Shared content Gaming-Registration information-Nickname Gaming-Registration information-Profile picture Gaming-Registration information-Signature Gaming-Instant messaging-Chat Gaming-Instant messaging-Group chat Gaming-Instant messaging-Chat room Gaming-Forums&Communities-Post Gaming-Forums&Communities-Comment Gaming-Forums&Communities-Tag Gaming-Forums&Communities-Recommendation New retail-Goods-Heading New retail-Goods-Description Reading-Books-Title Reading-Books-Heading Reading-Books-Cover Reading-Books-Content Media-News content-News content Education-Registration information-Nickname Education-Registration information-Profile picture Education-Registration information-Bio Gaming-Instant messaging-Chat Gaming-Forums&Communities-Post Education-Forums&Communities-Comment Education-Forums&Communities-Tag Education-Forums&Communities-Recommendation Education-Customer service-Voice call Others
   late final pulumi.Output<String?> industryInfo;
 
@@ -177,16 +181,16 @@ class BizType extends pulumi.CustomResource {
     BizTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:aligreen/bizType:BizType',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bizTypeImport = registerOutput<String?>('bizTypeImport');
-    this.bizTypeName = registerOutput<String>('bizTypeName');
-    this.citeTemplate = registerOutput<bool?>('citeTemplate');
-    this.description = registerOutput<String?>('description');
-    this.industryInfo = registerOutput<String?>('industryInfo');
+         'alicloud:aligreen/bizType:BizType',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bizTypeImport = registerOutput<String?>('bizTypeImport');
+    bizTypeName = registerOutput<String>('bizTypeName');
+    citeTemplate = registerOutput<bool?>('citeTemplate');
+    description = registerOutput<String?>('description');
+    industryInfo = registerOutput<String?>('industryInfo');
   }
 
   /// Gets an existing [BizType] resource's state with the given [name] and [id].
@@ -207,15 +211,15 @@ class BizType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:aligreen/bizType:BizType',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.bizTypeImport = registerOutput<String?>('bizTypeImport');
-    this.bizTypeName = registerOutput<String>('bizTypeName');
-    this.citeTemplate = registerOutput<bool?>('citeTemplate');
-    this.description = registerOutput<String?>('description');
-    this.industryInfo = registerOutput<String?>('industryInfo');
+         'alicloud:aligreen/bizType:BizType',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    bizTypeImport = registerOutput<String?>('bizTypeImport');
+    bizTypeName = registerOutput<String>('bizTypeName');
+    citeTemplate = registerOutput<bool?>('citeTemplate');
+    description = registerOutput<String?>('description');
+    industryInfo = registerOutput<String?>('industryInfo');
   }
 }

@@ -11,28 +11,37 @@ import 'ai_index_endpoint_private_service_connect_config.dart';
 class AiIndexEndpointArgs {
   /// The description of the Index.
   final pulumi.Input<String>? description;
+
   /// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
   final pulumi.Input<String> displayName;
+
   /// Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all sub-resources of this IndexEndpoint will be secured by this key.
   /// Structure is documented below.
   final pulumi.Input<AiIndexEndpointEncryptionSpec>? encryptionSpec;
+
   /// The labels with user-defined metadata to organize your Indexes.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the index endpoint should be peered.
   /// Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
   /// [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`.
   /// Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
   final pulumi.Input<String>? network;
+
   /// Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
   /// Structure is documented below.
-  final pulumi.Input<AiIndexEndpointPrivateServiceConnectConfig>? privateServiceConnectConfig;
+  final pulumi.Input<AiIndexEndpointPrivateServiceConnectConfig>?
+  privateServiceConnectConfig;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// If true, the deployed index will be accessible through public endpoint.
   final pulumi.Input<bool>? publicEndpointEnabled;
+
   /// The region of the index endpoint. eg us-central1
   final pulumi.Input<String>? region;
 
@@ -62,10 +71,18 @@ class AiIndexEndpointArgs {
     return <String, dynamic>{
       'description': ?description,
       'displayName': displayName,
-      'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<AiIndexEndpointEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
+      'encryptionSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            AiIndexEndpointEncryptionSpec,
+            Map<String, dynamic>
+          >(encryptionSpec, (value) => value.toMap()),
       'labels': ?labels,
       'network': ?network,
-      'privateServiceConnectConfig': ?pulumi.Input.mapOptionalInputValue<AiIndexEndpointPrivateServiceConnectConfig, Map<String, dynamic>>(privateServiceConnectConfig, (value) => value.toMap()),
+      'privateServiceConnectConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            AiIndexEndpointPrivateServiceConnectConfig,
+            Map<String, dynamic>
+          >(privateServiceConnectConfig, (value) => value.toMap()),
       'project': ?project,
       'publicEndpointEnabled': ?publicEndpointEnabled,
       'region': ?region,
@@ -74,16 +91,57 @@ class AiIndexEndpointArgs {
 
   factory AiIndexEndpointArgs.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (AiIndexEndpointEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      network: map['network'] == null ? null : (map['network']! as String).input(),
-      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (AiIndexEndpointPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig']! as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      publicEndpointEnabled: map['publicEndpointEnabled'] == null ? null : (map['publicEndpointEnabled']! as bool).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      encryptionSpec: (() {
+        final guardedValue = map['encryptionSpec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AiIndexEndpointEncryptionSpec.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      network: (() {
+        final guardedValue = map['network'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateServiceConnectConfig: (() {
+        final guardedValue = map['privateServiceConnectConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AiIndexEndpointPrivateServiceConnectConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicEndpointEnabled: (() {
+        final guardedValue = map['publicEndpointEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

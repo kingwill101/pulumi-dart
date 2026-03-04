@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedHSMSecurityDomainPropertiesResponse {
   /// Activation Status
   final pulumi.Input<String> activationStatus;
+
   /// Activation Status Message.
   final pulumi.Input<String> activationStatusMessage;
 
@@ -24,11 +25,16 @@ class ManagedHSMSecurityDomainPropertiesResponse {
     };
   }
 
-  factory ManagedHSMSecurityDomainPropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedHSMSecurityDomainPropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedHSMSecurityDomainPropertiesResponse(
-      activationStatus: (map['activationStatus'] as String).input(),
-      activationStatusMessage: (map['activationStatusMessage'] as String).input(),
+      activationStatus: pulumi.Input.fromValue(
+        map['activationStatus'] as String,
+      ),
+      activationStatusMessage: pulumi.Input.fromValue(
+        map['activationStatusMessage'] as String,
+      ),
     );
   }
 }
-

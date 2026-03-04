@@ -1,5 +1,3 @@
-library module_savingsplans;
-
 export 'savingsplans/functions.dart';
 export 'savingsplans/get_savings_plan_args.dart';
 export 'savingsplans/get_savings_plan_result.dart';

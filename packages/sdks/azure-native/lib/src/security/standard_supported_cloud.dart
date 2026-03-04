@@ -4,16 +4,15 @@ enum StandardSupportedCloud {
   valueAWS("AWS"),
   valueGCP("GCP");
 
-  const StandardSupportedCloud(this.value);
-  final String value;
+  const StandardSupportedCloud(this.wireValue);
+  final String wireValue;
 
   static StandardSupportedCloud fromValue(String value) {
     for (final item in StandardSupportedCloud.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown StandardSupportedCloud value: $value');
   }
 }
-

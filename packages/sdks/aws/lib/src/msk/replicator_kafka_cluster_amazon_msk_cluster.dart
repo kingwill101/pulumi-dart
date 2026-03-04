@@ -8,20 +8,17 @@ class ReplicatorKafkaClusterAmazonMskCluster {
 
   /// Creates a new [ReplicatorKafkaClusterAmazonMskCluster].
   /// [mskClusterArn] The ARN of an Amazon MSK cluster.
-  ReplicatorKafkaClusterAmazonMskCluster({
-    required this.mskClusterArn,
-  });
+  ReplicatorKafkaClusterAmazonMskCluster({required this.mskClusterArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mskClusterArn': mskClusterArn,
-    };
+    return <String, dynamic>{'mskClusterArn': mskClusterArn};
   }
 
-  factory ReplicatorKafkaClusterAmazonMskCluster.fromMap(Map<String, dynamic> map) {
+  factory ReplicatorKafkaClusterAmazonMskCluster.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReplicatorKafkaClusterAmazonMskCluster(
-      mskClusterArn: (map['mskClusterArn'] as String).input(),
+      mskClusterArn: pulumi.Input.fromValue(map['mskClusterArn'] as String),
     );
   }
 }
-

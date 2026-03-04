@@ -8,29 +8,42 @@ import 'ios_test_response.dart';
 class SpecificationResponse {
   /// An Android mobile test execution specification.
   final pulumi.Input<AndroidTestResponse> androidTest;
+
   /// An iOS mobile test execution specification.
   final pulumi.Input<IosTestResponse> iosTest;
 
   /// Creates a new [SpecificationResponse].
   /// [androidTest] An Android mobile test execution specification.
   /// [iosTest] An iOS mobile test execution specification.
-  SpecificationResponse({
-    required this.androidTest,
-    required this.iosTest,
-  });
+  SpecificationResponse({required this.androidTest, required this.iosTest});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'androidTest': pulumi.Input.mapInputValue<AndroidTestResponse, Map<String, dynamic>>(androidTest, (value) => value.toMap()),
-      'iosTest': pulumi.Input.mapInputValue<IosTestResponse, Map<String, dynamic>>(iosTest, (value) => value.toMap()),
+      'androidTest':
+          pulumi.Input.mapInputValue<AndroidTestResponse, Map<String, dynamic>>(
+            androidTest,
+            (value) => value.toMap(),
+          ),
+      'iosTest':
+          pulumi.Input.mapInputValue<IosTestResponse, Map<String, dynamic>>(
+            iosTest,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory SpecificationResponse.fromMap(Map<String, dynamic> map) {
     return SpecificationResponse(
-      androidTest: (AndroidTestResponse.fromMap((map['androidTest'] as Map).cast<String, dynamic>())).input(),
-      iosTest: (IosTestResponse.fromMap((map['iosTest'] as Map).cast<String, dynamic>())).input(),
+      androidTest: pulumi.Input.fromValue(
+        AndroidTestResponse.fromMap(
+          (map['androidTest']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      iosTest: pulumi.Input.fromValue(
+        IosTestResponse.fromMap(
+          (map['iosTest']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

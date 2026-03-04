@@ -10,7 +10,7 @@ import 'application_certificate_state.dart';
 ///
 /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
 ///
-/// > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+/// &gt; When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
 ///
 /// When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
 ///
@@ -813,26 +813,33 @@ import 'application_certificate_state.dart';
 /// $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
 /// ```
 ///
-/// > This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
+/// &gt; This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
 class ApplicationCertificate extends pulumi.CustomResource {
   /// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
+
   /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
   ///
-  /// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
+  /// &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
   late final pulumi.Output<String?> encoding;
+
   /// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> endDate;
+
   /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
   ///
-  /// > One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
+  /// &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
   late final pulumi.Output<String?> endDateRelative;
+
   /// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> keyId;
+
   /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> startDate;
+
   /// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
   late final pulumi.Output<String?> type;
+
   /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
   late final pulumi.Output<String> value;
 
@@ -845,19 +852,19 @@ class ApplicationCertificate extends pulumi.CustomResource {
     ApplicationCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/applicationCertificate:ApplicationCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.encoding = registerOutput<String?>('encoding');
-    this.endDate = registerOutput<String>('endDate');
-    this.endDateRelative = registerOutput<String?>('endDateRelative');
-    this.keyId = registerOutput<String>('keyId');
-    this.startDate = registerOutput<String>('startDate');
-    this.type = registerOutput<String?>('type');
-    this.value = registerOutput<String>('value');
+         'azuread:index/applicationCertificate:ApplicationCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    encoding = registerOutput<String?>('encoding');
+    endDate = registerOutput<String>('endDate');
+    endDateRelative = registerOutput<String?>('endDateRelative');
+    keyId = registerOutput<String>('keyId');
+    startDate = registerOutput<String>('startDate');
+    type = registerOutput<String?>('type');
+    value = registerOutput<String>('value');
   }
 
   /// Gets an existing [ApplicationCertificate] resource's state with the given [name] and [id].
@@ -878,18 +885,18 @@ class ApplicationCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/applicationCertificate:ApplicationCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.encoding = registerOutput<String?>('encoding');
-    this.endDate = registerOutput<String>('endDate');
-    this.endDateRelative = registerOutput<String?>('endDateRelative');
-    this.keyId = registerOutput<String>('keyId');
-    this.startDate = registerOutput<String>('startDate');
-    this.type = registerOutput<String?>('type');
-    this.value = registerOutput<String>('value');
+         'azuread:index/applicationCertificate:ApplicationCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    encoding = registerOutput<String?>('encoding');
+    endDate = registerOutput<String>('endDate');
+    endDateRelative = registerOutput<String?>('endDateRelative');
+    keyId = registerOutput<String>('keyId');
+    startDate = registerOutput<String>('startDate');
+    type = registerOutput<String?>('type');
+    value = registerOutput<String>('value');
   }
 }

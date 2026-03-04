@@ -10,20 +10,13 @@ class NoneAuthModel {
 
   /// Creates a new [NoneAuthModel].
   /// [type] Type of paging
-  NoneAuthModel({
-    required this.type,
-  });
+  NoneAuthModel({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory NoneAuthModel.fromMap(Map<String, dynamic> map) {
-    return NoneAuthModel(
-      type: (map['type'] as String).input(),
-    );
+    return NoneAuthModel(type: pulumi.Input.fromValue(map['type'] as String));
   }
 }
-

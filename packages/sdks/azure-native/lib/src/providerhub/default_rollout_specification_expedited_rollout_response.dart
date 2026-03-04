@@ -9,20 +9,21 @@ class DefaultRolloutSpecificationExpeditedRolloutResponse {
 
   /// Creates a new [DefaultRolloutSpecificationExpeditedRolloutResponse].
   /// [enabled] Indicates whether expedited rollout is enabled/disabled
-  DefaultRolloutSpecificationExpeditedRolloutResponse({
-    this.enabled,
-  });
+  DefaultRolloutSpecificationExpeditedRolloutResponse({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
-  factory DefaultRolloutSpecificationExpeditedRolloutResponse.fromMap(Map<String, dynamic> map) {
+  factory DefaultRolloutSpecificationExpeditedRolloutResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefaultRolloutSpecificationExpeditedRolloutResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

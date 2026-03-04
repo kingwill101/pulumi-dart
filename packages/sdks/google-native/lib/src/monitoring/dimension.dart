@@ -7,18 +7,25 @@ import 'dimension_sort_order.dart';
 class Dimension {
   /// The name of the column in the source SQL query that is used to chart the dimension.
   final pulumi.Input<String> column;
+
   /// Optional. The type of the dimension column. This is relevant only if one of the bin_size fields is set. If it is empty, the type TIMESTAMP or INT64 will be assumed based on which bin_size field is set. If populated, this should be set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC, INT64, NUMERIC, FLOAT64.
   final pulumi.Input<String>? columnType;
+
   /// Optional. float_bin_size is used when the column type used for a dimension is a floating point numeric column.
   final pulumi.Input<double>? floatBinSize;
+
   /// A limit to the number of bins generated. When 0 is specified, the maximum count is not enforced.
   final pulumi.Input<int>? maxBinCount;
+
   /// numeric_bin_size is used when the column type used for a dimension is numeric or string.
   final pulumi.Input<int>? numericBinSize;
+
   /// The column name to sort on for binning. This column can be the same column as this dimension or any other column used as a measure in the results. If sort_order is set to NONE, then this value is not used.
   final pulumi.Input<String>? sortColumn;
+
   /// The sort order applied to the sort column.
   final pulumi.Input<DimensionSortOrder>? sortOrder;
+
   /// time_bin_size is used when the data type specified by column is a time type and the bin size is determined by a time duration. If column_type is DATE, this must be a whole value multiple of 1 day. If column_type is TIME, this must be less than or equal to 24 hours.
   final pulumi.Input<String>? timeBinSize;
 
@@ -50,22 +57,55 @@ class Dimension {
       'maxBinCount': ?maxBinCount,
       'numericBinSize': ?numericBinSize,
       'sortColumn': ?sortColumn,
-      'sortOrder': ?pulumi.Input.mapOptionalInputValue<DimensionSortOrder, String>(sortOrder, (value) => value.value),
+      'sortOrder':
+          ?pulumi.Input.mapOptionalInputValue<DimensionSortOrder, String>(
+            sortOrder,
+            (value) => value.wireValue,
+          ),
       'timeBinSize': ?timeBinSize,
     };
   }
 
   factory Dimension.fromMap(Map<String, dynamic> map) {
     return Dimension(
-      column: (map['column'] as String).input(),
-      columnType: map['columnType'] == null ? null : (map['columnType']! as String).input(),
-      floatBinSize: map['floatBinSize'] == null ? null : (map['floatBinSize']! as double).input(),
-      maxBinCount: map['maxBinCount'] == null ? null : (map['maxBinCount']! as int).input(),
-      numericBinSize: map['numericBinSize'] == null ? null : (map['numericBinSize']! as int).input(),
-      sortColumn: map['sortColumn'] == null ? null : (map['sortColumn']! as String).input(),
-      sortOrder: map['sortOrder'] == null ? null : (DimensionSortOrder.fromValue(map['sortOrder']! as String)).input(),
-      timeBinSize: map['timeBinSize'] == null ? null : (map['timeBinSize']! as String).input(),
+      column: pulumi.Input.fromValue(map['column'] as String),
+      columnType: (() {
+        final guardedValue = map['columnType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      floatBinSize: (() {
+        final guardedValue = map['floatBinSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      maxBinCount: (() {
+        final guardedValue = map['maxBinCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      numericBinSize: (() {
+        final guardedValue = map['numericBinSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sortColumn: (() {
+        final guardedValue = map['sortColumn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sortOrder: (() {
+        final guardedValue = map['sortOrder'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DimensionSortOrder.fromValue(guardedValue as String),
+        );
+      })(),
+      timeBinSize: (() {
+        final guardedValue = map['timeBinSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

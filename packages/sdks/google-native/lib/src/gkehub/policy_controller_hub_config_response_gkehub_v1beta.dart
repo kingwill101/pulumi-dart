@@ -8,22 +8,33 @@ import 'policy_controller_policy_content_spec_response_gkehub_v1beta.dart';
 class PolicyControllerHubConfigResponseGkehubV1beta {
   /// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
   final pulumi.Input<String> auditIntervalSeconds;
+
   /// The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used.
   final pulumi.Input<String> constraintViolationLimit;
+
   /// Map of deployment configs to deployments ("admission", "audit", "mutation').
   final pulumi.Input<Map<String, String>> deploymentConfigs;
+
   /// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
   final pulumi.Input<List<String>> exemptableNamespaces;
+
   /// The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state.
   final pulumi.Input<String> installSpec;
+
   /// Logs all denies and dry run failures.
   final pulumi.Input<bool> logDeniesEnabled;
+
   /// Monitoring specifies the configuration of monitoring.
-  final pulumi.Input<PolicyControllerMonitoringConfigResponseGkehubV1beta> monitoring;
+  final pulumi.Input<PolicyControllerMonitoringConfigResponseGkehubV1beta>
+  monitoring;
+
   /// Enables the ability to mutate resources using Policy Controller.
   final pulumi.Input<bool> mutationEnabled;
+
   /// Specifies the desired policy content on the cluster
-  final pulumi.Input<PolicyControllerPolicyContentSpecResponseGkehubV1beta> policyContent;
+  final pulumi.Input<PolicyControllerPolicyContentSpecResponseGkehubV1beta>
+  policyContent;
+
   /// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
   final pulumi.Input<bool> referentialRulesEnabled;
 
@@ -59,26 +70,53 @@ class PolicyControllerHubConfigResponseGkehubV1beta {
       'exemptableNamespaces': exemptableNamespaces,
       'installSpec': installSpec,
       'logDeniesEnabled': logDeniesEnabled,
-      'monitoring': pulumi.Input.mapInputValue<PolicyControllerMonitoringConfigResponseGkehubV1beta, Map<String, dynamic>>(monitoring, (value) => value.toMap()),
+      'monitoring':
+          pulumi.Input.mapInputValue<
+            PolicyControllerMonitoringConfigResponseGkehubV1beta,
+            Map<String, dynamic>
+          >(monitoring, (value) => value.toMap()),
       'mutationEnabled': mutationEnabled,
-      'policyContent': pulumi.Input.mapInputValue<PolicyControllerPolicyContentSpecResponseGkehubV1beta, Map<String, dynamic>>(policyContent, (value) => value.toMap()),
+      'policyContent':
+          pulumi.Input.mapInputValue<
+            PolicyControllerPolicyContentSpecResponseGkehubV1beta,
+            Map<String, dynamic>
+          >(policyContent, (value) => value.toMap()),
       'referentialRulesEnabled': referentialRulesEnabled,
     };
   }
 
-  factory PolicyControllerHubConfigResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
+  factory PolicyControllerHubConfigResponseGkehubV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyControllerHubConfigResponseGkehubV1beta(
-      auditIntervalSeconds: (map['auditIntervalSeconds'] as String).input(),
-      constraintViolationLimit: (map['constraintViolationLimit'] as String).input(),
-      deploymentConfigs: ((map['deploymentConfigs'] as Map).cast<String, String>()).input(),
-      exemptableNamespaces: ((map['exemptableNamespaces'] as List).cast<String>()).input(),
-      installSpec: (map['installSpec'] as String).input(),
-      logDeniesEnabled: (map['logDeniesEnabled'] as bool).input(),
-      monitoring: (PolicyControllerMonitoringConfigResponseGkehubV1beta.fromMap((map['monitoring'] as Map).cast<String, dynamic>())).input(),
-      mutationEnabled: (map['mutationEnabled'] as bool).input(),
-      policyContent: (PolicyControllerPolicyContentSpecResponseGkehubV1beta.fromMap((map['policyContent'] as Map).cast<String, dynamic>())).input(),
-      referentialRulesEnabled: (map['referentialRulesEnabled'] as bool).input(),
+      auditIntervalSeconds: pulumi.Input.fromValue(
+        map['auditIntervalSeconds'] as String,
+      ),
+      constraintViolationLimit: pulumi.Input.fromValue(
+        map['constraintViolationLimit'] as String,
+      ),
+      deploymentConfigs: pulumi.Input.fromValue(
+        (map['deploymentConfigs'] as Map).cast<String, String>(),
+      ),
+      exemptableNamespaces: pulumi.Input.fromValue(
+        (map['exemptableNamespaces'] as List).cast<String>(),
+      ),
+      installSpec: pulumi.Input.fromValue(map['installSpec'] as String),
+      logDeniesEnabled: pulumi.Input.fromValue(map['logDeniesEnabled'] as bool),
+      monitoring: pulumi.Input.fromValue(
+        PolicyControllerMonitoringConfigResponseGkehubV1beta.fromMap(
+          (map['monitoring']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      mutationEnabled: pulumi.Input.fromValue(map['mutationEnabled'] as bool),
+      policyContent: pulumi.Input.fromValue(
+        PolicyControllerPolicyContentSpecResponseGkehubV1beta.fromMap(
+          (map['policyContent']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      referentialRulesEnabled: pulumi.Input.fromValue(
+        map['referentialRulesEnabled'] as bool,
+      ),
     );
   }
 }
-

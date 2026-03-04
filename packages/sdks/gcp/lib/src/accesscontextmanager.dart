@@ -1,5 +1,3 @@
-library module_accesscontextmanager;
-
 export 'accesscontextmanager/access_level.dart';
 export 'accesscontextmanager/access_level_args.dart';
 export 'accesscontextmanager/access_level_basic.dart';

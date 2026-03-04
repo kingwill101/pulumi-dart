@@ -7,20 +7,26 @@ import 'etl_configuration.dart';
 class EtlState {
   /// Detailed configuration of the data processing task.   See `configuration` below.
   final pulumi.Input<EtlConfiguration>? configuration;
+
   /// The time when the task was created.
   final pulumi.Input<int>? createTime;
+
   /// Description of the data processing task.
   final pulumi.Input<String>? description;
+
   /// The display name of the data processing task.
   final pulumi.Input<String>? displayName;
+
   /// The job name. Naming rules are as follows:
   /// - Job names must be unique within the same project.
   /// - Can only contain lowercase letters, digits, hyphens (-), and underscores (_).
   /// - Must start and end with a lowercase letter or digit.
   /// - Must be 2 to 64 characters in length.
   final pulumi.Input<String>? jobName;
+
   /// Project name.
   final pulumi.Input<String>? project;
+
   /// Task status.
   final pulumi.Input<String>? status;
 
@@ -44,7 +50,11 @@ class EtlState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': ?pulumi.Input.mapOptionalInputValue<EtlConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'configuration':
+          ?pulumi.Input.mapOptionalInputValue<
+            EtlConfiguration,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
       'createTime': ?createTime,
       'description': ?description,
       'displayName': ?displayName,
@@ -56,14 +66,45 @@ class EtlState {
 
   factory EtlState.fromMap(Map<String, dynamic> map) {
     return EtlState(
-      configuration: map['configuration'] == null ? null : (EtlConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      jobName: map['jobName'] == null ? null : (map['jobName']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      configuration: (() {
+        final guardedValue = map['configuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EtlConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      jobName: (() {
+        final guardedValue = map['jobName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

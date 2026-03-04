@@ -3,16 +3,15 @@ enum ElasticVolumePolicyEnforcement {
   enforced("Enforced"),
   notEnforced("NotEnforced");
 
-  const ElasticVolumePolicyEnforcement(this.value);
-  final String value;
+  const ElasticVolumePolicyEnforcement(this.wireValue);
+  final String wireValue;
 
   static ElasticVolumePolicyEnforcement fromValue(String value) {
     for (final item in ElasticVolumePolicyEnforcement.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ElasticVolumePolicyEnforcement value: $value');
   }
 }
-

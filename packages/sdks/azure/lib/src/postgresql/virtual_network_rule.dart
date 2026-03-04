@@ -4,9 +4,9 @@ import 'virtual_network_rule_state.dart';
 
 /// Manages a PostgreSQL Virtual Network Rule.
 ///
-/// > **Note:** The `azure.postgresql.VirtualNetworkRule` resource is deprecated and will be removed in v5.0 of the AzureRM Provider. Azure Database for PostgreSQL Single Server and its sub resources have been retired as of 2025-03-28. For more information, see https://techcommunity.microsoft.com/blog/adforpostgresql/retiring-azure-database-for-postgresql-single-server-in-2025/3783783.
+/// &gt; **Note:** The `azure.postgresql.VirtualNetworkRule` resource is deprecated and will be removed in v5.0 of the AzureRM Provider. Azure Database for PostgreSQL Single Server and its sub resources have been retired as of 2025-03-28. For more information, see https://techcommunity.microsoft.com/blog/adforpostgresql/retiring-azure-database-for-postgresql-single-server-in-2025/3783783.
 ///
-/// > **Note:** PostgreSQL Virtual Network Rules [can only be used with SKU Tiers of `GeneralPurpose` or `MemoryOptimized`](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet)
+/// &gt; **Note:** PostgreSQL Virtual Network Rules [can only be used with SKU Tiers of `GeneralPurpose` or `MemoryOptimized`](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet)
 ///
 /// ## Example Usage
 ///
@@ -353,7 +353,7 @@ import 'virtual_network_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DBforPostgreSQL` - 2017-12-01
@@ -368,18 +368,22 @@ import 'virtual_network_rule_state.dart';
 class VirtualNetworkRule extends pulumi.CustomResource {
   /// Should the Virtual Network Rule be created before the Subnet has the Virtual Network Service Endpoint enabled?
   late final pulumi.Output<bool?> ignoreMissingVnetServiceEndpoint;
+
   /// The name of the PostgreSQL virtual network rule. Cannot be empty and must only contain alphanumeric characters and hyphens. Cannot start with a number, and cannot start or end with a hyphen. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** `name` must be between 1-128 characters long and must satisfy all of the requirements below:
+  /// &gt; **Note:** `name` must be between 1-128 characters long and must satisfy all of the requirements below:
   ///
   /// 1. Contains only alphanumeric and hyphen characters
   /// 2. Cannot start with a number or hyphen
   /// 3. Cannot end with a hyphen
   late final pulumi.Output<String> name;
+
   /// The name of the resource group where the PostgreSQL server resides. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The name of the SQL Server to which this PostgreSQL virtual network rule will be applied to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> serverName;
+
   /// The ID of the subnet that the PostgreSQL server will be connected to.
   late final pulumi.Output<String> subnetId;
 
@@ -392,16 +396,18 @@ class VirtualNetworkRule extends pulumi.CustomResource {
     VirtualNetworkRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:postgresql/virtualNetworkRule:VirtualNetworkRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ignoreMissingVnetServiceEndpoint = registerOutput<bool?>('ignoreMissingVnetServiceEndpoint');
+         'azure:postgresql/virtualNetworkRule:VirtualNetworkRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ignoreMissingVnetServiceEndpoint = registerOutput<bool?>(
+      'ignoreMissingVnetServiceEndpoint',
+    );
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serverName = registerOutput<String>('serverName');
-    this.subnetId = registerOutput<String>('subnetId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+    subnetId = registerOutput<String>('subnetId');
   }
 
   /// Gets an existing [VirtualNetworkRule] resource's state with the given [name] and [id].
@@ -422,15 +428,17 @@ class VirtualNetworkRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:postgresql/virtualNetworkRule:VirtualNetworkRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ignoreMissingVnetServiceEndpoint = registerOutput<bool?>('ignoreMissingVnetServiceEndpoint');
+         'azure:postgresql/virtualNetworkRule:VirtualNetworkRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ignoreMissingVnetServiceEndpoint = registerOutput<bool?>(
+      'ignoreMissingVnetServiceEndpoint',
+    );
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.serverName = registerOutput<String>('serverName');
-    this.subnetId = registerOutput<String>('subnetId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+    subnetId = registerOutput<String>('subnetId');
   }
 }

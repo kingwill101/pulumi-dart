@@ -9,20 +9,17 @@ class GceInstanceFilterResponse {
 
   /// Creates a new [GceInstanceFilterResponse].
   /// [serviceAccounts] Service account of compute engine
-  GceInstanceFilterResponse({
-    required this.serviceAccounts,
-  });
+  GceInstanceFilterResponse({required this.serviceAccounts});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceAccounts': serviceAccounts,
-    };
+    return <String, dynamic>{'serviceAccounts': serviceAccounts};
   }
 
   factory GceInstanceFilterResponse.fromMap(Map<String, dynamic> map) {
     return GceInstanceFilterResponse(
-      serviceAccounts: ((map['serviceAccounts'] as List).cast<String>()).input(),
+      serviceAccounts: pulumi.Input.fromValue(
+        (map['serviceAccounts'] as List).cast<String>(),
+      ),
     );
   }
 }
-

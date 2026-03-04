@@ -7,9 +7,16 @@ import 'google_cloud_dialogflow_v2_human_agent_handoff_config_salesforce_live_ag
 /// Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation. Currently, this feature is not general available, please contact Google to get access.
 class GoogleCloudDialogflowV2HumanAgentHandoffConfig {
   /// Uses LivePerson (https://www.liveperson.com).
-  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig>? livePersonConfig;
+  final pulumi.Input<
+    GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig
+  >?
+  livePersonConfig;
+
   /// Uses Salesforce Live Agent.
-  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig>? salesforceLiveAgentConfig;
+  final pulumi.Input<
+    GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig
+  >?
+  salesforceLiveAgentConfig;
 
   /// Creates a new [GoogleCloudDialogflowV2HumanAgentHandoffConfig].
   /// [livePersonConfig] Uses LivePerson (https://www.liveperson.com).
@@ -21,16 +28,41 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'livePersonConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig, Map<String, dynamic>>(livePersonConfig, (value) => value.toMap()),
-      'salesforceLiveAgentConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig, Map<String, dynamic>>(salesforceLiveAgentConfig, (value) => value.toMap()),
+      'livePersonConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig,
+            Map<String, dynamic>
+          >(livePersonConfig, (value) => value.toMap()),
+      'salesforceLiveAgentConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig,
+            Map<String, dynamic>
+          >(salesforceLiveAgentConfig, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowV2HumanAgentHandoffConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2HumanAgentHandoffConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2HumanAgentHandoffConfig(
-      livePersonConfig: map['livePersonConfig'] == null ? null : (GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig.fromMap((map['livePersonConfig']! as Map).cast<String, dynamic>())).input(),
-      salesforceLiveAgentConfig: map['salesforceLiveAgentConfig'] == null ? null : (GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig.fromMap((map['salesforceLiveAgentConfig']! as Map).cast<String, dynamic>())).input(),
+      livePersonConfig: (() {
+        final guardedValue = map['livePersonConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      salesforceLiveAgentConfig: (() {
+        final guardedValue = map['salesforceLiveAgentConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

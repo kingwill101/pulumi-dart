@@ -8,20 +8,17 @@ class SpaceOwnershipSettings {
 
   /// Creates a new [SpaceOwnershipSettings].
   /// [ownerUserProfileName] The user profile who is the owner of the private space.
-  SpaceOwnershipSettings({
-    required this.ownerUserProfileName,
-  });
+  SpaceOwnershipSettings({required this.ownerUserProfileName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ownerUserProfileName': ownerUserProfileName,
-    };
+    return <String, dynamic>{'ownerUserProfileName': ownerUserProfileName};
   }
 
   factory SpaceOwnershipSettings.fromMap(Map<String, dynamic> map) {
     return SpaceOwnershipSettings(
-      ownerUserProfileName: (map['ownerUserProfileName'] as String).input(),
+      ownerUserProfileName: pulumi.Input.fromValue(
+        map['ownerUserProfileName'] as String,
+      ),
     );
   }
 }
-

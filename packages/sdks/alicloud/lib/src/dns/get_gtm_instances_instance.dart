@@ -6,36 +6,52 @@ import 'get_gtm_instances_instance_alert_config.dart';
 class GetGtmInstancesInstance {
   /// The alert notification methods.
   final pulumi.Input<List<GetGtmInstancesInstanceAlertConfig>> alertConfigs;
+
   /// The alert group.
   final pulumi.Input<List<String>> alertGroups;
+
   /// The access type of the CNAME domain name.
   final pulumi.Input<String> cnameType;
+
   /// The CreateTime of the Gtm Instance.
   final pulumi.Input<String> createTime;
+
   /// The ExpireTime of the Gtm Instance.
   final pulumi.Input<String> expireTime;
+
   /// The ID of the Gtm Instance.
   final pulumi.Input<String> id;
+
   /// The ID of the Gtm Instance.
   final pulumi.Input<String> instanceId;
+
   /// The name of the Gtm Instance.
   final pulumi.Input<String> instanceName;
+
   /// The version of the instance.
   final pulumi.Input<String> packageEdition;
+
   /// The paymentype of the resource.
   final pulumi.Input<String> paymentType;
+
   /// The Public Network domain name access method.
   final pulumi.Input<String> publicCnameMode;
+
   /// The CNAME access domain name.
   final pulumi.Input<String> publicRr;
+
   /// The website domain name that the user uses on the Internet.
   final pulumi.Input<String> publicUserDomainName;
+
   /// The domain name that is used to access GTM over the Internet.
   final pulumi.Input<String> publicZoneName;
+
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
+
   /// The type of the access policy.
   final pulumi.Input<String> strategyMode;
+
   /// The global time to live.
   final pulumi.Input<int> ttl;
 
@@ -79,7 +95,18 @@ class GetGtmInstancesInstance {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alertConfigs': pulumi.Input.mapInputValue<List<GetGtmInstancesInstanceAlertConfig>, List<Map<String, dynamic>>>(alertConfigs, (value) => pulumi.Input.encodeList<GetGtmInstancesInstanceAlertConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'alertConfigs':
+          pulumi.Input.mapInputValue<
+            List<GetGtmInstancesInstanceAlertConfig>,
+            List<Map<String, dynamic>>
+          >(
+            alertConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetGtmInstancesInstanceAlertConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'alertGroups': alertGroups,
       'cnameType': cnameType,
       'createTime': createTime,
@@ -101,24 +128,34 @@ class GetGtmInstancesInstance {
 
   factory GetGtmInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetGtmInstancesInstance(
-      alertConfigs: (pulumi.Input.decodeList<GetGtmInstancesInstanceAlertConfig>(map['alertConfigs'], (value) => GetGtmInstancesInstanceAlertConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      alertGroups: ((map['alertGroups'] as List).cast<String>()).input(),
-      cnameType: (map['cnameType'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      expireTime: (map['expireTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceName: (map['instanceName'] as String).input(),
-      packageEdition: (map['packageEdition'] as String).input(),
-      paymentType: (map['paymentType'] as String).input(),
-      publicCnameMode: (map['publicCnameMode'] as String).input(),
-      publicRr: (map['publicRr'] as String).input(),
-      publicUserDomainName: (map['publicUserDomainName'] as String).input(),
-      publicZoneName: (map['publicZoneName'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      strategyMode: (map['strategyMode'] as String).input(),
-      ttl: (map['ttl'] as int).input(),
+      alertConfigs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetGtmInstancesInstanceAlertConfig>(
+          map['alertConfigs']!,
+          (value) => GetGtmInstancesInstanceAlertConfig.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      alertGroups: pulumi.Input.fromValue(
+        (map['alertGroups'] as List).cast<String>(),
+      ),
+      cnameType: pulumi.Input.fromValue(map['cnameType'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
+      packageEdition: pulumi.Input.fromValue(map['packageEdition'] as String),
+      paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
+      publicCnameMode: pulumi.Input.fromValue(map['publicCnameMode'] as String),
+      publicRr: pulumi.Input.fromValue(map['publicRr'] as String),
+      publicUserDomainName: pulumi.Input.fromValue(
+        map['publicUserDomainName'] as String,
+      ),
+      publicZoneName: pulumi.Input.fromValue(map['publicZoneName'] as String),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      strategyMode: pulumi.Input.fromValue(map['strategyMode'] as String),
+      ttl: pulumi.Input.fromValue(map['ttl'] as int),
     );
   }
 }
-

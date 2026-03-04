@@ -5,10 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubscriptionClientScopedSubscription {
   /// Specifies the Client ID of the application that created the client-scoped subscription. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Client ID can be null or empty, but it must match the client ID set on the JMS client application. From the Azure Service Bus perspective, a null client ID and an empty client id have the same behavior. If the client ID is set to null or empty, it is only accessible to client applications whose client ID is also set to null or empty.
+  /// &gt; **Note:** Client ID can be null or empty, but it must match the client ID set on the JMS client application. From the Azure Service Bus perspective, a null client ID and an empty client id have the same behavior. If the client ID is set to null or empty, it is only accessible to client applications whose client ID is also set to null or empty.
   final pulumi.Input<String>? clientId;
+
   /// Whether the client scoped subscription is durable. This property can only be controlled from the application side.
   final pulumi.Input<bool>? isClientScopedSubscriptionDurable;
+
   /// Whether the client scoped subscription is shareable. Defaults to `true` Changing this forces a new resource to be created.
   final pulumi.Input<bool>? isClientScopedSubscriptionShareable;
 
@@ -26,16 +28,30 @@ class SubscriptionClientScopedSubscription {
     return <String, dynamic>{
       'clientId': ?clientId,
       'isClientScopedSubscriptionDurable': ?isClientScopedSubscriptionDurable,
-      'isClientScopedSubscriptionShareable': ?isClientScopedSubscriptionShareable,
+      'isClientScopedSubscriptionShareable':
+          ?isClientScopedSubscriptionShareable,
     };
   }
 
-  factory SubscriptionClientScopedSubscription.fromMap(Map<String, dynamic> map) {
+  factory SubscriptionClientScopedSubscription.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SubscriptionClientScopedSubscription(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      isClientScopedSubscriptionDurable: map['isClientScopedSubscriptionDurable'] == null ? null : (map['isClientScopedSubscriptionDurable']! as bool).input(),
-      isClientScopedSubscriptionShareable: map['isClientScopedSubscriptionShareable'] == null ? null : (map['isClientScopedSubscriptionShareable']! as bool).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isClientScopedSubscriptionDurable: (() {
+        final guardedValue = map['isClientScopedSubscriptionDurable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isClientScopedSubscriptionShareable: (() {
+        final guardedValue = map['isClientScopedSubscriptionShareable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

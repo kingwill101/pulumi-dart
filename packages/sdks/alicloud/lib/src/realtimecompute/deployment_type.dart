@@ -3,7 +3,6 @@ import 'deployment_args.dart';
 import 'deployment_artifact.dart';
 import 'deployment_batch_resource_setting.dart';
 import 'deployment_deployment_target.dart';
-import 'deployment_local_variable.dart';
 import 'deployment_logging.dart';
 import 'deployment_state.dart';
 import 'deployment_streaming_resource_setting.dart';
@@ -14,7 +13,7 @@ import 'deployment_streaming_resource_setting.dart';
 ///
 /// For information about Realtime Compute Deployment and how to use it, see [What is Deployment](https://next.api.alibabacloud.com/document/ververica/2022-07-18/CreateDeployment).
 ///
-/// > **NOTE:** Available since v1.265.0.
+/// &gt; **NOTE:** Available since v1.265.0.
 ///
 /// ## Example Usage
 ///
@@ -452,34 +451,50 @@ import 'deployment_streaming_resource_setting.dart';
 class DeploymentType extends pulumi.CustomResource {
   /// Content of the deployment job See `artifact` below.
   late final pulumi.Output<DeploymentArtifact> artifact;
+
   /// Batch job resource settings See `batch_resource_setting` below.
-  late final pulumi.Output<DeploymentBatchResourceSetting?> batchResourceSetting;
+  late final pulumi.Output<DeploymentBatchResourceSetting?>
+  batchResourceSetting;
+
   /// Resource property field representing the primary resource ID
   late final pulumi.Output<String> deploymentId;
+
   /// Name of the deployment
   late final pulumi.Output<String> deploymentName;
+
   /// Deployment target See `deployment_target` below.
   late final pulumi.Output<DeploymentDeploymentTarget> deploymentTarget;
+
   /// Description
   late final pulumi.Output<String?> description;
+
   /// Engine version of the deployment instance
   late final pulumi.Output<String> engineVersion;
+
   /// Execution mode. Valid values: STREAMING or BATCH.
   late final pulumi.Output<String> executionMode;
+
   /// Flink configuration
   late final pulumi.Output<Map<String, String>> flinkConf;
+
   /// Deployment labels
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// Job variables See `local_variables` below.
-  late final pulumi.Output<List<DeploymentLocalVariable>?> localVariables;
+  late final pulumi.Output<List<Map<String, dynamic>>?> localVariables;
+
   /// Job log configuration   See `logging` below.
   late final pulumi.Output<DeploymentLogging> logging;
+
   /// Namespace name
   late final pulumi.Output<String> namespace;
+
   /// Workspace resource ID
   late final pulumi.Output<String> resourceId;
+
   /// Resource settings for streaming mode See `streaming_resource_setting` below.
-  late final pulumi.Output<DeploymentStreamingResourceSetting> streamingResourceSetting;
+  late final pulumi.Output<DeploymentStreamingResourceSetting>
+  streamingResourceSetting;
 
   /// Creates a new [DeploymentType].
   /// [name] The Pulumi resource name.
@@ -490,26 +505,35 @@ class DeploymentType extends pulumi.CustomResource {
     DeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:realtimecompute/deployment:Deployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.artifact = registerOutput<DeploymentArtifact>('artifact');
-    this.batchResourceSetting = registerOutput<DeploymentBatchResourceSetting?>('batchResourceSetting');
-    this.deploymentId = registerOutput<String>('deploymentId');
-    this.deploymentName = registerOutput<String>('deploymentName');
-    this.deploymentTarget = registerOutput<DeploymentDeploymentTarget>('deploymentTarget');
-    this.description = registerOutput<String?>('description');
-    this.engineVersion = registerOutput<String>('engineVersion');
-    this.executionMode = registerOutput<String>('executionMode');
-    this.flinkConf = registerOutput<Map<String, String>>('flinkConf');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.localVariables = registerOutput<List<DeploymentLocalVariable>?>('localVariables');
-    this.logging = registerOutput<DeploymentLogging>('logging');
-    this.namespace = registerOutput<String>('namespace');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.streamingResourceSetting = registerOutput<DeploymentStreamingResourceSetting>('streamingResourceSetting');
+         'alicloud:realtimecompute/deployment:Deployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    artifact = registerOutput<DeploymentArtifact>('artifact');
+    batchResourceSetting = registerOutput<DeploymentBatchResourceSetting?>(
+      'batchResourceSetting',
+    );
+    deploymentId = registerOutput<String>('deploymentId');
+    deploymentName = registerOutput<String>('deploymentName');
+    deploymentTarget = registerOutput<DeploymentDeploymentTarget>(
+      'deploymentTarget',
+    );
+    description = registerOutput<String?>('description');
+    engineVersion = registerOutput<String>('engineVersion');
+    executionMode = registerOutput<String>('executionMode');
+    flinkConf = registerOutput<Map<String, String>>('flinkConf');
+    labels = registerOutput<Map<String, String>?>('labels');
+    localVariables = registerOutput<List<Map<String, dynamic>>?>(
+      'localVariables',
+    );
+    logging = registerOutput<DeploymentLogging>('logging');
+    namespace = registerOutput<String>('namespace');
+    resourceId = registerOutput<String>('resourceId');
+    streamingResourceSetting =
+        registerOutput<DeploymentStreamingResourceSetting>(
+          'streamingResourceSetting',
+        );
   }
 
   /// Gets an existing [DeploymentType] resource's state with the given [name] and [id].
@@ -530,25 +554,34 @@ class DeploymentType extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:realtimecompute/deployment:Deployment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.artifact = registerOutput<DeploymentArtifact>('artifact');
-    this.batchResourceSetting = registerOutput<DeploymentBatchResourceSetting?>('batchResourceSetting');
-    this.deploymentId = registerOutput<String>('deploymentId');
-    this.deploymentName = registerOutput<String>('deploymentName');
-    this.deploymentTarget = registerOutput<DeploymentDeploymentTarget>('deploymentTarget');
-    this.description = registerOutput<String?>('description');
-    this.engineVersion = registerOutput<String>('engineVersion');
-    this.executionMode = registerOutput<String>('executionMode');
-    this.flinkConf = registerOutput<Map<String, String>>('flinkConf');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.localVariables = registerOutput<List<DeploymentLocalVariable>?>('localVariables');
-    this.logging = registerOutput<DeploymentLogging>('logging');
-    this.namespace = registerOutput<String>('namespace');
-    this.resourceId = registerOutput<String>('resourceId');
-    this.streamingResourceSetting = registerOutput<DeploymentStreamingResourceSetting>('streamingResourceSetting');
+         'alicloud:realtimecompute/deployment:Deployment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    artifact = registerOutput<DeploymentArtifact>('artifact');
+    batchResourceSetting = registerOutput<DeploymentBatchResourceSetting?>(
+      'batchResourceSetting',
+    );
+    deploymentId = registerOutput<String>('deploymentId');
+    deploymentName = registerOutput<String>('deploymentName');
+    deploymentTarget = registerOutput<DeploymentDeploymentTarget>(
+      'deploymentTarget',
+    );
+    description = registerOutput<String?>('description');
+    engineVersion = registerOutput<String>('engineVersion');
+    executionMode = registerOutput<String>('executionMode');
+    flinkConf = registerOutput<Map<String, String>>('flinkConf');
+    labels = registerOutput<Map<String, String>?>('labels');
+    localVariables = registerOutput<List<Map<String, dynamic>>?>(
+      'localVariables',
+    );
+    logging = registerOutput<DeploymentLogging>('logging');
+    namespace = registerOutput<String>('namespace');
+    resourceId = registerOutput<String>('resourceId');
+    streamingResourceSetting =
+        registerOutput<DeploymentStreamingResourceSetting>(
+          'streamingResourceSetting',
+        );
   }
 }

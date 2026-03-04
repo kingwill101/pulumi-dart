@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocalRulestackState {
   /// The setting to use for Anti-Spyware. Possible values include `BestPractice`, and `Custom`.
   final pulumi.Input<String>? antiSpywareProfile;
+
   /// The setting to use for Anti-Virus. Possible values include `BestPractice`, and `Custom`.
   final pulumi.Input<String>? antiVirusProfile;
+
   /// The description for this Local Rulestack.
   final pulumi.Input<String>? description;
+
   /// TThe setting to use for DNS Subscription. Possible values include `BestPractice`, and `Custom`.
   final pulumi.Input<String>? dnsSubscription;
+
   /// The setting to use for the File Blocking Profile. Possible values include `BestPractice`, and `Custom`.
   final pulumi.Input<String>? fileBlockingProfile;
+
   /// The Azure Region where the Palo Alto Networks Rulestack should exist. Changing this forces a new Palo Alto Networks Rulestack to be created.
   final pulumi.Input<String>? location;
+
   /// The name which should be used for this Palo Alto Networks Rulestack. Changing this forces a new Palo Alto Networks Rulestack to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the Resource Group where the Palo Alto Networks Rulestack should exist. Changing this forces a new Palo Alto Networks Rulestack to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The setting to use for the URL Filtering Profile. Possible values include `BestPractice`, and `Custom`.
   final pulumi.Input<String>? urlFilteringProfile;
+
   /// The setting to use for the Vulnerability Profile. Possible values include `BestPractice`, and `Custom`.
   final pulumi.Input<String>? vulnerabilityProfile;
 
@@ -66,17 +75,56 @@ class LocalRulestackState {
 
   factory LocalRulestackState.fromMap(Map<String, dynamic> map) {
     return LocalRulestackState(
-      antiSpywareProfile: map['antiSpywareProfile'] == null ? null : (map['antiSpywareProfile']! as String).input(),
-      antiVirusProfile: map['antiVirusProfile'] == null ? null : (map['antiVirusProfile']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      dnsSubscription: map['dnsSubscription'] == null ? null : (map['dnsSubscription']! as String).input(),
-      fileBlockingProfile: map['fileBlockingProfile'] == null ? null : (map['fileBlockingProfile']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (map['urlFilteringProfile']! as String).input(),
-      vulnerabilityProfile: map['vulnerabilityProfile'] == null ? null : (map['vulnerabilityProfile']! as String).input(),
+      antiSpywareProfile: (() {
+        final guardedValue = map['antiSpywareProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      antiVirusProfile: (() {
+        final guardedValue = map['antiVirusProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnsSubscription: (() {
+        final guardedValue = map['dnsSubscription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fileBlockingProfile: (() {
+        final guardedValue = map['fileBlockingProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      urlFilteringProfile: (() {
+        final guardedValue = map['urlFilteringProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vulnerabilityProfile: (() {
+        final guardedValue = map['vulnerabilityProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

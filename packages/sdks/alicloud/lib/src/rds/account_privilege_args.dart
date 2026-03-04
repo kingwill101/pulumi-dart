@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccountPrivilegeArgs {
   /// A specified account name.
   final pulumi.Input<String> accountName;
+
   /// List of specified database name.
   final pulumi.Input<List<String>> dbNames;
+
   /// The Id of instance in which account belongs.
   final pulumi.Input<String> instanceId;
+
   /// The privilege of one account access database. Valid values:
   /// - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
   /// - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
@@ -45,11 +48,14 @@ class AccountPrivilegeArgs {
 
   factory AccountPrivilegeArgs.fromMap(Map<String, dynamic> map) {
     return AccountPrivilegeArgs(
-      accountName: (map['accountName'] as String).input(),
-      dbNames: ((map['dbNames'] as List).cast<String>()).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      privilege: map['privilege'] == null ? null : (map['privilege']! as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      dbNames: pulumi.Input.fromValue((map['dbNames'] as List).cast<String>()),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      privilege: (() {
+        final guardedValue = map['privilege'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

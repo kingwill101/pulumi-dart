@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActivityDependencyResponse {
   /// Activity name.
   final pulumi.Input<String> activity;
+
   /// Match-Condition for the dependency.
   final pulumi.Input<List<String>> dependencyConditions;
 
@@ -26,9 +27,10 @@ class ActivityDependencyResponse {
 
   factory ActivityDependencyResponse.fromMap(Map<String, dynamic> map) {
     return ActivityDependencyResponse(
-      activity: (map['activity'] as String).input(),
-      dependencyConditions: ((map['dependencyConditions'] as List).cast<String>()).input(),
+      activity: pulumi.Input.fromValue(map['activity'] as String),
+      dependencyConditions: pulumi.Input.fromValue(
+        (map['dependencyConditions'] as List).cast<String>(),
+      ),
     );
   }
 }
-

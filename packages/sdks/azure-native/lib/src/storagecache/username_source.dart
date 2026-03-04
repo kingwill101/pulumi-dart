@@ -5,16 +5,15 @@ enum UsernameSource {
   valueFile("File"),
   valueNone("None");
 
-  const UsernameSource(this.value);
-  final String value;
+  const UsernameSource(this.wireValue);
+  final String wireValue;
 
   static UsernameSource fromValue(String value) {
     for (final item in UsernameSource.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UsernameSource value: $value');
   }
 }
-

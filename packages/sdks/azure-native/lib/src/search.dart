@@ -1,5 +1,3 @@
-library module_search;
-
 export 'search/aad_auth_failure_mode.dart';
 export 'search/compute_type.dart';
 export 'search/data_plane_aad_or_api_key_auth_option.dart';

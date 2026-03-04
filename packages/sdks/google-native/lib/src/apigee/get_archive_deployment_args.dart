@@ -31,10 +31,11 @@ class GetArchiveDeploymentArgs {
 
   factory GetArchiveDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return GetArchiveDeploymentArgs(
-      archiveDeploymentId: (map['archiveDeploymentId'] as String).input(),
-      environmentId: (map['environmentId'] as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
+      archiveDeploymentId: pulumi.Input.fromValue(
+        map['archiveDeploymentId'] as String,
+      ),
+      environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }
 }
-

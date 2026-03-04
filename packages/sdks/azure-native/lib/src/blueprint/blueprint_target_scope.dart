@@ -3,16 +3,15 @@ enum BlueprintTargetScope {
   valueSubscription("subscription"),
   valueManagementGroup("managementGroup");
 
-  const BlueprintTargetScope(this.value);
-  final String value;
+  const BlueprintTargetScope(this.wireValue);
+  final String wireValue;
 
   static BlueprintTargetScope fromValue(String value) {
     for (final item in BlueprintTargetScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BlueprintTargetScope value: $value');
   }
 }
-

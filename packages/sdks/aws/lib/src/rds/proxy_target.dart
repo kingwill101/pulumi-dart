@@ -4,7 +4,7 @@ import 'proxy_target_state.dart';
 
 /// Provides an RDS DB proxy target resource.
 ///
-/// > **NOTE:** When the associated `aws.rds.Proxy` resource is replaced, Terraform will lose track of this resource, causing unexpected differences on the next apply. To ensure proper dependency management, add a `lifecycle` block with `replace_triggered_by` referencing the `aws.rds.Proxy` resource's `id` attribute.
+/// &gt; **NOTE:** When the associated `aws.rds.Proxy` resource is replaced, Terraform will lose track of this resource, causing unexpected differences on the next apply. To ensure proper dependency management, add a `lifecycle` block with `replace_triggered_by` referencing the `aws.rds.Proxy` resource's `id` attribute.
 ///
 /// ## Import
 ///
@@ -29,24 +29,34 @@ class ProxyTarget extends pulumi.CustomResource {
   ///
   /// **NOTE:** Either `db_instance_identifier` or `db_cluster_identifier` should be specified and both should not be specified together
   late final pulumi.Output<String?> dbClusterIdentifier;
+
   /// DB instance identifier.
   late final pulumi.Output<String?> dbInstanceIdentifier;
+
   /// The name of the DB proxy.
   late final pulumi.Output<String> dbProxyName;
+
   /// Hostname for the target RDS DB Instance. Only returned for `RDS_INSTANCE` type.
   late final pulumi.Output<String> endpoint;
+
   /// Port for the target RDS DB Instance or Aurora DB Cluster.
   late final pulumi.Output<int> port;
+
   /// Identifier representing the DB Instance or DB Cluster target.
   late final pulumi.Output<String> rdsResourceId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Amazon Resource Name (ARN) for the DB instance or DB cluster. Currently not returned by the RDS API.
   late final pulumi.Output<String> targetArn;
+
   /// The name of the target group.
   late final pulumi.Output<String> targetGroupName;
+
   /// DB Cluster identifier for the DB Instance target. Not returned unless manually importing an `RDS_INSTANCE` target that is part of a DB Cluster.
   late final pulumi.Output<String> trackedClusterId;
+
   /// Type of targetE.g., `RDS_INSTANCE` or `TRACKED_CLUSTER`
   late final pulumi.Output<String> type;
 
@@ -59,22 +69,22 @@ class ProxyTarget extends pulumi.CustomResource {
     ProxyTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:rds/proxyTarget:ProxyTarget',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dbClusterIdentifier = registerOutput<String?>('dbClusterIdentifier');
-    this.dbInstanceIdentifier = registerOutput<String?>('dbInstanceIdentifier');
-    this.dbProxyName = registerOutput<String>('dbProxyName');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.port = registerOutput<int>('port');
-    this.rdsResourceId = registerOutput<String>('rdsResourceId');
-    this.region = registerOutput<String>('region');
-    this.targetArn = registerOutput<String>('targetArn');
-    this.targetGroupName = registerOutput<String>('targetGroupName');
-    this.trackedClusterId = registerOutput<String>('trackedClusterId');
-    this.type = registerOutput<String>('type');
+         'aws:rds/proxyTarget:ProxyTarget',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dbClusterIdentifier = registerOutput<String?>('dbClusterIdentifier');
+    dbInstanceIdentifier = registerOutput<String?>('dbInstanceIdentifier');
+    dbProxyName = registerOutput<String>('dbProxyName');
+    endpoint = registerOutput<String>('endpoint');
+    port = registerOutput<int>('port');
+    rdsResourceId = registerOutput<String>('rdsResourceId');
+    region = registerOutput<String>('region');
+    targetArn = registerOutput<String>('targetArn');
+    targetGroupName = registerOutput<String>('targetGroupName');
+    trackedClusterId = registerOutput<String>('trackedClusterId');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [ProxyTarget] resource's state with the given [name] and [id].
@@ -95,21 +105,21 @@ class ProxyTarget extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:rds/proxyTarget:ProxyTarget',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dbClusterIdentifier = registerOutput<String?>('dbClusterIdentifier');
-    this.dbInstanceIdentifier = registerOutput<String?>('dbInstanceIdentifier');
-    this.dbProxyName = registerOutput<String>('dbProxyName');
-    this.endpoint = registerOutput<String>('endpoint');
-    this.port = registerOutput<int>('port');
-    this.rdsResourceId = registerOutput<String>('rdsResourceId');
-    this.region = registerOutput<String>('region');
-    this.targetArn = registerOutput<String>('targetArn');
-    this.targetGroupName = registerOutput<String>('targetGroupName');
-    this.trackedClusterId = registerOutput<String>('trackedClusterId');
-    this.type = registerOutput<String>('type');
+         'aws:rds/proxyTarget:ProxyTarget',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dbClusterIdentifier = registerOutput<String?>('dbClusterIdentifier');
+    dbInstanceIdentifier = registerOutput<String?>('dbInstanceIdentifier');
+    dbProxyName = registerOutput<String>('dbProxyName');
+    endpoint = registerOutput<String>('endpoint');
+    port = registerOutput<int>('port');
+    rdsResourceId = registerOutput<String>('rdsResourceId');
+    region = registerOutput<String>('region');
+    targetArn = registerOutput<String>('targetArn');
+    targetGroupName = registerOutput<String>('targetGroupName');
+    trackedClusterId = registerOutput<String>('trackedClusterId');
+    type = registerOutput<String>('type');
   }
 }

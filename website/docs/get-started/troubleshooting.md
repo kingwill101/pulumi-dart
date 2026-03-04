@@ -79,3 +79,4 @@ Or point to your own registry with `PULUMI_DART_DEPENDENCY_REGISTRY`.
 
 - [Pulumi troubleshooting](https://www.pulumi.com/docs/support/troubleshooting/)
 - [Language host releases](../reference/language-host-releases.md)
+- [Runtime execution and entrypoint resolution](../reference/runtime-execution.md)

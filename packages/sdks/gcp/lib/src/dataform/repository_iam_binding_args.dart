@@ -33,7 +33,11 @@ class RepositoryIamBindingArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<RepositoryIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            RepositoryIamBindingCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'members': members,
       'project': ?project,
       'region': ?region,
@@ -44,13 +48,28 @@ class RepositoryIamBindingArgs {
 
   factory RepositoryIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryIamBindingArgs(
-      condition: map['condition'] == null ? null : (RepositoryIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
-      members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      repository: (map['repository'] as String).input(),
-      role: (map['role'] as String).input(),
+      condition: (() {
+        final guardedValue = map['condition'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RepositoryIamBindingCondition.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      members: pulumi.Input.fromValue((map['members'] as List).cast<String>()),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repository: pulumi.Input.fromValue(map['repository'] as String),
+      role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
-

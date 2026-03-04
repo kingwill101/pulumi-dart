@@ -9,20 +9,19 @@ class VolumeOptionsResponse {
 
   /// Creates a new [VolumeOptionsResponse].
   /// [nocopy] Indicate whether volume is nocopy
-  VolumeOptionsResponse({
-    this.nocopy,
-  });
+  VolumeOptionsResponse({this.nocopy});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nocopy': ?nocopy,
-    };
+    return <String, dynamic>{'nocopy': ?nocopy};
   }
 
   factory VolumeOptionsResponse.fromMap(Map<String, dynamic> map) {
     return VolumeOptionsResponse(
-      nocopy: map['nocopy'] == null ? null : (map['nocopy']! as bool).input(),
+      nocopy: (() {
+        final guardedValue = map['nocopy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

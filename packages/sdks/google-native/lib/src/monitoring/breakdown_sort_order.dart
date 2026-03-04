@@ -5,16 +5,15 @@ enum BreakdownSortOrder {
   sortOrderAscending("SORT_ORDER_ASCENDING"),
   sortOrderDescending("SORT_ORDER_DESCENDING");
 
-  const BreakdownSortOrder(this.value);
-  final String value;
+  const BreakdownSortOrder(this.wireValue);
+  final String wireValue;
 
   static BreakdownSortOrder fromValue(String value) {
     for (final item in BreakdownSortOrder.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BreakdownSortOrder value: $value');
   }
 }
-

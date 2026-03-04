@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fulfillment_args.dart';
-import 'fulfillment_feature.dart';
 import 'fulfillment_generic_web_service.dart';
 import 'fulfillment_state.dart';
 
@@ -230,17 +229,22 @@ import 'fulfillment_state.dart';
 class Fulfillment extends pulumi.CustomResource {
   /// The human-readable name of the fulfillment, unique within the agent.
   late final pulumi.Output<String> displayName;
+
   /// Whether fulfillment is enabled.
   late final pulumi.Output<bool?> enabled;
+
   /// The field defines whether the fulfillment is enabled for certain features.
   /// Structure is documented below.
-  late final pulumi.Output<List<FulfillmentFeature>?> features;
+  late final pulumi.Output<List<Map<String, dynamic>>?> features;
+
   /// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
   /// Structure is documented below.
   late final pulumi.Output<FulfillmentGenericWebService?> genericWebService;
+
   /// The unique identifier of the fulfillment.
-  /// Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
+  /// Format: projects/&lt;Project ID&gt;/agent/fulfillment - projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent/fulfillment
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -254,17 +258,19 @@ class Fulfillment extends pulumi.CustomResource {
     FulfillmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/fulfillment:Fulfillment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.features = registerOutput<List<FulfillmentFeature>?>('features');
-    this.genericWebService = registerOutput<FulfillmentGenericWebService?>('genericWebService');
+         'gcp:diagflow/fulfillment:Fulfillment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    features = registerOutput<List<Map<String, dynamic>>?>('features');
+    genericWebService = registerOutput<FulfillmentGenericWebService?>(
+      'genericWebService',
+    );
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [Fulfillment] resource's state with the given [name] and [id].
@@ -285,16 +291,18 @@ class Fulfillment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/fulfillment:Fulfillment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.features = registerOutput<List<FulfillmentFeature>?>('features');
-    this.genericWebService = registerOutput<FulfillmentGenericWebService?>('genericWebService');
+         'gcp:diagflow/fulfillment:Fulfillment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    features = registerOutput<List<Map<String, dynamic>>?>('features');
+    genericWebService = registerOutput<FulfillmentGenericWebService?>(
+      'genericWebService',
+    );
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
+    project = registerOutput<String>('project');
   }
 }

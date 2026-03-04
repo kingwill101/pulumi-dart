@@ -4,16 +4,19 @@ enum IntegrationServiceEnvironmentAccessEndpointType {
   valueExternal("External"),
   valueInternal("Internal");
 
-  const IntegrationServiceEnvironmentAccessEndpointType(this.value);
-  final String value;
+  const IntegrationServiceEnvironmentAccessEndpointType(this.wireValue);
+  final String wireValue;
 
-  static IntegrationServiceEnvironmentAccessEndpointType fromValue(String value) {
+  static IntegrationServiceEnvironmentAccessEndpointType fromValue(
+    String value,
+  ) {
     for (final item in IntegrationServiceEnvironmentAccessEndpointType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown IntegrationServiceEnvironmentAccessEndpointType value: $value');
+    throw ArgumentError(
+      'Unknown IntegrationServiceEnvironmentAccessEndpointType value: $value',
+    );
   }
 }
-

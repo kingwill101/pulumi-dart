@@ -9,8 +9,10 @@ class UnitInputVariable {
   /// INT
   /// BOOL
   final pulumi.Input<String>? type;
+
   /// String encoded value for the variable.
   final pulumi.Input<String>? value;
+
   /// Name of the variable from actuation configs.
   final pulumi.Input<String> variable;
 
@@ -18,11 +20,7 @@ class UnitInputVariable {
   /// [type] Name of a supported variable type. Supported types are string, int, bool.
   /// [value] String encoded value for the variable.
   /// [variable] Name of the variable from actuation configs.
-  UnitInputVariable({
-    this.type,
-    this.value,
-    required this.variable,
-  });
+  UnitInputVariable({this.type, this.value, required this.variable});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,17 @@ class UnitInputVariable {
 
   factory UnitInputVariable.fromMap(Map<String, dynamic> map) {
     return UnitInputVariable(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
-      variable: (map['variable'] as String).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      variable: pulumi.Input.fromValue(map['variable'] as String),
     );
   }
 }
-

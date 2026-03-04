@@ -9,20 +9,39 @@ class DomainOsNvRamSourceSlices {
 
   /// Creates a new [DomainOsNvRamSourceSlices].
   /// [slices] Specifies individual slice configurations within the mirror source.
-  DomainOsNvRamSourceSlices({
-    this.slices,
-  });
+  DomainOsNvRamSourceSlices({this.slices});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'slices': ?pulumi.Input.mapOptionalInputValue<List<DomainOsNvRamSourceSlicesSlice>, List<Map<String, dynamic>>>(slices, (value) => pulumi.Input.encodeList<DomainOsNvRamSourceSlicesSlice, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'slices':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DomainOsNvRamSourceSlicesSlice>,
+            List<Map<String, dynamic>>
+          >(
+            slices,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DomainOsNvRamSourceSlicesSlice,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory DomainOsNvRamSourceSlices.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceSlices(
-      slices: map['slices'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceSlicesSlice>(map['slices']!, (value) => DomainOsNvRamSourceSlicesSlice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slices: (() {
+        final guardedValue = map['slices'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DomainOsNvRamSourceSlicesSlice>(
+            guardedValue,
+            (value) => DomainOsNvRamSourceSlicesSlice.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum RosettaNetPipRoleType {
   valueOrganizational("Organizational"),
   valueEmployee("Employee");
 
-  const RosettaNetPipRoleType(this.value);
-  final String value;
+  const RosettaNetPipRoleType(this.wireValue);
+  final String wireValue;
 
   static RosettaNetPipRoleType fromValue(String value) {
     for (final item in RosettaNetPipRoleType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RosettaNetPipRoleType value: $value');
   }
 }
-

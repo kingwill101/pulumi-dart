@@ -165,24 +165,34 @@ import 'workload_network_port_mirroring_args.dart';
 class WorkloadNetworkPortMirroring extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Destination VM Group.
   late final pulumi.Output<String?> destination;
+
   /// Direction of port mirroring profile.
   late final pulumi.Output<String?> direction;
+
   /// Display name of the port mirroring profile.
   late final pulumi.Output<String?> displayName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state
   late final pulumi.Output<String> provisioningState;
+
   /// NSX revision number.
   late final pulumi.Output<double?> revision;
+
   /// Source VM Group.
   late final pulumi.Output<String?> source;
+
   /// Port Mirroring Status.
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -195,21 +205,21 @@ class WorkloadNetworkPortMirroring extends pulumi.CustomResource {
     WorkloadNetworkPortMirroringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:avs:WorkloadNetworkPortMirroring',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.destination = registerOutput<String?>('destination');
-    this.direction = registerOutput<String?>('direction');
-    this.displayName = registerOutput<String?>('displayName');
+         'azure-native:avs:WorkloadNetworkPortMirroring',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    destination = registerOutput<String?>('destination');
+    direction = registerOutput<String?>('direction');
+    displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.revision = registerOutput<double?>('revision');
-    this.source = registerOutput<String?>('source');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    revision = registerOutput<double?>('revision');
+    source = registerOutput<String?>('source');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

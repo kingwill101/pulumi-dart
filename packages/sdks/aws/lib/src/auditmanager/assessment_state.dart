@@ -10,26 +10,37 @@ import 'assessment_scope.dart';
 class AssessmentState {
   /// Amazon Resource Name (ARN) of the assessment.
   final pulumi.Input<String>? arn;
+
   /// Assessment report storage destination configuration. See `assessment_reports_destination` below.
-  final pulumi.Input<AssessmentAssessmentReportsDestination>? assessmentReportsDestination;
+  final pulumi.Input<AssessmentAssessmentReportsDestination>?
+  assessmentReportsDestination;
+
   /// Description of the assessment.
   final pulumi.Input<String>? description;
+
   /// Unique identifier of the framework the assessment will be created from.
   final pulumi.Input<String>? frameworkId;
+
   /// Name of the assessment.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// List of roles for the assessment. See `roles` below.
   final pulumi.Input<List<AssessmentRole>>? roles;
+
   /// Complete list of all roles with access to the assessment. This includes both roles explicitly configured via the `roles` block, and any roles which have access to all Audit Manager assessments by default.
   final pulumi.Input<List<AssessmentRolesAll>>? rolesAlls;
+
   /// Amazon Web Services accounts and services that are in scope for the assessment. See `scope` below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<AssessmentScope>? scope;
+
   /// Status of the assessment. Valid values are `ACTIVE` and `INACTIVE`.
   final pulumi.Input<String>? status;
+
   /// A map of tags to assign to the assessment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
@@ -65,14 +76,44 @@ class AssessmentState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': ?arn,
-      'assessmentReportsDestination': ?pulumi.Input.mapOptionalInputValue<AssessmentAssessmentReportsDestination, Map<String, dynamic>>(assessmentReportsDestination, (value) => value.toMap()),
+      'assessmentReportsDestination':
+          ?pulumi.Input.mapOptionalInputValue<
+            AssessmentAssessmentReportsDestination,
+            Map<String, dynamic>
+          >(assessmentReportsDestination, (value) => value.toMap()),
       'description': ?description,
       'frameworkId': ?frameworkId,
       'name': ?name,
       'region': ?region,
-      'roles': ?pulumi.Input.mapOptionalInputValue<List<AssessmentRole>, List<Map<String, dynamic>>>(roles, (value) => pulumi.Input.encodeList<AssessmentRole, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'rolesAlls': ?pulumi.Input.mapOptionalInputValue<List<AssessmentRolesAll>, List<Map<String, dynamic>>>(rolesAlls, (value) => pulumi.Input.encodeList<AssessmentRolesAll, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'scope': ?pulumi.Input.mapOptionalInputValue<AssessmentScope, Map<String, dynamic>>(scope, (value) => value.toMap()),
+      'roles':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AssessmentRole>,
+            List<Map<String, dynamic>>
+          >(
+            roles,
+            (value) =>
+                pulumi.Input.encodeList<AssessmentRole, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'rolesAlls':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AssessmentRolesAll>,
+            List<Map<String, dynamic>>
+          >(
+            rolesAlls,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AssessmentRolesAll,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'scope':
+          ?pulumi.Input.mapOptionalInputValue<
+            AssessmentScope,
+            Map<String, dynamic>
+          >(scope, (value) => value.toMap()),
       'status': ?status,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
@@ -81,19 +122,91 @@ class AssessmentState {
 
   factory AssessmentState.fromMap(Map<String, dynamic> map) {
     return AssessmentState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      assessmentReportsDestination: map['assessmentReportsDestination'] == null ? null : ((AssessmentAssessmentReportsDestination.fromMap((map['assessmentReportsDestination']! as Map).cast<String, dynamic>())).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      frameworkId: map['frameworkId'] == null ? null : ((map['frameworkId'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      roles: map['roles'] == null ? null : ((pulumi.Input.decodeList<AssessmentRole>(map['roles']!, (value) => AssessmentRole.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      rolesAlls: map['rolesAlls'] == null ? null : ((pulumi.Input.decodeList<AssessmentRolesAll>(map['rolesAlls']!, (value) => AssessmentRolesAll.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      scope: map['scope'] == null ? null : ((AssessmentScope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input()).input(),
-      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      assessmentReportsDestination: (() {
+        final guardedValue = map['assessmentReportsDestination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AssessmentAssessmentReportsDestination.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      frameworkId: (() {
+        final guardedValue = map['frameworkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roles: (() {
+        final guardedValue = map['roles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AssessmentRole>(
+            guardedValue,
+            (value) =>
+                AssessmentRole.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      rolesAlls: (() {
+        final guardedValue = map['rolesAlls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AssessmentRolesAll>(
+            guardedValue,
+            (value) => AssessmentRolesAll.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AssessmentScope.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAppregistryAttributeGroupAssociations.
 class GetAppregistryAttributeGroupAssociationsResult {
   /// Set of attribute group IDs this application is associated with.
@@ -30,13 +29,22 @@ class GetAppregistryAttributeGroupAssociationsResult {
     };
   }
 
-  factory GetAppregistryAttributeGroupAssociationsResult.fromMap(Map<String, dynamic> map) {
+  factory GetAppregistryAttributeGroupAssociationsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAppregistryAttributeGroupAssociationsResult(
       attributeGroupIds: (map['attributeGroupIds'] as List).cast<String>(),
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       region: map['region'] as String,
     );
   }
 }
-

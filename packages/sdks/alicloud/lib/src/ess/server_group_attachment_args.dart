@@ -10,14 +10,19 @@ class ServerGroupAttachmentArgs {
   /// If instances of scaling group are attached/removed from backend server when
   /// server group from scaling group. Default to false.
   final pulumi.Input<bool>? forceAttach;
+
   /// The port will be used for Server Group backend server.
   final pulumi.Input<int> port;
+
   /// ID of the scaling group.
   final pulumi.Input<String> scalingGroupId;
+
   /// ID of Server Group.
   final pulumi.Input<String> serverGroupId;
+
   /// The type of server group N. Valid values: ALB, NLB.
   final pulumi.Input<String> type;
+
   /// The weight of an ECS instance attached to the Server Group.
   final pulumi.Input<int> weight;
 
@@ -50,13 +55,16 @@ class ServerGroupAttachmentArgs {
 
   factory ServerGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ServerGroupAttachmentArgs(
-      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach']! as bool).input(),
-      port: (map['port'] as int).input(),
-      scalingGroupId: (map['scalingGroupId'] as String).input(),
-      serverGroupId: (map['serverGroupId'] as String).input(),
-      type: (map['type'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      forceAttach: (() {
+        final guardedValue = map['forceAttach'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      scalingGroupId: pulumi.Input.fromValue(map['scalingGroupId'] as String),
+      serverGroupId: pulumi.Input.fromValue(map['serverGroupId'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

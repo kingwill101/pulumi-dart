@@ -6,7 +6,7 @@ import 'listener_certificate_state.dart';
 ///
 /// This resource is for additional certificates and does not replace the default certificate on the listener.
 ///
-/// > **Note:** `aws.alb.ListenerCertificate` is known as `aws.lb.ListenerCertificate`. The functionality is identical.
+/// &gt; **Note:** `aws.alb.ListenerCertificate` is known as `aws.lb.ListenerCertificate`. The functionality is identical.
 ///
 /// ## Example Usage
 ///
@@ -157,8 +157,10 @@ import 'listener_certificate_state.dart';
 class ListenerCertificate extends pulumi.CustomResource {
   /// The ARN of the certificate to attach to the listener.
   late final pulumi.Output<String> certificateArn;
+
   /// The ARN of the listener to which to attach the certificate.
   late final pulumi.Output<String> listenerArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -171,14 +173,14 @@ class ListenerCertificate extends pulumi.CustomResource {
     ListenerCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lb/listenerCertificate:ListenerCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateArn = registerOutput<String>('certificateArn');
-    this.listenerArn = registerOutput<String>('listenerArn');
-    this.region = registerOutput<String>('region');
+         'aws:lb/listenerCertificate:ListenerCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateArn = registerOutput<String>('certificateArn');
+    listenerArn = registerOutput<String>('listenerArn');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [ListenerCertificate] resource's state with the given [name] and [id].
@@ -199,13 +201,13 @@ class ListenerCertificate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lb/listenerCertificate:ListenerCertificate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateArn = registerOutput<String>('certificateArn');
-    this.listenerArn = registerOutput<String>('listenerArn');
-    this.region = registerOutput<String>('region');
+         'aws:lb/listenerCertificate:ListenerCertificate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateArn = registerOutput<String>('certificateArn');
+    listenerArn = registerOutput<String>('listenerArn');
+    region = registerOutput<String>('region');
   }
 }

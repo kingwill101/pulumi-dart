@@ -13,15 +13,14 @@ class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'oauthToken': oauthToken,
-    };
+    return <String, dynamic>{'oauthToken': oauthToken};
   }
 
-  factory CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig.fromMap(Map<String, dynamic> map) {
+  factory CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig(
-      oauthToken: (map['oauthToken'] as String).input(),
+      oauthToken: pulumi.Input.fromValue(map['oauthToken'] as String),
     );
   }
 }
-

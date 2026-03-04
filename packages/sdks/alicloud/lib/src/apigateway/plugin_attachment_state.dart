@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PluginAttachmentState {
   /// The api_id that plugin attaches to.
   final pulumi.Input<String>? apiId;
+
   /// The group that the api belongs to.
   final pulumi.Input<String>? groupId;
+
   /// The plugin that attaches to the api.
   final pulumi.Input<String>? pluginId;
+
   /// Stage that the plugin attaches to.
   final pulumi.Input<String>? stageName;
 
@@ -36,11 +39,26 @@ class PluginAttachmentState {
 
   factory PluginAttachmentState.fromMap(Map<String, dynamic> map) {
     return PluginAttachmentState(
-      apiId: map['apiId'] == null ? null : (map['apiId']! as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
-      pluginId: map['pluginId'] == null ? null : (map['pluginId']! as String).input(),
-      stageName: map['stageName'] == null ? null : (map['stageName']! as String).input(),
+      apiId: (() {
+        final guardedValue = map['apiId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      groupId: (() {
+        final guardedValue = map['groupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pluginId: (() {
+        final guardedValue = map['pluginId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      stageName: (() {
+        final guardedValue = map['stageName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

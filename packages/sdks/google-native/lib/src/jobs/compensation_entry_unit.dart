@@ -9,16 +9,15 @@ enum CompensationEntryUnit {
   oneTime("ONE_TIME"),
   otherCompensationUnit("OTHER_COMPENSATION_UNIT");
 
-  const CompensationEntryUnit(this.value);
-  final String value;
+  const CompensationEntryUnit(this.wireValue);
+  final String wireValue;
 
   static CompensationEntryUnit fromValue(String value) {
     for (final item in CompensationEntryUnit.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CompensationEntryUnit value: $value');
   }
 }
-

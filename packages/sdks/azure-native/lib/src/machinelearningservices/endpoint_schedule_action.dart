@@ -5,8 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointScheduleAction {
   /// Expected value is 'InvokeBatchEndpoint'.
   final pulumi.Input<String> actionType;
+
   /// [Required] Defines Schedule action definition details.
-  /// <see href="TBD" />
+  /// &lt;see href="TBD" /&gt;
   final pulumi.Input<dynamic> endpointInvocationDefinition;
 
   /// Creates a new [EndpointScheduleAction].
@@ -26,9 +27,10 @@ class EndpointScheduleAction {
 
   factory EndpointScheduleAction.fromMap(Map<String, dynamic> map) {
     return EndpointScheduleAction(
-      actionType: (map['actionType'] as String).input(),
-      endpointInvocationDefinition: (map['endpointInvocationDefinition']).input(),
+      actionType: pulumi.Input.fromValue(map['actionType'] as String),
+      endpointInvocationDefinition: pulumi.Input.fromValue(
+        map['endpointInvocationDefinition'],
+      ),
     );
   }
 }
-

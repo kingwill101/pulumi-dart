@@ -1,13 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_line_args.dart';
-import 'custom_line_ip_segment_list.dart';
 import 'custom_line_state.dart';
 
 /// Provides a Alidns Custom Line resource.
 ///
 /// For information about Alidns Custom Line and how to use it, see [What is Custom Line](https://www.alibabacloud.com/help/en/doc-detail/145059.html).
 ///
-/// > **NOTE:** Available since v1.151.0.
+/// &gt; **NOTE:** Available since v1.151.0.
 ///
 /// ## Example Usage
 ///
@@ -150,10 +149,13 @@ import 'custom_line_state.dart';
 class CustomLine extends pulumi.CustomResource {
   /// The name of the Custom Line.
   late final pulumi.Output<String> customLineName;
+
   /// The Domain name.
   late final pulumi.Output<String> domainName;
+
   /// The IP segment list. See `ip_segment_list` below for details.
-  late final pulumi.Output<List<CustomLineIpSegmentList>> ipSegmentLists;
+  late final pulumi.Output<List<Map<String, dynamic>>> ipSegmentLists;
+
   /// The lang.
   late final pulumi.Output<String?> lang;
 
@@ -166,15 +168,17 @@ class CustomLine extends pulumi.CustomResource {
     CustomLineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dns/customLine:CustomLine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customLineName = registerOutput<String>('customLineName');
-    this.domainName = registerOutput<String>('domainName');
-    this.ipSegmentLists = registerOutput<List<CustomLineIpSegmentList>>('ipSegmentLists');
-    this.lang = registerOutput<String?>('lang');
+         'alicloud:dns/customLine:CustomLine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customLineName = registerOutput<String>('customLineName');
+    domainName = registerOutput<String>('domainName');
+    ipSegmentLists = registerOutput<List<Map<String, dynamic>>>(
+      'ipSegmentLists',
+    );
+    lang = registerOutput<String?>('lang');
   }
 
   /// Gets an existing [CustomLine] resource's state with the given [name] and [id].
@@ -195,14 +199,16 @@ class CustomLine extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:dns/customLine:CustomLine',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customLineName = registerOutput<String>('customLineName');
-    this.domainName = registerOutput<String>('domainName');
-    this.ipSegmentLists = registerOutput<List<CustomLineIpSegmentList>>('ipSegmentLists');
-    this.lang = registerOutput<String?>('lang');
+         'alicloud:dns/customLine:CustomLine',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customLineName = registerOutput<String>('customLineName');
+    domainName = registerOutput<String>('domainName');
+    ipSegmentLists = registerOutput<List<Map<String, dynamic>>>(
+      'ipSegmentLists',
+    );
+    lang = registerOutput<String?>('lang');
   }
 }

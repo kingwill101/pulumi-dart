@@ -33,7 +33,11 @@ class GetBgpNetworksResult {
     return <String, dynamic>{
       'id': id,
       'ids': ids,
-      'networks': pulumi.Input.encodeList<GetBgpNetworksNetwork, Map<String, dynamic>>(networks, (value) => value.toMap()),
+      'networks':
+          pulumi.Input.encodeList<GetBgpNetworksNetwork, Map<String, dynamic>>(
+            networks,
+            (value) => value.toMap(),
+          ),
       'outputFile': ?outputFile,
       'routerId': ?routerId,
       'status': ?status,
@@ -44,11 +48,27 @@ class GetBgpNetworksResult {
     return GetBgpNetworksResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      networks: pulumi.Input.decodeList<GetBgpNetworksNetwork>(map['networks'], (value) => GetBgpNetworksNetwork.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      routerId: map['routerId'] == null ? null : map['routerId']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      networks: pulumi.Input.decodeList<GetBgpNetworksNetwork>(
+        map['networks']!,
+        (value) => GetBgpNetworksNetwork.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      routerId: (() {
+        final guardedValue = map['routerId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

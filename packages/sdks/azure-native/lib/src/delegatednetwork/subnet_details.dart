@@ -9,20 +9,19 @@ class SubnetDetails {
 
   /// Creates a new [SubnetDetails].
   /// [id] subnet arm resource id
-  SubnetDetails({
-    this.id,
-  });
+  SubnetDetails({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory SubnetDetails.fromMap(Map<String, dynamic> map) {
     return SubnetDetails(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

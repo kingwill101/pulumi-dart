@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim {
   /// The name of the OAuth policy claim for the Logic App Workflow.
   final pulumi.Input<String> name;
+
   /// The value of the OAuth policy claim for the Logic App Workflow.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim.fromMap(Map<String, dynamic> map) {
+  factory WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim(
-      name: (map['name'] as String).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

@@ -6,16 +6,15 @@ enum AzureStorageAuthenticationType {
   valueServicePrincipal("ServicePrincipal"),
   valueMsi("Msi");
 
-  const AzureStorageAuthenticationType(this.value);
-  final String value;
+  const AzureStorageAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static AzureStorageAuthenticationType fromValue(String value) {
     for (final item in AzureStorageAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureStorageAuthenticationType value: $value');
   }
 }
-

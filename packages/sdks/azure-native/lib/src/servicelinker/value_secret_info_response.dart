@@ -7,29 +7,27 @@ class ValueSecretInfoResponse {
   /// The secret type.
   /// Expected value is 'rawValue'.
   final pulumi.Input<String> secretType;
+
   /// The actual value of the secret.
   final pulumi.Input<String>? value;
 
   /// Creates a new [ValueSecretInfoResponse].
   /// [secretType] The secret type.
   /// [value] The actual value of the secret.
-  ValueSecretInfoResponse({
-    required this.secretType,
-    this.value,
-  });
+  ValueSecretInfoResponse({required this.secretType, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretType': secretType,
-      'value': ?value,
-    };
+    return <String, dynamic>{'secretType': secretType, 'value': ?value};
   }
 
   factory ValueSecretInfoResponse.fromMap(Map<String, dynamic> map) {
     return ValueSecretInfoResponse(
-      secretType: (map['secretType'] as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      secretType: pulumi.Input.fromValue(map['secretType'] as String),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

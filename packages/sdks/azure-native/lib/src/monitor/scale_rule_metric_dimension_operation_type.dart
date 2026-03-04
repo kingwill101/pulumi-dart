@@ -3,16 +3,17 @@ enum ScaleRuleMetricDimensionOperationType {
   valueEquals("Equals"),
   valueNotEquals("NotEquals");
 
-  const ScaleRuleMetricDimensionOperationType(this.value);
-  final String value;
+  const ScaleRuleMetricDimensionOperationType(this.wireValue);
+  final String wireValue;
 
   static ScaleRuleMetricDimensionOperationType fromValue(String value) {
     for (final item in ScaleRuleMetricDimensionOperationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ScaleRuleMetricDimensionOperationType value: $value');
+    throw ArgumentError(
+      'Unknown ScaleRuleMetricDimensionOperationType value: $value',
+    );
   }
 }
-

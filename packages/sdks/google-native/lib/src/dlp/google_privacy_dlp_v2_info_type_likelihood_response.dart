@@ -7,6 +7,7 @@ import 'google_privacy_dlp_v2_info_type_response.dart';
 class GooglePrivacyDlpV2InfoTypeLikelihoodResponse {
   /// Type of information the likelihood threshold applies to. Only one likelihood per info_type should be provided. If InfoTypeLikelihood does not have an info_type, the configuration fails.
   final pulumi.Input<GooglePrivacyDlpV2InfoTypeResponse> infoType;
+
   /// Only returns findings equal to or above this threshold. This field is required or else the configuration fails.
   final pulumi.Input<String> minLikelihood;
 
@@ -20,16 +21,25 @@ class GooglePrivacyDlpV2InfoTypeLikelihoodResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'infoType': pulumi.Input.mapInputValue<GooglePrivacyDlpV2InfoTypeResponse, Map<String, dynamic>>(infoType, (value) => value.toMap()),
+      'infoType':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2InfoTypeResponse,
+            Map<String, dynamic>
+          >(infoType, (value) => value.toMap()),
       'minLikelihood': minLikelihood,
     };
   }
 
-  factory GooglePrivacyDlpV2InfoTypeLikelihoodResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2InfoTypeLikelihoodResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2InfoTypeLikelihoodResponse(
-      infoType: (GooglePrivacyDlpV2InfoTypeResponse.fromMap((map['infoType'] as Map).cast<String, dynamic>())).input(),
-      minLikelihood: (map['minLikelihood'] as String).input(),
+      infoType: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2InfoTypeResponse.fromMap(
+          (map['infoType']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      minLikelihood: pulumi.Input.fromValue(map['minLikelihood'] as String),
     );
   }
 }
-

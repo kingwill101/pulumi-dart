@@ -9,7 +9,9 @@ import 'metric_value_status_patch_autoscaling_v2beta2.dart';
 class ObjectMetricStatusPatchAutoscalingV2beta2 {
   /// current contains the current value for the given metric
   final pulumi.Input<MetricValueStatusPatchAutoscalingV2beta2>? current;
-  final pulumi.Input<CrossVersionObjectReferencePatchAutoscalingV2beta2>? describedObject;
+  final pulumi.Input<CrossVersionObjectReferencePatchAutoscalingV2beta2>?
+  describedObject;
+
   /// metric identifies the target metric by name and selector
   final pulumi.Input<MetricIdentifierPatchAutoscalingV2beta2>? metric;
 
@@ -25,18 +27,55 @@ class ObjectMetricStatusPatchAutoscalingV2beta2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'current': ?pulumi.Input.mapOptionalInputValue<MetricValueStatusPatchAutoscalingV2beta2, Map<String, dynamic>>(current, (value) => value.toMap()),
-      'describedObject': ?pulumi.Input.mapOptionalInputValue<CrossVersionObjectReferencePatchAutoscalingV2beta2, Map<String, dynamic>>(describedObject, (value) => value.toMap()),
-      'metric': ?pulumi.Input.mapOptionalInputValue<MetricIdentifierPatchAutoscalingV2beta2, Map<String, dynamic>>(metric, (value) => value.toMap()),
+      'current':
+          ?pulumi.Input.mapOptionalInputValue<
+            MetricValueStatusPatchAutoscalingV2beta2,
+            Map<String, dynamic>
+          >(current, (value) => value.toMap()),
+      'describedObject':
+          ?pulumi.Input.mapOptionalInputValue<
+            CrossVersionObjectReferencePatchAutoscalingV2beta2,
+            Map<String, dynamic>
+          >(describedObject, (value) => value.toMap()),
+      'metric':
+          ?pulumi.Input.mapOptionalInputValue<
+            MetricIdentifierPatchAutoscalingV2beta2,
+            Map<String, dynamic>
+          >(metric, (value) => value.toMap()),
     };
   }
 
-  factory ObjectMetricStatusPatchAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
+  factory ObjectMetricStatusPatchAutoscalingV2beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ObjectMetricStatusPatchAutoscalingV2beta2(
-      current: map['current'] == null ? null : (MetricValueStatusPatchAutoscalingV2beta2.fromMap((map['current']! as Map).cast<String, dynamic>())).input(),
-      describedObject: map['describedObject'] == null ? null : (CrossVersionObjectReferencePatchAutoscalingV2beta2.fromMap((map['describedObject']! as Map).cast<String, dynamic>())).input(),
-      metric: map['metric'] == null ? null : (MetricIdentifierPatchAutoscalingV2beta2.fromMap((map['metric']! as Map).cast<String, dynamic>())).input(),
+      current: (() {
+        final guardedValue = map['current'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MetricValueStatusPatchAutoscalingV2beta2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      describedObject: (() {
+        final guardedValue = map['describedObject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CrossVersionObjectReferencePatchAutoscalingV2beta2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      metric: (() {
+        final guardedValue = map['metric'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MetricIdentifierPatchAutoscalingV2beta2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

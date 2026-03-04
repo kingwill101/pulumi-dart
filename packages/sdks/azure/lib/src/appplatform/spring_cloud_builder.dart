@@ -1,14 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spring_cloud_builder_args.dart';
-import 'spring_cloud_builder_build_pack_group.dart';
 import 'spring_cloud_builder_stack.dart';
 import 'spring_cloud_builder_state.dart';
 
 /// Manages a Spring Cloud Builder.
 ///
-/// > **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
+/// &gt; **Note:** This resource is applicable only for Spring Cloud Service with enterprise tier.
 ///
-/// !> **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudBuilder` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
+/// !&gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudBuilder` resource is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
 ///
 /// ## Example Usage
 ///
@@ -255,11 +254,14 @@ import 'spring_cloud_builder_state.dart';
 /// ```
 class SpringCloudBuilder extends pulumi.CustomResource {
   /// One or more `build_pack_group` blocks as defined below.
-  late final pulumi.Output<List<SpringCloudBuilderBuildPackGroup>> buildPackGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>> buildPackGroups;
+
   /// The name which should be used for this Spring Cloud Builder. Changing this forces a new Spring Cloud Builder to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Builder to be created.
   late final pulumi.Output<String> springCloudServiceId;
+
   /// A `stack` block as defined below.
   late final pulumi.Output<SpringCloudBuilderStack> stack;
 
@@ -272,15 +274,17 @@ class SpringCloudBuilder extends pulumi.CustomResource {
     SpringCloudBuilderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudBuilder:SpringCloudBuilder',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.buildPackGroups = registerOutput<List<SpringCloudBuilderBuildPackGroup>>('buildPackGroups');
+         'azure:appplatform/springCloudBuilder:SpringCloudBuilder',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    buildPackGroups = registerOutput<List<Map<String, dynamic>>>(
+      'buildPackGroups',
+    );
     this.name = registerOutput<String>('name');
-    this.springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    this.stack = registerOutput<SpringCloudBuilderStack>('stack');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    stack = registerOutput<SpringCloudBuilderStack>('stack');
   }
 
   /// Gets an existing [SpringCloudBuilder] resource's state with the given [name] and [id].
@@ -301,14 +305,16 @@ class SpringCloudBuilder extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appplatform/springCloudBuilder:SpringCloudBuilder',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.buildPackGroups = registerOutput<List<SpringCloudBuilderBuildPackGroup>>('buildPackGroups');
+         'azure:appplatform/springCloudBuilder:SpringCloudBuilder',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    buildPackGroups = registerOutput<List<Map<String, dynamic>>>(
+      'buildPackGroups',
+    );
     this.name = registerOutput<String>('name');
-    this.springCloudServiceId = registerOutput<String>('springCloudServiceId');
-    this.stack = registerOutput<SpringCloudBuilderStack>('stack');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    stack = registerOutput<SpringCloudBuilderStack>('stack');
   }
 }

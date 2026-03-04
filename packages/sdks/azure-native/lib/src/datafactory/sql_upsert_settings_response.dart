@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlUpsertSettingsResponse {
   /// Schema name for interim table. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? interimSchemaName;
+
   /// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
   final pulumi.Input<dynamic>? keys;
+
   /// Specifies whether to use temp db for upsert interim table. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? useTempDB;
 
@@ -31,10 +33,21 @@ class SqlUpsertSettingsResponse {
 
   factory SqlUpsertSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SqlUpsertSettingsResponse(
-      interimSchemaName: map['interimSchemaName'] == null ? null : (map['interimSchemaName']!).input(),
-      keys: map['keys'] == null ? null : (map['keys']!).input(),
-      useTempDB: map['useTempDB'] == null ? null : (map['useTempDB']!).input(),
+      interimSchemaName: (() {
+        final guardedValue = map['interimSchemaName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      keys: (() {
+        final guardedValue = map['keys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      useTempDB: (() {
+        final guardedValue = map['useTempDB'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

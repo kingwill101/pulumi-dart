@@ -6,7 +6,7 @@ import 'host_account_share_key_attachment_state.dart';
 ///
 /// For information about Bastion Host Host Account Share Key Attachment and how to use it, see [What is Host Account Share Key Attachment](https://www.alibabacloud.com/help/en/bastion-host/latest/attachhostaccountstohostsharekey).
 ///
-/// > **NOTE:** Available since v1.165.0.
+/// &gt; **NOTE:** Available since v1.165.0.
 ///
 /// ## Example Usage
 ///
@@ -504,8 +504,10 @@ import 'host_account_share_key_attachment_state.dart';
 class HostAccountShareKeyAttachment extends pulumi.CustomResource {
   /// The ID list of the host account.
   late final pulumi.Output<String> hostAccountId;
+
   /// The ID of the host shared key.
   late final pulumi.Output<String> hostShareKeyId;
+
   /// The ID of the Bastion machine instance.
   late final pulumi.Output<String> instanceId;
 
@@ -518,14 +520,14 @@ class HostAccountShareKeyAttachment extends pulumi.CustomResource {
     HostAccountShareKeyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.hostAccountId = registerOutput<String>('hostAccountId');
-    this.hostShareKeyId = registerOutput<String>('hostShareKeyId');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    hostAccountId = registerOutput<String>('hostAccountId');
+    hostShareKeyId = registerOutput<String>('hostShareKeyId');
+    instanceId = registerOutput<String>('instanceId');
   }
 
   /// Gets an existing [HostAccountShareKeyAttachment] resource's state with the given [name] and [id].
@@ -546,13 +548,13 @@ class HostAccountShareKeyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.hostAccountId = registerOutput<String>('hostAccountId');
-    this.hostShareKeyId = registerOutput<String>('hostShareKeyId');
-    this.instanceId = registerOutput<String>('instanceId');
+         'alicloud:bastionhost/hostAccountShareKeyAttachment:HostAccountShareKeyAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    hostAccountId = registerOutput<String>('hostAccountId');
+    hostShareKeyId = registerOutput<String>('hostShareKeyId');
+    instanceId = registerOutput<String>('instanceId');
   }
 }

@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOrganizationAccount {
   /// ARN of the root.
   final pulumi.Input<String> arn;
+
   /// Email of the account.
   final pulumi.Input<String> email;
+
   /// Identifier of the root.
   final pulumi.Input<String> id;
+
   /// Method by which the account joined the organization.
   final pulumi.Input<String> joinedMethod;
+
   /// Date the account became a part of the organization.
   final pulumi.Input<String> joinedTimestamp;
+
   /// Name of the policy type.
   final pulumi.Input<String> name;
+
   /// State of the account.
   final pulumi.Input<String> state;
+
   /// Status of the policy type as it relates to the associated root.
   final pulumi.Input<String> status;
 
@@ -55,15 +62,14 @@ class GetOrganizationAccount {
 
   factory GetOrganizationAccount.fromMap(Map<String, dynamic> map) {
     return GetOrganizationAccount(
-      arn: (map['arn'] as String).input(),
-      email: (map['email'] as String).input(),
-      id: (map['id'] as String).input(),
-      joinedMethod: (map['joinedMethod'] as String).input(),
-      joinedTimestamp: (map['joinedTimestamp'] as String).input(),
-      name: (map['name'] as String).input(),
-      state: (map['state'] as String).input(),
-      status: (map['status'] as String).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      joinedMethod: pulumi.Input.fromValue(map['joinedMethod'] as String),
+      joinedTimestamp: pulumi.Input.fromValue(map['joinedTimestamp'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

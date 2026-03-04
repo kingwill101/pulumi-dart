@@ -11,12 +11,15 @@ class GetRulesResult {
   final List<String>? listenerIds;
   final List<String>? loadBalancerIds;
   final String? nameRegex;
+
   /// A list of Rule names.
   final List<String> names;
   final String? outputFile;
   final List<String>? ruleIds;
+
   /// A list of Alb Rules. Each element contains the following attributes:
   final List<GetRulesRule> rules;
+
   /// The status of the forwarding rule.
   final String? status;
 
@@ -54,7 +57,10 @@ class GetRulesResult {
       'names': names,
       'outputFile': ?outputFile,
       'ruleIds': ?ruleIds,
-      'rules': pulumi.Input.encodeList<GetRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules': pulumi.Input.encodeList<GetRulesRule, Map<String, dynamic>>(
+        rules,
+        (value) => value.toMap(),
+      ),
       'status': ?status,
     };
   }
@@ -63,15 +69,41 @@ class GetRulesResult {
     return GetRulesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      listenerIds: map['listenerIds'] == null ? null : (map['listenerIds']! as List).cast<String>(),
-      loadBalancerIds: map['loadBalancerIds'] == null ? null : (map['loadBalancerIds']! as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      listenerIds: (() {
+        final guardedValue = map['listenerIds'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      loadBalancerIds: (() {
+        final guardedValue = map['loadBalancerIds'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      ruleIds: map['ruleIds'] == null ? null : (map['ruleIds']! as List).cast<String>(),
-      rules: pulumi.Input.decodeList<GetRulesRule>(map['rules'], (value) => GetRulesRule.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      ruleIds: (() {
+        final guardedValue = map['ruleIds'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      rules: pulumi.Input.decodeList<GetRulesRule>(
+        map['rules']!,
+        (value) => GetRulesRule.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

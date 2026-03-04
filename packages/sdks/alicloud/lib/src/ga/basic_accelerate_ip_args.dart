@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicAccelerateIpArgs {
   /// The ID of the Basic GA instance.
   final pulumi.Input<String> acceleratorId;
+
   /// The ID of the Basic Ip Set.
   final pulumi.Input<String> ipSetId;
 
   /// Creates a new [BasicAccelerateIpArgs].
   /// [acceleratorId] The ID of the Basic GA instance.
   /// [ipSetId] The ID of the Basic Ip Set.
-  BasicAccelerateIpArgs({
-    required this.acceleratorId,
-    required this.ipSetId,
-  });
+  BasicAccelerateIpArgs({required this.acceleratorId, required this.ipSetId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,8 @@ class BasicAccelerateIpArgs {
 
   factory BasicAccelerateIpArgs.fromMap(Map<String, dynamic> map) {
     return BasicAccelerateIpArgs(
-      acceleratorId: (map['acceleratorId'] as String).input(),
-      ipSetId: (map['ipSetId'] as String).input(),
+      acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
+      ipSetId: pulumi.Input.fromValue(map['ipSetId'] as String),
     );
   }
 }
-

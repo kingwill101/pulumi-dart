@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkSecurityPerimeterProfileArgs {
   /// The name which should be used for this Network Security Perimeter Profile. Changing this forces a new Network Security Perimeter Profile to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Network Security Perimeter within this Profile is created. Changing this forces a new Network Security Perimeter Profile to be created.
   final pulumi.Input<String> networkSecurityPerimeterId;
 
@@ -27,11 +28,18 @@ class NetworkSecurityPerimeterProfileArgs {
     };
   }
 
-  factory NetworkSecurityPerimeterProfileArgs.fromMap(Map<String, dynamic> map) {
+  factory NetworkSecurityPerimeterProfileArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkSecurityPerimeterProfileArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkSecurityPerimeterId: (map['networkSecurityPerimeterId'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkSecurityPerimeterId: pulumi.Input.fromValue(
+        map['networkSecurityPerimeterId'] as String,
+      ),
     );
   }
 }
-

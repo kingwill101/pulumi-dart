@@ -4,16 +4,15 @@ enum ClientPermissionType {
   valueReadOnly("ReadOnly"),
   valueReadWrite("ReadWrite");
 
-  const ClientPermissionType(this.value);
-  final String value;
+  const ClientPermissionType(this.wireValue);
+  final String wireValue;
 
   static ClientPermissionType fromValue(String value) {
     for (final item in ClientPermissionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClientPermissionType value: $value');
   }
 }
-

@@ -4,7 +4,7 @@ import 'directory_role_member_state.dart';
 
 /// Manages a single directory role membership (assignment) within Azure Active Directory.
 ///
-/// > **Deprecation Warning:** This resource has been superseded by the azuread.DirectoryRoleAssignment resource and will be removed in version 3.0 of the AzureAD provider
+/// &gt; **Deprecation Warning:** This resource has been superseded by the azuread.DirectoryRoleAssignment resource and will be removed in version 3.0 of the AzureAD provider
 ///
 /// ## API Permissions
 ///
@@ -170,10 +170,11 @@ import 'directory_role_member_state.dart';
 /// $ pulumi import azuread:index/directoryRoleMember:DirectoryRoleMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
 /// ```
 ///
-/// > This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
+/// &gt; This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
 class DirectoryRoleMember extends pulumi.CustomResource {
   /// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> memberObjectId;
+
   /// The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> roleObjectId;
 
@@ -186,13 +187,13 @@ class DirectoryRoleMember extends pulumi.CustomResource {
     DirectoryRoleMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/directoryRoleMember:DirectoryRoleMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.memberObjectId = registerOutput<String?>('memberObjectId');
-    this.roleObjectId = registerOutput<String?>('roleObjectId');
+         'azuread:index/directoryRoleMember:DirectoryRoleMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    memberObjectId = registerOutput<String?>('memberObjectId');
+    roleObjectId = registerOutput<String?>('roleObjectId');
   }
 
   /// Gets an existing [DirectoryRoleMember] resource's state with the given [name] and [id].
@@ -213,12 +214,12 @@ class DirectoryRoleMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/directoryRoleMember:DirectoryRoleMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.memberObjectId = registerOutput<String?>('memberObjectId');
-    this.roleObjectId = registerOutput<String?>('roleObjectId');
+         'azuread:index/directoryRoleMember:DirectoryRoleMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    memberObjectId = registerOutput<String?>('memberObjectId');
+    roleObjectId = registerOutput<String?>('roleObjectId');
   }
 }

@@ -114,16 +114,22 @@ import 'sms_channel_state.dart';
 class SmsChannel extends pulumi.CustomResource {
   /// ID of the application.
   late final pulumi.Output<String> applicationId;
+
   /// Whether the channel is enabled or disabled. By default, it is set to `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// Maximum number of promotional messages that can be sent per second.
   late final pulumi.Output<int> promotionalMessagesPerSecond;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Identifier of the sender for your messages.
   late final pulumi.Output<String?> senderId;
+
   /// Short Code registered with the phone provider.
   late final pulumi.Output<String?> shortCode;
+
   /// Maximum number of transactional messages per second that can be sent.
   late final pulumi.Output<int> transactionalMessagesPerSecond;
 
@@ -136,18 +142,22 @@ class SmsChannel extends pulumi.CustomResource {
     SmsChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:pinpoint/smsChannel:SmsChannel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.promotionalMessagesPerSecond = registerOutput<int>('promotionalMessagesPerSecond');
-    this.region = registerOutput<String>('region');
-    this.senderId = registerOutput<String?>('senderId');
-    this.shortCode = registerOutput<String?>('shortCode');
-    this.transactionalMessagesPerSecond = registerOutput<int>('transactionalMessagesPerSecond');
+         'aws:pinpoint/smsChannel:SmsChannel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    enabled = registerOutput<bool?>('enabled');
+    promotionalMessagesPerSecond = registerOutput<int>(
+      'promotionalMessagesPerSecond',
+    );
+    region = registerOutput<String>('region');
+    senderId = registerOutput<String?>('senderId');
+    shortCode = registerOutput<String?>('shortCode');
+    transactionalMessagesPerSecond = registerOutput<int>(
+      'transactionalMessagesPerSecond',
+    );
   }
 
   /// Gets an existing [SmsChannel] resource's state with the given [name] and [id].
@@ -168,17 +178,21 @@ class SmsChannel extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:pinpoint/smsChannel:SmsChannel',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.promotionalMessagesPerSecond = registerOutput<int>('promotionalMessagesPerSecond');
-    this.region = registerOutput<String>('region');
-    this.senderId = registerOutput<String?>('senderId');
-    this.shortCode = registerOutput<String?>('shortCode');
-    this.transactionalMessagesPerSecond = registerOutput<int>('transactionalMessagesPerSecond');
+         'aws:pinpoint/smsChannel:SmsChannel',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    enabled = registerOutput<bool?>('enabled');
+    promotionalMessagesPerSecond = registerOutput<int>(
+      'promotionalMessagesPerSecond',
+    );
+    region = registerOutput<String>('region');
+    senderId = registerOutput<String?>('senderId');
+    shortCode = registerOutput<String?>('shortCode');
+    transactionalMessagesPerSecond = registerOutput<int>(
+      'transactionalMessagesPerSecond',
+    );
   }
 }

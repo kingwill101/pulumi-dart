@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig {
   /// (Optional)
   final pulumi.Input<int>? registryBurst;
+
   /// (Optional)
   final pulumi.Input<int>? registryPullQps;
+
   /// (Optional)
   final pulumi.Input<bool>? serializeImagePullsDisabled;
 
@@ -28,12 +30,25 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
     };
   }
 
-  factory BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig.fromMap(Map<String, dynamic> map) {
+  factory BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig(
-      registryBurst: map['registryBurst'] == null ? null : (map['registryBurst']! as int).input(),
-      registryPullQps: map['registryPullQps'] == null ? null : (map['registryPullQps']! as int).input(),
-      serializeImagePullsDisabled: map['serializeImagePullsDisabled'] == null ? null : (map['serializeImagePullsDisabled']! as bool).input(),
+      registryBurst: (() {
+        final guardedValue = map['registryBurst'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      registryPullQps: (() {
+        final guardedValue = map['registryPullQps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      serializeImagePullsDisabled: (() {
+        final guardedValue = map['serializeImagePullsDisabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

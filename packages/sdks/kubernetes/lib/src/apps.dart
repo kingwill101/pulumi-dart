@@ -1,5 +1,3 @@
-library module_apps;
-
 export 'apps/controller_revision.dart';
 export 'apps/controller_revision_apps_v1.dart';
 export 'apps/controller_revision_apps_v1beta1.dart';

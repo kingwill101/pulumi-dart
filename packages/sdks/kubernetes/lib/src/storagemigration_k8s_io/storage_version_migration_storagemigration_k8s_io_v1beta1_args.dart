@@ -11,12 +11,16 @@ import 'storage_version_migration_spec_storagemigration_k8s_io_v1beta1.dart';
 class StorageVersionMigrationStoragemigrationK8sIoV1beta1Args {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
+
   /// Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   final pulumi.Input<ObjectMeta>? metadata;
+
   /// Specification of the migration.
-  final pulumi.Input<StorageVersionMigrationSpecStoragemigrationK8sIoV1beta1>? spec;
+  final pulumi.Input<StorageVersionMigrationSpecStoragemigrationK8sIoV1beta1>?
+  spec;
 
   /// Creates a new [StorageVersionMigrationStoragemigrationK8sIoV1beta1Args].
   /// [apiVersion] APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
@@ -34,18 +38,49 @@ class StorageVersionMigrationStoragemigrationK8sIoV1beta1Args {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'spec': ?pulumi.Input.mapOptionalInputValue<StorageVersionMigrationSpecStoragemigrationK8sIoV1beta1, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(
+            metadata,
+            (value) => value.toMap(),
+          ),
+      'spec':
+          ?pulumi.Input.mapOptionalInputValue<
+            StorageVersionMigrationSpecStoragemigrationK8sIoV1beta1,
+            Map<String, dynamic>
+          >(spec, (value) => value.toMap()),
     };
   }
 
-  factory StorageVersionMigrationStoragemigrationK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory StorageVersionMigrationStoragemigrationK8sIoV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StorageVersionMigrationStoragemigrationK8sIoV1beta1Args(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (StorageVersionMigrationSpecStoragemigrationK8sIoV1beta1.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      spec: (() {
+        final guardedValue = map['spec'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StorageVersionMigrationSpecStoragemigrationK8sIoV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

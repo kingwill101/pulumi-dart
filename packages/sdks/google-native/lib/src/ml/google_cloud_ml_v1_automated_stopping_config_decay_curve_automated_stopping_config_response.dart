@@ -13,15 +13,14 @@ class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfigRes
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'useElapsedTime': useElapsedTime,
-    };
+    return <String, dynamic>{'useElapsedTime': useElapsedTime};
   }
 
-  factory GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfigResponse(
-      useElapsedTime: (map['useElapsedTime'] as bool).input(),
+      useElapsedTime: pulumi.Input.fromValue(map['useElapsedTime'] as bool),
     );
   }
 }
-

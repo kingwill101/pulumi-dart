@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetS3BucketArgs {
   /// Name of S3Bucket
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetS3BucketArgs].
   /// [name] Name of S3Bucket
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetS3BucketArgs({
-    required this.name,
-    required this.resourceGroupName,
-  });
+  GetS3BucketArgs({required this.name, required this.resourceGroupName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetS3BucketArgs {
 
   factory GetS3BucketArgs.fromMap(Map<String, dynamic> map) {
     return GetS3BucketArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

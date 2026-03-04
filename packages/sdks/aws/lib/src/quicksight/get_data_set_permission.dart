@@ -9,23 +9,16 @@ class GetDataSetPermission {
   /// Creates a new [GetDataSetPermission].
   /// [actions] Required.
   /// [principal] Required.
-  GetDataSetPermission({
-    required this.actions,
-    required this.principal,
-  });
+  GetDataSetPermission({required this.actions, required this.principal});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'actions': actions,
-      'principal': principal,
-    };
+    return <String, dynamic>{'actions': actions, 'principal': principal};
   }
 
   factory GetDataSetPermission.fromMap(Map<String, dynamic> map) {
     return GetDataSetPermission(
-      actions: ((map['actions'] as List).cast<String>()).input(),
-      principal: (map['principal'] as String).input(),
+      actions: pulumi.Input.fromValue((map['actions'] as List).cast<String>()),
+      principal: pulumi.Input.fromValue(map['principal'] as String),
     );
   }
 }
-

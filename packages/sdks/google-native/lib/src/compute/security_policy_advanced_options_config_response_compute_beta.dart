@@ -5,9 +5,13 @@ import 'security_policy_advanced_options_config_json_custom_config_response_comp
 
 class SecurityPolicyAdvancedOptionsConfigResponseComputeBeta {
   /// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
-  final pulumi.Input<SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeBeta> jsonCustomConfig;
+  final pulumi.Input<
+    SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeBeta
+  >
+  jsonCustomConfig;
   final pulumi.Input<String> jsonParsing;
   final pulumi.Input<String> logLevel;
+
   /// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
   final pulumi.Input<List<String>> userIpRequestHeaders;
 
@@ -25,20 +29,31 @@ class SecurityPolicyAdvancedOptionsConfigResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'jsonCustomConfig': pulumi.Input.mapInputValue<SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeBeta, Map<String, dynamic>>(jsonCustomConfig, (value) => value.toMap()),
+      'jsonCustomConfig':
+          pulumi.Input.mapInputValue<
+            SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeBeta,
+            Map<String, dynamic>
+          >(jsonCustomConfig, (value) => value.toMap()),
       'jsonParsing': jsonParsing,
       'logLevel': logLevel,
       'userIpRequestHeaders': userIpRequestHeaders,
     };
   }
 
-  factory SecurityPolicyAdvancedOptionsConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyAdvancedOptionsConfigResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyAdvancedOptionsConfigResponseComputeBeta(
-      jsonCustomConfig: (SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeBeta.fromMap((map['jsonCustomConfig'] as Map).cast<String, dynamic>())).input(),
-      jsonParsing: (map['jsonParsing'] as String).input(),
-      logLevel: (map['logLevel'] as String).input(),
-      userIpRequestHeaders: ((map['userIpRequestHeaders'] as List).cast<String>()).input(),
+      jsonCustomConfig: pulumi.Input.fromValue(
+        SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeBeta.fromMap(
+          (map['jsonCustomConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      jsonParsing: pulumi.Input.fromValue(map['jsonParsing'] as String),
+      logLevel: pulumi.Input.fromValue(map['logLevel'] as String),
+      userIpRequestHeaders: pulumi.Input.fromValue(
+        (map['userIpRequestHeaders'] as List).cast<String>(),
+      ),
     );
   }
 }
-

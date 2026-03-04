@@ -2,16 +2,15 @@
 enum UserRole {
   databaseOwner("dbOwner");
 
-  const UserRole(this.value);
-  final String value;
+  const UserRole(this.wireValue);
+  final String wireValue;
 
   static UserRole fromValue(String value) {
     for (final item in UserRole.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UserRole value: $value');
   }
 }
-

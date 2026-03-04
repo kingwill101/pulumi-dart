@@ -10,20 +10,39 @@ class APIServiceStatusPatch {
 
   /// Creates a new [APIServiceStatusPatch].
   /// [conditions] Current service state of apiService.
-  APIServiceStatusPatch({
-    this.conditions,
-  });
+  APIServiceStatusPatch({this.conditions});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?pulumi.Input.mapOptionalInputValue<List<APIServiceConditionPatch>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<APIServiceConditionPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<APIServiceConditionPatch>,
+            List<Map<String, dynamic>>
+          >(
+            conditions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  APIServiceConditionPatch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory APIServiceStatusPatch.fromMap(Map<String, dynamic> map) {
     return APIServiceStatusPatch(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<APIServiceConditionPatch>(map['conditions']!, (value) => APIServiceConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<APIServiceConditionPatch>(
+            guardedValue,
+            (value) => APIServiceConditionPatch.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

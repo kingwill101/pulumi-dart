@@ -11,11 +11,7 @@ class GetTagsFilterNotTags {
   /// [key] Optional.
   /// [matchOptions] Optional.
   /// [values] Optional.
-  GetTagsFilterNotTags({
-    this.key,
-    this.matchOptions,
-    this.values,
-  });
+  GetTagsFilterNotTags({this.key, this.matchOptions, this.values});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,10 +23,21 @@ class GetTagsFilterNotTags {
 
   factory GetTagsFilterNotTags.fromMap(Map<String, dynamic> map) {
     return GetTagsFilterNotTags(
-      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
-      matchOptions: map['matchOptions'] == null ? null : (((map['matchOptions'] as List).cast<String>()).input()).input(),
-      values: map['values'] == null ? null : (((map['values'] as List).cast<String>()).input()).input(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      matchOptions: (() {
+        final guardedValue = map['matchOptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      values: (() {
+        final guardedValue = map['values'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -7,22 +7,31 @@ import 'plugin_grant_permission.dart';
 class PluginState {
   /// Docker Plugin alias
   final pulumi.Input<String>? alias;
+
   /// HTTP client timeout to enable the plugin
   final pulumi.Input<int>? enableTimeout;
+
   /// If `true` the plugin is enabled. Defaults to `true`
   final pulumi.Input<bool>? enabled;
+
   /// The environment variables in the form of `KEY=VALUE`, e.g. `DEBUG=0`
   final pulumi.Input<List<String>>? envs;
+
   /// If true, then the plugin is destroyed forcibly
   final pulumi.Input<bool>? forceDestroy;
+
   /// If true, then the plugin is disabled forcibly
   final pulumi.Input<bool>? forceDisable;
+
   /// If true, grant all permissions necessary to run the plugin
   final pulumi.Input<bool>? grantAllPermissions;
+
   /// Grant specific permissions only
   final pulumi.Input<List<PluginGrantPermission>>? grantPermissions;
+
   /// Docker Plugin name
   final pulumi.Input<String>? name;
+
   /// Docker Plugin Reference
   final pulumi.Input<String>? pluginReference;
 
@@ -59,7 +68,18 @@ class PluginState {
       'forceDestroy': ?forceDestroy,
       'forceDisable': ?forceDisable,
       'grantAllPermissions': ?grantAllPermissions,
-      'grantPermissions': ?pulumi.Input.mapOptionalInputValue<List<PluginGrantPermission>, List<Map<String, dynamic>>>(grantPermissions, (value) => pulumi.Input.encodeList<PluginGrantPermission, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'grantPermissions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PluginGrantPermission>,
+            List<Map<String, dynamic>>
+          >(
+            grantPermissions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  PluginGrantPermission,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'pluginReference': ?pluginReference,
     };
@@ -67,17 +87,63 @@ class PluginState {
 
   factory PluginState.fromMap(Map<String, dynamic> map) {
     return PluginState(
-      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
-      enableTimeout: map['enableTimeout'] == null ? null : (map['enableTimeout']! as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      envs: map['envs'] == null ? null : ((map['envs']! as List).cast<String>()).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
-      forceDisable: map['forceDisable'] == null ? null : (map['forceDisable']! as bool).input(),
-      grantAllPermissions: map['grantAllPermissions'] == null ? null : (map['grantAllPermissions']! as bool).input(),
-      grantPermissions: map['grantPermissions'] == null ? null : (pulumi.Input.decodeList<PluginGrantPermission>(map['grantPermissions']!, (value) => PluginGrantPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      pluginReference: map['pluginReference'] == null ? null : (map['pluginReference']! as String).input(),
+      alias: (() {
+        final guardedValue = map['alias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enableTimeout: (() {
+        final guardedValue = map['enableTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      envs: (() {
+        final guardedValue = map['envs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      forceDestroy: (() {
+        final guardedValue = map['forceDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      forceDisable: (() {
+        final guardedValue = map['forceDisable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      grantAllPermissions: (() {
+        final guardedValue = map['grantAllPermissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      grantPermissions: (() {
+        final guardedValue = map['grantPermissions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PluginGrantPermission>(
+            guardedValue,
+            (value) => PluginGrantPermission.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pluginReference: (() {
+        final guardedValue = map['pluginReference'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

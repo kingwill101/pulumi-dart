@@ -6,6 +6,7 @@ import 'get_kubernetes_cluster_linux_profile_ssh_key.dart';
 class GetKubernetesClusterLinuxProfile {
   /// The username associated with the administrator account of the Windows VMs.
   final pulumi.Input<String> adminUsername;
+
   /// An `ssh_key` block as defined below.
   final pulumi.Input<List<GetKubernetesClusterLinuxProfileSshKey>> sshKeys;
 
@@ -20,15 +21,32 @@ class GetKubernetesClusterLinuxProfile {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'adminUsername': adminUsername,
-      'sshKeys': pulumi.Input.mapInputValue<List<GetKubernetesClusterLinuxProfileSshKey>, List<Map<String, dynamic>>>(sshKeys, (value) => pulumi.Input.encodeList<GetKubernetesClusterLinuxProfileSshKey, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sshKeys':
+          pulumi.Input.mapInputValue<
+            List<GetKubernetesClusterLinuxProfileSshKey>,
+            List<Map<String, dynamic>>
+          >(
+            sshKeys,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetKubernetesClusterLinuxProfileSshKey,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetKubernetesClusterLinuxProfile.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterLinuxProfile(
-      adminUsername: (map['adminUsername'] as String).input(),
-      sshKeys: (pulumi.Input.decodeList<GetKubernetesClusterLinuxProfileSshKey>(map['sshKeys'], (value) => GetKubernetesClusterLinuxProfileSshKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      adminUsername: pulumi.Input.fromValue(map['adminUsername'] as String),
+      sshKeys: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetKubernetesClusterLinuxProfileSshKey>(
+          map['sshKeys']!,
+          (value) => GetKubernetesClusterLinuxProfileSshKey.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

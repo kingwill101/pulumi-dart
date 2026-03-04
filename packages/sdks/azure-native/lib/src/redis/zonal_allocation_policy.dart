@@ -4,16 +4,15 @@ enum ZonalAllocationPolicy {
   userDefined("UserDefined"),
   noZones("NoZones");
 
-  const ZonalAllocationPolicy(this.value);
-  final String value;
+  const ZonalAllocationPolicy(this.wireValue);
+  final String wireValue;
 
   static ZonalAllocationPolicy fromValue(String value) {
     for (final item in ZonalAllocationPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ZonalAllocationPolicy value: $value');
   }
 }
-

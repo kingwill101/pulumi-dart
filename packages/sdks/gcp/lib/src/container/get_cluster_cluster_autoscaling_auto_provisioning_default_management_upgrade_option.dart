@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption {
   /// This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
   final pulumi.Input<String> autoUpgradeStartTime;
+
   /// This field is set when upgrades are about to commence with the description of the upgrade.
   final pulumi.Input<String> description;
 
@@ -23,11 +24,14 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption
     };
   }
 
-  factory GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption.fromMap(Map<String, dynamic> map) {
+  factory GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption(
-      autoUpgradeStartTime: (map['autoUpgradeStartTime'] as String).input(),
-      description: (map['description'] as String).input(),
+      autoUpgradeStartTime: pulumi.Input.fromValue(
+        map['autoUpgradeStartTime'] as String,
+      ),
+      description: pulumi.Input.fromValue(map['description'] as String),
     );
   }
 }
-

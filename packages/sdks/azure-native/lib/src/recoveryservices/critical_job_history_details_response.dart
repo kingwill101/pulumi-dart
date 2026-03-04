@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CriticalJobHistoryDetailsResponse {
   /// The ARM Id of the job being executed.
   final pulumi.Input<String> jobId;
+
   /// The job name.
   final pulumi.Input<String> jobName;
+
   /// The job state.
   final pulumi.Input<String> jobStatus;
+
   /// The start time of the job.
   final pulumi.Input<String> startTime;
 
@@ -36,11 +39,10 @@ class CriticalJobHistoryDetailsResponse {
 
   factory CriticalJobHistoryDetailsResponse.fromMap(Map<String, dynamic> map) {
     return CriticalJobHistoryDetailsResponse(
-      jobId: (map['jobId'] as String).input(),
-      jobName: (map['jobName'] as String).input(),
-      jobStatus: (map['jobStatus'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
+      jobId: pulumi.Input.fromValue(map['jobId'] as String),
+      jobName: pulumi.Input.fromValue(map['jobName'] as String),
+      jobStatus: pulumi.Input.fromValue(map['jobStatus'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
-

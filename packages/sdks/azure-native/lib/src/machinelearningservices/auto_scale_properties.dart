@@ -12,11 +12,7 @@ class AutoScaleProperties {
   /// [enabled] Optional.
   /// [maxNodeCount] Optional.
   /// [minNodeCount] Optional.
-  AutoScaleProperties({
-    this.enabled,
-    this.maxNodeCount,
-    this.minNodeCount,
-  });
+  AutoScaleProperties({this.enabled, this.maxNodeCount, this.minNodeCount});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,10 +24,21 @@ class AutoScaleProperties {
 
   factory AutoScaleProperties.fromMap(Map<String, dynamic> map) {
     return AutoScaleProperties(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount']! as int).input(),
-      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount']! as int).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      maxNodeCount: (() {
+        final guardedValue = map['maxNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minNodeCount: (() {
+        final guardedValue = map['minNodeCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -31,11 +31,14 @@ class GetListenerMutualAuthentication {
 
   factory GetListenerMutualAuthentication.fromMap(Map<String, dynamic> map) {
     return GetListenerMutualAuthentication(
-      advertiseTrustStoreCaNames: (map['advertiseTrustStoreCaNames'] as String).input(),
-      ignoreClientCertificateExpiry: (map['ignoreClientCertificateExpiry'] as bool).input(),
-      mode: (map['mode'] as String).input(),
-      trustStoreArn: (map['trustStoreArn'] as String).input(),
+      advertiseTrustStoreCaNames: pulumi.Input.fromValue(
+        map['advertiseTrustStoreCaNames'] as String,
+      ),
+      ignoreClientCertificateExpiry: pulumi.Input.fromValue(
+        map['ignoreClientCertificateExpiry'] as bool,
+      ),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
+      trustStoreArn: pulumi.Input.fromValue(map['trustStoreArn'] as String),
     );
   }
 }
-

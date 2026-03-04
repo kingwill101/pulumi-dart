@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlacementProfileResponse {
   /// Gets or sets the ARM Id of the cluster resource on which this virtual machine will deploy.
   final pulumi.Input<String>? clusterId;
+
   /// Gets or sets the ARM Id of the datastore resource on which the data for the virtual machine will be kept.
   final pulumi.Input<String>? datastoreId;
+
   /// Gets or sets the ARM Id of the host resource on which this virtual machine will deploy.
   final pulumi.Input<String>? hostId;
+
   /// Gets or sets the ARM Id of the resourcePool resource on which this virtual machine will deploy.
   final pulumi.Input<String>? resourcePoolId;
 
@@ -36,11 +39,26 @@ class PlacementProfileResponse {
 
   factory PlacementProfileResponse.fromMap(Map<String, dynamic> map) {
     return PlacementProfileResponse(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
-      datastoreId: map['datastoreId'] == null ? null : (map['datastoreId']! as String).input(),
-      hostId: map['hostId'] == null ? null : (map['hostId']! as String).input(),
-      resourcePoolId: map['resourcePoolId'] == null ? null : (map['resourcePoolId']! as String).input(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      datastoreId: (() {
+        final guardedValue = map['datastoreId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostId: (() {
+        final guardedValue = map['hostId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourcePoolId: (() {
+        final guardedValue = map['resourcePoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

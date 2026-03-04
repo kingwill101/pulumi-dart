@@ -520,26 +520,36 @@ import 'system_data_response.dart';
 /// ```sh
 /// $ pulumi import azure-native:securityinsights:PremiumMicrosoftDefenderForThreatIntelligence 73e01a99-5cd7-4139-a149-9f2736ff2ab5 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors/{dataConnectorId}
 /// ```
-class PremiumMicrosoftDefenderForThreatIntelligence extends pulumi.CustomResource {
+class PremiumMicrosoftDefenderForThreatIntelligence
+    extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The available data types for the connector.
   late final pulumi.Output<PremiumMdtiDataConnectorDataTypesResponse> dataTypes;
+
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
+
   /// The kind of the data connector
   /// Expected value is 'PremiumMicrosoftDefenderForThreatIntelligence'.
   late final pulumi.Output<String> kind;
+
   /// The lookback period for the feed to be imported. The date-time to begin importing the feed from, for example: 2024-01-01T00:00:00.000Z.
   late final pulumi.Output<String> lookbackPeriod;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The flag to indicate whether the tenant has the premium SKU required to access this connector.
   late final pulumi.Output<bool?> requiredSKUsPresent;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The tenant id to connect to, and get the data from.
   late final pulumi.Output<String> tenantId;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -552,20 +562,22 @@ class PremiumMicrosoftDefenderForThreatIntelligence extends pulumi.CustomResourc
     PremiumMicrosoftDefenderForThreatIntelligenceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:securityinsights:PremiumMicrosoftDefenderForThreatIntelligence',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataTypes = registerOutput<PremiumMdtiDataConnectorDataTypesResponse>('dataTypes');
-    this.etag = registerOutput<String?>('etag');
-    this.kind = registerOutput<String>('kind');
-    this.lookbackPeriod = registerOutput<String>('lookbackPeriod');
+         'azure-native:securityinsights:PremiumMicrosoftDefenderForThreatIntelligence',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataTypes = registerOutput<PremiumMdtiDataConnectorDataTypesResponse>(
+      'dataTypes',
+    );
+    etag = registerOutput<String?>('etag');
+    kind = registerOutput<String>('kind');
+    lookbackPeriod = registerOutput<String>('lookbackPeriod');
     this.name = registerOutput<String>('name');
-    this.requiredSKUsPresent = registerOutput<bool?>('requiredSKUsPresent');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.type = registerOutput<String>('type');
+    requiredSKUsPresent = registerOutput<bool?>('requiredSKUsPresent');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

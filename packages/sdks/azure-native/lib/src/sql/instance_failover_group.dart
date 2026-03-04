@@ -2,8 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_failover_group_args.dart';
 import 'instance_failover_group_read_only_endpoint_response.dart';
 import 'instance_failover_group_read_write_endpoint_response.dart';
-import 'managed_instance_pair_info_response.dart';
-import 'partner_region_info_response.dart';
 
 /// An instance failover group.
 ///
@@ -242,22 +240,33 @@ import 'partner_region_info_response.dart';
 class InstanceFailoverGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of managed instance pairs in the failover group.
-  late final pulumi.Output<List<ManagedInstancePairInfoResponse>> managedInstancePairs;
+  late final pulumi.Output<List<Map<String, dynamic>>> managedInstancePairs;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Partner region information for the failover group.
-  late final pulumi.Output<List<PartnerRegionInfoResponse>> partnerRegions;
+  late final pulumi.Output<List<Map<String, dynamic>>> partnerRegions;
+
   /// Read-only endpoint of the failover group instance.
-  late final pulumi.Output<InstanceFailoverGroupReadOnlyEndpointResponse?> readOnlyEndpoint;
+  late final pulumi.Output<InstanceFailoverGroupReadOnlyEndpointResponse?>
+  readOnlyEndpoint;
+
   /// Read-write endpoint of the failover group instance.
-  late final pulumi.Output<InstanceFailoverGroupReadWriteEndpointResponse> readWriteEndpoint;
+  late final pulumi.Output<InstanceFailoverGroupReadWriteEndpointResponse>
+  readWriteEndpoint;
+
   /// Local replication role of the failover group instance.
   late final pulumi.Output<String> replicationRole;
+
   /// Replication state of the failover group instance.
   late final pulumi.Output<String> replicationState;
+
   /// Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only.
   late final pulumi.Output<String?> secondaryType;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -270,20 +279,30 @@ class InstanceFailoverGroup extends pulumi.CustomResource {
     InstanceFailoverGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:sql:InstanceFailoverGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.managedInstancePairs = registerOutput<List<ManagedInstancePairInfoResponse>>('managedInstancePairs');
+         'azure-native:sql:InstanceFailoverGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    managedInstancePairs = registerOutput<List<Map<String, dynamic>>>(
+      'managedInstancePairs',
+    );
     this.name = registerOutput<String>('name');
-    this.partnerRegions = registerOutput<List<PartnerRegionInfoResponse>>('partnerRegions');
-    this.readOnlyEndpoint = registerOutput<InstanceFailoverGroupReadOnlyEndpointResponse?>('readOnlyEndpoint');
-    this.readWriteEndpoint = registerOutput<InstanceFailoverGroupReadWriteEndpointResponse>('readWriteEndpoint');
-    this.replicationRole = registerOutput<String>('replicationRole');
-    this.replicationState = registerOutput<String>('replicationState');
-    this.secondaryType = registerOutput<String?>('secondaryType');
-    this.type = registerOutput<String>('type');
+    partnerRegions = registerOutput<List<Map<String, dynamic>>>(
+      'partnerRegions',
+    );
+    readOnlyEndpoint =
+        registerOutput<InstanceFailoverGroupReadOnlyEndpointResponse?>(
+          'readOnlyEndpoint',
+        );
+    readWriteEndpoint =
+        registerOutput<InstanceFailoverGroupReadWriteEndpointResponse>(
+          'readWriteEndpoint',
+        );
+    replicationRole = registerOutput<String>('replicationRole');
+    replicationState = registerOutput<String>('replicationState');
+    secondaryType = registerOutput<String?>('secondaryType');
+    type = registerOutput<String>('type');
   }
 }

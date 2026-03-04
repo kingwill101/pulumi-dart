@@ -1,26 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getProject.
 class GetProjectResult {
   /// The description of the project.
   final String description;
+
   /// See Argument Reference above.
   final String domainId;
+
   /// See Argument Reference above.
   final bool? enabled;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// See Argument Reference above.
   final bool? isDomain;
+
   /// See Argument Reference above.
   final String? name;
+
   /// See Argument Reference above.
   final String? parentId;
+
   /// See Argument Reference above.
   final String? projectId;
+
   /// See Argument Reference above.
   final String region;
+
   /// See Argument Reference above.
   final List<String> tags;
 
@@ -67,15 +75,34 @@ class GetProjectResult {
     return GetProjectResult(
       description: map['description'] as String,
       domainId: map['domainId'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
-      isDomain: map['isDomain'] == null ? null : map['isDomain']! as bool,
-      name: map['name'] == null ? null : map['name']! as String,
-      parentId: map['parentId'] == null ? null : map['parentId']! as String,
-      projectId: map['projectId'] == null ? null : map['projectId']! as String,
+      isDomain: (() {
+        final guardedValue = map['isDomain'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      parentId: (() {
+        final guardedValue = map['parentId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       region: map['region'] as String,
       tags: (map['tags'] as List).cast<String>(),
     );
   }
 }
-

@@ -9,20 +9,15 @@ class PostdeployResponse {
 
   /// Creates a new [PostdeployResponse].
   /// [actions] Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
-  PostdeployResponse({
-    required this.actions,
-  });
+  PostdeployResponse({required this.actions});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'actions': actions,
-    };
+    return <String, dynamic>{'actions': actions};
   }
 
   factory PostdeployResponse.fromMap(Map<String, dynamic> map) {
     return PostdeployResponse(
-      actions: ((map['actions'] as List).cast<String>()).input(),
+      actions: pulumi.Input.fromValue((map['actions'] as List).cast<String>()),
     );
   }
 }
-

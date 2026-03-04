@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lke_cluster_args.dart';
 import 'lke_cluster_control_plane.dart';
-import 'lke_cluster_pool.dart';
 import 'lke_cluster_state.dart';
 
 /// Manages an LKE cluster.
@@ -1709,38 +1708,53 @@ import 'lke_cluster_state.dart';
 class LkeCluster extends pulumi.CustomResource {
   /// The endpoints for the Kubernetes API server.
   late final pulumi.Output<List<String>> apiEndpoints;
+
   /// Enables the App Platform Layer
   late final pulumi.Output<bool> aplEnabled;
+
   /// Defines settings for the Kubernetes Control Plane.
   late final pulumi.Output<LkeClusterControlPlane> controlPlane;
+
   /// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
   late final pulumi.Output<String> dashboardUrl;
+
   /// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
   late final pulumi.Output<List<String>?> externalPoolTags;
+
   /// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
   late final pulumi.Output<String> k8sVersion;
+
   /// The base64 encoded kubeconfig for the Kubernetes cluster.
   late final pulumi.Output<String> kubeconfig;
+
   /// This Kubernetes cluster's unique label.
   late final pulumi.Output<String> label;
+
   /// Additional nested attributes:
-  late final pulumi.Output<List<LkeClusterPool>> pools;
+  late final pulumi.Output<List<Map<String, dynamic>>> pools;
+
   /// This Kubernetes cluster's location.
   ///
   /// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
   ///
   /// * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
   late final pulumi.Output<String> region;
+
   /// The networking stack type of the Kubernetes cluster.
   late final pulumi.Output<String> stackType;
+
   /// The status of the node. (`ready`, `not_ready`)
   late final pulumi.Output<String> status;
+
   /// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
   late final pulumi.Output<int> subnetId;
+
   /// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
   late final pulumi.Output<List<String>> tags;
+
   /// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
   late final pulumi.Output<String> tier;
+
   /// The ID of the VPC to use for the Kubernetes cluster.
   late final pulumi.Output<int> vpcId;
 
@@ -1753,27 +1767,27 @@ class LkeCluster extends pulumi.CustomResource {
     LkeClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/lkeCluster:LkeCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiEndpoints = registerOutput<List<String>>('apiEndpoints');
-    this.aplEnabled = registerOutput<bool>('aplEnabled');
-    this.controlPlane = registerOutput<LkeClusterControlPlane>('controlPlane');
-    this.dashboardUrl = registerOutput<String>('dashboardUrl');
-    this.externalPoolTags = registerOutput<List<String>?>('externalPoolTags');
-    this.k8sVersion = registerOutput<String>('k8sVersion');
-    this.kubeconfig = registerOutput<String>('kubeconfig');
-    this.label = registerOutput<String>('label');
-    this.pools = registerOutput<List<LkeClusterPool>>('pools');
-    this.region = registerOutput<String>('region');
-    this.stackType = registerOutput<String>('stackType');
-    this.status = registerOutput<String>('status');
-    this.subnetId = registerOutput<int>('subnetId');
-    this.tags = registerOutput<List<String>>('tags');
-    this.tier = registerOutput<String>('tier');
-    this.vpcId = registerOutput<int>('vpcId');
+         'linode:index/lkeCluster:LkeCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiEndpoints = registerOutput<List<String>>('apiEndpoints');
+    aplEnabled = registerOutput<bool>('aplEnabled');
+    controlPlane = registerOutput<LkeClusterControlPlane>('controlPlane');
+    dashboardUrl = registerOutput<String>('dashboardUrl');
+    externalPoolTags = registerOutput<List<String>?>('externalPoolTags');
+    k8sVersion = registerOutput<String>('k8sVersion');
+    kubeconfig = registerOutput<String>('kubeconfig');
+    label = registerOutput<String>('label');
+    pools = registerOutput<List<Map<String, dynamic>>>('pools');
+    region = registerOutput<String>('region');
+    stackType = registerOutput<String>('stackType');
+    status = registerOutput<String>('status');
+    subnetId = registerOutput<int>('subnetId');
+    tags = registerOutput<List<String>>('tags');
+    tier = registerOutput<String>('tier');
+    vpcId = registerOutput<int>('vpcId');
   }
 
   /// Gets an existing [LkeCluster] resource's state with the given [name] and [id].
@@ -1794,26 +1808,26 @@ class LkeCluster extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/lkeCluster:LkeCluster',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiEndpoints = registerOutput<List<String>>('apiEndpoints');
-    this.aplEnabled = registerOutput<bool>('aplEnabled');
-    this.controlPlane = registerOutput<LkeClusterControlPlane>('controlPlane');
-    this.dashboardUrl = registerOutput<String>('dashboardUrl');
-    this.externalPoolTags = registerOutput<List<String>?>('externalPoolTags');
-    this.k8sVersion = registerOutput<String>('k8sVersion');
-    this.kubeconfig = registerOutput<String>('kubeconfig');
-    this.label = registerOutput<String>('label');
-    this.pools = registerOutput<List<LkeClusterPool>>('pools');
-    this.region = registerOutput<String>('region');
-    this.stackType = registerOutput<String>('stackType');
-    this.status = registerOutput<String>('status');
-    this.subnetId = registerOutput<int>('subnetId');
-    this.tags = registerOutput<List<String>>('tags');
-    this.tier = registerOutput<String>('tier');
-    this.vpcId = registerOutput<int>('vpcId');
+         'linode:index/lkeCluster:LkeCluster',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiEndpoints = registerOutput<List<String>>('apiEndpoints');
+    aplEnabled = registerOutput<bool>('aplEnabled');
+    controlPlane = registerOutput<LkeClusterControlPlane>('controlPlane');
+    dashboardUrl = registerOutput<String>('dashboardUrl');
+    externalPoolTags = registerOutput<List<String>?>('externalPoolTags');
+    k8sVersion = registerOutput<String>('k8sVersion');
+    kubeconfig = registerOutput<String>('kubeconfig');
+    label = registerOutput<String>('label');
+    pools = registerOutput<List<Map<String, dynamic>>>('pools');
+    region = registerOutput<String>('region');
+    stackType = registerOutput<String>('stackType');
+    status = registerOutput<String>('status');
+    subnetId = registerOutput<int>('subnetId');
+    tags = registerOutput<List<String>>('tags');
+    tier = registerOutput<String>('tier');
+    vpcId = registerOutput<int>('vpcId');
   }
 }

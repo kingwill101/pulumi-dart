@@ -7,16 +7,17 @@ enum GooglePrivacyDlpV2CustomInfoTypeLikelihood {
   likely("LIKELY"),
   veryLikely("VERY_LIKELY");
 
-  const GooglePrivacyDlpV2CustomInfoTypeLikelihood(this.value);
-  final String value;
+  const GooglePrivacyDlpV2CustomInfoTypeLikelihood(this.wireValue);
+  final String wireValue;
 
   static GooglePrivacyDlpV2CustomInfoTypeLikelihood fromValue(String value) {
     for (final item in GooglePrivacyDlpV2CustomInfoTypeLikelihood.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2CustomInfoTypeLikelihood value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2CustomInfoTypeLikelihood value: $value',
+    );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDbClustersClusterScaleOutStatus {
   /// Process.
   final pulumi.Input<String> progress;
+
   /// Efficiency.
   final pulumi.Input<String> ratio;
 
@@ -17,17 +18,13 @@ class GetDbClustersClusterScaleOutStatus {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'progress': progress,
-      'ratio': ratio,
-    };
+    return <String, dynamic>{'progress': progress, 'ratio': ratio};
   }
 
   factory GetDbClustersClusterScaleOutStatus.fromMap(Map<String, dynamic> map) {
     return GetDbClustersClusterScaleOutStatus(
-      progress: (map['progress'] as String).input(),
-      ratio: (map['ratio'] as String).input(),
+      progress: pulumi.Input.fromValue(map['progress'] as String),
+      ratio: pulumi.Input.fromValue(map['ratio'] as String),
     );
   }
 }
-

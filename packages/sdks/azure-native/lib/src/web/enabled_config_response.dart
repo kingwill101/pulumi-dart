@@ -9,20 +9,19 @@ class EnabledConfigResponse {
 
   /// Creates a new [EnabledConfigResponse].
   /// [enabled] True if configuration is enabled, false if it is disabled and null if configuration is not set.
-  EnabledConfigResponse({
-    this.enabled,
-  });
+  EnabledConfigResponse({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory EnabledConfigResponse.fromMap(Map<String, dynamic> map) {
     return EnabledConfigResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

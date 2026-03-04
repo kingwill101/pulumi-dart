@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupUser {
   /// User ARN.
   final pulumi.Input<String> arn;
+
   /// Path to the IAM user.
   final pulumi.Input<String> path;
+
   /// Stable and unique string identifying the IAM user.
   final pulumi.Input<String> userId;
+
   /// Name of the IAM user.
   final pulumi.Input<String> userName;
 
@@ -35,11 +38,10 @@ class GetGroupUser {
 
   factory GetGroupUser.fromMap(Map<String, dynamic> map) {
     return GetGroupUser(
-      arn: (map['arn'] as String).input(),
-      path: (map['path'] as String).input(),
-      userId: (map['userId'] as String).input(),
-      userName: (map['userName'] as String).input(),
+      arn: pulumi.Input.fromValue(map['arn'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
-

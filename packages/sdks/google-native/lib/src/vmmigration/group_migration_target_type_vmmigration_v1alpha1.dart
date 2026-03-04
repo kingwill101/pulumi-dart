@@ -4,16 +4,17 @@ enum GroupMigrationTargetTypeVmmigrationV1alpha1 {
   migrationTargetTypeGce("MIGRATION_TARGET_TYPE_GCE"),
   migrationTargetTypeDisks("MIGRATION_TARGET_TYPE_DISKS");
 
-  const GroupMigrationTargetTypeVmmigrationV1alpha1(this.value);
-  final String value;
+  const GroupMigrationTargetTypeVmmigrationV1alpha1(this.wireValue);
+  final String wireValue;
 
   static GroupMigrationTargetTypeVmmigrationV1alpha1 fromValue(String value) {
     for (final item in GroupMigrationTargetTypeVmmigrationV1alpha1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GroupMigrationTargetTypeVmmigrationV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown GroupMigrationTargetTypeVmmigrationV1alpha1 value: $value',
+    );
   }
 }
-

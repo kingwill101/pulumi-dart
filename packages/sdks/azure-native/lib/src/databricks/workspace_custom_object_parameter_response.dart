@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceCustomObjectParameterResponse {
   /// The type of variable that this is
   final pulumi.Input<String> type;
+
   /// The value which should be used for this field.
   final pulumi.Input<dynamic> value;
 
@@ -18,17 +19,15 @@ class WorkspaceCustomObjectParameterResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-      'value': value,
-    };
+    return <String, dynamic>{'type': type, 'value': value};
   }
 
-  factory WorkspaceCustomObjectParameterResponse.fromMap(Map<String, dynamic> map) {
+  factory WorkspaceCustomObjectParameterResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkspaceCustomObjectParameterResponse(
-      type: (map['type'] as String).input(),
-      value: (map['value']).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value']),
     );
   }
 }
-

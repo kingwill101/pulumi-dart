@@ -6,20 +6,28 @@ import 'system_data_response.dart';
 class GetCapacityPoolSubvolumeResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// parent path to the subvolume
   final String? parentPath;
+
   /// Path to the subvolume
   final String? path;
+
   /// Azure lifecycle management
   final String provisioningState;
+
   /// Truncate subvolume to the provided size in bytes
   final double? size;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -64,13 +72,26 @@ class GetCapacityPoolSubvolumeResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      parentPath: map['parentPath'] == null ? null : map['parentPath']! as String,
-      path: map['path'] == null ? null : map['path']! as String,
+      parentPath: (() {
+        final guardedValue = map['parentPath'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       provisioningState: map['provisioningState'] as String,
-      size: map['size'] == null ? null : map['size']! as double,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return guardedValue as double;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

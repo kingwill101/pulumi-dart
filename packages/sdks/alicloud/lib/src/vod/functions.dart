@@ -4,7 +4,7 @@ import 'get_domains_result.dart';
 
 /// This data source provides the Vod Domains of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.136.0+.
+/// &gt; **NOTE:** Available in v1.136.0+.
 ///
 /// ## Example Usage
 ///

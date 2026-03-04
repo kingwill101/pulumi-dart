@@ -27,9 +27,8 @@ class GetSshPublicKeyOsloginV1alphaArgs {
 
   factory GetSshPublicKeyOsloginV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetSshPublicKeyOsloginV1alphaArgs(
-      sshPublicKeyId: (map['sshPublicKeyId'] as String).input(),
-      userId: (map['userId'] as String).input(),
+      sshPublicKeyId: pulumi.Input.fromValue(map['sshPublicKeyId'] as String),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
-

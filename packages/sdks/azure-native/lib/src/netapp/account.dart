@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_args.dart';
 import 'account_encryption_response.dart';
-import 'active_directory_response.dart';
 import 'managed_service_identity_response.dart';
 import 'system_data_response.dart';
 
@@ -328,27 +327,38 @@ import 'system_data_response.dart';
 /// ```
 class Account extends pulumi.CustomResource {
   /// Active Directories
-  late final pulumi.Output<List<ActiveDirectoryResponse>?> activeDirectories;
+  late final pulumi.Output<List<Map<String, dynamic>>?> activeDirectories;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Shows the status of disableShowmount for all volumes under the subscription, null equals false
   late final pulumi.Output<bool> disableShowmount;
+
   /// Encryption settings
   late final pulumi.Output<AccountEncryptionResponse?> encryption;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The identity used for the resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Azure lifecycle management
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -361,22 +371,24 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:netapp:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activeDirectories = registerOutput<List<ActiveDirectoryResponse>?>('activeDirectories');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.disableShowmount = registerOutput<bool>('disableShowmount');
-    this.encryption = registerOutput<AccountEncryptionResponse?>('encryption');
-    this.etag = registerOutput<String>('etag');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure-native:netapp:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activeDirectories = registerOutput<List<Map<String, dynamic>>?>(
+      'activeDirectories',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    disableShowmount = registerOutput<bool>('disableShowmount');
+    encryption = registerOutput<AccountEncryptionResponse?>('encryption');
+    etag = registerOutput<String>('etag');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

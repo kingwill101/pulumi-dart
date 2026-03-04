@@ -136,22 +136,35 @@ import 'data_collection_rule_association_response_metadata.dart';
 class DataCollectionRuleAssociation extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The resource ID of the data collection endpoint that is to be associated.
   late final pulumi.Output<String?> dataCollectionEndpointId;
+
   /// The resource ID of the data collection rule that is to be associated.
   late final pulumi.Output<String?> dataCollectionRuleId;
+
   /// Description of the association.
   late final pulumi.Output<String?> description;
+
   /// Resource entity tag (ETag).
   late final pulumi.Output<String> etag;
+
   /// Metadata about the resource
-  late final pulumi.Output<DataCollectionRuleAssociationResponseMetadata> metadata;
+  late final pulumi.Output<DataCollectionRuleAssociationResponseMetadata>
+  metadata;
+
   /// The name of the resource.
   late final pulumi.Output<String> name;
+
   /// The resource provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Metadata pertaining to creation and last modification of the resource.
-  late final pulumi.Output<DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData> systemData;
+  late final pulumi.Output<
+    DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData
+  >
+  systemData;
+
   /// The type of the resource.
   late final pulumi.Output<String> type;
 
@@ -164,20 +177,27 @@ class DataCollectionRuleAssociation extends pulumi.CustomResource {
     DataCollectionRuleAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:monitor:DataCollectionRuleAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dataCollectionEndpointId = registerOutput<String?>('dataCollectionEndpointId');
-    this.dataCollectionRuleId = registerOutput<String?>('dataCollectionRuleId');
-    this.description = registerOutput<String?>('description');
-    this.etag = registerOutput<String>('etag');
-    this.metadata = registerOutput<DataCollectionRuleAssociationResponseMetadata>('metadata');
+         'azure-native:monitor:DataCollectionRuleAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataCollectionEndpointId = registerOutput<String?>(
+      'dataCollectionEndpointId',
+    );
+    dataCollectionRuleId = registerOutput<String?>('dataCollectionRuleId');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    metadata = registerOutput<DataCollectionRuleAssociationResponseMetadata>(
+      'metadata',
+    );
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData =
+        registerOutput<
+          DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData
+        >('systemData');
+    type = registerOutput<String>('type');
   }
 }

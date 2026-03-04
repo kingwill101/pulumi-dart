@@ -1,5 +1,3 @@
-library module_keyspaces;
-
 export 'keyspaces/keyspace.dart';
 export 'keyspaces/keyspace_args.dart';
 export 'keyspaces/keyspace_replication_specification.dart';

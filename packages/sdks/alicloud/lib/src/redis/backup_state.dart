@@ -6,12 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupState {
   /// Backup ID.
   final pulumi.Input<int>? backupId;
+
   /// The expiration period for this manual backup ranges from 7 to 730 days. When you pass in -1, it indicates that this manual backup will not expire (during the instance's lifecycle). If you do not pass any value (default case), it means the expiration policy will be consistent with the current automatic backup strategy.
   ///
-  /// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+  /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
   final pulumi.Input<int>? backupRetentionPeriod;
+
   /// InstanceId
   final pulumi.Input<String>? instanceId;
+
   /// Backup status.
   final pulumi.Input<String>? status;
 
@@ -38,11 +41,26 @@ class BackupState {
 
   factory BackupState.fromMap(Map<String, dynamic> map) {
     return BackupState(
-      backupId: map['backupId'] == null ? null : (map['backupId']! as int).input(),
-      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod']! as int).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      backupId: (() {
+        final guardedValue = map['backupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      backupRetentionPeriod: (() {
+        final guardedValue = map['backupRetentionPeriod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

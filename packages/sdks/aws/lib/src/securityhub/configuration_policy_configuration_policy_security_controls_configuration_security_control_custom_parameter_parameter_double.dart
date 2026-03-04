@@ -12,15 +12,14 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurit
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
-  factory ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterDouble.fromMap(Map<String, dynamic> map) {
+  factory ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterDouble.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterDouble(
-      value: (map['value'] as double).input(),
+      value: pulumi.Input.fromValue(map['value'] as double),
     );
   }
 }
-

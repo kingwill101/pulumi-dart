@@ -7,12 +7,16 @@ import 'api_destination_http_api_parameters.dart';
 class ApiDestinationState {
   /// The name of the API destination.
   final pulumi.Input<String>? apiDestinationName;
+
   /// The name of the connection.
   final pulumi.Input<String>? connectionName;
+
   /// The creation time of the Api Destination.
   final pulumi.Input<int>? createTime;
+
   /// The description of the API destination.
   final pulumi.Input<String>? description;
+
   /// The parameters that are configured for the API destination. See `http_api_parameters` below.
   final pulumi.Input<ApiDestinationHttpApiParameters>? httpApiParameters;
 
@@ -36,18 +40,45 @@ class ApiDestinationState {
       'connectionName': ?connectionName,
       'createTime': ?createTime,
       'description': ?description,
-      'httpApiParameters': ?pulumi.Input.mapOptionalInputValue<ApiDestinationHttpApiParameters, Map<String, dynamic>>(httpApiParameters, (value) => value.toMap()),
+      'httpApiParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApiDestinationHttpApiParameters,
+            Map<String, dynamic>
+          >(httpApiParameters, (value) => value.toMap()),
     };
   }
 
   factory ApiDestinationState.fromMap(Map<String, dynamic> map) {
     return ApiDestinationState(
-      apiDestinationName: map['apiDestinationName'] == null ? null : (map['apiDestinationName']! as String).input(),
-      connectionName: map['connectionName'] == null ? null : (map['connectionName']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      httpApiParameters: map['httpApiParameters'] == null ? null : (ApiDestinationHttpApiParameters.fromMap((map['httpApiParameters']! as Map).cast<String, dynamic>())).input(),
+      apiDestinationName: (() {
+        final guardedValue = map['apiDestinationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionName: (() {
+        final guardedValue = map['connectionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      httpApiParameters: (() {
+        final guardedValue = map['httpApiParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApiDestinationHttpApiParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

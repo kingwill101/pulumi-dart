@@ -9,20 +9,19 @@ class AzureMonitorTableConfiguration {
 
   /// Creates a new [AzureMonitorTableConfiguration].
   /// [name] The name.
-  AzureMonitorTableConfiguration({
-    this.name,
-  });
+  AzureMonitorTableConfiguration({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory AzureMonitorTableConfiguration.fromMap(Map<String, dynamic> map) {
     return AzureMonitorTableConfiguration(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

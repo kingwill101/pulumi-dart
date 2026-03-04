@@ -9,23 +9,24 @@ class TaskDefinitionKeyValuePair {
   /// Creates a new [TaskDefinitionKeyValuePair].
   /// [name] Optional.
   /// [value] Optional.
-  TaskDefinitionKeyValuePair({
-    this.name,
-    this.value,
-  });
+  TaskDefinitionKeyValuePair({this.name, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'value': ?value,
-    };
+    return <String, dynamic>{'name': ?name, 'value': ?value};
   }
 
   factory TaskDefinitionKeyValuePair.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionKeyValuePair(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

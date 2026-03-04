@@ -5,16 +5,15 @@ enum FrontDoorRedirectType {
   valueTemporaryRedirect("TemporaryRedirect"),
   valuePermanentRedirect("PermanentRedirect");
 
-  const FrontDoorRedirectType(this.value);
-  final String value;
+  const FrontDoorRedirectType(this.wireValue);
+  final String wireValue;
 
   static FrontDoorRedirectType fromValue(String value) {
     for (final item in FrontDoorRedirectType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FrontDoorRedirectType value: $value');
   }
 }
-

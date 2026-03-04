@@ -12,20 +12,17 @@ class GetSubscriptionTemplateDeploymentArgs {
 
   /// Creates a new [GetSubscriptionTemplateDeploymentArgs].
   /// [name] The name of this Subscription Template Deployment.
-  GetSubscriptionTemplateDeploymentArgs({
-    required this.name,
-  });
+  GetSubscriptionTemplateDeploymentArgs({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory GetSubscriptionTemplateDeploymentArgs.fromMap(Map<String, dynamic> map) {
+  factory GetSubscriptionTemplateDeploymentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSubscriptionTemplateDeploymentArgs(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

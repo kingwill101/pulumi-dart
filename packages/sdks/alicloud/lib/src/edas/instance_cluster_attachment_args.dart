@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceClusterAttachmentArgs {
   /// The ID of the cluster that you want to create the application.
   final pulumi.Input<String> clusterId;
+
   /// The ID of instance. Type: list.
   final pulumi.Input<List<String>> instanceIds;
 
@@ -29,9 +30,10 @@ class InstanceClusterAttachmentArgs {
 
   factory InstanceClusterAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InstanceClusterAttachmentArgs(
-      clusterId: (map['clusterId'] as String).input(),
-      instanceIds: ((map['instanceIds'] as List).cast<String>()).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      instanceIds: pulumi.Input.fromValue(
+        (map['instanceIds'] as List).cast<String>(),
+      ),
     );
   }
 }
-

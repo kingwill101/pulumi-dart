@@ -13,15 +13,16 @@ class GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucketIdRegexes': bucketIdRegexes,
-    };
+    return <String, dynamic>{'bucketIdRegexes': bucketIdRegexes};
   }
 
-  factory GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket.fromMap(Map<String, dynamic> map) {
+  factory GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetControlFolderIntelligenceConfigFilterExcludedCloudStorageBucket(
-      bucketIdRegexes: ((map['bucketIdRegexes'] as List).cast<String>()).input(),
+      bucketIdRegexes: pulumi.Input.fromValue(
+        (map['bucketIdRegexes'] as List).cast<String>(),
+      ),
     );
   }
 }
-

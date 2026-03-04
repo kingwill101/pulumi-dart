@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSnapshotPolicyHourlySchedule {
   /// Minute of the hour that the snapshots will be created.
   final pulumi.Input<int> minute;
+
   /// How many hourly snapshots to keep.
   final pulumi.Input<int> snapshotsToKeep;
 
@@ -25,9 +26,8 @@ class GetSnapshotPolicyHourlySchedule {
 
   factory GetSnapshotPolicyHourlySchedule.fromMap(Map<String, dynamic> map) {
     return GetSnapshotPolicyHourlySchedule(
-      minute: (map['minute'] as int).input(),
-      snapshotsToKeep: (map['snapshotsToKeep'] as int).input(),
+      minute: pulumi.Input.fromValue(map['minute'] as int),
+      snapshotsToKeep: pulumi.Input.fromValue(map['snapshotsToKeep'] as int),
     );
   }
 }
-

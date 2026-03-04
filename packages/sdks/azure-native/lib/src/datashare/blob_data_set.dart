@@ -889,25 +889,35 @@ import 'system_data_response.dart';
 class BlobDataSet extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Container that has the file path.
   late final pulumi.Output<String> containerName;
+
   /// Unique id for identifying a data set resource
   late final pulumi.Output<String> dataSetId;
+
   /// File path within the source data set
   late final pulumi.Output<String> filePath;
+
   /// Kind of data set.
   /// Expected value is 'Blob'.
   late final pulumi.Output<String> kind;
+
   /// Name of the azure resource
   late final pulumi.Output<String> name;
+
   /// Resource group of storage account
   late final pulumi.Output<String> resourceGroup;
+
   /// Storage account name of the source data set
   late final pulumi.Output<String> storageAccountName;
+
   /// Subscription id of storage account
   late final pulumi.Output<String> subscriptionId;
+
   /// System Data of the Azure resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Type of the azure resource
   late final pulumi.Output<String> type;
 
@@ -920,21 +930,21 @@ class BlobDataSet extends pulumi.CustomResource {
     BlobDataSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datashare:BlobDataSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.containerName = registerOutput<String>('containerName');
-    this.dataSetId = registerOutput<String>('dataSetId');
-    this.filePath = registerOutput<String>('filePath');
-    this.kind = registerOutput<String>('kind');
+         'azure-native:datashare:BlobDataSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    containerName = registerOutput<String>('containerName');
+    dataSetId = registerOutput<String>('dataSetId');
+    filePath = registerOutput<String>('filePath');
+    kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    this.resourceGroup = registerOutput<String>('resourceGroup');
-    this.storageAccountName = registerOutput<String>('storageAccountName');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    resourceGroup = registerOutput<String>('resourceGroup');
+    storageAccountName = registerOutput<String>('storageAccountName');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

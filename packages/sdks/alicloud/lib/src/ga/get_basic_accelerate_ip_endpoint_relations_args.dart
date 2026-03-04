@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBasicAccelerateIpEndpointRelationsArgs {
   /// The ID of the Basic Accelerate IP.
   final pulumi.Input<String>? accelerateIpId;
+
   /// The ID of the Global Accelerator Basic Accelerator instance.
   final pulumi.Input<String> acceleratorId;
+
   /// The ID of the Basic Endpoint.
   final pulumi.Input<String>? endpointId;
+
   /// A list of Global Accelerator Basic Accelerate Ip Endpoint Relations IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
   final pulumi.Input<String>? status;
 
@@ -47,15 +52,36 @@ class GetBasicAccelerateIpEndpointRelationsArgs {
     };
   }
 
-  factory GetBasicAccelerateIpEndpointRelationsArgs.fromMap(Map<String, dynamic> map) {
+  factory GetBasicAccelerateIpEndpointRelationsArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBasicAccelerateIpEndpointRelationsArgs(
-      accelerateIpId: map['accelerateIpId'] == null ? null : (map['accelerateIpId']! as String).input(),
-      acceleratorId: (map['acceleratorId'] as String).input(),
-      endpointId: map['endpointId'] == null ? null : (map['endpointId']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      accelerateIpId: (() {
+        final guardedValue = map['accelerateIpId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      acceleratorId: pulumi.Input.fromValue(map['acceleratorId'] as String),
+      endpointId: (() {
+        final guardedValue = map['endpointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

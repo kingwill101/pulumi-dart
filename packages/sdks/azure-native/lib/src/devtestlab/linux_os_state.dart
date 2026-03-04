@@ -4,16 +4,15 @@ enum LinuxOsState {
   deprovisionRequested("DeprovisionRequested"),
   deprovisionApplied("DeprovisionApplied");
 
-  const LinuxOsState(this.value);
-  final String value;
+  const LinuxOsState(this.wireValue);
+  final String wireValue;
 
   static LinuxOsState fromValue(String value) {
     for (final item in LinuxOsState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown LinuxOsState value: $value');
   }
 }
-

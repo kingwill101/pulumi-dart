@@ -3,16 +3,15 @@ enum RunMode {
   auto("auto"),
   distributed("distributed");
 
-  const RunMode(this.value);
-  final String value;
+  const RunMode(this.wireValue);
+  final String wireValue;
 
   static RunMode fromValue(String value) {
     for (final item in RunMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RunMode value: $value');
   }
 }
-

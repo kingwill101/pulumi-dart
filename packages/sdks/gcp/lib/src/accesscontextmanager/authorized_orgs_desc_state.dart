@@ -9,6 +9,7 @@ class AuthorizedOrgsDescState {
   /// "ASSET_TYPE_CREDENTIAL_STRENGTH".
   /// Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
   final pulumi.Input<String>? assetType;
+
   /// The direction of the authorization relationship between this organization
   /// and the organizations listed in the "orgs" field. The valid values for this
   /// field include the following:
@@ -25,23 +26,29 @@ class AuthorizedOrgsDescState {
   /// "AuthorizedOrgsDesc" resource.
   /// Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
   final pulumi.Input<String>? authorizationDirection;
+
   /// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
   /// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
   final pulumi.Input<String>? authorizationType;
+
   /// Time the AuthorizedOrgsDesc was created in UTC.
   final pulumi.Input<String>? createTime;
+
   /// Resource name for the `AuthorizedOrgsDesc`. Format:
   /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
   /// The `authorized_orgs_desc` component must begin with a letter, followed by
   /// alphanumeric characters or `_`.
   /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
   final pulumi.Input<String>? name;
+
   /// The list of organization ids in this AuthorizedOrgsDesc.
-  /// Format: `organizations/<org_number>`
+  /// Format: `organizations/&lt;org_number&gt;`
   /// Example: `organizations/123456`
   final pulumi.Input<List<String>>? orgs;
+
   /// Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
   final pulumi.Input<String>? parent;
+
   /// Time the AuthorizedOrgsDesc was updated in UTC.
   final pulumi.Input<String>? updateTime;
 
@@ -80,15 +87,46 @@ class AuthorizedOrgsDescState {
 
   factory AuthorizedOrgsDescState.fromMap(Map<String, dynamic> map) {
     return AuthorizedOrgsDescState(
-      assetType: map['assetType'] == null ? null : (map['assetType']! as String).input(),
-      authorizationDirection: map['authorizationDirection'] == null ? null : (map['authorizationDirection']! as String).input(),
-      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      orgs: map['orgs'] == null ? null : ((map['orgs']! as List).cast<String>()).input(),
-      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      assetType: (() {
+        final guardedValue = map['assetType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authorizationDirection: (() {
+        final guardedValue = map['authorizationDirection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authorizationType: (() {
+        final guardedValue = map['authorizationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orgs: (() {
+        final guardedValue = map['orgs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      parent: (() {
+        final guardedValue = map['parent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

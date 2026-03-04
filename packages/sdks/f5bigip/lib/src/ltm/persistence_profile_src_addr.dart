@@ -187,26 +187,37 @@ import 'persistence_profile_src_addr_state.dart';
 /// ```
 class PersistenceProfileSrcAddr extends pulumi.CustomResource {
   late final pulumi.Output<String> appService;
+
   /// Inherit defaults from parent profile
   late final pulumi.Output<String> defaultsFrom;
+
   /// Specify the hash algorithm
   late final pulumi.Output<String> hashAlgorithm;
+
   /// To enable _ disable directs all to the same single pool member
   late final pulumi.Output<String> mapProxies;
+
   /// Identify a range of source IP addresses to manage together as a single source address affinity persistent connection when connecting to the pool. Must be a valid IPv4 or IPv6 mask.
   late final pulumi.Output<String> mask;
+
   /// To enable _ disable match across pools with given persistence record
   late final pulumi.Output<String> matchAcrossPools;
+
   /// To enable _ disable match across services with given persistence record
   late final pulumi.Output<String> matchAcrossServices;
+
   /// To enable _ disable match across services with given persistence record
   late final pulumi.Output<String> matchAcrossVirtuals;
+
   /// To enable _ disable
   late final pulumi.Output<String> mirror;
+
   /// Name of the persistence profile
   late final pulumi.Output<String> name;
+
   /// To enable _ disable that pool member connection limits are overridden for persisted clients. Per-virtual connection limits remain hard limits and are not overridden.
   late final pulumi.Output<String> overrideConnLimit;
+
   /// Timeout for persistence of the session
   late final pulumi.Output<int> timeout;
 
@@ -219,23 +230,23 @@ class PersistenceProfileSrcAddr extends pulumi.CustomResource {
     PersistenceProfileSrcAddrArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ltm/persistenceProfileSrcAddr:PersistenceProfileSrcAddr',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appService = registerOutput<String>('appService');
-    this.defaultsFrom = registerOutput<String>('defaultsFrom');
-    this.hashAlgorithm = registerOutput<String>('hashAlgorithm');
-    this.mapProxies = registerOutput<String>('mapProxies');
-    this.mask = registerOutput<String>('mask');
-    this.matchAcrossPools = registerOutput<String>('matchAcrossPools');
-    this.matchAcrossServices = registerOutput<String>('matchAcrossServices');
-    this.matchAcrossVirtuals = registerOutput<String>('matchAcrossVirtuals');
-    this.mirror = registerOutput<String>('mirror');
+         'f5bigip:ltm/persistenceProfileSrcAddr:PersistenceProfileSrcAddr',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appService = registerOutput<String>('appService');
+    defaultsFrom = registerOutput<String>('defaultsFrom');
+    hashAlgorithm = registerOutput<String>('hashAlgorithm');
+    mapProxies = registerOutput<String>('mapProxies');
+    mask = registerOutput<String>('mask');
+    matchAcrossPools = registerOutput<String>('matchAcrossPools');
+    matchAcrossServices = registerOutput<String>('matchAcrossServices');
+    matchAcrossVirtuals = registerOutput<String>('matchAcrossVirtuals');
+    mirror = registerOutput<String>('mirror');
     this.name = registerOutput<String>('name');
-    this.overrideConnLimit = registerOutput<String>('overrideConnLimit');
-    this.timeout = registerOutput<int>('timeout');
+    overrideConnLimit = registerOutput<String>('overrideConnLimit');
+    timeout = registerOutput<int>('timeout');
   }
 
   /// Gets an existing [PersistenceProfileSrcAddr] resource's state with the given [name] and [id].
@@ -256,22 +267,22 @@ class PersistenceProfileSrcAddr extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ltm/persistenceProfileSrcAddr:PersistenceProfileSrcAddr',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appService = registerOutput<String>('appService');
-    this.defaultsFrom = registerOutput<String>('defaultsFrom');
-    this.hashAlgorithm = registerOutput<String>('hashAlgorithm');
-    this.mapProxies = registerOutput<String>('mapProxies');
-    this.mask = registerOutput<String>('mask');
-    this.matchAcrossPools = registerOutput<String>('matchAcrossPools');
-    this.matchAcrossServices = registerOutput<String>('matchAcrossServices');
-    this.matchAcrossVirtuals = registerOutput<String>('matchAcrossVirtuals');
-    this.mirror = registerOutput<String>('mirror');
+         'f5bigip:ltm/persistenceProfileSrcAddr:PersistenceProfileSrcAddr',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appService = registerOutput<String>('appService');
+    defaultsFrom = registerOutput<String>('defaultsFrom');
+    hashAlgorithm = registerOutput<String>('hashAlgorithm');
+    mapProxies = registerOutput<String>('mapProxies');
+    mask = registerOutput<String>('mask');
+    matchAcrossPools = registerOutput<String>('matchAcrossPools');
+    matchAcrossServices = registerOutput<String>('matchAcrossServices');
+    matchAcrossVirtuals = registerOutput<String>('matchAcrossVirtuals');
+    mirror = registerOutput<String>('mirror');
     this.name = registerOutput<String>('name');
-    this.overrideConnLimit = registerOutput<String>('overrideConnLimit');
-    this.timeout = registerOutput<int>('timeout');
+    overrideConnLimit = registerOutput<String>('overrideConnLimit');
+    timeout = registerOutput<int>('timeout');
   }
 }

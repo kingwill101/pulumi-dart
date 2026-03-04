@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Day {
   /// Date of the month
   final pulumi.Input<int>? date;
+
   /// Whether Date is last date of month
   final pulumi.Input<bool>? isLast;
 
   /// Creates a new [Day].
   /// [date] Date of the month
   /// [isLast] Whether Date is last date of month
-  Day({
-    this.date,
-    this.isLast,
-  });
+  Day({this.date, this.isLast});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'date': ?date,
-      'isLast': ?isLast,
-    };
+    return <String, dynamic>{'date': ?date, 'isLast': ?isLast};
   }
 
   factory Day.fromMap(Map<String, dynamic> map) {
     return Day(
-      date: map['date'] == null ? null : (map['date']! as int).input(),
-      isLast: map['isLast'] == null ? null : (map['isLast']! as bool).input(),
+      date: (() {
+        final guardedValue = map['date'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      isLast: (() {
+        final guardedValue = map['isLast'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

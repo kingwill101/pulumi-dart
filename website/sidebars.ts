@@ -8,6 +8,7 @@ const sidebars: SidebarsConfig = {
       label: 'Get Started',
       items: [
         'get-started/prerequisites',
+        'get-started/how-to-playbook',
         'get-started/install',
         'get-started/create-project',
         'get-started/deploy',
@@ -35,7 +36,10 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Reference',
       items: [
+        'reference/architecture-overview',
         'reference/project-templates',
+        'reference/runtime-execution',
+        'reference/debugging-dart-runtime',
         'reference/language-host-releases',
         'reference/community-support',
         'reference/schema-drift-monitoring',

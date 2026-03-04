@@ -8,6 +8,7 @@ import 'google_cloud_documentai_v1_document_page_layout_response.dart';
 class GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse {
   /// Detailed barcode information of the DetectedBarcode.
   final pulumi.Input<GoogleCloudDocumentaiV1BarcodeResponse> barcode;
+
   /// Layout for DetectedBarcode.
   final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayoutResponse> layout;
 
@@ -21,16 +22,33 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'barcode': pulumi.Input.mapInputValue<GoogleCloudDocumentaiV1BarcodeResponse, Map<String, dynamic>>(barcode, (value) => value.toMap()),
-      'layout': pulumi.Input.mapInputValue<GoogleCloudDocumentaiV1DocumentPageLayoutResponse, Map<String, dynamic>>(layout, (value) => value.toMap()),
+      'barcode':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDocumentaiV1BarcodeResponse,
+            Map<String, dynamic>
+          >(barcode, (value) => value.toMap()),
+      'layout':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDocumentaiV1DocumentPageLayoutResponse,
+            Map<String, dynamic>
+          >(layout, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse(
-      barcode: (GoogleCloudDocumentaiV1BarcodeResponse.fromMap((map['barcode'] as Map).cast<String, dynamic>())).input(),
-      layout: (GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap((map['layout'] as Map).cast<String, dynamic>())).input(),
+      barcode: pulumi.Input.fromValue(
+        GoogleCloudDocumentaiV1BarcodeResponse.fromMap(
+          (map['barcode']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      layout: pulumi.Input.fromValue(
+        GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap(
+          (map['layout']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

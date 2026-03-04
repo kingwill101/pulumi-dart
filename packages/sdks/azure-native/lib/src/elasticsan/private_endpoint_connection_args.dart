@@ -10,12 +10,17 @@ import 'private_link_service_connection_state.dart';
 class PrivateEndpointConnectionArgs {
   /// The name of the ElasticSan.
   final pulumi.Input<String> elasticSanName;
+
   /// List of resources private endpoint is mapped
   final pulumi.Input<List<String>>? groupIds;
+
   /// The name of the Private Endpoint connection.
   final pulumi.Input<String>? privateEndpointConnectionName;
+
   /// Private Link Service Connection State.
-  final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionState>
+  privateLinkServiceConnectionState;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,19 +43,37 @@ class PrivateEndpointConnectionArgs {
       'elasticSanName': elasticSanName,
       'groupIds': ?groupIds,
       'privateEndpointConnectionName': ?privateEndpointConnectionName,
-      'privateLinkServiceConnectionState': pulumi.Input.mapInputValue<PrivateLinkServiceConnectionState, Map<String, dynamic>>(privateLinkServiceConnectionState, (value) => value.toMap()),
+      'privateLinkServiceConnectionState':
+          pulumi.Input.mapInputValue<
+            PrivateLinkServiceConnectionState,
+            Map<String, dynamic>
+          >(privateLinkServiceConnectionState, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory PrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionArgs(
-      elasticSanName: (map['elasticSanName'] as String).input(),
-      groupIds: map['groupIds'] == null ? null : ((map['groupIds']! as List).cast<String>()).input(),
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName']! as String).input(),
-      privateLinkServiceConnectionState: (PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      elasticSanName: pulumi.Input.fromValue(map['elasticSanName'] as String),
+      groupIds: (() {
+        final guardedValue = map['groupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      privateEndpointConnectionName: (() {
+        final guardedValue = map['privateEndpointConnectionName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateLinkServiceConnectionState: pulumi.Input.fromValue(
+        PrivateLinkServiceConnectionState.fromMap(
+          (map['privateLinkServiceConnectionState']! as Map)
+              .cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

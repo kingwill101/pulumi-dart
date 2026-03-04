@@ -20,48 +20,70 @@ import 'user_assigned_identity.dart';
 class ServerArgs {
   /// Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted.
   final pulumi.Input<String>? administratorLogin;
+
   /// Password assigned to the administrator login. As long as password authentication is enabled, this password can be changed at any time.
   final pulumi.Input<String>? administratorLoginPassword;
+
   /// Authentication configuration properties of a server.
   final pulumi.Input<AuthConfig>? authConfig;
+
   /// Availability zone of a server.
   final pulumi.Input<String>? availabilityZone;
+
   /// Backup properties of a server.
   final pulumi.Input<BackupDbforpostgresql>? backup;
+
   /// Cluster properties of a server.
   final pulumi.Input<Cluster>? cluster;
+
   /// Creation mode of a new server.
   final pulumi.Input<String>? createMode;
+
   /// Data encryption properties of a server.
   final pulumi.Input<DataEncryption>? dataEncryption;
+
   /// High availability properties of a server.
   final pulumi.Input<HighAvailability>? highAvailability;
+
   /// User assigned managed identities assigned to the server.
   final pulumi.Input<UserAssignedIdentity>? identity;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// Maintenance window properties of a server.
   final pulumi.Input<MaintenanceWindow>? maintenanceWindow;
+
   /// Network properties of a server. Only required if you want your server to be integrated into a virtual network provided by customer.
   final pulumi.Input<Network>? network;
+
   /// Creation time (in ISO8601 format) of the backup which you want to restore in the new server. It's required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', or 'ReviveDropped'.
   final pulumi.Input<String>? pointInTimeUTC;
+
   /// Read replica properties of a server. Required only in case that you want to promote a server.
   final pulumi.Input<Replica>? replica;
+
   /// Role of the server in a replication set.
   final pulumi.Input<String>? replicationRole;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String>? serverName;
+
   /// Compute tier and size of a server.
   final pulumi.Input<Sku>? sku;
+
   /// Identifier of the server to be used as the source of the new server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target server is a read replica.
   final pulumi.Input<String>? sourceServerResourceId;
+
   /// Storage properties of a server.
   final pulumi.Input<Storage>? storage;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Major version of PostgreSQL database engine.
   final pulumi.Input<String>? version;
 
@@ -119,25 +141,64 @@ class ServerArgs {
     return <String, dynamic>{
       'administratorLogin': ?administratorLogin,
       'administratorLoginPassword': ?administratorLoginPassword,
-      'authConfig': ?pulumi.Input.mapOptionalInputValue<AuthConfig, Map<String, dynamic>>(authConfig, (value) => value.toMap()),
+      'authConfig':
+          ?pulumi.Input.mapOptionalInputValue<AuthConfig, Map<String, dynamic>>(
+            authConfig,
+            (value) => value.toMap(),
+          ),
       'availabilityZone': ?availabilityZone,
       'backup': ?backup,
-      'cluster': ?pulumi.Input.mapOptionalInputValue<Cluster, Map<String, dynamic>>(cluster, (value) => value.toMap()),
+      'cluster':
+          ?pulumi.Input.mapOptionalInputValue<Cluster, Map<String, dynamic>>(
+            cluster,
+            (value) => value.toMap(),
+          ),
       'createMode': ?createMode,
-      'dataEncryption': ?pulumi.Input.mapOptionalInputValue<DataEncryption, Map<String, dynamic>>(dataEncryption, (value) => value.toMap()),
-      'highAvailability': ?pulumi.Input.mapOptionalInputValue<HighAvailability, Map<String, dynamic>>(highAvailability, (value) => value.toMap()),
-      'identity': ?pulumi.Input.mapOptionalInputValue<UserAssignedIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'dataEncryption':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataEncryption,
+            Map<String, dynamic>
+          >(dataEncryption, (value) => value.toMap()),
+      'highAvailability':
+          ?pulumi.Input.mapOptionalInputValue<
+            HighAvailability,
+            Map<String, dynamic>
+          >(highAvailability, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserAssignedIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
-      'maintenanceWindow': ?pulumi.Input.mapOptionalInputValue<MaintenanceWindow, Map<String, dynamic>>(maintenanceWindow, (value) => value.toMap()),
-      'network': ?pulumi.Input.mapOptionalInputValue<Network, Map<String, dynamic>>(network, (value) => value.toMap()),
+      'maintenanceWindow':
+          ?pulumi.Input.mapOptionalInputValue<
+            MaintenanceWindow,
+            Map<String, dynamic>
+          >(maintenanceWindow, (value) => value.toMap()),
+      'network':
+          ?pulumi.Input.mapOptionalInputValue<Network, Map<String, dynamic>>(
+            network,
+            (value) => value.toMap(),
+          ),
       'pointInTimeUTC': ?pointInTimeUTC,
-      'replica': ?pulumi.Input.mapOptionalInputValue<Replica, Map<String, dynamic>>(replica, (value) => value.toMap()),
+      'replica':
+          ?pulumi.Input.mapOptionalInputValue<Replica, Map<String, dynamic>>(
+            replica,
+            (value) => value.toMap(),
+          ),
       'replicationRole': ?replicationRole,
       'resourceGroupName': resourceGroupName,
       'serverName': ?serverName,
-      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(
+        sku,
+        (value) => value.toMap(),
+      ),
       'sourceServerResourceId': ?sourceServerResourceId,
-      'storage': ?pulumi.Input.mapOptionalInputValue<Storage, Map<String, dynamic>>(storage, (value) => value.toMap()),
+      'storage':
+          ?pulumi.Input.mapOptionalInputValue<Storage, Map<String, dynamic>>(
+            storage,
+            (value) => value.toMap(),
+          ),
       'tags': ?tags,
       'version': ?version,
     };
@@ -145,30 +206,147 @@ class ServerArgs {
 
   factory ServerArgs.fromMap(Map<String, dynamic> map) {
     return ServerArgs(
-      administratorLogin: map['administratorLogin'] == null ? null : (map['administratorLogin']! as String).input(),
-      administratorLoginPassword: map['administratorLoginPassword'] == null ? null : (map['administratorLoginPassword']! as String).input(),
-      authConfig: map['authConfig'] == null ? null : (AuthConfig.fromMap((map['authConfig']! as Map).cast<String, dynamic>())).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
-      backup: map['backup'] == null ? null : (map['backup']! as BackupDbforpostgresql).input(),
-      cluster: map['cluster'] == null ? null : (Cluster.fromMap((map['cluster']! as Map).cast<String, dynamic>())).input(),
-      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
-      dataEncryption: map['dataEncryption'] == null ? null : (DataEncryption.fromMap((map['dataEncryption']! as Map).cast<String, dynamic>())).input(),
-      highAvailability: map['highAvailability'] == null ? null : (HighAvailability.fromMap((map['highAvailability']! as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (UserAssignedIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : (MaintenanceWindow.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>())).input(),
-      network: map['network'] == null ? null : (Network.fromMap((map['network']! as Map).cast<String, dynamic>())).input(),
-      pointInTimeUTC: map['pointInTimeUTC'] == null ? null : (map['pointInTimeUTC']! as String).input(),
-      replica: map['replica'] == null ? null : (Replica.fromMap((map['replica']! as Map).cast<String, dynamic>())).input(),
-      replicationRole: map['replicationRole'] == null ? null : (map['replicationRole']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
-      sourceServerResourceId: map['sourceServerResourceId'] == null ? null : (map['sourceServerResourceId']! as String).input(),
-      storage: map['storage'] == null ? null : (Storage.fromMap((map['storage']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      administratorLogin: (() {
+        final guardedValue = map['administratorLogin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      administratorLoginPassword: (() {
+        final guardedValue = map['administratorLoginPassword'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authConfig: (() {
+        final guardedValue = map['authConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      availabilityZone: (() {
+        final guardedValue = map['availabilityZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backup: (() {
+        final guardedValue = map['backup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as BackupDbforpostgresql);
+      })(),
+      cluster: (() {
+        final guardedValue = map['cluster'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Cluster.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      createMode: (() {
+        final guardedValue = map['createMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dataEncryption: (() {
+        final guardedValue = map['dataEncryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      highAvailability: (() {
+        final guardedValue = map['highAvailability'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HighAvailability.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          UserAssignedIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      maintenanceWindow: (() {
+        final guardedValue = map['maintenanceWindow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MaintenanceWindow.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      network: (() {
+        final guardedValue = map['network'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Network.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      pointInTimeUTC: (() {
+        final guardedValue = map['pointInTimeUTC'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      replica: (() {
+        final guardedValue = map['replica'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Replica.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      replicationRole: (() {
+        final guardedValue = map['replicationRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: (() {
+        final guardedValue = map['serverName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Sku.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      sourceServerResourceId: (() {
+        final guardedValue = map['sourceServerResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storage: (() {
+        final guardedValue = map['storage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Storage.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

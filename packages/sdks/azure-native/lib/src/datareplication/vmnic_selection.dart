@@ -5,16 +5,15 @@ enum VMNicSelection {
   valueSelectedByDefault("SelectedByDefault"),
   valueSelectedByUserOverride("SelectedByUserOverride");
 
-  const VMNicSelection(this.value);
-  final String value;
+  const VMNicSelection(this.wireValue);
+  final String wireValue;
 
   static VMNicSelection fromValue(String value) {
     for (final item in VMNicSelection.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VMNicSelection value: $value');
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse {
   /// Confidence of detected language. Range `[0, 1]`.
   final pulumi.Input<double> confidence;
+
   /// The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US` or `sr-Latn`.
   final pulumi.Input<String> languageCode;
 
@@ -24,11 +25,12 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse {
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse(
-      confidence: (map['confidence'] as double).input(),
-      languageCode: (map['languageCode'] as String).input(),
+      confidence: pulumi.Input.fromValue(map['confidence'] as double),
+      languageCode: pulumi.Input.fromValue(map['languageCode'] as String),
     );
   }
 }
-

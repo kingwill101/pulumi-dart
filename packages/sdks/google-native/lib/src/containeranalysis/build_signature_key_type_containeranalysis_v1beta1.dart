@@ -4,16 +4,17 @@ enum BuildSignatureKeyTypeContaineranalysisV1beta1 {
   pgpAsciiArmored("PGP_ASCII_ARMORED"),
   pkixPem("PKIX_PEM");
 
-  const BuildSignatureKeyTypeContaineranalysisV1beta1(this.value);
-  final String value;
+  const BuildSignatureKeyTypeContaineranalysisV1beta1(this.wireValue);
+  final String wireValue;
 
   static BuildSignatureKeyTypeContaineranalysisV1beta1 fromValue(String value) {
     for (final item in BuildSignatureKeyTypeContaineranalysisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BuildSignatureKeyTypeContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown BuildSignatureKeyTypeContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

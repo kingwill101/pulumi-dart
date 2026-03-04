@@ -8,16 +8,15 @@ enum RolloutStatus {
   pending("PENDING"),
   failedRolledBack("FAILED_ROLLED_BACK");
 
-  const RolloutStatus(this.value);
-  final String value;
+  const RolloutStatus(this.wireValue);
+  final String wireValue;
 
   static RolloutStatus fromValue(String value) {
     for (final item in RolloutStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RolloutStatus value: $value');
   }
 }
-

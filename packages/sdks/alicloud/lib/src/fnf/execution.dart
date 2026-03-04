@@ -6,7 +6,7 @@ import 'execution_state.dart';
 ///
 /// For information about Serverless Workflow Execution and how to use it, see [What is Execution](https://www.alibabacloud.com/help/en/doc-detail/122628.html).
 ///
-/// > **NOTE:** Available since v1.149.0.
+/// &gt; **NOTE:** Available since v1.149.0.
 ///
 /// ## Example Usage
 ///
@@ -352,10 +352,13 @@ import 'execution_state.dart';
 class Execution extends pulumi.CustomResource {
   /// The name of the execution.
   late final pulumi.Output<String> executionName;
+
   /// The name of the flow.
   late final pulumi.Output<String> flowName;
+
   /// The Input information for this execution.
   late final pulumi.Output<String?> input;
+
   /// The status of the resource. Valid values: `Stopped`.
   late final pulumi.Output<String> status;
 
@@ -368,15 +371,15 @@ class Execution extends pulumi.CustomResource {
     ExecutionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fnf/execution:Execution',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.executionName = registerOutput<String>('executionName');
-    this.flowName = registerOutput<String>('flowName');
-    this.input = registerOutput<String?>('input');
-    this.status = registerOutput<String>('status');
+         'alicloud:fnf/execution:Execution',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    executionName = registerOutput<String>('executionName');
+    flowName = registerOutput<String>('flowName');
+    input = registerOutput<String?>('input');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Execution] resource's state with the given [name] and [id].
@@ -397,14 +400,14 @@ class Execution extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:fnf/execution:Execution',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.executionName = registerOutput<String>('executionName');
-    this.flowName = registerOutput<String>('flowName');
-    this.input = registerOutput<String?>('input');
-    this.status = registerOutput<String>('status');
+         'alicloud:fnf/execution:Execution',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    executionName = registerOutput<String>('executionName');
+    flowName = registerOutput<String>('flowName');
+    input = registerOutput<String?>('input');
+    status = registerOutput<String>('status');
   }
 }

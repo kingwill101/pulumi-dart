@@ -8,20 +8,15 @@ class SubResourceReadOnlyResponse {
 
   /// Creates a new [SubResourceReadOnlyResponse].
   /// [id] Resource Id
-  SubResourceReadOnlyResponse({
-    required this.id,
-  });
+  SubResourceReadOnlyResponse({required this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory SubResourceReadOnlyResponse.fromMap(Map<String, dynamic> map) {
     return SubResourceReadOnlyResponse(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
-

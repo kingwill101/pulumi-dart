@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AsymmetricEncryptedSecretResponse {
   /// The algorithm used to encrypt "Value".
   final pulumi.Input<String> encryptionAlgorithm;
+
   /// Thumbprint certificate used to encrypt \"Value\". If the value is unencrypted, it will be null.
   final pulumi.Input<String>? encryptionCertThumbprint;
+
   /// The value of the secret.
   final pulumi.Input<String> value;
 
@@ -31,10 +33,15 @@ class AsymmetricEncryptedSecretResponse {
 
   factory AsymmetricEncryptedSecretResponse.fromMap(Map<String, dynamic> map) {
     return AsymmetricEncryptedSecretResponse(
-      encryptionAlgorithm: (map['encryptionAlgorithm'] as String).input(),
-      encryptionCertThumbprint: map['encryptionCertThumbprint'] == null ? null : (map['encryptionCertThumbprint']! as String).input(),
-      value: (map['value'] as String).input(),
+      encryptionAlgorithm: pulumi.Input.fromValue(
+        map['encryptionAlgorithm'] as String,
+      ),
+      encryptionCertThumbprint: (() {
+        final guardedValue = map['encryptionCertThumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

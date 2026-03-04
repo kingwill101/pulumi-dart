@@ -6,24 +6,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RepositoryState {
   /// The ARN of the repository
   final pulumi.Input<String>? arn;
+
   /// The URL to use for cloning the repository over HTTPS.
   final pulumi.Input<String>? cloneUrlHttp;
+
   /// The URL to use for cloning the repository over SSH.
   final pulumi.Input<String>? cloneUrlSsh;
+
   /// The default branch of the repository. The branch specified here needs to exist.
   final pulumi.Input<String>? defaultBranch;
+
   /// The description of the repository. This needs to be less than 1000 characters
   final pulumi.Input<String>? description;
+
   /// The ARN of the encryption key. If no key is specified, the default `aws/codecommit` Amazon Web Services managed key is used.
   final pulumi.Input<String>? kmsKeyId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the repository
   final pulumi.Input<String>? repositoryId;
+
   /// The name for the repository. This needs to be less than 100 characters.
   final pulumi.Input<String>? repositoryName;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -71,18 +81,65 @@ class RepositoryState {
 
   factory RepositoryState.fromMap(Map<String, dynamic> map) {
     return RepositoryState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      cloneUrlHttp: map['cloneUrlHttp'] == null ? null : ((map['cloneUrlHttp'] as String).input()).input(),
-      cloneUrlSsh: map['cloneUrlSsh'] == null ? null : ((map['cloneUrlSsh'] as String).input()).input(),
-      defaultBranch: map['defaultBranch'] == null ? null : ((map['defaultBranch'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      repositoryId: map['repositoryId'] == null ? null : ((map['repositoryId'] as String).input()).input(),
-      repositoryName: map['repositoryName'] == null ? null : ((map['repositoryName'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloneUrlHttp: (() {
+        final guardedValue = map['cloneUrlHttp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      cloneUrlSsh: (() {
+        final guardedValue = map['cloneUrlSsh'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultBranch: (() {
+        final guardedValue = map['defaultBranch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKeyId: (() {
+        final guardedValue = map['kmsKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryId: (() {
+        final guardedValue = map['repositoryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      repositoryName: (() {
+        final guardedValue = map['repositoryName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTopicSpaceArgs {
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
+
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
+
   /// Name of the Topic space.
   final pulumi.Input<String> topicSpaceName;
 
@@ -34,10 +36,11 @@ class GetTopicSpaceArgs {
 
   factory GetTopicSpaceArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicSpaceArgs(
-      namespaceName: (map['namespaceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      topicSpaceName: (map['topicSpaceName'] as String).input(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      topicSpaceName: pulumi.Input.fromValue(map['topicSpaceName'] as String),
     );
   }
 }
-

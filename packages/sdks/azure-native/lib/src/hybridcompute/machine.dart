@@ -2,13 +2,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_configuration_response.dart';
 import 'agent_upgrade_response.dart';
 import 'cloud_metadata_response.dart';
-import 'error_detail_response.dart';
 import 'identity_response.dart';
 import 'license_profile_machine_instance_view_response.dart';
 import 'location_data_response.dart';
 import 'machine_args.dart';
-import 'machine_extension_instance_view_response.dart';
-import 'machine_extension_response.dart';
 import 'network_profile_response.dart';
 import 'osprofile_response.dart';
 import 'service_statuses_response.dart';
@@ -241,82 +238,122 @@ import 'system_data_response.dart';
 class Machine extends pulumi.CustomResource {
   /// Specifies the AD fully qualified display name.
   late final pulumi.Output<String> adFqdn;
+
   /// Configurable properties that the user can set locally via the azcmagent config command, or remotely via ARM.
   late final pulumi.Output<AgentConfigurationResponse> agentConfiguration;
+
   /// The info of the machine w.r.t Agent Upgrade
   late final pulumi.Output<AgentUpgradeResponse?> agentUpgrade;
+
   /// The hybrid machine agent full version.
   late final pulumi.Output<String> agentVersion;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Public Key that the client provides to be used during initial resource onboarding
   late final pulumi.Output<String?> clientPublicKey;
+
   /// The metadata of the cloud environment (Azure/GCP/AWS/OCI...).
   late final pulumi.Output<CloudMetadataResponse?> cloudMetadata;
+
   /// Detected properties from the machine.
   late final pulumi.Output<Map<String, String>> detectedProperties;
+
   /// Specifies the hybrid machine display name.
   late final pulumi.Output<String> displayName;
+
   /// Specifies the DNS fully qualified display name.
   late final pulumi.Output<String> dnsFqdn;
+
   /// Specifies the Windows domain name.
   late final pulumi.Output<String> domainName;
+
   /// Details about the error state.
-  late final pulumi.Output<List<ErrorDetailResponse>> errorDetails;
+  late final pulumi.Output<List<Map<String, dynamic>>> errorDetails;
+
   /// Machine Extensions information (deprecated field)
-  late final pulumi.Output<List<MachineExtensionInstanceViewResponse>?> extensions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> extensions;
+
   /// Identity for the resource.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
   late final pulumi.Output<String?> kind;
+
   /// The time of the last status change.
   late final pulumi.Output<String> lastStatusChange;
+
   /// Specifies the License related properties for a machine.
-  late final pulumi.Output<LicenseProfileMachineInstanceViewResponse?> licenseProfile;
+  late final pulumi.Output<LicenseProfileMachineInstanceViewResponse?>
+  licenseProfile;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Metadata pertaining to the geographic location of the resource.
   late final pulumi.Output<LocationDataResponse?> locationData;
+
   /// Specifies the hybrid machine FQDN.
   late final pulumi.Output<String> machineFqdn;
+
   /// Specifies whether any MS SQL instance is discovered on the machine.
   late final pulumi.Output<String?> mssqlDiscovered;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Information about the network the machine is on.
   late final pulumi.Output<NetworkProfileResponse> networkProfile;
+
   /// The edition of the Operating System.
   late final pulumi.Output<String> osEdition;
+
   /// The Operating System running on the hybrid machine.
   late final pulumi.Output<String> osName;
+
   /// Specifies the operating system settings for the hybrid machine.
   late final pulumi.Output<OSProfileResponse?> osProfile;
+
   /// Specifies the Operating System product SKU.
   late final pulumi.Output<String> osSku;
+
   /// The type of Operating System (windows/linux).
   late final pulumi.Output<String?> osType;
+
   /// The version of Operating System running on the hybrid machine.
   late final pulumi.Output<String> osVersion;
+
   /// The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
   late final pulumi.Output<String?> parentClusterResourceId;
+
   /// The resource id of the private link scope this machine is assigned to, if any.
   late final pulumi.Output<String?> privateLinkScopeResourceId;
+
   /// The provisioning state, which only appears in the response.
   late final pulumi.Output<String> provisioningState;
+
   /// The list of extensions affiliated to the machine
-  late final pulumi.Output<List<MachineExtensionResponse>> resources;
+  late final pulumi.Output<List<Map<String, dynamic>>> resources;
+
   /// Statuses of dependent services that are reported back to ARM.
   late final pulumi.Output<ServiceStatusesResponse?> serviceStatuses;
+
   /// The status of the hybrid machine agent.
   late final pulumi.Output<String> status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Specifies the hybrid machine unique ID.
   late final pulumi.Output<String?> vmId;
+
   /// Specifies the Arc Machine's unique SMBIOS ID
   late final pulumi.Output<String> vmUuid;
 
@@ -329,50 +366,62 @@ class Machine extends pulumi.CustomResource {
     MachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:hybridcompute:Machine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adFqdn = registerOutput<String>('adFqdn');
-    this.agentConfiguration = registerOutput<AgentConfigurationResponse>('agentConfiguration');
-    this.agentUpgrade = registerOutput<AgentUpgradeResponse?>('agentUpgrade');
-    this.agentVersion = registerOutput<String>('agentVersion');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clientPublicKey = registerOutput<String?>('clientPublicKey');
-    this.cloudMetadata = registerOutput<CloudMetadataResponse?>('cloudMetadata');
-    this.detectedProperties = registerOutput<Map<String, String>>('detectedProperties');
-    this.displayName = registerOutput<String>('displayName');
-    this.dnsFqdn = registerOutput<String>('dnsFqdn');
-    this.domainName = registerOutput<String>('domainName');
-    this.errorDetails = registerOutput<List<ErrorDetailResponse>>('errorDetails');
-    this.extensions = registerOutput<List<MachineExtensionInstanceViewResponse>?>('extensions');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.kind = registerOutput<String?>('kind');
-    this.lastStatusChange = registerOutput<String>('lastStatusChange');
-    this.licenseProfile = registerOutput<LicenseProfileMachineInstanceViewResponse?>('licenseProfile');
-    this.location = registerOutput<String>('location');
-    this.locationData = registerOutput<LocationDataResponse?>('locationData');
-    this.machineFqdn = registerOutput<String>('machineFqdn');
-    this.mssqlDiscovered = registerOutput<String?>('mssqlDiscovered');
+         'azure-native:hybridcompute:Machine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adFqdn = registerOutput<String>('adFqdn');
+    agentConfiguration = registerOutput<AgentConfigurationResponse>(
+      'agentConfiguration',
+    );
+    agentUpgrade = registerOutput<AgentUpgradeResponse?>('agentUpgrade');
+    agentVersion = registerOutput<String>('agentVersion');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientPublicKey = registerOutput<String?>('clientPublicKey');
+    cloudMetadata = registerOutput<CloudMetadataResponse?>('cloudMetadata');
+    detectedProperties = registerOutput<Map<String, String>>(
+      'detectedProperties',
+    );
+    displayName = registerOutput<String>('displayName');
+    dnsFqdn = registerOutput<String>('dnsFqdn');
+    domainName = registerOutput<String>('domainName');
+    errorDetails = registerOutput<List<Map<String, dynamic>>>('errorDetails');
+    extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
+    identity = registerOutput<IdentityResponse?>('identity');
+    kind = registerOutput<String?>('kind');
+    lastStatusChange = registerOutput<String>('lastStatusChange');
+    licenseProfile = registerOutput<LicenseProfileMachineInstanceViewResponse?>(
+      'licenseProfile',
+    );
+    location = registerOutput<String>('location');
+    locationData = registerOutput<LocationDataResponse?>('locationData');
+    machineFqdn = registerOutput<String>('machineFqdn');
+    mssqlDiscovered = registerOutput<String?>('mssqlDiscovered');
     this.name = registerOutput<String>('name');
-    this.networkProfile = registerOutput<NetworkProfileResponse>('networkProfile');
-    this.osEdition = registerOutput<String>('osEdition');
-    this.osName = registerOutput<String>('osName');
-    this.osProfile = registerOutput<OSProfileResponse?>('osProfile');
-    this.osSku = registerOutput<String>('osSku');
-    this.osType = registerOutput<String?>('osType');
-    this.osVersion = registerOutput<String>('osVersion');
-    this.parentClusterResourceId = registerOutput<String?>('parentClusterResourceId');
-    this.privateLinkScopeResourceId = registerOutput<String?>('privateLinkScopeResourceId');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resources = registerOutput<List<MachineExtensionResponse>>('resources');
-    this.serviceStatuses = registerOutput<ServiceStatusesResponse?>('serviceStatuses');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.vmId = registerOutput<String?>('vmId');
-    this.vmUuid = registerOutput<String>('vmUuid');
+    networkProfile = registerOutput<NetworkProfileResponse>('networkProfile');
+    osEdition = registerOutput<String>('osEdition');
+    osName = registerOutput<String>('osName');
+    osProfile = registerOutput<OSProfileResponse?>('osProfile');
+    osSku = registerOutput<String>('osSku');
+    osType = registerOutput<String?>('osType');
+    osVersion = registerOutput<String>('osVersion');
+    parentClusterResourceId = registerOutput<String?>(
+      'parentClusterResourceId',
+    );
+    privateLinkScopeResourceId = registerOutput<String?>(
+      'privateLinkScopeResourceId',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    resources = registerOutput<List<Map<String, dynamic>>>('resources');
+    serviceStatuses = registerOutput<ServiceStatusesResponse?>(
+      'serviceStatuses',
+    );
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    vmId = registerOutput<String?>('vmId');
+    vmUuid = registerOutput<String>('vmUuid');
   }
 }

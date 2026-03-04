@@ -8,14 +8,19 @@ import 'resource_restore_parameters.dart';
 class MongoDBCollectionResource {
   /// Analytical TTL.
   final pulumi.Input<int>? analyticalStorageTtl;
+
   /// Enum to indicate the mode of resource creation.
   final pulumi.Input<String>? createMode;
+
   /// Name of the Cosmos DB MongoDB collection
   final pulumi.Input<String> id;
+
   /// List of index keys
   final pulumi.Input<List<MongoIndex>>? indexes;
+
   /// Parameters to indicate the information about the restore
   final pulumi.Input<ResourceRestoreParameters>? restoreParameters;
+
   /// A key-value pair of shard keys to be applied for the request.
   final pulumi.Input<Map<String, String>>? shardKey;
 
@@ -40,21 +45,67 @@ class MongoDBCollectionResource {
       'analyticalStorageTtl': ?analyticalStorageTtl,
       'createMode': ?createMode,
       'id': id,
-      'indexes': ?pulumi.Input.mapOptionalInputValue<List<MongoIndex>, List<Map<String, dynamic>>>(indexes, (value) => pulumi.Input.encodeList<MongoIndex, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'restoreParameters': ?pulumi.Input.mapOptionalInputValue<ResourceRestoreParameters, Map<String, dynamic>>(restoreParameters, (value) => value.toMap()),
+      'indexes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<MongoIndex>,
+            List<Map<String, dynamic>>
+          >(
+            indexes,
+            (value) =>
+                pulumi.Input.encodeList<MongoIndex, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'restoreParameters':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceRestoreParameters,
+            Map<String, dynamic>
+          >(restoreParameters, (value) => value.toMap()),
       'shardKey': ?shardKey,
     };
   }
 
   factory MongoDBCollectionResource.fromMap(Map<String, dynamic> map) {
     return MongoDBCollectionResource(
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl']! as int).input(),
-      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
-      id: (map['id'] as String).input(),
-      indexes: map['indexes'] == null ? null : (pulumi.Input.decodeList<MongoIndex>(map['indexes']!, (value) => MongoIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      restoreParameters: map['restoreParameters'] == null ? null : (ResourceRestoreParameters.fromMap((map['restoreParameters']! as Map).cast<String, dynamic>())).input(),
-      shardKey: map['shardKey'] == null ? null : ((map['shardKey']! as Map).cast<String, String>()).input(),
+      analyticalStorageTtl: (() {
+        final guardedValue = map['analyticalStorageTtl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      createMode: (() {
+        final guardedValue = map['createMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      indexes: (() {
+        final guardedValue = map['indexes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<MongoIndex>(
+            guardedValue,
+            (value) =>
+                MongoIndex.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      restoreParameters: (() {
+        final guardedValue = map['restoreParameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceRestoreParameters.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      shardKey: (() {
+        final guardedValue = map['shardKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

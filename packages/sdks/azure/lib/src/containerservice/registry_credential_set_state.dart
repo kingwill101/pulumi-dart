@@ -7,13 +7,18 @@ import 'registry_credential_set_identity.dart';
 /// Input properties used for looking up and filtering RegistryCredentialSet resources.
 class RegistryCredentialSetState {
   /// A `authentication_credentials` block as defined below.
-  final pulumi.Input<RegistryCredentialSetAuthenticationCredentials>? authenticationCredentials;
+  final pulumi.Input<RegistryCredentialSetAuthenticationCredentials>?
+  authenticationCredentials;
+
   /// The ID of the Container Registry. Changing this forces a new Container Registry Credential Set to be created.
   final pulumi.Input<String>? containerRegistryId;
+
   /// An `identity` block as defined below.
   final pulumi.Input<RegistryCredentialSetIdentity>? identity;
+
   /// The login server for the Credential Set. Changing this forces a new Container Registry Credential Set to be created.
   final pulumi.Input<String>? loginServer;
+
   /// The name which should be used for this Container Registry Credential Set. Changing this forces a new Container Registry Credential Set to be created.
   final pulumi.Input<String>? name;
 
@@ -33,9 +38,17 @@ class RegistryCredentialSetState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authenticationCredentials': ?pulumi.Input.mapOptionalInputValue<RegistryCredentialSetAuthenticationCredentials, Map<String, dynamic>>(authenticationCredentials, (value) => value.toMap()),
+      'authenticationCredentials':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegistryCredentialSetAuthenticationCredentials,
+            Map<String, dynamic>
+          >(authenticationCredentials, (value) => value.toMap()),
       'containerRegistryId': ?containerRegistryId,
-      'identity': ?pulumi.Input.mapOptionalInputValue<RegistryCredentialSetIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegistryCredentialSetIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'loginServer': ?loginServer,
       'name': ?name,
     };
@@ -43,12 +56,39 @@ class RegistryCredentialSetState {
 
   factory RegistryCredentialSetState.fromMap(Map<String, dynamic> map) {
     return RegistryCredentialSetState(
-      authenticationCredentials: map['authenticationCredentials'] == null ? null : (RegistryCredentialSetAuthenticationCredentials.fromMap((map['authenticationCredentials']! as Map).cast<String, dynamic>())).input(),
-      containerRegistryId: map['containerRegistryId'] == null ? null : (map['containerRegistryId']! as String).input(),
-      identity: map['identity'] == null ? null : (RegistryCredentialSetIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      loginServer: map['loginServer'] == null ? null : (map['loginServer']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      authenticationCredentials: (() {
+        final guardedValue = map['authenticationCredentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegistryCredentialSetAuthenticationCredentials.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      containerRegistryId: (() {
+        final guardedValue = map['containerRegistryId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RegistryCredentialSetIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      loginServer: (() {
+        final guardedValue = map['loginServer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

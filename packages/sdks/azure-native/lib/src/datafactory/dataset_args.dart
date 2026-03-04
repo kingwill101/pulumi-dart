@@ -10,10 +10,13 @@ import 'amazon_mwsobject_dataset.dart';
 class DatasetArgs {
   /// The dataset name.
   final pulumi.Input<String>? datasetName;
+
   /// The factory name.
   final pulumi.Input<String> factoryName;
+
   /// Dataset properties.
   final pulumi.Input<AmazonMWSObjectDataset> properties;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,18 +36,31 @@ class DatasetArgs {
     return <String, dynamic>{
       'datasetName': ?datasetName,
       'factoryName': factoryName,
-      'properties': pulumi.Input.mapInputValue<AmazonMWSObjectDataset, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            AmazonMWSObjectDataset,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory DatasetArgs.fromMap(Map<String, dynamic> map) {
     return DatasetArgs(
-      datasetName: map['datasetName'] == null ? null : (map['datasetName']! as String).input(),
-      factoryName: (map['factoryName'] as String).input(),
-      properties: (AmazonMWSObjectDataset.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      datasetName: (() {
+        final guardedValue = map['datasetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
+      properties: pulumi.Input.fromValue(
+        AmazonMWSObjectDataset.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

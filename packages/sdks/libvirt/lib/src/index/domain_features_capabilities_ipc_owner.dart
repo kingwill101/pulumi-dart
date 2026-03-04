@@ -8,20 +8,19 @@ class DomainFeaturesCapabilitiesIpcOwner {
 
   /// Creates a new [DomainFeaturesCapabilitiesIpcOwner].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesIpcOwner({
-    this.state,
-  });
+  DomainFeaturesCapabilitiesIpcOwner({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
   factory DomainFeaturesCapabilitiesIpcOwner.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesIpcOwner(
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

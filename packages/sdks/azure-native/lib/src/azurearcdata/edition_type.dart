@@ -8,16 +8,15 @@ enum EditionType {
   valueExpress("Express"),
   valueBusinessIntelligence("Business Intelligence");
 
-  const EditionType(this.value);
-  final String value;
+  const EditionType(this.wireValue);
+  final String wireValue;
 
   static EditionType fromValue(String value) {
     for (final item in EditionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EditionType value: $value');
   }
 }
-

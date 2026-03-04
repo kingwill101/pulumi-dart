@@ -9,20 +9,37 @@ class ListCredentialResponseResponseProperties {
 
   /// Creates a new [ListCredentialResponseResponseProperties].
   /// [kubeconfigs] Base64-encoded Kubernetes configuration file.
-  ListCredentialResponseResponseProperties({
-    required this.kubeconfigs,
-  });
+  ListCredentialResponseResponseProperties({required this.kubeconfigs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kubeconfigs': pulumi.Input.mapInputValue<List<CredentialResultResponse>, List<Map<String, dynamic>>>(kubeconfigs, (value) => pulumi.Input.encodeList<CredentialResultResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'kubeconfigs':
+          pulumi.Input.mapInputValue<
+            List<CredentialResultResponse>,
+            List<Map<String, dynamic>>
+          >(
+            kubeconfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CredentialResultResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory ListCredentialResponseResponseProperties.fromMap(Map<String, dynamic> map) {
+  factory ListCredentialResponseResponseProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListCredentialResponseResponseProperties(
-      kubeconfigs: (pulumi.Input.decodeList<CredentialResultResponse>(map['kubeconfigs'], (value) => CredentialResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kubeconfigs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<CredentialResultResponse>(
+          map['kubeconfigs']!,
+          (value) => CredentialResultResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

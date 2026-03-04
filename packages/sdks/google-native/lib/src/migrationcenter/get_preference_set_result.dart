@@ -6,14 +6,19 @@ import 'virtual_machine_preferences_response.dart';
 class GetPreferenceSetResult {
   /// The timestamp when the preference set was created.
   final String createTime;
+
   /// A description of the preference set.
   final String description;
+
   /// User-friendly display name. Maximum length is 63 characters.
   final String displayName;
+
   /// Name of the preference set.
   final String name;
+
   /// The timestamp when the preference set was last updated.
   final String updateTime;
+
   /// A set of preferences that applies to all virtual machines in the context.
   final VirtualMachinePreferencesResponse virtualMachinePreferences;
 
@@ -51,8 +56,9 @@ class GetPreferenceSetResult {
       displayName: map['displayName'] as String,
       name: map['name'] as String,
       updateTime: map['updateTime'] as String,
-      virtualMachinePreferences: VirtualMachinePreferencesResponse.fromMap((map['virtualMachinePreferences'] as Map).cast<String, dynamic>()),
+      virtualMachinePreferences: VirtualMachinePreferencesResponse.fromMap(
+        (map['virtualMachinePreferences']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

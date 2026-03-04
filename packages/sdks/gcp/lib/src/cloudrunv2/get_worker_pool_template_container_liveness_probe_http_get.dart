@@ -5,9 +5,14 @@ import 'get_worker_pool_template_container_liveness_probe_http_get_http_header.d
 
 class GetWorkerPoolTemplateContainerLivenessProbeHttpGet {
   /// Optional. Custom headers to set in the request. HTTP allows repeated headers.
-  final pulumi.Input<List<GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader>> httpHeaders;
+  final pulumi.Input<
+    List<GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader>
+  >
+  httpHeaders;
+
   /// Optional. Path to access on the HTTP server. Defaults to '/'.
   final pulumi.Input<String> path;
+
   /// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
   final pulumi.Input<int> port;
 
@@ -23,18 +28,40 @@ class GetWorkerPoolTemplateContainerLivenessProbeHttpGet {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'httpHeaders': pulumi.Input.mapInputValue<List<GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader>, List<Map<String, dynamic>>>(httpHeaders, (value) => pulumi.Input.encodeList<GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'httpHeaders':
+          pulumi.Input.mapInputValue<
+            List<GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader>,
+            List<Map<String, dynamic>>
+          >(
+            httpHeaders,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'path': path,
       'port': port,
     };
   }
 
-  factory GetWorkerPoolTemplateContainerLivenessProbeHttpGet.fromMap(Map<String, dynamic> map) {
+  factory GetWorkerPoolTemplateContainerLivenessProbeHttpGet.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkerPoolTemplateContainerLivenessProbeHttpGet(
-      httpHeaders: (pulumi.Input.decodeList<GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader>(map['httpHeaders'], (value) => GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      path: (map['path'] as String).input(),
-      port: (map['port'] as int).input(),
+      httpHeaders: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<
+          GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader
+        >(
+          map['httpHeaders']!,
+          (value) =>
+              GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        ),
+      ),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
     );
   }
 }
-

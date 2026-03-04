@@ -9,20 +9,15 @@ class OfficeDataConnectorDataTypesTeams {
 
   /// Creates a new [OfficeDataConnectorDataTypesTeams].
   /// [state] Describe whether this data type connection is enabled or not.
-  OfficeDataConnectorDataTypesTeams({
-    required this.state,
-  });
+  OfficeDataConnectorDataTypesTeams({required this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': state,
-    };
+    return <String, dynamic>{'state': state};
   }
 
   factory OfficeDataConnectorDataTypesTeams.fromMap(Map<String, dynamic> map) {
     return OfficeDataConnectorDataTypesTeams(
-      state: (map['state'] as String).input(),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

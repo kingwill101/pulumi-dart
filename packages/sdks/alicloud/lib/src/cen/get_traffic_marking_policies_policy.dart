@@ -5,24 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTrafficMarkingPoliciesPolicy {
   /// The description of the Traffic Marking Policy.
   final pulumi.Input<String> description;
-  /// The ID of the resource. The value is formatted `<transit_router_id>:<traffic_marking_policy_id>`.
+
+  /// The ID of the resource. The value is formatted `&lt;transit_router_id&gt;:&lt;traffic_marking_policy_id&gt;`.
   final pulumi.Input<String> id;
+
   /// The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy.
   final pulumi.Input<int> markingDscp;
+
   /// The Priority of the Traffic Marking Policy.
   final pulumi.Input<int> priority;
+
   /// The status of the resource.
   final pulumi.Input<String> status;
+
   /// The ID of the Traffic Marking Policy.
   final pulumi.Input<String> trafficMarkingPolicyId;
+
   /// The name of the Traffic Marking Policy.
   final pulumi.Input<String> trafficMarkingPolicyName;
+
   /// The ID of the transit router.
   final pulumi.Input<String> transitRouterId;
 
   /// Creates a new [GetTrafficMarkingPoliciesPolicy].
   /// [description] The description of the Traffic Marking Policy.
-  /// [id] The ID of the resource. The value is formatted `<transit_router_id>:<traffic_marking_policy_id>`.
+  /// [id] The ID of the resource. The value is formatted `&lt;transit_router_id&gt;:&lt;traffic_marking_policy_id&gt;`.
   /// [markingDscp] The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy.
   /// [priority] The Priority of the Traffic Marking Policy.
   /// [status] The status of the resource.
@@ -55,15 +62,18 @@ class GetTrafficMarkingPoliciesPolicy {
 
   factory GetTrafficMarkingPoliciesPolicy.fromMap(Map<String, dynamic> map) {
     return GetTrafficMarkingPoliciesPolicy(
-      description: (map['description'] as String).input(),
-      id: (map['id'] as String).input(),
-      markingDscp: (map['markingDscp'] as int).input(),
-      priority: (map['priority'] as int).input(),
-      status: (map['status'] as String).input(),
-      trafficMarkingPolicyId: (map['trafficMarkingPolicyId'] as String).input(),
-      trafficMarkingPolicyName: (map['trafficMarkingPolicyName'] as String).input(),
-      transitRouterId: (map['transitRouterId'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      markingDscp: pulumi.Input.fromValue(map['markingDscp'] as int),
+      priority: pulumi.Input.fromValue(map['priority'] as int),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      trafficMarkingPolicyId: pulumi.Input.fromValue(
+        map['trafficMarkingPolicyId'] as String,
+      ),
+      trafficMarkingPolicyName: pulumi.Input.fromValue(
+        map['trafficMarkingPolicyName'] as String,
+      ),
+      transitRouterId: pulumi.Input.fromValue(map['transitRouterId'] as String),
     );
   }
 }
-

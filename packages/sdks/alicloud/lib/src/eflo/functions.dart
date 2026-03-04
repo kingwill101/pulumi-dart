@@ -6,7 +6,7 @@ import 'get_vpds_result.dart';
 
 /// This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
 ///
-/// > **NOTE:** Available in 1.204.0+
+/// &gt; **NOTE:** Available in 1.204.0+
 ///
 /// ## Example Usage
 ///
@@ -141,7 +141,7 @@ Future<GetSubnetsResult> getSubnets(
 
 /// This data source provides Eflo Vpd available to the user.[What is Vpd](https://help.aliyun.com/document_detail/604976.html)
 ///
-/// > **NOTE:** Available in 1.201.0+
+/// &gt; **NOTE:** Available in 1.201.0+
 ///
 /// ## Example Usage
 ///

@@ -8,20 +8,17 @@ class PipeTargetParametersLambdaFunctionParameters {
 
   /// Creates a new [PipeTargetParametersLambdaFunctionParameters].
   /// [invocationType] Specify whether to invoke the function synchronously or asynchronously. Valid Values: REQUEST_RESPONSE, FIRE_AND_FORGET.
-  PipeTargetParametersLambdaFunctionParameters({
-    required this.invocationType,
-  });
+  PipeTargetParametersLambdaFunctionParameters({required this.invocationType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'invocationType': invocationType,
-    };
+    return <String, dynamic>{'invocationType': invocationType};
   }
 
-  factory PipeTargetParametersLambdaFunctionParameters.fromMap(Map<String, dynamic> map) {
+  factory PipeTargetParametersLambdaFunctionParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipeTargetParametersLambdaFunctionParameters(
-      invocationType: (map['invocationType'] as String).input(),
+      invocationType: pulumi.Input.fromValue(map['invocationType'] as String),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig {
   /// Display name of the folder to be created
   final pulumi.Input<String> folderDisplayName;
+
   /// The parent of the folder to be created. It can be an organizations/{org} or
   /// folders/{folder}
   final pulumi.Input<String> parent;
@@ -24,11 +25,14 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderC
     };
   }
 
-  factory FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig.fromMap(Map<String, dynamic> map) {
+  factory FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig(
-      folderDisplayName: (map['folderDisplayName'] as String).input(),
-      parent: (map['parent'] as String).input(),
+      folderDisplayName: pulumi.Input.fromValue(
+        map['folderDisplayName'] as String,
+      ),
+      parent: pulumi.Input.fromValue(map['parent'] as String),
     );
   }
 }
-

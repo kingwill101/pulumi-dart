@@ -8,20 +8,21 @@ class RouteSpecHttpRouteMatchQueryParameterMatch {
 
   /// Creates a new [RouteSpecHttpRouteMatchQueryParameterMatch].
   /// [exact] The exact query parameter to match on.
-  RouteSpecHttpRouteMatchQueryParameterMatch({
-    this.exact,
-  });
+  RouteSpecHttpRouteMatchQueryParameterMatch({this.exact});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'exact': ?exact,
-    };
+    return <String, dynamic>{'exact': ?exact};
   }
 
-  factory RouteSpecHttpRouteMatchQueryParameterMatch.fromMap(Map<String, dynamic> map) {
+  factory RouteSpecHttpRouteMatchQueryParameterMatch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RouteSpecHttpRouteMatchQueryParameterMatch(
-      exact: map['exact'] == null ? null : ((map['exact'] as String).input()).input(),
+      exact: (() {
+        final guardedValue = map['exact'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

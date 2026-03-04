@@ -177,64 +177,94 @@ import 'system_data_response.dart';
 class RegisteredServer extends pulumi.CustomResource {
   /// Server auth type.
   late final pulumi.Output<String> activeAuthType;
+
   /// Registered Server Agent Version
   late final pulumi.Output<String?> agentVersion;
+
   /// Registered Server Agent Version Expiration Date
   late final pulumi.Output<String> agentVersionExpirationDate;
+
   /// Registered Server Agent Version Status
   late final pulumi.Output<String> agentVersionStatus;
+
   /// Server Application Id
   late final pulumi.Output<String?> applicationId;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Registered Server clusterId
   late final pulumi.Output<String?> clusterId;
+
   /// Registered Server clusterName
   late final pulumi.Output<String?> clusterName;
+
   /// Resource discoveryEndpointUri
   late final pulumi.Output<String?> discoveryEndpointUri;
+
   /// Friendly Name
   late final pulumi.Output<String?> friendlyName;
+
   /// Apply server with newly discovered ApplicationId if available.
   late final pulumi.Output<bool> identity;
+
   /// Registered Server last heart beat
   late final pulumi.Output<String?> lastHeartBeat;
+
   /// Resource Last Operation Name
   late final pulumi.Output<String?> lastOperationName;
+
   /// Registered Server lastWorkflowId
   late final pulumi.Output<String?> lastWorkflowId;
+
   /// Latest Server Application Id discovered from the server. It is not yet applied.
   late final pulumi.Output<String?> latestApplicationId;
+
   /// Management Endpoint Uri
   late final pulumi.Output<String?> managementEndpointUri;
+
   /// Monitoring Configuration
   late final pulumi.Output<String?> monitoringConfiguration;
+
   /// Telemetry Endpoint Uri
   late final pulumi.Output<String?> monitoringEndpointUri;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Registered Server Provisioning State
   late final pulumi.Output<String?> provisioningState;
+
   /// Resource Location
   late final pulumi.Output<String?> resourceLocation;
+
   /// Registered Server Certificate
   late final pulumi.Output<String?> serverCertificate;
+
   /// Registered Server serverId
   late final pulumi.Output<String?> serverId;
+
   /// Registered Server Management Error Code
   late final pulumi.Output<int?> serverManagementErrorCode;
+
   /// Server name
   late final pulumi.Output<String> serverName;
+
   /// Registered Server OS Version
   late final pulumi.Output<String?> serverOSVersion;
+
   /// Registered Server serverRole
   late final pulumi.Output<String?> serverRole;
+
   /// Service Location
   late final pulumi.Output<String?> serviceLocation;
+
   /// Registered Server storageSyncServiceUid
   late final pulumi.Output<String?> storageSyncServiceUid;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -247,41 +277,47 @@ class RegisteredServer extends pulumi.CustomResource {
     RegisteredServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:storagesync:RegisteredServer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activeAuthType = registerOutput<String>('activeAuthType');
-    this.agentVersion = registerOutput<String?>('agentVersion');
-    this.agentVersionExpirationDate = registerOutput<String>('agentVersionExpirationDate');
-    this.agentVersionStatus = registerOutput<String>('agentVersionStatus');
-    this.applicationId = registerOutput<String?>('applicationId');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clusterId = registerOutput<String?>('clusterId');
-    this.clusterName = registerOutput<String?>('clusterName');
-    this.discoveryEndpointUri = registerOutput<String?>('discoveryEndpointUri');
-    this.friendlyName = registerOutput<String?>('friendlyName');
-    this.identity = registerOutput<bool>('identity');
-    this.lastHeartBeat = registerOutput<String?>('lastHeartBeat');
-    this.lastOperationName = registerOutput<String?>('lastOperationName');
-    this.lastWorkflowId = registerOutput<String?>('lastWorkflowId');
-    this.latestApplicationId = registerOutput<String?>('latestApplicationId');
-    this.managementEndpointUri = registerOutput<String?>('managementEndpointUri');
-    this.monitoringConfiguration = registerOutput<String?>('monitoringConfiguration');
-    this.monitoringEndpointUri = registerOutput<String?>('monitoringEndpointUri');
+         'azure-native:storagesync:RegisteredServer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    activeAuthType = registerOutput<String>('activeAuthType');
+    agentVersion = registerOutput<String?>('agentVersion');
+    agentVersionExpirationDate = registerOutput<String>(
+      'agentVersionExpirationDate',
+    );
+    agentVersionStatus = registerOutput<String>('agentVersionStatus');
+    applicationId = registerOutput<String?>('applicationId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterId = registerOutput<String?>('clusterId');
+    clusterName = registerOutput<String?>('clusterName');
+    discoveryEndpointUri = registerOutput<String?>('discoveryEndpointUri');
+    friendlyName = registerOutput<String?>('friendlyName');
+    identity = registerOutput<bool>('identity');
+    lastHeartBeat = registerOutput<String?>('lastHeartBeat');
+    lastOperationName = registerOutput<String?>('lastOperationName');
+    lastWorkflowId = registerOutput<String?>('lastWorkflowId');
+    latestApplicationId = registerOutput<String?>('latestApplicationId');
+    managementEndpointUri = registerOutput<String?>('managementEndpointUri');
+    monitoringConfiguration = registerOutput<String?>(
+      'monitoringConfiguration',
+    );
+    monitoringEndpointUri = registerOutput<String?>('monitoringEndpointUri');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.resourceLocation = registerOutput<String?>('resourceLocation');
-    this.serverCertificate = registerOutput<String?>('serverCertificate');
-    this.serverId = registerOutput<String?>('serverId');
-    this.serverManagementErrorCode = registerOutput<int?>('serverManagementErrorCode');
-    this.serverName = registerOutput<String>('serverName');
-    this.serverOSVersion = registerOutput<String?>('serverOSVersion');
-    this.serverRole = registerOutput<String?>('serverRole');
-    this.serviceLocation = registerOutput<String?>('serviceLocation');
-    this.storageSyncServiceUid = registerOutput<String?>('storageSyncServiceUid');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String?>('provisioningState');
+    resourceLocation = registerOutput<String?>('resourceLocation');
+    serverCertificate = registerOutput<String?>('serverCertificate');
+    serverId = registerOutput<String?>('serverId');
+    serverManagementErrorCode = registerOutput<int?>(
+      'serverManagementErrorCode',
+    );
+    serverName = registerOutput<String>('serverName');
+    serverOSVersion = registerOutput<String?>('serverOSVersion');
+    serverRole = registerOutput<String?>('serverRole');
+    serviceLocation = registerOutput<String?>('serviceLocation');
+    storageSyncServiceUid = registerOutput<String?>('storageSyncServiceUid');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

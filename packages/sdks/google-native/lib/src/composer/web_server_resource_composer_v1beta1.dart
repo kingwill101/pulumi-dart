@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WebServerResourceComposerV1beta1 {
   /// Optional. CPU request and limit for Airflow web server.
   final pulumi.Input<double>? cpu;
+
   /// Optional. Memory (GB) request and limit for Airflow web server.
   final pulumi.Input<double>? memoryGb;
+
   /// Optional. Storage (GB) request and limit for Airflow web server.
   final pulumi.Input<double>? storageGb;
 
@@ -15,11 +17,7 @@ class WebServerResourceComposerV1beta1 {
   /// [cpu] Optional. CPU request and limit for Airflow web server.
   /// [memoryGb] Optional. Memory (GB) request and limit for Airflow web server.
   /// [storageGb] Optional. Storage (GB) request and limit for Airflow web server.
-  WebServerResourceComposerV1beta1({
-    this.cpu,
-    this.memoryGb,
-    this.storageGb,
-  });
+  WebServerResourceComposerV1beta1({this.cpu, this.memoryGb, this.storageGb});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class WebServerResourceComposerV1beta1 {
 
   factory WebServerResourceComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return WebServerResourceComposerV1beta1(
-      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
-      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb']! as double).input(),
-      storageGb: map['storageGb'] == null ? null : (map['storageGb']! as double).input(),
+      cpu: (() {
+        final guardedValue = map['cpu'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      memoryGb: (() {
+        final guardedValue = map['memoryGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      storageGb: (() {
+        final guardedValue = map['storageGb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

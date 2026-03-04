@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SiteMonitorCustomSchedule {
   /// The days in a week.
   final pulumi.Input<List<int>>? days;
+
   /// The end time of the detection. Unit: hours.
   final pulumi.Input<int>? endHour;
+
   /// The start time of the detection. Unit: hours.
   final pulumi.Input<int>? startHour;
+
   /// The time zone of the detection.
   final pulumi.Input<String>? timeZone;
 
@@ -35,11 +38,26 @@ class SiteMonitorCustomSchedule {
 
   factory SiteMonitorCustomSchedule.fromMap(Map<String, dynamic> map) {
     return SiteMonitorCustomSchedule(
-      days: map['days'] == null ? null : ((map['days']! as List).cast<int>()).input(),
-      endHour: map['endHour'] == null ? null : (map['endHour']! as int).input(),
-      startHour: map['startHour'] == null ? null : (map['startHour']! as int).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      days: (() {
+        final guardedValue = map['days'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<int>());
+      })(),
+      endHour: (() {
+        final guardedValue = map['endHour'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      startHour: (() {
+        final guardedValue = map['startHour'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timeZone: (() {
+        final guardedValue = map['timeZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

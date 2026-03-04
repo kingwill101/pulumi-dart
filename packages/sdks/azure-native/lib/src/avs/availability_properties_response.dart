@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AvailabilityPropertiesResponse {
   /// The secondary availability zone for the private cloud
   final pulumi.Input<int>? secondaryZone;
+
   /// The availability strategy for the private cloud
   final pulumi.Input<String>? strategy;
+
   /// The primary availability zone for the private cloud
   final pulumi.Input<int>? zone;
 
@@ -31,10 +33,21 @@ class AvailabilityPropertiesResponse {
 
   factory AvailabilityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AvailabilityPropertiesResponse(
-      secondaryZone: map['secondaryZone'] == null ? null : (map['secondaryZone']! as int).input(),
-      strategy: map['strategy'] == null ? null : (map['strategy']! as String).input(),
-      zone: map['zone'] == null ? null : (map['zone']! as int).input(),
+      secondaryZone: (() {
+        final guardedValue = map['secondaryZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      strategy: (() {
+        final guardedValue = map['strategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zone: (() {
+        final guardedValue = map['zone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

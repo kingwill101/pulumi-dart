@@ -12,20 +12,15 @@ class GetSubscriptionExpirationPolicy {
 
   /// Creates a new [GetSubscriptionExpirationPolicy].
   /// [ttl] Specifies the "time-to-live" duration for an associated resource. The
-  GetSubscriptionExpirationPolicy({
-    required this.ttl,
-  });
+  GetSubscriptionExpirationPolicy({required this.ttl});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ttl': ttl,
-    };
+    return <String, dynamic>{'ttl': ttl};
   }
 
   factory GetSubscriptionExpirationPolicy.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionExpirationPolicy(
-      ttl: (map['ttl'] as String).input(),
+      ttl: pulumi.Input.fromValue(map['ttl'] as String),
     );
   }
 }
-

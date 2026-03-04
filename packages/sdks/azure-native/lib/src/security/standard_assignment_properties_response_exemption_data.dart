@@ -7,6 +7,7 @@ import 'assigned_assessment_item_response.dart';
 class StandardAssignmentPropertiesResponseExemptionData {
   /// Component item with key as applied to this standard assignment over the given scope
   final pulumi.Input<AssignedAssessmentItemResponse>? assignedAssessment;
+
   /// Exemption category of this assignment
   final pulumi.Input<String>? exemptionCategory;
 
@@ -20,16 +21,33 @@ class StandardAssignmentPropertiesResponseExemptionData {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assignedAssessment': ?pulumi.Input.mapOptionalInputValue<AssignedAssessmentItemResponse, Map<String, dynamic>>(assignedAssessment, (value) => value.toMap()),
+      'assignedAssessment':
+          ?pulumi.Input.mapOptionalInputValue<
+            AssignedAssessmentItemResponse,
+            Map<String, dynamic>
+          >(assignedAssessment, (value) => value.toMap()),
       'exemptionCategory': ?exemptionCategory,
     };
   }
 
-  factory StandardAssignmentPropertiesResponseExemptionData.fromMap(Map<String, dynamic> map) {
+  factory StandardAssignmentPropertiesResponseExemptionData.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StandardAssignmentPropertiesResponseExemptionData(
-      assignedAssessment: map['assignedAssessment'] == null ? null : (AssignedAssessmentItemResponse.fromMap((map['assignedAssessment']! as Map).cast<String, dynamic>())).input(),
-      exemptionCategory: map['exemptionCategory'] == null ? null : (map['exemptionCategory']! as String).input(),
+      assignedAssessment: (() {
+        final guardedValue = map['assignedAssessment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AssignedAssessmentItemResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      exemptionCategory: (() {
+        final guardedValue = map['exemptionCategory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProbeArgs {
   /// The destination IP address. This must be either IPV4 or IPV6.
   final pulumi.Input<String> destination;
+
   /// The port associated with the destination. This is required only if the protocol is TCP and must be a number between 1 and 65536.
   final pulumi.Input<int>? destinationPort;
+
   /// The name of the monitor.
   final pulumi.Input<String> monitorName;
+
   /// The size of the packets sent between the source and destination. This must be a number between 56 and 8500.
   final pulumi.Input<int>? packetSize;
+
   /// The protocol used for the network traffic between the source and destination. This must be either TCP or ICMP.
   final pulumi.Input<String> protocol;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ARN of the subnet.
   final pulumi.Input<String> sourceArn;
+
   /// Key-value tags for the monitor. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -59,15 +66,32 @@ class ProbeArgs {
 
   factory ProbeArgs.fromMap(Map<String, dynamic> map) {
     return ProbeArgs(
-      destination: (map['destination'] as String).input(),
-      destinationPort: map['destinationPort'] == null ? null : ((map['destinationPort'] as int).input()).input(),
-      monitorName: (map['monitorName'] as String).input(),
-      packetSize: map['packetSize'] == null ? null : ((map['packetSize'] as int).input()).input(),
-      protocol: (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      sourceArn: (map['sourceArn'] as String).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      destination: pulumi.Input.fromValue(map['destination'] as String),
+      destinationPort: (() {
+        final guardedValue = map['destinationPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      monitorName: pulumi.Input.fromValue(map['monitorName'] as String),
+      packetSize: (() {
+        final guardedValue = map['packetSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourceArn: pulumi.Input.fromValue(map['sourceArn'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

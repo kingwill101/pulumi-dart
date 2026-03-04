@@ -6,16 +6,15 @@ enum IdentityKind {
   valueManaged("Managed"),
   valueNone("None");
 
-  const IdentityKind(this.value);
-  final String value;
+  const IdentityKind(this.wireValue);
+  final String wireValue;
 
   static IdentityKind fromValue(String value) {
     for (final item in IdentityKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IdentityKind value: $value');
   }
 }
-

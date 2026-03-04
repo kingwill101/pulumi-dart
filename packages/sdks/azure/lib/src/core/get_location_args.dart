@@ -12,20 +12,15 @@ class GetLocationArgs {
 
   /// Creates a new [GetLocationArgs].
   /// [location] Specifies the supported Azure location where the resource exists.
-  GetLocationArgs({
-    required this.location,
-  });
+  GetLocationArgs({required this.location});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'location': location,
-    };
+    return <String, dynamic>{'location': location};
   }
 
   factory GetLocationArgs.fromMap(Map<String, dynamic> map) {
     return GetLocationArgs(
-      location: (map['location'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
     );
   }
 }
-

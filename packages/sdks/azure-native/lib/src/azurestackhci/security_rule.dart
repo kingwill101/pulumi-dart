@@ -233,32 +233,46 @@ import 'system_data_response.dart';
 class SecurityRule extends pulumi.CustomResource {
   /// The network traffic is allowed or denied.
   late final pulumi.Output<String> access;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A description for this rule. Restricted to 140 chars.
   late final pulumi.Output<String?> description;
+
   /// The destination address prefixes. CIDR or destination IP ranges.
   late final pulumi.Output<List<String>?> destinationAddressPrefixes;
+
   /// The destination port ranges. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
   late final pulumi.Output<List<String>?> destinationPortRanges;
+
   /// The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
   late final pulumi.Output<String> direction;
+
   /// The extendedLocation of the resource.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
   late final pulumi.Output<int> priority;
+
   /// Network protocol this rule applies to.
   late final pulumi.Output<String> protocol;
+
   /// Provisioning state of the SR
   late final pulumi.Output<String> provisioningState;
+
   /// The CIDR or source IP ranges.
   late final pulumi.Output<List<String>?> sourceAddressPrefixes;
+
   /// The source port ranges. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
   late final pulumi.Output<List<String>?> sourcePortRanges;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -271,25 +285,33 @@ class SecurityRule extends pulumi.CustomResource {
     SecurityRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azurestackhci:SecurityRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.access = registerOutput<String>('access');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.destinationAddressPrefixes = registerOutput<List<String>?>('destinationAddressPrefixes');
-    this.destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges');
-    this.direction = registerOutput<String>('direction');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
+         'azure-native:azurestackhci:SecurityRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    access = registerOutput<String>('access');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    destinationAddressPrefixes = registerOutput<List<String>?>(
+      'destinationAddressPrefixes',
+    );
+    destinationPortRanges = registerOutput<List<String>?>(
+      'destinationPortRanges',
+    );
+    direction = registerOutput<String>('direction');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
     this.name = registerOutput<String>('name');
-    this.priority = registerOutput<int>('priority');
-    this.protocol = registerOutput<String>('protocol');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sourceAddressPrefixes = registerOutput<List<String>?>('sourceAddressPrefixes');
-    this.sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    priority = registerOutput<int>('priority');
+    protocol = registerOutput<String>('protocol');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceAddressPrefixes = registerOutput<List<String>?>(
+      'sourceAddressPrefixes',
+    );
+    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

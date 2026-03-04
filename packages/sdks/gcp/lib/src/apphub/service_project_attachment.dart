@@ -432,19 +432,25 @@ import 'service_project_attachment_state.dart';
 class ServiceProjectAttachment extends pulumi.CustomResource {
   /// Output only. Create time.
   late final pulumi.Output<String> createTime;
+
   /// "Identifier. The resource name of a ServiceProjectAttachment. Format:\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\""
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// "Immutable. Service project name in the format: \"projects/abc\"
   /// or \"projects/123\". As input, project name with either project id or number
   /// are accepted. As output, this field will contain project number."
   late final pulumi.Output<String?> serviceProject;
+
   /// Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
   late final pulumi.Output<String> serviceProjectAttachmentId;
+
   /// ServiceProjectAttachment state.
   late final pulumi.Output<String> state;
+
   /// Output only. A globally unique identifier (in UUID4 format) for the `ServiceProjectAttachment`.
   late final pulumi.Output<String> uid;
 
@@ -457,18 +463,20 @@ class ServiceProjectAttachment extends pulumi.CustomResource {
     ServiceProjectAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
+         'gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.serviceProject = registerOutput<String?>('serviceProject');
-    this.serviceProjectAttachmentId = registerOutput<String>('serviceProjectAttachmentId');
-    this.state = registerOutput<String>('state');
-    this.uid = registerOutput<String>('uid');
+    project = registerOutput<String>('project');
+    serviceProject = registerOutput<String?>('serviceProject');
+    serviceProjectAttachmentId = registerOutput<String>(
+      'serviceProjectAttachmentId',
+    );
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
   }
 
   /// Gets an existing [ServiceProjectAttachment] resource's state with the given [name] and [id].
@@ -489,17 +497,19 @@ class ServiceProjectAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
+         'gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.serviceProject = registerOutput<String?>('serviceProject');
-    this.serviceProjectAttachmentId = registerOutput<String>('serviceProjectAttachmentId');
+    project = registerOutput<String>('project');
+    serviceProject = registerOutput<String?>('serviceProject');
+    serviceProjectAttachmentId = registerOutput<String>(
+      'serviceProjectAttachmentId',
+    );
     this.state = registerOutput<String>('state');
-    this.uid = registerOutput<String>('uid');
+    uid = registerOutput<String>('uid');
   }
 }

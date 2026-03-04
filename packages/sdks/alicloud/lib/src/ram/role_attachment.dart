@@ -4,9 +4,9 @@ import 'role_attachment_state.dart';
 
 /// Provides a RAM role attachment resource to bind role for several ECS instances.
 ///
-/// > **NOTE:** Deprecated since v1.250.0.
+/// &gt; **NOTE:** Deprecated since v1.250.0.
 ///
-/// > **DEPRECATED:** This resource has been deprecated from version `1.250.0`. Please use new resource alicloud_ecs_ram_role_attachment.
+/// &gt; **DEPRECATED:** This resource has been deprecated from version `1.250.0`. Please use new resource alicloud_ecs_ram_role_attachment.
 ///
 /// ## Example Usage
 ///
@@ -540,6 +540,7 @@ import 'role_attachment_state.dart';
 class RoleAttachment extends pulumi.CustomResource {
   /// The list of ECS instance's IDs.
   late final pulumi.Output<List<String>> instanceIds;
+
   /// The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
   late final pulumi.Output<String> roleName;
 
@@ -552,13 +553,13 @@ class RoleAttachment extends pulumi.CustomResource {
     RoleAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/roleAttachment:RoleAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceIds = registerOutput<List<String>>('instanceIds');
-    this.roleName = registerOutput<String>('roleName');
+         'alicloud:ram/roleAttachment:RoleAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceIds = registerOutput<List<String>>('instanceIds');
+    roleName = registerOutput<String>('roleName');
   }
 
   /// Gets an existing [RoleAttachment] resource's state with the given [name] and [id].
@@ -579,12 +580,12 @@ class RoleAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ram/roleAttachment:RoleAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.instanceIds = registerOutput<List<String>>('instanceIds');
-    this.roleName = registerOutput<String>('roleName');
+         'alicloud:ram/roleAttachment:RoleAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    instanceIds = registerOutput<List<String>>('instanceIds');
+    roleName = registerOutput<String>('roleName');
   }
 }

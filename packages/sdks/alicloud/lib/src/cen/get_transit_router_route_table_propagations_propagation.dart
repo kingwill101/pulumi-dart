@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTransitRouterRouteTablePropagationsPropagation {
   /// The ID of the network instance connection.
   final pulumi.Input<String> id;
+
   /// The ID of the network instance.
   final pulumi.Input<String> resourceId;
+
   /// The type of the network instance.
   final pulumi.Input<String> resourceType;
+
   /// The status of the route learning correlation. Valid values: `Active`, `Enabling`, `Disabling`.
   final pulumi.Input<String> status;
+
   /// The ID of the network instance connection.
   final pulumi.Input<String> transitRouterAttachmentId;
+
   /// The ID of the route table of the Enterprise Edition transit router.
   final pulumi.Input<String> transitRouterRouteTableId;
 
@@ -43,15 +48,20 @@ class GetTransitRouterRouteTablePropagationsPropagation {
     };
   }
 
-  factory GetTransitRouterRouteTablePropagationsPropagation.fromMap(Map<String, dynamic> map) {
+  factory GetTransitRouterRouteTablePropagationsPropagation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTransitRouterRouteTablePropagationsPropagation(
-      id: (map['id'] as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
-      status: (map['status'] as String).input(),
-      transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
-      transitRouterRouteTableId: (map['transitRouterRouteTableId'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      transitRouterAttachmentId: pulumi.Input.fromValue(
+        map['transitRouterAttachmentId'] as String,
+      ),
+      transitRouterRouteTableId: pulumi.Input.fromValue(
+        map['transitRouterRouteTableId'] as String,
+      ),
     );
   }
 }
-

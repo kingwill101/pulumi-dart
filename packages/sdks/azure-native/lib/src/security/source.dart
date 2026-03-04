@@ -4,16 +4,15 @@ enum Source {
   valueOnPremise("OnPremise"),
   valueOnPremiseSql("OnPremiseSql");
 
-  const Source(this.value);
-  final String value;
+  const Source(this.wireValue);
+  final String wireValue;
 
   static Source fromValue(String value) {
     for (final item in Source.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Source value: $value');
   }
 }
-

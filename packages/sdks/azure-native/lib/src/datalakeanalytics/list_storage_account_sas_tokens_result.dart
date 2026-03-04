@@ -7,6 +7,7 @@ import 'sas_token_information_response.dart';
 class ListStorageAccountSasTokensResult {
   /// The link (url) to the next page of results.
   final String nextLink;
+
   /// The results of the list operation.
   final List<SasTokenInformationResponse> value;
 
@@ -21,15 +22,23 @@ class ListStorageAccountSasTokensResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': nextLink,
-      'value': pulumi.Input.encodeList<SasTokenInformationResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value':
+          pulumi.Input.encodeList<
+            SasTokenInformationResponse,
+            Map<String, dynamic>
+          >(value, (value) => value.toMap()),
     };
   }
 
   factory ListStorageAccountSasTokensResult.fromMap(Map<String, dynamic> map) {
     return ListStorageAccountSasTokensResult(
       nextLink: map['nextLink'] as String,
-      value: pulumi.Input.decodeList<SasTokenInformationResponse>(map['value'], (value) => SasTokenInformationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: pulumi.Input.decodeList<SasTokenInformationResponse>(
+        map['value']!,
+        (value) => SasTokenInformationResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

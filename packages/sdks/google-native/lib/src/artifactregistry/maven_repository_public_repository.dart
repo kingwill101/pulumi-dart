@@ -3,16 +3,17 @@ enum MavenRepositoryPublicRepository {
   publicRepositoryUnspecified("PUBLIC_REPOSITORY_UNSPECIFIED"),
   mavenCentral("MAVEN_CENTRAL");
 
-  const MavenRepositoryPublicRepository(this.value);
-  final String value;
+  const MavenRepositoryPublicRepository(this.wireValue);
+  final String wireValue;
 
   static MavenRepositoryPublicRepository fromValue(String value) {
     for (final item in MavenRepositoryPublicRepository.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MavenRepositoryPublicRepository value: $value');
+    throw ArgumentError(
+      'Unknown MavenRepositoryPublicRepository value: $value',
+    );
   }
 }
-

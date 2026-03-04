@@ -6,9 +6,9 @@ import 'instance_state.dart';
 ///
 /// For information about Time Series Database (TSDB) Instance and how to use it, see [What is Time Series Database (TSDB)](https://www.alibabacloud.com/help/en/doc-detail/55652.htm).
 ///
-/// > **NOTE:** Available since v1.112.0.
+/// &gt; **NOTE:** Available since v1.112.0.
 ///
-/// > **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/en/notice/0313tsdb?_p_lc=1) from version `1.223.1`.
+/// &gt; **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/en/notice/0313tsdb?_p_lc=1) from version `1.223.1`.
 ///
 /// ## Example Usage
 ///
@@ -236,14 +236,19 @@ import 'instance_state.dart';
 class Instance extends pulumi.CustomResource {
   /// The app key.
   late final pulumi.Output<String?> appKey;
+
   /// The disk type of instance. Valid when the engine type is `tsdb_influxdb`. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk, `cloud_essd` refers to ESSD PL1 disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
   late final pulumi.Output<String?> diskCategory;
+
   /// The duration.
   late final pulumi.Output<String?> duration;
+
   /// The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
   late final pulumi.Output<String?> engineType;
+
   /// The alias of the instance.
   late final pulumi.Output<String?> instanceAlias;
+
   /// The specification of the instance.
   /// - Following enumerative value for TSDB for InfluxDB️ standart edition:
   /// - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
@@ -268,14 +273,19 @@ class Instance extends pulumi.CustomResource {
   /// - `tsdb.48x.large` refers to ultimate edition I;
   /// - `tsdb.96x.large` refers to ultimate edition II.
   late final pulumi.Output<String> instanceClass;
+
   /// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
   late final pulumi.Output<String> instanceStorage;
+
   /// The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
   late final pulumi.Output<String> paymentType;
+
   /// Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
   late final pulumi.Output<String> status;
+
   /// The vswitch id.
   late final pulumi.Output<String> vswitchId;
+
   /// The zone ID of the instance.
   late final pulumi.Output<String> zoneId;
 
@@ -288,22 +298,22 @@ class Instance extends pulumi.CustomResource {
     InstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:tsdb/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appKey = registerOutput<String?>('appKey');
-    this.diskCategory = registerOutput<String?>('diskCategory');
-    this.duration = registerOutput<String?>('duration');
-    this.engineType = registerOutput<String?>('engineType');
-    this.instanceAlias = registerOutput<String?>('instanceAlias');
-    this.instanceClass = registerOutput<String>('instanceClass');
-    this.instanceStorage = registerOutput<String>('instanceStorage');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.status = registerOutput<String>('status');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:tsdb/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appKey = registerOutput<String?>('appKey');
+    diskCategory = registerOutput<String?>('diskCategory');
+    duration = registerOutput<String?>('duration');
+    engineType = registerOutput<String?>('engineType');
+    instanceAlias = registerOutput<String?>('instanceAlias');
+    instanceClass = registerOutput<String>('instanceClass');
+    instanceStorage = registerOutput<String>('instanceStorage');
+    paymentType = registerOutput<String>('paymentType');
+    status = registerOutput<String>('status');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -324,21 +334,21 @@ class Instance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:tsdb/instance:Instance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appKey = registerOutput<String?>('appKey');
-    this.diskCategory = registerOutput<String?>('diskCategory');
-    this.duration = registerOutput<String?>('duration');
-    this.engineType = registerOutput<String?>('engineType');
-    this.instanceAlias = registerOutput<String?>('instanceAlias');
-    this.instanceClass = registerOutput<String>('instanceClass');
-    this.instanceStorage = registerOutput<String>('instanceStorage');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.status = registerOutput<String>('status');
-    this.vswitchId = registerOutput<String>('vswitchId');
-    this.zoneId = registerOutput<String>('zoneId');
+         'alicloud:tsdb/instance:Instance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appKey = registerOutput<String?>('appKey');
+    diskCategory = registerOutput<String?>('diskCategory');
+    duration = registerOutput<String?>('duration');
+    engineType = registerOutput<String?>('engineType');
+    instanceAlias = registerOutput<String?>('instanceAlias');
+    instanceClass = registerOutput<String>('instanceClass');
+    instanceStorage = registerOutput<String>('instanceStorage');
+    paymentType = registerOutput<String>('paymentType');
+    status = registerOutput<String>('status');
+    vswitchId = registerOutput<String>('vswitchId');
+    zoneId = registerOutput<String>('zoneId');
   }
 }

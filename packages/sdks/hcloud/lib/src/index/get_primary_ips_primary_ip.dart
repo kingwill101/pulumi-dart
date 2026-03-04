@@ -63,19 +63,24 @@ class GetPrimaryIpsPrimaryIp {
 
   factory GetPrimaryIpsPrimaryIp.fromMap(Map<String, dynamic> map) {
     return GetPrimaryIpsPrimaryIp(
-      assigneeId: (map['assigneeId'] as int).input(),
-      assigneeType: (map['assigneeType'] as String).input(),
-      autoDelete: (map['autoDelete'] as bool).input(),
-      datacenter: (map['datacenter'] as String).input(),
-      deleteProtection: (map['deleteProtection'] as bool).input(),
-      id: (map['id'] as int).input(),
-      ipAddress: (map['ipAddress'] as String).input(),
-      ipNetwork: (map['ipNetwork'] as String).input(),
-      labels: ((map['labels'] as Map).cast<String, String>()).input(),
-      location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: (map['type'] as String).input(),
+      assigneeId: pulumi.Input.fromValue(map['assigneeId'] as int),
+      assigneeType: pulumi.Input.fromValue(map['assigneeType'] as String),
+      autoDelete: pulumi.Input.fromValue(map['autoDelete'] as bool),
+      datacenter: pulumi.Input.fromValue(map['datacenter'] as String),
+      deleteProtection: pulumi.Input.fromValue(map['deleteProtection'] as bool),
+      id: pulumi.Input.fromValue(map['id'] as int),
+      ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
+      ipNetwork: pulumi.Input.fromValue(map['ipNetwork'] as String),
+      labels: pulumi.Input.fromValue(
+        (map['labels'] as Map).cast<String, String>(),
+      ),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

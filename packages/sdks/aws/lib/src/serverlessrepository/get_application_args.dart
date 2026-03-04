@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetApplicationArgs {
   /// ARN of the application.
   final pulumi.Input<String> applicationId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Requested version of the application. By default, retrieves the latest version.
   final pulumi.Input<String>? semanticVersion;
 
@@ -34,10 +36,17 @@ class GetApplicationArgs {
 
   factory GetApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationArgs(
-      applicationId: (map['applicationId'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      semanticVersion: map['semanticVersion'] == null ? null : ((map['semanticVersion'] as String).input()).input(),
+      applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      semanticVersion: (() {
+        final guardedValue = map['semanticVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

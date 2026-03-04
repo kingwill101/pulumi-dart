@@ -1,5 +1,3 @@
-library module_cloudfunctions;
-
 export 'cloudfunctions/audit_config.dart';
 export 'cloudfunctions/audit_config_cloudfunctions_v2.dart';
 export 'cloudfunctions/audit_config_cloudfunctions_v2alpha.dart';

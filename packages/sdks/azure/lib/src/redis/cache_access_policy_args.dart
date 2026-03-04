@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CacheAccessPolicyArgs {
   /// The name of the Redis Cache Access Policy. Changing this forces a new Redis Cache Access Policy to be created.
   final pulumi.Input<String>? name;
+
   /// Permissions that are going to be assigned to this Redis Cache Access Policy.
   final pulumi.Input<String> permissions;
+
   /// The ID of the Redis Cache. Changing this forces a new Redis Cache Access Policy to be created.
   final pulumi.Input<String> redisCacheId;
 
@@ -34,10 +36,13 @@ class CacheAccessPolicyArgs {
 
   factory CacheAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return CacheAccessPolicyArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      permissions: (map['permissions'] as String).input(),
-      redisCacheId: (map['redisCacheId'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      permissions: pulumi.Input.fromValue(map['permissions'] as String),
+      redisCacheId: pulumi.Input.fromValue(map['redisCacheId'] as String),
     );
   }
 }
-

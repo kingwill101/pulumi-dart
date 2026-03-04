@@ -1,5 +1,3 @@
-library module_workflowexecutions;
-
 export 'workflowexecutions/error_response.dart';
 export 'workflowexecutions/error_response_workflowexecutions_v1beta.dart';
 export 'workflowexecutions/execution.dart';

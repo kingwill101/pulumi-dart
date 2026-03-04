@@ -7,8 +7,12 @@ import 'managed_cluster_security_profile_defender_security_monitoring_response.d
 class ManagedClusterSecurityProfileDefenderResponse {
   /// Resource ID of the Log Analytics workspace to be associated with Microsoft Defender. When Microsoft Defender is enabled, this field is required and must be a valid workspace resource ID. When Microsoft Defender is disabled, leave the field empty.
   final pulumi.Input<String>? logAnalyticsWorkspaceResourceId;
+
   /// Microsoft Defender threat detection for Cloud settings for the security profile.
-  final pulumi.Input<ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse>? securityMonitoring;
+  final pulumi.Input<
+    ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse
+  >?
+  securityMonitoring;
 
   /// Creates a new [ManagedClusterSecurityProfileDefenderResponse].
   /// [logAnalyticsWorkspaceResourceId] Resource ID of the Log Analytics workspace to be associated with Microsoft Defender. When Microsoft Defender is enabled, this field is required and must be a valid workspace resource ID. When Microsoft Defender is disabled, leave the field empty.
@@ -21,15 +25,32 @@ class ManagedClusterSecurityProfileDefenderResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'logAnalyticsWorkspaceResourceId': ?logAnalyticsWorkspaceResourceId,
-      'securityMonitoring': ?pulumi.Input.mapOptionalInputValue<ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse, Map<String, dynamic>>(securityMonitoring, (value) => value.toMap()),
+      'securityMonitoring':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse,
+            Map<String, dynamic>
+          >(securityMonitoring, (value) => value.toMap()),
     };
   }
 
-  factory ManagedClusterSecurityProfileDefenderResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedClusterSecurityProfileDefenderResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedClusterSecurityProfileDefenderResponse(
-      logAnalyticsWorkspaceResourceId: map['logAnalyticsWorkspaceResourceId'] == null ? null : (map['logAnalyticsWorkspaceResourceId']! as String).input(),
-      securityMonitoring: map['securityMonitoring'] == null ? null : (ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse.fromMap((map['securityMonitoring']! as Map).cast<String, dynamic>())).input(),
+      logAnalyticsWorkspaceResourceId: (() {
+        final guardedValue = map['logAnalyticsWorkspaceResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityMonitoring: (() {
+        final guardedValue = map['securityMonitoring'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

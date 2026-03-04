@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyArgs {
   /// The version of the policy. Default to v1.
   final pulumi.Input<String>? defaultVersion;
+
   /// The description of the policy. The description must be 1 to 1,024 characters in length.
   final pulumi.Input<String>? description;
+
   /// The content of the policy. The content must be 1 to 2,048 characters in length.
   final pulumi.Input<String> policyDocument;
+
   /// The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
   final pulumi.Input<String> policyName;
 
@@ -39,11 +42,18 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      defaultVersion: map['defaultVersion'] == null ? null : (map['defaultVersion']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      policyDocument: (map['policyDocument'] as String).input(),
-      policyName: (map['policyName'] as String).input(),
+      defaultVersion: (() {
+        final guardedValue = map['defaultVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyDocument: pulumi.Input.fromValue(map['policyDocument'] as String),
+      policyName: pulumi.Input.fromValue(map['policyName'] as String),
     );
   }
 }
-

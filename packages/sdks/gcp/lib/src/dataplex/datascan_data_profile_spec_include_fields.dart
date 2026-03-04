@@ -10,20 +10,21 @@ class DatascanDataProfileSpecIncludeFields {
 
   /// Creates a new [DatascanDataProfileSpecIncludeFields].
   /// [fieldNames] Expected input is a list of fully qualified names of fields as in the schema.
-  DatascanDataProfileSpecIncludeFields({
-    this.fieldNames,
-  });
+  DatascanDataProfileSpecIncludeFields({this.fieldNames});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fieldNames': ?fieldNames,
-    };
+    return <String, dynamic>{'fieldNames': ?fieldNames};
   }
 
-  factory DatascanDataProfileSpecIncludeFields.fromMap(Map<String, dynamic> map) {
+  factory DatascanDataProfileSpecIncludeFields.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatascanDataProfileSpecIncludeFields(
-      fieldNames: map['fieldNames'] == null ? null : ((map['fieldNames']! as List).cast<String>()).input(),
+      fieldNames: (() {
+        final guardedValue = map['fieldNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

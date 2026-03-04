@@ -4,16 +4,15 @@ enum SnowflakeAuthenticationType {
   valueKeyPair("KeyPair"),
   valueAADServicePrincipal("AADServicePrincipal");
 
-  const SnowflakeAuthenticationType(this.value);
-  final String value;
+  const SnowflakeAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static SnowflakeAuthenticationType fromValue(String value) {
     for (final item in SnowflakeAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SnowflakeAuthenticationType value: $value');
   }
 }
-

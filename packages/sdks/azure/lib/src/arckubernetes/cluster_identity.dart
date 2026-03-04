@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterIdentity {
   /// The Principal ID associated with this Managed Service Identity.
   final pulumi.Input<String>? principalId;
+
   /// The Tenant ID associated with this Managed Service Identity.
   final pulumi.Input<String>? tenantId;
+
   /// Specifies the type of Managed Service Identity assigned to this Arc Kubernetes Cluster. At this time the only possible value is `SystemAssigned`. Changing this forces a new resource to be created.
   final pulumi.Input<String> type;
 
@@ -14,11 +16,7 @@ class ClusterIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity assigned to this Arc Kubernetes Cluster. At this time the only possible value is `SystemAssigned`. Changing this forces a new resource to be created.
-  ClusterIdentity({
-    this.principalId,
-    this.tenantId,
-    required this.type,
-  });
+  ClusterIdentity({this.principalId, this.tenantId, required this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,10 +28,17 @@ class ClusterIdentity {
 
   factory ClusterIdentity.fromMap(Map<String, dynamic> map) {
     return ClusterIdentity(
-      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
-      type: (map['type'] as String).input(),
+      principalId: (() {
+        final guardedValue = map['principalId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

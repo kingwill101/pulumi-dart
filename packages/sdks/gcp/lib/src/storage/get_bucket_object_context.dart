@@ -9,20 +9,35 @@ class GetBucketObjectContext {
 
   /// Creates a new [GetBucketObjectContext].
   /// [customs] A list of custom context key-value pairs.
-  GetBucketObjectContext({
-    required this.customs,
-  });
+  GetBucketObjectContext({required this.customs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customs': pulumi.Input.mapInputValue<List<GetBucketObjectContextCustom>, List<Map<String, dynamic>>>(customs, (value) => pulumi.Input.encodeList<GetBucketObjectContextCustom, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'customs':
+          pulumi.Input.mapInputValue<
+            List<GetBucketObjectContextCustom>,
+            List<Map<String, dynamic>>
+          >(
+            customs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetBucketObjectContextCustom,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetBucketObjectContext.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectContext(
-      customs: (pulumi.Input.decodeList<GetBucketObjectContextCustom>(map['customs'], (value) => GetBucketObjectContextCustom.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetBucketObjectContextCustom>(
+          map['customs']!,
+          (value) => GetBucketObjectContextCustom.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

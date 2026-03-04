@@ -27,16 +27,17 @@ enum KnownSyslogDataSourceFacilityNames {
   valueLocal7("local7"),
   value("*");
 
-  const KnownSyslogDataSourceFacilityNames(this.value);
-  final String value;
+  const KnownSyslogDataSourceFacilityNames(this.wireValue);
+  final String wireValue;
 
   static KnownSyslogDataSourceFacilityNames fromValue(String value) {
     for (final item in KnownSyslogDataSourceFacilityNames.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown KnownSyslogDataSourceFacilityNames value: $value');
+    throw ArgumentError(
+      'Unknown KnownSyslogDataSourceFacilityNames value: $value',
+    );
   }
 }
-

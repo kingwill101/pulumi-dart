@@ -5,15 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserPermissionPermission {
   /// Whether the grant object is a RAM role.
   final pulumi.Input<bool>? isCustom;
+
   /// Whether the grant object is an entity.
   final pulumi.Input<bool>? isRamRole;
+
   /// The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
   /// - `istio-admin`:  The administrator.
   /// - `istio-ops`: The administrator of the service mesh resource.
   /// - `istio-readonly`: The read only permission.
   final pulumi.Input<String>? roleName;
+
   /// The role type. Valid Value: `custom`.
   final pulumi.Input<String>? roleType;
+
   /// The service mesh id.
   final pulumi.Input<String>? serviceMeshId;
 
@@ -43,12 +47,31 @@ class UserPermissionPermission {
 
   factory UserPermissionPermission.fromMap(Map<String, dynamic> map) {
     return UserPermissionPermission(
-      isCustom: map['isCustom'] == null ? null : (map['isCustom']! as bool).input(),
-      isRamRole: map['isRamRole'] == null ? null : (map['isRamRole']! as bool).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
-      roleType: map['roleType'] == null ? null : (map['roleType']! as String).input(),
-      serviceMeshId: map['serviceMeshId'] == null ? null : (map['serviceMeshId']! as String).input(),
+      isCustom: (() {
+        final guardedValue = map['isCustom'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      isRamRole: (() {
+        final guardedValue = map['isRamRole'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      roleName: (() {
+        final guardedValue = map['roleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleType: (() {
+        final guardedValue = map['roleType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceMeshId: (() {
+        final guardedValue = map['serviceMeshId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

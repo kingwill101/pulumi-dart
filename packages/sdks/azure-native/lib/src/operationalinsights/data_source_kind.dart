@@ -15,7 +15,9 @@ enum DataSourceKind {
   valueChangeTrackingCustomPath("ChangeTrackingCustomPath"),
   valueChangeTrackingPath("ChangeTrackingPath"),
   valueChangeTrackingServices("ChangeTrackingServices"),
-  valueChangeTrackingDataTypeConfiguration("ChangeTrackingDataTypeConfiguration"),
+  valueChangeTrackingDataTypeConfiguration(
+    "ChangeTrackingDataTypeConfiguration",
+  ),
   valueChangeTrackingDefaultRegistry("ChangeTrackingDefaultRegistry"),
   valueChangeTrackingRegistry("ChangeTrackingRegistry"),
   valueChangeTrackingLinuxPath("ChangeTrackingLinuxPath"),
@@ -23,10 +25,18 @@ enum DataSourceKind {
   valueChangeTrackingContentLocation("ChangeTrackingContentLocation"),
   valueWindowsTelemetry("WindowsTelemetry"),
   valueOffice365("Office365"),
-  valueSecurityWindowsBaselineConfiguration("SecurityWindowsBaselineConfiguration"),
-  valueSecurityCenterSecurityWindowsBaselineConfiguration("SecurityCenterSecurityWindowsBaselineConfiguration"),
-  valueSecurityEventCollectionConfiguration("SecurityEventCollectionConfiguration"),
-  valueSecurityInsightsSecurityEventCollectionConfiguration("SecurityInsightsSecurityEventCollectionConfiguration"),
+  valueSecurityWindowsBaselineConfiguration(
+    "SecurityWindowsBaselineConfiguration",
+  ),
+  valueSecurityCenterSecurityWindowsBaselineConfiguration(
+    "SecurityCenterSecurityWindowsBaselineConfiguration",
+  ),
+  valueSecurityEventCollectionConfiguration(
+    "SecurityEventCollectionConfiguration",
+  ),
+  valueSecurityInsightsSecurityEventCollectionConfiguration(
+    "SecurityInsightsSecurityEventCollectionConfiguration",
+  ),
   valueImportComputerGroup("ImportComputerGroup"),
   valueNetworkMonitoring("NetworkMonitoring"),
   valueItsm("Itsm"),
@@ -34,16 +44,15 @@ enum DataSourceKind {
   valueApplicationInsights("ApplicationInsights"),
   valueSqlDataClassification("SqlDataClassification");
 
-  const DataSourceKind(this.value);
-  final String value;
+  const DataSourceKind(this.wireValue);
+  final String wireValue;
 
   static DataSourceKind fromValue(String value) {
     for (final item in DataSourceKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DataSourceKind value: $value');
   }
 }
-

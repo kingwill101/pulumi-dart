@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagementConfigurationArgs {
   /// User Management Configuration Name.
   final pulumi.Input<String> managementConfigurationName;
+
   /// The name of the resource group to get. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetManagementConfigurationArgs {
 
   factory GetManagementConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementConfigurationArgs(
-      managementConfigurationName: (map['managementConfigurationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      managementConfigurationName: pulumi.Input.fromValue(
+        map['managementConfigurationName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

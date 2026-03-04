@@ -154,12 +154,16 @@ import 'certificate_properties_response.dart';
 class Certificate extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The entity tag.
   late final pulumi.Output<String> etag;
+
   /// The name of the certificate.
   late final pulumi.Output<String> name;
+
   /// The description of an X509 CA Certificate.
   late final pulumi.Output<CertificatePropertiesResponse> properties;
+
   /// The resource type.
   late final pulumi.Output<String> type;
 
@@ -172,15 +176,15 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:iothub:Certificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
+         'azure-native:iothub:Certificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<CertificatePropertiesResponse>('properties');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<CertificatePropertiesResponse>('properties');
+    type = registerOutput<String>('type');
   }
 }

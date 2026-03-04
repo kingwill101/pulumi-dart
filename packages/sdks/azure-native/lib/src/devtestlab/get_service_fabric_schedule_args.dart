@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServiceFabricScheduleArgs {
   /// Specify the $expand query. Example: 'properties($select=status)'
   final pulumi.Input<String>? expand;
+
   /// labs
   final pulumi.Input<String> labName;
+
   /// The name of the Schedule
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// servicefabrics
   final pulumi.Input<String> serviceFabricName;
+
   /// users
   final pulumi.Input<String> userName;
 
@@ -49,13 +54,20 @@ class GetServiceFabricScheduleArgs {
 
   factory GetServiceFabricScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceFabricScheduleArgs(
-      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
-      labName: (map['labName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceFabricName: (map['serviceFabricName'] as String).input(),
-      userName: (map['userName'] as String).input(),
+      expand: (() {
+        final guardedValue = map['expand'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labName: pulumi.Input.fromValue(map['labName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceFabricName: pulumi.Input.fromValue(
+        map['serviceFabricName'] as String,
+      ),
+      userName: pulumi.Input.fromValue(map['userName'] as String),
     );
   }
 }
-

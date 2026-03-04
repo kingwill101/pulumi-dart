@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RoleAssociationState {
   /// The AWS SSO group ids to be assigned the role given in `role`.
   final pulumi.Input<List<String>>? groupIds;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The grafana role. Valid values can be found [here](https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateInstruction.html#ManagedGrafana-Type-UpdateInstruction-role).
   final pulumi.Input<String>? role;
+
   /// The AWS SSO user ids to be assigned the role given in `role`.
   final pulumi.Input<List<String>>? userIds;
+
   /// The workspace id.
   ///
   /// The following arguments are optional:
@@ -43,12 +47,31 @@ class RoleAssociationState {
 
   factory RoleAssociationState.fromMap(Map<String, dynamic> map) {
     return RoleAssociationState(
-      groupIds: map['groupIds'] == null ? null : (((map['groupIds'] as List).cast<String>()).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      role: map['role'] == null ? null : ((map['role'] as String).input()).input(),
-      userIds: map['userIds'] == null ? null : (((map['userIds'] as List).cast<String>()).input()).input(),
-      workspaceId: map['workspaceId'] == null ? null : ((map['workspaceId'] as String).input()).input(),
+      groupIds: (() {
+        final guardedValue = map['groupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      role: (() {
+        final guardedValue = map['role'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userIds: (() {
+        final guardedValue = map['userIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      workspaceId: (() {
+        final guardedValue = map['workspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

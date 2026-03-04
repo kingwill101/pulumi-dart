@@ -6,18 +6,25 @@ import 'system_data_response.dart';
 class GetLabelByWorkspaceResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Label color.
   final String? color;
+
   /// Label display name.
   final String? displayName;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The name of the resource
   final String name;
+
   /// Resource provisioning state.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -57,14 +64,23 @@ class GetLabelByWorkspaceResult {
   factory GetLabelByWorkspaceResult.fromMap(Map<String, dynamic> map) {
     return GetLabelByWorkspaceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      color: map['color'] == null ? null : map['color']! as String,
-      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      color: (() {
+        final guardedValue = map['color'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum ResourceProviderConnection {
   valueInbound("Inbound"),
   valueOutbound("Outbound");
 
-  const ResourceProviderConnection(this.value);
-  final String value;
+  const ResourceProviderConnection(this.wireValue);
+  final String wireValue;
 
   static ResourceProviderConnection fromValue(String value) {
     for (final item in ResourceProviderConnection.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ResourceProviderConnection value: $value');
   }
 }
-

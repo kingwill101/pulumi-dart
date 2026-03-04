@@ -10,20 +10,20 @@ class GetObjectAccessControlArgs {
   final pulumi.Input<String> bucket;
   final pulumi.Input<String> entity;
   final pulumi.Input<String>? generation;
-  final pulumi.Input<String> object;
+  final pulumi.Input<String> object_;
   final pulumi.Input<String>? userProject;
 
   /// Creates a new [GetObjectAccessControlArgs].
   /// [bucket] Required.
   /// [entity] Required.
   /// [generation] Optional.
-  /// [object] Required.
+  /// [object_] Required.
   /// [userProject] Optional.
   GetObjectAccessControlArgs({
     required this.bucket,
     required this.entity,
     this.generation,
-    required this.object,
+    required this.object_,
     this.userProject,
   });
 
@@ -32,19 +32,26 @@ class GetObjectAccessControlArgs {
       'bucket': bucket,
       'entity': entity,
       'generation': ?generation,
-      'object': object,
+      'object': object_,
       'userProject': ?userProject,
     };
   }
 
   factory GetObjectAccessControlArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectAccessControlArgs(
-      bucket: (map['bucket'] as String).input(),
-      entity: (map['entity'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
-      object: (map['object'] as String).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      entity: pulumi.Input.fromValue(map['entity'] as String),
+      generation: (() {
+        final guardedValue = map['generation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      object_: pulumi.Input.fromValue(map['object'] as String),
+      userProject: (() {
+        final guardedValue = map['userProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

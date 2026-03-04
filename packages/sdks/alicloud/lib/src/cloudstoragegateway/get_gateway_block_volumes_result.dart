@@ -6,6 +6,7 @@ import 'get_gateway_block_volumes_volume.dart';
 /// Result data returned by getGatewayBlockVolumes.
 class GetGatewayBlockVolumesResult {
   final String gatewayId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -44,7 +45,11 @@ class GetGatewayBlockVolumesResult {
       'names': names,
       'outputFile': ?outputFile,
       'status': ?status,
-      'volumes': pulumi.Input.encodeList<GetGatewayBlockVolumesVolume, Map<String, dynamic>>(volumes, (value) => value.toMap()),
+      'volumes':
+          pulumi.Input.encodeList<
+            GetGatewayBlockVolumesVolume,
+            Map<String, dynamic>
+          >(volumes, (value) => value.toMap()),
     };
   }
 
@@ -53,12 +58,28 @@ class GetGatewayBlockVolumesResult {
       gatewayId: map['gatewayId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as int,
-      volumes: pulumi.Input.decodeList<GetGatewayBlockVolumesVolume>(map['volumes'], (value) => GetGatewayBlockVolumesVolume.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      volumes: pulumi.Input.decodeList<GetGatewayBlockVolumesVolume>(
+        map['volumes']!,
+        (value) => GetGatewayBlockVolumesVolume.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -11,18 +11,25 @@ import 'sku.dart';
 class JobAgentArgs {
   /// Resource ID of the database to store job metadata in.
   final pulumi.Input<String> databaseId;
+
   /// The identity of the job agent.
   final pulumi.Input<JobAgentIdentity>? identity;
+
   /// The name of the job agent to be created or updated.
   final pulumi.Input<String>? jobAgentName;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
+
   /// The name and tier of the SKU.
   final pulumi.Input<Sku>? sku;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -49,27 +56,63 @@ class JobAgentArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'databaseId': databaseId,
-      'identity': ?pulumi.Input.mapOptionalInputValue<JobAgentIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobAgentIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'jobAgentName': ?jobAgentName,
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'serverName': serverName,
-      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(
+        sku,
+        (value) => value.toMap(),
+      ),
       'tags': ?tags,
     };
   }
 
   factory JobAgentArgs.fromMap(Map<String, dynamic> map) {
     return JobAgentArgs(
-      databaseId: (map['databaseId'] as String).input(),
-      identity: map['identity'] == null ? null : (JobAgentIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      jobAgentName: map['jobAgentName'] == null ? null : (map['jobAgentName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      databaseId: pulumi.Input.fromValue(map['databaseId'] as String),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          JobAgentIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      jobAgentName: (() {
+        final guardedValue = map['jobAgentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      sku: (() {
+        final guardedValue = map['sku'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Sku.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

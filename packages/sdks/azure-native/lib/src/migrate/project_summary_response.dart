@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectSummaryResponse {
   /// Extended summary.
   final pulumi.Input<Map<String, String>>? extendedSummary;
+
   /// Instance type.
   final pulumi.Input<String> instanceType;
+
   /// Last summary refresh time.
   final pulumi.Input<String>? lastSummaryRefreshedTime;
+
   /// Refresh summary state.
   final pulumi.Input<String>? refreshSummaryState;
 
@@ -36,11 +39,24 @@ class ProjectSummaryResponse {
 
   factory ProjectSummaryResponse.fromMap(Map<String, dynamic> map) {
     return ProjectSummaryResponse(
-      extendedSummary: map['extendedSummary'] == null ? null : ((map['extendedSummary']! as Map).cast<String, String>()).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      lastSummaryRefreshedTime: map['lastSummaryRefreshedTime'] == null ? null : (map['lastSummaryRefreshedTime']! as String).input(),
-      refreshSummaryState: map['refreshSummaryState'] == null ? null : (map['refreshSummaryState']! as String).input(),
+      extendedSummary: (() {
+        final guardedValue = map['extendedSummary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      lastSummaryRefreshedTime: (() {
+        final guardedValue = map['lastSummaryRefreshedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      refreshSummaryState: (() {
+        final guardedValue = map['refreshSummaryState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

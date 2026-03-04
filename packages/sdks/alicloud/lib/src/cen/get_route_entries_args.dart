@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouteEntriesArgs {
   /// The destination CIDR block of the route entry to query.
   final pulumi.Input<String>? cidrBlock;
+
   /// ID of the CEN instance.
   final pulumi.Input<String> instanceId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// ID of the route table of the VPC or VBR.
   final pulumi.Input<String> routeTableId;
 
@@ -39,11 +42,18 @@ class GetRouteEntriesArgs {
 
   factory GetRouteEntriesArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteEntriesArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock']! as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      routeTableId: (map['routeTableId'] as String).input(),
+      cidrBlock: (() {
+        final guardedValue = map['cidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeTableId: pulumi.Input.fromValue(map['routeTableId'] as String),
     );
   }
 }
-

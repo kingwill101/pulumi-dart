@@ -1,32 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getOrderableDbInstance.
 class GetOrderableDbInstanceResult {
   final String availabilityZoneGroup;
+
   /// Availability zones where the instance is available.
   final List<String> availabilityZones;
   final String engine;
   final bool? engineLatestVersion;
   final String engineVersion;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceClass;
   final String licenseModel;
+
   /// Maximum total provisioned IOPS for a DB instance.
   final int maxIopsPerDbInstance;
+
   /// Maximum provisioned IOPS per GiB for a DB instance.
   final double maxIopsPerGib;
+
   /// Maximum storage size for a DB instance.
   final int maxStorageSize;
+
   /// Minimum total provisioned IOPS for a DB instance.
   final int minIopsPerDbInstance;
+
   /// Minimum provisioned IOPS per GiB for a DB instance.
   final double minIopsPerGib;
+
   /// Minimum storage size for a DB instance.
   final int minStorageSize;
+
   /// Whether a DB instance is Multi-AZ capable.
   final bool multiAzCapable;
+
   /// Whether a DB instance supports RDS on Outposts.
   final bool outpostCapable;
   final List<String>? preferredEngineVersions;
@@ -164,7 +173,11 @@ class GetOrderableDbInstanceResult {
       availabilityZoneGroup: map['availabilityZoneGroup'] as String,
       availabilityZones: (map['availabilityZones'] as List).cast<String>(),
       engine: map['engine'] as String,
-      engineLatestVersion: map['engineLatestVersion'] == null ? null : map['engineLatestVersion'] as bool,
+      engineLatestVersion: (() {
+        final guardedValue = map['engineLatestVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       engineVersion: map['engineVersion'] as String,
       id: map['id'] as String,
       instanceClass: map['instanceClass'] as String,
@@ -177,19 +190,31 @@ class GetOrderableDbInstanceResult {
       minStorageSize: map['minStorageSize'] as int,
       multiAzCapable: map['multiAzCapable'] as bool,
       outpostCapable: map['outpostCapable'] as bool,
-      preferredEngineVersions: map['preferredEngineVersions'] == null ? null : (map['preferredEngineVersions'] as List).cast<String>(),
-      preferredInstanceClasses: map['preferredInstanceClasses'] == null ? null : (map['preferredInstanceClasses'] as List).cast<String>(),
+      preferredEngineVersions: (() {
+        final guardedValue = map['preferredEngineVersions'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      preferredInstanceClasses: (() {
+        final guardedValue = map['preferredInstanceClasses'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
       readReplicaCapable: map['readReplicaCapable'] as bool,
       region: map['region'] as String,
       storageType: map['storageType'] as String,
-      supportedEngineModes: (map['supportedEngineModes'] as List).cast<String>(),
-      supportedNetworkTypes: (map['supportedNetworkTypes'] as List).cast<String>(),
+      supportedEngineModes: (map['supportedEngineModes'] as List)
+          .cast<String>(),
+      supportedNetworkTypes: (map['supportedNetworkTypes'] as List)
+          .cast<String>(),
       supportsClusters: map['supportsClusters'] as bool,
       supportsEnhancedMonitoring: map['supportsEnhancedMonitoring'] as bool,
       supportsGlobalDatabases: map['supportsGlobalDatabases'] as bool,
-      supportsIamDatabaseAuthentication: map['supportsIamDatabaseAuthentication'] as bool,
+      supportsIamDatabaseAuthentication:
+          map['supportsIamDatabaseAuthentication'] as bool,
       supportsIops: map['supportsIops'] as bool,
-      supportsKerberosAuthentication: map['supportsKerberosAuthentication'] as bool,
+      supportsKerberosAuthentication:
+          map['supportsKerberosAuthentication'] as bool,
       supportsMultiAz: map['supportsMultiAz'] as bool,
       supportsPerformanceInsights: map['supportsPerformanceInsights'] as bool,
       supportsStorageAutoscaling: map['supportsStorageAutoscaling'] as bool,
@@ -198,4 +223,3 @@ class GetOrderableDbInstanceResult {
     );
   }
 }
-

@@ -15,17 +15,15 @@ class EnvelopeSignatureResponseContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyid': keyid,
-      'sig': sig,
-    };
+    return <String, dynamic>{'keyid': keyid, 'sig': sig};
   }
 
-  factory EnvelopeSignatureResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory EnvelopeSignatureResponseContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnvelopeSignatureResponseContaineranalysisV1beta1(
-      keyid: (map['keyid'] as String).input(),
-      sig: (map['sig'] as String).input(),
+      keyid: pulumi.Input.fromValue(map['keyid'] as String),
+      sig: pulumi.Input.fromValue(map['sig'] as String),
     );
   }
 }
-

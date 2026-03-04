@@ -7,20 +7,17 @@ class BackendServiceUsedByResponseComputeV1 {
 
   /// Creates a new [BackendServiceUsedByResponseComputeV1].
   /// [reference] Required.
-  BackendServiceUsedByResponseComputeV1({
-    required this.reference,
-  });
+  BackendServiceUsedByResponseComputeV1({required this.reference});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'reference': reference,
-    };
+    return <String, dynamic>{'reference': reference};
   }
 
-  factory BackendServiceUsedByResponseComputeV1.fromMap(Map<String, dynamic> map) {
+  factory BackendServiceUsedByResponseComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackendServiceUsedByResponseComputeV1(
-      reference: (map['reference'] as String).input(),
+      reference: pulumi.Input.fromValue(map['reference'] as String),
     );
   }
 }
-

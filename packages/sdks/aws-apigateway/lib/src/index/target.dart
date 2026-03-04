@@ -9,12 +9,15 @@ class Target {
   /// The (id) of the VpcLink used for the integration when connectionType=VPC_LINK and undefined,
   /// otherwise.
   final pulumi.Input<String>? connectionId;
+
   /// The type of the network connection to the integration endpoint. The valid value is `INTERNET`
   /// for connections through the public routable internet or `VPC_LINK` for private connections
   /// between API Gateway and a network load balancer in a VPC. The default value is `INTERNET`.
   final pulumi.Input<IntegrationConnectionType>? connectionType;
+
   /// Specifies the integration's HTTP method type.  Currently, the only supported type is 'ANY'.
   final pulumi.Input<String>? httpMethod;
+
   /// Specifies how the method request body of an unmapped content type will be passed through the
   /// integration request to the back end without transformation.
   ///
@@ -36,6 +39,7 @@ class Target {
   ///
   /// Defaults to `WHEN_NO_MATCH` if unspecified.
   final pulumi.Input<IntegrationPassthroughBehavior>? passthroughBehaviour;
+
   /// Specifies an API method integration type. The valid value is one of the following:
   ///
   /// * `aws`: for integrating the API method request with an AWS service action, including the Lambda
@@ -57,6 +61,7 @@ class Target {
   /// * `mock`: for integrating the API method request with API Gateway as a "loop-back" endpoint
   /// without invoking any backend.
   final pulumi.Input<IntegrationType> type;
+
   /// Specifies Uniform Resource Identifier (URI) of the integration endpoint.
   ///
   /// For HTTP or HTTP_PROXY integrations, the URI must be a fully formed, encoded HTTP(S) URL
@@ -97,23 +102,59 @@ class Target {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'connectionId': ?connectionId,
-      'connectionType': ?pulumi.Input.mapOptionalInputValue<IntegrationConnectionType, String>(connectionType, (value) => value.value),
+      'connectionType':
+          ?pulumi.Input.mapOptionalInputValue<
+            IntegrationConnectionType,
+            String
+          >(connectionType, (value) => value.wireValue),
       'httpMethod': ?httpMethod,
-      'passthroughBehaviour': ?pulumi.Input.mapOptionalInputValue<IntegrationPassthroughBehavior, String>(passthroughBehaviour, (value) => value.value),
-      'type': pulumi.Input.mapInputValue<IntegrationType, String>(type, (value) => value.value),
+      'passthroughBehaviour':
+          ?pulumi.Input.mapOptionalInputValue<
+            IntegrationPassthroughBehavior,
+            String
+          >(passthroughBehaviour, (value) => value.wireValue),
+      'type': pulumi.Input.mapInputValue<IntegrationType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
       'uri': ?uri,
     };
   }
 
   factory Target.fromMap(Map<String, dynamic> map) {
     return Target(
-      connectionId: map['connectionId'] == null ? null : (map['connectionId']! as String).input(),
-      connectionType: map['connectionType'] == null ? null : (IntegrationConnectionType.fromValue(map['connectionType']! as String)).input(),
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod']! as String).input(),
-      passthroughBehaviour: map['passthroughBehaviour'] == null ? null : (IntegrationPassthroughBehavior.fromValue(map['passthroughBehaviour']! as String)).input(),
-      type: (IntegrationType.fromValue(map['type'] as String)).input(),
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      connectionId: (() {
+        final guardedValue = map['connectionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      connectionType: (() {
+        final guardedValue = map['connectionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IntegrationConnectionType.fromValue(guardedValue as String),
+        );
+      })(),
+      httpMethod: (() {
+        final guardedValue = map['httpMethod'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      passthroughBehaviour: (() {
+        final guardedValue = map['passthroughBehaviour'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IntegrationPassthroughBehavior.fromValue(guardedValue as String),
+        );
+      })(),
+      type: pulumi.Input.fromValue(
+        IntegrationType.fromValue(map['type']! as String),
+      ),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

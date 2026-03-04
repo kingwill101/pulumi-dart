@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DenylistCustomAlertRule {
   /// The values to deny. The format of the values depends on the rule type.
   final pulumi.Input<List<String>> denylistValues;
+
   /// Status of the custom alert.
   final pulumi.Input<bool> isEnabled;
+
   /// The type of the custom alert rule.
   /// Expected value is 'DenylistCustomAlertRule'.
   final pulumi.Input<String> ruleType;
@@ -32,10 +34,11 @@ class DenylistCustomAlertRule {
 
   factory DenylistCustomAlertRule.fromMap(Map<String, dynamic> map) {
     return DenylistCustomAlertRule(
-      denylistValues: ((map['denylistValues'] as List).cast<String>()).input(),
-      isEnabled: (map['isEnabled'] as bool).input(),
-      ruleType: (map['ruleType'] as String).input(),
+      denylistValues: pulumi.Input.fromValue(
+        (map['denylistValues'] as List).cast<String>(),
+      ),
+      isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
+      ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
     );
   }
 }
-

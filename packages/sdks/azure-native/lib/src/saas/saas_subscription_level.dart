@@ -204,12 +204,16 @@ import 'saas_subscription_level_args.dart';
 class SaasSubscriptionLevel extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// saas properties
   late final pulumi.Output<SaasResourceResponseProperties> properties;
+
   /// the resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -222,15 +226,15 @@ class SaasSubscriptionLevel extends pulumi.CustomResource {
     SaasSubscriptionLevelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:saas:SaasSubscriptionLevel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
+         'azure-native:saas:SaasSubscriptionLevel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<SaasResourceResponseProperties>('properties');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<SaasResourceResponseProperties>('properties');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

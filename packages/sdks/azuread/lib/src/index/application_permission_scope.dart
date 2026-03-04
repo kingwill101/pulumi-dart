@@ -12,7 +12,7 @@ import 'application_permission_scope_state.dart';
 ///
 /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
 ///
-/// > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+/// &gt; When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
 ///
 /// When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
 ///
@@ -172,7 +172,7 @@ import 'application_permission_scope_state.dart';
 /// ```
 ///
 ///
-/// > **Tip** For managing more permissions scopes, create additional instances of this resource
+/// &gt; **Tip** For managing more permissions scopes, create additional instances of this resource
 ///
 /// *Usage with azuread.Application resource*
 ///
@@ -295,23 +295,30 @@ import 'application_permission_scope_state.dart';
 class ApplicationPermissionScope extends pulumi.CustomResource {
   /// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
   late final pulumi.Output<String> adminConsentDescription;
+
   /// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
   late final pulumi.Output<String> adminConsentDisplayName;
+
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
+
   /// The unique identifier of the permission scope. Must be a valid UUID. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scopeId;
+
   /// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions.
   late final pulumi.Output<String?> type;
+
   /// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
   late final pulumi.Output<String?> userConsentDescription;
+
   /// Display name for the delegated permission that appears in the end user consent experience.
   ///
-  /// > **Tip** Use the `random_uuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
+  /// &gt; **Tip** Use the `random_uuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
   late final pulumi.Output<String?> userConsentDisplayName;
+
   /// The value that is used for the `scp` claim in OAuth access tokens.
   ///
-  /// > **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
+  /// &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
   late final pulumi.Output<String> value;
 
   /// Creates a new [ApplicationPermissionScope].
@@ -323,19 +330,19 @@ class ApplicationPermissionScope extends pulumi.CustomResource {
     ApplicationPermissionScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/applicationPermissionScope:ApplicationPermissionScope',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminConsentDescription = registerOutput<String>('adminConsentDescription');
-    this.adminConsentDisplayName = registerOutput<String>('adminConsentDisplayName');
-    this.applicationId = registerOutput<String>('applicationId');
-    this.scopeId = registerOutput<String>('scopeId');
-    this.type = registerOutput<String?>('type');
-    this.userConsentDescription = registerOutput<String?>('userConsentDescription');
-    this.userConsentDisplayName = registerOutput<String?>('userConsentDisplayName');
-    this.value = registerOutput<String>('value');
+         'azuread:index/applicationPermissionScope:ApplicationPermissionScope',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminConsentDescription = registerOutput<String>('adminConsentDescription');
+    adminConsentDisplayName = registerOutput<String>('adminConsentDisplayName');
+    applicationId = registerOutput<String>('applicationId');
+    scopeId = registerOutput<String>('scopeId');
+    type = registerOutput<String?>('type');
+    userConsentDescription = registerOutput<String?>('userConsentDescription');
+    userConsentDisplayName = registerOutput<String?>('userConsentDisplayName');
+    value = registerOutput<String>('value');
   }
 
   /// Gets an existing [ApplicationPermissionScope] resource's state with the given [name] and [id].
@@ -356,18 +363,18 @@ class ApplicationPermissionScope extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/applicationPermissionScope:ApplicationPermissionScope',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adminConsentDescription = registerOutput<String>('adminConsentDescription');
-    this.adminConsentDisplayName = registerOutput<String>('adminConsentDisplayName');
-    this.applicationId = registerOutput<String>('applicationId');
-    this.scopeId = registerOutput<String>('scopeId');
-    this.type = registerOutput<String?>('type');
-    this.userConsentDescription = registerOutput<String?>('userConsentDescription');
-    this.userConsentDisplayName = registerOutput<String?>('userConsentDisplayName');
-    this.value = registerOutput<String>('value');
+         'azuread:index/applicationPermissionScope:ApplicationPermissionScope',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adminConsentDescription = registerOutput<String>('adminConsentDescription');
+    adminConsentDisplayName = registerOutput<String>('adminConsentDisplayName');
+    applicationId = registerOutput<String>('applicationId');
+    scopeId = registerOutput<String>('scopeId');
+    type = registerOutput<String?>('type');
+    userConsentDescription = registerOutput<String?>('userConsentDescription');
+    userConsentDisplayName = registerOutput<String?>('userConsentDisplayName');
+    value = registerOutput<String>('value');
   }
 }

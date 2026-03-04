@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class URIsResponse {
   /// Chat Bot Uri of the ContactCenter
   final pulumi.Input<String> chatBotUri;
+
   /// Media Uri of the ContactCenter.
   final pulumi.Input<String> mediaUri;
+
   /// Root Uri of the ContactCenter.
   final pulumi.Input<String> rootUri;
+
   /// Virtual Agent Streaming Service Uri of the ContactCenter.
   final pulumi.Input<String> virtualAgentStreamingServiceUri;
 
@@ -36,11 +39,12 @@ class URIsResponse {
 
   factory URIsResponse.fromMap(Map<String, dynamic> map) {
     return URIsResponse(
-      chatBotUri: (map['chatBotUri'] as String).input(),
-      mediaUri: (map['mediaUri'] as String).input(),
-      rootUri: (map['rootUri'] as String).input(),
-      virtualAgentStreamingServiceUri: (map['virtualAgentStreamingServiceUri'] as String).input(),
+      chatBotUri: pulumi.Input.fromValue(map['chatBotUri'] as String),
+      mediaUri: pulumi.Input.fromValue(map['mediaUri'] as String),
+      rootUri: pulumi.Input.fromValue(map['rootUri'] as String),
+      virtualAgentStreamingServiceUri: pulumi.Input.fromValue(
+        map['virtualAgentStreamingServiceUri'] as String,
+      ),
     );
   }
 }
-

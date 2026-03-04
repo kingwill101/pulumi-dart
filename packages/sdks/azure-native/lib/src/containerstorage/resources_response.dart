@@ -10,20 +10,29 @@ class ResourcesResponse {
 
   /// Creates a new [ResourcesResponse].
   /// [requests] Requests for capacity for the pool.
-  ResourcesResponse({
-    this.requests,
-  });
+  ResourcesResponse({this.requests});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requests': ?pulumi.Input.mapOptionalInputValue<RequestsResponse, Map<String, dynamic>>(requests, (value) => value.toMap()),
+      'requests':
+          ?pulumi.Input.mapOptionalInputValue<
+            RequestsResponse,
+            Map<String, dynamic>
+          >(requests, (value) => value.toMap()),
     };
   }
 
   factory ResourcesResponse.fromMap(Map<String, dynamic> map) {
     return ResourcesResponse(
-      requests: map['requests'] == null ? null : (RequestsResponse.fromMap((map['requests']! as Map).cast<String, dynamic>())).input(),
+      requests: (() {
+        final guardedValue = map['requests'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RequestsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

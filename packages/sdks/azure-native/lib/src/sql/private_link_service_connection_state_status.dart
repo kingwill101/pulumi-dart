@@ -5,16 +5,17 @@ enum PrivateLinkServiceConnectionStateStatus {
   valueRejected("Rejected"),
   valueDisconnected("Disconnected");
 
-  const PrivateLinkServiceConnectionStateStatus(this.value);
-  final String value;
+  const PrivateLinkServiceConnectionStateStatus(this.wireValue);
+  final String wireValue;
 
   static PrivateLinkServiceConnectionStateStatus fromValue(String value) {
     for (final item in PrivateLinkServiceConnectionStateStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PrivateLinkServiceConnectionStateStatus value: $value');
+    throw ArgumentError(
+      'Unknown PrivateLinkServiceConnectionStateStatus value: $value',
+    );
   }
 }
-

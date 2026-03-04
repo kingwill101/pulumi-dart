@@ -6,7 +6,7 @@ import 'resource_group_state.dart';
 ///
 /// For information about AnalyticDB for MySQL (ADB) Resource Group and how to use it, see [What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -428,40 +428,58 @@ import 'resource_group_state.dart';
 class ResourceGroup extends pulumi.CustomResource {
   /// The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
   late final pulumi.Output<String> clusterMode;
+
   /// The resource specifications of a single compute cluster. Unit: ACU.
   late final pulumi.Output<String> clusterSizeResource;
+
   /// (Available since v1.261.0) The endpoint of the resource group.
   late final pulumi.Output<String> connectionString;
+
   /// The time when the resource group was created.
   late final pulumi.Output<String> createTime;
+
   /// The ID of the DBCluster.
   late final pulumi.Output<String> dbClusterId;
+
   /// The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
   late final pulumi.Output<String> engine;
+
   /// The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
   late final pulumi.Output<Map<String, String>?> engineParams;
+
   /// The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
   late final pulumi.Output<String> groupName;
+
   /// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
   late final pulumi.Output<String> groupType;
+
   /// The maximum number of compute clusters that are allowed in the resource group.
   late final pulumi.Output<int?> maxClusterCount;
+
   /// The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
   late final pulumi.Output<String> maxComputeResource;
+
   /// The minimum number of compute clusters that are required in the resource group.
   late final pulumi.Output<int?> minClusterCount;
+
   /// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
   late final pulumi.Output<String> minComputeResource;
+
   /// The number of nodes.
   late final pulumi.Output<int> nodeNum;
+
   /// (Available since v1.261.0) The port number of the resource group.
   late final pulumi.Output<String> port;
+
   /// (Available since v1.261.0) The status of the resource group.
   late final pulumi.Output<String> status;
+
   /// The time when the resource group was updated.
   late final pulumi.Output<String> updateTime;
+
   /// The database accounts that are associated with the resource group.
   late final pulumi.Output<String> user;
+
   /// The database accounts with which to associate the resource group.
   late final pulumi.Output<List<String>?> users;
 
@@ -474,30 +492,30 @@ class ResourceGroup extends pulumi.CustomResource {
     ResourceGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:adb/resourceGroup:ResourceGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterMode = registerOutput<String>('clusterMode');
-    this.clusterSizeResource = registerOutput<String>('clusterSizeResource');
-    this.connectionString = registerOutput<String>('connectionString');
-    this.createTime = registerOutput<String>('createTime');
-    this.dbClusterId = registerOutput<String>('dbClusterId');
-    this.engine = registerOutput<String>('engine');
-    this.engineParams = registerOutput<Map<String, String>?>('engineParams');
-    this.groupName = registerOutput<String>('groupName');
-    this.groupType = registerOutput<String>('groupType');
-    this.maxClusterCount = registerOutput<int?>('maxClusterCount');
-    this.maxComputeResource = registerOutput<String>('maxComputeResource');
-    this.minClusterCount = registerOutput<int?>('minClusterCount');
-    this.minComputeResource = registerOutput<String>('minComputeResource');
-    this.nodeNum = registerOutput<int>('nodeNum');
-    this.port = registerOutput<String>('port');
-    this.status = registerOutput<String>('status');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.user = registerOutput<String>('user');
-    this.users = registerOutput<List<String>?>('users');
+         'alicloud:adb/resourceGroup:ResourceGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterMode = registerOutput<String>('clusterMode');
+    clusterSizeResource = registerOutput<String>('clusterSizeResource');
+    connectionString = registerOutput<String>('connectionString');
+    createTime = registerOutput<String>('createTime');
+    dbClusterId = registerOutput<String>('dbClusterId');
+    engine = registerOutput<String>('engine');
+    engineParams = registerOutput<Map<String, String>?>('engineParams');
+    groupName = registerOutput<String>('groupName');
+    groupType = registerOutput<String>('groupType');
+    maxClusterCount = registerOutput<int?>('maxClusterCount');
+    maxComputeResource = registerOutput<String>('maxComputeResource');
+    minClusterCount = registerOutput<int?>('minClusterCount');
+    minComputeResource = registerOutput<String>('minComputeResource');
+    nodeNum = registerOutput<int>('nodeNum');
+    port = registerOutput<String>('port');
+    status = registerOutput<String>('status');
+    updateTime = registerOutput<String>('updateTime');
+    user = registerOutput<String>('user');
+    users = registerOutput<List<String>?>('users');
   }
 
   /// Gets an existing [ResourceGroup] resource's state with the given [name] and [id].
@@ -518,29 +536,29 @@ class ResourceGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:adb/resourceGroup:ResourceGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterMode = registerOutput<String>('clusterMode');
-    this.clusterSizeResource = registerOutput<String>('clusterSizeResource');
-    this.connectionString = registerOutput<String>('connectionString');
-    this.createTime = registerOutput<String>('createTime');
-    this.dbClusterId = registerOutput<String>('dbClusterId');
-    this.engine = registerOutput<String>('engine');
-    this.engineParams = registerOutput<Map<String, String>?>('engineParams');
-    this.groupName = registerOutput<String>('groupName');
-    this.groupType = registerOutput<String>('groupType');
-    this.maxClusterCount = registerOutput<int?>('maxClusterCount');
-    this.maxComputeResource = registerOutput<String>('maxComputeResource');
-    this.minClusterCount = registerOutput<int?>('minClusterCount');
-    this.minComputeResource = registerOutput<String>('minComputeResource');
-    this.nodeNum = registerOutput<int>('nodeNum');
-    this.port = registerOutput<String>('port');
-    this.status = registerOutput<String>('status');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.user = registerOutput<String>('user');
-    this.users = registerOutput<List<String>?>('users');
+         'alicloud:adb/resourceGroup:ResourceGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterMode = registerOutput<String>('clusterMode');
+    clusterSizeResource = registerOutput<String>('clusterSizeResource');
+    connectionString = registerOutput<String>('connectionString');
+    createTime = registerOutput<String>('createTime');
+    dbClusterId = registerOutput<String>('dbClusterId');
+    engine = registerOutput<String>('engine');
+    engineParams = registerOutput<Map<String, String>?>('engineParams');
+    groupName = registerOutput<String>('groupName');
+    groupType = registerOutput<String>('groupType');
+    maxClusterCount = registerOutput<int?>('maxClusterCount');
+    maxComputeResource = registerOutput<String>('maxComputeResource');
+    minClusterCount = registerOutput<int?>('minClusterCount');
+    minComputeResource = registerOutput<String>('minComputeResource');
+    nodeNum = registerOutput<int>('nodeNum');
+    port = registerOutput<String>('port');
+    status = registerOutput<String>('status');
+    updateTime = registerOutput<String>('updateTime');
+    user = registerOutput<String>('user');
+    users = registerOutput<List<String>?>('users');
   }
 }

@@ -8,20 +8,15 @@ class TxtRecordRecord {
 
   /// Creates a new [TxtRecordRecord].
   /// [value] The value of the record. Max length: 4096 characters
-  TxtRecordRecord({
-    required this.value,
-  });
+  TxtRecordRecord({required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
   factory TxtRecordRecord.fromMap(Map<String, dynamic> map) {
     return TxtRecordRecord(
-      value: (map['value'] as String).input(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

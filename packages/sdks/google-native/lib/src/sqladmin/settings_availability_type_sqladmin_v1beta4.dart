@@ -4,16 +4,17 @@ enum SettingsAvailabilityTypeSqladminV1beta4 {
   zonal("ZONAL"),
   regional("REGIONAL");
 
-  const SettingsAvailabilityTypeSqladminV1beta4(this.value);
-  final String value;
+  const SettingsAvailabilityTypeSqladminV1beta4(this.wireValue);
+  final String wireValue;
 
   static SettingsAvailabilityTypeSqladminV1beta4 fromValue(String value) {
     for (final item in SettingsAvailabilityTypeSqladminV1beta4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SettingsAvailabilityTypeSqladminV1beta4 value: $value');
+    throw ArgumentError(
+      'Unknown SettingsAvailabilityTypeSqladminV1beta4 value: $value',
+    );
   }
 }
-

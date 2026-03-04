@@ -229,33 +229,50 @@ class LinkedServiceAzureBlobStorage extends pulumi.CustomResource {
   ///
   /// The following supported arguments are specific to Azure Blob Storage Linked Service:
   late final pulumi.Output<Map<String, String>?> additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Linked Service.
   late final pulumi.Output<List<String>?> annotations;
+
   /// The connection string. Conflicts with `connection_string_insecure`, `sas_uri` and `service_endpoint`.
   late final pulumi.Output<String?> connectionString;
+
   /// The connection string sent insecurely. Conflicts with `connection_string`, `sas_uri` and `service_endpoint`.
   ///
-  /// > **Note:** `connection_string` uses the Azure [SecureString](https://learn.microsoft.com/en-us/dotnet/api/microsoft.azure.management.datafactory.models.securestring) to encrypt the contents within the REST payload sent to Azure whilst the `connection_string_insecure` is sent as a regular string. Both properties are still sent using SSL/HTTPS. At this time the portal will not decrypt Secure Strings so the `connection_string` property in the portal will show as `******` whilst `connection_string_insecure` will be viewable in the portal.
+  /// &gt; **Note:** `connection_string` uses the Azure [SecureString](https://learn.microsoft.com/en-us/dotnet/api/microsoft.azure.management.datafactory.models.securestring) to encrypt the contents within the REST payload sent to Azure whilst the `connection_string_insecure` is sent as a regular string. Both properties are still sent using SSL/HTTPS. At this time the portal will not decrypt Secure Strings so the `connection_string` property in the portal will show as `******` whilst `connection_string_insecure` will be viewable in the portal.
   late final pulumi.Output<String?> connectionStringInsecure;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Linked Service.
   late final pulumi.Output<String?> description;
+
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   late final pulumi.Output<String?> integrationRuntimeName;
-  late final pulumi.Output<LinkedServiceAzureBlobStorageKeyVaultSasToken> keyVaultSasToken;
+  late final pulumi.Output<LinkedServiceAzureBlobStorageKeyVaultSasToken>
+  keyVaultSasToken;
+
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// A map of parameters to associate with the Data Factory Linked Service.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// A `sas_token_linked_key_vault_key` block as defined below. Use this argument to store SAS Token in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service. A `sas_uri` is required.
-  late final pulumi.Output<LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey> sasTokenLinkedKeyVaultKey;
+  late final pulumi.Output<
+    LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey
+  >
+  sasTokenLinkedKeyVaultKey;
+
   /// The SAS URI. Conflicts with `connection_string_insecure`, `connection_string` and `service_endpoint`.
   late final pulumi.Output<String?> sasUri;
   late final pulumi.Output<String?> serviceEndpoint;
   late final pulumi.Output<String?> servicePrincipalId;
   late final pulumi.Output<String?> servicePrincipalKey;
-  late final pulumi.Output<LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey?> servicePrincipalLinkedKeyVaultKey;
+  late final pulumi.Output<
+    LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey?
+  >
+  servicePrincipalLinkedKeyVaultKey;
   late final pulumi.Output<String?> storageKind;
   late final pulumi.Output<String?> tenantId;
   late final pulumi.Output<bool?> useManagedIdentity;
@@ -269,30 +286,43 @@ class LinkedServiceAzureBlobStorage extends pulumi.CustomResource {
     LinkedServiceAzureBlobStorageArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/linkedServiceAzureBlobStorage:LinkedServiceAzureBlobStorage',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.connectionString = registerOutput<String?>('connectionString');
-    this.connectionStringInsecure = registerOutput<String?>('connectionStringInsecure');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
-    this.keyVaultSasToken = registerOutput<LinkedServiceAzureBlobStorageKeyVaultSasToken>('keyVaultSasToken');
+         'azure:datafactory/linkedServiceAzureBlobStorage:LinkedServiceAzureBlobStorage',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    connectionString = registerOutput<String?>('connectionString');
+    connectionStringInsecure = registerOutput<String?>(
+      'connectionStringInsecure',
+    );
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    keyVaultSasToken =
+        registerOutput<LinkedServiceAzureBlobStorageKeyVaultSasToken>(
+          'keyVaultSasToken',
+        );
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.sasTokenLinkedKeyVaultKey = registerOutput<LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey>('sasTokenLinkedKeyVaultKey');
-    this.sasUri = registerOutput<String?>('sasUri');
-    this.serviceEndpoint = registerOutput<String?>('serviceEndpoint');
-    this.servicePrincipalId = registerOutput<String?>('servicePrincipalId');
-    this.servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
-    this.servicePrincipalLinkedKeyVaultKey = registerOutput<LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey?>('servicePrincipalLinkedKeyVaultKey');
-    this.storageKind = registerOutput<String?>('storageKind');
-    this.tenantId = registerOutput<String?>('tenantId');
-    this.useManagedIdentity = registerOutput<bool?>('useManagedIdentity');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    sasTokenLinkedKeyVaultKey =
+        registerOutput<LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey>(
+          'sasTokenLinkedKeyVaultKey',
+        );
+    sasUri = registerOutput<String?>('sasUri');
+    serviceEndpoint = registerOutput<String?>('serviceEndpoint');
+    servicePrincipalId = registerOutput<String?>('servicePrincipalId');
+    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
+    servicePrincipalLinkedKeyVaultKey =
+        registerOutput<
+          LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey?
+        >('servicePrincipalLinkedKeyVaultKey');
+    storageKind = registerOutput<String?>('storageKind');
+    tenantId = registerOutput<String?>('tenantId');
+    useManagedIdentity = registerOutput<bool?>('useManagedIdentity');
   }
 
   /// Gets an existing [LinkedServiceAzureBlobStorage] resource's state with the given [name] and [id].
@@ -313,29 +343,42 @@ class LinkedServiceAzureBlobStorage extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/linkedServiceAzureBlobStorage:LinkedServiceAzureBlobStorage',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.connectionString = registerOutput<String?>('connectionString');
-    this.connectionStringInsecure = registerOutput<String?>('connectionStringInsecure');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
-    this.keyVaultSasToken = registerOutput<LinkedServiceAzureBlobStorageKeyVaultSasToken>('keyVaultSasToken');
+         'azure:datafactory/linkedServiceAzureBlobStorage:LinkedServiceAzureBlobStorage',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    connectionString = registerOutput<String?>('connectionString');
+    connectionStringInsecure = registerOutput<String?>(
+      'connectionStringInsecure',
+    );
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    keyVaultSasToken =
+        registerOutput<LinkedServiceAzureBlobStorageKeyVaultSasToken>(
+          'keyVaultSasToken',
+        );
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.sasTokenLinkedKeyVaultKey = registerOutput<LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey>('sasTokenLinkedKeyVaultKey');
-    this.sasUri = registerOutput<String?>('sasUri');
-    this.serviceEndpoint = registerOutput<String?>('serviceEndpoint');
-    this.servicePrincipalId = registerOutput<String?>('servicePrincipalId');
-    this.servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
-    this.servicePrincipalLinkedKeyVaultKey = registerOutput<LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey?>('servicePrincipalLinkedKeyVaultKey');
-    this.storageKind = registerOutput<String?>('storageKind');
-    this.tenantId = registerOutput<String?>('tenantId');
-    this.useManagedIdentity = registerOutput<bool?>('useManagedIdentity');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    sasTokenLinkedKeyVaultKey =
+        registerOutput<LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey>(
+          'sasTokenLinkedKeyVaultKey',
+        );
+    sasUri = registerOutput<String?>('sasUri');
+    serviceEndpoint = registerOutput<String?>('serviceEndpoint');
+    servicePrincipalId = registerOutput<String?>('servicePrincipalId');
+    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
+    servicePrincipalLinkedKeyVaultKey =
+        registerOutput<
+          LinkedServiceAzureBlobStorageServicePrincipalLinkedKeyVaultKey?
+        >('servicePrincipalLinkedKeyVaultKey');
+    storageKind = registerOutput<String?>('storageKind');
+    tenantId = registerOutput<String?>('tenantId');
+    useManagedIdentity = registerOutput<bool?>('useManagedIdentity');
   }
 }

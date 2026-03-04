@@ -8,7 +8,7 @@ import 'exchange_state.dart';
 ///
 /// For information about RabbitMQ (AMQP) Exchange and how to use it, see [What is Exchange](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createexchange).
 ///
-/// > **NOTE:** Available since v1.128.0.
+/// &gt; **NOTE:** Available since v1.128.0.
 ///
 /// ## Example Usage
 ///
@@ -307,15 +307,19 @@ import 'exchange_state.dart';
 class Exchange extends pulumi.CustomResource {
   /// The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
   late final pulumi.Output<String?> alternateExchange;
+
   /// Specifies whether to automatically delete the exchange. Valid values:
   late final pulumi.Output<bool> autoDeleteState;
+
   /// CreateTime
   late final pulumi.Output<int> createTime;
+
   /// The name of the exchange that you want to create. The exchange name must meet the following conventions:
   ///
   /// - The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
   /// - After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
   late final pulumi.Output<String> exchangeName;
+
   /// The Exchange type. Value:
   /// - `DIRECT`: This type of Routing rule routes messages to a Queue whose Binding Key matches the Routing Key.
   /// - `TOPIC`: This type is similar to the DIRECT type. It uses Routing Key pattern matching and string comparison to route messages to the bound Queue.
@@ -324,12 +328,16 @@ class Exchange extends pulumi.CustomResource {
   /// - `X_delayed_message`: By declaring this type of Exchange, you can customize the Header attribute x-delay of the message to specify the delivery delay time period, in milliseconds. Messages will be delivered to the corresponding Queue after the time period defined in the x-delay according to the routing rules. The routing rule depends on the Exchange route type specified in the x-delayed-type.
   /// - `X_CONSISTENT_HASH`: The x-consistent-hash Exchange allows you to Hash the Routing Key or Header value and use the consistent hashing algorithm to route messages to different queues.
   late final pulumi.Output<String> exchangeType;
+
   /// The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
   late final pulumi.Output<String> instanceId;
+
   /// Specifies whether the exchange is an internal exchange. Valid values:
   late final pulumi.Output<bool> internal;
+
   /// The name of the vhost to which the exchange that you want to create belongs.
   late final pulumi.Output<String> virtualHostName;
+
   /// RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
   late final pulumi.Output<String?> xDelayedType;
 
@@ -342,20 +350,20 @@ class Exchange extends pulumi.CustomResource {
     ExchangeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:amqp/exchange:Exchange',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alternateExchange = registerOutput<String?>('alternateExchange');
-    this.autoDeleteState = registerOutput<bool>('autoDeleteState');
-    this.createTime = registerOutput<int>('createTime');
-    this.exchangeName = registerOutput<String>('exchangeName');
-    this.exchangeType = registerOutput<String>('exchangeType');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.internal = registerOutput<bool>('internal');
-    this.virtualHostName = registerOutput<String>('virtualHostName');
-    this.xDelayedType = registerOutput<String?>('xDelayedType');
+         'alicloud:amqp/exchange:Exchange',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alternateExchange = registerOutput<String?>('alternateExchange');
+    autoDeleteState = registerOutput<bool>('autoDeleteState');
+    createTime = registerOutput<int>('createTime');
+    exchangeName = registerOutput<String>('exchangeName');
+    exchangeType = registerOutput<String>('exchangeType');
+    instanceId = registerOutput<String>('instanceId');
+    internal = registerOutput<bool>('internal');
+    virtualHostName = registerOutput<String>('virtualHostName');
+    xDelayedType = registerOutput<String?>('xDelayedType');
   }
 
   /// Gets an existing [Exchange] resource's state with the given [name] and [id].
@@ -376,19 +384,19 @@ class Exchange extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:amqp/exchange:Exchange',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alternateExchange = registerOutput<String?>('alternateExchange');
-    this.autoDeleteState = registerOutput<bool>('autoDeleteState');
-    this.createTime = registerOutput<int>('createTime');
-    this.exchangeName = registerOutput<String>('exchangeName');
-    this.exchangeType = registerOutput<String>('exchangeType');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.internal = registerOutput<bool>('internal');
-    this.virtualHostName = registerOutput<String>('virtualHostName');
-    this.xDelayedType = registerOutput<String?>('xDelayedType');
+         'alicloud:amqp/exchange:Exchange',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alternateExchange = registerOutput<String?>('alternateExchange');
+    autoDeleteState = registerOutput<bool>('autoDeleteState');
+    createTime = registerOutput<int>('createTime');
+    exchangeName = registerOutput<String>('exchangeName');
+    exchangeType = registerOutput<String>('exchangeType');
+    instanceId = registerOutput<String>('instanceId');
+    internal = registerOutput<bool>('internal');
+    virtualHostName = registerOutput<String>('virtualHostName');
+    xDelayedType = registerOutput<String?>('xDelayedType');
   }
 }

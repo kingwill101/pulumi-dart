@@ -8,16 +8,15 @@ enum DiskSkuName {
   standardSSDZRS("StandardSSD_ZRS"),
   premiumV2LRS("PremiumV2_LRS");
 
-  const DiskSkuName(this.value);
-  final String value;
+  const DiskSkuName(this.wireValue);
+  final String wireValue;
 
   static DiskSkuName fromValue(String value) {
     for (final item in DiskSkuName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DiskSkuName value: $value');
   }
 }
-

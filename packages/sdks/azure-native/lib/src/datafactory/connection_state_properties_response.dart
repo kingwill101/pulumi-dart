@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionStatePropertiesResponse {
   /// The actions required on the managed private endpoint
   final pulumi.Input<String> actionsRequired;
+
   /// The managed private endpoint description
   final pulumi.Input<String> description;
+
   /// The approval status
   final pulumi.Input<String> status;
 
@@ -31,10 +33,9 @@ class ConnectionStatePropertiesResponse {
 
   factory ConnectionStatePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionStatePropertiesResponse(
-      actionsRequired: (map['actionsRequired'] as String).input(),
-      description: (map['description'] as String).input(),
-      status: (map['status'] as String).input(),
+      actionsRequired: pulumi.Input.fromValue(map['actionsRequired'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

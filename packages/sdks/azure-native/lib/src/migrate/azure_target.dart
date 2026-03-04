@@ -15,16 +15,15 @@ enum AzureTarget {
   azureAppServiceContainer("AzureAppServiceContainer"),
   avs("Avs");
 
-  const AzureTarget(this.value);
-  final String value;
+  const AzureTarget(this.wireValue);
+  final String wireValue;
 
   static AzureTarget fromValue(String value) {
     for (final item in AzureTarget.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureTarget value: $value');
   }
 }
-

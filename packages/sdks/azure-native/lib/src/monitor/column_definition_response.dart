@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ColumnDefinitionResponse {
   /// The name of the column.
   final pulumi.Input<String>? name;
+
   /// The type of the column data.
   final pulumi.Input<String>? type;
 
   /// Creates a new [ColumnDefinitionResponse].
   /// [name] The name of the column.
   /// [type] The type of the column data.
-  ColumnDefinitionResponse({
-    this.name,
-    this.type,
-  });
+  ColumnDefinitionResponse({this.name, this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'type': ?type,
-    };
+    return <String, dynamic>{'name': ?name, 'type': ?type};
   }
 
   factory ColumnDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ColumnDefinitionResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

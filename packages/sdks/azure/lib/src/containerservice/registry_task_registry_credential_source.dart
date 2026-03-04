@@ -8,20 +8,17 @@ class RegistryTaskRegistryCredentialSource {
 
   /// Creates a new [RegistryTaskRegistryCredentialSource].
   /// [loginMode] The login mode for the source registry. Possible values are `None` and `Default`.
-  RegistryTaskRegistryCredentialSource({
-    required this.loginMode,
-  });
+  RegistryTaskRegistryCredentialSource({required this.loginMode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'loginMode': loginMode,
-    };
+    return <String, dynamic>{'loginMode': loginMode};
   }
 
-  factory RegistryTaskRegistryCredentialSource.fromMap(Map<String, dynamic> map) {
+  factory RegistryTaskRegistryCredentialSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegistryTaskRegistryCredentialSource(
-      loginMode: (map['loginMode'] as String).input(),
+      loginMode: pulumi.Input.fromValue(map['loginMode'] as String),
     );
   }
 }
-

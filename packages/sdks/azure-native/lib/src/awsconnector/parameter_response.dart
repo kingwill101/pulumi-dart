@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParameterResponse {
   /// The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation uses the default value that is specified in your template.
   final pulumi.Input<String>? parameterKey;
+
   /// The name of the parameter.
   final pulumi.Input<String>? parameterName;
+
   /// The value of the parameter. If `ParameterName` is `wlm_json_configuration`, then the maximum size of `ParameterValue` is 8000 characters.
   final pulumi.Input<String>? parameterValue;
 
@@ -31,10 +33,21 @@ class ParameterResponse {
 
   factory ParameterResponse.fromMap(Map<String, dynamic> map) {
     return ParameterResponse(
-      parameterKey: map['parameterKey'] == null ? null : (map['parameterKey']! as String).input(),
-      parameterName: map['parameterName'] == null ? null : (map['parameterName']! as String).input(),
-      parameterValue: map['parameterValue'] == null ? null : (map['parameterValue']! as String).input(),
+      parameterKey: (() {
+        final guardedValue = map['parameterKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterName: (() {
+        final guardedValue = map['parameterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterValue: (() {
+        final guardedValue = map['parameterValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,45 +9,65 @@ import 'vmware_to_az_stack_hcinic_input.dart';
 class VMwareToAzStackHCIProtectedItemModelCustomProperties {
   /// Gets or sets the location of Azure Arc HCI custom location resource.
   final pulumi.Input<String> customLocationRegion;
+
   /// Gets or sets the list of disks to replicate.
   final pulumi.Input<List<VMwareToAzStackHCIDiskInput>> disksToInclude;
+
   /// Protected item dynamic memory config.
   final pulumi.Input<ProtectedItemDynamicMemoryConfig>? dynamicMemoryConfig;
+
   /// Gets or sets the ARM Id of the discovered machine.
   final pulumi.Input<String> fabricDiscoveryMachineId;
+
   /// Gets or sets the hypervisor generation of the virtual machine possible values are 1,2.
   final pulumi.Input<String> hyperVGeneration;
+
   /// Gets or sets the instance type.
   /// Expected value is 'VMwareToAzStackHCI'.
   final pulumi.Input<String> instanceType;
+
   /// Gets or sets a value indicating whether memory is dynamical.
   final pulumi.Input<bool>? isDynamicRam;
+
   /// Gets or sets the list of VM NIC to replicate.
   final pulumi.Input<List<VMwareToAzStackHCINicInput>> nicsToInclude;
+
   /// Gets or sets a value indicating whether auto resync is to be done.
   final pulumi.Input<bool>? performAutoResync;
+
   /// Gets or sets the run as account Id.
   final pulumi.Input<String> runAsAccountId;
+
   /// Gets or sets the source DRA name.
   final pulumi.Input<String> sourceDraName;
+
   /// Gets or sets the target storage container ARM Id.
   final pulumi.Input<String> storageContainerId;
+
   /// Gets or sets the Target Arc Cluster Custom Location ARM Id.
   final pulumi.Input<String> targetArcClusterCustomLocationId;
+
   /// Gets or sets the target CPU cores.
   final pulumi.Input<int>? targetCpuCores;
+
   /// Gets or sets the target DRA name.
   final pulumi.Input<String> targetDraName;
+
   /// Gets or sets the Target HCI Cluster ARM Id.
   final pulumi.Input<String> targetHciClusterId;
+
   /// Gets or sets the target memory in mega-bytes.
   final pulumi.Input<int>? targetMemoryInMegaBytes;
+
   /// Gets or sets the target network Id within AzStackHCI Cluster.
   final pulumi.Input<String>? targetNetworkId;
+
   /// Gets or sets the target resource group ARM Id.
   final pulumi.Input<String> targetResourceGroupId;
+
   /// Gets or sets the target VM display name.
   final pulumi.Input<String>? targetVmName;
+
   /// Gets or sets the target test network Id within AzStackHCI Cluster.
   final pulumi.Input<String>? testNetworkId;
 
@@ -100,13 +120,39 @@ class VMwareToAzStackHCIProtectedItemModelCustomProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customLocationRegion': customLocationRegion,
-      'disksToInclude': pulumi.Input.mapInputValue<List<VMwareToAzStackHCIDiskInput>, List<Map<String, dynamic>>>(disksToInclude, (value) => pulumi.Input.encodeList<VMwareToAzStackHCIDiskInput, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'dynamicMemoryConfig': ?pulumi.Input.mapOptionalInputValue<ProtectedItemDynamicMemoryConfig, Map<String, dynamic>>(dynamicMemoryConfig, (value) => value.toMap()),
+      'disksToInclude':
+          pulumi.Input.mapInputValue<
+            List<VMwareToAzStackHCIDiskInput>,
+            List<Map<String, dynamic>>
+          >(
+            disksToInclude,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VMwareToAzStackHCIDiskInput,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'dynamicMemoryConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ProtectedItemDynamicMemoryConfig,
+            Map<String, dynamic>
+          >(dynamicMemoryConfig, (value) => value.toMap()),
       'fabricDiscoveryMachineId': fabricDiscoveryMachineId,
       'hyperVGeneration': hyperVGeneration,
       'instanceType': instanceType,
       'isDynamicRam': ?isDynamicRam,
-      'nicsToInclude': pulumi.Input.mapInputValue<List<VMwareToAzStackHCINicInput>, List<Map<String, dynamic>>>(nicsToInclude, (value) => pulumi.Input.encodeList<VMwareToAzStackHCINicInput, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'nicsToInclude':
+          pulumi.Input.mapInputValue<
+            List<VMwareToAzStackHCINicInput>,
+            List<Map<String, dynamic>>
+          >(
+            nicsToInclude,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VMwareToAzStackHCINicInput,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'performAutoResync': ?performAutoResync,
       'runAsAccountId': runAsAccountId,
       'sourceDraName': sourceDraName,
@@ -123,30 +169,95 @@ class VMwareToAzStackHCIProtectedItemModelCustomProperties {
     };
   }
 
-  factory VMwareToAzStackHCIProtectedItemModelCustomProperties.fromMap(Map<String, dynamic> map) {
+  factory VMwareToAzStackHCIProtectedItemModelCustomProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VMwareToAzStackHCIProtectedItemModelCustomProperties(
-      customLocationRegion: (map['customLocationRegion'] as String).input(),
-      disksToInclude: (pulumi.Input.decodeList<VMwareToAzStackHCIDiskInput>(map['disksToInclude'], (value) => VMwareToAzStackHCIDiskInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dynamicMemoryConfig: map['dynamicMemoryConfig'] == null ? null : (ProtectedItemDynamicMemoryConfig.fromMap((map['dynamicMemoryConfig']! as Map).cast<String, dynamic>())).input(),
-      fabricDiscoveryMachineId: (map['fabricDiscoveryMachineId'] as String).input(),
-      hyperVGeneration: (map['hyperVGeneration'] as String).input(),
-      instanceType: (map['instanceType'] as String).input(),
-      isDynamicRam: map['isDynamicRam'] == null ? null : (map['isDynamicRam']! as bool).input(),
-      nicsToInclude: (pulumi.Input.decodeList<VMwareToAzStackHCINicInput>(map['nicsToInclude'], (value) => VMwareToAzStackHCINicInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      performAutoResync: map['performAutoResync'] == null ? null : (map['performAutoResync']! as bool).input(),
-      runAsAccountId: (map['runAsAccountId'] as String).input(),
-      sourceDraName: (map['sourceDraName'] as String).input(),
-      storageContainerId: (map['storageContainerId'] as String).input(),
-      targetArcClusterCustomLocationId: (map['targetArcClusterCustomLocationId'] as String).input(),
-      targetCpuCores: map['targetCpuCores'] == null ? null : (map['targetCpuCores']! as int).input(),
-      targetDraName: (map['targetDraName'] as String).input(),
-      targetHciClusterId: (map['targetHciClusterId'] as String).input(),
-      targetMemoryInMegaBytes: map['targetMemoryInMegaBytes'] == null ? null : (map['targetMemoryInMegaBytes']! as int).input(),
-      targetNetworkId: map['targetNetworkId'] == null ? null : (map['targetNetworkId']! as String).input(),
-      targetResourceGroupId: (map['targetResourceGroupId'] as String).input(),
-      targetVmName: map['targetVmName'] == null ? null : (map['targetVmName']! as String).input(),
-      testNetworkId: map['testNetworkId'] == null ? null : (map['testNetworkId']! as String).input(),
+      customLocationRegion: pulumi.Input.fromValue(
+        map['customLocationRegion'] as String,
+      ),
+      disksToInclude: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<VMwareToAzStackHCIDiskInput>(
+          map['disksToInclude']!,
+          (value) => VMwareToAzStackHCIDiskInput.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      dynamicMemoryConfig: (() {
+        final guardedValue = map['dynamicMemoryConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ProtectedItemDynamicMemoryConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      fabricDiscoveryMachineId: pulumi.Input.fromValue(
+        map['fabricDiscoveryMachineId'] as String,
+      ),
+      hyperVGeneration: pulumi.Input.fromValue(
+        map['hyperVGeneration'] as String,
+      ),
+      instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
+      isDynamicRam: (() {
+        final guardedValue = map['isDynamicRam'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      nicsToInclude: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<VMwareToAzStackHCINicInput>(
+          map['nicsToInclude']!,
+          (value) => VMwareToAzStackHCINicInput.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      performAutoResync: (() {
+        final guardedValue = map['performAutoResync'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      runAsAccountId: pulumi.Input.fromValue(map['runAsAccountId'] as String),
+      sourceDraName: pulumi.Input.fromValue(map['sourceDraName'] as String),
+      storageContainerId: pulumi.Input.fromValue(
+        map['storageContainerId'] as String,
+      ),
+      targetArcClusterCustomLocationId: pulumi.Input.fromValue(
+        map['targetArcClusterCustomLocationId'] as String,
+      ),
+      targetCpuCores: (() {
+        final guardedValue = map['targetCpuCores'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      targetDraName: pulumi.Input.fromValue(map['targetDraName'] as String),
+      targetHciClusterId: pulumi.Input.fromValue(
+        map['targetHciClusterId'] as String,
+      ),
+      targetMemoryInMegaBytes: (() {
+        final guardedValue = map['targetMemoryInMegaBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      targetNetworkId: (() {
+        final guardedValue = map['targetNetworkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetResourceGroupId: pulumi.Input.fromValue(
+        map['targetResourceGroupId'] as String,
+      ),
+      targetVmName: (() {
+        final guardedValue = map['targetVmName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      testNetworkId: (() {
+        final guardedValue = map['testNetworkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

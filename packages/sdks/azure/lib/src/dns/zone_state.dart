@@ -7,16 +7,22 @@ import 'zone_soa_record.dart';
 class ZoneState {
   /// Maximum number of Records in the zone.
   final pulumi.Input<int>? maxNumberOfRecordSets;
+
   /// The name of the DNS Zone. Must be a valid domain name. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// A list of values that make up the NS record for the zone.
   final pulumi.Input<List<String>>? nameServers;
+
   /// The number of records already in the zone.
   final pulumi.Input<int>? numberOfRecordSets;
+
   /// Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A `soa_record` block as defined below.
   final pulumi.Input<ZoneSoaRecord>? soaRecord;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,21 +51,56 @@ class ZoneState {
       'nameServers': ?nameServers,
       'numberOfRecordSets': ?numberOfRecordSets,
       'resourceGroupName': ?resourceGroupName,
-      'soaRecord': ?pulumi.Input.mapOptionalInputValue<ZoneSoaRecord, Map<String, dynamic>>(soaRecord, (value) => value.toMap()),
+      'soaRecord':
+          ?pulumi.Input.mapOptionalInputValue<
+            ZoneSoaRecord,
+            Map<String, dynamic>
+          >(soaRecord, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory ZoneState.fromMap(Map<String, dynamic> map) {
     return ZoneState(
-      maxNumberOfRecordSets: map['maxNumberOfRecordSets'] == null ? null : (map['maxNumberOfRecordSets']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nameServers: map['nameServers'] == null ? null : ((map['nameServers']! as List).cast<String>()).input(),
-      numberOfRecordSets: map['numberOfRecordSets'] == null ? null : (map['numberOfRecordSets']! as int).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      soaRecord: map['soaRecord'] == null ? null : (ZoneSoaRecord.fromMap((map['soaRecord']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      maxNumberOfRecordSets: (() {
+        final guardedValue = map['maxNumberOfRecordSets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameServers: (() {
+        final guardedValue = map['nameServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      numberOfRecordSets: (() {
+        final guardedValue = map['numberOfRecordSets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      soaRecord: (() {
+        final guardedValue = map['soaRecord'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ZoneSoaRecord.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

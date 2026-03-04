@@ -9,20 +9,19 @@ class ScaleSpec {
 
   /// Creates a new [ScaleSpec].
   /// [replicas] desired number of instances for the scaled object.
-  ScaleSpec({
-    this.replicas,
-  });
+  ScaleSpec({this.replicas});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'replicas': ?replicas,
-    };
+    return <String, dynamic>{'replicas': ?replicas};
   }
 
   factory ScaleSpec.fromMap(Map<String, dynamic> map) {
     return ScaleSpec(
-      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
+      replicas: (() {
+        final guardedValue = map['replicas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -137,32 +137,48 @@ import 'purview_configuration_response.dart';
 class Factory extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Time the factory was created in ISO8601 format.
   late final pulumi.Output<String> createTime;
+
   /// Etag identifies change in the resource.
   late final pulumi.Output<String> eTag;
+
   /// Properties to enable Customer Managed Key for the factory.
   late final pulumi.Output<EncryptionConfigurationResponse?> encryption;
+
   /// List of parameters for factory.
-  late final pulumi.Output<Map<String, GlobalParameterSpecificationResponse>?> globalParameters;
+  late final pulumi.Output<Map<String, GlobalParameterSpecificationResponse>?>
+  globalParameters;
+
   /// Managed service identity of the factory.
   late final pulumi.Output<FactoryIdentityResponse?> identity;
+
   /// The resource location.
   late final pulumi.Output<String?> location;
+
   /// The resource name.
   late final pulumi.Output<String> name;
+
   /// Factory provisioning state, example Succeeded.
   late final pulumi.Output<String> provisioningState;
+
   /// Whether or not public network access is allowed for the data factory.
   late final pulumi.Output<String?> publicNetworkAccess;
+
   /// Purview information of the factory.
   late final pulumi.Output<PurviewConfigurationResponse?> purviewConfiguration;
+
   /// Git repo information of the factory.
-  late final pulumi.Output<FactoryGitHubConfigurationResponse?> repoConfiguration;
+  late final pulumi.Output<FactoryGitHubConfigurationResponse?>
+  repoConfiguration;
+
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The resource type.
   late final pulumi.Output<String> type;
+
   /// Version of the factory.
   late final pulumi.Output<String> version;
 
@@ -175,25 +191,32 @@ class Factory extends pulumi.CustomResource {
     FactoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:datafactory:Factory',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.createTime = registerOutput<String>('createTime');
-    this.eTag = registerOutput<String>('eTag');
-    this.encryption = registerOutput<EncryptionConfigurationResponse?>('encryption');
-    this.globalParameters = registerOutput<Map<String, GlobalParameterSpecificationResponse>?>('globalParameters');
-    this.identity = registerOutput<FactoryIdentityResponse?>('identity');
-    this.location = registerOutput<String?>('location');
+         'azure-native:datafactory:Factory',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createTime = registerOutput<String>('createTime');
+    eTag = registerOutput<String>('eTag');
+    encryption = registerOutput<EncryptionConfigurationResponse?>('encryption');
+    globalParameters =
+        registerOutput<Map<String, GlobalParameterSpecificationResponse>?>(
+          'globalParameters',
+        );
+    identity = registerOutput<FactoryIdentityResponse?>('identity');
+    location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    this.purviewConfiguration = registerOutput<PurviewConfigurationResponse?>('purviewConfiguration');
-    this.repoConfiguration = registerOutput<FactoryGitHubConfigurationResponse?>('repoConfiguration');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String>('version');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    purviewConfiguration = registerOutput<PurviewConfigurationResponse?>(
+      'purviewConfiguration',
+    );
+    repoConfiguration = registerOutput<FactoryGitHubConfigurationResponse?>(
+      'repoConfiguration',
+    );
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
   }
 }

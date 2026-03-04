@@ -14,15 +14,16 @@ class PreviewFeatureRolloutOperationRolloutInput {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'predefinedRolloutPlan': predefinedRolloutPlan,
-    };
+    return <String, dynamic>{'predefinedRolloutPlan': predefinedRolloutPlan};
   }
 
-  factory PreviewFeatureRolloutOperationRolloutInput.fromMap(Map<String, dynamic> map) {
+  factory PreviewFeatureRolloutOperationRolloutInput.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreviewFeatureRolloutOperationRolloutInput(
-      predefinedRolloutPlan: (map['predefinedRolloutPlan'] as String).input(),
+      predefinedRolloutPlan: pulumi.Input.fromValue(
+        map['predefinedRolloutPlan'] as String,
+      ),
     );
   }
 }
-

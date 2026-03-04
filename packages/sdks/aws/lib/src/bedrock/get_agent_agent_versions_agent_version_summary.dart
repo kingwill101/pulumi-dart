@@ -6,16 +6,24 @@ import 'get_agent_agent_versions_agent_version_summary_guardrail_configuration.d
 class GetAgentAgentVersionsAgentVersionSummary {
   /// Name of agent to which the version belongs.
   final pulumi.Input<String> agentName;
+
   /// Status of the agent to which the version belongs.
   final pulumi.Input<String> agentStatus;
+
   /// Version of the agent.
   final pulumi.Input<String> agentVersion;
+
   /// Time at which the version was created.
   final pulumi.Input<String> createdAt;
+
   /// Description of the version of the agent.
   /// * `GuardrailConfiguration` - Details aout the guardrail associated with the agent. See Guardrail Configuration
   final pulumi.Input<String> description;
-  final pulumi.Input<List<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration>>? guardrailConfigurations;
+  final pulumi.Input<
+    List<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration>
+  >?
+  guardrailConfigurations;
+
   /// Time at which the version was last updated.
   final pulumi.Input<String> updatedAt;
 
@@ -44,21 +52,49 @@ class GetAgentAgentVersionsAgentVersionSummary {
       'agentVersion': agentVersion,
       'createdAt': createdAt,
       'description': description,
-      'guardrailConfigurations': ?pulumi.Input.mapOptionalInputValue<List<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration>, List<Map<String, dynamic>>>(guardrailConfigurations, (value) => pulumi.Input.encodeList<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'guardrailConfigurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration
+            >,
+            List<Map<String, dynamic>>
+          >(
+            guardrailConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'updatedAt': updatedAt,
     };
   }
 
-  factory GetAgentAgentVersionsAgentVersionSummary.fromMap(Map<String, dynamic> map) {
+  factory GetAgentAgentVersionsAgentVersionSummary.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAgentAgentVersionsAgentVersionSummary(
-      agentName: (map['agentName'] as String).input(),
-      agentStatus: (map['agentStatus'] as String).input(),
-      agentVersion: (map['agentVersion'] as String).input(),
-      createdAt: (map['createdAt'] as String).input(),
-      description: (map['description'] as String).input(),
-      guardrailConfigurations: map['guardrailConfigurations'] == null ? null : ((pulumi.Input.decodeList<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration>(map['guardrailConfigurations']!, (value) => GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      updatedAt: (map['updatedAt'] as String).input(),
+      agentName: pulumi.Input.fromValue(map['agentName'] as String),
+      agentStatus: pulumi.Input.fromValue(map['agentStatus'] as String),
+      agentVersion: pulumi.Input.fromValue(map['agentVersion'] as String),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      guardrailConfigurations: (() {
+        final guardedValue = map['guardrailConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration
+          >(
+            guardedValue,
+            (value) =>
+                GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
     );
   }
 }
-

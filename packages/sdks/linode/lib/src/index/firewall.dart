@@ -1,8 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_args.dart';
-import 'firewall_device.dart';
-import 'firewall_inbound.dart';
-import 'firewall_outbound.dart';
 import 'firewall_state.dart';
 
 /// Manages a Linode Firewall.
@@ -450,34 +447,47 @@ import 'firewall_state.dart';
 class Firewall extends pulumi.CustomResource {
   /// When this firewall was created
   late final pulumi.Output<String> created;
+
   /// The devices associated with this firewall.
-  late final pulumi.Output<List<FirewallDevice>> devices;
+  late final pulumi.Output<List<Map<String, dynamic>>> devices;
+
   /// If `true`, the Firewall's rules are not enforced (defaults to `false`).
   ///
   /// * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
   late final pulumi.Output<bool> disabled;
+
   /// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
   ///
   /// * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
   late final pulumi.Output<String> inboundPolicy;
+
   /// A firewall rule that specifies what inbound network traffic is allowed.
-  late final pulumi.Output<List<FirewallInbound>?> inbounds;
+  late final pulumi.Output<List<Map<String, dynamic>>?> inbounds;
+
   /// A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
   late final pulumi.Output<List<int>> interfaces;
+
   /// This Firewall's unique label.
   late final pulumi.Output<String> label;
+
   /// A list of IDs of Linodes this Firewall should govern network traffic for.
   late final pulumi.Output<List<int>> linodes;
+
   /// A list of IDs of NodeBalancers this Firewall should govern network traffic for.
   late final pulumi.Output<List<int>> nodebalancers;
+
   /// The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
   late final pulumi.Output<String> outboundPolicy;
+
   /// A firewall rule that specifies what outbound network traffic is allowed.
-  late final pulumi.Output<List<FirewallOutbound>?> outbounds;
+  late final pulumi.Output<List<Map<String, dynamic>>?> outbounds;
+
   /// The status of the Firewall.
   late final pulumi.Output<String> status;
+
   /// A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
   late final pulumi.Output<List<String>> tags;
+
   /// When this firewall was last updated
   late final pulumi.Output<String> updated;
 
@@ -490,25 +500,25 @@ class Firewall extends pulumi.CustomResource {
     FirewallArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/firewall:Firewall',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.created = registerOutput<String>('created');
-    this.devices = registerOutput<List<FirewallDevice>>('devices');
-    this.disabled = registerOutput<bool>('disabled');
-    this.inboundPolicy = registerOutput<String>('inboundPolicy');
-    this.inbounds = registerOutput<List<FirewallInbound>?>('inbounds');
-    this.interfaces = registerOutput<List<int>>('interfaces');
-    this.label = registerOutput<String>('label');
-    this.linodes = registerOutput<List<int>>('linodes');
-    this.nodebalancers = registerOutput<List<int>>('nodebalancers');
-    this.outboundPolicy = registerOutput<String>('outboundPolicy');
-    this.outbounds = registerOutput<List<FirewallOutbound>?>('outbounds');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<List<String>>('tags');
-    this.updated = registerOutput<String>('updated');
+         'linode:index/firewall:Firewall',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    created = registerOutput<String>('created');
+    devices = registerOutput<List<Map<String, dynamic>>>('devices');
+    disabled = registerOutput<bool>('disabled');
+    inboundPolicy = registerOutput<String>('inboundPolicy');
+    inbounds = registerOutput<List<Map<String, dynamic>>?>('inbounds');
+    interfaces = registerOutput<List<int>>('interfaces');
+    label = registerOutput<String>('label');
+    linodes = registerOutput<List<int>>('linodes');
+    nodebalancers = registerOutput<List<int>>('nodebalancers');
+    outboundPolicy = registerOutput<String>('outboundPolicy');
+    outbounds = registerOutput<List<Map<String, dynamic>>?>('outbounds');
+    status = registerOutput<String>('status');
+    tags = registerOutput<List<String>>('tags');
+    updated = registerOutput<String>('updated');
   }
 
   /// Gets an existing [Firewall] resource's state with the given [name] and [id].
@@ -529,24 +539,24 @@ class Firewall extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'linode:index/firewall:Firewall',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.created = registerOutput<String>('created');
-    this.devices = registerOutput<List<FirewallDevice>>('devices');
-    this.disabled = registerOutput<bool>('disabled');
-    this.inboundPolicy = registerOutput<String>('inboundPolicy');
-    this.inbounds = registerOutput<List<FirewallInbound>?>('inbounds');
-    this.interfaces = registerOutput<List<int>>('interfaces');
-    this.label = registerOutput<String>('label');
-    this.linodes = registerOutput<List<int>>('linodes');
-    this.nodebalancers = registerOutput<List<int>>('nodebalancers');
-    this.outboundPolicy = registerOutput<String>('outboundPolicy');
-    this.outbounds = registerOutput<List<FirewallOutbound>?>('outbounds');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<List<String>>('tags');
-    this.updated = registerOutput<String>('updated');
+         'linode:index/firewall:Firewall',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    created = registerOutput<String>('created');
+    devices = registerOutput<List<Map<String, dynamic>>>('devices');
+    disabled = registerOutput<bool>('disabled');
+    inboundPolicy = registerOutput<String>('inboundPolicy');
+    inbounds = registerOutput<List<Map<String, dynamic>>?>('inbounds');
+    interfaces = registerOutput<List<int>>('interfaces');
+    label = registerOutput<String>('label');
+    linodes = registerOutput<List<int>>('linodes');
+    nodebalancers = registerOutput<List<int>>('nodebalancers');
+    outboundPolicy = registerOutput<String>('outboundPolicy');
+    outbounds = registerOutput<List<Map<String, dynamic>>?>('outbounds');
+    status = registerOutput<String>('status');
+    tags = registerOutput<List<String>>('tags');
+    updated = registerOutput<String>('updated');
   }
 }

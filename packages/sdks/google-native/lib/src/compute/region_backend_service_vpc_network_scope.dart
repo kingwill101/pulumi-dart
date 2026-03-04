@@ -3,16 +3,17 @@ enum RegionBackendServiceVpcNetworkScope {
   globalVpcNetwork("GLOBAL_VPC_NETWORK"),
   regionalVpcNetwork("REGIONAL_VPC_NETWORK");
 
-  const RegionBackendServiceVpcNetworkScope(this.value);
-  final String value;
+  const RegionBackendServiceVpcNetworkScope(this.wireValue);
+  final String wireValue;
 
   static RegionBackendServiceVpcNetworkScope fromValue(String value) {
     for (final item in RegionBackendServiceVpcNetworkScope.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionBackendServiceVpcNetworkScope value: $value');
+    throw ArgumentError(
+      'Unknown RegionBackendServiceVpcNetworkScope value: $value',
+    );
   }
 }
-

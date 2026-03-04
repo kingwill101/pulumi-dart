@@ -3,16 +3,15 @@ enum FilteredSync {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const FilteredSync(this.value);
-  final String value;
+  const FilteredSync(this.wireValue);
+  final String wireValue;
 
   static FilteredSync fromValue(String value) {
     for (final item in FilteredSync.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FilteredSync value: $value');
   }
 }
-

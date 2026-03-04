@@ -3,16 +3,15 @@ enum ProductState {
   valueNotPublished("notPublished"),
   valuePublished("published");
 
-  const ProductState(this.value);
-  final String value;
+  const ProductState(this.wireValue);
+  final String wireValue;
 
   static ProductState fromValue(String value) {
     for (final item in ProductState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProductState value: $value');
   }
 }
-

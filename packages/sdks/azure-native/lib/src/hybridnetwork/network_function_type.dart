@@ -4,16 +4,15 @@ enum NetworkFunctionType {
   valueVirtualNetworkFunction("VirtualNetworkFunction"),
   valueContainerizedNetworkFunction("ContainerizedNetworkFunction");
 
-  const NetworkFunctionType(this.value);
-  final String value;
+  const NetworkFunctionType(this.wireValue);
+  final String wireValue;
 
   static NetworkFunctionType fromValue(String value) {
     for (final item in NetworkFunctionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkFunctionType value: $value');
   }
 }
-

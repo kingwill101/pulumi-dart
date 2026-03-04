@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListGeodataByIpArgs {
   /// Enrichment type
   final pulumi.Input<String> enrichmentType;
+
   /// The dotted-decimal or colon-separated string representation of the IP address
   final pulumi.Input<String>? ipAddress;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -39,11 +42,16 @@ class ListGeodataByIpArgs {
 
   factory ListGeodataByIpArgs.fromMap(Map<String, dynamic> map) {
     return ListGeodataByIpArgs(
-      enrichmentType: (map['enrichmentType'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceName: (map['workspaceName'] as String).input(),
+      enrichmentType: pulumi.Input.fromValue(map['enrichmentType'] as String),
+      ipAddress: (() {
+        final guardedValue = map['ipAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }
 }
-

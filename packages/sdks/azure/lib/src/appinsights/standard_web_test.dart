@@ -226,7 +226,7 @@ import 'standard_web_test_validation_rules.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Insights` - 2022-06-15
@@ -241,32 +241,45 @@ import 'standard_web_test_validation_rules.dart';
 class StandardWebTest extends pulumi.CustomResource {
   /// The ID of the Application Insights instance on which the WebTest operates. Changing this forces a new Application Insights Standard WebTest to be created.
   late final pulumi.Output<String> applicationInsightsId;
+
   /// Purpose/user defined descriptive test for this WebTest.
   late final pulumi.Output<String?> description;
+
   /// Should the WebTest be enabled?
   late final pulumi.Output<bool?> enabled;
+
   /// Interval in seconds between test runs for this WebTest. Valid options are `300`, `600` and `900`. Defaults to `300`.
   late final pulumi.Output<int?> frequency;
+
   /// Specifies a list of where to physically run the tests from to give global coverage for accessibility of your application.
   ///
-  /// > **Note:** [Valid options for geo locations are described here](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability#location-population-tags)
+  /// &gt; **Note:** [Valid options for geo locations are described here](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability#location-population-tags)
   late final pulumi.Output<List<String>> geoLocations;
+
   /// The Azure Region where the Application Insights Standard WebTest should exist. Changing this forces a new Application Insights Standard WebTest to be created. It needs to correlate with location of the parent resource (azurerm_application_insights)
   late final pulumi.Output<String> location;
+
   /// The name which should be used for this Application Insights Standard WebTest. Changing this forces a new Application Insights Standard WebTest to be created.
   late final pulumi.Output<String> name;
+
   /// A `request` block as defined below.
   late final pulumi.Output<StandardWebTestRequest> request;
+
   /// The name of the Resource Group where the Application Insights Standard WebTest should exist. Changing this forces a new Application Insights Standard WebTest to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Should the retry on WebTest failure be enabled?
   late final pulumi.Output<bool?> retryEnabled;
+
   /// Unique ID of this WebTest. This is typically the same value as the Name field.
   late final pulumi.Output<String> syntheticMonitorId;
+
   /// A mapping of tags which should be assigned to the Application Insights Standard WebTest.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Seconds until this WebTest will timeout and fail. Default is `30`.
   late final pulumi.Output<int?> timeout;
+
   /// A `validation_rules` block as defined below.
   late final pulumi.Output<StandardWebTestValidationRules?> validationRules;
 
@@ -279,25 +292,27 @@ class StandardWebTest extends pulumi.CustomResource {
     StandardWebTestArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appinsights/standardWebTest:StandardWebTest',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationInsightsId = registerOutput<String>('applicationInsightsId');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.frequency = registerOutput<int?>('frequency');
-    this.geoLocations = registerOutput<List<String>>('geoLocations');
-    this.location = registerOutput<String>('location');
+         'azure:appinsights/standardWebTest:StandardWebTest',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationInsightsId = registerOutput<String>('applicationInsightsId');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    frequency = registerOutput<int?>('frequency');
+    geoLocations = registerOutput<List<String>>('geoLocations');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.request = registerOutput<StandardWebTestRequest>('request');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retryEnabled = registerOutput<bool?>('retryEnabled');
-    this.syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeout = registerOutput<int?>('timeout');
-    this.validationRules = registerOutput<StandardWebTestValidationRules?>('validationRules');
+    request = registerOutput<StandardWebTestRequest>('request');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retryEnabled = registerOutput<bool?>('retryEnabled');
+    syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeout = registerOutput<int?>('timeout');
+    validationRules = registerOutput<StandardWebTestValidationRules?>(
+      'validationRules',
+    );
   }
 
   /// Gets an existing [StandardWebTest] resource's state with the given [name] and [id].
@@ -318,24 +333,26 @@ class StandardWebTest extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appinsights/standardWebTest:StandardWebTest',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationInsightsId = registerOutput<String>('applicationInsightsId');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.frequency = registerOutput<int?>('frequency');
-    this.geoLocations = registerOutput<List<String>>('geoLocations');
-    this.location = registerOutput<String>('location');
+         'azure:appinsights/standardWebTest:StandardWebTest',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationInsightsId = registerOutput<String>('applicationInsightsId');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    frequency = registerOutput<int?>('frequency');
+    geoLocations = registerOutput<List<String>>('geoLocations');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.request = registerOutput<StandardWebTestRequest>('request');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.retryEnabled = registerOutput<bool?>('retryEnabled');
-    this.syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeout = registerOutput<int?>('timeout');
-    this.validationRules = registerOutput<StandardWebTestValidationRules?>('validationRules');
+    request = registerOutput<StandardWebTestRequest>('request');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retryEnabled = registerOutput<bool?>('retryEnabled');
+    syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeout = registerOutput<int?>('timeout');
+    validationRules = registerOutput<StandardWebTestValidationRules?>(
+      'validationRules',
+    );
   }
 }

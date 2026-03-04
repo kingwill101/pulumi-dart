@@ -11,15 +11,20 @@ class RepositoryArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// The location for the resource
   final pulumi.Input<String>? location;
+
   /// Name of the repository.
   final pulumi.Input<String>? name;
+
   /// The connection for the resource
   final pulumi.Input<String> parentConnection;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Required. Git Clone HTTPS URI.
   final pulumi.Input<String> remoteUri;
 
@@ -52,13 +57,32 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parentConnection: (map['parentConnection'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      remoteUri: (map['remoteUri'] as String).input(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parentConnection: pulumi.Input.fromValue(
+        map['parentConnection'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      remoteUri: pulumi.Input.fromValue(map['remoteUri'] as String),
     );
   }
 }
-

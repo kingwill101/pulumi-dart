@@ -229,7 +229,7 @@ import 'firewall_rule_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DocumentDB` - 2025-09-01
@@ -244,10 +244,13 @@ import 'firewall_rule_state.dart';
 class FirewallRule extends pulumi.CustomResource {
   /// The end IP address of the Mongo Cluster Firewall Rule.
   late final pulumi.Output<String> endIpAddress;
+
   /// The ID of the Mongo Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<String> mongoClusterId;
+
   /// The name of the Mongo Cluster Firewall Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The start IP address of the Mongo Cluster Firewall Rule.
   late final pulumi.Output<String> startIpAddress;
 
@@ -260,15 +263,15 @@ class FirewallRule extends pulumi.CustomResource {
     FirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mongocluster/firewallRule:FirewallRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endIpAddress = registerOutput<String>('endIpAddress');
-    this.mongoClusterId = registerOutput<String>('mongoClusterId');
+         'azure:mongocluster/firewallRule:FirewallRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endIpAddress = registerOutput<String>('endIpAddress');
+    mongoClusterId = registerOutput<String>('mongoClusterId');
     this.name = registerOutput<String>('name');
-    this.startIpAddress = registerOutput<String>('startIpAddress');
+    startIpAddress = registerOutput<String>('startIpAddress');
   }
 
   /// Gets an existing [FirewallRule] resource's state with the given [name] and [id].
@@ -289,14 +292,14 @@ class FirewallRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:mongocluster/firewallRule:FirewallRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endIpAddress = registerOutput<String>('endIpAddress');
-    this.mongoClusterId = registerOutput<String>('mongoClusterId');
+         'azure:mongocluster/firewallRule:FirewallRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endIpAddress = registerOutput<String>('endIpAddress');
+    mongoClusterId = registerOutput<String>('mongoClusterId');
     this.name = registerOutput<String>('name');
-    this.startIpAddress = registerOutput<String>('startIpAddress');
+    startIpAddress = registerOutput<String>('startIpAddress');
   }
 }

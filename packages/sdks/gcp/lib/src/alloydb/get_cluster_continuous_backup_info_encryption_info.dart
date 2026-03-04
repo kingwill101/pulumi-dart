@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterContinuousBackupInfoEncryptionInfo {
   /// Output only. Type of encryption.
   final pulumi.Input<String> encryptionType;
+
   /// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
   final pulumi.Input<List<String>> kmsKeyVersions;
 
@@ -23,11 +24,14 @@ class GetClusterContinuousBackupInfoEncryptionInfo {
     };
   }
 
-  factory GetClusterContinuousBackupInfoEncryptionInfo.fromMap(Map<String, dynamic> map) {
+  factory GetClusterContinuousBackupInfoEncryptionInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterContinuousBackupInfoEncryptionInfo(
-      encryptionType: (map['encryptionType'] as String).input(),
-      kmsKeyVersions: ((map['kmsKeyVersions'] as List).cast<String>()).input(),
+      encryptionType: pulumi.Input.fromValue(map['encryptionType'] as String),
+      kmsKeyVersions: pulumi.Input.fromValue(
+        (map['kmsKeyVersions'] as List).cast<String>(),
+      ),
     );
   }
 }
-

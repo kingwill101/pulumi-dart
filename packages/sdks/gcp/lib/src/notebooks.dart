@@ -1,5 +1,3 @@
-library module_notebooks;
-
 export 'notebooks/environment.dart';
 export 'notebooks/environment_args.dart';
 export 'notebooks/environment_container_image.dart';

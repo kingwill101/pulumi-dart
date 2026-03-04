@@ -7,28 +7,40 @@ import 'system_data_response.dart';
 class GetSapInstanceResult {
   /// Enter a business function/department identifier to group multiple SIDs.
   final String application;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The Environment; PRD, QA, DEV, etc to which SAP system belongs to. Select from the list of available dropdown values.
   final String environment;
+
   /// Defines the errors related to SAP Instance resource.
   final SAPMigrateErrorResponse errors;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// This is the SID of the production system in a landscape.  An SAP system could itself be a production SID or a part of a landscape with a different Production SID. This field can be used to relate non-prod SIDs, other components, SID (WEBDISP) to the prod SID. Enter the value of Production SID.
   final String landscapeSid;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// Defines the provisioning states.
   final String provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// This is the SID of SAP System. Keeping this not equal to ID as different landscapes can have repeated System SID IDs.
   final String systemSid;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -85,17 +97,24 @@ class GetSapInstanceResult {
       application: map['application'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
       environment: map['environment'] as String,
-      errors: SAPMigrateErrorResponse.fromMap((map['errors'] as Map).cast<String, dynamic>()),
+      errors: SAPMigrateErrorResponse.fromMap(
+        (map['errors']! as Map).cast<String, dynamic>(),
+      ),
       id: map['id'] as String,
       landscapeSid: map['landscapeSid'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       systemSid: map['systemSid'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

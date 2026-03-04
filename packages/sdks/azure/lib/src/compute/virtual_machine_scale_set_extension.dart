@@ -5,7 +5,7 @@ import 'virtual_machine_scale_set_extension_state.dart';
 
 /// Manages an Extension for a Virtual Machine Scale Set.
 ///
-/// > **Note:** This resource is not intended to be used with the `azure.compute.ScaleSet` resource - instead it's intended for this to be used with the `azure.compute.LinuxVirtualMachineScaleSet` and `azure.compute.WindowsVirtualMachineScaleSet` resources.
+/// &gt; **Note:** This resource is not intended to be used with the `azure.compute.ScaleSet` resource - instead it's intended for this to be used with the `azure.compute.LinuxVirtualMachineScaleSet` and `azure.compute.WindowsVirtualMachineScaleSet` resources.
 ///
 /// ## Example Usage
 ///
@@ -353,7 +353,7 @@ import 'virtual_machine_scale_set_extension_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-11-01, 2024-03-01
@@ -368,45 +368,60 @@ import 'virtual_machine_scale_set_extension_state.dart';
 class VirtualMachineScaleSetExtension extends pulumi.CustomResource {
   /// Should the latest version of the Extension be used at Deployment Time, if one is available? This won't auto-update the extension on existing installation. Defaults to `true`.
   late final pulumi.Output<bool?> autoUpgradeMinorVersion;
+
   /// Should the Extension be automatically updated whenever the Publisher releases a new version of this VM Extension?
   late final pulumi.Output<bool?> automaticUpgradeEnabled;
+
   /// Should failures from the extension be suppressed? Possible values are `true` or `false`. Defaults to `false`.
   ///
-  /// > **Note:** Operational failures such as not connecting to the VM will not be suppressed regardless of the `failure_suppression_enabled` value.
+  /// &gt; **Note:** Operational failures such as not connecting to the VM will not be suppressed regardless of the `failure_suppression_enabled` value.
   late final pulumi.Output<bool?> failureSuppressionEnabled;
+
   /// A value which, when different to the previous value can be used to force-run the Extension even if the Extension Configuration hasn't changed.
   late final pulumi.Output<String?> forceUpdateTag;
+
   /// The name for the Virtual Machine Scale Set Extension. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// A JSON String which specifies Sensitive Settings (such as Passwords) for the Extension.
   ///
-  /// > **Note:** Keys within the `protected_settings` block are notoriously case-sensitive, where the casing required (e.g. TitleCase vs snakeCase) depends on the Extension being used. Please refer to the documentation for the specific Virtual Machine Extension you're looking to use for more information.
+  /// &gt; **Note:** Keys within the `protected_settings` block are notoriously case-sensitive, where the casing required (e.g. TitleCase vs snakeCase) depends on the Extension being used. Please refer to the documentation for the specific Virtual Machine Extension you're looking to use for more information.
   late final pulumi.Output<String?> protectedSettings;
+
   /// A `protected_settings_from_key_vault` block as defined below.
   ///
-  /// > **Note:** `protected_settings_from_key_vault` cannot be used with `protected_settings`
-  late final pulumi.Output<VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault?> protectedSettingsFromKeyVault;
+  /// &gt; **Note:** `protected_settings_from_key_vault` cannot be used with `protected_settings`
+  late final pulumi.Output<
+    VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault?
+  >
+  protectedSettingsFromKeyVault;
+
   /// An ordered list of Extension names which this should be provisioned after.
   late final pulumi.Output<List<String>?> provisionAfterExtensions;
+
   /// Specifies the Publisher of the Extension. Changing this forces a new resource to be created.
   late final pulumi.Output<String> publisher;
+
   /// A JSON String which specifies Settings for the Extension.
   ///
-  /// > **Note:** Keys within the `settings` block are notoriously case-sensitive, where the casing required (e.g. TitleCase vs snakeCase) depends on the Extension being used. Please refer to the documentation for the specific Virtual Machine Extension you're looking to use for more information.
+  /// &gt; **Note:** Keys within the `settings` block are notoriously case-sensitive, where the casing required (e.g. TitleCase vs snakeCase) depends on the Extension being used. Please refer to the documentation for the specific Virtual Machine Extension you're looking to use for more information.
   late final pulumi.Output<String?> settings;
+
   /// Specifies the Type of the Extension. Changing this forces a new resource to be created.
   late final pulumi.Output<String> type;
+
   /// Specifies the version of the extension to use, available versions can be found using the Azure CLI.
   ///
-  /// > **Note:** The `Publisher` and `Type` of Virtual Machine Scale Set Extensions can be found using the Azure CLI, via:
+  /// &gt; **Note:** The `Publisher` and `Type` of Virtual Machine Scale Set Extensions can be found using the Azure CLI, via:
   ///
   /// ```shell
   /// az vmss extension image list --location westus -o table
   /// ```
   late final pulumi.Output<String> typeHandlerVersion;
+
   /// The ID of the Virtual Machine Scale Set. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** This should be the ID from the `azure.compute.LinuxVirtualMachineScaleSet` or `azure.compute.WindowsVirtualMachineScaleSet` resource - when using the older `azure.compute.ScaleSet` resource extensions should instead be defined inline.
+  /// &gt; **Note:** This should be the ID from the `azure.compute.LinuxVirtualMachineScaleSet` or `azure.compute.WindowsVirtualMachineScaleSet` resource - when using the older `azure.compute.ScaleSet` resource extensions should instead be defined inline.
   late final pulumi.Output<String> virtualMachineScaleSetId;
 
   /// Creates a new [VirtualMachineScaleSetExtension].
@@ -418,24 +433,33 @@ class VirtualMachineScaleSetExtension extends pulumi.CustomResource {
     VirtualMachineScaleSetExtensionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/virtualMachineScaleSetExtension:VirtualMachineScaleSetExtension',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
-    this.automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
-    this.failureSuppressionEnabled = registerOutput<bool?>('failureSuppressionEnabled');
-    this.forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+         'azure:compute/virtualMachineScaleSetExtension:VirtualMachineScaleSetExtension',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
+    automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
+    failureSuppressionEnabled = registerOutput<bool?>(
+      'failureSuppressionEnabled',
+    );
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     this.name = registerOutput<String>('name');
-    this.protectedSettings = registerOutput<String?>('protectedSettings');
-    this.protectedSettingsFromKeyVault = registerOutput<VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault?>('protectedSettingsFromKeyVault');
-    this.provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions');
-    this.publisher = registerOutput<String>('publisher');
-    this.settings = registerOutput<String?>('settings');
-    this.type = registerOutput<String>('type');
-    this.typeHandlerVersion = registerOutput<String>('typeHandlerVersion');
-    this.virtualMachineScaleSetId = registerOutput<String>('virtualMachineScaleSetId');
+    protectedSettings = registerOutput<String?>('protectedSettings');
+    protectedSettingsFromKeyVault =
+        registerOutput<
+          VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault?
+        >('protectedSettingsFromKeyVault');
+    provisionAfterExtensions = registerOutput<List<String>?>(
+      'provisionAfterExtensions',
+    );
+    publisher = registerOutput<String>('publisher');
+    settings = registerOutput<String?>('settings');
+    type = registerOutput<String>('type');
+    typeHandlerVersion = registerOutput<String>('typeHandlerVersion');
+    virtualMachineScaleSetId = registerOutput<String>(
+      'virtualMachineScaleSetId',
+    );
   }
 
   /// Gets an existing [VirtualMachineScaleSetExtension] resource's state with the given [name] and [id].
@@ -456,23 +480,32 @@ class VirtualMachineScaleSetExtension extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:compute/virtualMachineScaleSetExtension:VirtualMachineScaleSetExtension',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
-    this.automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
-    this.failureSuppressionEnabled = registerOutput<bool?>('failureSuppressionEnabled');
-    this.forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+         'azure:compute/virtualMachineScaleSetExtension:VirtualMachineScaleSetExtension',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
+    automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
+    failureSuppressionEnabled = registerOutput<bool?>(
+      'failureSuppressionEnabled',
+    );
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     this.name = registerOutput<String>('name');
-    this.protectedSettings = registerOutput<String?>('protectedSettings');
-    this.protectedSettingsFromKeyVault = registerOutput<VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault?>('protectedSettingsFromKeyVault');
-    this.provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions');
-    this.publisher = registerOutput<String>('publisher');
-    this.settings = registerOutput<String?>('settings');
-    this.type = registerOutput<String>('type');
-    this.typeHandlerVersion = registerOutput<String>('typeHandlerVersion');
-    this.virtualMachineScaleSetId = registerOutput<String>('virtualMachineScaleSetId');
+    protectedSettings = registerOutput<String?>('protectedSettings');
+    protectedSettingsFromKeyVault =
+        registerOutput<
+          VirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault?
+        >('protectedSettingsFromKeyVault');
+    provisionAfterExtensions = registerOutput<List<String>?>(
+      'provisionAfterExtensions',
+    );
+    publisher = registerOutput<String>('publisher');
+    settings = registerOutput<String?>('settings');
+    type = registerOutput<String>('type');
+    typeHandlerVersion = registerOutput<String>('typeHandlerVersion');
+    virtualMachineScaleSetId = registerOutput<String>(
+      'virtualMachineScaleSetId',
+    );
   }
 }

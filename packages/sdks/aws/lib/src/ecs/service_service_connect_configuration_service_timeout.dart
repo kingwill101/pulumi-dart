@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceServiceConnectConfigurationServiceTimeout {
   /// Amount of time in seconds a connection will stay active while idle. A value of 0 can be set to disable idleTimeout.
   final pulumi.Input<int>? idleTimeoutSeconds;
+
   /// Amount of time in seconds for the upstream to respond with a complete response per request. A value of 0 can be set to disable perRequestTimeout. Can only be set when appProtocol isn't TCP.
   final pulumi.Input<int>? perRequestTimeoutSeconds;
 
@@ -23,11 +24,20 @@ class ServiceServiceConnectConfigurationServiceTimeout {
     };
   }
 
-  factory ServiceServiceConnectConfigurationServiceTimeout.fromMap(Map<String, dynamic> map) {
+  factory ServiceServiceConnectConfigurationServiceTimeout.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceServiceConnectConfigurationServiceTimeout(
-      idleTimeoutSeconds: map['idleTimeoutSeconds'] == null ? null : ((map['idleTimeoutSeconds'] as int).input()).input(),
-      perRequestTimeoutSeconds: map['perRequestTimeoutSeconds'] == null ? null : ((map['perRequestTimeoutSeconds'] as int).input()).input(),
+      idleTimeoutSeconds: (() {
+        final guardedValue = map['idleTimeoutSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      perRequestTimeoutSeconds: (() {
+        final guardedValue = map['perRequestTimeoutSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

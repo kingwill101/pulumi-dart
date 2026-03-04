@@ -5,17 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExpressSyncsSync {
   /// The name of the OSS Bucket.
   final pulumi.Input<String> bucketName;
+
   /// The prefix of the OSS Bucket.
   final pulumi.Input<String> bucketPrefix;
+
   /// The region of the OSS Bucket.
   final pulumi.Input<String> bucketRegion;
+
   /// The description of the Express Sync.
   final pulumi.Input<String> description;
+
   /// The ID of the Express Sync.
   final pulumi.Input<String> expressSyncId;
+
   /// The name of the Express Sync.
   final pulumi.Input<String> expressSyncName;
   final pulumi.Input<String> id;
+
   /// The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.
   final pulumi.Input<String> mnsTopic;
 
@@ -54,15 +60,14 @@ class GetExpressSyncsSync {
 
   factory GetExpressSyncsSync.fromMap(Map<String, dynamic> map) {
     return GetExpressSyncsSync(
-      bucketName: (map['bucketName'] as String).input(),
-      bucketPrefix: (map['bucketPrefix'] as String).input(),
-      bucketRegion: (map['bucketRegion'] as String).input(),
-      description: (map['description'] as String).input(),
-      expressSyncId: (map['expressSyncId'] as String).input(),
-      expressSyncName: (map['expressSyncName'] as String).input(),
-      id: (map['id'] as String).input(),
-      mnsTopic: (map['mnsTopic'] as String).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      bucketPrefix: pulumi.Input.fromValue(map['bucketPrefix'] as String),
+      bucketRegion: pulumi.Input.fromValue(map['bucketRegion'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      expressSyncId: pulumi.Input.fromValue(map['expressSyncId'] as String),
+      expressSyncName: pulumi.Input.fromValue(map['expressSyncName'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      mnsTopic: pulumi.Input.fromValue(map['mnsTopic'] as String),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum SetMultiVmSyncStatus {
   valueEnable("Enable"),
   valueDisable("Disable");
 
-  const SetMultiVmSyncStatus(this.value);
-  final String value;
+  const SetMultiVmSyncStatus(this.wireValue);
+  final String wireValue;
 
   static SetMultiVmSyncStatus fromValue(String value) {
     for (final item in SetMultiVmSyncStatus.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SetMultiVmSyncStatus value: $value');
   }
 }
-

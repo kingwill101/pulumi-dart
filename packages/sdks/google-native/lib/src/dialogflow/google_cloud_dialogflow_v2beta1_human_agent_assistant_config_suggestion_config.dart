@@ -6,7 +6,13 @@ import 'google_cloud_dialogflow_v2beta1_human_agent_assistant_config_suggestion_
 /// Detail human agent assistant config.
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig {
   /// Configuration of different suggestion features. One feature can have only one config.
-  final pulumi.Input<List<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig>>? featureConfigs;
+  final pulumi.Input<
+    List<
+      GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig
+    >
+  >?
+  featureConfigs;
+
   /// If `group_suggestion_responses` is false, and there are multiple `feature_configs` in `event based suggestion` or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or `StreamingAnalyzeContentResponse`. If `group_suggestion_responses` set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
   final pulumi.Input<bool>? groupSuggestionResponses;
 
@@ -20,16 +26,48 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'featureConfigs': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig>, List<Map<String, dynamic>>>(featureConfigs, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'featureConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig
+            >,
+            List<Map<String, dynamic>>
+          >(
+            featureConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'groupSuggestionResponses': ?groupSuggestionResponses,
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig(
-      featureConfigs: map['featureConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig>(map['featureConfigs']!, (value) => GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      groupSuggestionResponses: map['groupSuggestionResponses'] == null ? null : (map['groupSuggestionResponses']! as bool).input(),
+      featureConfigs: (() {
+        final guardedValue = map['featureConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig
+          >(
+            guardedValue,
+            (value) =>
+                GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      groupSuggestionResponses: (() {
+        final guardedValue = map['groupSuggestionResponses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

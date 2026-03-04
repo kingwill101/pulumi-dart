@@ -7,24 +7,48 @@ class KeystoresAliasesSelfSignedCertCertsInfo {
   /// (Output)
   /// List of all properties in the object.
   /// Structure is documented below.
-  final pulumi.Input<List<KeystoresAliasesSelfSignedCertCertsInfoCertInfo>>? certInfos;
+  final pulumi.Input<List<KeystoresAliasesSelfSignedCertCertsInfoCertInfo>>?
+  certInfos;
 
   /// Creates a new [KeystoresAliasesSelfSignedCertCertsInfo].
   /// [certInfos] (Output)
-  KeystoresAliasesSelfSignedCertCertsInfo({
-    this.certInfos,
-  });
+  KeystoresAliasesSelfSignedCertCertsInfo({this.certInfos});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certInfos': ?pulumi.Input.mapOptionalInputValue<List<KeystoresAliasesSelfSignedCertCertsInfoCertInfo>, List<Map<String, dynamic>>>(certInfos, (value) => pulumi.Input.encodeList<KeystoresAliasesSelfSignedCertCertsInfoCertInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'certInfos':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<KeystoresAliasesSelfSignedCertCertsInfoCertInfo>,
+            List<Map<String, dynamic>>
+          >(
+            certInfos,
+            (value) =>
+                pulumi.Input.encodeList<
+                  KeystoresAliasesSelfSignedCertCertsInfoCertInfo,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory KeystoresAliasesSelfSignedCertCertsInfo.fromMap(Map<String, dynamic> map) {
+  factory KeystoresAliasesSelfSignedCertCertsInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KeystoresAliasesSelfSignedCertCertsInfo(
-      certInfos: map['certInfos'] == null ? null : (pulumi.Input.decodeList<KeystoresAliasesSelfSignedCertCertsInfoCertInfo>(map['certInfos']!, (value) => KeystoresAliasesSelfSignedCertCertsInfoCertInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certInfos: (() {
+        final guardedValue = map['certInfos'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            KeystoresAliasesSelfSignedCertCertsInfoCertInfo
+          >(
+            guardedValue,
+            (value) => KeystoresAliasesSelfSignedCertCertsInfoCertInfo.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

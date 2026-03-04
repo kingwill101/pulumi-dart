@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LabState {
   /// The ID of the Storage Account used for Artifact Storage.
   final pulumi.Input<String>? artifactsStorageAccountId;
+
   /// The ID of the Default Premium Storage Account for this Dev Test Lab.
   final pulumi.Input<String>? defaultPremiumStorageAccountId;
+
   /// The ID of the Default Storage Account for this Dev Test Lab.
   final pulumi.Input<String>? defaultStorageAccountId;
+
   /// The ID of the Key used for this Dev Test Lab.
   final pulumi.Input<String>? keyVaultId;
+
   /// Specifies the supported Azure location where the Dev Test Lab should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// Specifies the name of the Dev Test Lab. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The ID of the Storage Account used for Storage of Premium Data Disk.
   final pulumi.Input<String>? premiumDataDiskStorageAccountId;
+
   /// The name of the resource group under which the Dev Test Lab resource has to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The unique immutable identifier of the Dev Test Lab.
   final pulumi.Input<String>? uniqueIdentifier;
 
@@ -66,17 +75,58 @@ class LabState {
 
   factory LabState.fromMap(Map<String, dynamic> map) {
     return LabState(
-      artifactsStorageAccountId: map['artifactsStorageAccountId'] == null ? null : (map['artifactsStorageAccountId']! as String).input(),
-      defaultPremiumStorageAccountId: map['defaultPremiumStorageAccountId'] == null ? null : (map['defaultPremiumStorageAccountId']! as String).input(),
-      defaultStorageAccountId: map['defaultStorageAccountId'] == null ? null : (map['defaultStorageAccountId']! as String).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      premiumDataDiskStorageAccountId: map['premiumDataDiskStorageAccountId'] == null ? null : (map['premiumDataDiskStorageAccountId']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      uniqueIdentifier: map['uniqueIdentifier'] == null ? null : (map['uniqueIdentifier']! as String).input(),
+      artifactsStorageAccountId: (() {
+        final guardedValue = map['artifactsStorageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultPremiumStorageAccountId: (() {
+        final guardedValue = map['defaultPremiumStorageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultStorageAccountId: (() {
+        final guardedValue = map['defaultStorageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultId: (() {
+        final guardedValue = map['keyVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      premiumDataDiskStorageAccountId: (() {
+        final guardedValue = map['premiumDataDiskStorageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      uniqueIdentifier: (() {
+        final guardedValue = map['uniqueIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

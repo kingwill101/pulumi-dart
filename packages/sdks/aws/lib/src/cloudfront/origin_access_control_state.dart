@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OriginAccessControlState {
   /// The Origin Access Control ARN.
   final pulumi.Input<String>? arn;
+
   /// The description of the Origin Access Control. Defaults to "Managed by Pulumi" if omitted.
   final pulumi.Input<String>? description;
+
   /// The current version of this Origin Access Control.
   final pulumi.Input<String>? etag;
+
   /// A name that identifies the Origin Access Control.
   final pulumi.Input<String>? name;
+
   /// The type of origin that this Origin Access Control is for. Valid values are `lambda`, `mediapackagev2`, `mediastore`, and `s3`.
   final pulumi.Input<String>? originAccessControlOriginType;
+
   /// Specifies which requests CloudFront signs. Specify `always` for the most common use case. Allowed values: `always`, `never`, and `no-override`.
   final pulumi.Input<String>? signingBehavior;
+
   /// Determines how CloudFront signs (authenticates) requests. The only valid value is `sigv4`.
   final pulumi.Input<String>? signingProtocol;
 
@@ -51,14 +57,41 @@ class OriginAccessControlState {
 
   factory OriginAccessControlState.fromMap(Map<String, dynamic> map) {
     return OriginAccessControlState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      originAccessControlOriginType: map['originAccessControlOriginType'] == null ? null : ((map['originAccessControlOriginType'] as String).input()).input(),
-      signingBehavior: map['signingBehavior'] == null ? null : ((map['signingBehavior'] as String).input()).input(),
-      signingProtocol: map['signingProtocol'] == null ? null : ((map['signingProtocol'] as String).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      originAccessControlOriginType: (() {
+        final guardedValue = map['originAccessControlOriginType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signingBehavior: (() {
+        final guardedValue = map['signingBehavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signingProtocol: (() {
+        final guardedValue = map['signingProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

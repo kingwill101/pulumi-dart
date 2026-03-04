@@ -31,10 +31,9 @@ class GetProxyConfigArgs {
 
   factory GetProxyConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetProxyConfigArgs(
-      organizationId: (map['organizationId'] as String).input(),
-      partnerTenantId: (map['partnerTenantId'] as String).input(),
-      proxyConfigId: (map['proxyConfigId'] as String).input(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      partnerTenantId: pulumi.Input.fromValue(map['partnerTenantId'] as String),
+      proxyConfigId: pulumi.Input.fromValue(map['proxyConfigId'] as String),
     );
   }
 }
-

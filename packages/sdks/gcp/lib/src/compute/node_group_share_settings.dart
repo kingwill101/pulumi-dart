@@ -7,6 +7,7 @@ class NodeGroupShareSettings {
   /// A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
   /// Structure is documented below.
   final pulumi.Input<List<NodeGroupShareSettingsProjectMap>>? projectMaps;
+
   /// Node group sharing type.
   /// Possible values are: `ORGANIZATION`, `SPECIFIC_PROJECTS`, `LOCAL`.
   final pulumi.Input<String> shareType;
@@ -14,23 +15,41 @@ class NodeGroupShareSettings {
   /// Creates a new [NodeGroupShareSettings].
   /// [projectMaps] A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
   /// [shareType] Node group sharing type.
-  NodeGroupShareSettings({
-    this.projectMaps,
-    required this.shareType,
-  });
+  NodeGroupShareSettings({this.projectMaps, required this.shareType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'projectMaps': ?pulumi.Input.mapOptionalInputValue<List<NodeGroupShareSettingsProjectMap>, List<Map<String, dynamic>>>(projectMaps, (value) => pulumi.Input.encodeList<NodeGroupShareSettingsProjectMap, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'projectMaps':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NodeGroupShareSettingsProjectMap>,
+            List<Map<String, dynamic>>
+          >(
+            projectMaps,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NodeGroupShareSettingsProjectMap,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'shareType': shareType,
     };
   }
 
   factory NodeGroupShareSettings.fromMap(Map<String, dynamic> map) {
     return NodeGroupShareSettings(
-      projectMaps: map['projectMaps'] == null ? null : (pulumi.Input.decodeList<NodeGroupShareSettingsProjectMap>(map['projectMaps']!, (value) => NodeGroupShareSettingsProjectMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      shareType: (map['shareType'] as String).input(),
+      projectMaps: (() {
+        final guardedValue = map['projectMaps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<NodeGroupShareSettingsProjectMap>(
+            guardedValue,
+            (value) => NodeGroupShareSettingsProjectMap.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      shareType: pulumi.Input.fromValue(map['shareType'] as String),
     );
   }
 }
-

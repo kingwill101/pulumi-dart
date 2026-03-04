@@ -8,20 +8,17 @@ class DomainDevicesDiskMirrorSourceNetworkConfig {
 
   /// Creates a new [DomainDevicesDiskMirrorSourceNetworkConfig].
   /// [file] Specifies a file for loading additional network configuration in the backing store source.
-  DomainDevicesDiskMirrorSourceNetworkConfig({
-    required this.file,
-  });
+  DomainDevicesDiskMirrorSourceNetworkConfig({required this.file});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'file': file,
-    };
+    return <String, dynamic>{'file': file};
   }
 
-  factory DomainDevicesDiskMirrorSourceNetworkConfig.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesDiskMirrorSourceNetworkConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesDiskMirrorSourceNetworkConfig(
-      file: (map['file'] as String).input(),
+      file: pulumi.Input.fromValue(map['file'] as String),
     );
   }
 }
-

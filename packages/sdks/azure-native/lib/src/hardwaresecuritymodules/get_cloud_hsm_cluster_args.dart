@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCloudHsmClusterArgs {
   /// The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
   final pulumi.Input<String> cloudHsmClusterName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetCloudHsmClusterArgs {
 
   factory GetCloudHsmClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudHsmClusterArgs(
-      cloudHsmClusterName: (map['cloudHsmClusterName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      cloudHsmClusterName: pulumi.Input.fromValue(
+        map['cloudHsmClusterName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

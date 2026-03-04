@@ -7,36 +7,52 @@ import 'database_backup_setting_response.dart';
 class ListWebAppBackupStatusSecretsSlotResult {
   /// Id of the backup.
   final int backupId;
+
   /// Name of the blob which contains data for this backup.
   final String blobName;
+
   /// Unique correlation identifier. Please use this along with the timestamp while communicating with Azure support.
   final String correlationId;
+
   /// Timestamp of the backup creation.
   final String created;
+
   /// List of databases included in the backup.
   final List<DatabaseBackupSettingResponse> databases;
+
   /// Timestamp when this backup finished.
   final String finishedTimeStamp;
+
   /// Resource Id.
   final String id;
+
   /// Kind of resource.
   final String? kind;
+
   /// Timestamp of a last restore operation which used this backup.
   final String lastRestoreTimeStamp;
+
   /// Details regarding this backup. Might contain an error message.
   final String log;
+
   /// Resource Name.
   final String name;
+
   /// True if this backup has been created due to a schedule being triggered.
   final bool scheduled;
+
   /// Size of the backup in bytes.
   final double sizeInBytes;
+
   /// Backup status.
   final String status;
+
   /// SAS URL for the storage account container which contains this backup.
   final String storageAccountUrl;
+
   /// Resource type.
   final String type;
+
   /// Size of the original web app which has been backed up.
   final double websiteSizeInBytes;
 
@@ -84,7 +100,11 @@ class ListWebAppBackupStatusSecretsSlotResult {
       'blobName': blobName,
       'correlationId': correlationId,
       'created': created,
-      'databases': pulumi.Input.encodeList<DatabaseBackupSettingResponse, Map<String, dynamic>>(databases, (value) => value.toMap()),
+      'databases':
+          pulumi.Input.encodeList<
+            DatabaseBackupSettingResponse,
+            Map<String, dynamic>
+          >(databases, (value) => value.toMap()),
       'finishedTimeStamp': finishedTimeStamp,
       'id': id,
       'kind': ?kind,
@@ -100,16 +120,27 @@ class ListWebAppBackupStatusSecretsSlotResult {
     };
   }
 
-  factory ListWebAppBackupStatusSecretsSlotResult.fromMap(Map<String, dynamic> map) {
+  factory ListWebAppBackupStatusSecretsSlotResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListWebAppBackupStatusSecretsSlotResult(
       backupId: map['backupId'] as int,
       blobName: map['blobName'] as String,
       correlationId: map['correlationId'] as String,
       created: map['created'] as String,
-      databases: pulumi.Input.decodeList<DatabaseBackupSettingResponse>(map['databases'], (value) => DatabaseBackupSettingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      databases: pulumi.Input.decodeList<DatabaseBackupSettingResponse>(
+        map['databases']!,
+        (value) => DatabaseBackupSettingResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       finishedTimeStamp: map['finishedTimeStamp'] as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind']! as String,
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       lastRestoreTimeStamp: map['lastRestoreTimeStamp'] as String,
       log: map['log'] as String,
       name: map['name'] as String,
@@ -122,4 +153,3 @@ class ListWebAppBackupStatusSecretsSlotResult {
     );
   }
 }
-

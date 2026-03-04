@@ -4,16 +4,15 @@ enum NetworkConfigEgressOption {
   noPublicEgress("NO_PUBLIC_EGRESS"),
   publicEgress("PUBLIC_EGRESS");
 
-  const NetworkConfigEgressOption(this.value);
-  final String value;
+  const NetworkConfigEgressOption(this.wireValue);
+  final String wireValue;
 
   static NetworkConfigEgressOption fromValue(String value) {
     for (final item in NetworkConfigEgressOption.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkConfigEgressOption value: $value');
   }
 }
-

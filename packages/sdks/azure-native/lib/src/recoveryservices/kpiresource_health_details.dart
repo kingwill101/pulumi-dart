@@ -9,20 +9,19 @@ class KPIResourceHealthDetails {
 
   /// Creates a new [KPIResourceHealthDetails].
   /// [resourceHealthStatus] Resource Health Status
-  KPIResourceHealthDetails({
-    this.resourceHealthStatus,
-  });
+  KPIResourceHealthDetails({this.resourceHealthStatus});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceHealthStatus': ?resourceHealthStatus,
-    };
+    return <String, dynamic>{'resourceHealthStatus': ?resourceHealthStatus};
   }
 
   factory KPIResourceHealthDetails.fromMap(Map<String, dynamic> map) {
     return KPIResourceHealthDetails(
-      resourceHealthStatus: map['resourceHealthStatus'] == null ? null : (map['resourceHealthStatus']! as String).input(),
+      resourceHealthStatus: (() {
+        final guardedValue = map['resourceHealthStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

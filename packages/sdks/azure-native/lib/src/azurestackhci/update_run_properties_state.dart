@@ -5,16 +5,15 @@ enum UpdateRunPropertiesState {
   valueInProgress("InProgress"),
   valueFailed("Failed");
 
-  const UpdateRunPropertiesState(this.value);
-  final String value;
+  const UpdateRunPropertiesState(this.wireValue);
+  final String wireValue;
 
   static UpdateRunPropertiesState fromValue(String value) {
     for (final item in UpdateRunPropertiesState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UpdateRunPropertiesState value: $value');
   }
 }
-

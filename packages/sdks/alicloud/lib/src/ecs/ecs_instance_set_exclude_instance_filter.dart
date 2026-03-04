@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EcsInstanceSetExcludeInstanceFilter {
   /// The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
   final pulumi.Input<String> key;
+
   /// The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
   final pulumi.Input<List<String>> values;
 
@@ -17,17 +18,15 @@ class EcsInstanceSetExcludeInstanceFilter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'values': values,
-    };
+    return <String, dynamic>{'key': key, 'values': values};
   }
 
-  factory EcsInstanceSetExcludeInstanceFilter.fromMap(Map<String, dynamic> map) {
+  factory EcsInstanceSetExcludeInstanceFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EcsInstanceSetExcludeInstanceFilter(
-      key: (map['key'] as String).input(),
-      values: ((map['values'] as List).cast<String>()).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }
 }
-

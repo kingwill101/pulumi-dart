@@ -16,16 +16,17 @@ enum DiscoveryAnalysisKindContaineranalysisV1beta1 {
   vulnerabilityAssessment("VULNERABILITY_ASSESSMENT"),
   sbomReference("SBOM_REFERENCE");
 
-  const DiscoveryAnalysisKindContaineranalysisV1beta1(this.value);
-  final String value;
+  const DiscoveryAnalysisKindContaineranalysisV1beta1(this.wireValue);
+  final String wireValue;
 
   static DiscoveryAnalysisKindContaineranalysisV1beta1 fromValue(String value) {
     for (final item in DiscoveryAnalysisKindContaineranalysisV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DiscoveryAnalysisKindContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown DiscoveryAnalysisKindContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

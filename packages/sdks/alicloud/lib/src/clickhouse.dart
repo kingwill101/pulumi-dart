@@ -1,5 +1,3 @@
-library module_clickhouse;
-
 export 'clickhouse/account.dart';
 export 'clickhouse/account_args.dart';
 export 'clickhouse/account_state.dart';

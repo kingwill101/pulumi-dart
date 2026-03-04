@@ -9,10 +9,7 @@ class ScalingRuleHybridMetricDimension {
   /// Creates a new [ScalingRuleHybridMetricDimension].
   /// [dimensionKey] Optional.
   /// [dimensionValue] Optional.
-  ScalingRuleHybridMetricDimension({
-    this.dimensionKey,
-    this.dimensionValue,
-  });
+  ScalingRuleHybridMetricDimension({this.dimensionKey, this.dimensionValue});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,9 +20,16 @@ class ScalingRuleHybridMetricDimension {
 
   factory ScalingRuleHybridMetricDimension.fromMap(Map<String, dynamic> map) {
     return ScalingRuleHybridMetricDimension(
-      dimensionKey: map['dimensionKey'] == null ? null : (map['dimensionKey']! as String).input(),
-      dimensionValue: map['dimensionValue'] == null ? null : (map['dimensionValue']! as String).input(),
+      dimensionKey: (() {
+        final guardedValue = map['dimensionKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dimensionValue: (() {
+        final guardedValue = map['dimensionValue'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

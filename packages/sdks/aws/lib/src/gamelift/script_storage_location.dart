@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScriptStorageLocation {
   /// Name of your S3 bucket.
   final pulumi.Input<String> bucket;
+
   /// Name of the zip file containing your script files.
   final pulumi.Input<String> key;
+
   /// A specific version of the file. If not set, the latest version of the file is retrieved.
   final pulumi.Input<String>? objectVersion;
+
   /// ARN of the access role that allows Amazon GameLift to access your S3 bucket.
   final pulumi.Input<String> roleArn;
 
@@ -35,11 +38,14 @@ class ScriptStorageLocation {
 
   factory ScriptStorageLocation.fromMap(Map<String, dynamic> map) {
     return ScriptStorageLocation(
-      bucket: (map['bucket'] as String).input(),
-      key: (map['key'] as String).input(),
-      objectVersion: map['objectVersion'] == null ? null : ((map['objectVersion'] as String).input()).input(),
-      roleArn: (map['roleArn'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      objectVersion: (() {
+        final guardedValue = map['objectVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
     );
   }
 }
-

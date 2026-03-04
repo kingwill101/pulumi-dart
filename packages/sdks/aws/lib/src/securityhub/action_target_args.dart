@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActionTargetArgs {
   /// The name of the custom action target.
   final pulumi.Input<String> description;
+
   /// The ID for the custom action target.
   final pulumi.Input<String> identifier;
+
   /// The description for the custom action target.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -39,11 +42,18 @@ class ActionTargetArgs {
 
   factory ActionTargetArgs.fromMap(Map<String, dynamic> map) {
     return ActionTargetArgs(
-      description: (map['description'] as String).input(),
-      identifier: (map['identifier'] as String).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      identifier: pulumi.Input.fromValue(map['identifier'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

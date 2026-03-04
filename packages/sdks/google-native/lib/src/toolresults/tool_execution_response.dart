@@ -9,10 +9,13 @@ import 'tool_output_reference_response.dart';
 class ToolExecutionResponse {
   /// The full tokenized command line including the program name (equivalent to argv in a C program). - In response: present if set by create request - In create request: optional - In update request: never set
   final pulumi.Input<List<String>> commandLineArguments;
+
   /// Tool execution exit code. This field will be set once the tool has exited. - In response: present if set by create/update request - In create request: optional - In update request: optional, a FAILED_PRECONDITION error will be returned if an exit_code is already set.
   final pulumi.Input<ToolExitCodeResponse> exitCode;
+
   /// References to any plain text logs output the tool execution. This field can be set before the tool has exited in order to be able to have access to a live view of the logs while the tool is running. The maximum allowed number of tool logs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list
   final pulumi.Input<List<FileReferenceResponse>> toolLogs;
+
   /// References to opaque files of any format output by the tool execution. The maximum allowed number of tool outputs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list
   final pulumi.Input<List<ToolOutputReferenceResponse>> toolOutputs;
 
@@ -31,19 +34,64 @@ class ToolExecutionResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'commandLineArguments': commandLineArguments,
-      'exitCode': pulumi.Input.mapInputValue<ToolExitCodeResponse, Map<String, dynamic>>(exitCode, (value) => value.toMap()),
-      'toolLogs': pulumi.Input.mapInputValue<List<FileReferenceResponse>, List<Map<String, dynamic>>>(toolLogs, (value) => pulumi.Input.encodeList<FileReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'toolOutputs': pulumi.Input.mapInputValue<List<ToolOutputReferenceResponse>, List<Map<String, dynamic>>>(toolOutputs, (value) => pulumi.Input.encodeList<ToolOutputReferenceResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'exitCode':
+          pulumi.Input.mapInputValue<
+            ToolExitCodeResponse,
+            Map<String, dynamic>
+          >(exitCode, (value) => value.toMap()),
+      'toolLogs':
+          pulumi.Input.mapInputValue<
+            List<FileReferenceResponse>,
+            List<Map<String, dynamic>>
+          >(
+            toolLogs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  FileReferenceResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'toolOutputs':
+          pulumi.Input.mapInputValue<
+            List<ToolOutputReferenceResponse>,
+            List<Map<String, dynamic>>
+          >(
+            toolOutputs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ToolOutputReferenceResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ToolExecutionResponse.fromMap(Map<String, dynamic> map) {
     return ToolExecutionResponse(
-      commandLineArguments: ((map['commandLineArguments'] as List).cast<String>()).input(),
-      exitCode: (ToolExitCodeResponse.fromMap((map['exitCode'] as Map).cast<String, dynamic>())).input(),
-      toolLogs: (pulumi.Input.decodeList<FileReferenceResponse>(map['toolLogs'], (value) => FileReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      toolOutputs: (pulumi.Input.decodeList<ToolOutputReferenceResponse>(map['toolOutputs'], (value) => ToolOutputReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commandLineArguments: pulumi.Input.fromValue(
+        (map['commandLineArguments'] as List).cast<String>(),
+      ),
+      exitCode: pulumi.Input.fromValue(
+        ToolExitCodeResponse.fromMap(
+          (map['exitCode']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      toolLogs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<FileReferenceResponse>(
+          map['toolLogs']!,
+          (value) => FileReferenceResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      toolOutputs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<ToolOutputReferenceResponse>(
+          map['toolOutputs']!,
+          (value) => ToolOutputReferenceResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

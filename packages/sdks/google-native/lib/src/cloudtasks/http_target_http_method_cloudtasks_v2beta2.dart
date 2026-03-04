@@ -9,16 +9,17 @@ enum HttpTargetHttpMethodCloudtasksV2beta2 {
   patch("PATCH"),
   options("OPTIONS");
 
-  const HttpTargetHttpMethodCloudtasksV2beta2(this.value);
-  final String value;
+  const HttpTargetHttpMethodCloudtasksV2beta2(this.wireValue);
+  final String wireValue;
 
   static HttpTargetHttpMethodCloudtasksV2beta2 fromValue(String value) {
     for (final item in HttpTargetHttpMethodCloudtasksV2beta2.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown HttpTargetHttpMethodCloudtasksV2beta2 value: $value');
+    throw ArgumentError(
+      'Unknown HttpTargetHttpMethodCloudtasksV2beta2 value: $value',
+    );
   }
 }
-

@@ -3,16 +3,22 @@ enum AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1 {
   none("NONE"),
   optimizeAvailability("OPTIMIZE_AVAILABILITY");
 
-  const AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1(this.value);
-  final String value;
+  const AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1 fromValue(String value) {
-    for (final item in AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1.values) {
-      if (item.value == value) {
+  static AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown AutoscalingPolicyCpuUtilizationPredictiveMethodComputeV1 value: $value',
+    );
   }
 }
-

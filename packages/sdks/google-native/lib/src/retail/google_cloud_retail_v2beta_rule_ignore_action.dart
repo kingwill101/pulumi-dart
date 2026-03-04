@@ -9,20 +9,21 @@ class GoogleCloudRetailV2betaRuleIgnoreAction {
 
   /// Creates a new [GoogleCloudRetailV2betaRuleIgnoreAction].
   /// [ignoreTerms] Terms to ignore in the search query.
-  GoogleCloudRetailV2betaRuleIgnoreAction({
-    this.ignoreTerms,
-  });
+  GoogleCloudRetailV2betaRuleIgnoreAction({this.ignoreTerms});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ignoreTerms': ?ignoreTerms,
-    };
+    return <String, dynamic>{'ignoreTerms': ?ignoreTerms};
   }
 
-  factory GoogleCloudRetailV2betaRuleIgnoreAction.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2betaRuleIgnoreAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRetailV2betaRuleIgnoreAction(
-      ignoreTerms: map['ignoreTerms'] == null ? null : ((map['ignoreTerms']! as List).cast<String>()).input(),
+      ignoreTerms: (() {
+        final guardedValue = map['ignoreTerms'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

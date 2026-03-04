@@ -5,16 +5,15 @@ enum VMSwitchType {
   valueWan("Wan"),
   valueLan("Lan");
 
-  const VMSwitchType(this.value);
-  final String value;
+  const VMSwitchType(this.wireValue);
+  final String wireValue;
 
   static VMSwitchType fromValue(String value) {
     for (final item in VMSwitchType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VMSwitchType value: $value');
   }
 }
-

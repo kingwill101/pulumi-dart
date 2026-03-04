@@ -6,9 +6,16 @@ import 'ingestion_destination_destination_configuration_audit_log_destination_s3
 
 class IngestionDestinationDestinationConfigurationAuditLogDestination {
   /// Contains information about an Amazon Data Firehose delivery stream.
-  final pulumi.Input<IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream>? firehoseStream;
+  final pulumi.Input<
+    IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream
+  >?
+  firehoseStream;
+
   /// Contains information about an Amazon S3 bucket.
-  final pulumi.Input<IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket>? s3Bucket;
+  final pulumi.Input<
+    IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket
+  >?
+  s3Bucket;
 
   /// Creates a new [IngestionDestinationDestinationConfigurationAuditLogDestination].
   /// [firehoseStream] Contains information about an Amazon Data Firehose delivery stream.
@@ -20,16 +27,41 @@ class IngestionDestinationDestinationConfigurationAuditLogDestination {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'firehoseStream': ?pulumi.Input.mapOptionalInputValue<IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream, Map<String, dynamic>>(firehoseStream, (value) => value.toMap()),
-      's3Bucket': ?pulumi.Input.mapOptionalInputValue<IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket, Map<String, dynamic>>(s3Bucket, (value) => value.toMap()),
+      'firehoseStream':
+          ?pulumi.Input.mapOptionalInputValue<
+            IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream,
+            Map<String, dynamic>
+          >(firehoseStream, (value) => value.toMap()),
+      's3Bucket':
+          ?pulumi.Input.mapOptionalInputValue<
+            IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket,
+            Map<String, dynamic>
+          >(s3Bucket, (value) => value.toMap()),
     };
   }
 
-  factory IngestionDestinationDestinationConfigurationAuditLogDestination.fromMap(Map<String, dynamic> map) {
+  factory IngestionDestinationDestinationConfigurationAuditLogDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IngestionDestinationDestinationConfigurationAuditLogDestination(
-      firehoseStream: map['firehoseStream'] == null ? null : ((IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream.fromMap((map['firehoseStream']! as Map).cast<String, dynamic>())).input()).input(),
-      s3Bucket: map['s3Bucket'] == null ? null : ((IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket.fromMap((map['s3Bucket']! as Map).cast<String, dynamic>())).input()).input(),
+      firehoseStream: (() {
+        final guardedValue = map['firehoseStream'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      s3Bucket: (() {
+        final guardedValue = map['s3Bucket'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

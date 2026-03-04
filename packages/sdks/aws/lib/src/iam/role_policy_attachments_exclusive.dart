@@ -2,13 +2,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'role_policy_attachments_exclusive_args.dart';
 import 'role_policy_attachments_exclusive_state.dart';
 
-/// > **NOTE:**: To reliably detect drift between customer managed policies listed in this resource and actual policies attached to the role in the cloud, you currently need to run Pulumi with `pulumi up --refresh`. See [#4766](https://github.com/pulumi/pulumi-aws/issues/4766) for tracking making this work with regular `pulumi up`
+/// &gt; **NOTE:**: To reliably detect drift between customer managed policies listed in this resource and actual policies attached to the role in the cloud, you currently need to run Pulumi with `pulumi up --refresh`. See [#4766](https://github.com/pulumi/pulumi-aws/issues/4766) for tracking making this work with regular `pulumi up`
 ///
 /// Resource for maintaining exclusive management of managed IAM policies assigned to an AWS IAM (Identity & Access Management) role.
 ///
-/// !> This resource takes exclusive ownership over managed IAM policies attached to a role. This includes removal of managed IAM policies which are not explicitly configured. To prevent persistent drift, ensure any `aws.iam.RolePolicyAttachment` resources managed alongside this resource are included in the `policy_arns` argument.
+/// !&gt; This resource takes exclusive ownership over managed IAM policies attached to a role. This includes removal of managed IAM policies which are not explicitly configured. To prevent persistent drift, ensure any `aws.iam.RolePolicyAttachment` resources managed alongside this resource are included in the `policy_arns` argument.
 ///
-/// > Destruction of this resource means Pulumi will no longer manage reconciliation of the configured policy attachments. It **will not** detach the configured policies from the role.
+/// &gt; Destruction of this resource means Pulumi will no longer manage reconciliation of the configured policy attachments. It **will not** detach the configured policies from the role.
 ///
 /// ## Example Usage
 ///
@@ -118,7 +118,7 @@ import 'role_policy_attachments_exclusive_state.dart';
 ///
 /// To automatically remove any configured managed IAM policies, set the `policy_arns` argument to an empty list.
 ///
-/// > This will not **prevent** managed IAM policies from being assigned to a role via Pulumi (or any other interface). This resource enables bringing managed IAM policy assignments into a configured state, however, this reconciliation happens only when `apply` is proactively run.
+/// &gt; This will not **prevent** managed IAM policies from being assigned to a role via Pulumi (or any other interface). This resource enables bringing managed IAM policy assignments into a configured state, however, this reconciliation happens only when `apply` is proactively run.
 ///
 ///
 /// ```typescript
@@ -224,6 +224,7 @@ import 'role_policy_attachments_exclusive_state.dart';
 class RolePolicyAttachmentsExclusive extends pulumi.CustomResource {
   /// A list of managed IAM policy ARNs to be attached to the role. Policies attached to this role but not configured in this argument will be removed.
   late final pulumi.Output<List<String>> policyArns;
+
   /// IAM role name.
   late final pulumi.Output<String> roleName;
 
@@ -236,13 +237,13 @@ class RolePolicyAttachmentsExclusive extends pulumi.CustomResource {
     RolePolicyAttachmentsExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/rolePolicyAttachmentsExclusive:RolePolicyAttachmentsExclusive',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policyArns = registerOutput<List<String>>('policyArns');
-    this.roleName = registerOutput<String>('roleName');
+         'aws:iam/rolePolicyAttachmentsExclusive:RolePolicyAttachmentsExclusive',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policyArns = registerOutput<List<String>>('policyArns');
+    roleName = registerOutput<String>('roleName');
   }
 
   /// Gets an existing [RolePolicyAttachmentsExclusive] resource's state with the given [name] and [id].
@@ -263,12 +264,12 @@ class RolePolicyAttachmentsExclusive extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/rolePolicyAttachmentsExclusive:RolePolicyAttachmentsExclusive',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.policyArns = registerOutput<List<String>>('policyArns');
-    this.roleName = registerOutput<String>('roleName');
+         'aws:iam/rolePolicyAttachmentsExclusive:RolePolicyAttachmentsExclusive',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    policyArns = registerOutput<List<String>>('policyArns');
+    roleName = registerOutput<String>('roleName');
   }
 }

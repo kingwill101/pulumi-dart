@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LinkedNotificationRule {
   /// The actions.
   final pulumi.Input<List<String>>? actions;
+
   /// The actions on failed operation.
   final pulumi.Input<List<String>>? actionsOnFailedOperation;
+
   /// The fast path actions.
   final pulumi.Input<List<String>>? fastPathActions;
+
   /// The fast path action on failed operation.
   final pulumi.Input<List<String>>? fastPathActionsOnFailedOperation;
+
   /// This is a TimeSpan property.
   final pulumi.Input<String>? linkedNotificationTimeout;
 
@@ -40,12 +44,31 @@ class LinkedNotificationRule {
 
   factory LinkedNotificationRule.fromMap(Map<String, dynamic> map) {
     return LinkedNotificationRule(
-      actions: map['actions'] == null ? null : ((map['actions']! as List).cast<String>()).input(),
-      actionsOnFailedOperation: map['actionsOnFailedOperation'] == null ? null : ((map['actionsOnFailedOperation']! as List).cast<String>()).input(),
-      fastPathActions: map['fastPathActions'] == null ? null : ((map['fastPathActions']! as List).cast<String>()).input(),
-      fastPathActionsOnFailedOperation: map['fastPathActionsOnFailedOperation'] == null ? null : ((map['fastPathActionsOnFailedOperation']! as List).cast<String>()).input(),
-      linkedNotificationTimeout: map['linkedNotificationTimeout'] == null ? null : (map['linkedNotificationTimeout']! as String).input(),
+      actions: (() {
+        final guardedValue = map['actions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      actionsOnFailedOperation: (() {
+        final guardedValue = map['actionsOnFailedOperation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      fastPathActions: (() {
+        final guardedValue = map['fastPathActions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      fastPathActionsOnFailedOperation: (() {
+        final guardedValue = map['fastPathActionsOnFailedOperation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      linkedNotificationTimeout: (() {
+        final guardedValue = map['linkedNotificationTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

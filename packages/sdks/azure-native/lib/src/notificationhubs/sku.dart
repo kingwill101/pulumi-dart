@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class Sku {
   /// Gets or sets the capacity of the resource
   final pulumi.Input<int>? capacity;
+
   /// Gets or sets the Sku Family
   final pulumi.Input<String>? family;
+
   /// Namespace SKU name.
   final pulumi.Input<String> name;
+
   /// Gets or sets the Sku size
   final pulumi.Input<String>? size;
+
   /// Gets or sets the tier of particular sku
   final pulumi.Input<String>? tier;
 
@@ -21,13 +25,7 @@ class Sku {
   /// [name] Namespace SKU name.
   /// [size] Gets or sets the Sku size
   /// [tier] Gets or sets the tier of particular sku
-  Sku({
-    this.capacity,
-    this.family,
-    required this.name,
-    this.size,
-    this.tier,
-  });
+  Sku({this.capacity, this.family, required this.name, this.size, this.tier});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,12 +39,27 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
-      family: map['family'] == null ? null : (map['family']! as String).input(),
-      name: (map['name'] as String).input(),
-      size: map['size'] == null ? null : (map['size']! as String).input(),
-      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      capacity: (() {
+        final guardedValue = map['capacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      family: (() {
+        final guardedValue = map['family'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tier: (() {
+        final guardedValue = map['tier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

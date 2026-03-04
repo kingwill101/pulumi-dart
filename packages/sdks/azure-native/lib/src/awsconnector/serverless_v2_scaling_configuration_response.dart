@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerlessV2ScalingConfigurationResponse {
   /// The maximum number of Aurora capacity units (ACUs) for a DB instance in an Aurora Serverless v2 cluster. You can specify ACU values in half-step increments, such as 40, 40.5, 41, and so on. The largest value that you can use is 128.
   final pulumi.Input<double>? maxCapacity;
+
   /// The minimum number of Aurora capacity units (ACUs) for a DB instance in an Aurora Serverless v2 cluster. You can specify ACU values in half-step increments, such as 8, 8.5, 9, and so on. The smallest value that you can use is 0.5.
   final pulumi.Input<double>? minCapacity;
 
@@ -24,11 +25,20 @@ class ServerlessV2ScalingConfigurationResponse {
     };
   }
 
-  factory ServerlessV2ScalingConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory ServerlessV2ScalingConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServerlessV2ScalingConfigurationResponse(
-      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity']! as double).input(),
-      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity']! as double).input(),
+      maxCapacity: (() {
+        final guardedValue = map['maxCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      minCapacity: (() {
+        final guardedValue = map['minCapacity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

@@ -6,7 +6,7 @@ import 'network_state.dart';
 ///
 /// For information about ENS Network and how to use it, see [What is Network](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createnetwork-1).
 ///
-/// > **NOTE:** Available since v1.213.0.
+/// &gt; **NOTE:** Available since v1.213.0.
 ///
 /// ## Example Usage
 ///
@@ -151,14 +151,19 @@ import 'network_state.dart';
 class Network extends pulumi.CustomResource {
   /// The network segment of the network. You can use the following network segments or a subset of them as the network segment: `10.0.0.0/8` (default), `172.16.0.0/12`, `192.168.0.0/16`.
   late final pulumi.Output<String> cidrBlock;
+
   /// Creation time, timestamp (MS).
   late final pulumi.Output<String> createTime;
+
   /// Description information.Rules:It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`. Example value: this is my first network.
   late final pulumi.Output<String?> description;
+
   /// Ens node IDExample value: cn-beijing-telecom.
   late final pulumi.Output<String> ensRegionId;
+
   /// Name of the network instanceThe naming rules are as follows: 1. Length is 2~128 English or Chinese characters; 2. It must start with a large or small letter or Chinese, not with `http://` and `https://`; 3. Can contain numbers, colons (:), underscores (_), or dashes (-).
   late final pulumi.Output<String?> networkName;
+
   /// The status of the network instance. Pending: Configuring, Available: Available.
   late final pulumi.Output<String> status;
 
@@ -171,17 +176,17 @@ class Network extends pulumi.CustomResource {
     NetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/network:Network',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.ensRegionId = registerOutput<String>('ensRegionId');
-    this.networkName = registerOutput<String?>('networkName');
-    this.status = registerOutput<String>('status');
+         'alicloud:ens/network:Network',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlock = registerOutput<String>('cidrBlock');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    ensRegionId = registerOutput<String>('ensRegionId');
+    networkName = registerOutput<String?>('networkName');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [Network] resource's state with the given [name] and [id].
@@ -202,16 +207,16 @@ class Network extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ens/network:Network',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.ensRegionId = registerOutput<String>('ensRegionId');
-    this.networkName = registerOutput<String?>('networkName');
-    this.status = registerOutput<String>('status');
+         'alicloud:ens/network:Network',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cidrBlock = registerOutput<String>('cidrBlock');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    ensRegionId = registerOutput<String>('ensRegionId');
+    networkName = registerOutput<String?>('networkName');
+    status = registerOutput<String>('status');
   }
 }

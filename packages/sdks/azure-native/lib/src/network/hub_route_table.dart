@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'hub_route_response.dart';
 import 'hub_route_table_args.dart';
 
 /// RouteTable resource in a virtual hub.
@@ -229,20 +228,28 @@ import 'hub_route_table_args.dart';
 class HubRouteTable extends pulumi.CustomResource {
   /// List of all connections associated with this route table.
   late final pulumi.Output<List<String>> associatedConnections;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// List of labels associated with this route table.
   late final pulumi.Output<List<String>?> labels;
+
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
+
   /// List of all connections that advertise to this route table.
   late final pulumi.Output<List<String>> propagatingConnections;
+
   /// The provisioning state of the RouteTable resource.
   late final pulumi.Output<String> provisioningState;
+
   /// List of all routes.
-  late final pulumi.Output<List<HubRouteResponse>?> routes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> routes;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -255,19 +262,23 @@ class HubRouteTable extends pulumi.CustomResource {
     HubRouteTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:HubRouteTable',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associatedConnections = registerOutput<List<String>>('associatedConnections');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
-    this.labels = registerOutput<List<String>?>('labels');
+         'azure-native:network:HubRouteTable',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associatedConnections = registerOutput<List<String>>(
+      'associatedConnections',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<List<String>?>('labels');
     this.name = registerOutput<String?>('name');
-    this.propagatingConnections = registerOutput<List<String>>('propagatingConnections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.routes = registerOutput<List<HubRouteResponse>?>('routes');
-    this.type = registerOutput<String>('type');
+    propagatingConnections = registerOutput<List<String>>(
+      'propagatingConnections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
+    type = registerOutput<String>('type');
   }
 }

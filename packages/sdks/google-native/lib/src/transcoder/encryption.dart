@@ -9,14 +9,19 @@ import 'secret_manager_source.dart';
 class Encryption {
   /// Configuration for AES-128 encryption.
   final pulumi.Input<Map<String, dynamic>>? aes128;
+
   /// DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
   final pulumi.Input<DrmSystems> drmSystems;
+
   /// Identifier for this set of encryption options.
   final pulumi.Input<String> id;
+
   /// Configuration for MPEG Common Encryption (MPEG-CENC).
   final pulumi.Input<MpegCommonEncryption>? mpegCenc;
+
   /// Configuration for SAMPLE-AES encryption.
   final pulumi.Input<Map<String, dynamic>>? sampleAes;
+
   /// Keys are stored in Google Secret Manager.
   final pulumi.Input<SecretManagerSource>? secretManagerKeySource;
 
@@ -39,23 +44,64 @@ class Encryption {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'aes128': ?aes128,
-      'drmSystems': pulumi.Input.mapInputValue<DrmSystems, Map<String, dynamic>>(drmSystems, (value) => value.toMap()),
+      'drmSystems':
+          pulumi.Input.mapInputValue<DrmSystems, Map<String, dynamic>>(
+            drmSystems,
+            (value) => value.toMap(),
+          ),
       'id': id,
-      'mpegCenc': ?pulumi.Input.mapOptionalInputValue<MpegCommonEncryption, Map<String, dynamic>>(mpegCenc, (value) => value.toMap()),
+      'mpegCenc':
+          ?pulumi.Input.mapOptionalInputValue<
+            MpegCommonEncryption,
+            Map<String, dynamic>
+          >(mpegCenc, (value) => value.toMap()),
       'sampleAes': ?sampleAes,
-      'secretManagerKeySource': ?pulumi.Input.mapOptionalInputValue<SecretManagerSource, Map<String, dynamic>>(secretManagerKeySource, (value) => value.toMap()),
+      'secretManagerKeySource':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecretManagerSource,
+            Map<String, dynamic>
+          >(secretManagerKeySource, (value) => value.toMap()),
     };
   }
 
   factory Encryption.fromMap(Map<String, dynamic> map) {
     return Encryption(
-      aes128: map['aes128'] == null ? null : ((map['aes128']! as Map).cast<String, dynamic>()).input(),
-      drmSystems: (DrmSystems.fromMap((map['drmSystems'] as Map).cast<String, dynamic>())).input(),
-      id: (map['id'] as String).input(),
-      mpegCenc: map['mpegCenc'] == null ? null : (MpegCommonEncryption.fromMap((map['mpegCenc']! as Map).cast<String, dynamic>())).input(),
-      sampleAes: map['sampleAes'] == null ? null : ((map['sampleAes']! as Map).cast<String, dynamic>()).input(),
-      secretManagerKeySource: map['secretManagerKeySource'] == null ? null : (SecretManagerSource.fromMap((map['secretManagerKeySource']! as Map).cast<String, dynamic>())).input(),
+      aes128: (() {
+        final guardedValue = map['aes128'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      drmSystems: pulumi.Input.fromValue(
+        DrmSystems.fromMap((map['drmSystems']! as Map).cast<String, dynamic>()),
+      ),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      mpegCenc: (() {
+        final guardedValue = map['mpegCenc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MpegCommonEncryption.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      sampleAes: (() {
+        final guardedValue = map['sampleAes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      secretManagerKeySource: (() {
+        final guardedValue = map['secretManagerKeySource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecretManagerSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

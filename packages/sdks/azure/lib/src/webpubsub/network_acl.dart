@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_acl_args.dart';
-import 'network_acl_private_endpoint.dart';
 import 'network_acl_public_network.dart';
 import 'network_acl_state.dart';
 
@@ -476,7 +475,7 @@ import 'network_acl_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.SignalRService` - 2024-03-01
@@ -491,10 +490,13 @@ import 'network_acl_state.dart';
 class NetworkAcl extends pulumi.CustomResource {
   /// The default action to control the network access when no other rule matches. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
   late final pulumi.Output<String?> defaultAction;
+
   /// A `private_endpoint` block as defined below.
-  late final pulumi.Output<List<NetworkAclPrivateEndpoint>?> privateEndpoints;
+  late final pulumi.Output<List<Map<String, dynamic>>?> privateEndpoints;
+
   /// A `public_network` block as defined below.
   late final pulumi.Output<NetworkAclPublicNetwork> publicNetwork;
+
   /// The ID of the Web Pubsub service. Changing this forces a new resource to be created.
   late final pulumi.Output<String> webPubsubId;
 
@@ -507,15 +509,17 @@ class NetworkAcl extends pulumi.CustomResource {
     NetworkAclArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:webpubsub/networkAcl:NetworkAcl',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultAction = registerOutput<String?>('defaultAction');
-    this.privateEndpoints = registerOutput<List<NetworkAclPrivateEndpoint>?>('privateEndpoints');
-    this.publicNetwork = registerOutput<NetworkAclPublicNetwork>('publicNetwork');
-    this.webPubsubId = registerOutput<String>('webPubsubId');
+         'azure:webpubsub/networkAcl:NetworkAcl',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultAction = registerOutput<String?>('defaultAction');
+    privateEndpoints = registerOutput<List<Map<String, dynamic>>?>(
+      'privateEndpoints',
+    );
+    publicNetwork = registerOutput<NetworkAclPublicNetwork>('publicNetwork');
+    webPubsubId = registerOutput<String>('webPubsubId');
   }
 
   /// Gets an existing [NetworkAcl] resource's state with the given [name] and [id].
@@ -536,14 +540,16 @@ class NetworkAcl extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:webpubsub/networkAcl:NetworkAcl',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultAction = registerOutput<String?>('defaultAction');
-    this.privateEndpoints = registerOutput<List<NetworkAclPrivateEndpoint>?>('privateEndpoints');
-    this.publicNetwork = registerOutput<NetworkAclPublicNetwork>('publicNetwork');
-    this.webPubsubId = registerOutput<String>('webPubsubId');
+         'azure:webpubsub/networkAcl:NetworkAcl',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    defaultAction = registerOutput<String?>('defaultAction');
+    privateEndpoints = registerOutput<List<Map<String, dynamic>>?>(
+      'privateEndpoints',
+    );
+    publicNetwork = registerOutput<NetworkAclPublicNetwork>('publicNetwork');
+    webPubsubId = registerOutput<String>('webPubsubId');
   }
 }

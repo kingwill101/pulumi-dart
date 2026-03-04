@@ -158,16 +158,15 @@ enum InstanceType {
   mlT3Medium("ml.t3.medium"),
   mlT3Xlarge("ml.t3.xlarge");
 
-  const InstanceType(this.value);
-  final String value;
+  const InstanceType(this.wireValue);
+  final String wireValue;
 
   static InstanceType fromValue(String value) {
     for (final item in InstanceType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceType value: $value');
   }
 }
-

@@ -6,7 +6,6 @@ import 'identity_response.dart';
 import 'network_profile_response.dart';
 import 'os_profile_response.dart';
 import 'placement_profile_response.dart';
-import 'resource_status_response.dart';
 import 'security_profile_response.dart';
 import 'storage_profile_response.dart';
 import 'system_data_response.dart';
@@ -213,67 +212,98 @@ import 'virtual_machine_args.dart';
 class VirtualMachine extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the name of the corresponding resource in Kubernetes.
   late final pulumi.Output<String> customResourceName;
+
   /// Gets or sets the extended location.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
+
   /// Firmware type
   late final pulumi.Output<String?> firmwareType;
+
   /// Gets or sets the folder path of the vm.
   late final pulumi.Output<String> folderPath;
+
   /// Guest agent status properties.
   late final pulumi.Output<GuestAgentProfileResponse?> guestAgentProfile;
+
   /// Hardware properties.
   late final pulumi.Output<HardwareProfileResponse?> hardwareProfile;
+
   /// The identity of the resource.
   late final pulumi.Output<IdentityResponse?> identity;
+
   /// Gets or sets the instance uuid of the vm.
   late final pulumi.Output<String> instanceUuid;
+
   /// Gets or sets the inventory Item ID for the virtual machine.
   late final pulumi.Output<String?> inventoryItemId;
+
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   late final pulumi.Output<String?> kind;
+
   /// Gets or sets the location.
   late final pulumi.Output<String> location;
+
   /// Gets or sets the vCenter Managed Object name for the virtual machine.
   late final pulumi.Output<String> moName;
+
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual machine.
   late final pulumi.Output<String?> moRefId;
+
   /// Gets or sets the name.
   late final pulumi.Output<String> name;
+
   /// Network properties.
   late final pulumi.Output<NetworkProfileResponse?> networkProfile;
+
   /// OS properties.
   late final pulumi.Output<OsProfileResponse?> osProfile;
+
   /// Placement properties.
   late final pulumi.Output<PlacementProfileResponse?> placementProfile;
+
   /// Gets the power state of the virtual machine.
   late final pulumi.Output<String> powerState;
+
   /// Gets the provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Gets or sets the ARM Id of the resourcePool resource on which this virtual machine will
   /// deploy.
   late final pulumi.Output<String?> resourcePoolId;
+
   /// Gets the security profile.
   late final pulumi.Output<SecurityProfileResponse?> securityProfile;
+
   /// Gets or sets the SMBIOS UUID of the vm.
   late final pulumi.Output<String?> smbiosUuid;
+
   /// The resource status information.
-  late final pulumi.Output<List<ResourceStatusResponse>> statuses;
+  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+
   /// Storage properties.
   late final pulumi.Output<StorageProfileResponse?> storageProfile;
+
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Gets or sets the Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Gets or sets the ARM Id of the template resource to deploy the virtual machine.
   late final pulumi.Output<String?> templateId;
+
   /// Gets or sets the type of the resource.
   late final pulumi.Output<String> type;
+
   /// Gets or sets a unique identifier for this resource.
   late final pulumi.Output<String> uuid;
+
   /// Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
   late final pulumi.Output<String?> vCenterId;
+
   /// Gets or sets a unique identifier for the vm resource.
   late final pulumi.Output<String> vmId;
 
@@ -286,42 +316,52 @@ class VirtualMachine extends pulumi.CustomResource {
     VirtualMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:connectedvmwarevsphere:VirtualMachine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customResourceName = registerOutput<String>('customResourceName');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation');
-    this.firmwareType = registerOutput<String?>('firmwareType');
-    this.folderPath = registerOutput<String>('folderPath');
-    this.guestAgentProfile = registerOutput<GuestAgentProfileResponse?>('guestAgentProfile');
-    this.hardwareProfile = registerOutput<HardwareProfileResponse?>('hardwareProfile');
-    this.identity = registerOutput<IdentityResponse?>('identity');
-    this.instanceUuid = registerOutput<String>('instanceUuid');
-    this.inventoryItemId = registerOutput<String?>('inventoryItemId');
-    this.kind = registerOutput<String?>('kind');
-    this.location = registerOutput<String>('location');
-    this.moName = registerOutput<String>('moName');
-    this.moRefId = registerOutput<String?>('moRefId');
+         'azure-native:connectedvmwarevsphere:VirtualMachine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customResourceName = registerOutput<String>('customResourceName');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>(
+      'extendedLocation',
+    );
+    firmwareType = registerOutput<String?>('firmwareType');
+    folderPath = registerOutput<String>('folderPath');
+    guestAgentProfile = registerOutput<GuestAgentProfileResponse?>(
+      'guestAgentProfile',
+    );
+    hardwareProfile = registerOutput<HardwareProfileResponse?>(
+      'hardwareProfile',
+    );
+    identity = registerOutput<IdentityResponse?>('identity');
+    instanceUuid = registerOutput<String>('instanceUuid');
+    inventoryItemId = registerOutput<String?>('inventoryItemId');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    moName = registerOutput<String>('moName');
+    moRefId = registerOutput<String?>('moRefId');
     this.name = registerOutput<String>('name');
-    this.networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
-    this.osProfile = registerOutput<OsProfileResponse?>('osProfile');
-    this.placementProfile = registerOutput<PlacementProfileResponse?>('placementProfile');
-    this.powerState = registerOutput<String>('powerState');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourcePoolId = registerOutput<String?>('resourcePoolId');
-    this.securityProfile = registerOutput<SecurityProfileResponse?>('securityProfile');
-    this.smbiosUuid = registerOutput<String?>('smbiosUuid');
-    this.statuses = registerOutput<List<ResourceStatusResponse>>('statuses');
-    this.storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.templateId = registerOutput<String?>('templateId');
-    this.type = registerOutput<String>('type');
-    this.uuid = registerOutput<String>('uuid');
-    this.vCenterId = registerOutput<String?>('vCenterId');
-    this.vmId = registerOutput<String>('vmId');
+    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile');
+    osProfile = registerOutput<OsProfileResponse?>('osProfile');
+    placementProfile = registerOutput<PlacementProfileResponse?>(
+      'placementProfile',
+    );
+    powerState = registerOutput<String>('powerState');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourcePoolId = registerOutput<String?>('resourcePoolId');
+    securityProfile = registerOutput<SecurityProfileResponse?>(
+      'securityProfile',
+    );
+    smbiosUuid = registerOutput<String?>('smbiosUuid');
+    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    storageProfile = registerOutput<StorageProfileResponse?>('storageProfile');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    templateId = registerOutput<String?>('templateId');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
+    vCenterId = registerOutput<String?>('vCenterId');
+    vmId = registerOutput<String>('vmId');
   }
 }

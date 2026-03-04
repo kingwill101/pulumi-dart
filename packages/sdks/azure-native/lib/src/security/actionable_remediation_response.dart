@@ -8,13 +8,17 @@ import 'target_branch_configuration_response.dart';
 class ActionableRemediationResponse {
   /// Repository branch configuration for PR Annotations.
   final pulumi.Input<TargetBranchConfigurationResponse>? branchConfiguration;
+
   /// Gets or sets list of categories and severity levels.
-  final pulumi.Input<List<CategoryConfigurationResponse>>? categoryConfigurations;
+  final pulumi.Input<List<CategoryConfigurationResponse>>?
+  categoryConfigurations;
+
   /// Update Settings.
   ///
   /// Enabled - Resource should inherit configurations from parent.
   /// Disabled - Resource should not inherit configurations from parent.
   final pulumi.Input<String>? inheritFromParentState;
+
   /// ActionableRemediation Setting.
   /// None - the setting was never set.
   /// Enabled - ActionableRemediation is enabled.
@@ -35,8 +39,23 @@ class ActionableRemediationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'branchConfiguration': ?pulumi.Input.mapOptionalInputValue<TargetBranchConfigurationResponse, Map<String, dynamic>>(branchConfiguration, (value) => value.toMap()),
-      'categoryConfigurations': ?pulumi.Input.mapOptionalInputValue<List<CategoryConfigurationResponse>, List<Map<String, dynamic>>>(categoryConfigurations, (value) => pulumi.Input.encodeList<CategoryConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'branchConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            TargetBranchConfigurationResponse,
+            Map<String, dynamic>
+          >(branchConfiguration, (value) => value.toMap()),
+      'categoryConfigurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<CategoryConfigurationResponse>,
+            List<Map<String, dynamic>>
+          >(
+            categoryConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CategoryConfigurationResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'inheritFromParentState': ?inheritFromParentState,
       'state': ?state,
     };
@@ -44,11 +63,37 @@ class ActionableRemediationResponse {
 
   factory ActionableRemediationResponse.fromMap(Map<String, dynamic> map) {
     return ActionableRemediationResponse(
-      branchConfiguration: map['branchConfiguration'] == null ? null : (TargetBranchConfigurationResponse.fromMap((map['branchConfiguration']! as Map).cast<String, dynamic>())).input(),
-      categoryConfigurations: map['categoryConfigurations'] == null ? null : (pulumi.Input.decodeList<CategoryConfigurationResponse>(map['categoryConfigurations']!, (value) => CategoryConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inheritFromParentState: map['inheritFromParentState'] == null ? null : (map['inheritFromParentState']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      branchConfiguration: (() {
+        final guardedValue = map['branchConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TargetBranchConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      categoryConfigurations: (() {
+        final guardedValue = map['categoryConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<CategoryConfigurationResponse>(
+            guardedValue,
+            (value) => CategoryConfigurationResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      inheritFromParentState: (() {
+        final guardedValue = map['inheritFromParentState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

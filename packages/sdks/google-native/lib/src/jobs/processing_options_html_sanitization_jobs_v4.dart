@@ -4,16 +4,17 @@ enum ProcessingOptionsHtmlSanitizationJobsV4 {
   htmlSanitizationDisabled("HTML_SANITIZATION_DISABLED"),
   simpleFormattingOnly("SIMPLE_FORMATTING_ONLY");
 
-  const ProcessingOptionsHtmlSanitizationJobsV4(this.value);
-  final String value;
+  const ProcessingOptionsHtmlSanitizationJobsV4(this.wireValue);
+  final String wireValue;
 
   static ProcessingOptionsHtmlSanitizationJobsV4 fromValue(String value) {
     for (final item in ProcessingOptionsHtmlSanitizationJobsV4.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ProcessingOptionsHtmlSanitizationJobsV4 value: $value');
+    throw ArgumentError(
+      'Unknown ProcessingOptionsHtmlSanitizationJobsV4 value: $value',
+    );
   }
 }
-

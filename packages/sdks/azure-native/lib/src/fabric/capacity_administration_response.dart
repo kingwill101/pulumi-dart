@@ -9,20 +9,15 @@ class CapacityAdministrationResponse {
 
   /// Creates a new [CapacityAdministrationResponse].
   /// [members] An array of administrator user identities.
-  CapacityAdministrationResponse({
-    required this.members,
-  });
+  CapacityAdministrationResponse({required this.members});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'members': members,
-    };
+    return <String, dynamic>{'members': members};
   }
 
   factory CapacityAdministrationResponse.fromMap(Map<String, dynamic> map) {
     return CapacityAdministrationResponse(
-      members: ((map['members'] as List).cast<String>()).input(),
+      members: pulumi.Input.fromValue((map['members'] as List).cast<String>()),
     );
   }
 }
-

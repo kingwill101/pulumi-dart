@@ -6,6 +6,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence 
   /// Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
   /// Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
   final pulumi.Input<String>? frequency;
+
   /// The types of schema modifications to consider. Defaults to NEW_COLUMNS.
   /// Each value may be one of: `NEW_COLUMNS`, `REMOVED_COLUMNS`.
   final pulumi.Input<List<String>>? types;
@@ -19,17 +20,23 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'frequency': ?frequency,
-      'types': ?types,
-    };
+    return <String, dynamic>{'frequency': ?frequency, 'types': ?types};
   }
 
-  factory PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence(
-      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
-      types: map['types'] == null ? null : ((map['types']! as List).cast<String>()).input(),
+      frequency: (() {
+        final guardedValue = map['frequency'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      types: (() {
+        final guardedValue = map['types'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

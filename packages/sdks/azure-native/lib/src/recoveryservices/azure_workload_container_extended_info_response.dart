@@ -8,8 +8,10 @@ import 'inquiry_info_response.dart';
 class AzureWorkloadContainerExtendedInfoResponse {
   /// Host Os Name in case of Stand Alone and Cluster Name in case of distributed container.
   final pulumi.Input<String>? hostServerName;
+
   /// Inquiry Status for the container.
   final pulumi.Input<InquiryInfoResponse>? inquiryInfo;
+
   /// List of the nodes in case of distributed container.
   final pulumi.Input<List<DistributedNodesInfoResponse>>? nodesList;
 
@@ -26,17 +28,56 @@ class AzureWorkloadContainerExtendedInfoResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'hostServerName': ?hostServerName,
-      'inquiryInfo': ?pulumi.Input.mapOptionalInputValue<InquiryInfoResponse, Map<String, dynamic>>(inquiryInfo, (value) => value.toMap()),
-      'nodesList': ?pulumi.Input.mapOptionalInputValue<List<DistributedNodesInfoResponse>, List<Map<String, dynamic>>>(nodesList, (value) => pulumi.Input.encodeList<DistributedNodesInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'inquiryInfo':
+          ?pulumi.Input.mapOptionalInputValue<
+            InquiryInfoResponse,
+            Map<String, dynamic>
+          >(inquiryInfo, (value) => value.toMap()),
+      'nodesList':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DistributedNodesInfoResponse>,
+            List<Map<String, dynamic>>
+          >(
+            nodesList,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DistributedNodesInfoResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory AzureWorkloadContainerExtendedInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory AzureWorkloadContainerExtendedInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureWorkloadContainerExtendedInfoResponse(
-      hostServerName: map['hostServerName'] == null ? null : (map['hostServerName']! as String).input(),
-      inquiryInfo: map['inquiryInfo'] == null ? null : (InquiryInfoResponse.fromMap((map['inquiryInfo']! as Map).cast<String, dynamic>())).input(),
-      nodesList: map['nodesList'] == null ? null : (pulumi.Input.decodeList<DistributedNodesInfoResponse>(map['nodesList']!, (value) => DistributedNodesInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostServerName: (() {
+        final guardedValue = map['hostServerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inquiryInfo: (() {
+        final guardedValue = map['inquiryInfo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          InquiryInfoResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      nodesList: (() {
+        final guardedValue = map['nodesList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DistributedNodesInfoResponse>(
+            guardedValue,
+            (value) => DistributedNodesInfoResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

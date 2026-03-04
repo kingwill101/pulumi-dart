@@ -9,20 +9,19 @@ class NsRecordResponse {
 
   /// Creates a new [NsRecordResponse].
   /// [nsdname] The name server name for this NS record.
-  NsRecordResponse({
-    this.nsdname,
-  });
+  NsRecordResponse({this.nsdname});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nsdname': ?nsdname,
-    };
+    return <String, dynamic>{'nsdname': ?nsdname};
   }
 
   factory NsRecordResponse.fromMap(Map<String, dynamic> map) {
     return NsRecordResponse(
-      nsdname: map['nsdname'] == null ? null : (map['nsdname']! as String).input(),
+      nsdname: (() {
+        final guardedValue = map['nsdname'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

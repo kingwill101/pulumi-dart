@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"io"
 	"net"
+	"net/url"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -32,9 +33,14 @@ import (
 	ptesting "github.com/pulumi/pulumi/sdk/v3/go/common/testing"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"github.com/stretchr/testify/require"
+	"golang.org/x/net/websocket"
 )
 
 func TestDebuggerAttachDart(t *testing.T) {
+	if dartLanguageHostProgramDebuggerUsesVMService(t) {
+		t.Skip("program debugger emits vmServiceUri config; DAP handshake test is not applicable")
+	}
+
 	languagePluginPath, err := filepath.Abs("../pulumi-language-dart")
 	require.NoError(t, err)
 	pulumiSdkPath, err := pulumiSDKPath()
@@ -44,6 +50,8 @@ func TestDebuggerAttachDart(t *testing.T) {
 	defer e.DeleteIfNotFailed()
 	e.ImportDirectory("empty")
 	require.NoError(t, rewritePulumiPathDependency(filepath.Join(e.RootPath, "pubspec.yaml"), pulumiSdkPath))
+	e.RunCommand("dart", "pub", "get")
+	e.CWD = e.RootPath
 
 	e.RunCommand("pulumi", "login", "--cloud-url", e.LocalURL())
 	e.Env = append(e.Env, "PULUMI_DEBUG_COMMANDS=true", getProviderPath(languagePluginPath))
@@ -166,8 +174,14 @@ func continueDebuggingSessionWithDAP(
 ) {
 	t.Helper()
 
-	host, port, ok := debuggerAddress(debugEvent.Config)
-	require.Truef(t, ok, "StartDebuggingEvent did not include a supported DAP address config: %#v", debugEvent.Config)
+	host, port, ok := dapDebuggerAddress(debugEvent.Config)
+	if !ok {
+		vmHost, vmPort, vmOK := vmServiceAddress(debugEvent.Config)
+		require.Truef(t, vmOK, "StartDebuggingEvent did not include a supported debugger address config: %#v", debugEvent.Config)
+		err := attachVMServiceDebugger(vmHost, vmPort, 10*time.Second)
+		require.NoError(t, err)
+		return
+	}
 
 	conn, err := dialDebugger(host, port, 10*time.Second)
 	require.NoError(t, err)
@@ -282,6 +296,13 @@ func newDAPRequest(seq int, command string) dap.Request {
 }
 
 func debuggerAddress(config map[string]interface{}) (string, int, bool) {
+	if host, port, ok := dapDebuggerAddress(config); ok {
+		return host, port, true
+	}
+	return vmServiceAddress(config)
+}
+
+func dapDebuggerAddress(config map[string]interface{}) (string, int, bool) {
 	const defaultHost = "127.0.0.1"
 
 	rawConnect, ok := config["connect"]
@@ -305,6 +326,29 @@ func debuggerAddress(config map[string]interface{}) (string, int, bool) {
 	return "", 0, false
 }
 
+func vmServiceAddress(config map[string]interface{}) (string, int, bool) {
+	const defaultHost = "127.0.0.1"
+
+	if rawVMServiceURI, ok := config["vmServiceUri"]; ok {
+		if vmServiceURI, ok := rawVMServiceURI.(string); ok && strings.TrimSpace(vmServiceURI) != "" {
+			parsed, err := url.Parse(vmServiceURI)
+			if err == nil {
+				if parsedPort := parsed.Port(); parsedPort != "" {
+					if parsedPortInt, err := strconv.Atoi(parsedPort); err == nil {
+						host := parsed.Hostname()
+						if host == "" {
+							host = defaultHost
+						}
+						return host, parsedPortInt, true
+					}
+				}
+			}
+		}
+	}
+
+	return "", 0, false
+}
+
 func dialDebugger(host string, port int, timeout time.Duration) (net.Conn, error) {
 	address := net.JoinHostPort(host, strconv.Itoa(port))
 	deadline := time.Now().Add(timeout)
@@ -323,6 +367,89 @@ func dialDebugger(host string, port int, timeout time.Duration) (net.Conn, error
 		lastErr = fmt.Errorf("timed out dialing %s", address)
 	}
 	return nil, lastErr
+}
+
+func attachVMServiceDebugger(host string, port int, timeout time.Duration) error {
+	address := net.JoinHostPort(host, strconv.Itoa(port))
+	wsURL := "ws://" + address + "/ws"
+	origin := "http://" + address
+	deadline := time.Now().Add(timeout)
+
+	var lastErr error
+	for time.Now().Before(deadline) {
+		conn, err := websocket.Dial(wsURL, "", origin)
+		if err != nil {
+			lastErr = err
+			time.Sleep(100 * time.Millisecond)
+			continue
+		}
+
+		_ = conn.SetDeadline(time.Now().Add(5 * time.Second))
+		result, err := vmServiceCall(conn, "getVM", nil)
+		if err != nil {
+			lastErr = err
+			_ = conn.Close()
+			time.Sleep(100 * time.Millisecond)
+			continue
+		}
+
+		if isolatesRaw, ok := result["isolates"].([]interface{}); ok {
+			for _, isolateRaw := range isolatesRaw {
+				isolate, ok := isolateRaw.(map[string]interface{})
+				if !ok {
+					continue
+				}
+				isolateID, _ := isolate["id"].(string)
+				if isolateID == "" {
+					continue
+				}
+				_, _ = vmServiceCall(conn, "resume", map[string]interface{}{"isolateId": isolateID})
+			}
+		}
+
+		_ = conn.Close()
+		return nil
+	}
+
+	if lastErr == nil {
+		lastErr = fmt.Errorf("timed out attaching to vm service %s", wsURL)
+	}
+	return lastErr
+}
+
+func vmServiceCall(conn *websocket.Conn, method string, params map[string]interface{}) (map[string]interface{}, error) {
+	request := map[string]interface{}{
+		"jsonrpc": "2.0",
+		"id":      method,
+		"method":  method,
+	}
+	if len(params) > 0 {
+		request["params"] = params
+	}
+
+	if err := websocket.JSON.Send(conn, request); err != nil {
+		return nil, err
+	}
+
+	for {
+		var response map[string]interface{}
+		if err := websocket.JSON.Receive(conn, &response); err != nil {
+			return nil, err
+		}
+		if response == nil {
+			continue
+		}
+		if responseMethod, hasMethod := response["method"]; hasMethod && responseMethod != nil {
+			continue
+		}
+		if responseError, hasError := response["error"]; hasError && responseError != nil {
+			return nil, fmt.Errorf("vm service %s failed: %v", method, responseError)
+		}
+		if result, ok := response["result"].(map[string]interface{}); ok {
+			return result, nil
+		}
+		return map[string]interface{}{}, nil
+	}
 }
 
 func numericPort(raw interface{}) (int, bool) {
@@ -359,6 +486,16 @@ func dartLanguageHostSupportsProgramDebuggerAttach(t *testing.T) bool {
 		"func (host *dartLanguageHost) constructEnv(",
 		"AttachDebugger",
 		"StartDebugging",
+	)
+}
+
+func dartLanguageHostProgramDebuggerUsesVMService(t *testing.T) bool {
+	t.Helper()
+	return dartLanguageHostMethodContains(
+		t,
+		"func (host *dartLanguageHost) Run(",
+		"func (host *dartLanguageHost) constructEnv(",
+		"vmServiceUri",
 	)
 }
 

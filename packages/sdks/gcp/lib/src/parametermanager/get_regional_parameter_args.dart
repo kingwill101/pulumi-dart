@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionalParameterArgs {
   /// The location of the regional parameter. eg us-central1
   final pulumi.Input<String> location;
+
   /// The name of the regional parameter.
   final pulumi.Input<String> parameterId;
+
   /// The ID of the project in which the resource belongs.
   final pulumi.Input<String>? project;
 
@@ -34,10 +36,13 @@ class GetRegionalParameterArgs {
 
   factory GetRegionalParameterArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionalParameterArgs(
-      location: (map['location'] as String).input(),
-      parameterId: (map['parameterId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      parameterId: pulumi.Input.fromValue(map['parameterId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

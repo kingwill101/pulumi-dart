@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StandardAssignmentMetadataResponse {
   /// Standard assignment Created by object id (GUID)
   final pulumi.Input<String> createdBy;
+
   /// Standard assignment creation date
   final pulumi.Input<String> createdOn;
+
   /// Standard assignment last updated by object id (GUID)
   final pulumi.Input<String> lastUpdatedBy;
+
   /// Standard assignment last update date
   final pulumi.Input<String> lastUpdatedOn;
 
@@ -36,11 +39,10 @@ class StandardAssignmentMetadataResponse {
 
   factory StandardAssignmentMetadataResponse.fromMap(Map<String, dynamic> map) {
     return StandardAssignmentMetadataResponse(
-      createdBy: (map['createdBy'] as String).input(),
-      createdOn: (map['createdOn'] as String).input(),
-      lastUpdatedBy: (map['lastUpdatedBy'] as String).input(),
-      lastUpdatedOn: (map['lastUpdatedOn'] as String).input(),
+      createdBy: pulumi.Input.fromValue(map['createdBy'] as String),
+      createdOn: pulumi.Input.fromValue(map['createdOn'] as String),
+      lastUpdatedBy: pulumi.Input.fromValue(map['lastUpdatedBy'] as String),
+      lastUpdatedOn: pulumi.Input.fromValue(map['lastUpdatedOn'] as String),
     );
   }
 }
-

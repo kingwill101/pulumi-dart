@@ -8,7 +8,7 @@ import 'load_balancer_security_group_attachment_state.dart';
 ///
 /// For information about Application Load Balancer (ALB) Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://next.api.alibabacloud.com/document/Alb/2020-06-16/LoadBalancerJoinSecurityGroup).
 ///
-/// > **NOTE:** Available since v1.226.0.
+/// &gt; **NOTE:** Available since v1.226.0.
 ///
 /// ## Example Usage
 ///
@@ -454,8 +454,10 @@ import 'load_balancer_security_group_attachment_state.dart';
 class LoadBalancerSecurityGroupAttachment extends pulumi.CustomResource {
   /// Whether to PreCheck only this request. Value:
   late final pulumi.Output<bool?> dryRun;
+
   /// The ID of the Application Load Balancer.
   late final pulumi.Output<String> loadBalancerId;
+
   /// The ID of the security group.
   late final pulumi.Output<String> securityGroupId;
 
@@ -468,14 +470,14 @@ class LoadBalancerSecurityGroupAttachment extends pulumi.CustomResource {
     LoadBalancerSecurityGroupAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
+         'alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool?>('dryRun');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    securityGroupId = registerOutput<String>('securityGroupId');
   }
 
   /// Gets an existing [LoadBalancerSecurityGroupAttachment] resource's state with the given [name] and [id].
@@ -496,13 +498,13 @@ class LoadBalancerSecurityGroupAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.loadBalancerId = registerOutput<String>('loadBalancerId');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
+         'alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dryRun = registerOutput<bool?>('dryRun');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    securityGroupId = registerOutput<String>('securityGroupId');
   }
 }

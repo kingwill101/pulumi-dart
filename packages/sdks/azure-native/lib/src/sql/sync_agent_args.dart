@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SyncAgentArgs {
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server on which the sync agent is hosted.
   final pulumi.Input<String> serverName;
+
   /// The name of the sync agent.
   final pulumi.Input<String>? syncAgentName;
+
   /// ARM resource id of the sync database in the sync agent.
   final pulumi.Input<String>? syncDatabaseId;
 
@@ -39,11 +42,20 @@ class SyncAgentArgs {
 
   factory SyncAgentArgs.fromMap(Map<String, dynamic> map) {
     return SyncAgentArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      syncAgentName: map['syncAgentName'] == null ? null : (map['syncAgentName']! as String).input(),
-      syncDatabaseId: map['syncDatabaseId'] == null ? null : (map['syncDatabaseId']! as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      syncAgentName: (() {
+        final guardedValue = map['syncAgentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      syncDatabaseId: (() {
+        final guardedValue = map['syncDatabaseId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

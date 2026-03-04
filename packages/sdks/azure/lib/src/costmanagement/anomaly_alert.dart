@@ -4,7 +4,7 @@ import 'anomaly_alert_state.dart';
 
 /// Manages a Cost Anomaly Alert.
 ///
-/// > **Note:** Anomaly alerts are sent based on the current access of the rule creator at the time that the email is sent. Learn more [here](https://learn.microsoft.com/en-us/azure/cost-management-billing/understand/analyze-unexpected-charges#create-an-anomaly-alert).
+/// &gt; **Note:** Anomaly alerts are sent based on the current access of the rule creator at the time that the email is sent. Learn more [here](https://learn.microsoft.com/en-us/azure/cost-management-billing/understand/analyze-unexpected-charges#create-an-anomaly-alert).
 ///
 /// ## Example Usage
 ///
@@ -128,7 +128,7 @@ import 'anomaly_alert_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.CostManagement` - 2023-08-01
@@ -143,16 +143,22 @@ import 'anomaly_alert_state.dart';
 class AnomalyAlert extends pulumi.CustomResource {
   /// The display name which should be used for this Cost Anomaly Alert.
   late final pulumi.Output<String> displayName;
+
   /// Specifies a list of email addresses which the Anomaly Alerts are send to.
   late final pulumi.Output<List<String>> emailAddresses;
+
   /// The email subject of the Cost Anomaly Alerts. Maximum length of the subject is 70.
   late final pulumi.Output<String> emailSubject;
+
   /// The message of the Cost Anomaly Alert. Maximum length of the message is 250.
   late final pulumi.Output<String?> message;
+
   /// The name which should be used for this Cost Anomaly Alert. Changing this forces a new resource to be created. The name can contain only lowercase letters, numbers and hyphens.
   late final pulumi.Output<String> name;
+
   /// The email address of the point of contact that should get the unsubscribe requests and notification emails.
   late final pulumi.Output<String> notificationEmail;
+
   /// The ID of the Subscription this Cost Anomaly Alert is scoped to. Changing this forces a new resource to be created. When not supplied this defaults to the subscription configured in the provider.
   late final pulumi.Output<String> subscriptionId;
 
@@ -165,18 +171,18 @@ class AnomalyAlert extends pulumi.CustomResource {
     AnomalyAlertArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:costmanagement/anomalyAlert:AnomalyAlert',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.emailAddresses = registerOutput<List<String>>('emailAddresses');
-    this.emailSubject = registerOutput<String>('emailSubject');
-    this.message = registerOutput<String?>('message');
+         'azure:costmanagement/anomalyAlert:AnomalyAlert',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    emailAddresses = registerOutput<List<String>>('emailAddresses');
+    emailSubject = registerOutput<String>('emailSubject');
+    message = registerOutput<String?>('message');
     this.name = registerOutput<String>('name');
-    this.notificationEmail = registerOutput<String>('notificationEmail');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
+    notificationEmail = registerOutput<String>('notificationEmail');
+    subscriptionId = registerOutput<String>('subscriptionId');
   }
 
   /// Gets an existing [AnomalyAlert] resource's state with the given [name] and [id].
@@ -197,17 +203,17 @@ class AnomalyAlert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:costmanagement/anomalyAlert:AnomalyAlert',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.emailAddresses = registerOutput<List<String>>('emailAddresses');
-    this.emailSubject = registerOutput<String>('emailSubject');
-    this.message = registerOutput<String?>('message');
+         'azure:costmanagement/anomalyAlert:AnomalyAlert',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    emailAddresses = registerOutput<List<String>>('emailAddresses');
+    emailSubject = registerOutput<String>('emailSubject');
+    message = registerOutput<String?>('message');
     this.name = registerOutput<String>('name');
-    this.notificationEmail = registerOutput<String>('notificationEmail');
-    this.subscriptionId = registerOutput<String>('subscriptionId');
+    notificationEmail = registerOutput<String>('notificationEmail');
+    subscriptionId = registerOutput<String>('subscriptionId');
   }
 }

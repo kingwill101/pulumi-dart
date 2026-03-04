@@ -1,13 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_args.dart';
-import 'table_attribute.dart';
-import 'table_global_secondary_index.dart';
 import 'table_global_table_witness.dart';
 import 'table_import_table.dart';
-import 'table_local_secondary_index.dart';
 import 'table_on_demand_throughput.dart';
 import 'table_point_in_time_recovery.dart';
-import 'table_replica.dart';
 import 'table_server_side_encryption.dart';
 import 'table_state.dart';
 import 'table_ttl.dart';
@@ -15,11 +11,11 @@ import 'table_warm_throughput.dart';
 
 /// Provides a DynamoDB table resource.
 ///
-/// > **Note:** It is recommended to use [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) for `read_capacity` and/or `write_capacity` if there's `autoscaling policy` attached to the table.
+/// &gt; **Note:** It is recommended to use [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) for `read_capacity` and/or `write_capacity` if there's `autoscaling policy` attached to the table.
 ///
-/// > **Note:** When using aws.dynamodb.TableReplica with this resource, use `lifecycle` `ignore_changes` for `replica`, _e.g._, `lifecycle { ignore_changes = [replica] }`.
+/// &gt; **Note:** When using aws.dynamodb.TableReplica with this resource, use `lifecycle` `ignore_changes` for `replica`, _e.g._, `lifecycle { ignore_changes = [replica] }`.
 ///
-/// > **Note:** If autoscaling creates drift for your `global_secondary_index` blocks and/or more granular `lifecycle` management for GSIs, we recommend using the new **experimental** resource `aws.dynamodb.GlobalSecondaryIndex`.
+/// &gt; **Note:** If autoscaling creates drift for your `global_secondary_index` blocks and/or more granular `lifecycle` management for GSIs, we recommend using the new **experimental** resource `aws.dynamodb.GlobalSecondaryIndex`.
 ///
 /// ## DynamoDB Table attributes
 ///
@@ -30,7 +26,7 @@ import 'table_warm_throughput.dart';
 ///
 /// The DynamoDB API expects attribute structure (name and type) to be passed along when creating or updating GSI/LSIs or creating the initial table. In these cases it expects the Hash / Range keys to be provided. Because these get re-used in numerous places (i.e the table's range key could be a part of one or more GSIs), they are stored on the table object to prevent duplication and increase consistency. If you add attributes here that are not used in these scenarios it can cause an infinite loop in planning.
 ///
-/// > **Note:** When using the `aws.dynamodb.GlobalSecondaryIndex` resource, you do not need to define the attributes for externally managed GSIs in the `aws.dynamodb.Table` resource.
+/// &gt; **Note:** When using the `aws.dynamodb.GlobalSecondaryIndex` resource, you do not need to define the attributes for externally managed GSIs in the `aws.dynamodb.Table` resource.
 ///
 /// ## Example Usage
 ///
@@ -356,7 +352,7 @@ import 'table_warm_throughput.dart';
 ///
 /// The following dynamodb table description models the table and GSIs shown in the [AWS SDK example documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.DesignPattern.MultiAttributeKeys.html)
 ///
-/// > **Note:** Multi-attribute keys for GSIs use the `key_schema` block instead of `hash_key`/`range_key`. The `hash_key` and `range_key` arguments are deprecated in favor of `key_schema`.
+/// &gt; **Note:** Multi-attribute keys for GSIs use the `key_schema` block instead of `hash_key`/`range_key`. The `hash_key` and `range_key` arguments are deprecated in favor of `key_schema`.
 ///
 ///
 /// ```typescript
@@ -984,7 +980,7 @@ import 'table_warm_throughput.dart';
 ///
 /// This resource implements support for [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) via `replica` configuration blocks. For working with [DynamoDB Global Tables V1 (version 2017.11.29)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html), see the `aws.dynamodb.GlobalTable` resource.
 ///
-/// > **Note:** aws.dynamodb.TableReplica is an alternate way of configuring Global Tables. Do not use `replica` configuration blocks of `aws.dynamodb.Table` together with aws_dynamodb_table_replica.
+/// &gt; **Note:** aws.dynamodb.TableReplica is an alternate way of configuring Global Tables. Do not use `replica` configuration blocks of `aws.dynamodb.Table` together with aws_dynamodb_table_replica.
 ///
 ///
 /// ```typescript
@@ -1946,70 +1942,100 @@ import 'table_warm_throughput.dart';
 class Table extends pulumi.CustomResource {
   /// ARN of the table
   late final pulumi.Output<String> arn;
+
   /// Set of nested attribute definitions. Only required for `hash_key` and `range_key` attributes. See below.
-  late final pulumi.Output<List<TableAttribute>> attributes;
+  late final pulumi.Output<List<Map<String, dynamic>>> attributes;
+
   /// Controls how you are charged for read and write throughput and how you manage capacity. The valid values are `PROVISIONED` and `PAY_PER_REQUEST`. Defaults to `PROVISIONED`.
   late final pulumi.Output<String?> billingMode;
+
   /// Enables deletion protection for table. Defaults to `false`.
   late final pulumi.Output<bool?> deletionProtectionEnabled;
+
   /// Describe a GSI for the table; subject to the normal limits on the number of GSIs, projected attributes, etc. See below.
-  late final pulumi.Output<List<TableGlobalSecondaryIndex>> globalSecondaryIndexes;
+  late final pulumi.Output<List<Map<String, dynamic>>> globalSecondaryIndexes;
+
   /// Witness Region in a Multi-Region Strong Consistency deployment. **Note** This must be used alongside a single `replica` with `consistency_mode` set to `STRONG`. Other combinations will fail to provision. See below.
   late final pulumi.Output<TableGlobalTableWitness> globalTableWitness;
+
   /// Attribute to use as the hash (partition) key. Must also be defined as an `attribute`. See below.
   late final pulumi.Output<String> hashKey;
+
   /// Import Amazon S3 data into a new table. See below.
   late final pulumi.Output<TableImportTable?> importTable;
+
   /// Describe an LSI on the table; these can only be allocated _at creation_ so you cannot change this definition after you have created the resource. See below.
-  late final pulumi.Output<List<TableLocalSecondaryIndex>?> localSecondaryIndexes;
+  late final pulumi.Output<List<Map<String, dynamic>>?> localSecondaryIndexes;
+
   /// Unique within a region name of the table.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
+
   /// Sets the maximum number of read and write units for the specified on-demand table. See below.
   late final pulumi.Output<TableOnDemandThroughput?> onDemandThroughput;
+
   /// Enable point-in-time recovery options. See below.
   late final pulumi.Output<TablePointInTimeRecovery> pointInTimeRecovery;
+
   /// Attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
   late final pulumi.Output<String?> rangeKey;
+
   /// Number of read units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
   late final pulumi.Output<int> readCapacity;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Configuration block(s) with [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) replication configurations. See below.
-  late final pulumi.Output<List<TableReplica>?> replicas;
+  late final pulumi.Output<List<Map<String, dynamic>>?> replicas;
+
   /// Time of the point-in-time recovery point to restore.
   late final pulumi.Output<String?> restoreDateTime;
+
   /// Name of the table to restore. Must match the name of an existing table.
   late final pulumi.Output<String?> restoreSourceName;
+
   /// ARN of the source table to restore. Must be supplied for cross-region restores.
   late final pulumi.Output<String?> restoreSourceTableArn;
+
   /// If set, restores table to the most recent point-in-time recovery point.
   late final pulumi.Output<bool?> restoreToLatestTime;
+
   /// Encryption at rest options. AWS DynamoDB tables are automatically encrypted at rest with an AWS-owned Customer Master Key if this argument isn't specified. Must be supplied for cross-region restores. See below.
   late final pulumi.Output<TableServerSideEncryption> serverSideEncryption;
+
   /// ARN of the Table Stream. Only available when `stream_enabled = true`
   late final pulumi.Output<String> streamArn;
+
   /// Whether Streams are enabled.
   late final pulumi.Output<bool?> streamEnabled;
+
   /// Timestamp, in ISO 8601 format, for this stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when `stream_enabled = true`.
   late final pulumi.Output<String> streamLabel;
+
   /// When an item in the table is modified, StreamViewType determines what information is written to the table's stream.
   /// Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
   /// Only valid when `stream_enabled` is true.
   late final pulumi.Output<String> streamViewType;
+
   /// Storage class of the table.
   /// Valid values are `STANDARD` and `STANDARD_INFREQUENT_ACCESS`.
   /// Default value is `STANDARD`.
   late final pulumi.Output<String?> tableClass;
+
   /// A map of tags to populate on the created table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Configuration block for TTL. See below.
   late final pulumi.Output<TableTtl> ttl;
+
   /// Sets the number of warm read and write units for the specified table. See below.
   late final pulumi.Output<TableWarmThroughput> warmThroughput;
+
   /// Number of write units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
   late final pulumi.Output<int> writeCapacity;
 
@@ -2017,55 +2043,62 @@ class Table extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Table]. {@macro pulumi_dynamodb_table_table_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Table(
-    String name, {
-    TableArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:dynamodb/table:Table',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.attributes = registerOutput<List<TableAttribute>>('attributes');
-    this.billingMode = registerOutput<String?>('billingMode');
-    this.deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
-    this.globalSecondaryIndexes = registerOutput<List<TableGlobalSecondaryIndex>>('globalSecondaryIndexes');
-    this.globalTableWitness = registerOutput<TableGlobalTableWitness>('globalTableWitness');
-    this.hashKey = registerOutput<String>('hashKey');
-    this.importTable = registerOutput<TableImportTable?>('importTable');
-    this.localSecondaryIndexes = registerOutput<List<TableLocalSecondaryIndex>?>('localSecondaryIndexes');
+  Table(String name, {TableArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:dynamodb/table:Table',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    arn = registerOutput<String>('arn');
+    attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
+    billingMode = registerOutput<String?>('billingMode');
+    deletionProtectionEnabled = registerOutput<bool?>(
+      'deletionProtectionEnabled',
+    );
+    globalSecondaryIndexes = registerOutput<List<Map<String, dynamic>>>(
+      'globalSecondaryIndexes',
+    );
+    globalTableWitness = registerOutput<TableGlobalTableWitness>(
+      'globalTableWitness',
+    );
+    hashKey = registerOutput<String>('hashKey');
+    importTable = registerOutput<TableImportTable?>('importTable');
+    localSecondaryIndexes = registerOutput<List<Map<String, dynamic>>?>(
+      'localSecondaryIndexes',
+    );
     this.name = registerOutput<String>('name');
-    this.onDemandThroughput = registerOutput<TableOnDemandThroughput?>('onDemandThroughput');
-    this.pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>('pointInTimeRecovery');
-    this.rangeKey = registerOutput<String?>('rangeKey');
-    this.readCapacity = registerOutput<int>('readCapacity');
-    this.region = registerOutput<String>('region');
-    this.replicas = registerOutput<List<TableReplica>?>('replicas');
-    this.restoreDateTime = registerOutput<String?>('restoreDateTime');
-    this.restoreSourceName = registerOutput<String?>('restoreSourceName');
-    this.restoreSourceTableArn = registerOutput<String?>('restoreSourceTableArn');
-    this.restoreToLatestTime = registerOutput<bool?>('restoreToLatestTime');
-    this.serverSideEncryption = registerOutput<TableServerSideEncryption>('serverSideEncryption');
-    this.streamArn = registerOutput<String>('streamArn');
-    this.streamEnabled = registerOutput<bool?>('streamEnabled');
-    this.streamLabel = registerOutput<String>('streamLabel');
-    this.streamViewType = registerOutput<String>('streamViewType');
-    this.tableClass = registerOutput<String?>('tableClass');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.ttl = registerOutput<TableTtl>('ttl');
-    this.warmThroughput = registerOutput<TableWarmThroughput>('warmThroughput');
-    this.writeCapacity = registerOutput<int>('writeCapacity');
+    onDemandThroughput = registerOutput<TableOnDemandThroughput?>(
+      'onDemandThroughput',
+    );
+    pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>(
+      'pointInTimeRecovery',
+    );
+    rangeKey = registerOutput<String?>('rangeKey');
+    readCapacity = registerOutput<int>('readCapacity');
+    region = registerOutput<String>('region');
+    replicas = registerOutput<List<Map<String, dynamic>>?>('replicas');
+    restoreDateTime = registerOutput<String?>('restoreDateTime');
+    restoreSourceName = registerOutput<String?>('restoreSourceName');
+    restoreSourceTableArn = registerOutput<String?>('restoreSourceTableArn');
+    restoreToLatestTime = registerOutput<bool?>('restoreToLatestTime');
+    serverSideEncryption = registerOutput<TableServerSideEncryption>(
+      'serverSideEncryption',
+    );
+    streamArn = registerOutput<String>('streamArn');
+    streamEnabled = registerOutput<bool?>('streamEnabled');
+    streamLabel = registerOutput<String>('streamLabel');
+    streamViewType = registerOutput<String>('streamViewType');
+    tableClass = registerOutput<String?>('tableClass');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    ttl = registerOutput<TableTtl>('ttl');
+    warmThroughput = registerOutput<TableWarmThroughput>('warmThroughput');
+    writeCapacity = registerOutput<int>('writeCapacity');
   }
 
   /// Gets an existing [Table] resource's state with the given [name] and [id].
-  static Table get(
-    String name,
-    pulumi.Input<String> id, {
-    TableState? state,
-  }) {
+  static Table get(String name, pulumi.Input<String> id, {TableState? state}) {
     return Table._get(
       name,
       state: state?.toMap(),
@@ -2078,41 +2111,55 @@ class Table extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dynamodb/table:Table',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.attributes = registerOutput<List<TableAttribute>>('attributes');
-    this.billingMode = registerOutput<String?>('billingMode');
-    this.deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
-    this.globalSecondaryIndexes = registerOutput<List<TableGlobalSecondaryIndex>>('globalSecondaryIndexes');
-    this.globalTableWitness = registerOutput<TableGlobalTableWitness>('globalTableWitness');
-    this.hashKey = registerOutput<String>('hashKey');
-    this.importTable = registerOutput<TableImportTable?>('importTable');
-    this.localSecondaryIndexes = registerOutput<List<TableLocalSecondaryIndex>?>('localSecondaryIndexes');
+         'aws:dynamodb/table:Table',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
+    billingMode = registerOutput<String?>('billingMode');
+    deletionProtectionEnabled = registerOutput<bool?>(
+      'deletionProtectionEnabled',
+    );
+    globalSecondaryIndexes = registerOutput<List<Map<String, dynamic>>>(
+      'globalSecondaryIndexes',
+    );
+    globalTableWitness = registerOutput<TableGlobalTableWitness>(
+      'globalTableWitness',
+    );
+    hashKey = registerOutput<String>('hashKey');
+    importTable = registerOutput<TableImportTable?>('importTable');
+    localSecondaryIndexes = registerOutput<List<Map<String, dynamic>>?>(
+      'localSecondaryIndexes',
+    );
     this.name = registerOutput<String>('name');
-    this.onDemandThroughput = registerOutput<TableOnDemandThroughput?>('onDemandThroughput');
-    this.pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>('pointInTimeRecovery');
-    this.rangeKey = registerOutput<String?>('rangeKey');
-    this.readCapacity = registerOutput<int>('readCapacity');
-    this.region = registerOutput<String>('region');
-    this.replicas = registerOutput<List<TableReplica>?>('replicas');
-    this.restoreDateTime = registerOutput<String?>('restoreDateTime');
-    this.restoreSourceName = registerOutput<String?>('restoreSourceName');
-    this.restoreSourceTableArn = registerOutput<String?>('restoreSourceTableArn');
-    this.restoreToLatestTime = registerOutput<bool?>('restoreToLatestTime');
-    this.serverSideEncryption = registerOutput<TableServerSideEncryption>('serverSideEncryption');
-    this.streamArn = registerOutput<String>('streamArn');
-    this.streamEnabled = registerOutput<bool?>('streamEnabled');
-    this.streamLabel = registerOutput<String>('streamLabel');
-    this.streamViewType = registerOutput<String>('streamViewType');
-    this.tableClass = registerOutput<String?>('tableClass');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.ttl = registerOutput<TableTtl>('ttl');
-    this.warmThroughput = registerOutput<TableWarmThroughput>('warmThroughput');
-    this.writeCapacity = registerOutput<int>('writeCapacity');
+    onDemandThroughput = registerOutput<TableOnDemandThroughput?>(
+      'onDemandThroughput',
+    );
+    pointInTimeRecovery = registerOutput<TablePointInTimeRecovery>(
+      'pointInTimeRecovery',
+    );
+    rangeKey = registerOutput<String?>('rangeKey');
+    readCapacity = registerOutput<int>('readCapacity');
+    region = registerOutput<String>('region');
+    replicas = registerOutput<List<Map<String, dynamic>>?>('replicas');
+    restoreDateTime = registerOutput<String?>('restoreDateTime');
+    restoreSourceName = registerOutput<String?>('restoreSourceName');
+    restoreSourceTableArn = registerOutput<String?>('restoreSourceTableArn');
+    restoreToLatestTime = registerOutput<bool?>('restoreToLatestTime');
+    serverSideEncryption = registerOutput<TableServerSideEncryption>(
+      'serverSideEncryption',
+    );
+    streamArn = registerOutput<String>('streamArn');
+    streamEnabled = registerOutput<bool?>('streamEnabled');
+    streamLabel = registerOutput<String>('streamLabel');
+    streamViewType = registerOutput<String>('streamViewType');
+    tableClass = registerOutput<String?>('tableClass');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    ttl = registerOutput<TableTtl>('ttl');
+    warmThroughput = registerOutput<TableWarmThroughput>('warmThroughput');
+    writeCapacity = registerOutput<int>('writeCapacity');
   }
 }

@@ -11,9 +11,11 @@ class GetRuntimeTemplateIamPolicyArgs {
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   final pulumi.Input<String>? location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> runtimeTemplate;
 
@@ -37,10 +39,17 @@ class GetRuntimeTemplateIamPolicyArgs {
 
   factory GetRuntimeTemplateIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRuntimeTemplateIamPolicyArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      runtimeTemplate: (map['runtimeTemplate'] as String).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runtimeTemplate: pulumi.Input.fromValue(map['runtimeTemplate'] as String),
     );
   }
 }
-

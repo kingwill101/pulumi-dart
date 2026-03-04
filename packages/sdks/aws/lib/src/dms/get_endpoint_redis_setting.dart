@@ -43,14 +43,17 @@ class GetEndpointRedisSetting {
 
   factory GetEndpointRedisSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointRedisSetting(
-      authPassword: (map['authPassword'] as String).input(),
-      authType: (map['authType'] as String).input(),
-      authUserName: (map['authUserName'] as String).input(),
-      port: (map['port'] as int).input(),
-      serverName: (map['serverName'] as String).input(),
-      sslCaCertificateArn: (map['sslCaCertificateArn'] as String).input(),
-      sslSecurityProtocol: (map['sslSecurityProtocol'] as String).input(),
+      authPassword: pulumi.Input.fromValue(map['authPassword'] as String),
+      authType: pulumi.Input.fromValue(map['authType'] as String),
+      authUserName: pulumi.Input.fromValue(map['authUserName'] as String),
+      port: pulumi.Input.fromValue(map['port'] as int),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      sslCaCertificateArn: pulumi.Input.fromValue(
+        map['sslCaCertificateArn'] as String,
+      ),
+      sslSecurityProtocol: pulumi.Input.fromValue(
+        map['sslSecurityProtocol'] as String,
+      ),
     );
   }
 }
-

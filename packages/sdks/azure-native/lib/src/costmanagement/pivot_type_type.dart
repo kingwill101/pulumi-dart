@@ -3,16 +3,15 @@ enum PivotTypeType {
   valueDimension("Dimension"),
   valueTagKey("TagKey");
 
-  const PivotTypeType(this.value);
-  final String value;
+  const PivotTypeType(this.wireValue);
+  final String wireValue;
 
   static PivotTypeType fromValue(String value) {
     for (final item in PivotTypeType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PivotTypeType value: $value');
   }
 }
-

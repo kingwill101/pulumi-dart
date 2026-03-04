@@ -5,12 +5,16 @@ import 'environment_args.dart';
 class Environment extends pulumi.CustomResource {
   /// Environment name.
   late final pulumi.Output<String> name;
+
   /// Organization name.
   late final pulumi.Output<String> organization;
+
   /// Project name.
   late final pulumi.Output<String> project;
+
   /// Revision number of the latest version.
   late final pulumi.Output<int> revision;
+
   /// Environment's yaml file.
   late final pulumi.Output<dynamic> yaml;
 
@@ -23,15 +27,15 @@ class Environment extends pulumi.CustomResource {
     EnvironmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'pulumiservice:index:Environment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'pulumiservice:index:Environment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.organization = registerOutput<String>('organization');
-    this.project = registerOutput<String>('project');
-    this.revision = registerOutput<int>('revision');
-    this.yaml = registerOutput<dynamic>('yaml');
+    organization = registerOutput<String>('organization');
+    project = registerOutput<String>('project');
+    revision = registerOutput<int>('revision');
+    yaml = registerOutput<dynamic>('yaml');
   }
 }

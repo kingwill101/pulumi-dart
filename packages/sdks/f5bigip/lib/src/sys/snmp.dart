@@ -112,8 +112,10 @@ import 'snmp_state.dart';
 class Snmp extends pulumi.CustomResource {
   /// Configures hosts or networks from which snmpd can accept traffic. Entries go directly into hosts.allow.
   late final pulumi.Output<List<String>?> allowedaddresses;
+
   /// Specifies the contact information for the system administrator.
   late final pulumi.Output<String?> sysContact;
+
   /// Describes the system's physical location.
   late final pulumi.Output<String?> sysLocation;
 
@@ -121,27 +123,20 @@ class Snmp extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Snmp]. {@macro pulumi_sys_snmp_snmp_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Snmp(
-    String name, {
-    SnmpArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'f5bigip:sys/snmp:Snmp',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedaddresses = registerOutput<List<String>?>('allowedaddresses');
-    this.sysContact = registerOutput<String?>('sysContact');
-    this.sysLocation = registerOutput<String?>('sysLocation');
+  Snmp(String name, {SnmpArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'f5bigip:sys/snmp:Snmp',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    allowedaddresses = registerOutput<List<String>?>('allowedaddresses');
+    sysContact = registerOutput<String?>('sysContact');
+    sysLocation = registerOutput<String?>('sysLocation');
   }
 
   /// Gets an existing [Snmp] resource's state with the given [name] and [id].
-  static Snmp get(
-    String name,
-    pulumi.Input<String> id, {
-    SnmpState? state,
-  }) {
+  static Snmp get(String name, pulumi.Input<String> id, {SnmpState? state}) {
     return Snmp._get(
       name,
       state: state?.toMap(),
@@ -154,13 +149,13 @@ class Snmp extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:sys/snmp:Snmp',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedaddresses = registerOutput<List<String>?>('allowedaddresses');
-    this.sysContact = registerOutput<String?>('sysContact');
-    this.sysLocation = registerOutput<String?>('sysLocation');
+         'f5bigip:sys/snmp:Snmp',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedaddresses = registerOutput<List<String>?>('allowedaddresses');
+    sysContact = registerOutput<String?>('sysContact');
+    sysLocation = registerOutput<String?>('sysLocation');
   }
 }

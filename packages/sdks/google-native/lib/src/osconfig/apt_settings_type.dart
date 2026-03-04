@@ -4,16 +4,15 @@ enum AptSettingsType {
   dist("DIST"),
   upgrade("UPGRADE");
 
-  const AptSettingsType(this.value);
-  final String value;
+  const AptSettingsType(this.wireValue);
+  final String wireValue;
 
   static AptSettingsType fromValue(String value) {
     for (final item in AptSettingsType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AptSettingsType value: $value');
   }
 }
-

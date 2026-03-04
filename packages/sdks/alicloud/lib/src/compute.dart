@@ -1,5 +1,3 @@
-library module_compute;
-
 export 'compute/functions.dart';
 export 'compute/get_nest_service_instances_args.dart';
 export 'compute/get_nest_service_instances_filter.dart';

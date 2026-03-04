@@ -6,16 +6,15 @@ enum ManagedHsmSkuName {
   valueCustomC42("Custom_C42"),
   valueCustomC10("Custom_C10");
 
-  const ManagedHsmSkuName(this.value);
-  final String value;
+  const ManagedHsmSkuName(this.wireValue);
+  final String wireValue;
 
   static ManagedHsmSkuName fromValue(String value) {
     for (final item in ManagedHsmSkuName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ManagedHsmSkuName value: $value');
   }
 }
-

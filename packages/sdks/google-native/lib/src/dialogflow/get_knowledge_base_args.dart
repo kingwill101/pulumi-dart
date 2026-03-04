@@ -31,10 +31,13 @@ class GetKnowledgeBaseArgs {
 
   factory GetKnowledgeBaseArgs.fromMap(Map<String, dynamic> map) {
     return GetKnowledgeBaseArgs(
-      knowledgeBaseId: (map['knowledgeBaseId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      knowledgeBaseId: pulumi.Input.fromValue(map['knowledgeBaseId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

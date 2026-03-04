@@ -4,16 +4,15 @@ enum ArtifactKind {
   valueRoleAssignment("roleAssignment"),
   valuePolicyAssignment("policyAssignment");
 
-  const ArtifactKind(this.value);
-  final String value;
+  const ArtifactKind(this.wireValue);
+  final String wireValue;
 
   static ArtifactKind fromValue(String value) {
     for (final item in ArtifactKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ArtifactKind value: $value');
   }
 }
-

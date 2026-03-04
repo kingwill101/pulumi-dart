@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnServerConfigVpnClientRevokedCertificateResponse {
   /// The certificate name.
   final pulumi.Input<String>? name;
+
   /// The revoked VPN client certificate thumbprint.
   final pulumi.Input<String>? thumbprint;
 
@@ -18,17 +19,23 @@ class VpnServerConfigVpnClientRevokedCertificateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'thumbprint': ?thumbprint,
-    };
+    return <String, dynamic>{'name': ?name, 'thumbprint': ?thumbprint};
   }
 
-  factory VpnServerConfigVpnClientRevokedCertificateResponse.fromMap(Map<String, dynamic> map) {
+  factory VpnServerConfigVpnClientRevokedCertificateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpnServerConfigVpnClientRevokedCertificateResponse(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

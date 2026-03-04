@@ -7,8 +7,10 @@ import 'cross_tenant_scopes_response.dart';
 class NetworkManagerPropertiesResponseNetworkManagerScopes {
   /// List of cross tenant scopes.
   final pulumi.Input<List<CrossTenantScopesResponse>> crossTenantScopes;
+
   /// List of management groups.
   final pulumi.Input<List<String>>? managementGroups;
+
   /// List of subscriptions.
   final pulumi.Input<List<String>>? subscriptions;
 
@@ -24,18 +26,45 @@ class NetworkManagerPropertiesResponseNetworkManagerScopes {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'crossTenantScopes': pulumi.Input.mapInputValue<List<CrossTenantScopesResponse>, List<Map<String, dynamic>>>(crossTenantScopes, (value) => pulumi.Input.encodeList<CrossTenantScopesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'crossTenantScopes':
+          pulumi.Input.mapInputValue<
+            List<CrossTenantScopesResponse>,
+            List<Map<String, dynamic>>
+          >(
+            crossTenantScopes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CrossTenantScopesResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'managementGroups': ?managementGroups,
       'subscriptions': ?subscriptions,
     };
   }
 
-  factory NetworkManagerPropertiesResponseNetworkManagerScopes.fromMap(Map<String, dynamic> map) {
+  factory NetworkManagerPropertiesResponseNetworkManagerScopes.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkManagerPropertiesResponseNetworkManagerScopes(
-      crossTenantScopes: (pulumi.Input.decodeList<CrossTenantScopesResponse>(map['crossTenantScopes'], (value) => CrossTenantScopesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managementGroups: map['managementGroups'] == null ? null : ((map['managementGroups']! as List).cast<String>()).input(),
-      subscriptions: map['subscriptions'] == null ? null : ((map['subscriptions']! as List).cast<String>()).input(),
+      crossTenantScopes: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<CrossTenantScopesResponse>(
+          map['crossTenantScopes']!,
+          (value) => CrossTenantScopesResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      managementGroups: (() {
+        final guardedValue = map['managementGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      subscriptions: (() {
+        final guardedValue = map['subscriptions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

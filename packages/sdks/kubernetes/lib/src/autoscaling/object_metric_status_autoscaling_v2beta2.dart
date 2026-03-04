@@ -9,7 +9,9 @@ import 'metric_value_status_autoscaling_v2beta2.dart';
 class ObjectMetricStatusAutoscalingV2beta2 {
   /// current contains the current value for the given metric
   final pulumi.Input<MetricValueStatusAutoscalingV2beta2> current;
-  final pulumi.Input<CrossVersionObjectReferenceAutoscalingV2beta2> describedObject;
+  final pulumi.Input<CrossVersionObjectReferenceAutoscalingV2beta2>
+  describedObject;
+
   /// metric identifies the target metric by name and selector
   final pulumi.Input<MetricIdentifierAutoscalingV2beta2> metric;
 
@@ -25,18 +27,43 @@ class ObjectMetricStatusAutoscalingV2beta2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'current': pulumi.Input.mapInputValue<MetricValueStatusAutoscalingV2beta2, Map<String, dynamic>>(current, (value) => value.toMap()),
-      'describedObject': pulumi.Input.mapInputValue<CrossVersionObjectReferenceAutoscalingV2beta2, Map<String, dynamic>>(describedObject, (value) => value.toMap()),
-      'metric': pulumi.Input.mapInputValue<MetricIdentifierAutoscalingV2beta2, Map<String, dynamic>>(metric, (value) => value.toMap()),
+      'current':
+          pulumi.Input.mapInputValue<
+            MetricValueStatusAutoscalingV2beta2,
+            Map<String, dynamic>
+          >(current, (value) => value.toMap()),
+      'describedObject':
+          pulumi.Input.mapInputValue<
+            CrossVersionObjectReferenceAutoscalingV2beta2,
+            Map<String, dynamic>
+          >(describedObject, (value) => value.toMap()),
+      'metric':
+          pulumi.Input.mapInputValue<
+            MetricIdentifierAutoscalingV2beta2,
+            Map<String, dynamic>
+          >(metric, (value) => value.toMap()),
     };
   }
 
-  factory ObjectMetricStatusAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
+  factory ObjectMetricStatusAutoscalingV2beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ObjectMetricStatusAutoscalingV2beta2(
-      current: (MetricValueStatusAutoscalingV2beta2.fromMap((map['current'] as Map).cast<String, dynamic>())).input(),
-      describedObject: (CrossVersionObjectReferenceAutoscalingV2beta2.fromMap((map['describedObject'] as Map).cast<String, dynamic>())).input(),
-      metric: (MetricIdentifierAutoscalingV2beta2.fromMap((map['metric'] as Map).cast<String, dynamic>())).input(),
+      current: pulumi.Input.fromValue(
+        MetricValueStatusAutoscalingV2beta2.fromMap(
+          (map['current']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      describedObject: pulumi.Input.fromValue(
+        CrossVersionObjectReferenceAutoscalingV2beta2.fromMap(
+          (map['describedObject']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      metric: pulumi.Input.fromValue(
+        MetricIdentifierAutoscalingV2beta2.fromMap(
+          (map['metric']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

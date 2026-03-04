@@ -3,16 +3,15 @@ enum ClusterNetworkAccessFlag {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const ClusterNetworkAccessFlag(this.value);
-  final String value;
+  const ClusterNetworkAccessFlag(this.wireValue);
+  final String wireValue;
 
   static ClusterNetworkAccessFlag fromValue(String value) {
     for (final item in ClusterNetworkAccessFlag.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ClusterNetworkAccessFlag value: $value');
   }
 }
-

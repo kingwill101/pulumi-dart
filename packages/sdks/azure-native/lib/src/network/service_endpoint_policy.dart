@@ -7,16 +7,23 @@ import 'service_endpoint_policy_definition.dart';
 class ServiceEndpointPolicy {
   /// A collection of contextual service endpoint policy.
   final pulumi.Input<List<String>>? contextualServiceEndpointPolicies;
+
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String>? etag;
+
   /// Resource ID.
   final pulumi.Input<String>? id;
+
   /// Resource location.
   final pulumi.Input<String>? location;
+
   /// The alias indicating if the policy belongs to a service
   final pulumi.Input<String>? serviceAlias;
+
   /// A collection of service endpoint policy definitions of the service endpoint policy.
-  final pulumi.Input<List<ServiceEndpointPolicyDefinition>>? serviceEndpointPolicyDefinitions;
+  final pulumi.Input<List<ServiceEndpointPolicyDefinition>>?
+  serviceEndpointPolicyDefinitions;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -45,21 +52,68 @@ class ServiceEndpointPolicy {
       'id': ?id,
       'location': ?location,
       'serviceAlias': ?serviceAlias,
-      'serviceEndpointPolicyDefinitions': ?pulumi.Input.mapOptionalInputValue<List<ServiceEndpointPolicyDefinition>, List<Map<String, dynamic>>>(serviceEndpointPolicyDefinitions, (value) => pulumi.Input.encodeList<ServiceEndpointPolicyDefinition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'serviceEndpointPolicyDefinitions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ServiceEndpointPolicyDefinition>,
+            List<Map<String, dynamic>>
+          >(
+            serviceEndpointPolicyDefinitions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ServiceEndpointPolicyDefinition,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tags': ?tags,
     };
   }
 
   factory ServiceEndpointPolicy.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointPolicy(
-      contextualServiceEndpointPolicies: map['contextualServiceEndpointPolicies'] == null ? null : ((map['contextualServiceEndpointPolicies']! as List).cast<String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      serviceAlias: map['serviceAlias'] == null ? null : (map['serviceAlias']! as String).input(),
-      serviceEndpointPolicyDefinitions: map['serviceEndpointPolicyDefinitions'] == null ? null : (pulumi.Input.decodeList<ServiceEndpointPolicyDefinition>(map['serviceEndpointPolicyDefinitions']!, (value) => ServiceEndpointPolicyDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      contextualServiceEndpointPolicies: (() {
+        final guardedValue = map['contextualServiceEndpointPolicies'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      etag: (() {
+        final guardedValue = map['etag'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceAlias: (() {
+        final guardedValue = map['serviceAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceEndpointPolicyDefinitions: (() {
+        final guardedValue = map['serviceEndpointPolicyDefinitions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ServiceEndpointPolicyDefinition>(
+            guardedValue,
+            (value) => ServiceEndpointPolicyDefinition.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

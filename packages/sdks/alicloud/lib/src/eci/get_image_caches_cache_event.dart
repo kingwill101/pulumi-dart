@@ -5,13 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImageCachesCacheEvent {
   /// Number of events.
   final pulumi.Input<int> count;
+
   /// Start time.
   final pulumi.Input<String> firstTimestamp;
+
   /// End time.
   final pulumi.Input<String> lastTimestamp;
   final pulumi.Input<String> message;
+
   /// The name of event.
   final pulumi.Input<String> name;
+
   /// The type of event.
   final pulumi.Input<String> type;
 
@@ -44,13 +48,12 @@ class GetImageCachesCacheEvent {
 
   factory GetImageCachesCacheEvent.fromMap(Map<String, dynamic> map) {
     return GetImageCachesCacheEvent(
-      count: (map['count'] as int).input(),
-      firstTimestamp: (map['firstTimestamp'] as String).input(),
-      lastTimestamp: (map['lastTimestamp'] as String).input(),
-      message: (map['message'] as String).input(),
-      name: (map['name'] as String).input(),
-      type: (map['type'] as String).input(),
+      count: pulumi.Input.fromValue(map['count'] as int),
+      firstTimestamp: pulumi.Input.fromValue(map['firstTimestamp'] as String),
+      lastTimestamp: pulumi.Input.fromValue(map['lastTimestamp'] as String),
+      message: pulumi.Input.fromValue(map['message'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

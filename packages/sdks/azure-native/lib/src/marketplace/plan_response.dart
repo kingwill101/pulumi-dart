@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PlanResponse {
   /// Plan accessibility
   final pulumi.Input<String>? accessibility;
+
   /// Alternative stack type
   final pulumi.Input<String> altStackReference;
+
   /// Friendly name for the plan for display in the marketplace
   final pulumi.Input<String> planDisplayName;
+
   /// Text identifier for this plan
   final pulumi.Input<String> planId;
+
   /// Identifier for this plan
   final pulumi.Input<String> skuId;
+
   /// Stack type (classic or arm)
   final pulumi.Input<String> stackType;
 
@@ -45,13 +50,18 @@ class PlanResponse {
 
   factory PlanResponse.fromMap(Map<String, dynamic> map) {
     return PlanResponse(
-      accessibility: map['accessibility'] == null ? null : (map['accessibility']! as String).input(),
-      altStackReference: (map['altStackReference'] as String).input(),
-      planDisplayName: (map['planDisplayName'] as String).input(),
-      planId: (map['planId'] as String).input(),
-      skuId: (map['skuId'] as String).input(),
-      stackType: (map['stackType'] as String).input(),
+      accessibility: (() {
+        final guardedValue = map['accessibility'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      altStackReference: pulumi.Input.fromValue(
+        map['altStackReference'] as String,
+      ),
+      planDisplayName: pulumi.Input.fromValue(map['planDisplayName'] as String),
+      planId: pulumi.Input.fromValue(map['planId'] as String),
+      skuId: pulumi.Input.fromValue(map['skuId'] as String),
+      stackType: pulumi.Input.fromValue(map['stackType'] as String),
     );
   }
 }
-

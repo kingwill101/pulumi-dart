@@ -7,12 +7,16 @@ import 'managed_scaling_policy_compute_limit.dart';
 class ManagedScalingPolicyState {
   /// ID of the EMR cluster
   final pulumi.Input<String>? clusterId;
+
   /// Configuration block with compute limit settings. Described below.
   final pulumi.Input<List<ManagedScalingPolicyComputeLimit>>? computeLimits;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Specifies the scaling strategy. When set to `ADVANCED`, the `utilization_performance_index` argument can be used to configure an advanced scaling strategy. An advanced scaling strategy requires Amazon EMR on EC2 version 7.0 or later. Valid values: `ADVANCED`, `DEFAULT`.
   final pulumi.Input<String>? scalingStrategy;
+
   /// Integer value that represents the advanced scaling strategy. Higher values optimize for performance, while lower values optimize for resource conservation. A value of `50` provides a balance between performance and resource conservation. See [the AWS documentation](https://docs.aws.amazon.com/emr/latest/ManagementGuide/managed-scaling-allocation-strategy-optimized.html#managed-scaling-allocation-strategy-optimized-getting-started) for more details. Required when `scaling_strategy` is set to `ADVANCED`. Valid values: `1`, `25`, `50`, `75`, `100`.
   final pulumi.Input<int>? utilizationPerformanceIndex;
 
@@ -33,7 +37,18 @@ class ManagedScalingPolicyState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clusterId': ?clusterId,
-      'computeLimits': ?pulumi.Input.mapOptionalInputValue<List<ManagedScalingPolicyComputeLimit>, List<Map<String, dynamic>>>(computeLimits, (value) => pulumi.Input.encodeList<ManagedScalingPolicyComputeLimit, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'computeLimits':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ManagedScalingPolicyComputeLimit>,
+            List<Map<String, dynamic>>
+          >(
+            computeLimits,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ManagedScalingPolicyComputeLimit,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': ?region,
       'scalingStrategy': ?scalingStrategy,
       'utilizationPerformanceIndex': ?utilizationPerformanceIndex,
@@ -42,12 +57,38 @@ class ManagedScalingPolicyState {
 
   factory ManagedScalingPolicyState.fromMap(Map<String, dynamic> map) {
     return ManagedScalingPolicyState(
-      clusterId: map['clusterId'] == null ? null : ((map['clusterId'] as String).input()).input(),
-      computeLimits: map['computeLimits'] == null ? null : ((pulumi.Input.decodeList<ManagedScalingPolicyComputeLimit>(map['computeLimits']!, (value) => ManagedScalingPolicyComputeLimit.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      scalingStrategy: map['scalingStrategy'] == null ? null : ((map['scalingStrategy'] as String).input()).input(),
-      utilizationPerformanceIndex: map['utilizationPerformanceIndex'] == null ? null : ((map['utilizationPerformanceIndex'] as int).input()).input(),
+      clusterId: (() {
+        final guardedValue = map['clusterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      computeLimits: (() {
+        final guardedValue = map['computeLimits'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ManagedScalingPolicyComputeLimit>(
+            guardedValue,
+            (value) => ManagedScalingPolicyComputeLimit.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scalingStrategy: (() {
+        final guardedValue = map['scalingStrategy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      utilizationPerformanceIndex: (() {
+        final guardedValue = map['utilizationPerformanceIndex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

@@ -6,23 +6,32 @@ import 'system_data_response.dart';
 class GetSynapseWorkspaceSqlPoolTableDataSetMappingResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The id of the source data set.
   final String dataSetId;
+
   /// Gets the status of the data set mapping.
   final String dataSetMappingStatus;
+
   /// The resource id of the azure resource
   final String id;
+
   /// Kind of data set mapping.
   /// Expected value is 'SynapseWorkspaceSqlPoolTable'.
   final String kind;
+
   /// Name of the azure resource
   final String name;
+
   /// Provisioning state of the data set mapping.
   final String provisioningState;
+
   /// Resource id of the Synapse Workspace SQL Pool Table
   final String synapseWorkspaceSqlPoolTableResourceId;
+
   /// System Data of the Azure resource.
   final SystemDataResponse systemData;
+
   /// Type of the azure resource
   final String type;
 
@@ -59,13 +68,16 @@ class GetSynapseWorkspaceSqlPoolTableDataSetMappingResult {
       'kind': kind,
       'name': name,
       'provisioningState': provisioningState,
-      'synapseWorkspaceSqlPoolTableResourceId': synapseWorkspaceSqlPoolTableResourceId,
+      'synapseWorkspaceSqlPoolTableResourceId':
+          synapseWorkspaceSqlPoolTableResourceId,
       'systemData': systemData.toMap(),
       'type': type,
     };
   }
 
-  factory GetSynapseWorkspaceSqlPoolTableDataSetMappingResult.fromMap(Map<String, dynamic> map) {
+  factory GetSynapseWorkspaceSqlPoolTableDataSetMappingResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSynapseWorkspaceSqlPoolTableDataSetMappingResult(
       azureApiVersion: map['azureApiVersion'] as String,
       dataSetId: map['dataSetId'] as String,
@@ -74,10 +86,12 @@ class GetSynapseWorkspaceSqlPoolTableDataSetMappingResult {
       kind: map['kind'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      synapseWorkspaceSqlPoolTableResourceId: map['synapseWorkspaceSqlPoolTableResourceId'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      synapseWorkspaceSqlPoolTableResourceId:
+          map['synapseWorkspaceSqlPoolTableResourceId'] as String,
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

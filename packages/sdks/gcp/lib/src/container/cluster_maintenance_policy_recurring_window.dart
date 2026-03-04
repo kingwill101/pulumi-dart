@@ -25,12 +25,13 @@ class ClusterMaintenancePolicyRecurringWindow {
     };
   }
 
-  factory ClusterMaintenancePolicyRecurringWindow.fromMap(Map<String, dynamic> map) {
+  factory ClusterMaintenancePolicyRecurringWindow.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterMaintenancePolicyRecurringWindow(
-      endTime: (map['endTime'] as String).input(),
-      recurrence: (map['recurrence'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
+      endTime: pulumi.Input.fromValue(map['endTime'] as String),
+      recurrence: pulumi.Input.fromValue(map['recurrence'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );
   }
 }
-

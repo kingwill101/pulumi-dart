@@ -9,20 +9,19 @@ class EndpointConfigDataprocV1beta2 {
 
   /// Creates a new [EndpointConfigDataprocV1beta2].
   /// [enableHttpPortAccess] Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
-  EndpointConfigDataprocV1beta2({
-    this.enableHttpPortAccess,
-  });
+  EndpointConfigDataprocV1beta2({this.enableHttpPortAccess});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableHttpPortAccess': ?enableHttpPortAccess,
-    };
+    return <String, dynamic>{'enableHttpPortAccess': ?enableHttpPortAccess};
   }
 
   factory EndpointConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return EndpointConfigDataprocV1beta2(
-      enableHttpPortAccess: map['enableHttpPortAccess'] == null ? null : (map['enableHttpPortAccess']! as bool).input(),
+      enableHttpPortAccess: (() {
+        final guardedValue = map['enableHttpPortAccess'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

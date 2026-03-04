@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContactDetailsResponse {
   /// The name of the company.
   final pulumi.Input<String> companyName;
+
   /// The contact person name.
   final pulumi.Input<String> contactPerson;
+
   /// The email list.
   final pulumi.Input<List<String>> emailList;
+
   /// The phone number.
   final pulumi.Input<String> phone;
 
@@ -36,11 +39,12 @@ class ContactDetailsResponse {
 
   factory ContactDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ContactDetailsResponse(
-      companyName: (map['companyName'] as String).input(),
-      contactPerson: (map['contactPerson'] as String).input(),
-      emailList: ((map['emailList'] as List).cast<String>()).input(),
-      phone: (map['phone'] as String).input(),
+      companyName: pulumi.Input.fromValue(map['companyName'] as String),
+      contactPerson: pulumi.Input.fromValue(map['contactPerson'] as String),
+      emailList: pulumi.Input.fromValue(
+        (map['emailList'] as List).cast<String>(),
+      ),
+      phone: pulumi.Input.fromValue(map['phone'] as String),
     );
   }
 }
-

@@ -5,7 +5,11 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystem {
   /// Creates a cache checkpoint within a tool designation. See Cache Point for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystemCachePoint>? cachePoint;
+  final pulumi.Input<
+    AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystemCachePoint
+  >?
+  cachePoint;
+
   /// The text in the system prompt.
   final pulumi.Input<String>? text;
 
@@ -19,16 +23,33 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cachePoint': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystemCachePoint, Map<String, dynamic>>(cachePoint, (value) => value.toMap()),
+      'cachePoint':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystemCachePoint,
+            Map<String, dynamic>
+          >(cachePoint, (value) => value.toMap()),
       'text': ?text,
     };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystem.fromMap(Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystem.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystem(
-      cachePoint: map['cachePoint'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystemCachePoint.fromMap((map['cachePoint']! as Map).cast<String, dynamic>())).input()).input(),
-      text: map['text'] == null ? null : ((map['text'] as String).input()).input(),
+      cachePoint: (() {
+        final guardedValue = map['cachePoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystemCachePoint.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      text: (() {
+        final guardedValue = map['text'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

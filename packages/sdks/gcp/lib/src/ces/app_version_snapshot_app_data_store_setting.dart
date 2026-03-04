@@ -7,24 +7,46 @@ class AppVersionSnapshotAppDataStoreSetting {
   /// (Output)
   /// The engines for the app.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppDataStoreSettingEngine>>? engines;
+  final pulumi.Input<List<AppVersionSnapshotAppDataStoreSettingEngine>>?
+  engines;
 
   /// Creates a new [AppVersionSnapshotAppDataStoreSetting].
   /// [engines] (Output)
-  AppVersionSnapshotAppDataStoreSetting({
-    this.engines,
-  });
+  AppVersionSnapshotAppDataStoreSetting({this.engines});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'engines': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppDataStoreSettingEngine>, List<Map<String, dynamic>>>(engines, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppDataStoreSettingEngine, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'engines':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AppVersionSnapshotAppDataStoreSettingEngine>,
+            List<Map<String, dynamic>>
+          >(
+            engines,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AppVersionSnapshotAppDataStoreSettingEngine,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory AppVersionSnapshotAppDataStoreSetting.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotAppDataStoreSetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotAppDataStoreSetting(
-      engines: map['engines'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppDataStoreSettingEngine>(map['engines']!, (value) => AppVersionSnapshotAppDataStoreSettingEngine.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      engines: (() {
+        final guardedValue = map['engines'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AppVersionSnapshotAppDataStoreSettingEngine>(
+            guardedValue,
+            (value) => AppVersionSnapshotAppDataStoreSettingEngine.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

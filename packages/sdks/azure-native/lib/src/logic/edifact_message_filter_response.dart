@@ -9,20 +9,17 @@ class EdifactMessageFilterResponse {
 
   /// Creates a new [EdifactMessageFilterResponse].
   /// [messageFilterType] The message filter type.
-  EdifactMessageFilterResponse({
-    required this.messageFilterType,
-  });
+  EdifactMessageFilterResponse({required this.messageFilterType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'messageFilterType': messageFilterType,
-    };
+    return <String, dynamic>{'messageFilterType': messageFilterType};
   }
 
   factory EdifactMessageFilterResponse.fromMap(Map<String, dynamic> map) {
     return EdifactMessageFilterResponse(
-      messageFilterType: (map['messageFilterType'] as String).input(),
+      messageFilterType: pulumi.Input.fromValue(
+        map['messageFilterType'] as String,
+      ),
     );
   }
 }
-

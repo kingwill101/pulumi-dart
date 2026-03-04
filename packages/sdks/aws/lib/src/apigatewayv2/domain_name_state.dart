@@ -8,20 +8,30 @@ import 'domain_name_mutual_tls_authentication.dart';
 class DomainNameState {
   /// [API mapping selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-mapping-selection-expressions) for the domain name.
   final pulumi.Input<String>? apiMappingSelectionExpression;
+
   /// ARN of the domain name.
   final pulumi.Input<String>? arn;
+
   /// Domain name. Must be between 1 and 512 characters in length.
   final pulumi.Input<String>? domainName;
+
   /// Domain name configuration. See below.
-  final pulumi.Input<DomainNameDomainNameConfiguration>? domainNameConfiguration;
+  final pulumi.Input<DomainNameDomainNameConfiguration>?
+  domainNameConfiguration;
+
   /// Mutual TLS authentication configuration for the domain name.
-  final pulumi.Input<DomainNameMutualTlsAuthentication>? mutualTlsAuthentication;
+  final pulumi.Input<DomainNameMutualTlsAuthentication>?
+  mutualTlsAuthentication;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Mode to route traffic for the domain name. Valid values: `API_MAPPING_ONLY`, `ROUTING_RULE_ONLY`, `ROUTING_RULE_THEN_API_MAPPING`.
   final pulumi.Input<String>? routingMode;
+
   /// Map of tags to assign to the domain name. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -52,8 +62,16 @@ class DomainNameState {
       'apiMappingSelectionExpression': ?apiMappingSelectionExpression,
       'arn': ?arn,
       'domainName': ?domainName,
-      'domainNameConfiguration': ?pulumi.Input.mapOptionalInputValue<DomainNameDomainNameConfiguration, Map<String, dynamic>>(domainNameConfiguration, (value) => value.toMap()),
-      'mutualTlsAuthentication': ?pulumi.Input.mapOptionalInputValue<DomainNameMutualTlsAuthentication, Map<String, dynamic>>(mutualTlsAuthentication, (value) => value.toMap()),
+      'domainNameConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainNameDomainNameConfiguration,
+            Map<String, dynamic>
+          >(domainNameConfiguration, (value) => value.toMap()),
+      'mutualTlsAuthentication':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainNameMutualTlsAuthentication,
+            Map<String, dynamic>
+          >(mutualTlsAuthentication, (value) => value.toMap()),
       'region': ?region,
       'routingMode': ?routingMode,
       'tags': ?tags,
@@ -63,16 +81,63 @@ class DomainNameState {
 
   factory DomainNameState.fromMap(Map<String, dynamic> map) {
     return DomainNameState(
-      apiMappingSelectionExpression: map['apiMappingSelectionExpression'] == null ? null : ((map['apiMappingSelectionExpression'] as String).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
-      domainNameConfiguration: map['domainNameConfiguration'] == null ? null : ((DomainNameDomainNameConfiguration.fromMap((map['domainNameConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      mutualTlsAuthentication: map['mutualTlsAuthentication'] == null ? null : ((DomainNameMutualTlsAuthentication.fromMap((map['mutualTlsAuthentication']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      routingMode: map['routingMode'] == null ? null : ((map['routingMode'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      apiMappingSelectionExpression: (() {
+        final guardedValue = map['apiMappingSelectionExpression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainNameConfiguration: (() {
+        final guardedValue = map['domainNameConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainNameDomainNameConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      mutualTlsAuthentication: (() {
+        final guardedValue = map['mutualTlsAuthentication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainNameMutualTlsAuthentication.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routingMode: (() {
+        final guardedValue = map['routingMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

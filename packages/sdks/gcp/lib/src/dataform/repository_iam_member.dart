@@ -21,18 +21,18 @@ class RepositoryIamMember extends pulumi.CustomResource {
     RepositoryIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dataform/repositoryIamMember:RepositoryIamMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<RepositoryIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.repository = registerOutput<String>('repository');
-    this.role = registerOutput<String>('role');
+         'gcp:dataform/repositoryIamMember:RepositoryIamMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<RepositoryIamMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    repository = registerOutput<String>('repository');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [RepositoryIamMember] resource's state with the given [name] and [id].
@@ -53,17 +53,17 @@ class RepositoryIamMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dataform/repositoryIamMember:RepositoryIamMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<RepositoryIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.member = registerOutput<String>('member');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
-    this.repository = registerOutput<String>('repository');
-    this.role = registerOutput<String>('role');
+         'gcp:dataform/repositoryIamMember:RepositoryIamMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<RepositoryIamMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    repository = registerOutput<String>('repository');
+    role = registerOutput<String>('role');
   }
 }

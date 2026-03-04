@@ -291,7 +291,7 @@ import 'gallery_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DevCenter` - 2025-02-01
@@ -311,8 +311,10 @@ import 'gallery_state.dart';
 class Gallery extends pulumi.CustomResource {
   /// Specifies the ID of the Dev Center within which this Dev Center Gallery should exist. Changing this forces a new Dev Center Gallery to be created.
   late final pulumi.Output<String> devCenterId;
+
   /// Specifies the name of this Dev Center Gallery. Changing this forces a new Dev Center Gallery to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Shared Gallery which should be connected to the Dev Center Gallery. Changing this forces a new Dev Center Gallery to be created.
   late final pulumi.Output<String> sharedGalleryId;
 
@@ -325,14 +327,14 @@ class Gallery extends pulumi.CustomResource {
     GalleryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devcenter/gallery:Gallery',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.devCenterId = registerOutput<String>('devCenterId');
+         'azure:devcenter/gallery:Gallery',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
-    this.sharedGalleryId = registerOutput<String>('sharedGalleryId');
+    sharedGalleryId = registerOutput<String>('sharedGalleryId');
   }
 
   /// Gets an existing [Gallery] resource's state with the given [name] and [id].
@@ -353,13 +355,13 @@ class Gallery extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:devcenter/gallery:Gallery',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.devCenterId = registerOutput<String>('devCenterId');
+         'azure:devcenter/gallery:Gallery',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');
-    this.sharedGalleryId = registerOutput<String>('sharedGalleryId');
+    sharedGalleryId = registerOutput<String>('sharedGalleryId');
   }
 }

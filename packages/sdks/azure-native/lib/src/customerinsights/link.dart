@@ -1,7 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'link_args.dart';
-import 'participant_property_reference_response.dart';
-import 'type_properties_mapping_response.dart';
 
 /// The link resource format.
 ///
@@ -256,34 +254,50 @@ import 'type_properties_mapping_response.dart';
 class Link extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Localized descriptions for the Link.
   late final pulumi.Output<Map<String, String>?> description;
+
   /// Localized display name for the Link.
   late final pulumi.Output<Map<String, String>?> displayName;
+
   /// The link name.
   late final pulumi.Output<String> linkName;
+
   /// The set of properties mappings between the source and target Types.
-  late final pulumi.Output<List<TypePropertiesMappingResponse>?> mappings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> mappings;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only.
   late final pulumi.Output<String?> operationType;
+
   /// The properties that represent the participating profile.
-  late final pulumi.Output<List<ParticipantPropertyReferenceResponse>> participantPropertyReferences;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  participantPropertyReferences;
+
   /// Provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// Indicating whether the link is reference only link. This flag is ignored if the Mappings are defined. If the mappings are not defined and it is set to true, links processing will not create or update profiles.
   late final pulumi.Output<bool?> referenceOnly;
+
   /// Type of source entity.
   late final pulumi.Output<String> sourceEntityType;
+
   /// Name of the source Entity Type.
   late final pulumi.Output<String> sourceEntityTypeName;
+
   /// Type of target entity.
   late final pulumi.Output<String> targetEntityType;
+
   /// Name of the target Entity Type.
   late final pulumi.Output<String> targetEntityTypeName;
+
   /// The hub name.
   late final pulumi.Output<String> tenantId;
+
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -291,31 +305,30 @@ class Link extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Link]. {@macro pulumi_customerinsights_link_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Link(
-    String name, {
-    LinkArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:customerinsights:Link',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<Map<String, String>?>('description');
-    this.displayName = registerOutput<Map<String, String>?>('displayName');
-    this.linkName = registerOutput<String>('linkName');
-    this.mappings = registerOutput<List<TypePropertiesMappingResponse>?>('mappings');
+  Link(String name, {LinkArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:customerinsights:Link',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<Map<String, String>?>('description');
+    displayName = registerOutput<Map<String, String>?>('displayName');
+    linkName = registerOutput<String>('linkName');
+    mappings = registerOutput<List<Map<String, dynamic>>?>('mappings');
     this.name = registerOutput<String>('name');
-    this.operationType = registerOutput<String?>('operationType');
-    this.participantPropertyReferences = registerOutput<List<ParticipantPropertyReferenceResponse>>('participantPropertyReferences');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.referenceOnly = registerOutput<bool?>('referenceOnly');
-    this.sourceEntityType = registerOutput<String>('sourceEntityType');
-    this.sourceEntityTypeName = registerOutput<String>('sourceEntityTypeName');
-    this.targetEntityType = registerOutput<String>('targetEntityType');
-    this.targetEntityTypeName = registerOutput<String>('targetEntityTypeName');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.type = registerOutput<String>('type');
+    operationType = registerOutput<String?>('operationType');
+    participantPropertyReferences = registerOutput<List<Map<String, dynamic>>>(
+      'participantPropertyReferences',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    referenceOnly = registerOutput<bool?>('referenceOnly');
+    sourceEntityType = registerOutput<String>('sourceEntityType');
+    sourceEntityTypeName = registerOutput<String>('sourceEntityTypeName');
+    targetEntityType = registerOutput<String>('targetEntityType');
+    targetEntityTypeName = registerOutput<String>('targetEntityTypeName');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
   }
 }

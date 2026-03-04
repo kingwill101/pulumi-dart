@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTableRetentionProperty {
   /// Duration in days in which the data must be stored in magnetic store.
   final pulumi.Input<int> magneticStoreRetentionPeriodInDays;
+
   /// Duration in hours in which the data must be stored in memory store.
   final pulumi.Input<int> memoryStoreRetentionPeriodInHours;
 
@@ -25,9 +26,12 @@ class GetTableRetentionProperty {
 
   factory GetTableRetentionProperty.fromMap(Map<String, dynamic> map) {
     return GetTableRetentionProperty(
-      magneticStoreRetentionPeriodInDays: (map['magneticStoreRetentionPeriodInDays'] as int).input(),
-      memoryStoreRetentionPeriodInHours: (map['memoryStoreRetentionPeriodInHours'] as int).input(),
+      magneticStoreRetentionPeriodInDays: pulumi.Input.fromValue(
+        map['magneticStoreRetentionPeriodInDays'] as int,
+      ),
+      memoryStoreRetentionPeriodInHours: pulumi.Input.fromValue(
+        map['memoryStoreRetentionPeriodInHours'] as int,
+      ),
     );
   }
 }
-

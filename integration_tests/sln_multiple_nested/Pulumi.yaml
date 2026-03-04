@@ -1,3 +1,0 @@
-name: sln_multiple_nested_dart
-description: A Pulumi program with an .sln file with multiple projects.
-runtime: dart

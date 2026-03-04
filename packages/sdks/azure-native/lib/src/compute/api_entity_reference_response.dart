@@ -9,20 +9,19 @@ class ApiEntityReferenceResponse {
 
   /// Creates a new [ApiEntityReferenceResponse].
   /// [id] The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-  ApiEntityReferenceResponse({
-    this.id,
-  });
+  ApiEntityReferenceResponse({this.id});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-    };
+    return <String, dynamic>{'id': ?id};
   }
 
   factory ApiEntityReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ApiEntityReferenceResponse(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

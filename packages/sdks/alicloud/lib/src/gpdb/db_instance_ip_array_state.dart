@@ -6,20 +6,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DbInstanceIpArrayState {
   /// The instance ID.
   ///
-  /// > **NOTE:**  You can call the [DescribeDBInstances](https://www.alibabacloud.com/help/en/doc-detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+  /// &gt; **NOTE:**  You can call the [DescribeDBInstances](https://www.alibabacloud.com/help/en/doc-detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
   final pulumi.Input<String>? dbInstanceId;
+
   /// The default is empty. To distinguish between different attribute values, the console does not display groups with the 'hidden' attribute.
   final pulumi.Input<String>? dbInstanceIpArrayAttribute;
+
   /// The name of the IP address whitelist. If you do not specify this parameter, the default whitelist is queried.
   ///
-  /// > **NOTE:**   Each instance supports up to 50 IP address whitelists.
+  /// &gt; **NOTE:**   Each instance supports up to 50 IP address whitelists.
   final pulumi.Input<String>? dbInstanceIpArrayName;
+
   /// The method of modification. Valid values:
   ///
   /// - `Cover`: overwrites the whitelist.
   /// - `Append`: appends data to the whitelist.
   /// - `Delete`: deletes the whitelist.
   final pulumi.Input<String>? modifyMode;
+
   /// The IP address whitelist contains a maximum of 1000 IP addresses separated by commas in the following three formats:
   /// - 0.0.0.0/0
   /// - 10.23.12.24(IP)
@@ -52,12 +56,31 @@ class DbInstanceIpArrayState {
 
   factory DbInstanceIpArrayState.fromMap(Map<String, dynamic> map) {
     return DbInstanceIpArrayState(
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
-      dbInstanceIpArrayAttribute: map['dbInstanceIpArrayAttribute'] == null ? null : (map['dbInstanceIpArrayAttribute']! as String).input(),
-      dbInstanceIpArrayName: map['dbInstanceIpArrayName'] == null ? null : (map['dbInstanceIpArrayName']! as String).input(),
-      modifyMode: map['modifyMode'] == null ? null : (map['modifyMode']! as String).input(),
-      securityIpLists: map['securityIpLists'] == null ? null : ((map['securityIpLists']! as List).cast<String>()).input(),
+      dbInstanceId: (() {
+        final guardedValue = map['dbInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceIpArrayAttribute: (() {
+        final guardedValue = map['dbInstanceIpArrayAttribute'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceIpArrayName: (() {
+        final guardedValue = map['dbInstanceIpArrayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      modifyMode: (() {
+        final guardedValue = map['modifyMode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityIpLists: (() {
+        final guardedValue = map['securityIpLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

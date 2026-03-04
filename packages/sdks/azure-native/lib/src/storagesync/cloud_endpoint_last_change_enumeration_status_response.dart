@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudEndpointLastChangeEnumerationStatusResponse {
   /// Timestamp when change enumeration completed
   final pulumi.Input<String> completedTimestamp;
+
   /// Count of directories in the namespace
   final pulumi.Input<double> namespaceDirectoriesCount;
+
   /// Count of files in the namespace
   final pulumi.Input<double> namespaceFilesCount;
+
   /// Namespace size in bytes
   final pulumi.Input<double> namespaceSizeBytes;
+
   /// Timestamp of when change enumeration is expected to run again
   final pulumi.Input<String> nextRunTimestamp;
+
   /// Timestamp when change enumeration started
   final pulumi.Input<String> startedTimestamp;
 
@@ -44,15 +49,28 @@ class CloudEndpointLastChangeEnumerationStatusResponse {
     };
   }
 
-  factory CloudEndpointLastChangeEnumerationStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory CloudEndpointLastChangeEnumerationStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudEndpointLastChangeEnumerationStatusResponse(
-      completedTimestamp: (map['completedTimestamp'] as String).input(),
-      namespaceDirectoriesCount: (map['namespaceDirectoriesCount'] as double).input(),
-      namespaceFilesCount: (map['namespaceFilesCount'] as double).input(),
-      namespaceSizeBytes: (map['namespaceSizeBytes'] as double).input(),
-      nextRunTimestamp: (map['nextRunTimestamp'] as String).input(),
-      startedTimestamp: (map['startedTimestamp'] as String).input(),
+      completedTimestamp: pulumi.Input.fromValue(
+        map['completedTimestamp'] as String,
+      ),
+      namespaceDirectoriesCount: pulumi.Input.fromValue(
+        map['namespaceDirectoriesCount'] as double,
+      ),
+      namespaceFilesCount: pulumi.Input.fromValue(
+        map['namespaceFilesCount'] as double,
+      ),
+      namespaceSizeBytes: pulumi.Input.fromValue(
+        map['namespaceSizeBytes'] as double,
+      ),
+      nextRunTimestamp: pulumi.Input.fromValue(
+        map['nextRunTimestamp'] as String,
+      ),
+      startedTimestamp: pulumi.Input.fromValue(
+        map['startedTimestamp'] as String,
+      ),
     );
   }
 }
-

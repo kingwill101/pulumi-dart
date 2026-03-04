@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CrossAccountAttachmentResource {
   /// IP address range, in CIDR format, that is specified as resource.
   final pulumi.Input<String>? cidrBlock;
+
   /// The endpoint ID for the endpoint that is specified as a AWS resource.
   final pulumi.Input<String>? endpointId;
+
   /// The AWS Region where a shared endpoint resource is located.
   final pulumi.Input<String>? region;
 
@@ -30,10 +32,21 @@ class CrossAccountAttachmentResource {
 
   factory CrossAccountAttachmentResource.fromMap(Map<String, dynamic> map) {
     return CrossAccountAttachmentResource(
-      cidrBlock: map['cidrBlock'] == null ? null : ((map['cidrBlock'] as String).input()).input(),
-      endpointId: map['endpointId'] == null ? null : ((map['endpointId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      cidrBlock: (() {
+        final guardedValue = map['cidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpointId: (() {
+        final guardedValue = map['endpointId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

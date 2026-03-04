@@ -6,16 +6,15 @@ enum CVSSAvailabilityImpact {
   impactPartial("IMPACT_PARTIAL"),
   impactComplete("IMPACT_COMPLETE");
 
-  const CVSSAvailabilityImpact(this.value);
-  final String value;
+  const CVSSAvailabilityImpact(this.wireValue);
+  final String wireValue;
 
   static CVSSAvailabilityImpact fromValue(String value) {
     for (final item in CVSSAvailabilityImpact.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CVSSAvailabilityImpact value: $value');
   }
 }
-

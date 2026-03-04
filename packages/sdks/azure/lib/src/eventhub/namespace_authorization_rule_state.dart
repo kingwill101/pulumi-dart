@@ -6,26 +6,36 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NamespaceAuthorizationRuleState {
   /// Grants listen access to this Authorization Rule. Defaults to `false`.
   final pulumi.Input<bool>? listen;
+
   /// Grants manage access to this Authorization Rule. When this property is `true` - both `listen` and `send` must be too. Defaults to `false`.
   final pulumi.Input<bool>? manage;
+
   /// Specifies the name of the ServiceBus Namespace Authorization Rule resource. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// Specifies the ID of the ServiceBus Namespace. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** At least one of the 3 permissions below needs to be set.
+  /// &gt; **Note:** At least one of the 3 permissions below needs to be set.
   final pulumi.Input<String>? namespaceId;
+
   /// The Primary Connection String for the ServiceBus Namespace authorization Rule.
   final pulumi.Input<String>? primaryConnectionString;
+
   /// The alias Primary Connection String for the ServiceBus Namespace, if the namespace is Geo DR paired.
   final pulumi.Input<String>? primaryConnectionStringAlias;
+
   /// The Primary Key for the ServiceBus Namespace authorization Rule.
   final pulumi.Input<String>? primaryKey;
+
   /// The Secondary Connection String for the ServiceBus Namespace authorization Rule.
   final pulumi.Input<String>? secondaryConnectionString;
+
   /// The alias Secondary Connection String for the ServiceBus Namespace
   final pulumi.Input<String>? secondaryConnectionStringAlias;
+
   /// The Secondary Key for the ServiceBus Namespace authorization Rule.
   final pulumi.Input<String>? secondaryKey;
+
   /// Grants send access to this Authorization Rule. Defaults to `false`.
   final pulumi.Input<bool>? send;
 
@@ -73,18 +83,61 @@ class NamespaceAuthorizationRuleState {
 
   factory NamespaceAuthorizationRuleState.fromMap(Map<String, dynamic> map) {
     return NamespaceAuthorizationRuleState(
-      listen: map['listen'] == null ? null : (map['listen']! as bool).input(),
-      manage: map['manage'] == null ? null : (map['manage']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
-      primaryConnectionString: map['primaryConnectionString'] == null ? null : (map['primaryConnectionString']! as String).input(),
-      primaryConnectionStringAlias: map['primaryConnectionStringAlias'] == null ? null : (map['primaryConnectionStringAlias']! as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
-      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : (map['secondaryConnectionString']! as String).input(),
-      secondaryConnectionStringAlias: map['secondaryConnectionStringAlias'] == null ? null : (map['secondaryConnectionStringAlias']! as String).input(),
-      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey']! as String).input(),
-      send: map['send'] == null ? null : (map['send']! as bool).input(),
+      listen: (() {
+        final guardedValue = map['listen'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      manage: (() {
+        final guardedValue = map['manage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceId: (() {
+        final guardedValue = map['namespaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryConnectionString: (() {
+        final guardedValue = map['primaryConnectionString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryConnectionStringAlias: (() {
+        final guardedValue = map['primaryConnectionStringAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryKey: (() {
+        final guardedValue = map['primaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secondaryConnectionString: (() {
+        final guardedValue = map['secondaryConnectionString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secondaryConnectionStringAlias: (() {
+        final guardedValue = map['secondaryConnectionStringAlias'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secondaryKey: (() {
+        final guardedValue = map['secondaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      send: (() {
+        final guardedValue = map['send'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

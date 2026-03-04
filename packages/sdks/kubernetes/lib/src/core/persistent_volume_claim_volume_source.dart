@@ -6,29 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PersistentVolumeClaimVolumeSource {
   /// claimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
   final pulumi.Input<String> claimName;
+
   /// readOnly Will force the ReadOnly setting in VolumeMounts. Default false.
   final pulumi.Input<bool>? readOnly;
 
   /// Creates a new [PersistentVolumeClaimVolumeSource].
   /// [claimName] claimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
   /// [readOnly] readOnly Will force the ReadOnly setting in VolumeMounts. Default false.
-  PersistentVolumeClaimVolumeSource({
-    required this.claimName,
-    this.readOnly,
-  });
+  PersistentVolumeClaimVolumeSource({required this.claimName, this.readOnly});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'claimName': claimName,
-      'readOnly': ?readOnly,
-    };
+    return <String, dynamic>{'claimName': claimName, 'readOnly': ?readOnly};
   }
 
   factory PersistentVolumeClaimVolumeSource.fromMap(Map<String, dynamic> map) {
     return PersistentVolumeClaimVolumeSource(
-      claimName: (map['claimName'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      claimName: pulumi.Input.fromValue(map['claimName'] as String),
+      readOnly: (() {
+        final guardedValue = map['readOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_securityinsights;
-
 export 'securityinsights/aaddata_connector.dart';
 export 'securityinsights/aaddata_connector_args.dart';
 export 'securityinsights/aatpdata_connector.dart';

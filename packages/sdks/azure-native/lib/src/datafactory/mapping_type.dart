@@ -4,16 +4,15 @@ enum MappingType {
   valueDerived("Derived"),
   valueAggregate("Aggregate");
 
-  const MappingType(this.value);
-  final String value;
+  const MappingType(this.wireValue);
+  final String wireValue;
 
   static MappingType fromValue(String value) {
     for (final item in MappingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MappingType value: $value');
   }
 }
-

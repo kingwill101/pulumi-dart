@@ -5,62 +5,89 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRestoreJobsJob {
   /// The actual size of Snapshot.
   final pulumi.Input<String> actualBytes;
+
   /// The actual number of files.
   final pulumi.Input<String> actualItems;
+
   /// The size of restore job recovered.
   final pulumi.Input<String> bytesDone;
+
   /// The total size of restore job recovered.
   final pulumi.Input<String> bytesTotal;
+
   /// The completion time of restore Job.
   final pulumi.Input<String> completeTime;
+
   /// The creation time of restore job.
   final pulumi.Input<String> createTime;
   final pulumi.Input<String> errorFile;
+
   /// The error message of recovery task execution.
   final pulumi.Input<String> errorMessage;
+
   /// The expiration time of restore job. Unix Time in seconds.
   final pulumi.Input<String> expireTime;
+
   /// The ID of the restore job.
   final pulumi.Input<String> id;
+
   /// The number of items restore job recovered.
   final pulumi.Input<String> itemsDone;
+
   /// The total number of items restore job recovered.
   final pulumi.Input<String> itemsTotal;
+
   /// Recovery Options.
   final pulumi.Input<String> options;
   final pulumi.Input<String> parentId;
+
   /// The recovery progress.
   final pulumi.Input<int> progress;
+
   /// The ID of restore job.
   final pulumi.Input<String> restoreJobId;
+
   /// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
   final pulumi.Input<String> restoreType;
+
   /// The hashcode of Snapshot.
   final pulumi.Input<String> snapshotHash;
+
   /// The ID of Snapshot.
   final pulumi.Input<String> snapshotId;
+
   /// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
   final pulumi.Input<String> sourceType;
+
   /// The start time of restore job. Unix Time in Seconds.
   final pulumi.Input<String> startTime;
+
   /// The status of restore job.
   final pulumi.Input<String> status;
+
   /// The name of target ofo OSS bucket.
   final pulumi.Input<String> targetBucket;
   final pulumi.Input<String> targetClientId;
+
   /// The creation time of destination file system.
   final pulumi.Input<String> targetCreateTime;
   final pulumi.Input<String> targetDataSourceId;
+
   /// The ID of destination file system.
   final pulumi.Input<String> targetFileSystemId;
+
   /// The ID of target ECS instance.
   final pulumi.Input<String> targetInstanceId;
+
   /// The target file path of ECS instance.
   final pulumi.Input<String> targetPath;
+
   /// The file prefix of target OSS object.
   final pulumi.Input<String> targetPrefix;
+
   /// The update Time of restore job. Unix Time in Seconds.
   final pulumi.Input<String> updatedTime;
+
   /// The ID of backup vault.
   final pulumi.Input<String> vaultId;
 
@@ -171,39 +198,46 @@ class GetRestoreJobsJob {
 
   factory GetRestoreJobsJob.fromMap(Map<String, dynamic> map) {
     return GetRestoreJobsJob(
-      actualBytes: (map['actualBytes'] as String).input(),
-      actualItems: (map['actualItems'] as String).input(),
-      bytesDone: (map['bytesDone'] as String).input(),
-      bytesTotal: (map['bytesTotal'] as String).input(),
-      completeTime: (map['completeTime'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      errorFile: (map['errorFile'] as String).input(),
-      errorMessage: (map['errorMessage'] as String).input(),
-      expireTime: (map['expireTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      itemsDone: (map['itemsDone'] as String).input(),
-      itemsTotal: (map['itemsTotal'] as String).input(),
-      options: (map['options'] as String).input(),
-      parentId: (map['parentId'] as String).input(),
-      progress: (map['progress'] as int).input(),
-      restoreJobId: (map['restoreJobId'] as String).input(),
-      restoreType: (map['restoreType'] as String).input(),
-      snapshotHash: (map['snapshotHash'] as String).input(),
-      snapshotId: (map['snapshotId'] as String).input(),
-      sourceType: (map['sourceType'] as String).input(),
-      startTime: (map['startTime'] as String).input(),
-      status: (map['status'] as String).input(),
-      targetBucket: (map['targetBucket'] as String).input(),
-      targetClientId: (map['targetClientId'] as String).input(),
-      targetCreateTime: (map['targetCreateTime'] as String).input(),
-      targetDataSourceId: (map['targetDataSourceId'] as String).input(),
-      targetFileSystemId: (map['targetFileSystemId'] as String).input(),
-      targetInstanceId: (map['targetInstanceId'] as String).input(),
-      targetPath: (map['targetPath'] as String).input(),
-      targetPrefix: (map['targetPrefix'] as String).input(),
-      updatedTime: (map['updatedTime'] as String).input(),
-      vaultId: (map['vaultId'] as String).input(),
+      actualBytes: pulumi.Input.fromValue(map['actualBytes'] as String),
+      actualItems: pulumi.Input.fromValue(map['actualItems'] as String),
+      bytesDone: pulumi.Input.fromValue(map['bytesDone'] as String),
+      bytesTotal: pulumi.Input.fromValue(map['bytesTotal'] as String),
+      completeTime: pulumi.Input.fromValue(map['completeTime'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      errorFile: pulumi.Input.fromValue(map['errorFile'] as String),
+      errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
+      expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      itemsDone: pulumi.Input.fromValue(map['itemsDone'] as String),
+      itemsTotal: pulumi.Input.fromValue(map['itemsTotal'] as String),
+      options: pulumi.Input.fromValue(map['options'] as String),
+      parentId: pulumi.Input.fromValue(map['parentId'] as String),
+      progress: pulumi.Input.fromValue(map['progress'] as int),
+      restoreJobId: pulumi.Input.fromValue(map['restoreJobId'] as String),
+      restoreType: pulumi.Input.fromValue(map['restoreType'] as String),
+      snapshotHash: pulumi.Input.fromValue(map['snapshotHash'] as String),
+      snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
+      sourceType: pulumi.Input.fromValue(map['sourceType'] as String),
+      startTime: pulumi.Input.fromValue(map['startTime'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      targetBucket: pulumi.Input.fromValue(map['targetBucket'] as String),
+      targetClientId: pulumi.Input.fromValue(map['targetClientId'] as String),
+      targetCreateTime: pulumi.Input.fromValue(
+        map['targetCreateTime'] as String,
+      ),
+      targetDataSourceId: pulumi.Input.fromValue(
+        map['targetDataSourceId'] as String,
+      ),
+      targetFileSystemId: pulumi.Input.fromValue(
+        map['targetFileSystemId'] as String,
+      ),
+      targetInstanceId: pulumi.Input.fromValue(
+        map['targetInstanceId'] as String,
+      ),
+      targetPath: pulumi.Input.fromValue(map['targetPath'] as String),
+      targetPrefix: pulumi.Input.fromValue(map['targetPrefix'] as String),
+      updatedTime: pulumi.Input.fromValue(map['updatedTime'] as String),
+      vaultId: pulumi.Input.fromValue(map['vaultId'] as String),
     );
   }
 }
-

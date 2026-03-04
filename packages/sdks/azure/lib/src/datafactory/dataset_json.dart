@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_json_args.dart';
 import 'dataset_json_azure_blob_storage_location.dart';
 import 'dataset_json_http_server_location.dart';
-import 'dataset_json_schema_column.dart';
 import 'dataset_json_state.dart';
 
 /// Manages an Azure JSON Dataset inside an Azure Data Factory.
@@ -276,30 +275,42 @@ class DatasetJson extends pulumi.CustomResource {
   ///
   /// The following supported arguments are specific to JSON Dataset:
   late final pulumi.Output<Map<String, String>?> additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Dataset.
   late final pulumi.Output<List<String>?> annotations;
+
   /// A `azure_blob_storage_location` block as defined below.
   ///
   /// The following supported arguments are specific to Delimited Text Dataset:
-  late final pulumi.Output<DatasetJsonAzureBlobStorageLocation?> azureBlobStorageLocation;
+  late final pulumi.Output<DatasetJsonAzureBlobStorageLocation?>
+  azureBlobStorageLocation;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Dataset.
   late final pulumi.Output<String?> description;
+
   /// The encoding format for the file.
   late final pulumi.Output<String?> encoding;
+
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
   late final pulumi.Output<String?> folder;
+
   /// A `http_server_location` block as defined below.
   late final pulumi.Output<DatasetJsonHttpServerLocation?> httpServerLocation;
+
   /// The Data Factory Linked Service name in which to associate the Dataset with.
   late final pulumi.Output<String> linkedServiceName;
+
   /// Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// A map of parameters to associate with the Data Factory Dataset.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// A `schema_column` block as defined below.
-  late final pulumi.Output<List<DatasetJsonSchemaColumn>?> schemaColumns;
+  late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
 
   /// Creates a new [DatasetJson].
   /// [name] The Pulumi resource name.
@@ -310,23 +321,32 @@ class DatasetJson extends pulumi.CustomResource {
     DatasetJsonArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/datasetJson:DatasetJson',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.azureBlobStorageLocation = registerOutput<DatasetJsonAzureBlobStorageLocation?>('azureBlobStorageLocation');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.encoding = registerOutput<String?>('encoding');
-    this.folder = registerOutput<String?>('folder');
-    this.httpServerLocation = registerOutput<DatasetJsonHttpServerLocation?>('httpServerLocation');
-    this.linkedServiceName = registerOutput<String>('linkedServiceName');
+         'azure:datafactory/datasetJson:DatasetJson',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    azureBlobStorageLocation =
+        registerOutput<DatasetJsonAzureBlobStorageLocation?>(
+          'azureBlobStorageLocation',
+        );
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    encoding = registerOutput<String?>('encoding');
+    folder = registerOutput<String?>('folder');
+    httpServerLocation = registerOutput<DatasetJsonHttpServerLocation?>(
+      'httpServerLocation',
+    );
+    linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.schemaColumns = registerOutput<List<DatasetJsonSchemaColumn>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    schemaColumns = registerOutput<List<Map<String, dynamic>>?>(
+      'schemaColumns',
+    );
   }
 
   /// Gets an existing [DatasetJson] resource's state with the given [name] and [id].
@@ -347,22 +367,31 @@ class DatasetJson extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/datasetJson:DatasetJson',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.azureBlobStorageLocation = registerOutput<DatasetJsonAzureBlobStorageLocation?>('azureBlobStorageLocation');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.encoding = registerOutput<String?>('encoding');
-    this.folder = registerOutput<String?>('folder');
-    this.httpServerLocation = registerOutput<DatasetJsonHttpServerLocation?>('httpServerLocation');
-    this.linkedServiceName = registerOutput<String>('linkedServiceName');
+         'azure:datafactory/datasetJson:DatasetJson',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    azureBlobStorageLocation =
+        registerOutput<DatasetJsonAzureBlobStorageLocation?>(
+          'azureBlobStorageLocation',
+        );
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    encoding = registerOutput<String?>('encoding');
+    folder = registerOutput<String?>('folder');
+    httpServerLocation = registerOutput<DatasetJsonHttpServerLocation?>(
+      'httpServerLocation',
+    );
+    linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.schemaColumns = registerOutput<List<DatasetJsonSchemaColumn>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    schemaColumns = registerOutput<List<Map<String, dynamic>>?>(
+      'schemaColumns',
+    );
   }
 }

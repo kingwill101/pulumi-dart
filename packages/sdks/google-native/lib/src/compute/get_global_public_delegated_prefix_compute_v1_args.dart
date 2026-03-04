@@ -25,11 +25,18 @@ class GetGlobalPublicDelegatedPrefixComputeV1Args {
     };
   }
 
-  factory GetGlobalPublicDelegatedPrefixComputeV1Args.fromMap(Map<String, dynamic> map) {
+  factory GetGlobalPublicDelegatedPrefixComputeV1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGlobalPublicDelegatedPrefixComputeV1Args(
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      publicDelegatedPrefix: (map['publicDelegatedPrefix'] as String).input(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicDelegatedPrefix: pulumi.Input.fromValue(
+        map['publicDelegatedPrefix'] as String,
+      ),
     );
   }
 }
-

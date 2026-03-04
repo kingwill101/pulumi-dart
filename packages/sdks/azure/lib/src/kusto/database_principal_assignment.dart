@@ -309,7 +309,7 @@ import 'database_principal_assignment_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Kusto` - 2024-04-13
@@ -324,22 +324,31 @@ import 'database_principal_assignment_state.dart';
 class DatabasePrincipalAssignment extends pulumi.CustomResource {
   /// The name of the cluster in which to create the resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> clusterName;
+
   /// The name of the database in which to create the resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> databaseName;
+
   /// The name of the kusto principal assignment. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The object id of the principal. Changing this forces a new resource to be created.
   late final pulumi.Output<String> principalId;
+
   /// The name of the principal.
   late final pulumi.Output<String> principalName;
+
   /// The type of the principal. Valid values include `App`, `Group`, `User`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> principalType;
+
   /// The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The database role assigned to the principal. Valid values include `Admin`, `Ingestor`, `Monitor`, `UnrestrictedViewer`, `User` and `Viewer`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> role;
+
   /// The tenant id in which the principal resides. Changing this forces a new resource to be created.
   late final pulumi.Output<String> tenantId;
+
   /// The name of the tenant.
   late final pulumi.Output<String> tenantName;
 
@@ -352,21 +361,21 @@ class DatabasePrincipalAssignment extends pulumi.CustomResource {
     DatabasePrincipalAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:kusto/databasePrincipalAssignment:DatabasePrincipalAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterName = registerOutput<String>('clusterName');
-    this.databaseName = registerOutput<String>('databaseName');
+         'azure:kusto/databasePrincipalAssignment:DatabasePrincipalAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterName = registerOutput<String>('clusterName');
+    databaseName = registerOutput<String>('databaseName');
     this.name = registerOutput<String>('name');
-    this.principalId = registerOutput<String>('principalId');
-    this.principalName = registerOutput<String>('principalName');
-    this.principalType = registerOutput<String>('principalType');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.role = registerOutput<String>('role');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.tenantName = registerOutput<String>('tenantName');
+    principalId = registerOutput<String>('principalId');
+    principalName = registerOutput<String>('principalName');
+    principalType = registerOutput<String>('principalType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    role = registerOutput<String>('role');
+    tenantId = registerOutput<String>('tenantId');
+    tenantName = registerOutput<String>('tenantName');
   }
 
   /// Gets an existing [DatabasePrincipalAssignment] resource's state with the given [name] and [id].
@@ -387,20 +396,20 @@ class DatabasePrincipalAssignment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:kusto/databasePrincipalAssignment:DatabasePrincipalAssignment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterName = registerOutput<String>('clusterName');
-    this.databaseName = registerOutput<String>('databaseName');
+         'azure:kusto/databasePrincipalAssignment:DatabasePrincipalAssignment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    clusterName = registerOutput<String>('clusterName');
+    databaseName = registerOutput<String>('databaseName');
     this.name = registerOutput<String>('name');
-    this.principalId = registerOutput<String>('principalId');
-    this.principalName = registerOutput<String>('principalName');
-    this.principalType = registerOutput<String>('principalType');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.role = registerOutput<String>('role');
-    this.tenantId = registerOutput<String>('tenantId');
-    this.tenantName = registerOutput<String>('tenantName');
+    principalId = registerOutput<String>('principalId');
+    principalName = registerOutput<String>('principalName');
+    principalType = registerOutput<String>('principalType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    role = registerOutput<String>('role');
+    tenantId = registerOutput<String>('tenantId');
+    tenantName = registerOutput<String>('tenantName');
   }
 }

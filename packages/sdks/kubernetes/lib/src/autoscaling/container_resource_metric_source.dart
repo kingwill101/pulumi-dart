@@ -7,8 +7,10 @@ import 'metric_target.dart';
 class ContainerResourceMetricSource {
   /// container is the name of the container in the pods of the scaling target
   final pulumi.Input<String> container;
+
   /// name is the name of the resource in question.
   final pulumi.Input<String> name;
+
   /// target specifies the target value for the given metric
   final pulumi.Input<MetricTarget> target;
 
@@ -26,16 +28,20 @@ class ContainerResourceMetricSource {
     return <String, dynamic>{
       'container': container,
       'name': name,
-      'target': pulumi.Input.mapInputValue<MetricTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
+      'target': pulumi.Input.mapInputValue<MetricTarget, Map<String, dynamic>>(
+        target,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory ContainerResourceMetricSource.fromMap(Map<String, dynamic> map) {
     return ContainerResourceMetricSource(
-      container: (map['container'] as String).input(),
-      name: (map['name'] as String).input(),
-      target: (MetricTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      container: pulumi.Input.fromValue(map['container'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      target: pulumi.Input.fromValue(
+        MetricTarget.fromMap((map['target']! as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

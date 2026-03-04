@@ -5,7 +5,7 @@ import 'configuration_policy_state.dart';
 
 /// Manages Security Hub configuration policy
 ///
-/// > **NOTE:** This resource requires `aws.securityhub.OrganizationConfiguration` to be configured of type `CENTRAL`. More information about Security Hub central configuration and configuration policies can be found in the [How Security Hub configuration policies work](https://docs.aws.amazon.com/securityhub/latest/userguide/configuration-policies-overview.html) documentation.
+/// &gt; **NOTE:** This resource requires `aws.securityhub.OrganizationConfiguration` to be configured of type `CENTRAL`. More information about Security Hub central configuration and configuration policies can be found in the [How Security Hub configuration policies work](https://docs.aws.amazon.com/securityhub/latest/userguide/configuration-policies-overview.html) documentation.
 ///
 /// ## Example Usage
 ///
@@ -792,12 +792,17 @@ import 'configuration_policy_state.dart';
 /// ```
 class ConfigurationPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
+
   /// Defines how Security Hub is configured. See below.
-  late final pulumi.Output<ConfigurationPolicyConfigurationPolicy> configurationPolicy;
+  late final pulumi.Output<ConfigurationPolicyConfigurationPolicy>
+  configurationPolicy;
+
   /// The description of the configuration policy.
   late final pulumi.Output<String?> description;
+
   /// The name of the configuration policy.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -810,16 +815,19 @@ class ConfigurationPolicy extends pulumi.CustomResource {
     ConfigurationPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:securityhub/configurationPolicy:ConfigurationPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.configurationPolicy = registerOutput<ConfigurationPolicyConfigurationPolicy>('configurationPolicy');
-    this.description = registerOutput<String?>('description');
+         'aws:securityhub/configurationPolicy:ConfigurationPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    configurationPolicy =
+        registerOutput<ConfigurationPolicyConfigurationPolicy>(
+          'configurationPolicy',
+        );
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [ConfigurationPolicy] resource's state with the given [name] and [id].
@@ -840,15 +848,18 @@ class ConfigurationPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:securityhub/configurationPolicy:ConfigurationPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.configurationPolicy = registerOutput<ConfigurationPolicyConfigurationPolicy>('configurationPolicy');
-    this.description = registerOutput<String?>('description');
+         'aws:securityhub/configurationPolicy:ConfigurationPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    configurationPolicy =
+        registerOutput<ConfigurationPolicyConfigurationPolicy>(
+          'configurationPolicy',
+        );
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
+    region = registerOutput<String>('region');
   }
 }

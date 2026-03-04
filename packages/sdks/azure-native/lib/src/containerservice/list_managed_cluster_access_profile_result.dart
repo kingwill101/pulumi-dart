@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by listManagedClusterAccessProfile.
 class ListManagedClusterAccessProfileResult {
   /// Resource Id
   final String id;
+
   /// Base64-encoded Kubernetes configuration file.
   final String? kubeConfig;
+
   /// Resource location
   final String location;
+
   /// Resource name
   final String name;
+
   /// Resource tags
   final Map<String, String>? tags;
+
   /// Resource type
   final String type;
 
@@ -43,15 +47,24 @@ class ListManagedClusterAccessProfileResult {
     };
   }
 
-  factory ListManagedClusterAccessProfileResult.fromMap(Map<String, dynamic> map) {
+  factory ListManagedClusterAccessProfileResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListManagedClusterAccessProfileResult(
       id: map['id'] as String,
-      kubeConfig: map['kubeConfig'] == null ? null : map['kubeConfig']! as String,
+      kubeConfig: (() {
+        final guardedValue = map['kubeConfig'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       location: map['location'] as String,
       name: map['name'] as String,
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

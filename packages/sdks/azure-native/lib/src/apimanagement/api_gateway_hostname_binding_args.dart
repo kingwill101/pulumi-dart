@@ -10,12 +10,16 @@ import 'gateway_hostname_binding_key_vault.dart';
 class ApiGatewayHostnameBindingArgs {
   /// The name of the API Management gateway.
   final pulumi.Input<String> gatewayName;
+
   /// The default hostname of the data-plane gateway.
   final pulumi.Input<String> hostname;
+
   /// Gateway hostname binding identifier. Must be unique in the scope of parent Gateway entity.
   final pulumi.Input<String>? hostnameBindingName;
+
   /// The link to the API Management service workspace.
   final pulumi.Input<GatewayHostnameBindingKeyVault> keyVault;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,19 +42,32 @@ class ApiGatewayHostnameBindingArgs {
       'gatewayName': gatewayName,
       'hostname': hostname,
       'hostnameBindingName': ?hostnameBindingName,
-      'keyVault': pulumi.Input.mapInputValue<GatewayHostnameBindingKeyVault, Map<String, dynamic>>(keyVault, (value) => value.toMap()),
+      'keyVault':
+          pulumi.Input.mapInputValue<
+            GatewayHostnameBindingKeyVault,
+            Map<String, dynamic>
+          >(keyVault, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory ApiGatewayHostnameBindingArgs.fromMap(Map<String, dynamic> map) {
     return ApiGatewayHostnameBindingArgs(
-      gatewayName: (map['gatewayName'] as String).input(),
-      hostname: (map['hostname'] as String).input(),
-      hostnameBindingName: map['hostnameBindingName'] == null ? null : (map['hostnameBindingName']! as String).input(),
-      keyVault: (GatewayHostnameBindingKeyVault.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),
+      hostname: pulumi.Input.fromValue(map['hostname'] as String),
+      hostnameBindingName: (() {
+        final guardedValue = map['hostnameBindingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVault: pulumi.Input.fromValue(
+        GatewayHostnameBindingKeyVault.fromMap(
+          (map['keyVault']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

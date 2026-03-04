@@ -8,17 +8,24 @@ import 'domain_devices_tpm_backend_emulator_source.dart';
 
 class DomainDevicesTpmBackendEmulator {
   /// Sets the active PCR (Platform Configuration Register) banks for the emulator TPM backend.
-  final pulumi.Input<DomainDevicesTpmBackendEmulatorActivePcrBanks>? activePcrBanks;
+  final pulumi.Input<DomainDevicesTpmBackendEmulatorActivePcrBanks>?
+  activePcrBanks;
+
   /// Enables or disables debug mode for the emulator TPM backend.
   final pulumi.Input<double>? debug;
+
   /// Configures encryption settings for the emulator TPM backend.
   final pulumi.Input<DomainDevicesTpmBackendEmulatorEncryption>? encryption;
+
   /// Configures whether the emulator TPM keeps its state persistent across reboots.
   final pulumi.Input<String>? persistentState;
+
   /// Sets the profile configuration for the emulator TPM backend.
   final pulumi.Input<DomainDevicesTpmBackendEmulatorProfile>? profile;
+
   /// Configures the source settings for the emulator TPM backend.
   final pulumi.Input<DomainDevicesTpmBackendEmulatorSource>? source;
+
   /// Configures the version attributes for the emulator TPM backend.
   final pulumi.Input<String>? version;
 
@@ -42,26 +49,85 @@ class DomainDevicesTpmBackendEmulator {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activePcrBanks': ?pulumi.Input.mapOptionalInputValue<DomainDevicesTpmBackendEmulatorActivePcrBanks, Map<String, dynamic>>(activePcrBanks, (value) => value.toMap()),
+      'activePcrBanks':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesTpmBackendEmulatorActivePcrBanks,
+            Map<String, dynamic>
+          >(activePcrBanks, (value) => value.toMap()),
       'debug': ?debug,
-      'encryption': ?pulumi.Input.mapOptionalInputValue<DomainDevicesTpmBackendEmulatorEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
+      'encryption':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesTpmBackendEmulatorEncryption,
+            Map<String, dynamic>
+          >(encryption, (value) => value.toMap()),
       'persistentState': ?persistentState,
-      'profile': ?pulumi.Input.mapOptionalInputValue<DomainDevicesTpmBackendEmulatorProfile, Map<String, dynamic>>(profile, (value) => value.toMap()),
-      'source': ?pulumi.Input.mapOptionalInputValue<DomainDevicesTpmBackendEmulatorSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'profile':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesTpmBackendEmulatorProfile,
+            Map<String, dynamic>
+          >(profile, (value) => value.toMap()),
+      'source':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesTpmBackendEmulatorSource,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
       'version': ?version,
     };
   }
 
   factory DomainDevicesTpmBackendEmulator.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendEmulator(
-      activePcrBanks: map['activePcrBanks'] == null ? null : (DomainDevicesTpmBackendEmulatorActivePcrBanks.fromMap((map['activePcrBanks']! as Map).cast<String, dynamic>())).input(),
-      debug: map['debug'] == null ? null : (map['debug']! as double).input(),
-      encryption: map['encryption'] == null ? null : (DomainDevicesTpmBackendEmulatorEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
-      persistentState: map['persistentState'] == null ? null : (map['persistentState']! as String).input(),
-      profile: map['profile'] == null ? null : (DomainDevicesTpmBackendEmulatorProfile.fromMap((map['profile']! as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (DomainDevicesTpmBackendEmulatorSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      activePcrBanks: (() {
+        final guardedValue = map['activePcrBanks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesTpmBackendEmulatorActivePcrBanks.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      debug: (() {
+        final guardedValue = map['debug'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      encryption: (() {
+        final guardedValue = map['encryption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesTpmBackendEmulatorEncryption.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      persistentState: (() {
+        final guardedValue = map['persistentState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      profile: (() {
+        final guardedValue = map['profile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesTpmBackendEmulatorProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesTpmBackendEmulatorSource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -4,16 +4,17 @@ enum EventTriggerRetryPolicyCloudfunctionsV2beta {
   retryPolicyDoNotRetry("RETRY_POLICY_DO_NOT_RETRY"),
   retryPolicyRetry("RETRY_POLICY_RETRY");
 
-  const EventTriggerRetryPolicyCloudfunctionsV2beta(this.value);
-  final String value;
+  const EventTriggerRetryPolicyCloudfunctionsV2beta(this.wireValue);
+  final String wireValue;
 
   static EventTriggerRetryPolicyCloudfunctionsV2beta fromValue(String value) {
     for (final item in EventTriggerRetryPolicyCloudfunctionsV2beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EventTriggerRetryPolicyCloudfunctionsV2beta value: $value');
+    throw ArgumentError(
+      'Unknown EventTriggerRetryPolicyCloudfunctionsV2beta value: $value',
+    );
   }
 }
-

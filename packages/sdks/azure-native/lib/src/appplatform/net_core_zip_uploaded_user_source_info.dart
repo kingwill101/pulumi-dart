@@ -6,13 +6,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetCoreZipUploadedUserSourceInfo {
   /// The path to the .NET executable relative to zip root
   final pulumi.Input<String>? netCoreMainEntryPath;
+
   /// Relative path of the storage which stores the source
   final pulumi.Input<String>? relativePath;
+
   /// Runtime version of the .Net file
   final pulumi.Input<String>? runtimeVersion;
+
   /// Type of the source uploaded
   /// Expected value is 'NetCoreZip'.
   final pulumi.Input<String> type;
+
   /// Version of the source
   final pulumi.Input<String>? version;
 
@@ -42,12 +46,27 @@ class NetCoreZipUploadedUserSourceInfo {
 
   factory NetCoreZipUploadedUserSourceInfo.fromMap(Map<String, dynamic> map) {
     return NetCoreZipUploadedUserSourceInfo(
-      netCoreMainEntryPath: map['netCoreMainEntryPath'] == null ? null : (map['netCoreMainEntryPath']! as String).input(),
-      relativePath: map['relativePath'] == null ? null : (map['relativePath']! as String).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
-      type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version']! as String).input(),
+      netCoreMainEntryPath: (() {
+        final guardedValue = map['netCoreMainEntryPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      relativePath: (() {
+        final guardedValue = map['relativePath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runtimeVersion: (() {
+        final guardedValue = map['runtimeVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

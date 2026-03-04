@@ -159,16 +159,22 @@ import 'system_data_response.dart';
 class FederatedIdentityCredential extends pulumi.CustomResource {
   /// The list of audiences that can appear in the issued token.
   late final pulumi.Output<List<String>> audiences;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The URL of the issuer to be trusted.
   late final pulumi.Output<String> issuer;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The identifier of the external identity.
   late final pulumi.Output<String> subject;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -181,17 +187,17 @@ class FederatedIdentityCredential extends pulumi.CustomResource {
     FederatedIdentityCredentialArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:managedidentity:FederatedIdentityCredential',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.audiences = registerOutput<List<String>>('audiences');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.issuer = registerOutput<String>('issuer');
+         'azure-native:managedidentity:FederatedIdentityCredential',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    audiences = registerOutput<List<String>>('audiences');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    issuer = registerOutput<String>('issuer');
     this.name = registerOutput<String>('name');
-    this.subject = registerOutput<String>('subject');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    subject = registerOutput<String>('subject');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

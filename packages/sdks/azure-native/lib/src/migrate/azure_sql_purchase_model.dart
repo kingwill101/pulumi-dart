@@ -4,16 +4,15 @@ enum AzureSqlPurchaseModel {
   vCore("VCore"),
   dTU("DTU");
 
-  const AzureSqlPurchaseModel(this.value);
-  final String value;
+  const AzureSqlPurchaseModel(this.wireValue);
+  final String wireValue;
 
   static AzureSqlPurchaseModel fromValue(String value) {
     for (final item in AzureSqlPurchaseModel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AzureSqlPurchaseModel value: $value');
   }
 }
-

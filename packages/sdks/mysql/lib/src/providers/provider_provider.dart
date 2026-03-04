@@ -23,17 +23,17 @@ class ProviderProvider extends pulumi.ProviderResource {
     ProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'mysql',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationPlugin = registerOutput<String?>('authenticationPlugin');
-    this.endpoint = registerOutput<String?>('endpoint');
-    this.password = registerOutput<String?>('password');
-    this.proxy = registerOutput<String?>('proxy');
-    this.tls = registerOutput<String?>('tls');
-    this.username = registerOutput<String?>('username');
+         'mysql',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    authenticationPlugin = registerOutput<String?>('authenticationPlugin');
+    endpoint = registerOutput<String?>('endpoint');
+    password = registerOutput<String?>('password');
+    proxy = registerOutput<String?>('proxy');
+    tls = registerOutput<String?>('tls');
+    username = registerOutput<String?>('username');
   }
 
   /// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.

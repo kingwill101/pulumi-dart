@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'sub_resource_response.dart';
 import 'virtual_wan_args.dart';
 
 /// VirtualWAN Resource.
@@ -163,30 +162,42 @@ import 'virtual_wan_args.dart';
 class VirtualWan extends pulumi.CustomResource {
   /// True if branch to branch traffic is allowed.
   late final pulumi.Output<bool?> allowBranchToBranchTraffic;
+
   /// True if Vnet to Vnet traffic is allowed.
   late final pulumi.Output<bool?> allowVnetToVnetTraffic;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Vpn encryption to be disabled or not.
   late final pulumi.Output<bool?> disableVpnEncryption;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// Resource location.
   late final pulumi.Output<String> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// The office local breakout category.
   late final pulumi.Output<String> office365LocalBreakoutCategory;
+
   /// The provisioning state of the virtual WAN resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// List of VirtualHubs in the VirtualWAN.
-  late final pulumi.Output<List<SubResourceResponse>> virtualHubs;
+  late final pulumi.Output<List<Map<String, dynamic>>> virtualHubs;
+
   /// List of VpnSites in the VirtualWAN.
-  late final pulumi.Output<List<SubResourceResponse>> vpnSites;
+  late final pulumi.Output<List<Map<String, dynamic>>> vpnSites;
 
   /// Creates a new [VirtualWan].
   /// [name] The Pulumi resource name.
@@ -197,23 +208,27 @@ class VirtualWan extends pulumi.CustomResource {
     VirtualWanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:VirtualWan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowBranchToBranchTraffic = registerOutput<bool?>('allowBranchToBranchTraffic');
-    this.allowVnetToVnetTraffic = registerOutput<bool?>('allowVnetToVnetTraffic');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.disableVpnEncryption = registerOutput<bool?>('disableVpnEncryption');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'azure-native:network:VirtualWan',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowBranchToBranchTraffic = registerOutput<bool?>(
+      'allowBranchToBranchTraffic',
+    );
+    allowVnetToVnetTraffic = registerOutput<bool?>('allowVnetToVnetTraffic');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    disableVpnEncryption = registerOutput<bool?>('disableVpnEncryption');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.office365LocalBreakoutCategory = registerOutput<String>('office365LocalBreakoutCategory');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.virtualHubs = registerOutput<List<SubResourceResponse>>('virtualHubs');
-    this.vpnSites = registerOutput<List<SubResourceResponse>>('vpnSites');
+    office365LocalBreakoutCategory = registerOutput<String>(
+      'office365LocalBreakoutCategory',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    virtualHubs = registerOutput<List<Map<String, dynamic>>>('virtualHubs');
+    vpnSites = registerOutput<List<Map<String, dynamic>>>('vpnSites');
   }
 }

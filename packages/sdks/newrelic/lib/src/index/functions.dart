@@ -139,7 +139,7 @@ Future<GetAccountResult> getAccount(
 
 /// Use this data source to get information about a specific alert channel in New Relic that already exists. More information on Terraform's data sources can be found here.
 ///
-/// > **WARNING:** The `newrelic.AlertChannel` data source is deprecated and will be removed in the next major release.
+/// &gt; **WARNING:** The `newrelic.AlertChannel` data source is deprecated and will be removed in the next major release.
 ///
 ///
 /// ## Example Usage
@@ -486,7 +486,7 @@ Future<GetAlertPolicyResult> getAlertPolicy(
   return GetAlertPolicyResult.fromMap(result);
 }
 
-/// > **DEPRECATED** Use at your own risk. Use the [`newrelic.getEntity`](https://www.terraform.io/docs/providers/newrelic/d/entity.html) data source instead. This feature may be removed in the next major release.
+/// &gt; **DEPRECATED** Use at your own risk. Use the [`newrelic.getEntity`](https://www.terraform.io/docs/providers/newrelic/d/entity.html) data source instead. This feature may be removed in the next major release.
 ///
 /// Use this data source to get information about a specific application in New Relic that already exists. More information on Terraform's data sources can be found here.
 ///
@@ -967,8 +967,8 @@ Future<GetCloudAccountResult> getCloudAccount(
 
 /// Use this data source to get information about a specific entity in New Relic One that already exists. More information on Terraform's data sources can be found here.
 ///
-/// > **IMPORTANT!** Version 2.0.0 of the New Relic Terraform Provider introduces some [additional requirements](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/guides/migration_guide_v2) for configuring the provider.
-/// <br><br>
+/// &gt; **IMPORTANT!** Version 2.0.0 of the New Relic Terraform Provider introduces some [additional requirements](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/guides/migration_guide_v2) for configuring the provider.
+/// &lt;br&gt;&lt;br&gt;
 /// Before upgrading to version 2.0.0 or later, it is recommended to upgrade to the most recent 1.x version of the provider and ensure that your environment successfully runs `pulumi preview` without unexpected changes.
 ///
 /// ### Example: Filter By Account ID

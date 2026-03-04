@@ -6,16 +6,15 @@ enum GlobalAddressNetworkTier {
   standard("STANDARD"),
   standardOverridesFixedStandard("STANDARD_OVERRIDES_FIXED_STANDARD");
 
-  const GlobalAddressNetworkTier(this.value);
-  final String value;
+  const GlobalAddressNetworkTier(this.wireValue);
+  final String wireValue;
 
   static GlobalAddressNetworkTier fromValue(String value) {
     for (final item in GlobalAddressNetworkTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GlobalAddressNetworkTier value: $value');
   }
 }
-

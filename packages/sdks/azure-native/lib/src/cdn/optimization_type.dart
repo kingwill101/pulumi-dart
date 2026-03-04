@@ -6,16 +6,15 @@ enum OptimizationType {
   largeFileDownload("LargeFileDownload"),
   dynamicSiteAcceleration("DynamicSiteAcceleration");
 
-  const OptimizationType(this.value);
-  final String value;
+  const OptimizationType(this.wireValue);
+  final String wireValue;
 
   static OptimizationType fromValue(String value) {
     for (final item in OptimizationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OptimizationType value: $value');
   }
 }
-

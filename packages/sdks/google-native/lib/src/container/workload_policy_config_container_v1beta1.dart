@@ -9,20 +9,21 @@ class WorkloadPolicyConfigContainerV1beta1 {
 
   /// Creates a new [WorkloadPolicyConfigContainerV1beta1].
   /// [allowNetAdmin] If true, workloads can use NET_ADMIN capability.
-  WorkloadPolicyConfigContainerV1beta1({
-    this.allowNetAdmin,
-  });
+  WorkloadPolicyConfigContainerV1beta1({this.allowNetAdmin});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allowNetAdmin': ?allowNetAdmin,
-    };
+    return <String, dynamic>{'allowNetAdmin': ?allowNetAdmin};
   }
 
-  factory WorkloadPolicyConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory WorkloadPolicyConfigContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkloadPolicyConfigContainerV1beta1(
-      allowNetAdmin: map['allowNetAdmin'] == null ? null : (map['allowNetAdmin']! as bool).input(),
+      allowNetAdmin: (() {
+        final guardedValue = map['allowNetAdmin'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

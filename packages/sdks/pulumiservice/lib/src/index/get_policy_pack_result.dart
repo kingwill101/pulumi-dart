@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPolicyPack.
 class GetPolicyPackResult {
   /// Configuration for the policy pack.
   final Map<String, dynamic>? config;
+
   /// The display name of the policy pack.
   final String displayName;
+
   /// The name of the policy pack.
   final String name;
+
   /// List of policies in this pack.
   final List<Map<String, String>>? policies;
+
   /// The version number.
   final int version;
+
   /// The version tag (if any).
   final String? versionTag;
 
@@ -45,13 +49,24 @@ class GetPolicyPackResult {
 
   factory GetPolicyPackResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyPackResult(
-      config: map['config'] == null ? null : (map['config']! as Map).cast<String, dynamic>(),
+      config: (() {
+        final guardedValue = map['config'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, dynamic>();
+      })(),
       displayName: map['displayName'] as String,
       name: map['name'] as String,
-      policies: map['policies'] == null ? null : (map['policies']! as List).cast<Map<String, String>>(),
+      policies: (() {
+        final guardedValue = map['policies'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<Map<String, String>>();
+      })(),
       version: map['version'] as int,
-      versionTag: map['versionTag'] == null ? null : map['versionTag']! as String,
+      versionTag: (() {
+        final guardedValue = map['versionTag'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

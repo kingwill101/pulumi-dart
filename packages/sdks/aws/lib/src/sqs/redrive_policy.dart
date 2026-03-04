@@ -236,8 +236,10 @@ import 'redrive_policy_state.dart';
 class RedrivePolicy extends pulumi.CustomResource {
   /// The URL of the SQS Queue to which to attach the policy
   late final pulumi.Output<String> queueUrl;
+
   /// The JSON redrive policy for the SQS queue. Accepts two key/val pairs: `deadLetterTargetArn` and `maxReceiveCount`. Learn more in the [Amazon SQS dead-letter queues documentation](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html).
   late final pulumi.Output<String> redrivePolicy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -250,14 +252,14 @@ class RedrivePolicy extends pulumi.CustomResource {
     RedrivePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:sqs/redrivePolicy:RedrivePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.queueUrl = registerOutput<String>('queueUrl');
-    this.redrivePolicy = registerOutput<String>('redrivePolicy');
-    this.region = registerOutput<String>('region');
+         'aws:sqs/redrivePolicy:RedrivePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    queueUrl = registerOutput<String>('queueUrl');
+    redrivePolicy = registerOutput<String>('redrivePolicy');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [RedrivePolicy] resource's state with the given [name] and [id].
@@ -278,13 +280,13 @@ class RedrivePolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:sqs/redrivePolicy:RedrivePolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.queueUrl = registerOutput<String>('queueUrl');
-    this.redrivePolicy = registerOutput<String>('redrivePolicy');
-    this.region = registerOutput<String>('region');
+         'aws:sqs/redrivePolicy:RedrivePolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    queueUrl = registerOutput<String>('queueUrl');
+    redrivePolicy = registerOutput<String>('redrivePolicy');
+    region = registerOutput<String>('region');
   }
 }

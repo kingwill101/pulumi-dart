@@ -6,6 +6,7 @@ class AiIndexIndexStat {
   /// (Output)
   /// The number of shards in the Index.
   final pulumi.Input<int>? shardsCount;
+
   /// (Output)
   /// The number of vectors in the Index.
   final pulumi.Input<String>? vectorsCount;
@@ -13,10 +14,7 @@ class AiIndexIndexStat {
   /// Creates a new [AiIndexIndexStat].
   /// [shardsCount] (Output)
   /// [vectorsCount] (Output)
-  AiIndexIndexStat({
-    this.shardsCount,
-    this.vectorsCount,
-  });
+  AiIndexIndexStat({this.shardsCount, this.vectorsCount});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,16 @@ class AiIndexIndexStat {
 
   factory AiIndexIndexStat.fromMap(Map<String, dynamic> map) {
     return AiIndexIndexStat(
-      shardsCount: map['shardsCount'] == null ? null : (map['shardsCount']! as int).input(),
-      vectorsCount: map['vectorsCount'] == null ? null : (map['vectorsCount']! as String).input(),
+      shardsCount: (() {
+        final guardedValue = map['shardsCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      vectorsCount: (() {
+        final guardedValue = map['vectorsCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

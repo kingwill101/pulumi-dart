@@ -9,20 +9,21 @@ class SslCertificateManagedSslCertificateComputeV1 {
 
   /// Creates a new [SslCertificateManagedSslCertificateComputeV1].
   /// [domains] The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates).
-  SslCertificateManagedSslCertificateComputeV1({
-    this.domains,
-  });
+  SslCertificateManagedSslCertificateComputeV1({this.domains});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'domains': ?domains,
-    };
+    return <String, dynamic>{'domains': ?domains};
   }
 
-  factory SslCertificateManagedSslCertificateComputeV1.fromMap(Map<String, dynamic> map) {
+  factory SslCertificateManagedSslCertificateComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SslCertificateManagedSslCertificateComputeV1(
-      domains: map['domains'] == null ? null : ((map['domains']! as List).cast<String>()).input(),
+      domains: (() {
+        final guardedValue = map['domains'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

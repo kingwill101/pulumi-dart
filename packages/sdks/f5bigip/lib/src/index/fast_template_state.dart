@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FastTemplateState {
   /// MD5 hash of the zip archive file containing FAST template
   final pulumi.Input<String>? md5Hash;
+
   /// Name of the FAST template set to be created on to BIGIP
   final pulumi.Input<String>? name;
+
   /// Path to the zip archive file containing FAST template set on Local Disk
   final pulumi.Input<String>? source;
 
@@ -15,11 +17,7 @@ class FastTemplateState {
   /// [md5Hash] MD5 hash of the zip archive file containing FAST template
   /// [name] Name of the FAST template set to be created on to BIGIP
   /// [source] Path to the zip archive file containing FAST template set on Local Disk
-  FastTemplateState({
-    this.md5Hash,
-    this.name,
-    this.source,
-  });
+  FastTemplateState({this.md5Hash, this.name, this.source});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class FastTemplateState {
 
   factory FastTemplateState.fromMap(Map<String, dynamic> map) {
     return FastTemplateState(
-      md5Hash: map['md5Hash'] == null ? null : (map['md5Hash']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      source: map['source'] == null ? null : (map['source']! as String).input(),
+      md5Hash: (() {
+        final guardedValue = map['md5Hash'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

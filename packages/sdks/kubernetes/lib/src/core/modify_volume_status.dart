@@ -15,6 +15,7 @@ class ModifyVolumeStatus {
   /// resolve the error, a valid VolumeAttributesClass needs to be specified.
   /// Note: New statuses can be added in the future. Consumers should check for unknown statuses and fail appropriately.
   final pulumi.Input<String> status;
+
   /// targetVolumeAttributesClassName is the name of the VolumeAttributesClass the PVC currently being reconciled
   final pulumi.Input<String>? targetVolumeAttributesClassName;
 
@@ -35,9 +36,12 @@ class ModifyVolumeStatus {
 
   factory ModifyVolumeStatus.fromMap(Map<String, dynamic> map) {
     return ModifyVolumeStatus(
-      status: (map['status'] as String).input(),
-      targetVolumeAttributesClassName: map['targetVolumeAttributesClassName'] == null ? null : (map['targetVolumeAttributesClassName']! as String).input(),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      targetVolumeAttributesClassName: (() {
+        final guardedValue = map['targetVolumeAttributesClassName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

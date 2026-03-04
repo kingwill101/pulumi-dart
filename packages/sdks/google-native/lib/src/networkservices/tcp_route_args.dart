@@ -10,18 +10,24 @@ import 'tcp_route_route_rule.dart';
 class TcpRouteArgs {
   /// Optional. A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
+
   /// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
   final pulumi.Input<List<String>>? gateways;
+
   /// Optional. Set of label tags associated with the TcpRoute resource.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
   final pulumi.Input<List<String>>? meshes;
-  /// Name of the TcpRoute resource. It matches pattern `projects/*/locations/global/tcpRoutes/tcp_route_name>`.
+
+  /// Name of the TcpRoute resource. It matches pattern `projects/*/locations/global/tcpRoutes/tcp_route_name&gt;`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
   final pulumi.Input<List<TcpRouteRouteRule>> rules;
+
   /// Required. Short name of the TcpRoute resource to be created.
   final pulumi.Input<String> tcpRouteId;
 
@@ -31,7 +37,7 @@ class TcpRouteArgs {
   /// [labels] Optional. Set of label tags associated with the TcpRoute resource.
   /// [location] Optional.
   /// [meshes] Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
-  /// [name] Name of the TcpRoute resource. It matches pattern `projects/*/locations/global/tcpRoutes/tcp_route_name>`.
+  /// [name] Name of the TcpRoute resource. It matches pattern `projects/*/locations/global/tcpRoutes/tcp_route_name&gt;`.
   /// [project] Optional.
   /// [rules] Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
   /// [tcpRouteId] Required. Short name of the TcpRoute resource to be created.
@@ -56,23 +62,69 @@ class TcpRouteArgs {
       'meshes': ?meshes,
       'name': ?name,
       'project': ?project,
-      'rules': pulumi.Input.mapInputValue<List<TcpRouteRouteRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<TcpRouteRouteRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          pulumi.Input.mapInputValue<
+            List<TcpRouteRouteRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  TcpRouteRouteRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'tcpRouteId': tcpRouteId,
     };
   }
 
   factory TcpRouteArgs.fromMap(Map<String, dynamic> map) {
     return TcpRouteArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      gateways: map['gateways'] == null ? null : ((map['gateways']! as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      meshes: map['meshes'] == null ? null : ((map['meshes']! as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      rules: (pulumi.Input.decodeList<TcpRouteRouteRule>(map['rules'], (value) => TcpRouteRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tcpRouteId: (map['tcpRouteId'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gateways: (() {
+        final guardedValue = map['gateways'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      meshes: (() {
+        final guardedValue = map['meshes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<TcpRouteRouteRule>(
+          map['rules']!,
+          (value) =>
+              TcpRouteRouteRule.fromMap((value as Map).cast<String, dynamic>()),
+        ),
+      ),
+      tcpRouteId: pulumi.Input.fromValue(map['tcpRouteId'] as String),
     );
   }
 }
-

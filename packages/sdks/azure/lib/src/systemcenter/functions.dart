@@ -102,13 +102,14 @@ import 'get_virtual_machine_manager_inventory_items_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ScVmm` - 2023-10-07
 /// [args] Arguments passed to this invoke. {@macro pulumi_systemcenter_get_virtual_machine_manager_inventory_items_get_virtual_machine_manager_inventory_items_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetVirtualMachineManagerInventoryItemsResult> getVirtualMachineManagerInventoryItems(
+Future<GetVirtualMachineManagerInventoryItemsResult>
+getVirtualMachineManagerInventoryItems(
   GetVirtualMachineManagerInventoryItemsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

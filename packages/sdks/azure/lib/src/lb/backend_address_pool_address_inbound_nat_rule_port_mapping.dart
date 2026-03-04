@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendAddressPoolAddressInboundNatRulePortMapping {
   /// The Backend Port of the Load Balancing Inbound NAT Rules associated with this Backend Address Pool Address.
   final pulumi.Input<int>? backendPort;
+
   /// The Frontend Port of the Load Balancing Inbound NAT Rules associated with this Backend Address Pool Address.
   final pulumi.Input<int>? frontendPort;
+
   /// The name of the Load Balancing Inbound NAT Rules associated with this Backend Address Pool Address.
   final pulumi.Input<String>? inboundNatRuleName;
 
@@ -28,12 +30,25 @@ class BackendAddressPoolAddressInboundNatRulePortMapping {
     };
   }
 
-  factory BackendAddressPoolAddressInboundNatRulePortMapping.fromMap(Map<String, dynamic> map) {
+  factory BackendAddressPoolAddressInboundNatRulePortMapping.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackendAddressPoolAddressInboundNatRulePortMapping(
-      backendPort: map['backendPort'] == null ? null : (map['backendPort']! as int).input(),
-      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort']! as int).input(),
-      inboundNatRuleName: map['inboundNatRuleName'] == null ? null : (map['inboundNatRuleName']! as String).input(),
+      backendPort: (() {
+        final guardedValue = map['backendPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      frontendPort: (() {
+        final guardedValue = map['frontendPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      inboundNatRuleName: (() {
+        final guardedValue = map['inboundNatRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -14,15 +14,14 @@ class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
-  factory GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse(
-      type: (map['type'] as String).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

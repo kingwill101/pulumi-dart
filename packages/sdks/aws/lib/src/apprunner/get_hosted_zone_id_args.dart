@@ -12,20 +12,19 @@ class GetHostedZoneIdArgs {
 
   /// Creates a new [GetHostedZoneIdArgs].
   /// [region] Name of the Region whose AWS App Runner service HostedZoneId is desired. Defaults to the Region set in the provider configuration.
-  GetHostedZoneIdArgs({
-    this.region,
-  });
+  GetHostedZoneIdArgs({this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-    };
+    return <String, dynamic>{'region': ?region};
   }
 
   factory GetHostedZoneIdArgs.fromMap(Map<String, dynamic> map) {
     return GetHostedZoneIdArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

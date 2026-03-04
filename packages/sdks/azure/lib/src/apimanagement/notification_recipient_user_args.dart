@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationRecipientUserArgs {
   /// The ID of the API Management Service from which to create this Notification Recipient User. Changing this forces a new API Management Notification Recipient User to be created.
   final pulumi.Input<String> apiManagementId;
+
   /// The Notification Name to be received. Changing this forces a new API Management Notification Recipient User to be created. Possible values are `AccountClosedPublisher`, `BCC`, `NewApplicationNotificationMessage`, `NewIssuePublisherNotificationMessage`, `PurchasePublisherNotificationMessage`, `QuotaLimitApproachingPublisherNotificationMessage`, and `RequestPublisherNotificationMessage`.
   final pulumi.Input<String> notificationType;
+
   /// The recipient user ID. Changing this forces a new API Management Notification Recipient User to be created.
   final pulumi.Input<String> userId;
 
@@ -34,10 +36,11 @@ class NotificationRecipientUserArgs {
 
   factory NotificationRecipientUserArgs.fromMap(Map<String, dynamic> map) {
     return NotificationRecipientUserArgs(
-      apiManagementId: (map['apiManagementId'] as String).input(),
-      notificationType: (map['notificationType'] as String).input(),
-      userId: (map['userId'] as String).input(),
+      apiManagementId: pulumi.Input.fromValue(map['apiManagementId'] as String),
+      notificationType: pulumi.Input.fromValue(
+        map['notificationType'] as String,
+      ),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
-

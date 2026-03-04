@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotScheduleAssociationArgs {
   /// The cluster identifier.
   final pulumi.Input<String> clusterIdentifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The snapshot schedule identifier.
   final pulumi.Input<String> scheduleIdentifier;
 
@@ -34,10 +36,17 @@ class SnapshotScheduleAssociationArgs {
 
   factory SnapshotScheduleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotScheduleAssociationArgs(
-      clusterIdentifier: (map['clusterIdentifier'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      scheduleIdentifier: (map['scheduleIdentifier'] as String).input(),
+      clusterIdentifier: pulumi.Input.fromValue(
+        map['clusterIdentifier'] as String,
+      ),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scheduleIdentifier: pulumi.Input.fromValue(
+        map['scheduleIdentifier'] as String,
+      ),
     );
   }
 }
-

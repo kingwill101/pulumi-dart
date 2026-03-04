@@ -6,13 +6,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OracleCloudStorageLocationResponse {
   /// Specify the bucketName of Oracle Cloud Storage. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic>? bucketName;
+
   /// Specify the file name of dataset. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? fileName;
+
   /// Specify the folder path of dataset. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic>? folderPath;
+
   /// Type of dataset storage location.
   /// Expected value is 'OracleCloudStorageLocation'.
   final pulumi.Input<String> type;
+
   /// Specify the version of Oracle Cloud Storage. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? version;
 
@@ -42,12 +46,27 @@ class OracleCloudStorageLocationResponse {
 
   factory OracleCloudStorageLocationResponse.fromMap(Map<String, dynamic> map) {
     return OracleCloudStorageLocationResponse(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName']!).input(),
-      fileName: map['fileName'] == null ? null : (map['fileName']!).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath']!).input(),
-      type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version']!).input(),
+      bucketName: (() {
+        final guardedValue = map['bucketName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      fileName: (() {
+        final guardedValue = map['fileName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      folderPath: (() {
+        final guardedValue = map['folderPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      version: (() {
+        final guardedValue = map['version'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class GroupProperties {
 
   /// Creates a new [GroupProperties].
   /// [groupType] The type of group.
-  GroupProperties({
-    this.groupType,
-  });
+  GroupProperties({this.groupType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'groupType': ?groupType,
-    };
+    return <String, dynamic>{'groupType': ?groupType};
   }
 
   factory GroupProperties.fromMap(Map<String, dynamic> map) {
     return GroupProperties(
-      groupType: map['groupType'] == null ? null : (map['groupType']! as String).input(),
+      groupType: (() {
+        final guardedValue = map['groupType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

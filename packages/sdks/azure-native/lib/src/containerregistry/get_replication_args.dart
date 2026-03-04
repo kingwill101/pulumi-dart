@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReplicationArgs {
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
+
   /// The name of the replication.
   final pulumi.Input<String> replicationName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetReplicationArgs {
 
   factory GetReplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationArgs(
-      registryName: (map['registryName'] as String).input(),
-      replicationName: (map['replicationName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      registryName: pulumi.Input.fromValue(map['registryName'] as String),
+      replicationName: pulumi.Input.fromValue(map['replicationName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

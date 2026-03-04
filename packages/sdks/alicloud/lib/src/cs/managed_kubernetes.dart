@@ -1,11 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'managed_kubernetes_addon.dart';
 import 'managed_kubernetes_args.dart';
 import 'managed_kubernetes_audit_log_config.dart';
 import 'managed_kubernetes_auto_mode.dart';
 import 'managed_kubernetes_certificate_authority.dart';
 import 'managed_kubernetes_connections.dart';
-import 'managed_kubernetes_delete_option.dart';
 import 'managed_kubernetes_maintenance_window.dart';
 import 'managed_kubernetes_operation_policy.dart';
 import 'managed_kubernetes_rrsa_metadata.dart';
@@ -14,34 +12,34 @@ import 'managed_kubernetes_upgrade_policy.dart';
 
 /// This resource will help you to manage a ManagedKubernetes Cluster in Alibaba Cloud Kubernetes Service.
 ///
-/// > **NOTE:** Available since v1.26.0.
+/// &gt; **NOTE:** Available since v1.26.0.
 ///
-/// > **NOTE:** It is recommended to create a cluster with zero worker nodes, and then use a node pool to manage the cluster nodes.
+/// &gt; **NOTE:** It is recommended to create a cluster with zero worker nodes, and then use a node pool to manage the cluster nodes.
 ///
-/// > **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
+/// &gt; **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
 /// A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
 /// VPC, you can set `new_nat_gateway` to "true" to create one automatically.
 ///
-/// > **NOTE:** Creating kubernetes cluster need to install several packages and it will cost about 15 minutes. Please be patient.
+/// &gt; **NOTE:** Creating kubernetes cluster need to install several packages and it will cost about 15 minutes. Please be patient.
 ///
-/// > **NOTE:** From version 1.9.4, the provider supports to download kube config, client certificate, client key and cluster ca certificate
+/// &gt; **NOTE:** From version 1.9.4, the provider supports to download kube config, client certificate, client key and cluster ca certificate
 /// after creating cluster successfully, and you can put them into the specified location, like '~/.kube/config'.
 ///
-/// > **NOTE:** From version 1.20.0, the provider supports disabling internet load balancer for API Server by setting `false` to `slb_internet_enabled`.
+/// &gt; **NOTE:** From version 1.20.0, the provider supports disabling internet load balancer for API Server by setting `false` to `slb_internet_enabled`.
 ///
-/// > **NOTE:** If you want to manage Kubernetes, you can use Kubernetes Provider.
+/// &gt; **NOTE:** If you want to manage Kubernetes, you can use Kubernetes Provider.
 ///
-/// > **NOTE:** You need to activate several other products and confirm Authorization Policy used by Container Service before using this resource.
+/// &gt; **NOTE:** You need to activate several other products and confirm Authorization Policy used by Container Service before using this resource.
 /// Please refer to the `Authorization management` and `Cluster management` sections in the [Document Center](https://www.alibabacloud.com/help/doc-detail/86488.htm).
 ///
-/// > **NOTE:** From version 1.72.0, Some parameters have been removed from resource,You can check them below and re-import the cluster if necessary.
+/// &gt; **NOTE:** From version 1.72.0, Some parameters have been removed from resource,You can check them below and re-import the cluster if necessary.
 ///
-/// > **NOTE:** From version 1.120.0, Support for cluster migration from Standard cluster to professional.
+/// &gt; **NOTE:** From version 1.120.0, Support for cluster migration from Standard cluster to professional.
 ///
-/// > **NOTE:** From version 1.177.0, `runtime`,`enable_ssh`,`rds_instances`,`exclude_autoscaler_nodes`,`worker_number`,`worker_instance_types`,`password`,`key_name`,`kms_encrypted_password`,`kms_encryption_context`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_name_mode`,`node_port_range`,`os_type`,`platform`,`image_id`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`install_cloud_monitor` are deprecated.
+/// &gt; **NOTE:** From version 1.177.0, `runtime`,`enable_ssh`,`rds_instances`,`exclude_autoscaler_nodes`,`worker_number`,`worker_instance_types`,`password`,`key_name`,`kms_encrypted_password`,`kms_encryption_context`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_name_mode`,`node_port_range`,`os_type`,`platform`,`image_id`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`install_cloud_monitor` are deprecated.
 /// We Suggest you using resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
 ///
-/// > **NOTE:** From version 1.212.0, `runtime`,`enable_ssh`,`rds_instances`,`exclude_autoscaler_nodes`,`worker_number`,`worker_instance_types`,`password`,`key_name`,`kms_encrypted_password`,`kms_encryption_context`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_name_mode`,`node_port_range`,`os_type`,`platform`,`image_id`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`install_cloud_monitor`,`kube_config`,`availability_zone` are removed.
+/// &gt; **NOTE:** From version 1.212.0, `runtime`,`enable_ssh`,`rds_instances`,`exclude_autoscaler_nodes`,`worker_number`,`worker_instance_types`,`password`,`key_name`,`kms_encrypted_password`,`kms_encryption_context`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_name_mode`,`node_port_range`,`os_type`,`platform`,`image_id`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`install_cloud_monitor`,`kube_config`,`availability_zone` are removed.
 /// Please use resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
 ///
 /// ## Example Usage
@@ -1540,134 +1538,187 @@ import 'managed_kubernetes_upgrade_policy.dart';
 /// ```
 class ManagedKubernetes extends pulumi.CustomResource {
   /// The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
-  late final pulumi.Output<List<ManagedKubernetesAddon>?> addons;
+  late final pulumi.Output<List<Map<String, dynamic>>?> addons;
+
   /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
   late final pulumi.Output<List<String>?> apiAudiences;
+
   /// Audit log configuration. See `audit_log_config` below.
   late final pulumi.Output<ManagedKubernetesAuditLogConfig> auditLogConfig;
+
   /// Auto mode cluster configuration. See `auto_mode` below.
   late final pulumi.Output<ManagedKubernetesAutoMode?> autoMode;
+
   /// (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificate_authority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
-  late final pulumi.Output<ManagedKubernetesCertificateAuthority> certificateAuthority;
+  late final pulumi.Output<ManagedKubernetesCertificateAuthority>
+  certificateAuthority;
+
   /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
   late final pulumi.Output<String?> clientCert;
+
   /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
   late final pulumi.Output<String?> clientKey;
+
   /// From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
   ///
   /// *Removed params*
   late final pulumi.Output<String?> clusterCaCert;
+
   /// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
   late final pulumi.Output<String?> clusterDomain;
+
   /// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
   /// * ack.standard : Basic managed clusters.
   /// * ack.pro.small : Professional managed clusters.
   late final pulumi.Output<String> clusterSpec;
+
   /// Map of kubernetes cluster connection information.
   late final pulumi.Output<ManagedKubernetesConnections> connections;
+
   /// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
   late final pulumi.Output<List<String>?> controlPlaneLogComponents;
+
   /// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
   late final pulumi.Output<String> controlPlaneLogProject;
+
   /// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
   late final pulumi.Output<String> controlPlaneLogTtl;
+
   /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
-  /// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
+  /// &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
   late final pulumi.Output<String?> customSan;
+
   /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
-  late final pulumi.Output<List<ManagedKubernetesDeleteOption>?> deleteOptions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> deleteOptions;
+
   /// Whether to enable cluster deletion protection.
   late final pulumi.Output<bool> deletionProtection;
+
   /// Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
   late final pulumi.Output<bool?> enableRrsa;
+
   /// The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
   late final pulumi.Output<String?> encryptionProviderKey;
+
   /// The IP address family that the cluster network uses. Valid values:
   late final pulumi.Output<String> ipStack;
+
   /// Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
   late final pulumi.Output<bool> isEnterpriseSecurityGroup;
+
   /// The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
   late final pulumi.Output<String> loadBalancerSpec;
+
   /// The cluster maintenance window. Managed node pool will use it. See `maintenance_window` below.
-  late final pulumi.Output<ManagedKubernetesMaintenanceWindow> maintenanceWindow;
+  late final pulumi.Output<ManagedKubernetesMaintenanceWindow>
+  maintenanceWindow;
+
   /// The kubernetes cluster's name. It is unique in one Alicloud account.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String?> namePrefix;
+
   /// The ID of nat gateway used to launch kubernetes cluster.
   late final pulumi.Output<String> natGatewayId;
+
   /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
   late final pulumi.Output<bool?> newNatGateway;
+
   /// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
   late final pulumi.Output<int?> nodeCidrMask;
+
   /// The cluster automatic operation policy, only works when `maintenance_window` is enabled. See `operation_policy` below.
   late final pulumi.Output<ManagedKubernetesOperationPolicy> operationPolicy;
+
   /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
   late final pulumi.Output<String?> podCidr;
+
   /// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
   late final pulumi.Output<List<String>?> podVswitchIds;
+
   /// The profile of cluster. Valid values:
   /// * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
   /// * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
   /// * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
   /// * `Acs`: ACS cluster.
   late final pulumi.Output<String> profile;
+
   /// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
   late final pulumi.Output<String?> proxyMode;
+
   /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
   late final pulumi.Output<String> resourceGroupId;
   late final pulumi.Output<List<String>?> retainResources;
+
   /// (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
   late final pulumi.Output<ManagedKubernetesRrsaMetadata> rrsaMetadata;
+
   /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-  /// * > **NOTE:** Please take of note before updating the `security_group_id`:
+  /// * &gt; **NOTE:** Please take of note before updating the `security_group_id`:
   /// * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
   /// * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
   /// * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
   late final pulumi.Output<String> securityGroupId;
+
   /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
   late final pulumi.Output<String?> serviceAccountIssuer;
+
   /// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
   late final pulumi.Output<String?> serviceCidr;
+
   /// Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
   late final pulumi.Output<bool?> skipSetCertificateAuthority;
+
   /// The ID of APIServer load balancer.
   late final pulumi.Output<String> slbId;
+
   /// The public ip of load balancer.
   late final pulumi.Output<String> slbInternet;
+
   /// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
   late final pulumi.Output<bool?> slbInternetEnabled;
+
   /// The ID of private load balancer where the current cluster master node is located.
   late final pulumi.Output<String> slbIntranet;
+
   /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Cluster timezone, works for control plane and Worker nodes.
-  /// * > **NOTE:** Please take of note before updating the `timezone`:
+  /// * &gt; **NOTE:** Please take of note before updating the `timezone`:
   /// * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
   /// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
   /// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
   late final pulumi.Output<String?> timezone;
+
   /// Configuration block for cluster upgrade operations. See `upgrade_policy` below.
-  /// > **NOTE:** This parameter only applies during resource update.
+  /// &gt; **NOTE:** This parameter only applies during resource update.
   ///
   /// *Network params*
   late final pulumi.Output<ManagedKubernetesUpgradePolicy?> upgradePolicy;
+
   /// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
   late final pulumi.Output<String?> userCa;
+
   /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
   late final pulumi.Output<String> version;
+
   /// The ID of VPC where the current cluster is located.
   late final pulumi.Output<String> vpcId;
+
   /// The vSwitches of the control plane.
-  /// > **NOTE:** Please take of note before updating the `vswitch_ids`:
+  /// &gt; **NOTE:** Please take of note before updating the `vswitch_ids`:
   /// * This parameter overwrites the existing configuration. You must specify all vSwitches of the control plane.
   /// * The control plane restarts during the change process. Exercise caution when you perform this operation.
   /// * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
   /// * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
   late final pulumi.Output<List<String>> vswitchIds;
+
   /// The RamRole Name attached to worker node.
   late final pulumi.Output<String> workerRamRoleName;
+
   /// The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
   late final pulumi.Output<List<String>?> workerVswitchIds;
+
   /// The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
   late final pulumi.Output<List<String>?> zoneIds;
 
@@ -1680,65 +1731,86 @@ class ManagedKubernetes extends pulumi.CustomResource {
     ManagedKubernetesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cs/managedKubernetes:ManagedKubernetes',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addons = registerOutput<List<ManagedKubernetesAddon>?>('addons');
-    this.apiAudiences = registerOutput<List<String>?>('apiAudiences');
-    this.auditLogConfig = registerOutput<ManagedKubernetesAuditLogConfig>('auditLogConfig');
-    this.autoMode = registerOutput<ManagedKubernetesAutoMode?>('autoMode');
-    this.certificateAuthority = registerOutput<ManagedKubernetesCertificateAuthority>('certificateAuthority');
-    this.clientCert = registerOutput<String?>('clientCert');
-    this.clientKey = registerOutput<String?>('clientKey');
-    this.clusterCaCert = registerOutput<String?>('clusterCaCert');
-    this.clusterDomain = registerOutput<String?>('clusterDomain');
-    this.clusterSpec = registerOutput<String>('clusterSpec');
-    this.connections = registerOutput<ManagedKubernetesConnections>('connections');
-    this.controlPlaneLogComponents = registerOutput<List<String>?>('controlPlaneLogComponents');
-    this.controlPlaneLogProject = registerOutput<String>('controlPlaneLogProject');
-    this.controlPlaneLogTtl = registerOutput<String>('controlPlaneLogTtl');
-    this.customSan = registerOutput<String?>('customSan');
-    this.deleteOptions = registerOutput<List<ManagedKubernetesDeleteOption>?>('deleteOptions');
-    this.deletionProtection = registerOutput<bool>('deletionProtection');
-    this.enableRrsa = registerOutput<bool?>('enableRrsa');
-    this.encryptionProviderKey = registerOutput<String?>('encryptionProviderKey');
-    this.ipStack = registerOutput<String>('ipStack');
-    this.isEnterpriseSecurityGroup = registerOutput<bool>('isEnterpriseSecurityGroup');
-    this.loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
-    this.maintenanceWindow = registerOutput<ManagedKubernetesMaintenanceWindow>('maintenanceWindow');
+         'alicloud:cs/managedKubernetes:ManagedKubernetes',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addons = registerOutput<List<Map<String, dynamic>>?>('addons');
+    apiAudiences = registerOutput<List<String>?>('apiAudiences');
+    auditLogConfig = registerOutput<ManagedKubernetesAuditLogConfig>(
+      'auditLogConfig',
+    );
+    autoMode = registerOutput<ManagedKubernetesAutoMode?>('autoMode');
+    certificateAuthority =
+        registerOutput<ManagedKubernetesCertificateAuthority>(
+          'certificateAuthority',
+        );
+    clientCert = registerOutput<String?>('clientCert');
+    clientKey = registerOutput<String?>('clientKey');
+    clusterCaCert = registerOutput<String?>('clusterCaCert');
+    clusterDomain = registerOutput<String?>('clusterDomain');
+    clusterSpec = registerOutput<String>('clusterSpec');
+    connections = registerOutput<ManagedKubernetesConnections>('connections');
+    controlPlaneLogComponents = registerOutput<List<String>?>(
+      'controlPlaneLogComponents',
+    );
+    controlPlaneLogProject = registerOutput<String>('controlPlaneLogProject');
+    controlPlaneLogTtl = registerOutput<String>('controlPlaneLogTtl');
+    customSan = registerOutput<String?>('customSan');
+    deleteOptions = registerOutput<List<Map<String, dynamic>>?>(
+      'deleteOptions',
+    );
+    deletionProtection = registerOutput<bool>('deletionProtection');
+    enableRrsa = registerOutput<bool?>('enableRrsa');
+    encryptionProviderKey = registerOutput<String?>('encryptionProviderKey');
+    ipStack = registerOutput<String>('ipStack');
+    isEnterpriseSecurityGroup = registerOutput<bool>(
+      'isEnterpriseSecurityGroup',
+    );
+    loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
+    maintenanceWindow = registerOutput<ManagedKubernetesMaintenanceWindow>(
+      'maintenanceWindow',
+    );
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String?>('namePrefix');
-    this.natGatewayId = registerOutput<String>('natGatewayId');
-    this.newNatGateway = registerOutput<bool?>('newNatGateway');
-    this.nodeCidrMask = registerOutput<int?>('nodeCidrMask');
-    this.operationPolicy = registerOutput<ManagedKubernetesOperationPolicy>('operationPolicy');
-    this.podCidr = registerOutput<String?>('podCidr');
-    this.podVswitchIds = registerOutput<List<String>?>('podVswitchIds');
-    this.profile = registerOutput<String>('profile');
-    this.proxyMode = registerOutput<String?>('proxyMode');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.retainResources = registerOutput<List<String>?>('retainResources');
-    this.rrsaMetadata = registerOutput<ManagedKubernetesRrsaMetadata>('rrsaMetadata');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
-    this.serviceAccountIssuer = registerOutput<String?>('serviceAccountIssuer');
-    this.serviceCidr = registerOutput<String?>('serviceCidr');
-    this.skipSetCertificateAuthority = registerOutput<bool?>('skipSetCertificateAuthority');
-    this.slbId = registerOutput<String>('slbId');
-    this.slbInternet = registerOutput<String>('slbInternet');
-    this.slbInternetEnabled = registerOutput<bool?>('slbInternetEnabled');
-    this.slbIntranet = registerOutput<String>('slbIntranet');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timezone = registerOutput<String?>('timezone');
-    this.upgradePolicy = registerOutput<ManagedKubernetesUpgradePolicy?>('upgradePolicy');
-    this.userCa = registerOutput<String?>('userCa');
-    this.version = registerOutput<String>('version');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchIds = registerOutput<List<String>>('vswitchIds');
-    this.workerRamRoleName = registerOutput<String>('workerRamRoleName');
-    this.workerVswitchIds = registerOutput<List<String>?>('workerVswitchIds');
-    this.zoneIds = registerOutput<List<String>?>('zoneIds');
+    namePrefix = registerOutput<String?>('namePrefix');
+    natGatewayId = registerOutput<String>('natGatewayId');
+    newNatGateway = registerOutput<bool?>('newNatGateway');
+    nodeCidrMask = registerOutput<int?>('nodeCidrMask');
+    operationPolicy = registerOutput<ManagedKubernetesOperationPolicy>(
+      'operationPolicy',
+    );
+    podCidr = registerOutput<String?>('podCidr');
+    podVswitchIds = registerOutput<List<String>?>('podVswitchIds');
+    profile = registerOutput<String>('profile');
+    proxyMode = registerOutput<String?>('proxyMode');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    retainResources = registerOutput<List<String>?>('retainResources');
+    rrsaMetadata = registerOutput<ManagedKubernetesRrsaMetadata>(
+      'rrsaMetadata',
+    );
+    securityGroupId = registerOutput<String>('securityGroupId');
+    serviceAccountIssuer = registerOutput<String?>('serviceAccountIssuer');
+    serviceCidr = registerOutput<String?>('serviceCidr');
+    skipSetCertificateAuthority = registerOutput<bool?>(
+      'skipSetCertificateAuthority',
+    );
+    slbId = registerOutput<String>('slbId');
+    slbInternet = registerOutput<String>('slbInternet');
+    slbInternetEnabled = registerOutput<bool?>('slbInternetEnabled');
+    slbIntranet = registerOutput<String>('slbIntranet');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timezone = registerOutput<String?>('timezone');
+    upgradePolicy = registerOutput<ManagedKubernetesUpgradePolicy?>(
+      'upgradePolicy',
+    );
+    userCa = registerOutput<String?>('userCa');
+    version = registerOutput<String>('version');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchIds = registerOutput<List<String>>('vswitchIds');
+    workerRamRoleName = registerOutput<String>('workerRamRoleName');
+    workerVswitchIds = registerOutput<List<String>?>('workerVswitchIds');
+    zoneIds = registerOutput<List<String>?>('zoneIds');
   }
 
   /// Gets an existing [ManagedKubernetes] resource's state with the given [name] and [id].
@@ -1759,64 +1831,85 @@ class ManagedKubernetes extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cs/managedKubernetes:ManagedKubernetes',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addons = registerOutput<List<ManagedKubernetesAddon>?>('addons');
-    this.apiAudiences = registerOutput<List<String>?>('apiAudiences');
-    this.auditLogConfig = registerOutput<ManagedKubernetesAuditLogConfig>('auditLogConfig');
-    this.autoMode = registerOutput<ManagedKubernetesAutoMode?>('autoMode');
-    this.certificateAuthority = registerOutput<ManagedKubernetesCertificateAuthority>('certificateAuthority');
-    this.clientCert = registerOutput<String?>('clientCert');
-    this.clientKey = registerOutput<String?>('clientKey');
-    this.clusterCaCert = registerOutput<String?>('clusterCaCert');
-    this.clusterDomain = registerOutput<String?>('clusterDomain');
-    this.clusterSpec = registerOutput<String>('clusterSpec');
-    this.connections = registerOutput<ManagedKubernetesConnections>('connections');
-    this.controlPlaneLogComponents = registerOutput<List<String>?>('controlPlaneLogComponents');
-    this.controlPlaneLogProject = registerOutput<String>('controlPlaneLogProject');
-    this.controlPlaneLogTtl = registerOutput<String>('controlPlaneLogTtl');
-    this.customSan = registerOutput<String?>('customSan');
-    this.deleteOptions = registerOutput<List<ManagedKubernetesDeleteOption>?>('deleteOptions');
-    this.deletionProtection = registerOutput<bool>('deletionProtection');
-    this.enableRrsa = registerOutput<bool?>('enableRrsa');
-    this.encryptionProviderKey = registerOutput<String?>('encryptionProviderKey');
-    this.ipStack = registerOutput<String>('ipStack');
-    this.isEnterpriseSecurityGroup = registerOutput<bool>('isEnterpriseSecurityGroup');
-    this.loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
-    this.maintenanceWindow = registerOutput<ManagedKubernetesMaintenanceWindow>('maintenanceWindow');
+         'alicloud:cs/managedKubernetes:ManagedKubernetes',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addons = registerOutput<List<Map<String, dynamic>>?>('addons');
+    apiAudiences = registerOutput<List<String>?>('apiAudiences');
+    auditLogConfig = registerOutput<ManagedKubernetesAuditLogConfig>(
+      'auditLogConfig',
+    );
+    autoMode = registerOutput<ManagedKubernetesAutoMode?>('autoMode');
+    certificateAuthority =
+        registerOutput<ManagedKubernetesCertificateAuthority>(
+          'certificateAuthority',
+        );
+    clientCert = registerOutput<String?>('clientCert');
+    clientKey = registerOutput<String?>('clientKey');
+    clusterCaCert = registerOutput<String?>('clusterCaCert');
+    clusterDomain = registerOutput<String?>('clusterDomain');
+    clusterSpec = registerOutput<String>('clusterSpec');
+    connections = registerOutput<ManagedKubernetesConnections>('connections');
+    controlPlaneLogComponents = registerOutput<List<String>?>(
+      'controlPlaneLogComponents',
+    );
+    controlPlaneLogProject = registerOutput<String>('controlPlaneLogProject');
+    controlPlaneLogTtl = registerOutput<String>('controlPlaneLogTtl');
+    customSan = registerOutput<String?>('customSan');
+    deleteOptions = registerOutput<List<Map<String, dynamic>>?>(
+      'deleteOptions',
+    );
+    deletionProtection = registerOutput<bool>('deletionProtection');
+    enableRrsa = registerOutput<bool?>('enableRrsa');
+    encryptionProviderKey = registerOutput<String?>('encryptionProviderKey');
+    ipStack = registerOutput<String>('ipStack');
+    isEnterpriseSecurityGroup = registerOutput<bool>(
+      'isEnterpriseSecurityGroup',
+    );
+    loadBalancerSpec = registerOutput<String>('loadBalancerSpec');
+    maintenanceWindow = registerOutput<ManagedKubernetesMaintenanceWindow>(
+      'maintenanceWindow',
+    );
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String?>('namePrefix');
-    this.natGatewayId = registerOutput<String>('natGatewayId');
-    this.newNatGateway = registerOutput<bool?>('newNatGateway');
-    this.nodeCidrMask = registerOutput<int?>('nodeCidrMask');
-    this.operationPolicy = registerOutput<ManagedKubernetesOperationPolicy>('operationPolicy');
-    this.podCidr = registerOutput<String?>('podCidr');
-    this.podVswitchIds = registerOutput<List<String>?>('podVswitchIds');
-    this.profile = registerOutput<String>('profile');
-    this.proxyMode = registerOutput<String?>('proxyMode');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.retainResources = registerOutput<List<String>?>('retainResources');
-    this.rrsaMetadata = registerOutput<ManagedKubernetesRrsaMetadata>('rrsaMetadata');
-    this.securityGroupId = registerOutput<String>('securityGroupId');
-    this.serviceAccountIssuer = registerOutput<String?>('serviceAccountIssuer');
-    this.serviceCidr = registerOutput<String?>('serviceCidr');
-    this.skipSetCertificateAuthority = registerOutput<bool?>('skipSetCertificateAuthority');
-    this.slbId = registerOutput<String>('slbId');
-    this.slbInternet = registerOutput<String>('slbInternet');
-    this.slbInternetEnabled = registerOutput<bool?>('slbInternetEnabled');
-    this.slbIntranet = registerOutput<String>('slbIntranet');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timezone = registerOutput<String?>('timezone');
-    this.upgradePolicy = registerOutput<ManagedKubernetesUpgradePolicy?>('upgradePolicy');
-    this.userCa = registerOutput<String?>('userCa');
-    this.version = registerOutput<String>('version');
-    this.vpcId = registerOutput<String>('vpcId');
-    this.vswitchIds = registerOutput<List<String>>('vswitchIds');
-    this.workerRamRoleName = registerOutput<String>('workerRamRoleName');
-    this.workerVswitchIds = registerOutput<List<String>?>('workerVswitchIds');
-    this.zoneIds = registerOutput<List<String>?>('zoneIds');
+    namePrefix = registerOutput<String?>('namePrefix');
+    natGatewayId = registerOutput<String>('natGatewayId');
+    newNatGateway = registerOutput<bool?>('newNatGateway');
+    nodeCidrMask = registerOutput<int?>('nodeCidrMask');
+    operationPolicy = registerOutput<ManagedKubernetesOperationPolicy>(
+      'operationPolicy',
+    );
+    podCidr = registerOutput<String?>('podCidr');
+    podVswitchIds = registerOutput<List<String>?>('podVswitchIds');
+    profile = registerOutput<String>('profile');
+    proxyMode = registerOutput<String?>('proxyMode');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    retainResources = registerOutput<List<String>?>('retainResources');
+    rrsaMetadata = registerOutput<ManagedKubernetesRrsaMetadata>(
+      'rrsaMetadata',
+    );
+    securityGroupId = registerOutput<String>('securityGroupId');
+    serviceAccountIssuer = registerOutput<String?>('serviceAccountIssuer');
+    serviceCidr = registerOutput<String?>('serviceCidr');
+    skipSetCertificateAuthority = registerOutput<bool?>(
+      'skipSetCertificateAuthority',
+    );
+    slbId = registerOutput<String>('slbId');
+    slbInternet = registerOutput<String>('slbInternet');
+    slbInternetEnabled = registerOutput<bool?>('slbInternetEnabled');
+    slbIntranet = registerOutput<String>('slbIntranet');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timezone = registerOutput<String?>('timezone');
+    upgradePolicy = registerOutput<ManagedKubernetesUpgradePolicy?>(
+      'upgradePolicy',
+    );
+    userCa = registerOutput<String?>('userCa');
+    version = registerOutput<String>('version');
+    vpcId = registerOutput<String>('vpcId');
+    vswitchIds = registerOutput<List<String>>('vswitchIds');
+    workerRamRoleName = registerOutput<String>('workerRamRoleName');
+    workerVswitchIds = registerOutput<List<String>?>('workerVswitchIds');
+    zoneIds = registerOutput<List<String>?>('zoneIds');
   }
 }

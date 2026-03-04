@@ -9,35 +9,49 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPortArgs {
   /// The administrative state of the port.
   final pulumi.Input<bool>? adminStateUp;
+
   /// Human-readable description of the port.
   final pulumi.Input<String>? description;
+
   /// The ID of the device the port belongs to.
   final pulumi.Input<String>? deviceId;
+
   /// The device owner of the port.
   final pulumi.Input<String>? deviceOwner;
+
   /// The port DNS name to filter. Available, when Neutron
   /// DNS extension is enabled.
   final pulumi.Input<String>? dnsName;
+
   /// The port IP address filter.
   final pulumi.Input<String>? fixedIp;
+
   /// The MAC address of the port.
   final pulumi.Input<String>? macAddress;
+
   /// The name of the port.
   final pulumi.Input<String>? name;
+
   /// The ID of the network the port belongs to.
   final pulumi.Input<String>? networkId;
+
   /// The ID of the port.
   final pulumi.Input<String>? portId;
+
   /// The owner of the port.
   final pulumi.Input<String>? projectId;
+
   /// The region in which to obtain the V2 Neutron client.
   /// A Neutron client is needed to retrieve port ids. If omitted, the
   /// `region` argument of the provider is used.
   final pulumi.Input<String>? region;
+
   /// The list of port security group IDs to filter.
   final pulumi.Input<List<String>>? securityGroupIds;
+
   /// The status of the port.
   final pulumi.Input<String>? status;
+
   /// The list of port tags to filter.
   final pulumi.Input<List<String>>? tags;
   final pulumi.Input<String>? tenantId;
@@ -101,23 +115,86 @@ class GetPortArgs {
 
   factory GetPortArgs.fromMap(Map<String, dynamic> map) {
     return GetPortArgs(
-      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      deviceId: map['deviceId'] == null ? null : (map['deviceId']! as String).input(),
-      deviceOwner: map['deviceOwner'] == null ? null : (map['deviceOwner']! as String).input(),
-      dnsName: map['dnsName'] == null ? null : (map['dnsName']! as String).input(),
-      fixedIp: map['fixedIp'] == null ? null : (map['fixedIp']! as String).input(),
-      macAddress: map['macAddress'] == null ? null : (map['macAddress']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
-      portId: map['portId'] == null ? null : (map['portId']! as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds']! as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      adminStateUp: (() {
+        final guardedValue = map['adminStateUp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deviceId: (() {
+        final guardedValue = map['deviceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deviceOwner: (() {
+        final guardedValue = map['deviceOwner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnsName: (() {
+        final guardedValue = map['dnsName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fixedIp: (() {
+        final guardedValue = map['fixedIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      macAddress: (() {
+        final guardedValue = map['macAddress'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkId: (() {
+        final guardedValue = map['networkId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      portId: (() {
+        final guardedValue = map['portId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      securityGroupIds: (() {
+        final guardedValue = map['securityGroupIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

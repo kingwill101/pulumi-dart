@@ -4,16 +4,20 @@ enum GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode {
   disabled("DISABLED"),
   enabled("ENABLED");
 
-  const GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode(this.value);
-  final String value;
+  const GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode fromValue(String value) {
-    for (final item in GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode.values) {
-      if (item.value == value) {
+  static GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode value: $value',
+    );
   }
 }
-

@@ -5,16 +5,15 @@ enum MetricDescriptorMetricKind {
   delta("DELTA"),
   cumulative("CUMULATIVE");
 
-  const MetricDescriptorMetricKind(this.value);
-  final String value;
+  const MetricDescriptorMetricKind(this.wireValue);
+  final String wireValue;
 
   static MetricDescriptorMetricKind fromValue(String value) {
     for (final item in MetricDescriptorMetricKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown MetricDescriptorMetricKind value: $value');
   }
 }
-

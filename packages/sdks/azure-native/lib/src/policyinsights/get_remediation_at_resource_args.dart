@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRemediationAtResourceArgs {
   /// The name of the remediation.
   final pulumi.Input<String> remediationName;
+
   /// Resource ID.
   final pulumi.Input<String> resourceId;
 
@@ -29,9 +30,8 @@ class GetRemediationAtResourceArgs {
 
   factory GetRemediationAtResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetRemediationAtResourceArgs(
-      remediationName: (map['remediationName'] as String).input(),
-      resourceId: (map['resourceId'] as String).input(),
+      remediationName: pulumi.Input.fromValue(map['remediationName'] as String),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
     );
   }
 }
-

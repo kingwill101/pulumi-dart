@@ -13,15 +13,14 @@ class GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinati
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': bucket,
-    };
+    return <String, dynamic>{'bucket': bucket};
   }
 
-  factory GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationS3.fromMap(Map<String, dynamic> map) {
+  factory GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationS3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationS3(
-      bucket: (map['bucket'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
     );
   }
 }
-

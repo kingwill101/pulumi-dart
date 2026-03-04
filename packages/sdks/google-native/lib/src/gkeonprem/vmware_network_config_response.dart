@@ -10,16 +10,22 @@ import 'vmware_static_ip_config_response.dart';
 class VmwareNetworkConfigResponse {
   /// Configuration for control plane V2 mode.
   final pulumi.Input<VmwareControlPlaneV2ConfigResponse> controlPlaneV2Config;
+
   /// Configuration settings for a DHCP IP configuration.
   final pulumi.Input<VmwareDhcpIpConfigResponse> dhcpIpConfig;
+
   /// Represents common network settings irrespective of the host's IP address.
   final pulumi.Input<VmwareHostConfigResponse> hostConfig;
+
   /// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
   final pulumi.Input<List<String>> podAddressCidrBlocks;
+
   /// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
   final pulumi.Input<List<String>> serviceAddressCidrBlocks;
+
   /// Configuration settings for a static IP configuration.
   final pulumi.Input<VmwareStaticIpConfigResponse> staticIpConfig;
+
   /// vcenter_network specifies vCenter network name. Inherited from the admin cluster.
   final pulumi.Input<String> vcenterNetwork;
 
@@ -43,26 +49,61 @@ class VmwareNetworkConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'controlPlaneV2Config': pulumi.Input.mapInputValue<VmwareControlPlaneV2ConfigResponse, Map<String, dynamic>>(controlPlaneV2Config, (value) => value.toMap()),
-      'dhcpIpConfig': pulumi.Input.mapInputValue<VmwareDhcpIpConfigResponse, Map<String, dynamic>>(dhcpIpConfig, (value) => value.toMap()),
-      'hostConfig': pulumi.Input.mapInputValue<VmwareHostConfigResponse, Map<String, dynamic>>(hostConfig, (value) => value.toMap()),
+      'controlPlaneV2Config':
+          pulumi.Input.mapInputValue<
+            VmwareControlPlaneV2ConfigResponse,
+            Map<String, dynamic>
+          >(controlPlaneV2Config, (value) => value.toMap()),
+      'dhcpIpConfig':
+          pulumi.Input.mapInputValue<
+            VmwareDhcpIpConfigResponse,
+            Map<String, dynamic>
+          >(dhcpIpConfig, (value) => value.toMap()),
+      'hostConfig':
+          pulumi.Input.mapInputValue<
+            VmwareHostConfigResponse,
+            Map<String, dynamic>
+          >(hostConfig, (value) => value.toMap()),
       'podAddressCidrBlocks': podAddressCidrBlocks,
       'serviceAddressCidrBlocks': serviceAddressCidrBlocks,
-      'staticIpConfig': pulumi.Input.mapInputValue<VmwareStaticIpConfigResponse, Map<String, dynamic>>(staticIpConfig, (value) => value.toMap()),
+      'staticIpConfig':
+          pulumi.Input.mapInputValue<
+            VmwareStaticIpConfigResponse,
+            Map<String, dynamic>
+          >(staticIpConfig, (value) => value.toMap()),
       'vcenterNetwork': vcenterNetwork,
     };
   }
 
   factory VmwareNetworkConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareNetworkConfigResponse(
-      controlPlaneV2Config: (VmwareControlPlaneV2ConfigResponse.fromMap((map['controlPlaneV2Config'] as Map).cast<String, dynamic>())).input(),
-      dhcpIpConfig: (VmwareDhcpIpConfigResponse.fromMap((map['dhcpIpConfig'] as Map).cast<String, dynamic>())).input(),
-      hostConfig: (VmwareHostConfigResponse.fromMap((map['hostConfig'] as Map).cast<String, dynamic>())).input(),
-      podAddressCidrBlocks: ((map['podAddressCidrBlocks'] as List).cast<String>()).input(),
-      serviceAddressCidrBlocks: ((map['serviceAddressCidrBlocks'] as List).cast<String>()).input(),
-      staticIpConfig: (VmwareStaticIpConfigResponse.fromMap((map['staticIpConfig'] as Map).cast<String, dynamic>())).input(),
-      vcenterNetwork: (map['vcenterNetwork'] as String).input(),
+      controlPlaneV2Config: pulumi.Input.fromValue(
+        VmwareControlPlaneV2ConfigResponse.fromMap(
+          (map['controlPlaneV2Config']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      dhcpIpConfig: pulumi.Input.fromValue(
+        VmwareDhcpIpConfigResponse.fromMap(
+          (map['dhcpIpConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      hostConfig: pulumi.Input.fromValue(
+        VmwareHostConfigResponse.fromMap(
+          (map['hostConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      podAddressCidrBlocks: pulumi.Input.fromValue(
+        (map['podAddressCidrBlocks'] as List).cast<String>(),
+      ),
+      serviceAddressCidrBlocks: pulumi.Input.fromValue(
+        (map['serviceAddressCidrBlocks'] as List).cast<String>(),
+      ),
+      staticIpConfig: pulumi.Input.fromValue(
+        VmwareStaticIpConfigResponse.fromMap(
+          (map['staticIpConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      vcenterNetwork: pulumi.Input.fromValue(map['vcenterNetwork'] as String),
     );
   }
 }
-

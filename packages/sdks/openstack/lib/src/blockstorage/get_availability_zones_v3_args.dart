@@ -10,6 +10,7 @@ class GetAvailabilityZonesV3Args {
   /// The region in which to obtain the Block Storage client.
   /// If omitted, the `region` argument of the provider is used.
   final pulumi.Input<String>? region;
+
   /// The `state` of the availability zones to match. Can
   /// either be `available` or `unavailable`. Default is `available`.
   final pulumi.Input<String>? state;
@@ -17,23 +18,24 @@ class GetAvailabilityZonesV3Args {
   /// Creates a new [GetAvailabilityZonesV3Args].
   /// [region] The region in which to obtain the Block Storage client.
   /// [state] The `state` of the availability zones to match. Can
-  GetAvailabilityZonesV3Args({
-    this.region,
-    this.state,
-  });
+  GetAvailabilityZonesV3Args({this.region, this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-      'state': ?state,
-    };
+    return <String, dynamic>{'region': ?region, 'state': ?state};
   }
 
   factory GetAvailabilityZonesV3Args.fromMap(Map<String, dynamic> map) {
     return GetAvailabilityZonesV3Args(
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

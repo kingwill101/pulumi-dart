@@ -206,10 +206,12 @@ import 'lb_certificate_attachment_state.dart';
 class LbCertificateAttachment extends pulumi.CustomResource {
   /// Name of your SSL/TLS certificate.
   late final pulumi.Output<String> certificateName;
+
   /// Name of the load balancer to which you want to associate the SSL/TLS certificate.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> lbName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -222,14 +224,14 @@ class LbCertificateAttachment extends pulumi.CustomResource {
     LbCertificateAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lightsail/lbCertificateAttachment:LbCertificateAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateName = registerOutput<String>('certificateName');
-    this.lbName = registerOutput<String>('lbName');
-    this.region = registerOutput<String>('region');
+         'aws:lightsail/lbCertificateAttachment:LbCertificateAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateName = registerOutput<String>('certificateName');
+    lbName = registerOutput<String>('lbName');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [LbCertificateAttachment] resource's state with the given [name] and [id].
@@ -250,13 +252,13 @@ class LbCertificateAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lightsail/lbCertificateAttachment:LbCertificateAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.certificateName = registerOutput<String>('certificateName');
-    this.lbName = registerOutput<String>('lbName');
-    this.region = registerOutput<String>('region');
+         'aws:lightsail/lbCertificateAttachment:LbCertificateAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    certificateName = registerOutput<String>('certificateName');
+    lbName = registerOutput<String>('lbName');
+    region = registerOutput<String>('region');
   }
 }

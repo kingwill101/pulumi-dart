@@ -8,20 +8,19 @@ class PoolSourceInitiatorIqn {
 
   /// Creates a new [PoolSourceInitiatorIqn].
   /// [name] Sets the name attribute of the iSCSI IQN for identification.
-  PoolSourceInitiatorIqn({
-    this.name,
-  });
+  PoolSourceInitiatorIqn({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory PoolSourceInitiatorIqn.fromMap(Map<String, dynamic> map) {
     return PoolSourceInitiatorIqn(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

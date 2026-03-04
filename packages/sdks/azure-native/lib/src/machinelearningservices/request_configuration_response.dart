@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RequestConfigurationResponse {
   /// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
   final pulumi.Input<int>? maxConcurrentRequestsPerInstance;
+
   /// The scoring timeout in ISO 8601 format.
   /// Defaults to 5000ms.
   final pulumi.Input<String>? requestTimeout;
@@ -27,9 +28,16 @@ class RequestConfigurationResponse {
 
   factory RequestConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return RequestConfigurationResponse(
-      maxConcurrentRequestsPerInstance: map['maxConcurrentRequestsPerInstance'] == null ? null : (map['maxConcurrentRequestsPerInstance']! as int).input(),
-      requestTimeout: map['requestTimeout'] == null ? null : (map['requestTimeout']! as String).input(),
+      maxConcurrentRequestsPerInstance: (() {
+        final guardedValue = map['maxConcurrentRequestsPerInstance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      requestTimeout: (() {
+        final guardedValue = map['requestTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

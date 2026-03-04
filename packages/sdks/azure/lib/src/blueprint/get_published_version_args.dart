@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPublishedVersionArgs {
   /// The name of the Blueprint Definition
   final pulumi.Input<String> blueprintName;
+
   /// The ID of the Management Group / Subscription where this Blueprint Definition is stored.
   final pulumi.Input<String> scopeId;
+
   /// The Version name of the Published Version of the Blueprint Definition
   final pulumi.Input<String> version;
 
@@ -34,10 +36,9 @@ class GetPublishedVersionArgs {
 
   factory GetPublishedVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetPublishedVersionArgs(
-      blueprintName: (map['blueprintName'] as String).input(),
-      scopeId: (map['scopeId'] as String).input(),
-      version: (map['version'] as String).input(),
+      blueprintName: pulumi.Input.fromValue(map['blueprintName'] as String),
+      scopeId: pulumi.Input.fromValue(map['scopeId'] as String),
+      version: pulumi.Input.fromValue(map['version'] as String),
     );
   }
 }
-

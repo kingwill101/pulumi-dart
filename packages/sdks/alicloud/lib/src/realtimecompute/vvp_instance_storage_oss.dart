@@ -8,20 +8,15 @@ class VvpInstanceStorageOss {
 
   /// Creates a new [VvpInstanceStorageOss].
   /// [bucket] OSS Bucket name.
-  VvpInstanceStorageOss({
-    required this.bucket,
-  });
+  VvpInstanceStorageOss({required this.bucket});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': bucket,
-    };
+    return <String, dynamic>{'bucket': bucket};
   }
 
   factory VvpInstanceStorageOss.fromMap(Map<String, dynamic> map) {
     return VvpInstanceStorageOss(
-      bucket: (map['bucket'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
     );
   }
 }
-

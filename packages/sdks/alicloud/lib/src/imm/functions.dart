@@ -4,7 +4,7 @@ import 'get_projects_result.dart';
 
 /// This data source provides the Intelligent Media Management Projects of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.134.0+.
+/// &gt; **NOTE:** Available in v1.134.0+.
 ///
 /// ## Example Usage
 ///

@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FindingsFilterFindingCriteriaCriterion {
   /// The value for the property exclusively matches (equals an exact match for) all the specified values. If you specify multiple values, Amazon Macie uses AND logic to join the values.
   final pulumi.Input<List<String>>? eqExactMatches;
+
   /// The value for the property matches (equals) the specified value. If you specify multiple values, Amazon Macie uses OR logic to join the values.
   final pulumi.Input<List<String>>? eqs;
+
   /// The name of the field to be evaluated.
   final pulumi.Input<String> field;
+
   /// The value for the property is greater than the specified value.
   final pulumi.Input<String>? gt;
+
   /// The value for the property is greater than or equal to the specified value.
   final pulumi.Input<String>? gte;
+
   /// The value for the property is less than the specified value.
   final pulumi.Input<String>? lt;
+
   /// The value for the property is less than or equal to the specified value.
   final pulumi.Input<String>? lte;
+
   /// The value for the property doesn't match (doesn't equal) the specified value. If you specify multiple values, Amazon Macie uses OR logic to join the values.
   final pulumi.Input<List<String>>? neqs;
 
@@ -53,17 +60,46 @@ class FindingsFilterFindingCriteriaCriterion {
     };
   }
 
-  factory FindingsFilterFindingCriteriaCriterion.fromMap(Map<String, dynamic> map) {
+  factory FindingsFilterFindingCriteriaCriterion.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FindingsFilterFindingCriteriaCriterion(
-      eqExactMatches: map['eqExactMatches'] == null ? null : (((map['eqExactMatches'] as List).cast<String>()).input()).input(),
-      eqs: map['eqs'] == null ? null : (((map['eqs'] as List).cast<String>()).input()).input(),
-      field: (map['field'] as String).input(),
-      gt: map['gt'] == null ? null : ((map['gt'] as String).input()).input(),
-      gte: map['gte'] == null ? null : ((map['gte'] as String).input()).input(),
-      lt: map['lt'] == null ? null : ((map['lt'] as String).input()).input(),
-      lte: map['lte'] == null ? null : ((map['lte'] as String).input()).input(),
-      neqs: map['neqs'] == null ? null : (((map['neqs'] as List).cast<String>()).input()).input(),
+      eqExactMatches: (() {
+        final guardedValue = map['eqExactMatches'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      eqs: (() {
+        final guardedValue = map['eqs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      field: pulumi.Input.fromValue(map['field'] as String),
+      gt: (() {
+        final guardedValue = map['gt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gte: (() {
+        final guardedValue = map['gte'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lt: (() {
+        final guardedValue = map['lt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lte: (() {
+        final guardedValue = map['lte'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      neqs: (() {
+        final guardedValue = map['neqs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

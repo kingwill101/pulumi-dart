@@ -8,19 +8,26 @@ class GetUdmSnapshotsResult {
   /// Cloud disk ID. This field is valid only when SourceType = UDM_ECS_DISK.
   final String? diskId;
   final int endTime;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Udm Snapshot IDs.
   final List<String> ids;
+
   /// ECS instance ID
   final String instanceId;
+
   /// The ID of the backup job that creates the snapshot.
   final String? jobId;
   final String? outputFile;
+
   /// A list of Udm Snapshot Entries. Each element contains the following attributes:
   final List<GetUdmSnapshotsSnapshot> snapshots;
+
   /// Data source type. Only UDM_ECS and UDM_ECS_DISK are supported.
   final String sourceType;
+
   /// Start Time
   final int startTime;
 
@@ -57,7 +64,11 @@ class GetUdmSnapshotsResult {
       'instanceId': instanceId,
       'jobId': ?jobId,
       'outputFile': ?outputFile,
-      'snapshots': pulumi.Input.encodeList<GetUdmSnapshotsSnapshot, Map<String, dynamic>>(snapshots, (value) => value.toMap()),
+      'snapshots':
+          pulumi.Input.encodeList<
+            GetUdmSnapshotsSnapshot,
+            Map<String, dynamic>
+          >(snapshots, (value) => value.toMap()),
       'sourceType': sourceType,
       'startTime': startTime,
     };
@@ -65,17 +76,33 @@ class GetUdmSnapshotsResult {
 
   factory GetUdmSnapshotsResult.fromMap(Map<String, dynamic> map) {
     return GetUdmSnapshotsResult(
-      diskId: map['diskId'] == null ? null : map['diskId']! as String,
+      diskId: (() {
+        final guardedValue = map['diskId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       endTime: map['endTime'] as int,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      jobId: map['jobId'] == null ? null : map['jobId']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      snapshots: pulumi.Input.decodeList<GetUdmSnapshotsSnapshot>(map['snapshots'], (value) => GetUdmSnapshotsSnapshot.fromMap((value as Map).cast<String, dynamic>())),
+      jobId: (() {
+        final guardedValue = map['jobId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      snapshots: pulumi.Input.decodeList<GetUdmSnapshotsSnapshot>(
+        map['snapshots']!,
+        (value) => GetUdmSnapshotsSnapshot.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       sourceType: map['sourceType'] as String,
       startTime: map['startTime'] as int,
     );
   }
 }
-

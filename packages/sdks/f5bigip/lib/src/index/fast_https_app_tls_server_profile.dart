@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FastHttpsAppTlsServerProfile {
   /// Name of existing BIG-IP SSL certificate to be used for FAST-Generated TLS Server Profile.
   final pulumi.Input<String> tlsCertName;
+
   /// Name of existing BIG-IP SSL Key to be used for FAST-Generated TLS Server Profile.
   final pulumi.Input<String> tlsKeyName;
 
@@ -25,9 +26,8 @@ class FastHttpsAppTlsServerProfile {
 
   factory FastHttpsAppTlsServerProfile.fromMap(Map<String, dynamic> map) {
     return FastHttpsAppTlsServerProfile(
-      tlsCertName: (map['tlsCertName'] as String).input(),
-      tlsKeyName: (map['tlsKeyName'] as String).input(),
+      tlsCertName: pulumi.Input.fromValue(map['tlsCertName'] as String),
+      tlsKeyName: pulumi.Input.fromValue(map['tlsKeyName'] as String),
     );
   }
 }
-

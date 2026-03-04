@@ -3,16 +3,15 @@ enum AntivirusSolutions {
   defender("Defender"),
   clamAv("ClamAv");
 
-  const AntivirusSolutions(this.value);
-  final String value;
+  const AntivirusSolutions(this.wireValue);
+  final String wireValue;
 
   static AntivirusSolutions fromValue(String value) {
     for (final item in AntivirusSolutions.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AntivirusSolutions value: $value');
   }
 }
-

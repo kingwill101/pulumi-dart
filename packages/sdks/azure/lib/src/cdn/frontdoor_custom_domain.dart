@@ -5,7 +5,7 @@ import 'frontdoor_custom_domain_tls.dart';
 
 /// Manages a Front Door (standard/premium) Custom Domain.
 ///
-/// !> **Note:** If you are using Terraform to manage your DNS Auth and DNS CNAME records for your Custom Domain you will need to add configuration blocks for both the `azure.dns.TxtRecord`(see the `Example DNS Auth TXT Record Usage` below) and the `azure.dns.CNameRecord`(see the `Example CNAME Record Usage` below) to your configuration file.
+/// !&gt; **Note:** If you are using Terraform to manage your DNS Auth and DNS CNAME records for your Custom Domain you will need to add configuration blocks for both the `azure.dns.TxtRecord`(see the `Example DNS Auth TXT Record Usage` below) and the `azure.dns.CNameRecord`(see the `Example CNAME Record Usage` below) to your configuration file.
 ///
 /// ## Example Usage
 ///
@@ -249,7 +249,7 @@ import 'frontdoor_custom_domain_tls.dart';
 ///
 /// ## Example DNS Auth TXT Record Usage
 ///
-/// The name of your DNS TXT record should be in the format of `_dnsauth.<your_subdomain>`. So, for example, if we use the `host_name` in the example usage above you would create a DNS TXT record with the name of `_dnsauth.contoso` which contains the value of the Front Door Custom Domains `validation_token` field. See the [product documentation](https://learn.microsoft.com/azure/frontdoor/standard-premium/how-to-add-custom-domain) for more information.
+/// The name of your DNS TXT record should be in the format of `_dnsauth.&lt;your_subdomain&gt;`. So, for example, if we use the `host_name` in the example usage above you would create a DNS TXT record with the name of `_dnsauth.contoso` which contains the value of the Front Door Custom Domains `validation_token` field. See the [product documentation](https://learn.microsoft.com/azure/frontdoor/standard-premium/how-to-add-custom-domain) for more information.
 ///
 ///
 /// ```typescript
@@ -430,7 +430,7 @@ import 'frontdoor_custom_domain_tls.dart';
 ///
 /// ## Example CNAME Record Usage
 ///
-/// !> **Note:** You **must** include the `depends_on` meta-argument which references both the `azure.cdn.FrontdoorRoute` and the `azure.cdn.FrontdoorSecurityPolicy` that are associated with your Custom Domain. The reason for these `depends_on` meta-arguments is because all of the resources for the Custom Domain need to be associated within Front Door before the CNAME record can be written to the domains DNS, else the CNAME validation will fail and Front Door will not enable traffic to the Domain.
+/// !&gt; **Note:** You **must** include the `depends_on` meta-argument which references both the `azure.cdn.FrontdoorRoute` and the `azure.cdn.FrontdoorSecurityPolicy` that are associated with your Custom Domain. The reason for these `depends_on` meta-arguments is because all of the resources for the Custom Domain need to be associated within Front Door before the CNAME record can be written to the domains DNS, else the CNAME validation will fail and Front Door will not enable traffic to the Domain.
 ///
 ///
 /// ```typescript
@@ -582,20 +582,26 @@ import 'frontdoor_custom_domain_tls.dart';
 class FrontdoorCustomDomain extends pulumi.CustomResource {
   /// The ID of the Front Door Profile. Changing this forces a new Front Door Custom Domain to be created.
   late final pulumi.Output<String> cdnFrontdoorProfileId;
+
   /// The ID of the Azure DNS Zone which should be used for this Front Door Custom Domain. If you are using Azure to host your [DNS domains](https://learn.microsoft.com/azure/dns/dns-overview), you must delegate the domain provider's domain name system (DNS) to an Azure DNS Zone. For more information, see [Delegate a domain to Azure DNS](https://learn.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Otherwise, if you're using your own domain provider to handle your DNS, you must validate the Front Door Custom Domain by creating the DNS TXT records manually.
   ///
-  /// <!-- * `pre_validated_cdn_frontdoor_custom_domain_id` - (Optional) The resource ID of the pre-validated Front Door Custom Domain. This domain type is used when you wish to onboard a validated Azure service domain, and then configure the Azure service behind an Azure Front Door.
+  /// &lt;!-- * `pre_validated_cdn_frontdoor_custom_domain_id` - (Optional) The resource ID of the pre-validated Front Door Custom Domain. This domain type is used when you wish to onboard a validated Azure service domain, and then configure the Azure service behind an Azure Front Door.
   ///
-  /// > **Note:** Currently `pre_validated_cdn_frontdoor_custom_domain_id` only supports domains validated by Static Web App. -->
+  /// &gt; **Note:** Currently `pre_validated_cdn_frontdoor_custom_domain_id` only supports domains validated by Static Web App. --&gt;
   late final pulumi.Output<String?> dnsZoneId;
+
   /// The date time that the token expires.
   late final pulumi.Output<String> expirationDate;
+
   /// The host name of the domain. The `host_name` field must be the FQDN of your domain(e.g. `contoso.fabrikam.com`). Changing this forces a new Front Door Custom Domain to be created.
   late final pulumi.Output<String> hostName;
+
   /// The name which should be used for this Front Door Custom Domain. Possible values must be between 2 and 260 characters in length, must begin with a letter or number, end with a letter or number and contain only letters, numbers and hyphens. Changing this forces a new Front Door Custom Domain to be created.
   late final pulumi.Output<String> name;
+
   /// A `tls` block as defined below.
   late final pulumi.Output<FrontdoorCustomDomainTls> tls;
+
   /// Challenge used for DNS TXT record or file based validation.
   late final pulumi.Output<String> validationToken;
 
@@ -608,18 +614,18 @@ class FrontdoorCustomDomain extends pulumi.CustomResource {
     FrontdoorCustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorCustomDomain:FrontdoorCustomDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
-    this.dnsZoneId = registerOutput<String?>('dnsZoneId');
-    this.expirationDate = registerOutput<String>('expirationDate');
-    this.hostName = registerOutput<String>('hostName');
+         'azure:cdn/frontdoorCustomDomain:FrontdoorCustomDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
+    dnsZoneId = registerOutput<String?>('dnsZoneId');
+    expirationDate = registerOutput<String>('expirationDate');
+    hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
-    this.tls = registerOutput<FrontdoorCustomDomainTls>('tls');
-    this.validationToken = registerOutput<String>('validationToken');
+    tls = registerOutput<FrontdoorCustomDomainTls>('tls');
+    validationToken = registerOutput<String>('validationToken');
   }
 
   /// Gets an existing [FrontdoorCustomDomain] resource's state with the given [name] and [id].
@@ -640,17 +646,17 @@ class FrontdoorCustomDomain extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:cdn/frontdoorCustomDomain:FrontdoorCustomDomain',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
-    this.dnsZoneId = registerOutput<String?>('dnsZoneId');
-    this.expirationDate = registerOutput<String>('expirationDate');
-    this.hostName = registerOutput<String>('hostName');
+         'azure:cdn/frontdoorCustomDomain:FrontdoorCustomDomain',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
+    dnsZoneId = registerOutput<String?>('dnsZoneId');
+    expirationDate = registerOutput<String>('expirationDate');
+    hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
-    this.tls = registerOutput<FrontdoorCustomDomainTls>('tls');
-    this.validationToken = registerOutput<String>('validationToken');
+    tls = registerOutput<FrontdoorCustomDomainTls>('tls');
+    validationToken = registerOutput<String>('validationToken');
   }
 }

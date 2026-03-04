@@ -1,5 +1,3 @@
-library module_loadbalancer;
-
 export 'loadbalancer/flavor_v2.dart';
 export 'loadbalancer/flavor_v2_args.dart';
 export 'loadbalancer/flavor_v2_state.dart';

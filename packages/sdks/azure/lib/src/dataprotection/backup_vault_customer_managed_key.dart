@@ -4,7 +4,7 @@ import 'backup_vault_customer_managed_key_state.dart';
 
 /// Manages a Backup Vault Customer Managed Key.
 ///
-/// !> **Note:** It is not possible to remove the Customer Managed Key from the Backup Vault once it's been added. To remove the Customer Managed Key, the parent Data Protection Backup Vault must be deleted and recreated.
+/// !&gt; **Note:** It is not possible to remove the Customer Managed Key from the Backup Vault once it's been added. To remove the Customer Managed Key, the parent Data Protection Backup Vault must be deleted and recreated.
 ///
 /// ## Example Usage
 ///
@@ -626,7 +626,7 @@ import 'backup_vault_customer_managed_key_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.DataProtection` - 2024-04-01
@@ -641,6 +641,7 @@ import 'backup_vault_customer_managed_key_state.dart';
 class BackupVaultCustomerManagedKey extends pulumi.CustomResource {
   /// The ID of the Backup Vault. Changing this forces a new resource to be created.
   late final pulumi.Output<String> dataProtectionBackupVaultId;
+
   /// The ID of the Key Vault Key which should be used to Encrypt the data in this Backup Vault.
   late final pulumi.Output<String> keyVaultKeyId;
 
@@ -653,13 +654,15 @@ class BackupVaultCustomerManagedKey extends pulumi.CustomResource {
     BackupVaultCustomerManagedKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:dataprotection/backupVaultCustomerManagedKey:BackupVaultCustomerManagedKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataProtectionBackupVaultId = registerOutput<String>('dataProtectionBackupVaultId');
-    this.keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+         'azure:dataprotection/backupVaultCustomerManagedKey:BackupVaultCustomerManagedKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataProtectionBackupVaultId = registerOutput<String>(
+      'dataProtectionBackupVaultId',
+    );
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
   }
 
   /// Gets an existing [BackupVaultCustomerManagedKey] resource's state with the given [name] and [id].
@@ -680,12 +683,14 @@ class BackupVaultCustomerManagedKey extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:dataprotection/backupVaultCustomerManagedKey:BackupVaultCustomerManagedKey',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.dataProtectionBackupVaultId = registerOutput<String>('dataProtectionBackupVaultId');
-    this.keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+         'azure:dataprotection/backupVaultCustomerManagedKey:BackupVaultCustomerManagedKey',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    dataProtectionBackupVaultId = registerOutput<String>(
+      'dataProtectionBackupVaultId',
+    );
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
   }
 }

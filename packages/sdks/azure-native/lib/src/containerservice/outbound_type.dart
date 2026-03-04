@@ -6,16 +6,15 @@ enum OutboundType {
   valueUserAssignedNATGateway("userAssignedNATGateway"),
   valueNone("none");
 
-  const OutboundType(this.value);
-  final String value;
+  const OutboundType(this.wireValue);
+  final String wireValue;
 
   static OutboundType fromValue(String value) {
     for (final item in OutboundType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OutboundType value: $value');
   }
 }
-

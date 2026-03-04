@@ -9,20 +9,13 @@ class UserSubject {
 
   /// Creates a new [UserSubject].
   /// [name] `name` is the username that matches, or "*" to match all usernames. Required.
-  UserSubject({
-    required this.name,
-  });
+  UserSubject({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory UserSubject.fromMap(Map<String, dynamic> map) {
-    return UserSubject(
-      name: (map['name'] as String).input(),
-    );
+    return UserSubject(name: pulumi.Input.fromValue(map['name'] as String));
   }
 }
-

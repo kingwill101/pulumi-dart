@@ -7,8 +7,10 @@ import 'volume_attachment_source_storage_k8s_io_v1alpha1.dart';
 class VolumeAttachmentSpecStorageK8sIoV1alpha1 {
   /// Attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().
   final pulumi.Input<String> attacher;
+
   /// The node that the volume should be attached to.
   final pulumi.Input<String> nodeName;
+
   /// Source represents the volume that should be attached.
   final pulumi.Input<VolumeAttachmentSourceStorageK8sIoV1alpha1> source;
 
@@ -26,16 +28,25 @@ class VolumeAttachmentSpecStorageK8sIoV1alpha1 {
     return <String, dynamic>{
       'attacher': attacher,
       'nodeName': nodeName,
-      'source': pulumi.Input.mapInputValue<VolumeAttachmentSourceStorageK8sIoV1alpha1, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source':
+          pulumi.Input.mapInputValue<
+            VolumeAttachmentSourceStorageK8sIoV1alpha1,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
     };
   }
 
-  factory VolumeAttachmentSpecStorageK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory VolumeAttachmentSpecStorageK8sIoV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VolumeAttachmentSpecStorageK8sIoV1alpha1(
-      attacher: (map['attacher'] as String).input(),
-      nodeName: (map['nodeName'] as String).input(),
-      source: (VolumeAttachmentSourceStorageK8sIoV1alpha1.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      attacher: pulumi.Input.fromValue(map['attacher'] as String),
+      nodeName: pulumi.Input.fromValue(map['nodeName'] as String),
+      source: pulumi.Input.fromValue(
+        VolumeAttachmentSourceStorageK8sIoV1alpha1.fromMap(
+          (map['source']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

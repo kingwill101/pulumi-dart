@@ -1,5 +1,3 @@
-library module_resourcemanager;
-
 export 'resourcemanager/capability.dart';
 export 'resourcemanager/capability_args.dart';
 export 'resourcemanager/capability_state.dart';

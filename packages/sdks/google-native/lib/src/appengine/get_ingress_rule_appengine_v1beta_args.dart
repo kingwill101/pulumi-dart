@@ -19,17 +19,13 @@ class GetIngressRuleAppengineV1betaArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'appId': appId,
-      'ingressRuleId': ingressRuleId,
-    };
+    return <String, dynamic>{'appId': appId, 'ingressRuleId': ingressRuleId};
   }
 
   factory GetIngressRuleAppengineV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetIngressRuleAppengineV1betaArgs(
-      appId: (map['appId'] as String).input(),
-      ingressRuleId: (map['ingressRuleId'] as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      ingressRuleId: pulumi.Input.fromValue(map['ingressRuleId'] as String),
     );
   }
 }
-

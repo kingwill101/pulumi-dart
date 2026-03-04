@@ -8,20 +8,15 @@ class DomainDevicesParallelAlias {
 
   /// Creates a new [DomainDevicesParallelAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesParallelAlias({
-    required this.name,
-  });
+  DomainDevicesParallelAlias({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory DomainDevicesParallelAlias.fromMap(Map<String, dynamic> map) {
     return DomainDevicesParallelAlias(
-      name: (map['name'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProfileClientSslCertKeyChain {
   /// Specifies the name of the certificate that the system uses for client-side SSL processing. The default is `default`
   final pulumi.Input<String>? cert;
+
   /// Specifies a certificate chain file that a server can use for authentication. The default is `None`.
   final pulumi.Input<String>? chain;
+
   /// Specifies the file name of the SSL key. The default is `default`
   final pulumi.Input<String>? key;
+
   /// Name of Cert-key-chain
   final pulumi.Input<String>? name;
+
   /// Type the name of the pass phrase used to encrypt the key.
   final pulumi.Input<String>? passphrase;
 
@@ -40,12 +44,31 @@ class ProfileClientSslCertKeyChain {
 
   factory ProfileClientSslCertKeyChain.fromMap(Map<String, dynamic> map) {
     return ProfileClientSslCertKeyChain(
-      cert: map['cert'] == null ? null : (map['cert']! as String).input(),
-      chain: map['chain'] == null ? null : (map['chain']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      passphrase: map['passphrase'] == null ? null : (map['passphrase']! as String).input(),
+      cert: (() {
+        final guardedValue = map['cert'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      chain: (() {
+        final guardedValue = map['chain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      passphrase: (() {
+        final guardedValue = map['passphrase'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

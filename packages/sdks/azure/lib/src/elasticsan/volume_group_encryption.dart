@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeGroupEncryption {
   /// The timestamp of the expiration time for the current version of the customer managed key.
   final pulumi.Input<String>? currentVersionedKeyExpirationTimestamp;
+
   /// The ID of the current versioned Key Vault Key in use.
   final pulumi.Input<String>? currentVersionedKeyId;
+
   /// The Key Vault key URI for Customer Managed Key encryption, which can be either a full URI or a versionless URI.
   final pulumi.Input<String> keyVaultKeyId;
+
   /// The timestamp of the last rotation of the Key Vault Key.
   final pulumi.Input<String>? lastKeyRotationTimestamp;
+
   /// The ID of the User Assigned Identity used by this Elastic SAN Volume Group.
   final pulumi.Input<String>? userAssignedIdentityId;
 
@@ -30,7 +34,8 @@ class VolumeGroupEncryption {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'currentVersionedKeyExpirationTimestamp': ?currentVersionedKeyExpirationTimestamp,
+      'currentVersionedKeyExpirationTimestamp':
+          ?currentVersionedKeyExpirationTimestamp,
       'currentVersionedKeyId': ?currentVersionedKeyId,
       'keyVaultKeyId': keyVaultKeyId,
       'lastKeyRotationTimestamp': ?lastKeyRotationTimestamp,
@@ -40,12 +45,27 @@ class VolumeGroupEncryption {
 
   factory VolumeGroupEncryption.fromMap(Map<String, dynamic> map) {
     return VolumeGroupEncryption(
-      currentVersionedKeyExpirationTimestamp: map['currentVersionedKeyExpirationTimestamp'] == null ? null : (map['currentVersionedKeyExpirationTimestamp']! as String).input(),
-      currentVersionedKeyId: map['currentVersionedKeyId'] == null ? null : (map['currentVersionedKeyId']! as String).input(),
-      keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
-      lastKeyRotationTimestamp: map['lastKeyRotationTimestamp'] == null ? null : (map['lastKeyRotationTimestamp']! as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
+      currentVersionedKeyExpirationTimestamp: (() {
+        final guardedValue = map['currentVersionedKeyExpirationTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      currentVersionedKeyId: (() {
+        final guardedValue = map['currentVersionedKeyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultKeyId: pulumi.Input.fromValue(map['keyVaultKeyId'] as String),
+      lastKeyRotationTimestamp: (() {
+        final guardedValue = map['lastKeyRotationTimestamp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userAssignedIdentityId: (() {
+        final guardedValue = map['userAssignedIdentityId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

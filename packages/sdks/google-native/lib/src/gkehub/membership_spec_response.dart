@@ -9,20 +9,17 @@ class MembershipSpecResponse {
 
   /// Creates a new [MembershipSpecResponse].
   /// [certificateManagement] Specifies workload certificate management.
-  MembershipSpecResponse({
-    required this.certificateManagement,
-  });
+  MembershipSpecResponse({required this.certificateManagement});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'certificateManagement': certificateManagement,
-    };
+    return <String, dynamic>{'certificateManagement': certificateManagement};
   }
 
   factory MembershipSpecResponse.fromMap(Map<String, dynamic> map) {
     return MembershipSpecResponse(
-      certificateManagement: (map['certificateManagement'] as String).input(),
+      certificateManagement: pulumi.Input.fromValue(
+        map['certificateManagement'] as String,
+      ),
     );
   }
 }
-

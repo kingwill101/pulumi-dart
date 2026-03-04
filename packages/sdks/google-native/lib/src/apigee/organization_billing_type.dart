@@ -5,16 +5,15 @@ enum OrganizationBillingType {
   evaluation("EVALUATION"),
   payg("PAYG");
 
-  const OrganizationBillingType(this.value);
-  final String value;
+  const OrganizationBillingType(this.wireValue);
+  final String wireValue;
 
   static OrganizationBillingType fromValue(String value) {
     for (final item in OrganizationBillingType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OrganizationBillingType value: $value');
   }
 }
-

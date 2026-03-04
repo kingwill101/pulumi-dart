@@ -14,16 +14,15 @@ enum GenerationLanguage {
   valueRust("rust"),
   valueSwift("swift");
 
-  const GenerationLanguage(this.value);
-  final String value;
+  const GenerationLanguage(this.wireValue);
+  final String wireValue;
 
   static GenerationLanguage fromValue(String value) {
     for (final item in GenerationLanguage.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown GenerationLanguage value: $value');
   }
 }
-

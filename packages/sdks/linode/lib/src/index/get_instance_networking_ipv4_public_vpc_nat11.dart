@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceNetworkingIpv4PublicVpcNat11 {
   /// The address.
   final pulumi.Input<String> address;
+
   /// The unique globally general API entity identifier for the VPC subnet.
   final pulumi.Input<int> subnetId;
+
   /// The unique globally general API entity identifier for the VPC.
   final pulumi.Input<int> vpcId;
 
@@ -28,12 +30,13 @@ class GetInstanceNetworkingIpv4PublicVpcNat11 {
     };
   }
 
-  factory GetInstanceNetworkingIpv4PublicVpcNat11.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceNetworkingIpv4PublicVpcNat11.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceNetworkingIpv4PublicVpcNat11(
-      address: (map['address'] as String).input(),
-      subnetId: (map['subnetId'] as int).input(),
-      vpcId: (map['vpcId'] as int).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as int),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as int),
     );
   }
 }
-

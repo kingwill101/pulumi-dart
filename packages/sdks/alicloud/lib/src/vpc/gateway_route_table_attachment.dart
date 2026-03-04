@@ -6,7 +6,7 @@ import 'gateway_route_table_attachment_state.dart';
 ///
 /// For information about VPC Gateway Route Table Attachment and how to use it, see [What is Gateway Route Table Attachment](https://www.alibabacloud.com/help/doc-detail/174112.htm).
 ///
-/// > **NOTE:** Available since v1.194.0.
+/// &gt; **NOTE:** Available since v1.194.0.
 ///
 /// ## Example Usage
 ///
@@ -237,12 +237,16 @@ import 'gateway_route_table_attachment_state.dart';
 class GatewayRouteTableAttachment extends pulumi.CustomResource {
   /// The creation time of the resource.
   late final pulumi.Output<String> createTime;
+
   /// Specifies whether to only precheck this request. Default value: `false`.
   late final pulumi.Output<bool?> dryRun;
+
   /// The ID of the IPv4 Gateway instance.
   late final pulumi.Output<String> ipv4GatewayId;
+
   /// The ID of the Gateway route table to be bound.
   late final pulumi.Output<String> routeTableId;
+
   /// The status of the IPv4 Gateway instance. Value:
   /// - **Creating**: The function is being created.
   /// - **Created**: Created and available.
@@ -261,16 +265,16 @@ class GatewayRouteTableAttachment extends pulumi.CustomResource {
     GatewayRouteTableAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.ipv4GatewayId = registerOutput<String>('ipv4GatewayId');
-    this.routeTableId = registerOutput<String>('routeTableId');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dryRun = registerOutput<bool?>('dryRun');
+    ipv4GatewayId = registerOutput<String>('ipv4GatewayId');
+    routeTableId = registerOutput<String>('routeTableId');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [GatewayRouteTableAttachment] resource's state with the given [name] and [id].
@@ -291,15 +295,15 @@ class GatewayRouteTableAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.ipv4GatewayId = registerOutput<String>('ipv4GatewayId');
-    this.routeTableId = registerOutput<String>('routeTableId');
-    this.status = registerOutput<String>('status');
+         'alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dryRun = registerOutput<bool?>('dryRun');
+    ipv4GatewayId = registerOutput<String>('ipv4GatewayId');
+    routeTableId = registerOutput<String>('routeTableId');
+    status = registerOutput<String>('status');
   }
 }

@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSaslAclsAcl {
   /// The operation type of the sasl acl.
   final pulumi.Input<String> aclOperationType;
+
   /// Get results for the specified resource name.
   final pulumi.Input<String> aclResourceName;
+
   /// The resource pattern type of the sasl acl.
   final pulumi.Input<String> aclResourcePatternType;
+
   /// Get results for the specified resource type.
   final pulumi.Input<String> aclResourceType;
+
   /// The host of the sasl acl.
   final pulumi.Input<String> host;
+
   /// Get results for the specified username.
   final pulumi.Input<String> username;
 
@@ -45,13 +50,16 @@ class GetSaslAclsAcl {
 
   factory GetSaslAclsAcl.fromMap(Map<String, dynamic> map) {
     return GetSaslAclsAcl(
-      aclOperationType: (map['aclOperationType'] as String).input(),
-      aclResourceName: (map['aclResourceName'] as String).input(),
-      aclResourcePatternType: (map['aclResourcePatternType'] as String).input(),
-      aclResourceType: (map['aclResourceType'] as String).input(),
-      host: (map['host'] as String).input(),
-      username: (map['username'] as String).input(),
+      aclOperationType: pulumi.Input.fromValue(
+        map['aclOperationType'] as String,
+      ),
+      aclResourceName: pulumi.Input.fromValue(map['aclResourceName'] as String),
+      aclResourcePatternType: pulumi.Input.fromValue(
+        map['aclResourcePatternType'] as String,
+      ),
+      aclResourceType: pulumi.Input.fromValue(map['aclResourceType'] as String),
+      host: pulumi.Input.fromValue(map['host'] as String),
+      username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
 }
-

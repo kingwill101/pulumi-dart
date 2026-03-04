@@ -5,24 +5,38 @@ import 'domain_devices_disk_mirror_backing_store_format_metadata_cache_max_size.
 
 class DomainDevicesDiskMirrorBackingStoreFormatMetadataCache {
   /// Sets the maximum size for the metadata cache in the data store format configuration.
-  final pulumi.Input<DomainDevicesDiskMirrorBackingStoreFormatMetadataCacheMaxSize>? maxSize;
+  final pulumi.Input<
+    DomainDevicesDiskMirrorBackingStoreFormatMetadataCacheMaxSize
+  >?
+  maxSize;
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreFormatMetadataCache].
   /// [maxSize] Sets the maximum size for the metadata cache in the data store format configuration.
-  DomainDevicesDiskMirrorBackingStoreFormatMetadataCache({
-    this.maxSize,
-  });
+  DomainDevicesDiskMirrorBackingStoreFormatMetadataCache({this.maxSize});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxSize': ?pulumi.Input.mapOptionalInputValue<DomainDevicesDiskMirrorBackingStoreFormatMetadataCacheMaxSize, Map<String, dynamic>>(maxSize, (value) => value.toMap()),
+      'maxSize':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainDevicesDiskMirrorBackingStoreFormatMetadataCacheMaxSize,
+            Map<String, dynamic>
+          >(maxSize, (value) => value.toMap()),
     };
   }
 
-  factory DomainDevicesDiskMirrorBackingStoreFormatMetadataCache.fromMap(Map<String, dynamic> map) {
+  factory DomainDevicesDiskMirrorBackingStoreFormatMetadataCache.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDevicesDiskMirrorBackingStoreFormatMetadataCache(
-      maxSize: map['maxSize'] == null ? null : (DomainDevicesDiskMirrorBackingStoreFormatMetadataCacheMaxSize.fromMap((map['maxSize']! as Map).cast<String, dynamic>())).input(),
+      maxSize: (() {
+        final guardedValue = map['maxSize'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainDevicesDiskMirrorBackingStoreFormatMetadataCacheMaxSize.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

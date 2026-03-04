@@ -9,29 +9,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetLoadBalancersArgs {
   /// The IP version. Valid values: `ipv4`, `DualStack`.
   final pulumi.Input<String>? addressIpVersion;
+
   /// The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
   final pulumi.Input<String>? addressType;
+
   /// The domain name of the NLB instance.
   final pulumi.Input<String>? dnsName;
+
   /// A list of Load Balancer IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
   final pulumi.Input<String>? ipv6AddressType;
+
   /// The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
   final pulumi.Input<String>? loadBalancerBusinessStatus;
+
   /// The name of the NLB instance. You can specify at most 10 names.
   final pulumi.Input<List<String>>? loadBalancerNames;
+
   /// A regex string to filter results by Load Balancer name.
   final pulumi.Input<String>? nameRegex;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The ID of the resource group.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
   final pulumi.Input<String>? status;
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify at most 10 IDs.
   final pulumi.Input<List<String>>? vpcIds;
+
   /// The name of the zone.
   final pulumi.Input<String>? zoneId;
 
@@ -88,21 +100,78 @@ class GetLoadBalancersArgs {
 
   factory GetLoadBalancersArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersArgs(
-      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion']! as String).input(),
-      addressType: map['addressType'] == null ? null : (map['addressType']! as String).input(),
-      dnsName: map['dnsName'] == null ? null : (map['dnsName']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      ipv6AddressType: map['ipv6AddressType'] == null ? null : (map['ipv6AddressType']! as String).input(),
-      loadBalancerBusinessStatus: map['loadBalancerBusinessStatus'] == null ? null : (map['loadBalancerBusinessStatus']! as String).input(),
-      loadBalancerNames: map['loadBalancerNames'] == null ? null : ((map['loadBalancerNames']! as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds']! as List).cast<String>()).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      addressIpVersion: (() {
+        final guardedValue = map['addressIpVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      addressType: (() {
+        final guardedValue = map['addressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dnsName: (() {
+        final guardedValue = map['dnsName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      ipv6AddressType: (() {
+        final guardedValue = map['ipv6AddressType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loadBalancerBusinessStatus: (() {
+        final guardedValue = map['loadBalancerBusinessStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loadBalancerNames: (() {
+        final guardedValue = map['loadBalancerNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcIds: (() {
+        final guardedValue = map['vpcIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

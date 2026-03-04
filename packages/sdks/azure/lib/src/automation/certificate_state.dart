@@ -6,16 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateState {
   /// The name of the automation account in which the Certificate is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? automationAccountName;
+
   /// Base64 encoded value of the certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? base64;
+
   /// The description of this Automation Certificate.
   final pulumi.Input<String>? description;
+
   /// The is exportable flag of the certificate.
   final pulumi.Input<bool>? exportable;
+
   /// Specifies the name of the Certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group in which the Certificate is created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// The thumbprint for the certificate.
   final pulumi.Input<String>? thumbprint;
 
@@ -51,14 +57,41 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName']! as String).input(),
-      base64: map['base64'] == null ? null : (map['base64']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      exportable: map['exportable'] == null ? null : (map['exportable']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      automationAccountName: (() {
+        final guardedValue = map['automationAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      base64: (() {
+        final guardedValue = map['base64'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      exportable: (() {
+        final guardedValue = map['exportable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      thumbprint: (() {
+        final guardedValue = map['thumbprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

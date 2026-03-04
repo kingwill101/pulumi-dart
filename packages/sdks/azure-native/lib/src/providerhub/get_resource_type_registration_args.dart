@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourceTypeRegistrationArgs {
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String> providerNamespace;
+
   /// The resource type.
   final pulumi.Input<String> resourceType;
 
@@ -29,9 +30,10 @@ class GetResourceTypeRegistrationArgs {
 
   factory GetResourceTypeRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceTypeRegistrationArgs(
-      providerNamespace: (map['providerNamespace'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
+      providerNamespace: pulumi.Input.fromValue(
+        map['providerNamespace'] as String,
+      ),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
-

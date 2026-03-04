@@ -7,18 +7,25 @@ import 'instance_view_status_response.dart';
 class VirtualMachineRunCommandInstanceViewResponse {
   /// Script end time.
   final pulumi.Input<String>? endTime;
+
   /// Script error stream.
   final pulumi.Input<String>? error;
+
   /// Communicate script configuration errors or execution messages.
   final pulumi.Input<String>? executionMessage;
+
   /// Script execution status.
   final pulumi.Input<String>? executionState;
+
   /// Exit code returned from script execution.
   final pulumi.Input<int>? exitCode;
+
   /// Script output stream.
   final pulumi.Input<String>? output;
+
   /// Script start time.
   final pulumi.Input<String>? startTime;
+
   /// The resource status information.
   final pulumi.Input<List<InstanceViewStatusResponse>>? statuses;
 
@@ -51,21 +58,72 @@ class VirtualMachineRunCommandInstanceViewResponse {
       'exitCode': ?exitCode,
       'output': ?output,
       'startTime': ?startTime,
-      'statuses': ?pulumi.Input.mapOptionalInputValue<List<InstanceViewStatusResponse>, List<Map<String, dynamic>>>(statuses, (value) => pulumi.Input.encodeList<InstanceViewStatusResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'statuses':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceViewStatusResponse>,
+            List<Map<String, dynamic>>
+          >(
+            statuses,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceViewStatusResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory VirtualMachineRunCommandInstanceViewResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineRunCommandInstanceViewResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineRunCommandInstanceViewResponse(
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      error: map['error'] == null ? null : (map['error']! as String).input(),
-      executionMessage: map['executionMessage'] == null ? null : (map['executionMessage']! as String).input(),
-      executionState: map['executionState'] == null ? null : (map['executionState']! as String).input(),
-      exitCode: map['exitCode'] == null ? null : (map['exitCode']! as int).input(),
-      output: map['output'] == null ? null : (map['output']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses']!, (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      error: (() {
+        final guardedValue = map['error'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executionMessage: (() {
+        final guardedValue = map['executionMessage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      executionState: (() {
+        final guardedValue = map['executionState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      exitCode: (() {
+        final guardedValue = map['exitCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      output: (() {
+        final guardedValue = map['output'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statuses: (() {
+        final guardedValue = map['statuses'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<InstanceViewStatusResponse>(
+            guardedValue,
+            (value) => InstanceViewStatusResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -8,20 +8,21 @@ class WatchlistEntityPopulationMechanism {
 
   /// Creates a new [WatchlistEntityPopulationMechanism].
   /// [manual] Entities are added manually.
-  WatchlistEntityPopulationMechanism({
-    this.manual,
-  });
+  WatchlistEntityPopulationMechanism({this.manual});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'manual': ?manual,
-    };
+    return <String, dynamic>{'manual': ?manual};
   }
 
   factory WatchlistEntityPopulationMechanism.fromMap(Map<String, dynamic> map) {
     return WatchlistEntityPopulationMechanism(
-      manual: map['manual'] == null ? null : ((map['manual']! as Map).cast<String, dynamic>()).input(),
+      manual: (() {
+        final guardedValue = map['manual'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

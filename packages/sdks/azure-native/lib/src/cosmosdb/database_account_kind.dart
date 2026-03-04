@@ -4,16 +4,15 @@ enum DatabaseAccountKind {
   valueMongoDB("MongoDB"),
   valueParse("Parse");
 
-  const DatabaseAccountKind(this.value);
-  final String value;
+  const DatabaseAccountKind(this.wireValue);
+  final String wireValue;
 
   static DatabaseAccountKind fromValue(String value) {
     for (final item in DatabaseAccountKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DatabaseAccountKind value: $value');
   }
 }
-

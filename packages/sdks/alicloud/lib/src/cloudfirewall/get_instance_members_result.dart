@@ -6,10 +6,13 @@ import 'get_instance_members_member.dart';
 /// Result data returned by getInstanceMembers.
 class GetInstanceMembersResult {
   final String? currentPage;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Instance Member IDs.
   final List<String> ids;
+
   /// A list of Instance Member Entries. Each element contains the following attributes:
   final List<GetInstanceMembersMember> members;
   final String? outputFile;
@@ -39,7 +42,11 @@ class GetInstanceMembersResult {
       'currentPage': ?currentPage,
       'id': id,
       'ids': ids,
-      'members': pulumi.Input.encodeList<GetInstanceMembersMember, Map<String, dynamic>>(members, (value) => value.toMap()),
+      'members':
+          pulumi.Input.encodeList<
+            GetInstanceMembersMember,
+            Map<String, dynamic>
+          >(members, (value) => value.toMap()),
       'outputFile': ?outputFile,
       'pageNumber': ?pageNumber,
       'pageSize': ?pageSize,
@@ -48,14 +55,34 @@ class GetInstanceMembersResult {
 
   factory GetInstanceMembersResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceMembersResult(
-      currentPage: map['currentPage'] == null ? null : map['currentPage']! as String,
+      currentPage: (() {
+        final guardedValue = map['currentPage'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      members: pulumi.Input.decodeList<GetInstanceMembersMember>(map['members'], (value) => GetInstanceMembersMember.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      members: pulumi.Input.decodeList<GetInstanceMembersMember>(
+        map['members']!,
+        (value) => GetInstanceMembersMember.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

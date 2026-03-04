@@ -5,14 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSiteMonitorsMonitor {
   /// Address.
   final pulumi.Input<String> address;
+
   /// CreateTime.
   final pulumi.Input<String> createTime;
+
   /// Monitoring frequency.
   final pulumi.Input<String> interval;
+
   /// Task ID.
   final pulumi.Input<String> taskId;
+
   /// Task Name.
   final pulumi.Input<String> taskName;
+
   /// Task Type.
   final pulumi.Input<String> taskType;
 
@@ -45,13 +50,12 @@ class GetSiteMonitorsMonitor {
 
   factory GetSiteMonitorsMonitor.fromMap(Map<String, dynamic> map) {
     return GetSiteMonitorsMonitor(
-      address: (map['address'] as String).input(),
-      createTime: (map['createTime'] as String).input(),
-      interval: (map['interval'] as String).input(),
-      taskId: (map['taskId'] as String).input(),
-      taskName: (map['taskName'] as String).input(),
-      taskType: (map['taskType'] as String).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      interval: pulumi.Input.fromValue(map['interval'] as String),
+      taskId: pulumi.Input.fromValue(map['taskId'] as String),
+      taskName: pulumi.Input.fromValue(map['taskName'] as String),
+      taskType: pulumi.Input.fromValue(map['taskType'] as String),
     );
   }
 }
-

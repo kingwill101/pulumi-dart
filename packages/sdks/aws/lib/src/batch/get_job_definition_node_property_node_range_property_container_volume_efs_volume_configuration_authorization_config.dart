@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig {
   /// The Amazon EFS access point ID to use.
   final pulumi.Input<String> accessPointId;
+
   /// Whether or not to use the AWS Batch job IAM role defined in a job definition when mounting the Amazon EFS file system.
   final pulumi.Input<String> iam;
 
@@ -17,17 +18,15 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accessPointId': accessPointId,
-      'iam': iam,
-    };
+    return <String, dynamic>{'accessPointId': accessPointId, 'iam': iam};
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig.fromMap(Map<String, dynamic> map) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig(
-      accessPointId: (map['accessPointId'] as String).input(),
-      iam: (map['iam'] as String).input(),
+      accessPointId: pulumi.Input.fromValue(map['accessPointId'] as String),
+      iam: pulumi.Input.fromValue(map['iam'] as String),
     );
   }
 }
-

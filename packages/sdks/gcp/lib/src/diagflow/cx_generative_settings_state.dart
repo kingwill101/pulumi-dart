@@ -11,22 +11,30 @@ class CxGenerativeSettingsState {
   /// Settings for Generative Fallback.
   /// Structure is documented below.
   final pulumi.Input<CxGenerativeSettingsFallbackSettings>? fallbackSettings;
+
   /// Settings for Generative Safety.
   /// Structure is documented below.
-  final pulumi.Input<CxGenerativeSettingsGenerativeSafetySettings>? generativeSafetySettings;
+  final pulumi.Input<CxGenerativeSettingsGenerativeSafetySettings>?
+  generativeSafetySettings;
+
   /// Settings for knowledge connector.
   /// Structure is documented below.
-  final pulumi.Input<CxGenerativeSettingsKnowledgeConnectorSettings>? knowledgeConnectorSettings;
+  final pulumi.Input<CxGenerativeSettingsKnowledgeConnectorSettings>?
+  knowledgeConnectorSettings;
+
   /// Language for this settings.
   final pulumi.Input<String>? languageCode;
+
   /// LLM model settings.
   /// Structure is documented below.
   final pulumi.Input<CxGenerativeSettingsLlmModelSettings>? llmModelSettings;
+
   /// The unique identifier of the generativeSettings.
-  /// Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/generativeSettings.
+  /// Format: projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/generativeSettings.
   final pulumi.Input<String>? name;
+
   /// The agent to create a flow for.
-  /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
+  /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
   final pulumi.Input<String>? parent;
 
   /// Creates a new [CxGenerativeSettingsState].
@@ -49,11 +57,27 @@ class CxGenerativeSettingsState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fallbackSettings': ?pulumi.Input.mapOptionalInputValue<CxGenerativeSettingsFallbackSettings, Map<String, dynamic>>(fallbackSettings, (value) => value.toMap()),
-      'generativeSafetySettings': ?pulumi.Input.mapOptionalInputValue<CxGenerativeSettingsGenerativeSafetySettings, Map<String, dynamic>>(generativeSafetySettings, (value) => value.toMap()),
-      'knowledgeConnectorSettings': ?pulumi.Input.mapOptionalInputValue<CxGenerativeSettingsKnowledgeConnectorSettings, Map<String, dynamic>>(knowledgeConnectorSettings, (value) => value.toMap()),
+      'fallbackSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxGenerativeSettingsFallbackSettings,
+            Map<String, dynamic>
+          >(fallbackSettings, (value) => value.toMap()),
+      'generativeSafetySettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxGenerativeSettingsGenerativeSafetySettings,
+            Map<String, dynamic>
+          >(generativeSafetySettings, (value) => value.toMap()),
+      'knowledgeConnectorSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxGenerativeSettingsKnowledgeConnectorSettings,
+            Map<String, dynamic>
+          >(knowledgeConnectorSettings, (value) => value.toMap()),
       'languageCode': ?languageCode,
-      'llmModelSettings': ?pulumi.Input.mapOptionalInputValue<CxGenerativeSettingsLlmModelSettings, Map<String, dynamic>>(llmModelSettings, (value) => value.toMap()),
+      'llmModelSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxGenerativeSettingsLlmModelSettings,
+            Map<String, dynamic>
+          >(llmModelSettings, (value) => value.toMap()),
       'name': ?name,
       'parent': ?parent,
     };
@@ -61,14 +85,57 @@ class CxGenerativeSettingsState {
 
   factory CxGenerativeSettingsState.fromMap(Map<String, dynamic> map) {
     return CxGenerativeSettingsState(
-      fallbackSettings: map['fallbackSettings'] == null ? null : (CxGenerativeSettingsFallbackSettings.fromMap((map['fallbackSettings']! as Map).cast<String, dynamic>())).input(),
-      generativeSafetySettings: map['generativeSafetySettings'] == null ? null : (CxGenerativeSettingsGenerativeSafetySettings.fromMap((map['generativeSafetySettings']! as Map).cast<String, dynamic>())).input(),
-      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : (CxGenerativeSettingsKnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings']! as Map).cast<String, dynamic>())).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
-      llmModelSettings: map['llmModelSettings'] == null ? null : (CxGenerativeSettingsLlmModelSettings.fromMap((map['llmModelSettings']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      fallbackSettings: (() {
+        final guardedValue = map['fallbackSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxGenerativeSettingsFallbackSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      generativeSafetySettings: (() {
+        final guardedValue = map['generativeSafetySettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxGenerativeSettingsGenerativeSafetySettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      knowledgeConnectorSettings: (() {
+        final guardedValue = map['knowledgeConnectorSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxGenerativeSettingsKnowledgeConnectorSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      languageCode: (() {
+        final guardedValue = map['languageCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      llmModelSettings: (() {
+        final guardedValue = map['llmModelSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CxGenerativeSettingsLlmModelSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parent: (() {
+        final guardedValue = map['parent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

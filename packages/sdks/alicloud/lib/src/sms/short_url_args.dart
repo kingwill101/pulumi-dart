@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShortUrlArgs {
   /// Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
   final pulumi.Input<int> effectiveDays;
+
   /// The name of the resource.
   final pulumi.Input<String> shortUrlName;
+
   /// The original link address.
   final pulumi.Input<String> sourceUrl;
 
@@ -34,10 +36,9 @@ class ShortUrlArgs {
 
   factory ShortUrlArgs.fromMap(Map<String, dynamic> map) {
     return ShortUrlArgs(
-      effectiveDays: (map['effectiveDays'] as int).input(),
-      shortUrlName: (map['shortUrlName'] as String).input(),
-      sourceUrl: (map['sourceUrl'] as String).input(),
+      effectiveDays: pulumi.Input.fromValue(map['effectiveDays'] as int),
+      shortUrlName: pulumi.Input.fromValue(map['shortUrlName'] as String),
+      sourceUrl: pulumi.Input.fromValue(map['sourceUrl'] as String),
     );
   }
 }
-

@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IPv6FirewallRuleArgs {
   /// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpv6Address.
   final pulumi.Input<String>? endIPv6Address;
+
   /// The name of the firewall rule.
   final pulumi.Input<String>? firewallRuleName;
+
   /// Resource name.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the server.
   final pulumi.Input<String> serverName;
+
   /// The start IP address of the firewall rule. Must be IPv6 format.
   final pulumi.Input<String>? startIPv6Address;
 
@@ -49,13 +54,30 @@ class IPv6FirewallRuleArgs {
 
   factory IPv6FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return IPv6FirewallRuleArgs(
-      endIPv6Address: map['endIPv6Address'] == null ? null : (map['endIPv6Address']! as String).input(),
-      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: (map['serverName'] as String).input(),
-      startIPv6Address: map['startIPv6Address'] == null ? null : (map['startIPv6Address']! as String).input(),
+      endIPv6Address: (() {
+        final guardedValue = map['endIPv6Address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      firewallRuleName: (() {
+        final guardedValue = map['firewallRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverName: pulumi.Input.fromValue(map['serverName'] as String),
+      startIPv6Address: (() {
+        final guardedValue = map['startIPv6Address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

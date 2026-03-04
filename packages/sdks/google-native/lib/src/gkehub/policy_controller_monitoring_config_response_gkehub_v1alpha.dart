@@ -14,15 +14,16 @@ class PolicyControllerMonitoringConfigResponseGkehubV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'backends': backends,
-    };
+    return <String, dynamic>{'backends': backends};
   }
 
-  factory PolicyControllerMonitoringConfigResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory PolicyControllerMonitoringConfigResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyControllerMonitoringConfigResponseGkehubV1alpha(
-      backends: ((map['backends'] as List).cast<String>()).input(),
+      backends: pulumi.Input.fromValue(
+        (map['backends'] as List).cast<String>(),
+      ),
     );
   }
 }
-

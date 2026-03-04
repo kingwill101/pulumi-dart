@@ -2,8 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workload_args.dart';
 import 'workload_attributes.dart';
 import 'workload_state.dart';
-import 'workload_workload_property.dart';
-import 'workload_workload_reference.dart';
 
 /// Workload represents a binary deployment (such as Managed Instance Groups (MIGs), GKE deployments, etc.) that performs the smallest logical subset of business functionality. It registers identified workload to the Application.
 ///
@@ -37,38 +35,52 @@ import 'workload_workload_reference.dart';
 class Workload extends pulumi.CustomResource {
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   late final pulumi.Output<String> applicationId;
+
   /// Consumer provided attributes.
   /// Structure is documented below.
   late final pulumi.Output<WorkloadAttributes?> attributes;
+
   /// Output only. Create time.
   late final pulumi.Output<String> createTime;
+
   /// User-defined description of a Workload.
   late final pulumi.Output<String?> description;
+
   /// Immutable. The resource name of the original discovered workload.
   late final pulumi.Output<String> discoveredWorkload;
+
   /// User-defined name for the Workload.
   late final pulumi.Output<String?> displayName;
+
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   late final pulumi.Output<String> location;
+
   /// Identifier. The resource name of the Workload. Format:"projects/{host-project-id}/locations/{location}/applications/{application-id}/workloads/{workload-id}"
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Output only. Workload state. Possible values:  STATE_UNSPECIFIED CREATING ACTIVE DELETING DETACHED
   late final pulumi.Output<String> state;
+
   /// Output only. A universally unique identifier (UUID) for the `Workload` in the UUID4 format.
   late final pulumi.Output<String> uid;
+
   /// Output only. Update time.
   late final pulumi.Output<String> updateTime;
+
   /// The Workload identifier.
   late final pulumi.Output<String> workloadId;
+
   /// Properties of an underlying compute resource represented by the Workload.
   /// Structure is documented below.
-  late final pulumi.Output<List<WorkloadWorkloadProperty>> workloadProperties;
+  late final pulumi.Output<List<Map<String, dynamic>>> workloadProperties;
+
   /// Reference of an underlying compute resource represented by the Workload.
   /// Structure is documented below.
-  late final pulumi.Output<List<WorkloadWorkloadReference>> workloadReferences;
+  late final pulumi.Output<List<Map<String, dynamic>>> workloadReferences;
 
   /// Creates a new [Workload].
   /// [name] The Pulumi resource name.
@@ -79,26 +91,30 @@ class Workload extends pulumi.CustomResource {
     WorkloadArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apphub/workload:Workload',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.attributes = registerOutput<WorkloadAttributes?>('attributes');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.discoveredWorkload = registerOutput<String>('discoveredWorkload');
-    this.displayName = registerOutput<String?>('displayName');
-    this.location = registerOutput<String>('location');
+         'gcp:apphub/workload:Workload',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    attributes = registerOutput<WorkloadAttributes?>('attributes');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    discoveredWorkload = registerOutput<String>('discoveredWorkload');
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.state = registerOutput<String>('state');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.workloadId = registerOutput<String>('workloadId');
-    this.workloadProperties = registerOutput<List<WorkloadWorkloadProperty>>('workloadProperties');
-    this.workloadReferences = registerOutput<List<WorkloadWorkloadReference>>('workloadReferences');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    workloadId = registerOutput<String>('workloadId');
+    workloadProperties = registerOutput<List<Map<String, dynamic>>>(
+      'workloadProperties',
+    );
+    workloadReferences = registerOutput<List<Map<String, dynamic>>>(
+      'workloadReferences',
+    );
   }
 
   /// Gets an existing [Workload] resource's state with the given [name] and [id].
@@ -119,25 +135,29 @@ class Workload extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apphub/workload:Workload',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.attributes = registerOutput<WorkloadAttributes?>('attributes');
-    this.createTime = registerOutput<String>('createTime');
-    this.description = registerOutput<String?>('description');
-    this.discoveredWorkload = registerOutput<String>('discoveredWorkload');
-    this.displayName = registerOutput<String?>('displayName');
-    this.location = registerOutput<String>('location');
+         'gcp:apphub/workload:Workload',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    attributes = registerOutput<WorkloadAttributes?>('attributes');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String?>('description');
+    discoveredWorkload = registerOutput<String>('discoveredWorkload');
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
+    project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
-    this.uid = registerOutput<String>('uid');
-    this.updateTime = registerOutput<String>('updateTime');
-    this.workloadId = registerOutput<String>('workloadId');
-    this.workloadProperties = registerOutput<List<WorkloadWorkloadProperty>>('workloadProperties');
-    this.workloadReferences = registerOutput<List<WorkloadWorkloadReference>>('workloadReferences');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    workloadId = registerOutput<String>('workloadId');
+    workloadProperties = registerOutput<List<Map<String, dynamic>>>(
+      'workloadProperties',
+    );
+    workloadReferences = registerOutput<List<Map<String, dynamic>>>(
+      'workloadReferences',
+    );
   }
 }

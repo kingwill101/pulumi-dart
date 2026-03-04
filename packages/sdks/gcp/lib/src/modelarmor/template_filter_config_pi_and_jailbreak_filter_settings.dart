@@ -8,6 +8,7 @@ class TemplateFilterConfigPiAndJailbreakFilterSettings {
   /// MEDIUM_AND_ABOVE
   /// HIGH
   final pulumi.Input<String>? confidenceLevel;
+
   /// Tells whether Prompt injection and Jailbreak filter is enabled or
   /// disabled.
   /// Possible values:
@@ -30,11 +31,20 @@ class TemplateFilterConfigPiAndJailbreakFilterSettings {
     };
   }
 
-  factory TemplateFilterConfigPiAndJailbreakFilterSettings.fromMap(Map<String, dynamic> map) {
+  factory TemplateFilterConfigPiAndJailbreakFilterSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TemplateFilterConfigPiAndJailbreakFilterSettings(
-      confidenceLevel: map['confidenceLevel'] == null ? null : (map['confidenceLevel']! as String).input(),
-      filterEnforcement: map['filterEnforcement'] == null ? null : (map['filterEnforcement']! as String).input(),
+      confidenceLevel: (() {
+        final guardedValue = map['confidenceLevel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filterEnforcement: (() {
+        final guardedValue = map['filterEnforcement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

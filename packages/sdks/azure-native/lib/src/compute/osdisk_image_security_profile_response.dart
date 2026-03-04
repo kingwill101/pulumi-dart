@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OSDiskImageSecurityProfileResponse {
   /// confidential VM encryption types
   final pulumi.Input<String>? confidentialVMEncryptionType;
+
   /// secure VM disk encryption set id
   final pulumi.Input<String>? secureVMDiskEncryptionSetId;
 
@@ -26,9 +27,16 @@ class OSDiskImageSecurityProfileResponse {
 
   factory OSDiskImageSecurityProfileResponse.fromMap(Map<String, dynamic> map) {
     return OSDiskImageSecurityProfileResponse(
-      confidentialVMEncryptionType: map['confidentialVMEncryptionType'] == null ? null : (map['confidentialVMEncryptionType']! as String).input(),
-      secureVMDiskEncryptionSetId: map['secureVMDiskEncryptionSetId'] == null ? null : (map['secureVMDiskEncryptionSetId']! as String).input(),
+      confidentialVMEncryptionType: (() {
+        final guardedValue = map['confidentialVMEncryptionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secureVMDiskEncryptionSetId: (() {
+        final guardedValue = map['secureVMDiskEncryptionSetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

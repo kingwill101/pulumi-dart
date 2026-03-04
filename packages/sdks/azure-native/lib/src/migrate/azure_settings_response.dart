@@ -6,36 +6,52 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureSettingsResponse {
   /// Gets Avs labour cost percentage.
   final pulumi.Input<double>? avsLaborCostPercentage;
+
   /// Migration Strategy.
   final pulumi.Input<String>? businessCaseType;
+
   /// Gets comfort factor.
   final pulumi.Input<double>? comfortFactor;
+
   /// Business case Currency.
   final pulumi.Input<String> currency;
+
   /// Gets azure Discount percentage.
   final pulumi.Input<double>? discountPercentage;
+
   /// Gets IaaS labour cost percentage.
   final pulumi.Input<double>? iaasLaborCostPercentage;
+
   /// Gets infrastructure growth rate.
   final pulumi.Input<double>? infrastructureGrowthRate;
+
   /// Gets network cost percentage.
   final pulumi.Input<double>? networkCostPercentage;
+
   /// Gets PaaS labour cost percentage.
   final pulumi.Input<double>? paasLaborCostPercentage;
+
   /// Gets migration completion percentage per year.
   final pulumi.Input<Map<String, double>>? perYearMigrationCompletionPercentage;
+
   /// Gets end time to use for performance.
   final pulumi.Input<String>? performanceDataEndTime;
+
   /// Gets start time to use for performance.
   final pulumi.Input<String>? performanceDataStartTime;
+
   /// Gets utilization percentile for performance.
   final pulumi.Input<double>? performanceUtilizationPercentile;
+
   /// Gets the business case savings option type.
   final pulumi.Input<String>? savingsOption;
+
   /// Gets or sets azure location.
   final pulumi.Input<String> targetLocation;
+
   /// Gets wACC percentage.
   final pulumi.Input<double>? wacc;
+
   /// Workload discovery source.
   final pulumi.Input<String>? workloadDiscoverySource;
 
@@ -88,7 +104,8 @@ class AzureSettingsResponse {
       'infrastructureGrowthRate': ?infrastructureGrowthRate,
       'networkCostPercentage': ?networkCostPercentage,
       'paasLaborCostPercentage': ?paasLaborCostPercentage,
-      'perYearMigrationCompletionPercentage': ?perYearMigrationCompletionPercentage,
+      'perYearMigrationCompletionPercentage':
+          ?perYearMigrationCompletionPercentage,
       'performanceDataEndTime': ?performanceDataEndTime,
       'performanceDataStartTime': ?performanceDataStartTime,
       'performanceUtilizationPercentile': ?performanceUtilizationPercentile,
@@ -101,24 +118,85 @@ class AzureSettingsResponse {
 
   factory AzureSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AzureSettingsResponse(
-      avsLaborCostPercentage: map['avsLaborCostPercentage'] == null ? null : (map['avsLaborCostPercentage']! as double).input(),
-      businessCaseType: map['businessCaseType'] == null ? null : (map['businessCaseType']! as String).input(),
-      comfortFactor: map['comfortFactor'] == null ? null : (map['comfortFactor']! as double).input(),
-      currency: (map['currency'] as String).input(),
-      discountPercentage: map['discountPercentage'] == null ? null : (map['discountPercentage']! as double).input(),
-      iaasLaborCostPercentage: map['iaasLaborCostPercentage'] == null ? null : (map['iaasLaborCostPercentage']! as double).input(),
-      infrastructureGrowthRate: map['infrastructureGrowthRate'] == null ? null : (map['infrastructureGrowthRate']! as double).input(),
-      networkCostPercentage: map['networkCostPercentage'] == null ? null : (map['networkCostPercentage']! as double).input(),
-      paasLaborCostPercentage: map['paasLaborCostPercentage'] == null ? null : (map['paasLaborCostPercentage']! as double).input(),
-      perYearMigrationCompletionPercentage: map['perYearMigrationCompletionPercentage'] == null ? null : ((map['perYearMigrationCompletionPercentage']! as Map).cast<String, double>()).input(),
-      performanceDataEndTime: map['performanceDataEndTime'] == null ? null : (map['performanceDataEndTime']! as String).input(),
-      performanceDataStartTime: map['performanceDataStartTime'] == null ? null : (map['performanceDataStartTime']! as String).input(),
-      performanceUtilizationPercentile: map['performanceUtilizationPercentile'] == null ? null : (map['performanceUtilizationPercentile']! as double).input(),
-      savingsOption: map['savingsOption'] == null ? null : (map['savingsOption']! as String).input(),
-      targetLocation: (map['targetLocation'] as String).input(),
-      wacc: map['wacc'] == null ? null : (map['wacc']! as double).input(),
-      workloadDiscoverySource: map['workloadDiscoverySource'] == null ? null : (map['workloadDiscoverySource']! as String).input(),
+      avsLaborCostPercentage: (() {
+        final guardedValue = map['avsLaborCostPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      businessCaseType: (() {
+        final guardedValue = map['businessCaseType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      comfortFactor: (() {
+        final guardedValue = map['comfortFactor'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      currency: pulumi.Input.fromValue(map['currency'] as String),
+      discountPercentage: (() {
+        final guardedValue = map['discountPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      iaasLaborCostPercentage: (() {
+        final guardedValue = map['iaasLaborCostPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      infrastructureGrowthRate: (() {
+        final guardedValue = map['infrastructureGrowthRate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      networkCostPercentage: (() {
+        final guardedValue = map['networkCostPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      paasLaborCostPercentage: (() {
+        final guardedValue = map['paasLaborCostPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      perYearMigrationCompletionPercentage: (() {
+        final guardedValue = map['perYearMigrationCompletionPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, double>(),
+        );
+      })(),
+      performanceDataEndTime: (() {
+        final guardedValue = map['performanceDataEndTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      performanceDataStartTime: (() {
+        final guardedValue = map['performanceDataStartTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      performanceUtilizationPercentile: (() {
+        final guardedValue = map['performanceUtilizationPercentile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      savingsOption: (() {
+        final guardedValue = map['savingsOption'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetLocation: pulumi.Input.fromValue(map['targetLocation'] as String),
+      wacc: (() {
+        final guardedValue = map['wacc'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      workloadDiscoverySource: (() {
+        final guardedValue = map['workloadDiscoverySource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_args.dart';
-import 'image_response.dart';
 import 'system_data_response.dart';
 
 /// An deployment resource belonging to a device group resource.
@@ -146,18 +145,25 @@ import 'system_data_response.dart';
 class DeploymentType extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Images deployed
-  late final pulumi.Output<List<ImageResponse>?> deployedImages;
+  late final pulumi.Output<List<Map<String, dynamic>>?> deployedImages;
+
   /// Deployment date UTC
   late final pulumi.Output<String> deploymentDateUtc;
+
   /// Deployment ID
   late final pulumi.Output<String?> deploymentId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -170,18 +176,20 @@ class DeploymentType extends pulumi.CustomResource {
     DeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:azuresphere:Deployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.deployedImages = registerOutput<List<ImageResponse>?>('deployedImages');
-    this.deploymentDateUtc = registerOutput<String>('deploymentDateUtc');
-    this.deploymentId = registerOutput<String?>('deploymentId');
+         'azure-native:azuresphere:Deployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deployedImages = registerOutput<List<Map<String, dynamic>>?>(
+      'deployedImages',
+    );
+    deploymentDateUtc = registerOutput<String>('deploymentDateUtc');
+    deploymentId = registerOutput<String?>('deploymentId');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

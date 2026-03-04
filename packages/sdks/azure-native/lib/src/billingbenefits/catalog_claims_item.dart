@@ -10,10 +10,7 @@ class CatalogClaimsItem {
   /// Creates a new [CatalogClaimsItem].
   /// [catalogClaimsItemType] Optional.
   /// [value] Optional.
-  CatalogClaimsItem({
-    this.catalogClaimsItemType,
-    this.value,
-  });
+  CatalogClaimsItem({this.catalogClaimsItemType, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,9 +21,16 @@ class CatalogClaimsItem {
 
   factory CatalogClaimsItem.fromMap(Map<String, dynamic> map) {
     return CatalogClaimsItem(
-      catalogClaimsItemType: map['catalogClaimsItemType'] == null ? null : (map['catalogClaimsItemType']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      catalogClaimsItemType: (() {
+        final guardedValue = map['catalogClaimsItemType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -10,16 +10,22 @@ import 'tracking_data_store.dart';
 class ApplicationArgs {
   /// The name of the Application
   final pulumi.Input<String>? applicationName;
+
   /// The description of the resource.
   final pulumi.Input<String>? description;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the space
   final pulumi.Input<String> spaceName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The tracking data stores.
   final pulumi.Input<Map<String, TrackingDataStore>>? trackingDataStores;
 
@@ -49,20 +55,61 @@ class ApplicationArgs {
       'resourceGroupName': resourceGroupName,
       'spaceName': spaceName,
       'tags': ?tags,
-      'trackingDataStores': ?pulumi.Input.mapOptionalInputValue<Map<String, TrackingDataStore>, Map<String, Map<String, dynamic>>>(trackingDataStores, (value) => pulumi.Input.encodeMapValues<TrackingDataStore, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'trackingDataStores':
+          ?pulumi.Input.mapOptionalInputValue<
+            Map<String, TrackingDataStore>,
+            Map<String, Map<String, dynamic>>
+          >(
+            trackingDataStores,
+            (value) =>
+                pulumi.Input.encodeMapValues<
+                  TrackingDataStore,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      spaceName: (map['spaceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      trackingDataStores: map['trackingDataStores'] == null ? null : (pulumi.Input.decodeMapValues<TrackingDataStore>(map['trackingDataStores']!, (value) => TrackingDataStore.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationName: (() {
+        final guardedValue = map['applicationName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      spaceName: pulumi.Input.fromValue(map['spaceName'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      trackingDataStores: (() {
+        final guardedValue = map['trackingDataStores'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeMapValues<TrackingDataStore>(
+            guardedValue,
+            (value) => TrackingDataStore.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

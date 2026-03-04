@@ -7,6 +7,7 @@ import 'google_type_money_billingbudgets_v1beta1.dart';
 class GoogleCloudBillingBudgetsV1beta1BudgetAmount {
   /// Use the last period's actual spend as the budget for the present period. LastPeriodAmount can only be set when the budget's time period is a Filter.calendar_period. It cannot be set in combination with Filter.custom_period.
   final pulumi.Input<Map<String, dynamic>>? lastPeriodAmount;
+
   /// A specified amount to use as the budget. `currency_code` is optional. If specified when creating a budget, it must match the currency of the billing account. If specified when updating a budget, it must match the currency_code of the existing budget. The `currency_code` is provided on output.
   final pulumi.Input<GoogleTypeMoneyBillingbudgetsV1beta1>? specifiedAmount;
 
@@ -21,15 +22,34 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmount {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'lastPeriodAmount': ?lastPeriodAmount,
-      'specifiedAmount': ?pulumi.Input.mapOptionalInputValue<GoogleTypeMoneyBillingbudgetsV1beta1, Map<String, dynamic>>(specifiedAmount, (value) => value.toMap()),
+      'specifiedAmount':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleTypeMoneyBillingbudgetsV1beta1,
+            Map<String, dynamic>
+          >(specifiedAmount, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudBillingBudgetsV1beta1BudgetAmount.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudBillingBudgetsV1beta1BudgetAmount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudBillingBudgetsV1beta1BudgetAmount(
-      lastPeriodAmount: map['lastPeriodAmount'] == null ? null : ((map['lastPeriodAmount']! as Map).cast<String, dynamic>()).input(),
-      specifiedAmount: map['specifiedAmount'] == null ? null : (GoogleTypeMoneyBillingbudgetsV1beta1.fromMap((map['specifiedAmount']! as Map).cast<String, dynamic>())).input(),
+      lastPeriodAmount: (() {
+        final guardedValue = map['lastPeriodAmount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      specifiedAmount: (() {
+        final guardedValue = map['specifiedAmount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GoogleTypeMoneyBillingbudgetsV1beta1.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

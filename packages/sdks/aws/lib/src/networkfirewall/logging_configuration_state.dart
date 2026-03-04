@@ -7,10 +7,14 @@ import 'logging_configuration_logging_configuration.dart';
 class LoggingConfigurationState {
   /// Whether to enable the detailed firewall monitoring dashboard on the firewall. Defaults to `false`.
   final pulumi.Input<bool>? enableMonitoringDashboard;
+
   /// The Amazon Resource Name (ARN) of the Network Firewall firewall.
   final pulumi.Input<String>? firewallArn;
+
   /// A configuration block describing how AWS Network Firewall performs logging for a firewall. See Logging Configuration below for details.
-  final pulumi.Input<LoggingConfigurationLoggingConfiguration>? loggingConfiguration;
+  final pulumi.Input<LoggingConfigurationLoggingConfiguration>?
+  loggingConfiguration;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -30,18 +34,41 @@ class LoggingConfigurationState {
     return <String, dynamic>{
       'enableMonitoringDashboard': ?enableMonitoringDashboard,
       'firewallArn': ?firewallArn,
-      'loggingConfiguration': ?pulumi.Input.mapOptionalInputValue<LoggingConfigurationLoggingConfiguration, Map<String, dynamic>>(loggingConfiguration, (value) => value.toMap()),
+      'loggingConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            LoggingConfigurationLoggingConfiguration,
+            Map<String, dynamic>
+          >(loggingConfiguration, (value) => value.toMap()),
       'region': ?region,
     };
   }
 
   factory LoggingConfigurationState.fromMap(Map<String, dynamic> map) {
     return LoggingConfigurationState(
-      enableMonitoringDashboard: map['enableMonitoringDashboard'] == null ? null : ((map['enableMonitoringDashboard'] as bool).input()).input(),
-      firewallArn: map['firewallArn'] == null ? null : ((map['firewallArn'] as String).input()).input(),
-      loggingConfiguration: map['loggingConfiguration'] == null ? null : ((LoggingConfigurationLoggingConfiguration.fromMap((map['loggingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      enableMonitoringDashboard: (() {
+        final guardedValue = map['enableMonitoringDashboard'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      firewallArn: (() {
+        final guardedValue = map['firewallArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      loggingConfiguration: (() {
+        final guardedValue = map['loggingConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LoggingConfigurationLoggingConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

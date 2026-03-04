@@ -181,7 +181,7 @@ import 'mover_project_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.StorageMover` - 2025-07-01
@@ -196,8 +196,10 @@ import 'mover_project_state.dart';
 class MoverProject extends pulumi.CustomResource {
   /// Specifies a description for this Storage Mover Project.
   late final pulumi.Output<String?> description;
+
   /// Specifies the name which should be used for this Storage Mover Project. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Specifies the ID of the storage mover for this Storage Mover Project. Changing this forces a new resource to be created.
   late final pulumi.Output<String> storageMoverId;
 
@@ -210,14 +212,14 @@ class MoverProject extends pulumi.CustomResource {
     MoverProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/moverProject:MoverProject',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'azure:storage/moverProject:MoverProject',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.storageMoverId = registerOutput<String>('storageMoverId');
+    storageMoverId = registerOutput<String>('storageMoverId');
   }
 
   /// Gets an existing [MoverProject] resource's state with the given [name] and [id].
@@ -238,13 +240,13 @@ class MoverProject extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:storage/moverProject:MoverProject',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.description = registerOutput<String?>('description');
+         'azure:storage/moverProject:MoverProject',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.storageMoverId = registerOutput<String>('storageMoverId');
+    storageMoverId = registerOutput<String>('storageMoverId');
   }
 }

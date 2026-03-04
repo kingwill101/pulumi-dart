@@ -1,5 +1,3 @@
-library module_organizations;
-
 export 'organizations/account.dart';
 export 'organizations/account_args.dart';
 export 'organizations/account_state.dart';

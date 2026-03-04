@@ -13,39 +13,50 @@ class ContainerArgs {
   /// read the container (allows the GET method for all objects in the container).
   /// Changing this updates the access control list read access.
   final pulumi.Input<String>? containerRead;
+
   /// The secret key for container
   /// synchronization. Changing this updates container synchronization.
   final pulumi.Input<String>? containerSyncKey;
+
   /// The destination for container
   /// synchronization. Changing this updates container synchronization.
   final pulumi.Input<String>? containerSyncTo;
+
   /// Sets an ACL that grants write access. Changing
   /// this updates the access control list write access.
   final pulumi.Input<String>? containerWrite;
+
   /// The MIME type for the container. Changing this
   /// updates the MIME type.
   final pulumi.Input<String>? contentType;
+
   /// A boolean that indicates all
   /// objects should be deleted from the container so that the container can be
   /// destroyed without error. These objects are not recoverable.
   final pulumi.Input<bool>? forceDestroy;
+
   /// Custom key/value pairs to associate with the
   /// container. Changing this updates the existing container metadata.
   final pulumi.Input<Map<String, String>>? metadata;
+
   /// A unique name for the container. Changing this creates a
   /// new container.
   final pulumi.Input<String>? name;
+
   /// The region in which to create the container. If
   /// omitted, the `region` argument of the provider is used. Changing this creates
   /// a new container.
   final pulumi.Input<String>? region;
+
   /// The storage class to be used for the container.
   /// Changing this creates a new container. This option is only available in Ceph
   /// RGW Swift API implementation.
   final pulumi.Input<String>? storageClass;
+
   /// The storage policy to be used for the
   /// container. Changing this creates a new container.
   final pulumi.Input<String>? storagePolicy;
+
   /// A boolean that can enable or disable object
   /// versioning. The default value is `false`. To use this feature, your Swift
   /// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
@@ -55,6 +66,7 @@ class ContainerArgs {
   /// configuration option in Swift. If you cannot set this versioning type, you
   /// may want to consider using `versioning_legacy` instead.
   final pulumi.Input<bool>? versioning;
+
   /// Enable legacy object versioning. The
   /// structure is described below.
   final pulumi.Input<ContainerVersioningLegacy>? versioningLegacy;
@@ -103,26 +115,87 @@ class ContainerArgs {
       'storageClass': ?storageClass,
       'storagePolicy': ?storagePolicy,
       'versioning': ?versioning,
-      'versioningLegacy': ?pulumi.Input.mapOptionalInputValue<ContainerVersioningLegacy, Map<String, dynamic>>(versioningLegacy, (value) => value.toMap()),
+      'versioningLegacy':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerVersioningLegacy,
+            Map<String, dynamic>
+          >(versioningLegacy, (value) => value.toMap()),
     };
   }
 
   factory ContainerArgs.fromMap(Map<String, dynamic> map) {
     return ContainerArgs(
-      containerRead: map['containerRead'] == null ? null : (map['containerRead']! as String).input(),
-      containerSyncKey: map['containerSyncKey'] == null ? null : (map['containerSyncKey']! as String).input(),
-      containerSyncTo: map['containerSyncTo'] == null ? null : (map['containerSyncTo']! as String).input(),
-      containerWrite: map['containerWrite'] == null ? null : (map['containerWrite']! as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      storageClass: map['storageClass'] == null ? null : (map['storageClass']! as String).input(),
-      storagePolicy: map['storagePolicy'] == null ? null : (map['storagePolicy']! as String).input(),
-      versioning: map['versioning'] == null ? null : (map['versioning']! as bool).input(),
-      versioningLegacy: map['versioningLegacy'] == null ? null : (ContainerVersioningLegacy.fromMap((map['versioningLegacy']! as Map).cast<String, dynamic>())).input(),
+      containerRead: (() {
+        final guardedValue = map['containerRead'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerSyncKey: (() {
+        final guardedValue = map['containerSyncKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerSyncTo: (() {
+        final guardedValue = map['containerSyncTo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      containerWrite: (() {
+        final guardedValue = map['containerWrite'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      contentType: (() {
+        final guardedValue = map['contentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      forceDestroy: (() {
+        final guardedValue = map['forceDestroy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageClass: (() {
+        final guardedValue = map['storageClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storagePolicy: (() {
+        final guardedValue = map['storagePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      versioning: (() {
+        final guardedValue = map['versioning'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      versioningLegacy: (() {
+        final guardedValue = map['versioningLegacy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerVersioningLegacy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

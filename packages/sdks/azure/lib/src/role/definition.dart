@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'definition_args.dart';
-import 'definition_permission.dart';
 import 'definition_state.dart';
 
 /// Manages a custom Role Definition, used to assign Roles to Users/Principals. See ['Understand role definitions'](https://docs.microsoft.com/azure/role-based-access-control/role-definitions) in the Azure documentation for more details.
@@ -385,7 +384,7 @@ import 'definition_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Authorization` - 2022-05-01-preview
@@ -398,22 +397,28 @@ import 'definition_state.dart';
 /// $ pulumi import azure:role/definition:Definition example "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleDefinitions/00000000-0000-0000-0000-000000000000|/subscriptions/00000000-0000-0000-0000-000000000000"
 /// ```
 ///
-/// > **Note:** This ID is specific to this provider - and is of the format `{roleDefinitionId}|{scope}`.
+/// &gt; **Note:** This ID is specific to this provider - and is of the format `{roleDefinitionId}|{scope}`.
 class Definition extends pulumi.CustomResource {
   /// One or more assignable scopes for this Role Definition, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, `/providers/Microsoft.Management/managementGroups/0b1f6471-1bf0-4dda-aec3-111122223333` , or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`.
   ///
-  /// > **NOTE:** The value for `scope` is automatically included in this list if no other values supplied.
+  /// &gt; **NOTE:** The value for `scope` is automatically included in this list if no other values supplied.
   late final pulumi.Output<List<String>> assignableScopes;
+
   /// A description of the Role Definition.
   late final pulumi.Output<String?> description;
+
   /// The name of the Role Definition.
   late final pulumi.Output<String> name;
+
   /// A `permissions` block as defined below.
-  late final pulumi.Output<List<DefinitionPermission>?> permissions;
+  late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
+
   /// A unique UUID/GUID which identifies this role - one will be generated if not specified. Changing this forces a new resource to be created.
   late final pulumi.Output<String> roleDefinitionId;
+
   /// The Azure Resource Manager ID for the resource.
   late final pulumi.Output<String> roleDefinitionResourceId;
+
   /// The scope at which the Role Definition applies to, such as `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333`, `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`, `/providers/Microsoft.Management/managementGroups/0b1f6471-1bf0-4dda-aec3-111122223333`, or `/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup/providers/Microsoft.Compute/virtualMachines/myVM`. It is recommended to use the first entry of the `assignable_scopes`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> scope;
 
@@ -426,18 +431,20 @@ class Definition extends pulumi.CustomResource {
     DefinitionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:role/definition:Definition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assignableScopes = registerOutput<List<String>>('assignableScopes');
-    this.description = registerOutput<String?>('description');
+         'azure:role/definition:Definition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assignableScopes = registerOutput<List<String>>('assignableScopes');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.permissions = registerOutput<List<DefinitionPermission>?>('permissions');
-    this.roleDefinitionId = registerOutput<String>('roleDefinitionId');
-    this.roleDefinitionResourceId = registerOutput<String>('roleDefinitionResourceId');
-    this.scope = registerOutput<String>('scope');
+    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    roleDefinitionResourceId = registerOutput<String>(
+      'roleDefinitionResourceId',
+    );
+    scope = registerOutput<String>('scope');
   }
 
   /// Gets an existing [Definition] resource's state with the given [name] and [id].
@@ -458,17 +465,19 @@ class Definition extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:role/definition:Definition',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assignableScopes = registerOutput<List<String>>('assignableScopes');
-    this.description = registerOutput<String?>('description');
+         'azure:role/definition:Definition',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assignableScopes = registerOutput<List<String>>('assignableScopes');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.permissions = registerOutput<List<DefinitionPermission>?>('permissions');
-    this.roleDefinitionId = registerOutput<String>('roleDefinitionId');
-    this.roleDefinitionResourceId = registerOutput<String>('roleDefinitionResourceId');
-    this.scope = registerOutput<String>('scope');
+    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    roleDefinitionResourceId = registerOutput<String>(
+      'roleDefinitionResourceId',
+    );
+    scope = registerOutput<String>('scope');
   }
 }

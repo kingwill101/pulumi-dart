@@ -134,18 +134,24 @@ import 'playback_key_pair_state.dart';
 class PlaybackKeyPair extends pulumi.CustomResource {
   /// ARN of the Playback Key Pair.
   late final pulumi.Output<String> arn;
+
   /// Key-pair identifier.
   late final pulumi.Output<String> fingerprint;
+
   /// Playback Key Pair name.
   late final pulumi.Output<String> name;
+
   /// Public portion of a customer-generated key pair. Must be an ECDSA public key in PEM format.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> publicKey;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -158,18 +164,18 @@ class PlaybackKeyPair extends pulumi.CustomResource {
     PlaybackKeyPairArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ivs/playbackKeyPair:PlaybackKeyPair',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.fingerprint = registerOutput<String>('fingerprint');
+         'aws:ivs/playbackKeyPair:PlaybackKeyPair',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
-    this.publicKey = registerOutput<String>('publicKey');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    publicKey = registerOutput<String>('publicKey');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [PlaybackKeyPair] resource's state with the given [name] and [id].
@@ -190,17 +196,17 @@ class PlaybackKeyPair extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ivs/playbackKeyPair:PlaybackKeyPair',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.fingerprint = registerOutput<String>('fingerprint');
+         'aws:ivs/playbackKeyPair:PlaybackKeyPair',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
-    this.publicKey = registerOutput<String>('publicKey');
-    this.region = registerOutput<String>('region');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    publicKey = registerOutput<String>('publicKey');
+    region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipelineStageResponse {
   /// Description for stage.
   final pulumi.Input<String>? description;
+
   /// Next stage in the pipeline. Not required if output stage.
   final pulumi.Input<List<String>>? next;
+
   /// ARM resource type.
   final pulumi.Input<String> type;
 
@@ -15,11 +17,7 @@ class PipelineStageResponse {
   /// [description] Description for stage.
   /// [next] Next stage in the pipeline. Not required if output stage.
   /// [type] ARM resource type.
-  PipelineStageResponse({
-    this.description,
-    this.next,
-    required this.type,
-  });
+  PipelineStageResponse({this.description, this.next, required this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,17 @@ class PipelineStageResponse {
 
   factory PipelineStageResponse.fromMap(Map<String, dynamic> map) {
     return PipelineStageResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      next: map['next'] == null ? null : ((map['next']! as List).cast<String>()).input(),
-      type: (map['type'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      next: (() {
+        final guardedValue = map['next'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

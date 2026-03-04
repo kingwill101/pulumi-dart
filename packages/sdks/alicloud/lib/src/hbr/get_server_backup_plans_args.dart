@@ -10,8 +10,10 @@ import 'get_server_backup_plans_filter.dart';
 class GetServerBackupPlansArgs {
   /// The filters.
   final pulumi.Input<List<GetServerBackupPlansFilter>>? filters;
+
   /// A list of Server Backup Plan IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
 
@@ -19,15 +21,22 @@ class GetServerBackupPlansArgs {
   /// [filters] The filters.
   /// [ids] A list of Server Backup Plan IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetServerBackupPlansArgs({
-    this.filters,
-    this.ids,
-    this.outputFile,
-  });
+  GetServerBackupPlansArgs({this.filters, this.ids, this.outputFile});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetServerBackupPlansFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetServerBackupPlansFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetServerBackupPlansFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServerBackupPlansFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ids': ?ids,
       'outputFile': ?outputFile,
     };
@@ -35,10 +44,28 @@ class GetServerBackupPlansArgs {
 
   factory GetServerBackupPlansArgs.fromMap(Map<String, dynamic> map) {
     return GetServerBackupPlansArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetServerBackupPlansFilter>(map['filters']!, (value) => GetServerBackupPlansFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<GetServerBackupPlansFilter>(
+            guardedValue,
+            (value) => GetServerBackupPlansFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

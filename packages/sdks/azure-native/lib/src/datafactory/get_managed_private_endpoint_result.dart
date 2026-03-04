@@ -6,14 +6,19 @@ import 'managed_private_endpoint_response.dart';
 class GetManagedPrivateEndpointResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Etag identifies change in the resource.
   final String etag;
+
   /// The resource identifier.
   final String id;
+
   /// The resource name.
   final String name;
+
   /// Managed private endpoint properties.
   final ManagedPrivateEndpointResponse properties;
+
   /// The resource type.
   final String type;
 
@@ -50,9 +55,10 @@ class GetManagedPrivateEndpointResult {
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: ManagedPrivateEndpointResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: ManagedPrivateEndpointResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

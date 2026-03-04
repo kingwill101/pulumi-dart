@@ -133,7 +133,7 @@ class GetWidgetDetailsArgs {
 
   factory GetWidgetDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetWidgetDetailsArgs(
-      id: (map['id'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
     );
   }
 }
@@ -167,8 +167,8 @@ class GetWidgetDetailsResult {
 
   factory GetWidgetDetailsResult.fromMap(Map<String, dynamic> map) {
     return GetWidgetDetailsResult(
-      metadata: WidgetMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      mode: WidgetMode.fromValue(map['mode'] as String),
+      metadata: WidgetMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
+      mode: WidgetMode.fromValue(map['mode']! as String),
     );
   }
 }
@@ -234,8 +234,8 @@ class WidgetArgs {
 
   factory WidgetArgs.fromMap(Map<String, dynamic> map) {
     return WidgetArgs(
-      metadata: map['metadata'] == null ? null : (WidgetMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      mode: (WidgetMode.fromValue(map['mode'] as String)).input(),
+      metadata: map['metadata'] == null ? null : pulumi.Input.fromValue(WidgetMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())),
+      mode: pulumi.Input.fromValue(WidgetMode.fromValue(map['mode']! as String)),
     );
   }
 }
@@ -268,8 +268,8 @@ class WidgetMetadata {
 
   factory WidgetMetadata.fromMap(Map<String, dynamic> map) {
     return WidgetMetadata(
-      mode: (WidgetMode.fromValue(map['mode'] as String)).input(),
-      owner: (map['owner'] as String).input(),
+      mode: pulumi.Input.fromValue(WidgetMode.fromValue(map['mode']! as String)),
+      owner: pulumi.Input.fromValue(map['owner'] as String),
     );
   }
 }

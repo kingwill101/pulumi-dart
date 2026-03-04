@@ -7,17 +7,23 @@ import 'all_nodes_response.dart';
 class JobServiceResponse {
   /// Url for endpoint.
   final pulumi.Input<String>? endpoint;
+
   /// Any error in the service.
   final pulumi.Input<String> errorMessage;
+
   /// Endpoint type.
   final pulumi.Input<String>? jobServiceType;
+
   /// Nodes that user would like to start the service on.
   /// If Nodes is not set or set to null, the service will only be started on leader node.
   final pulumi.Input<AllNodesResponse>? nodes;
+
   /// Port for endpoint.
   final pulumi.Input<int>? port;
+
   /// Additional properties to set on the endpoint.
   final pulumi.Input<Map<String, String>>? properties;
+
   /// Status of endpoint.
   final pulumi.Input<String> status;
 
@@ -44,7 +50,11 @@ class JobServiceResponse {
       'endpoint': ?endpoint,
       'errorMessage': errorMessage,
       'jobServiceType': ?jobServiceType,
-      'nodes': ?pulumi.Input.mapOptionalInputValue<AllNodesResponse, Map<String, dynamic>>(nodes, (value) => value.toMap()),
+      'nodes':
+          ?pulumi.Input.mapOptionalInputValue<
+            AllNodesResponse,
+            Map<String, dynamic>
+          >(nodes, (value) => value.toMap()),
       'port': ?port,
       'properties': ?properties,
       'status': status,
@@ -53,14 +63,39 @@ class JobServiceResponse {
 
   factory JobServiceResponse.fromMap(Map<String, dynamic> map) {
     return JobServiceResponse(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
-      errorMessage: (map['errorMessage'] as String).input(),
-      jobServiceType: map['jobServiceType'] == null ? null : (map['jobServiceType']! as String).input(),
-      nodes: map['nodes'] == null ? null : (AllNodesResponse.fromMap((map['nodes']! as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port']! as int).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
-      status: (map['status'] as String).input(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
+      jobServiceType: (() {
+        final guardedValue = map['jobServiceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nodes: (() {
+        final guardedValue = map['nodes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AllNodesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

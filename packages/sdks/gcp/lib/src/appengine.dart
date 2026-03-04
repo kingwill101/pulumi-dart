@@ -1,5 +1,3 @@
-library module_appengine;
-
 export 'appengine/application.dart';
 export 'appengine/application_args.dart';
 export 'appengine/application_feature_settings.dart';

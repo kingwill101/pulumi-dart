@@ -4,16 +4,15 @@ enum SqlManagementMode {
   lightWeight("LightWeight"),
   noAgent("NoAgent");
 
-  const SqlManagementMode(this.value);
-  final String value;
+  const SqlManagementMode(this.wireValue);
+  final String wireValue;
 
   static SqlManagementMode fromValue(String value) {
     for (final item in SqlManagementMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SqlManagementMode value: $value');
   }
 }
-

@@ -1,5 +1,3 @@
-library module_cms;
-
 export 'cms/alarm.dart';
 export 'cms/alarm_args.dart';
 export 'cms/alarm_composite_expression.dart';

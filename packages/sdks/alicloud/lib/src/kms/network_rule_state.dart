@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkRuleState {
   /// Description.
   final pulumi.Input<String>? description;
+
   /// Network Rule Name.
   final pulumi.Input<String>? networkRuleName;
+
   /// Allowed private network addresses.
   final pulumi.Input<List<String>>? sourcePrivateIps;
 
@@ -31,10 +33,21 @@ class NetworkRuleState {
 
   factory NetworkRuleState.fromMap(Map<String, dynamic> map) {
     return NetworkRuleState(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      networkRuleName: map['networkRuleName'] == null ? null : (map['networkRuleName']! as String).input(),
-      sourcePrivateIps: map['sourcePrivateIps'] == null ? null : ((map['sourcePrivateIps']! as List).cast<String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkRuleName: (() {
+        final guardedValue = map['networkRuleName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sourcePrivateIps: (() {
+        final guardedValue = map['sourcePrivateIps'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

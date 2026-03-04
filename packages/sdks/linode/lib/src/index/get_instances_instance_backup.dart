@@ -6,6 +6,7 @@ import 'get_instances_instance_backup_schedule.dart';
 class GetInstancesInstanceBackup {
   /// Whether this Backup is available for restoration.
   final pulumi.Input<bool> available;
+
   /// If this Linode has the Backup service enabled.
   final pulumi.Input<bool> enabled;
   final pulumi.Input<List<GetInstancesInstanceBackupSchedule>> schedules;
@@ -24,16 +25,33 @@ class GetInstancesInstanceBackup {
     return <String, dynamic>{
       'available': available,
       'enabled': enabled,
-      'schedules': pulumi.Input.mapInputValue<List<GetInstancesInstanceBackupSchedule>, List<Map<String, dynamic>>>(schedules, (value) => pulumi.Input.encodeList<GetInstancesInstanceBackupSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'schedules':
+          pulumi.Input.mapInputValue<
+            List<GetInstancesInstanceBackupSchedule>,
+            List<Map<String, dynamic>>
+          >(
+            schedules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetInstancesInstanceBackupSchedule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory GetInstancesInstanceBackup.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceBackup(
-      available: (map['available'] as bool).input(),
-      enabled: (map['enabled'] as bool).input(),
-      schedules: (pulumi.Input.decodeList<GetInstancesInstanceBackupSchedule>(map['schedules'], (value) => GetInstancesInstanceBackupSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      available: pulumi.Input.fromValue(map['available'] as bool),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      schedules: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetInstancesInstanceBackupSchedule>(
+          map['schedules']!,
+          (value) => GetInstancesInstanceBackupSchedule.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

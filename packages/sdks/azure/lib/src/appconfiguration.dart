@@ -1,5 +1,3 @@
-library module_appconfiguration;
-
 export 'appconfiguration/configuration_feature.dart';
 export 'appconfiguration/configuration_feature_args.dart';
 export 'appconfiguration/configuration_feature_state.dart';

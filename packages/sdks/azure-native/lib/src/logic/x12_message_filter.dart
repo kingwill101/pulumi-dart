@@ -9,20 +9,17 @@ class X12MessageFilter {
 
   /// Creates a new [X12MessageFilter].
   /// [messageFilterType] The message filter type.
-  X12MessageFilter({
-    required this.messageFilterType,
-  });
+  X12MessageFilter({required this.messageFilterType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'messageFilterType': messageFilterType,
-    };
+    return <String, dynamic>{'messageFilterType': messageFilterType};
   }
 
   factory X12MessageFilter.fromMap(Map<String, dynamic> map) {
     return X12MessageFilter(
-      messageFilterType: (map['messageFilterType'] as String).input(),
+      messageFilterType: pulumi.Input.fromValue(
+        map['messageFilterType'] as String,
+      ),
     );
   }
 }
-

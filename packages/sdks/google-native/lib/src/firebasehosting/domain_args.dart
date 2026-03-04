@@ -10,9 +10,11 @@ import 'domain_redirect.dart';
 class DomainArgs {
   /// The domain name of the association.
   final pulumi.Input<String> domainName;
+
   /// If set, the domain should redirect with the provided parameters.
   final pulumi.Input<DomainRedirect>? domainRedirect;
   final pulumi.Input<String>? project;
+
   /// The site name of the association.
   final pulumi.Input<String> site;
   final pulumi.Input<String> siteId;
@@ -34,7 +36,11 @@ class DomainArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'domainName': domainName,
-      'domainRedirect': ?pulumi.Input.mapOptionalInputValue<DomainRedirect, Map<String, dynamic>>(domainRedirect, (value) => value.toMap()),
+      'domainRedirect':
+          ?pulumi.Input.mapOptionalInputValue<
+            DomainRedirect,
+            Map<String, dynamic>
+          >(domainRedirect, (value) => value.toMap()),
       'project': ?project,
       'site': site,
       'siteId': siteId,
@@ -43,12 +49,21 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      domainName: (map['domainName'] as String).input(),
-      domainRedirect: map['domainRedirect'] == null ? null : (DomainRedirect.fromMap((map['domainRedirect']! as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      site: (map['site'] as String).input(),
-      siteId: (map['siteId'] as String).input(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      domainRedirect: (() {
+        final guardedValue = map['domainRedirect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DomainRedirect.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      site: pulumi.Input.fromValue(map['site'] as String),
+      siteId: pulumi.Input.fromValue(map['siteId'] as String),
     );
   }
 }
-

@@ -6,27 +6,38 @@ import 'get_networking_ip_vpc_nat11.dart';
 class GetNetworkingIpResult {
   /// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
   final String address;
+
   /// The default gateway for this address.
   final String gateway;
   final String id;
+
   /// The ID of the interface this address is assigned to.
   final int interfaceId;
+
   /// The ID of the Linode this address currently belongs to.
   final int linodeId;
+
   /// The number of bits set in the subnet mask.
   final int prefix;
+
   /// Whether this is a public or private IP address.
   final bool public;
+
   /// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
   final String rdns;
+
   /// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
   final String region;
+
   /// Whether this IP address is a reserved IP.
   final bool reserved;
+
   /// The mask that separates host bits from network bits for this address.
   final String subnetMask;
+
   /// The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
   final String type;
+
   /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
   final GetNetworkingIpVpcNat11 vpcNat11;
 
@@ -92,8 +103,9 @@ class GetNetworkingIpResult {
       reserved: map['reserved'] as bool,
       subnetMask: map['subnetMask'] as String,
       type: map['type'] as String,
-      vpcNat11: GetNetworkingIpVpcNat11.fromMap((map['vpcNat11'] as Map).cast<String, dynamic>()),
+      vpcNat11: GetNetworkingIpVpcNat11.fromMap(
+        (map['vpcNat11']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

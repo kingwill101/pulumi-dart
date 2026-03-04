@@ -148,24 +148,35 @@ import 'system_data_response.dart';
 class CustomDomain extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Certificate parameters for securing custom HTTPS
-  late final pulumi.Output<CdnManagedHttpsParametersResponse?> customHttpsParameters;
+  late final pulumi.Output<CdnManagedHttpsParametersResponse?>
+  customHttpsParameters;
+
   /// Provisioning status of the custom domain.
   late final pulumi.Output<String> customHttpsProvisioningState;
+
   /// Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step.
   late final pulumi.Output<String> customHttpsProvisioningSubstate;
+
   /// The host name of the custom domain. Must be a domain name.
   late final pulumi.Output<String> hostName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Provisioning status of Custom Https of the custom domain.
   late final pulumi.Output<String> provisioningState;
+
   /// Resource status of the custom domain.
   late final pulumi.Output<String> resourceState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Special validation or data may be required when delivering CDN to some regions due to local compliance reasons. E.g. ICP license number of a custom domain is required to deliver content in China.
   late final pulumi.Output<String?> validationData;
 
@@ -178,21 +189,27 @@ class CustomDomain extends pulumi.CustomResource {
     CustomDomainArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cdn:CustomDomain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.customHttpsParameters = registerOutput<CdnManagedHttpsParametersResponse?>('customHttpsParameters');
-    this.customHttpsProvisioningState = registerOutput<String>('customHttpsProvisioningState');
-    this.customHttpsProvisioningSubstate = registerOutput<String>('customHttpsProvisioningSubstate');
-    this.hostName = registerOutput<String>('hostName');
+         'azure-native:cdn:CustomDomain',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customHttpsParameters = registerOutput<CdnManagedHttpsParametersResponse?>(
+      'customHttpsParameters',
+    );
+    customHttpsProvisioningState = registerOutput<String>(
+      'customHttpsProvisioningState',
+    );
+    customHttpsProvisioningSubstate = registerOutput<String>(
+      'customHttpsProvisioningSubstate',
+    );
+    hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.resourceState = registerOutput<String>('resourceState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.validationData = registerOutput<String?>('validationData');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceState = registerOutput<String>('resourceState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    validationData = registerOutput<String?>('validationData');
   }
 }

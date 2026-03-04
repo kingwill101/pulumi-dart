@@ -5,18 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterModifyClusterServiceConfig {
   /// Cluster service configuration modification comment, e.g. "Modify tez configuration".
   final pulumi.Input<String>? comment;
+
   /// Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
   final pulumi.Input<String> configParams;
+
   /// Cluster service configuration modification type.
   final pulumi.Input<String>? configType;
+
   /// Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
   final pulumi.Input<String>? customConfigParams;
+
   /// Cluster service configuration modification related gateway cluster id list.
   final pulumi.Input<List<String>>? gatewayClusterIdLists;
+
   /// Cluster service configuration modification node group id, e.g. ’G-XXX’.
   final pulumi.Input<String>? groupId;
+
   /// Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
   final pulumi.Input<String>? hostInstanceId;
+
   /// Cluster service configuration modification refresh host config, ’true’ or ’false’.
   final pulumi.Input<bool>? refreshHostConfig;
   final pulumi.Input<String> serviceName;
@@ -59,16 +66,43 @@ class ClusterModifyClusterServiceConfig {
 
   factory ClusterModifyClusterServiceConfig.fromMap(Map<String, dynamic> map) {
     return ClusterModifyClusterServiceConfig(
-      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
-      configParams: (map['configParams'] as String).input(),
-      configType: map['configType'] == null ? null : (map['configType']! as String).input(),
-      customConfigParams: map['customConfigParams'] == null ? null : (map['customConfigParams']! as String).input(),
-      gatewayClusterIdLists: map['gatewayClusterIdLists'] == null ? null : ((map['gatewayClusterIdLists']! as List).cast<String>()).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
-      hostInstanceId: map['hostInstanceId'] == null ? null : (map['hostInstanceId']! as String).input(),
-      refreshHostConfig: map['refreshHostConfig'] == null ? null : (map['refreshHostConfig']! as bool).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      comment: (() {
+        final guardedValue = map['comment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      configParams: pulumi.Input.fromValue(map['configParams'] as String),
+      configType: (() {
+        final guardedValue = map['configType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customConfigParams: (() {
+        final guardedValue = map['customConfigParams'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      gatewayClusterIdLists: (() {
+        final guardedValue = map['gatewayClusterIdLists'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      groupId: (() {
+        final guardedValue = map['groupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostInstanceId: (() {
+        final guardedValue = map['hostInstanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      refreshHostConfig: (() {
+        final guardedValue = map['refreshHostConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

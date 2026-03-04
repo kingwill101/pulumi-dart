@@ -8,20 +8,19 @@ class ModelSettings {
 
   /// Creates a new [ModelSettings].
   /// [modelId] The unique model identifier that this ServerlessEndpoint should provision.
-  ModelSettings({
-    this.modelId,
-  });
+  ModelSettings({this.modelId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'modelId': ?modelId,
-    };
+    return <String, dynamic>{'modelId': ?modelId};
   }
 
   factory ModelSettings.fromMap(Map<String, dynamic> map) {
     return ModelSettings(
-      modelId: map['modelId'] == null ? null : (map['modelId']! as String).input(),
+      modelId: (() {
+        final guardedValue = map['modelId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

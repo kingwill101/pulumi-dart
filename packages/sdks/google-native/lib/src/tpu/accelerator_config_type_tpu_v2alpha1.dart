@@ -5,16 +5,17 @@ enum AcceleratorConfigTypeTpuV2alpha1 {
   v3("V3"),
   v4("V4");
 
-  const AcceleratorConfigTypeTpuV2alpha1(this.value);
-  final String value;
+  const AcceleratorConfigTypeTpuV2alpha1(this.wireValue);
+  final String wireValue;
 
   static AcceleratorConfigTypeTpuV2alpha1 fromValue(String value) {
     for (final item in AcceleratorConfigTypeTpuV2alpha1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AcceleratorConfigTypeTpuV2alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown AcceleratorConfigTypeTpuV2alpha1 value: $value',
+    );
   }
 }
-

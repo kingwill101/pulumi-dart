@@ -6,9 +6,16 @@ import 'data_quality_job_definition_data_quality_baseline_config_statistics_reso
 
 class DataQualityJobDefinitionDataQualityBaselineConfig {
   /// The constraints resource for a monitoring job. Fields are documented below.
-  final pulumi.Input<DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource>? constraintsResource;
+  final pulumi.Input<
+    DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource
+  >?
+  constraintsResource;
+
   /// The statistics resource for a monitoring job. Fields are documented below.
-  final pulumi.Input<DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource>? statisticsResource;
+  final pulumi.Input<
+    DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource
+  >?
+  statisticsResource;
 
   /// Creates a new [DataQualityJobDefinitionDataQualityBaselineConfig].
   /// [constraintsResource] The constraints resource for a monitoring job. Fields are documented below.
@@ -20,16 +27,41 @@ class DataQualityJobDefinitionDataQualityBaselineConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'constraintsResource': ?pulumi.Input.mapOptionalInputValue<DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource, Map<String, dynamic>>(constraintsResource, (value) => value.toMap()),
-      'statisticsResource': ?pulumi.Input.mapOptionalInputValue<DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource, Map<String, dynamic>>(statisticsResource, (value) => value.toMap()),
+      'constraintsResource':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource,
+            Map<String, dynamic>
+          >(constraintsResource, (value) => value.toMap()),
+      'statisticsResource':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource,
+            Map<String, dynamic>
+          >(statisticsResource, (value) => value.toMap()),
     };
   }
 
-  factory DataQualityJobDefinitionDataQualityBaselineConfig.fromMap(Map<String, dynamic> map) {
+  factory DataQualityJobDefinitionDataQualityBaselineConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataQualityJobDefinitionDataQualityBaselineConfig(
-      constraintsResource: map['constraintsResource'] == null ? null : ((DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource.fromMap((map['constraintsResource']! as Map).cast<String, dynamic>())).input()).input(),
-      statisticsResource: map['statisticsResource'] == null ? null : ((DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource.fromMap((map['statisticsResource']! as Map).cast<String, dynamic>())).input()).input(),
+      constraintsResource: (() {
+        final guardedValue = map['constraintsResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      statisticsResource: (() {
+        final guardedValue = map['statisticsResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

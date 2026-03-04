@@ -7,6 +7,7 @@ import 'get_ecs_prefix_lists_list.dart';
 class GetEcsPrefixListsResult {
   final String? addressFamily;
   final bool? enableDetails;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -41,7 +42,11 @@ class GetEcsPrefixListsResult {
       'enableDetails': ?enableDetails,
       'id': id,
       'ids': ids,
-      'lists': pulumi.Input.encodeList<GetEcsPrefixListsList, Map<String, dynamic>>(lists, (value) => value.toMap()),
+      'lists':
+          pulumi.Input.encodeList<GetEcsPrefixListsList, Map<String, dynamic>>(
+            lists,
+            (value) => value.toMap(),
+          ),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
@@ -50,15 +55,35 @@ class GetEcsPrefixListsResult {
 
   factory GetEcsPrefixListsResult.fromMap(Map<String, dynamic> map) {
     return GetEcsPrefixListsResult(
-      addressFamily: map['addressFamily'] == null ? null : map['addressFamily']! as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      addressFamily: (() {
+        final guardedValue = map['addressFamily'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return guardedValue as bool;
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      lists: pulumi.Input.decodeList<GetEcsPrefixListsList>(map['lists'], (value) => GetEcsPrefixListsList.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      lists: pulumi.Input.decodeList<GetEcsPrefixListsList>(
+        map['lists']!,
+        (value) => GetEcsPrefixListsList.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

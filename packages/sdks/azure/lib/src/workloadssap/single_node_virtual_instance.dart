@@ -6,7 +6,7 @@ import 'single_node_virtual_instance_state.dart';
 
 /// Manages an SAP Single Node Virtual Instance with new SAP System.
 ///
-/// > **Note:** Before using this resource, it's required to submit the request of registering the Resource Provider with Azure CLI `az provider register --namespace "Microsoft.Workloads"`. The Resource Provider can take a while to register, you can check the status by running `az provider show --namespace "Microsoft.Workloads" --query "registrationState"`. Once this outputs "Registered" the Resource Provider is available for use.
+/// &gt; **Note:** Before using this resource, it's required to submit the request of registering the Resource Provider with Azure CLI `az provider register --namespace "Microsoft.Workloads"`. The Resource Provider can take a while to register, you can check the status by running `az provider show --namespace "Microsoft.Workloads" --query "registrationState"`. Once this outputs "Registered" the Resource Provider is available for use.
 ///
 /// ## Example Usage
 ///
@@ -954,7 +954,7 @@ import 'single_node_virtual_instance_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Workloads` - 2024-09-01
@@ -969,26 +969,38 @@ import 'single_node_virtual_instance_state.dart';
 class SingleNodeVirtualInstance extends pulumi.CustomResource {
   /// The Geo-Location where the SAP system is to be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> appLocation;
+
   /// The environment type for the SAP Single Node Virtual Instance. Possible values are `NonProd` and `Prod`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> environment;
+
   /// An `identity` block as defined below.
   late final pulumi.Output<SingleNodeVirtualInstanceIdentity?> identity;
+
   /// The Azure Region where the SAP Single Node Virtual Instance should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the managed Resource Group for the SAP Single Node Virtual Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String?> managedResourceGroupName;
+
   /// The network access type for managed resources. Possible values are `Private` and `Public`. Defaults to `Public`.
   late final pulumi.Output<String?> managedResourcesNetworkAccessType;
+
   /// Specifies the name of this SAP Single Node Virtual Instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The name of the Resource Group where the SAP Single Node Virtual Instance should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The fully qualified domain name for the SAP system. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sapFqdn;
+
   /// The SAP Product type for the SAP Single Node Virtual Instance. Possible values are `ECC`, `Other` and `S4HANA`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sapProduct;
+
   /// A `single_server_configuration` block as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<SingleNodeVirtualInstanceSingleServerConfiguration> singleServerConfiguration;
+  late final pulumi.Output<SingleNodeVirtualInstanceSingleServerConfiguration>
+  singleServerConfiguration;
+
   /// A mapping of tags which should be assigned to the SAP Single Node Virtual Instance.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -1001,23 +1013,30 @@ class SingleNodeVirtualInstance extends pulumi.CustomResource {
     SingleNodeVirtualInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:workloadssap/singleNodeVirtualInstance:SingleNodeVirtualInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appLocation = registerOutput<String>('appLocation');
-    this.environment = registerOutput<String>('environment');
-    this.identity = registerOutput<SingleNodeVirtualInstanceIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.managedResourceGroupName = registerOutput<String?>('managedResourceGroupName');
-    this.managedResourcesNetworkAccessType = registerOutput<String?>('managedResourcesNetworkAccessType');
+         'azure:workloadssap/singleNodeVirtualInstance:SingleNodeVirtualInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appLocation = registerOutput<String>('appLocation');
+    environment = registerOutput<String>('environment');
+    identity = registerOutput<SingleNodeVirtualInstanceIdentity?>('identity');
+    location = registerOutput<String>('location');
+    managedResourceGroupName = registerOutput<String?>(
+      'managedResourceGroupName',
+    );
+    managedResourcesNetworkAccessType = registerOutput<String?>(
+      'managedResourcesNetworkAccessType',
+    );
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sapFqdn = registerOutput<String>('sapFqdn');
-    this.sapProduct = registerOutput<String>('sapProduct');
-    this.singleServerConfiguration = registerOutput<SingleNodeVirtualInstanceSingleServerConfiguration>('singleServerConfiguration');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sapFqdn = registerOutput<String>('sapFqdn');
+    sapProduct = registerOutput<String>('sapProduct');
+    singleServerConfiguration =
+        registerOutput<SingleNodeVirtualInstanceSingleServerConfiguration>(
+          'singleServerConfiguration',
+        );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [SingleNodeVirtualInstance] resource's state with the given [name] and [id].
@@ -1038,22 +1057,29 @@ class SingleNodeVirtualInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:workloadssap/singleNodeVirtualInstance:SingleNodeVirtualInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appLocation = registerOutput<String>('appLocation');
-    this.environment = registerOutput<String>('environment');
-    this.identity = registerOutput<SingleNodeVirtualInstanceIdentity?>('identity');
-    this.location = registerOutput<String>('location');
-    this.managedResourceGroupName = registerOutput<String?>('managedResourceGroupName');
-    this.managedResourcesNetworkAccessType = registerOutput<String?>('managedResourcesNetworkAccessType');
+         'azure:workloadssap/singleNodeVirtualInstance:SingleNodeVirtualInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appLocation = registerOutput<String>('appLocation');
+    environment = registerOutput<String>('environment');
+    identity = registerOutput<SingleNodeVirtualInstanceIdentity?>('identity');
+    location = registerOutput<String>('location');
+    managedResourceGroupName = registerOutput<String?>(
+      'managedResourceGroupName',
+    );
+    managedResourcesNetworkAccessType = registerOutput<String?>(
+      'managedResourcesNetworkAccessType',
+    );
     this.name = registerOutput<String>('name');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.sapFqdn = registerOutput<String>('sapFqdn');
-    this.sapProduct = registerOutput<String>('sapProduct');
-    this.singleServerConfiguration = registerOutput<SingleNodeVirtualInstanceSingleServerConfiguration>('singleServerConfiguration');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sapFqdn = registerOutput<String>('sapFqdn');
+    sapProduct = registerOutput<String>('sapProduct');
+    singleServerConfiguration =
+        registerOutput<SingleNodeVirtualInstanceSingleServerConfiguration>(
+          'singleServerConfiguration',
+        );
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

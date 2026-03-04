@@ -14,15 +14,16 @@ class IapTestServiceAccountInfoWebsecurityscannerV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'targetAudienceClientId': targetAudienceClientId,
-    };
+    return <String, dynamic>{'targetAudienceClientId': targetAudienceClientId};
   }
 
-  factory IapTestServiceAccountInfoWebsecurityscannerV1beta.fromMap(Map<String, dynamic> map) {
+  factory IapTestServiceAccountInfoWebsecurityscannerV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IapTestServiceAccountInfoWebsecurityscannerV1beta(
-      targetAudienceClientId: (map['targetAudienceClientId'] as String).input(),
+      targetAudienceClientId: pulumi.Input.fromValue(
+        map['targetAudienceClientId'] as String,
+      ),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum SslCertificateTypeComputeBeta {
   selfManaged("SELF_MANAGED"),
   typeUnspecified("TYPE_UNSPECIFIED");
 
-  const SslCertificateTypeComputeBeta(this.value);
-  final String value;
+  const SslCertificateTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
   static SslCertificateTypeComputeBeta fromValue(String value) {
     for (final item in SslCertificateTypeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SslCertificateTypeComputeBeta value: $value');
   }
 }
-

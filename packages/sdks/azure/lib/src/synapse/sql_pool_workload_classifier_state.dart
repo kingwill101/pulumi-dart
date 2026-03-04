@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlPoolWorkloadClassifierState {
   /// Specifies the session context value that a request can be classified against.
   final pulumi.Input<String>? context;
+
   /// The workload classifier end time for classification. It's of the `HH:MM` format in UTC time zone.
   final pulumi.Input<String>? endTime;
+
   /// The workload classifier importance. The allowed values are `low`, `below_normal`, `normal`, `above_normal` and `high`.
   final pulumi.Input<String>? importance;
+
   /// Specifies the label value that a request can be classified against.
   final pulumi.Input<String>? label;
+
   /// The workload classifier member name used to classified against.
   final pulumi.Input<String>? memberName;
+
   /// The name which should be used for this Synapse SQL Pool Workload Classifier. Changing this forces a new Synapse SQL Pool Workload Classifier to be created.
   final pulumi.Input<String>? name;
+
   /// The workload classifier start time for classification. It's of the `HH:MM` format in UTC time zone.
   final pulumi.Input<String>? startTime;
+
   /// The ID of the Synapse SQL Pool Workload Group. Changing this forces a new Synapse SQL Pool Workload Classifier to be created.
   final pulumi.Input<String>? workloadGroupId;
 
@@ -56,15 +63,46 @@ class SqlPoolWorkloadClassifierState {
 
   factory SqlPoolWorkloadClassifierState.fromMap(Map<String, dynamic> map) {
     return SqlPoolWorkloadClassifierState(
-      context: map['context'] == null ? null : (map['context']! as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      importance: map['importance'] == null ? null : (map['importance']! as String).input(),
-      label: map['label'] == null ? null : (map['label']! as String).input(),
-      memberName: map['memberName'] == null ? null : (map['memberName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
-      workloadGroupId: map['workloadGroupId'] == null ? null : (map['workloadGroupId']! as String).input(),
+      context: (() {
+        final guardedValue = map['context'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      importance: (() {
+        final guardedValue = map['importance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memberName: (() {
+        final guardedValue = map['memberName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workloadGroupId: (() {
+        final guardedValue = map['workloadGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

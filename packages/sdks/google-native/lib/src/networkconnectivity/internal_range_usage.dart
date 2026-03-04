@@ -4,16 +4,15 @@ enum InternalRangeUsage {
   forVpc("FOR_VPC"),
   externalToVpc("EXTERNAL_TO_VPC");
 
-  const InternalRangeUsage(this.value);
-  final String value;
+  const InternalRangeUsage(this.wireValue);
+  final String wireValue;
 
   static InternalRangeUsage fromValue(String value) {
     for (final item in InternalRangeUsage.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InternalRangeUsage value: $value');
   }
 }
-

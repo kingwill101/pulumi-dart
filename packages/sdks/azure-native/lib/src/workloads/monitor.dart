@@ -439,38 +439,57 @@ import 'system_data_response.dart';
 class Monitor extends pulumi.CustomResource {
   /// The SAP monitor resources will be deployed in the SAP monitoring region. The subnet region should be same as the SAP monitoring region.
   late final pulumi.Output<String?> appLocation;
+
   /// App service plan configuration
-  late final pulumi.Output<AppServicePlanConfigurationResponse?> appServicePlanConfiguration;
+  late final pulumi.Output<AppServicePlanConfigurationResponse?>
+  appServicePlanConfiguration;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Defines the SAP monitor errors.
   late final pulumi.Output<ErrorDetailResponse> errors;
+
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The ARM ID of the Log Analytics Workspace that is used for SAP monitoring.
   late final pulumi.Output<String?> logAnalyticsWorkspaceArmId;
+
   /// Managed resource group configuration
-  late final pulumi.Output<ManagedResourceGroupConfigurationResponse?> managedResourceGroupConfiguration;
+  late final pulumi.Output<ManagedResourceGroupConfigurationResponse?>
+  managedResourceGroupConfiguration;
+
   /// The subnet which the SAP monitor will be deployed in
   late final pulumi.Output<String?> monitorSubnet;
+
   /// The ARM ID of the MSI used for SAP monitoring.
   late final pulumi.Output<String> msiArmId;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// State of provisioning of the SAP monitor.
   late final pulumi.Output<String> provisioningState;
+
   /// Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET.
   late final pulumi.Output<String?> routingPreference;
+
   /// The ARM ID of the Storage account used for SAP monitoring.
   late final pulumi.Output<String> storageAccountArmId;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Sets the preference for zone redundancy on resources created for the SAP monitor. By default resources will be created which do not support zone redundancy.
   late final pulumi.Output<String?> zoneRedundancyPreference;
 
@@ -483,28 +502,38 @@ class Monitor extends pulumi.CustomResource {
     MonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:workloads:Monitor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.appLocation = registerOutput<String?>('appLocation');
-    this.appServicePlanConfiguration = registerOutput<AppServicePlanConfigurationResponse?>('appServicePlanConfiguration');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.errors = registerOutput<ErrorDetailResponse>('errors');
-    this.identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
-    this.logAnalyticsWorkspaceArmId = registerOutput<String?>('logAnalyticsWorkspaceArmId');
-    this.managedResourceGroupConfiguration = registerOutput<ManagedResourceGroupConfigurationResponse?>('managedResourceGroupConfiguration');
-    this.monitorSubnet = registerOutput<String?>('monitorSubnet');
-    this.msiArmId = registerOutput<String>('msiArmId');
+         'azure-native:workloads:Monitor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    appLocation = registerOutput<String?>('appLocation');
+    appServicePlanConfiguration =
+        registerOutput<AppServicePlanConfigurationResponse?>(
+          'appServicePlanConfiguration',
+        );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    errors = registerOutput<ErrorDetailResponse>('errors');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
+    logAnalyticsWorkspaceArmId = registerOutput<String?>(
+      'logAnalyticsWorkspaceArmId',
+    );
+    managedResourceGroupConfiguration =
+        registerOutput<ManagedResourceGroupConfigurationResponse?>(
+          'managedResourceGroupConfiguration',
+        );
+    monitorSubnet = registerOutput<String?>('monitorSubnet');
+    msiArmId = registerOutput<String>('msiArmId');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.routingPreference = registerOutput<String?>('routingPreference');
-    this.storageAccountArmId = registerOutput<String>('storageAccountArmId');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.zoneRedundancyPreference = registerOutput<String?>('zoneRedundancyPreference');
+    provisioningState = registerOutput<String>('provisioningState');
+    routingPreference = registerOutput<String?>('routingPreference');
+    storageAccountArmId = registerOutput<String>('storageAccountArmId');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    zoneRedundancyPreference = registerOutput<String?>(
+      'zoneRedundancyPreference',
+    );
   }
 }

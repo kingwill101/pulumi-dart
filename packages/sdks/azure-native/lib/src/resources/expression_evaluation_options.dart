@@ -9,20 +9,19 @@ class ExpressionEvaluationOptions {
 
   /// Creates a new [ExpressionEvaluationOptions].
   /// [scope] The scope to be used for evaluation of parameters, variables and functions in a nested template.
-  ExpressionEvaluationOptions({
-    this.scope,
-  });
+  ExpressionEvaluationOptions({this.scope});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'scope': ?scope,
-    };
+    return <String, dynamic>{'scope': ?scope};
   }
 
   factory ExpressionEvaluationOptions.fromMap(Map<String, dynamic> map) {
     return ExpressionEvaluationOptions(
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

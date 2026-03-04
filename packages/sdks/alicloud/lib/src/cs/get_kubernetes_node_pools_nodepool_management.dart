@@ -8,22 +8,34 @@ import 'get_kubernetes_node_pools_nodepool_management_auto_vul_fix_policy.dart';
 class GetKubernetesNodePoolsNodepoolManagement {
   /// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
   final pulumi.Input<bool> autoRepair;
+
   /// Automatic repair node policy.
-  final pulumi.Input<GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy> autoRepairPolicy;
+  final pulumi.Input<GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy>
+  autoRepairPolicy;
+
   /// Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
   final pulumi.Input<bool> autoUpgrade;
+
   /// The auto update policy.
-  final pulumi.Input<GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy> autoUpgradePolicy;
+  final pulumi.Input<GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy>
+  autoUpgradePolicy;
+
   /// Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
   final pulumi.Input<bool> autoVulFix;
+
   /// The auto CVE patching policy.
-  final pulumi.Input<GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy> autoVulFixPolicy;
+  final pulumi.Input<GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy>
+  autoVulFixPolicy;
+
   /// Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `auto_scaling` configuration parameters do not take effect.
   final pulumi.Input<bool> enable;
+
   /// Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
   final pulumi.Input<int> maxUnavailable;
+
   /// Number of additional nodes. You have to specify one of surge, surge_percentage.
   final pulumi.Input<int> surge;
+
   /// Proportion of additional nodes. You have to specify one of surge, surge_percentage.
   final pulumi.Input<int> surgePercentage;
 
@@ -54,11 +66,23 @@ class GetKubernetesNodePoolsNodepoolManagement {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoRepair': autoRepair,
-      'autoRepairPolicy': pulumi.Input.mapInputValue<GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy, Map<String, dynamic>>(autoRepairPolicy, (value) => value.toMap()),
+      'autoRepairPolicy':
+          pulumi.Input.mapInputValue<
+            GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy,
+            Map<String, dynamic>
+          >(autoRepairPolicy, (value) => value.toMap()),
       'autoUpgrade': autoUpgrade,
-      'autoUpgradePolicy': pulumi.Input.mapInputValue<GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy, Map<String, dynamic>>(autoUpgradePolicy, (value) => value.toMap()),
+      'autoUpgradePolicy':
+          pulumi.Input.mapInputValue<
+            GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy,
+            Map<String, dynamic>
+          >(autoUpgradePolicy, (value) => value.toMap()),
       'autoVulFix': autoVulFix,
-      'autoVulFixPolicy': pulumi.Input.mapInputValue<GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy, Map<String, dynamic>>(autoVulFixPolicy, (value) => value.toMap()),
+      'autoVulFixPolicy':
+          pulumi.Input.mapInputValue<
+            GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy,
+            Map<String, dynamic>
+          >(autoVulFixPolicy, (value) => value.toMap()),
       'enable': enable,
       'maxUnavailable': maxUnavailable,
       'surge': surge,
@@ -66,19 +90,32 @@ class GetKubernetesNodePoolsNodepoolManagement {
     };
   }
 
-  factory GetKubernetesNodePoolsNodepoolManagement.fromMap(Map<String, dynamic> map) {
+  factory GetKubernetesNodePoolsNodepoolManagement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetKubernetesNodePoolsNodepoolManagement(
-      autoRepair: (map['autoRepair'] as bool).input(),
-      autoRepairPolicy: (GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy.fromMap((map['autoRepairPolicy'] as Map).cast<String, dynamic>())).input(),
-      autoUpgrade: (map['autoUpgrade'] as bool).input(),
-      autoUpgradePolicy: (GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy.fromMap((map['autoUpgradePolicy'] as Map).cast<String, dynamic>())).input(),
-      autoVulFix: (map['autoVulFix'] as bool).input(),
-      autoVulFixPolicy: (GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy.fromMap((map['autoVulFixPolicy'] as Map).cast<String, dynamic>())).input(),
-      enable: (map['enable'] as bool).input(),
-      maxUnavailable: (map['maxUnavailable'] as int).input(),
-      surge: (map['surge'] as int).input(),
-      surgePercentage: (map['surgePercentage'] as int).input(),
+      autoRepair: pulumi.Input.fromValue(map['autoRepair'] as bool),
+      autoRepairPolicy: pulumi.Input.fromValue(
+        GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy.fromMap(
+          (map['autoRepairPolicy']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      autoUpgrade: pulumi.Input.fromValue(map['autoUpgrade'] as bool),
+      autoUpgradePolicy: pulumi.Input.fromValue(
+        GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy.fromMap(
+          (map['autoUpgradePolicy']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      autoVulFix: pulumi.Input.fromValue(map['autoVulFix'] as bool),
+      autoVulFixPolicy: pulumi.Input.fromValue(
+        GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy.fromMap(
+          (map['autoVulFixPolicy']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      enable: pulumi.Input.fromValue(map['enable'] as bool),
+      maxUnavailable: pulumi.Input.fromValue(map['maxUnavailable'] as int),
+      surge: pulumi.Input.fromValue(map['surge'] as int),
+      surgePercentage: pulumi.Input.fromValue(map['surgePercentage'] as int),
     );
   }
 }
-

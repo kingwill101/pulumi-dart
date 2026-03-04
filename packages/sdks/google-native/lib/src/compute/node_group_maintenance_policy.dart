@@ -5,16 +5,15 @@ enum NodeGroupMaintenancePolicy {
   migrateWithinNodeGroup("MIGRATE_WITHIN_NODE_GROUP"),
   restartInPlace("RESTART_IN_PLACE");
 
-  const NodeGroupMaintenancePolicy(this.value);
-  final String value;
+  const NodeGroupMaintenancePolicy(this.wireValue);
+  final String wireValue;
 
   static NodeGroupMaintenancePolicy fromValue(String value) {
     for (final item in NodeGroupMaintenancePolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NodeGroupMaintenancePolicy value: $value');
   }
 }
-

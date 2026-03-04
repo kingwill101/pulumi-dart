@@ -5,9 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsFunctionAppSlotSiteConfigAppServiceLogs {
   /// The amount of disk space to use for logs. Valid values are between `25` and `100`. Defaults to `35`.
   final pulumi.Input<int>? diskQuotaMb;
+
   /// The retention period for logs in days. Valid values are between `0` and `99999`.(never delete).
   ///
-  /// > **Note:** This block is not supported on Consumption plans.
+  /// &gt; **Note:** This block is not supported on Consumption plans.
   final pulumi.Input<int>? retentionPeriodDays;
 
   /// Creates a new [WindowsFunctionAppSlotSiteConfigAppServiceLogs].
@@ -25,11 +26,20 @@ class WindowsFunctionAppSlotSiteConfigAppServiceLogs {
     };
   }
 
-  factory WindowsFunctionAppSlotSiteConfigAppServiceLogs.fromMap(Map<String, dynamic> map) {
+  factory WindowsFunctionAppSlotSiteConfigAppServiceLogs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WindowsFunctionAppSlotSiteConfigAppServiceLogs(
-      diskQuotaMb: map['diskQuotaMb'] == null ? null : (map['diskQuotaMb']! as int).input(),
-      retentionPeriodDays: map['retentionPeriodDays'] == null ? null : (map['retentionPeriodDays']! as int).input(),
+      diskQuotaMb: (() {
+        final guardedValue = map['diskQuotaMb'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      retentionPeriodDays: (() {
+        final guardedValue = map['retentionPeriodDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

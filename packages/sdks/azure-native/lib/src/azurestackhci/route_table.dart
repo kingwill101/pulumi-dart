@@ -10,20 +10,36 @@ class RouteTable {
 
   /// Creates a new [RouteTable].
   /// [routes] Collection of routes contained within a route table.
-  RouteTable({
-    this.routes,
-  });
+  RouteTable({this.routes});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'routes': ?pulumi.Input.mapOptionalInputValue<List<Route>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<Route, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Route>,
+            List<Map<String, dynamic>>
+          >(
+            routes,
+            (value) => pulumi.Input.encodeList<Route, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
     };
   }
 
   factory RouteTable.fromMap(Map<String, dynamic> map) {
     return RouteTable(
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<Route>(map['routes']!, (value) => Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routes: (() {
+        final guardedValue = map['routes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Route>(
+            guardedValue,
+            (value) => Route.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

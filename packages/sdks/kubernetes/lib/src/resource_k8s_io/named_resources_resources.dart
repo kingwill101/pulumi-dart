@@ -10,20 +10,35 @@ class NamedResourcesResources {
 
   /// Creates a new [NamedResourcesResources].
   /// [instances] The list of all individual resources instances currently available.
-  NamedResourcesResources({
-    required this.instances,
-  });
+  NamedResourcesResources({required this.instances});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'instances': pulumi.Input.mapInputValue<List<NamedResourcesInstance>, List<Map<String, dynamic>>>(instances, (value) => pulumi.Input.encodeList<NamedResourcesInstance, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'instances':
+          pulumi.Input.mapInputValue<
+            List<NamedResourcesInstance>,
+            List<Map<String, dynamic>>
+          >(
+            instances,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NamedResourcesInstance,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory NamedResourcesResources.fromMap(Map<String, dynamic> map) {
     return NamedResourcesResources(
-      instances: (pulumi.Input.decodeList<NamedResourcesInstance>(map['instances'], (value) => NamedResourcesInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instances: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<NamedResourcesInstance>(
+          map['instances']!,
+          (value) => NamedResourcesInstance.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
     );
   }
 }
-

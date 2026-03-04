@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudFunctionInfoResponseNetworkmanagementV1beta1 {
   /// Name of a Cloud Function.
   final pulumi.Input<String> displayName;
+
   /// Location in which the Cloud Function is deployed.
   final pulumi.Input<String> location;
+
   /// URI of a Cloud Function.
   final pulumi.Input<String> uri;
+
   /// Latest successfully deployed version id of the Cloud Function.
   final pulumi.Input<String> versionId;
 
@@ -34,13 +37,14 @@ class CloudFunctionInfoResponseNetworkmanagementV1beta1 {
     };
   }
 
-  factory CloudFunctionInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CloudFunctionInfoResponseNetworkmanagementV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudFunctionInfoResponseNetworkmanagementV1beta1(
-      displayName: (map['displayName'] as String).input(),
-      location: (map['location'] as String).input(),
-      uri: (map['uri'] as String).input(),
-      versionId: (map['versionId'] as String).input(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
+      versionId: pulumi.Input.fromValue(map['versionId'] as String),
     );
   }
 }
-

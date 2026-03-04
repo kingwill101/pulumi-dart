@@ -8,20 +8,15 @@ class AwsClusterControlPlaneSshConfig {
 
   /// Creates a new [AwsClusterControlPlaneSshConfig].
   /// [ec2KeyPair] The name of the EC2 key pair used to login into cluster machines.
-  AwsClusterControlPlaneSshConfig({
-    required this.ec2KeyPair,
-  });
+  AwsClusterControlPlaneSshConfig({required this.ec2KeyPair});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ec2KeyPair': ec2KeyPair,
-    };
+    return <String, dynamic>{'ec2KeyPair': ec2KeyPair};
   }
 
   factory AwsClusterControlPlaneSshConfig.fromMap(Map<String, dynamic> map) {
     return AwsClusterControlPlaneSshConfig(
-      ec2KeyPair: (map['ec2KeyPair'] as String).input(),
+      ec2KeyPair: pulumi.Input.fromValue(map['ec2KeyPair'] as String),
     );
   }
 }
-

@@ -9,18 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSharedImageVersionArgs {
   /// The name of the Shared Image Gallery in which the Shared Image exists.
   final pulumi.Input<String> galleryName;
+
   /// The name of the Shared Image in which this Version exists.
   final pulumi.Input<String> imageName;
+
   /// The name of the Image Version.
   ///
-  /// > **Note:** You may specify `latest` to obtain the latest version or `recent` to obtain the most recently updated version.
+  /// &gt; **Note:** You may specify `latest` to obtain the latest version or `recent` to obtain the most recently updated version.
   ///
-  /// > **Note:** In 3.0, `latest` may return an image version with `exclude_from_latest` set to `true`. Starting from 4.0 onwards `latest` will not return image versions with `exlude_from_latest` set to `true`.
+  /// &gt; **Note:** In 3.0, `latest` may return an image version with `exclude_from_latest` set to `true`. Starting from 4.0 onwards `latest` will not return image versions with `exlude_from_latest` set to `true`.
   final pulumi.Input<String> name;
+
   /// The name of the Resource Group in which the Shared Image Gallery exists.
   final pulumi.Input<String> resourceGroupName;
+
   /// Sort available versions taking SemVer versioning scheme into account. Defaults to `false`.
   final pulumi.Input<bool>? sortVersionsBySemver;
+
   /// A mapping of tags assigned to the Shared Image.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -53,13 +58,24 @@ class GetSharedImageVersionArgs {
 
   factory GetSharedImageVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetSharedImageVersionArgs(
-      galleryName: (map['galleryName'] as String).input(),
-      imageName: (map['imageName'] as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sortVersionsBySemver: map['sortVersionsBySemver'] == null ? null : (map['sortVersionsBySemver']! as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      galleryName: pulumi.Input.fromValue(map['galleryName'] as String),
+      imageName: pulumi.Input.fromValue(map['imageName'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sortVersionsBySemver: (() {
+        final guardedValue = map['sortVersionsBySemver'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

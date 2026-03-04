@@ -36,27 +36,37 @@ import 'serving_config_state.dart';
 class ServingConfig extends pulumi.CustomResource {
   /// The resource IDs of the boost controls to be applied.
   late final pulumi.Output<List<String>?> boostControlIds;
+
   /// The collection ID. Currently only accepts "default_collection".
   late final pulumi.Output<String?> collectionId;
+
   /// The ID of the engine associated with the serving config.
   late final pulumi.Output<String> engineId;
+
   /// The resource IDs of the filter controls to be applied.
   late final pulumi.Output<List<String>?> filterControlIds;
+
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   late final pulumi.Output<String> location;
+
   /// The unique full resource name of the serving config. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}`.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The resource IDs of the promote controls to be applied.
   late final pulumi.Output<List<String>?> promoteControlIds;
+
   /// The resource IDs of the redirect controls to be applied.
   late final pulumi.Output<List<String>?> redirectControlIds;
+
   /// 'The unique ID of the serving config. Currently only accepts "default_search".'
   late final pulumi.Output<String?> servingConfigId;
+
   /// The resource IDs of the synonyms controls to be applied.
   late final pulumi.Output<List<String>?> synonymsControlIds;
 
@@ -69,22 +79,22 @@ class ServingConfig extends pulumi.CustomResource {
     ServingConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:discoveryengine/servingConfig:ServingConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.boostControlIds = registerOutput<List<String>?>('boostControlIds');
-    this.collectionId = registerOutput<String?>('collectionId');
-    this.engineId = registerOutput<String>('engineId');
-    this.filterControlIds = registerOutput<List<String>?>('filterControlIds');
-    this.location = registerOutput<String>('location');
+         'gcp:discoveryengine/servingConfig:ServingConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    boostControlIds = registerOutput<List<String>?>('boostControlIds');
+    collectionId = registerOutput<String?>('collectionId');
+    engineId = registerOutput<String>('engineId');
+    filterControlIds = registerOutput<List<String>?>('filterControlIds');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.promoteControlIds = registerOutput<List<String>?>('promoteControlIds');
-    this.redirectControlIds = registerOutput<List<String>?>('redirectControlIds');
-    this.servingConfigId = registerOutput<String?>('servingConfigId');
-    this.synonymsControlIds = registerOutput<List<String>?>('synonymsControlIds');
+    project = registerOutput<String>('project');
+    promoteControlIds = registerOutput<List<String>?>('promoteControlIds');
+    redirectControlIds = registerOutput<List<String>?>('redirectControlIds');
+    servingConfigId = registerOutput<String?>('servingConfigId');
+    synonymsControlIds = registerOutput<List<String>?>('synonymsControlIds');
   }
 
   /// Gets an existing [ServingConfig] resource's state with the given [name] and [id].
@@ -105,21 +115,21 @@ class ServingConfig extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:discoveryengine/servingConfig:ServingConfig',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.boostControlIds = registerOutput<List<String>?>('boostControlIds');
-    this.collectionId = registerOutput<String?>('collectionId');
-    this.engineId = registerOutput<String>('engineId');
-    this.filterControlIds = registerOutput<List<String>?>('filterControlIds');
-    this.location = registerOutput<String>('location');
+         'gcp:discoveryengine/servingConfig:ServingConfig',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    boostControlIds = registerOutput<List<String>?>('boostControlIds');
+    collectionId = registerOutput<String?>('collectionId');
+    engineId = registerOutput<String>('engineId');
+    filterControlIds = registerOutput<List<String>?>('filterControlIds');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.promoteControlIds = registerOutput<List<String>?>('promoteControlIds');
-    this.redirectControlIds = registerOutput<List<String>?>('redirectControlIds');
-    this.servingConfigId = registerOutput<String?>('servingConfigId');
-    this.synonymsControlIds = registerOutput<List<String>?>('synonymsControlIds');
+    project = registerOutput<String>('project');
+    promoteControlIds = registerOutput<List<String>?>('promoteControlIds');
+    redirectControlIds = registerOutput<List<String>?>('redirectControlIds');
+    servingConfigId = registerOutput<String?>('servingConfigId');
+    synonymsControlIds = registerOutput<List<String>?>('synonymsControlIds');
   }
 }

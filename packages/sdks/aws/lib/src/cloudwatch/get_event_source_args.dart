@@ -9,29 +9,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEventSourceArgs {
   /// Specifying this limits the results to only those partner event sources with names that start with the specified prefix
   final pulumi.Input<String>? namePrefix;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetEventSourceArgs].
   /// [namePrefix] Specifying this limits the results to only those partner event sources with names that start with the specified prefix
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetEventSourceArgs({
-    this.namePrefix,
-    this.region,
-  });
+  GetEventSourceArgs({this.namePrefix, this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namePrefix': ?namePrefix,
-      'region': ?region,
-    };
+    return <String, dynamic>{'namePrefix': ?namePrefix, 'region': ?region};
   }
 
   factory GetEventSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetEventSourceArgs(
-      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      namePrefix: (() {
+        final guardedValue = map['namePrefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

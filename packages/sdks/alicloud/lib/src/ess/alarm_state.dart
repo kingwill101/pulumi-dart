@@ -7,48 +7,65 @@ import 'alarm_expression.dart';
 class AlarmState {
   /// The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
   final pulumi.Input<List<String>>? alarmActions;
+
   /// Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
   final pulumi.Input<int>? cloudMonitorGroupId;
-  /// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
+
+  /// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: &gt;=, &lt;=, &gt;, &lt;. Defaults to &gt;=.
   final pulumi.Input<String>? comparisonOperator;
+
   /// The description for the alarm.
   final pulumi.Input<String>? description;
+
   /// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
   final pulumi.Input<Map<String, String>>? dimensions;
+
   /// The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
   final pulumi.Input<String>? effective;
+
   /// Whether to enable specific ess alarm. Default to true.
   final pulumi.Input<bool>? enable;
+
   /// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
   final pulumi.Input<int>? evaluationCount;
+
   /// Support multi alert rule. See `expressions` below for details.
   final pulumi.Input<List<AlarmExpression>>? expressions;
+
   /// The relationship between the trigger conditions in the multi-metric alert rule.
   final pulumi.Input<String>? expressionsLogicOperator;
+
   /// The name for the alarm's associated metric. See `dimensions` below for details.
   final pulumi.Input<String>? metricName;
+
   /// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
   final pulumi.Input<String>? metricType;
+
   /// The name for ess alarm.
   final pulumi.Input<String>? name;
+
   /// The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
   final pulumi.Input<int>? period;
+
   /// The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
   final pulumi.Input<String>? scalingGroupId;
+
   /// The status of the event-triggered task. Valid values:
   /// - ALARM: The alert condition is met and an alert is triggered.
   /// - OK: The alert condition is not met.
   /// - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
   final pulumi.Input<String>? state;
+
   /// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
   final pulumi.Input<String>? statistics;
+
   /// The value against which the specified statistics is compared.
   final pulumi.Input<String>? threshold;
 
   /// Creates a new [AlarmState].
   /// [alarmActions] The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
   /// [cloudMonitorGroupId] Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
-  /// [comparisonOperator] The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
+  /// [comparisonOperator] The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: &gt;=, &lt;=, &gt;, &lt;. Defaults to &gt;=.
   /// [description] The description for the alarm.
   /// [dimensions] The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
   /// [effective] The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
@@ -95,7 +112,18 @@ class AlarmState {
       'effective': ?effective,
       'enable': ?enable,
       'evaluationCount': ?evaluationCount,
-      'expressions': ?pulumi.Input.mapOptionalInputValue<List<AlarmExpression>, List<Map<String, dynamic>>>(expressions, (value) => pulumi.Input.encodeList<AlarmExpression, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'expressions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AlarmExpression>,
+            List<Map<String, dynamic>>
+          >(
+            expressions,
+            (value) =>
+                pulumi.Input.encodeList<AlarmExpression, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'expressionsLogicOperator': ?expressionsLogicOperator,
       'metricName': ?metricName,
       'metricType': ?metricType,
@@ -110,25 +138,104 @@ class AlarmState {
 
   factory AlarmState.fromMap(Map<String, dynamic> map) {
     return AlarmState(
-      alarmActions: map['alarmActions'] == null ? null : ((map['alarmActions']! as List).cast<String>()).input(),
-      cloudMonitorGroupId: map['cloudMonitorGroupId'] == null ? null : (map['cloudMonitorGroupId']! as int).input(),
-      comparisonOperator: map['comparisonOperator'] == null ? null : (map['comparisonOperator']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      dimensions: map['dimensions'] == null ? null : ((map['dimensions']! as Map).cast<String, String>()).input(),
-      effective: map['effective'] == null ? null : (map['effective']! as String).input(),
-      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
-      evaluationCount: map['evaluationCount'] == null ? null : (map['evaluationCount']! as int).input(),
-      expressions: map['expressions'] == null ? null : (pulumi.Input.decodeList<AlarmExpression>(map['expressions']!, (value) => AlarmExpression.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expressionsLogicOperator: map['expressionsLogicOperator'] == null ? null : (map['expressionsLogicOperator']! as String).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
-      metricType: map['metricType'] == null ? null : (map['metricType']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      period: map['period'] == null ? null : (map['period']! as int).input(),
-      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      statistics: map['statistics'] == null ? null : (map['statistics']! as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold']! as String).input(),
+      alarmActions: (() {
+        final guardedValue = map['alarmActions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      cloudMonitorGroupId: (() {
+        final guardedValue = map['cloudMonitorGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      comparisonOperator: (() {
+        final guardedValue = map['comparisonOperator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dimensions: (() {
+        final guardedValue = map['dimensions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      effective: (() {
+        final guardedValue = map['effective'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      enable: (() {
+        final guardedValue = map['enable'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      evaluationCount: (() {
+        final guardedValue = map['evaluationCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      expressions: (() {
+        final guardedValue = map['expressions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AlarmExpression>(
+            guardedValue,
+            (value) =>
+                AlarmExpression.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      expressionsLogicOperator: (() {
+        final guardedValue = map['expressionsLogicOperator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metricName: (() {
+        final guardedValue = map['metricName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metricType: (() {
+        final guardedValue = map['metricType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      period: (() {
+        final guardedValue = map['period'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      scalingGroupId: (() {
+        final guardedValue = map['scalingGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statistics: (() {
+        final guardedValue = map['statistics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      threshold: (() {
+        final guardedValue = map['threshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

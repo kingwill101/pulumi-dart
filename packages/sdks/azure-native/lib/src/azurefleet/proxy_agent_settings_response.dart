@@ -8,9 +8,11 @@ class ProxyAgentSettingsResponse {
   /// Specifies whether ProxyAgent feature should be enabled on the virtual machine
   /// or virtual machine scale set.
   final pulumi.Input<bool>? enabled;
+
   /// Increase the value of this property allows user to reset the key used for
   /// securing communication channel between guest and host.
   final pulumi.Input<int>? keyIncarnationId;
+
   /// Specifies the mode that ProxyAgent will execute on if the feature is enabled.
   /// ProxyAgent will start to audit or monitor but not enforce access control over
   /// requests to host endpoints in Audit mode, while in Enforce mode it will enforce
@@ -21,11 +23,7 @@ class ProxyAgentSettingsResponse {
   /// [enabled] Specifies whether ProxyAgent feature should be enabled on the virtual machine
   /// [keyIncarnationId] Increase the value of this property allows user to reset the key used for
   /// [mode] Specifies the mode that ProxyAgent will execute on if the feature is enabled.
-  ProxyAgentSettingsResponse({
-    this.enabled,
-    this.keyIncarnationId,
-    this.mode,
-  });
+  ProxyAgentSettingsResponse({this.enabled, this.keyIncarnationId, this.mode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,10 +35,21 @@ class ProxyAgentSettingsResponse {
 
   factory ProxyAgentSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ProxyAgentSettingsResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      keyIncarnationId: map['keyIncarnationId'] == null ? null : (map['keyIncarnationId']! as int).input(),
-      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      keyIncarnationId: (() {
+        final guardedValue = map['keyIncarnationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      mode: (() {
+        final guardedValue = map['mode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

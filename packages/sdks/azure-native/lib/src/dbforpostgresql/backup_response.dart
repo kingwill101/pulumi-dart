@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupResponse {
   /// Backup retention days for the server.
   final pulumi.Input<int>? backupRetentionDays;
+
   /// Earliest restore point time (ISO8601 format) for a server.
   final pulumi.Input<String> earliestRestoreDate;
+
   /// Indicates if the server is configured to create geographically redundant backups.
   final pulumi.Input<String>? geoRedundantBackup;
 
@@ -31,10 +33,19 @@ class BackupResponse {
 
   factory BackupResponse.fromMap(Map<String, dynamic> map) {
     return BackupResponse(
-      backupRetentionDays: map['backupRetentionDays'] == null ? null : (map['backupRetentionDays']! as int).input(),
-      earliestRestoreDate: (map['earliestRestoreDate'] as String).input(),
-      geoRedundantBackup: map['geoRedundantBackup'] == null ? null : (map['geoRedundantBackup']! as String).input(),
+      backupRetentionDays: (() {
+        final guardedValue = map['backupRetentionDays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      earliestRestoreDate: pulumi.Input.fromValue(
+        map['earliestRestoreDate'] as String,
+      ),
+      geoRedundantBackup: (() {
+        final guardedValue = map['geoRedundantBackup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

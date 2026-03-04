@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IngressPortMappingResponse {
   /// Specifies the exposed port for the target port. If not specified, it defaults to target port
   final pulumi.Input<int>? exposedPort;
+
   /// Specifies whether the app port is accessible outside of the environment
   final pulumi.Input<bool> external;
+
   /// Specifies the port user's container listens on
   final pulumi.Input<int> targetPort;
 
@@ -31,10 +33,13 @@ class IngressPortMappingResponse {
 
   factory IngressPortMappingResponse.fromMap(Map<String, dynamic> map) {
     return IngressPortMappingResponse(
-      exposedPort: map['exposedPort'] == null ? null : (map['exposedPort']! as int).input(),
-      external: (map['external'] as bool).input(),
-      targetPort: (map['targetPort'] as int).input(),
+      exposedPort: (() {
+        final guardedValue = map['exposedPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      external: pulumi.Input.fromValue(map['external'] as bool),
+      targetPort: pulumi.Input.fromValue(map['targetPort'] as int),
     );
   }
 }
-

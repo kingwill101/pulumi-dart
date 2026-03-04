@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ParquetFormat {
   /// Deserializer. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? deserializer;
+
   /// Serializer. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? serializer;
+
   /// Type of dataset storage format.
   /// Expected value is 'ParquetFormat'.
   final pulumi.Input<String> type;
@@ -16,11 +18,7 @@ class ParquetFormat {
   /// [deserializer] Deserializer. Type: string (or Expression with resultType string).
   /// [serializer] Serializer. Type: string (or Expression with resultType string).
   /// [type] Type of dataset storage format.
-  ParquetFormat({
-    this.deserializer,
-    this.serializer,
-    required this.type,
-  });
+  ParquetFormat({this.deserializer, this.serializer, required this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +30,17 @@ class ParquetFormat {
 
   factory ParquetFormat.fromMap(Map<String, dynamic> map) {
     return ParquetFormat(
-      deserializer: map['deserializer'] == null ? null : (map['deserializer']!).input(),
-      serializer: map['serializer'] == null ? null : (map['serializer']!).input(),
-      type: (map['type'] as String).input(),
+      deserializer: (() {
+        final guardedValue = map['deserializer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      serializer: (() {
+        final guardedValue = map['serializer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

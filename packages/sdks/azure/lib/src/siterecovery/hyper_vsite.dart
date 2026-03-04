@@ -188,7 +188,7 @@ import 'hyper_vsite_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.RecoveryServices` - 2024-04-01
@@ -203,6 +203,7 @@ import 'hyper_vsite_state.dart';
 class HyperVSite extends pulumi.CustomResource {
   /// The name which should be used for this Recovery Service. Changing this forces a new Site to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Recovery Services Vault where the Site created. Changing this forces a new Site to be created.
   late final pulumi.Output<String> recoveryVaultId;
 
@@ -215,13 +216,13 @@ class HyperVSite extends pulumi.CustomResource {
     HyperVSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:siterecovery/hyperVSite:HyperVSite',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:siterecovery/hyperVSite:HyperVSite',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.recoveryVaultId = registerOutput<String>('recoveryVaultId');
+    recoveryVaultId = registerOutput<String>('recoveryVaultId');
   }
 
   /// Gets an existing [HyperVSite] resource's state with the given [name] and [id].
@@ -242,12 +243,12 @@ class HyperVSite extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:siterecovery/hyperVSite:HyperVSite',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:siterecovery/hyperVSite:HyperVSite',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.recoveryVaultId = registerOutput<String>('recoveryVaultId');
+    recoveryVaultId = registerOutput<String>('recoveryVaultId');
   }
 }

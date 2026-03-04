@@ -11,12 +11,16 @@ import 'pod_scheduling_context_status.dart';
 class PodSchedulingContext {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   final pulumi.Input<String>? apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   final pulumi.Input<String>? kind;
+
   /// Standard object metadata
   final pulumi.Input<ObjectMeta>? metadata;
+
   /// Spec describes where resources for the Pod are needed.
   final pulumi.Input<PodSchedulingContextSpec> spec;
+
   /// Status describes where resources for the Pod can be allocated.
   final pulumi.Input<PodSchedulingContextStatus>? status;
 
@@ -38,20 +42,57 @@ class PodSchedulingContext {
     return <String, dynamic>{
       'apiVersion': ?apiVersion,
       'kind': ?kind,
-      'metadata': ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(metadata, (value) => value.toMap()),
-      'spec': pulumi.Input.mapInputValue<PodSchedulingContextSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
-      'status': ?pulumi.Input.mapOptionalInputValue<PodSchedulingContextStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'metadata':
+          ?pulumi.Input.mapOptionalInputValue<ObjectMeta, Map<String, dynamic>>(
+            metadata,
+            (value) => value.toMap(),
+          ),
+      'spec':
+          pulumi.Input.mapInputValue<
+            PodSchedulingContextSpec,
+            Map<String, dynamic>
+          >(spec, (value) => value.toMap()),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            PodSchedulingContextStatus,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
     };
   }
 
   factory PodSchedulingContext.fromMap(Map<String, dynamic> map) {
     return PodSchedulingContext(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
-      spec: (PodSchedulingContextSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (PodSchedulingContextStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      apiVersion: (() {
+        final guardedValue = map['apiVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ObjectMeta.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      spec: pulumi.Input.fromValue(
+        PodSchedulingContextSpec.fromMap(
+          (map['spec']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PodSchedulingContextStatus.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

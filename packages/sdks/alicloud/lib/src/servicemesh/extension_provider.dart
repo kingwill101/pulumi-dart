@@ -6,7 +6,7 @@ import 'extension_provider_state.dart';
 ///
 /// For information about Service Mesh Extension Provider and how to use it, see [What is Extension Provider](https://help.aliyun.com/document_detail/461549.html).
 ///
-/// > **NOTE:** Available since v1.191.0.
+/// &gt; **NOTE:** Available since v1.191.0.
 ///
 /// ## Example Usage
 ///
@@ -496,10 +496,13 @@ import 'extension_provider_state.dart';
 class ExtensionProvider extends pulumi.CustomResource {
   /// The config of the Service Mesh Extension Provider. The `config` format is json.
   late final pulumi.Output<String> config;
+
   /// The name of the Service Mesh Extension Provider. It must be prefixed with `$type-`, for example `httpextauth-xxx`, `grpcextauth-xxx`.
   late final pulumi.Output<String> extensionProviderName;
+
   /// The ID of the Service Mesh.
   late final pulumi.Output<String> serviceMeshId;
+
   /// The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
   late final pulumi.Output<String> type;
 
@@ -512,15 +515,15 @@ class ExtensionProvider extends pulumi.CustomResource {
     ExtensionProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:servicemesh/extensionProvider:ExtensionProvider',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.config = registerOutput<String>('config');
-    this.extensionProviderName = registerOutput<String>('extensionProviderName');
-    this.serviceMeshId = registerOutput<String>('serviceMeshId');
-    this.type = registerOutput<String>('type');
+         'alicloud:servicemesh/extensionProvider:ExtensionProvider',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    config = registerOutput<String>('config');
+    extensionProviderName = registerOutput<String>('extensionProviderName');
+    serviceMeshId = registerOutput<String>('serviceMeshId');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [ExtensionProvider] resource's state with the given [name] and [id].
@@ -541,14 +544,14 @@ class ExtensionProvider extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:servicemesh/extensionProvider:ExtensionProvider',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.config = registerOutput<String>('config');
-    this.extensionProviderName = registerOutput<String>('extensionProviderName');
-    this.serviceMeshId = registerOutput<String>('serviceMeshId');
-    this.type = registerOutput<String>('type');
+         'alicloud:servicemesh/extensionProvider:ExtensionProvider',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    config = registerOutput<String>('config');
+    extensionProviderName = registerOutput<String>('extensionProviderName');
+    serviceMeshId = registerOutput<String>('serviceMeshId');
+    type = registerOutput<String>('type');
   }
 }

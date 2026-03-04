@@ -5,16 +5,17 @@ enum GoogleCloudMlV1StudyConfigAlgorithm {
   gridSearch("GRID_SEARCH"),
   randomSearch("RANDOM_SEARCH");
 
-  const GoogleCloudMlV1StudyConfigAlgorithm(this.value);
-  final String value;
+  const GoogleCloudMlV1StudyConfigAlgorithm(this.wireValue);
+  final String wireValue;
 
   static GoogleCloudMlV1StudyConfigAlgorithm fromValue(String value) {
     for (final item in GoogleCloudMlV1StudyConfigAlgorithm.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudMlV1StudyConfigAlgorithm value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudMlV1StudyConfigAlgorithm value: $value',
+    );
   }
 }
-

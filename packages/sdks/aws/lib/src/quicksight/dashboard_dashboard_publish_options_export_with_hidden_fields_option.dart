@@ -13,15 +13,18 @@ class DashboardDashboardPublishOptionsExportWithHiddenFieldsOption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'availabilityStatus': ?availabilityStatus,
-    };
+    return <String, dynamic>{'availabilityStatus': ?availabilityStatus};
   }
 
-  factory DashboardDashboardPublishOptionsExportWithHiddenFieldsOption.fromMap(Map<String, dynamic> map) {
+  factory DashboardDashboardPublishOptionsExportWithHiddenFieldsOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DashboardDashboardPublishOptionsExportWithHiddenFieldsOption(
-      availabilityStatus: map['availabilityStatus'] == null ? null : ((map['availabilityStatus'] as String).input()).input(),
+      availabilityStatus: (() {
+        final guardedValue = map['availabilityStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

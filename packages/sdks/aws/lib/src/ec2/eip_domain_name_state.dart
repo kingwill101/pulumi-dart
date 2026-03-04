@@ -7,10 +7,13 @@ import 'eip_domain_name_timeouts.dart';
 class EipDomainNameState {
   /// The allocation ID.
   final pulumi.Input<String>? allocationId;
+
   /// The domain name to modify for the IP address.
   final pulumi.Input<String>? domainName;
+
   /// The DNS pointer (PTR) record for the IP address.
   final pulumi.Input<String>? ptrRecord;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<EipDomainNameTimeouts>? timeouts;
@@ -35,18 +38,45 @@ class EipDomainNameState {
       'domainName': ?domainName,
       'ptrRecord': ?ptrRecord,
       'region': ?region,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<EipDomainNameTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            EipDomainNameTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory EipDomainNameState.fromMap(Map<String, dynamic> map) {
     return EipDomainNameState(
-      allocationId: map['allocationId'] == null ? null : ((map['allocationId'] as String).input()).input(),
-      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
-      ptrRecord: map['ptrRecord'] == null ? null : ((map['ptrRecord'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((EipDomainNameTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      allocationId: (() {
+        final guardedValue = map['allocationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainName: (() {
+        final guardedValue = map['domainName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ptrRecord: (() {
+        final guardedValue = map['ptrRecord'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EipDomainNameTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

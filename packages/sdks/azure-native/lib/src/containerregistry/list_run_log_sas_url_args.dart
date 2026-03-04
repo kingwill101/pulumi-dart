@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListRunLogSasUrlArgs {
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
+
   /// The name of the resource group to which the container registry belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// The run ID.
   final pulumi.Input<String> runId;
 
@@ -34,10 +36,11 @@ class ListRunLogSasUrlArgs {
 
   factory ListRunLogSasUrlArgs.fromMap(Map<String, dynamic> map) {
     return ListRunLogSasUrlArgs(
-      registryName: (map['registryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      runId: (map['runId'] as String).input(),
+      registryName: pulumi.Input.fromValue(map['registryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      runId: pulumi.Input.fromValue(map['runId'] as String),
     );
   }
 }
-

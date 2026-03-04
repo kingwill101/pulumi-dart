@@ -35,11 +35,14 @@ class GetDeploymentArgs {
 
   factory GetDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return GetDeploymentArgs(
-      apiId: (map['apiId'] as String).input(),
-      deploymentId: (map['deploymentId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      deploymentId: pulumi.Input.fromValue(map['deploymentId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

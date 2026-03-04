@@ -7,6 +7,7 @@ class AppSpecServiceTermination {
   ///
   /// A `static_site` can contain:
   final pulumi.Input<int>? drainSeconds;
+
   /// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
   ///
   /// A `function` component can contain:
@@ -15,10 +16,7 @@ class AppSpecServiceTermination {
   /// Creates a new [AppSpecServiceTermination].
   /// [drainSeconds] The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
   /// [gracePeriodSeconds] The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
-  AppSpecServiceTermination({
-    this.drainSeconds,
-    this.gracePeriodSeconds,
-  });
+  AppSpecServiceTermination({this.drainSeconds, this.gracePeriodSeconds});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,16 @@ class AppSpecServiceTermination {
 
   factory AppSpecServiceTermination.fromMap(Map<String, dynamic> map) {
     return AppSpecServiceTermination(
-      drainSeconds: map['drainSeconds'] == null ? null : (map['drainSeconds']! as int).input(),
-      gracePeriodSeconds: map['gracePeriodSeconds'] == null ? null : (map['gracePeriodSeconds']! as int).input(),
+      drainSeconds: (() {
+        final guardedValue = map['drainSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      gracePeriodSeconds: (() {
+        final guardedValue = map['gracePeriodSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

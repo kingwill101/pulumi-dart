@@ -5,7 +5,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 /// Adds existing resource policies to a disk. You can only add one policy
 /// which will be applied to this disk for scheduling snapshot creation.
 ///
-/// > **Note:** This resource does not support zonal disks (`gcp.compute.Disk`). For zonal disks, please refer to the `gcp.compute.DiskResourcePolicyAttachment` resource.
+/// &gt; **Note:** This resource does not support zonal disks (`gcp.compute.Disk`). For zonal disks, please refer to the `gcp.compute.DiskResourcePolicyAttachment` resource.
 ///
 ///
 ///
@@ -424,12 +424,15 @@ import 'region_disk_resource_policy_attachment_state.dart';
 class RegionDiskResourcePolicyAttachment extends pulumi.CustomResource {
   /// The name of the regional disk in which the resource policies are attached to.
   late final pulumi.Output<String> disk;
+
   /// The resource policy to be attached to the disk for scheduling snapshot
   /// creation. Do not specify the self link.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// A reference to the region where the disk resides.
   late final pulumi.Output<String> region;
 
@@ -442,15 +445,15 @@ class RegionDiskResourcePolicyAttachment extends pulumi.CustomResource {
     RegionDiskResourcePolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.disk = registerOutput<String>('disk');
+         'gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    disk = registerOutput<String>('disk');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [RegionDiskResourcePolicyAttachment] resource's state with the given [name] and [id].
@@ -471,14 +474,14 @@ class RegionDiskResourcePolicyAttachment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.disk = registerOutput<String>('disk');
+         'gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    disk = registerOutput<String>('disk');
     this.name = registerOutput<String>('name');
-    this.project = registerOutput<String>('project');
-    this.region = registerOutput<String>('region');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
   }
 }

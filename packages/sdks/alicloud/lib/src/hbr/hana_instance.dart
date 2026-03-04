@@ -6,9 +6,9 @@ import 'hana_instance_state.dart';
 ///
 /// For information about Hybrid Backup Recovery (HBR) Hana Instance and how to use it, see [What is Hana Instance](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createhanainstance).
 ///
-/// > **NOTE:** Available since v1.178.0.
+/// &gt; **NOTE:** Available since v1.178.0.
 ///
-/// > **NOTE:** The `sid` attribute is required when destroying resources.
+/// &gt; **NOTE:** The `sid` attribute is required when destroying resources.
 ///
 /// ## Example Usage
 ///
@@ -266,30 +266,43 @@ import 'hana_instance_state.dart';
 class HanaInstance extends pulumi.CustomResource {
   /// The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
   late final pulumi.Output<String> alertSetting;
+
   /// The IDs of ECS instances that host the SAP HANA instance to be registered. HBR installs backup clients on the specified ECS instances.
   late final pulumi.Output<List<String>?> ecsInstanceIds;
+
   /// The id of the Hana Instance.
   late final pulumi.Output<String> hanaInstanceId;
+
   /// The name of the SAP HANA instance.
   late final pulumi.Output<String?> hanaName;
+
   /// The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
   late final pulumi.Output<String?> host;
+
   /// The instance number of the SAP HANA system.
   late final pulumi.Output<int?> instanceNumber;
+
   /// The password that is used to connect with the SAP HANA database.
   late final pulumi.Output<String?> password;
+
   /// The ID of the resource group.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The security identifier (SID) of the SAP HANA database.
   late final pulumi.Output<String?> sid;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
+
   /// Specifies whether to connect with the SAP HANA database over Secure Sockets Layer (SSL).
   late final pulumi.Output<bool?> useSsl;
+
   /// The username of the SYSTEMDB database.
   late final pulumi.Output<String?> userName;
+
   /// Specifies whether to verify the SSL certificate of the SAP HANA database.
   late final pulumi.Output<bool?> validateCertificate;
+
   /// The ID of the backup vault.
   late final pulumi.Output<String> vaultId;
 
@@ -302,25 +315,25 @@ class HanaInstance extends pulumi.CustomResource {
     HanaInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:hbr/hanaInstance:HanaInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertSetting = registerOutput<String>('alertSetting');
-    this.ecsInstanceIds = registerOutput<List<String>?>('ecsInstanceIds');
-    this.hanaInstanceId = registerOutput<String>('hanaInstanceId');
-    this.hanaName = registerOutput<String?>('hanaName');
-    this.host = registerOutput<String?>('host');
-    this.instanceNumber = registerOutput<int?>('instanceNumber');
-    this.password = registerOutput<String?>('password');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.sid = registerOutput<String?>('sid');
-    this.status = registerOutput<String>('status');
-    this.useSsl = registerOutput<bool?>('useSsl');
-    this.userName = registerOutput<String?>('userName');
-    this.validateCertificate = registerOutput<bool?>('validateCertificate');
-    this.vaultId = registerOutput<String>('vaultId');
+         'alicloud:hbr/hanaInstance:HanaInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertSetting = registerOutput<String>('alertSetting');
+    ecsInstanceIds = registerOutput<List<String>?>('ecsInstanceIds');
+    hanaInstanceId = registerOutput<String>('hanaInstanceId');
+    hanaName = registerOutput<String?>('hanaName');
+    host = registerOutput<String?>('host');
+    instanceNumber = registerOutput<int?>('instanceNumber');
+    password = registerOutput<String?>('password');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    sid = registerOutput<String?>('sid');
+    status = registerOutput<String>('status');
+    useSsl = registerOutput<bool?>('useSsl');
+    userName = registerOutput<String?>('userName');
+    validateCertificate = registerOutput<bool?>('validateCertificate');
+    vaultId = registerOutput<String>('vaultId');
   }
 
   /// Gets an existing [HanaInstance] resource's state with the given [name] and [id].
@@ -341,24 +354,24 @@ class HanaInstance extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:hbr/hanaInstance:HanaInstance',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alertSetting = registerOutput<String>('alertSetting');
-    this.ecsInstanceIds = registerOutput<List<String>?>('ecsInstanceIds');
-    this.hanaInstanceId = registerOutput<String>('hanaInstanceId');
-    this.hanaName = registerOutput<String?>('hanaName');
-    this.host = registerOutput<String?>('host');
-    this.instanceNumber = registerOutput<int?>('instanceNumber');
-    this.password = registerOutput<String?>('password');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.sid = registerOutput<String?>('sid');
-    this.status = registerOutput<String>('status');
-    this.useSsl = registerOutput<bool?>('useSsl');
-    this.userName = registerOutput<String?>('userName');
-    this.validateCertificate = registerOutput<bool?>('validateCertificate');
-    this.vaultId = registerOutput<String>('vaultId');
+         'alicloud:hbr/hanaInstance:HanaInstance',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alertSetting = registerOutput<String>('alertSetting');
+    ecsInstanceIds = registerOutput<List<String>?>('ecsInstanceIds');
+    hanaInstanceId = registerOutput<String>('hanaInstanceId');
+    hanaName = registerOutput<String?>('hanaName');
+    host = registerOutput<String?>('host');
+    instanceNumber = registerOutput<int?>('instanceNumber');
+    password = registerOutput<String?>('password');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    sid = registerOutput<String?>('sid');
+    status = registerOutput<String>('status');
+    useSsl = registerOutput<bool?>('useSsl');
+    userName = registerOutput<String?>('userName');
+    validateCertificate = registerOutput<bool?>('validateCertificate');
+    vaultId = registerOutput<String>('vaultId');
   }
 }

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RetentionTagResponse {
   /// Retention Tag version.
   final pulumi.Input<String> eTag;
+
   /// Retention Tag version.
   final pulumi.Input<String> id;
+
   /// Retention Tag Name to relate it to retention rule.
   final pulumi.Input<String> tagName;
 
@@ -22,19 +24,14 @@ class RetentionTagResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'eTag': eTag,
-      'id': id,
-      'tagName': tagName,
-    };
+    return <String, dynamic>{'eTag': eTag, 'id': id, 'tagName': tagName};
   }
 
   factory RetentionTagResponse.fromMap(Map<String, dynamic> map) {
     return RetentionTagResponse(
-      eTag: (map['eTag'] as String).input(),
-      id: (map['id'] as String).input(),
-      tagName: (map['tagName'] as String).input(),
+      eTag: pulumi.Input.fromValue(map['eTag'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      tagName: pulumi.Input.fromValue(map['tagName'] as String),
     );
   }
 }
-

@@ -10,12 +10,16 @@ import 'elastic_backup_properties.dart';
 class ElasticBackupArgs {
   /// The name of the ElasticAccount
   final pulumi.Input<String> accountName;
+
   /// The name of the ElasticBackup
   final pulumi.Input<String>? backupName;
+
   /// The name of the ElasticBackupVault
   final pulumi.Input<String> backupVaultName;
+
   /// The resource-specific properties for this resource.
   final pulumi.Input<ElasticBackupProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -38,19 +42,36 @@ class ElasticBackupArgs {
       'accountName': accountName,
       'backupName': ?backupName,
       'backupVaultName': backupVaultName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<ElasticBackupProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            ElasticBackupProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory ElasticBackupArgs.fromMap(Map<String, dynamic> map) {
     return ElasticBackupArgs(
-      accountName: (map['accountName'] as String).input(),
-      backupName: map['backupName'] == null ? null : (map['backupName']! as String).input(),
-      backupVaultName: (map['backupVaultName'] as String).input(),
-      properties: map['properties'] == null ? null : (ElasticBackupProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      backupName: (() {
+        final guardedValue = map['backupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      backupVaultName: pulumi.Input.fromValue(map['backupVaultName'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ElasticBackupProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

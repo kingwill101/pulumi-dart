@@ -10,20 +10,31 @@ class FunctionsScaleAndConcurrencyResponseTriggers {
 
   /// Creates a new [FunctionsScaleAndConcurrencyResponseTriggers].
   /// [http] Scale and concurrency settings for the HTTP trigger.
-  FunctionsScaleAndConcurrencyResponseTriggers({
-    this.http,
-  });
+  FunctionsScaleAndConcurrencyResponseTriggers({this.http});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'http': ?pulumi.Input.mapOptionalInputValue<FunctionsScaleAndConcurrencyResponseHttp, Map<String, dynamic>>(http, (value) => value.toMap()),
+      'http':
+          ?pulumi.Input.mapOptionalInputValue<
+            FunctionsScaleAndConcurrencyResponseHttp,
+            Map<String, dynamic>
+          >(http, (value) => value.toMap()),
     };
   }
 
-  factory FunctionsScaleAndConcurrencyResponseTriggers.fromMap(Map<String, dynamic> map) {
+  factory FunctionsScaleAndConcurrencyResponseTriggers.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FunctionsScaleAndConcurrencyResponseTriggers(
-      http: map['http'] == null ? null : (FunctionsScaleAndConcurrencyResponseHttp.fromMap((map['http']! as Map).cast<String, dynamic>())).input(),
+      http: (() {
+        final guardedValue = map['http'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FunctionsScaleAndConcurrencyResponseHttp.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

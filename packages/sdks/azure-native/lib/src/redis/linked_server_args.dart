@@ -10,14 +10,19 @@ import 'replication_role.dart';
 class LinkedServerArgs {
   /// Fully qualified resourceId of the linked redis cache.
   final pulumi.Input<String> linkedRedisCacheId;
+
   /// Location of the linked redis cache.
   final pulumi.Input<String> linkedRedisCacheLocation;
+
   /// The name of the RedisLinkedServerWithProperties
   final pulumi.Input<String>? linkedServerName;
+
   /// The name of the redis cache.
   final pulumi.Input<String> name;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Role of the linked server.
   final pulumi.Input<ReplicationRole> serverRole;
 
@@ -44,19 +49,33 @@ class LinkedServerArgs {
       'linkedServerName': ?linkedServerName,
       'name': name,
       'resourceGroupName': resourceGroupName,
-      'serverRole': pulumi.Input.mapInputValue<ReplicationRole, String>(serverRole, (value) => value.value),
+      'serverRole': pulumi.Input.mapInputValue<ReplicationRole, String>(
+        serverRole,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory LinkedServerArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServerArgs(
-      linkedRedisCacheId: (map['linkedRedisCacheId'] as String).input(),
-      linkedRedisCacheLocation: (map['linkedRedisCacheLocation'] as String).input(),
-      linkedServerName: map['linkedServerName'] == null ? null : (map['linkedServerName']! as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverRole: (ReplicationRole.fromValue(map['serverRole'] as String)).input(),
+      linkedRedisCacheId: pulumi.Input.fromValue(
+        map['linkedRedisCacheId'] as String,
+      ),
+      linkedRedisCacheLocation: pulumi.Input.fromValue(
+        map['linkedRedisCacheLocation'] as String,
+      ),
+      linkedServerName: (() {
+        final guardedValue = map['linkedServerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serverRole: pulumi.Input.fromValue(
+        ReplicationRole.fromValue(map['serverRole']! as String),
+      ),
     );
   }
 }
-

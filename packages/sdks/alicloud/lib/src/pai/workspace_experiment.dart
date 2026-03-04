@@ -8,7 +8,7 @@ import 'workspace_experiment_state.dart';
 ///
 /// For information about PAI Workspace Experiment and how to use it, see [What is Experiment](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateExperiment).
 ///
-/// > **NOTE:** Available since v1.236.0.
+/// &gt; **NOTE:** Available since v1.236.0.
 ///
 /// ## Example Usage
 ///
@@ -203,12 +203,16 @@ import 'workspace_experiment_state.dart';
 class WorkspaceExperiment extends pulumi.CustomResource {
   /// Experimental Visibility
   late final pulumi.Output<String> accessibility;
+
   /// ArtifactUri is default OSS storage path of the output of trials in the experiment
   late final pulumi.Output<String> artifactUri;
+
   /// GmtCreateTime is time when this entity is created.
   late final pulumi.Output<String> createTime;
+
   /// Name is the name of the experiment, unique in a namespace
   late final pulumi.Output<String> experimentName;
+
   /// WorkspaceId is the workspace id which contains the experiment
   late final pulumi.Output<String> workspaceId;
 
@@ -221,16 +225,16 @@ class WorkspaceExperiment extends pulumi.CustomResource {
     WorkspaceExperimentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pai/workspaceExperiment:WorkspaceExperiment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessibility = registerOutput<String>('accessibility');
-    this.artifactUri = registerOutput<String>('artifactUri');
-    this.createTime = registerOutput<String>('createTime');
-    this.experimentName = registerOutput<String>('experimentName');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'alicloud:pai/workspaceExperiment:WorkspaceExperiment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessibility = registerOutput<String>('accessibility');
+    artifactUri = registerOutput<String>('artifactUri');
+    createTime = registerOutput<String>('createTime');
+    experimentName = registerOutput<String>('experimentName');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [WorkspaceExperiment] resource's state with the given [name] and [id].
@@ -251,15 +255,15 @@ class WorkspaceExperiment extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:pai/workspaceExperiment:WorkspaceExperiment',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessibility = registerOutput<String>('accessibility');
-    this.artifactUri = registerOutput<String>('artifactUri');
-    this.createTime = registerOutput<String>('createTime');
-    this.experimentName = registerOutput<String>('experimentName');
-    this.workspaceId = registerOutput<String>('workspaceId');
+         'alicloud:pai/workspaceExperiment:WorkspaceExperiment',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessibility = registerOutput<String>('accessibility');
+    artifactUri = registerOutput<String>('artifactUri');
+    createTime = registerOutput<String>('createTime');
+    experimentName = registerOutput<String>('experimentName');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

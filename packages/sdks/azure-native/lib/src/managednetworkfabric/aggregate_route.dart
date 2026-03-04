@@ -9,20 +9,15 @@ class AggregateRoute {
 
   /// Creates a new [AggregateRoute].
   /// [prefix] IPv4 Prefix of the aggregate Ipv4Route.
-  AggregateRoute({
-    required this.prefix,
-  });
+  AggregateRoute({required this.prefix});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'prefix': prefix,
-    };
+    return <String, dynamic>{'prefix': prefix};
   }
 
   factory AggregateRoute.fromMap(Map<String, dynamic> map) {
     return AggregateRoute(
-      prefix: (map['prefix'] as String).input(),
+      prefix: pulumi.Input.fromValue(map['prefix'] as String),
     );
   }
 }
-

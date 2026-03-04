@@ -16,14 +16,23 @@ class GooglePrivacyDlpV2DataProfilePubSubConditionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expressions': pulumi.Input.mapInputValue<GooglePrivacyDlpV2PubSubExpressionsResponse, Map<String, dynamic>>(expressions, (value) => value.toMap()),
+      'expressions':
+          pulumi.Input.mapInputValue<
+            GooglePrivacyDlpV2PubSubExpressionsResponse,
+            Map<String, dynamic>
+          >(expressions, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2DataProfilePubSubConditionResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DataProfilePubSubConditionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2DataProfilePubSubConditionResponse(
-      expressions: (GooglePrivacyDlpV2PubSubExpressionsResponse.fromMap((map['expressions'] as Map).cast<String, dynamic>())).input(),
+      expressions: pulumi.Input.fromValue(
+        GooglePrivacyDlpV2PubSubExpressionsResponse.fromMap(
+          (map['expressions']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppVersionSnapshotToolSystemTool {
   /// The description of the app version.
   final pulumi.Input<String>? description;
+
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
@@ -14,23 +15,24 @@ class AppVersionSnapshotToolSystemTool {
   /// Creates a new [AppVersionSnapshotToolSystemTool].
   /// [description] The description of the app version.
   /// [name] (Output)
-  AppVersionSnapshotToolSystemTool({
-    this.description,
-    this.name,
-  });
+  AppVersionSnapshotToolSystemTool({this.description, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': ?description,
-      'name': ?name,
-    };
+    return <String, dynamic>{'description': ?description, 'name': ?name};
   }
 
   factory AppVersionSnapshotToolSystemTool.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolSystemTool(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

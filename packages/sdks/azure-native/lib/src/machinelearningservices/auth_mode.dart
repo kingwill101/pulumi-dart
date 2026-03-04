@@ -2,16 +2,15 @@
 enum AuthMode {
   valueAAD("AAD");
 
-  const AuthMode(this.value);
-  final String value;
+  const AuthMode(this.wireValue);
+  final String wireValue;
 
   static AuthMode fromValue(String value) {
     for (final item in AuthMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuthMode value: $value');
   }
 }
-

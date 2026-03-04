@@ -7,20 +7,17 @@ class GetVirtualNodeSpecListenerConnectionPoolTcp {
 
   /// Creates a new [GetVirtualNodeSpecListenerConnectionPoolTcp].
   /// [maxConnections] Required.
-  GetVirtualNodeSpecListenerConnectionPoolTcp({
-    required this.maxConnections,
-  });
+  GetVirtualNodeSpecListenerConnectionPoolTcp({required this.maxConnections});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxConnections': maxConnections,
-    };
+    return <String, dynamic>{'maxConnections': maxConnections};
   }
 
-  factory GetVirtualNodeSpecListenerConnectionPoolTcp.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecListenerConnectionPoolTcp.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNodeSpecListenerConnectionPoolTcp(
-      maxConnections: (map['maxConnections'] as int).input(),
+      maxConnections: pulumi.Input.fromValue(map['maxConnections'] as int),
     );
   }
 }
-

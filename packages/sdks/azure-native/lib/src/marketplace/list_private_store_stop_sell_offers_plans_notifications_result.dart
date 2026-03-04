@@ -5,7 +5,8 @@ import 'stop_sell_offers_plans_notifications_list_properties_response.dart';
 
 /// Result data returned by listPrivateStoreStopSellOffersPlansNotifications.
 class ListPrivateStoreStopSellOffersPlansNotificationsResult {
-  final List<StopSellOffersPlansNotificationsListPropertiesResponse>? stopSellNotifications;
+  final List<StopSellOffersPlansNotificationsListPropertiesResponse>?
+  stopSellNotifications;
 
   /// Creates a new [ListPrivateStoreStopSellOffersPlansNotificationsResult].
   /// [stopSellNotifications] Optional.
@@ -15,14 +16,34 @@ class ListPrivateStoreStopSellOffersPlansNotificationsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'stopSellNotifications': ?stopSellNotifications == null ? null : pulumi.Input.encodeList<StopSellOffersPlansNotificationsListPropertiesResponse, Map<String, dynamic>>(stopSellNotifications!, (value) => value.toMap()),
+      'stopSellNotifications': ?(() {
+        final guardedValue = stopSellNotifications;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          StopSellOffersPlansNotificationsListPropertiesResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
     };
   }
 
-  factory ListPrivateStoreStopSellOffersPlansNotificationsResult.fromMap(Map<String, dynamic> map) {
+  factory ListPrivateStoreStopSellOffersPlansNotificationsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListPrivateStoreStopSellOffersPlansNotificationsResult(
-      stopSellNotifications: map['stopSellNotifications'] == null ? null : pulumi.Input.decodeList<StopSellOffersPlansNotificationsListPropertiesResponse>(map['stopSellNotifications']!, (value) => StopSellOffersPlansNotificationsListPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      stopSellNotifications: (() {
+        final guardedValue = map['stopSellNotifications'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<
+          StopSellOffersPlansNotificationsListPropertiesResponse
+        >(
+          guardedValue,
+          (value) =>
+              StopSellOffersPlansNotificationsListPropertiesResponse.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+        );
+      })(),
     );
   }
 }
-

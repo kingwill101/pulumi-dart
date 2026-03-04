@@ -1,5 +1,3 @@
-library module_gwlb;
-
 export 'gwlb/functions.dart';
 export 'gwlb/get_zones_args.dart';
 export 'gwlb/get_zones_result.dart';

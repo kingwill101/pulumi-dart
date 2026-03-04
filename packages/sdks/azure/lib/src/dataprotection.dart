@@ -1,5 +1,3 @@
-library module_dataprotection;
-
 export 'dataprotection/backup_instance_blog_storage.dart';
 export 'dataprotection/backup_instance_blog_storage_args.dart';
 export 'dataprotection/backup_instance_blog_storage_state.dart';

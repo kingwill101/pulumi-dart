@@ -7,20 +7,17 @@ class GetVirtualNodeSpecListenerConnectionPoolGrpc {
 
   /// Creates a new [GetVirtualNodeSpecListenerConnectionPoolGrpc].
   /// [maxRequests] Required.
-  GetVirtualNodeSpecListenerConnectionPoolGrpc({
-    required this.maxRequests,
-  });
+  GetVirtualNodeSpecListenerConnectionPoolGrpc({required this.maxRequests});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxRequests': maxRequests,
-    };
+    return <String, dynamic>{'maxRequests': maxRequests};
   }
 
-  factory GetVirtualNodeSpecListenerConnectionPoolGrpc.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecListenerConnectionPoolGrpc.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNodeSpecListenerConnectionPoolGrpc(
-      maxRequests: (map['maxRequests'] as int).input(),
+      maxRequests: pulumi.Input.fromValue(map['maxRequests'] as int),
     );
   }
 }
-

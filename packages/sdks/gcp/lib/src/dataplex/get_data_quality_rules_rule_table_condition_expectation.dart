@@ -13,15 +13,14 @@ class GetDataQualityRulesRuleTableConditionExpectation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sqlExpression': sqlExpression,
-    };
+    return <String, dynamic>{'sqlExpression': sqlExpression};
   }
 
-  factory GetDataQualityRulesRuleTableConditionExpectation.fromMap(Map<String, dynamic> map) {
+  factory GetDataQualityRulesRuleTableConditionExpectation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataQualityRulesRuleTableConditionExpectation(
-      sqlExpression: (map['sqlExpression'] as String).input(),
+      sqlExpression: pulumi.Input.fromValue(map['sqlExpression'] as String),
     );
   }
 }
-

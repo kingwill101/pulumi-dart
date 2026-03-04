@@ -1,5 +1,3 @@
-library module_cloudtasks;
-
 export 'cloudtasks/app_engine_http_queue.dart';
 export 'cloudtasks/app_engine_http_queue_response.dart';
 export 'cloudtasks/app_engine_http_request.dart';

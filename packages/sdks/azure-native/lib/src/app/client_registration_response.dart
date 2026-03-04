@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientRegistrationResponse {
   /// The Client ID of the app used for login.
   final pulumi.Input<String>? clientId;
+
   /// The app setting name that contains the client secret.
   final pulumi.Input<String>? clientSecretSettingName;
 
   /// Creates a new [ClientRegistrationResponse].
   /// [clientId] The Client ID of the app used for login.
   /// [clientSecretSettingName] The app setting name that contains the client secret.
-  ClientRegistrationResponse({
-    this.clientId,
-    this.clientSecretSettingName,
-  });
+  ClientRegistrationResponse({this.clientId, this.clientSecretSettingName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class ClientRegistrationResponse {
 
   factory ClientRegistrationResponse.fromMap(Map<String, dynamic> map) {
     return ClientRegistrationResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName']! as String).input(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecretSettingName: (() {
+        final guardedValue = map['clientSecretSettingName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

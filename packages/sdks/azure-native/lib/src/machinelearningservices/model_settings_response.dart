@@ -8,20 +8,19 @@ class ModelSettingsResponse {
 
   /// Creates a new [ModelSettingsResponse].
   /// [modelId] The unique model identifier that this ServerlessEndpoint should provision.
-  ModelSettingsResponse({
-    this.modelId,
-  });
+  ModelSettingsResponse({this.modelId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'modelId': ?modelId,
-    };
+    return <String, dynamic>{'modelId': ?modelId};
   }
 
   factory ModelSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ModelSettingsResponse(
-      modelId: map['modelId'] == null ? null : (map['modelId']! as String).input(),
+      modelId: (() {
+        final guardedValue = map['modelId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

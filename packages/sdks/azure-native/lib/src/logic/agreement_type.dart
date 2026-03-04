@@ -5,16 +5,15 @@ enum AgreementType {
   valueX12("X12"),
   valueEdifact("Edifact");
 
-  const AgreementType(this.value);
-  final String value;
+  const AgreementType(this.wireValue);
+  final String wireValue;
 
   static AgreementType fromValue(String value) {
     for (final item in AgreementType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AgreementType value: $value');
   }
 }
-

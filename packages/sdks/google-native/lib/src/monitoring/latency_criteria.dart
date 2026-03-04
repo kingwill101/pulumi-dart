@@ -9,20 +9,19 @@ class LatencyCriteria {
 
   /// Creates a new [LatencyCriteria].
   /// [threshold] Good service is defined to be the count of requests made to this service that return in no more than threshold.
-  LatencyCriteria({
-    this.threshold,
-  });
+  LatencyCriteria({this.threshold});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'threshold': ?threshold,
-    };
+    return <String, dynamic>{'threshold': ?threshold};
   }
 
   factory LatencyCriteria.fromMap(Map<String, dynamic> map) {
     return LatencyCriteria(
-      threshold: map['threshold'] == null ? null : (map['threshold']! as String).input(),
+      threshold: (() {
+        final guardedValue = map['threshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

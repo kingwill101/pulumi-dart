@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetZoneArgs {
   /// ID of the Zone.
   final pulumi.Input<int>? id;
+
   /// Name of the Zone.
   final pulumi.Input<String>? name;
+
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
   final pulumi.Input<String>? withSelector;
 
@@ -18,11 +20,7 @@ class GetZoneArgs {
   /// [id] ID of the Zone.
   /// [name] Name of the Zone.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
-  GetZoneArgs({
-    this.id,
-    this.name,
-    this.withSelector,
-  });
+  GetZoneArgs({this.id, this.name, this.withSelector});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +32,21 @@ class GetZoneArgs {
 
   factory GetZoneArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneArgs(
-      id: map['id'] == null ? null : (map['id']! as int).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      withSelector: (() {
+        final guardedValue = map['withSelector'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

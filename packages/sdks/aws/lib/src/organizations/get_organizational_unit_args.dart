@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOrganizationalUnitArgs {
   /// Name of the organizational unit
   final pulumi.Input<String> name;
+
   /// Parent ID of the organizational unit.
   final pulumi.Input<String> parentId;
 
   /// Creates a new [GetOrganizationalUnitArgs].
   /// [name] Name of the organizational unit
   /// [parentId] Parent ID of the organizational unit.
-  GetOrganizationalUnitArgs({
-    required this.name,
-    required this.parentId,
-  });
+  GetOrganizationalUnitArgs({required this.name, required this.parentId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'parentId': parentId,
-    };
+    return <String, dynamic>{'name': name, 'parentId': parentId};
   }
 
   factory GetOrganizationalUnitArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationalUnitArgs(
-      name: (map['name'] as String).input(),
-      parentId: (map['parentId'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      parentId: pulumi.Input.fromValue(map['parentId'] as String),
     );
   }
 }
-

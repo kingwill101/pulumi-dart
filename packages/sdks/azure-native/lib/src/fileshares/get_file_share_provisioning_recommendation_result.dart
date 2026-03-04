@@ -9,20 +9,19 @@ class GetFileShareProvisioningRecommendationResult {
 
   /// Creates a new [GetFileShareProvisioningRecommendationResult].
   /// [properties] The properties of the file share provisioning recommendation output.
-  GetFileShareProvisioningRecommendationResult({
-    required this.properties,
-  });
+  GetFileShareProvisioningRecommendationResult({required this.properties});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'properties': properties.toMap(),
-    };
+    return <String, dynamic>{'properties': properties.toMap()};
   }
 
-  factory GetFileShareProvisioningRecommendationResult.fromMap(Map<String, dynamic> map) {
+  factory GetFileShareProvisioningRecommendationResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFileShareProvisioningRecommendationResult(
-      properties: FileShareProvisioningRecommendationOutputResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: FileShareProvisioningRecommendationOutputResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_networkcloud;
-
 export 'networkcloud/aad_configuration.dart';
 export 'networkcloud/aad_configuration_response.dart';
 export 'networkcloud/administrative_credentials.dart';

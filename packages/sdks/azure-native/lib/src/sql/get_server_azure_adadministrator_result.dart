@@ -1,24 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getServerAzureADAdministrator.
 class GetServerAzureADAdministratorResult {
   /// Type of the sever administrator.
   final String? administratorType;
+
   /// Azure Active Directory only Authentication enabled.
   final bool azureADOnlyAuthentication;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Resource ID.
   final String id;
+
   /// Login name of the server administrator.
   final String login;
+
   /// Resource name.
   final String name;
+
   /// SID (object ID) of the server administrator.
   final String sid;
+
   /// Tenant ID of the administrator.
   final String? tenantId;
+
   /// Resource type.
   final String type;
 
@@ -58,18 +65,27 @@ class GetServerAzureADAdministratorResult {
     };
   }
 
-  factory GetServerAzureADAdministratorResult.fromMap(Map<String, dynamic> map) {
+  factory GetServerAzureADAdministratorResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServerAzureADAdministratorResult(
-      administratorType: map['administratorType'] == null ? null : map['administratorType']! as String,
+      administratorType: (() {
+        final guardedValue = map['administratorType'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       azureADOnlyAuthentication: map['azureADOnlyAuthentication'] as bool,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       login: map['login'] as String,
       name: map['name'] as String,
       sid: map['sid'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       type: map['type'] as String,
     );
   }
 }
-

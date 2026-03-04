@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountJwtArgs {
   /// Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.
   final pulumi.Input<List<String>>? delegates;
+
   /// Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
   final pulumi.Input<int>? expiresIn;
+
   /// The JSON-encoded JWT claims set to include in the self-signed JWT.
   final pulumi.Input<String> payload;
+
   /// The email of the service account that will sign the JWT.
   final pulumi.Input<String> targetServiceAccount;
 
@@ -39,11 +42,20 @@ class GetAccountJwtArgs {
 
   factory GetAccountJwtArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountJwtArgs(
-      delegates: map['delegates'] == null ? null : ((map['delegates']! as List).cast<String>()).input(),
-      expiresIn: map['expiresIn'] == null ? null : (map['expiresIn']! as int).input(),
-      payload: (map['payload'] as String).input(),
-      targetServiceAccount: (map['targetServiceAccount'] as String).input(),
+      delegates: (() {
+        final guardedValue = map['delegates'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      expiresIn: (() {
+        final guardedValue = map['expiresIn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      payload: pulumi.Input.fromValue(map['payload'] as String),
+      targetServiceAccount: pulumi.Input.fromValue(
+        map['targetServiceAccount'] as String,
+      ),
     );
   }
 }
-

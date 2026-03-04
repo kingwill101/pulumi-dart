@@ -8,20 +8,15 @@ class ShareInfoElementResponse {
 
   /// Creates a new [ShareInfoElementResponse].
   /// [vmUri] A relative URI containing the ID of the VM that has the disk attached.
-  ShareInfoElementResponse({
-    required this.vmUri,
-  });
+  ShareInfoElementResponse({required this.vmUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'vmUri': vmUri,
-    };
+    return <String, dynamic>{'vmUri': vmUri};
   }
 
   factory ShareInfoElementResponse.fromMap(Map<String, dynamic> map) {
     return ShareInfoElementResponse(
-      vmUri: (map['vmUri'] as String).input(),
+      vmUri: pulumi.Input.fromValue(map['vmUri'] as String),
     );
   }
 }
-

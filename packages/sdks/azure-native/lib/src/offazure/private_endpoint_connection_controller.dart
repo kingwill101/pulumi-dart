@@ -168,18 +168,26 @@ import 'system_data_response.dart';
 class PrivateEndpointConnectionController extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// array of group ids
   late final pulumi.Output<List<String>> groupIds;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// private endpoints
   late final pulumi.Output<ResourceIdResponse> privateEndpoint;
+
   /// private endpoints connection state
-  late final pulumi.Output<PrivateLinkServiceConnectionStateResponse?> privateLinkServiceConnectionState;
+  late final pulumi.Output<PrivateLinkServiceConnectionStateResponse?>
+  privateLinkServiceConnectionState;
+
   /// provisioning state enum
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -192,18 +200,21 @@ class PrivateEndpointConnectionController extends pulumi.CustomResource {
     PrivateEndpointConnectionControllerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:offazure:PrivateEndpointConnectionController',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.groupIds = registerOutput<List<String>>('groupIds');
+         'azure-native:offazure:PrivateEndpointConnectionController',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    groupIds = registerOutput<List<String>>('groupIds');
     this.name = registerOutput<String>('name');
-    this.privateEndpoint = registerOutput<ResourceIdResponse>('privateEndpoint');
-    this.privateLinkServiceConnectionState = registerOutput<PrivateLinkServiceConnectionStateResponse?>('privateLinkServiceConnectionState');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    privateEndpoint = registerOutput<ResourceIdResponse>('privateEndpoint');
+    privateLinkServiceConnectionState =
+        registerOutput<PrivateLinkServiceConnectionStateResponse?>(
+          'privateLinkServiceConnectionState',
+        );
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

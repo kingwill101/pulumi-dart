@@ -1,5 +1,3 @@
-library module_machinelearning;
-
 export 'machinelearning/functions.dart';
 export 'machinelearning/get_workspace_args.dart';
 export 'machinelearning/get_workspace_result.dart';

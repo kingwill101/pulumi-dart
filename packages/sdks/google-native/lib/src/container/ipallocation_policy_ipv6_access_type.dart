@@ -4,16 +4,17 @@ enum IPAllocationPolicyIpv6AccessType {
   internal("INTERNAL"),
   external("EXTERNAL");
 
-  const IPAllocationPolicyIpv6AccessType(this.value);
-  final String value;
+  const IPAllocationPolicyIpv6AccessType(this.wireValue);
+  final String wireValue;
 
   static IPAllocationPolicyIpv6AccessType fromValue(String value) {
     for (final item in IPAllocationPolicyIpv6AccessType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown IPAllocationPolicyIpv6AccessType value: $value');
+    throw ArgumentError(
+      'Unknown IPAllocationPolicyIpv6AccessType value: $value',
+    );
   }
 }
-

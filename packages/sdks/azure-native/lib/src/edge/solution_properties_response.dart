@@ -6,9 +6,12 @@ import 'available_solution_template_version_response.dart';
 /// Solution Properties
 class SolutionPropertiesResponse {
   /// List of latest revisions for available solution template versions
-  final pulumi.Input<List<AvailableSolutionTemplateVersionResponse>> availableSolutionTemplateVersions;
+  final pulumi.Input<List<AvailableSolutionTemplateVersionResponse>>
+  availableSolutionTemplateVersions;
+
   /// Provisioning state of resource
   final pulumi.Input<String> provisioningState;
+
   /// Solution template Id
   final pulumi.Input<String> solutionTemplateId;
 
@@ -24,7 +27,18 @@ class SolutionPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'availableSolutionTemplateVersions': pulumi.Input.mapInputValue<List<AvailableSolutionTemplateVersionResponse>, List<Map<String, dynamic>>>(availableSolutionTemplateVersions, (value) => pulumi.Input.encodeList<AvailableSolutionTemplateVersionResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'availableSolutionTemplateVersions':
+          pulumi.Input.mapInputValue<
+            List<AvailableSolutionTemplateVersionResponse>,
+            List<Map<String, dynamic>>
+          >(
+            availableSolutionTemplateVersions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AvailableSolutionTemplateVersionResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'provisioningState': provisioningState,
       'solutionTemplateId': solutionTemplateId,
     };
@@ -32,10 +46,20 @@ class SolutionPropertiesResponse {
 
   factory SolutionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SolutionPropertiesResponse(
-      availableSolutionTemplateVersions: (pulumi.Input.decodeList<AvailableSolutionTemplateVersionResponse>(map['availableSolutionTemplateVersions'], (value) => AvailableSolutionTemplateVersionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      solutionTemplateId: (map['solutionTemplateId'] as String).input(),
+      availableSolutionTemplateVersions: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<AvailableSolutionTemplateVersionResponse>(
+          map['availableSolutionTemplateVersions']!,
+          (value) => AvailableSolutionTemplateVersionResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      solutionTemplateId: pulumi.Input.fromValue(
+        map['solutionTemplateId'] as String,
+      ),
     );
   }
 }
-

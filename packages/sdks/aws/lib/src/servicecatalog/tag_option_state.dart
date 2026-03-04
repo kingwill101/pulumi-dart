@@ -6,11 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagOptionState {
   /// Whether tag option is active. Default is `true`.
   final pulumi.Input<bool>? active;
+
   /// Tag option key.
   final pulumi.Input<String>? key;
   final pulumi.Input<String>? owner;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Tag option value.
   ///
   /// The following arguments are optional:
@@ -22,13 +25,7 @@ class TagOptionState {
   /// [owner] Optional.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [value] Tag option value.
-  TagOptionState({
-    this.active,
-    this.key,
-    this.owner,
-    this.region,
-    this.value,
-  });
+  TagOptionState({this.active, this.key, this.owner, this.region, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,12 +39,31 @@ class TagOptionState {
 
   factory TagOptionState.fromMap(Map<String, dynamic> map) {
     return TagOptionState(
-      active: map['active'] == null ? null : ((map['active'] as bool).input()).input(),
-      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
-      owner: map['owner'] == null ? null : ((map['owner'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
+      active: (() {
+        final guardedValue = map['active'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      owner: (() {
+        final guardedValue = map['owner'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

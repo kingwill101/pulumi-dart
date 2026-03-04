@@ -13,15 +13,16 @@ class AuthorityConfigX509ConfigAdditionalExtensionObjectId {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'objectIdPaths': objectIdPaths,
-    };
+    return <String, dynamic>{'objectIdPaths': objectIdPaths};
   }
 
-  factory AuthorityConfigX509ConfigAdditionalExtensionObjectId.fromMap(Map<String, dynamic> map) {
+  factory AuthorityConfigX509ConfigAdditionalExtensionObjectId.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuthorityConfigX509ConfigAdditionalExtensionObjectId(
-      objectIdPaths: ((map['objectIdPaths'] as List).cast<int>()).input(),
+      objectIdPaths: pulumi.Input.fromValue(
+        (map['objectIdPaths'] as List).cast<int>(),
+      ),
     );
   }
 }
-

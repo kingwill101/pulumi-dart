@@ -7,16 +7,15 @@ enum RetentionDurationType {
   valueMonths("Months"),
   valueYears("Years");
 
-  const RetentionDurationType(this.value);
-  final String value;
+  const RetentionDurationType(this.wireValue);
+  final String wireValue;
 
   static RetentionDurationType fromValue(String value) {
     for (final item in RetentionDurationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RetentionDurationType value: $value');
   }
 }
-

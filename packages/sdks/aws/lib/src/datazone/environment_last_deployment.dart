@@ -7,7 +7,8 @@ class EnvironmentLastDeployment {
   final pulumi.Input<String> deploymentId;
   final pulumi.Input<String> deploymentStatus;
   final pulumi.Input<String> deploymentType;
-  final pulumi.Input<List<EnvironmentLastDeploymentFailureReason>> failureReasons;
+  final pulumi.Input<List<EnvironmentLastDeploymentFailureReason>>
+  failureReasons;
   final pulumi.Input<bool> isDeploymentComplete;
   final pulumi.Input<List<String>> messages;
 
@@ -32,7 +33,18 @@ class EnvironmentLastDeployment {
       'deploymentId': deploymentId,
       'deploymentStatus': deploymentStatus,
       'deploymentType': deploymentType,
-      'failureReasons': pulumi.Input.mapInputValue<List<EnvironmentLastDeploymentFailureReason>, List<Map<String, dynamic>>>(failureReasons, (value) => pulumi.Input.encodeList<EnvironmentLastDeploymentFailureReason, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'failureReasons':
+          pulumi.Input.mapInputValue<
+            List<EnvironmentLastDeploymentFailureReason>,
+            List<Map<String, dynamic>>
+          >(
+            failureReasons,
+            (value) =>
+                pulumi.Input.encodeList<
+                  EnvironmentLastDeploymentFailureReason,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'isDeploymentComplete': isDeploymentComplete,
       'messages': messages,
     };
@@ -40,13 +52,25 @@ class EnvironmentLastDeployment {
 
   factory EnvironmentLastDeployment.fromMap(Map<String, dynamic> map) {
     return EnvironmentLastDeployment(
-      deploymentId: (map['deploymentId'] as String).input(),
-      deploymentStatus: (map['deploymentStatus'] as String).input(),
-      deploymentType: (map['deploymentType'] as String).input(),
-      failureReasons: (pulumi.Input.decodeList<EnvironmentLastDeploymentFailureReason>(map['failureReasons']!, (value) => EnvironmentLastDeploymentFailureReason.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isDeploymentComplete: (map['isDeploymentComplete'] as bool).input(),
-      messages: ((map['messages'] as List).cast<String>()).input(),
+      deploymentId: pulumi.Input.fromValue(map['deploymentId'] as String),
+      deploymentStatus: pulumi.Input.fromValue(
+        map['deploymentStatus'] as String,
+      ),
+      deploymentType: pulumi.Input.fromValue(map['deploymentType'] as String),
+      failureReasons: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<EnvironmentLastDeploymentFailureReason>(
+          map['failureReasons']!,
+          (value) => EnvironmentLastDeploymentFailureReason.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      isDeploymentComplete: pulumi.Input.fromValue(
+        map['isDeploymentComplete'] as bool,
+      ),
+      messages: pulumi.Input.fromValue(
+        (map['messages'] as List).cast<String>(),
+      ),
     );
   }
 }
-

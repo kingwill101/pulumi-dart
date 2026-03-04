@@ -9,29 +9,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeployGroupArgs {
   /// The ID of the application that you want to deploy.
   final pulumi.Input<String> appId;
+
   /// The name of the instance group that you want to create.
   final pulumi.Input<String> groupName;
 
   /// Creates a new [DeployGroupArgs].
   /// [appId] The ID of the application that you want to deploy.
   /// [groupName] The name of the instance group that you want to create.
-  DeployGroupArgs({
-    required this.appId,
-    required this.groupName,
-  });
+  DeployGroupArgs({required this.appId, required this.groupName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'appId': appId,
-      'groupName': groupName,
-    };
+    return <String, dynamic>{'appId': appId, 'groupName': groupName};
   }
 
   factory DeployGroupArgs.fromMap(Map<String, dynamic> map) {
     return DeployGroupArgs(
-      appId: (map['appId'] as String).input(),
-      groupName: (map['groupName'] as String).input(),
+      appId: pulumi.Input.fromValue(map['appId'] as String),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetReportByResourceGroupNameArgs {
   /// Report Name.
   final pulumi.Input<String> reportName;
+
   /// Azure Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,10 @@ class GetReportByResourceGroupNameArgs {
 
   factory GetReportByResourceGroupNameArgs.fromMap(Map<String, dynamic> map) {
     return GetReportByResourceGroupNameArgs(
-      reportName: (map['reportName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      reportName: pulumi.Input.fromValue(map['reportName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

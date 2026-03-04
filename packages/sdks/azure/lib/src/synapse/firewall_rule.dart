@@ -329,14 +329,17 @@ import 'firewall_rule_state.dart';
 class FirewallRule extends pulumi.CustomResource {
   /// The ending IP address to allow through the firewall for this rule.
   ///
-  /// > **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0`.
+  /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0`.
   ///
-  /// > **Note:** The Azure feature `Allow access to Azure services` requires the `name` to be `AllowAllWindowsAzureIps`.
+  /// &gt; **Note:** The Azure feature `Allow access to Azure services` requires the `name` to be `AllowAllWindowsAzureIps`.
   late final pulumi.Output<String> endIpAddress;
+
   /// The Name of the firewall rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The starting IP address to allow through the firewall for this rule.
   late final pulumi.Output<String> startIpAddress;
+
   /// The ID of the Synapse Workspace on which to create the Firewall Rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> synapseWorkspaceId;
 
@@ -349,15 +352,15 @@ class FirewallRule extends pulumi.CustomResource {
     FirewallRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:synapse/firewallRule:FirewallRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endIpAddress = registerOutput<String>('endIpAddress');
+         'azure:synapse/firewallRule:FirewallRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
-    this.startIpAddress = registerOutput<String>('startIpAddress');
-    this.synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
+    startIpAddress = registerOutput<String>('startIpAddress');
+    synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
   }
 
   /// Gets an existing [FirewallRule] resource's state with the given [name] and [id].
@@ -378,14 +381,14 @@ class FirewallRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:synapse/firewallRule:FirewallRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.endIpAddress = registerOutput<String>('endIpAddress');
+         'azure:synapse/firewallRule:FirewallRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
-    this.startIpAddress = registerOutput<String>('startIpAddress');
-    this.synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
+    startIpAddress = registerOutput<String>('startIpAddress');
+    synapseWorkspaceId = registerOutput<String>('synapseWorkspaceId');
   }
 }

@@ -10,10 +10,13 @@ import 'wiki_documentation_contract.dart';
 class ProductWikiArgs {
   /// Collection wiki documents included into this wiki.
   final pulumi.Input<List<WikiDocumentationContract>>? documents;
+
   /// Product identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> productId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -31,7 +34,18 @@ class ProductWikiArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'documents': ?pulumi.Input.mapOptionalInputValue<List<WikiDocumentationContract>, List<Map<String, dynamic>>>(documents, (value) => pulumi.Input.encodeList<WikiDocumentationContract, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'documents':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<WikiDocumentationContract>,
+            List<Map<String, dynamic>>
+          >(
+            documents,
+            (value) =>
+                pulumi.Input.encodeList<
+                  WikiDocumentationContract,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'productId': productId,
       'resourceGroupName': resourceGroupName,
       'serviceName': serviceName,
@@ -40,11 +54,23 @@ class ProductWikiArgs {
 
   factory ProductWikiArgs.fromMap(Map<String, dynamic> map) {
     return ProductWikiArgs(
-      documents: map['documents'] == null ? null : (pulumi.Input.decodeList<WikiDocumentationContract>(map['documents']!, (value) => WikiDocumentationContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      productId: (map['productId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      documents: (() {
+        final guardedValue = map['documents'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<WikiDocumentationContract>(
+            guardedValue,
+            (value) => WikiDocumentationContract.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

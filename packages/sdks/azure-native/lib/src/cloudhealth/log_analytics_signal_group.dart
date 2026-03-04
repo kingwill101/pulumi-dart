@@ -7,8 +7,10 @@ import 'signal_assignment.dart';
 class LogAnalyticsSignalGroup {
   /// Reference to the name of the authentication setting which is used for querying the data source
   final pulumi.Input<String> authenticationSetting;
+
   /// Log Analytics Workspace resource ID
   final pulumi.Input<String> logAnalyticsWorkspaceResourceId;
+
   /// Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
   final pulumi.Input<List<SignalAssignment>>? signalAssignments;
 
@@ -26,16 +28,41 @@ class LogAnalyticsSignalGroup {
     return <String, dynamic>{
       'authenticationSetting': authenticationSetting,
       'logAnalyticsWorkspaceResourceId': logAnalyticsWorkspaceResourceId,
-      'signalAssignments': ?pulumi.Input.mapOptionalInputValue<List<SignalAssignment>, List<Map<String, dynamic>>>(signalAssignments, (value) => pulumi.Input.encodeList<SignalAssignment, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'signalAssignments':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SignalAssignment>,
+            List<Map<String, dynamic>>
+          >(
+            signalAssignments,
+            (value) =>
+                pulumi.Input.encodeList<SignalAssignment, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory LogAnalyticsSignalGroup.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsSignalGroup(
-      authenticationSetting: (map['authenticationSetting'] as String).input(),
-      logAnalyticsWorkspaceResourceId: (map['logAnalyticsWorkspaceResourceId'] as String).input(),
-      signalAssignments: map['signalAssignments'] == null ? null : (pulumi.Input.decodeList<SignalAssignment>(map['signalAssignments']!, (value) => SignalAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authenticationSetting: pulumi.Input.fromValue(
+        map['authenticationSetting'] as String,
+      ),
+      logAnalyticsWorkspaceResourceId: pulumi.Input.fromValue(
+        map['logAnalyticsWorkspaceResourceId'] as String,
+      ),
+      signalAssignments: (() {
+        final guardedValue = map['signalAssignments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SignalAssignment>(
+            guardedValue,
+            (value) => SignalAssignment.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

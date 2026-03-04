@@ -4,16 +4,17 @@ enum GRPCHealthCheckPortSpecificationComputeBeta {
   useNamedPort("USE_NAMED_PORT"),
   useServingPort("USE_SERVING_PORT");
 
-  const GRPCHealthCheckPortSpecificationComputeBeta(this.value);
-  final String value;
+  const GRPCHealthCheckPortSpecificationComputeBeta(this.wireValue);
+  final String wireValue;
 
   static GRPCHealthCheckPortSpecificationComputeBeta fromValue(String value) {
     for (final item in GRPCHealthCheckPortSpecificationComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GRPCHealthCheckPortSpecificationComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown GRPCHealthCheckPortSpecificationComputeBeta value: $value',
+    );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInterfaceArgs {
   /// Switch configuration description.
   final pulumi.Input<String>? annotation;
+
   /// Name of the Network Device.
   final pulumi.Input<String> networkDeviceName;
+
   /// Name of the Network Interface.
   final pulumi.Input<String>? networkInterfaceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,22 @@ class NetworkInterfaceArgs {
 
   factory NetworkInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
-      networkDeviceName: (map['networkDeviceName'] as String).input(),
-      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      annotation: (() {
+        final guardedValue = map['annotation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkDeviceName: pulumi.Input.fromValue(
+        map['networkDeviceName'] as String,
+      ),
+      networkInterfaceName: (() {
+        final guardedValue = map['networkInterfaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

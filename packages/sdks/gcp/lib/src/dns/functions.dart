@@ -16,7 +16,7 @@ import 'get_record_set_result.dart';
 /// [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
 /// and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
 ///
-/// > A gcp.dns.ManagedZone resource must have DNSSEC enabled in order
+/// &gt; A gcp.dns.ManagedZone resource must have DNSSEC enabled in order
 /// to contain any DNSKEYs. Queries to managed zones without this setting
 /// enabled will result in a 404 error as the collection of DNSKEYs does
 /// not exist in the DNS API.

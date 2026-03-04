@@ -7,12 +7,15 @@ import 'get_env_features_feature.dart';
 class GetEnvFeaturesResult {
   /// The ID of the environment instance.
   final String environmentId;
+
   /// A list of ARMS Env Features. Each element contains the following attributes:
   final List<GetEnvFeaturesFeature> features;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
   final String? nameRegex;
+
   /// A list of ARMS Env Feature names.
   final List<String> names;
   final String? outputFile;
@@ -38,7 +41,11 @@ class GetEnvFeaturesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'environmentId': environmentId,
-      'features': pulumi.Input.encodeList<GetEnvFeaturesFeature, Map<String, dynamic>>(features, (value) => value.toMap()),
+      'features':
+          pulumi.Input.encodeList<GetEnvFeaturesFeature, Map<String, dynamic>>(
+            features,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -50,13 +57,25 @@ class GetEnvFeaturesResult {
   factory GetEnvFeaturesResult.fromMap(Map<String, dynamic> map) {
     return GetEnvFeaturesResult(
       environmentId: map['environmentId'] as String,
-      features: pulumi.Input.decodeList<GetEnvFeaturesFeature>(map['features'], (value) => GetEnvFeaturesFeature.fromMap((value as Map).cast<String, dynamic>())),
+      features: pulumi.Input.decodeList<GetEnvFeaturesFeature>(
+        map['features']!,
+        (value) => GetEnvFeaturesFeature.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

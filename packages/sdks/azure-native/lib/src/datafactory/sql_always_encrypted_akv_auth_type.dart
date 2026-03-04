@@ -4,16 +4,15 @@ enum SqlAlwaysEncryptedAkvAuthType {
   valueManagedIdentity("ManagedIdentity"),
   valueUserAssignedManagedIdentity("UserAssignedManagedIdentity");
 
-  const SqlAlwaysEncryptedAkvAuthType(this.value);
-  final String value;
+  const SqlAlwaysEncryptedAkvAuthType(this.wireValue);
+  final String wireValue;
 
   static SqlAlwaysEncryptedAkvAuthType fromValue(String value) {
     for (final item in SqlAlwaysEncryptedAkvAuthType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SqlAlwaysEncryptedAkvAuthType value: $value');
   }
 }
-

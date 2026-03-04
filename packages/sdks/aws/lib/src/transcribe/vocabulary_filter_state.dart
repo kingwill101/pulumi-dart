@@ -6,21 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VocabularyFilterState {
   /// ARN of the VocabularyFilter.
   final pulumi.Input<String>? arn;
+
   /// Generated download URI.
   final pulumi.Input<String>? downloadUri;
+
   /// The language code you selected for your vocabulary filter. Refer to the [supported languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html) page for accepted codes.
   final pulumi.Input<String>? languageCode;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to the VocabularyFilter. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// The Amazon S3 location (URI) of the text file that contains your custom VocabularyFilter. Conflicts with `words` argument.
   final pulumi.Input<String>? vocabularyFilterFileUri;
+
   /// The name of the VocabularyFilter.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? vocabularyFilterName;
+
   /// A list of terms to include in the vocabulary. Conflicts with `vocabulary_filter_file_uri` argument.
   final pulumi.Input<List<String>>? words;
 
@@ -62,16 +69,55 @@ class VocabularyFilterState {
 
   factory VocabularyFilterState.fromMap(Map<String, dynamic> map) {
     return VocabularyFilterState(
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      downloadUri: map['downloadUri'] == null ? null : ((map['downloadUri'] as String).input()).input(),
-      languageCode: map['languageCode'] == null ? null : ((map['languageCode'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      vocabularyFilterFileUri: map['vocabularyFilterFileUri'] == null ? null : ((map['vocabularyFilterFileUri'] as String).input()).input(),
-      vocabularyFilterName: map['vocabularyFilterName'] == null ? null : ((map['vocabularyFilterName'] as String).input()).input(),
-      words: map['words'] == null ? null : (((map['words'] as List).cast<String>()).input()).input(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      downloadUri: (() {
+        final guardedValue = map['downloadUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      languageCode: (() {
+        final guardedValue = map['languageCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vocabularyFilterFileUri: (() {
+        final guardedValue = map['vocabularyFilterFileUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vocabularyFilterName: (() {
+        final guardedValue = map['vocabularyFilterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      words: (() {
+        final guardedValue = map['words'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

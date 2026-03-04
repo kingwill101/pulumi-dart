@@ -4,16 +4,15 @@ enum AcceleratorManufacturer {
   nvidia("Nvidia"),
   xilinx("Xilinx");
 
-  const AcceleratorManufacturer(this.value);
-  final String value;
+  const AcceleratorManufacturer(this.wireValue);
+  final String wireValue;
 
   static AcceleratorManufacturer fromValue(String value) {
     for (final item in AcceleratorManufacturer.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AcceleratorManufacturer value: $value');
   }
 }
-

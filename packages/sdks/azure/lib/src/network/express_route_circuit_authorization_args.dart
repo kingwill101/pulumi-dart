@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressRouteCircuitAuthorizationArgs {
   /// The name of the Express Route Circuit in which to create the Authorization. Changing this forces a new resource to be created.
   final pulumi.Input<String> expressRouteCircuitName;
+
   /// The name of the ExpressRoute circuit. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the resource group in which to create the ExpressRoute circuit. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 
@@ -32,12 +34,21 @@ class ExpressRouteCircuitAuthorizationArgs {
     };
   }
 
-  factory ExpressRouteCircuitAuthorizationArgs.fromMap(Map<String, dynamic> map) {
+  factory ExpressRouteCircuitAuthorizationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExpressRouteCircuitAuthorizationArgs(
-      expressRouteCircuitName: (map['expressRouteCircuitName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      expressRouteCircuitName: pulumi.Input.fromValue(
+        map['expressRouteCircuitName'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

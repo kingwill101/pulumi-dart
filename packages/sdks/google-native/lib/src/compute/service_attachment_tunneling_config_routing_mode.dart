@@ -4,16 +4,17 @@ enum ServiceAttachmentTunnelingConfigRoutingMode {
   standardRouting("STANDARD_ROUTING"),
   unspecifiedRoutingMode("UNSPECIFIED_ROUTING_MODE");
 
-  const ServiceAttachmentTunnelingConfigRoutingMode(this.value);
-  final String value;
+  const ServiceAttachmentTunnelingConfigRoutingMode(this.wireValue);
+  final String wireValue;
 
   static ServiceAttachmentTunnelingConfigRoutingMode fromValue(String value) {
     for (final item in ServiceAttachmentTunnelingConfigRoutingMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceAttachmentTunnelingConfigRoutingMode value: $value');
+    throw ArgumentError(
+      'Unknown ServiceAttachmentTunnelingConfigRoutingMode value: $value',
+    );
   }
 }
-

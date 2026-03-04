@@ -11,23 +11,24 @@ class ManagedZoneCloudLoggingConfig {
   /// Creates a new [ManagedZoneCloudLoggingConfig].
   /// [enableLogging] If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
   /// [kind] Optional.
-  ManagedZoneCloudLoggingConfig({
-    this.enableLogging,
-    this.kind,
-  });
+  ManagedZoneCloudLoggingConfig({this.enableLogging, this.kind});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableLogging': ?enableLogging,
-      'kind': ?kind,
-    };
+    return <String, dynamic>{'enableLogging': ?enableLogging, 'kind': ?kind};
   }
 
   factory ManagedZoneCloudLoggingConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZoneCloudLoggingConfig(
-      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']! as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      enableLogging: (() {
+        final guardedValue = map['enableLogging'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

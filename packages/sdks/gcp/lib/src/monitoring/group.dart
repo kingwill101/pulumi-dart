@@ -272,20 +272,25 @@ class Group extends pulumi.CustomResource {
   /// A user-assigned name for this group, used only for display
   /// purposes.
   late final pulumi.Output<String> displayName;
+
   /// The filter used to determine which monitored resources
   /// belong to this group.
   late final pulumi.Output<String> filter;
+
   /// If true, the members of this group are considered to be a
   /// cluster. The system can perform additional analysis on
   /// groups that are clusters.
   late final pulumi.Output<bool?> isCluster;
+
   /// A unique identifier for this group. The format is
   /// "projects/{project_id_or_number}/groups/{group_id}".
   late final pulumi.Output<String> name;
+
   /// The name of the group's parent, if it has one. The format is
   /// "projects/{project_id_or_number}/groups/{group_id}". For
   /// groups with no parent, parentName is the empty string, "".
   late final pulumi.Output<String?> parentName;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -294,30 +299,23 @@ class Group extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Group]. {@macro pulumi_monitoring_group_group_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Group(
-    String name, {
-    GroupArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:monitoring/group:Group',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.filter = registerOutput<String>('filter');
-    this.isCluster = registerOutput<bool?>('isCluster');
+  Group(String name, {GroupArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:monitoring/group:Group',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    displayName = registerOutput<String>('displayName');
+    filter = registerOutput<String>('filter');
+    isCluster = registerOutput<bool?>('isCluster');
     this.name = registerOutput<String>('name');
-    this.parentName = registerOutput<String?>('parentName');
-    this.project = registerOutput<String>('project');
+    parentName = registerOutput<String?>('parentName');
+    project = registerOutput<String>('project');
   }
 
   /// Gets an existing [Group] resource's state with the given [name] and [id].
-  static Group get(
-    String name,
-    pulumi.Input<String> id, {
-    GroupState? state,
-  }) {
+  static Group get(String name, pulumi.Input<String> id, {GroupState? state}) {
     return Group._get(
       name,
       state: state?.toMap(),
@@ -330,16 +328,16 @@ class Group extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:monitoring/group:Group',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
-    this.filter = registerOutput<String>('filter');
-    this.isCluster = registerOutput<bool?>('isCluster');
+         'gcp:monitoring/group:Group',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
+    filter = registerOutput<String>('filter');
+    isCluster = registerOutput<bool?>('isCluster');
     this.name = registerOutput<String>('name');
-    this.parentName = registerOutput<String?>('parentName');
-    this.project = registerOutput<String>('project');
+    parentName = registerOutput<String?>('parentName');
+    project = registerOutput<String>('project');
   }
 }

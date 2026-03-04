@@ -6,29 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InvestigationExecutionResponse {
   /// The time at which the investigation execution completed (in UTC)
   final pulumi.Input<String>? completedAt;
+
   /// The state of the investigation execution
   final pulumi.Input<String> runState;
 
   /// Creates a new [InvestigationExecutionResponse].
   /// [completedAt] The time at which the investigation execution completed (in UTC)
   /// [runState] The state of the investigation execution
-  InvestigationExecutionResponse({
-    this.completedAt,
-    required this.runState,
-  });
+  InvestigationExecutionResponse({this.completedAt, required this.runState});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'completedAt': ?completedAt,
-      'runState': runState,
-    };
+    return <String, dynamic>{'completedAt': ?completedAt, 'runState': runState};
   }
 
   factory InvestigationExecutionResponse.fromMap(Map<String, dynamic> map) {
     return InvestigationExecutionResponse(
-      completedAt: map['completedAt'] == null ? null : (map['completedAt']! as String).input(),
-      runState: (map['runState'] as String).input(),
+      completedAt: (() {
+        final guardedValue = map['completedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      runState: pulumi.Input.fromValue(map['runState'] as String),
     );
   }
 }
-

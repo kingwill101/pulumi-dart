@@ -5,16 +5,19 @@ enum GoogleCloudBillingBudgetsV1FilterCalendarPeriod {
   quarter("QUARTER"),
   year("YEAR");
 
-  const GoogleCloudBillingBudgetsV1FilterCalendarPeriod(this.value);
-  final String value;
+  const GoogleCloudBillingBudgetsV1FilterCalendarPeriod(this.wireValue);
+  final String wireValue;
 
-  static GoogleCloudBillingBudgetsV1FilterCalendarPeriod fromValue(String value) {
+  static GoogleCloudBillingBudgetsV1FilterCalendarPeriod fromValue(
+    String value,
+  ) {
     for (final item in GoogleCloudBillingBudgetsV1FilterCalendarPeriod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudBillingBudgetsV1FilterCalendarPeriod value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudBillingBudgetsV1FilterCalendarPeriod value: $value',
+    );
   }
 }
-

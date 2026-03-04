@@ -7,16 +7,22 @@ import 'mongo_db_collection_info_response.dart';
 class MongoDbDatabaseInfoResponse {
   /// The average document size, or -1 if the average size is unknown
   final pulumi.Input<double> averageDocumentSize;
+
   /// A list of supported collections in a MongoDB database
   final pulumi.Input<List<MongoDbCollectionInfoResponse>> collections;
+
   /// The estimated total data size, in bytes, or -1 if the size is unknown.
   final pulumi.Input<double> dataSize;
+
   /// The estimated total number of documents, or -1 if the document count is unknown
   final pulumi.Input<double> documentCount;
+
   /// The unqualified name of the database or collection
   final pulumi.Input<String> name;
+
   /// The qualified name of the database or collection. For a collection, this is the database-qualified name.
   final pulumi.Input<String> qualifiedName;
+
   /// Whether the database has sharding enabled. Note that the migration task will enable sharding on the target if necessary.
   final pulumi.Input<bool> supportsSharding;
 
@@ -41,7 +47,18 @@ class MongoDbDatabaseInfoResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'averageDocumentSize': averageDocumentSize,
-      'collections': pulumi.Input.mapInputValue<List<MongoDbCollectionInfoResponse>, List<Map<String, dynamic>>>(collections, (value) => pulumi.Input.encodeList<MongoDbCollectionInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'collections':
+          pulumi.Input.mapInputValue<
+            List<MongoDbCollectionInfoResponse>,
+            List<Map<String, dynamic>>
+          >(
+            collections,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MongoDbCollectionInfoResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'dataSize': dataSize,
       'documentCount': documentCount,
       'name': name,
@@ -52,14 +69,22 @@ class MongoDbDatabaseInfoResponse {
 
   factory MongoDbDatabaseInfoResponse.fromMap(Map<String, dynamic> map) {
     return MongoDbDatabaseInfoResponse(
-      averageDocumentSize: (map['averageDocumentSize'] as double).input(),
-      collections: (pulumi.Input.decodeList<MongoDbCollectionInfoResponse>(map['collections'], (value) => MongoDbCollectionInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dataSize: (map['dataSize'] as double).input(),
-      documentCount: (map['documentCount'] as double).input(),
-      name: (map['name'] as String).input(),
-      qualifiedName: (map['qualifiedName'] as String).input(),
-      supportsSharding: (map['supportsSharding'] as bool).input(),
+      averageDocumentSize: pulumi.Input.fromValue(
+        map['averageDocumentSize'] as double,
+      ),
+      collections: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<MongoDbCollectionInfoResponse>(
+          map['collections']!,
+          (value) => MongoDbCollectionInfoResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      dataSize: pulumi.Input.fromValue(map['dataSize'] as double),
+      documentCount: pulumi.Input.fromValue(map['documentCount'] as double),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      qualifiedName: pulumi.Input.fromValue(map['qualifiedName'] as String),
+      supportsSharding: pulumi.Input.fromValue(map['supportsSharding'] as bool),
     );
   }
 }
-

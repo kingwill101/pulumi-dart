@@ -1,5 +1,3 @@
-library module_chaos;
-
 export 'chaos/action_status_response.dart';
 export 'chaos/branch.dart';
 export 'chaos/branch_response.dart';

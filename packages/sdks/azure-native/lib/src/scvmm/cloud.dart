@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_args.dart';
 import 'cloud_capacity_response.dart';
 import 'extended_location_response.dart';
-import 'storage_qo_spolicy_response.dart';
 import 'system_data_response.dart';
 
 /// The Clouds resource definition.
@@ -175,30 +174,43 @@ import 'system_data_response.dart';
 class Cloud extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Capacity of the cloud.
   late final pulumi.Output<CloudCapacityResponse> cloudCapacity;
+
   /// Name of the cloud in VMMServer.
   late final pulumi.Output<String> cloudName;
+
   /// The extended location.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// Gets or sets the inventory Item ID for the resource.
   late final pulumi.Output<String?> inventoryItemId;
+
   /// Gets or sets the location.
   late final pulumi.Output<String> location;
+
   /// Resource Name
   late final pulumi.Output<String> name;
+
   /// Gets or sets the provisioning state.
   late final pulumi.Output<String> provisioningState;
+
   /// List of QoS policies available for the cloud.
-  late final pulumi.Output<List<StorageQoSPolicyResponse>> storageQoSPolicies;
+  late final pulumi.Output<List<Map<String, dynamic>>> storageQoSPolicies;
+
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource Type
   late final pulumi.Output<String> type;
+
   /// Unique ID of the cloud.
   late final pulumi.Output<String?> uuid;
+
   /// ARM Id of the vmmServer resource in which this resource resides.
   late final pulumi.Output<String?> vmmServerId;
 
@@ -206,29 +218,30 @@ class Cloud extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Cloud]. {@macro pulumi_scvmm_cloud_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Cloud(
-    String name, {
-    CloudArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'azure-native:scvmm:Cloud',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.cloudCapacity = registerOutput<CloudCapacityResponse>('cloudCapacity');
-    this.cloudName = registerOutput<String>('cloudName');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.inventoryItemId = registerOutput<String?>('inventoryItemId');
-    this.location = registerOutput<String>('location');
+  Cloud(String name, {CloudArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'azure-native:scvmm:Cloud',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cloudCapacity = registerOutput<CloudCapacityResponse>('cloudCapacity');
+    cloudName = registerOutput<String>('cloudName');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    inventoryItemId = registerOutput<String?>('inventoryItemId');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.storageQoSPolicies = registerOutput<List<StorageQoSPolicyResponse>>('storageQoSPolicies');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.uuid = registerOutput<String?>('uuid');
-    this.vmmServerId = registerOutput<String?>('vmmServerId');
+    provisioningState = registerOutput<String>('provisioningState');
+    storageQoSPolicies = registerOutput<List<Map<String, dynamic>>>(
+      'storageQoSPolicies',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String?>('uuid');
+    vmmServerId = registerOutput<String?>('vmmServerId');
   }
 }

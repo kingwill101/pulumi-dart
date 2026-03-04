@@ -6,29 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BatchRetrySettingsResponse {
   /// Maximum retry count for a mini-batch
   final pulumi.Input<int>? maxRetries;
+
   /// Invocation timeout for a mini-batch, in ISO 8601 format.
   final pulumi.Input<String>? timeout;
 
   /// Creates a new [BatchRetrySettingsResponse].
   /// [maxRetries] Maximum retry count for a mini-batch
   /// [timeout] Invocation timeout for a mini-batch, in ISO 8601 format.
-  BatchRetrySettingsResponse({
-    this.maxRetries,
-    this.timeout,
-  });
+  BatchRetrySettingsResponse({this.maxRetries, this.timeout});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxRetries': ?maxRetries,
-      'timeout': ?timeout,
-    };
+    return <String, dynamic>{'maxRetries': ?maxRetries, 'timeout': ?timeout};
   }
 
   factory BatchRetrySettingsResponse.fromMap(Map<String, dynamic> map) {
     return BatchRetrySettingsResponse(
-      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries']! as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      maxRetries: (() {
+        final guardedValue = map['maxRetries'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      timeout: (() {
+        final guardedValue = map['timeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

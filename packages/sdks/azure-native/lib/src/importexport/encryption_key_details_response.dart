@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EncryptionKeyDetailsResponse {
   /// The type of kek encryption key
   final pulumi.Input<String>? kekType;
+
   /// Specifies the url for kek encryption key.
   final pulumi.Input<String>? kekUrl;
+
   /// Specifies the keyvault resource id for kek encryption key.
   final pulumi.Input<String>? kekVaultResourceID;
 
@@ -31,10 +33,21 @@ class EncryptionKeyDetailsResponse {
 
   factory EncryptionKeyDetailsResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionKeyDetailsResponse(
-      kekType: map['kekType'] == null ? null : (map['kekType']! as String).input(),
-      kekUrl: map['kekUrl'] == null ? null : (map['kekUrl']! as String).input(),
-      kekVaultResourceID: map['kekVaultResourceID'] == null ? null : (map['kekVaultResourceID']! as String).input(),
+      kekType: (() {
+        final guardedValue = map['kekType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kekUrl: (() {
+        final guardedValue = map['kekUrl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kekVaultResourceID: (() {
+        final guardedValue = map['kekVaultResourceID'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -39,12 +39,15 @@ class GetSchemaArgs {
 
   factory GetSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemaArgs(
-      collectionId: (map['collectionId'] as String).input(),
-      dataStoreId: (map['dataStoreId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      schemaId: (map['schemaId'] as String).input(),
+      collectionId: pulumi.Input.fromValue(map['collectionId'] as String),
+      dataStoreId: pulumi.Input.fromValue(map['dataStoreId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      schemaId: pulumi.Input.fromValue(map['schemaId'] as String),
     );
   }
 }
-

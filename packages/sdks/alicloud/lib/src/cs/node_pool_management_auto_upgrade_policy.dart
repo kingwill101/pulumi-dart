@@ -8,20 +8,21 @@ class NodePoolManagementAutoUpgradePolicy {
 
   /// Creates a new [NodePoolManagementAutoUpgradePolicy].
   /// [autoUpgradeKubelet] Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
-  NodePoolManagementAutoUpgradePolicy({
-    this.autoUpgradeKubelet,
-  });
+  NodePoolManagementAutoUpgradePolicy({this.autoUpgradeKubelet});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'autoUpgradeKubelet': ?autoUpgradeKubelet,
-    };
+    return <String, dynamic>{'autoUpgradeKubelet': ?autoUpgradeKubelet};
   }
 
-  factory NodePoolManagementAutoUpgradePolicy.fromMap(Map<String, dynamic> map) {
+  factory NodePoolManagementAutoUpgradePolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NodePoolManagementAutoUpgradePolicy(
-      autoUpgradeKubelet: map['autoUpgradeKubelet'] == null ? null : (map['autoUpgradeKubelet']! as bool).input(),
+      autoUpgradeKubelet: (() {
+        final guardedValue = map['autoUpgradeKubelet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

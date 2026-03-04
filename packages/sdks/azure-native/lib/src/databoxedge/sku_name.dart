@@ -30,16 +30,15 @@ enum SkuName {
   valueEP2256GPU2Mx1("EP2_256_GPU2_Mx1"),
   valueEdgeMRTCP("EdgeMR_TCP");
 
-  const SkuName(this.value);
-  final String value;
+  const SkuName(this.wireValue);
+  final String wireValue;
 
   static SkuName fromValue(String value) {
     for (final item in SkuName.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SkuName value: $value');
   }
 }
-

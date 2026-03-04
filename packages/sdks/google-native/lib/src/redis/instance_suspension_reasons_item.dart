@@ -2,16 +2,15 @@ enum InstanceSuspensionReasonsItem {
   suspensionReasonUnspecified("SUSPENSION_REASON_UNSPECIFIED"),
   customerManagedKeyIssue("CUSTOMER_MANAGED_KEY_ISSUE");
 
-  const InstanceSuspensionReasonsItem(this.value);
-  final String value;
+  const InstanceSuspensionReasonsItem(this.wireValue);
+  final String wireValue;
 
   static InstanceSuspensionReasonsItem fromValue(String value) {
     for (final item in InstanceSuspensionReasonsItem.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceSuspensionReasonsItem value: $value');
   }
 }
-

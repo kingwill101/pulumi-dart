@@ -7,8 +7,10 @@ class RowAccessPolicyState {
   /// The time when this row access policy was created, in milliseconds since
   /// the epoch.
   final pulumi.Input<String>? creationTime;
+
   /// The ID of the dataset containing this row access policy.
   final pulumi.Input<String>? datasetId;
+
   /// A SQL boolean expression that represents the rows defined by this row
   /// access policy, similar to the boolean expression in a WHERE clause of a
   /// SELECT query on a table.
@@ -19,6 +21,7 @@ class RowAccessPolicyState {
   /// nullable_field is not NULL
   /// numeric_field BETWEEN 1.0 AND 5.0
   final pulumi.Input<String>? filterPredicate;
+
   /// Input only. The optional list of iam_member users or groups that specifies the initial
   /// members that the row-level access policy should be created with.
   /// grantees types:
@@ -41,16 +44,20 @@ class RowAccessPolicyState {
   /// BigQuery requires authentication before a user can access the service,
   /// allUsers includes only authenticated users.
   final pulumi.Input<List<String>>? grantees;
+
   /// The time when this row access policy was last modified, in milliseconds
   /// since the epoch.
   final pulumi.Input<String>? lastModifiedTime;
+
   /// The ID of the row access policy. The ID must contain only
   /// letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
   /// length is 256 characters.
   final pulumi.Input<String>? policyId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The ID of the table containing this row access policy.
   final pulumi.Input<String>? tableId;
 
@@ -89,15 +96,46 @@ class RowAccessPolicyState {
 
   factory RowAccessPolicyState.fromMap(Map<String, dynamic> map) {
     return RowAccessPolicyState(
-      creationTime: map['creationTime'] == null ? null : (map['creationTime']! as String).input(),
-      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
-      filterPredicate: map['filterPredicate'] == null ? null : (map['filterPredicate']! as String).input(),
-      grantees: map['grantees'] == null ? null : ((map['grantees']! as List).cast<String>()).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      tableId: map['tableId'] == null ? null : (map['tableId']! as String).input(),
+      creationTime: (() {
+        final guardedValue = map['creationTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      datasetId: (() {
+        final guardedValue = map['datasetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filterPredicate: (() {
+        final guardedValue = map['filterPredicate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      grantees: (() {
+        final guardedValue = map['grantees'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      lastModifiedTime: (() {
+        final guardedValue = map['lastModifiedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyId: (() {
+        final guardedValue = map['policyId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tableId: (() {
+        final guardedValue = map['tableId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

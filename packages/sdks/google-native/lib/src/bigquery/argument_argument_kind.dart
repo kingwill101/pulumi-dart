@@ -4,16 +4,15 @@ enum ArgumentArgumentKind {
   fixedType("FIXED_TYPE"),
   anyType("ANY_TYPE");
 
-  const ArgumentArgumentKind(this.value);
-  final String value;
+  const ArgumentArgumentKind(this.wireValue);
+  final String wireValue;
 
   static ArgumentArgumentKind fromValue(String value) {
     for (final item in ArgumentArgumentKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ArgumentArgumentKind value: $value');
   }
 }
-

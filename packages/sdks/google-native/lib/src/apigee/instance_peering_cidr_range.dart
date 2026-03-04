@@ -9,16 +9,15 @@ enum InstancePeeringCidrRange {
   slash22("SLASH_22"),
   slash23("SLASH_23");
 
-  const InstancePeeringCidrRange(this.value);
-  final String value;
+  const InstancePeeringCidrRange(this.wireValue);
+  final String wireValue;
 
   static InstancePeeringCidrRange fromValue(String value) {
     for (final item in InstancePeeringCidrRange.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstancePeeringCidrRange value: $value');
   }
 }
-

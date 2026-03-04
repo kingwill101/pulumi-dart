@@ -7,10 +7,13 @@ import 'virtual_machine_configuration_response.dart';
 class CentralServerConfigurationResponse {
   /// The number of central server VMs.
   final pulumi.Input<double> instanceCount;
+
   /// The subnet id.
   final pulumi.Input<String> subnetId;
+
   /// Gets or sets the virtual machine configuration.
-  final pulumi.Input<VirtualMachineConfigurationResponse> virtualMachineConfiguration;
+  final pulumi.Input<VirtualMachineConfigurationResponse>
+  virtualMachineConfiguration;
 
   /// Creates a new [CentralServerConfigurationResponse].
   /// [instanceCount] The number of central server VMs.
@@ -26,16 +29,23 @@ class CentralServerConfigurationResponse {
     return <String, dynamic>{
       'instanceCount': instanceCount,
       'subnetId': subnetId,
-      'virtualMachineConfiguration': pulumi.Input.mapInputValue<VirtualMachineConfigurationResponse, Map<String, dynamic>>(virtualMachineConfiguration, (value) => value.toMap()),
+      'virtualMachineConfiguration':
+          pulumi.Input.mapInputValue<
+            VirtualMachineConfigurationResponse,
+            Map<String, dynamic>
+          >(virtualMachineConfiguration, (value) => value.toMap()),
     };
   }
 
   factory CentralServerConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CentralServerConfigurationResponse(
-      instanceCount: (map['instanceCount'] as double).input(),
-      subnetId: (map['subnetId'] as String).input(),
-      virtualMachineConfiguration: (VirtualMachineConfigurationResponse.fromMap((map['virtualMachineConfiguration'] as Map).cast<String, dynamic>())).input(),
+      instanceCount: pulumi.Input.fromValue(map['instanceCount'] as double),
+      subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
+      virtualMachineConfiguration: pulumi.Input.fromValue(
+        VirtualMachineConfigurationResponse.fromMap(
+          (map['virtualMachineConfiguration']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

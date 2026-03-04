@@ -6,22 +6,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectState {
   /// the date and time when the project was created, (ISO8601)
   final pulumi.Input<String>? createdAt;
+
   /// the description of the project
   final pulumi.Input<String>? description;
+
   /// the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
   final pulumi.Input<String>? environment;
+
   /// a boolean indicating whether or not the project is the default project. (Default: "false")
   final pulumi.Input<bool>? isDefault;
+
   /// The name of the Project
   final pulumi.Input<String>? name;
+
   /// the id of the project owner.
   final pulumi.Input<int>? ownerId;
+
   /// the unique universal identifier of the project owner.
   final pulumi.Input<String>? ownerUuid;
+
   /// the purpose of the project, (Default: "Web Application")
   final pulumi.Input<String>? purpose;
+
   /// a list of uniform resource names (URNs) for the resources associated with the project
   final pulumi.Input<List<String>>? resources;
+
   /// the date and time when the project was last updated, (ISO8601)
   final pulumi.Input<String>? updatedAt;
 
@@ -66,17 +75,56 @@ class ProjectState {
 
   factory ProjectState.fromMap(Map<String, dynamic> map) {
     return ProjectState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId']! as int).input(),
-      ownerUuid: map['ownerUuid'] == null ? null : (map['ownerUuid']! as String).input(),
-      purpose: map['purpose'] == null ? null : (map['purpose']! as String).input(),
-      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
+      createdAt: (() {
+        final guardedValue = map['createdAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      environment: (() {
+        final guardedValue = map['environment'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isDefault: (() {
+        final guardedValue = map['isDefault'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ownerId: (() {
+        final guardedValue = map['ownerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ownerUuid: (() {
+        final guardedValue = map['ownerUuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      purpose: (() {
+        final guardedValue = map['purpose'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resources: (() {
+        final guardedValue = map['resources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      updatedAt: (() {
+        final guardedValue = map['updatedAt'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

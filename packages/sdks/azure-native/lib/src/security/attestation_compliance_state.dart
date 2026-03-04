@@ -4,16 +4,15 @@ enum AttestationComplianceState {
   valueCompliant("compliant"),
   valueNonCompliant("nonCompliant");
 
-  const AttestationComplianceState(this.value);
-  final String value;
+  const AttestationComplianceState(this.wireValue);
+  final String wireValue;
 
   static AttestationComplianceState fromValue(String value) {
     for (final item in AttestationComplianceState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AttestationComplianceState value: $value');
   }
 }
-

@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRestorableDatabaseAccountsAccountRestorableLocation {
   /// The creation time of the regional Cosmos DB Restorable Database Account.
   final pulumi.Input<String> creationTime;
+
   /// The deletion time of the regional Cosmos DB Restorable Database Account.
   final pulumi.Input<String> deletionTime;
+
   /// The location where the Cosmos DB Database Account.
   final pulumi.Input<String> location;
+
   /// The instance ID of the regional Cosmos DB Restorable Database Account.
   final pulumi.Input<String> regionalDatabaseAccountInstanceId;
 
@@ -33,13 +36,16 @@ class GetRestorableDatabaseAccountsAccountRestorableLocation {
     };
   }
 
-  factory GetRestorableDatabaseAccountsAccountRestorableLocation.fromMap(Map<String, dynamic> map) {
+  factory GetRestorableDatabaseAccountsAccountRestorableLocation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRestorableDatabaseAccountsAccountRestorableLocation(
-      creationTime: (map['creationTime'] as String).input(),
-      deletionTime: (map['deletionTime'] as String).input(),
-      location: (map['location'] as String).input(),
-      regionalDatabaseAccountInstanceId: (map['regionalDatabaseAccountInstanceId'] as String).input(),
+      creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
+      deletionTime: pulumi.Input.fromValue(map['deletionTime'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      regionalDatabaseAccountInstanceId: pulumi.Input.fromValue(
+        map['regionalDatabaseAccountInstanceId'] as String,
+      ),
     );
   }
 }
-

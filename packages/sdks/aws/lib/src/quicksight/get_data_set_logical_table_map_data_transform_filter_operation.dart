@@ -12,15 +12,16 @@ class GetDataSetLogicalTableMapDataTransformFilterOperation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'conditionExpression': conditionExpression,
-    };
+    return <String, dynamic>{'conditionExpression': conditionExpression};
   }
 
-  factory GetDataSetLogicalTableMapDataTransformFilterOperation.fromMap(Map<String, dynamic> map) {
+  factory GetDataSetLogicalTableMapDataTransformFilterOperation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSetLogicalTableMapDataTransformFilterOperation(
-      conditionExpression: (map['conditionExpression'] as String).input(),
+      conditionExpression: pulumi.Input.fromValue(
+        map['conditionExpression'] as String,
+      ),
     );
   }
 }
-

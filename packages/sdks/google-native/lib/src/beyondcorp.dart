@@ -1,5 +1,3 @@
-library module_beyondcorp;
-
 export 'beyondcorp/allocated_connection_response.dart';
 export 'beyondcorp/allocated_connection_response_beyondcorp_v1alpha.dart';
 export 'beyondcorp/app_connection.dart';

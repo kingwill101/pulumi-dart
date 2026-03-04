@@ -7,14 +7,18 @@ import 'get_router_interfaces_interface.dart';
 /// Result data returned by getRouterInterfaces.
 class GetRouterInterfacesResult {
   final List<GetRouterInterfacesFilter>? filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Router Interface IDs.
   final List<String> ids;
   final String? includeReservationData;
+
   /// A list of Router Interface Entries. Each element contains the following attributes:
   final List<GetRouterInterfacesInterface> interfaces;
   final String? nameRegex;
+
   /// A list of name of Router Interfaces.
   final List<String> names;
   final String? outputFile;
@@ -47,11 +51,22 @@ class GetRouterInterfacesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetRouterInterfacesFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          GetRouterInterfacesFilter,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'id': id,
       'ids': ids,
       'includeReservationData': ?includeReservationData,
-      'interfaces': pulumi.Input.encodeList<GetRouterInterfacesInterface, Map<String, dynamic>>(interfaces, (value) => value.toMap()),
+      'interfaces':
+          pulumi.Input.encodeList<
+            GetRouterInterfacesInterface,
+            Map<String, dynamic>
+          >(interfaces, (value) => value.toMap()),
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
@@ -62,17 +77,50 @@ class GetRouterInterfacesResult {
 
   factory GetRouterInterfacesResult.fromMap(Map<String, dynamic> map) {
     return GetRouterInterfacesResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetRouterInterfacesFilter>(map['filters']!, (value) => GetRouterInterfacesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetRouterInterfacesFilter>(
+          guardedValue,
+          (value) => GetRouterInterfacesFilter.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeReservationData: map['includeReservationData'] == null ? null : map['includeReservationData']! as String,
-      interfaces: pulumi.Input.decodeList<GetRouterInterfacesInterface>(map['interfaces'], (value) => GetRouterInterfacesInterface.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      includeReservationData: (() {
+        final guardedValue = map['includeReservationData'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      interfaces: pulumi.Input.decodeList<GetRouterInterfacesInterface>(
+        map['interfaces']!,
+        (value) => GetRouterInterfacesInterface.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      pageNumber: (() {
+        final guardedValue = map['pageNumber'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
+      pageSize: (() {
+        final guardedValue = map['pageSize'];
+        if (guardedValue == null) return null;
+        return guardedValue as int;
+      })(),
     );
   }
 }
-

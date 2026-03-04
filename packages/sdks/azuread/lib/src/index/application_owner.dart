@@ -4,7 +4,7 @@ import 'application_owner_state.dart';
 
 /// Manages a single owner of an application registration.
 ///
-/// > This resource is incompatible with the `azuread.Application` resource, instead use this with the `azuread.ApplicationRegistration` resource.
+/// &gt; This resource is incompatible with the `azuread.Application` resource, instead use this with the `azuread.ApplicationRegistration` resource.
 ///
 /// ## API Permissions
 ///
@@ -12,7 +12,7 @@ import 'application_owner_state.dart';
 ///
 /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
 ///
-/// > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Pulumi must be an owner of the application.
+/// &gt; When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Pulumi must be an owner of the application.
 ///
 /// When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
 ///
@@ -174,7 +174,7 @@ import 'application_owner_state.dart';
 /// ```
 ///
 ///
-/// > **Tip** For managing more application owners, create additional instances of this resource
+/// &gt; **Tip** For managing more application owners, create additional instances of this resource
 ///
 /// ## Import
 ///
@@ -186,6 +186,7 @@ import 'application_owner_state.dart';
 class ApplicationOwner extends pulumi.CustomResource {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
+
   /// The object ID of the owner to assign to the application, typically a user or service principal. Changing this forces a new resource to be created.
   late final pulumi.Output<String> ownerObjectId;
 
@@ -198,13 +199,13 @@ class ApplicationOwner extends pulumi.CustomResource {
     ApplicationOwnerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/applicationOwner:ApplicationOwner',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.ownerObjectId = registerOutput<String>('ownerObjectId');
+         'azuread:index/applicationOwner:ApplicationOwner',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    ownerObjectId = registerOutput<String>('ownerObjectId');
   }
 
   /// Gets an existing [ApplicationOwner] resource's state with the given [name] and [id].
@@ -225,12 +226,12 @@ class ApplicationOwner extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/applicationOwner:ApplicationOwner',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.applicationId = registerOutput<String>('applicationId');
-    this.ownerObjectId = registerOutput<String>('ownerObjectId');
+         'azuread:index/applicationOwner:ApplicationOwner',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    applicationId = registerOutput<String>('applicationId');
+    ownerObjectId = registerOutput<String>('ownerObjectId');
   }
 }

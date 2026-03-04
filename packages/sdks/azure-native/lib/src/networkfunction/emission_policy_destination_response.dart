@@ -9,20 +9,19 @@ class EmissionPolicyDestinationResponse {
 
   /// Creates a new [EmissionPolicyDestinationResponse].
   /// [destinationType] Emission destination type.
-  EmissionPolicyDestinationResponse({
-    this.destinationType,
-  });
+  EmissionPolicyDestinationResponse({this.destinationType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'destinationType': ?destinationType,
-    };
+    return <String, dynamic>{'destinationType': ?destinationType};
   }
 
   factory EmissionPolicyDestinationResponse.fromMap(Map<String, dynamic> map) {
     return EmissionPolicyDestinationResponse(
-      destinationType: map['destinationType'] == null ? null : (map['destinationType']! as String).input(),
+      destinationType: (() {
+        final guardedValue = map['destinationType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -9,20 +9,19 @@ class VolumeRelocationProperties {
 
   /// Creates a new [VolumeRelocationProperties].
   /// [relocationRequested] Has relocation been requested for this volume
-  VolumeRelocationProperties({
-    this.relocationRequested,
-  });
+  VolumeRelocationProperties({this.relocationRequested});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'relocationRequested': ?relocationRequested,
-    };
+    return <String, dynamic>{'relocationRequested': ?relocationRequested};
   }
 
   factory VolumeRelocationProperties.fromMap(Map<String, dynamic> map) {
     return VolumeRelocationProperties(
-      relocationRequested: map['relocationRequested'] == null ? null : (map['relocationRequested']! as bool).input(),
+      relocationRequested: (() {
+        final guardedValue = map['relocationRequested'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

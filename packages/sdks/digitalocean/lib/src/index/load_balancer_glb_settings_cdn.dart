@@ -8,20 +8,19 @@ class LoadBalancerGlbSettingsCdn {
 
   /// Creates a new [LoadBalancerGlbSettingsCdn].
   /// [isEnabled] Control flag to specify if caching is enabled.
-  LoadBalancerGlbSettingsCdn({
-    this.isEnabled,
-  });
+  LoadBalancerGlbSettingsCdn({this.isEnabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'isEnabled': ?isEnabled,
-    };
+    return <String, dynamic>{'isEnabled': ?isEnabled};
   }
 
   factory LoadBalancerGlbSettingsCdn.fromMap(Map<String, dynamic> map) {
     return LoadBalancerGlbSettingsCdn(
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
+      isEnabled: (() {
+        final guardedValue = map['isEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

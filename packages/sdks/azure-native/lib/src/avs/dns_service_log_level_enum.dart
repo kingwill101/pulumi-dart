@@ -6,16 +6,15 @@ enum DnsServiceLogLevelEnum {
   eRROR("ERROR"),
   fATAL("FATAL");
 
-  const DnsServiceLogLevelEnum(this.value);
-  final String value;
+  const DnsServiceLogLevelEnum(this.wireValue);
+  final String wireValue;
 
   static DnsServiceLogLevelEnum fromValue(String value) {
     for (final item in DnsServiceLogLevelEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DnsServiceLogLevelEnum value: $value');
   }
 }
-

@@ -6,7 +6,7 @@ import 'capacity_reservation_state.dart';
 ///
 /// For information about Ecs Capacity Reservation and how to use it, see [What is Capacity Reservation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createcapacityreservation).
 ///
-/// > **NOTE:** Available since v1.195.0.
+/// &gt; **NOTE:** Available since v1.195.0.
 ///
 /// ## Example Usage
 ///
@@ -271,36 +271,52 @@ import 'capacity_reservation_state.dart';
 class CapacityReservation extends pulumi.CustomResource {
   /// Capacity reservation service name.
   late final pulumi.Output<String> capacityReservationName;
+
   /// description of the capacity reservation instance.
   late final pulumi.Output<String?> description;
+
   /// Specifies whether to pre-check the API request. Valid values: `true` and `false`.
   late final pulumi.Output<bool?> dryRun;
+
   /// end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
   late final pulumi.Output<String> endTime;
+
   /// Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
   late final pulumi.Output<String> endTimeType;
+
   /// The total number of instances that need to be reserved within the capacity reservation.
   late final pulumi.Output<int> instanceAmount;
+
   /// Instance type. Currently, you can only set the capacity reservation service for one instance type.
   late final pulumi.Output<String> instanceType;
+
   /// The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
   late final pulumi.Output<String> matchCriteria;
+
   /// The payment type of the resource
   late final pulumi.Output<String> paymentType;
+
   /// platform of the capacity reservation, value range `windows`, `linux`.
   late final pulumi.Output<String> platform;
+
   /// The resource group id.
   late final pulumi.Output<String?> resourceGroupId;
+
   /// time of the capacity reservation which become active.
   late final pulumi.Output<String> startTime;
+
   /// The capacity is scheduled to take effect. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
   late final pulumi.Output<String> startTimeType;
+
   /// The status of the capacity reservation.
   late final pulumi.Output<String> status;
+
   /// The tag of the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// This parameter is under test and is not yet open for use.
   late final pulumi.Output<String> timeSlot;
+
   /// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
   late final pulumi.Output<List<String>> zoneIds;
 
@@ -313,28 +329,28 @@ class CapacityReservation extends pulumi.CustomResource {
     CapacityReservationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/capacityReservation:CapacityReservation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.capacityReservationName = registerOutput<String>('capacityReservationName');
-    this.description = registerOutput<String?>('description');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.endTime = registerOutput<String>('endTime');
-    this.endTimeType = registerOutput<String>('endTimeType');
-    this.instanceAmount = registerOutput<int>('instanceAmount');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.matchCriteria = registerOutput<String>('matchCriteria');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.platform = registerOutput<String>('platform');
-    this.resourceGroupId = registerOutput<String?>('resourceGroupId');
-    this.startTime = registerOutput<String>('startTime');
-    this.startTimeType = registerOutput<String>('startTimeType');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeSlot = registerOutput<String>('timeSlot');
-    this.zoneIds = registerOutput<List<String>>('zoneIds');
+         'alicloud:ecs/capacityReservation:CapacityReservation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    capacityReservationName = registerOutput<String>('capacityReservationName');
+    description = registerOutput<String?>('description');
+    dryRun = registerOutput<bool?>('dryRun');
+    endTime = registerOutput<String>('endTime');
+    endTimeType = registerOutput<String>('endTimeType');
+    instanceAmount = registerOutput<int>('instanceAmount');
+    instanceType = registerOutput<String>('instanceType');
+    matchCriteria = registerOutput<String>('matchCriteria');
+    paymentType = registerOutput<String>('paymentType');
+    platform = registerOutput<String>('platform');
+    resourceGroupId = registerOutput<String?>('resourceGroupId');
+    startTime = registerOutput<String>('startTime');
+    startTimeType = registerOutput<String>('startTimeType');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeSlot = registerOutput<String>('timeSlot');
+    zoneIds = registerOutput<List<String>>('zoneIds');
   }
 
   /// Gets an existing [CapacityReservation] resource's state with the given [name] and [id].
@@ -355,27 +371,27 @@ class CapacityReservation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/capacityReservation:CapacityReservation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.capacityReservationName = registerOutput<String>('capacityReservationName');
-    this.description = registerOutput<String?>('description');
-    this.dryRun = registerOutput<bool?>('dryRun');
-    this.endTime = registerOutput<String>('endTime');
-    this.endTimeType = registerOutput<String>('endTimeType');
-    this.instanceAmount = registerOutput<int>('instanceAmount');
-    this.instanceType = registerOutput<String>('instanceType');
-    this.matchCriteria = registerOutput<String>('matchCriteria');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.platform = registerOutput<String>('platform');
-    this.resourceGroupId = registerOutput<String?>('resourceGroupId');
-    this.startTime = registerOutput<String>('startTime');
-    this.startTimeType = registerOutput<String>('startTimeType');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timeSlot = registerOutput<String>('timeSlot');
-    this.zoneIds = registerOutput<List<String>>('zoneIds');
+         'alicloud:ecs/capacityReservation:CapacityReservation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    capacityReservationName = registerOutput<String>('capacityReservationName');
+    description = registerOutput<String?>('description');
+    dryRun = registerOutput<bool?>('dryRun');
+    endTime = registerOutput<String>('endTime');
+    endTimeType = registerOutput<String>('endTimeType');
+    instanceAmount = registerOutput<int>('instanceAmount');
+    instanceType = registerOutput<String>('instanceType');
+    matchCriteria = registerOutput<String>('matchCriteria');
+    paymentType = registerOutput<String>('paymentType');
+    platform = registerOutput<String>('platform');
+    resourceGroupId = registerOutput<String?>('resourceGroupId');
+    startTime = registerOutput<String>('startTime');
+    startTimeType = registerOutput<String>('startTimeType');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timeSlot = registerOutput<String>('timeSlot');
+    zoneIds = registerOutput<List<String>>('zoneIds');
   }
 }

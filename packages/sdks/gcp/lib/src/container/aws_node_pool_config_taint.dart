@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AwsNodePoolConfigTaint {
   /// The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
   final pulumi.Input<String> effect;
+
   /// Key for the taint.
   final pulumi.Input<String> key;
+
   /// Value for the taint.
   final pulumi.Input<String> value;
 
@@ -21,19 +23,14 @@ class AwsNodePoolConfigTaint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'effect': effect,
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'effect': effect, 'key': key, 'value': value};
   }
 
   factory AwsNodePoolConfigTaint.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolConfigTaint(
-      effect: (map['effect'] as String).input(),
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      effect: pulumi.Input.fromValue(map['effect'] as String),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

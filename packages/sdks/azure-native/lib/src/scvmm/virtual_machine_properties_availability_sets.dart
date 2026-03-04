@@ -6,29 +6,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMachinePropertiesAvailabilitySets {
   /// Gets the ARM Id of the microsoft.scvmm/availabilitySets resource.
   final pulumi.Input<String>? id;
+
   /// Gets or sets the name of the availability set.
   final pulumi.Input<String>? name;
 
   /// Creates a new [VirtualMachinePropertiesAvailabilitySets].
   /// [id] Gets the ARM Id of the microsoft.scvmm/availabilitySets resource.
   /// [name] Gets or sets the name of the availability set.
-  VirtualMachinePropertiesAvailabilitySets({
-    this.id,
-    this.name,
-  });
+  VirtualMachinePropertiesAvailabilitySets({this.id, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'name': ?name,
-    };
+    return <String, dynamic>{'id': ?id, 'name': ?name};
   }
 
-  factory VirtualMachinePropertiesAvailabilitySets.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachinePropertiesAvailabilitySets.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachinePropertiesAvailabilitySets(
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

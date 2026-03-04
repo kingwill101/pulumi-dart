@@ -1,9 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'avs_assessments_operation_args.dart';
-import 'avs_estimated_external_storage_response.dart';
-import 'avs_estimated_network_response.dart';
-import 'avs_estimated_node_response.dart';
-import 'cost_component_response.dart';
 import 'system_data_response.dart';
 
 /// AVS assessment resource.
@@ -366,116 +362,171 @@ class AvsAssessmentsOperation extends pulumi.CustomResource {
   /// This is the number of machines
   /// affected by each type of error in this assessment.
   late final pulumi.Output<Map<String, int>> assessmentErrorSummary;
+
   /// Assessment type of the assessment.
   late final pulumi.Output<String> assessmentType;
+
   /// AVS Assessment Scenario.
   late final pulumi.Output<String?> avsAssessmentScenario;
+
   /// Estimated External Storage for Assessment.
-  late final pulumi.Output<List<AvsEstimatedExternalStorageResponse>> avsEstimatedExternalStorages;
+  late final pulumi.Output<List<Map<String, dynamic>>>
+  avsEstimatedExternalStorages;
+
   /// Estimated External Storage for Assessment.
-  late final pulumi.Output<List<AvsEstimatedNetworkResponse>> avsEstimatedNetworks;
+  late final pulumi.Output<List<Map<String, dynamic>>> avsEstimatedNetworks;
+
   /// Estimated AVS SKU for Assessment.
-  late final pulumi.Output<List<AvsEstimatedNodeResponse>> avsEstimatedNodes;
+  late final pulumi.Output<List<Map<String, dynamic>>> avsEstimatedNodes;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Azure Location or Azure region where to which the machines will be migrated.
   late final pulumi.Output<String?> azureLocation;
+
   /// Azure Offer code according to which cost estimation is done.
   late final pulumi.Output<String?> azureOfferCode;
+
   /// Confidence Rating in Percentage.
   late final pulumi.Output<double> confidenceRatingInPercentage;
+
   /// collection of cost components.
-  late final pulumi.Output<List<CostComponentResponse>> costComponents;
+  late final pulumi.Output<List<Map<String, dynamic>>> costComponents;
+
   /// Percentage of CPU capacity reserved for processing additional workloads.
   late final pulumi.Output<double?> cpuHeadroom;
+
   /// Predicted CPU utilization.
   late final pulumi.Output<double> cpuUtilization;
+
   /// Date and Time when assessment was created.
   late final pulumi.Output<String> createdTimestamp;
+
   /// Currency in which prices should be reported.
   late final pulumi.Output<String?> currency;
+
   /// De-duplication compression.
   late final pulumi.Output<double?> dedupeCompression;
+
   /// Custom discount percentage.
   late final pulumi.Output<double?> discountPercentage;
+
   /// List of AVS external storage types.
   late final pulumi.Output<List<String>?> externalStorageTypes;
+
   /// Failures to tolerate and RAID level in a common property.
   late final pulumi.Output<String?> failuresToTolerateAndRaidLevel;
+
   /// List of Failures to tolerate and RAID levels in a common property.
   late final pulumi.Output<List<String>?> failuresToTolerateAndRaidLevelList;
+
   /// Gets the group type for the assessment.
   late final pulumi.Output<String> groupType;
+
   /// Is Stretch Cluster Enabled.
   late final pulumi.Output<bool?> isStretchClusterEnabled;
+
   /// Is VCF license applied
   late final pulumi.Output<bool?> isVcfByolEnabled;
+
   /// Limiting factor.
   late final pulumi.Output<String> limitingFactor;
+
   /// Memory overcommit.
   late final pulumi.Output<double?> memOvercommit;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// AVS node type.
   late final pulumi.Output<String?> nodeType;
+
   /// AVS node types.
   late final pulumi.Output<List<String>?> nodeTypes;
+
   /// Number of machines part of the assessment.
   late final pulumi.Output<int> numberOfMachines;
+
   /// Recommended number of nodes.
   late final pulumi.Output<int> numberOfNodes;
+
   /// Percentile of the utilization data values to be considered while assessing
   /// machines.
   late final pulumi.Output<String?> percentile;
+
   /// Gets or sets the end time to consider performance data for assessment.
   late final pulumi.Output<String?> perfDataEndTime;
+
   /// Gets or sets the start time to consider performance data for assessment.
   late final pulumi.Output<String?> perfDataStartTime;
+
   /// Time when the Azure Prices were queried. Date-Time represented in ISO-8601
   /// format.
   late final pulumi.Output<String> pricesTimestamp;
+
   /// The status of the last operation.
   late final pulumi.Output<String?> provisioningState;
+
   /// Predicted RAM utilization.
   late final pulumi.Output<double> ramUtilization;
+
   /// Reserved instance.
   late final pulumi.Output<String?> reservedInstance;
+
   /// Percentage of buffer that user wants on performance metrics when recommending
   /// Azure sizes.
   late final pulumi.Output<double?> scalingFactor;
+
   /// Schema version.
   late final pulumi.Output<String> schemaVersion;
+
   /// Assessment sizing criterion.
   late final pulumi.Output<String?> sizingCriterion;
+
   /// User configurable setting to display the Stage of Assessment.
   late final pulumi.Output<String> stage;
+
   /// Whether assessment is in valid state and all machines have been assessed.
   late final pulumi.Output<String> status;
+
   /// Predicted storage utilization.
   late final pulumi.Output<double> storageUtilization;
+
   /// Gets or sets the Assessment cloud suitability.
   late final pulumi.Output<String> suitability;
+
   /// Gets or sets the Assessment suitability explanation.
   late final pulumi.Output<String> suitabilityExplanation;
+
   /// Cloud suitability summary for all the machines in the assessment.
   late final pulumi.Output<Map<String, int>> suitabilitySummary;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Time Range for which the historic utilization data should be considered for
   /// assessment.
   late final pulumi.Output<String?> timeRange;
+
   /// Predicted total CPU cores used.
   late final pulumi.Output<double> totalCpuCores;
+
   /// Total monthly cost.
   late final pulumi.Output<double> totalMonthlyCost;
+
   /// Predicted total RAM used in GB.
   late final pulumi.Output<double> totalRamInGB;
+
   /// Predicted total Storage used in GB.
   late final pulumi.Output<double> totalStorageInGB;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
+
   /// Date and Time when assessment was last updated.
   late final pulumi.Output<String> updatedTimestamp;
+
   /// VCPU over subscription.
   late final pulumi.Output<double?> vcpuOversubscription;
 
@@ -488,65 +539,83 @@ class AvsAssessmentsOperation extends pulumi.CustomResource {
     AvsAssessmentsOperationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:AvsAssessmentsOperation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.assessmentErrorSummary = registerOutput<Map<String, int>>('assessmentErrorSummary');
-    this.assessmentType = registerOutput<String>('assessmentType');
-    this.avsAssessmentScenario = registerOutput<String?>('avsAssessmentScenario');
-    this.avsEstimatedExternalStorages = registerOutput<List<AvsEstimatedExternalStorageResponse>>('avsEstimatedExternalStorages');
-    this.avsEstimatedNetworks = registerOutput<List<AvsEstimatedNetworkResponse>>('avsEstimatedNetworks');
-    this.avsEstimatedNodes = registerOutput<List<AvsEstimatedNodeResponse>>('avsEstimatedNodes');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.azureLocation = registerOutput<String?>('azureLocation');
-    this.azureOfferCode = registerOutput<String?>('azureOfferCode');
-    this.confidenceRatingInPercentage = registerOutput<double>('confidenceRatingInPercentage');
-    this.costComponents = registerOutput<List<CostComponentResponse>>('costComponents');
-    this.cpuHeadroom = registerOutput<double?>('cpuHeadroom');
-    this.cpuUtilization = registerOutput<double>('cpuUtilization');
-    this.createdTimestamp = registerOutput<String>('createdTimestamp');
-    this.currency = registerOutput<String?>('currency');
-    this.dedupeCompression = registerOutput<double?>('dedupeCompression');
-    this.discountPercentage = registerOutput<double?>('discountPercentage');
-    this.externalStorageTypes = registerOutput<List<String>?>('externalStorageTypes');
-    this.failuresToTolerateAndRaidLevel = registerOutput<String?>('failuresToTolerateAndRaidLevel');
-    this.failuresToTolerateAndRaidLevelList = registerOutput<List<String>?>('failuresToTolerateAndRaidLevelList');
-    this.groupType = registerOutput<String>('groupType');
-    this.isStretchClusterEnabled = registerOutput<bool?>('isStretchClusterEnabled');
-    this.isVcfByolEnabled = registerOutput<bool?>('isVcfByolEnabled');
-    this.limitingFactor = registerOutput<String>('limitingFactor');
-    this.memOvercommit = registerOutput<double?>('memOvercommit');
+         'azure-native:migrate:AvsAssessmentsOperation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    assessmentErrorSummary = registerOutput<Map<String, int>>(
+      'assessmentErrorSummary',
+    );
+    assessmentType = registerOutput<String>('assessmentType');
+    avsAssessmentScenario = registerOutput<String?>('avsAssessmentScenario');
+    avsEstimatedExternalStorages = registerOutput<List<Map<String, dynamic>>>(
+      'avsEstimatedExternalStorages',
+    );
+    avsEstimatedNetworks = registerOutput<List<Map<String, dynamic>>>(
+      'avsEstimatedNetworks',
+    );
+    avsEstimatedNodes = registerOutput<List<Map<String, dynamic>>>(
+      'avsEstimatedNodes',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureLocation = registerOutput<String?>('azureLocation');
+    azureOfferCode = registerOutput<String?>('azureOfferCode');
+    confidenceRatingInPercentage = registerOutput<double>(
+      'confidenceRatingInPercentage',
+    );
+    costComponents = registerOutput<List<Map<String, dynamic>>>(
+      'costComponents',
+    );
+    cpuHeadroom = registerOutput<double?>('cpuHeadroom');
+    cpuUtilization = registerOutput<double>('cpuUtilization');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    currency = registerOutput<String?>('currency');
+    dedupeCompression = registerOutput<double?>('dedupeCompression');
+    discountPercentage = registerOutput<double?>('discountPercentage');
+    externalStorageTypes = registerOutput<List<String>?>(
+      'externalStorageTypes',
+    );
+    failuresToTolerateAndRaidLevel = registerOutput<String?>(
+      'failuresToTolerateAndRaidLevel',
+    );
+    failuresToTolerateAndRaidLevelList = registerOutput<List<String>?>(
+      'failuresToTolerateAndRaidLevelList',
+    );
+    groupType = registerOutput<String>('groupType');
+    isStretchClusterEnabled = registerOutput<bool?>('isStretchClusterEnabled');
+    isVcfByolEnabled = registerOutput<bool?>('isVcfByolEnabled');
+    limitingFactor = registerOutput<String>('limitingFactor');
+    memOvercommit = registerOutput<double?>('memOvercommit');
     this.name = registerOutput<String>('name');
-    this.nodeType = registerOutput<String?>('nodeType');
-    this.nodeTypes = registerOutput<List<String>?>('nodeTypes');
-    this.numberOfMachines = registerOutput<int>('numberOfMachines');
-    this.numberOfNodes = registerOutput<int>('numberOfNodes');
-    this.percentile = registerOutput<String?>('percentile');
-    this.perfDataEndTime = registerOutput<String?>('perfDataEndTime');
-    this.perfDataStartTime = registerOutput<String?>('perfDataStartTime');
-    this.pricesTimestamp = registerOutput<String>('pricesTimestamp');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.ramUtilization = registerOutput<double>('ramUtilization');
-    this.reservedInstance = registerOutput<String?>('reservedInstance');
-    this.scalingFactor = registerOutput<double?>('scalingFactor');
-    this.schemaVersion = registerOutput<String>('schemaVersion');
-    this.sizingCriterion = registerOutput<String?>('sizingCriterion');
-    this.stage = registerOutput<String>('stage');
-    this.status = registerOutput<String>('status');
-    this.storageUtilization = registerOutput<double>('storageUtilization');
-    this.suitability = registerOutput<String>('suitability');
-    this.suitabilityExplanation = registerOutput<String>('suitabilityExplanation');
-    this.suitabilitySummary = registerOutput<Map<String, int>>('suitabilitySummary');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.timeRange = registerOutput<String?>('timeRange');
-    this.totalCpuCores = registerOutput<double>('totalCpuCores');
-    this.totalMonthlyCost = registerOutput<double>('totalMonthlyCost');
-    this.totalRamInGB = registerOutput<double>('totalRamInGB');
-    this.totalStorageInGB = registerOutput<double>('totalStorageInGB');
-    this.type = registerOutput<String>('type');
-    this.updatedTimestamp = registerOutput<String>('updatedTimestamp');
-    this.vcpuOversubscription = registerOutput<double?>('vcpuOversubscription');
+    nodeType = registerOutput<String?>('nodeType');
+    nodeTypes = registerOutput<List<String>?>('nodeTypes');
+    numberOfMachines = registerOutput<int>('numberOfMachines');
+    numberOfNodes = registerOutput<int>('numberOfNodes');
+    percentile = registerOutput<String?>('percentile');
+    perfDataEndTime = registerOutput<String?>('perfDataEndTime');
+    perfDataStartTime = registerOutput<String?>('perfDataStartTime');
+    pricesTimestamp = registerOutput<String>('pricesTimestamp');
+    provisioningState = registerOutput<String?>('provisioningState');
+    ramUtilization = registerOutput<double>('ramUtilization');
+    reservedInstance = registerOutput<String?>('reservedInstance');
+    scalingFactor = registerOutput<double?>('scalingFactor');
+    schemaVersion = registerOutput<String>('schemaVersion');
+    sizingCriterion = registerOutput<String?>('sizingCriterion');
+    stage = registerOutput<String>('stage');
+    status = registerOutput<String>('status');
+    storageUtilization = registerOutput<double>('storageUtilization');
+    suitability = registerOutput<String>('suitability');
+    suitabilityExplanation = registerOutput<String>('suitabilityExplanation');
+    suitabilitySummary = registerOutput<Map<String, int>>('suitabilitySummary');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    timeRange = registerOutput<String?>('timeRange');
+    totalCpuCores = registerOutput<double>('totalCpuCores');
+    totalMonthlyCost = registerOutput<double>('totalMonthlyCost');
+    totalRamInGB = registerOutput<double>('totalRamInGB');
+    totalStorageInGB = registerOutput<double>('totalStorageInGB');
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
+    vcpuOversubscription = registerOutput<double?>('vcpuOversubscription');
   }
 }

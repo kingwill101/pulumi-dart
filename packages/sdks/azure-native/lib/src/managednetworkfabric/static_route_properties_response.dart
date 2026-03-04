@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticRoutePropertiesResponse {
   /// List of next hop addresses.
   final pulumi.Input<List<String>> nextHop;
+
   /// Prefix of the route.
   final pulumi.Input<String> prefix;
 
   /// Creates a new [StaticRoutePropertiesResponse].
   /// [nextHop] List of next hop addresses.
   /// [prefix] Prefix of the route.
-  StaticRoutePropertiesResponse({
-    required this.nextHop,
-    required this.prefix,
-  });
+  StaticRoutePropertiesResponse({required this.nextHop, required this.prefix});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nextHop': nextHop,
-      'prefix': prefix,
-    };
+    return <String, dynamic>{'nextHop': nextHop, 'prefix': prefix};
   }
 
   factory StaticRoutePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StaticRoutePropertiesResponse(
-      nextHop: ((map['nextHop'] as List).cast<String>()).input(),
-      prefix: (map['prefix'] as String).input(),
+      nextHop: pulumi.Input.fromValue((map['nextHop'] as List).cast<String>()),
+      prefix: pulumi.Input.fromValue(map['prefix'] as String),
     );
   }
 }
-

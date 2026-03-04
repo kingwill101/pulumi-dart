@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareClusterDataplaneV2 {
   /// Enable advanced networking which requires dataplane_v2_enabled to be set true.
   final pulumi.Input<bool>? advancedNetworking;
+
   /// Enables Dataplane V2.
   final pulumi.Input<bool>? dataplaneV2Enabled;
+
   /// Enable Dataplane V2 for clusters with Windows nodes.
   final pulumi.Input<bool>? windowsDataplaneV2Enabled;
 
@@ -30,10 +32,21 @@ class VMwareClusterDataplaneV2 {
 
   factory VMwareClusterDataplaneV2.fromMap(Map<String, dynamic> map) {
     return VMwareClusterDataplaneV2(
-      advancedNetworking: map['advancedNetworking'] == null ? null : (map['advancedNetworking']! as bool).input(),
-      dataplaneV2Enabled: map['dataplaneV2Enabled'] == null ? null : (map['dataplaneV2Enabled']! as bool).input(),
-      windowsDataplaneV2Enabled: map['windowsDataplaneV2Enabled'] == null ? null : (map['windowsDataplaneV2Enabled']! as bool).input(),
+      advancedNetworking: (() {
+        final guardedValue = map['advancedNetworking'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      dataplaneV2Enabled: (() {
+        final guardedValue = map['dataplaneV2Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      windowsDataplaneV2Enabled: (() {
+        final guardedValue = map['windowsDataplaneV2Enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

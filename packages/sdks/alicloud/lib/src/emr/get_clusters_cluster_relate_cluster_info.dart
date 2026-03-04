@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClustersClusterRelateClusterInfo {
   /// The ID of the associated cluster.
   final pulumi.Input<String> clusterId;
+
   /// The name of the associated cluster.
   final pulumi.Input<String> clusterName;
+
   /// The cluster type of the associated cluster.
   final pulumi.Input<String> clusterType;
+
   /// The status  of the associated cluster.
   final pulumi.Input<String> status;
 
@@ -33,13 +36,14 @@ class GetClustersClusterRelateClusterInfo {
     };
   }
 
-  factory GetClustersClusterRelateClusterInfo.fromMap(Map<String, dynamic> map) {
+  factory GetClustersClusterRelateClusterInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClustersClusterRelateClusterInfo(
-      clusterId: (map['clusterId'] as String).input(),
-      clusterName: (map['clusterName'] as String).input(),
-      clusterType: (map['clusterType'] as String).input(),
-      status: (map['status'] as String).input(),
+      clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      clusterType: pulumi.Input.fromValue(map['clusterType'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
     );
   }
 }
-

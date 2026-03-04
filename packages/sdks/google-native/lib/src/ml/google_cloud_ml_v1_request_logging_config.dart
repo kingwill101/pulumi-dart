@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudMlV1RequestLoggingConfig {
   /// Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
   final pulumi.Input<String> bigqueryTableName;
+
   /// Percentage of requests to be logged, expressed as a fraction from 0 to 1. For example, if you want to log 10% of requests, enter `0.1`. The sampling window is the lifetime of the model version. Defaults to 0.
   final pulumi.Input<double>? samplingPercentage;
 
@@ -24,11 +25,18 @@ class GoogleCloudMlV1RequestLoggingConfig {
     };
   }
 
-  factory GoogleCloudMlV1RequestLoggingConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudMlV1RequestLoggingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudMlV1RequestLoggingConfig(
-      bigqueryTableName: (map['bigqueryTableName'] as String).input(),
-      samplingPercentage: map['samplingPercentage'] == null ? null : (map['samplingPercentage']! as double).input(),
+      bigqueryTableName: pulumi.Input.fromValue(
+        map['bigqueryTableName'] as String,
+      ),
+      samplingPercentage: (() {
+        final guardedValue = map['samplingPercentage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
     );
   }
 }
-

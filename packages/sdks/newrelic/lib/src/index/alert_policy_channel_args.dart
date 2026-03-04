@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertPolicyChannelArgs {
   /// Determines the New Relic account where the alert policy channel will be created. Defaults to the account associated with the API key used.
   final pulumi.Input<String>? accountId;
+
   /// Array of channel IDs to apply to the specified policy. We recommended sorting channel IDs in ascending order to avoid drift your Terraform state.
   final pulumi.Input<List<String>> channelIds;
+
   /// The ID of the policy.
   final pulumi.Input<String> policyId;
 
@@ -34,10 +36,15 @@ class AlertPolicyChannelArgs {
 
   factory AlertPolicyChannelArgs.fromMap(Map<String, dynamic> map) {
     return AlertPolicyChannelArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
-      channelIds: ((map['channelIds'] as List).cast<String>()).input(),
-      policyId: (map['policyId'] as String).input(),
+      accountId: (() {
+        final guardedValue = map['accountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      channelIds: pulumi.Input.fromValue(
+        (map['channelIds'] as List).cast<String>(),
+      ),
+      policyId: pulumi.Input.fromValue(map['policyId'] as String),
     );
   }
 }
-

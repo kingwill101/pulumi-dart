@@ -7,20 +7,28 @@ import 'system_data_response.dart';
 class GetContainerResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Current status of the container.
   final String containerStatus;
+
   /// The UTC time when container got created.
   final String createdDateTime;
+
   /// DataFormat for Container
   final String dataFormat;
+
   /// The path ID that uniquely identifies the object.
   final String id;
+
   /// The object name.
   final String name;
+
   /// Details of the refresh job on this container.
   final RefreshDetailsResponse refreshDetails;
+
   /// Metadata pertaining to creation and last modification of Container
   final SystemDataResponse systemData;
+
   /// The hierarchical type of the object.
   final String type;
 
@@ -68,10 +76,13 @@ class GetContainerResult {
       dataFormat: map['dataFormat'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      refreshDetails: RefreshDetailsResponse.fromMap((map['refreshDetails'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      refreshDetails: RefreshDetailsResponse.fromMap(
+        (map['refreshDetails']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

@@ -9,20 +9,21 @@ class SimpleCriterionKeyForJobEnumValueResponse {
 
   /// Creates a new [SimpleCriterionKeyForJobEnumValueResponse].
   /// [value] Property value
-  SimpleCriterionKeyForJobEnumValueResponse({
-    this.value,
-  });
+  SimpleCriterionKeyForJobEnumValueResponse({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
-  factory SimpleCriterionKeyForJobEnumValueResponse.fromMap(Map<String, dynamic> map) {
+  factory SimpleCriterionKeyForJobEnumValueResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SimpleCriterionKeyForJobEnumValueResponse(
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -3,16 +3,17 @@ enum ScrubbingRuleEntryMatchOperator {
   valueEqualsAny("EqualsAny"),
   valueEquals("Equals");
 
-  const ScrubbingRuleEntryMatchOperator(this.value);
-  final String value;
+  const ScrubbingRuleEntryMatchOperator(this.wireValue);
+  final String wireValue;
 
   static ScrubbingRuleEntryMatchOperator fromValue(String value) {
     for (final item in ScrubbingRuleEntryMatchOperator.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ScrubbingRuleEntryMatchOperator value: $value');
+    throw ArgumentError(
+      'Unknown ScrubbingRuleEntryMatchOperator value: $value',
+    );
   }
 }
-

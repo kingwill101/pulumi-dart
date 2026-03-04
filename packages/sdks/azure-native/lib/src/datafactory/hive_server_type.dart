@@ -4,16 +4,15 @@ enum HiveServerType {
   valueHiveServer2("HiveServer2"),
   valueHiveThriftServer("HiveThriftServer");
 
-  const HiveServerType(this.value);
-  final String value;
+  const HiveServerType(this.wireValue);
+  final String wireValue;
 
   static HiveServerType fromValue(String value) {
     for (final item in HiveServerType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown HiveServerType value: $value');
   }
 }
-

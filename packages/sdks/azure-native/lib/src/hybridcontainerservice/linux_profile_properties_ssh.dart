@@ -10,20 +10,39 @@ class LinuxProfilePropertiesSsh {
 
   /// Creates a new [LinuxProfilePropertiesSsh].
   /// [publicKeys] PublicKeys - The list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified.
-  LinuxProfilePropertiesSsh({
-    this.publicKeys,
-  });
+  LinuxProfilePropertiesSsh({this.publicKeys});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicKeys': ?pulumi.Input.mapOptionalInputValue<List<LinuxProfilePropertiesPublicKeys>, List<Map<String, dynamic>>>(publicKeys, (value) => pulumi.Input.encodeList<LinuxProfilePropertiesPublicKeys, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'publicKeys':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<LinuxProfilePropertiesPublicKeys>,
+            List<Map<String, dynamic>>
+          >(
+            publicKeys,
+            (value) =>
+                pulumi.Input.encodeList<
+                  LinuxProfilePropertiesPublicKeys,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory LinuxProfilePropertiesSsh.fromMap(Map<String, dynamic> map) {
     return LinuxProfilePropertiesSsh(
-      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<LinuxProfilePropertiesPublicKeys>(map['publicKeys']!, (value) => LinuxProfilePropertiesPublicKeys.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicKeys: (() {
+        final guardedValue = map['publicKeys'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<LinuxProfilePropertiesPublicKeys>(
+            guardedValue,
+            (value) => LinuxProfilePropertiesPublicKeys.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

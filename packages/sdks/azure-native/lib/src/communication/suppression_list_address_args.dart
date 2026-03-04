@@ -9,20 +9,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SuppressionListAddressArgs {
   /// The id of the address in a suppression list.
   final pulumi.Input<String>? addressId;
+
   /// The name of the Domains resource.
   final pulumi.Input<String> domainName;
+
   /// Email address of the recipient.
   final pulumi.Input<String> email;
+
   /// The name of the EmailService resource.
   final pulumi.Input<String> emailServiceName;
+
   /// The first name of the email recipient.
   final pulumi.Input<String>? firstName;
+
   /// The last name of the email recipient.
   final pulumi.Input<String>? lastName;
+
   /// An optional property to provide contextual notes or a description for an address.
   final pulumi.Input<String>? notes;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the suppression list.
   final pulumi.Input<String> suppressionListName;
 
@@ -64,16 +72,37 @@ class SuppressionListAddressArgs {
 
   factory SuppressionListAddressArgs.fromMap(Map<String, dynamic> map) {
     return SuppressionListAddressArgs(
-      addressId: map['addressId'] == null ? null : (map['addressId']! as String).input(),
-      domainName: (map['domainName'] as String).input(),
-      email: (map['email'] as String).input(),
-      emailServiceName: (map['emailServiceName'] as String).input(),
-      firstName: map['firstName'] == null ? null : (map['firstName']! as String).input(),
-      lastName: map['lastName'] == null ? null : (map['lastName']! as String).input(),
-      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      suppressionListName: (map['suppressionListName'] as String).input(),
+      addressId: (() {
+        final guardedValue = map['addressId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      email: pulumi.Input.fromValue(map['email'] as String),
+      emailServiceName: pulumi.Input.fromValue(
+        map['emailServiceName'] as String,
+      ),
+      firstName: (() {
+        final guardedValue = map['firstName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastName: (() {
+        final guardedValue = map['lastName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      notes: (() {
+        final guardedValue = map['notes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      suppressionListName: pulumi.Input.fromValue(
+        map['suppressionListName'] as String,
+      ),
     );
   }
 }
-

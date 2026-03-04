@@ -1,5 +1,3 @@
-library module_ram;
-
 export 'ram/access_key.dart';
 export 'ram/access_key_args.dart';
 export 'ram/access_key_state.dart';

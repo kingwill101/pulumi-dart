@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EmailIdentityFeedbackAttributesArgs {
   /// Sets the feedback forwarding configuration for the identity.
   final pulumi.Input<bool>? emailForwardingEnabled;
+
   /// The email identity.
   final pulumi.Input<String> emailIdentity;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -32,12 +34,21 @@ class EmailIdentityFeedbackAttributesArgs {
     };
   }
 
-  factory EmailIdentityFeedbackAttributesArgs.fromMap(Map<String, dynamic> map) {
+  factory EmailIdentityFeedbackAttributesArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EmailIdentityFeedbackAttributesArgs(
-      emailForwardingEnabled: map['emailForwardingEnabled'] == null ? null : ((map['emailForwardingEnabled'] as bool).input()).input(),
-      emailIdentity: (map['emailIdentity'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      emailForwardingEnabled: (() {
+        final guardedValue = map['emailForwardingEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      emailIdentity: pulumi.Input.fromValue(map['emailIdentity'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

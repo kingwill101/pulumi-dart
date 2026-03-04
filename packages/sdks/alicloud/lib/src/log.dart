@@ -1,5 +1,3 @@
-library module_log;
-
 export 'log/alert.dart';
 export 'log/alert_annotation.dart';
 export 'log/alert_args.dart';

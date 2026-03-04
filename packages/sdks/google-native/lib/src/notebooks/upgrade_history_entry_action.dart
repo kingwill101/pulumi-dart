@@ -4,16 +4,15 @@ enum UpgradeHistoryEntryAction {
   upgrade("UPGRADE"),
   rollback("ROLLBACK");
 
-  const UpgradeHistoryEntryAction(this.value);
-  final String value;
+  const UpgradeHistoryEntryAction(this.wireValue);
+  final String wireValue;
 
   static UpgradeHistoryEntryAction fromValue(String value) {
     for (final item in UpgradeHistoryEntryAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown UpgradeHistoryEntryAction value: $value');
   }
 }
-

@@ -1,5 +1,3 @@
-library module_bigqueryreservation;
-
 export 'bigqueryreservation/autoscale.dart';
 export 'bigqueryreservation/autoscale_response.dart';
 export 'bigqueryreservation/capacity_commitment.dart';

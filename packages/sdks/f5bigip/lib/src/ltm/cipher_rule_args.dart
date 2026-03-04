@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CipherRuleArgs {
   /// Specifies one or more Cipher Suites used,this is a colon (:) separated string of cipher suites. example, `TLS13-AES128-GCM-SHA256:TLS13-AES256-GCM-SHA384`.
   final pulumi.Input<String> cipher;
+
   /// The Partition in which the Cipher Rule will be created.
   final pulumi.Input<String>? description;
+
   /// Specifies the DH Groups algorithms, separated by colons (:).
   final pulumi.Input<String>? dhGroups;
+
   /// Name of the Cipher Rule. Name should be in pattern `partition` + `cipher_rule_name`
   final pulumi.Input<String> name;
+
   /// Specifies the Signature Algorithms, separated by colons (:).
   final pulumi.Input<String>? signatureAlgorithms;
 
@@ -44,12 +48,23 @@ class CipherRuleArgs {
 
   factory CipherRuleArgs.fromMap(Map<String, dynamic> map) {
     return CipherRuleArgs(
-      cipher: (map['cipher'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      dhGroups: map['dhGroups'] == null ? null : (map['dhGroups']! as String).input(),
-      name: (map['name'] as String).input(),
-      signatureAlgorithms: map['signatureAlgorithms'] == null ? null : (map['signatureAlgorithms']! as String).input(),
+      cipher: pulumi.Input.fromValue(map['cipher'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dhGroups: (() {
+        final guardedValue = map['dhGroups'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      signatureAlgorithms: (() {
+        final guardedValue = map['signatureAlgorithms'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

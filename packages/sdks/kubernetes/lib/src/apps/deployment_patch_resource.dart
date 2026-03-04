@@ -18,15 +18,15 @@ import 'deployment_status_patch_apps_v1beta1.dart';
 /// succeeded or failed:
 ///
 /// 1. The Deployment has begun to be updated by the Deployment controller. If the current
-/// generation of the Deployment is > 1, then this means that the current generation must
+/// generation of the Deployment is &gt; 1, then this means that the current generation must
 /// be different from the generation reported by the last outputs.
 /// 2. There exists a ReplicaSet whose revision is equal to the current revision of the
 /// Deployment.
 /// 3. The Deployment's '.status.conditions' has a status of type 'Available' whose 'status'
 /// member is set to 'True'.
-/// 4. If the Deployment has generation > 1, then '.status.conditions' has a status of type
+/// 4. If the Deployment has generation &gt; 1, then '.status.conditions' has a status of type
 /// 'Progressing', whose 'status' member is set to 'True', and whose 'reason' is
-/// 'NewReplicaSetAvailable'. For generation <= 1, this status field does not exist,
+/// 'NewReplicaSetAvailable'. For generation &lt;= 1, this status field does not exist,
 /// because it doesn't do a rollout (i.e., it simply creates the Deployment and
 /// corresponding ReplicaSet), and therefore there is no rollout to mark as 'Progressing'.
 ///
@@ -36,12 +36,16 @@ import 'deployment_status_patch_apps_v1beta1.dart';
 class DeploymentPatchResource extends pulumi.CustomResource {
   /// APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
   late final pulumi.Output<String?> apiVersion;
+
   /// Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   late final pulumi.Output<String?> kind;
+
   /// Standard object metadata.
   late final pulumi.Output<ObjectMetaPatch?> metadata;
+
   /// Specification of the desired behavior of the Deployment.
   late final pulumi.Output<DeploymentSpecPatchAppsV1beta1?> spec;
+
   /// Most recently observed status of the Deployment.
   late final pulumi.Output<DeploymentStatusPatchAppsV1beta1?> status;
 
@@ -54,15 +58,15 @@ class DeploymentPatchResource extends pulumi.CustomResource {
     DeploymentPatchAppsV1beta1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'kubernetes:apps/v1beta1:DeploymentPatch',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiVersion = registerOutput<String?>('apiVersion');
-    this.kind = registerOutput<String?>('kind');
-    this.metadata = registerOutput<ObjectMetaPatch?>('metadata');
-    this.spec = registerOutput<DeploymentSpecPatchAppsV1beta1?>('spec');
-    this.status = registerOutput<DeploymentStatusPatchAppsV1beta1?>('status');
+         'kubernetes:apps/v1beta1:DeploymentPatch',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiVersion = registerOutput<String?>('apiVersion');
+    kind = registerOutput<String?>('kind');
+    metadata = registerOutput<ObjectMetaPatch?>('metadata');
+    spec = registerOutput<DeploymentSpecPatchAppsV1beta1?>('spec');
+    status = registerOutput<DeploymentStatusPatchAppsV1beta1?>('status');
   }
 }

@@ -9,20 +9,19 @@ class DashboardDefinitionProperties {
 
   /// Creates a new [DashboardDefinitionProperties].
   /// [serializedData] The dashboard definition data in JSON format.
-  DashboardDefinitionProperties({
-    this.serializedData,
-  });
+  DashboardDefinitionProperties({this.serializedData});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serializedData': ?serializedData,
-    };
+    return <String, dynamic>{'serializedData': ?serializedData};
   }
 
   factory DashboardDefinitionProperties.fromMap(Map<String, dynamic> map) {
     return DashboardDefinitionProperties(
-      serializedData: map['serializedData'] == null ? null : (map['serializedData']! as String).input(),
+      serializedData: (() {
+        final guardedValue = map['serializedData'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

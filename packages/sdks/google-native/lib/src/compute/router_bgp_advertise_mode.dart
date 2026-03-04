@@ -3,16 +3,15 @@ enum RouterBgpAdvertiseMode {
   custom("CUSTOM"),
   default_("DEFAULT");
 
-  const RouterBgpAdvertiseMode(this.value);
-  final String value;
+  const RouterBgpAdvertiseMode(this.wireValue);
+  final String wireValue;
 
   static RouterBgpAdvertiseMode fromValue(String value) {
     for (final item in RouterBgpAdvertiseMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RouterBgpAdvertiseMode value: $value');
   }
 }
-

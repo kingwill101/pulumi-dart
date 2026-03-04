@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DedicatedIpAssignmentArgs {
   /// Dedicated IP address.
   final pulumi.Input<String> destinationPoolName;
+
   /// Dedicated IP address.
   final pulumi.Input<String> ip;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -34,10 +36,15 @@ class DedicatedIpAssignmentArgs {
 
   factory DedicatedIpAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedIpAssignmentArgs(
-      destinationPoolName: (map['destinationPoolName'] as String).input(),
-      ip: (map['ip'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      destinationPoolName: pulumi.Input.fromValue(
+        map['destinationPoolName'] as String,
+      ),
+      ip: pulumi.Input.fromValue(map['ip'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -7,9 +7,15 @@ import 'defender_for_databases_gcp_offering_defender_for_databases_arc_auto_prov
 /// The Defender for Databases GCP offering configurations
 class DefenderForDatabasesGcpOffering {
   /// The ARC autoprovisioning configuration
-  final pulumi.Input<DefenderForDatabasesGcpOfferingArcAutoProvisioning>? arcAutoProvisioning;
+  final pulumi.Input<DefenderForDatabasesGcpOfferingArcAutoProvisioning>?
+  arcAutoProvisioning;
+
   /// The native cloud connection configuration
-  final pulumi.Input<DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioning>? defenderForDatabasesArcAutoProvisioning;
+  final pulumi.Input<
+    DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioning
+  >?
+  defenderForDatabasesArcAutoProvisioning;
+
   /// The type of the security offering.
   /// Expected value is 'DefenderForDatabasesGcp'.
   final pulumi.Input<String> offeringType;
@@ -26,18 +32,41 @@ class DefenderForDatabasesGcpOffering {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arcAutoProvisioning': ?pulumi.Input.mapOptionalInputValue<DefenderForDatabasesGcpOfferingArcAutoProvisioning, Map<String, dynamic>>(arcAutoProvisioning, (value) => value.toMap()),
-      'defenderForDatabasesArcAutoProvisioning': ?pulumi.Input.mapOptionalInputValue<DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioning, Map<String, dynamic>>(defenderForDatabasesArcAutoProvisioning, (value) => value.toMap()),
+      'arcAutoProvisioning':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefenderForDatabasesGcpOfferingArcAutoProvisioning,
+            Map<String, dynamic>
+          >(arcAutoProvisioning, (value) => value.toMap()),
+      'defenderForDatabasesArcAutoProvisioning':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioning,
+            Map<String, dynamic>
+          >(defenderForDatabasesArcAutoProvisioning, (value) => value.toMap()),
       'offeringType': offeringType,
     };
   }
 
   factory DefenderForDatabasesGcpOffering.fromMap(Map<String, dynamic> map) {
     return DefenderForDatabasesGcpOffering(
-      arcAutoProvisioning: map['arcAutoProvisioning'] == null ? null : (DefenderForDatabasesGcpOfferingArcAutoProvisioning.fromMap((map['arcAutoProvisioning']! as Map).cast<String, dynamic>())).input(),
-      defenderForDatabasesArcAutoProvisioning: map['defenderForDatabasesArcAutoProvisioning'] == null ? null : (DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioning.fromMap((map['defenderForDatabasesArcAutoProvisioning']! as Map).cast<String, dynamic>())).input(),
-      offeringType: (map['offeringType'] as String).input(),
+      arcAutoProvisioning: (() {
+        final guardedValue = map['arcAutoProvisioning'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefenderForDatabasesGcpOfferingArcAutoProvisioning.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      defenderForDatabasesArcAutoProvisioning: (() {
+        final guardedValue = map['defenderForDatabasesArcAutoProvisioning'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioning.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      offeringType: pulumi.Input.fromValue(map['offeringType'] as String),
     );
   }
 }
-

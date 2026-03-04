@@ -4,16 +4,17 @@ enum StoragePoolPerformanceProvisioningType {
   standard("STANDARD"),
   unspecified("UNSPECIFIED");
 
-  const StoragePoolPerformanceProvisioningType(this.value);
-  final String value;
+  const StoragePoolPerformanceProvisioningType(this.wireValue);
+  final String wireValue;
 
   static StoragePoolPerformanceProvisioningType fromValue(String value) {
     for (final item in StoragePoolPerformanceProvisioningType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown StoragePoolPerformanceProvisioningType value: $value');
+    throw ArgumentError(
+      'Unknown StoragePoolPerformanceProvisioningType value: $value',
+    );
   }
 }
-

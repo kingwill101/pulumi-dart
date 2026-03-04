@@ -9,23 +9,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDedicatedHostsArgs {
   /// Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
   final pulumi.Input<String>? allocationStatus;
+
   /// The ID of the dedicated cluster.
   final pulumi.Input<String> dedicatedHostGroupId;
+
   /// Default to `false`. Set it to `true` can output more details about resource attributes.
   final pulumi.Input<bool>? enableDetails;
+
   /// The storage type of the host. Valid values: `dhg_local_ssd` or `dhg_cloud_ssd`. `dhg_local_ssd`: specifies that the host uses local SSDs. `dhg_cloud_ssd`: specifies that the host uses enhanced SSDs (ESSDs).
   final pulumi.Input<String>? hostType;
+
   /// A list of Dedicated Host IDs.
   final pulumi.Input<List<String>>? ids;
+
   /// The ID of the order.
   final pulumi.Input<String>? orderId;
+
   /// File name where to save data source results (after running `pulumi preview`).
   final pulumi.Input<String>? outputFile;
+
   /// The state of the host. Valid values:
   /// * `0:` The host is being created.
   final pulumi.Input<String>? status;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The ID of the zone.
   final pulumi.Input<String>? zoneId;
 
@@ -70,17 +79,56 @@ class GetDedicatedHostsArgs {
 
   factory GetDedicatedHostsArgs.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsArgs(
-      allocationStatus: map['allocationStatus'] == null ? null : (map['allocationStatus']! as String).input(),
-      dedicatedHostGroupId: (map['dedicatedHostGroupId'] as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
-      hostType: map['hostType'] == null ? null : (map['hostType']! as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
-      orderId: map['orderId'] == null ? null : (map['orderId']! as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      allocationStatus: (() {
+        final guardedValue = map['allocationStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dedicatedHostGroupId: pulumi.Input.fromValue(
+        map['dedicatedHostGroupId'] as String,
+      ),
+      enableDetails: (() {
+        final guardedValue = map['enableDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      hostType: (() {
+        final guardedValue = map['hostType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ids: (() {
+        final guardedValue = map['ids'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      orderId: (() {
+        final guardedValue = map['orderId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

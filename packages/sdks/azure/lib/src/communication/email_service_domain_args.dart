@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EmailServiceDomainArgs {
   /// Describes how a Domains resource is being managed. Possible values are `AzureManaged`, `CustomerManaged`, `CustomerManagedInExchangeOnline`. Changing this forces a new Email Communication Service to be created.
   final pulumi.Input<String> domainManagement;
+
   /// The resource ID of the Email Communication Service where the Domain belongs to. Changing this forces a new Email Communication Service to be created.
   final pulumi.Input<String> emailServiceId;
+
   /// The name of the Email Communication Service resource. If `domain_management` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
   final pulumi.Input<String>? name;
+
   /// A mapping of tags which should be assigned to the Email Communication Service.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Describes user engagement tracking is enabled or disabled. Defaults to `false`.
   final pulumi.Input<bool>? userEngagementTrackingEnabled;
 
@@ -44,12 +48,27 @@ class EmailServiceDomainArgs {
 
   factory EmailServiceDomainArgs.fromMap(Map<String, dynamic> map) {
     return EmailServiceDomainArgs(
-      domainManagement: (map['domainManagement'] as String).input(),
-      emailServiceId: (map['emailServiceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      userEngagementTrackingEnabled: map['userEngagementTrackingEnabled'] == null ? null : (map['userEngagementTrackingEnabled']! as bool).input(),
+      domainManagement: pulumi.Input.fromValue(
+        map['domainManagement'] as String,
+      ),
+      emailServiceId: pulumi.Input.fromValue(map['emailServiceId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      userEngagementTrackingEnabled: (() {
+        final guardedValue = map['userEngagementTrackingEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

@@ -12,14 +12,19 @@ class CredentialSetArgs {
   /// List of authentication credentials stored for an upstream.
   /// Usually consists of a primary and an optional secondary credential.
   final pulumi.Input<List<AuthCredential>>? authCredentials;
+
   /// The name of the credential set.
   final pulumi.Input<String>? credentialSetName;
+
   /// Identities associated with the resource. This is used to access the KeyVault secrets.
   final pulumi.Input<IdentityProperties>? identity;
+
   /// The credentials are stored for this upstream or login server.
   final pulumi.Input<String>? loginServer;
+
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -41,9 +46,24 @@ class CredentialSetArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authCredentials': ?pulumi.Input.mapOptionalInputValue<List<AuthCredential>, List<Map<String, dynamic>>>(authCredentials, (value) => pulumi.Input.encodeList<AuthCredential, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'authCredentials':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AuthCredential>,
+            List<Map<String, dynamic>>
+          >(
+            authCredentials,
+            (value) =>
+                pulumi.Input.encodeList<AuthCredential, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'credentialSetName': ?credentialSetName,
-      'identity': ?pulumi.Input.mapOptionalInputValue<IdentityProperties, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            IdentityProperties,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'loginServer': ?loginServer,
       'registryName': registryName,
       'resourceGroupName': resourceGroupName,
@@ -52,13 +72,40 @@ class CredentialSetArgs {
 
   factory CredentialSetArgs.fromMap(Map<String, dynamic> map) {
     return CredentialSetArgs(
-      authCredentials: map['authCredentials'] == null ? null : (pulumi.Input.decodeList<AuthCredential>(map['authCredentials']!, (value) => AuthCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      credentialSetName: map['credentialSetName'] == null ? null : (map['credentialSetName']! as String).input(),
-      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      loginServer: map['loginServer'] == null ? null : (map['loginServer']! as String).input(),
-      registryName: (map['registryName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      authCredentials: (() {
+        final guardedValue = map['authCredentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AuthCredential>(
+            guardedValue,
+            (value) =>
+                AuthCredential.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      credentialSetName: (() {
+        final guardedValue = map['credentialSetName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          IdentityProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      loginServer: (() {
+        final guardedValue = map['loginServer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registryName: pulumi.Input.fromValue(map['registryName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

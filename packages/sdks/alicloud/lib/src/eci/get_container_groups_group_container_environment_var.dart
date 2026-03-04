@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerGroupsGroupContainerEnvironmentVar {
   /// The name of the variable.
   final pulumi.Input<String> key;
+
   /// The value of the variable.
   final pulumi.Input<String> value;
 
@@ -17,17 +18,15 @@ class GetContainerGroupsGroupContainerEnvironmentVar {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
-  factory GetContainerGroupsGroupContainerEnvironmentVar.fromMap(Map<String, dynamic> map) {
+  factory GetContainerGroupsGroupContainerEnvironmentVar.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetContainerGroupsGroupContainerEnvironmentVar(
-      key: (map['key'] as String).input(),
-      value: (map['value'] as String).input(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

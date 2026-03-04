@@ -37,14 +37,21 @@ class GetUserDataMappingHealthcareV1beta1Args {
     };
   }
 
-  factory GetUserDataMappingHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetUserDataMappingHealthcareV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetUserDataMappingHealthcareV1beta1Args(
-      consentStoreId: (map['consentStoreId'] as String).input(),
-      datasetId: (map['datasetId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      userDataMappingId: (map['userDataMappingId'] as String).input(),
+      consentStoreId: pulumi.Input.fromValue(map['consentStoreId'] as String),
+      datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userDataMappingId: pulumi.Input.fromValue(
+        map['userDataMappingId'] as String,
+      ),
     );
   }
 }
-

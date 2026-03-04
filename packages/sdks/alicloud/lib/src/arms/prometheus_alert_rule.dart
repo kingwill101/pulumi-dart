@@ -1,14 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'prometheus_alert_rule_annotation.dart';
 import 'prometheus_alert_rule_args.dart';
-import 'prometheus_alert_rule_label.dart';
 import 'prometheus_alert_rule_state.dart';
 
 /// Provides a Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule resource.
 ///
 /// For information about Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule and how to use it, see [What is Prometheus Alert Rule](https://www.alibabacloud.com/help/en/arms/prometheus-monitoring/api-arms-2019-08-08-createprometheusalertrule).
 ///
-/// > **NOTE:** Available since v1.136.0.
+/// &gt; **NOTE:** Available since v1.136.0.
 ///
 /// ## Example Usage
 ///
@@ -241,27 +239,38 @@ import 'prometheus_alert_rule_state.dart';
 /// ```
 class PrometheusAlertRule extends pulumi.CustomResource {
   /// The annotations of the alert rule. See `annotations` below.
-  late final pulumi.Output<List<PrometheusAlertRuleAnnotation>?> annotations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> annotations;
+
   /// The ID of the cluster.
   late final pulumi.Output<String> clusterId;
+
   /// The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
   late final pulumi.Output<String?> dispatchRuleId;
+
   /// The duration of the alert.
   late final pulumi.Output<String> duration;
+
   /// The alert rule expression that follows the PromQL syntax.
   late final pulumi.Output<String> expression;
+
   /// The labels of the resource. See `labels` below.
-  late final pulumi.Output<List<PrometheusAlertRuleLabel>?> labels;
+  late final pulumi.Output<List<Map<String, dynamic>>?> labels;
+
   /// The message of the alert notification.
   late final pulumi.Output<String> message;
+
   /// The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
   late final pulumi.Output<String?> notifyType;
+
   /// The first ID of the resource.
   late final pulumi.Output<int> prometheusAlertRuleId;
+
   /// The name of the resource.
   late final pulumi.Output<String> prometheusAlertRuleName;
+
   /// The status of the resource. Valid values: `0`, `1`.
   late final pulumi.Output<int> status;
+
   /// The type of the alert rule.
   late final pulumi.Output<String> type;
 
@@ -274,23 +283,23 @@ class PrometheusAlertRule extends pulumi.CustomResource {
     PrometheusAlertRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/prometheusAlertRule:PrometheusAlertRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.annotations = registerOutput<List<PrometheusAlertRuleAnnotation>?>('annotations');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.dispatchRuleId = registerOutput<String?>('dispatchRuleId');
-    this.duration = registerOutput<String>('duration');
-    this.expression = registerOutput<String>('expression');
-    this.labels = registerOutput<List<PrometheusAlertRuleLabel>?>('labels');
-    this.message = registerOutput<String>('message');
-    this.notifyType = registerOutput<String?>('notifyType');
-    this.prometheusAlertRuleId = registerOutput<int>('prometheusAlertRuleId');
-    this.prometheusAlertRuleName = registerOutput<String>('prometheusAlertRuleName');
-    this.status = registerOutput<int>('status');
-    this.type = registerOutput<String>('type');
+         'alicloud:arms/prometheusAlertRule:PrometheusAlertRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    annotations = registerOutput<List<Map<String, dynamic>>?>('annotations');
+    clusterId = registerOutput<String>('clusterId');
+    dispatchRuleId = registerOutput<String?>('dispatchRuleId');
+    duration = registerOutput<String>('duration');
+    expression = registerOutput<String>('expression');
+    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    message = registerOutput<String>('message');
+    notifyType = registerOutput<String?>('notifyType');
+    prometheusAlertRuleId = registerOutput<int>('prometheusAlertRuleId');
+    prometheusAlertRuleName = registerOutput<String>('prometheusAlertRuleName');
+    status = registerOutput<int>('status');
+    type = registerOutput<String>('type');
   }
 
   /// Gets an existing [PrometheusAlertRule] resource's state with the given [name] and [id].
@@ -311,22 +320,22 @@ class PrometheusAlertRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:arms/prometheusAlertRule:PrometheusAlertRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.annotations = registerOutput<List<PrometheusAlertRuleAnnotation>?>('annotations');
-    this.clusterId = registerOutput<String>('clusterId');
-    this.dispatchRuleId = registerOutput<String?>('dispatchRuleId');
-    this.duration = registerOutput<String>('duration');
-    this.expression = registerOutput<String>('expression');
-    this.labels = registerOutput<List<PrometheusAlertRuleLabel>?>('labels');
-    this.message = registerOutput<String>('message');
-    this.notifyType = registerOutput<String?>('notifyType');
-    this.prometheusAlertRuleId = registerOutput<int>('prometheusAlertRuleId');
-    this.prometheusAlertRuleName = registerOutput<String>('prometheusAlertRuleName');
-    this.status = registerOutput<int>('status');
-    this.type = registerOutput<String>('type');
+         'alicloud:arms/prometheusAlertRule:PrometheusAlertRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    annotations = registerOutput<List<Map<String, dynamic>>?>('annotations');
+    clusterId = registerOutput<String>('clusterId');
+    dispatchRuleId = registerOutput<String?>('dispatchRuleId');
+    duration = registerOutput<String>('duration');
+    expression = registerOutput<String>('expression');
+    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    message = registerOutput<String>('message');
+    notifyType = registerOutput<String?>('notifyType');
+    prometheusAlertRuleId = registerOutput<int>('prometheusAlertRuleId');
+    prometheusAlertRuleName = registerOutput<String>('prometheusAlertRuleName');
+    status = registerOutput<int>('status');
+    type = registerOutput<String>('type');
   }
 }

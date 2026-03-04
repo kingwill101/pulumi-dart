@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNfsSnapshotArgs {
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? nameRegex;
+
   /// The region where the NFS snapshot is located.
   final pulumi.Input<String>? region;
   final pulumi.Input<String> shareId;
@@ -36,11 +37,22 @@ class GetNfsSnapshotArgs {
 
   factory GetNfsSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetNfsSnapshotArgs(
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      shareId: (map['shareId'] as String).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shareId: pulumi.Input.fromValue(map['shareId'] as String),
     );
   }
 }
-

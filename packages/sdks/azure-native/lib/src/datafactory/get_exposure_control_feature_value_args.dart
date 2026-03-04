@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExposureControlFeatureValueArgs {
   /// The feature name.
   final pulumi.Input<String>? featureName;
+
   /// The feature type.
   final pulumi.Input<String>? featureType;
+
   /// The location identifier.
   final pulumi.Input<String> locationId;
 
@@ -34,10 +36,17 @@ class GetExposureControlFeatureValueArgs {
 
   factory GetExposureControlFeatureValueArgs.fromMap(Map<String, dynamic> map) {
     return GetExposureControlFeatureValueArgs(
-      featureName: map['featureName'] == null ? null : (map['featureName']! as String).input(),
-      featureType: map['featureType'] == null ? null : (map['featureType']! as String).input(),
-      locationId: (map['locationId'] as String).input(),
+      featureName: (() {
+        final guardedValue = map['featureName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      featureType: (() {
+        final guardedValue = map['featureType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      locationId: pulumi.Input.fromValue(map['locationId'] as String),
     );
   }
 }
-

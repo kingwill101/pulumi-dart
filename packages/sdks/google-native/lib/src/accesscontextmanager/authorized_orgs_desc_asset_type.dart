@@ -4,16 +4,15 @@ enum AuthorizedOrgsDescAssetType {
   assetTypeDevice("ASSET_TYPE_DEVICE"),
   assetTypeCredentialStrength("ASSET_TYPE_CREDENTIAL_STRENGTH");
 
-  const AuthorizedOrgsDescAssetType(this.value);
-  final String value;
+  const AuthorizedOrgsDescAssetType(this.wireValue);
+  final String wireValue;
 
   static AuthorizedOrgsDescAssetType fromValue(String value) {
     for (final item in AuthorizedOrgsDescAssetType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AuthorizedOrgsDescAssetType value: $value');
   }
 }
-

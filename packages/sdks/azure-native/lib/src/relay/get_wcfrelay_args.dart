@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWCFRelayArgs {
   /// The namespace name
   final pulumi.Input<String> namespaceName;
+
   /// The relay name.
   final pulumi.Input<String> relayName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,11 @@ class GetWCFRelayArgs {
 
   factory GetWCFRelayArgs.fromMap(Map<String, dynamic> map) {
     return GetWCFRelayArgs(
-      namespaceName: (map['namespaceName'] as String).input(),
-      relayName: (map['relayName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
+      relayName: pulumi.Input.fromValue(map['relayName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

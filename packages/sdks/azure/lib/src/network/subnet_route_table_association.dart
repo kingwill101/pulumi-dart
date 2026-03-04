@@ -319,7 +319,7 @@ import 'subnet_route_table_association_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -334,8 +334,9 @@ import 'subnet_route_table_association_state.dart';
 class SubnetRouteTableAssociation extends pulumi.CustomResource {
   /// The ID of the Route Table which should be associated with the Subnet. Changing this forces a new resource to be created.
   ///
-  /// > **Note:** Use this resource only when the subnet is managed as a standalone `azure.network.Subnet`. If the subnet is declared inline inside `azure.network.VirtualNetwork`, set `route_table_id` in the inline `subnet` block and do not create this association for the same subnet.
+  /// &gt; **Note:** Use this resource only when the subnet is managed as a standalone `azure.network.Subnet`. If the subnet is declared inline inside `azure.network.VirtualNetwork`, set `route_table_id` in the inline `subnet` block and do not create this association for the same subnet.
   late final pulumi.Output<String> routeTableId;
+
   /// The ID of the Subnet. Changing this forces a new resource to be created.
   late final pulumi.Output<String> subnetId;
 
@@ -348,13 +349,13 @@ class SubnetRouteTableAssociation extends pulumi.CustomResource {
     SubnetRouteTableAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/subnetRouteTableAssociation:SubnetRouteTableAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.routeTableId = registerOutput<String>('routeTableId');
-    this.subnetId = registerOutput<String>('subnetId');
+         'azure:network/subnetRouteTableAssociation:SubnetRouteTableAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    routeTableId = registerOutput<String>('routeTableId');
+    subnetId = registerOutput<String>('subnetId');
   }
 
   /// Gets an existing [SubnetRouteTableAssociation] resource's state with the given [name] and [id].
@@ -375,12 +376,12 @@ class SubnetRouteTableAssociation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/subnetRouteTableAssociation:SubnetRouteTableAssociation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.routeTableId = registerOutput<String>('routeTableId');
-    this.subnetId = registerOutput<String>('subnetId');
+         'azure:network/subnetRouteTableAssociation:SubnetRouteTableAssociation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    routeTableId = registerOutput<String>('routeTableId');
+    subnetId = registerOutput<String>('subnetId');
   }
 }

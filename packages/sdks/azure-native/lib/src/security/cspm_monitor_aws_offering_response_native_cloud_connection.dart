@@ -9,20 +9,21 @@ class CspmMonitorAwsOfferingResponseNativeCloudConnection {
 
   /// Creates a new [CspmMonitorAwsOfferingResponseNativeCloudConnection].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
-  CspmMonitorAwsOfferingResponseNativeCloudConnection({
-    this.cloudRoleArn,
-  });
+  CspmMonitorAwsOfferingResponseNativeCloudConnection({this.cloudRoleArn});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cloudRoleArn': ?cloudRoleArn,
-    };
+    return <String, dynamic>{'cloudRoleArn': ?cloudRoleArn};
   }
 
-  factory CspmMonitorAwsOfferingResponseNativeCloudConnection.fromMap(Map<String, dynamic> map) {
+  factory CspmMonitorAwsOfferingResponseNativeCloudConnection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CspmMonitorAwsOfferingResponseNativeCloudConnection(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
+      cloudRoleArn: (() {
+        final guardedValue = map['cloudRoleArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

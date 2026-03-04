@@ -7,6 +7,7 @@ import 'image_mapping_rule_profile.dart';
 class AzureOperatorNexusImageDeployMappingRuleProfile {
   /// The application enablement.
   final pulumi.Input<String>? applicationEnablement;
+
   /// The vhd mapping rule profile.
   final pulumi.Input<ImageMappingRuleProfile>? imageMappingRuleProfile;
 
@@ -21,15 +22,32 @@ class AzureOperatorNexusImageDeployMappingRuleProfile {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationEnablement': ?applicationEnablement,
-      'imageMappingRuleProfile': ?pulumi.Input.mapOptionalInputValue<ImageMappingRuleProfile, Map<String, dynamic>>(imageMappingRuleProfile, (value) => value.toMap()),
+      'imageMappingRuleProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImageMappingRuleProfile,
+            Map<String, dynamic>
+          >(imageMappingRuleProfile, (value) => value.toMap()),
     };
   }
 
-  factory AzureOperatorNexusImageDeployMappingRuleProfile.fromMap(Map<String, dynamic> map) {
+  factory AzureOperatorNexusImageDeployMappingRuleProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureOperatorNexusImageDeployMappingRuleProfile(
-      applicationEnablement: map['applicationEnablement'] == null ? null : (map['applicationEnablement']! as String).input(),
-      imageMappingRuleProfile: map['imageMappingRuleProfile'] == null ? null : (ImageMappingRuleProfile.fromMap((map['imageMappingRuleProfile']! as Map).cast<String, dynamic>())).input(),
+      applicationEnablement: (() {
+        final guardedValue = map['applicationEnablement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageMappingRuleProfile: (() {
+        final guardedValue = map['imageMappingRuleProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ImageMappingRuleProfile.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

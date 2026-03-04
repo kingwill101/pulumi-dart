@@ -7,30 +7,43 @@ import 'wsfc_domain_profile_response.dart';
 class GetSqlVirtualMachineGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Cluster type.
   final String clusterConfiguration;
+
   /// Type of cluster manager: Windows Server Failover Cluster (WSFC), implied by the scale type of the group and the OS type.
   final String clusterManagerType;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// Provisioning state to track the async operation status.
   final String provisioningState;
+
   /// Scale type.
   final String scaleType;
+
   /// SQL image offer. Examples may include SQL2016-WS2016, SQL2017-WS2016.
   final String? sqlImageOffer;
+
   /// SQL image sku.
   final String? sqlImageSku;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// Cluster Active Directory domain profile.
   final WsfcDomainProfileResponse? wsfcDomainProfile;
 
@@ -81,7 +94,7 @@ class GetSqlVirtualMachineGroupResult {
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
-      'wsfcDomainProfile': ?wsfcDomainProfile == null ? null : wsfcDomainProfile!.toMap(),
+      'wsfcDomainProfile': ?wsfcDomainProfile?.toMap(),
     };
   }
 
@@ -95,13 +108,32 @@ class GetSqlVirtualMachineGroupResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       scaleType: map['scaleType'] as String,
-      sqlImageOffer: map['sqlImageOffer'] == null ? null : map['sqlImageOffer']! as String,
-      sqlImageSku: map['sqlImageSku'] == null ? null : map['sqlImageSku']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      sqlImageOffer: (() {
+        final guardedValue = map['sqlImageOffer'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      sqlImageSku: (() {
+        final guardedValue = map['sqlImageSku'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      wsfcDomainProfile: map['wsfcDomainProfile'] == null ? null : WsfcDomainProfileResponse.fromMap((map['wsfcDomainProfile']! as Map).cast<String, dynamic>()),
+      wsfcDomainProfile: (() {
+        final guardedValue = map['wsfcDomainProfile'];
+        if (guardedValue == null) return null;
+        return WsfcDomainProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

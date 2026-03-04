@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dns_security_rule_action_response.dart';
 import 'dns_security_rule_args.dart';
-import 'sub_resource_response.dart';
 import 'system_data_response.dart';
 
 /// Describes a DNS security rule.
@@ -220,26 +219,37 @@ import 'system_data_response.dart';
 class DnsSecurityRule extends pulumi.CustomResource {
   /// The action to take on DNS requests that match the DNS security rule.
   late final pulumi.Output<DnsSecurityRuleActionResponse> action;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// DNS resolver policy domains lists that the DNS security rule applies to.
-  late final pulumi.Output<List<SubResourceResponse>> dnsResolverDomainLists;
+  late final pulumi.Output<List<Map<String, dynamic>>> dnsResolverDomainLists;
+
   /// The state of DNS security rule.
   late final pulumi.Output<String?> dnsSecurityRuleState;
+
   /// ETag of the DNS security rule.
   late final pulumi.Output<String> etag;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The priority of the DNS security rule.
   late final pulumi.Output<int> priority;
+
   /// The current provisioning state of the DNS security rule. This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -252,22 +262,24 @@ class DnsSecurityRule extends pulumi.CustomResource {
     DnsSecurityRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:dnsresolver:DnsSecurityRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<DnsSecurityRuleActionResponse>('action');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dnsResolverDomainLists = registerOutput<List<SubResourceResponse>>('dnsResolverDomainLists');
-    this.dnsSecurityRuleState = registerOutput<String?>('dnsSecurityRuleState');
-    this.etag = registerOutput<String>('etag');
-    this.location = registerOutput<String>('location');
+         'azure-native:dnsresolver:DnsSecurityRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<DnsSecurityRuleActionResponse>('action');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dnsResolverDomainLists = registerOutput<List<Map<String, dynamic>>>(
+      'dnsResolverDomainLists',
+    );
+    dnsSecurityRuleState = registerOutput<String?>('dnsSecurityRuleState');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.priority = registerOutput<int>('priority');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    priority = registerOutput<int>('priority');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -12,6 +12,7 @@ class VpcOriginArgs {
   /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<VpcOriginTimeouts>? timeouts;
+
   /// The VPC origin endpoint configuration.
   ///
   /// The following arguments are optional:
@@ -30,17 +31,42 @@ class VpcOriginArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'tags': ?tags,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<VpcOriginTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
-      'vpcOriginEndpointConfig': pulumi.Input.mapInputValue<VpcOriginVpcOriginEndpointConfig, Map<String, dynamic>>(vpcOriginEndpointConfig, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            VpcOriginTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
+      'vpcOriginEndpointConfig':
+          pulumi.Input.mapInputValue<
+            VpcOriginVpcOriginEndpointConfig,
+            Map<String, dynamic>
+          >(vpcOriginEndpointConfig, (value) => value.toMap()),
     };
   }
 
   factory VpcOriginArgs.fromMap(Map<String, dynamic> map) {
     return VpcOriginArgs(
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((VpcOriginTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
-      vpcOriginEndpointConfig: (VpcOriginVpcOriginEndpointConfig.fromMap((map['vpcOriginEndpointConfig']! as Map).cast<String, dynamic>())).input(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          VpcOriginTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vpcOriginEndpointConfig: pulumi.Input.fromValue(
+        VpcOriginVpcOriginEndpointConfig.fromMap(
+          (map['vpcOriginEndpointConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

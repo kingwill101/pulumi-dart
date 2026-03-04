@@ -153,22 +153,30 @@ import 'system_data_response.dart';
 class PermissionBinding extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The name of the client group resource that the permission is bound to.
   /// The client group needs to be a resource under the same namespace the permission binding is a part of.
   late final pulumi.Output<String?> clientGroupName;
+
   /// Description for the Permission Binding resource.
   late final pulumi.Output<String?> description;
+
   /// Name of the resource.
   late final pulumi.Output<String> name;
+
   /// The allowed permission.
   late final pulumi.Output<String?> permission;
+
   /// Provisioning state of the PermissionBinding resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The system metadata relating to the Event Grid resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The name of the Topic Space resource that the permission is bound to.
   /// The Topic space needs to be a resource under the same namespace the permission binding is a part of.
   late final pulumi.Output<String?> topicSpaceName;
+
   /// Type of the resource.
   late final pulumi.Output<String> type;
 
@@ -181,19 +189,19 @@ class PermissionBinding extends pulumi.CustomResource {
     PermissionBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:eventgrid:PermissionBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.clientGroupName = registerOutput<String?>('clientGroupName');
-    this.description = registerOutput<String?>('description');
+         'azure-native:eventgrid:PermissionBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientGroupName = registerOutput<String?>('clientGroupName');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.permission = registerOutput<String?>('permission');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.topicSpaceName = registerOutput<String?>('topicSpaceName');
-    this.type = registerOutput<String>('type');
+    permission = registerOutput<String?>('permission');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    topicSpaceName = registerOutput<String?>('topicSpaceName');
+    type = registerOutput<String>('type');
   }
 }

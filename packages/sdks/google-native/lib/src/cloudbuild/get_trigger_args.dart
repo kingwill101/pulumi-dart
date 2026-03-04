@@ -35,11 +35,14 @@ class GetTriggerArgs {
 
   factory GetTriggerArgs.fromMap(Map<String, dynamic> map) {
     return GetTriggerArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      projectId: (map['projectId'] as String).input(),
-      triggerId: (map['triggerId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectId: pulumi.Input.fromValue(map['projectId'] as String),
+      triggerId: pulumi.Input.fromValue(map['triggerId'] as String),
     );
   }
 }
-

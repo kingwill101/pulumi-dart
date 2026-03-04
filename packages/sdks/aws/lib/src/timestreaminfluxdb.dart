@@ -1,5 +1,3 @@
-library module_timestreaminfluxdb;
-
 export 'timestreaminfluxdb/db_cluster.dart';
 export 'timestreaminfluxdb/db_cluster_args.dart';
 export 'timestreaminfluxdb/db_cluster_log_delivery_configuration.dart';

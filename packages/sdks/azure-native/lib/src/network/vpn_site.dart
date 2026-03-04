@@ -5,7 +5,6 @@ import 'device_properties_response.dart';
 import 'o365_policy_properties_response.dart';
 import 'sub_resource_response.dart';
 import 'vpn_site_args.dart';
-import 'vpn_site_link_response.dart';
 
 /// VpnSite Resource.
 ///
@@ -336,36 +335,51 @@ import 'vpn_site_link_response.dart';
 class VpnSite extends pulumi.CustomResource {
   /// The AddressSpace that contains an array of IP address ranges.
   late final pulumi.Output<AddressSpaceResponse?> addressSpace;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The set of bgp properties.
   late final pulumi.Output<BgpSettingsResponse?> bgpProperties;
+
   /// The device properties.
   late final pulumi.Output<DevicePropertiesResponse?> deviceProperties;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The ip-address for the vpn-site.
   late final pulumi.Output<String?> ipAddress;
+
   /// IsSecuritySite flag.
   late final pulumi.Output<bool?> isSecuritySite;
+
   /// Resource location.
   late final pulumi.Output<String> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Office365 Policy.
   late final pulumi.Output<O365PolicyPropertiesResponse?> o365Policy;
+
   /// The provisioning state of the VPN site resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The key for vpn-site that can be used for connections.
   late final pulumi.Output<String?> siteKey;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// The VirtualWAN to which the vpnSite belongs.
   late final pulumi.Output<SubResourceResponse?> virtualWan;
+
   /// List of all vpn site links.
-  late final pulumi.Output<List<VpnSiteLinkResponse>?> vpnSiteLinks;
+  late final pulumi.Output<List<Map<String, dynamic>>?> vpnSiteLinks;
 
   /// Creates a new [VpnSite].
   /// [name] The Pulumi resource name.
@@ -376,26 +390,28 @@ class VpnSite extends pulumi.CustomResource {
     VpnSiteArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:VpnSite',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.addressSpace = registerOutput<AddressSpaceResponse?>('addressSpace');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.bgpProperties = registerOutput<BgpSettingsResponse?>('bgpProperties');
-    this.deviceProperties = registerOutput<DevicePropertiesResponse?>('deviceProperties');
-    this.etag = registerOutput<String>('etag');
-    this.ipAddress = registerOutput<String?>('ipAddress');
-    this.isSecuritySite = registerOutput<bool?>('isSecuritySite');
-    this.location = registerOutput<String>('location');
+         'azure-native:network:VpnSite',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    addressSpace = registerOutput<AddressSpaceResponse?>('addressSpace');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bgpProperties = registerOutput<BgpSettingsResponse?>('bgpProperties');
+    deviceProperties = registerOutput<DevicePropertiesResponse?>(
+      'deviceProperties',
+    );
+    etag = registerOutput<String>('etag');
+    ipAddress = registerOutput<String?>('ipAddress');
+    isSecuritySite = registerOutput<bool?>('isSecuritySite');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.o365Policy = registerOutput<O365PolicyPropertiesResponse?>('o365Policy');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.siteKey = registerOutput<String?>('siteKey');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
-    this.virtualWan = registerOutput<SubResourceResponse?>('virtualWan');
-    this.vpnSiteLinks = registerOutput<List<VpnSiteLinkResponse>?>('vpnSiteLinks');
+    o365Policy = registerOutput<O365PolicyPropertiesResponse?>('o365Policy');
+    provisioningState = registerOutput<String>('provisioningState');
+    siteKey = registerOutput<String?>('siteKey');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
+    virtualWan = registerOutput<SubResourceResponse?>('virtualWan');
+    vpnSiteLinks = registerOutput<List<Map<String, dynamic>>?>('vpnSiteLinks');
   }
 }

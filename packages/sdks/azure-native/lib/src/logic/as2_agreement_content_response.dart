@@ -7,6 +7,7 @@ import 'as2_one_way_agreement_response.dart';
 class AS2AgreementContentResponse {
   /// The AS2 one-way receive agreement.
   final pulumi.Input<AS2OneWayAgreementResponse> receiveAgreement;
+
   /// The AS2 one-way send agreement.
   final pulumi.Input<AS2OneWayAgreementResponse> sendAgreement;
 
@@ -20,16 +21,31 @@ class AS2AgreementContentResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'receiveAgreement': pulumi.Input.mapInputValue<AS2OneWayAgreementResponse, Map<String, dynamic>>(receiveAgreement, (value) => value.toMap()),
-      'sendAgreement': pulumi.Input.mapInputValue<AS2OneWayAgreementResponse, Map<String, dynamic>>(sendAgreement, (value) => value.toMap()),
+      'receiveAgreement':
+          pulumi.Input.mapInputValue<
+            AS2OneWayAgreementResponse,
+            Map<String, dynamic>
+          >(receiveAgreement, (value) => value.toMap()),
+      'sendAgreement':
+          pulumi.Input.mapInputValue<
+            AS2OneWayAgreementResponse,
+            Map<String, dynamic>
+          >(sendAgreement, (value) => value.toMap()),
     };
   }
 
   factory AS2AgreementContentResponse.fromMap(Map<String, dynamic> map) {
     return AS2AgreementContentResponse(
-      receiveAgreement: (AS2OneWayAgreementResponse.fromMap((map['receiveAgreement'] as Map).cast<String, dynamic>())).input(),
-      sendAgreement: (AS2OneWayAgreementResponse.fromMap((map['sendAgreement'] as Map).cast<String, dynamic>())).input(),
+      receiveAgreement: pulumi.Input.fromValue(
+        AS2OneWayAgreementResponse.fromMap(
+          (map['receiveAgreement']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      sendAgreement: pulumi.Input.fromValue(
+        AS2OneWayAgreementResponse.fromMap(
+          (map['sendAgreement']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

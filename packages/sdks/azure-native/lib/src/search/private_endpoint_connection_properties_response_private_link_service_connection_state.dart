@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState {
   /// A description of any extra actions that may be required.
   final pulumi.Input<String>? actionsRequired;
+
   /// The description for the private link service connection state.
   final pulumi.Input<String>? description;
+
   /// Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
   final pulumi.Input<String>? status;
 
@@ -29,12 +31,25 @@ class PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionSta
     };
   }
 
-  factory PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState.fromMap(Map<String, dynamic> map) {
+  factory PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrivateEndpointConnectionPropertiesResponsePrivateLinkServiceConnectionState(
-      actionsRequired: map['actionsRequired'] == null ? null : (map['actionsRequired']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      actionsRequired: (() {
+        final guardedValue = map['actionsRequired'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAcceleratorsAcceleratorBasicBandwidthPackage {
   /// Bandwidth value of cross-domain acceleration package.
   final pulumi.Input<int> bandwidth;
+
   /// The bandwidth type of the basic bandwidth package.
   final pulumi.Input<String> bandwidthType;
+
   /// Instance ID of the cross-domain acceleration package.
   final pulumi.Input<String> instanceId;
 
@@ -28,12 +30,13 @@ class GetAcceleratorsAcceleratorBasicBandwidthPackage {
     };
   }
 
-  factory GetAcceleratorsAcceleratorBasicBandwidthPackage.fromMap(Map<String, dynamic> map) {
+  factory GetAcceleratorsAcceleratorBasicBandwidthPackage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAcceleratorsAcceleratorBasicBandwidthPackage(
-      bandwidth: (map['bandwidth'] as int).input(),
-      bandwidthType: (map['bandwidthType'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
+      bandwidth: pulumi.Input.fromValue(map['bandwidth'] as int),
+      bandwidthType: pulumi.Input.fromValue(map['bandwidthType'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
     );
   }
 }
-

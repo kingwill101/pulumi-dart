@@ -7,8 +7,10 @@ class Settings {
   /// Workload compression flag. This has been added so that 'isSqlCompression'
   /// will be deprecated once clients upgrade to consider this flag.
   final pulumi.Input<bool>? isCompression;
+
   /// SQL compression flag
   final pulumi.Input<bool>? issqlcompression;
+
   /// TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
   final pulumi.Input<String>? timeZone;
 
@@ -16,11 +18,7 @@ class Settings {
   /// [isCompression] Workload compression flag. This has been added so that 'isSqlCompression'
   /// [issqlcompression] SQL compression flag
   /// [timeZone] TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
-  Settings({
-    this.isCompression,
-    this.issqlcompression,
-    this.timeZone,
-  });
+  Settings({this.isCompression, this.issqlcompression, this.timeZone});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +30,21 @@ class Settings {
 
   factory Settings.fromMap(Map<String, dynamic> map) {
     return Settings(
-      isCompression: map['isCompression'] == null ? null : (map['isCompression']! as bool).input(),
-      issqlcompression: map['issqlcompression'] == null ? null : (map['issqlcompression']! as bool).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      isCompression: (() {
+        final guardedValue = map['isCompression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      issqlcompression: (() {
+        final guardedValue = map['issqlcompression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      timeZone: (() {
+        final guardedValue = map['timeZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

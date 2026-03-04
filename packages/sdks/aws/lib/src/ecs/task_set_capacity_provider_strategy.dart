@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TaskSetCapacityProviderStrategy {
   /// The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.
   final pulumi.Input<int>? base;
+
   /// The short name or full Amazon Resource Name (ARN) of the capacity provider.
   final pulumi.Input<String> capacityProvider;
+
   /// The relative percentage of the total number of launched tasks that should use the specified capacity provider.
   final pulumi.Input<int> weight;
 
@@ -30,10 +32,15 @@ class TaskSetCapacityProviderStrategy {
 
   factory TaskSetCapacityProviderStrategy.fromMap(Map<String, dynamic> map) {
     return TaskSetCapacityProviderStrategy(
-      base: map['base'] == null ? null : ((map['base'] as int).input()).input(),
-      capacityProvider: (map['capacityProvider'] as String).input(),
-      weight: (map['weight'] as int).input(),
+      base: (() {
+        final guardedValue = map['base'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      capacityProvider: pulumi.Input.fromValue(
+        map['capacityProvider'] as String,
+      ),
+      weight: pulumi.Input.fromValue(map['weight'] as int),
     );
   }
 }
-

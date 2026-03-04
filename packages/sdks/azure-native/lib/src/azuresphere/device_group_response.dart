@@ -7,24 +7,34 @@ import 'system_data_response.dart';
 class DeviceGroupResponse {
   /// Flag to define if the user allows for crash dump collection.
   final pulumi.Input<String>? allowCrashDumpsCollection;
+
   /// Description of the device group.
   final pulumi.Input<String>? description;
+
   /// Deployment status for the device group.
   final pulumi.Input<bool> hasDeployment;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
+
   /// The name of the resource
   final pulumi.Input<String> name;
+
   /// Operating system feed type of the device group.
   final pulumi.Input<String>? osFeedType;
+
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
+
   /// Regional data boundary for the device group.
   final pulumi.Input<String>? regionalDataBoundary;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
+
   /// Update policy of the device group.
   final pulumi.Input<String>? updatePolicy;
 
@@ -64,7 +74,11 @@ class DeviceGroupResponse {
       'osFeedType': ?osFeedType,
       'provisioningState': provisioningState,
       'regionalDataBoundary': ?regionalDataBoundary,
-      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
+      'systemData':
+          pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(
+            systemData,
+            (value) => value.toMap(),
+          ),
       'type': type,
       'updatePolicy': ?updatePolicy,
     };
@@ -72,18 +86,43 @@ class DeviceGroupResponse {
 
   factory DeviceGroupResponse.fromMap(Map<String, dynamic> map) {
     return DeviceGroupResponse(
-      allowCrashDumpsCollection: map['allowCrashDumpsCollection'] == null ? null : (map['allowCrashDumpsCollection']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      hasDeployment: (map['hasDeployment'] as bool).input(),
-      id: (map['id'] as String).input(),
-      name: (map['name'] as String).input(),
-      osFeedType: map['osFeedType'] == null ? null : (map['osFeedType']! as String).input(),
-      provisioningState: (map['provisioningState'] as String).input(),
-      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : (map['regionalDataBoundary']! as String).input(),
-      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
-      type: (map['type'] as String).input(),
-      updatePolicy: map['updatePolicy'] == null ? null : (map['updatePolicy']! as String).input(),
+      allowCrashDumpsCollection: (() {
+        final guardedValue = map['allowCrashDumpsCollection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hasDeployment: pulumi.Input.fromValue(map['hasDeployment'] as bool),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      osFeedType: (() {
+        final guardedValue = map['osFeedType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: pulumi.Input.fromValue(
+        map['provisioningState'] as String,
+      ),
+      regionalDataBoundary: (() {
+        final guardedValue = map['regionalDataBoundary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      systemData: pulumi.Input.fromValue(
+        SystemDataResponse.fromMap(
+          (map['systemData']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      updatePolicy: (() {
+        final guardedValue = map['updatePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

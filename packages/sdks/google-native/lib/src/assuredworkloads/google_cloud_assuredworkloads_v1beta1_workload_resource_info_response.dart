@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse {
   /// Resource identifier. For a project this represents project_number.
   final pulumi.Input<String> resourceId;
+
   /// Indicates the type of resource.
   final pulumi.Input<String> resourceType;
 
@@ -24,11 +25,12 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse {
     };
   }
 
-  factory GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse(
-      resourceId: (map['resourceId'] as String).input(),
-      resourceType: (map['resourceType'] as String).input(),
+      resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
     );
   }
 }
-

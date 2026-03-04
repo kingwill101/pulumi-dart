@@ -4,16 +4,15 @@ enum InstanceLifecycleType {
   scheduled("scheduled"),
   spot("spot");
 
-  const InstanceLifecycleType(this.value);
-  final String value;
+  const InstanceLifecycleType(this.wireValue);
+  final String wireValue;
 
   static InstanceLifecycleType fromValue(String value) {
     for (final item in InstanceLifecycleType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceLifecycleType value: $value');
   }
 }
-

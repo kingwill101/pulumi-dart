@@ -9,20 +9,17 @@ class ReleaseChannelResponseContainerV1beta1 {
 
   /// Creates a new [ReleaseChannelResponseContainerV1beta1].
   /// [channel] channel specifies which release channel the cluster is subscribed to.
-  ReleaseChannelResponseContainerV1beta1({
-    required this.channel,
-  });
+  ReleaseChannelResponseContainerV1beta1({required this.channel});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'channel': channel,
-    };
+    return <String, dynamic>{'channel': channel};
   }
 
-  factory ReleaseChannelResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ReleaseChannelResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReleaseChannelResponseContainerV1beta1(
-      channel: (map['channel'] as String).input(),
+      channel: pulumi.Input.fromValue(map['channel'] as String),
     );
   }
 }
-

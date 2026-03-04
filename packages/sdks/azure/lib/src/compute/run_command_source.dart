@@ -7,8 +7,10 @@ class RunCommandSource {
   final pulumi.Input<String>? commandId;
   final pulumi.Input<String>? script;
   final pulumi.Input<String>? scriptUri;
+
   /// A `script_uri_managed_identity` block as defined above.
-  final pulumi.Input<RunCommandSourceScriptUriManagedIdentity>? scriptUriManagedIdentity;
+  final pulumi.Input<RunCommandSourceScriptUriManagedIdentity>?
+  scriptUriManagedIdentity;
 
   /// Creates a new [RunCommandSource].
   /// [commandId] Optional.
@@ -27,17 +29,40 @@ class RunCommandSource {
       'commandId': ?commandId,
       'script': ?script,
       'scriptUri': ?scriptUri,
-      'scriptUriManagedIdentity': ?pulumi.Input.mapOptionalInputValue<RunCommandSourceScriptUriManagedIdentity, Map<String, dynamic>>(scriptUriManagedIdentity, (value) => value.toMap()),
+      'scriptUriManagedIdentity':
+          ?pulumi.Input.mapOptionalInputValue<
+            RunCommandSourceScriptUriManagedIdentity,
+            Map<String, dynamic>
+          >(scriptUriManagedIdentity, (value) => value.toMap()),
     };
   }
 
   factory RunCommandSource.fromMap(Map<String, dynamic> map) {
     return RunCommandSource(
-      commandId: map['commandId'] == null ? null : (map['commandId']! as String).input(),
-      script: map['script'] == null ? null : (map['script']! as String).input(),
-      scriptUri: map['scriptUri'] == null ? null : (map['scriptUri']! as String).input(),
-      scriptUriManagedIdentity: map['scriptUriManagedIdentity'] == null ? null : (RunCommandSourceScriptUriManagedIdentity.fromMap((map['scriptUriManagedIdentity']! as Map).cast<String, dynamic>())).input(),
+      commandId: (() {
+        final guardedValue = map['commandId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      script: (() {
+        final guardedValue = map['script'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scriptUri: (() {
+        final guardedValue = map['scriptUri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scriptUriManagedIdentity: (() {
+        final guardedValue = map['scriptUriManagedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RunCommandSourceScriptUriManagedIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

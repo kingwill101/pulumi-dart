@@ -7,8 +7,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventHubEndpointResponse {
   /// The name of the Event Hub.
   final pulumi.Input<String> eventHubName;
+
   /// The fully qualified namespace name of the Event Hub resource. For example, "example.servicebus.windows.net".
   final pulumi.Input<String> fullyQualifiedNamespace;
+
   /// Expected value is 'EventHub'.
   final pulumi.Input<String> type;
 
@@ -32,10 +34,11 @@ class EventHubEndpointResponse {
 
   factory EventHubEndpointResponse.fromMap(Map<String, dynamic> map) {
     return EventHubEndpointResponse(
-      eventHubName: (map['eventHubName'] as String).input(),
-      fullyQualifiedNamespace: (map['fullyQualifiedNamespace'] as String).input(),
-      type: (map['type'] as String).input(),
+      eventHubName: pulumi.Input.fromValue(map['eventHubName'] as String),
+      fullyQualifiedNamespace: pulumi.Input.fromValue(
+        map['fullyQualifiedNamespace'] as String,
+      ),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'get_lke_types_type.dart';
 /// Result data returned by getLkeTypes.
 class GetLkeTypesResult {
   final List<GetLkeTypesFilter>? filters;
+
   /// The ID representing the Kubernetes type.
   final String id;
   final String? order;
@@ -29,22 +30,51 @@ class GetLkeTypesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetLkeTypesFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?(() {
+        final guardedValue = filters;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<GetLkeTypesFilter, Map<String, dynamic>>(
+          guardedValue,
+          (value) => value.toMap(),
+        );
+      })(),
       'id': id,
       'order': ?order,
       'orderBy': ?orderBy,
-      'types': pulumi.Input.encodeList<GetLkeTypesType, Map<String, dynamic>>(types, (value) => value.toMap()),
+      'types': pulumi.Input.encodeList<GetLkeTypesType, Map<String, dynamic>>(
+        types,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory GetLkeTypesResult.fromMap(Map<String, dynamic> map) {
     return GetLkeTypesResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetLkeTypesFilter>(map['filters']!, (value) => GetLkeTypesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: (() {
+        final guardedValue = map['filters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<GetLkeTypesFilter>(
+          guardedValue,
+          (value) =>
+              GetLkeTypesFilter.fromMap((value as Map).cast<String, dynamic>()),
+        );
+      })(),
       id: map['id'] as String,
-      order: map['order'] == null ? null : map['order']! as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
-      types: pulumi.Input.decodeList<GetLkeTypesType>(map['types'], (value) => GetLkeTypesType.fromMap((value as Map).cast<String, dynamic>())),
+      order: (() {
+        final guardedValue = map['order'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      orderBy: (() {
+        final guardedValue = map['orderBy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      types: pulumi.Input.decodeList<GetLkeTypesType>(
+        map['types']!,
+        (value) =>
+            GetLkeTypesType.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

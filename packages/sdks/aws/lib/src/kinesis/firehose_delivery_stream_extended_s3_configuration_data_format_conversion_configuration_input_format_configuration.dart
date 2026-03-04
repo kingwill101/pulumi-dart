@@ -5,7 +5,10 @@ import 'firehose_delivery_stream_extended_s3_configuration_data_format_conversio
 
 class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration {
   /// Specifies which deserializer to use. You can choose either the Apache Hive JSON SerDe or the OpenX JSON SerDe. See `deserializer` block below for details.
-  final pulumi.Input<FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer> deserializer;
+  final pulumi.Input<
+    FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer
+  >
+  deserializer;
 
   /// Creates a new [FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration].
   /// [deserializer] Specifies which deserializer to use. You can choose either the Apache Hive JSON SerDe or the OpenX JSON SerDe. See `deserializer` block below for details.
@@ -15,14 +18,23 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deserializer': pulumi.Input.mapInputValue<FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer, Map<String, dynamic>>(deserializer, (value) => value.toMap()),
+      'deserializer':
+          pulumi.Input.mapInputValue<
+            FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer,
+            Map<String, dynamic>
+          >(deserializer, (value) => value.toMap()),
     };
   }
 
-  factory FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration.fromMap(Map<String, dynamic> map) {
+  factory FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration(
-      deserializer: (FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer.fromMap((map['deserializer']! as Map).cast<String, dynamic>())).input(),
+      deserializer: pulumi.Input.fromValue(
+        FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer.fromMap(
+          (map['deserializer']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

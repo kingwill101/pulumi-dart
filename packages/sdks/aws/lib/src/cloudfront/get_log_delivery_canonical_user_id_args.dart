@@ -12,20 +12,19 @@ class GetLogDeliveryCanonicalUserIdArgs {
 
   /// Creates a new [GetLogDeliveryCanonicalUserIdArgs].
   /// [region] Name of the Region whose canonical user ID is desired. Defaults to the Region set in the provider configuration.
-  GetLogDeliveryCanonicalUserIdArgs({
-    this.region,
-  });
+  GetLogDeliveryCanonicalUserIdArgs({this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-    };
+    return <String, dynamic>{'region': ?region};
   }
 
   factory GetLogDeliveryCanonicalUserIdArgs.fromMap(Map<String, dynamic> map) {
     return GetLogDeliveryCanonicalUserIdArgs(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -8,24 +8,34 @@ import 'standard_metadata_response.dart';
 class GetSecurityStandardResult {
   /// List of assessment keys to apply to standard scope.
   final List<PartialAssessmentPropertiesResponse>? assessments;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// List of all standard supported clouds.
   final List<String>? cloudProviders;
+
   /// Description of the standard
   final String? description;
+
   /// Display name of the standard, equivalent to the standardId
   final String? displayName;
+
   /// Resource Id
   final String id;
+
   /// The security standard metadata.
   final StandardMetadataResponse? metadata;
+
   /// Resource name
   final String name;
+
   /// The policy set definition id associated with the standard.
   final String? policySetDefinitionId;
+
   /// Standard type (Custom or Default or Compliance only currently)
   final String standardType;
+
   /// Resource type
   final String type;
 
@@ -57,13 +67,20 @@ class GetSecurityStandardResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assessments': ?assessments == null ? null : pulumi.Input.encodeList<PartialAssessmentPropertiesResponse, Map<String, dynamic>>(assessments!, (value) => value.toMap()),
+      'assessments': ?(() {
+        final guardedValue = assessments;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          PartialAssessmentPropertiesResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'azureApiVersion': azureApiVersion,
       'cloudProviders': ?cloudProviders,
       'description': ?description,
       'displayName': ?displayName,
       'id': id,
-      'metadata': ?metadata == null ? null : metadata!.toMap(),
+      'metadata': ?metadata?.toMap(),
       'name': name,
       'policySetDefinitionId': ?policySetDefinitionId,
       'standardType': standardType,
@@ -73,18 +90,48 @@ class GetSecurityStandardResult {
 
   factory GetSecurityStandardResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityStandardResult(
-      assessments: map['assessments'] == null ? null : pulumi.Input.decodeList<PartialAssessmentPropertiesResponse>(map['assessments']!, (value) => PartialAssessmentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      assessments: (() {
+        final guardedValue = map['assessments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<PartialAssessmentPropertiesResponse>(
+          guardedValue,
+          (value) => PartialAssessmentPropertiesResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
-      cloudProviders: map['cloudProviders'] == null ? null : (map['cloudProviders']! as List).cast<String>(),
-      description: map['description'] == null ? null : map['description']! as String,
-      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      cloudProviders: (() {
+        final guardedValue = map['cloudProviders'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       id: map['id'] as String,
-      metadata: map['metadata'] == null ? null : StandardMetadataResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return StandardMetadataResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       name: map['name'] as String,
-      policySetDefinitionId: map['policySetDefinitionId'] == null ? null : map['policySetDefinitionId']! as String,
+      policySetDefinitionId: (() {
+        final guardedValue = map['policySetDefinitionId'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       standardType: map['standardType'] as String,
       type: map['type'] as String,
     );
   }
 }
-

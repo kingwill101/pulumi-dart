@@ -3,16 +3,19 @@ enum RegionBackendServiceCompressionModeComputeBeta {
   automatic("AUTOMATIC"),
   disabled("DISABLED");
 
-  const RegionBackendServiceCompressionModeComputeBeta(this.value);
-  final String value;
+  const RegionBackendServiceCompressionModeComputeBeta(this.wireValue);
+  final String wireValue;
 
-  static RegionBackendServiceCompressionModeComputeBeta fromValue(String value) {
+  static RegionBackendServiceCompressionModeComputeBeta fromValue(
+    String value,
+  ) {
     for (final item in RegionBackendServiceCompressionModeComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionBackendServiceCompressionModeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RegionBackendServiceCompressionModeComputeBeta value: $value',
+    );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGradientaiKnowledgeBaseIndexingJobsMeta {
   /// Current page number
   final pulumi.Input<int> page;
+
   /// Total number of pages
   final pulumi.Input<int> pages;
+
   /// Total number of items
   final pulumi.Input<int> total;
 
@@ -21,19 +23,16 @@ class GetGradientaiKnowledgeBaseIndexingJobsMeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'page': page,
-      'pages': pages,
-      'total': total,
-    };
+    return <String, dynamic>{'page': page, 'pages': pages, 'total': total};
   }
 
-  factory GetGradientaiKnowledgeBaseIndexingJobsMeta.fromMap(Map<String, dynamic> map) {
+  factory GetGradientaiKnowledgeBaseIndexingJobsMeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGradientaiKnowledgeBaseIndexingJobsMeta(
-      page: (map['page'] as int).input(),
-      pages: (map['pages'] as int).input(),
-      total: (map['total'] as int).input(),
+      page: pulumi.Input.fromValue(map['page'] as int),
+      pages: pulumi.Input.fromValue(map['pages'] as int),
+      total: pulumi.Input.fromValue(map['total'] as int),
     );
   }
 }
-

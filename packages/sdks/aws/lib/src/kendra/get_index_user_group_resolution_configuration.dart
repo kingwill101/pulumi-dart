@@ -18,10 +18,13 @@ class GetIndexUserGroupResolutionConfiguration {
     };
   }
 
-  factory GetIndexUserGroupResolutionConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetIndexUserGroupResolutionConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetIndexUserGroupResolutionConfiguration(
-      userGroupResolutionMode: (map['userGroupResolutionMode'] as String).input(),
+      userGroupResolutionMode: pulumi.Input.fromValue(
+        map['userGroupResolutionMode'] as String,
+      ),
     );
   }
 }
-

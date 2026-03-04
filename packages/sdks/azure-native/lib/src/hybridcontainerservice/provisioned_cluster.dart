@@ -520,18 +520,26 @@ import 'system_data_response.dart';
 class ProvisionedCluster extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
-  late final pulumi.Output<ProvisionedClustersResponseResponseExtendedLocation?> extendedLocation;
+  late final pulumi.Output<ProvisionedClustersResponseResponseExtendedLocation?>
+  extendedLocation;
+
   /// Identity for the Provisioned cluster.
   late final pulumi.Output<ProvisionedClusterIdentityResponse?> identity;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
-  late final pulumi.Output<ProvisionedClustersResponsePropertiesResponse> properties;
+  late final pulumi.Output<ProvisionedClustersResponsePropertiesResponse>
+  properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -544,19 +552,24 @@ class ProvisionedCluster extends pulumi.CustomResource {
     ProvisionedClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:hybridcontainerservice:ProvisionedCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.extendedLocation = registerOutput<ProvisionedClustersResponseResponseExtendedLocation?>('extendedLocation');
-    this.identity = registerOutput<ProvisionedClusterIdentityResponse?>('identity');
-    this.location = registerOutput<String>('location');
+         'azure-native:hybridcontainerservice:ProvisionedCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedLocation =
+        registerOutput<ProvisionedClustersResponseResponseExtendedLocation?>(
+          'extendedLocation',
+        );
+    identity = registerOutput<ProvisionedClusterIdentityResponse?>('identity');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<ProvisionedClustersResponsePropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<ProvisionedClustersResponsePropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -1,11 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_firewall_application_rule_collection_response.dart';
 import 'azure_firewall_args.dart';
 import 'azure_firewall_autoscale_configuration_response.dart';
-import 'azure_firewall_ip_groups_response.dart';
 import 'azure_firewall_ipconfiguration_response.dart';
-import 'azure_firewall_nat_rule_collection_response.dart';
-import 'azure_firewall_network_rule_collection_response.dart';
 import 'azure_firewall_sku_response.dart';
 import 'hub_ipaddresses_response.dart';
 import 'sub_resource_response.dart';
@@ -4607,44 +4603,67 @@ import 'sub_resource_response.dart';
 class AzureFirewall extends pulumi.CustomResource {
   /// The additional properties used to further config this azure firewall.
   late final pulumi.Output<Map<String, String>?> additionalProperties;
+
   /// Collection of application rule collections used by Azure Firewall.
-  late final pulumi.Output<List<AzureFirewallApplicationRuleCollectionResponse>?> applicationRuleCollections;
+  late final pulumi.Output<List<Map<String, dynamic>>?>
+  applicationRuleCollections;
+
   /// Properties to provide a custom autoscale configuration to this azure firewall.
-  late final pulumi.Output<AzureFirewallAutoscaleConfigurationResponse?> autoscaleConfiguration;
+  late final pulumi.Output<AzureFirewallAutoscaleConfigurationResponse?>
+  autoscaleConfiguration;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
+
   /// The firewallPolicy associated with this azure firewall.
   late final pulumi.Output<SubResourceResponse?> firewallPolicy;
+
   /// IP addresses associated with AzureFirewall.
   late final pulumi.Output<HubIPAddressesResponse?> hubIPAddresses;
+
   /// IP configuration of the Azure Firewall resource.
-  late final pulumi.Output<List<AzureFirewallIPConfigurationResponse>?> ipConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
+
   /// IpGroups associated with AzureFirewall.
-  late final pulumi.Output<List<AzureFirewallIpGroupsResponse>> ipGroups;
+  late final pulumi.Output<List<Map<String, dynamic>>> ipGroups;
+
   /// Resource location.
   late final pulumi.Output<String?> location;
+
   /// IP configuration of the Azure Firewall used for management traffic.
-  late final pulumi.Output<AzureFirewallIPConfigurationResponse?> managementIpConfiguration;
+  late final pulumi.Output<AzureFirewallIPConfigurationResponse?>
+  managementIpConfiguration;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Collection of NAT rule collections used by Azure Firewall.
-  late final pulumi.Output<List<AzureFirewallNatRuleCollectionResponse>?> natRuleCollections;
+  late final pulumi.Output<List<Map<String, dynamic>>?> natRuleCollections;
+
   /// Collection of network rule collections used by Azure Firewall.
-  late final pulumi.Output<List<AzureFirewallNetworkRuleCollectionResponse>?> networkRuleCollections;
+  late final pulumi.Output<List<Map<String, dynamic>>?> networkRuleCollections;
+
   /// The provisioning state of the Azure firewall resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The Azure Firewall Resource SKU.
   late final pulumi.Output<AzureFirewallSkuResponse?> sku;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The operation mode for Threat Intelligence.
   late final pulumi.Output<String?> threatIntelMode;
+
   /// Resource type.
   late final pulumi.Output<String> type;
+
   /// The virtualHub to which the firewall belongs.
   late final pulumi.Output<SubResourceResponse?> virtualHub;
+
   /// A list of availability zones denoting where the resource needs to come from.
   late final pulumi.Output<List<String>?> zones;
 
@@ -4657,31 +4676,47 @@ class AzureFirewall extends pulumi.CustomResource {
     AzureFirewallArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:network:AzureFirewall',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.applicationRuleCollections = registerOutput<List<AzureFirewallApplicationRuleCollectionResponse>?>('applicationRuleCollections');
-    this.autoscaleConfiguration = registerOutput<AzureFirewallAutoscaleConfigurationResponse?>('autoscaleConfiguration');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.etag = registerOutput<String>('etag');
-    this.firewallPolicy = registerOutput<SubResourceResponse?>('firewallPolicy');
-    this.hubIPAddresses = registerOutput<HubIPAddressesResponse?>('hubIPAddresses');
-    this.ipConfigurations = registerOutput<List<AzureFirewallIPConfigurationResponse>?>('ipConfigurations');
-    this.ipGroups = registerOutput<List<AzureFirewallIpGroupsResponse>>('ipGroups');
-    this.location = registerOutput<String?>('location');
-    this.managementIpConfiguration = registerOutput<AzureFirewallIPConfigurationResponse?>('managementIpConfiguration');
+         'azure-native:network:AzureFirewall',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    applicationRuleCollections = registerOutput<List<Map<String, dynamic>>?>(
+      'applicationRuleCollections',
+    );
+    autoscaleConfiguration =
+        registerOutput<AzureFirewallAutoscaleConfigurationResponse?>(
+          'autoscaleConfiguration',
+        );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    firewallPolicy = registerOutput<SubResourceResponse?>('firewallPolicy');
+    hubIPAddresses = registerOutput<HubIPAddressesResponse?>('hubIPAddresses');
+    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>(
+      'ipConfigurations',
+    );
+    ipGroups = registerOutput<List<Map<String, dynamic>>>('ipGroups');
+    location = registerOutput<String?>('location');
+    managementIpConfiguration =
+        registerOutput<AzureFirewallIPConfigurationResponse?>(
+          'managementIpConfiguration',
+        );
     this.name = registerOutput<String>('name');
-    this.natRuleCollections = registerOutput<List<AzureFirewallNatRuleCollectionResponse>?>('natRuleCollections');
-    this.networkRuleCollections = registerOutput<List<AzureFirewallNetworkRuleCollectionResponse>?>('networkRuleCollections');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sku = registerOutput<AzureFirewallSkuResponse?>('sku');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.threatIntelMode = registerOutput<String?>('threatIntelMode');
-    this.type = registerOutput<String>('type');
-    this.virtualHub = registerOutput<SubResourceResponse?>('virtualHub');
-    this.zones = registerOutput<List<String>?>('zones');
+    natRuleCollections = registerOutput<List<Map<String, dynamic>>?>(
+      'natRuleCollections',
+    );
+    networkRuleCollections = registerOutput<List<Map<String, dynamic>>?>(
+      'networkRuleCollections',
+    );
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<AzureFirewallSkuResponse?>('sku');
+    tags = registerOutput<Map<String, String>?>('tags');
+    threatIntelMode = registerOutput<String?>('threatIntelMode');
+    type = registerOutput<String>('type');
+    virtualHub = registerOutput<SubResourceResponse?>('virtualHub');
+    zones = registerOutput<List<String>?>('zones');
   }
 }

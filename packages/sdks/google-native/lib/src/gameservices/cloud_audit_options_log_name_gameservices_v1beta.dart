@@ -4,16 +4,17 @@ enum CloudAuditOptionsLogNameGameservicesV1beta {
   adminActivity("ADMIN_ACTIVITY"),
   dataAccess("DATA_ACCESS");
 
-  const CloudAuditOptionsLogNameGameservicesV1beta(this.value);
-  final String value;
+  const CloudAuditOptionsLogNameGameservicesV1beta(this.wireValue);
+  final String wireValue;
 
   static CloudAuditOptionsLogNameGameservicesV1beta fromValue(String value) {
     for (final item in CloudAuditOptionsLogNameGameservicesV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CloudAuditOptionsLogNameGameservicesV1beta value: $value');
+    throw ArgumentError(
+      'Unknown CloudAuditOptionsLogNameGameservicesV1beta value: $value',
+    );
   }
 }
-

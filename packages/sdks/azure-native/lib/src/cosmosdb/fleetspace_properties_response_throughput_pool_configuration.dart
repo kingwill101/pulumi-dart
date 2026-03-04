@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FleetspacePropertiesResponseThroughputPoolConfiguration {
   /// Maximum throughput for the pool.
   final pulumi.Input<int>? maxThroughput;
+
   /// Minimum throughput for the pool.
   final pulumi.Input<int>? minThroughput;
 
@@ -24,11 +25,20 @@ class FleetspacePropertiesResponseThroughputPoolConfiguration {
     };
   }
 
-  factory FleetspacePropertiesResponseThroughputPoolConfiguration.fromMap(Map<String, dynamic> map) {
+  factory FleetspacePropertiesResponseThroughputPoolConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetspacePropertiesResponseThroughputPoolConfiguration(
-      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput']! as int).input(),
-      minThroughput: map['minThroughput'] == null ? null : (map['minThroughput']! as int).input(),
+      maxThroughput: (() {
+        final guardedValue = map['maxThroughput'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minThroughput: (() {
+        final guardedValue = map['minThroughput'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

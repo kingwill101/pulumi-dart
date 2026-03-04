@@ -6,7 +6,7 @@ import 'ecs_invocation_state.dart';
 ///
 /// For information about ECS Invocation and how to use it, see [What is Invocation](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/invokecommand#t9958.html).
 ///
-/// > **NOTE:** Available since v1.168.0.
+/// &gt; **NOTE:** Available since v1.168.0.
 ///
 /// ## Example Usage
 ///
@@ -574,26 +574,34 @@ import 'ecs_invocation_state.dart';
 class EcsInvocation extends pulumi.CustomResource {
   /// The ID of the command.
   late final pulumi.Output<String> commandId;
+
   /// The schedule on which the recurring execution of the command takes place. Take note of the following items:
   /// * The interval between two consecutive executions must be 10 seconds or longer. The minimum interval cannot be less than the timeout period of the execution.
   /// * When you set Timed to true, you must specify Frequency.
   /// * The value of the Frequency parameter is a cron expression. For more information, see [Cron expression](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/cron-expression).
   late final pulumi.Output<String?> frequency;
+
   /// The list of instances to execute the command. You can specify up to 50 instance IDs.
   late final pulumi.Output<List<String>> instanceIds;
+
   /// The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
   late final pulumi.Output<String> repeatMode;
+
   /// The status of the resource.
   late final pulumi.Output<String> status;
+
   /// Specifies whether to periodically run the command. Default value: `false`.
   late final pulumi.Output<bool> timed;
+
   /// The username that is used to run the command on the ECS instance.
   /// * For Linux instances, the root username is used.
   /// * For Windows instances, the System username is used.
   /// * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).
   late final pulumi.Output<String> username;
+
   /// The name of the password used to run the command on a Windows instance.
   late final pulumi.Output<String?> windowsPasswordName;
 
@@ -606,20 +614,20 @@ class EcsInvocation extends pulumi.CustomResource {
     EcsInvocationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/ecsInvocation:EcsInvocation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.commandId = registerOutput<String>('commandId');
-    this.frequency = registerOutput<String?>('frequency');
-    this.instanceIds = registerOutput<List<String>>('instanceIds');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.repeatMode = registerOutput<String>('repeatMode');
-    this.status = registerOutput<String>('status');
-    this.timed = registerOutput<bool>('timed');
-    this.username = registerOutput<String>('username');
-    this.windowsPasswordName = registerOutput<String?>('windowsPasswordName');
+         'alicloud:ecs/ecsInvocation:EcsInvocation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    commandId = registerOutput<String>('commandId');
+    frequency = registerOutput<String?>('frequency');
+    instanceIds = registerOutput<List<String>>('instanceIds');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    repeatMode = registerOutput<String>('repeatMode');
+    status = registerOutput<String>('status');
+    timed = registerOutput<bool>('timed');
+    username = registerOutput<String>('username');
+    windowsPasswordName = registerOutput<String?>('windowsPasswordName');
   }
 
   /// Gets an existing [EcsInvocation] resource's state with the given [name] and [id].
@@ -640,19 +648,19 @@ class EcsInvocation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ecs/ecsInvocation:EcsInvocation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.commandId = registerOutput<String>('commandId');
-    this.frequency = registerOutput<String?>('frequency');
-    this.instanceIds = registerOutput<List<String>>('instanceIds');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.repeatMode = registerOutput<String>('repeatMode');
-    this.status = registerOutput<String>('status');
-    this.timed = registerOutput<bool>('timed');
-    this.username = registerOutput<String>('username');
-    this.windowsPasswordName = registerOutput<String?>('windowsPasswordName');
+         'alicloud:ecs/ecsInvocation:EcsInvocation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    commandId = registerOutput<String>('commandId');
+    frequency = registerOutput<String?>('frequency');
+    instanceIds = registerOutput<List<String>>('instanceIds');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    repeatMode = registerOutput<String>('repeatMode');
+    status = registerOutput<String>('status');
+    timed = registerOutput<bool>('timed');
+    username = registerOutput<String>('username');
+    windowsPasswordName = registerOutput<String?>('windowsPasswordName');
   }
 }

@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1SystemTimestamps {
   /// Creation timestamp of the resource within the given system.
   final pulumi.Input<String>? createTime;
+
   /// Timestamp of the last modification of the resource or its metadata within a given system. Note: Depending on the source system, not every modification updates this timestamp. For example, BigQuery timestamps every metadata modification but not data or permission changes.
   final pulumi.Input<String>? updateTime;
 
   /// Creates a new [GoogleCloudDatacatalogV1SystemTimestamps].
   /// [createTime] Creation timestamp of the resource within the given system.
   /// [updateTime] Timestamp of the last modification of the resource or its metadata within a given system. Note: Depending on the source system, not every modification updates this timestamp. For example, BigQuery timestamps every metadata modification but not data or permission changes.
-  GoogleCloudDatacatalogV1SystemTimestamps({
-    this.createTime,
-    this.updateTime,
-  });
+  GoogleCloudDatacatalogV1SystemTimestamps({this.createTime, this.updateTime});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,11 +22,20 @@ class GoogleCloudDatacatalogV1SystemTimestamps {
     };
   }
 
-  factory GoogleCloudDatacatalogV1SystemTimestamps.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1SystemTimestamps.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1SystemTimestamps(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

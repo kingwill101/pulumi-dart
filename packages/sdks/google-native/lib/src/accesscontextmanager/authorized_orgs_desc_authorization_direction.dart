@@ -4,16 +4,17 @@ enum AuthorizedOrgsDescAuthorizationDirection {
   authorizationDirectionTo("AUTHORIZATION_DIRECTION_TO"),
   authorizationDirectionFrom("AUTHORIZATION_DIRECTION_FROM");
 
-  const AuthorizedOrgsDescAuthorizationDirection(this.value);
-  final String value;
+  const AuthorizedOrgsDescAuthorizationDirection(this.wireValue);
+  final String wireValue;
 
   static AuthorizedOrgsDescAuthorizationDirection fromValue(String value) {
     for (final item in AuthorizedOrgsDescAuthorizationDirection.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuthorizedOrgsDescAuthorizationDirection value: $value');
+    throw ArgumentError(
+      'Unknown AuthorizedOrgsDescAuthorizationDirection value: $value',
+    );
   }
 }
-

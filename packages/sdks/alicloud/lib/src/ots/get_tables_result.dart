@@ -7,14 +7,18 @@ import 'get_tables_table.dart';
 class GetTablesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of table IDs.
   final List<String> ids;
+
   /// The OTS instance name.
   final String instanceName;
   final String? nameRegex;
+
   /// A list of table names.
   final List<String> names;
   final String? outputFile;
+
   /// A list of tables. Each element contains the following attributes:
   final List<GetTablesTable> tables;
 
@@ -44,7 +48,10 @@ class GetTablesResult {
       'nameRegex': ?nameRegex,
       'names': names,
       'outputFile': ?outputFile,
-      'tables': pulumi.Input.encodeList<GetTablesTable, Map<String, dynamic>>(tables, (value) => value.toMap()),
+      'tables': pulumi.Input.encodeList<GetTablesTable, Map<String, dynamic>>(
+        tables,
+        (value) => value.toMap(),
+      ),
     };
   }
 
@@ -53,11 +60,22 @@ class GetTablesResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceName: map['instanceName'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      tables: pulumi.Input.decodeList<GetTablesTable>(map['tables'], (value) => GetTablesTable.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tables: pulumi.Input.decodeList<GetTablesTable>(
+        map['tables']!,
+        (value) =>
+            GetTablesTable.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

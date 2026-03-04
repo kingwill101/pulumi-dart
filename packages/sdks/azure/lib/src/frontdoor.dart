@@ -1,5 +1,3 @@
-library module_frontdoor;
-
 export 'frontdoor/custom_https_configuration.dart';
 export 'frontdoor/custom_https_configuration_args.dart';
 export 'frontdoor/custom_https_configuration_custom_https_configuration.dart';

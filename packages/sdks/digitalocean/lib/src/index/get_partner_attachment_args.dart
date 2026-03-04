@@ -18,16 +18,15 @@ class GetPartnerAttachmentArgs {
   /// [id] Optional.
   /// [name] Optional.
   /// [redundancyZone] Optional.
-  GetPartnerAttachmentArgs({
-    this.bgp,
-    this.id,
-    this.name,
-    this.redundancyZone,
-  });
+  GetPartnerAttachmentArgs({this.bgp, this.id, this.name, this.redundancyZone});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bgp': ?pulumi.Input.mapOptionalInputValue<GetPartnerAttachmentBgp, Map<String, dynamic>>(bgp, (value) => value.toMap()),
+      'bgp':
+          ?pulumi.Input.mapOptionalInputValue<
+            GetPartnerAttachmentBgp,
+            Map<String, dynamic>
+          >(bgp, (value) => value.toMap()),
       'id': ?id,
       'name': ?name,
       'redundancyZone': ?redundancyZone,
@@ -36,11 +35,30 @@ class GetPartnerAttachmentArgs {
 
   factory GetPartnerAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerAttachmentArgs(
-      bgp: map['bgp'] == null ? null : (GetPartnerAttachmentBgp.fromMap((map['bgp']! as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      redundancyZone: map['redundancyZone'] == null ? null : (map['redundancyZone']! as String).input(),
+      bgp: (() {
+        final guardedValue = map['bgp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GetPartnerAttachmentBgp.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      redundancyZone: (() {
+        final guardedValue = map['redundancyZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

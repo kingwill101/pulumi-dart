@@ -1,5 +1,3 @@
-library module_sesv2;
-
 export 'sesv2/account_suppression_attributes.dart';
 export 'sesv2/account_suppression_attributes_args.dart';
 export 'sesv2/account_suppression_attributes_state.dart';

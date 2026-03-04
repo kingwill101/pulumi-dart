@@ -4,16 +4,15 @@ enum NetworkingConfigConnectionType {
   vpcPeering("VPC_PEERING"),
   privateServiceConnect("PRIVATE_SERVICE_CONNECT");
 
-  const NetworkingConfigConnectionType(this.value);
-  final String value;
+  const NetworkingConfigConnectionType(this.wireValue);
+  final String wireValue;
 
   static NetworkingConfigConnectionType fromValue(String value) {
     for (final item in NetworkingConfigConnectionType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown NetworkingConfigConnectionType value: $value');
   }
 }
-

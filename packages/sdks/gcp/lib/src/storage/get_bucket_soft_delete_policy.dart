@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketSoftDeletePolicy {
   /// Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
   final pulumi.Input<String> effectiveTime;
+
   /// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800.
   final pulumi.Input<int> retentionDurationSeconds;
 
@@ -25,9 +26,10 @@ class GetBucketSoftDeletePolicy {
 
   factory GetBucketSoftDeletePolicy.fromMap(Map<String, dynamic> map) {
     return GetBucketSoftDeletePolicy(
-      effectiveTime: (map['effectiveTime'] as String).input(),
-      retentionDurationSeconds: (map['retentionDurationSeconds'] as int).input(),
+      effectiveTime: pulumi.Input.fromValue(map['effectiveTime'] as String),
+      retentionDurationSeconds: pulumi.Input.fromValue(
+        map['retentionDurationSeconds'] as int,
+      ),
     );
   }
 }
-

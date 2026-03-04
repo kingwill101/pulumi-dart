@@ -34,16 +34,15 @@ enum TestIssueType {
   detectedAppSplashScreen("detectedAppSplashScreen"),
   assetIssue("assetIssue");
 
-  const TestIssueType(this.value);
-  final String value;
+  const TestIssueType(this.wireValue);
+  final String wireValue;
 
   static TestIssueType fromValue(String value) {
     for (final item in TestIssueType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TestIssueType value: $value');
   }
 }
-

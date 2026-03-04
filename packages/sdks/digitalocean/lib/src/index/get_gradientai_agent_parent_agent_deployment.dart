@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGradientaiAgentParentAgentDeployment {
   /// API Key value
   final pulumi.Input<String> createdAt;
+
   /// Name of the API Key
   final pulumi.Input<String>? name;
+
   /// Status of the Deployment
   final pulumi.Input<String>? status;
+
   /// Updated At timestamp for the Agent
   final pulumi.Input<String> updatedAt;
+
   /// Url of the Deployment
   final pulumi.Input<String>? url;
+
   /// API Key value
   final pulumi.Input<String>? uuid;
+
   /// Visibility of the Deployment
   final pulumi.Input<String>? visibility;
 
@@ -48,16 +54,37 @@ class GetGradientaiAgentParentAgentDeployment {
     };
   }
 
-  factory GetGradientaiAgentParentAgentDeployment.fromMap(Map<String, dynamic> map) {
+  factory GetGradientaiAgentParentAgentDeployment.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGradientaiAgentParentAgentDeployment(
-      createdAt: (map['createdAt'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      updatedAt: (map['updatedAt'] as String).input(),
-      url: map['url'] == null ? null : (map['url']! as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
-      visibility: map['visibility'] == null ? null : (map['visibility']! as String).input(),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
+      url: (() {
+        final guardedValue = map['url'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uuid: (() {
+        final guardedValue = map['uuid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      visibility: (() {
+        final guardedValue = map['visibility'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

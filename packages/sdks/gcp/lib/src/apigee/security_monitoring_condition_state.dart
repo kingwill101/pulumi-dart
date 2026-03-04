@@ -6,24 +6,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityMonitoringConditionState {
   /// Resource ID of the security monitoring condition.
   final pulumi.Input<String>? conditionId;
+
   /// The timestamp at which this profile was created.
   final pulumi.Input<String>? createTime;
+
   /// A nested object resource.
   final pulumi.Input<Map<String, dynamic>>? includeAllResources;
+
   /// Name of the security monitoring condition resource,
   /// in the format `organizations/{{org_name}}/securityMonitoringConditions/{{condition_id}}`.
   final pulumi.Input<String>? name;
+
   /// The Apigee Organization associated with the Apigee Security Monitoring Condition,
   /// in the format `organizations/{{org_name}}`.
   final pulumi.Input<String>? orgId;
+
   /// ID of security profile of the security monitoring condition.
   final pulumi.Input<String>? profile;
+
   /// ID of security profile of the security monitoring condition.
   final pulumi.Input<String>? scope;
+
   /// Total number of deployed resources within scope.
   final pulumi.Input<int>? totalDeployedResources;
+
   /// Total number of monitored resources within this condition.
   final pulumi.Input<int>? totalMonitoredResources;
+
   /// The timestamp at which this profile was most recently updated.
   final pulumi.Input<String>? updateTime;
 
@@ -68,17 +77,58 @@ class SecurityMonitoringConditionState {
 
   factory SecurityMonitoringConditionState.fromMap(Map<String, dynamic> map) {
     return SecurityMonitoringConditionState(
-      conditionId: map['conditionId'] == null ? null : (map['conditionId']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      includeAllResources: map['includeAllResources'] == null ? null : ((map['includeAllResources']! as Map).cast<String, dynamic>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
-      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
-      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
-      totalDeployedResources: map['totalDeployedResources'] == null ? null : (map['totalDeployedResources']! as int).input(),
-      totalMonitoredResources: map['totalMonitoredResources'] == null ? null : (map['totalMonitoredResources']! as int).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      conditionId: (() {
+        final guardedValue = map['conditionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      includeAllResources: (() {
+        final guardedValue = map['includeAllResources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      orgId: (() {
+        final guardedValue = map['orgId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      profile: (() {
+        final guardedValue = map['profile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      totalDeployedResources: (() {
+        final guardedValue = map['totalDeployedResources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      totalMonitoredResources: (() {
+        final guardedValue = map['totalMonitoredResources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

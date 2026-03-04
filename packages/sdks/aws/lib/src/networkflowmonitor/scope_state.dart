@@ -8,14 +8,19 @@ import 'scope_timeouts.dart';
 class ScopeState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The Amazon Resource Name (ARN) of the scope.
   final pulumi.Input<String>? scopeArn;
+
   /// The identifier for the scope that includes the resources you want to get data results for.
   final pulumi.Input<String>? scopeId;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
+
   /// The targets to define the scope to be monitored. A target is an array of target resources, which are currently Region-account pairs.
   ///
   /// The following arguments are optional:
@@ -47,21 +52,75 @@ class ScopeState {
       'scopeId': ?scopeId,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
-      'targets': ?pulumi.Input.mapOptionalInputValue<List<ScopeTarget>, List<Map<String, dynamic>>>(targets, (value) => pulumi.Input.encodeList<ScopeTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<ScopeTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'targets':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ScopeTarget>,
+            List<Map<String, dynamic>>
+          >(
+            targets,
+            (value) =>
+                pulumi.Input.encodeList<ScopeTarget, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScopeTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory ScopeState.fromMap(Map<String, dynamic> map) {
     return ScopeState(
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      scopeArn: map['scopeArn'] == null ? null : ((map['scopeArn'] as String).input()).input(),
-      scopeId: map['scopeId'] == null ? null : ((map['scopeId'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
-      targets: map['targets'] == null ? null : ((pulumi.Input.decodeList<ScopeTarget>(map['targets']!, (value) => ScopeTarget.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((ScopeTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scopeArn: (() {
+        final guardedValue = map['scopeArn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scopeId: (() {
+        final guardedValue = map['scopeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      targets: (() {
+        final guardedValue = map['targets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ScopeTarget>(
+            guardedValue,
+            (value) =>
+                ScopeTarget.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScopeTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

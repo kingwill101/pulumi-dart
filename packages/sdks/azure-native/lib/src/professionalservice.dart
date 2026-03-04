@@ -1,5 +1,3 @@
-library module_professionalservice;
-
 export 'professionalservice/functions.dart';
 export 'professionalservice/get_professional_service_subscription_level_args.dart';
 export 'professionalservice/get_professional_service_subscription_level_result.dart';

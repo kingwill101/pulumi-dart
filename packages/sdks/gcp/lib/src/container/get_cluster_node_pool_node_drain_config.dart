@@ -20,8 +20,9 @@ class GetClusterNodePoolNodeDrainConfig {
 
   factory GetClusterNodePoolNodeDrainConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeDrainConfig(
-      respectPdbDuringNodePoolDeletion: (map['respectPdbDuringNodePoolDeletion'] as bool).input(),
+      respectPdbDuringNodePoolDeletion: pulumi.Input.fromValue(
+        map['respectPdbDuringNodePoolDeletion'] as bool,
+      ),
     );
   }
 }
-

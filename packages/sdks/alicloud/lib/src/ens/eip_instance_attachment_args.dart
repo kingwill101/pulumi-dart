@@ -9,14 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EipInstanceAttachmentArgs {
   /// The first ID of the resource
   final pulumi.Input<String> allocationId;
+
   /// Instance ID
   final pulumi.Input<String> instanceId;
+
   /// The type of the EIP instance. Value:
   /// - `Nat`:NAT gateway.
   /// - `SlbInstance`: Server Load Balancer (ELB).
   /// - `NetworkInterface`: Secondary ENI.
   /// - `EnsInstance` (default): The ENS instance.
   final pulumi.Input<String>? instanceType;
+
   /// Indicates whether the EIP is a backup EIP. Value:
   /// - true: Spare.
   /// - false: not standby.
@@ -45,11 +48,18 @@ class EipInstanceAttachmentArgs {
 
   factory EipInstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EipInstanceAttachmentArgs(
-      allocationId: (map['allocationId'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      standby: map['standby'] == null ? null : (map['standby']! as bool).input(),
+      allocationId: pulumi.Input.fromValue(map['allocationId'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      standby: (() {
+        final guardedValue = map['standby'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

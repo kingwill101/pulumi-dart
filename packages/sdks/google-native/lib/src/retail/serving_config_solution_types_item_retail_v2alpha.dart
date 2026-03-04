@@ -3,16 +3,17 @@ enum ServingConfigSolutionTypesItemRetailV2alpha {
   solutionTypeRecommendation("SOLUTION_TYPE_RECOMMENDATION"),
   solutionTypeSearch("SOLUTION_TYPE_SEARCH");
 
-  const ServingConfigSolutionTypesItemRetailV2alpha(this.value);
-  final String value;
+  const ServingConfigSolutionTypesItemRetailV2alpha(this.wireValue);
+  final String wireValue;
 
   static ServingConfigSolutionTypesItemRetailV2alpha fromValue(String value) {
     for (final item in ServingConfigSolutionTypesItemRetailV2alpha.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServingConfigSolutionTypesItemRetailV2alpha value: $value');
+    throw ArgumentError(
+      'Unknown ServingConfigSolutionTypesItemRetailV2alpha value: $value',
+    );
   }
 }
-

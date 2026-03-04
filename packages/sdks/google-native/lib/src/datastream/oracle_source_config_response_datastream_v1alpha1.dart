@@ -7,8 +7,10 @@ import 'oracle_rdbms_response_datastream_v1alpha1.dart';
 class OracleSourceConfigResponseDatastreamV1alpha1 {
   /// Oracle objects to include in the stream.
   final pulumi.Input<OracleRdbmsResponseDatastreamV1alpha1> allowlist;
+
   /// Drop large object values.
   final pulumi.Input<Map<String, dynamic>> dropLargeObjects;
+
   /// Oracle objects to exclude from the stream.
   final pulumi.Input<OracleRdbmsResponseDatastreamV1alpha1> rejectlist;
 
@@ -24,18 +26,37 @@ class OracleSourceConfigResponseDatastreamV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowlist': pulumi.Input.mapInputValue<OracleRdbmsResponseDatastreamV1alpha1, Map<String, dynamic>>(allowlist, (value) => value.toMap()),
+      'allowlist':
+          pulumi.Input.mapInputValue<
+            OracleRdbmsResponseDatastreamV1alpha1,
+            Map<String, dynamic>
+          >(allowlist, (value) => value.toMap()),
       'dropLargeObjects': dropLargeObjects,
-      'rejectlist': pulumi.Input.mapInputValue<OracleRdbmsResponseDatastreamV1alpha1, Map<String, dynamic>>(rejectlist, (value) => value.toMap()),
+      'rejectlist':
+          pulumi.Input.mapInputValue<
+            OracleRdbmsResponseDatastreamV1alpha1,
+            Map<String, dynamic>
+          >(rejectlist, (value) => value.toMap()),
     };
   }
 
-  factory OracleSourceConfigResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory OracleSourceConfigResponseDatastreamV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OracleSourceConfigResponseDatastreamV1alpha1(
-      allowlist: (OracleRdbmsResponseDatastreamV1alpha1.fromMap((map['allowlist'] as Map).cast<String, dynamic>())).input(),
-      dropLargeObjects: ((map['dropLargeObjects'] as Map).cast<String, dynamic>()).input(),
-      rejectlist: (OracleRdbmsResponseDatastreamV1alpha1.fromMap((map['rejectlist'] as Map).cast<String, dynamic>())).input(),
+      allowlist: pulumi.Input.fromValue(
+        OracleRdbmsResponseDatastreamV1alpha1.fromMap(
+          (map['allowlist']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      dropLargeObjects: pulumi.Input.fromValue(
+        (map['dropLargeObjects']! as Map).cast<String, dynamic>(),
+      ),
+      rejectlist: pulumi.Input.fromValue(
+        OracleRdbmsResponseDatastreamV1alpha1.fromMap(
+          (map['rejectlist']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum FirewallLogConfigMetadata {
   excludeAllMetadata("EXCLUDE_ALL_METADATA"),
   includeAllMetadata("INCLUDE_ALL_METADATA");
 
-  const FirewallLogConfigMetadata(this.value);
-  final String value;
+  const FirewallLogConfigMetadata(this.wireValue);
+  final String wireValue;
 
   static FirewallLogConfigMetadata fromValue(String value) {
     for (final item in FirewallLogConfigMetadata.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown FirewallLogConfigMetadata value: $value');
   }
 }
-

@@ -11,6 +11,7 @@ class PatchDeploymentRollout {
   /// For example, if the disruption budget has a fixed value of 10, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
   /// Structure is documented below.
   final pulumi.Input<PatchDeploymentRolloutDisruptionBudget> disruptionBudget;
+
   /// Mode of the patch rollout.
   /// Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
   final pulumi.Input<String> mode;
@@ -18,23 +19,27 @@ class PatchDeploymentRollout {
   /// Creates a new [PatchDeploymentRollout].
   /// [disruptionBudget] The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
   /// [mode] Mode of the patch rollout.
-  PatchDeploymentRollout({
-    required this.disruptionBudget,
-    required this.mode,
-  });
+  PatchDeploymentRollout({required this.disruptionBudget, required this.mode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disruptionBudget': pulumi.Input.mapInputValue<PatchDeploymentRolloutDisruptionBudget, Map<String, dynamic>>(disruptionBudget, (value) => value.toMap()),
+      'disruptionBudget':
+          pulumi.Input.mapInputValue<
+            PatchDeploymentRolloutDisruptionBudget,
+            Map<String, dynamic>
+          >(disruptionBudget, (value) => value.toMap()),
       'mode': mode,
     };
   }
 
   factory PatchDeploymentRollout.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentRollout(
-      disruptionBudget: (PatchDeploymentRolloutDisruptionBudget.fromMap((map['disruptionBudget'] as Map).cast<String, dynamic>())).input(),
-      mode: (map['mode'] as String).input(),
+      disruptionBudget: pulumi.Input.fromValue(
+        PatchDeploymentRolloutDisruptionBudget.fromMap(
+          (map['disruptionBudget']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

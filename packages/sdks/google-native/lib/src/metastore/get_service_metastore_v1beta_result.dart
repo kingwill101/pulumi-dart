@@ -13,46 +13,68 @@ import 'telemetry_config_response_metastore_v1beta.dart';
 class GetServiceMetastoreV1betaResult {
   /// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
   final String artifactGcsUri;
+
   /// The time when the metastore service was created.
   final String createTime;
+
   /// Immutable. The database type that the Metastore service stores its data.
   final String databaseType;
+
   /// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
   final EncryptionConfigResponseMetastoreV1beta encryptionConfig;
+
   /// The URI of the endpoint used to access the metastore service.
   final String endpointUri;
+
   /// Configuration information specific to running Hive metastore software as the metastore service.
   final HiveMetastoreConfigResponseMetastoreV1beta hiveMetastoreConfig;
+
   /// User-defined labels for the metastore service.
   final Map<String, String> labels;
+
   /// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
   final MaintenanceWindowResponseMetastoreV1beta maintenanceWindow;
+
   /// Optional. The setting that defines how metastore metadata should be integrated with external services and systems.
   final MetadataIntegrationResponseMetastoreV1beta metadataIntegration;
+
   /// The metadata management activities of the metastore service.
-  final MetadataManagementActivityResponseMetastoreV1beta metadataManagementActivity;
+  final MetadataManagementActivityResponseMetastoreV1beta
+  metadataManagementActivity;
+
   /// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
   final String name;
+
   /// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
   final String network;
+
   /// The configuration specifying the network settings for the Dataproc Metastore service.
   final NetworkConfigResponseMetastoreV1beta networkConfig;
+
   /// The TCP port at which the metastore service is reached. Default: 9083.
   final int port;
+
   /// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
   final String releaseChannel;
+
   /// Scaling configuration of the metastore service.
   final ScalingConfigResponseMetastoreV1beta scalingConfig;
+
   /// The current state of the metastore service.
   final String state;
+
   /// Additional information about the current state of the metastore service, if available.
   final String stateMessage;
+
   /// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
   final TelemetryConfigResponseMetastoreV1beta telemetryConfig;
+
   /// The tier of the service.
   final String tier;
+
   /// The globally unique resource identifier of the metastore service.
   final String uid;
+
   /// The time when the metastore service was last updated.
   final String updateTime;
 
@@ -136,26 +158,42 @@ class GetServiceMetastoreV1betaResult {
       artifactGcsUri: map['artifactGcsUri'] as String,
       createTime: map['createTime'] as String,
       databaseType: map['databaseType'] as String,
-      encryptionConfig: EncryptionConfigResponseMetastoreV1beta.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>()),
+      encryptionConfig: EncryptionConfigResponseMetastoreV1beta.fromMap(
+        (map['encryptionConfig']! as Map).cast<String, dynamic>(),
+      ),
       endpointUri: map['endpointUri'] as String,
-      hiveMetastoreConfig: HiveMetastoreConfigResponseMetastoreV1beta.fromMap((map['hiveMetastoreConfig'] as Map).cast<String, dynamic>()),
+      hiveMetastoreConfig: HiveMetastoreConfigResponseMetastoreV1beta.fromMap(
+        (map['hiveMetastoreConfig']! as Map).cast<String, dynamic>(),
+      ),
       labels: (map['labels'] as Map).cast<String, String>(),
-      maintenanceWindow: MaintenanceWindowResponseMetastoreV1beta.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>()),
-      metadataIntegration: MetadataIntegrationResponseMetastoreV1beta.fromMap((map['metadataIntegration'] as Map).cast<String, dynamic>()),
-      metadataManagementActivity: MetadataManagementActivityResponseMetastoreV1beta.fromMap((map['metadataManagementActivity'] as Map).cast<String, dynamic>()),
+      maintenanceWindow: MaintenanceWindowResponseMetastoreV1beta.fromMap(
+        (map['maintenanceWindow']! as Map).cast<String, dynamic>(),
+      ),
+      metadataIntegration: MetadataIntegrationResponseMetastoreV1beta.fromMap(
+        (map['metadataIntegration']! as Map).cast<String, dynamic>(),
+      ),
+      metadataManagementActivity:
+          MetadataManagementActivityResponseMetastoreV1beta.fromMap(
+            (map['metadataManagementActivity']! as Map).cast<String, dynamic>(),
+          ),
       name: map['name'] as String,
       network: map['network'] as String,
-      networkConfig: NetworkConfigResponseMetastoreV1beta.fromMap((map['networkConfig'] as Map).cast<String, dynamic>()),
+      networkConfig: NetworkConfigResponseMetastoreV1beta.fromMap(
+        (map['networkConfig']! as Map).cast<String, dynamic>(),
+      ),
       port: map['port'] as int,
       releaseChannel: map['releaseChannel'] as String,
-      scalingConfig: ScalingConfigResponseMetastoreV1beta.fromMap((map['scalingConfig'] as Map).cast<String, dynamic>()),
+      scalingConfig: ScalingConfigResponseMetastoreV1beta.fromMap(
+        (map['scalingConfig']! as Map).cast<String, dynamic>(),
+      ),
       state: map['state'] as String,
       stateMessage: map['stateMessage'] as String,
-      telemetryConfig: TelemetryConfigResponseMetastoreV1beta.fromMap((map['telemetryConfig'] as Map).cast<String, dynamic>()),
+      telemetryConfig: TelemetryConfigResponseMetastoreV1beta.fromMap(
+        (map['telemetryConfig']! as Map).cast<String, dynamic>(),
+      ),
       tier: map['tier'] as String,
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'endpoint_private_dns_state.dart';
 
 /// Resource for enabling private DNS on an AWS VPC (Virtual Private Cloud) Endpoint.
 ///
-/// > When using this resource, the `private_dns_enabled` argument should be omitted on the parent `aws.ec2.VpcEndpoint` resource.
+/// &gt; When using this resource, the `private_dns_enabled` argument should be omitted on the parent `aws.ec2.VpcEndpoint` resource.
 /// Setting the value both places can lead to unintended behavior and persistent differences.
 ///
 /// ## Example Usage
@@ -115,8 +115,10 @@ import 'endpoint_private_dns_state.dart';
 class EndpointPrivateDns extends pulumi.CustomResource {
   /// Indicates whether a private hosted zone is associated with the VPC. Only applicable for `Interface` endpoints.
   late final pulumi.Output<bool> privateDnsEnabled;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// VPC endpoint identifier.
   late final pulumi.Output<String> vpcEndpointId;
 
@@ -129,14 +131,14 @@ class EndpointPrivateDns extends pulumi.CustomResource {
     EndpointPrivateDnsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:vpc/endpointPrivateDns:EndpointPrivateDns',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
-    this.region = registerOutput<String>('region');
-    this.vpcEndpointId = registerOutput<String>('vpcEndpointId');
+         'aws:vpc/endpointPrivateDns:EndpointPrivateDns',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
+    region = registerOutput<String>('region');
+    vpcEndpointId = registerOutput<String>('vpcEndpointId');
   }
 
   /// Gets an existing [EndpointPrivateDns] resource's state with the given [name] and [id].
@@ -157,13 +159,13 @@ class EndpointPrivateDns extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:vpc/endpointPrivateDns:EndpointPrivateDns',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
-    this.region = registerOutput<String>('region');
-    this.vpcEndpointId = registerOutput<String>('vpcEndpointId');
+         'aws:vpc/endpointPrivateDns:EndpointPrivateDns',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
+    region = registerOutput<String>('region');
+    vpcEndpointId = registerOutput<String>('vpcEndpointId');
   }
 }

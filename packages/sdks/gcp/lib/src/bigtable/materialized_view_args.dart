@@ -9,13 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MaterializedViewArgs {
   /// Set to true to make the MaterializedView protected against deletion.
   final pulumi.Input<bool>? deletionProtection;
+
   /// The name of the instance to create the materialized view within.
   final pulumi.Input<String>? instance;
+
   /// The unique name of the materialized view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
   final pulumi.Input<String> materializedViewId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The materialized view's select query.
   final pulumi.Input<String> query;
 
@@ -45,12 +49,25 @@ class MaterializedViewArgs {
 
   factory MaterializedViewArgs.fromMap(Map<String, dynamic> map) {
     return MaterializedViewArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
-      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
-      materializedViewId: (map['materializedViewId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      query: (map['query'] as String).input(),
+      deletionProtection: (() {
+        final guardedValue = map['deletionProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      instance: (() {
+        final guardedValue = map['instance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      materializedViewId: pulumi.Input.fromValue(
+        map['materializedViewId'] as String,
+      ),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      query: pulumi.Input.fromValue(map['query'] as String),
     );
   }
 }
-

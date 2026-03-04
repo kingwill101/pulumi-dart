@@ -1,5 +1,3 @@
-library module_discoveryengine;
-
 export 'discoveryengine/conversation.dart';
 export 'discoveryengine/conversation_args.dart';
 export 'discoveryengine/conversation_discoveryengine_v1beta.dart';

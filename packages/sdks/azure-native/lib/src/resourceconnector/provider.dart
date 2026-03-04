@@ -4,16 +4,15 @@ enum Provider {
   hCI("HCI"),
   sCVMM("SCVMM");
 
-  const Provider(this.value);
-  final String value;
+  const Provider(this.wireValue);
+  final String wireValue;
 
   static Provider fromValue(String value) {
     for (final item in Provider.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Provider value: $value');
   }
 }
-

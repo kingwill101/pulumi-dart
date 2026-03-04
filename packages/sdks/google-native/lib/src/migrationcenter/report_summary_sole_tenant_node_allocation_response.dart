@@ -7,8 +7,10 @@ import 'sole_tenant_node_type_response.dart';
 class ReportSummarySoleTenantNodeAllocationResponse {
   /// Count of assets allocated to these nodes
   final pulumi.Input<String> allocatedAssetCount;
+
   /// Sole Tenant node type, e.g. "m3-node-128-3904"
   final pulumi.Input<SoleTenantNodeTypeResponse> node;
+
   /// Count of this node type to be provisioned
   final pulumi.Input<String> nodeCount;
 
@@ -25,17 +27,28 @@ class ReportSummarySoleTenantNodeAllocationResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocatedAssetCount': allocatedAssetCount,
-      'node': pulumi.Input.mapInputValue<SoleTenantNodeTypeResponse, Map<String, dynamic>>(node, (value) => value.toMap()),
+      'node':
+          pulumi.Input.mapInputValue<
+            SoleTenantNodeTypeResponse,
+            Map<String, dynamic>
+          >(node, (value) => value.toMap()),
       'nodeCount': nodeCount,
     };
   }
 
-  factory ReportSummarySoleTenantNodeAllocationResponse.fromMap(Map<String, dynamic> map) {
+  factory ReportSummarySoleTenantNodeAllocationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReportSummarySoleTenantNodeAllocationResponse(
-      allocatedAssetCount: (map['allocatedAssetCount'] as String).input(),
-      node: (SoleTenantNodeTypeResponse.fromMap((map['node'] as Map).cast<String, dynamic>())).input(),
-      nodeCount: (map['nodeCount'] as String).input(),
+      allocatedAssetCount: pulumi.Input.fromValue(
+        map['allocatedAssetCount'] as String,
+      ),
+      node: pulumi.Input.fromValue(
+        SoleTenantNodeTypeResponse.fromMap(
+          (map['node']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as String),
     );
   }
 }
-

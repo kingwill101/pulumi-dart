@@ -4,16 +4,20 @@ enum EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType {
   asisTemplate("ASIS_TEMPLATE"),
   ioTemplate("IO_TEMPLATE");
 
-  const EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType(this.value);
-  final String value;
+  const EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType(this.wireValue);
+  final String wireValue;
 
-  static EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType fromValue(String value) {
-    for (final item in EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType.values) {
-      if (item.value == value) {
+  static EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType value: $value',
+    );
   }
 }
-

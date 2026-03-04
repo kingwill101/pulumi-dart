@@ -287,8 +287,10 @@ import 'domain_service_access_policy_state.dart';
 class DomainServiceAccessPolicy extends pulumi.CustomResource {
   /// The access rules you want to configure. These rules replace any existing rules. See the [AWS documentation](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html) for details.
   late final pulumi.Output<String> accessPolicy;
+
   /// The CloudSearch domain name the policy applies to.
   late final pulumi.Output<String> domainName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -301,14 +303,14 @@ class DomainServiceAccessPolicy extends pulumi.CustomResource {
     DomainServiceAccessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudsearch/domainServiceAccessPolicy:DomainServiceAccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPolicy = registerOutput<String>('accessPolicy');
-    this.domainName = registerOutput<String>('domainName');
-    this.region = registerOutput<String>('region');
+         'aws:cloudsearch/domainServiceAccessPolicy:DomainServiceAccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessPolicy = registerOutput<String>('accessPolicy');
+    domainName = registerOutput<String>('domainName');
+    region = registerOutput<String>('region');
   }
 
   /// Gets an existing [DomainServiceAccessPolicy] resource's state with the given [name] and [id].
@@ -329,13 +331,13 @@ class DomainServiceAccessPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudsearch/domainServiceAccessPolicy:DomainServiceAccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessPolicy = registerOutput<String>('accessPolicy');
-    this.domainName = registerOutput<String>('domainName');
-    this.region = registerOutput<String>('region');
+         'aws:cloudsearch/domainServiceAccessPolicy:DomainServiceAccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessPolicy = registerOutput<String>('accessPolicy');
+    domainName = registerOutput<String>('domainName');
+    region = registerOutput<String>('region');
   }
 }

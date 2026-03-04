@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountArgs {
   /// The minimum supported TLS version for this storage account.
   final pulumi.Input<String>? minTlsVersion;
+
   /// Specifies the name of the Storage Account
   final pulumi.Input<String> name;
+
   /// Specifies the name of the resource group the Storage Account is located in.
   final pulumi.Input<String>? resourceGroupName;
 
@@ -34,10 +36,17 @@ class GetAccountArgs {
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
-      minTlsVersion: map['minTlsVersion'] == null ? null : (map['minTlsVersion']! as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      minTlsVersion: (() {
+        final guardedValue = map['minTlsVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

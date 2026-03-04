@@ -39,12 +39,15 @@ class GetEntityArgs {
 
   factory GetEntityArgs.fromMap(Map<String, dynamic> map) {
     return GetEntityArgs(
-      connectionId: (map['connectionId'] as String).input(),
-      entityId: (map['entityId'] as String).input(),
-      entityTypeId: (map['entityTypeId'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      connectionId: pulumi.Input.fromValue(map['connectionId'] as String),
+      entityId: pulumi.Input.fromValue(map['entityId'] as String),
+      entityTypeId: pulumi.Input.fromValue(map['entityTypeId'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

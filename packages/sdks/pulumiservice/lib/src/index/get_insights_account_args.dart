@@ -27,9 +27,10 @@ class GetInsightsAccountArgs {
 
   factory GetInsightsAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetInsightsAccountArgs(
-      accountName: (map['accountName'] as String).input(),
-      organizationName: (map['organizationName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      organizationName: pulumi.Input.fromValue(
+        map['organizationName'] as String,
+      ),
     );
   }
 }
-

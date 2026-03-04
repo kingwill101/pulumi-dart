@@ -10,20 +10,27 @@ class CapacityReservationProfile {
 
   /// Creates a new [CapacityReservationProfile].
   /// [capacityReservationGroup] Specifies the capacity reservation group resource id that should be used for allocating the virtual machine or scaleset vm instances provided enough capacity has been reserved. Please refer to https://aka.ms/CapacityReservation for more details.
-  CapacityReservationProfile({
-    this.capacityReservationGroup,
-  });
+  CapacityReservationProfile({this.capacityReservationGroup});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capacityReservationGroup': ?pulumi.Input.mapOptionalInputValue<SubResource, Map<String, dynamic>>(capacityReservationGroup, (value) => value.toMap()),
+      'capacityReservationGroup':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubResource,
+            Map<String, dynamic>
+          >(capacityReservationGroup, (value) => value.toMap()),
     };
   }
 
   factory CapacityReservationProfile.fromMap(Map<String, dynamic> map) {
     return CapacityReservationProfile(
-      capacityReservationGroup: map['capacityReservationGroup'] == null ? null : (SubResource.fromMap((map['capacityReservationGroup']! as Map).cast<String, dynamic>())).input(),
+      capacityReservationGroup: (() {
+        final guardedValue = map['capacityReservationGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SubResource.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

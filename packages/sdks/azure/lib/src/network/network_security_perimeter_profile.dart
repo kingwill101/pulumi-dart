@@ -175,7 +175,7 @@ import 'network_security_perimeter_profile_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -190,6 +190,7 @@ import 'network_security_perimeter_profile_state.dart';
 class NetworkSecurityPerimeterProfile extends pulumi.CustomResource {
   /// The name which should be used for this Network Security Perimeter Profile. Changing this forces a new Network Security Perimeter Profile to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Network Security Perimeter within this Profile is created. Changing this forces a new Network Security Perimeter Profile to be created.
   late final pulumi.Output<String> networkSecurityPerimeterId;
 
@@ -202,13 +203,15 @@ class NetworkSecurityPerimeterProfile extends pulumi.CustomResource {
     NetworkSecurityPerimeterProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkSecurityPerimeterProfile:NetworkSecurityPerimeterProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:network/networkSecurityPerimeterProfile:NetworkSecurityPerimeterProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.networkSecurityPerimeterId = registerOutput<String>('networkSecurityPerimeterId');
+    networkSecurityPerimeterId = registerOutput<String>(
+      'networkSecurityPerimeterId',
+    );
   }
 
   /// Gets an existing [NetworkSecurityPerimeterProfile] resource's state with the given [name] and [id].
@@ -229,12 +232,14 @@ class NetworkSecurityPerimeterProfile extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/networkSecurityPerimeterProfile:NetworkSecurityPerimeterProfile',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:network/networkSecurityPerimeterProfile:NetworkSecurityPerimeterProfile',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.networkSecurityPerimeterId = registerOutput<String>('networkSecurityPerimeterId');
+    networkSecurityPerimeterId = registerOutput<String>(
+      'networkSecurityPerimeterId',
+    );
   }
 }

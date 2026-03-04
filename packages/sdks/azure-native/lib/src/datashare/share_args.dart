@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShareArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
+
   /// Share description.
   final pulumi.Input<String>? description;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// Share kind.
   final pulumi.Input<String>? shareKind;
+
   /// The name of the share.
   final pulumi.Input<String>? shareName;
+
   /// Share terms.
   final pulumi.Input<String>? terms;
 
@@ -49,13 +54,30 @@ class ShareArgs {
 
   factory ShareArgs.fromMap(Map<String, dynamic> map) {
     return ShareArgs(
-      accountName: (map['accountName'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      shareKind: map['shareKind'] == null ? null : (map['shareKind']! as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
-      terms: map['terms'] == null ? null : (map['terms']! as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      shareKind: (() {
+        final guardedValue = map['shareKind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shareName: (() {
+        final guardedValue = map['shareName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      terms: (() {
+        final guardedValue = map['terms'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

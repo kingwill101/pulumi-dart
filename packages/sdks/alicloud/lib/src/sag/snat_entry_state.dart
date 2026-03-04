@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnatEntryState {
   /// The destination CIDR block.
   final pulumi.Input<String>? cidrBlock;
+
   /// The ID of the SAG instance.
   final pulumi.Input<String>? sagId;
+
   /// The public IP address.
   final pulumi.Input<String>? snatIp;
 
@@ -15,11 +17,7 @@ class SnatEntryState {
   /// [cidrBlock] The destination CIDR block.
   /// [sagId] The ID of the SAG instance.
   /// [snatIp] The public IP address.
-  SnatEntryState({
-    this.cidrBlock,
-    this.sagId,
-    this.snatIp,
-  });
+  SnatEntryState({this.cidrBlock, this.sagId, this.snatIp});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,21 @@ class SnatEntryState {
 
   factory SnatEntryState.fromMap(Map<String, dynamic> map) {
     return SnatEntryState(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock']! as String).input(),
-      sagId: map['sagId'] == null ? null : (map['sagId']! as String).input(),
-      snatIp: map['snatIp'] == null ? null : (map['snatIp']! as String).input(),
+      cidrBlock: (() {
+        final guardedValue = map['cidrBlock'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sagId: (() {
+        final guardedValue = map['sagId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      snatIp: (() {
+        final guardedValue = map['snatIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,17 +5,19 @@ import 'hostname_type_enum_value_response.dart';
 
 /// Definition of PrivateDnsNameOptionsResponse
 class PrivateDnsNameOptionsResponseResponse {
-  /// <p>Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records.</p>
+  /// &lt;p&gt;Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records.&lt;/p&gt;
   final pulumi.Input<bool>? enableResourceNameDnsAAAARecord;
-  /// <p>Indicates whether to respond to DNS queries for instance hostnames with DNS A records.</p>
+
+  /// &lt;p&gt;Indicates whether to respond to DNS queries for instance hostnames with DNS A records.&lt;/p&gt;
   final pulumi.Input<bool>? enableResourceNameDnsARecord;
-  /// <p>The type of hostname to assign to an instance.</p>
+
+  /// &lt;p&gt;The type of hostname to assign to an instance.&lt;/p&gt;
   final pulumi.Input<HostnameTypeEnumValueResponse>? hostnameType;
 
   /// Creates a new [PrivateDnsNameOptionsResponseResponse].
-  /// [enableResourceNameDnsAAAARecord] <p>Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records.</p>
-  /// [enableResourceNameDnsARecord] <p>Indicates whether to respond to DNS queries for instance hostnames with DNS A records.</p>
-  /// [hostnameType] <p>The type of hostname to assign to an instance.</p>
+  /// [enableResourceNameDnsAAAARecord] &lt;p&gt;Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records.&lt;/p&gt;
+  /// [enableResourceNameDnsARecord] &lt;p&gt;Indicates whether to respond to DNS queries for instance hostnames with DNS A records.&lt;/p&gt;
+  /// [hostnameType] &lt;p&gt;The type of hostname to assign to an instance.&lt;/p&gt;
   PrivateDnsNameOptionsResponseResponse({
     this.enableResourceNameDnsAAAARecord,
     this.enableResourceNameDnsARecord,
@@ -26,16 +28,37 @@ class PrivateDnsNameOptionsResponseResponse {
     return <String, dynamic>{
       'enableResourceNameDnsAAAARecord': ?enableResourceNameDnsAAAARecord,
       'enableResourceNameDnsARecord': ?enableResourceNameDnsARecord,
-      'hostnameType': ?pulumi.Input.mapOptionalInputValue<HostnameTypeEnumValueResponse, Map<String, dynamic>>(hostnameType, (value) => value.toMap()),
+      'hostnameType':
+          ?pulumi.Input.mapOptionalInputValue<
+            HostnameTypeEnumValueResponse,
+            Map<String, dynamic>
+          >(hostnameType, (value) => value.toMap()),
     };
   }
 
-  factory PrivateDnsNameOptionsResponseResponse.fromMap(Map<String, dynamic> map) {
+  factory PrivateDnsNameOptionsResponseResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrivateDnsNameOptionsResponseResponse(
-      enableResourceNameDnsAAAARecord: map['enableResourceNameDnsAAAARecord'] == null ? null : (map['enableResourceNameDnsAAAARecord']! as bool).input(),
-      enableResourceNameDnsARecord: map['enableResourceNameDnsARecord'] == null ? null : (map['enableResourceNameDnsARecord']! as bool).input(),
-      hostnameType: map['hostnameType'] == null ? null : (HostnameTypeEnumValueResponse.fromMap((map['hostnameType']! as Map).cast<String, dynamic>())).input(),
+      enableResourceNameDnsAAAARecord: (() {
+        final guardedValue = map['enableResourceNameDnsAAAARecord'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      enableResourceNameDnsARecord: (() {
+        final guardedValue = map['enableResourceNameDnsARecord'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      hostnameType: (() {
+        final guardedValue = map['hostnameType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          HostnameTypeEnumValueResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

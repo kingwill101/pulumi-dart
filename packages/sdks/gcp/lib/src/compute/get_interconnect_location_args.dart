@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInterconnectLocationArgs {
   /// The name of the interconnect location.
   final pulumi.Input<String> name;
+
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -16,23 +17,20 @@ class GetInterconnectLocationArgs {
   /// Creates a new [GetInterconnectLocationArgs].
   /// [name] The name of the interconnect location.
   /// [project] The project in which the resource belongs. If it
-  GetInterconnectLocationArgs({
-    required this.name,
-    this.project,
-  });
+  GetInterconnectLocationArgs({required this.name, this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'project': ?project,
-    };
+    return <String, dynamic>{'name': name, 'project': ?project};
   }
 
   factory GetInterconnectLocationArgs.fromMap(Map<String, dynamic> map) {
     return GetInterconnectLocationArgs(
-      name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

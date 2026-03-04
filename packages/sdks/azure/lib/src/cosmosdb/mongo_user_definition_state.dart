@@ -6,12 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MongoUserDefinitionState {
   /// The resource ID of the Mongo DB. Changing this forces a new resource to be created.
   final pulumi.Input<String>? cosmosMongoDatabaseId;
+
   /// A list of Mongo Roles that are inherited to the Mongo User Definition.
   ///
-  /// > **Note:** The role that needs to be inherited should exist in the Mongo DB of `cosmos_mongo_database_id`.
+  /// &gt; **Note:** The role that needs to be inherited should exist in the Mongo DB of `cosmos_mongo_database_id`.
   final pulumi.Input<List<String>>? inheritedRoleNames;
+
   /// The password for the Mongo User Definition.
   final pulumi.Input<String>? password;
+
   /// The username for the Mongo User Definition. Changing this forces a new resource to be created.
   final pulumi.Input<String>? username;
 
@@ -38,11 +41,26 @@ class MongoUserDefinitionState {
 
   factory MongoUserDefinitionState.fromMap(Map<String, dynamic> map) {
     return MongoUserDefinitionState(
-      cosmosMongoDatabaseId: map['cosmosMongoDatabaseId'] == null ? null : (map['cosmosMongoDatabaseId']! as String).input(),
-      inheritedRoleNames: map['inheritedRoleNames'] == null ? null : ((map['inheritedRoleNames']! as List).cast<String>()).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      cosmosMongoDatabaseId: (() {
+        final guardedValue = map['cosmosMongoDatabaseId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inheritedRoleNames: (() {
+        final guardedValue = map['inheritedRoleNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

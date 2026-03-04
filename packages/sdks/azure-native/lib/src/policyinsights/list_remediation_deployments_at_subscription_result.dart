@@ -7,6 +7,7 @@ import 'remediation_deployment_response.dart';
 class ListRemediationDeploymentsAtSubscriptionResult {
   /// The URL to get the next set of results.
   final String nextLink;
+
   /// Array of deployments for the remediation.
   final List<RemediationDeploymentResponse> value;
 
@@ -21,15 +22,25 @@ class ListRemediationDeploymentsAtSubscriptionResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': nextLink,
-      'value': pulumi.Input.encodeList<RemediationDeploymentResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value':
+          pulumi.Input.encodeList<
+            RemediationDeploymentResponse,
+            Map<String, dynamic>
+          >(value, (value) => value.toMap()),
     };
   }
 
-  factory ListRemediationDeploymentsAtSubscriptionResult.fromMap(Map<String, dynamic> map) {
+  factory ListRemediationDeploymentsAtSubscriptionResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListRemediationDeploymentsAtSubscriptionResult(
       nextLink: map['nextLink'] as String,
-      value: pulumi.Input.decodeList<RemediationDeploymentResponse>(map['value'], (value) => RemediationDeploymentResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: pulumi.Input.decodeList<RemediationDeploymentResponse>(
+        map['value']!,
+        (value) => RemediationDeploymentResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

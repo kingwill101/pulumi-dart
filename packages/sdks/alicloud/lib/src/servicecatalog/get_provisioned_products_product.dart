@@ -8,42 +8,60 @@ class GetProvisionedProductsProduct {
   /// The creation time of the product instance
   final pulumi.Input<String> createTime;
   final pulumi.Input<String> id;
+
   /// The ID of the last instance operation task
   final pulumi.Input<String> lastProvisioningTaskId;
+
   /// The ID of the last successful instance operation task
   final pulumi.Input<String> lastSuccessfulProvisioningTaskId;
+
   /// The ID of the last task
   final pulumi.Input<String> lastTaskId;
   final pulumi.Input<List<GetProvisionedProductsProductOutput>> outputs;
+
   /// The RAM entity ID of the owner
   final pulumi.Input<String> ownerPrincipalId;
+
   /// The RAM entity type of the owner
   final pulumi.Input<String> ownerPrincipalType;
   final pulumi.Input<List<GetProvisionedProductsProductParameter>> parameters;
-  /// Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+
+  /// Product mix ID.&gt; When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
   final pulumi.Input<String> portfolioId;
+
   /// Product ID.
   final pulumi.Input<String> productId;
+
   /// The name of the product
   final pulumi.Input<String> productName;
+
   /// Product version ID.
   final pulumi.Input<String> productVersionId;
+
   /// The name of the product version
   final pulumi.Input<String> productVersionName;
+
   /// The ARN of the product instance
   final pulumi.Input<String> provisionedProductArn;
+
   /// The ID of the instance.
   final pulumi.Input<String> provisionedProductId;
+
   /// The name of the instance.The length is 1~128 characters.
   final pulumi.Input<String> provisionedProductName;
+
   /// Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
   final pulumi.Input<String> provisionedProductType;
+
   /// The ID of the ROS stack
   final pulumi.Input<String> stackId;
+
   /// The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
   final pulumi.Input<String> stackRegionId;
+
   /// Instance status
   final pulumi.Input<String> status;
+
   /// The status message of the product instance
   final pulumi.Input<String> statusMessage;
   final pulumi.Input<Map<String, String>>? tags;
@@ -58,7 +76,7 @@ class GetProvisionedProductsProduct {
   /// [ownerPrincipalId] The RAM entity ID of the owner
   /// [ownerPrincipalType] The RAM entity type of the owner
   /// [parameters] Required.
-  /// [portfolioId] Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
+  /// [portfolioId] Product mix ID.&gt; When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
   /// [productId] Product ID.
   /// [productName] The name of the product
   /// [productVersionId] Product version ID.
@@ -105,10 +123,32 @@ class GetProvisionedProductsProduct {
       'lastProvisioningTaskId': lastProvisioningTaskId,
       'lastSuccessfulProvisioningTaskId': lastSuccessfulProvisioningTaskId,
       'lastTaskId': lastTaskId,
-      'outputs': pulumi.Input.mapInputValue<List<GetProvisionedProductsProductOutput>, List<Map<String, dynamic>>>(outputs, (value) => pulumi.Input.encodeList<GetProvisionedProductsProductOutput, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'outputs':
+          pulumi.Input.mapInputValue<
+            List<GetProvisionedProductsProductOutput>,
+            List<Map<String, dynamic>>
+          >(
+            outputs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetProvisionedProductsProductOutput,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'ownerPrincipalId': ownerPrincipalId,
       'ownerPrincipalType': ownerPrincipalType,
-      'parameters': pulumi.Input.mapInputValue<List<GetProvisionedProductsProductParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<GetProvisionedProductsProductParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'parameters':
+          pulumi.Input.mapInputValue<
+            List<GetProvisionedProductsProductParameter>,
+            List<Map<String, dynamic>>
+          >(
+            parameters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetProvisionedProductsProductParameter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'portfolioId': portfolioId,
       'productId': productId,
       'productName': productName,
@@ -128,30 +168,69 @@ class GetProvisionedProductsProduct {
 
   factory GetProvisionedProductsProduct.fromMap(Map<String, dynamic> map) {
     return GetProvisionedProductsProduct(
-      createTime: (map['createTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      lastProvisioningTaskId: (map['lastProvisioningTaskId'] as String).input(),
-      lastSuccessfulProvisioningTaskId: (map['lastSuccessfulProvisioningTaskId'] as String).input(),
-      lastTaskId: (map['lastTaskId'] as String).input(),
-      outputs: (pulumi.Input.decodeList<GetProvisionedProductsProductOutput>(map['outputs'], (value) => GetProvisionedProductsProductOutput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ownerPrincipalId: (map['ownerPrincipalId'] as String).input(),
-      ownerPrincipalType: (map['ownerPrincipalType'] as String).input(),
-      parameters: (pulumi.Input.decodeList<GetProvisionedProductsProductParameter>(map['parameters'], (value) => GetProvisionedProductsProductParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      portfolioId: (map['portfolioId'] as String).input(),
-      productId: (map['productId'] as String).input(),
-      productName: (map['productName'] as String).input(),
-      productVersionId: (map['productVersionId'] as String).input(),
-      productVersionName: (map['productVersionName'] as String).input(),
-      provisionedProductArn: (map['provisionedProductArn'] as String).input(),
-      provisionedProductId: (map['provisionedProductId'] as String).input(),
-      provisionedProductName: (map['provisionedProductName'] as String).input(),
-      provisionedProductType: (map['provisionedProductType'] as String).input(),
-      stackId: (map['stackId'] as String).input(),
-      stackRegionId: (map['stackRegionId'] as String).input(),
-      status: (map['status'] as String).input(),
-      statusMessage: (map['statusMessage'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      lastProvisioningTaskId: pulumi.Input.fromValue(
+        map['lastProvisioningTaskId'] as String,
+      ),
+      lastSuccessfulProvisioningTaskId: pulumi.Input.fromValue(
+        map['lastSuccessfulProvisioningTaskId'] as String,
+      ),
+      lastTaskId: pulumi.Input.fromValue(map['lastTaskId'] as String),
+      outputs: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetProvisionedProductsProductOutput>(
+          map['outputs']!,
+          (value) => GetProvisionedProductsProductOutput.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      ownerPrincipalId: pulumi.Input.fromValue(
+        map['ownerPrincipalId'] as String,
+      ),
+      ownerPrincipalType: pulumi.Input.fromValue(
+        map['ownerPrincipalType'] as String,
+      ),
+      parameters: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetProvisionedProductsProductParameter>(
+          map['parameters']!,
+          (value) => GetProvisionedProductsProductParameter.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      portfolioId: pulumi.Input.fromValue(map['portfolioId'] as String),
+      productId: pulumi.Input.fromValue(map['productId'] as String),
+      productName: pulumi.Input.fromValue(map['productName'] as String),
+      productVersionId: pulumi.Input.fromValue(
+        map['productVersionId'] as String,
+      ),
+      productVersionName: pulumi.Input.fromValue(
+        map['productVersionName'] as String,
+      ),
+      provisionedProductArn: pulumi.Input.fromValue(
+        map['provisionedProductArn'] as String,
+      ),
+      provisionedProductId: pulumi.Input.fromValue(
+        map['provisionedProductId'] as String,
+      ),
+      provisionedProductName: pulumi.Input.fromValue(
+        map['provisionedProductName'] as String,
+      ),
+      provisionedProductType: pulumi.Input.fromValue(
+        map['provisionedProductType'] as String,
+      ),
+      stackId: pulumi.Input.fromValue(map['stackId'] as String),
+      stackRegionId: pulumi.Input.fromValue(map['stackRegionId'] as String),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      statusMessage: pulumi.Input.fromValue(map['statusMessage'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

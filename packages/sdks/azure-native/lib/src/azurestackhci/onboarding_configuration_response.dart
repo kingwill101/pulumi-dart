@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OnboardingConfigurationResponse {
   /// Azure Arc virtual machine ID.
   final pulumi.Input<String>? arcVirtualMachineId;
+
   /// Location of the resource.
   final pulumi.Input<String>? location;
+
   /// Resource ID.
   final pulumi.Input<String>? resourceId;
+
   /// Tenant ID of the resource.
   final pulumi.Input<String>? tenantId;
+
   /// Type of the onboarding resource to support polymorphic resource.
   final pulumi.Input<String>? type;
 
@@ -41,12 +45,31 @@ class OnboardingConfigurationResponse {
 
   factory OnboardingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return OnboardingConfigurationResponse(
-      arcVirtualMachineId: map['arcVirtualMachineId'] == null ? null : (map['arcVirtualMachineId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
+      arcVirtualMachineId: (() {
+        final guardedValue = map['arcVirtualMachineId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceId: (() {
+        final guardedValue = map['resourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

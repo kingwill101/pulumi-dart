@@ -1,5 +1,3 @@
-library module_deviceupdate;
-
 export 'deviceupdate/account.dart';
 export 'deviceupdate/account_args.dart';
 export 'deviceupdate/authentication_type.dart';

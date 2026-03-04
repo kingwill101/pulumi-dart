@@ -10,20 +10,28 @@ import 'application_plan.dart';
 class ApplicationArgs {
   /// The application definition ID to deploy.
   final pulumi.Input<String>? applicationDefinitionId;
+
   /// The kind of the managed application to deploy. Possible values are `MarketPlace` and `ServiceCatalog`. Changing this forces a new resource to be created.
   final pulumi.Input<String> kind;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name of the target resource group where all the resources deployed by the managed application will reside. Changing this forces a new resource to be created.
   final pulumi.Input<String> managedResourceGroupName;
+
   /// Specifies the name of the Managed Application. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The parameter values to pass to the Managed Application. This field is a JSON object that allows you to assign parameters to this Managed Application.
   final pulumi.Input<String>? parameterValues;
+
   /// One `plan` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ApplicationPlan>? plan;
+
   /// The name of the Resource Group where the Managed Application should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -57,7 +65,11 @@ class ApplicationArgs {
       'managedResourceGroupName': managedResourceGroupName,
       'name': ?name,
       'parameterValues': ?parameterValues,
-      'plan': ?pulumi.Input.mapOptionalInputValue<ApplicationPlan, Map<String, dynamic>>(plan, (value) => value.toMap()),
+      'plan':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationPlan,
+            Map<String, dynamic>
+          >(plan, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -65,16 +77,49 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationDefinitionId: map['applicationDefinitionId'] == null ? null : (map['applicationDefinitionId']! as String).input(),
-      kind: (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      managedResourceGroupName: (map['managedResourceGroupName'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues']! as String).input(),
-      plan: map['plan'] == null ? null : (ApplicationPlan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      applicationDefinitionId: (() {
+        final guardedValue = map['applicationDefinitionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managedResourceGroupName: pulumi.Input.fromValue(
+        map['managedResourceGroupName'] as String,
+      ),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterValues: (() {
+        final guardedValue = map['parameterValues'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      plan: (() {
+        final guardedValue = map['plan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ApplicationPlan.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

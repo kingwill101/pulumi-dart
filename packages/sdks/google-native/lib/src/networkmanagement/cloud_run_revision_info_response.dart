@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CloudRunRevisionInfoResponse {
   /// Name of a Cloud Run revision.
   final pulumi.Input<String> displayName;
+
   /// Location in which this revision is deployed.
   final pulumi.Input<String> location;
+
   /// URI of Cloud Run service this revision belongs to.
   final pulumi.Input<String> serviceUri;
+
   /// URI of a Cloud Run revision.
   final pulumi.Input<String> uri;
 
@@ -36,11 +39,10 @@ class CloudRunRevisionInfoResponse {
 
   factory CloudRunRevisionInfoResponse.fromMap(Map<String, dynamic> map) {
     return CloudRunRevisionInfoResponse(
-      displayName: (map['displayName'] as String).input(),
-      location: (map['location'] as String).input(),
-      serviceUri: (map['serviceUri'] as String).input(),
-      uri: (map['uri'] as String).input(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      serviceUri: pulumi.Input.fromValue(map['serviceUri'] as String),
+      uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }
 }
-

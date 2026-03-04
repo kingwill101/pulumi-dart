@@ -6,14 +6,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FolderMembershipState {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
+
   /// Identifier for the folder.
   final pulumi.Input<String>? folderId;
+
   /// ID of the asset (the dashboard, analysis, or dataset).
   final pulumi.Input<String>? memberId;
+
   /// Type of the member. Valid values are `ANALYSIS`, `DASHBOARD`, and `DATASET`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? memberType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -43,12 +47,31 @@ class FolderMembershipState {
 
   factory FolderMembershipState.fromMap(Map<String, dynamic> map) {
     return FolderMembershipState(
-      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
-      folderId: map['folderId'] == null ? null : ((map['folderId'] as String).input()).input(),
-      memberId: map['memberId'] == null ? null : ((map['memberId'] as String).input()).input(),
-      memberType: map['memberType'] == null ? null : ((map['memberType'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      awsAccountId: (() {
+        final guardedValue = map['awsAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      folderId: (() {
+        final guardedValue = map['folderId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memberId: (() {
+        final guardedValue = map['memberId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      memberType: (() {
+        final guardedValue = map['memberType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

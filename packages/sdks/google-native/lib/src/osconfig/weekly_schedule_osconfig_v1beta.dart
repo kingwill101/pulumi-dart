@@ -10,20 +10,25 @@ class WeeklyScheduleOsconfigV1beta {
 
   /// Creates a new [WeeklyScheduleOsconfigV1beta].
   /// [dayOfWeek] Day of the week.
-  WeeklyScheduleOsconfigV1beta({
-    required this.dayOfWeek,
-  });
+  WeeklyScheduleOsconfigV1beta({required this.dayOfWeek});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dayOfWeek': pulumi.Input.mapInputValue<WeeklyScheduleDayOfWeekOsconfigV1beta, String>(dayOfWeek, (value) => value.value),
+      'dayOfWeek':
+          pulumi.Input.mapInputValue<
+            WeeklyScheduleDayOfWeekOsconfigV1beta,
+            String
+          >(dayOfWeek, (value) => value.wireValue),
     };
   }
 
   factory WeeklyScheduleOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return WeeklyScheduleOsconfigV1beta(
-      dayOfWeek: (WeeklyScheduleDayOfWeekOsconfigV1beta.fromValue(map['dayOfWeek'] as String)).input(),
+      dayOfWeek: pulumi.Input.fromValue(
+        WeeklyScheduleDayOfWeekOsconfigV1beta.fromValue(
+          map['dayOfWeek']! as String,
+        ),
+      ),
     );
   }
 }
-

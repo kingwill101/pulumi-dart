@@ -10,7 +10,8 @@ class RRSetRoutingPolicyDnsV1beta2 {
   final pulumi.Input<RRSetRoutingPolicyGeoPolicyDnsV1beta2>? geo;
   final pulumi.Input<RRSetRoutingPolicyGeoPolicyDnsV1beta2>? geoPolicy;
   final pulumi.Input<String>? kind;
-  final pulumi.Input<RRSetRoutingPolicyPrimaryBackupPolicyDnsV1beta2>? primaryBackup;
+  final pulumi.Input<RRSetRoutingPolicyPrimaryBackupPolicyDnsV1beta2>?
+  primaryBackup;
   final pulumi.Input<RRSetRoutingPolicyWrrPolicyDnsV1beta2>? wrr;
   final pulumi.Input<RRSetRoutingPolicyWrrPolicyDnsV1beta2>? wrrPolicy;
 
@@ -32,24 +33,87 @@ class RRSetRoutingPolicyDnsV1beta2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'geo': ?pulumi.Input.mapOptionalInputValue<RRSetRoutingPolicyGeoPolicyDnsV1beta2, Map<String, dynamic>>(geo, (value) => value.toMap()),
-      'geoPolicy': ?pulumi.Input.mapOptionalInputValue<RRSetRoutingPolicyGeoPolicyDnsV1beta2, Map<String, dynamic>>(geoPolicy, (value) => value.toMap()),
+      'geo':
+          ?pulumi.Input.mapOptionalInputValue<
+            RRSetRoutingPolicyGeoPolicyDnsV1beta2,
+            Map<String, dynamic>
+          >(geo, (value) => value.toMap()),
+      'geoPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            RRSetRoutingPolicyGeoPolicyDnsV1beta2,
+            Map<String, dynamic>
+          >(geoPolicy, (value) => value.toMap()),
       'kind': ?kind,
-      'primaryBackup': ?pulumi.Input.mapOptionalInputValue<RRSetRoutingPolicyPrimaryBackupPolicyDnsV1beta2, Map<String, dynamic>>(primaryBackup, (value) => value.toMap()),
-      'wrr': ?pulumi.Input.mapOptionalInputValue<RRSetRoutingPolicyWrrPolicyDnsV1beta2, Map<String, dynamic>>(wrr, (value) => value.toMap()),
-      'wrrPolicy': ?pulumi.Input.mapOptionalInputValue<RRSetRoutingPolicyWrrPolicyDnsV1beta2, Map<String, dynamic>>(wrrPolicy, (value) => value.toMap()),
+      'primaryBackup':
+          ?pulumi.Input.mapOptionalInputValue<
+            RRSetRoutingPolicyPrimaryBackupPolicyDnsV1beta2,
+            Map<String, dynamic>
+          >(primaryBackup, (value) => value.toMap()),
+      'wrr':
+          ?pulumi.Input.mapOptionalInputValue<
+            RRSetRoutingPolicyWrrPolicyDnsV1beta2,
+            Map<String, dynamic>
+          >(wrr, (value) => value.toMap()),
+      'wrrPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            RRSetRoutingPolicyWrrPolicyDnsV1beta2,
+            Map<String, dynamic>
+          >(wrrPolicy, (value) => value.toMap()),
     };
   }
 
   factory RRSetRoutingPolicyDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyDnsV1beta2(
-      geo: map['geo'] == null ? null : (RRSetRoutingPolicyGeoPolicyDnsV1beta2.fromMap((map['geo']! as Map).cast<String, dynamic>())).input(),
-      geoPolicy: map['geoPolicy'] == null ? null : (RRSetRoutingPolicyGeoPolicyDnsV1beta2.fromMap((map['geoPolicy']! as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      primaryBackup: map['primaryBackup'] == null ? null : (RRSetRoutingPolicyPrimaryBackupPolicyDnsV1beta2.fromMap((map['primaryBackup']! as Map).cast<String, dynamic>())).input(),
-      wrr: map['wrr'] == null ? null : (RRSetRoutingPolicyWrrPolicyDnsV1beta2.fromMap((map['wrr']! as Map).cast<String, dynamic>())).input(),
-      wrrPolicy: map['wrrPolicy'] == null ? null : (RRSetRoutingPolicyWrrPolicyDnsV1beta2.fromMap((map['wrrPolicy']! as Map).cast<String, dynamic>())).input(),
+      geo: (() {
+        final guardedValue = map['geo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RRSetRoutingPolicyGeoPolicyDnsV1beta2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      geoPolicy: (() {
+        final guardedValue = map['geoPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RRSetRoutingPolicyGeoPolicyDnsV1beta2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      primaryBackup: (() {
+        final guardedValue = map['primaryBackup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RRSetRoutingPolicyPrimaryBackupPolicyDnsV1beta2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      wrr: (() {
+        final guardedValue = map['wrr'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RRSetRoutingPolicyWrrPolicyDnsV1beta2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      wrrPolicy: (() {
+        final guardedValue = map['wrrPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          RRSetRoutingPolicyWrrPolicyDnsV1beta2.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

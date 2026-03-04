@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegexPatternSetArgs {
   /// Name of the WAFv2 Regex Pattern Set.
   final pulumi.Input<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
   final pulumi.Input<String> scope;
 
@@ -25,19 +27,18 @@ class GetRegexPatternSetArgs {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'region': ?region,
-      'scope': scope,
-    };
+    return <String, dynamic>{'name': name, 'region': ?region, 'scope': scope};
   }
 
   factory GetRegexPatternSetArgs.fromMap(Map<String, dynamic> map) {
     return GetRegexPatternSetArgs(
-      name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      scope: (map['scope'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      scope: pulumi.Input.fromValue(map['scope'] as String),
     );
   }
 }
-

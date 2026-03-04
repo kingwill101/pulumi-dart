@@ -8,7 +8,7 @@ import 'streaming_data_service_state.dart';
 ///
 /// For information about AnalyticDB for PostgreSQL (GPDB) Streaming Data Service and how to use it, see [What is Streaming Data Service](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingdataservice).
 ///
-/// > **NOTE:** Available since v1.227.0.
+/// &gt; **NOTE:** Available since v1.227.0.
 ///
 /// ## Example Usage
 ///
@@ -361,16 +361,22 @@ import 'streaming_data_service_state.dart';
 class StreamingDataService extends pulumi.CustomResource {
   /// Create time
   late final pulumi.Output<String> createTime;
+
   /// The ID of the associated instance.
   late final pulumi.Output<String> dbInstanceId;
+
   /// The description of the service.
   late final pulumi.Output<String?> serviceDescription;
+
   /// Service ID
   late final pulumi.Output<String> serviceId;
+
   /// Service Name
   late final pulumi.Output<String> serviceName;
+
   /// Resource Specifications
   late final pulumi.Output<String> serviceSpec;
+
   /// The status of the resource
   late final pulumi.Output<String> status;
 
@@ -383,18 +389,18 @@ class StreamingDataService extends pulumi.CustomResource {
     StreamingDataServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/streamingDataService:StreamingDataService',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.serviceDescription = registerOutput<String?>('serviceDescription');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.serviceSpec = registerOutput<String>('serviceSpec');
-    this.status = registerOutput<String>('status');
+         'alicloud:gpdb/streamingDataService:StreamingDataService',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    serviceDescription = registerOutput<String?>('serviceDescription');
+    serviceId = registerOutput<String>('serviceId');
+    serviceName = registerOutput<String>('serviceName');
+    serviceSpec = registerOutput<String>('serviceSpec');
+    status = registerOutput<String>('status');
   }
 
   /// Gets an existing [StreamingDataService] resource's state with the given [name] and [id].
@@ -415,17 +421,17 @@ class StreamingDataService extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:gpdb/streamingDataService:StreamingDataService',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
-    this.dbInstanceId = registerOutput<String>('dbInstanceId');
-    this.serviceDescription = registerOutput<String?>('serviceDescription');
-    this.serviceId = registerOutput<String>('serviceId');
-    this.serviceName = registerOutput<String>('serviceName');
-    this.serviceSpec = registerOutput<String>('serviceSpec');
-    this.status = registerOutput<String>('status');
+         'alicloud:gpdb/streamingDataService:StreamingDataService',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
+    dbInstanceId = registerOutput<String>('dbInstanceId');
+    serviceDescription = registerOutput<String?>('serviceDescription');
+    serviceId = registerOutput<String>('serviceId');
+    serviceName = registerOutput<String>('serviceName');
+    serviceSpec = registerOutput<String>('serviceSpec');
+    status = registerOutput<String>('status');
   }
 }

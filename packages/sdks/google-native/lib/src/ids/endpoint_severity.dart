@@ -7,16 +7,15 @@ enum EndpointSeverity {
   high("HIGH"),
   critical("CRITICAL");
 
-  const EndpointSeverity(this.value);
-  final String value;
+  const EndpointSeverity(this.wireValue);
+  final String wireValue;
 
   static EndpointSeverity fromValue(String value) {
     for (final item in EndpointSeverity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EndpointSeverity value: $value');
   }
 }
-

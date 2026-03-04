@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDropletsSort {
   /// The sort direction. This may be either `asc` or `desc`.
   final pulumi.Input<String>? direction;
+
   /// Sort the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
   /// `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
   /// `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
@@ -14,23 +15,20 @@ class GetDropletsSort {
   /// Creates a new [GetDropletsSort].
   /// [direction] The sort direction. This may be either `asc` or `desc`.
   /// [key] Sort the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-  GetDropletsSort({
-    this.direction,
-    required this.key,
-  });
+  GetDropletsSort({this.direction, required this.key});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'direction': ?direction,
-      'key': key,
-    };
+    return <String, dynamic>{'direction': ?direction, 'key': key};
   }
 
   factory GetDropletsSort.fromMap(Map<String, dynamic> map) {
     return GetDropletsSort(
-      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
-      key: (map['key'] as String).input(),
+      direction: (() {
+        final guardedValue = map['direction'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: pulumi.Input.fromValue(map['key'] as String),
     );
   }
 }
-

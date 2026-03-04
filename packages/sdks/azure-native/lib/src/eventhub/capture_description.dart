@@ -8,14 +8,19 @@ import 'encoding_capture_description.dart';
 class CaptureDescription {
   /// Properties of Destination where capture will be stored. (Storage Account, Blob Names)
   final pulumi.Input<Destination>? destination;
+
   /// A value that indicates whether capture description is enabled.
   final pulumi.Input<bool>? enabled;
+
   /// Enumerates the possible values for the encoding format of capture description. Note: 'AvroDeflate' will be deprecated in New API Version
   final pulumi.Input<EncodingCaptureDescription>? encoding;
+
   /// The time window allows you to set the frequency with which the capture to Azure Blobs will happen, value should between 60 to 900 seconds
   final pulumi.Input<int>? intervalInSeconds;
+
   /// The size window defines the amount of data built up in your Event Hub before an capture operation, value should be between 10485760 to 524288000 bytes
   final pulumi.Input<int>? sizeLimitInBytes;
+
   /// A value that indicates whether to Skip Empty Archives
   final pulumi.Input<bool>? skipEmptyArchives;
 
@@ -37,9 +42,17 @@ class CaptureDescription {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destination': ?pulumi.Input.mapOptionalInputValue<Destination, Map<String, dynamic>>(destination, (value) => value.toMap()),
+      'destination':
+          ?pulumi.Input.mapOptionalInputValue<
+            Destination,
+            Map<String, dynamic>
+          >(destination, (value) => value.toMap()),
       'enabled': ?enabled,
-      'encoding': ?pulumi.Input.mapOptionalInputValue<EncodingCaptureDescription, String>(encoding, (value) => value.value),
+      'encoding':
+          ?pulumi.Input.mapOptionalInputValue<
+            EncodingCaptureDescription,
+            String
+          >(encoding, (value) => value.wireValue),
       'intervalInSeconds': ?intervalInSeconds,
       'sizeLimitInBytes': ?sizeLimitInBytes,
       'skipEmptyArchives': ?skipEmptyArchives,
@@ -48,13 +61,40 @@ class CaptureDescription {
 
   factory CaptureDescription.fromMap(Map<String, dynamic> map) {
     return CaptureDescription(
-      destination: map['destination'] == null ? null : (Destination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
-      encoding: map['encoding'] == null ? null : (EncodingCaptureDescription.fromValue(map['encoding']! as String)).input(),
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds']! as int).input(),
-      sizeLimitInBytes: map['sizeLimitInBytes'] == null ? null : (map['sizeLimitInBytes']! as int).input(),
-      skipEmptyArchives: map['skipEmptyArchives'] == null ? null : (map['skipEmptyArchives']! as bool).input(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          Destination.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      encoding: (() {
+        final guardedValue = map['encoding'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          EncodingCaptureDescription.fromValue(guardedValue as String),
+        );
+      })(),
+      intervalInSeconds: (() {
+        final guardedValue = map['intervalInSeconds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      sizeLimitInBytes: (() {
+        final guardedValue = map['sizeLimitInBytes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      skipEmptyArchives: (() {
+        final guardedValue = map['skipEmptyArchives'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

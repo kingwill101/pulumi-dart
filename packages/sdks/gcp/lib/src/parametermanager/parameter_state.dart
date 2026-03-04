@@ -7,15 +7,19 @@ import 'parameter_policy_member.dart';
 class ParameterState {
   /// The time at which the Parameter was created.
   final pulumi.Input<String>? createTime;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+
   /// The format type of the parameter resource.
   /// Default value is `UNFORMATTED`.
   /// Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
   final pulumi.Input<String>? format;
+
   /// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format
   /// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
   final pulumi.Input<String>? kmsKey;
+
   /// The labels assigned to this Parameter.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
   /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -28,20 +32,26 @@ class ParameterState {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The resource name of the Parameter. Format:
   /// `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
   final pulumi.Input<String>? name;
+
   /// This must be unique within the project.
   final pulumi.Input<String>? parameterId;
+
   /// Policy member strings of a Google Cloud resource.
   /// Structure is documented below.
   final pulumi.Input<List<ParameterPolicyMember>>? policyMembers;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
+
   /// The time at which the Parameter was updated.
   final pulumi.Input<String>? updateTime;
 
@@ -80,7 +90,18 @@ class ParameterState {
       'labels': ?labels,
       'name': ?name,
       'parameterId': ?parameterId,
-      'policyMembers': ?pulumi.Input.mapOptionalInputValue<List<ParameterPolicyMember>, List<Map<String, dynamic>>>(policyMembers, (value) => pulumi.Input.encodeList<ParameterPolicyMember, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'policyMembers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ParameterPolicyMember>,
+            List<Map<String, dynamic>>
+          >(
+            policyMembers,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ParameterPolicyMember,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
       'updateTime': ?updateTime,
@@ -89,18 +110,74 @@ class ParameterState {
 
   factory ParameterState.fromMap(Map<String, dynamic> map) {
     return ParameterState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
-      format: map['format'] == null ? null : (map['format']! as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parameterId: map['parameterId'] == null ? null : (map['parameterId']! as String).input(),
-      policyMembers: map['policyMembers'] == null ? null : (pulumi.Input.decodeList<ParameterPolicyMember>(map['policyMembers']!, (value) => ParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      effectiveLabels: (() {
+        final guardedValue = map['effectiveLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      format: (() {
+        final guardedValue = map['format'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kmsKey: (() {
+        final guardedValue = map['kmsKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameterId: (() {
+        final guardedValue = map['parameterId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyMembers: (() {
+        final guardedValue = map['policyMembers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ParameterPolicyMember>(
+            guardedValue,
+            (value) => ParameterPolicyMember.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pulumiLabels: (() {
+        final guardedValue = map['pulumiLabels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      updateTime: (() {
+        final guardedValue = map['updateTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

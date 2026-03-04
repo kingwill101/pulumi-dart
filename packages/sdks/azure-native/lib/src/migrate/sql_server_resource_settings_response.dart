@@ -7,8 +7,10 @@ class SqlServerResourceSettingsResponse {
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Sql/servers'.
   final pulumi.Input<String> resourceType;
+
   /// Gets or sets the target resource group name.
   final pulumi.Input<String>? targetResourceGroupName;
+
   /// Gets or sets the target Resource name.
   final pulumi.Input<String>? targetResourceName;
 
@@ -32,10 +34,17 @@ class SqlServerResourceSettingsResponse {
 
   factory SqlServerResourceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SqlServerResourceSettingsResponse(
-      resourceType: (map['resourceType'] as String).input(),
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName']! as String).input(),
-      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName']! as String).input(),
+      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      targetResourceGroupName: (() {
+        final guardedValue = map['targetResourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      targetResourceName: (() {
+        final guardedValue = map['targetResourceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

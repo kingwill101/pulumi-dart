@@ -5,31 +5,41 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTopicsTopic {
   /// whether the current topic is kafka compact topic or not.
   final pulumi.Input<bool> compactTopic;
+
   /// Time of creation.
   final pulumi.Input<String> createTime;
-  /// The ID of the topic, It is formatted to `<instance_id>:<topic>`.
+
+  /// The ID of the topic, It is formatted to `&lt;instance_id&gt;:&lt;topic&gt;`.
   final pulumi.Input<String> id;
+
   /// ID of the instance.
   final pulumi.Input<String> instanceId;
+
   /// whether the current topic is kafka local topic or not.
   final pulumi.Input<bool> localTopic;
+
   /// Partition number of the topic.
   final pulumi.Input<int> partitionNum;
+
   /// Remark of the topic.
   final pulumi.Input<String> remark;
+
   /// The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause.
   final pulumi.Input<int> status;
+
   /// The status_name of the topic.
   final pulumi.Input<String> statusName;
+
   /// A mapping of tags to assign to the topic.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A topic to filter results by the topic name.
   final pulumi.Input<String> topic;
 
   /// Creates a new [GetTopicsTopic].
   /// [compactTopic] whether the current topic is kafka compact topic or not.
   /// [createTime] Time of creation.
-  /// [id] The ID of the topic, It is formatted to `<instance_id>:<topic>`.
+  /// [id] The ID of the topic, It is formatted to `&lt;instance_id&gt;:&lt;topic&gt;`.
   /// [instanceId] ID of the instance.
   /// [localTopic] whether the current topic is kafka local topic or not.
   /// [partitionNum] Partition number of the topic.
@@ -70,18 +80,23 @@ class GetTopicsTopic {
 
   factory GetTopicsTopic.fromMap(Map<String, dynamic> map) {
     return GetTopicsTopic(
-      compactTopic: (map['compactTopic'] as bool).input(),
-      createTime: (map['createTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      instanceId: (map['instanceId'] as String).input(),
-      localTopic: (map['localTopic'] as bool).input(),
-      partitionNum: (map['partitionNum'] as int).input(),
-      remark: (map['remark'] as String).input(),
-      status: (map['status'] as int).input(),
-      statusName: (map['statusName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      topic: (map['topic'] as String).input(),
+      compactTopic: pulumi.Input.fromValue(map['compactTopic'] as bool),
+      createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      localTopic: pulumi.Input.fromValue(map['localTopic'] as bool),
+      partitionNum: pulumi.Input.fromValue(map['partitionNum'] as int),
+      remark: pulumi.Input.fromValue(map['remark'] as String),
+      status: pulumi.Input.fromValue(map['status'] as int),
+      statusName: pulumi.Input.fromValue(map['statusName'] as String),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      topic: pulumi.Input.fromValue(map['topic'] as String),
     );
   }
 }
-

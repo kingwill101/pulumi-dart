@@ -3,16 +3,15 @@ enum DnsKeySpecKeyType {
   keySigning("keySigning"),
   zoneSigning("zoneSigning");
 
-  const DnsKeySpecKeyType(this.value);
-  final String value;
+  const DnsKeySpecKeyType(this.wireValue);
+  final String wireValue;
 
   static DnsKeySpecKeyType fromValue(String value) {
     for (final item in DnsKeySpecKeyType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DnsKeySpecKeyType value: $value');
   }
 }
-

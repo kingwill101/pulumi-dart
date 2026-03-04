@@ -58,9 +58,11 @@ func optsForConstructDart(
 	localProviders []integration.LocalDependency,
 	env ...string,
 ) *integration.ProgramTestOptions {
+	// Legacy fixture directory name retained for parity with upstream layout.
+	const constructProgramDir = "dart"
 	return &integration.ProgramTestOptions{
 		Env:            env,
-		Dir:            filepath.Join("construct_component", "dotnet"),
+		Dir:            filepath.Join("construct_component", constructProgramDir),
 		LocalProviders: localProviders,
 		Secrets: map[string]string{
 			"secret": "this super secret is encrypted",
@@ -69,14 +71,27 @@ func optsForConstructDart(
 		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
 			assert.NotNil(t, stackInfo.Deployment)
 			if assert.Equal(t, expectedResourceCount, len(stackInfo.Deployment.Resources)) {
-				stackRes := stackInfo.Deployment.Resources[0]
+				stackIndex := -1
+				for i, res := range stackInfo.Deployment.Resources {
+					if res.Type == resource.RootStackType {
+						stackIndex = i
+						break
+					}
+				}
+				if !assert.NotEqual(t, -1, stackIndex, "expected root stack resource in deployment") {
+					return
+				}
+				stackRes := stackInfo.Deployment.Resources[stackIndex]
 				assert.NotNil(t, stackRes)
 				assert.Equal(t, resource.RootStackType, stackRes.Type)
 				assert.Equal(t, "", string(stackRes.Parent))
 
 				// Check that dependencies flow correctly between the originating program and the remote component plugin.
 				urns := make(map[string]resource.URN)
-				for _, res := range stackInfo.Deployment.Resources[1:] {
+				for i, res := range stackInfo.Deployment.Resources {
+					if i == stackIndex {
+						continue
+					}
 					assert.NotNil(t, res)
 
 					urns[string(res.URN.Name())] = res.URN

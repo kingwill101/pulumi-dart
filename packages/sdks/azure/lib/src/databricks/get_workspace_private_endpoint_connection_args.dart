@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkspacePrivateEndpointConnectionArgs {
   /// The resource ID of the Private Endpoint.
   final pulumi.Input<String> privateEndpointId;
+
   /// The resource ID of the Databricks Workspace.
   final pulumi.Input<String> workspaceId;
 
@@ -27,11 +28,14 @@ class GetWorkspacePrivateEndpointConnectionArgs {
     };
   }
 
-  factory GetWorkspacePrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
+  factory GetWorkspacePrivateEndpointConnectionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkspacePrivateEndpointConnectionArgs(
-      privateEndpointId: (map['privateEndpointId'] as String).input(),
-      workspaceId: (map['workspaceId'] as String).input(),
+      privateEndpointId: pulumi.Input.fromValue(
+        map['privateEndpointId'] as String,
+      ),
+      workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }
 }
-

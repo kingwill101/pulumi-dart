@@ -15,14 +15,27 @@ class ResourcePolicyVmMaintenancePolicyMaintenanceWindow {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dailyMaintenanceWindow': ?pulumi.Input.mapOptionalInputValue<ResourcePolicyDailyCycle, Map<String, dynamic>>(dailyMaintenanceWindow, (value) => value.toMap()),
+      'dailyMaintenanceWindow':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourcePolicyDailyCycle,
+            Map<String, dynamic>
+          >(dailyMaintenanceWindow, (value) => value.toMap()),
     };
   }
 
-  factory ResourcePolicyVmMaintenancePolicyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicyVmMaintenancePolicyMaintenanceWindow.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicyVmMaintenancePolicyMaintenanceWindow(
-      dailyMaintenanceWindow: map['dailyMaintenanceWindow'] == null ? null : (ResourcePolicyDailyCycle.fromMap((map['dailyMaintenanceWindow']! as Map).cast<String, dynamic>())).input(),
+      dailyMaintenanceWindow: (() {
+        final guardedValue = map['dailyMaintenanceWindow'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourcePolicyDailyCycle.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

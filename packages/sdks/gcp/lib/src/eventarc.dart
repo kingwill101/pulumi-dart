@@ -1,5 +1,3 @@
-library module_eventarc;
-
 export 'eventarc/channel.dart';
 export 'eventarc/channel_args.dart';
 export 'eventarc/channel_state.dart';

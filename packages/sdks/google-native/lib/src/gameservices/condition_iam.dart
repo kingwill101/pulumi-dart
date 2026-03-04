@@ -9,16 +9,15 @@ enum ConditionIam {
   credentialsType("CREDENTIALS_TYPE"),
   credsAssertion("CREDS_ASSERTION");
 
-  const ConditionIam(this.value);
-  final String value;
+  const ConditionIam(this.wireValue);
+  final String wireValue;
 
   static ConditionIam fromValue(String value) {
     for (final item in ConditionIam.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConditionIam value: $value');
   }
 }
-

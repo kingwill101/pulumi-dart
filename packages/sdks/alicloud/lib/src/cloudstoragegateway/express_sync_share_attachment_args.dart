@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExpressSyncShareAttachmentArgs {
   /// The ID of the ExpressSync.
   final pulumi.Input<String> expressSyncId;
+
   /// The ID of the Gateway.
   final pulumi.Input<String> gatewayId;
+
   /// The name of the GatewayFileShare. **NOTE:** When GatewayFileShare is associated with a speed sync group, its reverse synchronization function will be turned off by default.
   final pulumi.Input<String> shareName;
 
@@ -34,10 +36,9 @@ class ExpressSyncShareAttachmentArgs {
 
   factory ExpressSyncShareAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ExpressSyncShareAttachmentArgs(
-      expressSyncId: (map['expressSyncId'] as String).input(),
-      gatewayId: (map['gatewayId'] as String).input(),
-      shareName: (map['shareName'] as String).input(),
+      expressSyncId: pulumi.Input.fromValue(map['expressSyncId'] as String),
+      gatewayId: pulumi.Input.fromValue(map['gatewayId'] as String),
+      shareName: pulumi.Input.fromValue(map['shareName'] as String),
     );
   }
 }
-

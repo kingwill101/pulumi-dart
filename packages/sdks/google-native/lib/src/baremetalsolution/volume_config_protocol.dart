@@ -4,16 +4,15 @@ enum VolumeConfigProtocol {
   protocolFc("PROTOCOL_FC"),
   protocolNfs("PROTOCOL_NFS");
 
-  const VolumeConfigProtocol(this.value);
-  final String value;
+  const VolumeConfigProtocol(this.wireValue);
+  final String wireValue;
 
   static VolumeConfigProtocol fromValue(String value) {
     for (final item in VolumeConfigProtocol.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VolumeConfigProtocol value: $value');
   }
 }
-

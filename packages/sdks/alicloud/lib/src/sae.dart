@@ -1,5 +1,3 @@
-library module_sae;
-
 export 'sae/application.dart';
 export 'sae/application_args.dart';
 export 'sae/application_config_map_mount_desc_v2.dart';

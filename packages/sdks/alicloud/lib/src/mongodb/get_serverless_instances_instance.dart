@@ -6,58 +6,86 @@ import 'get_serverless_instances_instance_security_ip_group.dart';
 class GetServerlessInstancesInstance {
   /// The read/write throughput consumed by the instance.
   final pulumi.Input<int> capacityUnit;
+
   /// The db instance class.
   final pulumi.Input<String> dbInstanceClass;
+
   /// The db instance description.
   final pulumi.Input<String> dbInstanceDescription;
+
   /// The db instance id.
   final pulumi.Input<String> dbInstanceId;
+
   /// The db instance release protection.
   final pulumi.Input<bool> dbInstanceReleaseProtection;
+
   /// The db instance storage.
   final pulumi.Input<int> dbInstanceStorage;
+
   /// The database engine of the instance.
   final pulumi.Input<String> engine;
+
   /// The database version number. Valid values: `4.2`.
   final pulumi.Input<String> engineVersion;
+
   /// The time when the subscription instance expires. The time is in the `yyyy-MM-ddTHH:mmZ` format. The time is displayed in UTC.
   final pulumi.Input<String> expireTime;
+
   /// The ID of the Serverless Instance.
   final pulumi.Input<String> id;
+
   /// Indicates the type of the instance. Valid values: `0`: physical machine. `1`: ECS. `2`: DOCKER. `18`: k8s new architecture instance.
   final pulumi.Input<String> kindCode;
+
   /// The locked status of the instance.
   final pulumi.Input<String> lockMode;
+
   /// The start time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
   final pulumi.Input<String> maintainEndTime;
+
   /// The end time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
   final pulumi.Input<String> maintainStartTime;
+
   /// Instance maximum connections.
   final pulumi.Input<int> maxConnections;
+
   /// The maximum IOPS of the instance.
   final pulumi.Input<int> maxIops;
+
   /// The network type of the instance.
   final pulumi.Input<String> networkType;
+
   /// The Payment type of the instance.
   final pulumi.Input<String> paymentType;
+
   /// The access protocol type of the instance. Valid values: `mongodb`, `dynamodb`.
   final pulumi.Input<String> protocolType;
+
   /// The ID of the resource group.
   final pulumi.Input<String> resourceGroupId;
+
   /// The security ip list.
-  final pulumi.Input<List<GetServerlessInstancesInstanceSecurityIpGroup>> securityIpGroups;
+  final pulumi.Input<List<GetServerlessInstancesInstanceSecurityIpGroup>>
+  securityIpGroups;
+
   /// The status of the instance.
   final pulumi.Input<String> status;
+
   /// The storage engine used by the instance.
   final pulumi.Input<String> storageEngine;
+
   /// The tag of the resource.
   final pulumi.Input<Map<String, String>> tags;
+
   /// Intranet secret free access mode.
   final pulumi.Input<String> vpcAuthMode;
+
   /// The ID of the VPC network.
   final pulumi.Input<String> vpcId;
+
   /// The id of the vswitch.
   final pulumi.Input<String> vswitchId;
+
   /// The ID of the zone.
   final pulumi.Input<String> zoneId;
 
@@ -143,7 +171,18 @@ class GetServerlessInstancesInstance {
       'paymentType': paymentType,
       'protocolType': protocolType,
       'resourceGroupId': resourceGroupId,
-      'securityIpGroups': pulumi.Input.mapInputValue<List<GetServerlessInstancesInstanceSecurityIpGroup>, List<Map<String, dynamic>>>(securityIpGroups, (value) => pulumi.Input.encodeList<GetServerlessInstancesInstanceSecurityIpGroup, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'securityIpGroups':
+          pulumi.Input.mapInputValue<
+            List<GetServerlessInstancesInstanceSecurityIpGroup>,
+            List<Map<String, dynamic>>
+          >(
+            securityIpGroups,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetServerlessInstancesInstanceSecurityIpGroup,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'status': status,
       'storageEngine': storageEngine,
       'tags': tags,
@@ -156,35 +195,49 @@ class GetServerlessInstancesInstance {
 
   factory GetServerlessInstancesInstance.fromMap(Map<String, dynamic> map) {
     return GetServerlessInstancesInstance(
-      capacityUnit: (map['capacityUnit'] as int).input(),
-      dbInstanceClass: (map['dbInstanceClass'] as String).input(),
-      dbInstanceDescription: (map['dbInstanceDescription'] as String).input(),
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      dbInstanceReleaseProtection: (map['dbInstanceReleaseProtection'] as bool).input(),
-      dbInstanceStorage: (map['dbInstanceStorage'] as int).input(),
-      engine: (map['engine'] as String).input(),
-      engineVersion: (map['engineVersion'] as String).input(),
-      expireTime: (map['expireTime'] as String).input(),
-      id: (map['id'] as String).input(),
-      kindCode: (map['kindCode'] as String).input(),
-      lockMode: (map['lockMode'] as String).input(),
-      maintainEndTime: (map['maintainEndTime'] as String).input(),
-      maintainStartTime: (map['maintainStartTime'] as String).input(),
-      maxConnections: (map['maxConnections'] as int).input(),
-      maxIops: (map['maxIops'] as int).input(),
-      networkType: (map['networkType'] as String).input(),
-      paymentType: (map['paymentType'] as String).input(),
-      protocolType: (map['protocolType'] as String).input(),
-      resourceGroupId: (map['resourceGroupId'] as String).input(),
-      securityIpGroups: (pulumi.Input.decodeList<GetServerlessInstancesInstanceSecurityIpGroup>(map['securityIpGroups'], (value) => GetServerlessInstancesInstanceSecurityIpGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: (map['status'] as String).input(),
-      storageEngine: (map['storageEngine'] as String).input(),
-      tags: ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcAuthMode: (map['vpcAuthMode'] as String).input(),
-      vpcId: (map['vpcId'] as String).input(),
-      vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: (map['zoneId'] as String).input(),
+      capacityUnit: pulumi.Input.fromValue(map['capacityUnit'] as int),
+      dbInstanceClass: pulumi.Input.fromValue(map['dbInstanceClass'] as String),
+      dbInstanceDescription: pulumi.Input.fromValue(
+        map['dbInstanceDescription'] as String,
+      ),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      dbInstanceReleaseProtection: pulumi.Input.fromValue(
+        map['dbInstanceReleaseProtection'] as bool,
+      ),
+      dbInstanceStorage: pulumi.Input.fromValue(
+        map['dbInstanceStorage'] as int,
+      ),
+      engine: pulumi.Input.fromValue(map['engine'] as String),
+      engineVersion: pulumi.Input.fromValue(map['engineVersion'] as String),
+      expireTime: pulumi.Input.fromValue(map['expireTime'] as String),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      kindCode: pulumi.Input.fromValue(map['kindCode'] as String),
+      lockMode: pulumi.Input.fromValue(map['lockMode'] as String),
+      maintainEndTime: pulumi.Input.fromValue(map['maintainEndTime'] as String),
+      maintainStartTime: pulumi.Input.fromValue(
+        map['maintainStartTime'] as String,
+      ),
+      maxConnections: pulumi.Input.fromValue(map['maxConnections'] as int),
+      maxIops: pulumi.Input.fromValue(map['maxIops'] as int),
+      networkType: pulumi.Input.fromValue(map['networkType'] as String),
+      paymentType: pulumi.Input.fromValue(map['paymentType'] as String),
+      protocolType: pulumi.Input.fromValue(map['protocolType'] as String),
+      resourceGroupId: pulumi.Input.fromValue(map['resourceGroupId'] as String),
+      securityIpGroups: pulumi.Input.fromValue(
+        pulumi.Input.decodeList<GetServerlessInstancesInstanceSecurityIpGroup>(
+          map['securityIpGroups']!,
+          (value) => GetServerlessInstancesInstanceSecurityIpGroup.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        ),
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      storageEngine: pulumi.Input.fromValue(map['storageEngine'] as String),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
+      vpcAuthMode: pulumi.Input.fromValue(map['vpcAuthMode'] as String),
+      vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
+      vswitchId: pulumi.Input.fromValue(map['vswitchId'] as String),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }
-

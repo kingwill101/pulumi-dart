@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFaceConfigsConfig {
   /// Scene name.
   final pulumi.Input<String> bizName;
+
   /// Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
   final pulumi.Input<String> bizType;
+
   /// The Update Time.
   final pulumi.Input<String> gmtUpdated;
 
@@ -30,10 +32,9 @@ class GetFaceConfigsConfig {
 
   factory GetFaceConfigsConfig.fromMap(Map<String, dynamic> map) {
     return GetFaceConfigsConfig(
-      bizName: (map['bizName'] as String).input(),
-      bizType: (map['bizType'] as String).input(),
-      gmtUpdated: (map['gmtUpdated'] as String).input(),
+      bizName: pulumi.Input.fromValue(map['bizName'] as String),
+      bizType: pulumi.Input.fromValue(map['bizType'] as String),
+      gmtUpdated: pulumi.Input.fromValue(map['gmtUpdated'] as String),
     );
   }
 }
-

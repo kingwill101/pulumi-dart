@@ -9,15 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserArgs {
   /// The ID of the authentication domain to which the user to be created would belong.
   final pulumi.Input<String> authenticationDomainId;
+
   /// The email ID of the user to be created.
   final pulumi.Input<String> emailId;
+
   /// The name of the user to be created.
   final pulumi.Input<String>? name;
+
   /// The tier to which the user to be created would belong. Accepted values for this argument are `BASIC_USER_TIER`, `CORE_USER_TIER`, or `FULL_USER_TIER`. If not specified in the configuration, the argument would default to `BASIC_USER_TIER`.
   ///
-  /// > **NOTE** The ID of an authentication domain can be retrieved using its name, via the data source `newrelic.getAuthenticationDomain`, as shown in the example above. Head over to the documentation of this data source for more details and examples.
+  /// &gt; **NOTE** The ID of an authentication domain can be retrieved using its name, via the data source `newrelic.getAuthenticationDomain`, as shown in the example above. Head over to the documentation of this data source for more details and examples.
   ///
-  /// > **WARNING:** Changing the `authentication_domain_id` of a `newrelic.User` resource that has already been applied would result in a **replacement** of the resource – destruction of the existing resource, followed by the addition of a new resource with the specified configuration. This is due to the fact that updating the `authentication_domain_id` of an existing user is not supported.
+  /// &gt; **WARNING:** Changing the `authentication_domain_id` of a `newrelic.User` resource that has already been applied would result in a **replacement** of the resource – destruction of the existing resource, followed by the addition of a new resource with the specified configuration. This is due to the fact that updating the `authentication_domain_id` of an existing user is not supported.
   final pulumi.Input<String>? userType;
 
   /// Creates a new [UserArgs].
@@ -43,11 +46,20 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      authenticationDomainId: (map['authenticationDomainId'] as String).input(),
-      emailId: (map['emailId'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      userType: map['userType'] == null ? null : (map['userType']! as String).input(),
+      authenticationDomainId: pulumi.Input.fromValue(
+        map['authenticationDomainId'] as String,
+      ),
+      emailId: pulumi.Input.fromValue(map['emailId'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userType: (() {
+        final guardedValue = map['userType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

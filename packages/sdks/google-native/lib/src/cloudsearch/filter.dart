@@ -12,23 +12,41 @@ class Filter {
   /// Creates a new [Filter].
   /// [compositeFilter] Optional.
   /// [valueFilter] Optional.
-  Filter({
-    this.compositeFilter,
-    this.valueFilter,
-  });
+  Filter({this.compositeFilter, this.valueFilter});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compositeFilter': ?pulumi.Input.mapOptionalInputValue<CompositeFilter, Map<String, dynamic>>(compositeFilter, (value) => value.toMap()),
-      'valueFilter': ?pulumi.Input.mapOptionalInputValue<ValueFilter, Map<String, dynamic>>(valueFilter, (value) => value.toMap()),
+      'compositeFilter':
+          ?pulumi.Input.mapOptionalInputValue<
+            CompositeFilter,
+            Map<String, dynamic>
+          >(compositeFilter, (value) => value.toMap()),
+      'valueFilter':
+          ?pulumi.Input.mapOptionalInputValue<
+            ValueFilter,
+            Map<String, dynamic>
+          >(valueFilter, (value) => value.toMap()),
     };
   }
 
   factory Filter.fromMap(Map<String, dynamic> map) {
     return Filter(
-      compositeFilter: map['compositeFilter'] == null ? null : (CompositeFilter.fromMap((map['compositeFilter']! as Map).cast<String, dynamic>())).input(),
-      valueFilter: map['valueFilter'] == null ? null : (ValueFilter.fromMap((map['valueFilter']! as Map).cast<String, dynamic>())).input(),
+      compositeFilter: (() {
+        final guardedValue = map['compositeFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          CompositeFilter.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      valueFilter: (() {
+        final guardedValue = map['valueFilter'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ValueFilter.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
     );
   }
 }
-

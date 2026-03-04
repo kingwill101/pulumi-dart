@@ -24,6 +24,11 @@ pulumi-dart-quickstart/
     pulumi_dart_quickstart.dart
 ```
 
+Main file note:
+
+- If no explicit `runtime.options.binary` or `entryPoint` is set, Pulumi resolves `program: "."` using `bin/main.dart` first, then `bin/<pubspec.name>.dart`.
+- In this guide, `pubspec.yaml` uses `name: pulumi_dart_quickstart`, so `bin/pulumi_dart_quickstart.dart` is discovered automatically.
+
 ## 2. Define `Pulumi.yaml`
 
 ```yaml title="Pulumi.yaml"

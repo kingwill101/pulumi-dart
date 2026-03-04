@@ -5,16 +5,17 @@ enum AccessDeterminationLogConfigLogLevel {
   minimum("MINIMUM"),
   verbose("VERBOSE");
 
-  const AccessDeterminationLogConfigLogLevel(this.value);
-  final String value;
+  const AccessDeterminationLogConfigLogLevel(this.wireValue);
+  final String wireValue;
 
   static AccessDeterminationLogConfigLogLevel fromValue(String value) {
     for (final item in AccessDeterminationLogConfigLogLevel.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AccessDeterminationLogConfigLogLevel value: $value');
+    throw ArgumentError(
+      'Unknown AccessDeterminationLogConfigLogLevel value: $value',
+    );
   }
 }
-

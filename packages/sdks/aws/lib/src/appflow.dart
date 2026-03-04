@@ -1,5 +1,3 @@
-library module_appflow;
-
 export 'appflow/connector_profile.dart';
 export 'appflow/connector_profile_args.dart';
 export 'appflow/connector_profile_connector_profile_config.dart';

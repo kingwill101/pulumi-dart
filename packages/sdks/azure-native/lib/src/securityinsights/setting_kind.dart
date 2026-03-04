@@ -5,16 +5,15 @@ enum SettingKind {
   valueEntityAnalytics("EntityAnalytics"),
   valueUeba("Ueba");
 
-  const SettingKind(this.value);
-  final String value;
+  const SettingKind(this.wireValue);
+  final String wireValue;
 
   static SettingKind fromValue(String value) {
     for (final item in SettingKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SettingKind value: $value');
   }
 }
-

@@ -6,20 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SslCert {
   /// PEM representation.
   final pulumi.Input<String>? cert;
+
   /// Serial number, as extracted from the certificate.
   final pulumi.Input<String>? certSerialNumber;
+
   /// User supplied name. Constrained to [a-zA-Z.-_ ]+.
   final pulumi.Input<String>? commonName;
+
   /// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
   final pulumi.Input<String>? createTime;
+
   /// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
   final pulumi.Input<String>? expirationTime;
+
   /// Name of the database instance.
   final pulumi.Input<String>? instance;
+
   /// This is always `sql#sslCert`.
   final pulumi.Input<String>? kind;
+
   /// The URI of this resource.
   final pulumi.Input<String>? selfLink;
+
   /// Sha1 Fingerprint.
   final pulumi.Input<String>? sha1Fingerprint;
 
@@ -61,16 +69,51 @@ class SslCert {
 
   factory SslCert.fromMap(Map<String, dynamic> map) {
     return SslCert(
-      cert: map['cert'] == null ? null : (map['cert']! as String).input(),
-      certSerialNumber: map['certSerialNumber'] == null ? null : (map['certSerialNumber']! as String).input(),
-      commonName: map['commonName'] == null ? null : (map['commonName']! as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime']! as String).input(),
-      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
-      sha1Fingerprint: map['sha1Fingerprint'] == null ? null : (map['sha1Fingerprint']! as String).input(),
+      cert: (() {
+        final guardedValue = map['cert'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certSerialNumber: (() {
+        final guardedValue = map['certSerialNumber'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      commonName: (() {
+        final guardedValue = map['commonName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expirationTime: (() {
+        final guardedValue = map['expirationTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instance: (() {
+        final guardedValue = map['instance'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      selfLink: (() {
+        final guardedValue = map['selfLink'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sha1Fingerprint: (() {
+        final guardedValue = map['sha1Fingerprint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

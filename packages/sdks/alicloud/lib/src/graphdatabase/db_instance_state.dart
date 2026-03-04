@@ -7,32 +7,46 @@ import 'db_instance_db_instance_ip_array.dart';
 class DbInstanceState {
   /// (Available in 1.196.0+)  The connection string of the instance.
   final pulumi.Input<String>? connectionString;
+
   /// The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
   final pulumi.Input<String>? dbInstanceCategory;
+
   /// According to the practical example or notes.
   final pulumi.Input<String>? dbInstanceDescription;
+
   /// IP ADDRESS whitelist for the instance group list. See `db_instance_ip_array` below.
   final pulumi.Input<List<DbInstanceDbInstanceIpArray>>? dbInstanceIpArrays;
+
   /// The network type of the db instance. Valid values: `vpc`.
   final pulumi.Input<String>? dbInstanceNetworkType;
+
   /// Disk storage type. Valid values: `cloud_essd`, `cloud_ssd`. Modification is not supported.
   final pulumi.Input<String>? dbInstanceStorageType;
+
   /// The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
   final pulumi.Input<String>? dbNodeClass;
+
   /// Instance storage space, which is measured in GB.
   final pulumi.Input<int>? dbNodeStorage;
+
   /// Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
   final pulumi.Input<String>? dbVersion;
+
   /// The paymen type of the resource. Valid values: `PayAsYouGo`.
   final pulumi.Input<String>? paymentType;
+
   /// (Available in 1.196.0+) The connection port of the instance.
   final pulumi.Input<String>? port;
+
   /// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
   final pulumi.Input<String>? status;
+
   /// ID of the VPC.
   final pulumi.Input<String>? vpcId;
+
   /// The ID of attaching vswitch to instance.
   final pulumi.Input<String>? vswitchId;
+
   /// The zone ID of the resource.
   final pulumi.Input<String>? zoneId;
 
@@ -75,7 +89,18 @@ class DbInstanceState {
       'connectionString': ?connectionString,
       'dbInstanceCategory': ?dbInstanceCategory,
       'dbInstanceDescription': ?dbInstanceDescription,
-      'dbInstanceIpArrays': ?pulumi.Input.mapOptionalInputValue<List<DbInstanceDbInstanceIpArray>, List<Map<String, dynamic>>>(dbInstanceIpArrays, (value) => pulumi.Input.encodeList<DbInstanceDbInstanceIpArray, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dbInstanceIpArrays':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DbInstanceDbInstanceIpArray>,
+            List<Map<String, dynamic>>
+          >(
+            dbInstanceIpArrays,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DbInstanceDbInstanceIpArray,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'dbInstanceNetworkType': ?dbInstanceNetworkType,
       'dbInstanceStorageType': ?dbInstanceStorageType,
       'dbNodeClass': ?dbNodeClass,
@@ -92,22 +117,88 @@ class DbInstanceState {
 
   factory DbInstanceState.fromMap(Map<String, dynamic> map) {
     return DbInstanceState(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
-      dbInstanceCategory: map['dbInstanceCategory'] == null ? null : (map['dbInstanceCategory']! as String).input(),
-      dbInstanceDescription: map['dbInstanceDescription'] == null ? null : (map['dbInstanceDescription']! as String).input(),
-      dbInstanceIpArrays: map['dbInstanceIpArrays'] == null ? null : (pulumi.Input.decodeList<DbInstanceDbInstanceIpArray>(map['dbInstanceIpArrays']!, (value) => DbInstanceDbInstanceIpArray.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dbInstanceNetworkType: map['dbInstanceNetworkType'] == null ? null : (map['dbInstanceNetworkType']! as String).input(),
-      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : (map['dbInstanceStorageType']! as String).input(),
-      dbNodeClass: map['dbNodeClass'] == null ? null : (map['dbNodeClass']! as String).input(),
-      dbNodeStorage: map['dbNodeStorage'] == null ? null : (map['dbNodeStorage']! as int).input(),
-      dbVersion: map['dbVersion'] == null ? null : (map['dbVersion']! as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      port: map['port'] == null ? null : (map['port']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
+      connectionString: (() {
+        final guardedValue = map['connectionString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceCategory: (() {
+        final guardedValue = map['dbInstanceCategory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceDescription: (() {
+        final guardedValue = map['dbInstanceDescription'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceIpArrays: (() {
+        final guardedValue = map['dbInstanceIpArrays'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DbInstanceDbInstanceIpArray>(
+            guardedValue,
+            (value) => DbInstanceDbInstanceIpArray.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      dbInstanceNetworkType: (() {
+        final guardedValue = map['dbInstanceNetworkType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbInstanceStorageType: (() {
+        final guardedValue = map['dbInstanceStorageType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbNodeClass: (() {
+        final guardedValue = map['dbNodeClass'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dbNodeStorage: (() {
+        final guardedValue = map['dbNodeStorage'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      dbVersion: (() {
+        final guardedValue = map['dbVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      port: (() {
+        final guardedValue = map['port'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vpcId: (() {
+        final guardedValue = map['vpcId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vswitchId: (() {
+        final guardedValue = map['vswitchId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      zoneId: (() {
+        final guardedValue = map['zoneId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

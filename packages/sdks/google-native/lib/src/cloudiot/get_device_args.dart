@@ -39,12 +39,19 @@ class GetDeviceArgs {
 
   factory GetDeviceArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceArgs(
-      deviceId: (map['deviceId'] as String).input(),
-      fieldMask: map['fieldMask'] == null ? null : (map['fieldMask']! as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      registryId: (map['registryId'] as String).input(),
+      deviceId: pulumi.Input.fromValue(map['deviceId'] as String),
+      fieldMask: (() {
+        final guardedValue = map['fieldMask'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      registryId: pulumi.Input.fromValue(map['registryId'] as String),
     );
   }
 }
-

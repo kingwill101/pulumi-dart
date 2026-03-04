@@ -3,16 +3,15 @@ enum SmbAccessBasedEnumeration {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
-  const SmbAccessBasedEnumeration(this.value);
-  final String value;
+  const SmbAccessBasedEnumeration(this.wireValue);
+  final String wireValue;
 
   static SmbAccessBasedEnumeration fromValue(String value) {
     for (final item in SmbAccessBasedEnumeration.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SmbAccessBasedEnumeration value: $value');
   }
 }
-

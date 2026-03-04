@@ -6,12 +6,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GkeWorkload {
   /// The name of the parent cluster.
   final pulumi.Input<String>? clusterName;
+
   /// The location of the parent cluster. This may be a zone or region.
   final pulumi.Input<String>? location;
+
   /// The name of the parent namespace.
   final pulumi.Input<String>? namespaceName;
+
   /// The name of this workload.
   final pulumi.Input<String>? topLevelControllerName;
+
   /// The type of this workload (for example, "Deployment" or "DaemonSet")
   final pulumi.Input<String>? topLevelControllerType;
 
@@ -41,12 +45,31 @@ class GkeWorkload {
 
   factory GkeWorkload.fromMap(Map<String, dynamic> map) {
     return GkeWorkload(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
-      topLevelControllerName: map['topLevelControllerName'] == null ? null : (map['topLevelControllerName']! as String).input(),
-      topLevelControllerType: map['topLevelControllerType'] == null ? null : (map['topLevelControllerType']! as String).input(),
+      clusterName: (() {
+        final guardedValue = map['clusterName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      namespaceName: (() {
+        final guardedValue = map['namespaceName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topLevelControllerName: (() {
+        final guardedValue = map['topLevelControllerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      topLevelControllerType: (() {
+        final guardedValue = map['topLevelControllerType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

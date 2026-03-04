@@ -10,12 +10,15 @@ class GetClusterIstioServiceArgs {
   /// The name of the Kubernetes cluster in which this Istio service
   /// is defined. Corresponds to the clusterName resource label in k8s_cluster resources.
   final pulumi.Input<String> clusterName;
+
   /// The location of the Kubernetes cluster in which this Istio service
   /// is defined. Corresponds to the location resource label in k8s_cluster resources.
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The name of the Istio service underlying this service.
   /// Corresponds to the destination_service_name metric label in Istio metrics.
   ///
@@ -23,6 +26,7 @@ class GetClusterIstioServiceArgs {
   ///
   /// Other optional fields include:
   final pulumi.Input<String> serviceName;
+
   /// The namespace of the Istio service underlying this service.
   /// Corresponds to the destination_service_namespace metric label in Istio metrics.
   final pulumi.Input<String> serviceNamespace;
@@ -53,12 +57,17 @@ class GetClusterIstioServiceArgs {
 
   factory GetClusterIstioServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterIstioServiceArgs(
-      clusterName: (map['clusterName'] as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
-      serviceNamespace: (map['serviceNamespace'] as String).input(),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
+      serviceNamespace: pulumi.Input.fromValue(
+        map['serviceNamespace'] as String,
+      ),
     );
   }
 }
-

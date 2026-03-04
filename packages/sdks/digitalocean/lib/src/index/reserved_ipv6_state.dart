@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReservedIpv6State {
   final pulumi.Input<int>? dropletId;
   final pulumi.Input<String>? ip;
+
   /// The region that the reserved IPv6 needs to be reserved to.
   final pulumi.Input<String>? regionSlug;
+
   /// the uniform resource name for the reserved ipv6
   final pulumi.Input<String>? reservedIpv6Urn;
 
@@ -34,11 +36,26 @@ class ReservedIpv6State {
 
   factory ReservedIpv6State.fromMap(Map<String, dynamic> map) {
     return ReservedIpv6State(
-      dropletId: map['dropletId'] == null ? null : (map['dropletId']! as int).input(),
-      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
-      regionSlug: map['regionSlug'] == null ? null : (map['regionSlug']! as String).input(),
-      reservedIpv6Urn: map['reservedIpv6Urn'] == null ? null : (map['reservedIpv6Urn']! as String).input(),
+      dropletId: (() {
+        final guardedValue = map['dropletId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ip: (() {
+        final guardedValue = map['ip'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      regionSlug: (() {
+        final guardedValue = map['regionSlug'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      reservedIpv6Urn: (() {
+        final guardedValue = map['reservedIpv6Urn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

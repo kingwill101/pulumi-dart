@@ -10,10 +10,13 @@ import 'protected_item_model_properties.dart';
 class ProtectedItemArgs {
   /// Protected item model properties.
   final pulumi.Input<ProtectedItemModelProperties> properties;
+
   /// The protected item name.
   final pulumi.Input<String>? protectedItemName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The vault name.
   final pulumi.Input<String> vaultName;
 
@@ -31,7 +34,11 @@ class ProtectedItemArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': pulumi.Input.mapInputValue<ProtectedItemModelProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.mapInputValue<
+            ProtectedItemModelProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'protectedItemName': ?protectedItemName,
       'resourceGroupName': resourceGroupName,
       'vaultName': vaultName,
@@ -40,11 +47,20 @@ class ProtectedItemArgs {
 
   factory ProtectedItemArgs.fromMap(Map<String, dynamic> map) {
     return ProtectedItemArgs(
-      properties: (ProtectedItemModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      protectedItemName: map['protectedItemName'] == null ? null : (map['protectedItemName']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vaultName: (map['vaultName'] as String).input(),
+      properties: pulumi.Input.fromValue(
+        ProtectedItemModelProperties.fromMap(
+          (map['properties']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      protectedItemName: (() {
+        final guardedValue = map['protectedItemName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
-

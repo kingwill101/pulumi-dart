@@ -6,7 +6,7 @@ import 'alarm_contact_group_state.dart';
 ///
 /// For information about CMS Alarm Contact Group and how to use it, see [What is Alarm Contact Group](https://www.alibabacloud.com/help/en/cloudmonitor/latest/putcontactgroup).
 ///
-/// > **NOTE:** Available since v1.101.0.
+/// &gt; **NOTE:** Available since v1.101.0.
 ///
 /// ## Example Usage
 ///
@@ -110,10 +110,13 @@ import 'alarm_contact_group_state.dart';
 class AlarmContactGroup extends pulumi.CustomResource {
   /// The name of the alarm group.
   late final pulumi.Output<String> alarmContactGroupName;
+
   /// The name of the alert contact.
   late final pulumi.Output<List<String>?> contacts;
+
   /// The description of the alert group.
   late final pulumi.Output<String?> describe;
+
   /// Whether to open weekly subscription.
   late final pulumi.Output<bool> enableSubscribed;
 
@@ -126,15 +129,15 @@ class AlarmContactGroup extends pulumi.CustomResource {
     AlarmContactGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cms/alarmContactGroup:AlarmContactGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alarmContactGroupName = registerOutput<String>('alarmContactGroupName');
-    this.contacts = registerOutput<List<String>?>('contacts');
-    this.describe = registerOutput<String?>('describe');
-    this.enableSubscribed = registerOutput<bool>('enableSubscribed');
+         'alicloud:cms/alarmContactGroup:AlarmContactGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alarmContactGroupName = registerOutput<String>('alarmContactGroupName');
+    contacts = registerOutput<List<String>?>('contacts');
+    describe = registerOutput<String?>('describe');
+    enableSubscribed = registerOutput<bool>('enableSubscribed');
   }
 
   /// Gets an existing [AlarmContactGroup] resource's state with the given [name] and [id].
@@ -155,14 +158,14 @@ class AlarmContactGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cms/alarmContactGroup:AlarmContactGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alarmContactGroupName = registerOutput<String>('alarmContactGroupName');
-    this.contacts = registerOutput<List<String>?>('contacts');
-    this.describe = registerOutput<String?>('describe');
-    this.enableSubscribed = registerOutput<bool>('enableSubscribed');
+         'alicloud:cms/alarmContactGroup:AlarmContactGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    alarmContactGroupName = registerOutput<String>('alarmContactGroupName');
+    contacts = registerOutput<List<String>?>('contacts');
+    describe = registerOutput<String?>('describe');
+    enableSubscribed = registerOutput<bool>('enableSubscribed');
   }
 }

@@ -13,15 +13,14 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTra
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'phoneNumber': phoneNumber,
-    };
+    return <String, dynamic>{'phoneNumber': phoneNumber};
   }
 
-  factory CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall.fromMap(Map<String, dynamic> map) {
+  factory CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall(
-      phoneNumber: (map['phoneNumber'] as String).input(),
+      phoneNumber: pulumi.Input.fromValue(map['phoneNumber'] as String),
     );
   }
 }
-

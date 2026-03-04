@@ -11,12 +11,16 @@ import 'multiplex_program_timeouts.dart';
 class MultiplexProgramArgs {
   /// Multiplex ID.
   final pulumi.Input<String> multiplexId;
+
   /// MultiplexProgram settings. See Multiplex Program Settings for more details.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<MultiplexProgramMultiplexProgramSettings>? multiplexProgramSettings;
+  final pulumi.Input<MultiplexProgramMultiplexProgramSettings>?
+  multiplexProgramSettings;
+
   /// Unique program name.
   final pulumi.Input<String> programName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<MultiplexProgramTimeouts>? timeouts;
@@ -38,21 +42,48 @@ class MultiplexProgramArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'multiplexId': multiplexId,
-      'multiplexProgramSettings': ?pulumi.Input.mapOptionalInputValue<MultiplexProgramMultiplexProgramSettings, Map<String, dynamic>>(multiplexProgramSettings, (value) => value.toMap()),
+      'multiplexProgramSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            MultiplexProgramMultiplexProgramSettings,
+            Map<String, dynamic>
+          >(multiplexProgramSettings, (value) => value.toMap()),
       'programName': programName,
       'region': ?region,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<MultiplexProgramTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            MultiplexProgramTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory MultiplexProgramArgs.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramArgs(
-      multiplexId: (map['multiplexId'] as String).input(),
-      multiplexProgramSettings: map['multiplexProgramSettings'] == null ? null : ((MultiplexProgramMultiplexProgramSettings.fromMap((map['multiplexProgramSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      programName: (map['programName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((MultiplexProgramTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      multiplexId: pulumi.Input.fromValue(map['multiplexId'] as String),
+      multiplexProgramSettings: (() {
+        final guardedValue = map['multiplexProgramSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MultiplexProgramMultiplexProgramSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      programName: pulumi.Input.fromValue(map['programName'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MultiplexProgramTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

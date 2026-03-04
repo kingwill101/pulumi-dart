@@ -32,11 +32,14 @@ class ConfigurationTemplateSetting {
 
   factory ConfigurationTemplateSetting.fromMap(Map<String, dynamic> map) {
     return ConfigurationTemplateSetting(
-      name: (map['name'] as String).input(),
-      namespace: (map['namespace'] as String).input(),
-      resource: map['resource'] == null ? null : ((map['resource'] as String).input()).input(),
-      value: (map['value'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      namespace: pulumi.Input.fromValue(map['namespace'] as String),
+      resource: (() {
+        final guardedValue = map['resource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

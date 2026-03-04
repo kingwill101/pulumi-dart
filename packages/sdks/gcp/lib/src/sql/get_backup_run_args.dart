@@ -10,11 +10,14 @@ class GetBackupRunArgs {
   /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
   /// If left empty and multiple backups exist for the instance, `most_recent` must be set to `true`.
   final pulumi.Input<int>? backupId;
+
   /// The name of the instance the backup is taken from.
   final pulumi.Input<String> instance;
+
   /// Toggles use of the most recent backup run if multiple backups exist for a
   /// Cloud SQL instance.
   final pulumi.Input<bool>? mostRecent;
+
   /// The project to list instances for. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -42,11 +45,22 @@ class GetBackupRunArgs {
 
   factory GetBackupRunArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupRunArgs(
-      backupId: map['backupId'] == null ? null : (map['backupId']! as int).input(),
-      instance: (map['instance'] as String).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent']! as bool).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      backupId: (() {
+        final guardedValue = map['backupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instance: pulumi.Input.fromValue(map['instance'] as String),
+      mostRecent: (() {
+        final guardedValue = map['mostRecent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

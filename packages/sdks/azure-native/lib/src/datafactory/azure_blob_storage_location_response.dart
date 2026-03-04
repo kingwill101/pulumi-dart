@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AzureBlobStorageLocationResponse {
   /// Specify the container of azure blob. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? container;
+
   /// Specify the file name of dataset. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? fileName;
+
   /// Specify the folder path of dataset. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic>? folderPath;
+
   /// Type of dataset storage location.
   /// Expected value is 'AzureBlobStorageLocation'.
   final pulumi.Input<String> type;
@@ -37,11 +40,22 @@ class AzureBlobStorageLocationResponse {
 
   factory AzureBlobStorageLocationResponse.fromMap(Map<String, dynamic> map) {
     return AzureBlobStorageLocationResponse(
-      container: map['container'] == null ? null : (map['container']!).input(),
-      fileName: map['fileName'] == null ? null : (map['fileName']!).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath']!).input(),
-      type: (map['type'] as String).input(),
+      container: (() {
+        final guardedValue = map['container'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      fileName: (() {
+        final guardedValue = map['fileName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      folderPath: (() {
+        final guardedValue = map['folderPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

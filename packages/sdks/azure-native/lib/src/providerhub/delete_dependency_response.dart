@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeleteDependencyResponse {
   /// Linked property.
   final pulumi.Input<String>? linkedProperty;
+
   /// Linked type.
   final pulumi.Input<String>? linkedType;
+
   /// Required features.
   final pulumi.Input<List<String>>? requiredFeatures;
 
@@ -30,10 +32,21 @@ class DeleteDependencyResponse {
 
   factory DeleteDependencyResponse.fromMap(Map<String, dynamic> map) {
     return DeleteDependencyResponse(
-      linkedProperty: map['linkedProperty'] == null ? null : (map['linkedProperty']! as String).input(),
-      linkedType: map['linkedType'] == null ? null : (map['linkedType']! as String).input(),
-      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures']! as List).cast<String>()).input(),
+      linkedProperty: (() {
+        final guardedValue = map['linkedProperty'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      linkedType: (() {
+        final guardedValue = map['linkedType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      requiredFeatures: (() {
+        final guardedValue = map['requiredFeatures'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

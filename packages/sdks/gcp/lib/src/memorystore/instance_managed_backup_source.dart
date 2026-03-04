@@ -8,20 +8,15 @@ class InstanceManagedBackupSource {
 
   /// Creates a new [InstanceManagedBackupSource].
   /// [backup] Example: `projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}`.
-  InstanceManagedBackupSource({
-    required this.backup,
-  });
+  InstanceManagedBackupSource({required this.backup});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'backup': backup,
-    };
+    return <String, dynamic>{'backup': backup};
   }
 
   factory InstanceManagedBackupSource.fromMap(Map<String, dynamic> map) {
     return InstanceManagedBackupSource(
-      backup: (map['backup'] as String).input(),
+      backup: pulumi.Input.fromValue(map['backup'] as String),
     );
   }
 }
-

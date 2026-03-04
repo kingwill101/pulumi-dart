@@ -5,16 +5,17 @@ enum ValidationOptionsSchemaValidation {
   ignoreWithWarnings("IGNORE_WITH_WARNINGS"),
   fail("FAIL");
 
-  const ValidationOptionsSchemaValidation(this.value);
-  final String value;
+  const ValidationOptionsSchemaValidation(this.wireValue);
+  final String wireValue;
 
   static ValidationOptionsSchemaValidation fromValue(String value) {
     for (final item in ValidationOptionsSchemaValidation.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ValidationOptionsSchemaValidation value: $value');
+    throw ArgumentError(
+      'Unknown ValidationOptionsSchemaValidation value: $value',
+    );
   }
 }
-

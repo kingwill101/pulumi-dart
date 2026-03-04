@@ -14,15 +14,16 @@ class GPUDriverInstallationConfigResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gpuDriverVersion': gpuDriverVersion,
-    };
+    return <String, dynamic>{'gpuDriverVersion': gpuDriverVersion};
   }
 
-  factory GPUDriverInstallationConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory GPUDriverInstallationConfigResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GPUDriverInstallationConfigResponseContainerV1beta1(
-      gpuDriverVersion: (map['gpuDriverVersion'] as String).input(),
+      gpuDriverVersion: pulumi.Input.fromValue(
+        map['gpuDriverVersion'] as String,
+      ),
     );
   }
 }
-

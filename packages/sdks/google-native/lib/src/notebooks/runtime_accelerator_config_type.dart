@@ -14,16 +14,15 @@ enum RuntimeAcceleratorConfigType {
   nvidiaTeslaP100Vws("NVIDIA_TESLA_P100_VWS"),
   nvidiaTeslaP4Vws("NVIDIA_TESLA_P4_VWS");
 
-  const RuntimeAcceleratorConfigType(this.value);
-  final String value;
+  const RuntimeAcceleratorConfigType(this.wireValue);
+  final String wireValue;
 
   static RuntimeAcceleratorConfigType fromValue(String value) {
     for (final item in RuntimeAcceleratorConfigType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RuntimeAcceleratorConfigType value: $value');
   }
 }
-

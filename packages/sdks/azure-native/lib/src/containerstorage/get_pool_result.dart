@@ -11,30 +11,43 @@ import 'system_data_response.dart';
 class GetPoolResult {
   /// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
   final List<AssignmentResponse>? assignments;
+
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The geo-location where the resource lives
   final String location;
+
   /// The name of the resource
   final String name;
+
   /// Type of the Pool: ephemeralDisk, azureDisk, or elasticsan.
   final PoolTypeResponse poolType;
+
   /// The status of the last operation.
   final String provisioningState;
+
   /// ReclaimPolicy defines what happens to the backend storage when StoragePool is deleted
   final String? reclaimPolicy;
+
   /// Resources represent the resources the pool should have.
   final ResourcesResponse? resources;
+
   /// The operational status of the resource
   final ResourceOperationalStatusResponse status;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final SystemDataResponse systemData;
+
   /// Resource tags.
   final Map<String, String>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
+
   /// List of availability zones that resources can be created in.
   final List<String>? zones;
 
@@ -72,7 +85,14 @@ class GetPoolResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assignments': ?assignments == null ? null : pulumi.Input.encodeList<AssignmentResponse, Map<String, dynamic>>(assignments!, (value) => value.toMap()),
+      'assignments': ?(() {
+        final guardedValue = assignments;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          AssignmentResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
       'azureApiVersion': azureApiVersion,
       'id': id,
       'location': location,
@@ -80,7 +100,7 @@ class GetPoolResult {
       'poolType': poolType.toMap(),
       'provisioningState': provisioningState,
       'reclaimPolicy': ?reclaimPolicy,
-      'resources': ?resources == null ? null : resources!.toMap(),
+      'resources': ?resources?.toMap(),
       'status': status.toMap(),
       'systemData': systemData.toMap(),
       'tags': ?tags,
@@ -91,21 +111,53 @@ class GetPoolResult {
 
   factory GetPoolResult.fromMap(Map<String, dynamic> map) {
     return GetPoolResult(
-      assignments: map['assignments'] == null ? null : pulumi.Input.decodeList<AssignmentResponse>(map['assignments']!, (value) => AssignmentResponse.fromMap((value as Map).cast<String, dynamic>())),
+      assignments: (() {
+        final guardedValue = map['assignments'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<AssignmentResponse>(
+          guardedValue,
+          (value) => AssignmentResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      poolType: PoolTypeResponse.fromMap((map['poolType'] as Map).cast<String, dynamic>()),
+      poolType: PoolTypeResponse.fromMap(
+        (map['poolType']! as Map).cast<String, dynamic>(),
+      ),
       provisioningState: map['provisioningState'] as String,
-      reclaimPolicy: map['reclaimPolicy'] == null ? null : map['reclaimPolicy']! as String,
-      resources: map['resources'] == null ? null : ResourcesResponse.fromMap((map['resources']! as Map).cast<String, dynamic>()),
-      status: ResourceOperationalStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      reclaimPolicy: (() {
+        final guardedValue = map['reclaimPolicy'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      resources: (() {
+        final guardedValue = map['resources'];
+        if (guardedValue == null) return null;
+        return ResourcesResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      status: ResourceOperationalStatusResponse.fromMap(
+        (map['status']! as Map).cast<String, dynamic>(),
+      ),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
     );
   }
 }
-

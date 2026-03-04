@@ -4,16 +4,15 @@ enum RegionCommitmentPlan {
   thirtySixMonth("THIRTY_SIX_MONTH"),
   twelveMonth("TWELVE_MONTH");
 
-  const RegionCommitmentPlan(this.value);
-  final String value;
+  const RegionCommitmentPlan(this.wireValue);
+  final String wireValue;
 
   static RegionCommitmentPlan fromValue(String value) {
     for (final item in RegionCommitmentPlan.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RegionCommitmentPlan value: $value');
   }
 }
-

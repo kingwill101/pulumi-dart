@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDnsForwardingRulesetArgs {
   /// The name of the DNS forwarding ruleset.
   final pulumi.Input<String> dnsForwardingRulesetName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetDnsForwardingRulesetArgs {
 
   factory GetDnsForwardingRulesetArgs.fromMap(Map<String, dynamic> map) {
     return GetDnsForwardingRulesetArgs(
-      dnsForwardingRulesetName: (map['dnsForwardingRulesetName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      dnsForwardingRulesetName: pulumi.Input.fromValue(
+        map['dnsForwardingRulesetName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

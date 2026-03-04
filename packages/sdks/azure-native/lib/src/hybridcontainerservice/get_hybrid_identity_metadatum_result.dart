@@ -7,20 +7,28 @@ import 'system_data_response.dart';
 class GetHybridIdentityMetadatumResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final String id;
+
   /// The identity of the provisioned cluster.
   final ProvisionedClusterIdentityResponse? identity;
+
   /// The name of the resource
   final String name;
+
   /// provisioning state of the hybridIdentityMetadata resource.
   final String provisioningState;
+
   /// Onboarding public key for provisioning the Managed identity for the HybridAKS cluster.
   final String? publicKey;
+
   /// Unique id of the parent provisioned cluster resource.
   final String? resourceUid;
+
   /// The system data.
   final SystemDataResponse systemData;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final String type;
 
@@ -50,7 +58,7 @@ class GetHybridIdentityMetadatumResult {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'name': name,
       'provisioningState': provisioningState,
       'publicKey': ?publicKey,
@@ -64,14 +72,29 @@ class GetHybridIdentityMetadatumResult {
     return GetHybridIdentityMetadatumResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ProvisionedClusterIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return ProvisionedClusterIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      publicKey: map['publicKey'] == null ? null : map['publicKey']! as String,
-      resourceUid: map['resourceUid'] == null ? null : map['resourceUid']! as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
+      publicKey: (() {
+        final guardedValue = map['publicKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      resourceUid: (() {
+        final guardedValue = map['resourceUid'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

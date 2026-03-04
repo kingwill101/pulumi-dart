@@ -3,16 +3,15 @@ enum SyncMode {
   valueAutomatic("Automatic"),
   valueManual("Manual");
 
-  const SyncMode(this.value);
-  final String value;
+  const SyncMode(this.wireValue);
+  final String wireValue;
 
   static SyncMode fromValue(String value) {
     for (final item in SyncMode.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SyncMode value: $value');
   }
 }
-

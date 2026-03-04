@@ -7,17 +7,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_web_web_app_ftp_allowed_args_doc}
 class WebAppFtpAllowedArgs {
-  /// <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
+  /// &lt;code&gt;true&lt;/code&gt; to allow access to a publishing method; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final pulumi.Input<bool> allow;
+
   /// Kind of resource.
   final pulumi.Input<String>? kind;
+
   /// Name of the app.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [WebAppFtpAllowedArgs].
-  /// [allow] <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.
+  /// [allow] &lt;code&gt;true&lt;/code&gt; to allow access to a publishing method; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [kind] Kind of resource.
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
@@ -39,11 +42,16 @@ class WebAppFtpAllowedArgs {
 
   factory WebAppFtpAllowedArgs.fromMap(Map<String, dynamic> map) {
     return WebAppFtpAllowedArgs(
-      allow: (map['allow'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      allow: pulumi.Input.fromValue(map['allow'] as bool),
+      kind: (() {
+        final guardedValue = map['kind'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

@@ -9,9 +9,7 @@ class CutoverForecastResponse {
 
   /// Creates a new [CutoverForecastResponse].
   /// [estimatedCutoverJobDuration] Estimation of the CutoverJob duration.
-  CutoverForecastResponse({
-    required this.estimatedCutoverJobDuration,
-  });
+  CutoverForecastResponse({required this.estimatedCutoverJobDuration});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class CutoverForecastResponse {
 
   factory CutoverForecastResponse.fromMap(Map<String, dynamic> map) {
     return CutoverForecastResponse(
-      estimatedCutoverJobDuration: (map['estimatedCutoverJobDuration'] as String).input(),
+      estimatedCutoverJobDuration: pulumi.Input.fromValue(
+        map['estimatedCutoverJobDuration'] as String,
+      ),
     );
   }
 }
-

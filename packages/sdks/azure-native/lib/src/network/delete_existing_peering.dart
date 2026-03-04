@@ -3,16 +3,15 @@ enum DeleteExistingPeering {
   valueFalse("False"),
   valueTrue("True");
 
-  const DeleteExistingPeering(this.value);
-  final String value;
+  const DeleteExistingPeering(this.wireValue);
+  final String wireValue;
 
   static DeleteExistingPeering fromValue(String value) {
     for (final item in DeleteExistingPeering.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown DeleteExistingPeering value: $value');
   }
 }
-

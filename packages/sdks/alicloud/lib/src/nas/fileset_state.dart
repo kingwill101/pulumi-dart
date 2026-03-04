@@ -6,20 +6,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FilesetState {
   /// The time when Fileset was created.
   final pulumi.Input<String>? createTime;
+
   /// The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
   /// - true: Enable instance release protection.
   /// - false (default): Turn off instance release protection
   final pulumi.Input<bool>? deletionProtection;
+
   /// Description of Fileset.
   final pulumi.Input<String>? description;
+
   /// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
   final pulumi.Input<bool>? dryRun;
+
   /// The ID of the file system.
   final pulumi.Input<String>? fileSystemId;
+
   /// The path of Fileset.
   final pulumi.Input<String>? fileSystemPath;
+
   /// Fileset ID
   final pulumi.Input<String>? filesetId;
+
   /// The status of Fileset. Includes:
   final pulumi.Input<String>? status;
 
@@ -58,15 +65,46 @@ class FilesetState {
 
   factory FilesetState.fromMap(Map<String, dynamic> map) {
     return FilesetState(
-      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
-      fileSystemPath: map['fileSystemPath'] == null ? null : (map['fileSystemPath']! as String).input(),
-      filesetId: map['filesetId'] == null ? null : (map['filesetId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      createTime: (() {
+        final guardedValue = map['createTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deletionProtection: (() {
+        final guardedValue = map['deletionProtection'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      dryRun: (() {
+        final guardedValue = map['dryRun'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      fileSystemId: (() {
+        final guardedValue = map['fileSystemId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      fileSystemPath: (() {
+        final guardedValue = map['fileSystemPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      filesetId: (() {
+        final guardedValue = map['filesetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

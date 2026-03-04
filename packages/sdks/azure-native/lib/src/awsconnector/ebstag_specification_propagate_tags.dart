@@ -3,16 +3,17 @@ enum EBSTagSpecificationPropagateTags {
   sERVICE("SERVICE"),
   tASKDEFINITION("TASK_DEFINITION");
 
-  const EBSTagSpecificationPropagateTags(this.value);
-  final String value;
+  const EBSTagSpecificationPropagateTags(this.wireValue);
+  final String wireValue;
 
   static EBSTagSpecificationPropagateTags fromValue(String value) {
     for (final item in EBSTagSpecificationPropagateTags.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EBSTagSpecificationPropagateTags value: $value');
+    throw ArgumentError(
+      'Unknown EBSTagSpecificationPropagateTags value: $value',
+    );
   }
 }
-

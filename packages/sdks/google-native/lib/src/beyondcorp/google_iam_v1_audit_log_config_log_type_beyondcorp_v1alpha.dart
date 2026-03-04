@@ -5,16 +5,20 @@ enum GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha {
   dataWrite("DATA_WRITE"),
   dataRead("DATA_READ");
 
-  const GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha(this.value);
-  final String value;
+  const GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha(this.wireValue);
+  final String wireValue;
 
-  static GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha fromValue(String value) {
-    for (final item in GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha.values) {
-      if (item.value == value) {
+  static GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown GoogleIamV1AuditLogConfigLogTypeBeyondcorpV1alpha value: $value',
+    );
   }
 }
-

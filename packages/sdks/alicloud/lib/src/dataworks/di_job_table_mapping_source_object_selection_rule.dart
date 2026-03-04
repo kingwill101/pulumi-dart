@@ -4,10 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DiJobTableMappingSourceObjectSelectionRule {
   final pulumi.Input<String>? action;
+
   /// Expression, such as mysql_table_1
   final pulumi.Input<String>? expression;
+
   /// Expression type, value range: Exact/Regex
   final pulumi.Input<String>? expressionType;
+
   /// Object type, optional enumeration value:
   ///
   /// Table (Table)
@@ -36,13 +39,30 @@ class DiJobTableMappingSourceObjectSelectionRule {
     };
   }
 
-  factory DiJobTableMappingSourceObjectSelectionRule.fromMap(Map<String, dynamic> map) {
+  factory DiJobTableMappingSourceObjectSelectionRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DiJobTableMappingSourceObjectSelectionRule(
-      action: map['action'] == null ? null : (map['action']! as String).input(),
-      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
-      expressionType: map['expressionType'] == null ? null : (map['expressionType']! as String).input(),
-      objectType: map['objectType'] == null ? null : (map['objectType']! as String).input(),
+      action: (() {
+        final guardedValue = map['action'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expression: (() {
+        final guardedValue = map['expression'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      expressionType: (() {
+        final guardedValue = map['expressionType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      objectType: (() {
+        final guardedValue = map['objectType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

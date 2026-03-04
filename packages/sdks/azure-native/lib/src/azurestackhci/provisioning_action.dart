@@ -4,16 +4,15 @@ enum ProvisioningAction {
   uninstall("uninstall"),
   repair("repair");
 
-  const ProvisioningAction(this.value);
-  final String value;
+  const ProvisioningAction(this.wireValue);
+  final String wireValue;
 
   static ProvisioningAction fromValue(String value) {
     for (final item in ProvisioningAction.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ProvisioningAction value: $value');
   }
 }
-

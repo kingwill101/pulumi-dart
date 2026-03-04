@@ -10,20 +10,22 @@ class AttestationNoteResponse {
 
   /// Creates a new [AttestationNoteResponse].
   /// [hint] Hint hints at the purpose of the attestation authority.
-  AttestationNoteResponse({
-    required this.hint,
-  });
+  AttestationNoteResponse({required this.hint});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'hint': pulumi.Input.mapInputValue<HintResponse, Map<String, dynamic>>(hint, (value) => value.toMap()),
+      'hint': pulumi.Input.mapInputValue<HintResponse, Map<String, dynamic>>(
+        hint,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory AttestationNoteResponse.fromMap(Map<String, dynamic> map) {
     return AttestationNoteResponse(
-      hint: (HintResponse.fromMap((map['hint'] as Map).cast<String, dynamic>())).input(),
+      hint: pulumi.Input.fromValue(
+        HintResponse.fromMap((map['hint']! as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

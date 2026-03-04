@@ -8,20 +8,15 @@ class EnvironmentHighAvailabilityConfig {
 
   /// Creates a new [EnvironmentHighAvailabilityConfig].
   /// [desiredCapacity] Desired number of instances for the Environment.
-  EnvironmentHighAvailabilityConfig({
-    required this.desiredCapacity,
-  });
+  EnvironmentHighAvailabilityConfig({required this.desiredCapacity});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'desiredCapacity': desiredCapacity,
-    };
+    return <String, dynamic>{'desiredCapacity': desiredCapacity};
   }
 
   factory EnvironmentHighAvailabilityConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentHighAvailabilityConfig(
-      desiredCapacity: (map['desiredCapacity'] as int).input(),
+      desiredCapacity: pulumi.Input.fromValue(map['desiredCapacity'] as int),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInterfaceVpcIpv4Address {
   /// The VPC IPv4 address.
   final pulumi.Input<String> address;
+
   /// The 1:1 NAT address for this VPC IPv4 address.
   final pulumi.Input<String> nat11Address;
+
   /// Whether this is the primary VPC IPv4 address.
   final pulumi.Input<bool> primary;
 
@@ -30,10 +32,9 @@ class GetInterfaceVpcIpv4Address {
 
   factory GetInterfaceVpcIpv4Address.fromMap(Map<String, dynamic> map) {
     return GetInterfaceVpcIpv4Address(
-      address: (map['address'] as String).input(),
-      nat11Address: (map['nat11Address'] as String).input(),
-      primary: (map['primary'] as bool).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      nat11Address: pulumi.Input.fromValue(map['nat11Address'] as String),
+      primary: pulumi.Input.fromValue(map['primary'] as bool),
     );
   }
 }
-

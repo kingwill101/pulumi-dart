@@ -9,20 +9,19 @@ class ProductCodeValuesEnumValue {
 
   /// Creates a new [ProductCodeValuesEnumValue].
   /// [value] Property value
-  ProductCodeValuesEnumValue({
-    this.value,
-  });
+  ProductCodeValuesEnumValue({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
   factory ProductCodeValuesEnumValue.fromMap(Map<String, dynamic> map) {
     return ProductCodeValuesEnumValue(
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

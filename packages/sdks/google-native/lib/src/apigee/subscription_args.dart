@@ -10,9 +10,11 @@ class SubscriptionArgs {
   /// Name of the API product for which the developer is purchasing a subscription.
   final pulumi.Input<String>? apiproduct;
   final pulumi.Input<String> developerId;
+
   /// Time when the API product subscription ends in milliseconds since epoch.
   final pulumi.Input<String>? endTime;
   final pulumi.Input<String> organizationId;
+
   /// Time when the API product subscription starts in milliseconds since epoch.
   final pulumi.Input<String>? startTime;
 
@@ -42,12 +44,23 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      apiproduct: map['apiproduct'] == null ? null : (map['apiproduct']! as String).input(),
-      developerId: (map['developerId'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
-      organizationId: (map['organizationId'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      apiproduct: (() {
+        final guardedValue = map['apiproduct'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      developerId: pulumi.Input.fromValue(map['developerId'] as String),
+      endTime: (() {
+        final guardedValue = map['endTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
+      startTime: (() {
+        final guardedValue = map['startTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

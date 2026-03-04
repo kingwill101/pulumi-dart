@@ -1,5 +1,3 @@
-library module_apikeys;
-
 export 'apikeys/android_application.dart';
 export 'apikeys/android_application_response.dart';
 export 'apikeys/android_key_restrictions.dart';

@@ -4,7 +4,7 @@ import 'workspace_table_state.dart';
 
 /// Manages a Table in a Log Analytics (formally Operational Insights) Workspace.
 ///
-/// > **Note:** This resource does not create or destroy tables. This resource is used to update attributes (currently only retention_in_days) of the tables created when a Log Analytics Workspace is created. Deleting an azure.loganalytics.WorkspaceTable resource will not delete the table. Instead, the table's retention_in_days field will be set to the value of azure.operationalinsights.AnalyticsWorkspace retention_in_days
+/// &gt; **Note:** This resource does not create or destroy tables. This resource is used to update attributes (currently only retention_in_days) of the tables created when a Log Analytics Workspace is created. Deleting an azure.loganalytics.WorkspaceTable resource will not delete the table. Instead, the table's retention_in_days field will be set to the value of azure.operationalinsights.AnalyticsWorkspace retention_in_days
 ///
 /// ## Example Usage
 ///
@@ -202,25 +202,29 @@ import 'workspace_table_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.OperationalInsights` - 2022-10-01
 class WorkspaceTable extends pulumi.CustomResource {
   /// Specifies the name of a table in a Log Analytics Workspace.
   late final pulumi.Output<String> name;
+
   /// Specify the system how to handle and charge the logs ingested to the table. Possible values are `Analytics` and `Basic`. Defaults to `Analytics`.
   ///
-  /// > **Note:** The `name` of tables currently supported by the `Basic` plan can be found [here](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/basic-logs-azure-tables).
+  /// &gt; **Note:** The `name` of tables currently supported by the `Basic` plan can be found [here](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/basic-logs-azure-tables).
   late final pulumi.Output<String?> plan;
+
   /// The table's retention in days. Possible values are either `8` (Basic Tier only) or range between `4` and `730`.
   late final pulumi.Output<int?> retentionInDays;
+
   /// The table's total retention in days. Possible values range between `4` and `730`; or `1095`, `1460`, `1826`, `2191`, `2556`, `2922`, `3288`, `3653`, `4018`, or `4383`.
   ///
-  /// > **Note:** `retention_in_days` and `total_retention_in_days` will revert back to the value of azure.operationalinsights.AnalyticsWorkspace retention_in_days when a azure.loganalytics.WorkspaceTable is deleted.
+  /// &gt; **Note:** `retention_in_days` and `total_retention_in_days` will revert back to the value of azure.operationalinsights.AnalyticsWorkspace retention_in_days when a azure.loganalytics.WorkspaceTable is deleted.
   ///
-  /// > **Note:** The `retention_in_days` cannot be specified when `plan` is `Basic` because the retention is fixed at eight days.
+  /// &gt; **Note:** The `retention_in_days` cannot be specified when `plan` is `Basic` because the retention is fixed at eight days.
   late final pulumi.Output<int?> totalRetentionInDays;
+
   /// The object ID of the Log Analytics Workspace that contains the table.
   late final pulumi.Output<String> workspaceId;
 
@@ -233,16 +237,16 @@ class WorkspaceTable extends pulumi.CustomResource {
     WorkspaceTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:loganalytics/workspaceTable:WorkspaceTable',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:loganalytics/workspaceTable:WorkspaceTable',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.plan = registerOutput<String?>('plan');
-    this.retentionInDays = registerOutput<int?>('retentionInDays');
-    this.totalRetentionInDays = registerOutput<int?>('totalRetentionInDays');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    plan = registerOutput<String?>('plan');
+    retentionInDays = registerOutput<int?>('retentionInDays');
+    totalRetentionInDays = registerOutput<int?>('totalRetentionInDays');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 
   /// Gets an existing [WorkspaceTable] resource's state with the given [name] and [id].
@@ -263,15 +267,15 @@ class WorkspaceTable extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:loganalytics/workspaceTable:WorkspaceTable',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:loganalytics/workspaceTable:WorkspaceTable',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.plan = registerOutput<String?>('plan');
-    this.retentionInDays = registerOutput<int?>('retentionInDays');
-    this.totalRetentionInDays = registerOutput<int?>('totalRetentionInDays');
-    this.workspaceId = registerOutput<String>('workspaceId');
+    plan = registerOutput<String?>('plan');
+    retentionInDays = registerOutput<int?>('retentionInDays');
+    totalRetentionInDays = registerOutput<int?>('totalRetentionInDays');
+    workspaceId = registerOutput<String>('workspaceId');
   }
 }

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTimeSeriesDatabaseConnectionArgs {
   /// The name of the resource group that contains the DigitalTwinsInstance.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the DigitalTwinsInstance.
   final pulumi.Input<String> resourceName;
+
   /// Name of time series database connection.
   final pulumi.Input<String> timeSeriesDatabaseConnectionName;
 
@@ -32,12 +34,17 @@ class GetTimeSeriesDatabaseConnectionArgs {
     };
   }
 
-  factory GetTimeSeriesDatabaseConnectionArgs.fromMap(Map<String, dynamic> map) {
+  factory GetTimeSeriesDatabaseConnectionArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTimeSeriesDatabaseConnectionArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: (map['resourceName'] as String).input(),
-      timeSeriesDatabaseConnectionName: (map['timeSeriesDatabaseConnectionName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
+      timeSeriesDatabaseConnectionName: pulumi.Input.fromValue(
+        map['timeSeriesDatabaseConnectionName'] as String,
+      ),
     );
   }
 }
-

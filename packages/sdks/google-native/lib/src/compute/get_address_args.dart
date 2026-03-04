@@ -15,11 +15,7 @@ class GetAddressArgs {
   /// [address] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetAddressArgs({
-    required this.address,
-    this.project,
-    required this.region,
-  });
+  GetAddressArgs({required this.address, this.project, required this.region});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +27,13 @@ class GetAddressArgs {
 
   factory GetAddressArgs.fromMap(Map<String, dynamic> map) {
     return GetAddressArgs(
-      address: (map['address'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      region: (map['region'] as String).input(),
+      address: pulumi.Input.fromValue(map['address'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: pulumi.Input.fromValue(map['region'] as String),
     );
   }
 }
-

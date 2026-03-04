@@ -6,15 +6,19 @@ class AutonomousDatabasePropertiesLocalStandbyDb {
   /// The date and time the Autonomous Data Guard role was switched for the
   /// standby Autonomous Database.
   final pulumi.Input<String>? dataGuardRoleChangedTime;
+
   /// The date and time the Disaster Recovery role was switched for the standby
   /// Autonomous Database.
   final pulumi.Input<String>? disasterRecoveryRoleChangedTime;
+
   /// The amount of time, in seconds, that the data of the standby database lags
   /// in comparison to the data of the primary database.
   final pulumi.Input<String>? lagTimeDuration;
+
   /// The additional details about the current lifecycle state of the
   /// Autonomous Database.
   final pulumi.Input<String>? lifecycleDetails;
+
   /// Possible values:
   /// STATE_UNSPECIFIED
   /// PROVISIONING
@@ -64,14 +68,35 @@ class AutonomousDatabasePropertiesLocalStandbyDb {
     };
   }
 
-  factory AutonomousDatabasePropertiesLocalStandbyDb.fromMap(Map<String, dynamic> map) {
+  factory AutonomousDatabasePropertiesLocalStandbyDb.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutonomousDatabasePropertiesLocalStandbyDb(
-      dataGuardRoleChangedTime: map['dataGuardRoleChangedTime'] == null ? null : (map['dataGuardRoleChangedTime']! as String).input(),
-      disasterRecoveryRoleChangedTime: map['disasterRecoveryRoleChangedTime'] == null ? null : (map['disasterRecoveryRoleChangedTime']! as String).input(),
-      lagTimeDuration: map['lagTimeDuration'] == null ? null : (map['lagTimeDuration']! as String).input(),
-      lifecycleDetails: map['lifecycleDetails'] == null ? null : (map['lifecycleDetails']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
+      dataGuardRoleChangedTime: (() {
+        final guardedValue = map['dataGuardRoleChangedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disasterRecoveryRoleChangedTime: (() {
+        final guardedValue = map['disasterRecoveryRoleChangedTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lagTimeDuration: (() {
+        final guardedValue = map['lagTimeDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lifecycleDetails: (() {
+        final guardedValue = map['lifecycleDetails'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

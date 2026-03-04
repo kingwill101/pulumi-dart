@@ -13,15 +13,16 @@ class RuleGroupRuleStatementRateBasedStatementCustomKeyJa4Fingerprint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fallbackBehavior': fallbackBehavior,
-    };
+    return <String, dynamic>{'fallbackBehavior': fallbackBehavior};
   }
 
-  factory RuleGroupRuleStatementRateBasedStatementCustomKeyJa4Fingerprint.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementRateBasedStatementCustomKeyJa4Fingerprint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleStatementRateBasedStatementCustomKeyJa4Fingerprint(
-      fallbackBehavior: (map['fallbackBehavior'] as String).input(),
+      fallbackBehavior: pulumi.Input.fromValue(
+        map['fallbackBehavior'] as String,
+      ),
     );
   }
 }
-

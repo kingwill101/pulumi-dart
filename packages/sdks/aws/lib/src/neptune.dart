@@ -1,5 +1,3 @@
-library module_neptune;
-
 export 'neptune/cluster.dart';
 export 'neptune/cluster_args.dart';
 export 'neptune/cluster_endpoint.dart';

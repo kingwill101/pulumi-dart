@@ -35,11 +35,10 @@ class GetPeeredDnsDomainArgs {
 
   factory GetPeeredDnsDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetPeeredDnsDomainArgs(
-      name: (map['name'] as String).input(),
-      network: (map['network'] as String).input(),
-      project: (map['project'] as String).input(),
-      service: (map['service'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      network: pulumi.Input.fromValue(map['network'] as String),
+      project: pulumi.Input.fromValue(map['project'] as String),
+      service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
-

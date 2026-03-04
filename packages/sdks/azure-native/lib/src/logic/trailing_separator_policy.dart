@@ -5,16 +5,15 @@ enum TrailingSeparatorPolicy {
   valueOptional("Optional"),
   valueMandatory("Mandatory");
 
-  const TrailingSeparatorPolicy(this.value);
-  final String value;
+  const TrailingSeparatorPolicy(this.wireValue);
+  final String wireValue;
 
   static TrailingSeparatorPolicy fromValue(String value) {
     for (final item in TrailingSeparatorPolicy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TrailingSeparatorPolicy value: $value');
   }
 }
-

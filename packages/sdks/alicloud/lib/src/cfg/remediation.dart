@@ -6,7 +6,7 @@ import 'remediation_state.dart';
 ///
 /// For information about Config Remediation and how to use it, see [What is Remediation](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createremediation).
 ///
-/// > **NOTE:** Available since v1.204.0.
+/// &gt; **NOTE:** Available since v1.204.0.
 ///
 /// ## Example Usage
 ///
@@ -402,16 +402,22 @@ import 'remediation_state.dart';
 class Remediation extends pulumi.CustomResource {
   /// Rule ID.
   late final pulumi.Output<String> configRuleId;
+
   /// Execution type, valid values: `Manual`, `Automatic`.
   late final pulumi.Output<String> invokeType;
+
   /// Remediation parameter.
   late final pulumi.Output<String> params;
+
   /// Remediation ID.
   late final pulumi.Output<String> remediationId;
+
   /// Remediation resource type, valid values: `ALIYUN` , `CUSTOMER`.
   late final pulumi.Output<String> remediationSourceType;
+
   /// Remediation template ID.
   late final pulumi.Output<String> remediationTemplateId;
+
   /// Remediation type, valid values: `OOS`, `FC`.
   ///
   /// The following arguments will be discarded. Please use new fields as soon as possible:
@@ -426,18 +432,18 @@ class Remediation extends pulumi.CustomResource {
     RemediationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cfg/remediation:Remediation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configRuleId = registerOutput<String>('configRuleId');
-    this.invokeType = registerOutput<String>('invokeType');
-    this.params = registerOutput<String>('params');
-    this.remediationId = registerOutput<String>('remediationId');
-    this.remediationSourceType = registerOutput<String>('remediationSourceType');
-    this.remediationTemplateId = registerOutput<String>('remediationTemplateId');
-    this.remediationType = registerOutput<String>('remediationType');
+         'alicloud:cfg/remediation:Remediation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configRuleId = registerOutput<String>('configRuleId');
+    invokeType = registerOutput<String>('invokeType');
+    params = registerOutput<String>('params');
+    remediationId = registerOutput<String>('remediationId');
+    remediationSourceType = registerOutput<String>('remediationSourceType');
+    remediationTemplateId = registerOutput<String>('remediationTemplateId');
+    remediationType = registerOutput<String>('remediationType');
   }
 
   /// Gets an existing [Remediation] resource's state with the given [name] and [id].
@@ -458,17 +464,17 @@ class Remediation extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cfg/remediation:Remediation',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configRuleId = registerOutput<String>('configRuleId');
-    this.invokeType = registerOutput<String>('invokeType');
-    this.params = registerOutput<String>('params');
-    this.remediationId = registerOutput<String>('remediationId');
-    this.remediationSourceType = registerOutput<String>('remediationSourceType');
-    this.remediationTemplateId = registerOutput<String>('remediationTemplateId');
-    this.remediationType = registerOutput<String>('remediationType');
+         'alicloud:cfg/remediation:Remediation',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    configRuleId = registerOutput<String>('configRuleId');
+    invokeType = registerOutput<String>('invokeType');
+    params = registerOutput<String>('params');
+    remediationId = registerOutput<String>('remediationId');
+    remediationSourceType = registerOutput<String>('remediationSourceType');
+    remediationTemplateId = registerOutput<String>('remediationTemplateId');
+    remediationType = registerOutput<String>('remediationType');
   }
 }

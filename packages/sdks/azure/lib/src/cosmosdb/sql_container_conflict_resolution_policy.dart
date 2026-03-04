@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlContainerConflictResolutionPolicy {
   /// The conflict resolution path in the case of `LastWriterWins` mode.
   final pulumi.Input<String>? conflictResolutionPath;
+
   /// The procedure to resolve conflicts in the case of `Custom` mode.
   final pulumi.Input<String>? conflictResolutionProcedure;
+
   /// Indicates the conflict resolution mode. Possible values include: `LastWriterWins`, `Custom`.
   final pulumi.Input<String> mode;
 
@@ -28,12 +30,21 @@ class SqlContainerConflictResolutionPolicy {
     };
   }
 
-  factory SqlContainerConflictResolutionPolicy.fromMap(Map<String, dynamic> map) {
+  factory SqlContainerConflictResolutionPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SqlContainerConflictResolutionPolicy(
-      conflictResolutionPath: map['conflictResolutionPath'] == null ? null : (map['conflictResolutionPath']! as String).input(),
-      conflictResolutionProcedure: map['conflictResolutionProcedure'] == null ? null : (map['conflictResolutionProcedure']! as String).input(),
-      mode: (map['mode'] as String).input(),
+      conflictResolutionPath: (() {
+        final guardedValue = map['conflictResolutionPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      conflictResolutionProcedure: (() {
+        final guardedValue = map['conflictResolutionProcedure'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }
 }
-

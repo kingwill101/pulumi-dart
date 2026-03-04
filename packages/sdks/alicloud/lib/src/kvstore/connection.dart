@@ -4,7 +4,7 @@ import 'connection_state.dart';
 
 /// Operate the public network ip of the specified resource. How to use it, see [What is Connection](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-allocateinstancepublicconnection-redis).
 ///
-/// > **NOTE:** Available since v1.101.0.
+/// &gt; **NOTE:** Available since v1.101.0.
 ///
 /// ## Example Usage
 ///
@@ -391,10 +391,13 @@ import 'connection_state.dart';
 class Connection extends pulumi.CustomResource {
   /// The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
   late final pulumi.Output<String> connectionString;
+
   /// The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
   late final pulumi.Output<String> connectionStringPrefix;
+
   /// The ID of the instance.
   late final pulumi.Output<String> instanceId;
+
   /// The service port number of the instance.
   late final pulumi.Output<String> port;
 
@@ -407,15 +410,15 @@ class Connection extends pulumi.CustomResource {
     ConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:kvstore/connection:Connection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionString = registerOutput<String>('connectionString');
-    this.connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.port = registerOutput<String>('port');
+         'alicloud:kvstore/connection:Connection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionString = registerOutput<String>('connectionString');
+    connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
+    instanceId = registerOutput<String>('instanceId');
+    port = registerOutput<String>('port');
   }
 
   /// Gets an existing [Connection] resource's state with the given [name] and [id].
@@ -436,14 +439,14 @@ class Connection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:kvstore/connection:Connection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.connectionString = registerOutput<String>('connectionString');
-    this.connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.port = registerOutput<String>('port');
+         'alicloud:kvstore/connection:Connection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    connectionString = registerOutput<String>('connectionString');
+    connectionStringPrefix = registerOutput<String>('connectionStringPrefix');
+    instanceId = registerOutput<String>('instanceId');
+    port = registerOutput<String>('port');
   }
 }

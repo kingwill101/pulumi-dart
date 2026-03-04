@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'snapshot_args.dart';
-import 'snapshot_cluster_configuration.dart';
 import 'snapshot_state.dart';
 
 /// Provides a MemoryDB Snapshot.
@@ -113,22 +112,31 @@ import 'snapshot_state.dart';
 class Snapshot extends pulumi.CustomResource {
   /// The ARN of the snapshot.
   late final pulumi.Output<String> arn;
+
   /// The configuration of the cluster from which the snapshot was taken.
-  late final pulumi.Output<List<SnapshotClusterConfiguration>> clusterConfigurations;
+  late final pulumi.Output<List<Map<String, dynamic>>> clusterConfigurations;
+
   /// Name of the MemoryDB cluster to take a snapshot of.
   late final pulumi.Output<String> clusterName;
+
   /// ARN of the KMS key used to encrypt the snapshot at rest.
   late final pulumi.Output<String?> kmsKeyArn;
+
   /// Name of the snapshot. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   late final pulumi.Output<String> name;
+
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Indicates whether the snapshot is from an automatic backup (`automated`) or was created manually (`manual`).
   late final pulumi.Output<String> source;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -141,21 +149,23 @@ class Snapshot extends pulumi.CustomResource {
     SnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:memorydb/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.clusterConfigurations = registerOutput<List<SnapshotClusterConfiguration>>('clusterConfigurations');
-    this.clusterName = registerOutput<String>('clusterName');
-    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+         'aws:memorydb/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    clusterConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'clusterConfigurations',
+    );
+    clusterName = registerOutput<String>('clusterName');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String>('namePrefix');
-    this.region = registerOutput<String>('region');
-    this.source = registerOutput<String>('source');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    source = registerOutput<String>('source');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 
   /// Gets an existing [Snapshot] resource's state with the given [name] and [id].
@@ -176,20 +186,22 @@ class Snapshot extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:memorydb/snapshot:Snapshot',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.clusterConfigurations = registerOutput<List<SnapshotClusterConfiguration>>('clusterConfigurations');
-    this.clusterName = registerOutput<String>('clusterName');
-    this.kmsKeyArn = registerOutput<String?>('kmsKeyArn');
+         'aws:memorydb/snapshot:Snapshot',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    clusterConfigurations = registerOutput<List<Map<String, dynamic>>>(
+      'clusterConfigurations',
+    );
+    clusterName = registerOutput<String>('clusterName');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
-    this.namePrefix = registerOutput<String>('namePrefix');
-    this.region = registerOutput<String>('region');
-    this.source = registerOutput<String>('source');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    namePrefix = registerOutput<String>('namePrefix');
+    region = registerOutput<String>('region');
+    source = registerOutput<String>('source');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }
 }

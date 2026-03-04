@@ -6,6 +6,7 @@ import 'get_dynamic_tag_groups_group.dart';
 /// Result data returned by getDynamicTagGroups.
 class GetDynamicTagGroupsResult {
   final List<GetDynamicTagGroupsGroup> groups;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -31,7 +32,11 @@ class GetDynamicTagGroupsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groups': pulumi.Input.encodeList<GetDynamicTagGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'groups':
+          pulumi.Input.encodeList<
+            GetDynamicTagGroupsGroup,
+            Map<String, dynamic>
+          >(groups, (value) => value.toMap()),
       'id': id,
       'ids': ids,
       'outputFile': ?outputFile,
@@ -42,13 +47,29 @@ class GetDynamicTagGroupsResult {
 
   factory GetDynamicTagGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetDynamicTagGroupsResult(
-      groups: pulumi.Input.decodeList<GetDynamicTagGroupsGroup>(map['groups'], (value) => GetDynamicTagGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
+      groups: pulumi.Input.decodeList<GetDynamicTagGroupsGroup>(
+        map['groups']!,
+        (value) => GetDynamicTagGroupsGroup.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
-      tagKey: map['tagKey'] == null ? null : map['tagKey']! as String,
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      tagKey: (() {
+        final guardedValue = map['tagKey'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

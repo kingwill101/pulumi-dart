@@ -38,16 +38,15 @@ enum InstanceDatabaseVersion {
   sqlserver2022Express("SQLSERVER_2022_EXPRESS"),
   sqlserver2022Web("SQLSERVER_2022_WEB");
 
-  const InstanceDatabaseVersion(this.value);
-  final String value;
+  const InstanceDatabaseVersion(this.wireValue);
+  final String wireValue;
 
   static InstanceDatabaseVersion fromValue(String value) {
     for (final item in InstanceDatabaseVersion.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceDatabaseVersion value: $value');
   }
 }
-

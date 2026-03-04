@@ -1,5 +1,3 @@
-library module_mwaa;
-
 export 'mwaa/environment.dart';
 export 'mwaa/environment_args.dart';
 export 'mwaa/environment_last_updated.dart';

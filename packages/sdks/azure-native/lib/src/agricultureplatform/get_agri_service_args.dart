@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAgriServiceArgs {
   /// The name of the AgriService resource.
   final pulumi.Input<String> agriServiceResourceName;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetAgriServiceArgs {
 
   factory GetAgriServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetAgriServiceArgs(
-      agriServiceResourceName: (map['agriServiceResourceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      agriServiceResourceName: pulumi.Input.fromValue(
+        map['agriServiceResourceName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

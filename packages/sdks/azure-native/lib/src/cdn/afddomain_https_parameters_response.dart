@@ -8,12 +8,17 @@ import 'resource_reference_response.dart';
 class AFDDomainHttpsParametersResponse {
   /// Defines the source of the SSL certificate.
   final pulumi.Input<String> certificateType;
+
   /// cipher suite set type that will be used for Https
   final pulumi.Input<String>? cipherSuiteSetType;
+
   /// Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
-  final pulumi.Input<AFDDomainHttpsCustomizedCipherSuiteSetResponse>? customizedCipherSuiteSet;
+  final pulumi.Input<AFDDomainHttpsCustomizedCipherSuiteSetResponse>?
+  customizedCipherSuiteSet;
+
   /// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
   final pulumi.Input<String>? minimumTlsVersion;
+
   /// Resource reference to the secret. ie. subs/rg/profile/secret
   final pulumi.Input<ResourceReferenceResponse>? secret;
 
@@ -35,20 +40,51 @@ class AFDDomainHttpsParametersResponse {
     return <String, dynamic>{
       'certificateType': certificateType,
       'cipherSuiteSetType': ?cipherSuiteSetType,
-      'customizedCipherSuiteSet': ?pulumi.Input.mapOptionalInputValue<AFDDomainHttpsCustomizedCipherSuiteSetResponse, Map<String, dynamic>>(customizedCipherSuiteSet, (value) => value.toMap()),
+      'customizedCipherSuiteSet':
+          ?pulumi.Input.mapOptionalInputValue<
+            AFDDomainHttpsCustomizedCipherSuiteSetResponse,
+            Map<String, dynamic>
+          >(customizedCipherSuiteSet, (value) => value.toMap()),
       'minimumTlsVersion': ?minimumTlsVersion,
-      'secret': ?pulumi.Input.mapOptionalInputValue<ResourceReferenceResponse, Map<String, dynamic>>(secret, (value) => value.toMap()),
+      'secret':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceReferenceResponse,
+            Map<String, dynamic>
+          >(secret, (value) => value.toMap()),
     };
   }
 
   factory AFDDomainHttpsParametersResponse.fromMap(Map<String, dynamic> map) {
     return AFDDomainHttpsParametersResponse(
-      certificateType: (map['certificateType'] as String).input(),
-      cipherSuiteSetType: map['cipherSuiteSetType'] == null ? null : (map['cipherSuiteSetType']! as String).input(),
-      customizedCipherSuiteSet: map['customizedCipherSuiteSet'] == null ? null : (AFDDomainHttpsCustomizedCipherSuiteSetResponse.fromMap((map['customizedCipherSuiteSet']! as Map).cast<String, dynamic>())).input(),
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion']! as String).input(),
-      secret: map['secret'] == null ? null : (ResourceReferenceResponse.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
+      certificateType: pulumi.Input.fromValue(map['certificateType'] as String),
+      cipherSuiteSetType: (() {
+        final guardedValue = map['cipherSuiteSetType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      customizedCipherSuiteSet: (() {
+        final guardedValue = map['customizedCipherSuiteSet'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AFDDomainHttpsCustomizedCipherSuiteSetResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      minimumTlsVersion: (() {
+        final guardedValue = map['minimumTlsVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secret: (() {
+        final guardedValue = map['secret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceReferenceResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

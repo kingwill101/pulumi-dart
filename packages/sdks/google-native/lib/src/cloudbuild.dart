@@ -1,5 +1,3 @@
-library module_cloudbuild;
-
 export 'cloudbuild/approval_config.dart';
 export 'cloudbuild/approval_config_response.dart';
 export 'cloudbuild/approval_result_response.dart';

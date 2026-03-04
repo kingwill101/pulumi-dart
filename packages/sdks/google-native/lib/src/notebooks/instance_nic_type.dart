@@ -4,16 +4,15 @@ enum InstanceNicType {
   virtioNet("VIRTIO_NET"),
   gvnic("GVNIC");
 
-  const InstanceNicType(this.value);
-  final String value;
+  const InstanceNicType(this.wireValue);
+  final String wireValue;
 
   static InstanceNicType fromValue(String value) {
     for (final item in InstanceNicType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceNicType value: $value');
   }
 }
-

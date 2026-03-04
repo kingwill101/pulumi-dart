@@ -334,26 +334,38 @@ import 'system_data_response.dart';
 class PolicyDefinitionVersionAtManagementGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The policy definition description.
   late final pulumi.Output<String?> description;
+
   /// The display name of the policy definition.
   late final pulumi.Output<String?> displayName;
+
   /// The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
   late final pulumi.Output<dynamic> metadata;
+
   /// The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
   late final pulumi.Output<String?> mode;
+
   /// The name of the policy definition version.
   late final pulumi.Output<String> name;
+
   /// The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
-  late final pulumi.Output<Map<String, ParameterDefinitionsValueResponse>?> parameters;
+  late final pulumi.Output<Map<String, ParameterDefinitionsValueResponse>?>
+  parameters;
+
   /// The policy rule.
   late final pulumi.Output<dynamic> policyRule;
+
   /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
   late final pulumi.Output<String?> policyType;
+
   /// The system metadata relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The type of the resource (Microsoft.Authorization/policyDefinitions/versions).
   late final pulumi.Output<String> type;
+
   /// The policy definition version in #.#.# format.
   late final pulumi.Output<String?> version;
 
@@ -366,22 +378,25 @@ class PolicyDefinitionVersionAtManagementGroup extends pulumi.CustomResource {
     PolicyDefinitionVersionAtManagementGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:authorization:PolicyDefinitionVersionAtManagementGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
-    this.metadata = registerOutput<dynamic>('metadata');
-    this.mode = registerOutput<String?>('mode');
+         'azure-native:authorization:PolicyDefinitionVersionAtManagementGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    metadata = registerOutput<dynamic>('metadata');
+    mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, ParameterDefinitionsValueResponse>?>('parameters');
-    this.policyRule = registerOutput<dynamic>('policyRule');
-    this.policyType = registerOutput<String?>('policyType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
-    this.version = registerOutput<String?>('version');
+    parameters =
+        registerOutput<Map<String, ParameterDefinitionsValueResponse>?>(
+          'parameters',
+        );
+    policyRule = registerOutput<dynamic>('policyRule');
+    policyType = registerOutput<String?>('policyType');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
   }
 }

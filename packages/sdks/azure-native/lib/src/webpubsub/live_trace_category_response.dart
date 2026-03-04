@@ -8,6 +8,7 @@ class LiveTraceCategoryResponse {
   /// Available values: true, false.
   /// Case insensitive.
   final pulumi.Input<String>? enabled;
+
   /// Gets or sets the live trace category's name.
   /// Available values: ConnectivityLogs, MessagingLogs.
   /// Case insensitive.
@@ -16,23 +17,24 @@ class LiveTraceCategoryResponse {
   /// Creates a new [LiveTraceCategoryResponse].
   /// [enabled] Indicates whether or the live trace category is enabled.
   /// [name] Gets or sets the live trace category's name.
-  LiveTraceCategoryResponse({
-    this.enabled,
-    this.name,
-  });
+  LiveTraceCategoryResponse({this.enabled, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-      'name': ?name,
-    };
+    return <String, dynamic>{'enabled': ?enabled, 'name': ?name};
   }
 
   factory LiveTraceCategoryResponse.fromMap(Map<String, dynamic> map) {
     return LiveTraceCategoryResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
+      enabled: (() {
+        final guardedValue = map['enabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

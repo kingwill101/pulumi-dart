@@ -3,16 +3,17 @@ enum GooglePrivacyDlpV2BigQueryOptionsSampleMethod {
   top("TOP"),
   randomStart("RANDOM_START");
 
-  const GooglePrivacyDlpV2BigQueryOptionsSampleMethod(this.value);
-  final String value;
+  const GooglePrivacyDlpV2BigQueryOptionsSampleMethod(this.wireValue);
+  final String wireValue;
 
   static GooglePrivacyDlpV2BigQueryOptionsSampleMethod fromValue(String value) {
     for (final item in GooglePrivacyDlpV2BigQueryOptionsSampleMethod.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2BigQueryOptionsSampleMethod value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2BigQueryOptionsSampleMethod value: $value',
+    );
   }
 }
-

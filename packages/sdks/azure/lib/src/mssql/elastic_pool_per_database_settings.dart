@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticPoolPerDatabaseSettings {
   /// The maximum capacity any one database can consume.
   final pulumi.Input<double> maxCapacity;
+
   /// The minimum capacity all databases are guaranteed.
   final pulumi.Input<double> minCapacity;
 
@@ -25,9 +26,8 @@ class ElasticPoolPerDatabaseSettings {
 
   factory ElasticPoolPerDatabaseSettings.fromMap(Map<String, dynamic> map) {
     return ElasticPoolPerDatabaseSettings(
-      maxCapacity: (map['maxCapacity'] as double).input(),
-      minCapacity: (map['minCapacity'] as double).input(),
+      maxCapacity: pulumi.Input.fromValue(map['maxCapacity'] as double),
+      minCapacity: pulumi.Input.fromValue(map['minCapacity'] as double),
     );
   }
 }
-

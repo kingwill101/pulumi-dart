@@ -3,16 +3,15 @@ enum InstanceSqlNetworkArchitecture {
   newNetworkArchitecture("NEW_NETWORK_ARCHITECTURE"),
   oldNetworkArchitecture("OLD_NETWORK_ARCHITECTURE");
 
-  const InstanceSqlNetworkArchitecture(this.value);
-  final String value;
+  const InstanceSqlNetworkArchitecture(this.wireValue);
+  final String wireValue;
 
   static InstanceSqlNetworkArchitecture fromValue(String value) {
     for (final item in InstanceSqlNetworkArchitecture.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown InstanceSqlNetworkArchitecture value: $value');
   }
 }
-

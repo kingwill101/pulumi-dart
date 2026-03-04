@@ -8,6 +8,7 @@ class RegionalParameterPolicyMember {
   /// deleted and recreated with the same name, the binding will be applicable to the new resource. Format:
   /// `principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/{{location}}/parameters/{{parameter_id}}`
   final pulumi.Input<String>? iamPolicyNamePrincipal;
+
   /// (Output)
   /// IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier. If
   /// a resource is deleted and recreated with the same name, the binding will not be applicable to the new
@@ -32,9 +33,16 @@ class RegionalParameterPolicyMember {
 
   factory RegionalParameterPolicyMember.fromMap(Map<String, dynamic> map) {
     return RegionalParameterPolicyMember(
-      iamPolicyNamePrincipal: map['iamPolicyNamePrincipal'] == null ? null : (map['iamPolicyNamePrincipal']! as String).input(),
-      iamPolicyUidPrincipal: map['iamPolicyUidPrincipal'] == null ? null : (map['iamPolicyUidPrincipal']! as String).input(),
+      iamPolicyNamePrincipal: (() {
+        final guardedValue = map['iamPolicyNamePrincipal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      iamPolicyUidPrincipal: (() {
+        final guardedValue = map['iamPolicyUidPrincipal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -13,32 +13,39 @@ class PolicyV2Args {
   /// rules are changed. Changing this updates the `audited` status of an existing
   /// firewall policy.
   final pulumi.Input<bool>? audited;
+
   /// A description for the firewall policy. Changing
   /// this updates the `description` of an existing firewall policy.
   final pulumi.Input<String>? description;
+
   /// A name for the firewall policy. Changing this
   /// updates the `name` of an existing firewall policy.
   final pulumi.Input<String>? name;
+
   /// This argument conflicts and is interchangeable
   /// with `tenant_id`. The owner of the firewall policy. Required if admin wants
   /// to create a firewall policy for another project. Changing this creates a new
   /// firewall policy.
   final pulumi.Input<String>? projectId;
+
   /// The region in which to obtain the v2 networking client.
   /// A networking client is needed to create a firewall policy. If omitted, the
   /// `region` argument of the provider is used. Changing this creates a new
   /// firewall policy.
   final pulumi.Input<String>? region;
+
   /// An array of one or more firewall rules that comprise
   /// the policy. Changing this results in adding/removing rules from the
   /// existing firewall policy.
   final pulumi.Input<List<String>>? rules;
+
   /// Sharing status of the firewall policy (must be "true"
   /// or "false" if provided). If this is "true" the policy is visible to, and
   /// can be used in, firewalls in other tenants. Changing this updates the
   /// `shared` status of an existing firewall policy. Only administrative users
   /// can specify if the policy should be shared.
   final pulumi.Input<bool>? shared;
+
   /// This argument conflicts and is interchangeable
   /// with `project_id`. The owner of the firewall policy. Required if admin wants
   /// to create a firewall policy for another tenant. Changing this creates a new
@@ -80,15 +87,46 @@ class PolicyV2Args {
 
   factory PolicyV2Args.fromMap(Map<String, dynamic> map) {
     return PolicyV2Args(
-      audited: map['audited'] == null ? null : (map['audited']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      rules: map['rules'] == null ? null : ((map['rules']! as List).cast<String>()).input(),
-      shared: map['shared'] == null ? null : (map['shared']! as bool).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      audited: (() {
+        final guardedValue = map['audited'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectId: (() {
+        final guardedValue = map['projectId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      rules: (() {
+        final guardedValue = map['rules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      shared: (() {
+        final guardedValue = map['shared'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      tenantId: (() {
+        final guardedValue = map['tenantId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'error_response.dart';
 import 'my_sqlserver_args.dart';
 import 'system_data_response.dart';
 
@@ -193,36 +192,52 @@ import 'system_data_response.dart';
 class MySQLServer extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// mysql server edition.
   late final pulumi.Output<String?> edition;
+
   /// The list of errors.
-  late final pulumi.Output<List<ErrorResponse>?> errors;
+  late final pulumi.Output<List<Map<String, dynamic>>?> errors;
+
   /// The Server IP/host name.
   late final pulumi.Output<List<String>?> hostIp;
+
   /// The Server IP/host name.
   late final pulumi.Output<String> hostName;
+
   /// Resource labels.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// discovery Machine Id
   late final pulumi.Output<String?> machineId;
+
   /// The mysql server version.
   late final pulumi.Output<String?> mysqlVersion;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The number of database.
   late final pulumi.Output<double?> numberOfDatabase;
+
   /// MySQL Server port number
   late final pulumi.Output<String> portNumber;
+
   /// Gets or sets the provisioning state.
   late final pulumi.Output<String?> provisioningState;
+
   /// Time when mysql version support end.
   late final pulumi.Output<String?> supportEndIn;
+
   /// mysql version support status.
   late final pulumi.Output<String?> supportStatus;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -235,27 +250,27 @@ class MySQLServer extends pulumi.CustomResource {
     MySQLServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:mysqldiscovery:MySQLServer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.edition = registerOutput<String?>('edition');
-    this.errors = registerOutput<List<ErrorResponse>?>('errors');
-    this.hostIp = registerOutput<List<String>?>('hostIp');
-    this.hostName = registerOutput<String>('hostName');
-    this.labels = registerOutput<Map<String, String>?>('labels');
-    this.machineId = registerOutput<String?>('machineId');
-    this.mysqlVersion = registerOutput<String?>('mysqlVersion');
+         'azure-native:mysqldiscovery:MySQLServer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    edition = registerOutput<String?>('edition');
+    errors = registerOutput<List<Map<String, dynamic>>?>('errors');
+    hostIp = registerOutput<List<String>?>('hostIp');
+    hostName = registerOutput<String>('hostName');
+    labels = registerOutput<Map<String, String>?>('labels');
+    machineId = registerOutput<String?>('machineId');
+    mysqlVersion = registerOutput<String?>('mysqlVersion');
     this.name = registerOutput<String>('name');
-    this.numberOfDatabase = registerOutput<double?>('numberOfDatabase');
-    this.portNumber = registerOutput<String>('portNumber');
-    this.provisioningState = registerOutput<String?>('provisioningState');
-    this.supportEndIn = registerOutput<String?>('supportEndIn');
-    this.supportStatus = registerOutput<String?>('supportStatus');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    numberOfDatabase = registerOutput<double?>('numberOfDatabase');
+    portNumber = registerOutput<String>('portNumber');
+    provisioningState = registerOutput<String?>('provisioningState');
+    supportEndIn = registerOutput<String?>('supportEndIn');
+    supportStatus = registerOutput<String?>('supportStatus');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

@@ -9,12 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallRuleArgs {
   /// The ending IP address to allow through the firewall for this rule.
   ///
-  /// > **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
+  /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `start_ip_address` and `end_ip_address` to `0.0.0.0` which ([is documented in the Azure API Docs](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)).
   final pulumi.Input<String> endIpAddress;
+
   /// The name of the firewall rule. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The resource ID of the SQL Server on which to create the Firewall Rule. Changing this forces a new resource to be created.
   final pulumi.Input<String> serverId;
+
   /// The starting IP address to allow through the firewall for this rule.
   final pulumi.Input<String> startIpAddress;
 
@@ -41,11 +44,14 @@ class FirewallRuleArgs {
 
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
-      endIpAddress: (map['endIpAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      serverId: (map['serverId'] as String).input(),
-      startIpAddress: (map['startIpAddress'] as String).input(),
+      endIpAddress: pulumi.Input.fromValue(map['endIpAddress'] as String),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serverId: pulumi.Input.fromValue(map['serverId'] as String),
+      startIpAddress: pulumi.Input.fromValue(map['startIpAddress'] as String),
     );
   }
 }
-

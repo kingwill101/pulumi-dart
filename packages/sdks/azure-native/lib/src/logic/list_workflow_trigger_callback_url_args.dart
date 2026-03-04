@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListWorkflowTriggerCallbackUrlArgs {
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The workflow trigger name.
   final pulumi.Input<String> triggerName;
+
   /// The workflow name.
   final pulumi.Input<String> workflowName;
 
@@ -34,10 +36,11 @@ class ListWorkflowTriggerCallbackUrlArgs {
 
   factory ListWorkflowTriggerCallbackUrlArgs.fromMap(Map<String, dynamic> map) {
     return ListWorkflowTriggerCallbackUrlArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      triggerName: (map['triggerName'] as String).input(),
-      workflowName: (map['workflowName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      triggerName: pulumi.Input.fromValue(map['triggerName'] as String),
+      workflowName: pulumi.Input.fromValue(map['workflowName'] as String),
     );
   }
 }
-

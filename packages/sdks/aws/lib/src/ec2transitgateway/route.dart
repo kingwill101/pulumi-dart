@@ -220,12 +220,16 @@ import 'route_state.dart';
 class Route extends pulumi.CustomResource {
   /// Indicates whether to drop traffic that matches this route (default to `false`).
   late final pulumi.Output<bool?> blackhole;
+
   /// IPv4 or IPv6 RFC1924 CIDR used for destination matches. Routing decisions are based on the most specific match.
   late final pulumi.Output<String> destinationCidrBlock;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Identifier of EC2 Transit Gateway Attachment (required if `blackhole` is set to false).
   late final pulumi.Output<String?> transitGatewayAttachmentId;
+
   /// Identifier of EC2 Transit Gateway Route Table.
   late final pulumi.Output<String> transitGatewayRouteTableId;
 
@@ -233,29 +237,26 @@ class Route extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Route]. {@macro pulumi_ec2transitgateway_route_route_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Route(
-    String name, {
-    RouteArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:ec2transitgateway/route:Route',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.blackhole = registerOutput<bool?>('blackhole');
-    this.destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
-    this.region = registerOutput<String>('region');
-    this.transitGatewayAttachmentId = registerOutput<String?>('transitGatewayAttachmentId');
-    this.transitGatewayRouteTableId = registerOutput<String>('transitGatewayRouteTableId');
+  Route(String name, {RouteArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:ec2transitgateway/route:Route',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    blackhole = registerOutput<bool?>('blackhole');
+    destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
+    region = registerOutput<String>('region');
+    transitGatewayAttachmentId = registerOutput<String?>(
+      'transitGatewayAttachmentId',
+    );
+    transitGatewayRouteTableId = registerOutput<String>(
+      'transitGatewayRouteTableId',
+    );
   }
 
   /// Gets an existing [Route] resource's state with the given [name] and [id].
-  static Route get(
-    String name,
-    pulumi.Input<String> id, {
-    RouteState? state,
-  }) {
+  static Route get(String name, pulumi.Input<String> id, {RouteState? state}) {
     return Route._get(
       name,
       state: state?.toMap(),
@@ -268,15 +269,19 @@ class Route extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2transitgateway/route:Route',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.blackhole = registerOutput<bool?>('blackhole');
-    this.destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
-    this.region = registerOutput<String>('region');
-    this.transitGatewayAttachmentId = registerOutput<String?>('transitGatewayAttachmentId');
-    this.transitGatewayRouteTableId = registerOutput<String>('transitGatewayRouteTableId');
+         'aws:ec2transitgateway/route:Route',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    blackhole = registerOutput<bool?>('blackhole');
+    destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
+    region = registerOutput<String>('region');
+    transitGatewayAttachmentId = registerOutput<String?>(
+      'transitGatewayAttachmentId',
+    );
+    transitGatewayRouteTableId = registerOutput<String>(
+      'transitGatewayRouteTableId',
+    );
   }
 }

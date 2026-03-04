@@ -8,20 +8,17 @@ class GetClusterRemoteNetworkConfigRemoteNodeNetwork {
 
   /// Creates a new [GetClusterRemoteNetworkConfigRemoteNodeNetwork].
   /// [cidrs] List of network CIDRs that can contain pods that run Kubernetes webhooks on hybrid nodes.
-  GetClusterRemoteNetworkConfigRemoteNodeNetwork({
-    required this.cidrs,
-  });
+  GetClusterRemoteNetworkConfigRemoteNodeNetwork({required this.cidrs});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cidrs': cidrs,
-    };
+    return <String, dynamic>{'cidrs': cidrs};
   }
 
-  factory GetClusterRemoteNetworkConfigRemoteNodeNetwork.fromMap(Map<String, dynamic> map) {
+  factory GetClusterRemoteNetworkConfigRemoteNodeNetwork.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterRemoteNetworkConfigRemoteNodeNetwork(
-      cidrs: ((map['cidrs'] as List).cast<String>()).input(),
+      cidrs: pulumi.Input.fromValue((map['cidrs'] as List).cast<String>()),
     );
   }
 }
-

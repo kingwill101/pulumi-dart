@@ -173,61 +173,63 @@ import 'node_state.dart';
 class Node extends pulumi.CustomResource {
   /// IP or hostname of the node
   late final pulumi.Output<String> address;
+
   /// Specifies the maximum number of connections allowed for the node or node address.
   late final pulumi.Output<int> connectionLimit;
+
   /// User-defined description give ltm_node
   late final pulumi.Output<String?> description;
+
   /// Specifies the fixed ratio value used for a node during ratio load balancing.
   late final pulumi.Output<int> dynamicRatio;
   late final pulumi.Output<NodeFqdn?> fqdn;
+
   /// specifies the name of the monitor or monitor rule that you want to associate with the node.
   late final pulumi.Output<String?> monitor;
+
   /// Name of the node
   late final pulumi.Output<String> name;
+
   /// Specifies the maximum number of connections per second allowed for a node or node address. The default value is 'disabled'.
   late final pulumi.Output<String> rateLimit;
+
   /// Sets the ratio number for the node.
   late final pulumi.Output<int> ratio;
+
   /// Enables or disables the node for new sessions. The default value is user-enabled.
   late final pulumi.Output<String> session;
+
   /// Default is "user-up" you can set to "user-down" if you want to disable
   ///
-  /// > *NOTE* Below attributes needs to be configured under fqdn option.
+  /// &gt; *NOTE* Below attributes needs to be configured under fqdn option.
   late final pulumi.Output<String> state;
 
   /// Creates a new [Node].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Node]. {@macro pulumi_ltm_node_node_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Node(
-    String name, {
-    NodeArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'f5bigip:ltm/node:Node',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.address = registerOutput<String>('address');
-    this.connectionLimit = registerOutput<int>('connectionLimit');
-    this.description = registerOutput<String?>('description');
-    this.dynamicRatio = registerOutput<int>('dynamicRatio');
-    this.fqdn = registerOutput<NodeFqdn?>('fqdn');
-    this.monitor = registerOutput<String?>('monitor');
+  Node(String name, {NodeArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'f5bigip:ltm/node:Node',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    address = registerOutput<String>('address');
+    connectionLimit = registerOutput<int>('connectionLimit');
+    description = registerOutput<String?>('description');
+    dynamicRatio = registerOutput<int>('dynamicRatio');
+    fqdn = registerOutput<NodeFqdn?>('fqdn');
+    monitor = registerOutput<String?>('monitor');
     this.name = registerOutput<String>('name');
-    this.rateLimit = registerOutput<String>('rateLimit');
-    this.ratio = registerOutput<int>('ratio');
-    this.session = registerOutput<String>('session');
-    this.state = registerOutput<String>('state');
+    rateLimit = registerOutput<String>('rateLimit');
+    ratio = registerOutput<int>('ratio');
+    session = registerOutput<String>('session');
+    state = registerOutput<String>('state');
   }
 
   /// Gets an existing [Node] resource's state with the given [name] and [id].
-  static Node get(
-    String name,
-    pulumi.Input<String> id, {
-    NodeState? state,
-  }) {
+  static Node get(String name, pulumi.Input<String> id, {NodeState? state}) {
     return Node._get(
       name,
       state: state?.toMap(),
@@ -240,21 +242,21 @@ class Node extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'f5bigip:ltm/node:Node',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.address = registerOutput<String>('address');
-    this.connectionLimit = registerOutput<int>('connectionLimit');
-    this.description = registerOutput<String?>('description');
-    this.dynamicRatio = registerOutput<int>('dynamicRatio');
-    this.fqdn = registerOutput<NodeFqdn?>('fqdn');
-    this.monitor = registerOutput<String?>('monitor');
+         'f5bigip:ltm/node:Node',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    address = registerOutput<String>('address');
+    connectionLimit = registerOutput<int>('connectionLimit');
+    description = registerOutput<String?>('description');
+    dynamicRatio = registerOutput<int>('dynamicRatio');
+    fqdn = registerOutput<NodeFqdn?>('fqdn');
+    monitor = registerOutput<String?>('monitor');
     this.name = registerOutput<String>('name');
-    this.rateLimit = registerOutput<String>('rateLimit');
-    this.ratio = registerOutput<int>('ratio');
-    this.session = registerOutput<String>('session');
+    rateLimit = registerOutput<String>('rateLimit');
+    ratio = registerOutput<int>('ratio');
+    session = registerOutput<String>('session');
     this.state = registerOutput<String>('state');
   }
 }

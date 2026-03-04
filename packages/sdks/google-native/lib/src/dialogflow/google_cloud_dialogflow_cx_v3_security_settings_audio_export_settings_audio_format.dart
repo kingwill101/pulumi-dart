@@ -5,16 +5,22 @@ enum GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat {
   mp3("MP3"),
   ogg("OGG");
 
-  const GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat(this.value);
-  final String value;
+  const GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat(
+    this.wireValue,
+  );
+  final String wireValue;
 
-  static GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat fromValue(String value) {
-    for (final item in GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat.values) {
-      if (item.value == value) {
+  static GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat
+            .values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat value: $value',
+    );
   }
 }
-

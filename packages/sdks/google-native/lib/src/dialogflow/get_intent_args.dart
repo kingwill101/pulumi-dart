@@ -39,12 +39,23 @@ class GetIntentArgs {
 
   factory GetIntentArgs.fromMap(Map<String, dynamic> map) {
     return GetIntentArgs(
-      intentId: (map['intentId'] as String).input(),
-      intentView: map['intentView'] == null ? null : (map['intentView']! as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      intentId: pulumi.Input.fromValue(map['intentId'] as String),
+      intentView: (() {
+        final guardedValue = map['intentView'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      languageCode: (() {
+        final guardedValue = map['languageCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

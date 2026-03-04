@@ -121,18 +121,25 @@ import 'system_data_response.dart';
 class ManagementGroupSubscription extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The friendly name of the subscription.
   late final pulumi.Output<String?> displayName;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The ID of the parent management group.
   late final pulumi.Output<DescendantParentGroupInfoResponse?> parent;
+
   /// The state of the subscription.
   late final pulumi.Output<String?> state;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// The AAD Tenant ID associated with the subscription. For example, 00000000-0000-0000-0000-000000000000
   late final pulumi.Output<String?> tenant;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -145,18 +152,18 @@ class ManagementGroupSubscription extends pulumi.CustomResource {
     ManagementGroupSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:management:ManagementGroupSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.displayName = registerOutput<String?>('displayName');
+         'azure-native:management:ManagementGroupSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    this.parent = registerOutput<DescendantParentGroupInfoResponse?>('parent');
-    this.state = registerOutput<String?>('state');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tenant = registerOutput<String?>('tenant');
-    this.type = registerOutput<String>('type');
+    parent = registerOutput<DescendantParentGroupInfoResponse?>('parent');
+    state = registerOutput<String?>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tenant = registerOutput<String?>('tenant');
+    type = registerOutput<String>('type');
   }
 }

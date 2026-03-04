@@ -4,16 +4,15 @@ enum SingleServerSkuTier {
   valueGeneralPurpose("GeneralPurpose"),
   valueMemoryOptimized("MemoryOptimized");
 
-  const SingleServerSkuTier(this.value);
-  final String value;
+  const SingleServerSkuTier(this.wireValue);
+  final String wireValue;
 
   static SingleServerSkuTier fromValue(String value) {
     for (final item in SingleServerSkuTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown SingleServerSkuTier value: $value');
   }
 }
-

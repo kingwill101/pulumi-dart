@@ -5,7 +5,7 @@ import 'service_basic_public_state.dart';
 ///
 /// For information about Cloud Monitor Service Basic Public and how to use it, see [What is Basic Public](https://www.alibabacloud.com/help/en/cms/product-overview/what-is-cloudmonitor).
 ///
-/// > **NOTE:** Available since v1.215.0.
+/// &gt; **NOTE:** Available since v1.215.0.
 ///
 /// ## Example Usage
 ///
@@ -129,12 +129,12 @@ class ServiceBasicPublic extends pulumi.CustomResource {
     Map<String, dynamic>? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudmonitor/serviceBasicPublic:ServiceBasicPublic',
-          name,
-          pulumi.Input.mapToInputs(args ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
+         'alicloud:cloudmonitor/serviceBasicPublic:ServiceBasicPublic',
+         name,
+         pulumi.Input.mapToInputs(args ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
   }
 
   /// Gets an existing [ServiceBasicPublic] resource's state with the given [name] and [id].
@@ -155,11 +155,11 @@ class ServiceBasicPublic extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:cloudmonitor/serviceBasicPublic:ServiceBasicPublic',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.createTime = registerOutput<String>('createTime');
+         'alicloud:cloudmonitor/serviceBasicPublic:ServiceBasicPublic',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    createTime = registerOutput<String>('createTime');
   }
 }

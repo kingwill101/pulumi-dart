@@ -8,20 +8,21 @@ class ResourceLfTagTableWithColumnsColumnWildcard {
 
   /// Creates a new [ResourceLfTagTableWithColumnsColumnWildcard].
   /// [excludedColumnNames] Set of column names for the table to exclude. If `excluded_column_names` is included, `wildcard` must be set to `true` to avoid Terraform reporting a difference.
-  ResourceLfTagTableWithColumnsColumnWildcard({
-    this.excludedColumnNames,
-  });
+  ResourceLfTagTableWithColumnsColumnWildcard({this.excludedColumnNames});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'excludedColumnNames': ?excludedColumnNames,
-    };
+    return <String, dynamic>{'excludedColumnNames': ?excludedColumnNames};
   }
 
-  factory ResourceLfTagTableWithColumnsColumnWildcard.fromMap(Map<String, dynamic> map) {
+  factory ResourceLfTagTableWithColumnsColumnWildcard.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceLfTagTableWithColumnsColumnWildcard(
-      excludedColumnNames: map['excludedColumnNames'] == null ? null : (((map['excludedColumnNames'] as List).cast<String>()).input()).input(),
+      excludedColumnNames: (() {
+        final guardedValue = map['excludedColumnNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

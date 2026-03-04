@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetContainerArgs {
   /// The container Name
   final pulumi.Input<String> containerName;
+
   /// The device name.
   final pulumi.Input<String> deviceName;
+
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
+
   /// The Storage Account Name
   final pulumi.Input<String> storageAccountName;
 
@@ -39,11 +42,14 @@ class GetContainerArgs {
 
   factory GetContainerArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerArgs(
-      containerName: (map['containerName'] as String).input(),
-      deviceName: (map['deviceName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageAccountName: (map['storageAccountName'] as String).input(),
+      containerName: pulumi.Input.fromValue(map['containerName'] as String),
+      deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      storageAccountName: pulumi.Input.fromValue(
+        map['storageAccountName'] as String,
+      ),
     );
   }
 }
-

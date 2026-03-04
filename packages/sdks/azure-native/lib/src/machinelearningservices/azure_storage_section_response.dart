@@ -6,31 +6,44 @@ import 'client_credentials_response.dart';
 class AzureStorageSectionResponse {
   /// Storage Account Key (Deprecated).
   final pulumi.Input<String>? accountKey;
+
   /// Storage Account Name.
   final pulumi.Input<String>? accountName;
+
   /// Indicate if we are using Workspace ManagedIdentities/MSI token (Deprecated).
   final pulumi.Input<bool>? areWorkspaceManagedIdentitiesAllowed;
+
   /// If this is an "DataStoreType.AzureBlob", the length of time (in seconds) to cache files locally after they are accessed (downloaded).
   final pulumi.Input<int>? blobCacheTimeout;
   final pulumi.Input<ClientCredentialsResponse>? clientCredentials;
+
   /// The storage container name.
   final pulumi.Input<String>? containerName;
+
   /// The credential.
   final pulumi.Input<String>? credential;
+
   /// The credential type.
   final pulumi.Input<String>? credentialType;
+
   /// The host of the container.
   final pulumi.Input<String>? endpoint;
+
   /// Indicate if we are using SAS token or Account Key (Deprecated).
   final pulumi.Input<bool>? isSas;
+
   /// The protocol to use. Defaults to https.
   final pulumi.Input<String>? protocol;
+
   /// Resource Group.
   final pulumi.Input<String>? resourceGroup;
+
   /// SAS Token for the container (Deprecated).
   final pulumi.Input<String>? sasToken;
+
   /// Indicates which identity to use to authenticate service data access to customer's storage.
   final pulumi.Input<String>? serviceDataAccessAuthIdentity;
+
   /// Subscription ID.
   final pulumi.Input<String>? subscriptionId;
 
@@ -72,9 +85,14 @@ class AzureStorageSectionResponse {
     return <String, dynamic>{
       'accountKey': ?accountKey,
       'accountName': ?accountName,
-      'areWorkspaceManagedIdentitiesAllowed': ?areWorkspaceManagedIdentitiesAllowed,
+      'areWorkspaceManagedIdentitiesAllowed':
+          ?areWorkspaceManagedIdentitiesAllowed,
       'blobCacheTimeout': ?blobCacheTimeout,
-      'clientCredentials': ?pulumi.Input.mapOptionalInputValue<ClientCredentialsResponse, Map<String, dynamic>>(clientCredentials, (value) => value.toMap()),
+      'clientCredentials':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClientCredentialsResponse,
+            Map<String, dynamic>
+          >(clientCredentials, (value) => value.toMap()),
       'containerName': ?containerName,
       'credential': ?credential,
       'credentialType': ?credentialType,
@@ -90,22 +108,85 @@ class AzureStorageSectionResponse {
 
   factory AzureStorageSectionResponse.fromMap(Map<String, dynamic> map) {
     return AzureStorageSectionResponse(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
-      areWorkspaceManagedIdentitiesAllowed: map['areWorkspaceManagedIdentitiesAllowed'] == null ? null : (map['areWorkspaceManagedIdentitiesAllowed']! as bool).input(),
-      blobCacheTimeout: map['blobCacheTimeout'] == null ? null : (map['blobCacheTimeout']! as int).input(),
-      clientCredentials: map['clientCredentials'] == null ? null : (ClientCredentialsResponse.fromMap((map['clientCredentials']! as Map).cast<String, dynamic>())).input(),
-      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
-      credential: map['credential'] == null ? null : (map['credential']! as String).input(),
-      credentialType: map['credentialType'] == null ? null : (map['credentialType']! as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
-      isSas: map['isSas'] == null ? null : (map['isSas']! as bool).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
-      sasToken: map['sasToken'] == null ? null : (map['sasToken']! as String).input(),
-      serviceDataAccessAuthIdentity: map['serviceDataAccessAuthIdentity'] == null ? null : (map['serviceDataAccessAuthIdentity']! as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      accountKey: (() {
+        final guardedValue = map['accountKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      accountName: (() {
+        final guardedValue = map['accountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      areWorkspaceManagedIdentitiesAllowed: (() {
+        final guardedValue = map['areWorkspaceManagedIdentitiesAllowed'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      blobCacheTimeout: (() {
+        final guardedValue = map['blobCacheTimeout'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      clientCredentials: (() {
+        final guardedValue = map['clientCredentials'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ClientCredentialsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      containerName: (() {
+        final guardedValue = map['containerName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credential: (() {
+        final guardedValue = map['credential'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      credentialType: (() {
+        final guardedValue = map['credentialType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      endpoint: (() {
+        final guardedValue = map['endpoint'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      isSas: (() {
+        final guardedValue = map['isSas'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      protocol: (() {
+        final guardedValue = map['protocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroup: (() {
+        final guardedValue = map['resourceGroup'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sasToken: (() {
+        final guardedValue = map['sasToken'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceDataAccessAuthIdentity: (() {
+        final guardedValue = map['serviceDataAccessAuthIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subscriptionId: (() {
+        final guardedValue = map['subscriptionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

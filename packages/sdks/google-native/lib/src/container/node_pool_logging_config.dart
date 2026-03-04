@@ -10,20 +10,29 @@ class NodePoolLoggingConfig {
 
   /// Creates a new [NodePoolLoggingConfig].
   /// [variantConfig] Logging variant configuration.
-  NodePoolLoggingConfig({
-    this.variantConfig,
-  });
+  NodePoolLoggingConfig({this.variantConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'variantConfig': ?pulumi.Input.mapOptionalInputValue<LoggingVariantConfig, Map<String, dynamic>>(variantConfig, (value) => value.toMap()),
+      'variantConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            LoggingVariantConfig,
+            Map<String, dynamic>
+          >(variantConfig, (value) => value.toMap()),
     };
   }
 
   factory NodePoolLoggingConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolLoggingConfig(
-      variantConfig: map['variantConfig'] == null ? null : (LoggingVariantConfig.fromMap((map['variantConfig']! as Map).cast<String, dynamic>())).input(),
+      variantConfig: (() {
+        final guardedValue = map['variantConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LoggingVariantConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

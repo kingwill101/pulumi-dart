@@ -10,12 +10,16 @@ import 'test_grid_project_vpc_config.dart';
 class TestGridProjectArgs {
   /// Human-readable description of the project.
   final pulumi.Input<String>? description;
+
   /// The name of the Selenium testing project.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The VPC security groups and subnets that are attached to a project. See VPC Config below.
   final pulumi.Input<TestGridProjectVpcConfig>? vpcConfig;
 
@@ -39,18 +43,47 @@ class TestGridProjectArgs {
       'name': ?name,
       'region': ?region,
       'tags': ?tags,
-      'vpcConfig': ?pulumi.Input.mapOptionalInputValue<TestGridProjectVpcConfig, Map<String, dynamic>>(vpcConfig, (value) => value.toMap()),
+      'vpcConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            TestGridProjectVpcConfig,
+            Map<String, dynamic>
+          >(vpcConfig, (value) => value.toMap()),
     };
   }
 
   factory TestGridProjectArgs.fromMap(Map<String, dynamic> map) {
     return TestGridProjectArgs(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      vpcConfig: map['vpcConfig'] == null ? null : ((TestGridProjectVpcConfig.fromMap((map['vpcConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      vpcConfig: (() {
+        final guardedValue = map['vpcConfig'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          TestGridProjectVpcConfig.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -5,13 +5,22 @@ import 'three_tier_virtual_instance_three_tier_configuration_resource_names_appl
 
 class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachine {
   /// One or more `data_disk` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachineDataDisk>>? dataDisks;
+  final pulumi.Input<
+    List<
+      ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachineDataDisk
+    >
+  >?
+  dataDisks;
+
   /// The full name of the host of the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String>? hostName;
+
   /// A list of full names for the Network Interface of the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>>? networkInterfaceNames;
+
   /// The full name of the OS Disk attached to the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String>? osDiskName;
+
   /// The full name of the Virtual Machine in a single server SAP system. Changing this forces a new resource to be created.
   final pulumi.Input<String>? virtualMachineName;
 
@@ -31,7 +40,20 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServ
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataDisks': ?pulumi.Input.mapOptionalInputValue<List<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachineDataDisk>, List<Map<String, dynamic>>>(dataDisks, (value) => pulumi.Input.encodeList<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachineDataDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'dataDisks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachineDataDisk
+            >,
+            List<Map<String, dynamic>>
+          >(
+            dataDisks,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachineDataDisk,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'hostName': ?hostName,
       'networkInterfaceNames': ?networkInterfaceNames,
       'osDiskName': ?osDiskName,
@@ -39,14 +61,45 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServ
     };
   }
 
-  factory ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachine.fromMap(Map<String, dynamic> map) {
+  factory ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachine.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachine(
-      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachineDataDisk>(map['dataDisks']!, (value) => ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachineDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
-      networkInterfaceNames: map['networkInterfaceNames'] == null ? null : ((map['networkInterfaceNames']! as List).cast<String>()).input(),
-      osDiskName: map['osDiskName'] == null ? null : (map['osDiskName']! as String).input(),
-      virtualMachineName: map['virtualMachineName'] == null ? null : (map['virtualMachineName']! as String).input(),
+      dataDisks: (() {
+        final guardedValue = map['dataDisks'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<
+            ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachineDataDisk
+          >(
+            guardedValue,
+            (value) =>
+                ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachineDataDisk.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+        );
+      })(),
+      hostName: (() {
+        final guardedValue = map['hostName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkInterfaceNames: (() {
+        final guardedValue = map['networkInterfaceNames'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      osDiskName: (() {
+        final guardedValue = map['osDiskName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      virtualMachineName: (() {
+        final guardedValue = map['virtualMachineName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

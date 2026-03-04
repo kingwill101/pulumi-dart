@@ -1,5 +1,3 @@
-library module_hybridnetwork;
-
 export 'hybridnetwork/application_enablement.dart';
 export 'hybridnetwork/arm_resource_definition_resource_element_template.dart';
 export 'hybridnetwork/arm_resource_definition_resource_element_template_details.dart';

@@ -6,14 +6,19 @@ import 'certificate_properties_response.dart';
 class GetCertificateResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The entity tag.
   final String etag;
+
   /// The resource identifier.
   final String id;
+
   /// The name of the certificate.
   final String name;
+
   /// The description of an X509 CA Certificate.
   final CertificatePropertiesResponse properties;
+
   /// The resource type.
   final String type;
 
@@ -50,9 +55,10 @@ class GetCertificateResult {
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      properties: CertificatePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: CertificatePropertiesResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
     );
   }
 }
-

@@ -3,16 +3,15 @@ enum Enforce {
   valueFalse("False"),
   valueTrue("True");
 
-  const Enforce(this.value);
-  final String value;
+  const Enforce(this.wireValue);
+  final String wireValue;
 
   static Enforce fromValue(String value) {
     for (final item in Enforce.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Enforce value: $value');
   }
 }
-

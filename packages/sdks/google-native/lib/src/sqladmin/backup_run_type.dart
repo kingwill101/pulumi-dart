@@ -4,16 +4,15 @@ enum BackupRunType {
   automated("AUTOMATED"),
   onDemand("ON_DEMAND");
 
-  const BackupRunType(this.value);
-  final String value;
+  const BackupRunType(this.wireValue);
+  final String wireValue;
 
   static BackupRunType fromValue(String value) {
     for (final item in BackupRunType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackupRunType value: $value');
   }
 }
-

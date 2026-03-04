@@ -6,7 +6,7 @@ import 'basic_accelerator_state.dart';
 ///
 /// For information about Global Accelerator (GA) Basic Accelerator and how to use it, see [What is Basic Accelerator](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createbasicaccelerator).
 ///
-/// > **NOTE:** Available since v1.194.0.
+/// &gt; **NOTE:** Available since v1.194.0.
 ///
 /// ## Example Usage
 ///
@@ -149,34 +149,48 @@ import 'basic_accelerator_state.dart';
 class BasicAccelerator extends pulumi.CustomResource {
   /// Specifies whether to enable automatic payment. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> autoPay;
+
   /// Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> autoRenew;
+
   /// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
   late final pulumi.Output<int?> autoRenewDuration;
+
   /// Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
   late final pulumi.Output<String?> autoUseCoupon;
+
   /// The bandwidth billing method. Valid values: `BandwidthPackage`, `CDT`, `CDT95`.
   late final pulumi.Output<String?> bandwidthBillingType;
+
   /// The name of the Global Accelerator Basic Accelerator instance.
   late final pulumi.Output<String?> basicAcceleratorName;
+
   /// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
   late final pulumi.Output<bool?> crossBorderStatus;
+
   /// The description of the Global Accelerator Basic Accelerator instance.
   late final pulumi.Output<String?> description;
+
   /// The subscription duration. Default value: `1`.
   /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
   /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
   late final pulumi.Output<int?> duration;
+
   /// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
   late final pulumi.Output<String> paymentType;
+
   /// The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
   late final pulumi.Output<String?> pricingCycle;
+
   /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
   late final pulumi.Output<String?> promotionOptionNo;
+
   /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
   late final pulumi.Output<String> resourceGroupId;
+
   /// The status of the Basic Accelerator instance.
   late final pulumi.Output<String> status;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -189,26 +203,26 @@ class BasicAccelerator extends pulumi.CustomResource {
     BasicAcceleratorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/basicAccelerator:BasicAccelerator',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoPay = registerOutput<bool?>('autoPay');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.autoRenewDuration = registerOutput<int?>('autoRenewDuration');
-    this.autoUseCoupon = registerOutput<String?>('autoUseCoupon');
-    this.bandwidthBillingType = registerOutput<String?>('bandwidthBillingType');
-    this.basicAcceleratorName = registerOutput<String?>('basicAcceleratorName');
-    this.crossBorderStatus = registerOutput<bool?>('crossBorderStatus');
-    this.description = registerOutput<String?>('description');
-    this.duration = registerOutput<int?>('duration');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.pricingCycle = registerOutput<String?>('pricingCycle');
-    this.promotionOptionNo = registerOutput<String?>('promotionOptionNo');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:ga/basicAccelerator:BasicAccelerator',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoPay = registerOutput<bool?>('autoPay');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    autoRenewDuration = registerOutput<int?>('autoRenewDuration');
+    autoUseCoupon = registerOutput<String?>('autoUseCoupon');
+    bandwidthBillingType = registerOutput<String?>('bandwidthBillingType');
+    basicAcceleratorName = registerOutput<String?>('basicAcceleratorName');
+    crossBorderStatus = registerOutput<bool?>('crossBorderStatus');
+    description = registerOutput<String?>('description');
+    duration = registerOutput<int?>('duration');
+    paymentType = registerOutput<String>('paymentType');
+    pricingCycle = registerOutput<String?>('pricingCycle');
+    promotionOptionNo = registerOutput<String?>('promotionOptionNo');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 
   /// Gets an existing [BasicAccelerator] resource's state with the given [name] and [id].
@@ -229,25 +243,25 @@ class BasicAccelerator extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ga/basicAccelerator:BasicAccelerator',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autoPay = registerOutput<bool?>('autoPay');
-    this.autoRenew = registerOutput<bool?>('autoRenew');
-    this.autoRenewDuration = registerOutput<int?>('autoRenewDuration');
-    this.autoUseCoupon = registerOutput<String?>('autoUseCoupon');
-    this.bandwidthBillingType = registerOutput<String?>('bandwidthBillingType');
-    this.basicAcceleratorName = registerOutput<String?>('basicAcceleratorName');
-    this.crossBorderStatus = registerOutput<bool?>('crossBorderStatus');
-    this.description = registerOutput<String?>('description');
-    this.duration = registerOutput<int?>('duration');
-    this.paymentType = registerOutput<String>('paymentType');
-    this.pricingCycle = registerOutput<String?>('pricingCycle');
-    this.promotionOptionNo = registerOutput<String?>('promotionOptionNo');
-    this.resourceGroupId = registerOutput<String>('resourceGroupId');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
+         'alicloud:ga/basicAccelerator:BasicAccelerator',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    autoPay = registerOutput<bool?>('autoPay');
+    autoRenew = registerOutput<bool?>('autoRenew');
+    autoRenewDuration = registerOutput<int?>('autoRenewDuration');
+    autoUseCoupon = registerOutput<String?>('autoUseCoupon');
+    bandwidthBillingType = registerOutput<String?>('bandwidthBillingType');
+    basicAcceleratorName = registerOutput<String?>('basicAcceleratorName');
+    crossBorderStatus = registerOutput<bool?>('crossBorderStatus');
+    description = registerOutput<String?>('description');
+    duration = registerOutput<int?>('duration');
+    paymentType = registerOutput<String>('paymentType');
+    pricingCycle = registerOutput<String?>('pricingCycle');
+    promotionOptionNo = registerOutput<String?>('promotionOptionNo');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
   }
 }

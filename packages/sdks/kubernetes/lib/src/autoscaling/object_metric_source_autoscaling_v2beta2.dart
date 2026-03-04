@@ -7,9 +7,12 @@ import 'metric_target_autoscaling_v2beta2.dart';
 
 /// ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).
 class ObjectMetricSourceAutoscalingV2beta2 {
-  final pulumi.Input<CrossVersionObjectReferenceAutoscalingV2beta2> describedObject;
+  final pulumi.Input<CrossVersionObjectReferenceAutoscalingV2beta2>
+  describedObject;
+
   /// metric identifies the target metric by name and selector
   final pulumi.Input<MetricIdentifierAutoscalingV2beta2> metric;
+
   /// target specifies the target value for the given metric
   final pulumi.Input<MetricTargetAutoscalingV2beta2> target;
 
@@ -25,18 +28,43 @@ class ObjectMetricSourceAutoscalingV2beta2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'describedObject': pulumi.Input.mapInputValue<CrossVersionObjectReferenceAutoscalingV2beta2, Map<String, dynamic>>(describedObject, (value) => value.toMap()),
-      'metric': pulumi.Input.mapInputValue<MetricIdentifierAutoscalingV2beta2, Map<String, dynamic>>(metric, (value) => value.toMap()),
-      'target': pulumi.Input.mapInputValue<MetricTargetAutoscalingV2beta2, Map<String, dynamic>>(target, (value) => value.toMap()),
+      'describedObject':
+          pulumi.Input.mapInputValue<
+            CrossVersionObjectReferenceAutoscalingV2beta2,
+            Map<String, dynamic>
+          >(describedObject, (value) => value.toMap()),
+      'metric':
+          pulumi.Input.mapInputValue<
+            MetricIdentifierAutoscalingV2beta2,
+            Map<String, dynamic>
+          >(metric, (value) => value.toMap()),
+      'target':
+          pulumi.Input.mapInputValue<
+            MetricTargetAutoscalingV2beta2,
+            Map<String, dynamic>
+          >(target, (value) => value.toMap()),
     };
   }
 
-  factory ObjectMetricSourceAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
+  factory ObjectMetricSourceAutoscalingV2beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ObjectMetricSourceAutoscalingV2beta2(
-      describedObject: (CrossVersionObjectReferenceAutoscalingV2beta2.fromMap((map['describedObject'] as Map).cast<String, dynamic>())).input(),
-      metric: (MetricIdentifierAutoscalingV2beta2.fromMap((map['metric'] as Map).cast<String, dynamic>())).input(),
-      target: (MetricTargetAutoscalingV2beta2.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      describedObject: pulumi.Input.fromValue(
+        CrossVersionObjectReferenceAutoscalingV2beta2.fromMap(
+          (map['describedObject']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      metric: pulumi.Input.fromValue(
+        MetricIdentifierAutoscalingV2beta2.fromMap(
+          (map['metric']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      target: pulumi.Input.fromValue(
+        MetricTargetAutoscalingV2beta2.fromMap(
+          (map['target']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

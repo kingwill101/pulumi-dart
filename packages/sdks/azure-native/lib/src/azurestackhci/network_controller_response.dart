@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkControllerResponse {
   /// macAddressPoolStart of network controller used for SDN Integration.
   final pulumi.Input<String>? macAddressPoolStart;
+
   /// macAddressPoolStop of network controller used for SDN Integration.
   final pulumi.Input<String>? macAddressPoolStop;
+
   /// NetworkVirtualizationEnabled of network controller used for SDN Integration.
   final pulumi.Input<bool>? networkVirtualizationEnabled;
 
@@ -31,10 +33,21 @@ class NetworkControllerResponse {
 
   factory NetworkControllerResponse.fromMap(Map<String, dynamic> map) {
     return NetworkControllerResponse(
-      macAddressPoolStart: map['macAddressPoolStart'] == null ? null : (map['macAddressPoolStart']! as String).input(),
-      macAddressPoolStop: map['macAddressPoolStop'] == null ? null : (map['macAddressPoolStop']! as String).input(),
-      networkVirtualizationEnabled: map['networkVirtualizationEnabled'] == null ? null : (map['networkVirtualizationEnabled']! as bool).input(),
+      macAddressPoolStart: (() {
+        final guardedValue = map['macAddressPoolStart'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      macAddressPoolStop: (() {
+        final guardedValue = map['macAddressPoolStop'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      networkVirtualizationEnabled: (() {
+        final guardedValue = map['networkVirtualizationEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

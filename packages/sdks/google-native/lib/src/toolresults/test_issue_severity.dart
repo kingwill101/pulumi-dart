@@ -6,16 +6,15 @@ enum TestIssueSeverity {
   warning("warning"),
   severe("severe");
 
-  const TestIssueSeverity(this.value);
-  final String value;
+  const TestIssueSeverity(this.wireValue);
+  final String wireValue;
 
   static TestIssueSeverity fromValue(String value) {
     for (final item in TestIssueSeverity.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown TestIssueSeverity value: $value');
   }
 }
-

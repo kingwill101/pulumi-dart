@@ -6,12 +6,16 @@ import 'team_stack_permission_scope.dart';
 class TeamStackPermission extends pulumi.CustomResource {
   /// The organization or the personal account name of the stack.
   late final pulumi.Output<String> organization;
+
   /// Sets the permission level that this team will be granted to the stack.
   late final pulumi.Output<TeamStackPermissionScope> permission;
+
   /// The project name for this stack.
   late final pulumi.Output<String> project;
+
   /// The name of the stack that the team will be granted permissions to.
   late final pulumi.Output<String> stack;
+
   /// The name of the team to grant this stack permissions to. This is not the display name.
   late final pulumi.Output<String> team;
 
@@ -24,15 +28,15 @@ class TeamStackPermission extends pulumi.CustomResource {
     TeamStackPermissionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'pulumiservice:index:TeamStackPermission',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.organization = registerOutput<String>('organization');
-    this.permission = registerOutput<TeamStackPermissionScope>('permission');
-    this.project = registerOutput<String>('project');
-    this.stack = registerOutput<String>('stack');
-    this.team = registerOutput<String>('team');
+         'pulumiservice:index:TeamStackPermission',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    organization = registerOutput<String>('organization');
+    permission = registerOutput<TeamStackPermissionScope>('permission');
+    project = registerOutput<String>('project');
+    stack = registerOutput<String>('stack');
+    team = registerOutput<String>('team');
   }
 }

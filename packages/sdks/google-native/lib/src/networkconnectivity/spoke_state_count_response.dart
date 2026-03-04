@@ -6,29 +6,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpokeStateCountResponse {
   /// The total number of spokes that are in this state and associated with a given hub.
   final pulumi.Input<String> count;
+
   /// The state of the spokes.
   final pulumi.Input<String> state;
 
   /// Creates a new [SpokeStateCountResponse].
   /// [count] The total number of spokes that are in this state and associated with a given hub.
   /// [state] The state of the spokes.
-  SpokeStateCountResponse({
-    required this.count,
-    required this.state,
-  });
+  SpokeStateCountResponse({required this.count, required this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': count,
-      'state': state,
-    };
+    return <String, dynamic>{'count': count, 'state': state};
   }
 
   factory SpokeStateCountResponse.fromMap(Map<String, dynamic> map) {
     return SpokeStateCountResponse(
-      count: (map['count'] as String).input(),
-      state: (map['state'] as String).input(),
+      count: pulumi.Input.fromValue(map['count'] as String),
+      state: pulumi.Input.fromValue(map['state'] as String),
     );
   }
 }
-

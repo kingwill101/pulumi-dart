@@ -3,16 +3,15 @@ enum PublicIPPrefixSkuTier {
   valueRegional("Regional"),
   valueGlobal("Global");
 
-  const PublicIPPrefixSkuTier(this.value);
-  final String value;
+  const PublicIPPrefixSkuTier(this.wireValue);
+  final String wireValue;
 
   static PublicIPPrefixSkuTier fromValue(String value) {
     for (final item in PublicIPPrefixSkuTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PublicIPPrefixSkuTier value: $value');
   }
 }
-

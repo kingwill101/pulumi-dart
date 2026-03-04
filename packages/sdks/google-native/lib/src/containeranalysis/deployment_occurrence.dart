@@ -7,14 +7,19 @@ import 'deployment_occurrence_platform.dart';
 class DeploymentOccurrence {
   /// Address of the runtime element hosting this deployment.
   final pulumi.Input<String>? address;
+
   /// Configuration used to create this deployment.
   final pulumi.Input<String>? config;
+
   /// Beginning of the lifetime of this deployment.
   final pulumi.Input<String> deployTime;
+
   /// Platform hosting this deployment.
   final pulumi.Input<DeploymentOccurrencePlatform>? platform;
+
   /// End of the lifetime of this deployment.
   final pulumi.Input<String>? undeployTime;
+
   /// Identity of the user that triggered this deployment.
   final pulumi.Input<String>? userEmail;
 
@@ -39,7 +44,11 @@ class DeploymentOccurrence {
       'address': ?address,
       'config': ?config,
       'deployTime': deployTime,
-      'platform': ?pulumi.Input.mapOptionalInputValue<DeploymentOccurrencePlatform, String>(platform, (value) => value.value),
+      'platform':
+          ?pulumi.Input.mapOptionalInputValue<
+            DeploymentOccurrencePlatform,
+            String
+          >(platform, (value) => value.wireValue),
       'undeployTime': ?undeployTime,
       'userEmail': ?userEmail,
     };
@@ -47,13 +56,34 @@ class DeploymentOccurrence {
 
   factory DeploymentOccurrence.fromMap(Map<String, dynamic> map) {
     return DeploymentOccurrence(
-      address: map['address'] == null ? null : (map['address']! as String).input(),
-      config: map['config'] == null ? null : (map['config']! as String).input(),
-      deployTime: (map['deployTime'] as String).input(),
-      platform: map['platform'] == null ? null : (DeploymentOccurrencePlatform.fromValue(map['platform']! as String)).input(),
-      undeployTime: map['undeployTime'] == null ? null : (map['undeployTime']! as String).input(),
-      userEmail: map['userEmail'] == null ? null : (map['userEmail']! as String).input(),
+      address: (() {
+        final guardedValue = map['address'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      config: (() {
+        final guardedValue = map['config'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deployTime: pulumi.Input.fromValue(map['deployTime'] as String),
+      platform: (() {
+        final guardedValue = map['platform'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DeploymentOccurrencePlatform.fromValue(guardedValue as String),
+        );
+      })(),
+      undeployTime: (() {
+        final guardedValue = map['undeployTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userEmail: (() {
+        final guardedValue = map['userEmail'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

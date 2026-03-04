@@ -1,5 +1,3 @@
-library module_domainservices;
-
 export 'domainservices/functions.dart';
 export 'domainservices/get_service_args.dart';
 export 'domainservices/get_service_notification.dart';

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedClusterServiceArgs {
   /// The name of the application resource.
   final pulumi.Input<String> applicationName;
+
   /// The name of the cluster resource.
   final pulumi.Input<String> clusterName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the service resource in the format of {applicationName}~{serviceName}.
   final pulumi.Input<String> serviceName;
 
@@ -39,11 +42,12 @@ class GetManagedClusterServiceArgs {
 
   factory GetManagedClusterServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedClusterServiceArgs(
-      applicationName: (map['applicationName'] as String).input(),
-      clusterName: (map['clusterName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      applicationName: pulumi.Input.fromValue(map['applicationName'] as String),
+      clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

@@ -9,16 +9,15 @@ enum KnownSyslogDataSourceLogLevels {
   valueEmergency("Emergency"),
   value("*");
 
-  const KnownSyslogDataSourceLogLevels(this.value);
-  final String value;
+  const KnownSyslogDataSourceLogLevels(this.wireValue);
+  final String wireValue;
 
   static KnownSyslogDataSourceLogLevels fromValue(String value) {
     for (final item in KnownSyslogDataSourceLogLevels.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KnownSyslogDataSourceLogLevels value: $value');
   }
 }
-

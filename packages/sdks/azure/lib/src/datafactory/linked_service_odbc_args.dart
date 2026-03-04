@@ -10,20 +10,28 @@ import 'linked_service_odbc_basic_authentication.dart';
 class LinkedServiceOdbcArgs {
   /// A map of additional properties to associate with the Data Factory Linked Service ODBC.
   final pulumi.Input<Map<String, String>>? additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Linked Service ODBC.
   final pulumi.Input<List<String>>? annotations;
+
   /// A `basic_authentication` block as defined below.
   final pulumi.Input<LinkedServiceOdbcBasicAuthentication>? basicAuthentication;
+
   /// The connection string in which to authenticate with ODBC.
   final pulumi.Input<String> connectionString;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
+
   /// The description for the Data Factory Linked Service ODBC.
   final pulumi.Input<String>? description;
+
   /// The integration runtime reference to associate with the Data Factory Linked Service ODBC.
   final pulumi.Input<String>? integrationRuntimeName;
+
   /// Specifies the name of the Data Factory Linked Service ODBC. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   final pulumi.Input<String>? name;
+
   /// A map of parameters to associate with the Data Factory Linked Service ODBC.
   final pulumi.Input<Map<String, String>>? parameters;
 
@@ -53,7 +61,11 @@ class LinkedServiceOdbcArgs {
     return <String, dynamic>{
       'additionalProperties': ?additionalProperties,
       'annotations': ?annotations,
-      'basicAuthentication': ?pulumi.Input.mapOptionalInputValue<LinkedServiceOdbcBasicAuthentication, Map<String, dynamic>>(basicAuthentication, (value) => value.toMap()),
+      'basicAuthentication':
+          ?pulumi.Input.mapOptionalInputValue<
+            LinkedServiceOdbcBasicAuthentication,
+            Map<String, dynamic>
+          >(basicAuthentication, (value) => value.toMap()),
       'connectionString': connectionString,
       'dataFactoryId': dataFactoryId,
       'description': ?description,
@@ -65,16 +77,53 @@ class LinkedServiceOdbcArgs {
 
   factory LinkedServiceOdbcArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceOdbcArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
-      basicAuthentication: map['basicAuthentication'] == null ? null : (LinkedServiceOdbcBasicAuthentication.fromMap((map['basicAuthentication']! as Map).cast<String, dynamic>())).input(),
-      connectionString: (map['connectionString'] as String).input(),
-      dataFactoryId: (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      additionalProperties: (() {
+        final guardedValue = map['additionalProperties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      annotations: (() {
+        final guardedValue = map['annotations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      basicAuthentication: (() {
+        final guardedValue = map['basicAuthentication'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          LinkedServiceOdbcBasicAuthentication.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      connectionString: pulumi.Input.fromValue(
+        map['connectionString'] as String,
+      ),
+      dataFactoryId: pulumi.Input.fromValue(map['dataFactoryId'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      integrationRuntimeName: (() {
+        final guardedValue = map['integrationRuntimeName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parameters: (() {
+        final guardedValue = map['parameters'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

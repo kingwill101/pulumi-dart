@@ -9,20 +9,19 @@ class TrustSettingsResponse {
 
   /// Creates a new [TrustSettingsResponse].
   /// [trustList] Defines a secret reference for certificates to trust.
-  TrustSettingsResponse({
-    this.trustList,
-  });
+  TrustSettingsResponse({this.trustList});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'trustList': ?trustList,
-    };
+    return <String, dynamic>{'trustList': ?trustList};
   }
 
   factory TrustSettingsResponse.fromMap(Map<String, dynamic> map) {
     return TrustSettingsResponse(
-      trustList: map['trustList'] == null ? null : (map['trustList']! as String).input(),
+      trustList: (() {
+        final guardedValue = map['trustList'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

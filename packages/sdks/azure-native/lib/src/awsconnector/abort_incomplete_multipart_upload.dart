@@ -9,20 +9,19 @@ class AbortIncompleteMultipartUpload {
 
   /// Creates a new [AbortIncompleteMultipartUpload].
   /// [daysAfterInitiation] Specifies the number of days after which Amazon S3 stops an incomplete multipart upload.
-  AbortIncompleteMultipartUpload({
-    this.daysAfterInitiation,
-  });
+  AbortIncompleteMultipartUpload({this.daysAfterInitiation});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'daysAfterInitiation': ?daysAfterInitiation,
-    };
+    return <String, dynamic>{'daysAfterInitiation': ?daysAfterInitiation};
   }
 
   factory AbortIncompleteMultipartUpload.fromMap(Map<String, dynamic> map) {
     return AbortIncompleteMultipartUpload(
-      daysAfterInitiation: map['daysAfterInitiation'] == null ? null : (map['daysAfterInitiation']! as int).input(),
+      daysAfterInitiation: (() {
+        final guardedValue = map['daysAfterInitiation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

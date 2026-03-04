@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainDevicesInterfaceBackend {
   /// Specifies the log file location for the network interface backend.
   final pulumi.Input<String>? logFile;
+
   /// Controls whether the backend uses a tap device.
   final pulumi.Input<String>? tap;
+
   /// Configures the type of backend for the interface, specifying how the interface connects to the underlying hardware.
   final pulumi.Input<String>? type;
+
   /// Controls whether the vhost user mode is enabled for the interface, optimizing network performance by using shared memory.
   final pulumi.Input<String>? vhost;
 
@@ -35,11 +38,26 @@ class DomainDevicesInterfaceBackend {
 
   factory DomainDevicesInterfaceBackend.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceBackend(
-      logFile: map['logFile'] == null ? null : (map['logFile']! as String).input(),
-      tap: map['tap'] == null ? null : (map['tap']! as String).input(),
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      vhost: map['vhost'] == null ? null : (map['vhost']! as String).input(),
+      logFile: (() {
+        final guardedValue = map['logFile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tap: (() {
+        final guardedValue = map['tap'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vhost: (() {
+        final guardedValue = map['vhost'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

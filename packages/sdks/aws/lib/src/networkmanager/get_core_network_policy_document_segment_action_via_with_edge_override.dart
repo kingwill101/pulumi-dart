@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride {
   /// A list of a list of strings. The list of edges associated with the network function group.
   final pulumi.Input<List<List<String>>>? edgeSets;
+
   /// The preferred edge to use.
   final pulumi.Input<String>? useEdge;
+
   /// The preferred edge to use.
   final pulumi.Input<String>? useEdgeLocation;
 
@@ -28,12 +30,27 @@ class GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride {
     };
   }
 
-  factory GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride.fromMap(Map<String, dynamic> map) {
+  factory GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride(
-      edgeSets: map['edgeSets'] == null ? null : (((map['edgeSets'] as List).cast<List<String>>()).input()).input(),
-      useEdge: map['useEdge'] == null ? null : ((map['useEdge'] as String).input()).input(),
-      useEdgeLocation: map['useEdgeLocation'] == null ? null : ((map['useEdgeLocation'] as String).input()).input(),
+      edgeSets: (() {
+        final guardedValue = map['edgeSets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as List).cast<List<String>>(),
+        );
+      })(),
+      useEdge: (() {
+        final guardedValue = map['useEdge'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      useEdgeLocation: (() {
+        final guardedValue = map['useEdgeLocation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

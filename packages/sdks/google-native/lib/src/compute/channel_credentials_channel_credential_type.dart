@@ -4,16 +4,17 @@ enum ChannelCredentialsChannelCredentialType {
   gceVm("GCE_VM"),
   invalid("INVALID");
 
-  const ChannelCredentialsChannelCredentialType(this.value);
-  final String value;
+  const ChannelCredentialsChannelCredentialType(this.wireValue);
+  final String wireValue;
 
   static ChannelCredentialsChannelCredentialType fromValue(String value) {
     for (final item in ChannelCredentialsChannelCredentialType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ChannelCredentialsChannelCredentialType value: $value');
+    throw ArgumentError(
+      'Unknown ChannelCredentialsChannelCredentialType value: $value',
+    );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityIpArgs {
   /// The cluster ID.
   final pulumi.Input<String> dbInstanceId;
+
   /// The whitelist name.
   final pulumi.Input<String> groupName;
+
   /// The IP address list under the whitelist group.
   final pulumi.Input<String> securityIpList;
 
@@ -34,10 +36,9 @@ class SecurityIpArgs {
 
   factory SecurityIpArgs.fromMap(Map<String, dynamic> map) {
     return SecurityIpArgs(
-      dbInstanceId: (map['dbInstanceId'] as String).input(),
-      groupName: (map['groupName'] as String).input(),
-      securityIpList: (map['securityIpList'] as String).input(),
+      dbInstanceId: pulumi.Input.fromValue(map['dbInstanceId'] as String),
+      groupName: pulumi.Input.fromValue(map['groupName'] as String),
+      securityIpList: pulumi.Input.fromValue(map['securityIpList'] as String),
     );
   }
 }
-

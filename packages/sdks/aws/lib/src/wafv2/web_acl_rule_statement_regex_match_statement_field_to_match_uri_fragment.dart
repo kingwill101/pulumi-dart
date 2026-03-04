@@ -13,15 +13,18 @@ class WebAclRuleStatementRegexMatchStatementFieldToMatchUriFragment {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fallbackBehavior': ?fallbackBehavior,
-    };
+    return <String, dynamic>{'fallbackBehavior': ?fallbackBehavior};
   }
 
-  factory WebAclRuleStatementRegexMatchStatementFieldToMatchUriFragment.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementRegexMatchStatementFieldToMatchUriFragment.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementRegexMatchStatementFieldToMatchUriFragment(
-      fallbackBehavior: map['fallbackBehavior'] == null ? null : ((map['fallbackBehavior'] as String).input()).input(),
+      fallbackBehavior: (() {
+        final guardedValue = map['fallbackBehavior'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

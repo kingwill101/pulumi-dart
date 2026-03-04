@@ -10,12 +10,15 @@ import 'bi_reservation_preferred_table.dart';
 class BiReservationArgs {
   /// LOCATION_DESCRIPTION
   final pulumi.Input<String> location;
+
   /// Preferred tables to use BI capacity for.
   /// Structure is documented below.
   final pulumi.Input<List<BiReservationPreferredTable>>? preferredTables;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Size of a reservation, in bytes.
   final pulumi.Input<int>? size;
 
@@ -34,7 +37,18 @@ class BiReservationArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': location,
-      'preferredTables': ?pulumi.Input.mapOptionalInputValue<List<BiReservationPreferredTable>, List<Map<String, dynamic>>>(preferredTables, (value) => pulumi.Input.encodeList<BiReservationPreferredTable, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'preferredTables':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BiReservationPreferredTable>,
+            List<Map<String, dynamic>>
+          >(
+            preferredTables,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BiReservationPreferredTable,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'project': ?project,
       'size': ?size,
     };
@@ -42,11 +56,29 @@ class BiReservationArgs {
 
   factory BiReservationArgs.fromMap(Map<String, dynamic> map) {
     return BiReservationArgs(
-      location: (map['location'] as String).input(),
-      preferredTables: map['preferredTables'] == null ? null : (pulumi.Input.decodeList<BiReservationPreferredTable>(map['preferredTables']!, (value) => BiReservationPreferredTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      size: map['size'] == null ? null : (map['size']! as int).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      preferredTables: (() {
+        final guardedValue = map['preferredTables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<BiReservationPreferredTable>(
+            guardedValue,
+            (value) => BiReservationPreferredTable.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      size: (() {
+        final guardedValue = map['size'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

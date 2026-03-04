@@ -2608,40 +2608,58 @@ import 'data_source_state.dart';
 class DataSource extends pulumi.CustomResource {
   /// ARN of the Data Source.
   late final pulumi.Output<String> arn;
+
   /// A block with the configuration information to connect to your Data Source repository. You can't specify the `configuration` block when the `type` parameter is set to `CUSTOM`. Detailed below.
   late final pulumi.Output<DataSourceConfiguration?> configuration;
+
   /// The Unix time stamp of when the Data Source was created.
   late final pulumi.Output<String> createdAt;
+
   /// A block with the configuration information for altering document metadata and content during the document ingestion process. For more information on how to create, modify and delete document metadata, or make other content alterations when you ingest documents into Amazon Kendra, see [Customizing document metadata during the ingestion process](https://docs.aws.amazon.com/kendra/latest/dg/custom-document-enrichment.html). Detailed below.
-  late final pulumi.Output<DataSourceCustomDocumentEnrichmentConfiguration?> customDocumentEnrichmentConfiguration;
+  late final pulumi.Output<DataSourceCustomDocumentEnrichmentConfiguration?>
+  customDocumentEnrichmentConfiguration;
+
   /// The unique identifiers of the Data Source.
   late final pulumi.Output<String> dataSourceId;
+
   /// A description for the Data Source connector.
   late final pulumi.Output<String?> description;
+
   /// When the Status field value is `FAILED`, contains a description of the error that caused the Data Source to fail.
   late final pulumi.Output<String> errorMessage;
+
   /// The identifier of the index for your Amazon Kendra data source.
   late final pulumi.Output<String> indexId;
+
   /// The code for a language. This allows you to support a language for all documents when creating the Data Source connector. English is supported by default. For more information on supported languages, including their codes, see [Adding documents in languages other than English](https://docs.aws.amazon.com/kendra/latest/dg/in-adding-languages.html).
   late final pulumi.Output<String> languageCode;
+
   /// A name for your data source connector.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The Amazon Resource Name (ARN) of a role with permission to access the data source connector. For more information, see [IAM roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html). You can't specify the `role_arn` parameter when the `type` parameter is set to `CUSTOM`. The `role_arn` parameter is required for all other data sources.
   late final pulumi.Output<String?> roleArn;
+
   /// Sets the frequency for Amazon Kendra to check the documents in your Data Source repository and update the index. If you don't set a schedule Amazon Kendra will not periodically update the index. You can call the `StartDataSourceSyncJob` API to update the index.
   late final pulumi.Output<String?> schedule;
+
   /// The current status of the Data Source. When the status is `ACTIVE` the Data Source is ready to use. When the status is `FAILED`, the `error_message` field contains the reason that the Data Source failed.
   late final pulumi.Output<String> status;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The type of data source repository. For an updated list of values, refer to [Valid Values for Type](https://docs.aws.amazon.com/kendra/latest/dg/API_CreateDataSource.html#Kendra-CreateDataSource-request-Type).
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> type;
+
   /// The Unix time stamp of when the Data Source was last updated.
   late final pulumi.Output<String> updatedAt;
 
@@ -2654,29 +2672,32 @@ class DataSource extends pulumi.CustomResource {
     DataSourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:kendra/dataSource:DataSource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.configuration = registerOutput<DataSourceConfiguration?>('configuration');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.customDocumentEnrichmentConfiguration = registerOutput<DataSourceCustomDocumentEnrichmentConfiguration?>('customDocumentEnrichmentConfiguration');
-    this.dataSourceId = registerOutput<String>('dataSourceId');
-    this.description = registerOutput<String?>('description');
-    this.errorMessage = registerOutput<String>('errorMessage');
-    this.indexId = registerOutput<String>('indexId');
-    this.languageCode = registerOutput<String>('languageCode');
+         'aws:kendra/dataSource:DataSource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    configuration = registerOutput<DataSourceConfiguration?>('configuration');
+    createdAt = registerOutput<String>('createdAt');
+    customDocumentEnrichmentConfiguration =
+        registerOutput<DataSourceCustomDocumentEnrichmentConfiguration?>(
+          'customDocumentEnrichmentConfiguration',
+        );
+    dataSourceId = registerOutput<String>('dataSourceId');
+    description = registerOutput<String?>('description');
+    errorMessage = registerOutput<String>('errorMessage');
+    indexId = registerOutput<String>('indexId');
+    languageCode = registerOutput<String>('languageCode');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.roleArn = registerOutput<String?>('roleArn');
-    this.schedule = registerOutput<String?>('schedule');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.type = registerOutput<String>('type');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String?>('roleArn');
+    schedule = registerOutput<String?>('schedule');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    type = registerOutput<String>('type');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 
   /// Gets an existing [DataSource] resource's state with the given [name] and [id].
@@ -2697,28 +2718,31 @@ class DataSource extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:kendra/dataSource:DataSource',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.arn = registerOutput<String>('arn');
-    this.configuration = registerOutput<DataSourceConfiguration?>('configuration');
-    this.createdAt = registerOutput<String>('createdAt');
-    this.customDocumentEnrichmentConfiguration = registerOutput<DataSourceCustomDocumentEnrichmentConfiguration?>('customDocumentEnrichmentConfiguration');
-    this.dataSourceId = registerOutput<String>('dataSourceId');
-    this.description = registerOutput<String?>('description');
-    this.errorMessage = registerOutput<String>('errorMessage');
-    this.indexId = registerOutput<String>('indexId');
-    this.languageCode = registerOutput<String>('languageCode');
+         'aws:kendra/dataSource:DataSource',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    arn = registerOutput<String>('arn');
+    configuration = registerOutput<DataSourceConfiguration?>('configuration');
+    createdAt = registerOutput<String>('createdAt');
+    customDocumentEnrichmentConfiguration =
+        registerOutput<DataSourceCustomDocumentEnrichmentConfiguration?>(
+          'customDocumentEnrichmentConfiguration',
+        );
+    dataSourceId = registerOutput<String>('dataSourceId');
+    description = registerOutput<String?>('description');
+    errorMessage = registerOutput<String>('errorMessage');
+    indexId = registerOutput<String>('indexId');
+    languageCode = registerOutput<String>('languageCode');
     this.name = registerOutput<String>('name');
-    this.region = registerOutput<String>('region');
-    this.roleArn = registerOutput<String?>('roleArn');
-    this.schedule = registerOutput<String?>('schedule');
-    this.status = registerOutput<String>('status');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.type = registerOutput<String>('type');
-    this.updatedAt = registerOutput<String>('updatedAt');
+    region = registerOutput<String>('region');
+    roleArn = registerOutput<String?>('roleArn');
+    schedule = registerOutput<String?>('schedule');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags');
+    tagsAll = registerOutput<Map<String, String>>('tagsAll');
+    type = registerOutput<String>('type');
+    updatedAt = registerOutput<String>('updatedAt');
   }
 }

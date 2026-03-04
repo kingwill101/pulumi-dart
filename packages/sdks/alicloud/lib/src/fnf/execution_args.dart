@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExecutionArgs {
   /// The name of the execution.
   final pulumi.Input<String> executionName;
+
   /// The name of the flow.
   final pulumi.Input<String> flowName;
+
   /// The Input information for this execution.
   final pulumi.Input<String>? input;
+
   /// The status of the resource. Valid values: `Stopped`.
   final pulumi.Input<String>? status;
 
@@ -39,11 +42,18 @@ class ExecutionArgs {
 
   factory ExecutionArgs.fromMap(Map<String, dynamic> map) {
     return ExecutionArgs(
-      executionName: (map['executionName'] as String).input(),
-      flowName: (map['flowName'] as String).input(),
-      input: map['input'] == null ? null : (map['input']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
+      executionName: pulumi.Input.fromValue(map['executionName'] as String),
+      flowName: pulumi.Input.fromValue(map['flowName'] as String),
+      input: (() {
+        final guardedValue = map['input'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

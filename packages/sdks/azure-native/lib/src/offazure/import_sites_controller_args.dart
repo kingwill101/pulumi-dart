@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImportSitesControllerArgs {
   /// Gets or sets the ARM ID of migration hub solution for SDS.
   final pulumi.Input<String>? discoverySolutionId;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The status of the last operation.
   final pulumi.Input<String>? provisioningState;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Site name
   final pulumi.Input<String>? siteName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -49,13 +54,36 @@ class ImportSitesControllerArgs {
 
   factory ImportSitesControllerArgs.fromMap(Map<String, dynamic> map) {
     return ImportSitesControllerArgs(
-      discoverySolutionId: map['discoverySolutionId'] == null ? null : (map['discoverySolutionId']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteName: map['siteName'] == null ? null : (map['siteName']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      discoverySolutionId: (() {
+        final guardedValue = map['discoverySolutionId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      provisioningState: (() {
+        final guardedValue = map['provisioningState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      siteName: (() {
+        final guardedValue = map['siteName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

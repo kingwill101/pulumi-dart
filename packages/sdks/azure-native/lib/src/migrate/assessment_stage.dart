@@ -4,16 +4,15 @@ enum AssessmentStage {
   valueUnderReview("UnderReview"),
   valueApproved("Approved");
 
-  const AssessmentStage(this.value);
-  final String value;
+  const AssessmentStage(this.wireValue);
+  final String wireValue;
 
   static AssessmentStage fromValue(String value) {
     for (final item in AssessmentStage.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown AssessmentStage value: $value');
   }
 }
-

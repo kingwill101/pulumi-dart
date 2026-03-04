@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharedVPCServiceProjectState {
   /// The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
   final pulumi.Input<String>? deletionPolicy;
+
   /// The ID of a host project to associate.
   final pulumi.Input<String>? hostProject;
+
   /// The ID of the project that will serve as a Shared VPC service project.
   final pulumi.Input<String>? serviceProject;
 
@@ -31,10 +33,21 @@ class SharedVPCServiceProjectState {
 
   factory SharedVPCServiceProjectState.fromMap(Map<String, dynamic> map) {
     return SharedVPCServiceProjectState(
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
-      hostProject: map['hostProject'] == null ? null : (map['hostProject']! as String).input(),
-      serviceProject: map['serviceProject'] == null ? null : (map['serviceProject']! as String).input(),
+      deletionPolicy: (() {
+        final guardedValue = map['deletionPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      hostProject: (() {
+        final guardedValue = map['hostProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceProject: (() {
+        final guardedValue = map['serviceProject'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

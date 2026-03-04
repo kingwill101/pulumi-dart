@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserPoolEmailConfiguration {
   /// - Configuration set used for sending emails.
   final pulumi.Input<String> configurationSet;
+
   /// - Email sending account.
   final pulumi.Input<String> emailSendingAccount;
+
   /// - Email sender address.
   final pulumi.Input<String> from;
+
   /// - Reply-to email address.
   final pulumi.Input<String> replyToEmailAddress;
+
   /// - Source Amazon Resource Name (ARN) for emails.
   final pulumi.Input<String> sourceArn;
 
@@ -40,12 +44,17 @@ class GetUserPoolEmailConfiguration {
 
   factory GetUserPoolEmailConfiguration.fromMap(Map<String, dynamic> map) {
     return GetUserPoolEmailConfiguration(
-      configurationSet: (map['configurationSet'] as String).input(),
-      emailSendingAccount: (map['emailSendingAccount'] as String).input(),
-      from: (map['from'] as String).input(),
-      replyToEmailAddress: (map['replyToEmailAddress'] as String).input(),
-      sourceArn: (map['sourceArn'] as String).input(),
+      configurationSet: pulumi.Input.fromValue(
+        map['configurationSet'] as String,
+      ),
+      emailSendingAccount: pulumi.Input.fromValue(
+        map['emailSendingAccount'] as String,
+      ),
+      from: pulumi.Input.fromValue(map['from'] as String),
+      replyToEmailAddress: pulumi.Input.fromValue(
+        map['replyToEmailAddress'] as String,
+      ),
+      sourceArn: pulumi.Input.fromValue(map['sourceArn'] as String),
     );
   }
 }
-

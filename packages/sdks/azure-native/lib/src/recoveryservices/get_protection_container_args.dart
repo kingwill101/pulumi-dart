@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProtectionContainerArgs {
   /// Name of the container whose details need to be fetched.
   final pulumi.Input<String> containerName;
+
   /// Name of the fabric where the container belongs.
   final pulumi.Input<String> fabricName;
+
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the recovery services vault.
   final pulumi.Input<String> vaultName;
 
@@ -39,11 +42,12 @@ class GetProtectionContainerArgs {
 
   factory GetProtectionContainerArgs.fromMap(Map<String, dynamic> map) {
     return GetProtectionContainerArgs(
-      containerName: (map['containerName'] as String).input(),
-      fabricName: (map['fabricName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vaultName: (map['vaultName'] as String).input(),
+      containerName: pulumi.Input.fromValue(map['containerName'] as String),
+      fabricName: pulumi.Input.fromValue(map['fabricName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }
 }
-

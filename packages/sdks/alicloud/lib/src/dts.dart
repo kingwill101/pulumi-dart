@@ -1,5 +1,3 @@
-library module_dts;
-
 export 'dts/consumer_channel.dart';
 export 'dts/consumer_channel_args.dart';
 export 'dts/consumer_channel_state.dart';

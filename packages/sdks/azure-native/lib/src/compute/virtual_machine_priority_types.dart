@@ -4,16 +4,15 @@ enum VirtualMachinePriorityTypes {
   low("Low"),
   spot("Spot");
 
-  const VirtualMachinePriorityTypes(this.value);
-  final String value;
+  const VirtualMachinePriorityTypes(this.wireValue);
+  final String wireValue;
 
   static VirtualMachinePriorityTypes fromValue(String value) {
     for (final item in VirtualMachinePriorityTypes.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown VirtualMachinePriorityTypes value: $value');
   }
 }
-

@@ -5,26 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FlowSourceFlowConfigSourceConnectorPropertiesVeeva {
   /// Document type specified in the Veeva document extract flow.
   final pulumi.Input<String>? documentType;
+
   /// Boolean value to include All Versions of files in Veeva document extract flow.
   final pulumi.Input<bool>? includeAllVersions;
+
   /// Boolean value to include file renditions in Veeva document extract flow.
   final pulumi.Input<bool>? includeRenditions;
+
   /// Boolean value to include source files in Veeva document extract flow.
   final pulumi.Input<bool>? includeSourceFiles;
-  final pulumi.Input<String> object;
+  final pulumi.Input<String> object_;
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesVeeva].
   /// [documentType] Document type specified in the Veeva document extract flow.
   /// [includeAllVersions] Boolean value to include All Versions of files in Veeva document extract flow.
   /// [includeRenditions] Boolean value to include file renditions in Veeva document extract flow.
   /// [includeSourceFiles] Boolean value to include source files in Veeva document extract flow.
-  /// [object] Required.
+  /// [object_] Required.
   FlowSourceFlowConfigSourceConnectorPropertiesVeeva({
     this.documentType,
     this.includeAllVersions,
     this.includeRenditions,
     this.includeSourceFiles,
-    required this.object,
+    required this.object_,
   });
 
   Map<String, dynamic> toMap() {
@@ -33,18 +36,35 @@ class FlowSourceFlowConfigSourceConnectorPropertiesVeeva {
       'includeAllVersions': ?includeAllVersions,
       'includeRenditions': ?includeRenditions,
       'includeSourceFiles': ?includeSourceFiles,
-      'object': object,
+      'object': object_,
     };
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesVeeva.fromMap(Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesVeeva.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowSourceFlowConfigSourceConnectorPropertiesVeeva(
-      documentType: map['documentType'] == null ? null : ((map['documentType'] as String).input()).input(),
-      includeAllVersions: map['includeAllVersions'] == null ? null : ((map['includeAllVersions'] as bool).input()).input(),
-      includeRenditions: map['includeRenditions'] == null ? null : ((map['includeRenditions'] as bool).input()).input(),
-      includeSourceFiles: map['includeSourceFiles'] == null ? null : ((map['includeSourceFiles'] as bool).input()).input(),
-      object: (map['object'] as String).input(),
+      documentType: (() {
+        final guardedValue = map['documentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      includeAllVersions: (() {
+        final guardedValue = map['includeAllVersions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      includeRenditions: (() {
+        final guardedValue = map['includeRenditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      includeSourceFiles: (() {
+        final guardedValue = map['includeSourceFiles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }
 }
-

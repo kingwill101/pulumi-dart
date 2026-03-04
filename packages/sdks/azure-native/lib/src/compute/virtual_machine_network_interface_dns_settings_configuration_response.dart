@@ -14,15 +14,18 @@ class VirtualMachineNetworkInterfaceDnsSettingsConfigurationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dnsServers': ?dnsServers,
-    };
+    return <String, dynamic>{'dnsServers': ?dnsServers};
   }
 
-  factory VirtualMachineNetworkInterfaceDnsSettingsConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory VirtualMachineNetworkInterfaceDnsSettingsConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualMachineNetworkInterfaceDnsSettingsConfigurationResponse(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      dnsServers: (() {
+        final guardedValue = map['dnsServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

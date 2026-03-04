@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutomanageConfigurationAssignmentArgs {
   /// The ARM resource ID of the Automanage Configuration to assign to the Virtual Machine. Changing this forces a new resource to be created.
   final pulumi.Input<String> configurationId;
+
   /// The ARM resource ID of the Virtual Machine to assign the Automanage Configuration to. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualMachineId;
 
@@ -27,11 +28,14 @@ class AutomanageConfigurationAssignmentArgs {
     };
   }
 
-  factory AutomanageConfigurationAssignmentArgs.fromMap(Map<String, dynamic> map) {
+  factory AutomanageConfigurationAssignmentArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutomanageConfigurationAssignmentArgs(
-      configurationId: (map['configurationId'] as String).input(),
-      virtualMachineId: (map['virtualMachineId'] as String).input(),
+      configurationId: pulumi.Input.fromValue(map['configurationId'] as String),
+      virtualMachineId: pulumi.Input.fromValue(
+        map['virtualMachineId'] as String,
+      ),
     );
   }
 }
-

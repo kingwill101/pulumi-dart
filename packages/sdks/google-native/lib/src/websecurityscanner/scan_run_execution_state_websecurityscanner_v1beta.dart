@@ -5,16 +5,17 @@ enum ScanRunExecutionStateWebsecurityscannerV1beta {
   scanning("SCANNING"),
   finished("FINISHED");
 
-  const ScanRunExecutionStateWebsecurityscannerV1beta(this.value);
-  final String value;
+  const ScanRunExecutionStateWebsecurityscannerV1beta(this.wireValue);
+  final String wireValue;
 
   static ScanRunExecutionStateWebsecurityscannerV1beta fromValue(String value) {
     for (final item in ScanRunExecutionStateWebsecurityscannerV1beta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ScanRunExecutionStateWebsecurityscannerV1beta value: $value');
+    throw ArgumentError(
+      'Unknown ScanRunExecutionStateWebsecurityscannerV1beta value: $value',
+    );
   }
 }
-

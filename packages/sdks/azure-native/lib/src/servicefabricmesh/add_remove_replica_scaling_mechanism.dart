@@ -7,10 +7,13 @@ class AddRemoveReplicaScalingMechanism {
   /// Enumerates the mechanisms for auto scaling.
   /// Expected value is 'AddRemoveReplica'.
   final pulumi.Input<String> kind;
+
   /// Maximum number of containers (scale up won't be performed above this number).
   final pulumi.Input<int> maxCount;
+
   /// Minimum number of containers (scale down won't be performed below this number).
   final pulumi.Input<int> minCount;
+
   /// Each time auto scaling is performed, this number of containers will be added or removed.
   final pulumi.Input<int> scaleIncrement;
 
@@ -37,11 +40,10 @@ class AddRemoveReplicaScalingMechanism {
 
   factory AddRemoveReplicaScalingMechanism.fromMap(Map<String, dynamic> map) {
     return AddRemoveReplicaScalingMechanism(
-      kind: (map['kind'] as String).input(),
-      maxCount: (map['maxCount'] as int).input(),
-      minCount: (map['minCount'] as int).input(),
-      scaleIncrement: (map['scaleIncrement'] as int).input(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      maxCount: pulumi.Input.fromValue(map['maxCount'] as int),
+      minCount: pulumi.Input.fromValue(map['minCount'] as int),
+      scaleIncrement: pulumi.Input.fromValue(map['scaleIncrement'] as int),
     );
   }
 }
-

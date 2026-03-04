@@ -1,5 +1,3 @@
-library module_eventgrid;
-
 export 'eventgrid/domain.dart';
 export 'eventgrid/domain_args.dart';
 export 'eventgrid/domain_identity.dart';

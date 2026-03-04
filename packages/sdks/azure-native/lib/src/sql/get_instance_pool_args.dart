@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstancePoolArgs {
   /// The name of the instance pool to be retrieved.
   final pulumi.Input<String> instancePoolName;
+
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
 
@@ -29,9 +30,12 @@ class GetInstancePoolArgs {
 
   factory GetInstancePoolArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancePoolArgs(
-      instancePoolName: (map['instancePoolName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      instancePoolName: pulumi.Input.fromValue(
+        map['instancePoolName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

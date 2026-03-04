@@ -205,7 +205,7 @@ import 'credential_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Automation` - 2024-10-23
@@ -220,14 +220,19 @@ import 'credential_state.dart';
 class Credential extends pulumi.CustomResource {
   /// The name of the automation account in which the Credential is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> automationAccountName;
+
   /// The description associated with this Automation Credential.
   late final pulumi.Output<String?> description;
+
   /// Specifies the name of the Credential. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The password associated with this Automation Credential.
   late final pulumi.Output<String> password;
+
   /// The name of the resource group in which the Credential is created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// The username associated with this Automation Credential.
   late final pulumi.Output<String> username;
 
@@ -240,17 +245,17 @@ class Credential extends pulumi.CustomResource {
     CredentialArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/credential:Credential',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.description = registerOutput<String?>('description');
+         'azure:automation/credential:Credential',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.username = registerOutput<String>('username');
+    password = registerOutput<String>('password');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    username = registerOutput<String>('username');
   }
 
   /// Gets an existing [Credential] resource's state with the given [name] and [id].
@@ -271,16 +276,16 @@ class Credential extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:automation/credential:Credential',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automationAccountName = registerOutput<String>('automationAccountName');
-    this.description = registerOutput<String?>('description');
+         'azure:automation/credential:Credential',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.password = registerOutput<String>('password');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.username = registerOutput<String>('username');
+    password = registerOutput<String>('password');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    username = registerOutput<String>('username');
   }
 }

@@ -4,16 +4,15 @@ enum WarehouseAuthenticationType {
   valueSystemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
   valueUserAssignedManagedIdentity("UserAssignedManagedIdentity");
 
-  const WarehouseAuthenticationType(this.value);
-  final String value;
+  const WarehouseAuthenticationType(this.wireValue);
+  final String wireValue;
 
   static WarehouseAuthenticationType fromValue(String value) {
     for (final item in WarehouseAuthenticationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown WarehouseAuthenticationType value: $value');
   }
 }
-

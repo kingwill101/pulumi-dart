@@ -1,5 +1,3 @@
-library module_cloudsso;
-
 export 'cloudsso/access_configuration.dart';
 export 'cloudsso/access_configuration_args.dart';
 export 'cloudsso/access_configuration_permission_policy.dart';

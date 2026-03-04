@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkerPoolInstanceSplitStatus {
   /// Specifies percent of the instance split to this Revision.
   final pulumi.Input<int> percent;
+
   /// Revision to which this instance split is assigned.
   final pulumi.Input<String> revision;
+
   /// The allocation type for this instance split.
   final pulumi.Input<String> type;
 
@@ -30,10 +32,9 @@ class GetWorkerPoolInstanceSplitStatus {
 
   factory GetWorkerPoolInstanceSplitStatus.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolInstanceSplitStatus(
-      percent: (map['percent'] as int).input(),
-      revision: (map['revision'] as String).input(),
-      type: (map['type'] as String).input(),
+      percent: pulumi.Input.fromValue(map['percent'] as int),
+      revision: pulumi.Input.fromValue(map['revision'] as String),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

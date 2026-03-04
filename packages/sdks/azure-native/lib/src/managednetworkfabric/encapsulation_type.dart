@@ -3,16 +3,15 @@ enum EncapsulationType {
   valueNone("None"),
   valueGTPv1("GTPv1");
 
-  const EncapsulationType(this.value);
-  final String value;
+  const EncapsulationType(this.wireValue);
+  final String wireValue;
 
   static EncapsulationType fromValue(String value) {
     for (final item in EncapsulationType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EncapsulationType value: $value');
   }
 }
-

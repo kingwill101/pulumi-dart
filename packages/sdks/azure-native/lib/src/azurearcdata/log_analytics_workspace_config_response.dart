@@ -9,20 +9,21 @@ class LogAnalyticsWorkspaceConfigResponse {
 
   /// Creates a new [LogAnalyticsWorkspaceConfigResponse].
   /// [workspaceId] Azure Log Analytics workspace ID
-  LogAnalyticsWorkspaceConfigResponse({
-    this.workspaceId,
-  });
+  LogAnalyticsWorkspaceConfigResponse({this.workspaceId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'workspaceId': ?workspaceId,
-    };
+    return <String, dynamic>{'workspaceId': ?workspaceId};
   }
 
-  factory LogAnalyticsWorkspaceConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory LogAnalyticsWorkspaceConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LogAnalyticsWorkspaceConfigResponse(
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
+      workspaceId: (() {
+        final guardedValue = map['workspaceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

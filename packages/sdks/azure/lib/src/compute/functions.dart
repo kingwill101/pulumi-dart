@@ -152,7 +152,7 @@ import 'get_virtual_machine_scale_set_result.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-03-01
@@ -281,7 +281,7 @@ Future<GetAvailabilitySetResult> getAvailabilitySet(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2024-01-01
@@ -410,7 +410,7 @@ Future<GetBastionHostResult> getBastionHost(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.ConfidentialLedger` - 2022-05-13
@@ -545,7 +545,7 @@ Future<GetConfidentialLedgerResult> getConfidentialLedger(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-03-01
@@ -674,7 +674,7 @@ Future<GetDedicatedHostResult> getDedicatedHost(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-03-01
@@ -803,7 +803,7 @@ Future<GetDedicatedHostGroupResult> getDedicatedHostGroup(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-03-02
@@ -932,7 +932,7 @@ Future<GetDiskAccessResult> getDiskAccess(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-03-02
@@ -1061,7 +1061,7 @@ Future<GetDiskEncryptionSetResult> getDiskEncryptionSet(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-03-01
@@ -1174,7 +1174,7 @@ Future<GetImageResult> getImage(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-03-01
@@ -1303,7 +1303,7 @@ Future<GetImagesResult> getImages(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2023-04-02
@@ -1426,7 +1426,7 @@ Future<GetManagedDiskResult> getManagedDisk(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2023-04-02
@@ -1555,13 +1555,14 @@ Future<GetManagedDisksResult> getManagedDisks(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-11-01
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_orchestrated_virtual_machine_scale_set_get_orchestrated_virtual_machine_scale_set_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrchestratedVirtualMachineScaleSetResult> getOrchestratedVirtualMachineScaleSet(
+Future<GetOrchestratedVirtualMachineScaleSetResult>
+getOrchestratedVirtualMachineScaleSet(
   GetOrchestratedVirtualMachineScaleSetArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1696,7 +1697,7 @@ Future<GetOrchestratedVirtualMachineScaleSetResult> getOrchestratedVirtualMachin
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-03-01
@@ -1821,7 +1822,7 @@ Future<GetPlatformImageResult> getPlatformImage(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-03-03
@@ -1940,7 +1941,7 @@ Future<GetSharedImageResult> getSharedImage(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-03-03
@@ -2071,7 +2072,7 @@ Future<GetSharedImageGalleryResult> getSharedImageGallery(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2023-07-03
@@ -2196,7 +2197,7 @@ Future<GetSharedImageVersionResult> getSharedImageVersion(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2023-07-03
@@ -2315,7 +2316,7 @@ Future<GetSharedImageVersionsResult> getSharedImageVersions(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2022-03-02
@@ -2444,7 +2445,7 @@ Future<GetSnapshotResult> getSnapshot(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-03-01
@@ -2573,7 +2574,7 @@ Future<GetSshPublicKeyResult> getSshPublicKey(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-03-01
@@ -2702,7 +2703,7 @@ Future<GetVirtualMachineResult> getVirtualMachine(
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This data source uses the following Azure API Providers:
 ///
 /// * `Microsoft.Compute` - 2024-11-01, 2024-03-01, 2023-09-01

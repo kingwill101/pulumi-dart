@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceTypeFpga {
   final pulumi.Input<int> count;
   final pulumi.Input<String> manufacturer;
+
   /// Size of the instance memory, in MiB.
   final pulumi.Input<int> memorySize;
   final pulumi.Input<String> name;
@@ -32,11 +33,10 @@ class GetInstanceTypeFpga {
 
   factory GetInstanceTypeFpga.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeFpga(
-      count: (map['count'] as int).input(),
-      manufacturer: (map['manufacturer'] as String).input(),
-      memorySize: (map['memorySize'] as int).input(),
-      name: (map['name'] as String).input(),
+      count: pulumi.Input.fromValue(map['count'] as int),
+      manufacturer: pulumi.Input.fromValue(map['manufacturer'] as String),
+      memorySize: pulumi.Input.fromValue(map['memorySize'] as int),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

@@ -15,26 +15,17 @@ class GetFeedArgs {
   /// [feedId] Required.
   /// [v1Id] Required.
   /// [v1Id1] Required.
-  GetFeedArgs({
-    required this.feedId,
-    required this.v1Id,
-    required this.v1Id1,
-  });
+  GetFeedArgs({required this.feedId, required this.v1Id, required this.v1Id1});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'feedId': feedId,
-      'v1Id': v1Id,
-      'v1Id1': v1Id1,
-    };
+    return <String, dynamic>{'feedId': feedId, 'v1Id': v1Id, 'v1Id1': v1Id1};
   }
 
   factory GetFeedArgs.fromMap(Map<String, dynamic> map) {
     return GetFeedArgs(
-      feedId: (map['feedId'] as String).input(),
-      v1Id: (map['v1Id'] as String).input(),
-      v1Id1: (map['v1Id1'] as String).input(),
+      feedId: pulumi.Input.fromValue(map['feedId'] as String),
+      v1Id: pulumi.Input.fromValue(map['v1Id'] as String),
+      v1Id1: pulumi.Input.fromValue(map['v1Id1'] as String),
     );
   }
 }
-

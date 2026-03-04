@@ -10,9 +10,11 @@ class RouterRoutesV2State {
   /// omitted, the `region` argument of the provider is used. Changing this creates
   /// new routing entries.
   final pulumi.Input<String>? region;
+
   /// ID of the router these routing entries belong to.
   /// Changing this creates new routing entries.
   final pulumi.Input<String>? routerId;
+
   /// A set of routing entries to add to the router.
   final pulumi.Input<List<RouterRoutesV2Route>>? routes;
 
@@ -20,26 +22,51 @@ class RouterRoutesV2State {
   /// [region] The region in which to obtain the V2 networking client.
   /// [routerId] ID of the router these routing entries belong to.
   /// [routes] A set of routing entries to add to the router.
-  RouterRoutesV2State({
-    this.region,
-    this.routerId,
-    this.routes,
-  });
+  RouterRoutesV2State({this.region, this.routerId, this.routes});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'region': ?region,
       'routerId': ?routerId,
-      'routes': ?pulumi.Input.mapOptionalInputValue<List<RouterRoutesV2Route>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<RouterRoutesV2Route, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RouterRoutesV2Route>,
+            List<Map<String, dynamic>>
+          >(
+            routes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RouterRoutesV2Route,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory RouterRoutesV2State.fromMap(Map<String, dynamic> map) {
     return RouterRoutesV2State(
-      region: map['region'] == null ? null : (map['region']! as String).input(),
-      routerId: map['routerId'] == null ? null : (map['routerId']! as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<RouterRoutesV2Route>(map['routes']!, (value) => RouterRoutesV2Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routerId: (() {
+        final guardedValue = map['routerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routes: (() {
+        final guardedValue = map['routes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RouterRoutesV2Route>(
+            guardedValue,
+            (value) => RouterRoutesV2Route.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

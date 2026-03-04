@@ -1,5 +1,3 @@
-library module_alb;
-
 export 'alb/functions.dart';
 export 'alb/get_listener_args.dart';
 export 'alb/get_listener_default_action.dart';

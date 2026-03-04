@@ -3,16 +3,15 @@ enum RecurrenceInterval {
   valueHour("Hour"),
   valueDay("Day");
 
-  const RecurrenceInterval(this.value);
-  final String value;
+  const RecurrenceInterval(this.wireValue);
+  final String wireValue;
 
   static RecurrenceInterval fromValue(String value) {
     for (final item in RecurrenceInterval.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RecurrenceInterval value: $value');
   }
 }
-

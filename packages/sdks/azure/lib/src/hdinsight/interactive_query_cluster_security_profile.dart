@@ -5,16 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InteractiveQueryClusterSecurityProfile {
   /// The resource ID of the Azure Active Directory Domain Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> aaddsResourceId;
+
   /// A list of the distinguished names for the cluster user groups. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>>? clusterUsersGroupDns;
+
   /// The name of the Azure Active Directory Domain. Changing this forces a new resource to be created.
   final pulumi.Input<String> domainName;
+
   /// The user password of the Azure Active Directory Domain. Changing this forces a new resource to be created.
   final pulumi.Input<String> domainUserPassword;
+
   /// The username of the Azure Active Directory Domain. Changing this forces a new resource to be created.
   final pulumi.Input<String> domainUsername;
+
   /// A list of the LDAPS URLs to communicate with the Azure Active Directory. Changing this forces a new resource to be created.
   final pulumi.Input<List<String>> ldapsUrls;
+
   /// The User Assigned Identity for the HDInsight Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String> msiResourceId;
 
@@ -48,16 +54,25 @@ class InteractiveQueryClusterSecurityProfile {
     };
   }
 
-  factory InteractiveQueryClusterSecurityProfile.fromMap(Map<String, dynamic> map) {
+  factory InteractiveQueryClusterSecurityProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InteractiveQueryClusterSecurityProfile(
-      aaddsResourceId: (map['aaddsResourceId'] as String).input(),
-      clusterUsersGroupDns: map['clusterUsersGroupDns'] == null ? null : ((map['clusterUsersGroupDns']! as List).cast<String>()).input(),
-      domainName: (map['domainName'] as String).input(),
-      domainUserPassword: (map['domainUserPassword'] as String).input(),
-      domainUsername: (map['domainUsername'] as String).input(),
-      ldapsUrls: ((map['ldapsUrls'] as List).cast<String>()).input(),
-      msiResourceId: (map['msiResourceId'] as String).input(),
+      aaddsResourceId: pulumi.Input.fromValue(map['aaddsResourceId'] as String),
+      clusterUsersGroupDns: (() {
+        final guardedValue = map['clusterUsersGroupDns'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      domainName: pulumi.Input.fromValue(map['domainName'] as String),
+      domainUserPassword: pulumi.Input.fromValue(
+        map['domainUserPassword'] as String,
+      ),
+      domainUsername: pulumi.Input.fromValue(map['domainUsername'] as String),
+      ldapsUrls: pulumi.Input.fromValue(
+        (map['ldapsUrls'] as List).cast<String>(),
+      ),
+      msiResourceId: pulumi.Input.fromValue(map['msiResourceId'] as String),
     );
   }
 }
-

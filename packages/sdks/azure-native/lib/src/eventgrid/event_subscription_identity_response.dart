@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventSubscriptionIdentityResponse {
   /// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
   final pulumi.Input<String>? type;
+
   /// The user identity associated with the resource.
   final pulumi.Input<String>? userAssignedIdentity;
 
   /// Creates a new [EventSubscriptionIdentityResponse].
   /// [type] The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
   /// [userAssignedIdentity] The user identity associated with the resource.
-  EventSubscriptionIdentityResponse({
-    this.type,
-    this.userAssignedIdentity,
-  });
+  EventSubscriptionIdentityResponse({this.type, this.userAssignedIdentity});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class EventSubscriptionIdentityResponse {
 
   factory EventSubscriptionIdentityResponse.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionIdentityResponse(
-      type: map['type'] == null ? null : (map['type']! as String).input(),
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      userAssignedIdentity: (() {
+        final guardedValue = map['userAssignedIdentity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

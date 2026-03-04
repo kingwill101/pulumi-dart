@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppServiceCertificate {
   /// Key Vault resource Id.
   final pulumi.Input<String>? keyVaultId;
+
   /// Key Vault secret name.
   final pulumi.Input<String>? keyVaultSecretName;
 
   /// Creates a new [AppServiceCertificate].
   /// [keyVaultId] Key Vault resource Id.
   /// [keyVaultSecretName] Key Vault secret name.
-  AppServiceCertificate({
-    this.keyVaultId,
-    this.keyVaultSecretName,
-  });
+  AppServiceCertificate({this.keyVaultId, this.keyVaultSecretName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class AppServiceCertificate {
 
   factory AppServiceCertificate.fromMap(Map<String, dynamic> map) {
     return AppServiceCertificate(
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
-      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : (map['keyVaultSecretName']! as String).input(),
+      keyVaultId: (() {
+        final guardedValue = map['keyVaultId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      keyVaultSecretName: (() {
+        final guardedValue = map['keyVaultSecretName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

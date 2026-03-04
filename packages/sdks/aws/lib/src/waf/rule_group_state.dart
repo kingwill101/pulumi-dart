@@ -7,14 +7,19 @@ import 'rule_group_activated_rule.dart';
 class RuleGroupState {
   /// A list of activated rules, see below
   final pulumi.Input<List<RuleGroupActivatedRule>>? activatedRules;
+
   /// The ARN of the WAF rule group.
   final pulumi.Input<String>? arn;
+
   /// A friendly name for the metrics from the rule group
   final pulumi.Input<String>? metricName;
+
   /// Name of the rule group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   final pulumi.Input<String>? name;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final pulumi.Input<Map<String, String>>? tagsAll;
 
@@ -36,7 +41,18 @@ class RuleGroupState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activatedRules': ?pulumi.Input.mapOptionalInputValue<List<RuleGroupActivatedRule>, List<Map<String, dynamic>>>(activatedRules, (value) => pulumi.Input.encodeList<RuleGroupActivatedRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'activatedRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RuleGroupActivatedRule>,
+            List<Map<String, dynamic>>
+          >(
+            activatedRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RuleGroupActivatedRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'arn': ?arn,
       'metricName': ?metricName,
       'name': ?name,
@@ -47,13 +63,47 @@ class RuleGroupState {
 
   factory RuleGroupState.fromMap(Map<String, dynamic> map) {
     return RuleGroupState(
-      activatedRules: map['activatedRules'] == null ? null : ((pulumi.Input.decodeList<RuleGroupActivatedRule>(map['activatedRules']!, (value) => RuleGroupActivatedRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
-      metricName: map['metricName'] == null ? null : ((map['metricName'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      activatedRules: (() {
+        final guardedValue = map['activatedRules'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<RuleGroupActivatedRule>(
+            guardedValue,
+            (value) => RuleGroupActivatedRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      arn: (() {
+        final guardedValue = map['arn'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      metricName: (() {
+        final guardedValue = map['metricName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tagsAll: (() {
+        final guardedValue = map['tagsAll'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

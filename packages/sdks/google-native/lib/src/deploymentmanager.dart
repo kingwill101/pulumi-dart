@@ -1,5 +1,3 @@
-library module_deploymentmanager;
-
 export 'deploymentmanager/async_options.dart';
 export 'deploymentmanager/async_options_deploymentmanager_v2beta.dart';
 export 'deploymentmanager/async_options_response.dart';

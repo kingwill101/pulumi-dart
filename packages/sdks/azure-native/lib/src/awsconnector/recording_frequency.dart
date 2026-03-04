@@ -3,16 +3,15 @@ enum RecordingFrequency {
   cONTINUOUS("CONTINUOUS"),
   dAILY("DAILY");
 
-  const RecordingFrequency(this.value);
-  final String value;
+  const RecordingFrequency(this.wireValue);
+  final String wireValue;
 
   static RecordingFrequency fromValue(String value) {
     for (final item in RecordingFrequency.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown RecordingFrequency value: $value');
   }
 }
-

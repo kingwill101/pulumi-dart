@@ -31,10 +31,15 @@ class GetServiceBindingArgs {
 
   factory GetServiceBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceBindingArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      serviceBindingId: (map['serviceBindingId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      serviceBindingId: pulumi.Input.fromValue(
+        map['serviceBindingId'] as String,
+      ),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SqlServerAuditConfigResponseSqladminV1beta4 {
   /// The name of the destination bucket (e.g., gs://mybucket).
   final pulumi.Input<String> bucket;
+
   /// This is always sql#sqlServerAuditConfig
   final pulumi.Input<String> kind;
+
   /// How long to keep generated audit files.
   final pulumi.Input<String> retentionInterval;
+
   /// How often to upload generated audit files.
   final pulumi.Input<String> uploadInterval;
 
@@ -34,13 +37,16 @@ class SqlServerAuditConfigResponseSqladminV1beta4 {
     };
   }
 
-  factory SqlServerAuditConfigResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
+  factory SqlServerAuditConfigResponseSqladminV1beta4.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SqlServerAuditConfigResponseSqladminV1beta4(
-      bucket: (map['bucket'] as String).input(),
-      kind: (map['kind'] as String).input(),
-      retentionInterval: (map['retentionInterval'] as String).input(),
-      uploadInterval: (map['uploadInterval'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      retentionInterval: pulumi.Input.fromValue(
+        map['retentionInterval'] as String,
+      ),
+      uploadInterval: pulumi.Input.fromValue(map['uploadInterval'] as String),
     );
   }
 }
-

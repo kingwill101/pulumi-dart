@@ -31,10 +31,13 @@ class GetProcessorDocumentaiV1beta3Args {
 
   factory GetProcessorDocumentaiV1beta3Args.fromMap(Map<String, dynamic> map) {
     return GetProcessorDocumentaiV1beta3Args(
-      location: (map['location'] as String).input(),
-      processorId: (map['processorId'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      processorId: pulumi.Input.fromValue(map['processorId'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

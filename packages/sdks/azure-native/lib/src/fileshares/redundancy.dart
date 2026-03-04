@@ -3,16 +3,15 @@ enum Redundancy {
   local("Local"),
   zone("Zone");
 
-  const Redundancy(this.value);
-  final String value;
+  const Redundancy(this.wireValue);
+  final String wireValue;
 
   static Redundancy fromValue(String value) {
     for (final item in Redundancy.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Redundancy value: $value');
   }
 }
-

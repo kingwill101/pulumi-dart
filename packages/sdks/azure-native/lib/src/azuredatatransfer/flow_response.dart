@@ -10,20 +10,28 @@ import 'system_data_response.dart';
 class FlowResponse {
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
+
   /// The managed service identities assigned to this resource.
   final pulumi.Input<ManagedServiceIdentityResponse>? identity;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String> location;
+
   /// The name of the resource
   final pulumi.Input<String> name;
+
   /// Details of the resource plan.
   final pulumi.Input<PlanResponse>? plan;
+
   /// Properties of flow
   final pulumi.Input<FlowPropertiesResponse>? properties;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 
@@ -52,12 +60,28 @@ class FlowResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentityResponse, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            ManagedServiceIdentityResponse,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': location,
       'name': name,
-      'plan': ?pulumi.Input.mapOptionalInputValue<PlanResponse, Map<String, dynamic>>(plan, (value) => value.toMap()),
-      'properties': ?pulumi.Input.mapOptionalInputValue<FlowPropertiesResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
-      'systemData': pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(systemData, (value) => value.toMap()),
+      'plan':
+          ?pulumi.Input.mapOptionalInputValue<
+            PlanResponse,
+            Map<String, dynamic>
+          >(plan, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            FlowPropertiesResponse,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
+      'systemData':
+          pulumi.Input.mapInputValue<SystemDataResponse, Map<String, dynamic>>(
+            systemData,
+            (value) => value.toMap(),
+          ),
       'tags': ?tags,
       'type': type,
     };
@@ -65,16 +89,47 @@ class FlowResponse {
 
   factory FlowResponse.fromMap(Map<String, dynamic> map) {
     return FlowResponse(
-      id: (map['id'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: (map['location'] as String).input(),
-      name: (map['name'] as String).input(),
-      plan: map['plan'] == null ? null : (PlanResponse.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : (FlowPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
-      type: (map['type'] as String).input(),
+      id: pulumi.Input.fromValue(map['id'] as String),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ManagedServiceIdentityResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      plan: (() {
+        final guardedValue = map['plan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          FlowPropertiesResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      systemData: pulumi.Input.fromValue(
+        SystemDataResponse.fromMap(
+          (map['systemData']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

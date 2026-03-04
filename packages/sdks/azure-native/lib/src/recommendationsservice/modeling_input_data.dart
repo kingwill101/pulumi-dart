@@ -9,20 +9,19 @@ class ModelingInputData {
 
   /// Creates a new [ModelingInputData].
   /// [connectionString] Connection string to raw input data.
-  ModelingInputData({
-    this.connectionString,
-  });
+  ModelingInputData({this.connectionString});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'connectionString': ?connectionString,
-    };
+    return <String, dynamic>{'connectionString': ?connectionString};
   }
 
   factory ModelingInputData.fromMap(Map<String, dynamic> map) {
     return ModelingInputData(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      connectionString: (() {
+        final guardedValue = map['connectionString'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

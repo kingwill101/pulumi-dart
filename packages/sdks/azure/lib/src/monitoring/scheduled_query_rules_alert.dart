@@ -6,7 +6,7 @@ import 'scheduled_query_rules_alert_trigger.dart';
 
 /// Manages an AlertingAction Scheduled Query Rules resource within Azure Monitor.
 ///
-/// > **Note:** This resource is using an older AzureRM API version which is known to cause problems e.g. with custom webhook properties not included in triggered alerts. This resource is superseded by the azure.monitoring.ScheduledQueryRulesAlertV2 resource using newer API versions.
+/// &gt; **Note:** This resource is using an older AzureRM API version which is known to cause problems e.g. with custom webhook properties not included in triggered alerts. This resource is superseded by the azure.monitoring.ScheduledQueryRulesAlertV2 resource using newer API versions.
 ///
 /// ## Example Usage
 ///
@@ -604,7 +604,7 @@ import 'scheduled_query_rules_alert_trigger.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Insights` - 2018-04-16
@@ -619,37 +619,53 @@ import 'scheduled_query_rules_alert_trigger.dart';
 class ScheduledQueryRulesAlert extends pulumi.CustomResource {
   /// An `action` block as defined below.
   late final pulumi.Output<ScheduledQueryRulesAlertAction> action;
+
   /// List of Resource IDs referred into query.
   late final pulumi.Output<List<String>?> authorizedResourceIds;
+
   /// Should the alerts in this Metric Alert be auto resolved? Defaults to `false`.
-  /// > **Note:** `auto_mitigation_enabled` and `throttling` are mutually exclusive and cannot both be set.
+  /// &gt; **Note:** `auto_mitigation_enabled` and `throttling` are mutually exclusive and cannot both be set.
   late final pulumi.Output<bool?> autoMitigationEnabled;
+
   /// The resource URI over which log search query is to be run. Changing this forces a new resource to be created.
   late final pulumi.Output<String> dataSourceId;
+
   /// The description of the scheduled query rule.
   late final pulumi.Output<String?> description;
+
   /// Whether this scheduled query rule is enabled. Default is `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// Frequency (in minutes) at which rule condition should be evaluated. Values must be between 5 and 1440 (inclusive).
   late final pulumi.Output<int> frequency;
+
   /// Specifies the Azure Region where the resource should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
+
   /// The name of the scheduled query rule. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// Log search query.
   late final pulumi.Output<String> query;
+
   /// The type of query results. Possible values are `ResultCount` and `Number`. Default is `ResultCount`. If set to `ResultCount`, `query` must include an `AggregatedValue` column of a numeric type, for example, `Heartbeat | summarize AggregatedValue = count() by bin(TimeGenerated, 5m)`.
   late final pulumi.Output<String?> queryType;
+
   /// The name of the resource group in which to create the scheduled query rule instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
+
   /// Severity of the alert. Possible values include: 0, 1, 2, 3, or 4.
   late final pulumi.Output<int?> severity;
+
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Time (in minutes) for which Alerts should be throttled or suppressed. Values must be between 0 and 10000 (inclusive).
   late final pulumi.Output<int?> throttling;
+
   /// Time window for which data needs to be fetched for query (must be greater than or equal to `frequency`). Values must be between 5 and 2880 (inclusive).
   late final pulumi.Output<int> timeWindow;
+
   /// A `trigger` block as defined below.
   late final pulumi.Output<ScheduledQueryRulesAlertTrigger> trigger;
 
@@ -662,28 +678,30 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
     ScheduledQueryRulesAlertArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:monitoring/scheduledQueryRulesAlert:ScheduledQueryRulesAlert',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<ScheduledQueryRulesAlertAction>('action');
-    this.authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds');
-    this.autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
-    this.dataSourceId = registerOutput<String>('dataSourceId');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.frequency = registerOutput<int>('frequency');
-    this.location = registerOutput<String>('location');
+         'azure:monitoring/scheduledQueryRulesAlert:ScheduledQueryRulesAlert',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<ScheduledQueryRulesAlertAction>('action');
+    authorizedResourceIds = registerOutput<List<String>?>(
+      'authorizedResourceIds',
+    );
+    autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
+    dataSourceId = registerOutput<String>('dataSourceId');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    frequency = registerOutput<int>('frequency');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.query = registerOutput<String>('query');
-    this.queryType = registerOutput<String?>('queryType');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.severity = registerOutput<int?>('severity');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.throttling = registerOutput<int?>('throttling');
-    this.timeWindow = registerOutput<int>('timeWindow');
-    this.trigger = registerOutput<ScheduledQueryRulesAlertTrigger>('trigger');
+    query = registerOutput<String>('query');
+    queryType = registerOutput<String?>('queryType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    severity = registerOutput<int?>('severity');
+    tags = registerOutput<Map<String, String>?>('tags');
+    throttling = registerOutput<int?>('throttling');
+    timeWindow = registerOutput<int>('timeWindow');
+    trigger = registerOutput<ScheduledQueryRulesAlertTrigger>('trigger');
   }
 
   /// Gets an existing [ScheduledQueryRulesAlert] resource's state with the given [name] and [id].
@@ -704,27 +722,29 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:monitoring/scheduledQueryRulesAlert:ScheduledQueryRulesAlert',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.action = registerOutput<ScheduledQueryRulesAlertAction>('action');
-    this.authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds');
-    this.autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
-    this.dataSourceId = registerOutput<String>('dataSourceId');
-    this.description = registerOutput<String?>('description');
-    this.enabled = registerOutput<bool?>('enabled');
-    this.frequency = registerOutput<int>('frequency');
-    this.location = registerOutput<String>('location');
+         'azure:monitoring/scheduledQueryRulesAlert:ScheduledQueryRulesAlert',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    action = registerOutput<ScheduledQueryRulesAlertAction>('action');
+    authorizedResourceIds = registerOutput<List<String>?>(
+      'authorizedResourceIds',
+    );
+    autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');
+    dataSourceId = registerOutput<String>('dataSourceId');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    frequency = registerOutput<int>('frequency');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.query = registerOutput<String>('query');
-    this.queryType = registerOutput<String?>('queryType');
-    this.resourceGroupName = registerOutput<String>('resourceGroupName');
-    this.severity = registerOutput<int?>('severity');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.throttling = registerOutput<int?>('throttling');
-    this.timeWindow = registerOutput<int>('timeWindow');
-    this.trigger = registerOutput<ScheduledQueryRulesAlertTrigger>('trigger');
+    query = registerOutput<String>('query');
+    queryType = registerOutput<String?>('queryType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    severity = registerOutput<int?>('severity');
+    tags = registerOutput<Map<String, String>?>('tags');
+    throttling = registerOutput<int?>('throttling');
+    timeWindow = registerOutput<int>('timeWindow');
+    trigger = registerOutput<ScheduledQueryRulesAlertTrigger>('trigger');
   }
 }

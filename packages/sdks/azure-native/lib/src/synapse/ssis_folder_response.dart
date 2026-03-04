@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SsisFolderResponse {
   /// Metadata description.
   final pulumi.Input<String>? description;
+
   /// Metadata id.
   final pulumi.Input<double>? id;
+
   /// Metadata name.
   final pulumi.Input<String>? name;
+
   /// The type of SSIS object metadata.
   /// Expected value is 'Folder'.
   final pulumi.Input<String> type;
@@ -37,11 +40,22 @@ class SsisFolderResponse {
 
   factory SsisFolderResponse.fromMap(Map<String, dynamic> map) {
     return SsisFolderResponse(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      id: map['id'] == null ? null : (map['id']! as double).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      type: (map['type'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      id: (() {
+        final guardedValue = map['id'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as double);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate {
   /// Specifies the name of the Virtual Network Gateway.
   final pulumi.Input<String> name;
+
   /// The public certificate of the root certificate
   /// authority. The certificate must be provided in Base-64 encoded X.509 format
   /// (PEM).
@@ -19,17 +20,15 @@ class GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'publicCertData': publicCertData,
-    };
+    return <String, dynamic>{'name': name, 'publicCertData': publicCertData};
   }
 
-  factory GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate(
-      name: (map['name'] as String).input(),
-      publicCertData: (map['publicCertData'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      publicCertData: pulumi.Input.fromValue(map['publicCertData'] as String),
     );
   }
 }
-

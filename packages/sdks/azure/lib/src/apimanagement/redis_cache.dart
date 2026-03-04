@@ -295,7 +295,7 @@ import 'redis_cache_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.ApiManagement` - 2022-08-01
@@ -310,14 +310,19 @@ import 'redis_cache_state.dart';
 class RedisCache extends pulumi.CustomResource {
   /// The resource ID of the API Management Service from which to create this external cache. Changing this forces a new API Management Redis Cache to be created.
   late final pulumi.Output<String> apiManagementId;
+
   /// The location where to use cache from. Possible values are `default` and valid Azure regions. Defaults to `default`.
   late final pulumi.Output<String?> cacheLocation;
+
   /// The connection string to the Cache for Redis.
   late final pulumi.Output<String> connectionString;
+
   /// The description of the API Management Redis Cache.
   late final pulumi.Output<String?> description;
+
   /// The name which should be used for this API Management Redis Cache. Changing this forces a new API Management Redis Cache to be created.
   late final pulumi.Output<String> name;
+
   /// The resource ID of the Cache for Redis.
   late final pulumi.Output<String?> redisCacheId;
 
@@ -330,17 +335,17 @@ class RedisCache extends pulumi.CustomResource {
     RedisCacheArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/redisCache:RedisCache',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.cacheLocation = registerOutput<String?>('cacheLocation');
-    this.connectionString = registerOutput<String>('connectionString');
-    this.description = registerOutput<String?>('description');
+         'azure:apimanagement/redisCache:RedisCache',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    cacheLocation = registerOutput<String?>('cacheLocation');
+    connectionString = registerOutput<String>('connectionString');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.redisCacheId = registerOutput<String?>('redisCacheId');
+    redisCacheId = registerOutput<String?>('redisCacheId');
   }
 
   /// Gets an existing [RedisCache] resource's state with the given [name] and [id].
@@ -361,16 +366,16 @@ class RedisCache extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:apimanagement/redisCache:RedisCache',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.apiManagementId = registerOutput<String>('apiManagementId');
-    this.cacheLocation = registerOutput<String?>('cacheLocation');
-    this.connectionString = registerOutput<String>('connectionString');
-    this.description = registerOutput<String?>('description');
+         'azure:apimanagement/redisCache:RedisCache',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    cacheLocation = registerOutput<String?>('cacheLocation');
+    connectionString = registerOutput<String>('connectionString');
+    description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    this.redisCacheId = registerOutput<String?>('redisCacheId');
+    redisCacheId = registerOutput<String?>('redisCacheId');
   }
 }

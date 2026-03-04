@@ -11,20 +11,15 @@ class GetSubscriptionPubsubV1beta1aArgs {
 
   /// Creates a new [GetSubscriptionPubsubV1beta1aArgs].
   /// [subscriptionId] Required.
-  GetSubscriptionPubsubV1beta1aArgs({
-    required this.subscriptionId,
-  });
+  GetSubscriptionPubsubV1beta1aArgs({required this.subscriptionId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'subscriptionId': subscriptionId,
-    };
+    return <String, dynamic>{'subscriptionId': subscriptionId};
   }
 
   factory GetSubscriptionPubsubV1beta1aArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionPubsubV1beta1aArgs(
-      subscriptionId: (map['subscriptionId'] as String).input(),
+      subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
     );
   }
 }
-

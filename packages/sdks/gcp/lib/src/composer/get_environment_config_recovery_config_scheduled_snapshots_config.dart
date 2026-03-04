@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
   /// When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
   final pulumi.Input<bool> enabled;
+
   /// Snapshot schedule, in the unix-cron format.
   final pulumi.Input<String> snapshotCreationSchedule;
+
   /// the URI of a bucket folder where to save the snapshot.
   final pulumi.Input<String> snapshotLocation;
+
   /// A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
   final pulumi.Input<String> timeZone;
 
@@ -33,13 +36,18 @@ class GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
     };
   }
 
-  factory GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig.fromMap(Map<String, dynamic> map) {
+  factory GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig(
-      enabled: (map['enabled'] as bool).input(),
-      snapshotCreationSchedule: (map['snapshotCreationSchedule'] as String).input(),
-      snapshotLocation: (map['snapshotLocation'] as String).input(),
-      timeZone: (map['timeZone'] as String).input(),
+      enabled: pulumi.Input.fromValue(map['enabled'] as bool),
+      snapshotCreationSchedule: pulumi.Input.fromValue(
+        map['snapshotCreationSchedule'] as String,
+      ),
+      snapshotLocation: pulumi.Input.fromValue(
+        map['snapshotLocation'] as String,
+      ),
+      timeZone: pulumi.Input.fromValue(map['timeZone'] as String),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NatGatewayPublicIpAssociationState {
   /// The ID of the NAT Gateway. Changing this forces a new resource to be created.
   final pulumi.Input<String>? natGatewayId;
+
   /// The ID of the Public IP which this NAT Gateway which should be connected to. Changing this forces a new resource to be created.
   final pulumi.Input<String>? publicIpAddressId;
 
@@ -26,9 +27,16 @@ class NatGatewayPublicIpAssociationState {
 
   factory NatGatewayPublicIpAssociationState.fromMap(Map<String, dynamic> map) {
     return NatGatewayPublicIpAssociationState(
-      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId']! as String).input(),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId']! as String).input(),
+      natGatewayId: (() {
+        final guardedValue = map['natGatewayId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      publicIpAddressId: (() {
+        final guardedValue = map['publicIpAddressId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

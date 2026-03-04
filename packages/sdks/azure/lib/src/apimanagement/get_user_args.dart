@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetUserArgs {
   /// The Name of the API Management Service in which this User exists.
   final pulumi.Input<String> apiManagementName;
+
   /// The Name of the Resource Group in which the API Management Service exists.
   final pulumi.Input<String> resourceGroupName;
+
   /// The Identifier for the User.
   final pulumi.Input<String> userId;
 
@@ -34,10 +36,13 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      apiManagementName: (map['apiManagementName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      userId: (map['userId'] as String).input(),
+      apiManagementName: pulumi.Input.fromValue(
+        map['apiManagementName'] as String,
+      ),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      userId: pulumi.Input.fromValue(map['userId'] as String),
     );
   }
 }
-

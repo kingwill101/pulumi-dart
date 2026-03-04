@@ -6,16 +6,15 @@ enum JobTargetType {
   valueSqlShardMap("SqlShardMap"),
   valueSqlServer("SqlServer");
 
-  const JobTargetType(this.value);
-  final String value;
+  const JobTargetType(this.wireValue);
+  final String wireValue;
 
   static JobTargetType fromValue(String value) {
     for (final item in JobTargetType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown JobTargetType value: $value');
   }
 }
-

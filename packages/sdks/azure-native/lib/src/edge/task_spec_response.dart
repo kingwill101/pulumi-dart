@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TaskSpecResponse {
   /// Name of Task
   final pulumi.Input<String> name;
+
   /// Task specification
   final pulumi.Input<dynamic> specification;
+
   /// Target ARM id
   final pulumi.Input<String>? targetId;
 
@@ -31,10 +33,13 @@ class TaskSpecResponse {
 
   factory TaskSpecResponse.fromMap(Map<String, dynamic> map) {
     return TaskSpecResponse(
-      name: (map['name'] as String).input(),
-      specification: (map['specification']).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId']! as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      specification: pulumi.Input.fromValue(map['specification']),
+      targetId: (() {
+        final guardedValue = map['targetId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

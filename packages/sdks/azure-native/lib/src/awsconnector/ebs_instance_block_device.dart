@@ -5,26 +5,31 @@ import 'attachment_status_enum_value.dart';
 
 /// Definition of EbsInstanceBlockDevice
 class EbsInstanceBlockDevice {
-  /// <p>The ARN of the Amazon ECS or Fargate task to which the volume is attached.</p>
+  /// &lt;p&gt;The ARN of the Amazon ECS or Fargate task to which the volume is attached.&lt;/p&gt;
   final pulumi.Input<String>? associatedResource;
-  /// <p>The time stamp when the attachment initiated.</p>
+
+  /// &lt;p&gt;The time stamp when the attachment initiated.&lt;/p&gt;
   final pulumi.Input<String>? attachTime;
-  /// <p>Indicates whether the volume is deleted on instance termination.</p>
+
+  /// &lt;p&gt;Indicates whether the volume is deleted on instance termination.&lt;/p&gt;
   final pulumi.Input<bool>? deleteOnTermination;
-  /// <p>The attachment state.</p>
+
+  /// &lt;p&gt;The attachment state.&lt;/p&gt;
   final pulumi.Input<AttachmentStatusEnumValue>? status;
-  /// <p>The ID of the EBS volume.</p>
+
+  /// &lt;p&gt;The ID of the EBS volume.&lt;/p&gt;
   final pulumi.Input<String>? volumeId;
-  /// <p>The ID of the Amazon Web Services account that owns the volume.</p> <p>This parameter is returned only for volumes that are attached to Fargate tasks.</p>
+
+  /// &lt;p&gt;The ID of the Amazon Web Services account that owns the volume.&lt;/p&gt; &lt;p&gt;This parameter is returned only for volumes that are attached to Fargate tasks.&lt;/p&gt;
   final pulumi.Input<String>? volumeOwnerId;
 
   /// Creates a new [EbsInstanceBlockDevice].
-  /// [associatedResource] <p>The ARN of the Amazon ECS or Fargate task to which the volume is attached.</p>
-  /// [attachTime] <p>The time stamp when the attachment initiated.</p>
-  /// [deleteOnTermination] <p>Indicates whether the volume is deleted on instance termination.</p>
-  /// [status] <p>The attachment state.</p>
-  /// [volumeId] <p>The ID of the EBS volume.</p>
-  /// [volumeOwnerId] <p>The ID of the Amazon Web Services account that owns the volume.</p> <p>This parameter is returned only for volumes that are attached to Fargate tasks.</p>
+  /// [associatedResource] &lt;p&gt;The ARN of the Amazon ECS or Fargate task to which the volume is attached.&lt;/p&gt;
+  /// [attachTime] &lt;p&gt;The time stamp when the attachment initiated.&lt;/p&gt;
+  /// [deleteOnTermination] &lt;p&gt;Indicates whether the volume is deleted on instance termination.&lt;/p&gt;
+  /// [status] &lt;p&gt;The attachment state.&lt;/p&gt;
+  /// [volumeId] &lt;p&gt;The ID of the EBS volume.&lt;/p&gt;
+  /// [volumeOwnerId] &lt;p&gt;The ID of the Amazon Web Services account that owns the volume.&lt;/p&gt; &lt;p&gt;This parameter is returned only for volumes that are attached to Fargate tasks.&lt;/p&gt;
   EbsInstanceBlockDevice({
     this.associatedResource,
     this.attachTime,
@@ -39,7 +44,11 @@ class EbsInstanceBlockDevice {
       'associatedResource': ?associatedResource,
       'attachTime': ?attachTime,
       'deleteOnTermination': ?deleteOnTermination,
-      'status': ?pulumi.Input.mapOptionalInputValue<AttachmentStatusEnumValue, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            AttachmentStatusEnumValue,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
       'volumeId': ?volumeId,
       'volumeOwnerId': ?volumeOwnerId,
     };
@@ -47,13 +56,40 @@ class EbsInstanceBlockDevice {
 
   factory EbsInstanceBlockDevice.fromMap(Map<String, dynamic> map) {
     return EbsInstanceBlockDevice(
-      associatedResource: map['associatedResource'] == null ? null : (map['associatedResource']! as String).input(),
-      attachTime: map['attachTime'] == null ? null : (map['attachTime']! as String).input(),
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination']! as bool).input(),
-      status: map['status'] == null ? null : (AttachmentStatusEnumValue.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as String).input(),
-      volumeOwnerId: map['volumeOwnerId'] == null ? null : (map['volumeOwnerId']! as String).input(),
+      associatedResource: (() {
+        final guardedValue = map['associatedResource'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      attachTime: (() {
+        final guardedValue = map['attachTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      deleteOnTermination: (() {
+        final guardedValue = map['deleteOnTermination'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AttachmentStatusEnumValue.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      volumeId: (() {
+        final guardedValue = map['volumeId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      volumeOwnerId: (() {
+        final guardedValue = map['volumeOwnerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

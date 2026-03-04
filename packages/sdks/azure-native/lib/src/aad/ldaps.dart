@@ -3,16 +3,15 @@ enum Ldaps {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const Ldaps(this.value);
-  final String value;
+  const Ldaps(this.wireValue);
+  final String wireValue;
 
   static Ldaps fromValue(String value) {
     for (final item in Ldaps.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Ldaps value: $value');
   }
 }
-

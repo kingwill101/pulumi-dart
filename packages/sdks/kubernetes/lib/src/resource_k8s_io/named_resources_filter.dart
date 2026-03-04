@@ -14,20 +14,15 @@ class NamedResourcesFilter {
 
   /// Creates a new [NamedResourcesFilter].
   /// [selector] Selector is a CEL expression which must evaluate to true if a resource instance is suitable. The language is as defined in https://kubernetes.io/docs/reference/using-api/cel/
-  NamedResourcesFilter({
-    required this.selector,
-  });
+  NamedResourcesFilter({required this.selector});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'selector': selector,
-    };
+    return <String, dynamic>{'selector': selector};
   }
 
   factory NamedResourcesFilter.fromMap(Map<String, dynamic> map) {
     return NamedResourcesFilter(
-      selector: (map['selector'] as String).input(),
+      selector: pulumi.Input.fromValue(map['selector'] as String),
     );
   }
 }
-

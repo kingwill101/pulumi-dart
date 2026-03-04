@@ -9,20 +9,13 @@ class ArgResponse {
 
   /// Creates a new [ArgResponse].
   /// [query] The query to create workloads within the wave.
-  ArgResponse({
-    required this.query,
-  });
+  ArgResponse({required this.query});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'query': query,
-    };
+    return <String, dynamic>{'query': query};
   }
 
   factory ArgResponse.fromMap(Map<String, dynamic> map) {
-    return ArgResponse(
-      query: (map['query'] as String).input(),
-    );
+    return ArgResponse(query: pulumi.Input.fromValue(map['query'] as String));
   }
 }
-

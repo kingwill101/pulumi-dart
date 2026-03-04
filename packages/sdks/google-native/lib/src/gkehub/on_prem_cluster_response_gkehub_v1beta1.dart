@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OnPremClusterResponseGkehubV1beta1 {
   /// Immutable. Whether the cluster is an admin cluster.
   final pulumi.Input<bool> adminCluster;
+
   /// If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
   final pulumi.Input<bool> clusterMissing;
+
   /// Immutable. The on prem cluster's type.
   final pulumi.Input<String> clusterType;
+
   /// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
   final pulumi.Input<String> resourceLink;
 
@@ -36,11 +39,10 @@ class OnPremClusterResponseGkehubV1beta1 {
 
   factory OnPremClusterResponseGkehubV1beta1.fromMap(Map<String, dynamic> map) {
     return OnPremClusterResponseGkehubV1beta1(
-      adminCluster: (map['adminCluster'] as bool).input(),
-      clusterMissing: (map['clusterMissing'] as bool).input(),
-      clusterType: (map['clusterType'] as String).input(),
-      resourceLink: (map['resourceLink'] as String).input(),
+      adminCluster: pulumi.Input.fromValue(map['adminCluster'] as bool),
+      clusterMissing: pulumi.Input.fromValue(map['clusterMissing'] as bool),
+      clusterType: pulumi.Input.fromValue(map['clusterType'] as String),
+      resourceLink: pulumi.Input.fromValue(map['resourceLink'] as String),
     );
   }
 }
-

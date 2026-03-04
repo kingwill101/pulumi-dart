@@ -6,16 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetLocationResponse {
   /// Storage Account Key.
   final pulumi.Input<String>? accountKey;
+
   /// Resource Id of the storage account copying backups.
   final pulumi.Input<String>? storageAccountResourceId;
 
   /// Creates a new [TargetLocationResponse].
   /// [accountKey] Storage Account Key.
   /// [storageAccountResourceId] Resource Id of the storage account copying backups.
-  TargetLocationResponse({
-    this.accountKey,
-    this.storageAccountResourceId,
-  });
+  TargetLocationResponse({this.accountKey, this.storageAccountResourceId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,16 @@ class TargetLocationResponse {
 
   factory TargetLocationResponse.fromMap(Map<String, dynamic> map) {
     return TargetLocationResponse(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId']! as String).input(),
+      accountKey: (() {
+        final guardedValue = map['accountKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountResourceId: (() {
+        final guardedValue = map['storageAccountResourceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

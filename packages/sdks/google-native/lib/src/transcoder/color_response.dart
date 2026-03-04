@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ColorResponse {
   /// Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.
   final pulumi.Input<double> brightness;
+
   /// Control black and white contrast of the video. Enter a value between -1 and 1, where -1 is minimum contrast and 1 is maximum contrast. 0 is no change. The default is 0.
   final pulumi.Input<double> contrast;
+
   /// Control color saturation of the video. Enter a value between -1 and 1, where -1 is fully desaturated and 1 is maximum saturation. 0 is no change. The default is 0.
   final pulumi.Input<double> saturation;
 
@@ -31,10 +33,9 @@ class ColorResponse {
 
   factory ColorResponse.fromMap(Map<String, dynamic> map) {
     return ColorResponse(
-      brightness: (map['brightness'] as double).input(),
-      contrast: (map['contrast'] as double).input(),
-      saturation: (map['saturation'] as double).input(),
+      brightness: pulumi.Input.fromValue(map['brightness'] as double),
+      contrast: pulumi.Input.fromValue(map['contrast'] as double),
+      saturation: pulumi.Input.fromValue(map['saturation'] as double),
     );
   }
 }
-

@@ -337,7 +337,7 @@ import 'web_app_hybrid_connection_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Relay` - 2021-11-01
@@ -354,22 +354,31 @@ import 'web_app_hybrid_connection_state.dart';
 class WebAppHybridConnection extends pulumi.CustomResource {
   /// The hostname of the endpoint.
   late final pulumi.Output<String> hostname;
+
   /// The name of the Relay Namespace.
   late final pulumi.Output<String> namespaceName;
+
   /// The port to use for the endpoint.
   late final pulumi.Output<int> port;
+
   /// The ID of the Relay Hybrid Connection to use. Changing this forces a new resource to be created.
   late final pulumi.Output<String> relayId;
+
   /// The name of the Relay in use.
   late final pulumi.Output<String> relayName;
+
   /// The name of the Relay key with `Send` permission to use. Defaults to `RootManageSharedAccessKey`
   late final pulumi.Output<String?> sendKeyName;
+
   /// The Primary Access Key for the `send_key_name`
   late final pulumi.Output<String> sendKeyValue;
+
   /// The Service Bus Namespace.
   late final pulumi.Output<String> serviceBusNamespace;
+
   /// The suffix for the endpoint.
   late final pulumi.Output<String> serviceBusSuffix;
+
   /// The ID of the Web App for this Hybrid Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> webAppId;
 
@@ -382,21 +391,21 @@ class WebAppHybridConnection extends pulumi.CustomResource {
     WebAppHybridConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/webAppHybridConnection:WebAppHybridConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.hostname = registerOutput<String>('hostname');
-    this.namespaceName = registerOutput<String>('namespaceName');
-    this.port = registerOutput<int>('port');
-    this.relayId = registerOutput<String>('relayId');
-    this.relayName = registerOutput<String>('relayName');
-    this.sendKeyName = registerOutput<String?>('sendKeyName');
-    this.sendKeyValue = registerOutput<String>('sendKeyValue');
-    this.serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
-    this.serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
-    this.webAppId = registerOutput<String>('webAppId');
+         'azure:appservice/webAppHybridConnection:WebAppHybridConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    hostname = registerOutput<String>('hostname');
+    namespaceName = registerOutput<String>('namespaceName');
+    port = registerOutput<int>('port');
+    relayId = registerOutput<String>('relayId');
+    relayName = registerOutput<String>('relayName');
+    sendKeyName = registerOutput<String?>('sendKeyName');
+    sendKeyValue = registerOutput<String>('sendKeyValue');
+    serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
+    serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
+    webAppId = registerOutput<String>('webAppId');
   }
 
   /// Gets an existing [WebAppHybridConnection] resource's state with the given [name] and [id].
@@ -417,20 +426,20 @@ class WebAppHybridConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:appservice/webAppHybridConnection:WebAppHybridConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.hostname = registerOutput<String>('hostname');
-    this.namespaceName = registerOutput<String>('namespaceName');
-    this.port = registerOutput<int>('port');
-    this.relayId = registerOutput<String>('relayId');
-    this.relayName = registerOutput<String>('relayName');
-    this.sendKeyName = registerOutput<String?>('sendKeyName');
-    this.sendKeyValue = registerOutput<String>('sendKeyValue');
-    this.serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
-    this.serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
-    this.webAppId = registerOutput<String>('webAppId');
+         'azure:appservice/webAppHybridConnection:WebAppHybridConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    hostname = registerOutput<String>('hostname');
+    namespaceName = registerOutput<String>('namespaceName');
+    port = registerOutput<int>('port');
+    relayId = registerOutput<String>('relayId');
+    relayName = registerOutput<String>('relayName');
+    sendKeyName = registerOutput<String?>('sendKeyName');
+    sendKeyValue = registerOutput<String>('sendKeyValue');
+    serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
+    serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
+    webAppId = registerOutput<String>('webAppId');
   }
 }

@@ -3,18 +3,17 @@ enum PatchConfigRebootConfig {
   rebootConfigUnspecified("REBOOT_CONFIG_UNSPECIFIED"),
   default_("DEFAULT"),
   always("ALWAYS"),
-  never("NEVER");
+  never_("NEVER");
 
-  const PatchConfigRebootConfig(this.value);
-  final String value;
+  const PatchConfigRebootConfig(this.wireValue);
+  final String wireValue;
 
   static PatchConfigRebootConfig fromValue(String value) {
     for (final item in PatchConfigRebootConfig.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown PatchConfigRebootConfig value: $value');
   }
 }
-

@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec {
   /// Version of the database engine.
   final pulumi.Input<String>? databaseVersion;
+
   /// Host of the SQL database enum InstanceHost { UNDEFINED = 0; SELF_HOSTED = 1; CLOUD_SQL = 2; AMAZON_RDS = 3; AZURE_SQL = 4; } Host of the enclousing database instance.
   final pulumi.Input<String>? instanceHost;
+
   /// SQL Database Engine. enum SqlEngine { UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL = 2; SQL_SERVER = 3; } Engine of the enclosing database instance.
   final pulumi.Input<String>? sqlEngine;
 
@@ -29,12 +31,25 @@ class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec {
     };
   }
 
-  factory GoogleCloudDatacatalogV1SqlDatabaseSystemSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1SqlDatabaseSystemSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1SqlDatabaseSystemSpec(
-      databaseVersion: map['databaseVersion'] == null ? null : (map['databaseVersion']! as String).input(),
-      instanceHost: map['instanceHost'] == null ? null : (map['instanceHost']! as String).input(),
-      sqlEngine: map['sqlEngine'] == null ? null : (map['sqlEngine']! as String).input(),
+      databaseVersion: (() {
+        final guardedValue = map['databaseVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceHost: (() {
+        final guardedValue = map['instanceHost'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sqlEngine: (() {
+        final guardedValue = map['sqlEngine'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

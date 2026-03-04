@@ -8,6 +8,7 @@ import 'disk_volume_configuration_response.dart';
 class SAPDiskConfigurationResponse {
   /// The recommended disk details for a given VM Sku.
   final pulumi.Input<DiskVolumeConfigurationResponse>? recommendedConfiguration;
+
   /// The list of supported disks for a given VM Sku.
   final pulumi.Input<List<DiskDetailsResponse>>? supportedConfigurations;
 
@@ -21,16 +22,49 @@ class SAPDiskConfigurationResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'recommendedConfiguration': ?pulumi.Input.mapOptionalInputValue<DiskVolumeConfigurationResponse, Map<String, dynamic>>(recommendedConfiguration, (value) => value.toMap()),
-      'supportedConfigurations': ?pulumi.Input.mapOptionalInputValue<List<DiskDetailsResponse>, List<Map<String, dynamic>>>(supportedConfigurations, (value) => pulumi.Input.encodeList<DiskDetailsResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'recommendedConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiskVolumeConfigurationResponse,
+            Map<String, dynamic>
+          >(recommendedConfiguration, (value) => value.toMap()),
+      'supportedConfigurations':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<DiskDetailsResponse>,
+            List<Map<String, dynamic>>
+          >(
+            supportedConfigurations,
+            (value) =>
+                pulumi.Input.encodeList<
+                  DiskDetailsResponse,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory SAPDiskConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SAPDiskConfigurationResponse(
-      recommendedConfiguration: map['recommendedConfiguration'] == null ? null : (DiskVolumeConfigurationResponse.fromMap((map['recommendedConfiguration']! as Map).cast<String, dynamic>())).input(),
-      supportedConfigurations: map['supportedConfigurations'] == null ? null : (pulumi.Input.decodeList<DiskDetailsResponse>(map['supportedConfigurations']!, (value) => DiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recommendedConfiguration: (() {
+        final guardedValue = map['recommendedConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DiskVolumeConfigurationResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      supportedConfigurations: (() {
+        final guardedValue = map['supportedConfigurations'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<DiskDetailsResponse>(
+            guardedValue,
+            (value) => DiskDetailsResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

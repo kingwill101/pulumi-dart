@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_resource_manager_managed_identity_properties_response.dart';
 import 'dnssettings_response.dart';
 import 'firewall_args.dart';
-import 'frontend_setting_response.dart';
 import 'marketplace_details_response.dart';
 import 'network_profile_response.dart';
 import 'panorama_config_response.dart';
@@ -1064,40 +1063,62 @@ import 'system_data_response.dart';
 class Firewall extends pulumi.CustomResource {
   /// Associated Rulestack
   late final pulumi.Output<RulestackDetailsResponse?> associatedRulestack;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// DNS settings for Firewall
   late final pulumi.Output<DNSSettingsResponse> dnsSettings;
+
   /// Frontend settings for Firewall
-  late final pulumi.Output<List<FrontendSettingResponse>?> frontEndSettings;
+  late final pulumi.Output<List<Map<String, dynamic>>?> frontEndSettings;
+
   /// The managed service identities assigned to this resource.
-  late final pulumi.Output<AzureResourceManagerManagedIdentityPropertiesResponse?> identity;
+  late final pulumi.Output<
+    AzureResourceManagerManagedIdentityPropertiesResponse?
+  >
+  identity;
+
   /// Panorama Managed: Default is False. Default will be CloudSec managed
   late final pulumi.Output<String?> isPanoramaManaged;
+
   /// Strata Cloud Managed: Default is False. Default will be CloudSec managed
   late final pulumi.Output<String?> isStrataCloudManaged;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// Marketplace details
   late final pulumi.Output<MarketplaceDetailsResponse> marketplaceDetails;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Network settings
   late final pulumi.Output<NetworkProfileResponse> networkProfile;
+
   /// panEtag info
   late final pulumi.Output<String?> panEtag;
+
   /// Panorama Configuration
   late final pulumi.Output<PanoramaConfigResponse?> panoramaConfig;
+
   /// Billing plan information.
   late final pulumi.Output<PlanDataResponse> planData;
+
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
-  late final pulumi.Output<StrataCloudManagerConfigResponse?> strataCloudManagerConfig;
+  late final pulumi.Output<StrataCloudManagerConfigResponse?>
+  strataCloudManagerConfig;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -1110,29 +1131,41 @@ class Firewall extends pulumi.CustomResource {
     FirewallArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:cloudngfw:Firewall',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.associatedRulestack = registerOutput<RulestackDetailsResponse?>('associatedRulestack');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.dnsSettings = registerOutput<DNSSettingsResponse>('dnsSettings');
-    this.frontEndSettings = registerOutput<List<FrontendSettingResponse>?>('frontEndSettings');
-    this.identity = registerOutput<AzureResourceManagerManagedIdentityPropertiesResponse?>('identity');
-    this.isPanoramaManaged = registerOutput<String?>('isPanoramaManaged');
-    this.isStrataCloudManaged = registerOutput<String?>('isStrataCloudManaged');
-    this.location = registerOutput<String>('location');
-    this.marketplaceDetails = registerOutput<MarketplaceDetailsResponse>('marketplaceDetails');
+         'azure-native:cloudngfw:Firewall',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    associatedRulestack = registerOutput<RulestackDetailsResponse?>(
+      'associatedRulestack',
+    );
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dnsSettings = registerOutput<DNSSettingsResponse>('dnsSettings');
+    frontEndSettings = registerOutput<List<Map<String, dynamic>>?>(
+      'frontEndSettings',
+    );
+    identity =
+        registerOutput<AzureResourceManagerManagedIdentityPropertiesResponse?>(
+          'identity',
+        );
+    isPanoramaManaged = registerOutput<String?>('isPanoramaManaged');
+    isStrataCloudManaged = registerOutput<String?>('isStrataCloudManaged');
+    location = registerOutput<String>('location');
+    marketplaceDetails = registerOutput<MarketplaceDetailsResponse>(
+      'marketplaceDetails',
+    );
     this.name = registerOutput<String>('name');
-    this.networkProfile = registerOutput<NetworkProfileResponse>('networkProfile');
-    this.panEtag = registerOutput<String?>('panEtag');
-    this.panoramaConfig = registerOutput<PanoramaConfigResponse?>('panoramaConfig');
-    this.planData = registerOutput<PlanDataResponse>('planData');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.strataCloudManagerConfig = registerOutput<StrataCloudManagerConfigResponse?>('strataCloudManagerConfig');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    networkProfile = registerOutput<NetworkProfileResponse>('networkProfile');
+    panEtag = registerOutput<String?>('panEtag');
+    panoramaConfig = registerOutput<PanoramaConfigResponse?>('panoramaConfig');
+    planData = registerOutput<PlanDataResponse>('planData');
+    provisioningState = registerOutput<String>('provisioningState');
+    strataCloudManagerConfig =
+        registerOutput<StrataCloudManagerConfigResponse?>(
+          'strataCloudManagerConfig',
+        );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

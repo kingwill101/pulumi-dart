@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GitCatalog {
   /// Git branch.
   final pulumi.Input<String>? branch;
+
   /// The folder where the catalog items can be found inside the repository.
   final pulumi.Input<String>? path;
+
   /// A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
   final pulumi.Input<String>? secretIdentifier;
+
   /// Git URI.
   final pulumi.Input<String>? uri;
 
@@ -18,12 +21,7 @@ class GitCatalog {
   /// [path] The folder where the catalog items can be found inside the repository.
   /// [secretIdentifier] A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
   /// [uri] Git URI.
-  GitCatalog({
-    this.branch,
-    this.path,
-    this.secretIdentifier,
-    this.uri,
-  });
+  GitCatalog({this.branch, this.path, this.secretIdentifier, this.uri});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,11 +34,26 @@ class GitCatalog {
 
   factory GitCatalog.fromMap(Map<String, dynamic> map) {
     return GitCatalog(
-      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
-      path: map['path'] == null ? null : (map['path']! as String).input(),
-      secretIdentifier: map['secretIdentifier'] == null ? null : (map['secretIdentifier']! as String).input(),
-      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      branch: (() {
+        final guardedValue = map['branch'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      path: (() {
+        final guardedValue = map['path'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secretIdentifier: (() {
+        final guardedValue = map['secretIdentifier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      uri: (() {
+        final guardedValue = map['uri'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

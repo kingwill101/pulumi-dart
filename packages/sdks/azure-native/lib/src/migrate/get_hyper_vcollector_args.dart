@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetHyperVCollectorArgs {
   /// Unique name of a Hyper-V collector within a project.
   final pulumi.Input<String> hyperVCollectorName;
+
   /// Name of the Azure Migrate project.
   final pulumi.Input<String> projectName;
+
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
 
@@ -34,10 +36,13 @@ class GetHyperVCollectorArgs {
 
   factory GetHyperVCollectorArgs.fromMap(Map<String, dynamic> map) {
     return GetHyperVCollectorArgs(
-      hyperVCollectorName: (map['hyperVCollectorName'] as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      hyperVCollectorName: pulumi.Input.fromValue(
+        map['hyperVCollectorName'] as String,
+      ),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

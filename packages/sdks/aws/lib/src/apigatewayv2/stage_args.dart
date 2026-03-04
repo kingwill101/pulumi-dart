@@ -13,29 +13,40 @@ class StageArgs {
   /// Settings for logging access in this stage.
   /// Use the `aws.apigateway.Account` resource to configure [permissions for CloudWatch Logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html#set-up-access-logging-permissions).
   final pulumi.Input<StageAccessLogSettings>? accessLogSettings;
+
   /// API identifier.
   final pulumi.Input<String> apiId;
+
   /// Whether updates to an API automatically trigger a new deployment. Defaults to `false`. Applicable for HTTP APIs.
   final pulumi.Input<bool>? autoDeploy;
+
   /// Identifier of a client certificate for the stage. Use the `aws.apigateway.ClientCertificate` resource to configure a client certificate.
   /// Supported only for WebSocket APIs.
   final pulumi.Input<String>? clientCertificateId;
+
   /// Default route settings for the stage.
   final pulumi.Input<StageDefaultRouteSettings>? defaultRouteSettings;
+
   /// Deployment identifier of the stage. Use the `aws.apigatewayv2.Deployment` resource to configure a deployment.
   final pulumi.Input<String>? deploymentId;
+
   /// Description for the stage. Must be less than or equal to 1024 characters in length.
   final pulumi.Input<String>? description;
+
   /// Name of the stage. Must be between 1 and 128 characters in length.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Route settings for the stage.
   final pulumi.Input<List<StageRouteSetting>>? routeSettings;
+
   /// Map that defines the stage variables for the stage.
   final pulumi.Input<Map<String, String>>? stageVariables;
+
   /// Map of tags to assign to the stage. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -69,16 +80,35 @@ class StageArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessLogSettings': ?pulumi.Input.mapOptionalInputValue<StageAccessLogSettings, Map<String, dynamic>>(accessLogSettings, (value) => value.toMap()),
+      'accessLogSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            StageAccessLogSettings,
+            Map<String, dynamic>
+          >(accessLogSettings, (value) => value.toMap()),
       'apiId': apiId,
       'autoDeploy': ?autoDeploy,
       'clientCertificateId': ?clientCertificateId,
-      'defaultRouteSettings': ?pulumi.Input.mapOptionalInputValue<StageDefaultRouteSettings, Map<String, dynamic>>(defaultRouteSettings, (value) => value.toMap()),
+      'defaultRouteSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            StageDefaultRouteSettings,
+            Map<String, dynamic>
+          >(defaultRouteSettings, (value) => value.toMap()),
       'deploymentId': ?deploymentId,
       'description': ?description,
       'name': ?name,
       'region': ?region,
-      'routeSettings': ?pulumi.Input.mapOptionalInputValue<List<StageRouteSetting>, List<Map<String, dynamic>>>(routeSettings, (value) => pulumi.Input.encodeList<StageRouteSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'routeSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<StageRouteSetting>,
+            List<Map<String, dynamic>>
+          >(
+            routeSettings,
+            (value) =>
+                pulumi.Input.encodeList<
+                  StageRouteSetting,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'stageVariables': ?stageVariables,
       'tags': ?tags,
     };
@@ -86,19 +116,81 @@ class StageArgs {
 
   factory StageArgs.fromMap(Map<String, dynamic> map) {
     return StageArgs(
-      accessLogSettings: map['accessLogSettings'] == null ? null : ((StageAccessLogSettings.fromMap((map['accessLogSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      apiId: (map['apiId'] as String).input(),
-      autoDeploy: map['autoDeploy'] == null ? null : ((map['autoDeploy'] as bool).input()).input(),
-      clientCertificateId: map['clientCertificateId'] == null ? null : ((map['clientCertificateId'] as String).input()).input(),
-      defaultRouteSettings: map['defaultRouteSettings'] == null ? null : ((StageDefaultRouteSettings.fromMap((map['defaultRouteSettings']! as Map).cast<String, dynamic>())).input()).input(),
-      deploymentId: map['deploymentId'] == null ? null : ((map['deploymentId'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      routeSettings: map['routeSettings'] == null ? null : ((pulumi.Input.decodeList<StageRouteSetting>(map['routeSettings']!, (value) => StageRouteSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
-      stageVariables: map['stageVariables'] == null ? null : (((map['stageVariables'] as Map).cast<String, String>()).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      accessLogSettings: (() {
+        final guardedValue = map['accessLogSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StageAccessLogSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      apiId: pulumi.Input.fromValue(map['apiId'] as String),
+      autoDeploy: (() {
+        final guardedValue = map['autoDeploy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      clientCertificateId: (() {
+        final guardedValue = map['clientCertificateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultRouteSettings: (() {
+        final guardedValue = map['defaultRouteSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StageDefaultRouteSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      deploymentId: (() {
+        final guardedValue = map['deploymentId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      routeSettings: (() {
+        final guardedValue = map['routeSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<StageRouteSetting>(
+            guardedValue,
+            (value) => StageRouteSetting.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      stageVariables: (() {
+        final guardedValue = map['stageVariables'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeMount {
   /// Path within the container at which the volume should be mounted. Must not contain ':'.
   final pulumi.Input<String> mountPath;
+
   /// The name of the volume. There must be a corresponding Volume with the same name.
   final pulumi.Input<String> name;
+
   /// Sets the mount to be read-only or read-write. Not used by Cloud Run.
   final pulumi.Input<bool>? readOnly;
+
   /// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
   final pulumi.Input<String>? subPath;
 
@@ -36,11 +39,18 @@ class VolumeMount {
 
   factory VolumeMount.fromMap(Map<String, dynamic> map) {
     return VolumeMount(
-      mountPath: (map['mountPath'] as String).input(),
-      name: (map['name'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
-      subPath: map['subPath'] == null ? null : (map['subPath']! as String).input(),
+      mountPath: pulumi.Input.fromValue(map['mountPath'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      readOnly: (() {
+        final guardedValue = map['readOnly'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      subPath: (() {
+        final guardedValue = map['subPath'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

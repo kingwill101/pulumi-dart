@@ -6,10 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProgressMetricsResponse {
   /// The completed datapoint count.
   final pulumi.Input<double> completedDatapointCount;
+
   /// The time of last successful incremental data refresh in UTC.
   final pulumi.Input<String> incrementalDataLastRefreshDateTime;
+
   /// The skipped datapoint count.
   final pulumi.Input<double> skippedDatapointCount;
+
   /// The total datapoint count.
   final pulumi.Input<double> totalDatapointCount;
 
@@ -36,11 +39,18 @@ class ProgressMetricsResponse {
 
   factory ProgressMetricsResponse.fromMap(Map<String, dynamic> map) {
     return ProgressMetricsResponse(
-      completedDatapointCount: (map['completedDatapointCount'] as double).input(),
-      incrementalDataLastRefreshDateTime: (map['incrementalDataLastRefreshDateTime'] as String).input(),
-      skippedDatapointCount: (map['skippedDatapointCount'] as double).input(),
-      totalDatapointCount: (map['totalDatapointCount'] as double).input(),
+      completedDatapointCount: pulumi.Input.fromValue(
+        map['completedDatapointCount'] as double,
+      ),
+      incrementalDataLastRefreshDateTime: pulumi.Input.fromValue(
+        map['incrementalDataLastRefreshDateTime'] as String,
+      ),
+      skippedDatapointCount: pulumi.Input.fromValue(
+        map['skippedDatapointCount'] as double,
+      ),
+      totalDatapointCount: pulumi.Input.fromValue(
+        map['totalDatapointCount'] as double,
+      ),
     );
   }
 }
-

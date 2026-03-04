@@ -6,26 +6,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IdentityProviderAadb2cState {
   /// The allowed AAD tenant, usually your B2C tenant domain.
   final pulumi.Input<String>? allowedTenant;
+
   /// The Name of the API Management Service where this AAD Identity Provider should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String>? apiManagementName;
+
   /// OpenID Connect discovery endpoint hostname, usually your b2clogin.com domain.
   final pulumi.Input<String>? authority;
+
   /// Client ID of the Application in your B2C tenant.
   final pulumi.Input<String>? clientId;
+
   /// The client library to be used in the Azure AD B2C Identity Provider.
   final pulumi.Input<String>? clientLibrary;
+
   /// Client secret of the Application in your B2C tenant.
   final pulumi.Input<String>? clientSecret;
+
   /// Password reset Policy Name.
   final pulumi.Input<String>? passwordResetPolicy;
+
   /// Profile editing Policy Name.
   final pulumi.Input<String>? profileEditingPolicy;
+
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? resourceGroupName;
+
   /// Signin Policy Name.
   final pulumi.Input<String>? signinPolicy;
+
   /// The tenant to use instead of Common when logging into Active Directory, usually your B2C tenant domain.
   final pulumi.Input<String>? signinTenant;
+
   /// Signup Policy Name.
   final pulumi.Input<String>? signupPolicy;
 
@@ -76,19 +87,66 @@ class IdentityProviderAadb2cState {
 
   factory IdentityProviderAadb2cState.fromMap(Map<String, dynamic> map) {
     return IdentityProviderAadb2cState(
-      allowedTenant: map['allowedTenant'] == null ? null : (map['allowedTenant']! as String).input(),
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
-      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
-      clientLibrary: map['clientLibrary'] == null ? null : (map['clientLibrary']! as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
-      passwordResetPolicy: map['passwordResetPolicy'] == null ? null : (map['passwordResetPolicy']! as String).input(),
-      profileEditingPolicy: map['profileEditingPolicy'] == null ? null : (map['profileEditingPolicy']! as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
-      signinPolicy: map['signinPolicy'] == null ? null : (map['signinPolicy']! as String).input(),
-      signinTenant: map['signinTenant'] == null ? null : (map['signinTenant']! as String).input(),
-      signupPolicy: map['signupPolicy'] == null ? null : (map['signupPolicy']! as String).input(),
+      allowedTenant: (() {
+        final guardedValue = map['allowedTenant'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      apiManagementName: (() {
+        final guardedValue = map['apiManagementName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      authority: (() {
+        final guardedValue = map['authority'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientId: (() {
+        final guardedValue = map['clientId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientLibrary: (() {
+        final guardedValue = map['clientLibrary'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      clientSecret: (() {
+        final guardedValue = map['clientSecret'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      passwordResetPolicy: (() {
+        final guardedValue = map['passwordResetPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      profileEditingPolicy: (() {
+        final guardedValue = map['profileEditingPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: (() {
+        final guardedValue = map['resourceGroupName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signinPolicy: (() {
+        final guardedValue = map['signinPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signinTenant: (() {
+        final guardedValue = map['signinTenant'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      signupPolicy: (() {
+        final guardedValue = map['signupPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

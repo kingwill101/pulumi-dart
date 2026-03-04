@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudApigeeV1ProfileConfigCategory {
   /// Checks for abuse, which includes any requests sent to the API for purposes other than what it is intended for, such as high volumes of requests, data scraping, and abuse related to authorization.
   final pulumi.Input<Map<String, dynamic>>? abuse;
+
   /// Checks to see if you have an authorization policy in place.
   final pulumi.Input<Map<String, dynamic>>? authorization;
+
   /// Checks to see if you have CORS policy in place.
   final pulumi.Input<Map<String, dynamic>>? cors;
+
   /// Checks to see if you have a mediation policy in place.
   final pulumi.Input<Map<String, dynamic>>? mediation;
+
   /// Checks to see if you have configured mTLS for the target server.
   final pulumi.Input<Map<String, dynamic>>? mtls;
+
   /// Checks to see if you have a threat protection policy in place.
   final pulumi.Input<Map<String, dynamic>>? threat;
 
@@ -44,15 +49,52 @@ class GoogleCloudApigeeV1ProfileConfigCategory {
     };
   }
 
-  factory GoogleCloudApigeeV1ProfileConfigCategory.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1ProfileConfigCategory.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1ProfileConfigCategory(
-      abuse: map['abuse'] == null ? null : ((map['abuse']! as Map).cast<String, dynamic>()).input(),
-      authorization: map['authorization'] == null ? null : ((map['authorization']! as Map).cast<String, dynamic>()).input(),
-      cors: map['cors'] == null ? null : ((map['cors']! as Map).cast<String, dynamic>()).input(),
-      mediation: map['mediation'] == null ? null : ((map['mediation']! as Map).cast<String, dynamic>()).input(),
-      mtls: map['mtls'] == null ? null : ((map['mtls']! as Map).cast<String, dynamic>()).input(),
-      threat: map['threat'] == null ? null : ((map['threat']! as Map).cast<String, dynamic>()).input(),
+      abuse: (() {
+        final guardedValue = map['abuse'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      authorization: (() {
+        final guardedValue = map['authorization'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      cors: (() {
+        final guardedValue = map['cors'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      mediation: (() {
+        final guardedValue = map['mediation'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      mtls: (() {
+        final guardedValue = map['mtls'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      threat: (() {
+        final guardedValue = map['threat'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

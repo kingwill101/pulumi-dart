@@ -6,11 +6,11 @@ import 'iambinding_state.dart';
 /// Allows creation and management of a single binding within IAM policy for
 /// an existing Google Cloud Platform folder.
 ///
-/// > **Note:** This resource _must not_ be used in conjunction with
+/// &gt; **Note:** This resource _must not_ be used in conjunction with
 /// `gcp.folder.IAMPolicy` or they will fight over what your policy
 /// should be.
 ///
-/// > **Note:** On create, this resource will overwrite members of any existing roles.
+/// &gt; **Note:** On create, this resource will overwrite members of any existing roles.
 /// Use `pulumi import` and inspect the output to ensure
 /// your existing members are preserved.
 ///
@@ -163,15 +163,18 @@ import 'iambinding_state.dart';
 /// $ pulumi import gcp:folder/iAMBinding:IAMBinding viewer "folder-name roles/viewer"
 /// ```
 ///
-/// -> **Custom Roles**: If you're importing a IAM binding with a custom role, make sure to use the
+/// -&gt; **Custom Roles**: If you're importing a IAM binding with a custom role, make sure to use the
 ///
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class IAMBinding extends pulumi.CustomResource {
   late final pulumi.Output<IAMBindingCondition?> condition;
+
   /// (Computed) The etag of the folder's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   late final pulumi.Output<String> folder;
+
   /// An array of identities that will be granted the privilege in the `role`.
   /// Each entry can have one of the following values:
   /// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
@@ -180,6 +183,7 @@ class IAMBinding extends pulumi.CustomResource {
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   /// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
   late final pulumi.Output<List<String>> members;
+
   /// The role that should be applied. Only one
   /// `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -194,16 +198,16 @@ class IAMBinding extends pulumi.CustomResource {
     IAMBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:folder/iAMBinding:IAMBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<IAMBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.folder = registerOutput<String>('folder');
-    this.members = registerOutput<List<String>>('members');
-    this.role = registerOutput<String>('role');
+         'gcp:folder/iAMBinding:IAMBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<IAMBindingCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    folder = registerOutput<String>('folder');
+    members = registerOutput<List<String>>('members');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [IAMBinding] resource's state with the given [name] and [id].
@@ -224,15 +228,15 @@ class IAMBinding extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:folder/iAMBinding:IAMBinding',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<IAMBindingCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.folder = registerOutput<String>('folder');
-    this.members = registerOutput<List<String>>('members');
-    this.role = registerOutput<String>('role');
+         'gcp:folder/iAMBinding:IAMBinding',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<IAMBindingCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    folder = registerOutput<String>('folder');
+    members = registerOutput<List<String>>('members');
+    role = registerOutput<String>('role');
   }
 }

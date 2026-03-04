@@ -9,26 +9,34 @@ class WorkforcePoolState {
   /// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
   /// Structure is documented below.
   final pulumi.Input<WorkforcePoolAccessRestrictions>? accessRestrictions;
+
   /// A user-specified description of the pool. Cannot exceed 256 characters.
   final pulumi.Input<String>? description;
+
   /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
   /// or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
   final pulumi.Input<bool>? disabled;
+
   /// A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
   final pulumi.Input<String>? displayName;
+
   /// The location for the resource.
   final pulumi.Input<String>? location;
+
   /// Output only. The resource name of the pool.
   /// Format: `locations/{location}/workforcePools/{workforcePoolId}`
   final pulumi.Input<String>? name;
+
   /// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
   final pulumi.Input<String>? parent;
+
   /// Duration that the Google Cloud access tokens, console sign-in sessions,
   /// and `gcloud` sign-in sessions from this pool are valid.
   /// Must be greater than 15 minutes (900s) and less than 12 hours (43200s).
   /// If `sessionDuration` is not configured, minted credentials have a default duration of one hour (3600s).
   /// A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: "`3.5s`".
   final pulumi.Input<String>? sessionDuration;
+
   /// Output only. The state of the pool.
   /// * STATE_UNSPECIFIED: State unspecified.
   /// * ACTIVE: The pool is active, and may be used in Google Cloud policies.
@@ -40,6 +48,7 @@ class WorkforcePoolState {
   /// existing tokens to access resources. If the pool is undeleted, existing
   /// tokens grant access again.
   final pulumi.Input<String>? state;
+
   /// The name of the pool. The ID must be a globally unique string of 6 to 63 lowercase letters,
   /// digits, or hyphens. It must start with a letter, and cannot have a trailing hyphen.
   /// The prefix `gcp-` is reserved for use by Google, and may not be specified.
@@ -71,7 +80,11 @@ class WorkforcePoolState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessRestrictions': ?pulumi.Input.mapOptionalInputValue<WorkforcePoolAccessRestrictions, Map<String, dynamic>>(accessRestrictions, (value) => value.toMap()),
+      'accessRestrictions':
+          ?pulumi.Input.mapOptionalInputValue<
+            WorkforcePoolAccessRestrictions,
+            Map<String, dynamic>
+          >(accessRestrictions, (value) => value.toMap()),
       'description': ?description,
       'disabled': ?disabled,
       'displayName': ?displayName,
@@ -86,17 +99,60 @@ class WorkforcePoolState {
 
   factory WorkforcePoolState.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolState(
-      accessRestrictions: map['accessRestrictions'] == null ? null : (WorkforcePoolAccessRestrictions.fromMap((map['accessRestrictions']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
-      sessionDuration: map['sessionDuration'] == null ? null : (map['sessionDuration']! as String).input(),
-      state: map['state'] == null ? null : (map['state']! as String).input(),
-      workforcePoolId: map['workforcePoolId'] == null ? null : (map['workforcePoolId']! as String).input(),
+      accessRestrictions: (() {
+        final guardedValue = map['accessRestrictions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WorkforcePoolAccessRestrictions.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      disabled: (() {
+        final guardedValue = map['disabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      displayName: (() {
+        final guardedValue = map['displayName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      parent: (() {
+        final guardedValue = map['parent'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      sessionDuration: (() {
+        final guardedValue = map['sessionDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      workforcePoolId: (() {
+        final guardedValue = map['workforcePoolId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentResourceConfigurationResponse {
   /// Optional number of instances or nodes used by the compute target.
   final pulumi.Input<int>? instanceCount;
+
   /// Optional type of VM used as supported by the compute target.
   final pulumi.Input<String>? instanceType;
+
   /// Additional properties bag.
   final pulumi.Input<Map<String, dynamic>>? properties;
 
@@ -28,12 +30,27 @@ class DeploymentResourceConfigurationResponse {
     };
   }
 
-  factory DeploymentResourceConfigurationResponse.fromMap(Map<String, dynamic> map) {
+  factory DeploymentResourceConfigurationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeploymentResourceConfigurationResponse(
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, dynamic>()).input(),
+      instanceCount: (() {
+        final guardedValue = map['instanceCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      instanceType: (() {
+        final guardedValue = map['instanceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
     );
   }
 }
-

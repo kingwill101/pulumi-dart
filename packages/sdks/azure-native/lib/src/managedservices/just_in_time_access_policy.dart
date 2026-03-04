@@ -7,8 +7,10 @@ import 'eligible_approver.dart';
 class JustInTimeAccessPolicy {
   /// The list of managedByTenant approvers for the eligible authorization.
   final pulumi.Input<List<EligibleApprover>>? managedByTenantApprovers;
+
   /// The maximum access duration in ISO 8601 format for just-in-time access requests.
   final pulumi.Input<String>? maximumActivationDuration;
+
   /// The multi-factor authorization provider to be used for just-in-time access requests.
   final pulumi.Input<String> multiFactorAuthProvider;
 
@@ -24,7 +26,18 @@ class JustInTimeAccessPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'managedByTenantApprovers': ?pulumi.Input.mapOptionalInputValue<List<EligibleApprover>, List<Map<String, dynamic>>>(managedByTenantApprovers, (value) => pulumi.Input.encodeList<EligibleApprover, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'managedByTenantApprovers':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<EligibleApprover>,
+            List<Map<String, dynamic>>
+          >(
+            managedByTenantApprovers,
+            (value) =>
+                pulumi.Input.encodeList<EligibleApprover, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'maximumActivationDuration': ?maximumActivationDuration,
       'multiFactorAuthProvider': multiFactorAuthProvider,
     };
@@ -32,10 +45,26 @@ class JustInTimeAccessPolicy {
 
   factory JustInTimeAccessPolicy.fromMap(Map<String, dynamic> map) {
     return JustInTimeAccessPolicy(
-      managedByTenantApprovers: map['managedByTenantApprovers'] == null ? null : (pulumi.Input.decodeList<EligibleApprover>(map['managedByTenantApprovers']!, (value) => EligibleApprover.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maximumActivationDuration: map['maximumActivationDuration'] == null ? null : (map['maximumActivationDuration']! as String).input(),
-      multiFactorAuthProvider: (map['multiFactorAuthProvider'] as String).input(),
+      managedByTenantApprovers: (() {
+        final guardedValue = map['managedByTenantApprovers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<EligibleApprover>(
+            guardedValue,
+            (value) => EligibleApprover.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      maximumActivationDuration: (() {
+        final guardedValue = map['maximumActivationDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      multiFactorAuthProvider: pulumi.Input.fromValue(
+        map['multiFactorAuthProvider'] as String,
+      ),
     );
   }
 }
-

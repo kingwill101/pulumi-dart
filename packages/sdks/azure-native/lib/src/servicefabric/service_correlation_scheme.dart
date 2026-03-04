@@ -3,16 +3,15 @@ enum ServiceCorrelationScheme {
   alignedAffinity("AlignedAffinity"),
   nonAlignedAffinity("NonAlignedAffinity");
 
-  const ServiceCorrelationScheme(this.value);
-  final String value;
+  const ServiceCorrelationScheme(this.wireValue);
+  final String wireValue;
 
   static ServiceCorrelationScheme fromValue(String value) {
     for (final item in ServiceCorrelationScheme.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ServiceCorrelationScheme value: $value');
   }
 }
-

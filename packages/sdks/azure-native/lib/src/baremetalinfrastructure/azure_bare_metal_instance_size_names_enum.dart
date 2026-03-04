@@ -45,16 +45,17 @@ enum AzureBareMetalInstanceSizeNamesEnum {
   valueS896ooo("S896ooo"),
   valueS960m("S960m");
 
-  const AzureBareMetalInstanceSizeNamesEnum(this.value);
-  final String value;
+  const AzureBareMetalInstanceSizeNamesEnum(this.wireValue);
+  final String wireValue;
 
   static AzureBareMetalInstanceSizeNamesEnum fromValue(String value) {
     for (final item in AzureBareMetalInstanceSizeNamesEnum.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AzureBareMetalInstanceSizeNamesEnum value: $value');
+    throw ArgumentError(
+      'Unknown AzureBareMetalInstanceSizeNamesEnum value: $value',
+    );
   }
 }
-

@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuditLogConfigResponseCloudresourcemanagerV2 {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final pulumi.Input<List<String>> exemptedMembers;
+
   /// The log type that this config enables.
   final pulumi.Input<String> logType;
 
@@ -24,11 +25,14 @@ class AuditLogConfigResponseCloudresourcemanagerV2 {
     };
   }
 
-  factory AuditLogConfigResponseCloudresourcemanagerV2.fromMap(Map<String, dynamic> map) {
+  factory AuditLogConfigResponseCloudresourcemanagerV2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuditLogConfigResponseCloudresourcemanagerV2(
-      exemptedMembers: ((map['exemptedMembers'] as List).cast<String>()).input(),
-      logType: (map['logType'] as String).input(),
+      exemptedMembers: pulumi.Input.fromValue(
+        (map['exemptedMembers'] as List).cast<String>(),
+      ),
+      logType: pulumi.Input.fromValue(map['logType'] as String),
     );
   }
 }
-

@@ -2,16 +2,15 @@
 enum CIAMResourceSKUTier {
   valueA0("A0");
 
-  const CIAMResourceSKUTier(this.value);
-  final String value;
+  const CIAMResourceSKUTier(this.wireValue);
+  final String wireValue;
 
   static CIAMResourceSKUTier fromValue(String value) {
     for (final item in CIAMResourceSKUTier.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CIAMResourceSKUTier value: $value');
   }
 }
-

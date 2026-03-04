@@ -6,7 +6,7 @@ import 'policy_state.dart';
 ///
 /// For information about KMS Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/zh/key-management-service/latest/api-createpolicy).
 ///
-/// > **NOTE:** Available since v1.210.0.
+/// &gt; **NOTE:** Available since v1.210.0.
 ///
 /// ## Example Usage
 ///
@@ -452,14 +452,19 @@ import 'policy_state.dart';
 class Policy extends pulumi.CustomResource {
   /// Network Rules in JSON struct.
   late final pulumi.Output<String> accessControlRules;
+
   /// Description.
   late final pulumi.Output<String?> description;
+
   /// KMS instance .
   late final pulumi.Output<String> kmsInstanceId;
+
   /// Allowed permissions (RBAC)Optional values:"RbacPermission/Template/CryptoServiceKeyUser" and "RbacPermission/Template/CryptoServiceSecretUser".
   late final pulumi.Output<List<String>> permissions;
+
   /// Policy Name.
   late final pulumi.Output<String> policyName;
+
   /// The resources that the permission policy allows to access.Use "key/${KeyId}" or "key/*"  to specify a key or all keys.Use "secret/${SecretName}" or "secret/*" to specify a secret or all secrets.
   late final pulumi.Output<List<String>> resources;
 
@@ -467,22 +472,19 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_kms_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(
-    String name, {
-    PolicyArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'alicloud:kms/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessControlRules = registerOutput<String>('accessControlRules');
-    this.description = registerOutput<String?>('description');
-    this.kmsInstanceId = registerOutput<String>('kmsInstanceId');
-    this.permissions = registerOutput<List<String>>('permissions');
-    this.policyName = registerOutput<String>('policyName');
-    this.resources = registerOutput<List<String>>('resources');
+  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'alicloud:kms/policy:Policy',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    accessControlRules = registerOutput<String>('accessControlRules');
+    description = registerOutput<String?>('description');
+    kmsInstanceId = registerOutput<String>('kmsInstanceId');
+    permissions = registerOutput<List<String>>('permissions');
+    policyName = registerOutput<String>('policyName');
+    resources = registerOutput<List<String>>('resources');
   }
 
   /// Gets an existing [Policy] resource's state with the given [name] and [id].
@@ -503,16 +505,16 @@ class Policy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:kms/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessControlRules = registerOutput<String>('accessControlRules');
-    this.description = registerOutput<String?>('description');
-    this.kmsInstanceId = registerOutput<String>('kmsInstanceId');
-    this.permissions = registerOutput<List<String>>('permissions');
-    this.policyName = registerOutput<String>('policyName');
-    this.resources = registerOutput<List<String>>('resources');
+         'alicloud:kms/policy:Policy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    accessControlRules = registerOutput<String>('accessControlRules');
+    description = registerOutput<String?>('description');
+    kmsInstanceId = registerOutput<String>('kmsInstanceId');
+    permissions = registerOutput<List<String>>('permissions');
+    policyName = registerOutput<String>('policyName');
+    resources = registerOutput<List<String>>('resources');
   }
 }

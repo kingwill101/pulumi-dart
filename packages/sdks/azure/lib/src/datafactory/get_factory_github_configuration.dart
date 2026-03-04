@@ -5,12 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFactoryGithubConfiguration {
   /// The VSTS account name.
   final pulumi.Input<String> accountName;
+
   /// The branch of the repository to get code from.
   final pulumi.Input<String> branchName;
+
   /// The GitHub repository url.
   final pulumi.Input<String> gitUrl;
+
   /// The name of the git repository.
   final pulumi.Input<String> repositoryName;
+
   /// The root folder within the repository.
   final pulumi.Input<String> rootFolder;
 
@@ -40,12 +44,11 @@ class GetFactoryGithubConfiguration {
 
   factory GetFactoryGithubConfiguration.fromMap(Map<String, dynamic> map) {
     return GetFactoryGithubConfiguration(
-      accountName: (map['accountName'] as String).input(),
-      branchName: (map['branchName'] as String).input(),
-      gitUrl: (map['gitUrl'] as String).input(),
-      repositoryName: (map['repositoryName'] as String).input(),
-      rootFolder: (map['rootFolder'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      branchName: pulumi.Input.fromValue(map['branchName'] as String),
+      gitUrl: pulumi.Input.fromValue(map['gitUrl'] as String),
+      repositoryName: pulumi.Input.fromValue(map['repositoryName'] as String),
+      rootFolder: pulumi.Input.fromValue(map['rootFolder'] as String),
     );
   }
 }
-

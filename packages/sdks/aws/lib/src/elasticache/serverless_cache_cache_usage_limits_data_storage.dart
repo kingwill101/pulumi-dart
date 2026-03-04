@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServerlessCacheCacheUsageLimitsDataStorage {
   /// The upper limit for data storage the cache is set to use. Must be between 1 and 5,000.
   final pulumi.Input<int>? maximum;
+
   /// The lower limit for data storage the cache is set to use. Must be between 1 and 5,000.
   final pulumi.Input<int>? minimum;
+
   /// The unit that the storage is measured in, in GB.
   final pulumi.Input<String> unit;
 
@@ -28,12 +30,21 @@ class ServerlessCacheCacheUsageLimitsDataStorage {
     };
   }
 
-  factory ServerlessCacheCacheUsageLimitsDataStorage.fromMap(Map<String, dynamic> map) {
+  factory ServerlessCacheCacheUsageLimitsDataStorage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServerlessCacheCacheUsageLimitsDataStorage(
-      maximum: map['maximum'] == null ? null : ((map['maximum'] as int).input()).input(),
-      minimum: map['minimum'] == null ? null : ((map['minimum'] as int).input()).input(),
-      unit: (map['unit'] as String).input(),
+      maximum: (() {
+        final guardedValue = map['maximum'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      minimum: (() {
+        final guardedValue = map['minimum'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      unit: pulumi.Input.fromValue(map['unit'] as String),
     );
   }
 }
-

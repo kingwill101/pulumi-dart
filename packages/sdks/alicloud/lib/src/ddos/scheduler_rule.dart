@@ -1,11 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scheduler_rule_args.dart';
-import 'scheduler_rule_rule.dart';
 import 'scheduler_rule_state.dart';
 
 /// Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createschedulerrule).
 ///
-/// > **NOTE:** Available since v1.86.0.
+/// &gt; **NOTE:** Available since v1.86.0.
 ///
 /// ## Example Usage
 ///
@@ -232,19 +231,24 @@ import 'scheduler_rule_state.dart';
 class SchedulerRule extends pulumi.CustomResource {
   /// The cname is the traffic scheduler corresponding to rules.
   late final pulumi.Output<String> cname;
+
   /// The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
   late final pulumi.Output<String?> param;
+
   /// The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
   late final pulumi.Output<String?> resourceGroupId;
+
   /// The name of the rule.
   late final pulumi.Output<String> ruleName;
+
   /// The rule type. Valid values:
   /// `2`: tiered protection.
   /// `3`: globalization acceleration.
   /// `6`: Cloud product interaction.
   late final pulumi.Output<int> ruleType;
+
   /// The information about the scheduling rules. See `rules` below.
-  late final pulumi.Output<List<SchedulerRuleRule>> rules;
+  late final pulumi.Output<List<Map<String, dynamic>>> rules;
 
   /// Creates a new [SchedulerRule].
   /// [name] The Pulumi resource name.
@@ -255,17 +259,17 @@ class SchedulerRule extends pulumi.CustomResource {
     SchedulerRuleArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ddos/schedulerRule:SchedulerRule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cname = registerOutput<String>('cname');
-    this.param = registerOutput<String?>('param');
-    this.resourceGroupId = registerOutput<String?>('resourceGroupId');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.ruleType = registerOutput<int>('ruleType');
-    this.rules = registerOutput<List<SchedulerRuleRule>>('rules');
+         'alicloud:ddos/schedulerRule:SchedulerRule',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cname = registerOutput<String>('cname');
+    param = registerOutput<String?>('param');
+    resourceGroupId = registerOutput<String?>('resourceGroupId');
+    ruleName = registerOutput<String>('ruleName');
+    ruleType = registerOutput<int>('ruleType');
+    rules = registerOutput<List<Map<String, dynamic>>>('rules');
   }
 
   /// Gets an existing [SchedulerRule] resource's state with the given [name] and [id].
@@ -286,16 +290,16 @@ class SchedulerRule extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:ddos/schedulerRule:SchedulerRule',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cname = registerOutput<String>('cname');
-    this.param = registerOutput<String?>('param');
-    this.resourceGroupId = registerOutput<String?>('resourceGroupId');
-    this.ruleName = registerOutput<String>('ruleName');
-    this.ruleType = registerOutput<int>('ruleType');
-    this.rules = registerOutput<List<SchedulerRuleRule>>('rules');
+         'alicloud:ddos/schedulerRule:SchedulerRule',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    cname = registerOutput<String>('cname');
+    param = registerOutput<String?>('param');
+    resourceGroupId = registerOutput<String?>('resourceGroupId');
+    ruleName = registerOutput<String>('ruleName');
+    ruleType = registerOutput<int>('ruleType');
+    rules = registerOutput<List<Map<String, dynamic>>>('rules');
   }
 }

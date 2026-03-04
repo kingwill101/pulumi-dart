@@ -3,16 +3,15 @@ enum Version {
   valueSQLServer2012("SQL Server 2012"),
   valueSQLServer2014("SQL Server 2014");
 
-  const Version(this.value);
-  final String value;
+  const Version(this.wireValue);
+  final String wireValue;
 
   static Version fromValue(String value) {
     for (final item in Version.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Version value: $value');
   }
 }
-

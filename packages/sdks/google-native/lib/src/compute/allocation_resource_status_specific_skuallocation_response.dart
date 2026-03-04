@@ -19,10 +19,13 @@ class AllocationResourceStatusSpecificSKUAllocationResponse {
     };
   }
 
-  factory AllocationResourceStatusSpecificSKUAllocationResponse.fromMap(Map<String, dynamic> map) {
+  factory AllocationResourceStatusSpecificSKUAllocationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AllocationResourceStatusSpecificSKUAllocationResponse(
-      sourceInstanceTemplateId: (map['sourceInstanceTemplateId'] as String).input(),
+      sourceInstanceTemplateId: pulumi.Input.fromValue(
+        map['sourceInstanceTemplateId'] as String,
+      ),
     );
   }
 }
-

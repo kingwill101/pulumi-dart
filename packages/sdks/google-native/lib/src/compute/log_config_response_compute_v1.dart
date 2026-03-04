@@ -9,8 +9,10 @@ import 'log_config_data_access_options_response_compute_v1.dart';
 class LogConfigResponseComputeV1 {
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<LogConfigCloudAuditOptionsResponseComputeV1> cloudAudit;
+
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<LogConfigCounterOptionsResponseComputeV1> counter;
+
   /// This is deprecated and has no effect. Do not use.
   final pulumi.Input<LogConfigDataAccessOptionsResponseComputeV1> dataAccess;
 
@@ -26,18 +28,41 @@ class LogConfigResponseComputeV1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudAudit': pulumi.Input.mapInputValue<LogConfigCloudAuditOptionsResponseComputeV1, Map<String, dynamic>>(cloudAudit, (value) => value.toMap()),
-      'counter': pulumi.Input.mapInputValue<LogConfigCounterOptionsResponseComputeV1, Map<String, dynamic>>(counter, (value) => value.toMap()),
-      'dataAccess': pulumi.Input.mapInputValue<LogConfigDataAccessOptionsResponseComputeV1, Map<String, dynamic>>(dataAccess, (value) => value.toMap()),
+      'cloudAudit':
+          pulumi.Input.mapInputValue<
+            LogConfigCloudAuditOptionsResponseComputeV1,
+            Map<String, dynamic>
+          >(cloudAudit, (value) => value.toMap()),
+      'counter':
+          pulumi.Input.mapInputValue<
+            LogConfigCounterOptionsResponseComputeV1,
+            Map<String, dynamic>
+          >(counter, (value) => value.toMap()),
+      'dataAccess':
+          pulumi.Input.mapInputValue<
+            LogConfigDataAccessOptionsResponseComputeV1,
+            Map<String, dynamic>
+          >(dataAccess, (value) => value.toMap()),
     };
   }
 
   factory LogConfigResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return LogConfigResponseComputeV1(
-      cloudAudit: (LogConfigCloudAuditOptionsResponseComputeV1.fromMap((map['cloudAudit'] as Map).cast<String, dynamic>())).input(),
-      counter: (LogConfigCounterOptionsResponseComputeV1.fromMap((map['counter'] as Map).cast<String, dynamic>())).input(),
-      dataAccess: (LogConfigDataAccessOptionsResponseComputeV1.fromMap((map['dataAccess'] as Map).cast<String, dynamic>())).input(),
+      cloudAudit: pulumi.Input.fromValue(
+        LogConfigCloudAuditOptionsResponseComputeV1.fromMap(
+          (map['cloudAudit']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      counter: pulumi.Input.fromValue(
+        LogConfigCounterOptionsResponseComputeV1.fromMap(
+          (map['counter']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      dataAccess: pulumi.Input.fromValue(
+        LogConfigDataAccessOptionsResponseComputeV1.fromMap(
+          (map['dataAccess']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

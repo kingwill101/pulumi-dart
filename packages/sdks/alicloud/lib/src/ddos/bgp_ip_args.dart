@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BgpIpArgs {
   /// The ID of the Anti-DDoS Origin instance.
   final pulumi.Input<String> instanceId;
+
   /// The IP address that you want to add.
   final pulumi.Input<String> ip;
+
   /// The member to which the asset belongs.
   final pulumi.Input<String>? memberUid;
+
   /// Field `resource_group_id` has been deprecated from provider version 1.259.0.
   final pulumi.Input<String>? resourceGroupId;
 
@@ -39,11 +42,18 @@ class BgpIpArgs {
 
   factory BgpIpArgs.fromMap(Map<String, dynamic> map) {
     return BgpIpArgs(
-      instanceId: (map['instanceId'] as String).input(),
-      ip: (map['ip'] as String).input(),
-      memberUid: map['memberUid'] == null ? null : (map['memberUid']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
+      ip: pulumi.Input.fromValue(map['ip'] as String),
+      memberUid: (() {
+        final guardedValue = map['memberUid'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

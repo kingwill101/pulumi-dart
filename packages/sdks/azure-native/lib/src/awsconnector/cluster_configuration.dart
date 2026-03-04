@@ -10,20 +10,29 @@ class ClusterConfiguration {
 
   /// Creates a new [ClusterConfiguration].
   /// [executeCommandConfiguration] The details of the execute command configuration. The details of the execute command configuration.
-  ClusterConfiguration({
-    this.executeCommandConfiguration,
-  });
+  ClusterConfiguration({this.executeCommandConfiguration});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'executeCommandConfiguration': ?pulumi.Input.mapOptionalInputValue<ExecuteCommandConfiguration, Map<String, dynamic>>(executeCommandConfiguration, (value) => value.toMap()),
+      'executeCommandConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ExecuteCommandConfiguration,
+            Map<String, dynamic>
+          >(executeCommandConfiguration, (value) => value.toMap()),
     };
   }
 
   factory ClusterConfiguration.fromMap(Map<String, dynamic> map) {
     return ClusterConfiguration(
-      executeCommandConfiguration: map['executeCommandConfiguration'] == null ? null : (ExecuteCommandConfiguration.fromMap((map['executeCommandConfiguration']! as Map).cast<String, dynamic>())).input(),
+      executeCommandConfiguration: (() {
+        final guardedValue = map['executeCommandConfiguration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ExecuteCommandConfiguration.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

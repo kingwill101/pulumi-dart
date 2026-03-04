@@ -29,19 +29,25 @@ enum Techniques {
   valueDataManipulation("Data Manipulation"),
   valueDataStaged("Data Staged"),
   valueDefacement("Defacement"),
-  valueDeobfuscateDecodeFilesOrInformation("Deobfuscate/Decode Files or Information"),
+  valueDeobfuscateDecodeFilesOrInformation(
+    "Deobfuscate/Decode Files or Information",
+  ),
   valueDiskWipe("Disk Wipe"),
   valueDomainTrustDiscovery("Domain Trust Discovery"),
   valueDriveByCompromise("Drive-by Compromise"),
   valueDynamicResolution("Dynamic Resolution"),
   valueEndpointDenialOfService("Endpoint Denial of Service"),
   valueEventTriggeredExecution("Event Triggered Execution"),
-  valueExfiltrationOverAlternativeProtocol("Exfiltration Over Alternative Protocol"),
+  valueExfiltrationOverAlternativeProtocol(
+    "Exfiltration Over Alternative Protocol",
+  ),
   valueExploitPublicFacingApplication("Exploit Public-Facing Application"),
   valueExploitationForClientExecution("Exploitation for Client Execution"),
   valueExploitationForCredentialAccess("Exploitation for Credential Access"),
   valueExploitationForDefenseEvasion("Exploitation for Defense Evasion"),
-  valueExploitationForPrivilegeEscalation("Exploitation for Privilege Escalation"),
+  valueExploitationForPrivilegeEscalation(
+    "Exploitation for Privilege Escalation",
+  ),
   valueExploitationOfRemoteServices("Exploitation of Remote Services"),
   valueExternalRemoteServices("External Remote Services"),
   valueFallbackChannels("Fallback Channels"),
@@ -103,18 +109,19 @@ enum Techniques {
   valueUserExecution("User Execution"),
   valueValidAccounts("Valid Accounts"),
   valueWindowsManagementInstrumentation("Windows Management Instrumentation"),
-  valueFileAndDirectoryPermissionsModification("File and Directory Permissions Modification");
+  valueFileAndDirectoryPermissionsModification(
+    "File and Directory Permissions Modification",
+  );
 
-  const Techniques(this.value);
-  final String value;
+  const Techniques(this.wireValue);
+  final String wireValue;
 
   static Techniques fromValue(String value) {
     for (final item in Techniques.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown Techniques value: $value');
   }
 }
-

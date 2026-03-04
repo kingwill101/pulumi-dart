@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProfileArgs {
   /// The name of the hub.
   final pulumi.Input<String> hubName;
+
   /// Locale of profile to retrieve, default is en-us.
   final pulumi.Input<String>? localeCode;
+
   /// The name of the profile.
   final pulumi.Input<String> profileName;
+
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,11 +42,16 @@ class GetProfileArgs {
 
   factory GetProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetProfileArgs(
-      hubName: (map['hubName'] as String).input(),
-      localeCode: map['localeCode'] == null ? null : (map['localeCode']! as String).input(),
-      profileName: (map['profileName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      hubName: pulumi.Input.fromValue(map['hubName'] as String),
+      localeCode: (() {
+        final guardedValue = map['localeCode'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      profileName: pulumi.Input.fromValue(map['profileName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

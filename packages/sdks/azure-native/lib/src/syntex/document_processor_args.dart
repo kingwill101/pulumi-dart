@@ -10,12 +10,16 @@ import 'document_processor_properties.dart';
 class DocumentProcessorArgs {
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of document processor resource.
   final pulumi.Input<String>? processorName;
+
   /// Document processor properties.
   final pulumi.Input<DocumentProcessorProperties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -37,7 +41,11 @@ class DocumentProcessorArgs {
     return <String, dynamic>{
       'location': ?location,
       'processorName': ?processorName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<DocumentProcessorProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            DocumentProcessorProperties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -45,12 +53,35 @@ class DocumentProcessorArgs {
 
   factory DocumentProcessorArgs.fromMap(Map<String, dynamic> map) {
     return DocumentProcessorArgs(
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      processorName: map['processorName'] == null ? null : (map['processorName']! as String).input(),
-      properties: map['properties'] == null ? null : (DocumentProcessorProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      processorName: (() {
+        final guardedValue = map['processorName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DocumentProcessorProperties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

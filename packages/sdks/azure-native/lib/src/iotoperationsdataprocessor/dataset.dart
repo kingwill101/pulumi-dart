@@ -204,28 +204,40 @@ import 'system_data_response.dart';
 class Dataset extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Detailed description of the Dataset.
   late final pulumi.Output<String?> description;
+
   /// Edge location of the resource.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
+
   /// List of keys that can be used for joining on enrich.
   late final pulumi.Output<Map<String, DatasetPropertyKeyResponse>?> keys;
+
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// Path to the payload in the message. Enrich will add only the payload to the enriched message, other fields will not be kept except for in the indexes.
   late final pulumi.Output<String?> payload;
+
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Path to an RFC3339 timestamp in the message. If no path is provided, the ingestion time of the record is used for time-based joins.
   late final pulumi.Output<String?> timestamp;
+
   /// Time to live for individual records.
   late final pulumi.Output<String?> ttl;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -238,23 +250,25 @@ class Dataset extends pulumi.CustomResource {
     DatasetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:iotoperationsdataprocessor:Dataset',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation');
-    this.keys = registerOutput<Map<String, DatasetPropertyKeyResponse>?>('keys');
-    this.location = registerOutput<String>('location');
+         'azure-native:iotoperationsdataprocessor:Dataset',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    extendedLocation = registerOutput<ExtendedLocationResponse>(
+      'extendedLocation',
+    );
+    keys = registerOutput<Map<String, DatasetPropertyKeyResponse>?>('keys');
+    location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.payload = registerOutput<String?>('payload');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.timestamp = registerOutput<String?>('timestamp');
-    this.ttl = registerOutput<String?>('ttl');
-    this.type = registerOutput<String>('type');
+    payload = registerOutput<String?>('payload');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    timestamp = registerOutput<String?>('timestamp');
+    ttl = registerOutput<String?>('ttl');
+    type = registerOutput<String>('type');
   }
 }

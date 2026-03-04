@@ -13,16 +13,15 @@ enum OptInHeaderType {
   clientPrincipalNameEncoded("ClientPrincipalNameEncoded"),
   mSIResourceIdEncoded("MSIResourceIdEncoded");
 
-  const OptInHeaderType(this.value);
-  final String value;
+  const OptInHeaderType(this.wireValue);
+  final String wireValue;
 
   static OptInHeaderType fromValue(String value) {
     for (final item in OptInHeaderType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OptInHeaderType value: $value');
   }
 }
-

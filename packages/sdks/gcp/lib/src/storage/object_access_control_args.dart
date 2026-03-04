@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ObjectAccessControlArgs {
   /// The name of the bucket.
   final pulumi.Input<String> bucket;
+
   /// The entity holding the permission, in one of the following forms:
   /// * user-{{userId}}
   /// * user-{{email}} (such as "user-liz@example.com")
@@ -19,8 +20,10 @@ class ObjectAccessControlArgs {
   /// * allUsers
   /// * allAuthenticatedUsers
   final pulumi.Input<String> entity;
+
   /// The name of the object to apply the access control to.
-  final pulumi.Input<String> object;
+  final pulumi.Input<String> object_;
+
   /// The access permission for the entity.
   /// Possible values are: `OWNER`, `READER`.
   final pulumi.Input<String> role;
@@ -28,12 +31,12 @@ class ObjectAccessControlArgs {
   /// Creates a new [ObjectAccessControlArgs].
   /// [bucket] The name of the bucket.
   /// [entity] The entity holding the permission, in one of the following forms:
-  /// [object] The name of the object to apply the access control to.
+  /// [object_] The name of the object to apply the access control to.
   /// [role] The access permission for the entity.
   ObjectAccessControlArgs({
     required this.bucket,
     required this.entity,
-    required this.object,
+    required this.object_,
     required this.role,
   });
 
@@ -41,18 +44,17 @@ class ObjectAccessControlArgs {
     return <String, dynamic>{
       'bucket': bucket,
       'entity': entity,
-      'object': object,
+      'object': object_,
       'role': role,
     };
   }
 
   factory ObjectAccessControlArgs.fromMap(Map<String, dynamic> map) {
     return ObjectAccessControlArgs(
-      bucket: (map['bucket'] as String).input(),
-      entity: (map['entity'] as String).input(),
-      object: (map['object'] as String).input(),
-      role: (map['role'] as String).input(),
+      bucket: pulumi.Input.fromValue(map['bucket'] as String),
+      entity: pulumi.Input.fromValue(map['entity'] as String),
+      object_: pulumi.Input.fromValue(map['object'] as String),
+      role: pulumi.Input.fromValue(map['role'] as String),
     );
   }
 }
-

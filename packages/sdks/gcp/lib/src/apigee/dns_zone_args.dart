@@ -10,13 +10,17 @@ import 'dns_zone_peering_config.dart';
 class DnsZoneArgs {
   /// Description for the zone.
   final pulumi.Input<String> description;
+
   /// ID of the dns zone.
   final pulumi.Input<String> dnsZoneId;
+
   /// Doamin for the zone.
   final pulumi.Input<String> domain;
+
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
   final pulumi.Input<String> orgId;
+
   /// Peering zone config
   /// Structure is documented below.
   final pulumi.Input<DnsZonePeeringConfig> peeringConfig;
@@ -41,18 +45,25 @@ class DnsZoneArgs {
       'dnsZoneId': dnsZoneId,
       'domain': domain,
       'orgId': orgId,
-      'peeringConfig': pulumi.Input.mapInputValue<DnsZonePeeringConfig, Map<String, dynamic>>(peeringConfig, (value) => value.toMap()),
+      'peeringConfig':
+          pulumi.Input.mapInputValue<
+            DnsZonePeeringConfig,
+            Map<String, dynamic>
+          >(peeringConfig, (value) => value.toMap()),
     };
   }
 
   factory DnsZoneArgs.fromMap(Map<String, dynamic> map) {
     return DnsZoneArgs(
-      description: (map['description'] as String).input(),
-      dnsZoneId: (map['dnsZoneId'] as String).input(),
-      domain: (map['domain'] as String).input(),
-      orgId: (map['orgId'] as String).input(),
-      peeringConfig: (DnsZonePeeringConfig.fromMap((map['peeringConfig'] as Map).cast<String, dynamic>())).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      dnsZoneId: pulumi.Input.fromValue(map['dnsZoneId'] as String),
+      domain: pulumi.Input.fromValue(map['domain'] as String),
+      orgId: pulumi.Input.fromValue(map['orgId'] as String),
+      peeringConfig: pulumi.Input.fromValue(
+        DnsZonePeeringConfig.fromMap(
+          (map['peeringConfig']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -5,16 +5,15 @@ enum EnvironmentKind {
   staging("staging"),
   production("production");
 
-  const EnvironmentKind(this.value);
-  final String value;
+  const EnvironmentKind(this.wireValue);
+  final String wireValue;
 
   static EnvironmentKind fromValue(String value) {
     for (final item in EnvironmentKind.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown EnvironmentKind value: $value');
   }
 }
-

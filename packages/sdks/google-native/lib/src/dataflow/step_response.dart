@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StepResponse {
   /// The kind of step in the Cloud Dataflow job.
   final pulumi.Input<String> kind;
+
   /// The name that identifies the step. This must be unique for each step with respect to all other steps in the Cloud Dataflow job.
   final pulumi.Input<String> name;
+
   /// Named properties associated with the step. Each kind of predefined step has its own required set of properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
   final pulumi.Input<Map<String, String>> properties;
 
@@ -31,10 +33,11 @@ class StepResponse {
 
   factory StepResponse.fromMap(Map<String, dynamic> map) {
     return StepResponse(
-      kind: (map['kind'] as String).input(),
-      name: (map['name'] as String).input(),
-      properties: ((map['properties'] as Map).cast<String, String>()).input(),
+      kind: pulumi.Input.fromValue(map['kind'] as String),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      properties: pulumi.Input.fromValue(
+        (map['properties'] as Map).cast<String, String>(),
+      ),
     );
   }
 }
-

@@ -108,7 +108,7 @@ import 'assessment_policy_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Security` - 2021-06-01
@@ -123,20 +123,28 @@ import 'assessment_policy_state.dart';
 class AssessmentPolicy extends pulumi.CustomResource {
   /// A list of the categories of resource that is at risk when the Security Center Assessment is unhealthy. Possible values are `Unknown`, `Compute`, `Data`, `IdentityAndAccess`, `IoT` and `Networking`.
   late final pulumi.Output<List<String>> categories;
+
   /// The description of the Security Center Assessment.
   late final pulumi.Output<String> description;
+
   /// The user-friendly display name of the Security Center Assessment.
   late final pulumi.Output<String> displayName;
+
   /// The implementation effort which is used to remediate the Security Center Assessment. Possible values are `Low`, `Moderate` and `High`.
   late final pulumi.Output<String?> implementationEffort;
+
   /// The GUID as the name of the Security Center Assessment Policy.
   late final pulumi.Output<String> name;
+
   /// The description which is used to mitigate the security issue.
   late final pulumi.Output<String?> remediationDescription;
+
   /// The severity level of the Security Center Assessment. Possible values are `Low`, `Medium` and `High`. Defaults to `Medium`.
   late final pulumi.Output<String?> severity;
+
   /// A list of the threat impacts for the Security Center Assessment. Possible values are `AccountBreach`, `DataExfiltration`, `DataSpillage`, `DenialOfService`, `ElevationOfPrivilege`, `MaliciousInsider`, `MissingCoverage` and `ThreatResistance`.
   late final pulumi.Output<List<String>?> threats;
+
   /// The user impact of the Security Center Assessment. Possible values are `Low`, `Moderate` and `High`.
   late final pulumi.Output<String?> userImpact;
 
@@ -149,20 +157,20 @@ class AssessmentPolicy extends pulumi.CustomResource {
     AssessmentPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/assessmentPolicy:AssessmentPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.categories = registerOutput<List<String>>('categories');
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.implementationEffort = registerOutput<String?>('implementationEffort');
+         'azure:securitycenter/assessmentPolicy:AssessmentPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    categories = registerOutput<List<String>>('categories');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    implementationEffort = registerOutput<String?>('implementationEffort');
     this.name = registerOutput<String>('name');
-    this.remediationDescription = registerOutput<String?>('remediationDescription');
-    this.severity = registerOutput<String?>('severity');
-    this.threats = registerOutput<List<String>?>('threats');
-    this.userImpact = registerOutput<String?>('userImpact');
+    remediationDescription = registerOutput<String?>('remediationDescription');
+    severity = registerOutput<String?>('severity');
+    threats = registerOutput<List<String>?>('threats');
+    userImpact = registerOutput<String?>('userImpact');
   }
 
   /// Gets an existing [AssessmentPolicy] resource's state with the given [name] and [id].
@@ -183,19 +191,19 @@ class AssessmentPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:securitycenter/assessmentPolicy:AssessmentPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.categories = registerOutput<List<String>>('categories');
-    this.description = registerOutput<String>('description');
-    this.displayName = registerOutput<String>('displayName');
-    this.implementationEffort = registerOutput<String?>('implementationEffort');
+         'azure:securitycenter/assessmentPolicy:AssessmentPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    categories = registerOutput<List<String>>('categories');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    implementationEffort = registerOutput<String?>('implementationEffort');
     this.name = registerOutput<String>('name');
-    this.remediationDescription = registerOutput<String?>('remediationDescription');
-    this.severity = registerOutput<String?>('severity');
-    this.threats = registerOutput<List<String>?>('threats');
-    this.userImpact = registerOutput<String?>('userImpact');
+    remediationDescription = registerOutput<String?>('remediationDescription');
+    severity = registerOutput<String?>('severity');
+    threats = registerOutput<List<String>?>('threats');
+    userImpact = registerOutput<String?>('userImpact');
   }
 }

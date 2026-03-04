@@ -9,16 +9,15 @@ enum ConditionIamComputeBeta {
   noAttr("NO_ATTR"),
   securityRealm("SECURITY_REALM");
 
-  const ConditionIamComputeBeta(this.value);
-  final String value;
+  const ConditionIamComputeBeta(this.wireValue);
+  final String wireValue;
 
   static ConditionIamComputeBeta fromValue(String value) {
     for (final item in ConditionIamComputeBeta.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown ConditionIamComputeBeta value: $value');
   }
 }
-

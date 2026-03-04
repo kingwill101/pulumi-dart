@@ -9,20 +9,19 @@ class GetLogAnalyticExportThrottledRequestsResult {
 
   /// Creates a new [GetLogAnalyticExportThrottledRequestsResult].
   /// [properties] LogAnalyticsOutput
-  GetLogAnalyticExportThrottledRequestsResult({
-    required this.properties,
-  });
+  GetLogAnalyticExportThrottledRequestsResult({required this.properties});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'properties': properties.toMap(),
-    };
+    return <String, dynamic>{'properties': properties.toMap()};
   }
 
-  factory GetLogAnalyticExportThrottledRequestsResult.fromMap(Map<String, dynamic> map) {
+  factory GetLogAnalyticExportThrottledRequestsResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLogAnalyticExportThrottledRequestsResult(
-      properties: LogAnalyticsOutputResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: LogAnalyticsOutputResponse.fromMap(
+        (map['properties']! as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

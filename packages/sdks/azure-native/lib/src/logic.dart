@@ -1,5 +1,3 @@
-library module_logic;
-
 export 'logic/agreement_content.dart';
 export 'logic/agreement_content_response.dart';
 export 'logic/agreement_type.dart';

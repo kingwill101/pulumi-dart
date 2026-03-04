@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork {
   /// The time when this access control entry expires in RFC 3339 format.
   final pulumi.Input<String>? expireTime;
+
   /// A label to identify this entry.
   final pulumi.Input<String>? label;
+
   /// Input only. The time-to-leave of this access control entry.
   final pulumi.Input<String>? ttl;
+
   /// The allowlisted value for the access control list.
   final pulumi.Input<String> value;
 
@@ -33,13 +36,26 @@ class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork {
     };
   }
 
-  factory ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork.fromMap(Map<String, dynamic> map) {
+  factory ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork(
-      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
-      label: map['label'] == null ? null : (map['label']! as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
-      value: (map['value'] as String).input(),
+      expireTime: (() {
+        final guardedValue = map['expireTime'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      label: (() {
+        final guardedValue = map['label'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ttl: (() {
+        final guardedValue = map['ttl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: pulumi.Input.fromValue(map['value'] as String),
     );
   }
 }
-

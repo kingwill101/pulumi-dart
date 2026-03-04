@@ -380,7 +380,7 @@ import 'route_server_bgp_connection_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Network` - 2025-01-01
@@ -395,10 +395,13 @@ import 'route_server_bgp_connection_state.dart';
 class RouteServerBgpConnection extends pulumi.CustomResource {
   /// The name which should be used for this Route Server Bgp Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The peer autonomous system number for the Route Server Bgp Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<int> peerAsn;
+
   /// The peer ip address for the Route Server Bgp Connection. Changing this forces a new resource to be created.
   late final pulumi.Output<String> peerIp;
+
   /// The ID of the Route Server within which this Bgp connection should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> routeServerId;
 
@@ -411,15 +414,15 @@ class RouteServerBgpConnection extends pulumi.CustomResource {
     RouteServerBgpConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/routeServerBgpConnection:RouteServerBgpConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:network/routeServerBgpConnection:RouteServerBgpConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.peerAsn = registerOutput<int>('peerAsn');
-    this.peerIp = registerOutput<String>('peerIp');
-    this.routeServerId = registerOutput<String>('routeServerId');
+    peerAsn = registerOutput<int>('peerAsn');
+    peerIp = registerOutput<String>('peerIp');
+    routeServerId = registerOutput<String>('routeServerId');
   }
 
   /// Gets an existing [RouteServerBgpConnection] resource's state with the given [name] and [id].
@@ -440,14 +443,14 @@ class RouteServerBgpConnection extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:network/routeServerBgpConnection:RouteServerBgpConnection',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'azure:network/routeServerBgpConnection:RouteServerBgpConnection',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.peerAsn = registerOutput<int>('peerAsn');
-    this.peerIp = registerOutput<String>('peerIp');
-    this.routeServerId = registerOutput<String>('routeServerId');
+    peerAsn = registerOutput<int>('peerAsn');
+    peerIp = registerOutput<String>('peerIp');
+    routeServerId = registerOutput<String>('routeServerId');
   }
 }

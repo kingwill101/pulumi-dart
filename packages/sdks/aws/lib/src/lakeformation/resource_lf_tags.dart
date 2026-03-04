@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_lf_tags_args.dart';
 import 'resource_lf_tags_database.dart';
-import 'resource_lf_tags_lf_tag.dart';
 import 'resource_lf_tags_state.dart';
 import 'resource_lf_tags_table.dart';
 import 'resource_lf_tags_table_with_columns.dart';
@@ -554,16 +553,21 @@ import 'resource_lf_tags_table_with_columns.dart';
 class ResourceLfTags extends pulumi.CustomResource {
   /// Identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.
   late final pulumi.Output<String> catalogId;
+
   /// Configuration block for a database resource. See below.
   late final pulumi.Output<ResourceLfTagsDatabase> database;
+
   /// Set of LF-tags to attach to the resource. See below.
   ///
   /// Exactly one of the following is required:
-  late final pulumi.Output<List<ResourceLfTagsLfTag>> lfTags;
+  late final pulumi.Output<List<Map<String, dynamic>>> lfTags;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Configuration block for a table resource. See below.
   late final pulumi.Output<ResourceLfTagsTable> table;
+
   /// Configuration block for a table with columns resource. See below.
   ///
   /// The following arguments are optional:
@@ -578,17 +582,19 @@ class ResourceLfTags extends pulumi.CustomResource {
     ResourceLfTagsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lakeformation/resourceLfTags:ResourceLfTags',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.catalogId = registerOutput<String>('catalogId');
-    this.database = registerOutput<ResourceLfTagsDatabase>('database');
-    this.lfTags = registerOutput<List<ResourceLfTagsLfTag>>('lfTags');
-    this.region = registerOutput<String>('region');
-    this.table = registerOutput<ResourceLfTagsTable>('table');
-    this.tableWithColumns = registerOutput<ResourceLfTagsTableWithColumns>('tableWithColumns');
+         'aws:lakeformation/resourceLfTags:ResourceLfTags',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    catalogId = registerOutput<String>('catalogId');
+    database = registerOutput<ResourceLfTagsDatabase>('database');
+    lfTags = registerOutput<List<Map<String, dynamic>>>('lfTags');
+    region = registerOutput<String>('region');
+    table = registerOutput<ResourceLfTagsTable>('table');
+    tableWithColumns = registerOutput<ResourceLfTagsTableWithColumns>(
+      'tableWithColumns',
+    );
   }
 
   /// Gets an existing [ResourceLfTags] resource's state with the given [name] and [id].
@@ -609,16 +615,18 @@ class ResourceLfTags extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lakeformation/resourceLfTags:ResourceLfTags',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.catalogId = registerOutput<String>('catalogId');
-    this.database = registerOutput<ResourceLfTagsDatabase>('database');
-    this.lfTags = registerOutput<List<ResourceLfTagsLfTag>>('lfTags');
-    this.region = registerOutput<String>('region');
-    this.table = registerOutput<ResourceLfTagsTable>('table');
-    this.tableWithColumns = registerOutput<ResourceLfTagsTableWithColumns>('tableWithColumns');
+         'aws:lakeformation/resourceLfTags:ResourceLfTags',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    catalogId = registerOutput<String>('catalogId');
+    database = registerOutput<ResourceLfTagsDatabase>('database');
+    lfTags = registerOutput<List<Map<String, dynamic>>>('lfTags');
+    region = registerOutput<String>('region');
+    table = registerOutput<ResourceLfTagsTable>('table');
+    tableWithColumns = registerOutput<ResourceLfTagsTableWithColumns>(
+      'tableWithColumns',
+    );
   }
 }

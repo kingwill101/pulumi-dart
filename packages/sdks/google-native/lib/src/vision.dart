@@ -1,5 +1,3 @@
-library module_vision;
-
 export 'vision/bounding_poly.dart';
 export 'vision/bounding_poly_response.dart';
 export 'vision/functions.dart';

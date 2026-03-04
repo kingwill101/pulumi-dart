@@ -4,16 +4,17 @@ enum DataflowEndpointAuthenticationSaslType {
   scramSha256("ScramSha256"),
   scramSha512("ScramSha512");
 
-  const DataflowEndpointAuthenticationSaslType(this.value);
-  final String value;
+  const DataflowEndpointAuthenticationSaslType(this.wireValue);
+  final String wireValue;
 
   static DataflowEndpointAuthenticationSaslType fromValue(String value) {
     for (final item in DataflowEndpointAuthenticationSaslType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown DataflowEndpointAuthenticationSaslType value: $value');
+    throw ArgumentError(
+      'Unknown DataflowEndpointAuthenticationSaslType value: $value',
+    );
   }
 }
-

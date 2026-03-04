@@ -5,7 +5,11 @@ import 'rule_group_rule_group_rules_source_stateless_rules_and_custom_actions_cu
 
 class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction {
   /// A configuration block describing the custom action associated with the `action_name`. See Action Definition below for details.
-  final pulumi.Input<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition> actionDefinition;
+  final pulumi.Input<
+    RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition
+  >
+  actionDefinition;
+
   /// A friendly name of the custom action.
   final pulumi.Input<String> actionName;
 
@@ -19,16 +23,25 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionDefinition': pulumi.Input.mapInputValue<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition, Map<String, dynamic>>(actionDefinition, (value) => value.toMap()),
+      'actionDefinition':
+          pulumi.Input.mapInputValue<
+            RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition,
+            Map<String, dynamic>
+          >(actionDefinition, (value) => value.toMap()),
       'actionName': actionName,
     };
   }
 
-  factory RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction(
-      actionDefinition: (RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition.fromMap((map['actionDefinition']! as Map).cast<String, dynamic>())).input(),
-      actionName: (map['actionName'] as String).input(),
+      actionDefinition: pulumi.Input.fromValue(
+        RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition.fromMap(
+          (map['actionDefinition']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      actionName: pulumi.Input.fromValue(map['actionName'] as String),
     );
   }
 }
-

@@ -6,16 +6,20 @@ enum AuthorizationLoggingOptionsPermissionTypeComputeBeta {
   dataWrite("DATA_WRITE"),
   permissionTypeUnspecified("PERMISSION_TYPE_UNSPECIFIED");
 
-  const AuthorizationLoggingOptionsPermissionTypeComputeBeta(this.value);
-  final String value;
+  const AuthorizationLoggingOptionsPermissionTypeComputeBeta(this.wireValue);
+  final String wireValue;
 
-  static AuthorizationLoggingOptionsPermissionTypeComputeBeta fromValue(String value) {
-    for (final item in AuthorizationLoggingOptionsPermissionTypeComputeBeta.values) {
-      if (item.value == value) {
+  static AuthorizationLoggingOptionsPermissionTypeComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in AuthorizationLoggingOptionsPermissionTypeComputeBeta.values) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuthorizationLoggingOptionsPermissionTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown AuthorizationLoggingOptionsPermissionTypeComputeBeta value: $value',
+    );
   }
 }
-

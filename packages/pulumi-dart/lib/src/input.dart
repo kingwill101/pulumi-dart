@@ -198,10 +198,18 @@ class _ValueInput<T> implements Input<T> {
 /// Ergonomic value/output conversions for Pulumi program code.
 extension PulumiInputOutputExtensions<T> on T {
   /// Converts this value into a Pulumi [Input].
-  Input<T> input() => Input.fromValue(this);
+  Input<T> input() => Input.asInput(this);
 
   /// Converts this value into a Pulumi [Output].
-  Output<T> output() => Output.create(this);
+  Output<T> output() => Input.asInput<T>(this).toOutput();
+}
+
+extension PulumiInputExtensions<T> on Input<T> {
+  /// Returns this value unchanged for inputs to keep `.input()` idempotent.
+  Input<T> input() => this;
+
+  /// Converts this input to an [Output], preserving any existing dependencies.
+  Output<T> output() => toOutput();
 }
 
 /// Makes `.input()`/`.output()` chain-friendly on already-computed outputs.

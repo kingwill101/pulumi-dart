@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateState {
   /// Certificate file content.
   final pulumi.Input<String>? certificate;
+
   /// The certificate id is automatically generated when you upload your certificate content.**NOTE:** you can also use Certificate ID saved in SSL.
   final pulumi.Input<String>? certificateId;
+
   /// Certificate file name.
   final pulumi.Input<String>? certificateName;
+
   /// The domain that you want to add to WAF.
   final pulumi.Input<String>? domain;
+
   /// The ID of the WAF instance.
   final pulumi.Input<String>? instanceId;
+
   /// The private key.
   final pulumi.Input<String>? privateKey;
 
@@ -46,13 +51,36 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
-      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
-      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
-      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      certificate: (() {
+        final guardedValue = map['certificate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateId: (() {
+        final guardedValue = map['certificateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      certificateName: (() {
+        final guardedValue = map['certificateName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      domain: (() {
+        final guardedValue = map['domain'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      instanceId: (() {
+        final guardedValue = map['instanceId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      privateKey: (() {
+        final guardedValue = map['privateKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

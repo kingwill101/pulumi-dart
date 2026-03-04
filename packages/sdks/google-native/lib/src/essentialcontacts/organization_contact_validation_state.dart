@@ -4,16 +4,17 @@ enum OrganizationContactValidationState {
   valid("VALID"),
   invalid("INVALID");
 
-  const OrganizationContactValidationState(this.value);
-  final String value;
+  const OrganizationContactValidationState(this.wireValue);
+  final String wireValue;
 
   static OrganizationContactValidationState fromValue(String value) {
     for (final item in OrganizationContactValidationState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OrganizationContactValidationState value: $value');
+    throw ArgumentError(
+      'Unknown OrganizationContactValidationState value: $value',
+    );
   }
 }
-

@@ -14,7 +14,7 @@ import 'get_zones_result.dart';
 
 /// This data source provides the Pvtz Endpoints of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.143.0+.
+/// &gt; **NOTE:** Available in v1.143.0+.
 ///
 /// ## Example Usage
 ///
@@ -169,7 +169,7 @@ Future<GetEndpointsResult> getEndpoints(
 
 /// This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.143.0+.
+/// &gt; **NOTE:** Available in v1.143.0+.
 ///
 /// ## Example Usage
 ///
@@ -288,7 +288,7 @@ Future<GetResolverZonesResult> getResolverZones(
 
 /// This data source provides the PrivateZone Rules of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available in v1.143.0+.
+/// &gt; **NOTE:** Available in v1.143.0+.
 ///
 /// ## Example Usage
 ///
@@ -430,7 +430,7 @@ Future<GetRulesResult> getRules(
 ///
 /// For information about Private Zone and how to use it, see [What is Private Zone](https://www.alibabacloud.com/help/en/product/64583.htm).
 ///
-/// > **NOTE:** Available since v1.114.0.
+/// &gt; **NOTE:** Available since v1.114.0.
 ///
 /// ## Example Usage
 ///
@@ -539,7 +539,7 @@ Future<GetServiceResult> getService(
 
 /// This data source provides the Private Zone Records of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.13.0.
+/// &gt; **NOTE:** Available since v1.13.0.
 ///
 /// ## Example Usage
 ///
@@ -776,7 +776,7 @@ Future<GetZoneRecordsResult> getZoneRecords(
 
 /// This data source provides the Private Zones of the current Alibaba Cloud user.
 ///
-/// > **NOTE:** Available since v1.13.0.
+/// &gt; **NOTE:** Available since v1.13.0.
 ///
 /// ## Example Usage
 ///

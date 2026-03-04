@@ -5,16 +5,15 @@ enum KeyDataKeySpec {
   rsa3072("RSA_3072"),
   rsa4096("RSA_4096");
 
-  const KeyDataKeySpec(this.value);
-  final String value;
+  const KeyDataKeySpec(this.wireValue);
+  final String wireValue;
 
   static KeyDataKeySpec fromValue(String value) {
     for (final item in KeyDataKeySpec.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown KeyDataKeySpec value: $value');
   }
 }
-

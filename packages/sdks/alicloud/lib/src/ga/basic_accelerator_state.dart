@@ -6,34 +6,48 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BasicAcceleratorState {
   /// Specifies whether to enable automatic payment. Default value: `false`. Valid values:
   final pulumi.Input<bool>? autoPay;
+
   /// Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
   final pulumi.Input<bool>? autoRenew;
+
   /// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
   final pulumi.Input<int>? autoRenewDuration;
+
   /// Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
   final pulumi.Input<String>? autoUseCoupon;
+
   /// The bandwidth billing method. Valid values: `BandwidthPackage`, `CDT`, `CDT95`.
   final pulumi.Input<String>? bandwidthBillingType;
+
   /// The name of the Global Accelerator Basic Accelerator instance.
   final pulumi.Input<String>? basicAcceleratorName;
+
   /// Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
   final pulumi.Input<bool>? crossBorderStatus;
+
   /// The description of the Global Accelerator Basic Accelerator instance.
   final pulumi.Input<String>? description;
+
   /// The subscription duration. Default value: `1`.
   /// * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
   /// * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
   final pulumi.Input<int>? duration;
+
   /// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
   final pulumi.Input<String>? paymentType;
+
   /// The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
   final pulumi.Input<String>? pricingCycle;
+
   /// The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
   final pulumi.Input<String>? promotionOptionNo;
+
   /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
   final pulumi.Input<String>? resourceGroupId;
+
   /// The status of the Basic Accelerator instance.
   final pulumi.Input<String>? status;
+
   /// A mapping of tags to assign to the resource.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -93,22 +107,83 @@ class BasicAcceleratorState {
 
   factory BasicAcceleratorState.fromMap(Map<String, dynamic> map) {
     return BasicAcceleratorState(
-      autoPay: map['autoPay'] == null ? null : (map['autoPay']! as bool).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
-      autoRenewDuration: map['autoRenewDuration'] == null ? null : (map['autoRenewDuration']! as int).input(),
-      autoUseCoupon: map['autoUseCoupon'] == null ? null : (map['autoUseCoupon']! as String).input(),
-      bandwidthBillingType: map['bandwidthBillingType'] == null ? null : (map['bandwidthBillingType']! as String).input(),
-      basicAcceleratorName: map['basicAcceleratorName'] == null ? null : (map['basicAcceleratorName']! as String).input(),
-      crossBorderStatus: map['crossBorderStatus'] == null ? null : (map['crossBorderStatus']! as bool).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
-      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle']! as String).input(),
-      promotionOptionNo: map['promotionOptionNo'] == null ? null : (map['promotionOptionNo']! as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      autoPay: (() {
+        final guardedValue = map['autoPay'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      autoRenew: (() {
+        final guardedValue = map['autoRenew'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      autoRenewDuration: (() {
+        final guardedValue = map['autoRenewDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      autoUseCoupon: (() {
+        final guardedValue = map['autoUseCoupon'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      bandwidthBillingType: (() {
+        final guardedValue = map['bandwidthBillingType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      basicAcceleratorName: (() {
+        final guardedValue = map['basicAcceleratorName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      crossBorderStatus: (() {
+        final guardedValue = map['crossBorderStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      duration: (() {
+        final guardedValue = map['duration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      paymentType: (() {
+        final guardedValue = map['paymentType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      pricingCycle: (() {
+        final guardedValue = map['pricingCycle'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      promotionOptionNo: (() {
+        final guardedValue = map['promotionOptionNo'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupId: (() {
+        final guardedValue = map['resourceGroupId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

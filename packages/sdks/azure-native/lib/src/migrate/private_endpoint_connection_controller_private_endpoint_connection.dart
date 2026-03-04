@@ -171,17 +171,24 @@ import 'system_data_response.dart';
 /// ```sh
 /// $ pulumi import azure-native:migrate:PrivateEndpointConnectionControllerPrivateEndpointConnection proj5675162pe.fdccace0-e303-4a79-80c8-3aa7c1f09cc6 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnections/{peConnectionName}
 /// ```
-class PrivateEndpointConnectionControllerPrivateEndpointConnection extends pulumi.CustomResource {
+class PrivateEndpointConnectionControllerPrivateEndpointConnection
+    extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// Gets the tag for optimistic concurrency control.
   late final pulumi.Output<String> eTag;
+
   /// Gets the name of the resource.
   late final pulumi.Output<String> name;
+
   /// Gets the properties of the object.
-  late final pulumi.Output<PrivateEndpointConnectionPropertiesResponse> properties;
+  late final pulumi.Output<PrivateEndpointConnectionPropertiesResponse>
+  properties;
+
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Gets the resource type.
   late final pulumi.Output<String> type;
 
@@ -194,16 +201,18 @@ class PrivateEndpointConnectionControllerPrivateEndpointConnection extends pulum
     PrivateEndpointConnectionControllerPrivateEndpointConnectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:migrate:PrivateEndpointConnectionControllerPrivateEndpointConnection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.eTag = registerOutput<String>('eTag');
+         'azure-native:migrate:PrivateEndpointConnectionControllerPrivateEndpointConnection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String>('eTag');
     this.name = registerOutput<String>('name');
-    this.properties = registerOutput<PrivateEndpointConnectionPropertiesResponse>('properties');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.type = registerOutput<String>('type');
+    properties = registerOutput<PrivateEndpointConnectionPropertiesResponse>(
+      'properties',
+    );
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    type = registerOutput<String>('type');
   }
 }

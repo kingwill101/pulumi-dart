@@ -13,15 +13,18 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'waitForDrainDuration': ?waitForDrainDuration,
-    };
+    return <String, dynamic>{'waitForDrainDuration': ?waitForDrainDuration};
   }
 
-  factory ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy(
-      waitForDrainDuration: map['waitForDrainDuration'] == null ? null : (map['waitForDrainDuration']! as String).input(),
+      waitForDrainDuration: (() {
+        final guardedValue = map['waitForDrainDuration'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

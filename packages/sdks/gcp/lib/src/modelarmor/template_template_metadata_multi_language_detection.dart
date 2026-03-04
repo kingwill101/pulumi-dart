@@ -18,10 +18,13 @@ class TemplateTemplateMetadataMultiLanguageDetection {
     };
   }
 
-  factory TemplateTemplateMetadataMultiLanguageDetection.fromMap(Map<String, dynamic> map) {
+  factory TemplateTemplateMetadataMultiLanguageDetection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TemplateTemplateMetadataMultiLanguageDetection(
-      enableMultiLanguageDetection: (map['enableMultiLanguageDetection'] as bool).input(),
+      enableMultiLanguageDetection: pulumi.Input.fromValue(
+        map['enableMultiLanguageDetection'] as bool,
+      ),
     );
   }
 }
-

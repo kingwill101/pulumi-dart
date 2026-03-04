@@ -5,16 +5,15 @@ enum IdentityType {
   userAssigned("UserAssigned"),
   systemAssignedUserAssigned("SystemAssigned, UserAssigned");
 
-  const IdentityType(this.value);
-  final String value;
+  const IdentityType(this.wireValue);
+  final String wireValue;
 
   static IdentityType fromValue(String value) {
     for (final item in IdentityType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown IdentityType value: $value');
   }
 }
-

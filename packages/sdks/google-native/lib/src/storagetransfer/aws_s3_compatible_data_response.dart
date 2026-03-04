@@ -7,12 +7,16 @@ import 's3_compatible_metadata_response.dart';
 class AwsS3CompatibleDataResponse {
   /// Specifies the name of the bucket.
   final pulumi.Input<String> bucketName;
+
   /// Specifies the endpoint of the storage service.
   final pulumi.Input<String> endpoint;
+
   /// Specifies the root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
   final pulumi.Input<String> path;
+
   /// Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
   final pulumi.Input<String> region;
+
   /// A S3 compatible metadata.
   final pulumi.Input<S3CompatibleMetadataResponse> s3Metadata;
 
@@ -36,18 +40,25 @@ class AwsS3CompatibleDataResponse {
       'endpoint': endpoint,
       'path': path,
       'region': region,
-      's3Metadata': pulumi.Input.mapInputValue<S3CompatibleMetadataResponse, Map<String, dynamic>>(s3Metadata, (value) => value.toMap()),
+      's3Metadata':
+          pulumi.Input.mapInputValue<
+            S3CompatibleMetadataResponse,
+            Map<String, dynamic>
+          >(s3Metadata, (value) => value.toMap()),
     };
   }
 
   factory AwsS3CompatibleDataResponse.fromMap(Map<String, dynamic> map) {
     return AwsS3CompatibleDataResponse(
-      bucketName: (map['bucketName'] as String).input(),
-      endpoint: (map['endpoint'] as String).input(),
-      path: (map['path'] as String).input(),
-      region: (map['region'] as String).input(),
-      s3Metadata: (S3CompatibleMetadataResponse.fromMap((map['s3Metadata'] as Map).cast<String, dynamic>())).input(),
+      bucketName: pulumi.Input.fromValue(map['bucketName'] as String),
+      endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
+      path: pulumi.Input.fromValue(map['path'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
+      s3Metadata: pulumi.Input.fromValue(
+        S3CompatibleMetadataResponse.fromMap(
+          (map['s3Metadata']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'management_group_state.dart';
 
 /// Manages a Management Group.
 ///
-/// !> **Note:** Configuring `subscription_ids` is not supported when using the `azure.management.GroupSubscriptionAssociation` resource, results will be unpredictable.
+/// !&gt; **Note:** Configuring `subscription_ids` is not supported when using the `azure.management.GroupSubscriptionAssociation` resource, results will be unpredictable.
 ///
 /// ## Example Usage
 ///
@@ -173,7 +173,7 @@ import 'management_group_state.dart';
 ///
 /// ## API Providers
 ///
-/// <!-- This section is generated, changes will be overwritten -->
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
 /// * `Microsoft.Management` - 2020-05-01
@@ -188,14 +188,18 @@ import 'management_group_state.dart';
 class ManagementGroup extends pulumi.CustomResource {
   /// A friendly name for this Management Group. If not specified, this will be the same as the `name`.
   late final pulumi.Output<String> displayName;
+
   /// The name or UUID for this Management Group, which needs to be unique across your tenant. A new UUID will be generated if not provided. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the Parent Management Group.
   late final pulumi.Output<String> parentManagementGroupId;
+
   /// A list of Subscription GUIDs which should be assigned to the Management Group.
   ///
-  /// > **Note:** To clear all Subscriptions from the Management Group set `subscription_ids` to an empty list
+  /// &gt; **Note:** To clear all Subscriptions from the Management Group set `subscription_ids` to an empty list
   late final pulumi.Output<List<String>> subscriptionIds;
+
   /// The Management Group ID with the Tenant ID prefix.
   late final pulumi.Output<String> tenantScopedId;
 
@@ -208,16 +212,16 @@ class ManagementGroup extends pulumi.CustomResource {
     ManagementGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:managementgroups/managementGroup:ManagementGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
+         'azure:managementgroups/managementGroup:ManagementGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    this.parentManagementGroupId = registerOutput<String>('parentManagementGroupId');
-    this.subscriptionIds = registerOutput<List<String>>('subscriptionIds');
-    this.tenantScopedId = registerOutput<String>('tenantScopedId');
+    parentManagementGroupId = registerOutput<String>('parentManagementGroupId');
+    subscriptionIds = registerOutput<List<String>>('subscriptionIds');
+    tenantScopedId = registerOutput<String>('tenantScopedId');
   }
 
   /// Gets an existing [ManagementGroup] resource's state with the given [name] and [id].
@@ -238,15 +242,15 @@ class ManagementGroup extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:managementgroups/managementGroup:ManagementGroup',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.displayName = registerOutput<String>('displayName');
+         'azure:managementgroups/managementGroup:ManagementGroup',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    this.parentManagementGroupId = registerOutput<String>('parentManagementGroupId');
-    this.subscriptionIds = registerOutput<List<String>>('subscriptionIds');
-    this.tenantScopedId = registerOutput<String>('tenantScopedId');
+    parentManagementGroupId = registerOutput<String>('parentManagementGroupId');
+    subscriptionIds = registerOutput<List<String>>('subscriptionIds');
+    tenantScopedId = registerOutput<String>('tenantScopedId');
   }
 }

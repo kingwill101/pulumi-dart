@@ -8,12 +8,16 @@ import 'saml_sp_config_response_cloudidentity_v1beta1.dart';
 class InboundSamlSsoProfileCloudidentityV1beta1 extends pulumi.CustomResource {
   /// Immutable. The customer. For example: `customers/C0123abc`.
   late final pulumi.Output<String> customer;
+
   /// Human-readable name of the SAML SSO profile.
   late final pulumi.Output<String> displayName;
+
   /// SAML identity provider configuration.
   late final pulumi.Output<SamlIdpConfigResponseCloudidentityV1beta1> idpConfig;
+
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of the SAML SSO profile.
   late final pulumi.Output<String> name;
+
   /// SAML service provider configuration for this SAML SSO profile. These are the service provider details provided by Google that should be configured on the corresponding identity provider.
   late final pulumi.Output<SamlSpConfigResponseCloudidentityV1beta1> spConfig;
 
@@ -26,15 +30,19 @@ class InboundSamlSsoProfileCloudidentityV1beta1 extends pulumi.CustomResource {
     InboundSamlSsoProfileCloudidentityV1beta1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:cloudidentity/v1beta1:InboundSamlSsoProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.customer = registerOutput<String>('customer');
-    this.displayName = registerOutput<String>('displayName');
-    this.idpConfig = registerOutput<SamlIdpConfigResponseCloudidentityV1beta1>('idpConfig');
+         'google-native:cloudidentity/v1beta1:InboundSamlSsoProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    customer = registerOutput<String>('customer');
+    displayName = registerOutput<String>('displayName');
+    idpConfig = registerOutput<SamlIdpConfigResponseCloudidentityV1beta1>(
+      'idpConfig',
+    );
     this.name = registerOutput<String>('name');
-    this.spConfig = registerOutput<SamlSpConfigResponseCloudidentityV1beta1>('spConfig');
+    spConfig = registerOutput<SamlSpConfigResponseCloudidentityV1beta1>(
+      'spConfig',
+    );
   }
 }

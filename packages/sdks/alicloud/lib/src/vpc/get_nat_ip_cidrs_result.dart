@@ -6,6 +6,7 @@ import 'get_nat_ip_cidrs_cidr.dart';
 /// Result data returned by getNatIpCidrs.
 class GetNatIpCidrsResult {
   final List<GetNatIpCidrsCidr> cidrs;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<String> ids;
@@ -43,7 +44,10 @@ class GetNatIpCidrsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cidrs': pulumi.Input.encodeList<GetNatIpCidrsCidr, Map<String, dynamic>>(cidrs, (value) => value.toMap()),
+      'cidrs': pulumi.Input.encodeList<GetNatIpCidrsCidr, Map<String, dynamic>>(
+        cidrs,
+        (value) => value.toMap(),
+      ),
       'id': id,
       'ids': ids,
       'nameRegex': ?nameRegex,
@@ -58,17 +62,40 @@ class GetNatIpCidrsResult {
 
   factory GetNatIpCidrsResult.fromMap(Map<String, dynamic> map) {
     return GetNatIpCidrsResult(
-      cidrs: pulumi.Input.decodeList<GetNatIpCidrsCidr>(map['cidrs'], (value) => GetNatIpCidrsCidr.fromMap((value as Map).cast<String, dynamic>())),
+      cidrs: pulumi.Input.decodeList<GetNatIpCidrsCidr>(
+        map['cidrs']!,
+        (value) =>
+            GetNatIpCidrsCidr.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      nameRegex: (() {
+        final guardedValue = map['nameRegex'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       names: (map['names'] as List).cast<String>(),
       natGatewayId: map['natGatewayId'] as String,
-      natIpCidrNames: map['natIpCidrNames'] == null ? null : (map['natIpCidrNames']! as List).cast<String>(),
-      natIpCidrs: map['natIpCidrs'] == null ? null : (map['natIpCidrs']! as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      status: map['status'] == null ? null : map['status']! as String,
+      natIpCidrNames: (() {
+        final guardedValue = map['natIpCidrNames'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      natIpCidrs: (() {
+        final guardedValue = map['natIpCidrs'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

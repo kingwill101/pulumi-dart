@@ -1,5 +1,3 @@
-library module_appstream;
-
 export 'appstream/directory_config.dart';
 export 'appstream/directory_config_args.dart';
 export 'appstream/directory_config_certificate_based_auth_properties.dart';

@@ -138,14 +138,19 @@ import 'application_args.dart';
 class Application extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// description of the application
   late final pulumi.Output<String?> description;
+
   /// display name of the application
   late final pulumi.Output<String?> displayName;
+
   /// Resource name
   late final pulumi.Output<String> name;
+
   /// The application source, what it affects, e.g. Assessments
   late final pulumi.Output<String> sourceResourceType;
+
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -158,16 +163,16 @@ class Application extends pulumi.CustomResource {
     ApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:security:Application',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String?>('displayName');
+         'azure-native:security:Application',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
-    this.sourceResourceType = registerOutput<String>('sourceResourceType');
-    this.type = registerOutput<String>('type');
+    sourceResourceType = registerOutput<String>('sourceResourceType');
+    type = registerOutput<String>('type');
   }
 }

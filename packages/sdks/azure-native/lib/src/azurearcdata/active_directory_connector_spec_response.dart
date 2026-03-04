@@ -7,7 +7,9 @@ import 'active_directory_connector_domain_details_response.dart';
 /// The specifications of the AD Kubernetes resource.
 class ActiveDirectoryConnectorSpecResponse {
   /// null
-  final pulumi.Input<ActiveDirectoryConnectorDomainDetailsResponse> activeDirectory;
+  final pulumi.Input<ActiveDirectoryConnectorDomainDetailsResponse>
+  activeDirectory;
+
   /// null
   final pulumi.Input<ActiveDirectoryConnectorDNSDetailsResponse> dns;
 
@@ -21,16 +23,33 @@ class ActiveDirectoryConnectorSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeDirectory': pulumi.Input.mapInputValue<ActiveDirectoryConnectorDomainDetailsResponse, Map<String, dynamic>>(activeDirectory, (value) => value.toMap()),
-      'dns': pulumi.Input.mapInputValue<ActiveDirectoryConnectorDNSDetailsResponse, Map<String, dynamic>>(dns, (value) => value.toMap()),
+      'activeDirectory':
+          pulumi.Input.mapInputValue<
+            ActiveDirectoryConnectorDomainDetailsResponse,
+            Map<String, dynamic>
+          >(activeDirectory, (value) => value.toMap()),
+      'dns':
+          pulumi.Input.mapInputValue<
+            ActiveDirectoryConnectorDNSDetailsResponse,
+            Map<String, dynamic>
+          >(dns, (value) => value.toMap()),
     };
   }
 
-  factory ActiveDirectoryConnectorSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory ActiveDirectoryConnectorSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ActiveDirectoryConnectorSpecResponse(
-      activeDirectory: (ActiveDirectoryConnectorDomainDetailsResponse.fromMap((map['activeDirectory'] as Map).cast<String, dynamic>())).input(),
-      dns: (ActiveDirectoryConnectorDNSDetailsResponse.fromMap((map['dns'] as Map).cast<String, dynamic>())).input(),
+      activeDirectory: pulumi.Input.fromValue(
+        ActiveDirectoryConnectorDomainDetailsResponse.fromMap(
+          (map['activeDirectory']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      dns: pulumi.Input.fromValue(
+        ActiveDirectoryConnectorDNSDetailsResponse.fromMap(
+          (map['dns']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

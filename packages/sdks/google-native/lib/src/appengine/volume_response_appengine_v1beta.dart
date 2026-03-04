@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeResponseAppengineV1beta {
   /// Unique name for the volume.
   final pulumi.Input<String> name;
+
   /// Volume size in gigabytes.
   final pulumi.Input<double> sizeGb;
+
   /// Underlying volume type, e.g. 'tmpfs'.
   final pulumi.Input<String> volumeType;
 
@@ -31,10 +33,9 @@ class VolumeResponseAppengineV1beta {
 
   factory VolumeResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return VolumeResponseAppengineV1beta(
-      name: (map['name'] as String).input(),
-      sizeGb: (map['sizeGb'] as double).input(),
-      volumeType: (map['volumeType'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as double),
+      volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }
 }
-

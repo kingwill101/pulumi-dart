@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointDeploymentConfigRollingUpdatePolicyMaximumBatchSize {
   /// Specifies the endpoint capacity type. Valid values are: `INSTANCE_COUNT`, or `CAPACITY_PERCENT`.
   final pulumi.Input<String> type;
+
   /// Defines the capacity size, either as a number of instances or a capacity percentage.
   final pulumi.Input<int> value;
 
@@ -17,17 +18,15 @@ class EndpointDeploymentConfigRollingUpdatePolicyMaximumBatchSize {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-      'value': value,
-    };
+    return <String, dynamic>{'type': type, 'value': value};
   }
 
-  factory EndpointDeploymentConfigRollingUpdatePolicyMaximumBatchSize.fromMap(Map<String, dynamic> map) {
+  factory EndpointDeploymentConfigRollingUpdatePolicyMaximumBatchSize.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EndpointDeploymentConfigRollingUpdatePolicyMaximumBatchSize(
-      type: (map['type'] as String).input(),
-      value: (map['value'] as int).input(),
+      type: pulumi.Input.fromValue(map['type'] as String),
+      value: pulumi.Input.fromValue(map['value'] as int),
     );
   }
 }
-

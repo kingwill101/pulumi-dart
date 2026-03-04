@@ -14,15 +14,16 @@ class GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'instanceDisplayName': instanceDisplayName,
-    };
+    return <String, dynamic>{'instanceDisplayName': instanceDisplayName};
   }
 
-  factory GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse(
-      instanceDisplayName: (map['instanceDisplayName'] as String).input(),
+      instanceDisplayName: pulumi.Input.fromValue(
+        map['instanceDisplayName'] as String,
+      ),
     );
   }
 }
-

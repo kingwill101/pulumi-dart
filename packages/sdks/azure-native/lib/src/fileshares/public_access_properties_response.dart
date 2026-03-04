@@ -9,20 +9,19 @@ class PublicAccessPropertiesResponse {
 
   /// Creates a new [PublicAccessPropertiesResponse].
   /// [allowedSubnets] The allowed set of subnets when access is restricted.
-  PublicAccessPropertiesResponse({
-    this.allowedSubnets,
-  });
+  PublicAccessPropertiesResponse({this.allowedSubnets});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allowedSubnets': ?allowedSubnets,
-    };
+    return <String, dynamic>{'allowedSubnets': ?allowedSubnets};
   }
 
   factory PublicAccessPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PublicAccessPropertiesResponse(
-      allowedSubnets: map['allowedSubnets'] == null ? null : ((map['allowedSubnets']! as List).cast<String>()).input(),
+      allowedSubnets: (() {
+        final guardedValue = map['allowedSubnets'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
   /// Maximum age of the snapshot that is allowed to be kept.
   final pulumi.Input<int> maxRetentionDays;
+
   /// Specifies the behavior to apply to scheduled snapshots when
   /// the source disk is deleted.
   /// Default value is `KEEP_AUTO_SNAPSHOTS`.
@@ -26,11 +27,16 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
     };
   }
 
-  factory ResourcePolicySnapshotSchedulePolicyRetentionPolicy.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicySnapshotSchedulePolicyRetentionPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicySnapshotSchedulePolicyRetentionPolicy(
-      maxRetentionDays: (map['maxRetentionDays'] as int).input(),
-      onSourceDiskDelete: map['onSourceDiskDelete'] == null ? null : (map['onSourceDiskDelete']! as String).input(),
+      maxRetentionDays: pulumi.Input.fromValue(map['maxRetentionDays'] as int),
+      onSourceDiskDelete: (() {
+        final guardedValue = map['onSourceDiskDelete'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

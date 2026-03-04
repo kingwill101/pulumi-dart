@@ -6,8 +6,10 @@ class PrivateCloudNetworkConfig {
   /// (Output)
   /// DNS Server IP of the Private Cloud.
   final pulumi.Input<String>? dnsServerIp;
+
   /// Management CIDR used by VMware management appliances.
   final pulumi.Input<String> managementCidr;
+
   /// (Output)
   /// The IP address layout version of the management IP address range.
   /// Possible versions include:
@@ -16,10 +18,12 @@ class PrivateCloudNetworkConfig {
   /// * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
   /// used by all newly created private clouds. This version supports all current features.
   final pulumi.Input<int>? managementIpAddressLayoutVersion;
+
   /// The relative resource name of the VMware Engine network attached to the private cloud.
   /// Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
   /// where {project} can either be a project number or a project ID.
   final pulumi.Input<String>? vmwareEngineNetwork;
+
   /// (Output)
   /// The canonical name of the VMware Engine network in
   /// the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
@@ -51,12 +55,27 @@ class PrivateCloudNetworkConfig {
 
   factory PrivateCloudNetworkConfig.fromMap(Map<String, dynamic> map) {
     return PrivateCloudNetworkConfig(
-      dnsServerIp: map['dnsServerIp'] == null ? null : (map['dnsServerIp']! as String).input(),
-      managementCidr: (map['managementCidr'] as String).input(),
-      managementIpAddressLayoutVersion: map['managementIpAddressLayoutVersion'] == null ? null : (map['managementIpAddressLayoutVersion']! as int).input(),
-      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork']! as String).input(),
-      vmwareEngineNetworkCanonical: map['vmwareEngineNetworkCanonical'] == null ? null : (map['vmwareEngineNetworkCanonical']! as String).input(),
+      dnsServerIp: (() {
+        final guardedValue = map['dnsServerIp'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      managementCidr: pulumi.Input.fromValue(map['managementCidr'] as String),
+      managementIpAddressLayoutVersion: (() {
+        final guardedValue = map['managementIpAddressLayoutVersion'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      vmwareEngineNetwork: (() {
+        final guardedValue = map['vmwareEngineNetwork'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      vmwareEngineNetworkCanonical: (() {
+        final guardedValue = map['vmwareEngineNetworkCanonical'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipelineTriggerAllGitConfigurationPullRequestBranch {
   /// A list of patterns of Git branches that, when a commit is pushed, are to be excluded from starting the pipeline.
   final pulumi.Input<List<String>>? excludes;
+
   /// A list of patterns of Git branches that, when a commit is pushed, are to be included as criteria that starts the pipeline.
   final pulumi.Input<List<String>>? includes;
 
@@ -17,17 +18,23 @@ class PipelineTriggerAllGitConfigurationPullRequestBranch {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'excludes': ?excludes,
-      'includes': ?includes,
-    };
+    return <String, dynamic>{'excludes': ?excludes, 'includes': ?includes};
   }
 
-  factory PipelineTriggerAllGitConfigurationPullRequestBranch.fromMap(Map<String, dynamic> map) {
+  factory PipelineTriggerAllGitConfigurationPullRequestBranch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipelineTriggerAllGitConfigurationPullRequestBranch(
-      excludes: map['excludes'] == null ? null : (((map['excludes'] as List).cast<String>()).input()).input(),
-      includes: map['includes'] == null ? null : (((map['includes'] as List).cast<String>()).input()).input(),
+      excludes: (() {
+        final guardedValue = map['excludes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
+      includes: (() {
+        final guardedValue = map['includes'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue((guardedValue as List).cast<String>());
+      })(),
     );
   }
 }
-

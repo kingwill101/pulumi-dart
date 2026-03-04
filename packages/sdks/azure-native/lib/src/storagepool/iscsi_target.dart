@@ -1,6 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'acl_response.dart';
-import 'iscsi_lun_response.dart';
 import 'iscsi_target_args.dart';
 import 'system_metadata_response.dart';
 
@@ -177,32 +175,46 @@ import 'system_metadata_response.dart';
 class IscsiTarget extends pulumi.CustomResource {
   /// Mode for Target connectivity.
   late final pulumi.Output<String> aclMode;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// List of private IPv4 addresses to connect to the iSCSI Target.
   late final pulumi.Output<List<String>?> endpoints;
+
   /// List of LUNs to be exposed through iSCSI Target.
-  late final pulumi.Output<List<IscsiLunResponse>?> luns;
+  late final pulumi.Output<List<Map<String, dynamic>>?> luns;
+
   /// Azure resource id. Indicates if this resource is managed by another Azure resource.
   late final pulumi.Output<String> managedBy;
+
   /// List of Azure resource ids that manage this resource.
   late final pulumi.Output<List<String>> managedByExtended;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The port used by iSCSI Target portal group.
   late final pulumi.Output<int?> port;
+
   /// State of the operation on the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// List of identifiers for active sessions on the iSCSI target
   late final pulumi.Output<List<String>> sessions;
+
   /// Access Control List (ACL) for an iSCSI Target; defines LUN masking policy
-  late final pulumi.Output<List<AclResponse>?> staticAcls;
+  late final pulumi.Output<List<Map<String, dynamic>>?> staticAcls;
+
   /// Operational status of the iSCSI Target.
   late final pulumi.Output<String> status;
+
   /// Resource metadata required by ARM RPC
   late final pulumi.Output<SystemMetadataResponse> systemData;
+
   /// iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server".
   late final pulumi.Output<String> targetIqn;
+
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
 
@@ -215,25 +227,25 @@ class IscsiTarget extends pulumi.CustomResource {
     IscsiTargetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:storagepool:IscsiTarget',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.aclMode = registerOutput<String>('aclMode');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.endpoints = registerOutput<List<String>?>('endpoints');
-    this.luns = registerOutput<List<IscsiLunResponse>?>('luns');
-    this.managedBy = registerOutput<String>('managedBy');
-    this.managedByExtended = registerOutput<List<String>>('managedByExtended');
+         'azure-native:storagepool:IscsiTarget',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    aclMode = registerOutput<String>('aclMode');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    endpoints = registerOutput<List<String>?>('endpoints');
+    luns = registerOutput<List<Map<String, dynamic>>?>('luns');
+    managedBy = registerOutput<String>('managedBy');
+    managedByExtended = registerOutput<List<String>>('managedByExtended');
     this.name = registerOutput<String>('name');
-    this.port = registerOutput<int?>('port');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.sessions = registerOutput<List<String>>('sessions');
-    this.staticAcls = registerOutput<List<AclResponse>?>('staticAcls');
-    this.status = registerOutput<String>('status');
-    this.systemData = registerOutput<SystemMetadataResponse>('systemData');
-    this.targetIqn = registerOutput<String>('targetIqn');
-    this.type = registerOutput<String>('type');
+    port = registerOutput<int?>('port');
+    provisioningState = registerOutput<String>('provisioningState');
+    sessions = registerOutput<List<String>>('sessions');
+    staticAcls = registerOutput<List<Map<String, dynamic>>?>('staticAcls');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemMetadataResponse>('systemData');
+    targetIqn = registerOutput<String>('targetIqn');
+    type = registerOutput<String>('type');
   }
 }

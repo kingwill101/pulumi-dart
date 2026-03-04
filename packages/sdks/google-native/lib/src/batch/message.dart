@@ -9,8 +9,10 @@ import 'message_type.dart';
 class Message {
   /// The new job state.
   final pulumi.Input<MessageNewJobState>? newJobState;
+
   /// The new task state.
   final pulumi.Input<MessageNewTaskState>? newTaskState;
+
   /// The message type.
   final pulumi.Input<MessageType>? type;
 
@@ -18,26 +20,50 @@ class Message {
   /// [newJobState] The new job state.
   /// [newTaskState] The new task state.
   /// [type] The message type.
-  Message({
-    this.newJobState,
-    this.newTaskState,
-    this.type,
-  });
+  Message({this.newJobState, this.newTaskState, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'newJobState': ?pulumi.Input.mapOptionalInputValue<MessageNewJobState, String>(newJobState, (value) => value.value),
-      'newTaskState': ?pulumi.Input.mapOptionalInputValue<MessageNewTaskState, String>(newTaskState, (value) => value.value),
-      'type': ?pulumi.Input.mapOptionalInputValue<MessageType, String>(type, (value) => value.value),
+      'newJobState':
+          ?pulumi.Input.mapOptionalInputValue<MessageNewJobState, String>(
+            newJobState,
+            (value) => value.wireValue,
+          ),
+      'newTaskState':
+          ?pulumi.Input.mapOptionalInputValue<MessageNewTaskState, String>(
+            newTaskState,
+            (value) => value.wireValue,
+          ),
+      'type': ?pulumi.Input.mapOptionalInputValue<MessageType, String>(
+        type,
+        (value) => value.wireValue,
+      ),
     };
   }
 
   factory Message.fromMap(Map<String, dynamic> map) {
     return Message(
-      newJobState: map['newJobState'] == null ? null : (MessageNewJobState.fromValue(map['newJobState']! as String)).input(),
-      newTaskState: map['newTaskState'] == null ? null : (MessageNewTaskState.fromValue(map['newTaskState']! as String)).input(),
-      type: map['type'] == null ? null : (MessageType.fromValue(map['type']! as String)).input(),
+      newJobState: (() {
+        final guardedValue = map['newJobState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MessageNewJobState.fromValue(guardedValue as String),
+        );
+      })(),
+      newTaskState: (() {
+        final guardedValue = map['newTaskState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MessageNewTaskState.fromValue(guardedValue as String),
+        );
+      })(),
+      type: (() {
+        final guardedValue = map['type'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MessageType.fromValue(guardedValue as String),
+        );
+      })(),
     );
   }
 }
-

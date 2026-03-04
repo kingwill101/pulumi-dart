@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TimeConfiguration {
   /// Primary NTP server.
   final pulumi.Input<String>? primaryTimeServer;
+
   /// Secondary NTP server.
   final pulumi.Input<String>? secondaryTimeServer;
+
   /// Time zone.
   final pulumi.Input<String>? timeZone;
 
@@ -31,10 +33,21 @@ class TimeConfiguration {
 
   factory TimeConfiguration.fromMap(Map<String, dynamic> map) {
     return TimeConfiguration(
-      primaryTimeServer: map['primaryTimeServer'] == null ? null : (map['primaryTimeServer']! as String).input(),
-      secondaryTimeServer: map['secondaryTimeServer'] == null ? null : (map['secondaryTimeServer']! as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      primaryTimeServer: (() {
+        final guardedValue = map['primaryTimeServer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      secondaryTimeServer: (() {
+        final guardedValue = map['secondaryTimeServer'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      timeZone: (() {
+        final guardedValue = map['timeZone'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

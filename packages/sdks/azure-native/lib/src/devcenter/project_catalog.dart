@@ -324,30 +324,43 @@ import 'system_data_response.dart';
 class ProjectCatalog extends pulumi.CustomResource {
   /// Properties for an Azure DevOps catalog type.
   late final pulumi.Output<GitCatalogResponse?> adoGit;
+
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
+
   /// The connection state of the catalog.
   late final pulumi.Output<String> connectionState;
+
   /// Properties for a GitHub catalog type.
   late final pulumi.Output<GitCatalogResponse?> gitHub;
+
   /// When the catalog was last connected.
   late final pulumi.Output<String> lastConnectionTime;
+
   /// Stats of the latest synchronization.
   late final pulumi.Output<SyncStatsResponse> lastSyncStats;
+
   /// When the catalog was last synced.
   late final pulumi.Output<String> lastSyncTime;
+
   /// The name of the resource
   late final pulumi.Output<String> name;
+
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
+
   /// The synchronization state of the catalog.
   late final pulumi.Output<String> syncState;
+
   /// Indicates the type of sync that is configured for the catalog.
   late final pulumi.Output<String?> syncType;
+
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
+
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -360,24 +373,24 @@ class ProjectCatalog extends pulumi.CustomResource {
     ProjectCatalogArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure-native:devcenter:ProjectCatalog',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.adoGit = registerOutput<GitCatalogResponse?>('adoGit');
-    this.azureApiVersion = registerOutput<String>('azureApiVersion');
-    this.connectionState = registerOutput<String>('connectionState');
-    this.gitHub = registerOutput<GitCatalogResponse?>('gitHub');
-    this.lastConnectionTime = registerOutput<String>('lastConnectionTime');
-    this.lastSyncStats = registerOutput<SyncStatsResponse>('lastSyncStats');
-    this.lastSyncTime = registerOutput<String>('lastSyncTime');
+         'azure-native:devcenter:ProjectCatalog',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    adoGit = registerOutput<GitCatalogResponse?>('adoGit');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionState = registerOutput<String>('connectionState');
+    gitHub = registerOutput<GitCatalogResponse?>('gitHub');
+    lastConnectionTime = registerOutput<String>('lastConnectionTime');
+    lastSyncStats = registerOutput<SyncStatsResponse>('lastSyncStats');
+    lastSyncTime = registerOutput<String>('lastSyncTime');
     this.name = registerOutput<String>('name');
-    this.provisioningState = registerOutput<String>('provisioningState');
-    this.syncState = registerOutput<String>('syncState');
-    this.syncType = registerOutput<String?>('syncType');
-    this.systemData = registerOutput<SystemDataResponse>('systemData');
-    this.tags = registerOutput<Map<String, String>?>('tags');
-    this.type = registerOutput<String>('type');
+    provisioningState = registerOutput<String>('provisioningState');
+    syncState = registerOutput<String>('syncState');
+    syncType = registerOutput<String?>('syncType');
+    systemData = registerOutput<SystemDataResponse>('systemData');
+    tags = registerOutput<Map<String, String>?>('tags');
+    type = registerOutput<String>('type');
   }
 }

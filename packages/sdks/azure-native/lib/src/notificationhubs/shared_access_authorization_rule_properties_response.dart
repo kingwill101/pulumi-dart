@@ -6,21 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharedAccessAuthorizationRulePropertiesResponse {
   /// Gets a string that describes the claim type
   final pulumi.Input<String> claimType;
+
   /// Gets a string that describes the claim value
   final pulumi.Input<String> claimValue;
+
   /// Gets the created time for this rule
   final pulumi.Input<String> createdTime;
+
   /// Gets a string that describes the authorization rule.
   final pulumi.Input<String> keyName;
+
   /// Gets the last modified time for this rule
   final pulumi.Input<String> modifiedTime;
+
   /// Gets a base64-encoded 256-bit primary key for signing and
   /// validating the SAS token.
   final pulumi.Input<String>? primaryKey;
+
   /// Gets the revision number for the rule
   final pulumi.Input<int> revision;
+
   /// Gets or sets the rights associated with the rule.
   final pulumi.Input<List<String>> rights;
+
   /// Gets a base64-encoded 256-bit primary key for signing and
   /// validating the SAS token.
   final pulumi.Input<String>? secondaryKey;
@@ -61,18 +69,27 @@ class SharedAccessAuthorizationRulePropertiesResponse {
     };
   }
 
-  factory SharedAccessAuthorizationRulePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory SharedAccessAuthorizationRulePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SharedAccessAuthorizationRulePropertiesResponse(
-      claimType: (map['claimType'] as String).input(),
-      claimValue: (map['claimValue'] as String).input(),
-      createdTime: (map['createdTime'] as String).input(),
-      keyName: (map['keyName'] as String).input(),
-      modifiedTime: (map['modifiedTime'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
-      revision: (map['revision'] as int).input(),
-      rights: ((map['rights'] as List).cast<String>()).input(),
-      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey']! as String).input(),
+      claimType: pulumi.Input.fromValue(map['claimType'] as String),
+      claimValue: pulumi.Input.fromValue(map['claimValue'] as String),
+      createdTime: pulumi.Input.fromValue(map['createdTime'] as String),
+      keyName: pulumi.Input.fromValue(map['keyName'] as String),
+      modifiedTime: pulumi.Input.fromValue(map['modifiedTime'] as String),
+      primaryKey: (() {
+        final guardedValue = map['primaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      revision: pulumi.Input.fromValue(map['revision'] as int),
+      rights: pulumi.Input.fromValue((map['rights'] as List).cast<String>()),
+      secondaryKey: (() {
+        final guardedValue = map['secondaryKey'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

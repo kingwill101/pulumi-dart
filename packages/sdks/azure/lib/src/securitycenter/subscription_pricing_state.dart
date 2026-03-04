@@ -7,10 +7,13 @@ import 'subscription_pricing_extension.dart';
 class SubscriptionPricingState {
   /// One or more `extension` blocks as defined below.
   final pulumi.Input<List<SubscriptionPricingExtension>>? extensions;
+
   /// The resource type this setting affects. Possible values are `AI`, `Api`, `AppServices`, `ContainerRegistry`, `KeyVaults`, `KubernetesService`, `SqlServers`, `SqlServerVirtualMachines`, `StorageAccounts`, `VirtualMachines`, `Arm`, `Dns`, `OpenSourceRelationalDatabases`, `Containers`, `CosmosDbs` and `CloudPosture`. Defaults to `VirtualMachines`
   final pulumi.Input<String>? resourceType;
+
   /// Resource type pricing subplan. Contact your MSFT representative for possible values. Changing this forces a new resource to be created.
   final pulumi.Input<String>? subplan;
+
   /// The pricing tier to use. Possible values are `Free` and `Standard`.
   final pulumi.Input<String>? tier;
 
@@ -28,7 +31,18 @@ class SubscriptionPricingState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extensions': ?pulumi.Input.mapOptionalInputValue<List<SubscriptionPricingExtension>, List<Map<String, dynamic>>>(extensions, (value) => pulumi.Input.encodeList<SubscriptionPricingExtension, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'extensions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<SubscriptionPricingExtension>,
+            List<Map<String, dynamic>>
+          >(
+            extensions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  SubscriptionPricingExtension,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'resourceType': ?resourceType,
       'subplan': ?subplan,
       'tier': ?tier,
@@ -37,11 +51,33 @@ class SubscriptionPricingState {
 
   factory SubscriptionPricingState.fromMap(Map<String, dynamic> map) {
     return SubscriptionPricingState(
-      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<SubscriptionPricingExtension>(map['extensions']!, (value) => SubscriptionPricingExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
-      subplan: map['subplan'] == null ? null : (map['subplan']! as String).input(),
-      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      extensions: (() {
+        final guardedValue = map['extensions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<SubscriptionPricingExtension>(
+            guardedValue,
+            (value) => SubscriptionPricingExtension.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      resourceType: (() {
+        final guardedValue = map['resourceType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      subplan: (() {
+        final guardedValue = map['subplan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tier: (() {
+        final guardedValue = map['tier'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -6,8 +6,13 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec {
   /// A description for the flow.
   final pulumi.Input<String>? description;
+
   /// The input schema of the tool. See Tool Input Schema for more information.
-  final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema>? inputSchema;
+  final pulumi.Input<
+    AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema
+  >?
+  inputSchema;
+
   /// A name for the flow.
   final pulumi.Input<String> name;
 
@@ -24,17 +29,34 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'inputSchema': ?pulumi.Input.mapOptionalInputValue<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema, Map<String, dynamic>>(inputSchema, (value) => value.toMap()),
+      'inputSchema':
+          ?pulumi.Input.mapOptionalInputValue<
+            AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema,
+            Map<String, dynamic>
+          >(inputSchema, (value) => value.toMap()),
       'name': name,
     };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec.fromMap(Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec(
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      inputSchema: map['inputSchema'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema.fromMap((map['inputSchema']! as Map).cast<String, dynamic>())).input()).input(),
-      name: (map['name'] as String).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      inputSchema: (() {
+        final guardedValue = map['inputSchema'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: pulumi.Input.fromValue(map['name'] as String),
     );
   }
 }
-

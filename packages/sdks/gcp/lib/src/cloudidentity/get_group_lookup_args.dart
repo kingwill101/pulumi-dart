@@ -15,20 +15,25 @@ class GetGroupLookupArgs {
 
   /// Creates a new [GetGroupLookupArgs].
   /// [groupKey] The EntityKey of the Group to lookup. A unique identifier for an entity in the Cloud Identity Groups API.
-  GetGroupLookupArgs({
-    required this.groupKey,
-  });
+  GetGroupLookupArgs({required this.groupKey});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groupKey': pulumi.Input.mapInputValue<GetGroupLookupGroupKey, Map<String, dynamic>>(groupKey, (value) => value.toMap()),
+      'groupKey':
+          pulumi.Input.mapInputValue<
+            GetGroupLookupGroupKey,
+            Map<String, dynamic>
+          >(groupKey, (value) => value.toMap()),
     };
   }
 
   factory GetGroupLookupArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupLookupArgs(
-      groupKey: (GetGroupLookupGroupKey.fromMap((map['groupKey'] as Map).cast<String, dynamic>())).input(),
+      groupKey: pulumi.Input.fromValue(
+        GetGroupLookupGroupKey.fromMap(
+          (map['groupKey']! as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

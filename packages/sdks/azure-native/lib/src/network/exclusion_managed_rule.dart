@@ -9,20 +9,15 @@ class ExclusionManagedRule {
 
   /// Creates a new [ExclusionManagedRule].
   /// [ruleId] Identifier for the managed rule.
-  ExclusionManagedRule({
-    required this.ruleId,
-  });
+  ExclusionManagedRule({required this.ruleId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ruleId': ruleId,
-    };
+    return <String, dynamic>{'ruleId': ruleId};
   }
 
   factory ExclusionManagedRule.fromMap(Map<String, dynamic> map) {
     return ExclusionManagedRule(
-      ruleId: (map['ruleId'] as String).input(),
+      ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
     );
   }
 }
-

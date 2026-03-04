@@ -7,7 +7,7 @@ import 'whitelist_template_state.dart';
 ///
 /// For information about Resource AliCloudWhitelistTemplate and how to use it, see [What is Whitelist Template](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-modifywhitelisttemplate?).
 ///
-/// > **NOTE:** Available since v1.254.0.
+/// &gt; **NOTE:** Available since v1.254.0.
 ///
 /// ## Example Usage
 ///
@@ -120,6 +120,7 @@ class WhitelistTemplate extends pulumi.CustomResource {
   /// - IP address format, for example: 10.23.XX.XX.
   /// - CIDR format, for example: 10.23.XX.XX/24 (no inter domain routing, 24 represents the length of the prefix in the address, ranging from 1 to 32).
   late final pulumi.Output<String> ipWhiteList;
+
   /// Whitelist template name. Passed in when creating a template, and cannot have the same name under the same account, starting with a letter.
   late final pulumi.Output<String> templateName;
 
@@ -132,13 +133,13 @@ class WhitelistTemplate extends pulumi.CustomResource {
     WhitelistTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/whitelistTemplate:WhitelistTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ipWhiteList = registerOutput<String>('ipWhiteList');
-    this.templateName = registerOutput<String>('templateName');
+         'alicloud:rds/whitelistTemplate:WhitelistTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ipWhiteList = registerOutput<String>('ipWhiteList');
+    templateName = registerOutput<String>('templateName');
   }
 
   /// Gets an existing [WhitelistTemplate] resource's state with the given [name] and [id].
@@ -159,12 +160,12 @@ class WhitelistTemplate extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'alicloud:rds/whitelistTemplate:WhitelistTemplate',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.ipWhiteList = registerOutput<String>('ipWhiteList');
-    this.templateName = registerOutput<String>('templateName');
+         'alicloud:rds/whitelistTemplate:WhitelistTemplate',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    ipWhiteList = registerOutput<String>('ipWhiteList');
+    templateName = registerOutput<String>('templateName');
   }
 }

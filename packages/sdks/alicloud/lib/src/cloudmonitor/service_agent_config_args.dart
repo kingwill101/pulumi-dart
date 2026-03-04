@@ -14,9 +14,7 @@ class ServiceAgentConfigArgs {
 
   /// Creates a new [ServiceAgentConfigArgs].
   /// [enableInstallAgentNewEcs] Whether the cloud monitoring plug-in is automatically installed on the newly purchased ECS host. Value:
-  ServiceAgentConfigArgs({
-    this.enableInstallAgentNewEcs,
-  });
+  ServiceAgentConfigArgs({this.enableInstallAgentNewEcs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,8 +24,11 @@ class ServiceAgentConfigArgs {
 
   factory ServiceAgentConfigArgs.fromMap(Map<String, dynamic> map) {
     return ServiceAgentConfigArgs(
-      enableInstallAgentNewEcs: map['enableInstallAgentNewEcs'] == null ? null : (map['enableInstallAgentNewEcs']! as bool).input(),
+      enableInstallAgentNewEcs: (() {
+        final guardedValue = map['enableInstallAgentNewEcs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

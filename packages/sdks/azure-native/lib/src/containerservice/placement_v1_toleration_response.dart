@@ -2,14 +2,17 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 
-/// Toleration allows ClusterResourcePlacement to tolerate any taint that matches the triple <key,value,effect> using the matching operator <operator>.
+/// Toleration allows ClusterResourcePlacement to tolerate any taint that matches the triple &lt;key,value,effect&gt; using the matching operator &lt;operator&gt;.
 class PlacementV1TolerationResponse {
   /// Effect indicates the taint effect to match. Empty means match all taint effects. When specified, only allowed value is NoSchedule.
   final pulumi.Input<String>? effect;
+
   /// Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
   final pulumi.Input<String>? key;
+
   /// Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a ClusterResourcePlacement can tolerate all taints of a particular category.
   final pulumi.Input<String>? operator;
+
   /// Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
   final pulumi.Input<String>? value;
 
@@ -36,11 +39,26 @@ class PlacementV1TolerationResponse {
 
   factory PlacementV1TolerationResponse.fromMap(Map<String, dynamic> map) {
     return PlacementV1TolerationResponse(
-      effect: map['effect'] == null ? null : (map['effect']! as String).input(),
-      key: map['key'] == null ? null : (map['key']! as String).input(),
-      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
-      value: map['value'] == null ? null : (map['value']! as String).input(),
+      effect: (() {
+        final guardedValue = map['effect'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      key: (() {
+        final guardedValue = map['key'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      operator: (() {
+        final guardedValue = map['operator'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

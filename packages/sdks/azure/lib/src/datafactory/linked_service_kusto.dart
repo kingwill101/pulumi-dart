@@ -405,32 +405,44 @@ class LinkedServiceKusto extends pulumi.CustomResource {
   ///
   /// The following supported arguments are specific to Azure Kusto Linked Service:
   late final pulumi.Output<Map<String, String>?> additionalProperties;
+
   /// List of tags that can be used for describing the Data Factory Linked Service.
   late final pulumi.Output<List<String>?> annotations;
+
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   late final pulumi.Output<String> dataFactoryId;
+
   /// The description for the Data Factory Linked Service.
   late final pulumi.Output<String?> description;
+
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   late final pulumi.Output<String?> integrationRuntimeName;
+
   /// The Kusto Database Name.
   late final pulumi.Output<String> kustoDatabaseName;
+
   /// The URI of the Kusto Cluster endpoint.
   late final pulumi.Output<String> kustoEndpoint;
+
   /// Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   late final pulumi.Output<String> name;
+
   /// A map of parameters to associate with the Data Factory Linked Service.
   late final pulumi.Output<Map<String, String>?> parameters;
+
   /// The service principal id in which to authenticate against the Kusto Database.
   late final pulumi.Output<String?> servicePrincipalId;
+
   /// The service principal key in which to authenticate against the Kusto Database.
   late final pulumi.Output<String?> servicePrincipalKey;
+
   /// The service principal tenant id or name in which to authenticate against the Kusto Database.
   ///
-  /// > **Note:** If `service_principal_id` is used, `service_principal_key` and `tenant` is also required.
+  /// &gt; **Note:** If `service_principal_id` is used, `service_principal_key` and `tenant` is also required.
   ///
-  /// > **Note:** One of Managed Identity authentication and Service Principal authentication must be set.
+  /// &gt; **Note:** One of Managed Identity authentication and Service Principal authentication must be set.
   late final pulumi.Output<String?> tenant;
+
   /// Whether to use the Data Factory's managed identity to authenticate against the Kusto Database.
   late final pulumi.Output<bool?> useManagedIdentity;
 
@@ -443,24 +455,26 @@ class LinkedServiceKusto extends pulumi.CustomResource {
     LinkedServiceKustoArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/linkedServiceKusto:LinkedServiceKusto',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
-    this.kustoDatabaseName = registerOutput<String>('kustoDatabaseName');
-    this.kustoEndpoint = registerOutput<String>('kustoEndpoint');
+         'azure:datafactory/linkedServiceKusto:LinkedServiceKusto',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    kustoDatabaseName = registerOutput<String>('kustoDatabaseName');
+    kustoEndpoint = registerOutput<String>('kustoEndpoint');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.servicePrincipalId = registerOutput<String?>('servicePrincipalId');
-    this.servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
-    this.tenant = registerOutput<String?>('tenant');
-    this.useManagedIdentity = registerOutput<bool?>('useManagedIdentity');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    servicePrincipalId = registerOutput<String?>('servicePrincipalId');
+    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
+    tenant = registerOutput<String?>('tenant');
+    useManagedIdentity = registerOutput<bool?>('useManagedIdentity');
   }
 
   /// Gets an existing [LinkedServiceKusto] resource's state with the given [name] and [id].
@@ -481,23 +495,25 @@ class LinkedServiceKusto extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azure:datafactory/linkedServiceKusto:LinkedServiceKusto',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    this.annotations = registerOutput<List<String>?>('annotations');
-    this.dataFactoryId = registerOutput<String>('dataFactoryId');
-    this.description = registerOutput<String?>('description');
-    this.integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
-    this.kustoDatabaseName = registerOutput<String>('kustoDatabaseName');
-    this.kustoEndpoint = registerOutput<String>('kustoEndpoint');
+         'azure:datafactory/linkedServiceKusto:LinkedServiceKusto',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    additionalProperties = registerOutput<Map<String, String>?>(
+      'additionalProperties',
+    );
+    annotations = registerOutput<List<String>?>('annotations');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    kustoDatabaseName = registerOutput<String>('kustoDatabaseName');
+    kustoEndpoint = registerOutput<String>('kustoEndpoint');
     this.name = registerOutput<String>('name');
-    this.parameters = registerOutput<Map<String, String>?>('parameters');
-    this.servicePrincipalId = registerOutput<String?>('servicePrincipalId');
-    this.servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
-    this.tenant = registerOutput<String?>('tenant');
-    this.useManagedIdentity = registerOutput<bool?>('useManagedIdentity');
+    parameters = registerOutput<Map<String, String>?>('parameters');
+    servicePrincipalId = registerOutput<String?>('servicePrincipalId');
+    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
+    tenant = registerOutput<String?>('tenant');
+    useManagedIdentity = registerOutput<bool?>('useManagedIdentity');
   }
 }

@@ -10,10 +10,13 @@ import 'machine_assessment_v2_properties.dart';
 class MachineAssessmentsV2OperationArgs {
   /// Machine Assessment V2 ARM name
   final pulumi.Input<String>? assessmentName;
+
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
+
   /// The resource-specific properties for this resource.
   final pulumi.Input<MachineAssessmentV2Properties>? properties;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,18 +36,35 @@ class MachineAssessmentsV2OperationArgs {
     return <String, dynamic>{
       'assessmentName': ?assessmentName,
       'projectName': projectName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<MachineAssessmentV2Properties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          ?pulumi.Input.mapOptionalInputValue<
+            MachineAssessmentV2Properties,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
     };
   }
 
   factory MachineAssessmentsV2OperationArgs.fromMap(Map<String, dynamic> map) {
     return MachineAssessmentsV2OperationArgs(
-      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName']! as String).input(),
-      projectName: (map['projectName'] as String).input(),
-      properties: map['properties'] == null ? null : (MachineAssessmentV2Properties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
+      assessmentName: (() {
+        final guardedValue = map['assessmentName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      projectName: pulumi.Input.fromValue(map['projectName'] as String),
+      properties: (() {
+        final guardedValue = map['properties'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          MachineAssessmentV2Properties.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
     );
   }
 }
-

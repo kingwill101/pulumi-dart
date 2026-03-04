@@ -31,10 +31,13 @@ class GetTrustConfigArgs {
 
   factory GetTrustConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetTrustConfigArgs(
-      location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project']! as String).input(),
-      trustConfigId: (map['trustConfigId'] as String).input(),
+      location: pulumi.Input.fromValue(map['location'] as String),
+      project: (() {
+        final guardedValue = map['project'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      trustConfigId: pulumi.Input.fromValue(map['trustConfigId'] as String),
     );
   }
 }
-

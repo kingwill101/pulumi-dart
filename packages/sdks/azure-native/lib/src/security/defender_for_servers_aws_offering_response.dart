@@ -11,22 +11,34 @@ import 'defender_for_servers_aws_offering_response_vm_scanners.dart';
 /// The Defender for Servers AWS offering
 class DefenderForServersAwsOfferingResponse {
   /// The ARC autoprovisioning configuration
-  final pulumi.Input<DefenderForServersAwsOfferingResponseArcAutoProvisioning>? arcAutoProvisioning;
+  final pulumi.Input<DefenderForServersAwsOfferingResponseArcAutoProvisioning>?
+  arcAutoProvisioning;
+
   /// The Defender for servers connection configuration
-  final pulumi.Input<DefenderForServersAwsOfferingResponseDefenderForServers>? defenderForServers;
+  final pulumi.Input<DefenderForServersAwsOfferingResponseDefenderForServers>?
+  defenderForServers;
+
   /// The offering description.
   final pulumi.Input<String> description;
+
   /// The Microsoft Defender for Endpoint autoprovisioning configuration
-  final pulumi.Input<DefenderForServersAwsOfferingResponseMdeAutoProvisioning>? mdeAutoProvisioning;
+  final pulumi.Input<DefenderForServersAwsOfferingResponseMdeAutoProvisioning>?
+  mdeAutoProvisioning;
+
   /// The type of the security offering.
   /// Expected value is 'DefenderForServersAws'.
   final pulumi.Input<String> offeringType;
+
   /// configuration for the servers offering subPlan
   final pulumi.Input<DefenderForServersAwsOfferingResponseSubPlan>? subPlan;
+
   /// The Vulnerability Assessment autoprovisioning configuration
-  final pulumi.Input<DefenderForServersAwsOfferingResponseVaAutoProvisioning>? vaAutoProvisioning;
+  final pulumi.Input<DefenderForServersAwsOfferingResponseVaAutoProvisioning>?
+  vaAutoProvisioning;
+
   /// The Microsoft Defender for Server VM scanning configuration
-  final pulumi.Input<DefenderForServersAwsOfferingResponseVmScanners>? vmScanners;
+  final pulumi.Input<DefenderForServersAwsOfferingResponseVmScanners>?
+  vmScanners;
 
   /// Creates a new [DefenderForServersAwsOfferingResponse].
   /// [arcAutoProvisioning] The ARC autoprovisioning configuration
@@ -50,28 +62,101 @@ class DefenderForServersAwsOfferingResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arcAutoProvisioning': ?pulumi.Input.mapOptionalInputValue<DefenderForServersAwsOfferingResponseArcAutoProvisioning, Map<String, dynamic>>(arcAutoProvisioning, (value) => value.toMap()),
-      'defenderForServers': ?pulumi.Input.mapOptionalInputValue<DefenderForServersAwsOfferingResponseDefenderForServers, Map<String, dynamic>>(defenderForServers, (value) => value.toMap()),
+      'arcAutoProvisioning':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefenderForServersAwsOfferingResponseArcAutoProvisioning,
+            Map<String, dynamic>
+          >(arcAutoProvisioning, (value) => value.toMap()),
+      'defenderForServers':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefenderForServersAwsOfferingResponseDefenderForServers,
+            Map<String, dynamic>
+          >(defenderForServers, (value) => value.toMap()),
       'description': description,
-      'mdeAutoProvisioning': ?pulumi.Input.mapOptionalInputValue<DefenderForServersAwsOfferingResponseMdeAutoProvisioning, Map<String, dynamic>>(mdeAutoProvisioning, (value) => value.toMap()),
+      'mdeAutoProvisioning':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefenderForServersAwsOfferingResponseMdeAutoProvisioning,
+            Map<String, dynamic>
+          >(mdeAutoProvisioning, (value) => value.toMap()),
       'offeringType': offeringType,
-      'subPlan': ?pulumi.Input.mapOptionalInputValue<DefenderForServersAwsOfferingResponseSubPlan, Map<String, dynamic>>(subPlan, (value) => value.toMap()),
-      'vaAutoProvisioning': ?pulumi.Input.mapOptionalInputValue<DefenderForServersAwsOfferingResponseVaAutoProvisioning, Map<String, dynamic>>(vaAutoProvisioning, (value) => value.toMap()),
-      'vmScanners': ?pulumi.Input.mapOptionalInputValue<DefenderForServersAwsOfferingResponseVmScanners, Map<String, dynamic>>(vmScanners, (value) => value.toMap()),
+      'subPlan':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefenderForServersAwsOfferingResponseSubPlan,
+            Map<String, dynamic>
+          >(subPlan, (value) => value.toMap()),
+      'vaAutoProvisioning':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefenderForServersAwsOfferingResponseVaAutoProvisioning,
+            Map<String, dynamic>
+          >(vaAutoProvisioning, (value) => value.toMap()),
+      'vmScanners':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefenderForServersAwsOfferingResponseVmScanners,
+            Map<String, dynamic>
+          >(vmScanners, (value) => value.toMap()),
     };
   }
 
-  factory DefenderForServersAwsOfferingResponse.fromMap(Map<String, dynamic> map) {
+  factory DefenderForServersAwsOfferingResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefenderForServersAwsOfferingResponse(
-      arcAutoProvisioning: map['arcAutoProvisioning'] == null ? null : (DefenderForServersAwsOfferingResponseArcAutoProvisioning.fromMap((map['arcAutoProvisioning']! as Map).cast<String, dynamic>())).input(),
-      defenderForServers: map['defenderForServers'] == null ? null : (DefenderForServersAwsOfferingResponseDefenderForServers.fromMap((map['defenderForServers']! as Map).cast<String, dynamic>())).input(),
-      description: (map['description'] as String).input(),
-      mdeAutoProvisioning: map['mdeAutoProvisioning'] == null ? null : (DefenderForServersAwsOfferingResponseMdeAutoProvisioning.fromMap((map['mdeAutoProvisioning']! as Map).cast<String, dynamic>())).input(),
-      offeringType: (map['offeringType'] as String).input(),
-      subPlan: map['subPlan'] == null ? null : (DefenderForServersAwsOfferingResponseSubPlan.fromMap((map['subPlan']! as Map).cast<String, dynamic>())).input(),
-      vaAutoProvisioning: map['vaAutoProvisioning'] == null ? null : (DefenderForServersAwsOfferingResponseVaAutoProvisioning.fromMap((map['vaAutoProvisioning']! as Map).cast<String, dynamic>())).input(),
-      vmScanners: map['vmScanners'] == null ? null : (DefenderForServersAwsOfferingResponseVmScanners.fromMap((map['vmScanners']! as Map).cast<String, dynamic>())).input(),
+      arcAutoProvisioning: (() {
+        final guardedValue = map['arcAutoProvisioning'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefenderForServersAwsOfferingResponseArcAutoProvisioning.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      defenderForServers: (() {
+        final guardedValue = map['defenderForServers'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefenderForServersAwsOfferingResponseDefenderForServers.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      mdeAutoProvisioning: (() {
+        final guardedValue = map['mdeAutoProvisioning'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefenderForServersAwsOfferingResponseMdeAutoProvisioning.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      offeringType: pulumi.Input.fromValue(map['offeringType'] as String),
+      subPlan: (() {
+        final guardedValue = map['subPlan'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefenderForServersAwsOfferingResponseSubPlan.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vaAutoProvisioning: (() {
+        final guardedValue = map['vaAutoProvisioning'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefenderForServersAwsOfferingResponseVaAutoProvisioning.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      vmScanners: (() {
+        final guardedValue = map['vmScanners'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          DefenderForServersAwsOfferingResponseVmScanners.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

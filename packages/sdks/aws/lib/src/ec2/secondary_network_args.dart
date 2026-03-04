@@ -10,10 +10,13 @@ import 'secondary_network_timeouts.dart';
 class SecondaryNetworkArgs {
   /// IPv4 CIDR block for the secondary network. The CIDR block size must be between `/12` and `/28`.
   final pulumi.Input<String> ipv4CidrBlock;
+
   /// Type of secondary network. Currently only `rdma` is supported.
   final pulumi.Input<String> networkType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<SecondaryNetworkTimeouts>? timeouts;
@@ -38,18 +41,39 @@ class SecondaryNetworkArgs {
       'networkType': networkType,
       'region': ?region,
       'tags': ?tags,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<SecondaryNetworkTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            SecondaryNetworkTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory SecondaryNetworkArgs.fromMap(Map<String, dynamic> map) {
     return SecondaryNetworkArgs(
-      ipv4CidrBlock: (map['ipv4CidrBlock'] as String).input(),
-      networkType: (map['networkType'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
-      timeouts: map['timeouts'] == null ? null : ((SecondaryNetworkTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      ipv4CidrBlock: pulumi.Input.fromValue(map['ipv4CidrBlock'] as String),
+      networkType: pulumi.Input.fromValue(map['networkType'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      timeouts: (() {
+        final guardedValue = map['timeouts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SecondaryNetworkTimeouts.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -7,25 +7,34 @@ import 'get_control_policies_policy.dart';
 class GetControlPoliciesResult {
   /// The action that Cloud Firewall performs on the traffic.
   final String? aclAction;
+
   /// The unique ID of the access control policy.
   final String? aclUuid;
+
   /// The description of the access control policy.
   final String? description;
+
   /// The destination address in the access control policy.
   final String? destination;
+
   /// The direction of the traffic to which the access control policy applies.
   final String direction;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Control Policy IDs.
   final List<String> ids;
   final String? ipVersion;
   final String? lang;
   final String? outputFile;
+
   /// A list of Cloud Firewall Control Policies. Each element contains the following attributes:
   final List<GetControlPoliciesPolicy> policies;
+
   /// The type of the protocol in the access control policy.
   final String? proto;
+
   /// The source address in the access control policy.
   final String? source;
 
@@ -71,7 +80,11 @@ class GetControlPoliciesResult {
       'ipVersion': ?ipVersion,
       'lang': ?lang,
       'outputFile': ?outputFile,
-      'policies': pulumi.Input.encodeList<GetControlPoliciesPolicy, Map<String, dynamic>>(policies, (value) => value.toMap()),
+      'policies':
+          pulumi.Input.encodeList<
+            GetControlPoliciesPolicy,
+            Map<String, dynamic>
+          >(policies, (value) => value.toMap()),
       'proto': ?proto,
       'source': ?source,
     };
@@ -79,20 +92,60 @@ class GetControlPoliciesResult {
 
   factory GetControlPoliciesResult.fromMap(Map<String, dynamic> map) {
     return GetControlPoliciesResult(
-      aclAction: map['aclAction'] == null ? null : map['aclAction']! as String,
-      aclUuid: map['aclUuid'] == null ? null : map['aclUuid']! as String,
-      description: map['description'] == null ? null : map['description']! as String,
-      destination: map['destination'] == null ? null : map['destination']! as String,
+      aclAction: (() {
+        final guardedValue = map['aclAction'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      aclUuid: (() {
+        final guardedValue = map['aclUuid'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      destination: (() {
+        final guardedValue = map['destination'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       direction: map['direction'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      ipVersion: map['ipVersion'] == null ? null : map['ipVersion']! as String,
-      lang: map['lang'] == null ? null : map['lang']! as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
-      policies: pulumi.Input.decodeList<GetControlPoliciesPolicy>(map['policies'], (value) => GetControlPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      proto: map['proto'] == null ? null : map['proto']! as String,
-      source: map['source'] == null ? null : map['source']! as String,
+      ipVersion: (() {
+        final guardedValue = map['ipVersion'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      lang: (() {
+        final guardedValue = map['lang'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      outputFile: (() {
+        final guardedValue = map['outputFile'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      policies: pulumi.Input.decodeList<GetControlPoliciesPolicy>(
+        map['policies']!,
+        (value) => GetControlPoliciesPolicy.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      proto: (() {
+        final guardedValue = map['proto'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
+      source: (() {
+        final guardedValue = map['source'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
     );
   }
 }
-

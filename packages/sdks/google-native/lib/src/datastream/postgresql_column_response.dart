@@ -6,18 +6,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PostgresqlColumnResponse {
   /// Column name.
   final pulumi.Input<String> column;
+
   /// The PostgreSQL data type.
   final pulumi.Input<String> dataType;
+
   /// Column length.
   final pulumi.Input<int> length;
+
   /// Whether or not the column can accept a null value.
   final pulumi.Input<bool> nullable;
+
   /// The ordinal position of the column in the table.
   final pulumi.Input<int> ordinalPosition;
+
   /// Column precision.
   final pulumi.Input<int> precision;
+
   /// Whether or not the column represents a primary key.
   final pulumi.Input<bool> primaryKey;
+
   /// Column scale.
   final pulumi.Input<int> scale;
 
@@ -56,15 +63,14 @@ class PostgresqlColumnResponse {
 
   factory PostgresqlColumnResponse.fromMap(Map<String, dynamic> map) {
     return PostgresqlColumnResponse(
-      column: (map['column'] as String).input(),
-      dataType: (map['dataType'] as String).input(),
-      length: (map['length'] as int).input(),
-      nullable: (map['nullable'] as bool).input(),
-      ordinalPosition: (map['ordinalPosition'] as int).input(),
-      precision: (map['precision'] as int).input(),
-      primaryKey: (map['primaryKey'] as bool).input(),
-      scale: (map['scale'] as int).input(),
+      column: pulumi.Input.fromValue(map['column'] as String),
+      dataType: pulumi.Input.fromValue(map['dataType'] as String),
+      length: pulumi.Input.fromValue(map['length'] as int),
+      nullable: pulumi.Input.fromValue(map['nullable'] as bool),
+      ordinalPosition: pulumi.Input.fromValue(map['ordinalPosition'] as int),
+      precision: pulumi.Input.fromValue(map['precision'] as int),
+      primaryKey: pulumi.Input.fromValue(map['primaryKey'] as bool),
+      scale: pulumi.Input.fromValue(map['scale'] as int),
     );
   }
 }
-

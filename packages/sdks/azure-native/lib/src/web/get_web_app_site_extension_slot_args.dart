@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebAppSiteExtensionSlotArgs {
   /// Site name.
   final pulumi.Input<String> name;
+
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
+
   /// Site extension name.
   final pulumi.Input<String> siteExtensionId;
+
   /// Name of the deployment slot. If a slot is not specified, the API uses the production slot.
   final pulumi.Input<String> slot;
 
@@ -39,11 +42,12 @@ class GetWebAppSiteExtensionSlotArgs {
 
   factory GetWebAppSiteExtensionSlotArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppSiteExtensionSlotArgs(
-      name: (map['name'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteExtensionId: (map['siteExtensionId'] as String).input(),
-      slot: (map['slot'] as String).input(),
+      name: pulumi.Input.fromValue(map['name'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      siteExtensionId: pulumi.Input.fromValue(map['siteExtensionId'] as String),
+      slot: pulumi.Input.fromValue(map['slot'] as String),
     );
   }
 }
-

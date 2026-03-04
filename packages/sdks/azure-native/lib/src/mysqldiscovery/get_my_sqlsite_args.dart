@@ -9,16 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMySQLSiteArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of Site
   final pulumi.Input<String> siteName;
 
   /// Creates a new [GetMySQLSiteArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] The name of Site
-  GetMySQLSiteArgs({
-    required this.resourceGroupName,
-    required this.siteName,
-  });
+  GetMySQLSiteArgs({required this.resourceGroupName, required this.siteName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +27,10 @@ class GetMySQLSiteArgs {
 
   factory GetMySQLSiteArgs.fromMap(Map<String, dynamic> map) {
     return GetMySQLSiteArgs(
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteName: (map['siteName'] as String).input(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      siteName: pulumi.Input.fromValue(map['siteName'] as String),
     );
   }
 }
-

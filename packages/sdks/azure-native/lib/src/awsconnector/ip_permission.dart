@@ -8,29 +8,35 @@ import 'user_id_group_pair.dart';
 
 /// Definition of IpPermission
 class IpPermission {
-  /// <p>If the protocol is TCP or UDP, this is the start of the port range. If the protocol is ICMP or ICMPv6, this is the ICMP type or -1 (all ICMP types).</p>
+  /// &lt;p&gt;If the protocol is TCP or UDP, this is the start of the port range. If the protocol is ICMP or ICMPv6, this is the ICMP type or -1 (all ICMP types).&lt;/p&gt;
   final pulumi.Input<int>? fromPort;
-  /// <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>, <code>icmpv6</code>) or number (see <a href='http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>).</p> <p>Use <code>-1</code> to specify all protocols. When authorizing security group rules, specifying <code>-1</code> or a protocol number other than <code>tcp</code>, <code>udp</code>, <code>icmp</code>, or <code>icmpv6</code> allows traffic on all ports, regardless of any port range you specify. For <code>tcp</code>, <code>udp</code>, and <code>icmp</code>, you must specify a port range. For <code>icmpv6</code>, the port range is optional; if you omit the port range, traffic for all types and codes is allowed.</p>
+
+  /// &lt;p&gt;The IP protocol name (&lt;code&gt;tcp&lt;/code&gt;, &lt;code&gt;udp&lt;/code&gt;, &lt;code&gt;icmp&lt;/code&gt;, &lt;code&gt;icmpv6&lt;/code&gt;) or number (see &lt;a href='http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'&gt;Protocol Numbers&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;Use &lt;code&gt;-1&lt;/code&gt; to specify all protocols. When authorizing security group rules, specifying &lt;code&gt;-1&lt;/code&gt; or a protocol number other than &lt;code&gt;tcp&lt;/code&gt;, &lt;code&gt;udp&lt;/code&gt;, &lt;code&gt;icmp&lt;/code&gt;, or &lt;code&gt;icmpv6&lt;/code&gt; allows traffic on all ports, regardless of any port range you specify. For &lt;code&gt;tcp&lt;/code&gt;, &lt;code&gt;udp&lt;/code&gt;, and &lt;code&gt;icmp&lt;/code&gt;, you must specify a port range. For &lt;code&gt;icmpv6&lt;/code&gt;, the port range is optional; if you omit the port range, traffic for all types and codes is allowed.&lt;/p&gt;
   final pulumi.Input<String>? ipProtocol;
-  /// <p>The IPv4 address ranges.</p>
+
+  /// &lt;p&gt;The IPv4 address ranges.&lt;/p&gt;
   final pulumi.Input<List<IpRange>>? ipRanges;
-  /// <p>The IPv6 address ranges.</p>
+
+  /// &lt;p&gt;The IPv6 address ranges.&lt;/p&gt;
   final pulumi.Input<List<Ipv6Range>>? ipv6Ranges;
-  /// <p>The prefix list IDs.</p>
+
+  /// &lt;p&gt;The prefix list IDs.&lt;/p&gt;
   final pulumi.Input<List<PrefixListId>>? prefixListIds;
-  /// <p>If the protocol is TCP or UDP, this is the end of the port range. If the protocol is ICMP or ICMPv6, this is the ICMP code or -1 (all ICMP codes). If the start port is -1 (all ICMP types), then the end port must be -1 (all ICMP codes).</p>
+
+  /// &lt;p&gt;If the protocol is TCP or UDP, this is the end of the port range. If the protocol is ICMP or ICMPv6, this is the ICMP code or -1 (all ICMP codes). If the start port is -1 (all ICMP types), then the end port must be -1 (all ICMP codes).&lt;/p&gt;
   final pulumi.Input<int>? toPort;
-  /// <p>The security group and Amazon Web Services account ID pairs.</p>
+
+  /// &lt;p&gt;The security group and Amazon Web Services account ID pairs.&lt;/p&gt;
   final pulumi.Input<List<UserIdGroupPair>>? userIdGroupPairs;
 
   /// Creates a new [IpPermission].
-  /// [fromPort] <p>If the protocol is TCP or UDP, this is the start of the port range. If the protocol is ICMP or ICMPv6, this is the ICMP type or -1 (all ICMP types).</p>
-  /// [ipProtocol] <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>, <code>icmpv6</code>) or number (see <a href='http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'>Protocol Numbers</a>).</p> <p>Use <code>-1</code> to specify all protocols. When authorizing security group rules, specifying <code>-1</code> or a protocol number other than <code>tcp</code>, <code>udp</code>, <code>icmp</code>, or <code>icmpv6</code> allows traffic on all ports, regardless of any port range you specify. For <code>tcp</code>, <code>udp</code>, and <code>icmp</code>, you must specify a port range. For <code>icmpv6</code>, the port range is optional; if you omit the port range, traffic for all types and codes is allowed.</p>
-  /// [ipRanges] <p>The IPv4 address ranges.</p>
-  /// [ipv6Ranges] <p>The IPv6 address ranges.</p>
-  /// [prefixListIds] <p>The prefix list IDs.</p>
-  /// [toPort] <p>If the protocol is TCP or UDP, this is the end of the port range. If the protocol is ICMP or ICMPv6, this is the ICMP code or -1 (all ICMP codes). If the start port is -1 (all ICMP types), then the end port must be -1 (all ICMP codes).</p>
-  /// [userIdGroupPairs] <p>The security group and Amazon Web Services account ID pairs.</p>
+  /// [fromPort] &lt;p&gt;If the protocol is TCP or UDP, this is the start of the port range. If the protocol is ICMP or ICMPv6, this is the ICMP type or -1 (all ICMP types).&lt;/p&gt;
+  /// [ipProtocol] &lt;p&gt;The IP protocol name (&lt;code&gt;tcp&lt;/code&gt;, &lt;code&gt;udp&lt;/code&gt;, &lt;code&gt;icmp&lt;/code&gt;, &lt;code&gt;icmpv6&lt;/code&gt;) or number (see &lt;a href='http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml'&gt;Protocol Numbers&lt;/a&gt;).&lt;/p&gt; &lt;p&gt;Use &lt;code&gt;-1&lt;/code&gt; to specify all protocols. When authorizing security group rules, specifying &lt;code&gt;-1&lt;/code&gt; or a protocol number other than &lt;code&gt;tcp&lt;/code&gt;, &lt;code&gt;udp&lt;/code&gt;, &lt;code&gt;icmp&lt;/code&gt;, or &lt;code&gt;icmpv6&lt;/code&gt; allows traffic on all ports, regardless of any port range you specify. For &lt;code&gt;tcp&lt;/code&gt;, &lt;code&gt;udp&lt;/code&gt;, and &lt;code&gt;icmp&lt;/code&gt;, you must specify a port range. For &lt;code&gt;icmpv6&lt;/code&gt;, the port range is optional; if you omit the port range, traffic for all types and codes is allowed.&lt;/p&gt;
+  /// [ipRanges] &lt;p&gt;The IPv4 address ranges.&lt;/p&gt;
+  /// [ipv6Ranges] &lt;p&gt;The IPv6 address ranges.&lt;/p&gt;
+  /// [prefixListIds] &lt;p&gt;The prefix list IDs.&lt;/p&gt;
+  /// [toPort] &lt;p&gt;If the protocol is TCP or UDP, this is the end of the port range. If the protocol is ICMP or ICMPv6, this is the ICMP code or -1 (all ICMP codes). If the start port is -1 (all ICMP types), then the end port must be -1 (all ICMP codes).&lt;/p&gt;
+  /// [userIdGroupPairs] &lt;p&gt;The security group and Amazon Web Services account ID pairs.&lt;/p&gt;
   IpPermission({
     this.fromPort,
     this.ipProtocol,
@@ -45,24 +51,116 @@ class IpPermission {
     return <String, dynamic>{
       'fromPort': ?fromPort,
       'ipProtocol': ?ipProtocol,
-      'ipRanges': ?pulumi.Input.mapOptionalInputValue<List<IpRange>, List<Map<String, dynamic>>>(ipRanges, (value) => pulumi.Input.encodeList<IpRange, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'ipv6Ranges': ?pulumi.Input.mapOptionalInputValue<List<Ipv6Range>, List<Map<String, dynamic>>>(ipv6Ranges, (value) => pulumi.Input.encodeList<Ipv6Range, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'prefixListIds': ?pulumi.Input.mapOptionalInputValue<List<PrefixListId>, List<Map<String, dynamic>>>(prefixListIds, (value) => pulumi.Input.encodeList<PrefixListId, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipRanges':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IpRange>,
+            List<Map<String, dynamic>>
+          >(
+            ipRanges,
+            (value) => pulumi.Input.encodeList<IpRange, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
+      'ipv6Ranges':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<Ipv6Range>,
+            List<Map<String, dynamic>>
+          >(
+            ipv6Ranges,
+            (value) => pulumi.Input.encodeList<Ipv6Range, Map<String, dynamic>>(
+              value,
+              (value) => value.toMap(),
+            ),
+          ),
+      'prefixListIds':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PrefixListId>,
+            List<Map<String, dynamic>>
+          >(
+            prefixListIds,
+            (value) =>
+                pulumi.Input.encodeList<PrefixListId, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'toPort': ?toPort,
-      'userIdGroupPairs': ?pulumi.Input.mapOptionalInputValue<List<UserIdGroupPair>, List<Map<String, dynamic>>>(userIdGroupPairs, (value) => pulumi.Input.encodeList<UserIdGroupPair, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'userIdGroupPairs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<UserIdGroupPair>,
+            List<Map<String, dynamic>>
+          >(
+            userIdGroupPairs,
+            (value) =>
+                pulumi.Input.encodeList<UserIdGroupPair, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory IpPermission.fromMap(Map<String, dynamic> map) {
     return IpPermission(
-      fromPort: map['fromPort'] == null ? null : (map['fromPort']! as int).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol']! as String).input(),
-      ipRanges: map['ipRanges'] == null ? null : (pulumi.Input.decodeList<IpRange>(map['ipRanges']!, (value) => IpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipv6Ranges: map['ipv6Ranges'] == null ? null : (pulumi.Input.decodeList<Ipv6Range>(map['ipv6Ranges']!, (value) => Ipv6Range.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prefixListIds: map['prefixListIds'] == null ? null : (pulumi.Input.decodeList<PrefixListId>(map['prefixListIds']!, (value) => PrefixListId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      toPort: map['toPort'] == null ? null : (map['toPort']! as int).input(),
-      userIdGroupPairs: map['userIdGroupPairs'] == null ? null : (pulumi.Input.decodeList<UserIdGroupPair>(map['userIdGroupPairs']!, (value) => UserIdGroupPair.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fromPort: (() {
+        final guardedValue = map['fromPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      ipProtocol: (() {
+        final guardedValue = map['ipProtocol'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ipRanges: (() {
+        final guardedValue = map['ipRanges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<IpRange>(
+            guardedValue,
+            (value) => IpRange.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      ipv6Ranges: (() {
+        final guardedValue = map['ipv6Ranges'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<Ipv6Range>(
+            guardedValue,
+            (value) =>
+                Ipv6Range.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      prefixListIds: (() {
+        final guardedValue = map['prefixListIds'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<PrefixListId>(
+            guardedValue,
+            (value) =>
+                PrefixListId.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
+      toPort: (() {
+        final guardedValue = map['toPort'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      userIdGroupPairs: (() {
+        final guardedValue = map['userIdGroupPairs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<UserIdGroupPair>(
+            guardedValue,
+            (value) =>
+                UserIdGroupPair.fromMap((value as Map).cast<String, dynamic>()),
+          ),
+        );
+      })(),
     );
   }
 }
-

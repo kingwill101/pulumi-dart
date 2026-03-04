@@ -7,12 +7,16 @@ import 'waf_rule_config_rate_limit_threshold.dart';
 class WafRuleConfigRateLimit {
   /// The statistical dimensions to which the rate limiting rule applies. See `characteristics` below.
   final pulumi.Input<WafRuleConfigRateLimitCharacteristics>? characteristics;
+
   /// The statistical interval.
   final pulumi.Input<int>? interval;
+
   /// Indicates whether the rule applies to requests that hit the cache.
   final pulumi.Input<bool>? onHit;
+
   /// Threshold settings for the rate limiting rule. See `threshold` below.
   final pulumi.Input<WafRuleConfigRateLimitThreshold>? threshold;
+
   /// The timeout period for creating the stack used in rate limiting.
   final pulumi.Input<int>? ttl;
 
@@ -32,22 +36,57 @@ class WafRuleConfigRateLimit {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'characteristics': ?pulumi.Input.mapOptionalInputValue<WafRuleConfigRateLimitCharacteristics, Map<String, dynamic>>(characteristics, (value) => value.toMap()),
+      'characteristics':
+          ?pulumi.Input.mapOptionalInputValue<
+            WafRuleConfigRateLimitCharacteristics,
+            Map<String, dynamic>
+          >(characteristics, (value) => value.toMap()),
       'interval': ?interval,
       'onHit': ?onHit,
-      'threshold': ?pulumi.Input.mapOptionalInputValue<WafRuleConfigRateLimitThreshold, Map<String, dynamic>>(threshold, (value) => value.toMap()),
+      'threshold':
+          ?pulumi.Input.mapOptionalInputValue<
+            WafRuleConfigRateLimitThreshold,
+            Map<String, dynamic>
+          >(threshold, (value) => value.toMap()),
       'ttl': ?ttl,
     };
   }
 
   factory WafRuleConfigRateLimit.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigRateLimit(
-      characteristics: map['characteristics'] == null ? null : (WafRuleConfigRateLimitCharacteristics.fromMap((map['characteristics']! as Map).cast<String, dynamic>())).input(),
-      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
-      onHit: map['onHit'] == null ? null : (map['onHit']! as bool).input(),
-      threshold: map['threshold'] == null ? null : (WafRuleConfigRateLimitThreshold.fromMap((map['threshold']! as Map).cast<String, dynamic>())).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
+      characteristics: (() {
+        final guardedValue = map['characteristics'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WafRuleConfigRateLimitCharacteristics.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      interval: (() {
+        final guardedValue = map['interval'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      onHit: (() {
+        final guardedValue = map['onHit'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      threshold: (() {
+        final guardedValue = map['threshold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          WafRuleConfigRateLimitThreshold.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      ttl: (() {
+        final guardedValue = map['ttl'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
     );
   }
 }
-

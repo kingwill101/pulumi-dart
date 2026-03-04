@@ -4,16 +4,17 @@ enum UpgradeSettingsStrategyContainerV1beta1 {
   blueGreen("BLUE_GREEN"),
   surge("SURGE");
 
-  const UpgradeSettingsStrategyContainerV1beta1(this.value);
-  final String value;
+  const UpgradeSettingsStrategyContainerV1beta1(this.wireValue);
+  final String wireValue;
 
   static UpgradeSettingsStrategyContainerV1beta1 fromValue(String value) {
     for (final item in UpgradeSettingsStrategyContainerV1beta1.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown UpgradeSettingsStrategyContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown UpgradeSettingsStrategyContainerV1beta1 value: $value',
+    );
   }
 }
-

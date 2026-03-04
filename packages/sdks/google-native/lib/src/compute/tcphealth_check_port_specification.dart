@@ -4,16 +4,17 @@ enum TCPHealthCheckPortSpecification {
   useNamedPort("USE_NAMED_PORT"),
   useServingPort("USE_SERVING_PORT");
 
-  const TCPHealthCheckPortSpecification(this.value);
-  final String value;
+  const TCPHealthCheckPortSpecification(this.wireValue);
+  final String wireValue;
 
   static TCPHealthCheckPortSpecification fromValue(String value) {
     for (final item in TCPHealthCheckPortSpecification.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown TCPHealthCheckPortSpecification value: $value');
+    throw ArgumentError(
+      'Unknown TCPHealthCheckPortSpecification value: $value',
+    );
   }
 }
-

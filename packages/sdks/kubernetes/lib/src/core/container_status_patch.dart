@@ -11,41 +11,55 @@ import 'volume_mount_status_patch.dart';
 class ContainerStatusPatch {
   /// AllocatedResources represents the compute resources allocated for this container by the node. Kubelet sets this value to Container.Resources.Requests upon successful pod admission and after successfully admitting desired pod resize.
   final pulumi.Input<Map<String, String>>? allocatedResources;
+
   /// AllocatedResourcesStatus represents the status of various resources allocated for this Pod.
   final pulumi.Input<List<ResourceStatusPatch>>? allocatedResourcesStatus;
-  /// ContainerID is the ID of the container in the format '<type>://<container_id>'. Where type is a container runtime identifier, returned from Version call of CRI API (for example "containerd").
+
+  /// ContainerID is the ID of the container in the format '&lt;type&gt;://&lt;container_id&gt;'. Where type is a container runtime identifier, returned from Version call of CRI API (for example "containerd").
   final pulumi.Input<String>? containerID;
+
   /// Image is the name of container image that the container is running. The container image may not match the image used in the PodSpec, as it may have been resolved by the runtime. More info: https://kubernetes.io/docs/concepts/containers/images.
   final pulumi.Input<String>? image;
+
   /// ImageID is the image ID of the container's image. The image ID may not match the image ID of the image used in the PodSpec, as it may have been resolved by the runtime.
   final pulumi.Input<String>? imageID;
+
   /// LastTerminationState holds the last termination state of the container to help debug container crashes and restarts. This field is not populated if the container is still running and RestartCount is 0.
   final pulumi.Input<ContainerStatePatch>? lastState;
+
   /// Name is a DNS_LABEL representing the unique name of the container. Each container in a pod must have a unique name across all container types. Cannot be updated.
   final pulumi.Input<String>? name;
+
   /// Ready specifies whether the container is currently passing its readiness check. The value will change as readiness probes keep executing. If no readiness probes are specified, this field defaults to true once the container is fully started (see Started field).
   ///
   /// The value is typically used to determine whether a container is ready to accept traffic.
   final pulumi.Input<bool>? ready;
+
   /// Resources represents the compute resource requests and limits that have been successfully enacted on the running container after it has been started or has been successfully resized.
   final pulumi.Input<ResourceRequirementsPatch>? resources;
+
   /// RestartCount holds the number of times the container has been restarted. Kubelet makes an effort to always increment the value, but there are cases when the state may be lost due to node restarts and then the value may be reset to 0. The value is never negative.
   final pulumi.Input<int>? restartCount;
+
   /// Started indicates whether the container has finished its postStart lifecycle hook and passed its startup probe. Initialized as false, becomes true after startupProbe is considered successful. Resets to false when the container is restarted, or if kubelet loses state temporarily. In both cases, startup probes will run again. Is always true when no startupProbe is defined and container is running and has passed the postStart lifecycle hook. The null value must be treated the same as false.
   final pulumi.Input<bool>? started;
+
   /// State holds details about the container's current condition.
   final pulumi.Input<ContainerStatePatch>? state;
+
   /// StopSignal reports the effective stop signal for this container
   final pulumi.Input<String>? stopSignal;
+
   /// User represents user identity information initially attached to the first process of the container
   final pulumi.Input<ContainerUserPatch>? user;
+
   /// Status of volume mounts.
   final pulumi.Input<List<VolumeMountStatusPatch>>? volumeMounts;
 
   /// Creates a new [ContainerStatusPatch].
   /// [allocatedResources] AllocatedResources represents the compute resources allocated for this container by the node. Kubelet sets this value to Container.Resources.Requests upon successful pod admission and after successfully admitting desired pod resize.
   /// [allocatedResourcesStatus] AllocatedResourcesStatus represents the status of various resources allocated for this Pod.
-  /// [containerID] ContainerID is the ID of the container in the format '<type>://<container_id>'. Where type is a container runtime identifier, returned from Version call of CRI API (for example "containerd").
+  /// [containerID] ContainerID is the ID of the container in the format '&lt;type&gt;://&lt;container_id&gt;'. Where type is a container runtime identifier, returned from Version call of CRI API (for example "containerd").
   /// [image] Image is the name of container image that the container is running. The container image may not match the image used in the PodSpec, as it may have been resolved by the runtime. More info: https://kubernetes.io/docs/concepts/containers/images.
   /// [imageID] ImageID is the image ID of the container's image. The image ID may not match the image ID of the image used in the PodSpec, as it may have been resolved by the runtime.
   /// [lastState] LastTerminationState holds the last termination state of the container to help debug container crashes and restarts. This field is not populated if the container is still running and RestartCount is 0.
@@ -79,41 +93,170 @@ class ContainerStatusPatch {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocatedResources': ?allocatedResources,
-      'allocatedResourcesStatus': ?pulumi.Input.mapOptionalInputValue<List<ResourceStatusPatch>, List<Map<String, dynamic>>>(allocatedResourcesStatus, (value) => pulumi.Input.encodeList<ResourceStatusPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'allocatedResourcesStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ResourceStatusPatch>,
+            List<Map<String, dynamic>>
+          >(
+            allocatedResourcesStatus,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceStatusPatch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'containerID': ?containerID,
       'image': ?image,
       'imageID': ?imageID,
-      'lastState': ?pulumi.Input.mapOptionalInputValue<ContainerStatePatch, Map<String, dynamic>>(lastState, (value) => value.toMap()),
+      'lastState':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerStatePatch,
+            Map<String, dynamic>
+          >(lastState, (value) => value.toMap()),
       'name': ?name,
       'ready': ?ready,
-      'resources': ?pulumi.Input.mapOptionalInputValue<ResourceRequirementsPatch, Map<String, dynamic>>(resources, (value) => value.toMap()),
+      'resources':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceRequirementsPatch,
+            Map<String, dynamic>
+          >(resources, (value) => value.toMap()),
       'restartCount': ?restartCount,
       'started': ?started,
-      'state': ?pulumi.Input.mapOptionalInputValue<ContainerStatePatch, Map<String, dynamic>>(state, (value) => value.toMap()),
+      'state':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerStatePatch,
+            Map<String, dynamic>
+          >(state, (value) => value.toMap()),
       'stopSignal': ?stopSignal,
-      'user': ?pulumi.Input.mapOptionalInputValue<ContainerUserPatch, Map<String, dynamic>>(user, (value) => value.toMap()),
-      'volumeMounts': ?pulumi.Input.mapOptionalInputValue<List<VolumeMountStatusPatch>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<VolumeMountStatusPatch, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'user':
+          ?pulumi.Input.mapOptionalInputValue<
+            ContainerUserPatch,
+            Map<String, dynamic>
+          >(user, (value) => value.toMap()),
+      'volumeMounts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<VolumeMountStatusPatch>,
+            List<Map<String, dynamic>>
+          >(
+            volumeMounts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  VolumeMountStatusPatch,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ContainerStatusPatch.fromMap(Map<String, dynamic> map) {
     return ContainerStatusPatch(
-      allocatedResources: map['allocatedResources'] == null ? null : ((map['allocatedResources']! as Map).cast<String, String>()).input(),
-      allocatedResourcesStatus: map['allocatedResourcesStatus'] == null ? null : (pulumi.Input.decodeList<ResourceStatusPatch>(map['allocatedResourcesStatus']!, (value) => ResourceStatusPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      containerID: map['containerID'] == null ? null : (map['containerID']! as String).input(),
-      image: map['image'] == null ? null : (map['image']! as String).input(),
-      imageID: map['imageID'] == null ? null : (map['imageID']! as String).input(),
-      lastState: map['lastState'] == null ? null : (ContainerStatePatch.fromMap((map['lastState']! as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      ready: map['ready'] == null ? null : (map['ready']! as bool).input(),
-      resources: map['resources'] == null ? null : (ResourceRequirementsPatch.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
-      restartCount: map['restartCount'] == null ? null : (map['restartCount']! as int).input(),
-      started: map['started'] == null ? null : (map['started']! as bool).input(),
-      state: map['state'] == null ? null : (ContainerStatePatch.fromMap((map['state']! as Map).cast<String, dynamic>())).input(),
-      stopSignal: map['stopSignal'] == null ? null : (map['stopSignal']! as String).input(),
-      user: map['user'] == null ? null : (ContainerUserPatch.fromMap((map['user']! as Map).cast<String, dynamic>())).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<VolumeMountStatusPatch>(map['volumeMounts']!, (value) => VolumeMountStatusPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allocatedResources: (() {
+        final guardedValue = map['allocatedResources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      allocatedResourcesStatus: (() {
+        final guardedValue = map['allocatedResourcesStatus'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<ResourceStatusPatch>(
+            guardedValue,
+            (value) => ResourceStatusPatch.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      containerID: (() {
+        final guardedValue = map['containerID'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      image: (() {
+        final guardedValue = map['image'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      imageID: (() {
+        final guardedValue = map['imageID'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastState: (() {
+        final guardedValue = map['lastState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerStatePatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      ready: (() {
+        final guardedValue = map['ready'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      resources: (() {
+        final guardedValue = map['resources'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ResourceRequirementsPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      restartCount: (() {
+        final guardedValue = map['restartCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      started: (() {
+        final guardedValue = map['started'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      state: (() {
+        final guardedValue = map['state'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerStatePatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      stopSignal: (() {
+        final guardedValue = map['stopSignal'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      user: (() {
+        final guardedValue = map['user'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ContainerUserPatch.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      volumeMounts: (() {
+        final guardedValue = map['volumeMounts'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<VolumeMountStatusPatch>(
+            guardedValue,
+            (value) => VolumeMountStatusPatch.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
     );
   }
 }
-

@@ -4,16 +4,15 @@ enum CloudSqlSettingsDataDiskType {
   pdSsd("PD_SSD"),
   pdHdd("PD_HDD");
 
-  const CloudSqlSettingsDataDiskType(this.value);
-  final String value;
+  const CloudSqlSettingsDataDiskType(this.wireValue);
+  final String wireValue;
 
   static CloudSqlSettingsDataDiskType fromValue(String value) {
     for (final item in CloudSqlSettingsDataDiskType.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown CloudSqlSettingsDataDiskType value: $value');
   }
 }
-

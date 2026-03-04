@@ -3,16 +3,15 @@ enum BackendEnabledState {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
-  const BackendEnabledState(this.value);
-  final String value;
+  const BackendEnabledState(this.wireValue);
+  final String wireValue;
 
   static BackendEnabledState fromValue(String value) {
     for (final item in BackendEnabledState.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown BackendEnabledState value: $value');
   }
 }
-

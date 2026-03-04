@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClientApplicationArgs {
   /// Client Application identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String>? clientApplicationId;
+
   /// Client application description.
   final pulumi.Input<String>? description;
+
   /// Client application name.
   final pulumi.Input<String> displayName;
+
   /// A resource identifier for the user who owns the application.
   final pulumi.Input<String> ownerId;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -49,13 +54,22 @@ class ClientApplicationArgs {
 
   factory ClientApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ClientApplicationArgs(
-      clientApplicationId: map['clientApplicationId'] == null ? null : (map['clientApplicationId']! as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      displayName: (map['displayName'] as String).input(),
-      ownerId: (map['ownerId'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: (map['serviceName'] as String).input(),
+      clientApplicationId: (() {
+        final guardedValue = map['clientApplicationId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      ownerId: pulumi.Input.fromValue(map['ownerId'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }
 }
-

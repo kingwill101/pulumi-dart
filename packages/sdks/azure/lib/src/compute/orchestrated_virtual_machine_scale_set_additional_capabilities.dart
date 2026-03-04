@@ -13,15 +13,18 @@ class OrchestratedVirtualMachineScaleSetAdditionalCapabilities {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ultraSsdEnabled': ?ultraSsdEnabled,
-    };
+    return <String, dynamic>{'ultraSsdEnabled': ?ultraSsdEnabled};
   }
 
-  factory OrchestratedVirtualMachineScaleSetAdditionalCapabilities.fromMap(Map<String, dynamic> map) {
+  factory OrchestratedVirtualMachineScaleSetAdditionalCapabilities.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OrchestratedVirtualMachineScaleSetAdditionalCapabilities(
-      ultraSsdEnabled: map['ultraSsdEnabled'] == null ? null : (map['ultraSsdEnabled']! as bool).input(),
+      ultraSsdEnabled: (() {
+        final guardedValue = map['ultraSsdEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
     );
   }
 }
-

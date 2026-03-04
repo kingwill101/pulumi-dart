@@ -7,12 +7,16 @@ import 'cost_allocation_rule_details_response.dart';
 class CostAllocationRulePropertiesResponse {
   /// Time at which the rule was created. Rules that change cost for the same resource are applied in order of creation.
   final pulumi.Input<String> createdDate;
+
   /// Description of a cost allocation rule.
   final pulumi.Input<String>? description;
+
   /// Resource information for the cost allocation rule
   final pulumi.Input<CostAllocationRuleDetailsResponse> details;
+
   /// Status of the rule
   final pulumi.Input<String> status;
+
   /// Time at which the rule was last updated.
   final pulumi.Input<String> updatedDate;
 
@@ -34,20 +38,33 @@ class CostAllocationRulePropertiesResponse {
     return <String, dynamic>{
       'createdDate': createdDate,
       'description': ?description,
-      'details': pulumi.Input.mapInputValue<CostAllocationRuleDetailsResponse, Map<String, dynamic>>(details, (value) => value.toMap()),
+      'details':
+          pulumi.Input.mapInputValue<
+            CostAllocationRuleDetailsResponse,
+            Map<String, dynamic>
+          >(details, (value) => value.toMap()),
       'status': status,
       'updatedDate': updatedDate,
     };
   }
 
-  factory CostAllocationRulePropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory CostAllocationRulePropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CostAllocationRulePropertiesResponse(
-      createdDate: (map['createdDate'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      details: (CostAllocationRuleDetailsResponse.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
-      status: (map['status'] as String).input(),
-      updatedDate: (map['updatedDate'] as String).input(),
+      createdDate: pulumi.Input.fromValue(map['createdDate'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      details: pulumi.Input.fromValue(
+        CostAllocationRuleDetailsResponse.fromMap(
+          (map['details']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      status: pulumi.Input.fromValue(map['status'] as String),
+      updatedDate: pulumi.Input.fromValue(map['updatedDate'] as String),
     );
   }
 }
-

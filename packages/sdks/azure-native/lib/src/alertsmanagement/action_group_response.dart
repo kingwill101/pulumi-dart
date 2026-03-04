@@ -8,22 +8,31 @@ import 'scope_response.dart';
 class ActionGroupResponse {
   /// Action group to trigger if action rule matches
   final pulumi.Input<String> actionGroupId;
+
   /// conditions on which alerts will be filtered
   final pulumi.Input<ConditionsResponse>? conditions;
+
   /// Creation time of action rule. Date-Time in ISO-8601 format.
   final pulumi.Input<String> createdAt;
+
   /// Created by user name.
   final pulumi.Input<String> createdBy;
+
   /// Description of action rule
   final pulumi.Input<String>? description;
+
   /// Last updated time of action rule. Date-Time in ISO-8601 format.
   final pulumi.Input<String> lastModifiedAt;
+
   /// Last modified by user name.
   final pulumi.Input<String> lastModifiedBy;
+
   /// scope on which action rule will apply
   final pulumi.Input<ScopeResponse>? scope;
+
   /// Indicates if the given action rule is enabled or disabled
   final pulumi.Input<String>? status;
+
   /// Indicates type of action rule
   /// Expected value is 'ActionGroup'.
   final pulumi.Input<String> type;
@@ -55,13 +64,21 @@ class ActionGroupResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'actionGroupId': actionGroupId,
-      'conditions': ?pulumi.Input.mapOptionalInputValue<ConditionsResponse, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+      'conditions':
+          ?pulumi.Input.mapOptionalInputValue<
+            ConditionsResponse,
+            Map<String, dynamic>
+          >(conditions, (value) => value.toMap()),
       'createdAt': createdAt,
       'createdBy': createdBy,
       'description': ?description,
       'lastModifiedAt': lastModifiedAt,
       'lastModifiedBy': lastModifiedBy,
-      'scope': ?pulumi.Input.mapOptionalInputValue<ScopeResponse, Map<String, dynamic>>(scope, (value) => value.toMap()),
+      'scope':
+          ?pulumi.Input.mapOptionalInputValue<
+            ScopeResponse,
+            Map<String, dynamic>
+          >(scope, (value) => value.toMap()),
       'status': ?status,
       'type': type,
     };
@@ -69,17 +86,38 @@ class ActionGroupResponse {
 
   factory ActionGroupResponse.fromMap(Map<String, dynamic> map) {
     return ActionGroupResponse(
-      actionGroupId: (map['actionGroupId'] as String).input(),
-      conditions: map['conditions'] == null ? null : (ConditionsResponse.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
-      createdAt: (map['createdAt'] as String).input(),
-      createdBy: (map['createdBy'] as String).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      lastModifiedAt: (map['lastModifiedAt'] as String).input(),
-      lastModifiedBy: (map['lastModifiedBy'] as String).input(),
-      scope: map['scope'] == null ? null : (ScopeResponse.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status']! as String).input(),
-      type: (map['type'] as String).input(),
+      actionGroupId: pulumi.Input.fromValue(map['actionGroupId'] as String),
+      conditions: (() {
+        final guardedValue = map['conditions'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ConditionsResponse.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      createdBy: pulumi.Input.fromValue(map['createdBy'] as String),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      lastModifiedAt: pulumi.Input.fromValue(map['lastModifiedAt'] as String),
+      lastModifiedBy: pulumi.Input.fromValue(map['lastModifiedBy'] as String),
+      scope: (() {
+        final guardedValue = map['scope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          ScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      status: (() {
+        final guardedValue = map['status'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

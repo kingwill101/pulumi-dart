@@ -1,5 +1,3 @@
-library module_operationsmanagement;
-
 export 'operationsmanagement/arm_template_parameter.dart';
 export 'operationsmanagement/arm_template_parameter_response.dart';
 export 'operationsmanagement/functions.dart';

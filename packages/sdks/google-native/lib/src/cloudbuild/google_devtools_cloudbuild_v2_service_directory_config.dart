@@ -9,20 +9,17 @@ class GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig {
 
   /// Creates a new [GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig].
   /// [service] The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
-  GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig({
-    required this.service,
-  });
+  GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig({required this.service});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'service': service,
-    };
+    return <String, dynamic>{'service': service};
   }
 
-  factory GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig(
-      service: (map['service'] as String).input(),
+      service: pulumi.Input.fromValue(map['service'] as String),
     );
   }
 }
-

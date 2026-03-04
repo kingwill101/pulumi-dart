@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabasesDatabaseAccount {
   /// Account name.
   final pulumi.Input<String> accountName;
+
   /// Account status.
   final pulumi.Input<String> accountStatus;
+
   /// The privilege status of account.
   final pulumi.Input<String> privilegeStatus;
 
@@ -30,10 +32,9 @@ class GetDatabasesDatabaseAccount {
 
   factory GetDatabasesDatabaseAccount.fromMap(Map<String, dynamic> map) {
     return GetDatabasesDatabaseAccount(
-      accountName: (map['accountName'] as String).input(),
-      accountStatus: (map['accountStatus'] as String).input(),
-      privilegeStatus: (map['privilegeStatus'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      accountStatus: pulumi.Input.fromValue(map['accountStatus'] as String),
+      privilegeStatus: pulumi.Input.fromValue(map['privilegeStatus'] as String),
     );
   }
 }
-

@@ -1,5 +1,3 @@
-library module_mq;
-
 export 'mq/broker.dart';
 export 'mq/broker_args.dart';
 export 'mq/broker_configuration.dart';

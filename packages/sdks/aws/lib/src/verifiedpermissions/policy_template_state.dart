@@ -6,14 +6,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyTemplateState {
   /// The date the Policy Store was created.
   final pulumi.Input<String>? createdDate;
+
   /// Provides a description for the policy template.
   final pulumi.Input<String>? description;
+
   /// The ID of the Policy Store.
   final pulumi.Input<String>? policyStoreId;
+
   /// The ID of the Policy Store.
   final pulumi.Input<String>? policyTemplateId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Defines the content of the statement, written in Cedar policy language.
   ///
   /// The following arguments are optional:
@@ -48,13 +53,36 @@ class PolicyTemplateState {
 
   factory PolicyTemplateState.fromMap(Map<String, dynamic> map) {
     return PolicyTemplateState(
-      createdDate: map['createdDate'] == null ? null : ((map['createdDate'] as String).input()).input(),
-      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
-      policyStoreId: map['policyStoreId'] == null ? null : ((map['policyStoreId'] as String).input()).input(),
-      policyTemplateId: map['policyTemplateId'] == null ? null : ((map['policyTemplateId'] as String).input()).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
-      statement: map['statement'] == null ? null : ((map['statement'] as String).input()).input(),
+      createdDate: (() {
+        final guardedValue = map['createdDate'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyStoreId: (() {
+        final guardedValue = map['policyStoreId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      policyTemplateId: (() {
+        final guardedValue = map['policyTemplateId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      statement: (() {
+        final guardedValue = map['statement'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

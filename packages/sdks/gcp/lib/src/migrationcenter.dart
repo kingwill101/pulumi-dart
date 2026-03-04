@@ -1,5 +1,3 @@
-library module_migrationcenter;
-
 export 'migrationcenter/group.dart';
 export 'migrationcenter/group_args.dart';
 export 'migrationcenter/group_state.dart';

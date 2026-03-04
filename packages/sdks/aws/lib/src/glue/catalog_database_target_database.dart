@@ -5,8 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CatalogDatabaseTargetDatabase {
   /// ID of the Data Catalog in which the database resides.
   final pulumi.Input<String> catalogId;
+
   /// Name of the catalog database.
   final pulumi.Input<String> databaseName;
+
   /// Region of the target database.
   final pulumi.Input<String>? region;
 
@@ -30,10 +32,13 @@ class CatalogDatabaseTargetDatabase {
 
   factory CatalogDatabaseTargetDatabase.fromMap(Map<String, dynamic> map) {
     return CatalogDatabaseTargetDatabase(
-      catalogId: (map['catalogId'] as String).input(),
-      databaseName: (map['databaseName'] as String).input(),
-      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      catalogId: pulumi.Input.fromValue(map['catalogId'] as String),
+      databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
+      region: (() {
+        final guardedValue = map['region'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

@@ -14,15 +14,16 @@ class GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'trainingModelType': trainingModelType,
-    };
+    return <String, dynamic>{'trainingModelType': trainingModelType};
   }
 
-  factory GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponse(
-      trainingModelType: (map['trainingModelType'] as String).input(),
+      trainingModelType: pulumi.Input.fromValue(
+        map['trainingModelType'] as String,
+      ),
     );
   }
 }
-

@@ -7,16 +7,15 @@ enum OrganizationRoleStage {
   disabled("DISABLED"),
   eap("EAP");
 
-  const OrganizationRoleStage(this.value);
-  final String value;
+  const OrganizationRoleStage(this.wireValue);
+  final String wireValue;
 
   static OrganizationRoleStage fromValue(String value) {
     for (final item in OrganizationRoleStage.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
     throw ArgumentError('Unknown OrganizationRoleStage value: $value');
   }
 }
-

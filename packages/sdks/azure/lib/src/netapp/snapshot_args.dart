@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotArgs {
   /// The name of the NetApp account in which the NetApp Pool should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> accountName;
+
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String>? location;
+
   /// The name of the NetApp Snapshot. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The name of the NetApp pool in which the NetApp Volume should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> poolName;
+
   /// The name of the resource group where the NetApp Snapshot should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
+
   /// The name of the NetApp volume in which the NetApp Snapshot should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> volumeName;
 
@@ -49,13 +54,22 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      accountName: (map['accountName'] as String).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      poolName: (map['poolName'] as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      volumeName: (map['volumeName'] as String).input(),
+      accountName: pulumi.Input.fromValue(map['accountName'] as String),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      poolName: pulumi.Input.fromValue(map['poolName'] as String),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      volumeName: pulumi.Input.fromValue(map['volumeName'] as String),
     );
   }
 }
-

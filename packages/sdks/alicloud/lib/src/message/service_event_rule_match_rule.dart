@@ -6,8 +6,10 @@ class ServiceEventRuleMatchRule {
   /// Match state. valid values: `true`, `false`.
   final pulumi.Input<String>? matchState;
   final pulumi.Input<String>? name;
+
   /// Prefix matching rule.
   final pulumi.Input<String>? prefix;
+
   /// Suffix matching rule.
   final pulumi.Input<String>? suffix;
 
@@ -34,11 +36,26 @@ class ServiceEventRuleMatchRule {
 
   factory ServiceEventRuleMatchRule.fromMap(Map<String, dynamic> map) {
     return ServiceEventRuleMatchRule(
-      matchState: map['matchState'] == null ? null : (map['matchState']! as String).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
-      suffix: map['suffix'] == null ? null : (map['suffix']! as String).input(),
+      matchState: (() {
+        final guardedValue = map['matchState'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      prefix: (() {
+        final guardedValue = map['prefix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      suffix: (() {
+        final guardedValue = map['suffix'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

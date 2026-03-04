@@ -308,8 +308,10 @@ import 'authentication_strength_policy_state.dart';
 class AuthenticationStrengthPolicy extends pulumi.CustomResource {
   /// List of allowed authentication methods for this authentication strength policy.
   late final pulumi.Output<List<String>> allowedCombinations;
+
   /// The description for this authentication strength policy.
   late final pulumi.Output<String?> description;
+
   /// The friendly name for this authentication strength policy.
   late final pulumi.Output<String> displayName;
 
@@ -322,14 +324,14 @@ class AuthenticationStrengthPolicy extends pulumi.CustomResource {
     AuthenticationStrengthPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedCombinations = registerOutput<List<String>>('allowedCombinations');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
+         'azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedCombinations = registerOutput<List<String>>('allowedCombinations');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
   }
 
   /// Gets an existing [AuthenticationStrengthPolicy] resource's state with the given [name] and [id].
@@ -350,13 +352,13 @@ class AuthenticationStrengthPolicy extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedCombinations = registerOutput<List<String>>('allowedCombinations');
-    this.description = registerOutput<String?>('description');
-    this.displayName = registerOutput<String>('displayName');
+         'azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    allowedCombinations = registerOutput<List<String>>('allowedCombinations');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
   }
 }

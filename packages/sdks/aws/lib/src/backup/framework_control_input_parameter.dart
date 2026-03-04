@@ -5,29 +5,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FrameworkControlInputParameter {
   /// The name of a parameter, for example, BackupPlanFrequency.
   final pulumi.Input<String>? name;
+
   /// The value of parameter, for example, hourly.
   final pulumi.Input<String>? value;
 
   /// Creates a new [FrameworkControlInputParameter].
   /// [name] The name of a parameter, for example, BackupPlanFrequency.
   /// [value] The value of parameter, for example, hourly.
-  FrameworkControlInputParameter({
-    this.name,
-    this.value,
-  });
+  FrameworkControlInputParameter({this.name, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'value': ?value,
-    };
+    return <String, dynamic>{'name': ?name, 'value': ?value};
   }
 
   factory FrameworkControlInputParameter.fromMap(Map<String, dynamic> map) {
     return FrameworkControlInputParameter(
-      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
-      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      value: (() {
+        final guardedValue = map['value'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

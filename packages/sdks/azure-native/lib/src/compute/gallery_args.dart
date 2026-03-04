@@ -12,18 +12,25 @@ import 'soft_delete_policy.dart';
 class GalleryArgs {
   /// The description of this Shared Image Gallery resource. This property is updatable.
   final pulumi.Input<String>? description;
+
   /// The name of the Shared Image Gallery.
   final pulumi.Input<String>? galleryName;
+
   /// The identity of the gallery, if configured.
   final pulumi.Input<GalleryIdentity>? identity;
+
   /// The geo-location where the resource lives
   final pulumi.Input<String>? location;
+
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
+
   /// Profile for gallery sharing to subscription or tenant
   final pulumi.Input<SharingProfile>? sharingProfile;
+
   /// Contains information about the soft deletion policy of the gallery.
   final pulumi.Input<SoftDeletePolicy>? softDeletePolicy;
+
   /// Resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -51,26 +58,79 @@ class GalleryArgs {
     return <String, dynamic>{
       'description': ?description,
       'galleryName': ?galleryName,
-      'identity': ?pulumi.Input.mapOptionalInputValue<GalleryIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'identity':
+          ?pulumi.Input.mapOptionalInputValue<
+            GalleryIdentity,
+            Map<String, dynamic>
+          >(identity, (value) => value.toMap()),
       'location': ?location,
       'resourceGroupName': resourceGroupName,
-      'sharingProfile': ?pulumi.Input.mapOptionalInputValue<SharingProfile, Map<String, dynamic>>(sharingProfile, (value) => value.toMap()),
-      'softDeletePolicy': ?pulumi.Input.mapOptionalInputValue<SoftDeletePolicy, Map<String, dynamic>>(softDeletePolicy, (value) => value.toMap()),
+      'sharingProfile':
+          ?pulumi.Input.mapOptionalInputValue<
+            SharingProfile,
+            Map<String, dynamic>
+          >(sharingProfile, (value) => value.toMap()),
+      'softDeletePolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            SoftDeletePolicy,
+            Map<String, dynamic>
+          >(softDeletePolicy, (value) => value.toMap()),
       'tags': ?tags,
     };
   }
 
   factory GalleryArgs.fromMap(Map<String, dynamic> map) {
     return GalleryArgs(
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      galleryName: map['galleryName'] == null ? null : (map['galleryName']! as String).input(),
-      identity: map['identity'] == null ? null : (GalleryIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location']! as String).input(),
-      resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sharingProfile: map['sharingProfile'] == null ? null : (SharingProfile.fromMap((map['sharingProfile']! as Map).cast<String, dynamic>())).input(),
-      softDeletePolicy: map['softDeletePolicy'] == null ? null : (SoftDeletePolicy.fromMap((map['softDeletePolicy']! as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      galleryName: (() {
+        final guardedValue = map['galleryName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          GalleryIdentity.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceGroupName: pulumi.Input.fromValue(
+        map['resourceGroupName'] as String,
+      ),
+      sharingProfile: (() {
+        final guardedValue = map['sharingProfile'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SharingProfile.fromMap((guardedValue as Map).cast<String, dynamic>()),
+        );
+      })(),
+      softDeletePolicy: (() {
+        final guardedValue = map['softDeletePolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          SoftDeletePolicy.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
     );
   }
 }
-

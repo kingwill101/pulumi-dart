@@ -7,20 +7,28 @@ import 'storage_box_subaccount_access_settings.dart';
 class StorageBoxSubaccountState {
   /// Access settings for the Subaccount.
   final pulumi.Input<StorageBoxSubaccountAccessSettings>? accessSettings;
+
   /// A description of the Storage Box Subaccount.
   final pulumi.Input<String>? description;
+
   /// Home directory of the Storage Box Subaccount. The directory will be created if it doesn't exist yet. Must not include a leading slash (`/`).
   final pulumi.Input<String>? homeDirectory;
+
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Name of the Storage Box Subaccount.
   final pulumi.Input<String>? name;
+
   /// Password of the Storage Box. For more details, see the [Storage Boxes password policy](https://docs.hetzner.cloud/reference/hetzner#storage-boxes-password-policy).
   final pulumi.Input<String>? password;
+
   /// FQDN of the Storage Box Subaccount.
   final pulumi.Input<String>? server;
+
   /// ID of the Storage Box.
   final pulumi.Input<int>? storageBoxId;
+
   /// Username of the Storage Box Subaccount.
   final pulumi.Input<String>? username;
 
@@ -48,7 +56,11 @@ class StorageBoxSubaccountState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessSettings': ?pulumi.Input.mapOptionalInputValue<StorageBoxSubaccountAccessSettings, Map<String, dynamic>>(accessSettings, (value) => value.toMap()),
+      'accessSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            StorageBoxSubaccountAccessSettings,
+            Map<String, dynamic>
+          >(accessSettings, (value) => value.toMap()),
       'description': ?description,
       'homeDirectory': ?homeDirectory,
       'labels': ?labels,
@@ -62,16 +74,57 @@ class StorageBoxSubaccountState {
 
   factory StorageBoxSubaccountState.fromMap(Map<String, dynamic> map) {
     return StorageBoxSubaccountState(
-      accessSettings: map['accessSettings'] == null ? null : (StorageBoxSubaccountAccessSettings.fromMap((map['accessSettings']! as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description']! as String).input(),
-      homeDirectory: map['homeDirectory'] == null ? null : (map['homeDirectory']! as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      password: map['password'] == null ? null : (map['password']! as String).input(),
-      server: map['server'] == null ? null : (map['server']! as String).input(),
-      storageBoxId: map['storageBoxId'] == null ? null : (map['storageBoxId']! as int).input(),
-      username: map['username'] == null ? null : (map['username']! as String).input(),
+      accessSettings: (() {
+        final guardedValue = map['accessSettings'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          StorageBoxSubaccountAccessSettings.fromMap(
+            (guardedValue as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      description: (() {
+        final guardedValue = map['description'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      homeDirectory: (() {
+        final guardedValue = map['homeDirectory'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      labels: (() {
+        final guardedValue = map['labels'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      password: (() {
+        final guardedValue = map['password'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      server: (() {
+        final guardedValue = map['server'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageBoxId: (() {
+        final guardedValue = map['storageBoxId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as int);
+      })(),
+      username: (() {
+        final guardedValue = map['username'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

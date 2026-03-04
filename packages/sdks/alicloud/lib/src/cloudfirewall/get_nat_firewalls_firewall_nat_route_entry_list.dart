@@ -5,10 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNatFirewallsFirewallNatRouteEntryList {
   /// The destination network segment of the default route.
   final pulumi.Input<String> destinationCidr;
+
   /// The next hop address of the original NAT gateway.
   final pulumi.Input<String> nexthopId;
+
   /// The network type of the next hop. Value: NatGateway : NAT Gateway.
   final pulumi.Input<String> nexthopType;
+
   /// The route table where the default route of the NAT gateway is located.
   final pulumi.Input<String> routeTableId;
 
@@ -33,13 +36,14 @@ class GetNatFirewallsFirewallNatRouteEntryList {
     };
   }
 
-  factory GetNatFirewallsFirewallNatRouteEntryList.fromMap(Map<String, dynamic> map) {
+  factory GetNatFirewallsFirewallNatRouteEntryList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNatFirewallsFirewallNatRouteEntryList(
-      destinationCidr: (map['destinationCidr'] as String).input(),
-      nexthopId: (map['nexthopId'] as String).input(),
-      nexthopType: (map['nexthopType'] as String).input(),
-      routeTableId: (map['routeTableId'] as String).input(),
+      destinationCidr: pulumi.Input.fromValue(map['destinationCidr'] as String),
+      nexthopId: pulumi.Input.fromValue(map['nexthopId'] as String),
+      nexthopType: pulumi.Input.fromValue(map['nexthopType'] as String),
+      routeTableId: pulumi.Input.fromValue(map['routeTableId'] as String),
     );
   }
 }
-

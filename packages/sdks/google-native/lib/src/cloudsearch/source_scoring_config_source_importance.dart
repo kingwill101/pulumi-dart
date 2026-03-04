@@ -4,16 +4,17 @@ enum SourceScoringConfigSourceImportance {
   low("LOW"),
   high("HIGH");
 
-  const SourceScoringConfigSourceImportance(this.value);
-  final String value;
+  const SourceScoringConfigSourceImportance(this.wireValue);
+  final String wireValue;
 
   static SourceScoringConfigSourceImportance fromValue(String value) {
     for (final item in SourceScoringConfigSourceImportance.values) {
-      if (item.value == value) {
+      if (item.wireValue == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SourceScoringConfigSourceImportance value: $value');
+    throw ArgumentError(
+      'Unknown SourceScoringConfigSourceImportance value: $value',
+    );
   }
 }
-

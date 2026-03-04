@@ -12,30 +12,43 @@ import 'update_profile_response.dart';
 class GetNGroupResult {
   /// The Azure API version of the resource.
   final String azureApiVersion;
+
   /// The Container Group Profiles that could be used in the NGroups resource.
   final List<ContainerGroupProfileStubResponse>? containerGroupProfiles;
+
   /// The elastic profile.
   final ElasticProfileResponse? elasticProfile;
+
   /// The resource id.
   final String id;
+
   /// The identity of the NGroup, if configured.
   final NGroupIdentityResponse? identity;
+
   /// The resource location.
   final String? location;
+
   /// The resource name.
   final String name;
+
   /// Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
   final PlacementProfileResponse? placementProfile;
+
   /// The provisioning state, which only appears in the response.
   final String provisioningState;
+
   /// Metadata pertaining to creation and last modification of the resource.
   final SystemDataResponse systemData;
+
   /// The resource tags.
   final Map<String, String>? tags;
+
   /// The resource type.
   final String type;
+
   /// Used by the customer to specify the way to update the Container Groups in NGroup.
   final UpdateProfileResponse? updateProfile;
+
   /// The zones for the container group.
   final List<String>? zones;
 
@@ -74,18 +87,25 @@ class GetNGroupResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureApiVersion': azureApiVersion,
-      'containerGroupProfiles': ?containerGroupProfiles == null ? null : pulumi.Input.encodeList<ContainerGroupProfileStubResponse, Map<String, dynamic>>(containerGroupProfiles!, (value) => value.toMap()),
-      'elasticProfile': ?elasticProfile == null ? null : elasticProfile!.toMap(),
+      'containerGroupProfiles': ?(() {
+        final guardedValue = containerGroupProfiles;
+        if (guardedValue == null) return null;
+        return pulumi.Input.encodeList<
+          ContainerGroupProfileStubResponse,
+          Map<String, dynamic>
+        >(guardedValue, (value) => value.toMap());
+      })(),
+      'elasticProfile': ?elasticProfile?.toMap(),
       'id': id,
-      'identity': ?identity == null ? null : identity!.toMap(),
+      'identity': ?identity?.toMap(),
       'location': ?location,
       'name': name,
-      'placementProfile': ?placementProfile == null ? null : placementProfile!.toMap(),
+      'placementProfile': ?placementProfile?.toMap(),
       'provisioningState': provisioningState,
       'systemData': systemData.toMap(),
       'tags': ?tags,
       'type': type,
-      'updateProfile': ?updateProfile == null ? null : updateProfile!.toMap(),
+      'updateProfile': ?updateProfile?.toMap(),
       'zones': ?zones,
     };
   }
@@ -93,20 +113,66 @@ class GetNGroupResult {
   factory GetNGroupResult.fromMap(Map<String, dynamic> map) {
     return GetNGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      containerGroupProfiles: map['containerGroupProfiles'] == null ? null : pulumi.Input.decodeList<ContainerGroupProfileStubResponse>(map['containerGroupProfiles']!, (value) => ContainerGroupProfileStubResponse.fromMap((value as Map).cast<String, dynamic>())),
-      elasticProfile: map['elasticProfile'] == null ? null : ElasticProfileResponse.fromMap((map['elasticProfile']! as Map).cast<String, dynamic>()),
+      containerGroupProfiles: (() {
+        final guardedValue = map['containerGroupProfiles'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.decodeList<ContainerGroupProfileStubResponse>(
+          guardedValue,
+          (value) => ContainerGroupProfileStubResponse.fromMap(
+            (value as Map).cast<String, dynamic>(),
+          ),
+        );
+      })(),
+      elasticProfile: (() {
+        final guardedValue = map['elasticProfile'];
+        if (guardedValue == null) return null;
+        return ElasticProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : NGroupIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location']! as String,
+      identity: (() {
+        final guardedValue = map['identity'];
+        if (guardedValue == null) return null;
+        return NGroupIdentityResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      location: (() {
+        final guardedValue = map['location'];
+        if (guardedValue == null) return null;
+        return guardedValue as String;
+      })(),
       name: map['name'] as String,
-      placementProfile: map['placementProfile'] == null ? null : PlacementProfileResponse.fromMap((map['placementProfile']! as Map).cast<String, dynamic>()),
+      placementProfile: (() {
+        final guardedValue = map['placementProfile'];
+        if (guardedValue == null) return null;
+        return PlacementProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
       provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      systemData: SystemDataResponse.fromMap(
+        (map['systemData']! as Map).cast<String, dynamic>(),
+      ),
+      tags: (() {
+        final guardedValue = map['tags'];
+        if (guardedValue == null) return null;
+        return (guardedValue as Map).cast<String, String>();
+      })(),
       type: map['type'] as String,
-      updateProfile: map['updateProfile'] == null ? null : UpdateProfileResponse.fromMap((map['updateProfile']! as Map).cast<String, dynamic>()),
-      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
+      updateProfile: (() {
+        final guardedValue = map['updateProfile'];
+        if (guardedValue == null) return null;
+        return UpdateProfileResponse.fromMap(
+          (guardedValue as Map).cast<String, dynamic>(),
+        );
+      })(),
+      zones: (() {
+        final guardedValue = map['zones'];
+        if (guardedValue == null) return null;
+        return (guardedValue as List).cast<String>();
+      })(),
     );
   }
 }
-

@@ -9,23 +9,16 @@ class GetManagedPrefixListEntry {
   /// Creates a new [GetManagedPrefixListEntry].
   /// [cidr] Required.
   /// [description] Required.
-  GetManagedPrefixListEntry({
-    required this.cidr,
-    required this.description,
-  });
+  GetManagedPrefixListEntry({required this.cidr, required this.description});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cidr': cidr,
-      'description': description,
-    };
+    return <String, dynamic>{'cidr': cidr, 'description': description};
   }
 
   factory GetManagedPrefixListEntry.fromMap(Map<String, dynamic> map) {
     return GetManagedPrefixListEntry(
-      cidr: (map['cidr'] as String).input(),
-      description: (map['description'] as String).input(),
+      cidr: pulumi.Input.fromValue(map['cidr'] as String),
+      description: pulumi.Input.fromValue(map['description'] as String),
     );
   }
 }
-

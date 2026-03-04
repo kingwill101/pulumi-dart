@@ -6,8 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoogleCloudDocumentaiV1DocumentShardInfo {
   /// Total number of shards.
   final pulumi.Input<String>? shardCount;
+
   /// The 0-based index of this shard.
   final pulumi.Input<String>? shardIndex;
+
   /// The index of the first character in Document.text in the overall document global text.
   final pulumi.Input<String>? textOffset;
 
@@ -29,12 +31,25 @@ class GoogleCloudDocumentaiV1DocumentShardInfo {
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentShardInfo.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentShardInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentShardInfo(
-      shardCount: map['shardCount'] == null ? null : (map['shardCount']! as String).input(),
-      shardIndex: map['shardIndex'] == null ? null : (map['shardIndex']! as String).input(),
-      textOffset: map['textOffset'] == null ? null : (map['textOffset']! as String).input(),
+      shardCount: (() {
+        final guardedValue = map['shardCount'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      shardIndex: (() {
+        final guardedValue = map['shardIndex'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      textOffset: (() {
+        final guardedValue = map['textOffset'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

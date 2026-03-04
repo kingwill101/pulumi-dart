@@ -21,18 +21,18 @@ class InstanceIamMember extends pulumi.CustomResource {
     InstanceIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:securesourcemanager/instanceIamMember:InstanceIamMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<InstanceIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.location = registerOutput<String>('location');
-    this.member = registerOutput<String>('member');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
+         'gcp:securesourcemanager/instanceIamMember:InstanceIamMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<InstanceIamMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    instanceId = registerOutput<String>('instanceId');
+    location = registerOutput<String>('location');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
   }
 
   /// Gets an existing [InstanceIamMember] resource's state with the given [name] and [id].
@@ -53,17 +53,17 @@ class InstanceIamMember extends pulumi.CustomResource {
     Map<String, dynamic>? state,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:securesourcemanager/instanceIamMember:InstanceIamMember',
-          name,
-          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<InstanceIamMemberCondition?>('condition');
-    this.etag = registerOutput<String>('etag');
-    this.instanceId = registerOutput<String>('instanceId');
-    this.location = registerOutput<String>('location');
-    this.member = registerOutput<String>('member');
-    this.project = registerOutput<String>('project');
-    this.role = registerOutput<String>('role');
+         'gcp:securesourcemanager/instanceIamMember:InstanceIamMember',
+         name,
+         pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    condition = registerOutput<InstanceIamMemberCondition?>('condition');
+    etag = registerOutput<String>('etag');
+    instanceId = registerOutput<String>('instanceId');
+    location = registerOutput<String>('location');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
   }
 }

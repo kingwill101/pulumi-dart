@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ElasticEncryptionConfiguration {
   /// Pool Encryption Key Source.
   final pulumi.Input<String> elasticPoolEncryptionKeySource;
+
   /// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
   final pulumi.Input<String> keyVaultPrivateEndpointResourceId;
 
@@ -26,9 +27,12 @@ class ElasticEncryptionConfiguration {
 
   factory ElasticEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return ElasticEncryptionConfiguration(
-      elasticPoolEncryptionKeySource: (map['elasticPoolEncryptionKeySource'] as String).input(),
-      keyVaultPrivateEndpointResourceId: (map['keyVaultPrivateEndpointResourceId'] as String).input(),
+      elasticPoolEncryptionKeySource: pulumi.Input.fromValue(
+        map['elasticPoolEncryptionKeySource'] as String,
+      ),
+      keyVaultPrivateEndpointResourceId: pulumi.Input.fromValue(
+        map['keyVaultPrivateEndpointResourceId'] as String,
+      ),
     );
   }
 }
-

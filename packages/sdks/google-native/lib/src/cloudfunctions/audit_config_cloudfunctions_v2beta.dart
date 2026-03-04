@@ -7,29 +7,52 @@ import 'audit_log_config_cloudfunctions_v2beta.dart';
 class AuditConfigCloudfunctionsV2beta {
   /// The configuration for logging of each type of permission.
   final pulumi.Input<List<AuditLogConfigCloudfunctionsV2beta>>? auditLogConfigs;
+
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final pulumi.Input<String>? service;
 
   /// Creates a new [AuditConfigCloudfunctionsV2beta].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  AuditConfigCloudfunctionsV2beta({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfigCloudfunctionsV2beta({this.auditLogConfigs, this.service});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': ?pulumi.Input.mapOptionalInputValue<List<AuditLogConfigCloudfunctionsV2beta>, List<Map<String, dynamic>>>(auditLogConfigs, (value) => pulumi.Input.encodeList<AuditLogConfigCloudfunctionsV2beta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'auditLogConfigs':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<AuditLogConfigCloudfunctionsV2beta>,
+            List<Map<String, dynamic>>
+          >(
+            auditLogConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  AuditLogConfigCloudfunctionsV2beta,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'service': ?service,
     };
   }
 
   factory AuditConfigCloudfunctionsV2beta.fromMap(Map<String, dynamic> map) {
     return AuditConfigCloudfunctionsV2beta(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigCloudfunctionsV2beta>(map['auditLogConfigs']!, (value) => AuditLogConfigCloudfunctionsV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      service: map['service'] == null ? null : (map['service']! as String).input(),
+      auditLogConfigs: (() {
+        final guardedValue = map['auditLogConfigs'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          pulumi.Input.decodeList<AuditLogConfigCloudfunctionsV2beta>(
+            guardedValue,
+            (value) => AuditLogConfigCloudfunctionsV2beta.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+        );
+      })(),
+      service: (() {
+        final guardedValue = map['service'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

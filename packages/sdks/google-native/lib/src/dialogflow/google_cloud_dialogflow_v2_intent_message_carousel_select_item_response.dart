@@ -8,10 +8,14 @@ import 'google_cloud_dialogflow_v2_intent_message_select_item_info_response.dart
 class GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse {
   /// Optional. The body text of the card.
   final pulumi.Input<String> description;
+
   /// Optional. The image to display.
   final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImageResponse> image;
+
   /// Additional info about the option item.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse> info;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse>
+  info;
+
   /// Title of the carousel item.
   final pulumi.Input<String> title;
 
@@ -30,19 +34,36 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': description,
-      'image': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2IntentMessageImageResponse, Map<String, dynamic>>(image, (value) => value.toMap()),
-      'info': pulumi.Input.mapInputValue<GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse, Map<String, dynamic>>(info, (value) => value.toMap()),
+      'image':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDialogflowV2IntentMessageImageResponse,
+            Map<String, dynamic>
+          >(image, (value) => value.toMap()),
+      'info':
+          pulumi.Input.mapInputValue<
+            GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse,
+            Map<String, dynamic>
+          >(info, (value) => value.toMap()),
       'title': title,
     };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse(
-      description: (map['description'] as String).input(),
-      image: (GoogleCloudDialogflowV2IntentMessageImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      info: (GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse.fromMap((map['info'] as Map).cast<String, dynamic>())).input(),
-      title: (map['title'] as String).input(),
+      description: pulumi.Input.fromValue(map['description'] as String),
+      image: pulumi.Input.fromValue(
+        GoogleCloudDialogflowV2IntentMessageImageResponse.fromMap(
+          (map['image']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      info: pulumi.Input.fromValue(
+        GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse.fromMap(
+          (map['info']! as Map).cast<String, dynamic>(),
+        ),
+      ),
+      title: pulumi.Input.fromValue(map['title'] as String),
     );
   }
 }
-

@@ -6,29 +6,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerState {
   /// The Access Level configured for this Container. Possible values are `blob`, `container` or `private`. Defaults to `private`.
   ///
-  /// > **Note:** When updating `container_access_type` for an existing storage container resource, Shared Key authentication will always be used, as AzureAD authentication is not supported.
+  /// &gt; **Note:** When updating `container_access_type` for an existing storage container resource, Shared Key authentication will always be used, as AzureAD authentication is not supported.
   final pulumi.Input<String>? containerAccessType;
+
   /// The default encryption scope to use for blobs uploaded to this container. Changing this forces a new resource to be created.
   final pulumi.Input<String>? defaultEncryptionScope;
+
   /// Whether to allow blobs to override the default encryption scope for this container. Can only be set when specifying `default_encryption_scope`. Defaults to `true`. Changing this forces a new resource to be created.
   final pulumi.Input<bool>? encryptionScopeOverrideEnabled;
+
   /// Is there an Immutability Policy configured on this Storage Container?
   final pulumi.Input<bool>? hasImmutabilityPolicy;
+
   /// Is there a Legal Hold configured on this Storage Container?
   final pulumi.Input<bool>? hasLegalHold;
+
   /// A mapping of MetaData for this Container. All metadata keys should be lowercase.
   final pulumi.Input<Map<String, String>>? metadata;
+
   /// The name of the Container which should be created within the Storage Account. Changing this forces a new resource to be created.
   final pulumi.Input<String>? name;
+
   /// The Resource Manager ID of this Storage Container.
   final pulumi.Input<String>? resourceManagerId;
+
   /// The name of the Storage Account where the Container should be created.
   ///
-  /// > **Note:** One of `storage_account_name` or `storage_account_id` must be specified. When specifying `storage_account_id` the resource will use the Resource Manager API, rather than the Data Plane API.
+  /// &gt; **Note:** One of `storage_account_name` or `storage_account_id` must be specified. When specifying `storage_account_id` the resource will use the Resource Manager API, rather than the Data Plane API.
   final pulumi.Input<String>? storageAccountId;
+
   /// The name of the Storage Account where the Container should be created. This property is deprecated in favour of `storage_account_id`.
   ///
-  /// > **Note:** Migrating from the deprecated `storage_account_name` to `storage_account_id` is supported without recreation. Any other change to either property will result in the resource being recreated.
+  /// &gt; **Note:** Migrating from the deprecated `storage_account_name` to `storage_account_id` is supported without recreation. Any other change to either property will result in the resource being recreated.
   final pulumi.Input<String>? storageAccountName;
 
   /// Creates a new [ContainerState].
@@ -72,17 +81,58 @@ class ContainerState {
 
   factory ContainerState.fromMap(Map<String, dynamic> map) {
     return ContainerState(
-      containerAccessType: map['containerAccessType'] == null ? null : (map['containerAccessType']! as String).input(),
-      defaultEncryptionScope: map['defaultEncryptionScope'] == null ? null : (map['defaultEncryptionScope']! as String).input(),
-      encryptionScopeOverrideEnabled: map['encryptionScopeOverrideEnabled'] == null ? null : (map['encryptionScopeOverrideEnabled']! as bool).input(),
-      hasImmutabilityPolicy: map['hasImmutabilityPolicy'] == null ? null : (map['hasImmutabilityPolicy']! as bool).input(),
-      hasLegalHold: map['hasLegalHold'] == null ? null : (map['hasLegalHold']! as bool).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name']! as String).input(),
-      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId']! as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
+      containerAccessType: (() {
+        final guardedValue = map['containerAccessType'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      defaultEncryptionScope: (() {
+        final guardedValue = map['defaultEncryptionScope'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      encryptionScopeOverrideEnabled: (() {
+        final guardedValue = map['encryptionScopeOverrideEnabled'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      hasImmutabilityPolicy: (() {
+        final guardedValue = map['hasImmutabilityPolicy'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      hasLegalHold: (() {
+        final guardedValue = map['hasLegalHold'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as bool);
+      })(),
+      metadata: (() {
+        final guardedValue = map['metadata'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(
+          (guardedValue as Map).cast<String, String>(),
+        );
+      })(),
+      name: (() {
+        final guardedValue = map['name'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      resourceManagerId: (() {
+        final guardedValue = map['resourceManagerId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountId: (() {
+        final guardedValue = map['storageAccountId'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
+      storageAccountName: (() {
+        final guardedValue = map['storageAccountName'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-

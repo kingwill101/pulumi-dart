@@ -8,20 +8,19 @@ class DomainDevicesParallelSourceDbus {
 
   /// Creates a new [DomainDevicesParallelSourceDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainDevicesParallelSourceDbus({
-    this.channel,
-  });
+  DomainDevicesParallelSourceDbus({this.channel});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'channel': ?channel,
-    };
+    return <String, dynamic>{'channel': ?channel};
   }
 
   factory DomainDevicesParallelSourceDbus.fromMap(Map<String, dynamic> map) {
     return DomainDevicesParallelSourceDbus(
-      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
+      channel: (() {
+        final guardedValue = map['channel'];
+        if (guardedValue == null) return null;
+        return pulumi.Input.fromValue(guardedValue as String);
+      })(),
     );
   }
 }
-
