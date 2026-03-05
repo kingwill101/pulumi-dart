@@ -10,16 +10,26 @@ It defines four AWS policies:
 - mandatory ban on `0.0.0.0/0` ingress in security groups
 - mandatory ban on Elastic Beanstalk resources
 
-## Run
+## Run against a stack
 
-From this directory, use Pulumi Policy CLI commands:
+Policy packs are evaluated from a **target stack**.
+
+Example end-to-end (from repository root):
 
 ```bash
-pulumi policy validate --policy-pack .
+export PULUMI_CONFIG_PASSPHRASE=banana
+
+cd examples/aws/webserver
+pulumi stack select dev --create
+
+pulumi preview --policy-pack ../../policy/aws --show-policy-remediations
+pulumi up --policy-pack ../../policy/aws
 ```
 
-To publish the pack:
+## Publish
+
+From this directory:
 
 ```bash
-pulumi policy publish --policy-pack .
+pulumi policy publish <org-name>
 ```

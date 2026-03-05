@@ -18,16 +18,19 @@ Included rule families:
 - S3 lifecycle and expiration checks
 - NAT gateway count stack validation
 
-## Run
+## Run against a stack
+
+Policy packs are evaluated from a **target stack**:
+
+```bash
+cd <your-stack-project>
+pulumi preview --policy-pack /absolute/path/to/examples/policy/aws-finops
+```
+
+## Publish
 
 From this directory:
 
 ```bash
-pulumi policy validate --policy-pack .
-```
-
-To publish:
-
-```bash
-pulumi policy publish --policy-pack .
+pulumi policy publish <org-name>
 ```

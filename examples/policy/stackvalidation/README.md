@@ -8,8 +8,9 @@ It demonstrates stack-wide checks:
 - bucket region validation (uses provider-populated output)
 - total S3 bucket count in the stack
 
-Run from this directory:
+Run from a target stack project:
 
 ```bash
-pulumi policy validate --policy-pack .
+cd <your-stack-project>
+pulumi preview --policy-pack /absolute/path/to/examples/policy/stackvalidation
 ```

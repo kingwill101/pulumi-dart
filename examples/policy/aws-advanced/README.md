@@ -14,16 +14,19 @@ It defines the same policy set as the upstream advanced AWS policy pack:
 - EBS encryption checks
 - ELB/ALB access logging checks
 
-## Run
+## Run against a stack
+
+Policy packs are evaluated from a **target stack**:
+
+```bash
+cd <your-stack-project>
+pulumi preview --policy-pack /absolute/path/to/examples/policy/aws-advanced
+```
+
+## Publish
 
 From this directory:
 
 ```bash
-pulumi policy validate --policy-pack .
-```
-
-To publish:
-
-```bash
-pulumi policy publish --policy-pack .
+pulumi policy publish <org-name>
 ```
