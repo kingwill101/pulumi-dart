@@ -62,6 +62,12 @@ jobs:
     working_directory: ~/project
     steps:
       - checkout
+      - run:
+          name: Initialize git submodules
+          command: |
+            set -euo pipefail
+            git submodule sync --recursive
+            git submodule update --init --recursive
       - restore_cache:
           keys:
             - integration-go-v1-{{ checksum "integration_tests/go.sum" }}-{{ checksum "pulumi-language-dart/go.sum" }}
