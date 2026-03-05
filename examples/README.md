@@ -83,7 +83,7 @@ The workspace currently includes SDKs under `packages/sdks/`. Use this mapping w
 
 These packages still need Dart-first examples, but they are not primarily sourced from `pulumi_examples` right now:
 
-- None currently.
+- `aws-app-platform` (Dart-first foundation examples in `examples/aws-app-platform/`)
 
 ## How to catalog a provider before porting
 

@@ -1,0 +1,7 @@
+name: aws-app-platform-basic-web
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: Basic low-cost AWS app platform deployment for a Dart web server.
+

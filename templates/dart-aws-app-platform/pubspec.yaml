@@ -1,0 +1,15 @@
+name: dart_aws_app_platform
+description: Pulumi Dart template for ECS/Fargate app deployment with app-platform defaults.
+publish_to: none
+version: 0.1.0
+
+environment:
+  sdk: ">=3.11.0 <4.0.0"
+
+dependencies:
+  pulumi: ^3.0.0
+  pulumi_aws_app_platform:
+    git:
+      url: https://github.com/kingwill101/pulumi-dart.git
+      path: packages/pulumi-aws-app-platform
+

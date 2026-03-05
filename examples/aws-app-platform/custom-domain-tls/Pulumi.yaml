@@ -1,0 +1,12 @@
+name: aws-app-platform-custom-domain-tls
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWS app platform deployment with managed DNS and ACM TLS.
+config:
+  aws-app-platform-custom-domain-tls:hostedZoneId:
+    description: Route53 Hosted Zone ID for DNS record and ACM validation.
+  aws-app-platform-custom-domain-tls:hostname:
+    description: Full domain name (for example app.example.com).
+

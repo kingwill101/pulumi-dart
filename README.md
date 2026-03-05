@@ -6,6 +6,7 @@ Community Pulumi support for Dart.
 
 - [Quickstart](#quickstart)
 - [Templates](#templates)
+- [App Platform Foundation](#app-platform-foundation)
 - [Generate Provider SDKs](#generate-provider-sdks)
 - [Contributing](#contributing)
 
@@ -154,6 +155,25 @@ export PULUMI_DART_PULUMI_DEPENDENCY_VERSION=0.0.1-dev
 
 # Or read latest published pub.dev version dynamically
 export PULUMI_DART_PULUMI_DEPENDENCY_VERSION="$(curl -fsSL https://pub.dev/api/packages/pulumi | jq -r '.latest.version')"
+```
+
+## App Platform Foundation
+
+This repo now includes an opinionated AWS-first app hosting package:
+
+- [`pulumi_aws_app_platform`](packages/pulumi-aws-app-platform/README.md)
+
+Use it to deploy containerized Dart web services on ECS/Fargate with:
+
+- ECR image build/push
+- ALB ingress
+- optional Route53 + ACM TLS
+- low-cost defaults with scalable settings
+
+Starter template:
+
+```bash
+pulumi new ./templates/dart-aws-app-platform -y --name my-dart-app --stack dev --secrets-provider passphrase
 ```
 
 ## Generate Provider SDKs

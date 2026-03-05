@@ -1,0 +1,4 @@
+name: dart-aws-app-platform
+description: Opinionated Pulumi Dart template for deploying a low-cost ECS/Fargate web service.
+runtime: dart
+

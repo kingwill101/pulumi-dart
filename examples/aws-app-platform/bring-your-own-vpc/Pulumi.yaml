@@ -1,0 +1,12 @@
+name: aws-app-platform-bring-your-own-vpc
+runtime:
+  name: dart
+  options:
+    resolution: workspace
+description: AWS app platform deployment into an existing VPC/public subnets.
+config:
+  aws-app-platform-bring-your-own-vpc:vpcId:
+    description: Existing VPC ID (for example vpc-1234abcd).
+  aws-app-platform-bring-your-own-vpc:publicSubnetIds:
+    description: Comma-separated public subnet IDs.
+
