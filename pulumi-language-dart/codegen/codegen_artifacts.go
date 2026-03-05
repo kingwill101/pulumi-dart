@@ -117,7 +117,7 @@ Future<void> main() async {
 func generatedPackageReadme(packageName, packagePath string) []byte {
 	gitURL := strings.TrimSpace(os.Getenv("PULUMI_DART_SDK_GIT_URL"))
 	if gitURL == "" {
-		gitURL = "https://github.com/<owner>/<repo>.git"
+		gitURL = defaultPulumiGitURL
 	}
 	gitRef := strings.TrimSpace(os.Getenv("PULUMI_DART_SDK_GIT_REF"))
 	if gitRef == "" {
@@ -197,7 +197,7 @@ func buildGeneratedPubspec(
 		Description: "Generated Pulumi Dart project.",
 		Version:     "0.0.1",
 		Environment: map[string]string{
-			"sdk": "^3.11.0",
+			"sdk": ">=3.11.0 <4.0.0",
 		},
 		Dependencies: map[string]interface{}{},
 	}

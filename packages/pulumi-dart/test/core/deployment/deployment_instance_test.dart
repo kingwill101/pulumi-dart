@@ -4,7 +4,7 @@ import 'package:grpc/grpc.dart';
 import 'package:mockito/mockito.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide RegisterPackageRequest;
 import 'package:pulumi/src/deployment/deployment.dart' as deployment_src;
 import 'package:pulumi/src/monitor.dart' as monitorpkg;
 import 'package:pulumi/src/pulumirpc/pulumi/provider.pb.dart';
@@ -434,7 +434,7 @@ void main() {
     });
 
     test(
-      'registerResourceOutputs serializes known values and skips unknown non-stack outputs',
+      'registerResourceOutputs serializes plain/Input/Output values and skips unknown non-stack outputs',
       () async {
         final stack = MockStack();
         when(stack.serializeOutputValue(any)).thenAnswer((invocation) async {
@@ -447,7 +447,9 @@ void main() {
           'urn:pulumi:stack::project::pkg:index:Thing::thing',
         );
         final outputs = Output.create(<String, dynamic>{
-          'known': Output.create('value'),
+          'plain': 'value',
+          'input': Input.fromValue('from-input'),
+          'known': Output.create('from-output'),
           'unknown': Output.createUnknown<String>(),
         });
 
@@ -457,8 +459,12 @@ void main() {
         final request = monitor.lastRegisterResourceOutputsRequest;
         expect(request, isNotNull);
         expect(request!.urn, await resource.urn.getValue());
+        expect(request.outputs.fields.containsKey('plain'), isTrue);
+        expect(request.outputs.fields['plain']!.stringValue, 'value');
+        expect(request.outputs.fields.containsKey('input'), isTrue);
+        expect(request.outputs.fields['input']!.stringValue, 'from-input');
         expect(request.outputs.fields.containsKey('known'), isTrue);
-        expect(request.outputs.fields['known']!.stringValue, 'value');
+        expect(request.outputs.fields['known']!.stringValue, 'from-output');
         expect(request.outputs.fields.containsKey('unknown'), isFalse);
       },
     );

@@ -10,10 +10,10 @@ topics:
     - category-cloud
     - kind-component
 environment:
-    sdk: ^3.11.0
+    sdk: ">=3.11.0 <4.0.0"
 resolution: workspace
 dependencies:
-    pulumi: 0.1.0
+    pulumi: 3.0.0
     pulumi_aws: ^7.0.0
 dev_dependencies:
     lints: ^6.1.0

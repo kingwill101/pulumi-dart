@@ -4,8 +4,8 @@
 [submodule "pulumi_examples"]
 	path = thirdparty/pulumi_examples
 	url = git@github.com:kingwill101/pulumi-examples.git
-[submodule "pulumi_automation_api_examples"]
-	path = pulumi_automation_api_examples
+[submodule "thirdparty/pulumi-automation-api-examples"]
+	path = thirdparty/pulumi-automation-api-examples
 	url = git@github.com:kingwill101/pulumi-automation-api-examples.git
 [submodule "thirdparty/pulumi-dotnet"]
 	path = thirdparty/pulumi-dotnet
@@ -16,3 +16,6 @@
 [submodule "thirdparty/pulumi-awsx"]
 	path = thirdparty/pulumi-awsx
 	url = https://github.com/pulumi/pulumi-awsx.git
+[submodule "thirdparty/pulumi-command"]
+	path = thirdparty/pulumi-command
+	url = https://github.com/pulumi/pulumi-command.git

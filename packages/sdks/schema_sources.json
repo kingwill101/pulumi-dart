@@ -85,12 +85,6 @@
       "package_pubspec_path": "packages/sdks/gcp/pubspec.yaml"
     },
     {
-      "name": "gcp-global-cloudrun",
-      "schema_url": "https://www.pulumi.com/registry/packages/gcp-global-cloudrun/schema.json",
-      "local_schema_path": "packages/sdks/schemas/gcp-global-cloudrun.schema.json",
-      "package_pubspec_path": "packages/sdks/gcp-global-cloudrun/pubspec.yaml"
-    },
-    {
       "name": "google-native",
       "schema_url": "https://www.pulumi.com/registry/packages/google-native/schema.json",
       "local_schema_path": "packages/sdks/schemas/google-native.schema.json",

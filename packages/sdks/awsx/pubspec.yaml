@@ -11,10 +11,10 @@ topics:
     - kind-component
     - category-cloud
 environment:
-    sdk: ^3.11.0
+    sdk: ">=3.11.0 <4.0.0"
 resolution: workspace
 dependencies:
-    pulumi: 0.1.0
+    pulumi: 3.0.0
     pulumi_aws: ^7.15.0
     pulumi_docker: ^4.6.0
     pulumi_docker_build: ^0.0.14

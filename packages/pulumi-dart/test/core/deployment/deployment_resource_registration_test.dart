@@ -1,7 +1,7 @@
 import 'package:grpc/grpc.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide RegisterPackageRequest;
 import 'package:pulumi/src/constants.dart';
 import 'package:pulumi/src/deployment/models.dart' as deployment_models;
 import 'package:pulumi/src/monitor.dart' as monitorpkg;

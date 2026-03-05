@@ -181,7 +181,7 @@ void main() {
     test(
       'custom resources with urn are read via monitor.readResource',
       () async {
-        final foo = _ReadCustomResource(
+        _ReadCustomResource(
           'foo-urn',
           {'a': Input.fromValue('bar')},
           options: CustomResourceOptions(

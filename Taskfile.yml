@@ -19,8 +19,8 @@ vars:
   COVERAGE_LCOV: ""
   COVERAGE_EXCLUDE_FILE: "{{.ROOT_DIR}}/.coverage_filter"
   DART_COVERAGE_BASELINE: "29.27"
-  DAY1_PROVIDERS: "gcp gcp-global-cloudrun google-native"
-  ALL_PROVIDERS: "gcp gcp-global-cloudrun google-native aws awsx random"
+  DAY1_PROVIDERS: "gcp google-native"
+  ALL_PROVIDERS: "gcp google-native aws awsx random"
 
 tasks:
   default:
@@ -234,7 +234,7 @@ tasks:
         description: Pulumi Dart SDK generation workspace
         version: 0.0.1
         environment:
-          sdk: ^3.11.0
+          sdk: ">=3.11.0 <4.0.0"
         dependencies:
           pulumi: any
         dependency_overrides:
@@ -288,13 +288,6 @@ tasks:
         vars:
           PACKAGE: gcp
 
-  generate:gcp-global-cloudrun:
-    desc: Generate Dart SDK for Pulumi GCP Global Cloud Run
-    cmds:
-      - task: generate:provider
-        vars:
-          PACKAGE: gcp-global-cloudrun
-
   generate:google-native:
     desc: Generate Dart SDK for Pulumi Google Native
     cmds:
@@ -338,7 +331,7 @@ tasks:
   generate:day1:
     desc: Generate Day 1 Google provider SDKs for Dart
     cmds:
-      - dart run tool/generate_packages.dart --provider "gcp,gcp-global-cloudrun,google-native"
+      - dart run tool/generate_packages.dart --provider "gcp,google-native"
 
   analyze-package:
     internal: true
@@ -416,13 +409,6 @@ tasks:
       - task: analyze-package
         vars:
           PACKAGE: gcp
-
-  analyze:gcp-global-cloudrun:
-    desc: Analyze generated Dart SDK for Pulumi GCP Global Cloud Run
-    cmds:
-      - task: analyze-package
-        vars:
-          PACKAGE: gcp-global-cloudrun
 
   analyze:google-native:
     desc: Analyze generated Dart SDK for Pulumi Google Native
@@ -516,7 +502,7 @@ tasks:
         publish_to: none
         version: 0.0.1
         environment:
-          sdk: ^3.11.0
+          sdk: ">=3.11.0 <4.0.0"
         dependencies:
           pulumi: any
           ${PROVIDER_PACKAGE}:

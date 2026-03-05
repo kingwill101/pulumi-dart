@@ -1,6 +1,6 @@
 import 'package:grpc/grpc.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide RegisterPackageRequest;
 import 'package:pulumi/src/monitor.dart' as monitorpkg;
 import 'package:pulumi/src/pulumirpc/pulumi/provider.pb.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart'

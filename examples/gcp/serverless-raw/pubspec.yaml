@@ -5,7 +5,7 @@ resolution: workspace
 description: Pulumi GCP serverless raw example.
 
 environment:
-  sdk: ^3.11.0
+  sdk: ">=3.11.0 <4.0.0"
 dependencies:
   pulumi: 3.0.0
   pulumi_gcp: 9.11.0

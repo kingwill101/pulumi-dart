@@ -299,8 +299,8 @@ void main() {
         expect(await idViaOptionalInput!.toOutput().getValue(), 'source-id');
         expect(await mapped.toOutput().getValue(), 'mapped-source-id');
         expect(identical(consumer.targetId, idAsInput), isTrue);
-        expect(source.id is Input<String>, isTrue);
-        expect(Output.create('inline') is Input<String>, isTrue);
+        expect(source.id, isA<Input<String>>());
+        expect(Output.create('inline'), isA<Input<String>>());
         expect(_acceptInputString(source.id), same(source.id));
       },
     );

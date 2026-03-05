@@ -254,65 +254,65 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
 
     final elementType = _extractTypeArg(normalizedType);
     if (elementType == 'String') {
-      return (value as List)
+      return (value)
           .map<String>((entry) => entry.toString())
           .toList(growable: false);
     }
     if (elementType == 'int') {
-      return (value as List)
+      return (value)
           .map<int>((entry) => entry is num ? entry.toInt() : entry as int)
           .toList(growable: false);
     }
     if (elementType == 'double') {
-      return (value as List)
+      return (value)
           .map<double>(
             (entry) => entry is num ? entry.toDouble() : entry as double,
           )
           .toList(growable: false);
     }
     if (elementType == 'bool') {
-      return (value as List)
+      return (value)
           .map<bool>((entry) => entry as bool)
           .toList(growable: false);
     }
     if (elementType.startsWith('Map<')) {
       final mapValueType = _mapValueType(elementType);
       if (mapValueType == 'String') {
-        return (value as List)
+        return (value)
             .map<Map<String, String>>(
               (entry) => _coerceMap(entry, elementType) as Map<String, String>,
             )
             .toList(growable: false);
       }
       if (mapValueType == 'int') {
-        return (value as List)
+        return (value)
             .map<Map<String, int>>(
               (entry) => _coerceMap(entry, elementType) as Map<String, int>,
             )
             .toList(growable: false);
       }
       if (mapValueType == 'double') {
-        return (value as List)
+        return (value)
             .map<Map<String, double>>(
               (entry) => _coerceMap(entry, elementType) as Map<String, double>,
             )
             .toList(growable: false);
       }
       if (mapValueType == 'bool') {
-        return (value as List)
+        return (value)
             .map<Map<String, bool>>(
               (entry) => _coerceMap(entry, elementType) as Map<String, bool>,
             )
             .toList(growable: false);
       }
-      return (value as List)
+      return (value)
           .map<Map<String, dynamic>>(
             (entry) => _coerceMap(entry, elementType) as Map<String, dynamic>,
           )
           .toList(growable: false);
     }
 
-    return (value as List)
+    return (value)
         .map((entry) => _coerceValue(entry, elementType))
         .toList(growable: false);
   }
@@ -328,7 +328,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
     final mapValueType = _mapValueType(normalizedType);
 
     if (mapValueType == 'String') {
-      return (value as Map).map<String, String>(
+      return (value).map<String, String>(
         (key, entryValue) => MapEntry(
           key.toString(),
           _coerceValue(entryValue, mapValueType) as String? ?? 'null',
@@ -336,7 +336,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
       );
     }
     if (mapValueType == 'int') {
-      return (value as Map).map<String, int>(
+      return (value).map<String, int>(
         (key, entryValue) => MapEntry(
           key.toString(),
           _coerceValue(entryValue, mapValueType) as int,
@@ -344,7 +344,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
       );
     }
     if (mapValueType == 'double') {
-      return (value as Map).map<String, double>(
+      return (value).map<String, double>(
         (key, entryValue) => MapEntry(
           key.toString(),
           _coerceValue(entryValue, mapValueType) as double,
@@ -352,7 +352,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
       );
     }
     if (mapValueType == 'bool') {
-      return (value as Map).map<String, bool>(
+      return (value).map<String, bool>(
         (key, entryValue) => MapEntry(
           key.toString(),
           _coerceValue(entryValue, mapValueType) as bool,
@@ -362,7 +362,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
     if (mapValueType.startsWith('List<')) {
       final listElementType = _extractTypeArg(mapValueType);
       if (mapValueType == 'List<String>') {
-        return (value as Map).map<String, List<String>>(
+        return (value).map<String, List<String>>(
           (key, entryValue) => MapEntry(
             key.toString(),
             _coerceList(entryValue, mapValueType) as List<String>,
@@ -370,7 +370,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
         );
       }
       if (mapValueType == 'List<int>') {
-        return (value as Map).map<String, List<int>>(
+        return (value).map<String, List<int>>(
           (key, entryValue) => MapEntry(
             key.toString(),
             _coerceList(entryValue, mapValueType) as List<int>,
@@ -378,7 +378,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
         );
       }
       if (mapValueType == 'List<double>') {
-        return (value as Map).map<String, List<double>>(
+        return (value).map<String, List<double>>(
           (key, entryValue) => MapEntry(
             key.toString(),
             _coerceList(entryValue, mapValueType) as List<double>,
@@ -386,7 +386,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
         );
       }
       if (mapValueType == 'List<bool>') {
-        return (value as Map).map<String, List<bool>>(
+        return (value).map<String, List<bool>>(
           (key, entryValue) => MapEntry(
             key.toString(),
             _coerceList(entryValue, mapValueType) as List<bool>,
@@ -394,7 +394,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
         );
       }
       if (listElementType.startsWith('Map<')) {
-        return (value as Map).map<String, List<Map<String, dynamic>>>(
+        return (value).map<String, List<Map<String, dynamic>>>(
           (key, entryValue) => MapEntry(
             key.toString(),
             (_coerceList(entryValue, mapValueType) as List)
@@ -403,7 +403,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
           ),
         );
       }
-      return (value as Map).map<String, List<dynamic>>(
+      return (value).map<String, List<dynamic>>(
         (key, entryValue) => MapEntry(
           key.toString(),
           _coerceList(entryValue, mapValueType) as List<dynamic>,
@@ -413,7 +413,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
     if (mapValueType.startsWith('Map<')) {
       final nestedMapValueType = _mapValueType(mapValueType);
       if (nestedMapValueType == 'String') {
-        return (value as Map).map<String, Map<String, String>>(
+        return (value).map<String, Map<String, String>>(
           (key, entryValue) => MapEntry(
             key.toString(),
             _coerceMap(entryValue, mapValueType) as Map<String, String>,
@@ -421,7 +421,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
         );
       }
       if (nestedMapValueType == 'int') {
-        return (value as Map).map<String, Map<String, int>>(
+        return (value).map<String, Map<String, int>>(
           (key, entryValue) => MapEntry(
             key.toString(),
             _coerceMap(entryValue, mapValueType) as Map<String, int>,
@@ -429,7 +429,7 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
         );
       }
       if (nestedMapValueType == 'double') {
-        return (value as Map).map<String, Map<String, double>>(
+        return (value).map<String, Map<String, double>>(
           (key, entryValue) => MapEntry(
             key.toString(),
             _coerceMap(entryValue, mapValueType) as Map<String, double>,
@@ -437,21 +437,21 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
         );
       }
       if (nestedMapValueType == 'bool') {
-        return (value as Map).map<String, Map<String, bool>>(
+        return (value).map<String, Map<String, bool>>(
           (key, entryValue) => MapEntry(
             key.toString(),
             _coerceMap(entryValue, mapValueType) as Map<String, bool>,
           ),
         );
       }
-      return (value as Map).map<String, Map<String, dynamic>>(
+      return (value).map<String, Map<String, dynamic>>(
         (key, entryValue) => MapEntry(
           key.toString(),
           _coerceMap(entryValue, mapValueType) as Map<String, dynamic>,
         ),
       );
     }
-    return (value as Map).map<String, dynamic>(
+    return (value).map<String, dynamic>(
       (key, entryValue) =>
           MapEntry(key.toString(), _coerceValue(entryValue, mapValueType)),
     );

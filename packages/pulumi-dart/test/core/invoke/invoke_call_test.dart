@@ -1,7 +1,7 @@
 import 'package:grpc/grpc.dart';
 import 'package:mockito/mockito.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide RegisterPackageRequest;
 import 'package:pulumi/src/deployment/call.dart';
 import 'package:pulumi/src/deployment/invoke.dart';
 import 'package:pulumi/src/deployment/models.dart' as deployment_models;

@@ -1019,7 +1019,7 @@ class DeploymentImpl extends Deployment
     var outputsMap = await outputs.getValue();
 
     for (var entry in outputsMap.entries) {
-      var outputData = await entry.value.getData();
+      final outputData = await Input.output<Object?>(entry.value).getData();
       if (!outputData.isKnown) {
         if (resource.getResourceType() != Stack.rootPulumiStackTypeName) {
           continue;

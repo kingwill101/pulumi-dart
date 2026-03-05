@@ -49,11 +49,11 @@ abstract class Input<T> {
       return value;
     }
     if (value is Input) {
-      final input = value as Input<dynamic>;
+      final input = value;
       return Input.fromOutput(input.toOutput().apply<T>((v) => v as T));
     }
     if (value is Output) {
-      final output = value as Output<dynamic>;
+      final output = value;
       return Input.fromOutput(output.apply<T>((v) => v as T));
     }
     if (value is T) {
@@ -79,11 +79,11 @@ abstract class Input<T> {
       return value;
     }
     if (value is Input) {
-      final input = value as Input<dynamic>;
+      final input = value;
       return Input.fromOutput(input.toOutput().apply<T>((v) => v as T));
     }
     if (value is Output) {
-      final output = value as Output<dynamic>;
+      final output = value;
       return Input.fromOutput(output.apply<T>((v) => v as T));
     }
     if (value is T) {

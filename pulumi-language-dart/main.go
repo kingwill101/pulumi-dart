@@ -539,6 +539,111 @@ func appendDartDirectoryFingerprints(entries *[]string, programDirectory, dir st
 	})
 }
 
+func appendLocalDependencyFingerprints(entries *[]string, programDirectory string) error {
+	if strings.TrimSpace(programDirectory) == "" {
+		return nil
+	}
+
+	pubspecPath := filepath.Join(programDirectory, "pubspec.yaml")
+	pubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
+	if err != nil || pubspec == nil {
+		return nil
+	}
+
+	dependencyDirs := map[string]struct{}{}
+	appendDepPaths := func(deps map[string]interface{}) {
+		for _, depSpec := range deps {
+			rawPath, ok := codegen.DependencySpecPath(depSpec)
+			if !ok {
+				continue
+			}
+			depPath := strings.TrimSpace(rawPath)
+			if depPath == "" {
+				continue
+			}
+			if !filepath.IsAbs(depPath) {
+				depPath = filepath.Join(programDirectory, filepath.FromSlash(depPath))
+			}
+			dependencyDirs[filepath.Clean(depPath)] = struct{}{}
+		}
+	}
+	appendDepPaths(pubspec.Dependencies)
+	appendDepPaths(pubspec.DependencyOverrides)
+
+	packageConfigPath := filepath.Join(programDirectory, ".dart_tool", "package_config.json")
+	if data, err := os.ReadFile(packageConfigPath); err == nil {
+		type packageConfigPackage struct {
+			Name    string `json:"name"`
+			RootURI string `json:"rootUri"`
+		}
+		type packageConfig struct {
+			Packages []packageConfigPackage `json:"packages"`
+		}
+		var cfg packageConfig
+		if jsonErr := json.Unmarshal(data, &cfg); jsonErr == nil {
+			configDir := filepath.Dir(packageConfigPath)
+			for _, pkg := range cfg.Packages {
+				name := strings.TrimSpace(pkg.Name)
+				if name != "pulumi" && !strings.HasPrefix(name, "pulumi_") {
+					continue
+				}
+				rootURI := strings.TrimSpace(pkg.RootURI)
+				if rootURI == "" {
+					continue
+				}
+				var rootPath string
+				if strings.HasPrefix(rootURI, "file://") {
+					u, parseErr := url.Parse(rootURI)
+					if parseErr != nil {
+						continue
+					}
+					rootPath = u.Path
+				} else {
+					rootPath = filepath.Join(configDir, filepath.FromSlash(rootURI))
+				}
+				rootPath = filepath.Clean(rootPath)
+				if filepath.Base(rootPath) == "lib" {
+					rootPath = filepath.Dir(rootPath)
+				}
+				dependencyDirs[rootPath] = struct{}{}
+			}
+		}
+	}
+
+	if len(dependencyDirs) == 0 {
+		return nil
+	}
+
+	dirs := make([]string, 0, len(dependencyDirs))
+	for dir := range dependencyDirs {
+		dirs = append(dirs, dir)
+	}
+	sort.Strings(dirs)
+
+	for _, depDir := range dirs {
+		stat, err := os.Stat(depDir)
+		if err != nil {
+			if os.IsNotExist(err) {
+				continue
+			}
+			return err
+		}
+		if !stat.IsDir() {
+			continue
+		}
+		if err := appendDartFileFingerprint(entries, programDirectory, filepath.Join(depDir, "pubspec.yaml")); err != nil {
+			return err
+		}
+		for _, relativeDir := range []string{"lib", "bin", "tool"} {
+			if err := appendDartDirectoryFingerprints(entries, programDirectory, filepath.Join(depDir, relativeDir)); err != nil {
+				return err
+			}
+		}
+	}
+
+	return nil
+}
+
 func computeDartProgramFingerprint(programDirectory, entryPoint string) (string, error) {
 	entryPoint = strings.TrimSpace(entryPoint)
 	entries := []string{
@@ -565,6 +670,9 @@ func computeDartProgramFingerprint(programDirectory, entryPoint string) (string,
 			if err := appendDartDirectoryFingerprints(&entries, programDirectory, filepath.Join(programDirectory, relativeDir)); err != nil {
 				return "", err
 			}
+		}
+		if err := appendLocalDependencyFingerprints(&entries, programDirectory); err != nil {
+			return "", err
 		}
 	}
 

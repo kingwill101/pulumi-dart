@@ -740,7 +740,7 @@ func TestGeneratePackageUsesWorkspacePulumiVersion(t *testing.T) {
 	rootPubspec := strings.TrimSpace(`
 name: root_workspace
 environment:
-  sdk: ^3.11.0
+  sdk: ">=3.11.0 <4.0.0"
 workspace:
   - pulumi-dart
   - packages/command
@@ -754,7 +754,7 @@ name: pulumi
 version: 9.8.7
 resolution: workspace
 environment:
-  sdk: ^3.11.0
+  sdk: ">=3.11.0 <4.0.0"
 `) + "\n"
 	require.NoError(t, os.WriteFile(filepath.Join(pulumiDir, "pubspec.yaml"), []byte(pulumiPubspec), 0o600))
 
@@ -837,7 +837,7 @@ name: pulumi_command
 description: A Pulumi package for executing commands locally or remotely.
 version: 1.0.0
 environment:
-  sdk: ^3.11.0
+  sdk: ">=3.11.0 <4.0.0"
 dependencies:
   pulumi: ^1.0.0
 `) + "\n"

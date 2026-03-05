@@ -49,6 +49,9 @@ func toDartPackageName(namespace, name string) string {
 	} else {
 		base = sanitizeDartIdentifier(namespace + "_" + name)
 	}
+	if namespace == "" && base == "pulumi" {
+		return "pulumi"
+	}
 	if strings.HasPrefix(base, "pulumi_") {
 		return base
 	}

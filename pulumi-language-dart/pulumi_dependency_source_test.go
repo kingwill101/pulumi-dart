@@ -160,7 +160,7 @@ func TestIsSourceDependencySpec(t *testing.T) {
 
 func TestDependencyPackageDirFromDartPackageName(t *testing.T) {
 	assert.Equal(t, "random", codegen.DependencyPackageDirFromDartPackageName("pulumi_random"))
-	assert.Equal(t, "gcp-global-cloudrun", codegen.DependencyPackageDirFromDartPackageName("pulumi_gcp_global_cloudrun"))
+	assert.Equal(t, "google-native", codegen.DependencyPackageDirFromDartPackageName("pulumi_google_native"))
 	assert.Equal(t, "", codegen.DependencyPackageDirFromDartPackageName("pulumi"))
 	assert.Equal(t, "", codegen.DependencyPackageDirFromDartPackageName("http"))
 }
@@ -175,7 +175,7 @@ func TestInferLocalPulumiDependencyFromProjectReadsDependencyOverrides(t *testin
 description: Pulumi Dart SDK generation workspace
 version: 0.0.1
 environment:
-  sdk: ^3.11.0
+  sdk: ">=3.11.0 <4.0.0"
 dependencies:
   pulumi: any
 dependency_overrides:

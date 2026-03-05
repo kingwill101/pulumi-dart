@@ -63,7 +63,7 @@ Status: **In Progress**
 
 Current validation snapshot (2026-02-27):
 
-- `task generate:all`: **PASS** (gcp, gcp-global-cloudrun, google-native, aws, awsx, random).
+- `task generate:all`: **PASS** (gcp, google-native, aws, awsx, random).
 - `task analyze:random`, `task analyze:aws`, `task analyze:gcp`: **0 issues** each.
 - `task smoke:preview PACKAGE=random|aws|gcp`: **PASS**.
 - `task verify:terraform` (opt-in): **PASS** (`terraform@6.0.1`, analyze 0 issues, smoke preview pass).
